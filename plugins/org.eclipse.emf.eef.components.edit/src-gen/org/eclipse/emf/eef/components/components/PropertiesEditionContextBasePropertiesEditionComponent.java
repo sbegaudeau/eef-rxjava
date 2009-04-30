@@ -9,97 +9,75 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:46 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
 // Start of user code for imports
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.components.PropertiesEditionContext	;
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.components.PropertiesEditionContext	;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage	;
-import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
-import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class PropertiesEditionContextBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private PropertiesEditionContext propertiesEditionContext;
-
+	
 	/**
 	 * The Base part
 	 */
 	private PropertiesEditionContextPropertiesEditionPart basePart;
-
 	
-
 	/**
 	 * Default constructor
 	 */
-	public PropertiesEditionContextBasePropertiesEditionComponent(EObject propertiesEditionContext, String mode) {
+	public PropertiesEditionContextBasePropertiesEditionComponent(EObject propertiesEditionContext, String editing_mode) {
 		if (propertiesEditionContext instanceof PropertiesEditionContext) {
 			this.propertiesEditionContext = (PropertiesEditionContext)propertiesEditionContext;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
+			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
 				this.propertiesEditionContext.eAdapters().add(semanticAdapter);
 			}
 		}
 		listeners = new ArrayList();
-		this.mode = mode;
+		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * @return the semantic model listener
@@ -122,6 +100,17 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		};
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 */
+	public java.lang.Class translatePart(String key) {
+		if (BASE_PART.equals(key))
+			return ComponentsViewsRepository.PropertiesEditionContext.class;
+		return super.translatePart(key);
+	}
+	
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
@@ -136,18 +125,33 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 * (java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(String kind, String key) {
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (propertiesEditionContext != null && BASE_PART.equals(key)) {
-				if (basePart == null) {
-					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(propertiesEditionContext);
-					if (provider != null) {
-						basePart = (PropertiesEditionContextPropertiesEditionPart)provider.getPropertiesEditionPart(propertiesEditionContext, this, key, kind);
-						listeners.add(basePart);
-					}
+			if (basePart == null) {
+				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ComponentsViewsRepository.class);
+				if (provider != null) {
+					basePart = (PropertiesEditionContextPropertiesEditionPart)provider.getPropertiesEditionPart(ComponentsViewsRepository.PropertiesEditionContext.class, kind, this);
+					listeners.add(basePart);
 				}
-				return (IPropertiesEditionPart)basePart;
+			}
+			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent
+	 * 		#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 * 						org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		if (basePart != null && key == ComponentsViewsRepository.PropertiesEditionContext.class) {
+			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+			PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)elt;
+			basePart.initModel(allResource, propertiesEditionContext.getModel());
+		}
+
 	}
 
 	/*
@@ -190,17 +194,17 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		super.firePropertiesChanged(event);
-		if (PathedPropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
-			Command command = null;
+		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+			CompoundCommand command = new CompoundCommand();
 			if (ComponentsViewsRepository.PropertiesEditionContext.model == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model(), event.getNewValue());
+				command.append(SetCommand.create(liveEditingDomain, propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model(), event.getNewValue()));
 
 
 			if (command != null)
 				liveEditingDomain.getCommandStack().execute(command);
-		} else if (PathedPropertiesEditionEvent.CHANGE == event.getState()) {
+		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				
@@ -212,42 +216,58 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 			}
 		}
-	}	
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 */
+	public boolean isRequired(String key, int kind) {
+		return key == ComponentsViewsRepository.PropertiesEditionContext.model;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+			if (key == ComponentsViewsRepository.PropertiesEditionContext.model)
+				return "The GenPackage for this edition context"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
 	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
-	public Diagnostic validateValue(PathedPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditionEvent event) {
 		String newStringValue = event.getNewValue().toString();
-		
 		Diagnostic ret = null;
-		
 		try {
-
 
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
 		}
-		
 		return ret;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(mode)) {
+		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
 			return Diagnostician.INSTANCE.validate(copy);
 		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(mode))
+		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			return Diagnostician.INSTANCE.validate(propertiesEditionContext);
 		else
 			return null;
 	}
+	
 
 	/**
 	 * {@inheritDoc}
@@ -260,5 +280,4 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	}
 
 }
-
 

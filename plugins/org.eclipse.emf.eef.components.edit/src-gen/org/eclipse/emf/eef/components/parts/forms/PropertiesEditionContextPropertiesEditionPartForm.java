@@ -9,110 +9,81 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartForm.java,v 1.1 2009/04/30 17:09:48 glefur Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
+import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
+import org.eclipse.emf.eef.components.providers.ComponentsMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IMessageManager;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.events.IExpansionListener;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.events.IExpansionListener;
-
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
-import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
-import org.eclipse.emf.eef.components.providers.ComponentsMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;	
 
 
 
 
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class PropertiesEditionContextPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PropertiesEditionContextPropertiesEditionPart {
 
-	protected PropertiesEditionContext current;
-	protected ResourceSet resourceSet;
-	private EObjectFlatComboViewer model;
-		
+	protected EObjectFlatComboViewer model;
+
+
+
+
+	
 	public PropertiesEditionContextPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-		
+	
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);		
+		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));		
-		
+		view.setLayout(layout);
+		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
 	
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) { 
+	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createBindingGroup(widgetFactory, view);
-
 		// Start of user code for additional ui definition
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
-	private void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
+	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bindingSection.setText(ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingSectionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -124,16 +95,19 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 		bindingGroup.setLayout(bindingGroupLayout);
 		createModelFlatComboViewer(bindingGroup, widgetFactory);
 		bindingSection.setClient(bindingGroup);
-	}   		
-
+	}
 	/**
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 	
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, true);
+		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.FORM_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		// Start of user code for model filters initialisation
+
+ 		// End of user code
 		model.addFilter(new ViewerFilter() {
 
 			/*
@@ -158,33 +132,19 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(PropertiesEditionContextPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionContext.model, PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, getModel()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionContextPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionContext.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getModel()));
 			}
 			
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, "The GenPackage for this edition context", null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)eObject;
-		current = propertiesEditionContext;
-		resourceSet = allResources;
-		model.setInput(allResources);
-		if (propertiesEditionContext.getModel() != null){
-			model.setSelection(new StructuredSelection(propertiesEditionContext.getModel()));
-		}
-		// Start of user code for model filters initialisation
-
- 		// End of user code
 	
-	}
-	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -204,6 +164,17 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#initModel(ResourceSet allResources, EObject current)
+	 */
+	public void initModel(ResourceSet allResources, EObject current) {
+		model.setInput(allResources);
+		if (current != null)
+			model.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
@@ -212,10 +183,14 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 		else
 			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 
 
@@ -223,5 +198,4 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	// Start of user code additional methods
  	
 	// End of user code
-
 }	

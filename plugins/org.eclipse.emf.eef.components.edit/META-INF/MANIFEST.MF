@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.eef.components.edit;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.1.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.emf.eef.components.provider.ComponentsEditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -23,5 +23,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.eef.views.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.codegen.ecore.ui,
- org.eclipse.emf.eef.runtime;bundle-version="0.7.0";visibility:=reexport
+ org.eclipse.emf.eef.runtime;visibility:=reexport,
+ org.eclipse.emf.validation
 Bundle-ActivationPolicy: lazy

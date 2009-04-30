@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsPackagePropertiesEditionProvider.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ * $Id: ComponentsPackagePropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
- 	
+import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -25,10 +26,26 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 	 */
 	public ComponentsPackagePropertiesEditionProvider() {
 		super();
+		append(createDocumentedElementPropertiesEditionProvider());
 		append(createPropertiesEditionContextPropertiesEditionProvider());
 		append(createPropertiesEditionComponentPropertiesEditionProvider());
 		append(createPropertiesEditionElementPropertiesEditionProvider());
 		append(createPropertiesMultiEditionElementPropertiesEditionProvider());
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * DocumentedElement instances.
+	 */
+	protected DocumentedElementPropertiesEditionProvider documentedElementPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a DocumentedElement
+	 */
+	public DocumentedElementPropertiesEditionProvider createDocumentedElementPropertiesEditionProvider() {
+		if (documentedElementPropertiesEditionProvider == null)
+			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
+		return documentedElementPropertiesEditionProvider;
 	}
 	
 	/**
@@ -91,5 +108,4 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 		return propertiesMultiEditionElementPropertiesEditionProvider;
 	}
 	
-
 }	

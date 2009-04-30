@@ -9,99 +9,83 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.1 2009/04/30 17:09:48 glefur Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.components.PropertiesEditionElement;
+import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
+import org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart;
+import org.eclipse.emf.eef.components.providers.ComponentsMessages;
+import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.views.ElementEditor;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.components.PropertiesEditionElement	;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.components.providers.ComponentsMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
-import org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart;
-import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionElementPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.ecore.EStructuralFeature;	
-
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.views.ElementEditor;	
+import org.eclipse.swt.widgets.Text;
 
 
 
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class PropertiesEditionElementPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PropertiesEditionElementPropertiesEditionPart {
 
-	protected PropertiesEditionElement current;
-	protected ResourceSet resourceSet;
 	private Text name;
 	private Text helpID;
-	private EObjectFlatComboViewer model;
+	protected EObjectFlatComboViewer model;
 	protected EMFListEditUtil viewsEditUtil;
 	private TableViewer views;
 	private Button addViews;
 	private Button removeViews;
-		
+
+
+
+
+	
 	public PropertiesEditionElementPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
@@ -110,17 +94,16 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
+		view.setLayout(layout);
 		
 		createControls(view);
-		
 		return view;
 	}
 	
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 		createBindingGroup(view);
-
+		
 		// Start of user code for additional ui definition
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory) {
 
@@ -133,11 +116,10 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			}
 			
 		});
-		// End of user code
-		
+		// End of user code		
 	}
-	
-	private void createPropertiesGroup(Composite parent) {
+
+	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -148,10 +130,9 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
 		createHelpIDText(propertiesGroup);
-   	}
-
-	private void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_NameLabel, true);
+	}
+	protected void createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.name, ComponentsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -164,16 +145,15 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.name, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, "The name of this property binding", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.name, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-
-	private void createHelpIDText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_HelpIDLabel, false);
+	protected void createHelpIDText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.helpID, ComponentsViewsRepository.SWT_KIND));
 		helpID = new Text(parent, SWT.BORDER);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
@@ -186,15 +166,14 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.helpID, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, helpID.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.helpID, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, helpID.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, "The ID of the dynamic help associated to this element (not implemented for the moment)", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.helpID, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-
-	private void createBindingGroup(Composite parent) {
+	protected void createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -205,16 +184,18 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		bindingGroup.setLayout(bindingGroupLayout);
 		createModelFlatComboViewer(bindingGroup);
 		createViewsReferencesTable(bindingGroup);
-   	}
-
+	}
 	/**
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent) {
-	
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ModelLabel, true);		
+
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.model, ComponentsViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		
+		// Start of user code for model filters initialisation
+ 		// End of user code		
 		model.addFilter(new ViewerFilter() {
 
 			/*
@@ -223,27 +204,26 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EStructuralFeature);			
+				return (element instanceof EStructuralFeature);
 			}
 
 		});
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.model, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, getModel()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
 			}
 
 		});
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
-		SWTUtils.createHelpButton(parent, "The mapped structural feature", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-
 	/**
 	 * @param parent
 	 */
 	protected void createViewsReferencesTable(Composite parent) {
-		Label viewsLabel = SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ViewsLabel, true);
+		Label viewsLabel = SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ViewsLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.views, ComponentsViewsRepository.SWT_KIND));
 		GridData viewsLabelData = new GridData();
 		viewsLabelData.horizontalSpan = 3;
 		viewsLabel.setLayoutData(viewsLabelData);
@@ -271,12 +251,11 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Views"); //$NON-NLS-1$
-		// End of user code
-		
+		// End of user code		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
- 	
+	
 			// Start of user code for table views label provider
 			
 			public String getColumnText(Object object, int columnIndex) {
@@ -290,7 +269,6 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 				return ""; //$NON-NLS-1$
 			}
 			// End of user code
-
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
@@ -350,7 +328,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 					IStructuredSelection selection = (IStructuredSelection) views.getSelection();
 					removeViews(selection);
 					views.refresh();
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.views, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.REMOVE, null, selection.getFirstElement()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selection.getFirstElement()));
 				}
 			}
 
@@ -362,33 +340,33 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	 */
 	protected void addViews() {
 		ViewerFilter viewerFilter = new ViewerFilter() {
-	
+
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return element instanceof ElementEditor  && !viewsEditUtil.getVirtualList().contains(element);
+				return element instanceof ElementEditor && !viewsEditUtil.getVirtualList().contains(element);
 			}
-	
+
 		};
-		
+
 		List filters = new ArrayList();
-	
+
 		// Start of user code for filters initialisation for ElementEditor
 				
 				// End of user code
-	
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(view.getShell(), new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
+
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
 					if (!viewsEditUtil.getVirtualList().contains(elem))
 						viewsEditUtil.addElement(elem);
 				}
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.views, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.ADD, null, selection));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionElement.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.ADD, null, selection));
 			}
-	
+
 		};
 		dialog.open();
 	}
-	
+
 	/**
 	 * @param selection the views to remove 
 	 */
@@ -399,37 +377,11 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		}
 	}
 
-
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		PropertiesEditionElement propertiesEditionElement = (PropertiesEditionElement)eObject;
-		current = propertiesEditionElement;
-		resourceSet = allResources;
-		if (propertiesEditionElement.getName() != null){
-			name.setText(propertiesEditionElement.getName());
-		}	
-		viewsEditUtil = new EMFListEditUtil(propertiesEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
-		this.views.setInput(viewsEditUtil.getVirtualList());	
-		model.setInput(allResources);
-		if (propertiesEditionElement.getModel() != null){
-			model.setSelection(new StructuredSelection(propertiesEditionElement.getModel()));
-		}
-		// Start of user code for model filters initialisation
-		model.setInput(EEFUtils.choiceOfValues(adapterFactory, eObject, MappingPackage.eINSTANCE.getEMFPropertyBinding_Model(), allResources));
-		if (propertiesEditionElement.getModel() != null){
-			model.setSelection(new StructuredSelection(propertiesEditionElement.getModel()));
-		}
- 		// End of user code
 	
-		if (propertiesEditionElement.getHelpID() != null){
-			helpID.setText(propertiesEditionElement.getHelpID());
-		}	
-	}
-	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -450,12 +402,12 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		name.setText(newValue);
 	}
 
-	public void setMessageForName (String msg, int msgLevel) {
-	
+	public void setMessageForName(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForName () {
-	
+
+	public void unsetMessageForName() {
+
 	}
 
 	/**
@@ -476,12 +428,12 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		helpID.setText(newValue);
 	}
 
-	public void setMessageForHelpID (String msg, int msgLevel) {
-	
+	public void setMessageForHelpID(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForHelpID () {
-	
+
+	public void unsetMessageForHelpID() {
+
 	}
 
 	/**
@@ -501,6 +453,17 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#initModel(ResourceSet allResources, EObject current)
+	 */
+	public void initModel(ResourceSet allResources, EObject current) {
+		model.setInput(allResources);
+		if (current != null)
+			model.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
@@ -510,12 +473,12 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
-	public void setMessageForModel (String msg, int msgLevel) {
-	
+	public void setMessageForModel(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForModel () {
-	
+
+	public void unsetMessageForModel() {
+
 	}
 
 	/**
@@ -539,22 +502,41 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#initViews(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initViews(EObject current, EReference containingFeature, EReference feature) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			viewsEditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			viewsEditUtil = new EMFListEditUtil(current, feature);
+		this.views.setInput(viewsEditUtil.getVirtualList());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#updateViews(EObject newValue)
 	 */
 	public void updateViews(EObject newValue) {
 		if(viewsEditUtil!=null){
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
-		}		
+		}
 	}
 
-	public void setMessageForViews (String msg, int msgLevel) {
-	
+	public void setMessageForViews(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForViews () {
-	
+
+	public void unsetMessageForViews() {
+
 	}
+
+
+
+
 
 
 
@@ -562,5 +544,4 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	// Start of user code additional methods
  	
 	// End of user code
-
-}	
+}

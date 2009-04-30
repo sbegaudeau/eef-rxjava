@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionProvider.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -23,11 +23,7 @@ import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesEditionComponentPropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesEditionComponentBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionComponentPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.components.parts.forms.PropertiesEditionComponentPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -49,9 +45,9 @@ public class PropertiesEditionComponentPropertiesEditionProvider implements IPro
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof PropertiesEditionComponent) {
-			return new PropertiesEditionComponentPropertiesEditionComponent(eObject, mode);
+			return new PropertiesEditionComponentPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -62,38 +58,12 @@ public class PropertiesEditionComponentPropertiesEditionProvider implements IPro
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof PropertiesEditionComponent) {
 			if (PropertiesEditionComponentBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new PropertiesEditionComponentBasePropertiesEditionComponent(eObject, mode);
+				return new PropertiesEditionComponentBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new DocumentedElementPropertiesEditionComponent(eObject, mode);
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionPart(org.eclipse.emf.ecore.EObject,
-	 *      org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent, java.lang.String,
-	 *      java.lang.String)
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(EObject eObject,
-			IPropertiesEditionComponent editionComponent, String part, String kind) {
-		if (eObject instanceof PropertiesEditionComponent) {
-			if (PropertiesEditionComponentPropertiesEditionComponent.SWT_KIND.equals(kind)) {
-				if (PropertiesEditionComponentBasePropertiesEditionComponent.BASE_PART.equals(part))
-					return new PropertiesEditionComponentPropertiesEditionPartImpl(editionComponent);
-				if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-					return new DocumentationPropertiesEditionPartImpl(editionComponent);
-			}
-		}
-		if (PropertiesEditionComponentPropertiesEditionComponent.FORM_KIND.equals(kind)) {
-				if (PropertiesEditionComponentBasePropertiesEditionComponent.BASE_PART.equals(part))
-					return new PropertiesEditionComponentPropertiesEditionPartForm(editionComponent);
-				if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-					return new DocumentationPropertiesEditionPartForm(editionComponent);
+				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

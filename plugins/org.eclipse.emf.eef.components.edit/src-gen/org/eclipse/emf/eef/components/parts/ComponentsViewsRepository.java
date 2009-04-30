@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsViewsRepository.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ * $Id: ComponentsViewsRepository.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -17,77 +17,99 @@ package org.eclipse.emf.eef.components.parts;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ComponentsViewsRepository {
+
+	public static final int SWT_KIND = 0;
+		
+	public static final int FORM_KIND = 1;
+
 	
-    /**
-     * Documentation view descriptor
-     *
-     */
+	/**
+	 * Documentation view descriptor
+	 */
 	public static class Documentation {
 
 		public static String documentation = "components::Documentation::documentation";
-	
+
+
+
 	}
-	
-    /**
-     * PropertiesEditionContext view descriptor
-     *
-     */
+
+	/**
+	 * PropertiesEditionContext view descriptor
+	 */
 	public static class PropertiesEditionContext {
 
 		public static String model = "components::PropertiesEditionContext::model";
-	
+
+
+
 	}
-	
-    /**
-     * PropertiesEditionComponent view descriptor
-     *
-     */
+
+	/**
+	 * PropertiesEditionComponent view descriptor
+	 */
 	public static class PropertiesEditionComponent {
 
 		public static String name = "components::PropertiesEditionComponent::name";
 
+
 		public static String helpID = "components::PropertiesEditionComponent::helpID";
+
 
 		public static String explicit = "components::PropertiesEditionComponent::explicit";
 
+
+
 		public static String model = "components::PropertiesEditionComponent::model";
 
+
 		public static String views = "components::PropertiesEditionComponent::views";
-	
+
+
+
 	}
-	
-    /**
-     * PropertiesEditionElement view descriptor
-     *
-     */
+
+	/**
+	 * PropertiesEditionElement view descriptor
+	 */
 	public static class PropertiesEditionElement {
 
 		public static String name = "components::PropertiesEditionElement::name";
 
+
 		public static String helpID = "components::PropertiesEditionElement::helpID";
+
+
 
 		public static String model = "components::PropertiesEditionElement::model";
 
+
 		public static String views = "components::PropertiesEditionElement::views";
-	
+
+
+
 	}
-	
-    /**
-     * PropertiesMultiEditionElement view descriptor
-     *
-     */
+
+	/**
+	 * PropertiesMultiEditionElement view descriptor
+	 */
 	public static class PropertiesMultiEditionElement {
 
 		public static String name = "components::PropertiesMultiEditionElement::name";
 
+
 		public static String helpID = "components::PropertiesMultiEditionElement::helpID";
+
+
 
 		public static String model = "components::PropertiesMultiEditionElement::model";
 
+
 		public static String views = "components::PropertiesMultiEditionElement::views";
-	
+
+
+
 	}
-	
 
 }
 

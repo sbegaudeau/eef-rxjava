@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsMessages.java,v 1.1 2009/04/30 17:09:48 glefur Exp $
+ * $Id: ComponentsMessages.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -23,95 +23,96 @@ public class ComponentsMessages extends NLS {
 
 	public static String DocumentationPropertiesEditionPart_DocumentationGroupLabel;
 
-	public static String DocumentedElement_ReadOnly;
-	
-	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
-			
 	public static String PropertiesEditionContextPropertiesEditionPart_BindingGroupLabel;
 
-	public static String PropertiesEditionContext_ReadOnly;
-	
-	public static String PropertiesEditionContextPropertiesEditionPart_ModelLabel;
-			
 	public static String PropertiesEditionComponentPropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String PropertiesEditionComponentPropertiesEditionPart_BindingGroupLabel;
 
-	public static String PropertiesEditionComponent_ReadOnly;
-	
-	public static String PropertiesEditionComponentPropertiesEditionPart_NameLabel;
-			
-	public static String PropertiesEditionComponentPropertiesEditionPart_ViewsLabel;
-			
-	public static String PropertiesEditionComponentPropertiesEditionPart_ModelLabel;
-			
-	public static String PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel;
-			
-	public static String PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel;
-			
 	public static String PropertiesEditionElementPropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String PropertiesEditionElementPropertiesEditionPart_BindingGroupLabel;
 
-	public static String PropertiesEditionElement_ReadOnly;
-	
-	public static String PropertiesEditionElementPropertiesEditionPart_NameLabel;
-			
-	public static String PropertiesEditionElementPropertiesEditionPart_ViewsLabel;
-			
-	public static String PropertiesEditionElementPropertiesEditionPart_ModelLabel;
-			
-	public static String PropertiesEditionElementPropertiesEditionPart_HelpIDLabel;
-			
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String PropertiesMultiEditionElementPropertiesEditionPart_BindingGroupLabel;
+
+	public static String Documentation_ReadOnly;
+
+	public static String PropertiesEditionContext_ReadOnly;
+
+	public static String PropertiesEditionComponent_ReadOnly;
+
+	public static String PropertiesEditionElement_ReadOnly;
+
 	public static String PropertiesMultiEditionElement_ReadOnly;
-	
+
+	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
+
+	public static String PropertiesEditionContextPropertiesEditionPart_ModelLabel;
+
+	public static String PropertiesEditionComponentPropertiesEditionPart_NameLabel;
+
+	public static String PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel;
+
+	public static String PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel;
+
+	public static String PropertiesEditionComponentPropertiesEditionPart_ModelLabel;
+
+	public static String PropertiesEditionComponentPropertiesEditionPart_ViewsLabel;
+
+	public static String PropertiesEditionElementPropertiesEditionPart_NameLabel;
+
+	public static String PropertiesEditionElementPropertiesEditionPart_HelpIDLabel;
+
+	public static String PropertiesEditionElementPropertiesEditionPart_ModelLabel;
+
+	public static String PropertiesEditionElementPropertiesEditionPart_ViewsLabel;
+
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_NameLabel;
-			
-	public static String PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel;
-			
-	public static String PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel;
-			
+
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel;
-			
+
+	public static String PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel;
+
+	public static String PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel;
+
 	public static String PropertiesEditionPart_DocumentationLabel;
 
 	public static String PropertiesEditionPart_IntegerValueMessage;
-	
+
 	public static String PropertiesEditionPart_FloatValueMessage;
-	
+
 	public static String PropertiesEditionPart_ShortValueMessage;
-	
+
 	public static String PropertiesEditionPart_LongValueMessage;
-	
+
 	public static String PropertiesEditionPart_ByteValueMessage;
-	
+
 	public static String PropertiesEditionPart_BigIntegerValueMessage;
-	
+
 	public static String PropertiesEditionPart_BigDecimalValueMessage;
-	
+
 	public static String PropertiesEditionPart_DoubleValueMessage;
 
 	public static String PropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String PropertiesEditionPart_RequiredFeatureMessage;
-	
+
 	public static String PropertiesEditionPart_AddTableViewerLabel;
 
 	public static String PropertiesEditionPart_EditTableViewerLabel;
 
 	public static String PropertiesEditionPart_RemoveTableViewerLabel;
-	
+
 	public static String PropertiesEditionPart_AddListViewerLabel;
 
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
-	
+
 	// Start of user code for additionnal NLS Constants
 	
  	
 	// End of user code
-	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, ComponentsMessages.class);
@@ -120,4 +121,5 @@ public class ComponentsMessages extends NLS {
 	private ComponentsMessages() {
 		//protect instanciation
 	}
-}	
+}
+

@@ -9,43 +9,35 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:46 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
+// Start of user code for imports
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class PropertiesEditionComponentPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private PropertiesEditionComponent propertiesEditionComponent;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param propertiesEditionComponent
 	 *            the EObject to edit
 	 */
-	public PropertiesEditionComponentPropertiesEditionComponent(EObject propertiesEditionComponent, String mode) {
-		super(mode);
+	public PropertiesEditionComponentPropertiesEditionComponent(EObject propertiesEditionComponent, String editing_mode) {
+		super(editing_mode);
 		if (propertiesEditionComponent instanceof PropertiesEditionComponent) {
-			this.propertiesEditionComponent = (PropertiesEditionComponent)propertiesEditionComponent;
-			addSubComponent(new PropertiesEditionComponentBasePropertiesEditionComponent(propertiesEditionComponent, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(propertiesEditionComponent, mode));
+			addSubComponent(new PropertiesEditionComponentBasePropertiesEditionComponent(propertiesEditionComponent, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(propertiesEditionComponent, editing_mode));
 		}
 	}
 }
-
 

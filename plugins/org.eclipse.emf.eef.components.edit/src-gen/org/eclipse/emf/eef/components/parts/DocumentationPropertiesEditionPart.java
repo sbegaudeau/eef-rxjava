@@ -9,43 +9,35 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPart.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: DocumentationPropertiesEditionPart.java,v 1.1 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
 // Start of user code for imports
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+
  
 
 // End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public interface PropertiesEditionContextPropertiesEditionPart {
+public interface DocumentationPropertiesEditionPart {
 
 	/**
-	 * @return the model
+	 * @return the documentation
 	 */
-	public EObject getModel();
+	public String getDocumentation();
 	
 	/**
-	 * Init the model
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * Defines a new documentation
+	 * @param newValue the new documentation to set
 	 */
-	public void initModel(ResourceSet allResources, EObject current);
-
-/**
-	 * Defines a new model
-	 * @param newValue the new model to set
-	 */
-	public void setModel(EObject newValue);
+	public void setDocumentation(String newValue);
 	
+	public void setMessageForDocumentation(String msg, int msgLevel);
 	
-	
-	
+	public void unsetMessageForDocumentation();
 	
 
 

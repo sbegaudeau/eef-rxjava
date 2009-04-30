@@ -9,20 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPart.java,v 1.1 2009/04/30 17:09:46 glefur Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPart.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
 // Start of user code for imports
 
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
  
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -39,9 +38,9 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 	
-	public void setMessageForName (String msg, int msgLevel);	
+	public void setMessageForName(String msg, int msgLevel);
 	
-	public void unsetMessageForName ();
+	public void unsetMessageForName();
 	
 	/**
 	 * @return the helpID
@@ -54,20 +53,33 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 */
 	public void setHelpID(String newValue);
 	
-	public void setMessageForHelpID (String msg, int msgLevel);	
+	public void setMessageForHelpID(String msg, int msgLevel);
 	
-	public void unsetMessageForHelpID ();
-	
-	/**
-	 * @return the model
-	 */
-	public EObject getModel();
+	public void unsetMessageForHelpID();
 	
 	/**
-	 * Defines a new model
-	 * @param newValue the new model to set
+	 * @return the model to add
 	 */
-	public void setModel(EObject newValue);
+	public List getModelToAdd();
+	
+	/**
+	 * @return the model to remove
+	 */
+	public List getModelToRemove();
+	
+	/**
+	 * Init the model
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initModel(EObject current, EReference containingFeature, EReference feature);
+
+/**
+	 * Update the model
+	 * @param newValue the model to update
+	 */
+	public void updateModel(EObject newValue);
 	
 	
 	
@@ -84,6 +96,14 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	public List getViewsToRemove();
 	
 	/**
+	 * Init the views
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initViews(EObject current, EReference containingFeature, EReference feature);
+
+/**
 	 * Update the views
 	 * @param newValue the views to update
 	 */
@@ -93,9 +113,13 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	
 	
 	
+
+
+
+
+
 	// Start of user code for additional methods
  	
 	// End of user code
-
 }
 

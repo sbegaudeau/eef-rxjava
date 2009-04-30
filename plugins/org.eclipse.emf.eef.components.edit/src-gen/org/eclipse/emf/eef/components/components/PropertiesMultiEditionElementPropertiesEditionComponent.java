@@ -9,43 +9,35 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionComponent.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
+// Start of user code for imports
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class PropertiesMultiEditionElementPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private PropertiesMultiEditionElement propertiesMultiEditionElement;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param propertiesMultiEditionElement
 	 *            the EObject to edit
 	 */
-	public PropertiesMultiEditionElementPropertiesEditionComponent(EObject propertiesMultiEditionElement, String mode) {
-		super(mode);
+	public PropertiesMultiEditionElementPropertiesEditionComponent(EObject propertiesMultiEditionElement, String editing_mode) {
+		super(editing_mode);
 		if (propertiesMultiEditionElement instanceof PropertiesMultiEditionElement) {
-			this.propertiesMultiEditionElement = (PropertiesMultiEditionElement)propertiesMultiEditionElement;
-			addSubComponent(new PropertiesMultiEditionElementBasePropertiesEditionComponent(propertiesMultiEditionElement, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(propertiesMultiEditionElement, mode));
+			addSubComponent(new PropertiesMultiEditionElementBasePropertiesEditionComponent(propertiesMultiEditionElement, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(propertiesMultiEditionElement, editing_mode));
 		}
 	}
 }
-
 

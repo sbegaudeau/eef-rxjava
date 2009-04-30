@@ -9,9 +9,9 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id$
  */
-package org.eclipse.emf.eef.components.providers;
+package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -19,16 +19,14 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
-import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
-import org.eclipse.emf.eef.components.components.PropertiesEditionContextPropertiesEditionComponent;
-import org.eclipse.emf.eef.components.components.PropertiesEditionContextBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class PropertiesEditionContextPropertiesEditionProvider implements IPropertiesEditionProvider {
+public class DocumentedElementPropertiesEditionProvider implements IPropertiesEditionProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -36,7 +34,7 @@ public class PropertiesEditionContextPropertiesEditionProvider implements IPrope
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof PropertiesEditionContext) && (ComponentsPackage.eINSTANCE.getPropertiesEditionContext() == eObject.eClass());
+		return (eObject instanceof DocumentedElement) && (MappingPackage.eINSTANCE.getDocumentedElement() == eObject.eClass());
 	}
 	
 	/**
@@ -46,8 +44,8 @@ public class PropertiesEditionContextPropertiesEditionProvider implements IPrope
 	 *      java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof PropertiesEditionContext) {
-			return new PropertiesEditionContextPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof DocumentedElement) {
+			return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -59,9 +57,7 @@ public class PropertiesEditionContextPropertiesEditionProvider implements IPrope
 	 *      java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof PropertiesEditionContext) {
-			if (PropertiesEditionContextBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new PropertiesEditionContextBasePropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof DocumentedElement) {
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}

@@ -25,7 +25,7 @@
                label="Base"
                category="default"
                id="Base">
-         </propertyTab>         	
+         </propertyTab>
          <propertyTab
                label="Documentation"
                category="extended"
@@ -58,71 +58,71 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.components.properties">
          <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.components.section.PropertiesEditionContext">
-          	   <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionContext">
-          	   </input>
-         </propertySection>
-         <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.components.PropertiesEditionContext">
-          	   </input>
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.components.section.PropertiesEditionContext">
+             <input
+                    type="org.eclipse.emf.eef.components.PropertiesEditionContext">
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.components.PropertiesEditionComponent">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.components.PropertiesEditionComponent">
-          	   </input>
-         </propertySection>
-         <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.components.section.PropertiesEditionElement">
-          	   <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionElement">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.components.PropertiesEditionElement">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement">
-          	   <input
-                    type="org.eclipse.emf.eef.components.PropertiesMultiEditionElement">
-          	   </input>
+               id="org.eclipse.emf.eef.components.section.PropertiesEditionElement">
+             <input
+                    type="org.eclipse.emf.eef.components.PropertiesEditionElement">
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.components.PropertiesMultiEditionElement">
-          	   </input>
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement">
+             <input
+                    type="org.eclipse.emf.eef.components.PropertiesMultiEditionElement">
+             </input>
          </propertySection>
       </propertySections>
    </extension>
    
-</plugin>
+ </plugin>
 

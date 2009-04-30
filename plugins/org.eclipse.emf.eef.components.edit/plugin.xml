@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.1 2009/04/30 17:09:48 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/04/30 17:49:48 nlepine Exp $
 -->
 
 <plugin>
@@ -43,7 +43,7 @@
  	<extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
       <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.eef.components.providers.ComponentsCustomPackagePropertiesEditionProvider">
+            providerClass="org.eclipse.emf.eef.components.providers.ComponentsPackagePropertiesEditionProvider">
       </PropertiesEditionComponentProvider>
    </extension>
    <extension
@@ -52,4 +52,39 @@
             providerClass="org.eclipse.emf.eef.components.providers.ComponentsPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.components.providers.ComponentsCustomPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <!-- Added contraints on components -->
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            name="EEF Constraints"
+            id="org.eclipse.emf.eef.validation"/>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://www.eclipse.org/emf/eef/components/1.0.0"/>
+         <constraints categories="org.eclipse.emf.eef.validation">
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.emf.eef.components.validation.BadReferencedEditorConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Bad Referenced Element Editor"
+                  id="org.eclipse.emf.eef.views.validation.badrefeditorviews"
+                  statusCode="1">
+               <description>
+                  All element editor referenced in a properties edition element must be child of views mapped by the properties edition component ...
+               </description>
+               <message>
+                  The element editor {0} is not a child of the views mapped by the properties edition element {1}.
+               </message>
+               <target class="PropertiesEditionElement"/>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      </extension>
+   
 </plugin>
