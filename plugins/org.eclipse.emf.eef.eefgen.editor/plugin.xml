@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+  Copyright (c) 2008 Obeo.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+  
+  Contributors:
+      Obeo - initial API and implementation
+ 
+
+ $Id: plugin.xml,v 1.1 2009/04/30 17:13:14 glefur Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+     <category
+            id="org.eclipse.emf.eef.ui.category"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.emf.eef.EEFGen.presentation.EEFGenModelWizardID"
+            name="%_UI_EEFGenModelWizard_label"
+            class="org.eclipse.emf.eef.EEFGen.presentation.EEFGenModelWizard"
+            category="org.eclipse.emf.eef.ui.category"
+            icon="icons/full/obj16/EEFGenModelFile.gif">
+         <description>%_UI_EEFGenModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.emf.eef.EEFGen.presentation.EEFGenEditorID"
+            name="%_UI_EEFGenEditor_label"
+            icon="icons/full/obj16/EEFGenModelFile.gif"
+            extensions="eefgen"
+            class="org.eclipse.emf.eef.EEFGen.presentation.EEFGenEditor"
+            contributorClass="org.eclipse.emf.eef.EEFGen.presentation.EEFGenActionBarContributor">
+      </editor>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>         	
+         <propertyTab
+               label="Gen Activation"
+               category="extended"
+               id="Gen Activation">
+         </propertyTab>	
+         <propertyTab
+               label="Gen References"
+               category="extended"
+               id="Gen References">
+         </propertyTab>	
+         <propertyTab
+               label="Gen Parameters"
+               category="extended"
+               id="Gen Parameters">
+         </propertyTab>	
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+         <propertySection
+               tab="Gen Activation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
+          	   <input
+                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Gen References"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
+          	   <input
+                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Gen Parameters"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
+          	   <input
+                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
+          	   </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+</plugin>
