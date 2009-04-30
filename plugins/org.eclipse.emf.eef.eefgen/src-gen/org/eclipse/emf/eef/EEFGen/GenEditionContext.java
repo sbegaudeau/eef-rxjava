@@ -9,12 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContext.java,v 1.1 2009/04/30 17:11:46 glefur Exp $
+ * $Id: GenEditionContext.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 
 /**
@@ -27,15 +26,10 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getPropertiesEditionContext <em>Properties Edition Context</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getBasePackage <em>Base Package</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getGenDirectory <em>Gen Directory</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isSwtViews <em>Swt Views</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isFormViews <em>Form Views</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getEefGenModel <em>Eef Gen Model</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGmfPropertiesViews <em>Gmf Properties Views</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getHelpStrategy <em>Help Strategy</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getAuthor <em>Author</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getLicense <em>License</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,82 +91,58 @@ public interface GenEditionContext extends EObject {
 	void setBasePackage(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Gen Directory</b></em>' attribute.
+	 * Returns the value of the '<em><b>Eef Gen Model</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getEditionContexts <em>Edition Contexts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Gen Directory</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Eef Gen Model</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Gen Directory</em>' attribute.
-	 * @see #setGenDirectory(String)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_GenDirectory()
-	 * @model required="true"
+	 * @return the value of the '<em>Eef Gen Model</em>' container reference.
+	 * @see #setEefGenModel(EEFGenModel)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_EefGenModel()
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getEditionContexts
+	 * @model opposite="editionContexts" required="true" transient="false"
 	 * @generated
 	 */
-	String getGenDirectory();
+	EEFGenModel getEefGenModel();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getGenDirectory <em>Gen Directory</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getEefGenModel <em>Eef Gen Model</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Gen Directory</em>' attribute.
-	 * @see #getGenDirectory()
+	 * @param value the new value of the '<em>Eef Gen Model</em>' container reference.
+	 * @see #getEefGenModel()
 	 * @generated
 	 */
-	void setGenDirectory(String value);
+	void setEefGenModel(EEFGenModel value);
 
 	/**
-	 * Returns the value of the '<em><b>Swt Views</b></em>' attribute.
+	 * Returns the value of the '<em><b>Descriptors Contributor ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Swt Views</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Descriptors Contributor ID</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Swt Views</em>' attribute.
-	 * @see #setSwtViews(boolean)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_SwtViews()
+	 * @return the value of the '<em>Descriptors Contributor ID</em>' attribute.
+	 * @see #setDescriptorsContributorID(String)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_DescriptorsContributorID()
 	 * @model
 	 * @generated
 	 */
-	boolean isSwtViews();
+	String getDescriptorsContributorID();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isSwtViews <em>Swt Views</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Swt Views</em>' attribute.
-	 * @see #isSwtViews()
+	 * @param value the new value of the '<em>Descriptors Contributor ID</em>' attribute.
+	 * @see #getDescriptorsContributorID()
 	 * @generated
 	 */
-	void setSwtViews(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Form Views</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Form Views</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Form Views</em>' attribute.
-	 * @see #setFormViews(boolean)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_FormViews()
-	 * @model
-	 * @generated
-	 */
-	boolean isFormViews();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isFormViews <em>Form Views</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Form Views</em>' attribute.
-	 * @see #isFormViews()
-	 * @generated
-	 */
-	void setFormViews(boolean value);
+	void setDescriptorsContributorID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Descriptors Generic Properties Views</b></em>' attribute.
@@ -225,112 +195,5 @@ public interface GenEditionContext extends EObject {
 	 * @generated
 	 */
 	void setGmfPropertiesViews(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Help Strategy</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Help Strategy</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Help Strategy</em>' attribute.
-	 * @see org.eclipse.emf.eef.EEFGen.HELP_STRATEGY
-	 * @see #setHelpStrategy(HELP_STRATEGY)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_HelpStrategy()
-	 * @model required="true"
-	 * @generated
-	 */
-	HELP_STRATEGY getHelpStrategy();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getHelpStrategy <em>Help Strategy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Help Strategy</em>' attribute.
-	 * @see org.eclipse.emf.eef.EEFGen.HELP_STRATEGY
-	 * @see #getHelpStrategy()
-	 * @generated
-	 */
-	void setHelpStrategy(HELP_STRATEGY value);
-
-	/**
-	 * Returns the value of the '<em><b>Descriptors Contributor ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Descriptors Contributor ID</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Descriptors Contributor ID</em>' attribute.
-	 * @see #setDescriptorsContributorID(String)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_DescriptorsContributorID()
-	 * @model
-	 * @generated
-	 */
-	String getDescriptorsContributorID();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Descriptors Contributor ID</em>' attribute.
-	 * @see #getDescriptorsContributorID()
-	 * @generated
-	 */
-	void setDescriptorsContributorID(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Author</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Author</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Author</em>' attribute.
-	 * @see #setAuthor(String)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_Author()
-	 * @model
-	 * @generated
-	 */
-	String getAuthor();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getAuthor <em>Author</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Author</em>' attribute.
-	 * @see #getAuthor()
-	 * @generated
-	 */
-	void setAuthor(String value);
-
-	/**
-	 * Returns the value of the '<em><b>License</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>License</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>License</em>' attribute.
-	 * @see #setLicense(String)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_License()
-	 * @model
-	 * @generated
-	 */
-	String getLicense();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getLicense <em>License</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>License</em>' attribute.
-	 * @see #getLicense()
-	 * @generated
-	 */
-	void setLicense(String value);
 
 } // GenEditionContext

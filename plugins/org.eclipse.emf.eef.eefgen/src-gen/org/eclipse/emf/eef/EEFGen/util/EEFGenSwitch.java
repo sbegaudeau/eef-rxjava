@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenSwitch.java,v 1.1 2009/04/30 17:11:46 glefur Exp $
+ * $Id: EEFGenSwitch.java,v 1.2 2009/04/30 17:49:08 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.util;
 
@@ -17,8 +17,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.EEFGen.*;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
+import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
+import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,6 +104,24 @@ public class EEFGenSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EEFGenPackage.EEF_GEN_MODEL_REFERENCE: {
+				EEFGenModelReference eefGenModelReference = (EEFGenModelReference)theEObject;
+				T result = caseEEFGenModelReference(eefGenModelReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EEFGenPackage.EEF_GEN_MODEL: {
+				EEFGenModel eefGenModel = (EEFGenModel)theEObject;
+				T result = caseEEFGenModel(eefGenModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY: {
+				GenViewsRepository genViewsRepository = (GenViewsRepository)theEObject;
+				T result = caseGenViewsRepository(genViewsRepository);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -116,6 +138,51 @@ public class EEFGenSwitch<T> {
 	 * @generated
 	 */
 	public T caseGenEditionContext(GenEditionContext object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEEFGenModelReference(EEFGenModelReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEEFGenModel(EEFGenModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Gen Views Repository</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Gen Views Repository</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGenViewsRepository(GenViewsRepository object) {
 		return null;
 	}
 

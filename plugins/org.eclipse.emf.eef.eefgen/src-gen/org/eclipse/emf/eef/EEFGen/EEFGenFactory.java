@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenFactory.java,v 1.1 2009/04/30 17:11:46 glefur Exp $
+ * $Id: EEFGenFactory.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -40,6 +40,33 @@ public interface EEFGenFactory extends EFactory {
 	 * @generated
 	 */
 	GenEditionContext createGenEditionContext();
+
+	/**
+	 * Returns a new object of class '<em>Model Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Reference</em>'.
+	 * @generated
+	 */
+	EEFGenModelReference createEEFGenModelReference();
+
+	/**
+	 * Returns a new object of class '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model</em>'.
+	 * @generated
+	 */
+	EEFGenModel createEEFGenModel();
+
+	/**
+	 * Returns a new object of class '<em>Gen Views Repository</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Gen Views Repository</em>'.
+	 * @generated
+	 */
+	GenViewsRepository createGenViewsRepository();
 
 	/**
 	 * Returns the package supported by this factory.

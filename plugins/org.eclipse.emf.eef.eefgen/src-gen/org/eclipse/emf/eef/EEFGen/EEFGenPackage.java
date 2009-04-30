@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackage.java,v 1.1 2009/04/30 17:11:46 glefur Exp $
+ * $Id: EEFGenPackage.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -96,58 +96,13 @@ public interface EEFGenPackage extends EPackage {
 	int GEN_EDITION_CONTEXT__BASE_PACKAGE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Gen Directory</b></em>' attribute.
+	 * The feature id for the '<em><b>Eef Gen Model</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT__GEN_DIRECTORY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Swt Views</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_EDITION_CONTEXT__SWT_VIEWS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Form Views</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_EDITION_CONTEXT__FORM_VIEWS = 4;
-
-	/**
-	 * The feature id for the '<em><b>Descriptors Generic Properties Views</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS = 5;
-
-	/**
-	 * The feature id for the '<em><b>Gmf Properties Views</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS = 6;
-
-	/**
-	 * The feature id for the '<em><b>Help Strategy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_EDITION_CONTEXT__HELP_STRATEGY = 7;
+	int GEN_EDITION_CONTEXT__EEF_GEN_MODEL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Descriptors Contributor ID</b></em>' attribute.
@@ -156,25 +111,25 @@ public interface EEFGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID = 8;
+	int GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID = 3;
 
 	/**
-	 * The feature id for the '<em><b>Author</b></em>' attribute.
+	 * The feature id for the '<em><b>Descriptors Generic Properties Views</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT__AUTHOR = 9;
+	int GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS = 4;
 
 	/**
-	 * The feature id for the '<em><b>License</b></em>' attribute.
+	 * The feature id for the '<em><b>Gmf Properties Views</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT__LICENSE = 10;
+	int GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS = 5;
 
 	/**
 	 * The number of structural features of the '<em>Gen Edition Context</em>' class.
@@ -183,8 +138,182 @@ public interface EEFGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 11;
+	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 6;
 
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl
+	 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getEEFGenModelReference()
+	 * @generated
+	 */
+	int EEF_GEN_MODEL_REFERENCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Referenced Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL_REFERENCE__REFERENCED_CONTEXT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Model Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL_REFERENCE_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl <em>Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl
+	 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getEEFGenModel()
+	 * @generated
+	 */
+	int EEF_GEN_MODEL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Edition Contexts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__EDITION_CONTEXTS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Views Repositories</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__VIEWS_REPOSITORIES = 1;
+
+	/**
+	 * The feature id for the '<em><b>Gen Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__GEN_DIRECTORY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Author</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__AUTHOR = 3;
+
+	/**
+	 * The feature id for the '<em><b>License</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__LICENSE = 4;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__REFERENCES = 5;
+
+	/**
+	 * The number of structural features of the '<em>Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL_FEATURE_COUNT = 6;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl <em>Gen Views Repository</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl
+	 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getGenViewsRepository()
+	 * @generated
+	 */
+	int GEN_VIEWS_REPOSITORY = 3;
+
+	/**
+	 * The feature id for the '<em><b>Views Repository</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__VIEWS_REPOSITORY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Base Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__BASE_PACKAGE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Swt Views</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__SWT_VIEWS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Form Views</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__FORM_VIEWS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Help Strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__HELP_STRATEGY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Eef Gen Model</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL = 5;
+
+	/**
+	 * The number of structural features of the '<em>Gen Views Repository</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}' enum.
@@ -194,7 +323,7 @@ public interface EEFGenPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getHELP_STRATEGY()
 	 * @generated
 	 */
-	int HELP_STRATEGY = 1;
+	int HELP_STRATEGY = 4;
 
 
 	/**
@@ -230,37 +359,26 @@ public interface EEFGenPackage extends EPackage {
 	EAttribute getGenEditionContext_BasePackage();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getGenDirectory <em>Gen Directory</em>}'.
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getEefGenModel <em>Eef Gen Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Gen Directory</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getGenDirectory()
+	 * @return the meta object for the container reference '<em>Eef Gen Model</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getEefGenModel()
 	 * @see #getGenEditionContext()
 	 * @generated
 	 */
-	EAttribute getGenEditionContext_GenDirectory();
+	EReference getGenEditionContext_EefGenModel();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isSwtViews <em>Swt Views</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Swt Views</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#isSwtViews()
+	 * @return the meta object for the attribute '<em>Descriptors Contributor ID</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID()
 	 * @see #getGenEditionContext()
 	 * @generated
 	 */
-	EAttribute getGenEditionContext_SwtViews();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isFormViews <em>Form Views</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Form Views</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#isFormViews()
-	 * @see #getGenEditionContext()
-	 * @generated
-	 */
-	EAttribute getGenEditionContext_FormViews();
+	EAttribute getGenEditionContext_DescriptorsContributorID();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}'.
@@ -285,48 +403,177 @@ public interface EEFGenPackage extends EPackage {
 	EAttribute getGenEditionContext_GmfPropertiesViews();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getHelpStrategy <em>Help Strategy</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference <em>Model Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Help Strategy</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getHelpStrategy()
-	 * @see #getGenEditionContext()
+	 * @return the meta object for class '<em>Model Reference</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModelReference
 	 * @generated
 	 */
-	EAttribute getGenEditionContext_HelpStrategy();
+	EClass getEEFGenModelReference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference#getReferencedContext <em>Referenced Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Descriptors Contributor ID</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID()
-	 * @see #getGenEditionContext()
+	 * @return the meta object for the reference '<em>Referenced Context</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModelReference#getReferencedContext()
+	 * @see #getEEFGenModelReference()
 	 * @generated
 	 */
-	EAttribute getGenEditionContext_DescriptorsContributorID();
+	EReference getEEFGenModelReference_ReferencedContext();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getAuthor <em>Author</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel
+	 * @generated
+	 */
+	EClass getEEFGenModel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getEditionContexts <em>Edition Contexts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Edition Contexts</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getEditionContexts()
+	 * @see #getEEFGenModel()
+	 * @generated
+	 */
+	EReference getEEFGenModel_EditionContexts();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getViewsRepositories <em>Views Repositories</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Views Repositories</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getViewsRepositories()
+	 * @see #getEEFGenModel()
+	 * @generated
+	 */
+	EReference getEEFGenModel_ViewsRepositories();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getGenDirectory <em>Gen Directory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Gen Directory</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getGenDirectory()
+	 * @see #getEEFGenModel()
+	 * @generated
+	 */
+	EAttribute getEEFGenModel_GenDirectory();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getAuthor <em>Author</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Author</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getAuthor()
-	 * @see #getGenEditionContext()
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getAuthor()
+	 * @see #getEEFGenModel()
 	 * @generated
 	 */
-	EAttribute getGenEditionContext_Author();
+	EAttribute getEEFGenModel_Author();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getLicense <em>License</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getLicense <em>License</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>License</em>'.
-	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getLicense()
-	 * @see #getGenEditionContext()
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getLicense()
+	 * @see #getEEFGenModel()
 	 * @generated
 	 */
-	EAttribute getGenEditionContext_License();
+	EAttribute getEEFGenModel_License();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getReferences <em>References</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>References</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getReferences()
+	 * @see #getEEFGenModel()
+	 * @generated
+	 */
+	EReference getEEFGenModel_References();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository <em>Gen Views Repository</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Gen Views Repository</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository
+	 * @generated
+	 */
+	EClass getGenViewsRepository();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getViewsRepository <em>Views Repository</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Views Repository</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#getViewsRepository()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EReference getGenViewsRepository_ViewsRepository();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getBasePackage <em>Base Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Base Package</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#getBasePackage()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EAttribute getGenViewsRepository_BasePackage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#isSwtViews <em>Swt Views</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Swt Views</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#isSwtViews()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EAttribute getGenViewsRepository_SwtViews();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#isFormViews <em>Form Views</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Form Views</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#isFormViews()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EAttribute getGenViewsRepository_FormViews();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getHelpStrategy <em>Help Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Help Strategy</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#getHelpStrategy()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EAttribute getGenViewsRepository_HelpStrategy();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getEefGenModel <em>Eef Gen Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Eef Gen Model</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#getEefGenModel()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EReference getGenViewsRepository_EefGenModel();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}'.
@@ -387,28 +634,20 @@ public interface EEFGenPackage extends EPackage {
 		EAttribute GEN_EDITION_CONTEXT__BASE_PACKAGE = eINSTANCE.getGenEditionContext_BasePackage();
 
 		/**
-		 * The meta object literal for the '<em><b>Gen Directory</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Eef Gen Model</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_EDITION_CONTEXT__GEN_DIRECTORY = eINSTANCE.getGenEditionContext_GenDirectory();
+		EReference GEN_EDITION_CONTEXT__EEF_GEN_MODEL = eINSTANCE.getGenEditionContext_EefGenModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Swt Views</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Descriptors Contributor ID</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_EDITION_CONTEXT__SWT_VIEWS = eINSTANCE.getGenEditionContext_SwtViews();
-
-		/**
-		 * The meta object literal for the '<em><b>Form Views</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GEN_EDITION_CONTEXT__FORM_VIEWS = eINSTANCE.getGenEditionContext_FormViews();
+		EAttribute GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID = eINSTANCE.getGenEditionContext_DescriptorsContributorID();
 
 		/**
 		 * The meta object literal for the '<em><b>Descriptors Generic Properties Views</b></em>' attribute feature.
@@ -427,20 +666,56 @@ public interface EEFGenPackage extends EPackage {
 		EAttribute GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS = eINSTANCE.getGenEditionContext_GmfPropertiesViews();
 
 		/**
-		 * The meta object literal for the '<em><b>Help Strategy</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl
+		 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getEEFGenModelReference()
 		 * @generated
 		 */
-		EAttribute GEN_EDITION_CONTEXT__HELP_STRATEGY = eINSTANCE.getGenEditionContext_HelpStrategy();
+		EClass EEF_GEN_MODEL_REFERENCE = eINSTANCE.getEEFGenModelReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Descriptors Contributor ID</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Referenced Context</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID = eINSTANCE.getGenEditionContext_DescriptorsContributorID();
+		EReference EEF_GEN_MODEL_REFERENCE__REFERENCED_CONTEXT = eINSTANCE.getEEFGenModelReference_ReferencedContext();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl <em>Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl
+		 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getEEFGenModel()
+		 * @generated
+		 */
+		EClass EEF_GEN_MODEL = eINSTANCE.getEEFGenModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Edition Contexts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EEF_GEN_MODEL__EDITION_CONTEXTS = eINSTANCE.getEEFGenModel_EditionContexts();
+
+		/**
+		 * The meta object literal for the '<em><b>Views Repositories</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EEF_GEN_MODEL__VIEWS_REPOSITORIES = eINSTANCE.getEEFGenModel_ViewsRepositories();
+
+		/**
+		 * The meta object literal for the '<em><b>Gen Directory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EEF_GEN_MODEL__GEN_DIRECTORY = eINSTANCE.getEEFGenModel_GenDirectory();
 
 		/**
 		 * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
@@ -448,7 +723,7 @@ public interface EEFGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_EDITION_CONTEXT__AUTHOR = eINSTANCE.getGenEditionContext_Author();
+		EAttribute EEF_GEN_MODEL__AUTHOR = eINSTANCE.getEEFGenModel_Author();
 
 		/**
 		 * The meta object literal for the '<em><b>License</b></em>' attribute feature.
@@ -456,7 +731,73 @@ public interface EEFGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_EDITION_CONTEXT__LICENSE = eINSTANCE.getGenEditionContext_License();
+		EAttribute EEF_GEN_MODEL__LICENSE = eINSTANCE.getEEFGenModel_License();
+
+		/**
+		 * The meta object literal for the '<em><b>References</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EEF_GEN_MODEL__REFERENCES = eINSTANCE.getEEFGenModel_References();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl <em>Gen Views Repository</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl
+		 * @see org.eclipse.emf.eef.EEFGen.impl.EEFGenPackageImpl#getGenViewsRepository()
+		 * @generated
+		 */
+		EClass GEN_VIEWS_REPOSITORY = eINSTANCE.getGenViewsRepository();
+
+		/**
+		 * The meta object literal for the '<em><b>Views Repository</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GEN_VIEWS_REPOSITORY__VIEWS_REPOSITORY = eINSTANCE.getGenViewsRepository_ViewsRepository();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_VIEWS_REPOSITORY__BASE_PACKAGE = eINSTANCE.getGenViewsRepository_BasePackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Swt Views</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_VIEWS_REPOSITORY__SWT_VIEWS = eINSTANCE.getGenViewsRepository_SwtViews();
+
+		/**
+		 * The meta object literal for the '<em><b>Form Views</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_VIEWS_REPOSITORY__FORM_VIEWS = eINSTANCE.getGenViewsRepository_FormViews();
+
+		/**
+		 * The meta object literal for the '<em><b>Help Strategy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_VIEWS_REPOSITORY__HELP_STRATEGY = eINSTANCE.getGenViewsRepository_HelpStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Eef Gen Model</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL = eINSTANCE.getGenViewsRepository_EefGenModel();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}' enum.

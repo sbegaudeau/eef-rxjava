@@ -9,18 +9,20 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenAdapterFactory.java,v 1.1 2009/04/30 17:11:46 glefur Exp $
+ * $Id: EEFGenAdapterFactory.java,v 1.2 2009/04/30 17:49:08 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.EEFGen.*;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
+import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
+import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,6 +85,18 @@ public class EEFGenAdapterFactory extends AdapterFactoryImpl {
 				return createGenEditionContextAdapter();
 			}
 			@Override
+			public Adapter caseEEFGenModelReference(EEFGenModelReference object) {
+				return createEEFGenModelReferenceAdapter();
+			}
+			@Override
+			public Adapter caseEEFGenModel(EEFGenModel object) {
+				return createEEFGenModelAdapter();
+			}
+			@Override
+			public Adapter caseGenViewsRepository(GenViewsRepository object) {
+				return createGenViewsRepositoryAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -113,6 +127,48 @@ public class EEFGenAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGenEditionContextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference <em>Model Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModelReference
+	 * @generated
+	 */
+	public Adapter createEEFGenModelReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel
+	 * @generated
+	 */
+	public Adapter createEEFGenModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository <em>Gen Views Repository</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository
+	 * @generated
+	 */
+	public Adapter createGenViewsRepositoryAdapter() {
 		return null;
 	}
 

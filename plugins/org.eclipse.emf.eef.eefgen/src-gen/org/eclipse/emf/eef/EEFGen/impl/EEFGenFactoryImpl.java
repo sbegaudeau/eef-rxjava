@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenFactoryImpl.java,v 1.1 2009/04/30 17:11:46 glefur Exp $
+ * $Id: EEFGenFactoryImpl.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -17,12 +17,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.eef.EEFGen.*;
+import org.eclipse.emf.eef.EEFGen.EEFGenFactory;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
+import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
+import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
+import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,6 +73,9 @@ public class EEFGenFactoryImpl extends EFactoryImpl implements EEFGenFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EEFGenPackage.GEN_EDITION_CONTEXT: return createGenEditionContext();
+			case EEFGenPackage.EEF_GEN_MODEL_REFERENCE: return createEEFGenModelReference();
+			case EEFGenPackage.EEF_GEN_MODEL: return createEEFGenModel();
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY: return createGenViewsRepository();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -112,6 +119,36 @@ public class EEFGenFactoryImpl extends EFactoryImpl implements EEFGenFactory {
 	public GenEditionContext createGenEditionContext() {
 		GenEditionContextImpl genEditionContext = new GenEditionContextImpl();
 		return genEditionContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEFGenModelReference createEEFGenModelReference() {
+		EEFGenModelReferenceImpl eefGenModelReference = new EEFGenModelReferenceImpl();
+		return eefGenModelReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEFGenModel createEEFGenModel() {
+		EEFGenModelImpl eefGenModel = new EEFGenModelImpl();
+		return eefGenModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenViewsRepository createGenViewsRepository() {
+		GenViewsRepositoryImpl genViewsRepository = new GenViewsRepositoryImpl();
+		return genViewsRepository;
 	}
 
 	/**

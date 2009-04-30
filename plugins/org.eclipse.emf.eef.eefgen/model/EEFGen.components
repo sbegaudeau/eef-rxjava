@@ -1,98 +1,144 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
-  <eef-components:PropertiesEditionContext xmi:id="_yurzAAcQEd6Hk7N-65jhOg" documentation="Edition Context for EEFGen GenPackage">
-    <categories xmi:id="_yurzAQcQEd6Hk7N-65jhOg" name="common"/>
-    <categories xmi:id="_yurzAgcQEd6Hk7N-65jhOg" name="EEFGen">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_yurzAwcQEd6Hk7N-65jhOg" name="GenEditionContext" views="_yurzDQcQEd6Hk7N-65jhOg _4wTaYAcUEd6DlbAfZI3uPw _KO7BMAd0Ed6dXvC3uVBZQg">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yurzBAcQEd6Hk7N-65jhOg" name="basePackage" views="_4wTaZwcUEd6DlbAfZI3uPw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/basePackage"/>
+  <eef-components:PropertiesEditionContext xmi:id="_tAYOoBxUEd6jvs_siNWNCw" documentation="Edition Context for EEFGen GenPackage">
+    <categories xmi:id="_tAYOoRxUEd6jvs_siNWNCw" name="common"/>
+    <categories xmi:id="_tAYOohxUEd6jvs_siNWNCw" name="EEFGen">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tAYOoxxUEd6jvs_siNWNCw" name="GenEditionContext" views="_tAYOtRxUEd6jvs_siNWNCw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOpBxUEd6jvs_siNWNCw" name="basePackage" views="_tAYOtxxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenEditionContext/basePackage"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yurzBQcQEd6Hk7N-65jhOg" name="genDirectory" views="_4wTaaAcUEd6DlbAfZI3uPw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/genDirectory"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOpRxUEd6jvs_siNWNCw" name="descriptorsContributorID" views="_tAYOuBxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenEditionContext/descriptorsContributorID"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yurzBgcQEd6Hk7N-65jhOg" name="swtViews" views="_yurzEQcQEd6Hk7N-65jhOg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/swtViews"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOphxUEd6jvs_siNWNCw" name="descriptorsGenericPropertiesViews" views="_tAYOuRxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenEditionContext/descriptorsGenericPropertiesViews"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yurzBwcQEd6Hk7N-65jhOg" name="formViews" views="_yurzEgcQEd6Hk7N-65jhOg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/formViews"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOpxxUEd6jvs_siNWNCw" name="gmfPropertiesViews" views="_tAYOuhxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenEditionContext/gmfPropertiesViews"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yurzCAcQEd6Hk7N-65jhOg" name="descriptorsGenericPropertiesViews" views="_yurzEwcQEd6Hk7N-65jhOg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/descriptorsGenericPropertiesViews"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rSrr0BxWEd6jvs_siNWNCw" name="propertiesEditionContext" views="_eVZWABxWEd6jvs_siNWNCw" helpID="">
+          <model xsi:type="ecore:EReference" href="EEFGen.ecore#//GenEditionContext/PropertiesEditionContext"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yurzCQcQEd6Hk7N-65jhOg" name="gmfPropertiesViews" views="_yurzFAcQEd6Hk7N-65jhOg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/gmfPropertiesViews"/>
+        <model xsi:type="ecore:EClass" href="EEFGen.ecore#//GenEditionContext"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tAYOqBxUEd6jvs_siNWNCw" name="EEFGenModelReference" views="_tAYOuxxUEd6jvs_siNWNCw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_G5a-UBxXEd6jvs_siNWNCw" name="reference" views="_JoxggBxXEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EReference" href="EEFGen.ecore#//EEFGenModelReference/referencedContext"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6QKb4AcaEd67UMzngsMULw" name="descriptorsContributorID" views="_zQO1UAcaEd67UMzngsMULw" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/descriptorsContributorID"/>
+        <model xsi:type="ecore:EClass" href="EEFGen.ecore#//EEFGenModelReference"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tAYOqRxUEd6jvs_siNWNCw" name="EEFGenModel" views="_tAYOvBxUEd6jvs_siNWNCw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOqhxUEd6jvs_siNWNCw" name="genDirectory" views="_tAYOvhxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//EEFGenModel/genDirectory"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_SCm9YAcbEd67UMzngsMULw" name="helpStrategy" views="_-VQEIAcpEd67UMzngsMULw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/helpStrategy"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOqxxUEd6jvs_siNWNCw" name="author" views="_tAYOvxxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//EEFGenModel/author"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AYwNUAd0Ed6dXvC3uVBZQg" name="propertiesEditionContext" views="_KO7BMgd0Ed6dXvC3uVBZQg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/PropertiesEditionContext"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOrBxUEd6jvs_siNWNCw" name="license" views="_tAYOwBxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//EEFGenModel/license"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_g4418AvNEd6vEYc1Zq2Vow" name="author" views="_apAzUAvNEd6vEYc1Zq2Vow" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/author"/>
+        <model xsi:type="ecore:EClass" href="EEFGen.ecore#//EEFGenModel"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tAYOrRxUEd6jvs_siNWNCw" name="GenViewsRepository" views="_tAYOwRxUEd6jvs_siNWNCw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOrhxUEd6jvs_siNWNCw" name="basePackage" views="_tAYOwxxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenViewsRepository/basePackage"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ln3tkAvNEd6vEYc1Zq2Vow" name="license" views="_dj3a4AvNEd6vEYc1Zq2Vow">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/license"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOrxxUEd6jvs_siNWNCw" name="swtViews" views="_tAYOxBxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenViewsRepository/swtViews"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOsBxUEd6jvs_siNWNCw" name="formViews" views="_tAYOxRxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenViewsRepository/formViews"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tAYOsRxUEd6jvs_siNWNCw" name="helpStrategy" views="_tAYOxhxUEd6jvs_siNWNCw">
+          <model xsi:type="ecore:EAttribute" href="EEFGen.ecore#//GenViewsRepository/helpStrategy"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DGVTQCTTEd6NLaRtyZDf1Q" name="viewsRepository" views="_9RCT0STSEd6NLaRtyZDf1Q" helpID="">
+          <model xsi:type="ecore:EReference" href="EEFGen.ecore#//GenViewsRepository/viewsRepository"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="EEFGen.ecore#//GenViewsRepository"/>
       </bindings>
     </categories>
-    <model href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.genmodel#//EEFGen"/>
+    <model href="EEFGen.genmodel#//EEFGen"/>
   </eef-components:PropertiesEditionContext>
-  <eef-views:ViewsRepository xmi:id="_yurzCgcQEd6Hk7N-65jhOg" documentation="Views repository for EEFGen GenPackage" RepositoryKind="SWT" name="EEFGen">
-    <categories xmi:id="_yurzCwcQEd6Hk7N-65jhOg" name="common"/>
-    <categories xmi:id="_yurzDAcQEd6Hk7N-65jhOg" name="EEFGen">
-      <views xmi:id="_4wTaYAcUEd6DlbAfZI3uPw" name="Gen Parameters">
-        <elements xsi:type="eef-views:Container" xmi:id="_4wTaZgcUEd6DlbAfZI3uPw" name="Parameters">
+  <eef-views:ViewsRepository xmi:id="_tAYOshxUEd6jvs_siNWNCw" documentation="Views repository for EEFGen GenPackage" name="EEFGen">
+    <RepositoryKind>SWT</RepositoryKind>
+    <RepositoryKind>Form</RepositoryKind>
+    <categories xmi:id="_tAYOsxxUEd6jvs_siNWNCw" name="common"/>
+    <categories xmi:id="_tAYOtBxUEd6jvs_siNWNCw" name="EEFGen">
+      <views xmi:id="_tAYOtRxUEd6jvs_siNWNCw" name="GenEditionContext">
+        <elements xsi:type="eef-views:Container" xmi:id="_YiXncBxWEd6jvs_siNWNCw" name="Reference">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_4wTaZwcUEd6DlbAfZI3uPw" name="basePackage">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_eVZWABxWEd6jvs_siNWNCw" name="properties Edition Context">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_tAYOthxUEd6jvs_siNWNCw" name="Parameters">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOtxxUEd6jvs_siNWNCw" name="basePackage">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_4wTaaAcUEd6DlbAfZI3uPw" name="genDirectory">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOuBxUEd6jvs_siNWNCw" name="descriptorsContributorID">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_zQO1UAcaEd67UMzngsMULw" name="descriptorsContributorID">
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_Q2Q3YBxWEd6jvs_siNWNCw" name="Activation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOuRxUEd6jvs_siNWNCw" name="descriptorsGenericPropertiesViews">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOuhxUEd6jvs_siNWNCw" name="gmfPropertiesViews">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_tAYOuxxUEd6jvs_siNWNCw" name="EEFGenModelReference">
+        <elements xsi:type="eef-views:Container" xmi:id="_H1x44BxXEd6jvs_siNWNCw" name="Reference">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_JoxggBxXEd6jvs_siNWNCw" name="Referenced EEFGenModel">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_tAYOvBxUEd6jvs_siNWNCw" name="EEFGenModel">
+        <elements xsi:type="eef-views:Container" xmi:id="_tAYOvRxUEd6jvs_siNWNCw" name="Parameters">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOvhxUEd6jvs_siNWNCw" name="genDirectory">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-VQEIAcpEd67UMzngsMULw" name="helpStrategy">
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_zmuloBxWEd6jvs_siNWNCw" name="Legal">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOvxxUEd6jvs_siNWNCw" name="author">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOwBxUEd6jvs_siNWNCw" name="license">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_tAYOwRxUEd6jvs_siNWNCw" name="GenViewsRepository">
+        <elements xsi:type="eef-views:Container" xmi:id="_9RCT0CTSEd6NLaRtyZDf1Q" name="Reference">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_9RCT0STSEd6NLaRtyZDf1Q" name="Views repository">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_tAYOwhxUEd6jvs_siNWNCw" name="Parameters">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOwxxUEd6jvs_siNWNCw" name="basePackage">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOxhxUEd6jvs_siNWNCw" name="helpStrategy">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:Container" xmi:id="_Qw43oQvNEd6vEYc1Zq2Vow" name="Legal">
+        <elements xsi:type="eef-views:Container" xmi:id="__HIGsBxWEd6jvs_siNWNCw" name="Activation">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_apAzUAvNEd6vEYc1Zq2Vow" name="author">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_dj3a4AvNEd6vEYc1Zq2Vow" name="license">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
-          </elements>
-        </elements>
-      </views>
-      <views xmi:id="_yurzDQcQEd6Hk7N-65jhOg" name="Gen Activation">
-        <elements xsi:type="eef-views:Container" xmi:id="_26MUsAcREd6Hk7N-65jhOg" name="activation">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yurzEwcQEd6Hk7N-65jhOg" name="descriptorsGenericPropertiesViews">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOxBxUEd6jvs_siNWNCw" name="swtViews">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yurzEgcQEd6Hk7N-65jhOg" name="formViews">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOxRxUEd6jvs_siNWNCw" name="formViews">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yurzFAcQEd6Hk7N-65jhOg" name="gmfPropertiesViews">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yurzEQcQEd6Hk7N-65jhOg" name="swtViews">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-        </elements>
-      </views>
-      <views xmi:id="_KO7BMAd0Ed6dXvC3uVBZQg" name="Gen References">
-        <elements xsi:type="eef-views:Container" xmi:id="_KO7BMQd0Ed6dXvC3uVBZQg" name="References">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KO7BMgd0Ed6dXvC3uVBZQg" name="propertiesEditionContext">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
