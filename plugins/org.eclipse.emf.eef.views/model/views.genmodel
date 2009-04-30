@@ -60,6 +60,9 @@
       <genFeatures notify="false" createChild="false" propertyDescription="The referenced view"
           propertySortChoices="true" ecoreFeature="ecore:EReference views.ecore#//ViewReference/view"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="views.ecore#//IdentifiedElement">
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute views.ecore#//IdentifiedElement/qualifiedIdentifier"/>
+    </genClasses>
     <nestedGenPackages prefix="Toolkits" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
         multipleEditorPages="false" ecorePackage="views.ecore#//toolkits">
       <genClasses ecoreClass="views.ecore#//toolkits/Toolkit">

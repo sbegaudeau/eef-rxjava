@@ -2,7 +2,7 @@
 <eef-views:Toolkit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/toolkits/1.0.0" name="EMFProperties">
   <widgets name="EObjectFlatComboViewer"/>
   <widgets name="ReferencesTable"/>
-  <widgets name="EENumViewer"/>
+  <widgets name="EMFComboViewer"/>
   <widgets name="MultiValuedEditor"/>
   <widgets name="TableComposition" implementation=""/>
   <widgets name="VerticalBox" implementation=""/>

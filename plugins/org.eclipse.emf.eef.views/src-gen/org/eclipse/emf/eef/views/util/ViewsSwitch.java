@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsSwitch.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: ViewsSwitch.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.util;
 
@@ -97,6 +97,8 @@ public class ViewsSwitch<T> {
 				if (result == null)
 					result = caseDocumentedElement(viewsRepository);
 				if (result == null)
+					result = caseIdentifiedElement(viewsRepository);
+				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,6 +107,8 @@ public class ViewsSwitch<T> {
 				T result = caseView(view);
 				if (result == null)
 					result = caseContainer(view);
+				if (result == null)
+					result = caseIdentifiedElement(view);
 				if (result == null)
 					result = caseViewElement(view);
 				if (result == null)
@@ -118,6 +122,8 @@ public class ViewsSwitch<T> {
 				T result = caseElementEditor(elementEditor);
 				if (result == null)
 					result = caseViewElement(elementEditor);
+				if (result == null)
+					result = caseIdentifiedElement(elementEditor);
 				if (result == null)
 					result = caseDocumentedElement(elementEditor);
 				if (result == null)
@@ -161,6 +167,8 @@ public class ViewsSwitch<T> {
 				if (result == null)
 					result = caseViewElement(specificElementEditor);
 				if (result == null)
+					result = caseIdentifiedElement(specificElementEditor);
+				if (result == null)
 					result = caseDocumentedElement(specificElementEditor);
 				if (result == null)
 					result = defaultCase(theEObject);
@@ -173,6 +181,8 @@ public class ViewsSwitch<T> {
 					result = caseView(customView);
 				if (result == null)
 					result = caseContainer(customView);
+				if (result == null)
+					result = caseIdentifiedElement(customView);
 				if (result == null)
 					result = caseViewElement(customView);
 				if (result == null)
@@ -195,6 +205,13 @@ public class ViewsSwitch<T> {
 					result = caseViewElement(viewReference);
 				if (result == null)
 					result = caseDocumentedElement(viewReference);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.IDENTIFIED_ELEMENT: {
+				IdentifiedElement identifiedElement = (IdentifiedElement)theEObject;
+				T result = caseIdentifiedElement(identifiedElement);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -351,6 +368,21 @@ public class ViewsSwitch<T> {
 	 * @generated
 	 */
 	public T caseViewReference(ViewReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifiedElement(IdentifiedElement object) {
 		return null;
 	}
 

@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsPackage.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewsPackage.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -115,22 +115,31 @@ public interface ViewsPackage extends EPackage {
 	int VIEWS_REPOSITORY__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Views</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEWS_REPOSITORY__VIEWS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int VIEWS_REPOSITORY__VIEWS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Repository Kind</b></em>' attribute.
+	 * The feature id for the '<em><b>Repository Kind</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEWS_REPOSITORY__REPOSITORY_KIND = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int VIEWS_REPOSITORY__REPOSITORY_KIND = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
@@ -139,7 +148,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEWS_REPOSITORY__CATEGORIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int VIEWS_REPOSITORY__CATEGORIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -148,7 +157,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEWS_REPOSITORY__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int VIEWS_REPOSITORY__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Repository</em>' class.
@@ -157,7 +166,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEWS_REPOSITORY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int VIEWS_REPOSITORY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.ViewElementImpl <em>View Element</em>}' class.
@@ -334,13 +343,22 @@ public interface ViewsPackage extends EPackage {
 	int VIEW__ELEMENTS = CONTAINER__ELEMENTS;
 
 	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW__QUALIFIED_IDENTIFIER = CONTAINER_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Repository</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW__REPOSITORY = CONTAINER_FEATURE_COUNT + 0;
+	int VIEW__REPOSITORY = CONTAINER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Explicit</b></em>' attribute.
@@ -349,7 +367,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW__EXPLICIT = CONTAINER_FEATURE_COUNT + 1;
+	int VIEW__EXPLICIT = CONTAINER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' container reference.
@@ -358,7 +376,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW__CATEGORY = CONTAINER_FEATURE_COUNT + 2;
+	int VIEW__CATEGORY = CONTAINER_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>View</em>' class.
@@ -367,7 +385,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_FEATURE_COUNT = CONTAINER_FEATURE_COUNT + 3;
+	int VIEW_FEATURE_COUNT = CONTAINER_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl <em>Element Editor</em>}' class.
@@ -416,13 +434,22 @@ public interface ViewsPackage extends EPackage {
 	int ELEMENT_EDITOR__NAME = VIEW_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_EDITOR__QUALIFIED_IDENTIFIER = VIEW_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Read Only</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_EDITOR__READ_ONLY = VIEW_ELEMENT_FEATURE_COUNT + 0;
+	int ELEMENT_EDITOR__READ_ONLY = VIEW_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Element Editor</em>' class.
@@ -431,7 +458,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_EDITOR_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 1;
+	int ELEMENT_EDITOR_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.CategoryImpl <em>Category</em>}' class.
@@ -544,6 +571,15 @@ public interface ViewsPackage extends EPackage {
 	int SPECIFIC_ELEMENT_EDITOR__NAME = ELEMENT_EDITOR__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_ELEMENT_EDITOR__QUALIFIED_IDENTIFIER = ELEMENT_EDITOR__QUALIFIED_IDENTIFIER;
+
+	/**
 	 * The feature id for the '<em><b>Read Only</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -615,6 +651,15 @@ public interface ViewsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_VIEW__ELEMENTS = VIEW__ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VIEW__QUALIFIED_IDENTIFIER = VIEW__QUALIFIED_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Repository</b></em>' container reference.
@@ -717,6 +762,34 @@ public interface ViewsPackage extends EPackage {
 	int VIEW_REFERENCE_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.IdentifiedElementImpl <em>Identified Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.views.impl.IdentifiedElementImpl
+	 * @see org.eclipse.emf.eef.views.impl.ViewsPackageImpl#getIdentifiedElement()
+	 * @generated
+	 */
+	int IDENTIFIED_ELEMENT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Identified Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIED_ELEMENT_FEATURE_COUNT = 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.ViewsRepository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -738,10 +811,10 @@ public interface ViewsPackage extends EPackage {
 	EReference getViewsRepository_Views();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.views.ViewsRepository#getRepositoryKind <em>Repository Kind</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.eef.views.ViewsRepository#getRepositoryKind <em>Repository Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Repository Kind</em>'.
+	 * @return the meta object for the attribute list '<em>Repository Kind</em>'.
 	 * @see org.eclipse.emf.eef.views.ViewsRepository#getRepositoryKind()
 	 * @see #getViewsRepository()
 	 * @generated
@@ -1015,6 +1088,27 @@ public interface ViewsPackage extends EPackage {
 	EReference getViewReference_View();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.IdentifiedElement <em>Identified Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identified Element</em>'.
+	 * @see org.eclipse.emf.eef.views.IdentifiedElement
+	 * @generated
+	 */
+	EClass getIdentifiedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.views.IdentifiedElement#getQualifiedIdentifier <em>Qualified Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Qualified Identifier</em>'.
+	 * @see org.eclipse.emf.eef.views.IdentifiedElement#getQualifiedIdentifier()
+	 * @see #getIdentifiedElement()
+	 * @generated
+	 */
+	EAttribute getIdentifiedElement_QualifiedIdentifier();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1055,7 +1149,7 @@ public interface ViewsPackage extends EPackage {
 		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE.getViewsRepository_Views();
 
 		/**
-		 * The meta object literal for the '<em><b>Repository Kind</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Repository Kind</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1279,6 +1373,25 @@ public interface ViewsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VIEW_REFERENCE__VIEW = eINSTANCE.getViewReference_View();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.IdentifiedElementImpl <em>Identified Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.views.impl.IdentifiedElementImpl
+		 * @see org.eclipse.emf.eef.views.impl.ViewsPackageImpl#getIdentifiedElement()
+		 * @generated
+		 */
+		EClass IDENTIFIED_ELEMENT = eINSTANCE.getIdentifiedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualified Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER = eINSTANCE
+				.getIdentifiedElement_QualifiedIdentifier();
 
 	}
 

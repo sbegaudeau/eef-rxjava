@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ElementEditor.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ElementEditor.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -30,7 +30,7 @@ package org.eclipse.emf.eef.views;
  * @model
  * @generated
  */
-public interface ElementEditor extends ViewElement {
+public interface ElementEditor extends ViewElement, IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Read Only</b></em>' attribute.
 	 * <!-- begin-user-doc -->

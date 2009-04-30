@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsRepositoryImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewsRepositoryImpl.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -25,13 +25,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.eef.views.Category;
+import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
@@ -43,6 +42,7 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eef.views.impl.ViewsRepositoryImpl#getQualifiedIdentifier <em>Qualified Identifier</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewsRepositoryImpl#getViews <em>Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewsRepositoryImpl#getRepositoryKind <em>Repository Kind</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewsRepositoryImpl#getCategories <em>Categories</em>}</li>
@@ -54,6 +54,16 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  */
 public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsRepository {
 	/**
+	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiedIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUALIFIED_IDENTIFIER_EDEFAULT = null;
+
+	/**
 	 * The cached value of the '{@link #getViews() <em>Views</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -64,24 +74,14 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	protected EList<View> views;
 
 	/**
-	 * The default value of the '{@link #getRepositoryKind() <em>Repository Kind</em>}' attribute.
+	 * The cached value of the '{@link #getRepositoryKind() <em>Repository Kind</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRepositoryKind()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REPOSITORY_KIND_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRepositoryKind() <em>Repository Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRepositoryKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected String repositoryKind = REPOSITORY_KIND_EDEFAULT;
+	protected EList<String> repositoryKind;
 
 	/**
 	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' containment reference list.
@@ -135,6 +135,24 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getQualifiedIdentifier() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
+		// Nothing to do
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<View> getViews() {
@@ -150,21 +168,12 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRepositoryKind() {
+	public EList<String> getRepositoryKind() {
+		if (repositoryKind == null) {
+			repositoryKind = new EDataTypeUniqueEList<String>(String.class, this,
+					ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND);
+		}
 		return repositoryKind;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRepositoryKind(String newRepositoryKind) {
-		String oldRepositoryKind = repositoryKind;
-		repositoryKind = newRepositoryKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND, oldRepositoryKind, repositoryKind));
 	}
 
 	/**
@@ -245,6 +254,8 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
+				return getQualifiedIdentifier();
 			case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 				return getViews();
 			case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
@@ -266,12 +277,16 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
+				setQualifiedIdentifier((String)newValue);
+				return;
 			case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 				getViews().clear();
 				getViews().addAll((Collection<? extends View>)newValue);
 				return;
 			case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
-				setRepositoryKind((String)newValue);
+				getRepositoryKind().clear();
+				getRepositoryKind().addAll((Collection<? extends String>)newValue);
 				return;
 			case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
 				getCategories().clear();
@@ -292,11 +307,14 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
+				setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
+				return;
 			case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 				getViews().clear();
 				return;
 			case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
-				setRepositoryKind(REPOSITORY_KIND_EDEFAULT);
+				getRepositoryKind().clear();
 				return;
 			case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
 				getCategories().clear();
@@ -316,17 +334,55 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsR
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
+				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 			case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 				return views != null && !views.isEmpty();
 			case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
-				return REPOSITORY_KIND_EDEFAULT == null ? repositoryKind != null : !REPOSITORY_KIND_EDEFAULT
-						.equals(repositoryKind);
+				return repositoryKind != null && !repositoryKind.isEmpty();
 			case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
 				return categories != null && !categories.isEmpty();
 			case ViewsPackage.VIEWS_REPOSITORY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (derivedFeatureID) {
+				case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
+					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+				default:
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (baseFeatureID) {
+				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+					return ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER;
+				default:
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

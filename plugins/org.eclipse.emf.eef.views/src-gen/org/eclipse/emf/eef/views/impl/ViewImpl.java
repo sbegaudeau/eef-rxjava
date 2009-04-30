@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewImpl.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.emf.eef.views.Category;
+import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
@@ -36,6 +38,7 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#getQualifiedIdentifier <em>Qualified Identifier</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#getRepository <em>Repository</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#isExplicit <em>Explicit</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#getCategory <em>Category</em>}</li>
@@ -45,6 +48,16 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * @generated
  */
 public class ViewImpl extends ContainerImpl implements View {
+	/**
+	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiedIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUALIFIED_IDENTIFIER_EDEFAULT = null;
+
 	/**
 	 * The default value of the '{@link #isExplicit() <em>Explicit</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -82,6 +95,34 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	protected EClass eStaticClass() {
 		return ViewsPackage.Literals.VIEW;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getQualifiedIdentifier() {
+		StringBuilder result = new StringBuilder(name);
+		EObject container = this.eContainer();
+		while (container != null) {
+			if (container instanceof IdentifiedElement) {
+				result.insert(0, "::");
+				result.insert(0, ((IdentifiedElement)container).getQualifiedIdentifier());
+				return result.toString();
+			}
+			container = container.eContainer();
+		}
+		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
+		// Nothing to do
 	}
 
 	/**
@@ -258,6 +299,8 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+				return getQualifiedIdentifier();
 			case ViewsPackage.VIEW__REPOSITORY:
 				return getRepository();
 			case ViewsPackage.VIEW__EXPLICIT:
@@ -276,6 +319,9 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+				setQualifiedIdentifier((String)newValue);
+				return;
 			case ViewsPackage.VIEW__REPOSITORY:
 				setRepository((ViewsRepository)newValue);
 				return;
@@ -297,6 +343,9 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+				setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
+				return;
 			case ViewsPackage.VIEW__REPOSITORY:
 				setRepository((ViewsRepository)null);
 				return;
@@ -318,6 +367,9 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 			case ViewsPackage.VIEW__REPOSITORY:
 				return getRepository() != null;
 			case ViewsPackage.VIEW__EXPLICIT:
@@ -326,6 +378,42 @@ public class ViewImpl extends ContainerImpl implements View {
 				return getCategory() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (derivedFeatureID) {
+				case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+				default:
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (baseFeatureID) {
+				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+					return ViewsPackage.VIEW__QUALIFIED_IDENTIFIER;
+				default:
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

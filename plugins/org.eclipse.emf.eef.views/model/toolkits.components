@@ -18,7 +18,8 @@
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.views/model/views.genmodel#//views/toolkits"/>
   </eef-components:PropertiesEditionContext>
-  <eef-views:ViewsRepository xmi:id="_C2Y-hgd9Ed6YkIySVKIecQ" documentation="Views repository for views GenPackage" RepositoryKind="SWT" name="views">
+  <eef-views:ViewsRepository xmi:id="_C2Y-hgd9Ed6YkIySVKIecQ" documentation="Views repository for toolkits GenPackage" name="toolkits">
+    <RepositoryKind>SWT</RepositoryKind>
     <categories xmi:id="_C2Y-hwd9Ed6YkIySVKIecQ" name="common"/>
     <categories xmi:id="_C2Y-iAd9Ed6YkIySVKIecQ" name="views">
       <views xmi:id="_Q-2tsAt2Ed67leoXK0dEdg" name="Toolkit">

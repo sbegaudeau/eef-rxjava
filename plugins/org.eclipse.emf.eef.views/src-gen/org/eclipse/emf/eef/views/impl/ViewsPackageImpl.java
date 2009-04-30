@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsPackageImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewsPackageImpl.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.CustomView;
 import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.views.ElementEditor;
+import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.SpecificElementEditor;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewElement;
@@ -115,6 +116,13 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	private EClass viewReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identifiedElementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -455,6 +463,24 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIdentifiedElement() {
+		return identifiedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiedElement_QualifiedIdentifier() {
+		return (EAttribute)identifiedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ViewsFactory getViewsFactory() {
 		return (ViewsFactory)getEFactoryInstance();
 	}
@@ -516,6 +542,9 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 
 		viewReferenceEClass = createEClass(VIEW_REFERENCE);
 		createEReference(viewReferenceEClass, VIEW_REFERENCE__VIEW);
+
+		identifiedElementEClass = createEClass(IDENTIFIED_ELEMENT);
+		createEAttribute(identifiedElementEClass, IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER);
 	}
 
 	/**
@@ -557,8 +586,11 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 
 		// Add supertypes to classes
 		viewsRepositoryEClass.getESuperTypes().add(this.getDocumentedElement());
+		viewsRepositoryEClass.getESuperTypes().add(this.getIdentifiedElement());
 		viewEClass.getESuperTypes().add(this.getContainer());
+		viewEClass.getESuperTypes().add(this.getIdentifiedElement());
 		elementEditorEClass.getESuperTypes().add(this.getViewElement());
+		elementEditorEClass.getESuperTypes().add(this.getIdentifiedElement());
 		categoryEClass.getESuperTypes().add(this.getDocumentedElement());
 		containerEClass.getESuperTypes().add(this.getViewElement());
 		viewElementEClass.getESuperTypes().add(this.getDocumentedElement());
@@ -577,7 +609,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		initEAttribute(
 				getViewsRepository_RepositoryKind(),
 				ecorePackage.getEString(),
-				"RepositoryKind", null, 1, 1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"RepositoryKind", null, 1, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 				getViewsRepository_Categories(),
 				this.getCategory(),
@@ -678,6 +710,13 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 				this.getViewElement(),
 				null,
 				"view", null, 1, 1, ViewReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(identifiedElementEClass, IdentifiedElement.class,
+				"IdentifiedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getIdentifiedElement_QualifiedIdentifier(),
+				ecorePackage.getEString(),
+				"qualifiedIdentifier", null, 1, 1, IdentifiedElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);

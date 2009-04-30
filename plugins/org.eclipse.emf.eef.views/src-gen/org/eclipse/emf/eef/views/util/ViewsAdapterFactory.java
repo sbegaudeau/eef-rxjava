@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsAdapterFactory.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: ViewsAdapterFactory.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.util;
 
@@ -126,6 +126,11 @@ public class ViewsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseViewReference(ViewReference object) {
 			return createViewReferenceAdapter();
+		}
+
+		@Override
+		public Adapter caseIdentifiedElement(IdentifiedElement object) {
+			return createIdentifiedElementAdapter();
 		}
 
 		@Override
@@ -284,6 +289,20 @@ public class ViewsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createViewReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.views.IdentifiedElement <em>Identified Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.views.IdentifiedElement
+	 * @generated
+	 */
+	public Adapter createIdentifiedElementAdapter() {
 		return null;
 	}
 

@@ -10,17 +10,19 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ElementEditorImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ElementEditorImpl.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.eef.views.ElementEditor;
+import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
@@ -30,6 +32,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl#getQualifiedIdentifier <em>Qualified Identifier</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl#isReadOnly <em>Read Only</em>}</li>
  * </ul>
  * </p>
@@ -37,6 +40,16 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * @generated
  */
 public class ElementEditorImpl extends ViewElementImpl implements ElementEditor {
+	/**
+	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiedIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUALIFIED_IDENTIFIER_EDEFAULT = null;
+
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,6 +92,34 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getQualifiedIdentifier() {
+		StringBuilder result = new StringBuilder(name);
+		EObject container = this.eContainer();
+		while (container != null) {
+			if (container instanceof IdentifiedElement) {
+				result.insert(0, "::");
+				result.insert(0, ((IdentifiedElement)container).getQualifiedIdentifier());
+				return result.toString();
+			}
+			container = container.eContainer();
+		}
+		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
+		// Nothing to do
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isReadOnly() {
@@ -106,6 +147,8 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+				return getQualifiedIdentifier();
 			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 				return isReadOnly() ? Boolean.TRUE : Boolean.FALSE;
 		}
@@ -120,6 +163,9 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+				setQualifiedIdentifier((String)newValue);
+				return;
 			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 				setReadOnly(((Boolean)newValue).booleanValue());
 				return;
@@ -135,6 +181,9 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+				setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
+				return;
 			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 				setReadOnly(READ_ONLY_EDEFAULT);
 				return;
@@ -150,10 +199,49 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 				return readOnly != READ_ONLY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (derivedFeatureID) {
+				case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+				default:
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (baseFeatureID) {
+				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+					return ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER;
+				default:
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

@@ -27,6 +27,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-XQd9Ed6YkIySVKIecQ" name="name" views="_C2Y-lQd9Ed6YkIySVKIecQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ViewElement/name"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KSAn8BydEd6waImJvxo-PQ" name="explicit" views="_FqqCUBydEd6waImJvxo-PQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//View/explicit"/>
+        </properties>
         <referencedBinding xmi:id="_yvvBgAtmEd6B37SLkBAPJA" binding="_U6-YQAtmEd6B37SLkBAPJA"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//View"/>
       </bindings>
@@ -93,7 +96,8 @@
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.views/model/views.genmodel#//views"/>
   </eef-components:PropertiesEditionContext>
-  <eef-views:ViewsRepository xmi:id="_C2Y-hgd9Ed6YkIySVKIecQ" documentation="Views repository for views GenPackage" RepositoryKind="SWT" name="views">
+  <eef-views:ViewsRepository xmi:id="_C2Y-hgd9Ed6YkIySVKIecQ" documentation="Views repository for views GenPackage" name="views">
+    <RepositoryKind>SWT</RepositoryKind>
     <categories xmi:id="_C2Y-hwd9Ed6YkIySVKIecQ" name="common">
       <views xmi:id="_EqJ1IAtmEd6B37SLkBAPJA" name="Documentation">
         <elements xsi:type="eef-views:Container" xmi:id="_HeK04AtmEd6B37SLkBAPJA" name="Documentation">
@@ -124,6 +128,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-kwd9Ed6YkIySVKIecQ" name="representation">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_FqqCUBydEd6waImJvxo-PQ" name="explicit">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

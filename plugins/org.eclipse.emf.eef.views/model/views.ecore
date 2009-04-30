@@ -3,16 +3,16 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="views"
     nsURI="http://www.eclipse.org/emf/eef/views/1.0.0" nsPrefix="eef-views">
-  <eClassifiers xsi:type="ecore:EClass" name="ViewsRepository" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ViewsRepository" eSuperTypes="#//DocumentedElement #//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="views" upperBound="-1"
         eType="#//View" containment="true" eOpposite="#//View/repository"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="RepositoryKind" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" containment="true" eOpposite="#//Category/repository"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//Container">
+  <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//Container #//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="#//ViewsRepository"
         eOpposite="#//ViewsRepository/views"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="explicit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -20,7 +20,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"
         eOpposite="#//Category/views"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ElementEditor" eSuperTypes="#//ViewElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ElementEditor" eSuperTypes="#//ViewElement #//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="readOnly" lowerBound="1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
@@ -50,6 +50,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ViewReference" eSuperTypes="#//ViewElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="view" lowerBound="1" eType="#//ViewElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedIdentifier" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" volatile="true"
+        transient="true" derived="true"/>
   </eClassifiers>
   <eSubpackages name="toolkits" nsURI="http://www.eclipse.org/emf/eef/views/toolkits/1.0.0"
       nsPrefix="eef-views">

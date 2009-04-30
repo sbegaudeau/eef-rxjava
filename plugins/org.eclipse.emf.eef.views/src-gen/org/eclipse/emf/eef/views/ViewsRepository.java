@@ -10,13 +10,11 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsRepository.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewsRepository.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
  */
 package org.eclipse.emf.eef.views;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ViewsRepository extends DocumentedElement {
+public interface ViewsRepository extends DocumentedElement, IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Views</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.eef.views.View}.
@@ -57,30 +55,20 @@ public interface ViewsRepository extends DocumentedElement {
 	EList<View> getViews();
 
 	/**
-	 * Returns the value of the '<em><b>Repository Kind</b></em>' attribute.
+	 * Returns the value of the '<em><b>Repository Kind</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Repository Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Repository Kind</em>' attribute.
-	 * @see #setRepositoryKind(String)
+	 * @return the value of the '<em>Repository Kind</em>' attribute list.
 	 * @see org.eclipse.emf.eef.views.ViewsPackage#getViewsRepository_RepositoryKind()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getRepositoryKind();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.views.ViewsRepository#getRepositoryKind <em>Repository Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Repository Kind</em>' attribute.
-	 * @see #getRepositoryKind()
-	 * @generated
-	 */
-	void setRepositoryKind(String value);
+	EList<String> getRepositoryKind();
 
 	/**
 	 * Returns the value of the '<em><b>Categories</b></em>' containment reference list.
