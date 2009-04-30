@@ -1,0 +1,9 @@
+[module umlViewCommon('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends viewCommon/]
+[import common /]
+[import naming /]
+[import typeUtils /]
+
+[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) overrides updater ? (editor.model.oclIsTypeOf(ecore::EAttribute) and editor.model.oclAsType(ecore::EAttribute).isBoolean() and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
+[editor.views->first().name.toJavaIdentifier().trim()/].setSelection([pec.model.name.toJavaIdentifier().trim()/].[if (not editor.model.name.startsWith('is'))]is[editor.model.name.toJavaClassifier().trim()/][else][editor.model.name.toJavaClassifier().trim().toLowerFirst()/][/if]());
+[/template]
+
