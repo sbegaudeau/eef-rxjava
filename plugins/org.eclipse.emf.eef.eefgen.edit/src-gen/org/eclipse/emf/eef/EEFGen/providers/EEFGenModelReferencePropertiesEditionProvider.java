@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:29 nlepine Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionProvider.java,v 1.1 2009/04/30 17:49:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
@@ -20,13 +20,13 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
-import org.eclipse.emf.eef.EEFGen.GenEditionContext;
-import org.eclipse.emf.eef.EEFGen.components.GenEditionContextPropertiesEditionComponent;
+import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
+import org.eclipse.emf.eef.EEFGen.components.EEFGenModelReferencePropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class GenEditionContextPropertiesEditionProvider implements IPropertiesEditionProvider {
+public class EEFGenModelReferencePropertiesEditionProvider implements IPropertiesEditionProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -34,7 +34,7 @@ public class GenEditionContextPropertiesEditionProvider implements IPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof GenEditionContext) && (EEFGenPackage.eINSTANCE.getGenEditionContext() == eObject.eClass());
+		return (eObject instanceof EEFGenModelReference) && (EEFGenPackage.eINSTANCE.getEEFGenModelReference() == eObject.eClass());
 	}
 	
 	/**
@@ -44,8 +44,8 @@ public class GenEditionContextPropertiesEditionProvider implements IPropertiesEd
 	 *      java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof GenEditionContext) {
-			return new GenEditionContextPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof EEFGenModelReference) {
+			return new EEFGenModelReferencePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -57,9 +57,9 @@ public class GenEditionContextPropertiesEditionProvider implements IPropertiesEd
 	 *      java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof GenEditionContext) {
-			if (GenEditionContextPropertiesEditionComponent.BASE_PART.equals(part))
-				return new GenEditionContextPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof EEFGenModelReference) {
+			if (EEFGenModelReferencePropertiesEditionComponent.BASE_PART.equals(part))
+				return new EEFGenModelReferencePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

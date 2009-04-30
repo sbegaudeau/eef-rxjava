@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.1 2009/04/30 17:12:36 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/04/30 17:49:29 nlepine Exp $
 -->
 
 <plugin>
@@ -40,6 +40,12 @@
       <PropertiesEditionPolicyProvider
             providerClass="org.eclipse.emf.eef.EEFGen.providers.EEFGenPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.EEFGen.providers.EEFGenPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
    </extension>
    
 </plugin>

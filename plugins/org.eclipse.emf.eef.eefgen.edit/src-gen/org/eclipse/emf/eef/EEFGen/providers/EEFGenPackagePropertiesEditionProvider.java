@@ -9,12 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackagePropertiesEditionProvider.java,v 1.1 2009/04/30 17:12:36 glefur Exp $
+ * $Id: EEFGenPackagePropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
- 	
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -26,6 +26,9 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	public EEFGenPackagePropertiesEditionProvider() {
 		super();
 		append(createGenEditionContextPropertiesEditionProvider());
+		append(createEEFGenModelReferencePropertiesEditionProvider());
+		append(createEEFGenModelPropertiesEditionProvider());
+		append(createGenViewsRepositoryPropertiesEditionProvider());
 	}
 	
 	/**
@@ -43,5 +46,49 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		return genEditionContextPropertiesEditionProvider;
 	}
 	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * EEFGenModelReference instances.
+	 */
+	protected EEFGenModelReferencePropertiesEditionProvider eEFGenModelReferencePropertiesEditionProvider;
 
+	/**
+	 * This creates an PropertiesEditionProvider for a EEFGenModelReference
+	 */
+	public EEFGenModelReferencePropertiesEditionProvider createEEFGenModelReferencePropertiesEditionProvider() {
+		if (eEFGenModelReferencePropertiesEditionProvider == null)
+			eEFGenModelReferencePropertiesEditionProvider = new EEFGenModelReferencePropertiesEditionProvider();
+		return eEFGenModelReferencePropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * EEFGenModel instances.
+	 */
+	protected EEFGenModelPropertiesEditionProvider eEFGenModelPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a EEFGenModel
+	 */
+	public EEFGenModelPropertiesEditionProvider createEEFGenModelPropertiesEditionProvider() {
+		if (eEFGenModelPropertiesEditionProvider == null)
+			eEFGenModelPropertiesEditionProvider = new EEFGenModelPropertiesEditionProvider();
+		return eEFGenModelPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * GenViewsRepository instances.
+	 */
+	protected GenViewsRepositoryPropertiesEditionProvider genViewsRepositoryPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a GenViewsRepository
+	 */
+	public GenViewsRepositoryPropertiesEditionProvider createGenViewsRepositoryPropertiesEditionProvider() {
+		if (genViewsRepositoryPropertiesEditionProvider == null)
+			genViewsRepositoryPropertiesEditionProvider = new GenViewsRepositoryPropertiesEditionProvider();
+		return genViewsRepositoryPropertiesEditionProvider;
+	}
+	
 }	

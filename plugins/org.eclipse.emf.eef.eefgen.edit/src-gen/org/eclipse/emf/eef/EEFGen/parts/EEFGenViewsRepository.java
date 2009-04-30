@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenViewsRepository.java,v 1.1 2009/04/30 17:12:36 glefur Exp $
+ * $Id: EEFGenViewsRepository.java,v 1.2 2009/04/30 17:49:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -17,53 +17,90 @@ package org.eclipse.emf.eef.EEFGen.parts;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EEFGenViewsRepository {
+
+	public static final int SWT_KIND = 0;
+		
+	public static final int FORM_KIND = 1;
+
 	
-    /**
-     * Gen Parameters view descriptor
-     *
-     */
-	public static class GenParameters {
+	/**
+	 * GenEditionContext view descriptor
+	 */
+	public static class GenEditionContext {
 
-		public static String basePackage = "EEFGen::Gen Parameters::basePackage";
+		public static String propertiesEditionContext = "EEFGen::GenEditionContext::properties Edition Context";
 
-		public static String genDirectory = "EEFGen::Gen Parameters::genDirectory";
 
-		public static String descriptorsContributorID = "EEFGen::Gen Parameters::descriptorsContributorID";
 
-		public static String helpStrategy = "EEFGen::Gen Parameters::helpStrategy";
+		public static String basePackage = "EEFGen::GenEditionContext::basePackage";
 
-		public static String author = "EEFGen::Gen Parameters::author";
 
-		public static String license = "EEFGen::Gen Parameters::license";
-	
+		public static String descriptorsContributorID = "EEFGen::GenEditionContext::descriptorsContributorID";
+
+
+
+		public static String descriptorsGenericPropertiesViews = "EEFGen::GenEditionContext::descriptorsGenericPropertiesViews";
+
+
+		public static String gmfPropertiesViews = "EEFGen::GenEditionContext::gmfPropertiesViews";
+
+
+
 	}
-	
-    /**
-     * Gen Activation view descriptor
-     *
-     */
-	public static class GenActivation {
 
-		public static String descriptorsGenericPropertiesViews = "EEFGen::Gen Activation::descriptorsGenericPropertiesViews";
+	/**
+	 * EEFGenModelReference view descriptor
+	 */
+	public static class EEFGenModelReference {
 
-		public static String formViews = "EEFGen::Gen Activation::formViews";
+		public static String referencedEEFGenModel = "EEFGen::EEFGenModelReference::Referenced EEFGenModel";
 
-		public static String gmfPropertiesViews = "EEFGen::Gen Activation::gmfPropertiesViews";
 
-		public static String swtViews = "EEFGen::Gen Activation::swtViews";
-	
+
 	}
-	
-    /**
-     * Gen References view descriptor
-     *
-     */
-	public static class GenReferences {
 
-		public static String propertiesEditionContext = "EEFGen::Gen References::propertiesEditionContext";
-	
+	/**
+	 * EEFGenModel view descriptor
+	 */
+	public static class EEFGenModel {
+
+		public static String genDirectory = "EEFGen::EEFGenModel::genDirectory";
+
+
+
+		public static String author = "EEFGen::EEFGenModel::author";
+
+
+		public static String license = "EEFGen::EEFGenModel::license";
+
+
+
 	}
-	
+
+	/**
+	 * GenViewsRepository view descriptor
+	 */
+	public static class GenViewsRepository {
+
+		public static String viewsRepository = "EEFGen::GenViewsRepository::Views repository";
+
+
+
+		public static String basePackage = "EEFGen::GenViewsRepository::basePackage";
+
+
+		public static String helpStrategy = "EEFGen::GenViewsRepository::helpStrategy";
+
+
+
+		public static String swtViews = "EEFGen::GenViewsRepository::swtViews";
+
+
+		public static String formViews = "EEFGen::GenViewsRepository::formViews";
+
+
+
+	}
 
 }
 

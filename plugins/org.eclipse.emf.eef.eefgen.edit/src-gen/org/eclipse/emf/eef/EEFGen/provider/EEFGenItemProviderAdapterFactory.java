@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenItemProviderAdapterFactory.java,v 1.1 2009/04/30 17:12:37 glefur Exp $
+ * $Id: EEFGenItemProviderAdapterFactory.java,v 1.2 2009/04/30 17:49:28 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -31,7 +30,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory;
 
 /**
@@ -103,6 +101,75 @@ public class EEFGenItemProviderAdapterFactory extends EEFGenAdapterFactory imple
 		}
 
 		return genEditionContextItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFGenModelReferenceItemProvider eefGenModelReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFGenModelReferenceAdapter() {
+		if (eefGenModelReferenceItemProvider == null) {
+			eefGenModelReferenceItemProvider = new EEFGenModelReferenceItemProvider(this);
+		}
+
+		return eefGenModelReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.EEFGen.EEFGenModel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFGenModelItemProvider eefGenModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.EEFGen.EEFGenModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFGenModelAdapter() {
+		if (eefGenModelItemProvider == null) {
+			eefGenModelItemProvider = new EEFGenModelItemProvider(this);
+		}
+
+		return eefGenModelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.EEFGen.GenViewsRepository} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GenViewsRepositoryItemProvider genViewsRepositoryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.EEFGen.GenViewsRepository}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGenViewsRepositoryAdapter() {
+		if (genViewsRepositoryItemProvider == null) {
+			genViewsRepositoryItemProvider = new GenViewsRepositoryItemProvider(this);
+		}
+
+		return genViewsRepositoryItemProvider;
 	}
 
 	/**
@@ -205,6 +272,9 @@ public class EEFGenItemProviderAdapterFactory extends EEFGenAdapterFactory imple
 	 */
 	public void dispose() {
 		if (genEditionContextItemProvider != null) genEditionContextItemProvider.dispose();
+		if (eefGenModelReferenceItemProvider != null) eefGenModelReferenceItemProvider.dispose();
+		if (eefGenModelItemProvider != null) eefGenModelItemProvider.dispose();
+		if (genViewsRepositoryItemProvider != null) genViewsRepositoryItemProvider.dispose();
 	}
 
 }

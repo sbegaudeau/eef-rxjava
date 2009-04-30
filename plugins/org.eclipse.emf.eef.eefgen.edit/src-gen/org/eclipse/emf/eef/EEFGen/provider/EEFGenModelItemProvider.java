@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextItemProvider.java,v 1.2 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: EEFGenModelItemProvider.java,v 1.1 2009/04/30 17:49:28 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -20,6 +20,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -30,16 +31,17 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.emf.eef.EEFGen.EEFGenFactory;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
-import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.EEFGen.GenEditionContext} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.EEFGen.EEFGenModel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenEditionContextItemProvider
+public class EEFGenModelItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -53,7 +55,7 @@ public class GenEditionContextItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenEditionContextItemProvider(AdapterFactory adapterFactory) {
+	public EEFGenModelItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -68,73 +70,27 @@ public class GenEditionContextItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPropertiesEditionContextPropertyDescriptor(object);
-			addBasePackagePropertyDescriptor(object);
-			addDescriptorsContributorIDPropertyDescriptor(object);
-			addDescriptorsGenericPropertiesViewsPropertyDescriptor(object);
-			addGmfPropertiesViewsPropertyDescriptor(object);
+			addGenDirectoryPropertyDescriptor(object);
+			addAuthorPropertyDescriptor(object);
+			addLicensePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Properties Edition Context feature.
+	 * This adds a property descriptor for the Gen Directory feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPropertiesEditionContextPropertyDescriptor(Object object) {
+	protected void addGenDirectoryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_GenEditionContext_PropertiesEditionContext_feature"),
-				 getString("_UI_GenEditionContext_PropertiesEditionContext_description"),
-				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__PROPERTIES_EDITION_CONTEXT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 getString("_UI_ReferencesPropertyCategory"),
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Base Package feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBasePackagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GenEditionContext_basePackage_feature"),
-				 getString("_UI_GenEditionContext_basePackage_description"),
-				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__BASE_PACKAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_ParametersPropertyCategory"),
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Descriptors Contributor ID feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptorsContributorIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GenEditionContext_descriptorsContributorID_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GenEditionContext_descriptorsContributorID_feature", "_UI_GenEditionContext_type"),
-				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID,
+				 getString("_UI_EEFGenModel_genDirectory_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EEFGenModel_genDirectory_feature", "_UI_EEFGenModel_type"),
+				 EEFGenPackage.Literals.EEF_GEN_MODEL__GEN_DIRECTORY,
 				 true,
 				 false,
 				 false,
@@ -144,58 +100,90 @@ public class GenEditionContextItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Descriptors Generic Properties Views feature.
+	 * This adds a property descriptor for the Author feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDescriptorsGenericPropertiesViewsPropertyDescriptor(Object object) {
+	protected void addAuthorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_GenEditionContext_descriptorsGenericPropertiesViews_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GenEditionContext_descriptorsGenericPropertiesViews_feature", "_UI_GenEditionContext_type"),
-				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS,
+				 getString("_UI_EEFGenModel_author_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EEFGenModel_author_feature", "_UI_EEFGenModel_type"),
+				 EEFGenPackage.Literals.EEF_GEN_MODEL__AUTHOR,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Gmf Properties Views feature.
+	 * This adds a property descriptor for the License feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addGmfPropertiesViewsPropertyDescriptor(Object object) {
+	protected void addLicensePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_GenEditionContext_gmfPropertiesViews_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GenEditionContext_gmfPropertiesViews_feature", "_UI_GenEditionContext_type"),
-				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS,
+				 getString("_UI_EEFGenModel_license_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EEFGenModel_license_feature", "_UI_EEFGenModel_type"),
+				 EEFGenPackage.Literals.EEF_GEN_MODEL__LICENSE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns GenEditionContext.gif.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(EEFGenPackage.Literals.EEF_GEN_MODEL__EDITION_CONTEXTS);
+			childrenFeatures.add(EEFGenPackage.Literals.EEF_GEN_MODEL__VIEWS_REPOSITORIES);
+			childrenFeatures.add(EEFGenPackage.Literals.EEF_GEN_MODEL__REFERENCES);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns EEFGenModel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenEditionContext"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EEFGenModel"));
 	}
 
 	/**
@@ -206,10 +194,10 @@ public class GenEditionContextItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((GenEditionContext)object).getBasePackage();
+		String label = ((EEFGenModel)object).getGenDirectory();
 		return label == null || label.length() == 0 ?
-			getString("_UI_GenEditionContext_type") :
-			getString("_UI_GenEditionContext_type") + " " + label;
+			getString("_UI_EEFGenModel_type") :
+			getString("_UI_EEFGenModel_type") + " " + label;
 	}
 
 	/**
@@ -223,12 +211,16 @@ public class GenEditionContextItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(GenEditionContext.class)) {
-			case EEFGenPackage.GEN_EDITION_CONTEXT__BASE_PACKAGE:
-			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID:
-			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS:
-			case EEFGenPackage.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS:
+		switch (notification.getFeatureID(EEFGenModel.class)) {
+			case EEFGenPackage.EEF_GEN_MODEL__GEN_DIRECTORY:
+			case EEFGenPackage.EEF_GEN_MODEL__AUTHOR:
+			case EEFGenPackage.EEF_GEN_MODEL__LICENSE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case EEFGenPackage.EEF_GEN_MODEL__EDITION_CONTEXTS:
+			case EEFGenPackage.EEF_GEN_MODEL__VIEWS_REPOSITORIES:
+			case EEFGenPackage.EEF_GEN_MODEL__REFERENCES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -244,6 +236,21 @@ public class GenEditionContextItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EEFGenPackage.Literals.EEF_GEN_MODEL__EDITION_CONTEXTS,
+				 EEFGenFactory.eINSTANCE.createGenEditionContext()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EEFGenPackage.Literals.EEF_GEN_MODEL__VIEWS_REPOSITORIES,
+				 EEFGenFactory.eINSTANCE.createGenViewsRepository()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EEFGenPackage.Literals.EEF_GEN_MODEL__REFERENCES,
+				 EEFGenFactory.eINSTANCE.createEEFGenModelReference()));
 	}
 
 	/**

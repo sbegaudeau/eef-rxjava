@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenReferencesPropertiesEditionPart.java,v 1.1 2009/04/30 17:12:36 glefur Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionPart.java,v 1.1 2009/04/30 17:49:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -19,33 +19,44 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
  
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public interface GenReferencesPropertiesEditionPart {
+public interface EEFGenModelReferencePropertiesEditionPart {
 
 	/**
-	 * @return the propertiesEditionContext
+	 * @return the Referenced EEFGenModel
 	 */
-	public EObject getPropertiesEditionContext();
+	public EObject getReferencedEEFGenModel();
 	
 	/**
-	 * Defines a new propertiesEditionContext
-	 * @param newValue the new propertiesEditionContext to set
+	 * Init the Referenced EEFGenModel
+	 * @param allResources the ResourceSet where the widget have to process
+	 * @param current the current value
 	 */
-	public void setPropertiesEditionContext(EObject newValue);
+	public void initReferencedEEFGenModel(ResourceSet allResources, EObject current);
+
+/**
+	 * Defines a new Referenced EEFGenModel
+	 * @param newValue the new Referenced EEFGenModel to set
+	 */
+	public void setReferencedEEFGenModel(EObject newValue);
 	
 	
 	
 	
 	
+
+
+
+
+
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
-
 }
 
