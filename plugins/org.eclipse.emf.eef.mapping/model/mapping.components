@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_btT4wAd2Ed6c_JoEf-t5JA" documentation="Edition Context for mapping GenPackage">
+    <categories xmi:id="_btT4wQd2Ed6c_JoEf-t5JA" name="common">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_s6Yv0AtHEd6GjLeaWWGqlg" name="DocumentedElement" views="_iUFfgQtHEd6GjLeaWWGqlg" explicit="false">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_1TYbEAtHEd6GjLeaWWGqlg" name="documentation" views="_nCOpoAtHEd6GjLeaWWGqlg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//DocumentedElement/documentation"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//DocumentedElement"/>
+      </bindings>
+    </categories>
+    <categories xmi:id="_btT4wgd2Ed6c_JoEf-t5JA" name="mapping">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT4wwd2Ed6c_JoEf-t5JA" name="Databinding">
+        <referencedBinding xmi:id="_lJN_8AtPEd6GjLeaWWGqlg" documentation="" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//Databinding"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT4xwd2Ed6c_JoEf-t5JA" name="EMFElementBinding" views="_btT5AQd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT4zQd2Ed6c_JoEf-t5JA" name="name" views="_btT5CAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT4zwd2Ed6c_JoEf-t5JA" name="views" views="_btT5Cgd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding/views"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT40Qd2Ed6c_JoEf-t5JA" name="model" views="_btT5DAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFElementBinding/model"/>
+        </properties>
+        <referencedBinding xmi:id="_qaTfEAtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFElementBinding"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT40gd2Ed6c_JoEf-t5JA" name="EMFPropertyBinding" views="_btT5DQd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT41Ad2Ed6c_JoEf-t5JA" name="name" views="_btT5EAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractPropertyBinding/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT41Qd2Ed6c_JoEf-t5JA" name="views" views="_btT5EQd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractPropertyBinding/views"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT41wd2Ed6c_JoEf-t5JA" name="model" views="_btT5Ewd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFPropertyBinding/model"/>
+        </properties>
+        <referencedBinding xmi:id="_29_pIAtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFPropertyBinding"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT42Qd2Ed6c_JoEf-t5JA" name="StandardElementBinding" views="_btT5FQd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT43wd2Ed6c_JoEf-t5JA" name="name" views="_btT5HAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT44Qd2Ed6c_JoEf-t5JA" name="views" views="_btT5Hgd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding/views"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT44wd2Ed6c_JoEf-t5JA" name="model" views="_btT5IAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//StandardElementBinding/model"/>
+        </properties>
+        <referencedBinding xmi:id="_3SerYAtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//StandardElementBinding"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT45Ad2Ed6c_JoEf-t5JA" name="StandardPropertyBinding" views="_btT5IQd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT45gd2Ed6c_JoEf-t5JA" name="name" views="_btT5JAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractPropertyBinding/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT45wd2Ed6c_JoEf-t5JA" name="views" views="_btT5JQd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractPropertyBinding/views"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT46Qd2Ed6c_JoEf-t5JA" name="model" views="_btT5Jwd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//StandardPropertyBinding/model"/>
+        </properties>
+        <referencedBinding xmi:id="_5ExvcAtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//StandardPropertyBinding"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT46gd2Ed6c_JoEf-t5JA" name="Category" views="_btT5KAd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT47Ad2Ed6c_JoEf-t5JA" name="name" views="_btT5Kwd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//Category/name"/>
+        </properties>
+        <referencedBinding xmi:id="_6VNckAtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//Category"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT47wd2Ed6c_JoEf-t5JA" name="ElementBindingReference" views="_btT5Lgd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT48Qd2Ed6c_JoEf-t5JA" name="binding" views="_btT5MQd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//ElementBindingReference/binding"/>
+        </properties>
+        <referencedBinding xmi:id="_7PZz8AtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//ElementBindingReference"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT48gd2Ed6c_JoEf-t5JA" name="EMFMultiPropertiesBinding" views="_btT5Mgd2Ed6c_JoEf-t5JA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT49Ad2Ed6c_JoEf-t5JA" name="name" views="_btT5NQd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractPropertyBinding/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT49Qd2Ed6c_JoEf-t5JA" name="views" views="_btT5Ngd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractPropertyBinding/views"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT49wd2Ed6c_JoEf-t5JA" name="model" views="_btT5OAd2Ed6c_JoEf-t5JA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFMultiPropertiesBinding/model"/>
+        </properties>
+        <referencedBinding xmi:id="_7l7dkAtPEd6GjLeaWWGqlg" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFMultiPropertiesBinding"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_btT4-Qd2Ed6c_JoEf-t5JA" documentation="Views repository for mapping GenPackage" RepositoryKind="SWT" name="mapping">
+    <categories xmi:id="_btT4-gd2Ed6c_JoEf-t5JA" name="common">
+      <views xmi:id="_iUFfgQtHEd6GjLeaWWGqlg" name="Documentation">
+        <elements xsi:type="eef-views:Container" xmi:id="_lPoqoAtHEd6GjLeaWWGqlg" name="Documentation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nCOpoAtHEd6GjLeaWWGqlg" name="documentation">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+    <categories xmi:id="_btT4-wd2Ed6c_JoEf-t5JA" name="mapping">
+      <views xmi:id="_btT5AQd2Ed6c_JoEf-t5JA" name="EMFElementBinding">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5Agd2Ed6c_JoEf-t5JA" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5CAd2Ed6c_JoEf-t5JA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_uMjBoAtPEd6GjLeaWWGqlg" name="Binding">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5DAd2Ed6c_JoEf-t5JA" name="model">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Cgd2Ed6c_JoEf-t5JA" name="views">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_btT5DQd2Ed6c_JoEf-t5JA" name="EMFPropertyBinding">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5Dgd2Ed6c_JoEf-t5JA" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5EAd2Ed6c_JoEf-t5JA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_yc74wAtPEd6GjLeaWWGqlg" name="Binding">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Ewd2Ed6c_JoEf-t5JA" name="model">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5EQd2Ed6c_JoEf-t5JA" name="views">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_btT5FQd2Ed6c_JoEf-t5JA" name="StandardElementBinding">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5Fgd2Ed6c_JoEf-t5JA" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5HAd2Ed6c_JoEf-t5JA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_C47xIAtQEd6GjLeaWWGqlg" name="Binding">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5IAd2Ed6c_JoEf-t5JA" name="model">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Hgd2Ed6c_JoEf-t5JA" name="views">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_btT5IQd2Ed6c_JoEf-t5JA" name="StandardPropertyBinding">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5Igd2Ed6c_JoEf-t5JA" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5JAd2Ed6c_JoEf-t5JA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_GT1KsAtQEd6GjLeaWWGqlg" name="Binding">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Jwd2Ed6c_JoEf-t5JA" name="model">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5JQd2Ed6c_JoEf-t5JA" name="views">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_btT5KAd2Ed6c_JoEf-t5JA" name="Category">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5KQd2Ed6c_JoEf-t5JA" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Kwd2Ed6c_JoEf-t5JA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_btT5Lgd2Ed6c_JoEf-t5JA" name="ElementBindingReference">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5Lwd2Ed6c_JoEf-t5JA" name="R&#xe9;ference">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5MQd2Ed6c_JoEf-t5JA" name="binding">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_btT5Mgd2Ed6c_JoEf-t5JA" name="EMFMultiPropertiesBinding">
+        <elements xsi:type="eef-views:Container" xmi:id="_btT5Mwd2Ed6c_JoEf-t5JA" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5NQd2Ed6c_JoEf-t5JA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_Oeoo8AtQEd6GjLeaWWGqlg" name="Binding">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5OAd2Ed6c_JoEf-t5JA" name="model">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Ngd2Ed6c_JoEf-t5JA" name="views">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>

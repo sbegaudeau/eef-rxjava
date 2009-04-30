@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2008 Obeo.&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License v1.0&#xA; which accompanies this distribution, and is available at&#xA; http://www.eclipse.org/legal/epl-v10.html&#xA; &#xA; Contributors:&#xA;     Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.emf.eef.mapping/src-gen" editDirectory="/org.eclipse.emf.eef.mapping.edit/src-gen"
+    editorDirectory="/org.eclipse.emf.eef.mapping.editor/src-gen" modelPluginID="org.eclipse.emf.eef.mapping"
+    modelName="Mapping" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.emf.eef.views/model/views.genmodel#//views">
+  <foreignModel>mapping.ecore</foreignModel>
+  <genPackages prefix="Mapping" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
+      extensibleProviderFactory="true" ecorePackage="mapping.ecore#/">
+    <genClasses ecoreClass="mapping.ecore#//Databinding">
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          propertyDescription="The bindings defined in this context" ecoreFeature="ecore:EReference mapping.ecore#//Databinding/bindings"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The categories of the context"
+          ecoreFeature="ecore:EReference mapping.ecore#//Databinding/categories"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mapping.ecore#//ModelElement">
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The mapped properties of the current element"
+          ecoreFeature="ecore:EReference mapping.ecore#//ModelElement/properties"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The mapped sub-elements"
+          ecoreFeature="ecore:EReference mapping.ecore#//ModelElement/subElements"/>
+      <genFeatures notify="false" createChild="false" propertyCategory="" propertyDescription="The binding that manage this element"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//ModelElement/binding"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyCategory=""
+          propertyDescription="The container of this element" ecoreFeature="ecore:EReference mapping.ecore#//ModelElement/superElement"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//AbstractElementBinding">
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          propertyDescription="The sub-binding of the element" ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/subElements"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The nested properties binding"
+          ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/properties"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription="The owning databinding"
+          ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/databinding"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription="The containing element binding"
+          ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/superElement"/>
+      <genFeatures createChild="false" propertyDescription="The name of this element binding"
+          ecoreFeature="ecore:EAttribute mapping.ecore#//AbstractElementBinding/name"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The owned binding references"
+          ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/referencedBinding"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped views"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/views"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyCategory=""
+          propertyDescription="The owning category" ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/category"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mapping.ecore#//ModelProperty">
+      <genFeatures notify="false" createChild="false" propertyDescription="The binding that manage this property"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//ModelProperty/binding"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyCategory=""
+          propertyDescription="The owning element" ecoreFeature="ecore:EReference mapping.ecore#//ModelProperty/modelElement"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//AbstractPropertyBinding">
+      <genFeatures createChild="false" propertyDescription="The name of this property binding"
+          ecoreFeature="ecore:EAttribute mapping.ecore#//AbstractPropertyBinding/name"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped views"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//AbstractPropertyBinding/views"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription="The owning element binding"
+          ecoreFeature="ecore:EReference mapping.ecore#//AbstractPropertyBinding/element"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//EMFElementBinding">
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped classifier"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//EMFElementBinding/model"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//EMFPropertyBinding">
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped structural feature"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//EMFPropertyBinding/model"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The model navigation description"
+          ecoreFeature="ecore:EReference mapping.ecore#//EMFPropertyBinding/navigation"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//StandardElementBinding">
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped model element"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//StandardElementBinding/model"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//StandardPropertyBinding">
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped model property"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//StandardPropertyBinding/model"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//Category">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Category/name"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The bindings defined in this category"
+          ecoreFeature="ecore:EReference mapping.ecore#//Category/bindings"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription="The owning Databinding"
+          ecoreFeature="ecore:EReference mapping.ecore#//Category/databinding"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The owned categories"
+          ecoreFeature="ecore:EReference mapping.ecore#//Category/categories"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//ElementBindingReference">
+      <genFeatures notify="false" createChild="false" propertyDescription="The referenced element binding"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//ElementBindingReference/binding"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//DocumentedElement">
+      <genFeatures createChild="false" propertyDescription="The documentation of the element"
+          ecoreFeature="ecore:EAttribute mapping.ecore#//DocumentedElement/documentation"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//EMFMultiPropertiesBinding">
+      <genFeatures notify="false" createChild="false" propertyDescription="The mapped properties"
+          propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//EMFMultiPropertiesBinding/model"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="The model navigation description"
+          ecoreFeature="ecore:EReference mapping.ecore#//EMFMultiPropertiesBinding/navigation"/>
+    </genClasses>
+    <nestedGenPackages prefix="Navigation" basePackage="org.eclipse.emf.eef.mapping"
+        disposableProviderFactory="true" ecorePackage="mapping.ecore#//navigation">
+      <genClasses image="false" ecoreClass="mapping.ecore#//navigation/ModelNavigation"/>
+      <genClasses ecoreClass="mapping.ecore#//navigation/SimpleModelNavigation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mapping.ecore#//navigation/SimpleModelNavigation/feature"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//navigation/SimpleModelNavigation/index"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mapping.ecore#//navigation/SimpleModelNavigation/discriminatorType"/>
+      </genClasses>
+      <genClasses ecoreClass="mapping.ecore#//navigation/ChainedModelNavigation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//navigation/ChainedModelNavigation/current"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//navigation/ChainedModelNavigation/next"/>
+      </genClasses>
+      <genClasses ecoreClass="mapping.ecore#//navigation/StructuredModelNavigation">
+        <genOperations ecoreOperation="mapping.ecore#//navigation/StructuredModelNavigation/evaluate"/>
+      </genClasses>
+      <genClasses ecoreClass="mapping.ecore#//navigation/CustomModelNavigation"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
