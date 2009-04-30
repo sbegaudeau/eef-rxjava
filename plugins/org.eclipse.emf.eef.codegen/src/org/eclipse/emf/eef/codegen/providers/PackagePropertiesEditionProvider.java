@@ -158,6 +158,7 @@ public class PackagePropertiesEditionProvider {
    * @generated
    */
   private void registerPackages(ResourceSet resourceSet) {
+    resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.ocl.ecore.EcorePackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE.getNsURI(), org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(MtlPackage.eINSTANCE.getNsURI(), MtlPackage.eINSTANCE);
