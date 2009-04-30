@@ -9,22 +9,31 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewPropertiesEditionPartImpl.java,v 1.1 2009/04/30 17:16:52 glefur Exp $
+ * $Id: ViewPropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.toolkits.Widget;
+import org.eclipse.emf.eef.views.View;
+import org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart;
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
+import org.eclipse.emf.eef.views.providers.ViewsMessages;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -33,45 +42,22 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import org.eclipse.emf.eef.views.View	;
-import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.providers.ViewsMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
-import org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart;
-import org.eclipse.emf.eef.views.parts.impl.ViewPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.toolkits.Widget;	
-
-
-
-
-
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ViewPropertiesEditionPart {
 
-	protected View current;
-	protected ResourceSet resourceSet;
 	private Text name;
-	private EObjectFlatComboViewer representation;
-		
+	protected EObjectFlatComboViewer representation;
+	private Button explicit;
+
+
+
+
+	
 	public ViewPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
@@ -80,23 +66,21 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
+		view.setLayout(layout);
 		
 		createControls(view);
-		
 		return view;
 	}
 	
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
-
+		
 		// Start of user code for additional ui definition
 		
-		// End of user code
-		
+		// End of user code		
 	}
-	
-	private void createPropertiesGroup(Composite parent) {
+
+	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(ViewsMessages.ViewPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -107,10 +91,10 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
 		createRepresentationFlatComboViewer(propertiesGroup);
-   	}
-
-	private void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_NameLabel, true);
+		createExplicitCheckbox(propertiesGroup);
+	}
+	protected void createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.name, ViewsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -123,22 +107,25 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.name, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, "The element name", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-
 	/**
 	 * @param propertiesGroup
 	 */
 	protected void createRepresentationFlatComboViewer(Composite parent) {
-	
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel, false);		
+
+		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.representation, ViewsViewsRepository.SWT_KIND));
 		representation = new EObjectFlatComboViewer(parent, true);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		
+		// Start of user code for representation filters initialisation
+
+ 		// End of user code		
 		representation.addFilter(new ViewerFilter() {
 
 			/*
@@ -147,45 +134,35 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 			
+				return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
 			}
 
 		});
 		representation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.representation, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, getRepresentation()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.representation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getRepresentation()));
 			}
 
 		});
 		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
 		representation.setLayoutData(representationData);
-		SWTUtils.createHelpButton(parent, "The representation of this part of view", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.representation, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+	protected void createExplicitCheckbox(Composite parent) {
+		explicit = new Button(parent, SWT.CHECK);
+		explicit.setText(ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel);
+		GridData explicitData = new GridData(GridData.FILL_HORIZONTAL);
+		explicitData.horizontalSpan = 2;
+		explicit.setLayoutData(explicitData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.explicit, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		View view = (View)eObject;
-		current = view;
-		resourceSet = allResources;
-		representation.setInput(allResources);
-		if (view.getRepresentation() != null){
-			representation.setSelection(new StructuredSelection(view.getRepresentation()));
-		}
-		// Start of user code for representation filters initialisation
-
- 		// End of user code
 	
-		if (view.getName() != null){
-			name.setText(view.getName());
-		}	
-	}
-	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -206,12 +183,12 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		name.setText(newValue);
 	}
 
-	public void setMessageForName (String msg, int msgLevel) {
-	
+	public void setMessageForName(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForName () {
-	
+
+	public void unsetMessageForName() {
+
 	}
 
 	/**
@@ -231,6 +208,17 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#initRepresentation(ResourceSet allResources, EObject current)
+	 */
+	public void initRepresentation(ResourceSet allResources, EObject current) {
+		representation.setInput(allResources);
+		if (current != null)
+			representation.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#setRepresentation(EObject newValue)
 	 */
 	public void setRepresentation(EObject newValue) {
@@ -240,13 +228,47 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			representation.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
-	public void setMessageForRepresentation (String msg, int msgLevel) {
-	
+	public void setMessageForRepresentation(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForRepresentation () {
-	
+
+	public void unsetMessageForRepresentation() {
+
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#getExplicit()
+	 */
+	public Boolean getExplicit() {
+		return Boolean.valueOf(explicit.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#setExplicit(Boolean newValue)
+	 */
+	public void setExplicit(Boolean newValue) {
+		if (newValue != null) {
+			explicit.setSelection(newValue.booleanValue());
+		} else {
+			explicit.setSelection(false);
+		}
+	}
+
+	public void setMessageForExplicit(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForExplicit() {
+
+	}
+
+
+
+
 
 
 
@@ -254,5 +276,4 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	// Start of user code additional methods
  	
 	// End of user code
-
-}	
+}

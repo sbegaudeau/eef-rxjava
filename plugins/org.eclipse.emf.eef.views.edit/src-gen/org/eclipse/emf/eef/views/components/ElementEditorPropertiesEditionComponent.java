@@ -9,42 +9,34 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorPropertiesEditionComponent.java,v 1.1 2009/04/30 17:16:50 glefur Exp $
+ * $Id: ElementEditorPropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.views.ElementEditor;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+// Start of user code for imports
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.views.ElementEditor;
+
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ElementEditorPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private ElementEditor elementEditor;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param elementEditor
 	 *            the EObject to edit
 	 */
-	public ElementEditorPropertiesEditionComponent(EObject elementEditor, String mode) {
-		super(mode);
+	public ElementEditorPropertiesEditionComponent(EObject elementEditor, String editing_mode) {
+		super(editing_mode);
 		if (elementEditor instanceof ElementEditor) {
-			this.elementEditor = (ElementEditor)elementEditor;
-			addSubComponent(new ElementEditorBasePropertiesEditionComponent(elementEditor, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(elementEditor, mode));
+			addSubComponent(new ElementEditorBasePropertiesEditionComponent(elementEditor, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(elementEditor, editing_mode));
 		}
 	}
 }
-
 

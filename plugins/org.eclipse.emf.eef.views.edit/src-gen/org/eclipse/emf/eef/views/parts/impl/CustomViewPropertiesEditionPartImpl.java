@@ -9,57 +9,41 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewPropertiesEditionPartImpl.java,v 1.1 2009/04/30 17:16:52 glefur Exp $
+ * $Id: CustomViewPropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.views.parts.CustomViewPropertiesEditionPart;
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
+import org.eclipse.emf.eef.views.providers.ViewsMessages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import org.eclipse.emf.eef.views.CustomView	;
-import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.providers.ViewsMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
-import org.eclipse.emf.eef.views.parts.CustomViewPropertiesEditionPart;
-import org.eclipse.emf.eef.views.parts.impl.CustomViewPropertiesEditionPartImpl;
-
-
-
-
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, CustomViewPropertiesEditionPart {
 
 	private Text name;
-		
+
+
+
+
+	
 	public CustomViewPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
@@ -68,23 +52,21 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
+		view.setLayout(layout);
 		
 		createControls(view);
-		
 		return view;
 	}
 	
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
-
+		
 		// Start of user code for additional ui definition
 		
-		// End of user code
-		
+		// End of user code		
 	}
-	
-	private void createPropertiesGroup(Composite parent) {
+
+	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(ViewsMessages.CustomViewPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -94,10 +76,9 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
-   	}
-
-	private void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.CustomViewPropertiesEditionPart_NameLabel, true);
+	}
+	protected void createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ViewsMessages.CustomViewPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomView.name, ViewsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -110,27 +91,19 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(CustomViewPropertiesEditionPartImpl.this, ViewsViewsRepository.CustomView.name, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomViewPropertiesEditionPartImpl.this, ViewsViewsRepository.CustomView.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, "The element name", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomView.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		CustomView customView = (CustomView)eObject;
-		if (customView.getName() != null){
-			name.setText(customView.getName());
-		}	
-	}
 	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -151,13 +124,17 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 		name.setText(newValue);
 	}
 
-	public void setMessageForName (String msg, int msgLevel) {
-	
+	public void setMessageForName(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForName () {
-	
+
+	public void unsetMessageForName() {
+
 	}
+
+
+
+
 
 
 
@@ -165,5 +142,4 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 	// Start of user code additional methods
  	
 	// End of user code
-
-}	
+}

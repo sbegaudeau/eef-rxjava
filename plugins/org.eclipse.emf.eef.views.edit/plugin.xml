@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.1 2009/04/30 17:16:52 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/04/30 17:49:39 nlepine Exp $
 -->
 
 <plugin>
@@ -46,7 +46,55 @@
         	class="org.eclipse.emf.eef.views.resources.ViewsResourceFactory"
           	type="views"/>
  </extension>
- 
+    <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            name="EEF Constraints"
+            id="org.eclipse.emf.eef.validation"/>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://www.eclipse.org/emf/eef/views/1.0.0"/>
+         <constraints categories="org.eclipse.emf.eef.validation">
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.emf.eef.views.validation.NonReferenceViewsConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Non-Referenced Views"
+                  id="org.eclipse.emf.eef.views.validation.nonrefviews"
+                  statusCode="1">
+               <description>
+                  All items in a views model must be referenced by a controller ...
+               </description>
+               <message>
+                  The ElementEditor {0} has been found without controller.
+               </message>
+               <target class="ElementEditor"/>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://www.eclipse.org/emf/eef/views/1.0.0"/>
+         <constraints categories="org.eclipse.emf.eef.validation">
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.emf.eef.views.validation.ContainerWithoutRepresensationConstraint"
+                  severity="WARNING"
+                  mode="Batch"
+                  name="Container without representation"
+                  id="org.eclipse.emf.eef.views.validation.containerwithoutrepresentation"
+                  statusCode="1">
+               <description>
+                  Container should have a representation.
+               </description>
+               <message>
+                  The container {0} ({1}) hasn't representation. This could stop the EEF generation.
+               </message>
+               <target class="Container"/>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+
  <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
       <PropertiesEditionComponentProvider
@@ -71,6 +119,18 @@
       <PropertiesEditionPolicyProvider
             providerClass="org.eclipse.emf.eef.toolkits.providers.ToolkitsPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.toolkits.providers.ToolkitsPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.views.providers.ViewsPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
    </extension>
 
 </plugin>

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionProvider.java,v 1.1 2009/04/30 17:16:51 glefur Exp $
+ * $Id: ViewsRepositoryPropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -23,11 +23,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.emf.eef.views.components.ViewsRepositoryPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ViewsRepositoryBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.views.parts.impl.ViewsRepositoryPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.views.parts.forms.ViewsRepositoryPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.views.parts.impl.DocumentationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -49,9 +45,9 @@ public class ViewsRepositoryPropertiesEditionProvider implements IPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof ViewsRepository) {
-			return new ViewsRepositoryPropertiesEditionComponent(eObject, mode);
+			return new ViewsRepositoryPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

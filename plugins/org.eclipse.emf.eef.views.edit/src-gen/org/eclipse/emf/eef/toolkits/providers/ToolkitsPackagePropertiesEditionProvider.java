@@ -9,12 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPackagePropertiesEditionProvider.java,v 1.1 2009/04/30 17:16:51 glefur Exp $
+ * $Id: ToolkitsPackagePropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
- 	
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -59,5 +59,4 @@ public class ToolkitsPackagePropertiesEditionProvider extends ComposedProperties
 		return widgetPropertiesEditionProvider;
 	}
 	
-
 }	

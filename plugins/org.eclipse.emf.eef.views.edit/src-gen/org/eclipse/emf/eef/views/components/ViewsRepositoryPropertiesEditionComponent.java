@@ -9,42 +9,34 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionComponent.java,v 1.1 2009/04/30 17:16:51 glefur Exp $
+ * $Id: ViewsRepositoryPropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.views.ViewsRepository;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+// Start of user code for imports
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.views.ViewsRepository;
+
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ViewsRepositoryPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private ViewsRepository viewsRepository;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param viewsRepository
 	 *            the EObject to edit
 	 */
-	public ViewsRepositoryPropertiesEditionComponent(EObject viewsRepository, String mode) {
-		super(mode);
+	public ViewsRepositoryPropertiesEditionComponent(EObject viewsRepository, String editing_mode) {
+		super(editing_mode);
 		if (viewsRepository instanceof ViewsRepository) {
-			this.viewsRepository = (ViewsRepository)viewsRepository;
-			addSubComponent(new ViewsRepositoryBasePropertiesEditionComponent(viewsRepository, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(viewsRepository, mode));
+			addSubComponent(new ViewsRepositoryBasePropertiesEditionComponent(viewsRepository, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(viewsRepository, editing_mode));
 		}
 	}
 }
-
 

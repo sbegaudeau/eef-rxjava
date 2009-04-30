@@ -9,19 +9,16 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPart.java,v 1.1 2009/04/30 17:16:52 glefur Exp $
+ * $Id: DocumentationPropertiesEditionPart.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
 
  
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -38,13 +35,17 @@ public interface DocumentationPropertiesEditionPart {
 	 */
 	public void setDocumentation(String newValue);
 	
-	public void setMessageForDocumentation (String msg, int msgLevel);	
+	public void setMessageForDocumentation(String msg, int msgLevel);
 	
-	public void unsetMessageForDocumentation ();
+	public void unsetMessageForDocumentation();
 	
+
+
+
+
+
 	// Start of user code for additional methods
  	
 	// End of user code
-
 }
 

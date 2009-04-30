@@ -25,7 +25,7 @@
                label="Base"
                category="default"
                id="Base">
-         </propertyTab>         	
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -36,20 +36,20 @@
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.toolkits.section.Toolkit">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.toolkits.Toolkit">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.toolkits.section.Widget">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.toolkits.Widget">
-          	   </input>
+             </input>
          </propertySection>
       </propertySections>
    </extension>
    
-</plugin>
+ </plugin>
 

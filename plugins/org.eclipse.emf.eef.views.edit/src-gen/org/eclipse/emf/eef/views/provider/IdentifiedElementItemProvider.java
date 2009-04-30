@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewItemProvider.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
+ * $Id: IdentifiedElementItemProvider.java,v 1.1 2009/04/30 17:49:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,6 +18,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,18 +29,20 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.emf.eef.views.View;
+
+import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.views.View} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.views.IdentifiedElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewItemProvider extends ContainerItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
+public class IdentifiedElementItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -45,7 +50,7 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ViewItemProvider(AdapterFactory adapterFactory) {
+	public IdentifiedElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,59 +65,8 @@ public class ViewItemProvider extends ContainerItemProvider implements
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addQualifiedIdentifierPropertyDescriptor(object);
-			addExplicitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Qualified Identifier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addQualifiedIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_IdentifiedElement_qualifiedIdentifier_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_IdentifiedElement_qualifiedIdentifier_feature", "_UI_IdentifiedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ViewsPackage.Literals.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER,
-						false, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Explicit feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addExplicitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_View_explicit_feature"), //$NON-NLS-1$
-				getString("_UI_View_explicit_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW__EXPLICIT, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This returns View.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/View")); //$NON-NLS-1$
 	}
 
 	/**
@@ -123,9 +77,9 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((View) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_View_type") : //$NON-NLS-1$
-				getString("_UI_View_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		String label = ((IdentifiedElement) object).getQualifiedIdentifier();
+		return label == null || label.length() == 0 ? getString("_UI_IdentifiedElement_type") : //$NON-NLS-1$
+				getString("_UI_IdentifiedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -139,9 +93,8 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(View.class)) {
-		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-		case ViewsPackage.VIEW__EXPLICIT:
+		switch (notification.getFeatureID(IdentifiedElement.class)) {
+		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
 			fireNotifyChanged(new ViewerNotification(notification, notification
 					.getNotifier(), false, true));
 			return;
@@ -160,6 +113,17 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return ViewsEditPlugin.INSTANCE;
 	}
 
 }

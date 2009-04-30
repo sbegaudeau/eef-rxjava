@@ -9,19 +9,16 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionPart.java,v 1.1 2009/04/30 17:16:52 glefur Exp $
+ * $Id: ViewsRepositoryPropertiesEditionPart.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
 
  
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -38,9 +35,9 @@ public interface ViewsRepositoryPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 	
-	public void setMessageForName (String msg, int msgLevel);	
+	public void setMessageForName(String msg, int msgLevel);
 	
-	public void unsetMessageForName ();
+	public void unsetMessageForName();
 	
 	/**
 	 * @return the RepositoryKind
@@ -53,13 +50,17 @@ public interface ViewsRepositoryPropertiesEditionPart {
 	 */
 	public void setRepositoryKind(String newValue);
 	
-	public void setMessageForRepositoryKind (String msg, int msgLevel);	
+	public void setMessageForRepositoryKind(String msg, int msgLevel);
 	
-	public void unsetMessageForRepositoryKind ();
+	public void unsetMessageForRepositoryKind();
 	
+
+
+
+
+
 	// Start of user code for additional methods
  	
 	// End of user code
-
 }
 

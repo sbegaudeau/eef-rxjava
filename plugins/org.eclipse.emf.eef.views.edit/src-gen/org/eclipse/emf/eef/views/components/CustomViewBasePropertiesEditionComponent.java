@@ -9,95 +9,75 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewBasePropertiesEditionComponent.java,v 1.1 2009/04/30 17:16:51 glefur Exp $
+ * $Id: CustomViewBasePropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.views.CustomView	;
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.CustomView	;
-import org.eclipse.emf.eef.views.parts.CustomViewPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.views.CustomView;
+import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclipse.emf.eef.views.parts.CustomViewPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class CustomViewBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private CustomView customView;
-
+	
 	/**
 	 * The Base part
 	 */
 	private CustomViewPropertiesEditionPart basePart;
-
 	
-
 	/**
 	 * Default constructor
 	 */
-	public CustomViewBasePropertiesEditionComponent(EObject customView, String mode) {
+	public CustomViewBasePropertiesEditionComponent(EObject customView, String editing_mode) {
 		if (customView instanceof CustomView) {
 			this.customView = (CustomView)customView;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
+			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
 				this.customView.eAdapters().add(semanticAdapter);
 			}
 		}
 		listeners = new ArrayList();
-		this.mode = mode;
+		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * @return the semantic model listener
@@ -115,10 +95,22 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 					basePart.setName((String)msg.getNewValue());
 
 
+
 			}
 
 		};
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 */
+	public java.lang.Class translatePart(String key) {
+		if (BASE_PART.equals(key))
+			return ViewsViewsRepository.CustomView.class;
+		return super.translatePart(key);
+	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -134,18 +126,35 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 * (java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(String kind, String key) {
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (customView != null && BASE_PART.equals(key)) {
-				if (basePart == null) {
-					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(customView);
-					if (provider != null) {
-						basePart = (CustomViewPropertiesEditionPart)provider.getPropertiesEditionPart(customView, this, key, kind);
-						listeners.add(basePart);
-					}
+			if (basePart == null) {
+				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ViewsViewsRepository.class);
+				if (provider != null) {
+					basePart = (CustomViewPropertiesEditionPart)provider.getPropertiesEditionPart(ViewsViewsRepository.CustomView.class, kind, this);
+					listeners.add(basePart);
 				}
-				return (IPropertiesEditionPart)basePart;
+			}
+			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent
+	 * 		#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 * 						org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		if (basePart != null && key == ViewsViewsRepository.CustomView.class) {
+			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+			CustomView customView = (CustomView)elt;
+			if (customView.getName() != null)
+				basePart.setName(customView.getName());
+
+		}
+
 	}
 
 	/*
@@ -158,6 +167,7 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 		CompoundCommand cc = new CompoundCommand();
 		if (customView != null) {
 			cc.append(SetCommand.create(editingDomain, customView, ViewsPackage.eINSTANCE.getViewElement_Name(), basePart.getName()));
+
 
 
 		}
@@ -179,6 +189,7 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 			customViewToUpdate.setName(basePart.getName());
 
 
+
 			return customViewToUpdate;
 		}
 		else
@@ -188,17 +199,18 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		super.firePropertiesChanged(event);
-		if (PathedPropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
-			Command command = null;
+		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+			CompoundCommand command = new CompoundCommand();
 			if (ViewsViewsRepository.CustomView.name == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, customView, ViewsPackage.eINSTANCE.getViewElement_Name(), event.getNewValue());
+				command.append(SetCommand.create(liveEditingDomain, customView, ViewsPackage.eINSTANCE.getViewElement_Name(), event.getNewValue()));
+
 
 
 			if (command != null)
 				liveEditingDomain.getCommandStack().execute(command);
-		} else if (PathedPropertiesEditionEvent.CHANGE == event.getState()) {
+		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (ViewsViewsRepository.CustomView.name == event.getAffectedEditor())
@@ -212,46 +224,62 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 
 			}
 		}
-	}	
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 */
+	public boolean isRequired(String key, int kind) {
+		return key == ViewsViewsRepository.CustomView.name;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+			if (key == ViewsViewsRepository.CustomView.name)
+				return "The element name"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
 	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
-	public Diagnostic validateValue(PathedPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditionEvent event) {
 		String newStringValue = event.getNewValue().toString();
-		
 		Diagnostic ret = null;
-		
 		try {
 			if (ViewsViewsRepository.CustomView.name == event.getAffectedEditor()) {
 				Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
 				ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 			}
 
-
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
 		}
-		
 		return ret;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(mode)) {
+		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
 			return Diagnostician.INSTANCE.validate(copy);
 		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(mode))
+		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			return Diagnostician.INSTANCE.validate(customView);
 		else
 			return null;
 	}
+	
 
 	/**
 	 * {@inheritDoc}
@@ -264,5 +292,4 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 	}
 
 }
-
 
