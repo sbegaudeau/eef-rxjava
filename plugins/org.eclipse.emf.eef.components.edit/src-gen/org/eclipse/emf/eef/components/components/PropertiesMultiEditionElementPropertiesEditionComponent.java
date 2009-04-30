@@ -1,0 +1,51 @@
+/**
+ *  Copyright (c) 2008-2009 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
+ * 
+ *
+ * $Id: PropertiesMultiEditionElementPropertiesEditionComponent.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ */
+package org.eclipse.emf.eef.components.components;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
+/**
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ */
+public class PropertiesMultiEditionElementPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+
+	public static final String SWT_KIND = "SWT";
+
+	public static final String FORM_KIND = "Form";
+		
+	/**
+	 * The EObject to edit
+	 */
+	private PropertiesMultiEditionElement propertiesMultiEditionElement;
+	
+	/**
+	 * Parameterized constructor
+	 * 
+	 * @param propertiesMultiEditionElement
+	 *            the EObject to edit
+	 */
+	public PropertiesMultiEditionElementPropertiesEditionComponent(EObject propertiesMultiEditionElement, String mode) {
+		super(mode);
+		if (propertiesMultiEditionElement instanceof PropertiesMultiEditionElement) {
+			this.propertiesMultiEditionElement = (PropertiesMultiEditionElement)propertiesMultiEditionElement;
+			addSubComponent(new PropertiesMultiEditionElementBasePropertiesEditionComponent(propertiesMultiEditionElement, mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(propertiesMultiEditionElement, mode));
+		}
+	}
+}
+
+

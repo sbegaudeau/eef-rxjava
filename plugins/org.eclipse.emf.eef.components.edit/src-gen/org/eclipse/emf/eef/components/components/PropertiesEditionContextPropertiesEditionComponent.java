@@ -1,0 +1,51 @@
+/**
+ *  Copyright (c) 2008-2009 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
+ * 
+ *
+ * $Id: PropertiesEditionContextPropertiesEditionComponent.java,v 1.1 2009/04/30 17:09:47 glefur Exp $
+ */
+package org.eclipse.emf.eef.components.components;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
+/**
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ */
+public class PropertiesEditionContextPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+
+	public static final String SWT_KIND = "SWT";
+
+	public static final String FORM_KIND = "Form";
+		
+	/**
+	 * The EObject to edit
+	 */
+	private PropertiesEditionContext propertiesEditionContext;
+	
+	/**
+	 * Parameterized constructor
+	 * 
+	 * @param propertiesEditionContext
+	 *            the EObject to edit
+	 */
+	public PropertiesEditionContextPropertiesEditionComponent(EObject propertiesEditionContext, String mode) {
+		super(mode);
+		if (propertiesEditionContext instanceof PropertiesEditionContext) {
+			this.propertiesEditionContext = (PropertiesEditionContext)propertiesEditionContext;
+			addSubComponent(new PropertiesEditionContextBasePropertiesEditionComponent(propertiesEditionContext, mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(propertiesEditionContext, mode));
+		}
+	}
+}
+
+

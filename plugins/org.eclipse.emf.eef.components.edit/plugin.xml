@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+  Copyright (c) 2008 Obeo.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+  
+  Contributors:
+      Obeo - initial API and implementation
+ 
+
+ $Id: plugin.xml,v 1.1 2009/04/30 17:09:48 glefur Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/components/1.0.0"
+            class="org.eclipse.emf.eef.components.provider.ComponentsItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender
+            uri="http://www.eclipse.org/emf/eef/mapping/1.0.0"
+            class="org.eclipse.emf.eef.components.provider.ComponentsItemProviderAdapterFactory$MappingChildCreationExtender"/>
+   </extension>
+    <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+        	class="org.eclipse.emf.eef.components.resources.ComponentsResourceFactory"
+          	type="components"/>
+ 	</extension>
+ 	
+ 	<extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.components.providers.ComponentsCustomPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.components.providers.ComponentsPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+</plugin>
