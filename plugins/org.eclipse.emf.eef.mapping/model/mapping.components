@@ -94,9 +94,27 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFMultiPropertiesBinding"/>
       </bindings>
     </categories>
+    <categories xmi:id="_hJc5AA_UEd6yj5ZmUZfl5Q" name="navigation">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_kaqyIA_UEd6yj5ZmUZfl5Q" name="ModelNavigation" views="_Sdf2YA_eEd6yj5ZmUZfl5Q" helpID="">
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/ModelNavigation"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_F3VnIA_eEd6yj5ZmUZfl5Q" name="SimpleModelNavigation" views="_obafMA_eEd6yj5ZmUZfl5Q" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uLTdYA_iEd6yj5ZmUZfl5Q" name="index" views="_3onCIA_eEd6yj5ZmUZfl5Q">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/SimpleModelNavigation/index"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CzZiwA_jEd6yj5ZmUZfl5Q" name="feature" views="_yOm3kA_eEd6yj5ZmUZfl5Q">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/SimpleModelNavigation/feature"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C6__kA_jEd6yj5ZmUZfl5Q" name="discriminatorType" views="_Tn4JYA_fEd6yj5ZmUZfl5Q">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/SimpleModelNavigation/discriminatorType"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/SimpleModelNavigation"/>
+      </bindings>
+    </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping"/>
   </eef-components:PropertiesEditionContext>
-  <eef-views:ViewsRepository xmi:id="_btT4-Qd2Ed6c_JoEf-t5JA" documentation="Views repository for mapping GenPackage" RepositoryKind="SWT" name="mapping">
+  <eef-views:ViewsRepository xmi:id="_btT4-Qd2Ed6c_JoEf-t5JA" documentation="Views repository for mapping GenPackage" name="mapping">
+    <RepositoryKind>SWT</RepositoryKind>
     <categories xmi:id="_btT4-gd2Ed6c_JoEf-t5JA" name="common">
       <views xmi:id="_iUFfgQtHEd6GjLeaWWGqlg" name="Documentation">
         <elements xsi:type="eef-views:Container" xmi:id="_lPoqoAtHEd6GjLeaWWGqlg" name="Documentation">
@@ -116,6 +134,7 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_uMjBoAtPEd6GjLeaWWGqlg" name="Binding">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5DAd2Ed6c_JoEf-t5JA" name="model">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
@@ -132,6 +151,7 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_yc74wAtPEd6GjLeaWWGqlg" name="Binding">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Ewd2Ed6c_JoEf-t5JA" name="model">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
@@ -148,6 +168,7 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_C47xIAtQEd6GjLeaWWGqlg" name="Binding">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5IAd2Ed6c_JoEf-t5JA" name="model">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
@@ -164,6 +185,7 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_GT1KsAtQEd6GjLeaWWGqlg" name="Binding">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Jwd2Ed6c_JoEf-t5JA" name="model">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
@@ -196,11 +218,33 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_Oeoo8AtQEd6GjLeaWWGqlg" name="Binding">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5OAd2Ed6c_JoEf-t5JA" name="model">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_btT5Ngd2Ed6c_JoEf-t5JA" name="views">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+    <categories xmi:id="_QVvfsA_eEd6yj5ZmUZfl5Q" name="navigation">
+      <views xmi:id="_Sdf2YA_eEd6yj5ZmUZfl5Q" name="ModelNavigation">
+        <elements xsi:type="eef-views:Container" xmi:id="_Sdf2YQ_eEd6yj5ZmUZfl5Q" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+        </elements>
+      </views>
+      <views xmi:id="_obafMA_eEd6yj5ZmUZfl5Q" name="SimpleModelNavigation">
+        <elements xsi:type="eef-views:Container" xmi:id="_vHri4A_eEd6yj5ZmUZfl5Q" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3onCIA_eEd6yj5ZmUZfl5Q" name="index">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yOm3kA_eEd6yj5ZmUZfl5Q" name="feature">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Tn4JYA_fEd6yj5ZmUZfl5Q" documentation="" name="discriminatorType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
