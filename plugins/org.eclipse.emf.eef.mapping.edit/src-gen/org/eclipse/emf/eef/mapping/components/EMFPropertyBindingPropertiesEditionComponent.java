@@ -9,42 +9,34 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionComponent.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionComponent.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
+
+// Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EMFPropertyBindingPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private EMFPropertyBinding eMFPropertyBinding;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param eMFPropertyBinding
 	 *            the EObject to edit
 	 */
-	public EMFPropertyBindingPropertiesEditionComponent(EObject eMFPropertyBinding, String mode) {
-		super(mode);
+	public EMFPropertyBindingPropertiesEditionComponent(EObject eMFPropertyBinding, String editing_mode) {
+		super(editing_mode);
 		if (eMFPropertyBinding instanceof EMFPropertyBinding) {
-			this.eMFPropertyBinding = (EMFPropertyBinding)eMFPropertyBinding;
-			addSubComponent(new EMFPropertyBindingBasePropertiesEditionComponent(eMFPropertyBinding, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(eMFPropertyBinding, mode));
+			addSubComponent(new EMFPropertyBindingBasePropertiesEditionComponent(eMFPropertyBinding, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(eMFPropertyBinding, editing_mode));
 		}
 	}
 }
-
 

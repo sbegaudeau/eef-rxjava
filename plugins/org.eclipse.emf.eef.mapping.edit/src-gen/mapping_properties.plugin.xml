@@ -25,7 +25,7 @@
                label="Base"
                category="default"
                id="Base">
-         </propertyTab>         	
+         </propertyTab>
          <propertyTab
                label="Documentation"
                category="extended"
@@ -81,124 +81,140 @@
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.Databinding">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.Databinding">
-          	   </input>
-         </propertySection>
-         <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.EMFElementBinding">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.EMFElementBinding">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFElementBinding">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.EMFElementBinding">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
-          	   </input>
+               id="org.eclipse.emf.eef.mapping.section.EMFElementBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.EMFElementBinding">
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
-          	   </input>
+               id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.StandardElementBinding">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
-          	   </input>
+               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.Category">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.Category">
-          	   </input>
+               id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.Category">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.Category">
-          	   </input>
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.Category">
+             <input
+                    type="org.eclipse.emf.eef.mapping.Category">
+             </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.ElementBindingReference">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.ElementBindingReference">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.ElementBindingReference">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.ElementBindingReference">
-          	   </input>
-         </propertySection>
-         <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding">
-          	   </input>
+             </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
-          	   <input
+             <input
                     type="org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding">
-          	   </input>
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.ModelNavigation">
+             <input
+                    type="org.eclipse.emf.eef.mapping.navigation.ModelNavigation">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.SimpleModelNavigation">
+             <input
+                    type="org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation">
+             </input>
          </propertySection>
       </propertySections>
    </extension>
    
-</plugin>
+ </plugin>
 

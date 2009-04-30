@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2009/04/30 17:14:44 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/04/30 17:48:58 nlepine Exp $
 -->
 
 <plugin>
@@ -43,8 +43,14 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
       <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.mapping.providers.MappingPackagePropertiesEditionPolicyProvider">
+            providerClass="org.eclipse.emf.eef.navigation.providers.MappingPackageCustomPropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.navigation.providers.MappingCustomPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
    </extension>
 
 </plugin>

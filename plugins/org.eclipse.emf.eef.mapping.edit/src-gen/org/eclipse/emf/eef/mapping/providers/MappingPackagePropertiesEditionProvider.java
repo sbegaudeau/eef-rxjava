@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.2 2009/04/30 17:48:59 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
- 	
+import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -25,6 +26,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	 */
 	public MappingPackagePropertiesEditionProvider() {
 		super();
+		append(createDocumentedElementPropertiesEditionProvider());
 		append(createDatabindingPropertiesEditionProvider());
 		append(createEMFElementBindingPropertiesEditionProvider());
 		append(createEMFPropertyBindingPropertiesEditionProvider());
@@ -33,6 +35,22 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		append(createCategoryPropertiesEditionProvider());
 		append(createElementBindingReferencePropertiesEditionProvider());
 		append(createEMFMultiPropertiesBindingPropertiesEditionProvider());
+		append(createSimpleModelNavigationPropertiesEditionProvider());
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * DocumentedElement instances.
+	 */
+	protected DocumentedElementPropertiesEditionProvider documentedElementPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a DocumentedElement
+	 */
+	public DocumentedElementPropertiesEditionProvider createDocumentedElementPropertiesEditionProvider() {
+		if (documentedElementPropertiesEditionProvider == null)
+			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
+		return documentedElementPropertiesEditionProvider;
 	}
 	
 	/**
@@ -155,5 +173,19 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		return eMFMultiPropertiesBindingPropertiesEditionProvider;
 	}
 	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * SimpleModelNavigation instances.
+	 */
+	protected SimpleModelNavigationPropertiesEditionProvider simpleModelNavigationPropertiesEditionProvider;
 
+	/**
+	 * This creates an PropertiesEditionProvider for a SimpleModelNavigation
+	 */
+	public SimpleModelNavigationPropertiesEditionProvider createSimpleModelNavigationPropertiesEditionProvider() {
+		if (simpleModelNavigationPropertiesEditionProvider == null)
+			simpleModelNavigationPropertiesEditionProvider = new SimpleModelNavigationPropertiesEditionProvider();
+		return simpleModelNavigationPropertiesEditionProvider;
+	}
+	
 }	

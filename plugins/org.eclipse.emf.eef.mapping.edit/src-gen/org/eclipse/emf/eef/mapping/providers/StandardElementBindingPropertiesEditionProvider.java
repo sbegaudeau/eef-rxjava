@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingPropertiesEditionProvider.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: StandardElementBindingPropertiesEditionProvider.java,v 1.2 2009/04/30 17:48:59 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -23,11 +23,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.StandardElementBinding;
 import org.eclipse.emf.eef.mapping.components.StandardElementBindingPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.StandardElementBindingBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -49,9 +45,9 @@ public class StandardElementBindingPropertiesEditionProvider implements IPropert
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof StandardElementBinding) {
-			return new StandardElementBindingPropertiesEditionComponent(eObject, mode);
+			return new StandardElementBindingPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -62,38 +58,12 @@ public class StandardElementBindingPropertiesEditionProvider implements IPropert
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof StandardElementBinding) {
 			if (StandardElementBindingBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new StandardElementBindingBasePropertiesEditionComponent(eObject, mode);
+				return new StandardElementBindingBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new DocumentedElementPropertiesEditionComponent(eObject, mode);
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionPart(org.eclipse.emf.ecore.EObject,
-	 *      org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent, java.lang.String,
-	 *      java.lang.String)
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(EObject eObject,
-			IPropertiesEditionComponent editionComponent, String part, String kind) {
-		if (eObject instanceof StandardElementBinding) {
-			if (StandardElementBindingPropertiesEditionComponent.SWT_KIND.equals(kind)) {
-				if (StandardElementBindingBasePropertiesEditionComponent.BASE_PART.equals(part))
-					return new StandardElementBindingPropertiesEditionPartImpl(editionComponent);
-				if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-					return new DocumentationPropertiesEditionPartImpl(editionComponent);
-			}
-		}
-		if (StandardElementBindingPropertiesEditionComponent.FORM_KIND.equals(kind)) {
-				if (StandardElementBindingBasePropertiesEditionComponent.BASE_PART.equals(part))
-					return new StandardElementBindingPropertiesEditionPartForm(editionComponent);
-				if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-					return new DocumentationPropertiesEditionPartForm(editionComponent);
+				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

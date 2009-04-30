@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingItemProviderAdapterFactory.java,v 1.1 2009/04/30 17:14:44 glefur Exp $
+ * $Id: MappingItemProviderAdapterFactory.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -20,11 +20,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ChildCreationExtenderManager;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -38,9 +35,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
-
 import org.eclipse.emf.eef.mapping.util.MappingAdapterFactory;
 
 /**

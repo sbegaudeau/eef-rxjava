@@ -9,41 +9,33 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingPropertiesEditionComponent.java,v 1.1 2009/04/30 17:14:42 glefur Exp $
+ * $Id: DatabindingPropertiesEditionComponent.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
+
+// Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class DatabindingPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private Databinding databinding;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param databinding
 	 *            the EObject to edit
 	 */
-	public DatabindingPropertiesEditionComponent(EObject databinding, String mode) {
-		super(mode);
+	public DatabindingPropertiesEditionComponent(EObject databinding, String editing_mode) {
+		super(editing_mode);
 		if (databinding instanceof Databinding) {
-			this.databinding = (Databinding)databinding;
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(databinding, mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(databinding, editing_mode));
 		}
 	}
 }
-
 

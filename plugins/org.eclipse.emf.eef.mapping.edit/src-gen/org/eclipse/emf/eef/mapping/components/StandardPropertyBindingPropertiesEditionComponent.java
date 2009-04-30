@@ -9,42 +9,34 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingPropertiesEditionComponent.java,v 1.1 2009/04/30 17:14:42 glefur Exp $
+ * $Id: StandardPropertyBindingPropertiesEditionComponent.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
+
+// Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class StandardPropertyBindingPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private StandardPropertyBinding standardPropertyBinding;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param standardPropertyBinding
 	 *            the EObject to edit
 	 */
-	public StandardPropertyBindingPropertiesEditionComponent(EObject standardPropertyBinding, String mode) {
-		super(mode);
+	public StandardPropertyBindingPropertiesEditionComponent(EObject standardPropertyBinding, String editing_mode) {
+		super(editing_mode);
 		if (standardPropertyBinding instanceof StandardPropertyBinding) {
-			this.standardPropertyBinding = (StandardPropertyBinding)standardPropertyBinding;
-			addSubComponent(new StandardPropertyBindingBasePropertiesEditionComponent(standardPropertyBinding, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(standardPropertyBinding, mode));
+			addSubComponent(new StandardPropertyBindingBasePropertiesEditionComponent(standardPropertyBinding, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(standardPropertyBinding, editing_mode));
 		}
 	}
 }
-
 

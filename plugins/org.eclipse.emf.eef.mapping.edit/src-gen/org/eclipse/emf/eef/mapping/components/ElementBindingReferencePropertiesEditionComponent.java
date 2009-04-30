@@ -9,42 +9,34 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionComponent.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: ElementBindingReferencePropertiesEditionComponent.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
+
+// Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ElementBindingReferencePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private ElementBindingReference elementBindingReference;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param elementBindingReference
 	 *            the EObject to edit
 	 */
-	public ElementBindingReferencePropertiesEditionComponent(EObject elementBindingReference, String mode) {
-		super(mode);
+	public ElementBindingReferencePropertiesEditionComponent(EObject elementBindingReference, String editing_mode) {
+		super(editing_mode);
 		if (elementBindingReference instanceof ElementBindingReference) {
-			this.elementBindingReference = (ElementBindingReference)elementBindingReference;
-			addSubComponent(new ElementBindingReferenceBasePropertiesEditionComponent(elementBindingReference, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(elementBindingReference, mode));
+			addSubComponent(new ElementBindingReferenceBasePropertiesEditionComponent(elementBindingReference, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(elementBindingReference, editing_mode));
 		}
 	}
 }
-
 

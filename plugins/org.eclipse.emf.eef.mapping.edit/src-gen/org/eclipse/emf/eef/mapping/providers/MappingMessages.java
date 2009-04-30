@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingMessages.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: MappingMessages.java,v 1.2 2009/04/30 17:48:59 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -23,111 +23,132 @@ public class MappingMessages extends NLS {
 
 	public static String DocumentationPropertiesEditionPart_DocumentationGroupLabel;
 
-	public static String DocumentedElement_ReadOnly;
-	
-	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
-			
-	public static String Databinding_ReadOnly;
-	
 	public static String EMFElementBindingPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String EMFElementBinding_ReadOnly;
-	
-	public static String EMFElementBindingPropertiesEditionPart_NameLabel;
-			
-	public static String EMFElementBindingPropertiesEditionPart_ViewsLabel;
-			
-	public static String EMFElementBindingPropertiesEditionPart_ModelLabel;
-			
+	public static String EMFElementBindingPropertiesEditionPart_BindingGroupLabel;
+
 	public static String EMFPropertyBindingPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String EMFPropertyBinding_ReadOnly;
-	
-	public static String EMFPropertyBindingPropertiesEditionPart_NameLabel;
-			
-	public static String EMFPropertyBindingPropertiesEditionPart_ViewsLabel;
-			
-	public static String EMFPropertyBindingPropertiesEditionPart_ModelLabel;
-			
+	public static String EMFPropertyBindingPropertiesEditionPart_BindingGroupLabel;
+
 	public static String StandardElementBindingPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String StandardElementBinding_ReadOnly;
-	
-	public static String StandardElementBindingPropertiesEditionPart_NameLabel;
-			
-	public static String StandardElementBindingPropertiesEditionPart_ViewsLabel;
-			
-	public static String StandardElementBindingPropertiesEditionPart_ModelLabel;
-			
+	public static String StandardElementBindingPropertiesEditionPart_BindingGroupLabel;
+
 	public static String StandardPropertyBindingPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String StandardPropertyBinding_ReadOnly;
-	
-	public static String StandardPropertyBindingPropertiesEditionPart_NameLabel;
-			
-	public static String StandardPropertyBindingPropertiesEditionPart_ViewsLabel;
-			
-	public static String StandardPropertyBindingPropertiesEditionPart_ModelLabel;
-			
+	public static String StandardPropertyBindingPropertiesEditionPart_BindingGroupLabel;
+
 	public static String CategoryPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String Category_ReadOnly;
-	
-	public static String CategoryPropertiesEditionPart_NameLabel;
-			
 	public static String ElementBindingReferencePropertiesEditionPart_ReferenceGroupLabel;
 
-	public static String ElementBindingReference_ReadOnly;
-	
-	public static String ElementBindingReferencePropertiesEditionPart_BindingLabel;
-			
 	public static String EMFMultiPropertiesBindingPropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String EMFMultiPropertiesBindingPropertiesEditionPart_BindingGroupLabel;
+
+	public static String ModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
+
+	public static String SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
+
+	public static String Documentation_ReadOnly;
+
+	public static String EMFElementBinding_ReadOnly;
+
+	public static String EMFPropertyBinding_ReadOnly;
+
+	public static String StandardElementBinding_ReadOnly;
+
+	public static String StandardPropertyBinding_ReadOnly;
+
+	public static String Category_ReadOnly;
+
+	public static String ElementBindingReference_ReadOnly;
+
 	public static String EMFMultiPropertiesBinding_ReadOnly;
-	
+
+	public static String ModelNavigation_ReadOnly;
+
+	public static String SimpleModelNavigation_ReadOnly;
+
+	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
+
+	public static String EMFElementBindingPropertiesEditionPart_NameLabel;
+
+	public static String EMFElementBindingPropertiesEditionPart_ModelLabel;
+
+	public static String EMFElementBindingPropertiesEditionPart_ViewsLabel;
+
+	public static String EMFPropertyBindingPropertiesEditionPart_NameLabel;
+
+	public static String EMFPropertyBindingPropertiesEditionPart_ModelLabel;
+
+	public static String EMFPropertyBindingPropertiesEditionPart_ViewsLabel;
+
+	public static String StandardElementBindingPropertiesEditionPart_NameLabel;
+
+	public static String StandardElementBindingPropertiesEditionPart_ModelLabel;
+
+	public static String StandardElementBindingPropertiesEditionPart_ViewsLabel;
+
+	public static String StandardPropertyBindingPropertiesEditionPart_NameLabel;
+
+	public static String StandardPropertyBindingPropertiesEditionPart_ModelLabel;
+
+	public static String StandardPropertyBindingPropertiesEditionPart_ViewsLabel;
+
+	public static String CategoryPropertiesEditionPart_NameLabel;
+
+	public static String ElementBindingReferencePropertiesEditionPart_BindingLabel;
+
 	public static String EMFMultiPropertiesBindingPropertiesEditionPart_NameLabel;
-			
-	public static String EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel;
-			
+
 	public static String EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel;
-			
+
+	public static String EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel;
+
+	public static String SimpleModelNavigationPropertiesEditionPart_IndexLabel;
+
+	public static String SimpleModelNavigationPropertiesEditionPart_FeatureLabel;
+
+	public static String SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel;
+
 	public static String PropertiesEditionPart_DocumentationLabel;
 
 	public static String PropertiesEditionPart_IntegerValueMessage;
-	
+
 	public static String PropertiesEditionPart_FloatValueMessage;
-	
+
 	public static String PropertiesEditionPart_ShortValueMessage;
-	
+
 	public static String PropertiesEditionPart_LongValueMessage;
-	
+
 	public static String PropertiesEditionPart_ByteValueMessage;
-	
+
 	public static String PropertiesEditionPart_BigIntegerValueMessage;
-	
+
 	public static String PropertiesEditionPart_BigDecimalValueMessage;
-	
+
 	public static String PropertiesEditionPart_DoubleValueMessage;
 
 	public static String PropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String PropertiesEditionPart_RequiredFeatureMessage;
-	
+
 	public static String PropertiesEditionPart_AddTableViewerLabel;
 
 	public static String PropertiesEditionPart_EditTableViewerLabel;
 
 	public static String PropertiesEditionPart_RemoveTableViewerLabel;
-	
+
 	public static String PropertiesEditionPart_AddListViewerLabel;
 
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
-	
+
 	// Start of user code for additionnal NLS Constants
 	
  	
 	// End of user code
-	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, MappingMessages.class);
@@ -136,4 +157,5 @@ public class MappingMessages extends NLS {
 	private MappingMessages() {
 		//protect instanciation
 	}
-}	
+}
+

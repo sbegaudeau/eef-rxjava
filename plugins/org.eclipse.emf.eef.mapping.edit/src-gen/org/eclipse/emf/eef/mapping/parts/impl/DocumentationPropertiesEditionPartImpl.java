@@ -9,56 +9,40 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.1 2009/04/30 17:14:44 glefur Exp $
+ * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import org.eclipse.emf.eef.mapping.DocumentedElement	;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.providers.MappingMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
-import org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart;
-import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
-
-
-
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DocumentationPropertiesEditionPart {
 
 	private Text documentation;
-		
+
+
+
+
+	
 	public DocumentationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
@@ -67,23 +51,21 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
+		view.setLayout(layout);
 		
 		createControls(view);
-		
 		return view;
 	}
 	
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
-
+		
 		// Start of user code for additional ui definition
 		
-		// End of user code
-		
+		// End of user code		
 	}
-	
-	private void createDocumentationGroup(Composite parent) {
+
+	protected void createDocumentationGroup(Composite parent) {
 		Group documentationGroup = new Group(parent, SWT.NONE);
 		documentationGroup.setText(MappingMessages.DocumentationPropertiesEditionPart_DocumentationGroupLabel);
 		GridData documentationGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -93,10 +75,9 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		documentationGroupLayout.numColumns = 3;
 		documentationGroup.setLayout(documentationGroupLayout);
 		createDocumentationTextarea(documentationGroup);
-   	}
-
+	}
 	protected void createDocumentationTextarea(Composite parent) {
-		Label documentationLabel = SWTUtils.createPartLabel(parent, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel, false);
+		Label documentationLabel = SWTUtils.createPartLabel(parent, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Documentation.documentation, MappingViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
@@ -105,22 +86,14 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
 		documentation.setLayoutData(documentationData);
-		SWTUtils.createHelpButton(parent, "The documentation of the element", null); //$NON-NLS-1$
-	}		
-
-
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		DocumentedElement documentedElement = (DocumentedElement)eObject;
-		if (documentedElement.getDocumentation() != null){
-			documentation.setText(documentedElement.getDocumentation());
-		}	
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.Documentation.documentation, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -141,13 +114,17 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		documentation.setText(newValue);
 	}
 
-	public void setMessageForDocumentation (String msg, int msgLevel) {
-	
+	public void setMessageForDocumentation(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForDocumentation () {
-	
+
+	public void unsetMessageForDocumentation() {
+
 	}
+
+
+
+
 
 
 
@@ -155,5 +132,4 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 	// Start of user code additional methods
  	
 	// End of user code
-
-}	
+}

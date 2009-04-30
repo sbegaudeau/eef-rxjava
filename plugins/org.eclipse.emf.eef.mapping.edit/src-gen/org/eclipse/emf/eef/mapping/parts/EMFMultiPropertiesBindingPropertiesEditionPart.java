@@ -9,20 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPart.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPart.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
 // Start of user code for imports
 
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
  
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -39,9 +38,9 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 	
-	public void setMessageForName (String msg, int msgLevel);	
+	public void setMessageForName(String msg, int msgLevel);
 	
-	public void unsetMessageForName ();
+	public void unsetMessageForName();
 	
 	/**
 	 * @return the model to add
@@ -54,6 +53,14 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	public List getModelToRemove();
 	
 	/**
+	 * Init the model
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initModel(EObject current, EReference containingFeature, EReference feature);
+
+/**
 	 * Update the model
 	 * @param newValue the model to update
 	 */
@@ -74,6 +81,14 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	public List getViewsToRemove();
 	
 	/**
+	 * Init the views
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initViews(EObject current, EReference containingFeature, EReference feature);
+
+/**
 	 * Update the views
 	 * @param newValue the views to update
 	 */
@@ -83,9 +98,13 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	
 	
 	
+
+
+
+
+
 	// Start of user code for additional methods
  	
 	// End of user code
-
 }
 

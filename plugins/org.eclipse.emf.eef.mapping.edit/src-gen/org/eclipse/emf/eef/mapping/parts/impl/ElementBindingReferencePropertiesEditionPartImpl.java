@@ -9,67 +9,48 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPartImpl.java,v 1.1 2009/04/30 17:14:44 glefur Exp $
+ * $Id: ElementBindingReferencePropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.mapping.ElementBindingReference	;
-import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.mapping.AbstractElementBinding;
+import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
-import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
-import org.eclipse.emf.eef.mapping.parts.impl.ElementBindingReferencePropertiesEditionPartImpl;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.mapping.AbstractElementBinding;	
-
-
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ElementBindingReferencePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ElementBindingReferencePropertiesEditionPart {
 
-	protected ElementBindingReference current;
-	protected ResourceSet resourceSet;
-	private EObjectFlatComboViewer binding;
-		
+	protected EObjectFlatComboViewer binding;
+
+
+
+
+	
 	public ElementBindingReferencePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
@@ -78,23 +59,21 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
+		view.setLayout(layout);
 		
 		createControls(view);
-		
 		return view;
 	}
 	
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
-
+		
 		// Start of user code for additional ui definition
 		
-		// End of user code
-		
+		// End of user code		
 	}
-	
-	private void createReferenceGroup(Composite parent) {
+
+	protected void createReferenceGroup(Composite parent) {
 		Group referenceGroup = new Group(parent, SWT.NONE);
 		referenceGroup.setText(MappingMessages.ElementBindingReferencePropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -104,16 +83,19 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		referenceGroupLayout.numColumns = 3;
 		referenceGroup.setLayout(referenceGroupLayout);
 		createBindingFlatComboViewer(referenceGroup);
-   	}
-
+	}
 	/**
 	 * @param referenceGroup
 	 */
 	protected void createBindingFlatComboViewer(Composite parent) {
-	
-		SWTUtils.createPartLabel(parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, true);		
+
+		SWTUtils.createPartLabel(parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.SWT_KIND));
 		binding = new EObjectFlatComboViewer(parent, false);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		
+		// Start of user code for binding filters initialisation
+
+ 		// End of user code		
 		binding.addFilter(new ViewerFilter() {
 
 			/*
@@ -122,42 +104,27 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof AbstractElementBinding);			
+				return (element instanceof AbstractElementBinding);
 			}
 
 		});
 		binding.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartImpl.this, MappingViewsRepository.ElementBindingReference.binding, PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, getBinding()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartImpl.this, MappingViewsRepository.ElementBindingReference.binding, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getBinding()));
 			}
 
 		});
 		GridData bindingData = new GridData(GridData.FILL_HORIZONTAL);
 		binding.setLayoutData(bindingData);
-		SWTUtils.createHelpButton(parent, "The referenced element binding", null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		ElementBindingReference elementBindingReference = (ElementBindingReference)eObject;
-		current = elementBindingReference;
-		resourceSet = allResources;
-		binding.setInput(allResources);
-		if (elementBindingReference.getBinding() != null){
-			binding.setSelection(new StructuredSelection(elementBindingReference.getBinding()));
-		}
-		// Start of user code for binding filters initialisation
-
- 		// End of user code
 	
-	}
-	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -177,6 +144,17 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#initBinding(ResourceSet allResources, EObject current)
+	 */
+	public void initBinding(ResourceSet allResources, EObject current) {
+		binding.setInput(allResources);
+		if (current != null)
+			binding.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#setBinding(EObject newValue)
 	 */
 	public void setBinding(EObject newValue) {
@@ -186,13 +164,17 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 			binding.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
-	public void setMessageForBinding (String msg, int msgLevel) {
-	
+	public void setMessageForBinding(String msg, int msgLevel) {
+
 	}
-	
-	public void unsetMessageForBinding () {
-	
+
+	public void unsetMessageForBinding() {
+
 	}
+
+
+
+
 
 
 
@@ -200,5 +182,4 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	// Start of user code additional methods
  	
 	// End of user code
-
-}	
+}

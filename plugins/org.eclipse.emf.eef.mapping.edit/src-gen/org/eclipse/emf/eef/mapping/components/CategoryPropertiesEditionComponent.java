@@ -9,42 +9,34 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryPropertiesEditionComponent.java,v 1.1 2009/04/30 17:14:43 glefur Exp $
+ * $Id: CategoryPropertiesEditionComponent.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
+
+// Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
+// End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private Category category;
-	
 	/**
 	 * Parameterized constructor
 	 * 
 	 * @param category
 	 *            the EObject to edit
 	 */
-	public CategoryPropertiesEditionComponent(EObject category, String mode) {
-		super(mode);
+	public CategoryPropertiesEditionComponent(EObject category, String editing_mode) {
+		super(editing_mode);
 		if (category instanceof Category) {
-			this.category = (Category)category;
-			addSubComponent(new CategoryBasePropertiesEditionComponent(category, mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(category, mode));
+			addSubComponent(new CategoryBasePropertiesEditionComponent(category, editing_mode));
+			addSubComponent(new DocumentedElementPropertiesEditionComponent(category, editing_mode));
 		}
 	}
 }
-
 

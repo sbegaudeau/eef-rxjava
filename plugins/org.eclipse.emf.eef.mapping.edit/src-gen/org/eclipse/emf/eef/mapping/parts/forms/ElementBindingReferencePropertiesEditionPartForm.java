@@ -9,109 +9,76 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPartForm.java,v 1.1 2009/04/30 17:14:44 glefur Exp $
+ * $Id: ElementBindingReferencePropertiesEditionPartForm.java,v 1.2 2009/04/30 17:48:59 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.mapping.AbstractElementBinding;
+import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IMessageManager;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.events.IExpansionListener;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.events.IExpansionListener;
-
-import org.eclipse.emf.eef.mapping.ElementBindingReference;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
-import org.eclipse.emf.eef.mapping.providers.MappingMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.emf.eef.mapping.AbstractElementBinding;	
-
-
-
-
 
 // End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ElementBindingReferencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ElementBindingReferencePropertiesEditionPart {
 
-	protected ElementBindingReference current;
-	protected ResourceSet resourceSet;
-	private EObjectFlatComboViewer binding;
-		
+	protected EObjectFlatComboViewer binding;
+
+
+
+
+	
 	public ElementBindingReferencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-		
+	
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);		
+		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
 		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
-		view.setLayout(layout);	
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));		
-		
+		view.setLayout(layout);
+		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
 	
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) { 
+	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
-
 		// Start of user code for additional ui definition
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
-	private void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
+	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
 		Section referenceSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referenceSection.setText(MappingMessages.ElementBindingReferencePropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceSectionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -123,16 +90,19 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 		referenceGroup.setLayout(referenceGroupLayout);
 		createBindingFlatComboViewer(referenceGroup, widgetFactory);
 		referenceSection.setClient(referenceGroup);
-	}   		
-
+	}
 	/**
 	 * @param referenceGroup
 	 */
 	protected void createBindingFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 	
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, true);
+		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.FORM_KIND));
 		binding = new EObjectFlatComboViewer(parent, false);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		// Start of user code for binding filters initialisation
+
+ 		// End of user code
 		binding.addFilter(new ViewerFilter() {
 
 			/*
@@ -157,33 +127,19 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartForm.this, MappingViewsRepository.ElementBindingReference.binding, PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, getBinding()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartForm.this, MappingViewsRepository.ElementBindingReference.binding, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getBinding()));
 			}
 			
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, "The referenced element binding", null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		ElementBindingReference elementBindingReference = (ElementBindingReference)eObject;
-		current = elementBindingReference;
-		resourceSet = allResources;
-		binding.setInput(allResources);
-		if (elementBindingReference.getBinding() != null){
-			binding.setSelection(new StructuredSelection(elementBindingReference.getBinding()));
-		}
-		// Start of user code for binding filters initialisation
-
- 		// End of user code
 	
-	}
-	
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -203,6 +159,17 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#initBinding(ResourceSet allResources, EObject current)
+	 */
+	public void initBinding(ResourceSet allResources, EObject current) {
+		binding.setInput(allResources);
+		if (current != null)
+			binding.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#setBinding(EObject newValue)
 	 */
 	public void setBinding(EObject newValue) {
@@ -211,10 +178,14 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 		else
 			binding.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 
 
@@ -222,5 +193,4 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	// Start of user code additional methods
  	
 	// End of user code
-
 }	
