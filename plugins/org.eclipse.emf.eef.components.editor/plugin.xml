@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.1 2009/04/30 17:10:27 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/04/30 17:49:18 nlepine Exp $
 -->
 
 <plugin>
@@ -145,7 +145,7 @@
       </propertySections>
    </extension>
 
-	<extension
+	 <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
             contributorId="org.eclipse.emf.eef.components.properties">
@@ -169,6 +169,51 @@
                category="default"
                id="Base">
          </propertyTab>         	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
       </propertyTabs>
    </extension>
    <extension
@@ -200,14 +245,6 @@
           	   </input>
          </propertySection>
          <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
-          	   <input
-                    type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
-          	   </input>
-         </propertySection>
-         <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
@@ -218,9 +255,9 @@
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
+               id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
           	   <input
-                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
+                    type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
           	   </input>
          </propertySection>
          <propertySection
@@ -234,9 +271,9 @@
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
+               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
           	   <input
-                    type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
+                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
           	   </input>
          </propertySection>
          <propertySection
@@ -249,6 +286,14 @@
          </propertySection>
          <propertySection
                tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
+          	   <input
+                    type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.Category">
           	   <input
@@ -256,7 +301,7 @@
           	   </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.Category">
           	   <input
@@ -293,6 +338,22 @@
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
           	   <input
                     type="org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.ModelNavigation">
+          	   <input
+                    type="org.eclipse.emf.eef.mapping.navigation.ModelNavigation">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.SimpleModelNavigation">
+          	   <input
+                    type="org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation">
           	   </input>
          </propertySection>
       </propertySections>
