@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2008 Obeo.&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License v1.0&#xA; which accompanies this distribution, and is available at&#xA; http://www.eclipse.org/legal/epl-v10.html&#xA; &#xA; Contributors:&#xA;     Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.emf.eef.eefgen/src-gen" editDirectory="/org.eclipse.emf.eef.eefgen.edit/src-gen"
+    editorDirectory="/org.eclipse.emf.eef.eefgen.editor/src-gen" modelPluginID="org.eclipse.emf.eef.eefgen"
+    modelName="EEFGen" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.eef.components/model/components.genmodel#//components platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel ../../org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping ../../org.eclipse.emf.eef.views/model/views.genmodel#//views">
+  <foreignModel>EEFGen.ecore</foreignModel>
+  <genPackages prefix="EEFGen" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
+      multipleEditorPages="false" ecorePackage="EEFGen.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="EEFGen.ecore#//HELP_STRATEGY">
+      <genEnumLiterals ecoreEnumLiteral="EEFGen.ecore#//HELP_STRATEGY/GENMODEL"/>
+      <genEnumLiterals ecoreEnumLiteral="EEFGen.ecore#//HELP_STRATEGY/ECOREMODEL"/>
+    </genEnums>
+    <genClasses ecoreClass="EEFGen.ecore#//GenEditionContext">
+      <genFeatures notify="false" createChild="false" propertyCategory="References"
+          propertyDescription="The PropertiesEditioContext to describe" propertySortChoices="true"
+          ecoreFeature="ecore:EReference EEFGen.ecore#//GenEditionContext/PropertiesEditionContext"/>
+      <genFeatures createChild="false" propertyCategory="Parameters" propertyDescription="The base package for all the generated code"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/basePackage"/>
+      <genFeatures createChild="false" propertyCategory="Parameters" propertyDescription="The target directory for the generated code"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/genDirectory"/>
+      <genFeatures createChild="false" propertyCategory="Activation" propertyDescription="Whether to include the SWT implementation of views"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/swtViews"/>
+      <genFeatures createChild="false" propertyCategory="Activation" propertyDescription="Whether to include the Eclipse Forms implementation of views"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/formViews"/>
+      <genFeatures createChild="false" propertyCategory="Activation" propertyDescription="Whether to include a sample configuration for plugin.xml to use a generic EEF properties view"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/descriptorsGenericPropertiesViews"/>
+      <genFeatures createChild="false" propertyCategory="Activation" propertyDescription="Whether to include a views implementation and a sample configuration for plugin.xml to use EEF on a GMF modeler"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/gmfPropertiesViews"/>
+      <genFeatures createChild="false" propertyCategory="Parameters" propertyDescription="Defines where the generators have to search the help entries"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/helpStrategy"/>
+      <genFeatures createChild="false" propertyCategory="Parameters" propertyDescription="Override if necessary the contributorID to use for generic descriptors"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/descriptorsContributorID"/>
+      <genFeatures createChild="false" propertyCategory="Parameters" propertyDescription="The string that must be generated for the @author tag"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/author"/>
+      <genFeatures createChild="false" propertyCategory="Parameters" propertyDescription="The license text of the generated code"
+          propertyMultiLine="true" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/license"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
