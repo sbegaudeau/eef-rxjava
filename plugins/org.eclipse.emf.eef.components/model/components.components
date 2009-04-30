@@ -71,7 +71,8 @@
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.components/model/components.genmodel#//components"/>
   </eef-components:PropertiesEditionContext>
-  <eef-views:ViewsRepository xmi:id="_PvwLRQc1Ed6AO86QFJ8SHA" documentation="Views repository for components GenPackage" RepositoryKind="SWT" name="components">
+  <eef-views:ViewsRepository xmi:id="_PvwLRQc1Ed6AO86QFJ8SHA" documentation="Views repository for components GenPackage" name="components">
+    <RepositoryKind>SWT</RepositoryKind>
     <categories xmi:id="_PvwLRgc1Ed6AO86QFJ8SHA" name="common">
       <views xmi:id="_nvkKMAsaEd6ejM-vAbbZMA" name="Documentation">
         <elements xsi:type="eef-views:Container" xmi:id="_prjVwAsaEd6ejM-vAbbZMA" name="Documentation">
@@ -145,8 +146,9 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_aQBUsAtCEd6o76KHM0_A1g" name="Binding">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_PvwLawc1Ed6AO86QFJ8SHA" name="model">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_PvwLaQc1Ed6AO86QFJ8SHA" name="views">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
