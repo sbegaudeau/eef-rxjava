@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.1 2009/04/30 17:13:14 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/04/30 17:49:31 nlepine Exp $
 -->
 
 <plugin>
@@ -43,7 +43,7 @@
       </editor>
    </extension>
    
-    <extension
+   <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
             contributorId="org.eclipse.emf.eef.EEFGen.properties">
@@ -67,21 +67,6 @@
                category="default"
                id="Base">
          </propertyTab>         	
-         <propertyTab
-               label="Gen Activation"
-               category="extended"
-               id="Gen Activation">
-         </propertyTab>	
-         <propertyTab
-               label="Gen References"
-               category="extended"
-               id="Gen References">
-         </propertyTab>	
-         <propertyTab
-               label="Gen Parameters"
-               category="extended"
-               id="Gen Parameters">
-         </propertyTab>	
       </propertyTabs>
    </extension>
    <extension
@@ -89,7 +74,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.EEFGen.properties">
          <propertySection
-               tab="Gen Activation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
           	   <input
@@ -97,22 +82,30 @@
           	   </input>
          </propertySection>
          <propertySection
-               tab="Gen References"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
+               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference">
           	   <input
-                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
+                    type="org.eclipse.emf.eef.EEFGen.EEFGenModelReference">
           	   </input>
          </propertySection>
          <propertySection
-               tab="Gen Parameters"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
+               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel">
           	   <input
-                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
+                    type="org.eclipse.emf.eef.EEFGen.EEFGenModel">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository">
+          	   <input
+                    type="org.eclipse.emf.eef.EEFGen.GenViewsRepository">
           	   </input>
          </propertySection>
       </propertySections>
    </extension>
-
+   
 </plugin>
