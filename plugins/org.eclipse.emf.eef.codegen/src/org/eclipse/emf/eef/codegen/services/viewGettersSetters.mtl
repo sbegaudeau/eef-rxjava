@@ -1,0 +1,481 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module viewGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0')/]
+
+[import common/]
+[import naming/]
+
+[comment ====== Widgets View getters for declaration ====== /]
+[template public getterDeclaration(view : ElementEditor) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable')]
+[view.getterAddSignatureDocumentation()/]
+	[view.getterAddSignature()/];
+	
+	[view.getterRemoveSignatureDocumentation()/]
+	[view.getterRemoveSignature()/];
+[/template]
+
+[template public getterDeclaration(view : ElementEditor) ? (view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
+[view.getterAddSignatureDocumentation()/]
+	[view.getterAddSignature()/];
+	
+	[view.getterRemoveSignatureDocumentation()/]
+	[view.getterRemoveSignature()/];
+	
+	[view.getterMoveSignatureDocumentation()/]
+	[view.getterMoveSignature()/];
+	
+	[view.getterEditSignatureDocumentation()/]
+	[view.getterEditSignature()/];
+	
+	[view.getterTableListSignatureDocumentation()/]
+	[view.getterTableListSignature()/];
+[/template]
+
+[template public getterDeclaration(view : ElementEditor)]
+[view.getterSignatureDocumentation()/]
+	[view.getterSignature()/];
+[/template]
+
+[template public getterSignature(view : ElementEditor)]
+public [view.toJavaType().trim()/] [view.viewCompletePackageGetter()/]
+[/template]
+
+[template public getterAddSignature(view : ElementEditor)]
+public List [view.viewPackageGetter()/]ToAdd()
+[/template]
+
+[template public getterRemoveSignature(view : ElementEditor)]
+public List [view.viewPackageGetter()/]ToRemove()
+[/template]
+
+[template public getterMoveSignature(view : ElementEditor)]
+public List [view.viewPackageGetter()/]ToMove()
+[/template]
+
+[template public getterEditSignature(view : ElementEditor)]
+public Map [view.viewPackageGetter()/]ToEdit()
+[/template]
+
+[template public getterTableListSignature(view : ElementEditor)]
+public List [view.viewPackageGetter()/]Table()
+[/template]
+
+[template public getterSignatureDocumentation(view : ElementEditor)]
+/**
+	 * @return the [view.name/]
+	 */
+[/template]
+
+[template public getterAddSignatureDocumentation(view : ElementEditor)]
+/**
+	 * @return the [view.name/] to add
+	 */
+[/template]
+
+[template public getterRemoveSignatureDocumentation(view : ElementEditor)]
+/**
+	 * @return the [view.name/] to remove
+	 */
+[/template]
+
+[template public getterMoveSignatureDocumentation(view : ElementEditor)]
+/**
+	 * @return the [view.name/] to move
+	 */
+[/template]
+
+[template public getterEditSignatureDocumentation(view : ElementEditor)]
+/**
+	 * @return the [view.name/] to edit
+	 */
+[/template]
+
+[template public getterTableListSignatureDocumentation(view : ElementEditor)]
+/**
+	 * @return the current [view.name/]
+	 */
+[/template]
+
+[comment ===== error message handling methods ======= /]
+
+[template public setMessageDeclaration(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.setMessageSignature()/];	
+[/template]
+
+[template public unsetMessageDeclaration(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.unsetMessageSignature()/];
+[/template]
+
+[template public setMessageSignature(view : ElementEditor)]
+public void setMessageFor[view.name.toJavaClassifier().trim()/] (String msg, int msgLevel)
+[/template]
+
+[template public unsetMessageSignature(view : ElementEditor)]
+public void unsetMessageFor[view.name.toJavaClassifier().trim()/] ()
+[/template]
+
+[template public setMessageImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.setMessageSignature()/] {
+	messageManager.addMessage("[view.name.toJavaClassifier()/]_key", msg, null, msgLevel, [view.name.toJavaIdentifier()/]);
+}	
+[/template]
+
+[comment delegate implementation for ViewReference/]
+[template public setMessageImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.setMessageSignature()/] {
+	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.setMessageFor[view.name.toJavaClassifier().trim()/] (msg, msgLevel);
+}	
+[/template]
+
+[template public unsetMessageImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.unsetMessageSignature()/] {
+	messageManager.removeMessage("[view.name.toJavaClassifier()/]_key", [view.name.toJavaIdentifier()/]);
+}	
+[/template]
+
+[comment delegate implementation for ViewReference/]
+[template public unsetMessageImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.unsetMessageSignature()/] {
+	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.unsetMessageFor[view.name.toJavaClassifier().trim()/]();	
+}	
+[/template]
+
+[comment ====== Widgets View setters for declaration ====== /]
+[template public setterDeclaration(view : ElementEditor) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable' or view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
+[view.updateSignatureDocumentation()/]
+	[view.updateSignature()/];
+[/template]
+
+[template public setterSignature(view : ElementEditor)]
+public void [view.viewCompletePackageSetter()/]
+[/template]
+
+[template public updateSignature(view : ElementEditor)]
+public void update[view.viewPackageSignature()/](EObject newValue)
+[/template]
+
+[template public setterDeclaration(view : ElementEditor)]
+[view.setterSignatureDocumentation()/]
+	[view.setterSignature()/];
+[/template]
+
+[template public setterSignatureDocumentation(view : ElementEditor)]
+/**
+	 * Defines a new [view.name/]
+	 * @param newValue the new [view.name/] to set
+	 */
+[/template]
+
+[template public updateSignatureDocumentation(view : ElementEditor)]
+/**
+	 * Update the [view.name/]
+	 * @param newValue the [view.name/] to update
+	 */
+[/template]
+
+[comment ====== Widgets getter implementation ====== /]
+[template public getterImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable')]
+[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterAddSignatureImplementation()/]
+	
+	[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterRemoveSignatureImplementation()/]
+[/template]
+
+[template public getterImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
+[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterAddSignatureImplementation()/]
+	
+	[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterRemoveSignatureImplementation()/]
+	
+	[getterEditSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterEditSignatureImplementation()/];
+	
+	[getterMoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterMoveSignatureImplementation()/];
+	
+	[getterTableListSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterTableListSignatureImplementation()/];
+[/template]
+
+[template public getterImplementation(view : ElementEditor, fullInterfacePath : String)]
+[getterSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.getterSignatureImplementation()/]
+[/template]
+
+[comment delegate implementation for ViewReference/]
+[template public getterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable')]
+[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterAddSignature()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToAdd();
+}
+
+[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterRemoveSignature()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToRemove();
+}
+[/template]
+
+[template public getterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
+[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterAddSignature()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToAdd();
+}
+
+[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterRemoveSignature()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToRemove();
+}
+
+[getterEditSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterEditSignature().trim()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToEdit();
+}
+
+[getterTableListSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterTableListSignature().trim()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]Table();
+}
+[/template]
+
+[template public getterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference)]
+[getterSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.getterSignature()/] {
+	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewCompletePackageGetter()/];
+}	
+[/template]
+[template public getterSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewCompletePackageGetter()/]
+	 */
+[/template]
+
+[template public getterAddSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToAdd()
+	 */
+[/template]
+
+[template public getterRemoveSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToRemove()
+	 */
+[/template]
+
+[template public getterMoveSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToMove()
+	 */
+[/template]
+
+[template public getterEditSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToEdit()
+	 */
+[/template]
+
+[template public getterTableListSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]Table()
+	 */
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.getterSignature()/] {
+		return [view.name.toJavaIdentifier()/].getText();
+	}
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EENumViewer')]
+[view.getterSignature()/] {
+		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) [view.name.toJavaIdentifier().trim()/].getSelection()).getFirstElement();
+		return selection.getInstance();
+	}
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EObjectFlatComboViewer')]
+[view.getterSignature()/] {
+		if ([view.name.toJavaIdentifier().trim()/].getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) [view.name.toJavaIdentifier().trim()/].getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (EObject) firstElement;
+		}
+		return null;
+	}
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'AdvancedEObjectFlatComboViewer')]
+[view.getterSignature()/] {		
+		return [view.name.toJavaIdentifier().trim()/].getSelection();
+	}
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Checkbox')]
+[view.getterSignature()/] {
+		return Boolean.valueOf([view.name.toJavaIdentifier().trim()/].getSelection());
+	}
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'MultiValuedEditor')]
+[view.getterSignature()/] {
+		return [view.name.toJavaIdentifier()/]List;
+	}
+[/template]
+
+[template public getterAddSignatureImplementation(view : ElementEditor)]
+[view.getterAddSignature()/] {
+		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToAdd();
+	}
+[/template]
+
+[template public getterRemoveSignatureImplementation(view : ElementEditor)]
+[view.getterRemoveSignature()/] {
+		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToRemove();
+	}
+[/template]
+
+[template public getterMoveSignatureImplementation(view : ElementEditor)]
+[view.getterMoveSignature()/] {
+		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToMove();
+	}
+[/template]
+
+[template public getterEditSignatureImplementation(view : ElementEditor)]
+[view.getterEditSignature().trim()/] {
+		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToRefresh();
+	}
+[/template]
+
+[template public getterTableListSignatureImplementation(view : ElementEditor)]
+[view.getterTableListSignature().trim()/] {
+		return [view.name.toJavaIdentifier().trim()/]EditUtil.getVirtualList();
+	}
+[/template]
+
+[template public getterSignatureImplementation(view : ElementEditor)]
+[view.getterSignature()/] {
+		ERROR [view.representation.name/]
+	}
+[/template]
+
+[comment ====== Widgets setter implementation ====== /]
+[template public setterImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable' or view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
+[updateSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.updateSignatureImplementation()/]
+[/template]
+
+[template public setterImplementation(view : ElementEditor, fullInterfacePath : String)]
+[setterSignatureDocumentationImplementation(view, fullInterfacePath)/]
+	[view.setterSignatureImplementation()/]
+[/template]
+
+[comment delegate implementation for ViewReference/]
+[template public setterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable' or view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
+[updateSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.updateSignature()/] {
+	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.update[view.viewPackageSignature()/](newValue);
+}
+[/template]
+
+[template public setterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference)]
+[setterSignatureDocumentationImplementation(view, fullInterfacePath)/]
+[view.setterSignature()/] {
+	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageSetter()/](newValue);
+}	
+[/template]
+
+[template public setterSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[view.viewCompletePackageSetter()/]
+	 */
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
+[view.setterSignature()/] {
+		[view.name.toJavaIdentifier()/].setText(newValue);
+	}
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EENumViewer')]
+[view.setterSignature()/] {
+		[view.name.toJavaIdentifier().trim()/].modelUpdating(new StructuredSelection(newValue));
+	}
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EObjectFlatComboViewer')]
+[view.setterSignature()/] {
+		if (newValue != null)
+			[view.name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection(newValue));
+		else
+			[view.name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'AdvancedEObjectFlatComboViewer')]
+[view.setterSignature()/] {
+		if (newValue != null){
+			[view.name.toJavaIdentifier().trim()/].setSelection(newValue);
+		}
+	}
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Checkbox')]
+[view.setterSignature()/] {
+		[view.name.toJavaIdentifier().trim()/].setSelection(newValue.booleanValue());
+	}
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'MultiValuedEditor')]
+[view.setterSignature()/] {
+		[view.name.toJavaIdentifier()/]List = newValue;
+		[view.name.toJavaIdentifier()/]Text.setText([view.name.toJavaIdentifier()/]List.toString());
+	}
+[/template]
+
+[template public setterSignatureImplementation(view : ElementEditor)]
+[view.setterSignature()/] {
+		ERROR [view.representation.name/]
+	}
+[/template]
+
+[template public updateSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#update[view.viewPackageSignature()/](EObject newValue)
+	 */
+[/template]
+
+[template public updateSignatureImplementation(view : ElementEditor)]
+[view.updateSignature()/] {
+		if([view.name.toJavaIdentifier().trim()/]EditUtil!=null){
+			[view.name.toJavaIdentifier().trim()/]EditUtil.reinit(newValue);
+			[view.name.toJavaIdentifier().trim()/].refresh();
+		}		
+	}
+[/template]

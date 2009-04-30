@@ -1,0 +1,95 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module ContextMessages('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
+
+[import common /]
+[import naming /]
+
+[template public ContextMessages(peContext : PropertiesEditionContext, basePackage : String)]
+[comment @main /]
+	[file (peContext.fullFilePath(basePackage).trim(), false)]
+[peContext.licenceText().trim()/]
+package [peContext.messagesProviderPackage(basePackage).trim()/];
+
+import org.eclipse.osgi.util.NLS;
+
+/**
+ * [peContext.authorText().trim()/]
+ */
+public class [peContext.messagesProvider().trim()/] extends NLS {
+	private static final String BUNDLE_NAME = "[peContext.messagesProviderPackage(basePackage).trim()/].[peContext.messagesProperties().trim()/]"; //$NON-NLS-1$
+
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
+[for (group : ViewElement | component.views.eAllContents()) ? (group.oclIsTypeOf(Container) and group.representation.name = 'Group') ]
+	public static String [group.groupKey(group.owningView()).trim()/];
+
+[/for]
+	public static String [component.model.name/]_ReadOnly;
+	
+[for (element : PropertiesEditionElement | component.properties)][let editor : ElementEditor = element.views->first()]
+	public static String [editor.editorKey(editor.owningView()).trim()/];
+			
+[/let][/for]
+[/for]
+	public static String PropertiesEditionPart_DocumentationLabel;
+
+	public static String PropertiesEditionPart_IntegerValueMessage;
+	
+	public static String PropertiesEditionPart_FloatValueMessage;
+	
+	public static String PropertiesEditionPart_ShortValueMessage;
+	
+	public static String PropertiesEditionPart_LongValueMessage;
+	
+	public static String PropertiesEditionPart_ByteValueMessage;
+	
+	public static String PropertiesEditionPart_BigIntegerValueMessage;
+	
+	public static String PropertiesEditionPart_BigDecimalValueMessage;
+	
+	public static String PropertiesEditionPart_DoubleValueMessage;
+
+	public static String PropertiesEditionPart_PropertiesGroupLabel;
+
+	public static String PropertiesEditionPart_RequiredFeatureMessage;
+	
+	public static String PropertiesEditionPart_AddTableViewerLabel;
+
+	public static String PropertiesEditionPart_EditTableViewerLabel;
+
+	public static String PropertiesEditionPart_RemoveTableViewerLabel;
+	
+	public static String PropertiesEditionPart_AddListViewerLabel;
+
+	public static String PropertiesEditionPart_RemoveListViewerLabel;
+	
+	// [protected ('for additionnal NLS Constants')]
+	
+ 	
+	// [/protected]
+	
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, [peContext.messagesProvider().trim()/].class);
+	}
+
+	private [peContext.messagesProvider().trim()/]() {
+		//protect instanciation
+	}
+}	[/file]
+[/template]
+
+[template public fullFilePath(editionContext : PropertiesEditionContext, basePackage : String)]
+[editionContext.messagesProviderPackage(basePackage).toPath().trim()/]/[editionContext.messagesProvider().trim()/].java
+[/template]
+

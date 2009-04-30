@@ -1,0 +1,299 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module componentUtils('http://www.eclipse.org/emf/2002/Ecore','http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0')/]
+
+[import naming /]
+[import common /]
+[import typeUtils /]
+
+[comment ===== Case : model = any - view = SpecificElementEditor ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]	
+// [protected ('for '.concat(editionElement.name).concat(' live update'))]
+				
+				// [/protected]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+// [protected ('for '.concat(editionElement.name).concat(' live command update'))]
+			
+			// [/protected]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]	
+// [protected ('for '.concat(editionElement.name).concat(' update command'))]
+			
+			// [/protected]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+// [protected ('for '.concat(editionElement.name).concat(' part update'))]
+			
+			// [/protected]
+[/template]
+
+[comment ===== Case : model = Attribute(1) - view = Text ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text')) ]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Integer)msg.getNewValue()).toString());
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], new Integer((String)event.getNewValue()));	
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));	
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], new Integer([view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text')) ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[/template]
+
+[comment ===== Case : model = Attribute(1) - view = Checkbox ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[/template]
+
+[comment ===== Case : model = Attribute(1) - view = EEnumViewer ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.oclIsKindOf(ecore::EEnum))]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.oclIsKindOf(ecore::EEnum))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.oclIsKindOf(ecore::EEnum))]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[/template]
+
+[comment ===== Case : model = Attribute(1) - view = Textarea ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[/template]
+
+[comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]	
+[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.get[if (editionElement.model.many)][editionElement.model.name.toMany().toJavaClassifier().trim()/][else][editionElement.model.name.toJavaClassifier().trim()/][/if]().addAll(([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]));
+[/template]
+
+[comment ===== Case : model = Reference(1) - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]	
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]	
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]	
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[/template]
+
+[comment ===== Case : model = Reference(*) - view = ReferencesTable ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))  ]
+if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature())) {
+					[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+				}
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+				if (PathedPropertiesEditionEvent.ADD == event.getKind())
+					command = AddCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());
+				if (PathedPropertiesEditionEvent.REMOVE == event.getKind())
+					command = RemoveCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());
+				if (PathedPropertiesEditionEvent.MOVE == event.getKind())
+					command = MoveCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue(), event.getNewIndex());
+			}
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))  ]	
+List [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], iter.next()));
+			List [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove.iterator(); iter.hasNext();)
+				cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], iter.next()));
+			//List [editionElement.model.name.toJavaIdentifier().trim()/]ToMove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToMove.iterator(); iter.hasNext();){
+			//	MoveElement moveElement = (MoveElement)iter.next();
+			//	cc.append(MoveCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+			//}
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
+[/template]
+
+[comment ===== Case : model = Containment(*) - view = TableComposition ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))  ]
+if (msg.getFeature() != null && 
+						(((EStructuralFeature)msg.getFeature()) == [editionElement.metamodelGetter()/]
+						|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]())) {
+					[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+				}
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) )]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+				if (PathedPropertiesEditionEvent.SET == event.getKind()) {
+					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
+					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
+					// [protected (' for '.concat(editionElement.name).concat(' live update command'))]
+					// TODO: Complete the [pec.model.name.toJavaIdentifier()/] update command					
+					// [/protected]
+					
+				}
+				else if (PathedPropertiesEditionEvent.ADD == event.getKind())
+					command = AddCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());
+				else if (PathedPropertiesEditionEvent.REMOVE == event.getKind())
+					command = DeleteCommand.create(liveEditingDomain, event.getNewValue());
+				else if (PathedPropertiesEditionEvent.MOVE == event.getKind())
+					command = MoveCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex());
+			}
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))  ]	
+List [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], iter.next()));
+			Map [editionElement.model.name.toJavaIdentifier().trim()/]ToRefresh = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToRefresh.keySet().iterator(); iter.hasNext();) {
+			
+				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment'))]
+					
+				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
+				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier().trim()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier().trim()/]ToRefresh.get(nextElement);
+
+				// [/protected]
+
+			}
+			List [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove.iterator(); iter.hasNext();)
+				cc.append(DeleteCommand.create(editingDomain, iter.next()));				
+			List [editionElement.model.name.toJavaIdentifier().trim()/]ToMove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToMove.iterator(); iter.hasNext();){
+				MoveElement moveElement = (MoveElement)iter.next();
+				cc.append(MoveCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+			}
+[/template]
+
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))  ]
+[pec.model.name.toJavaIdentifier()/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
+[/template]
+
+[comment ========= message setter and unsetter /]
+[template public liveMessageSetter(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Text') or editionElement.representationName('Textarea'))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+					[view.viewIdentifier(pec)/].setMessageFor[editionElement.model.name.toJavaClassifier()/](diag.getMessage(), IMessageProvider.ERROR);
+[/template]
+
+[template public liveMessageUnsetter(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Text') or editionElement.representationName('Textarea'))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+					[view.viewIdentifier(pec)/].unsetMessageFor[editionElement.model.name.toJavaClassifier()/]();
+[/template]

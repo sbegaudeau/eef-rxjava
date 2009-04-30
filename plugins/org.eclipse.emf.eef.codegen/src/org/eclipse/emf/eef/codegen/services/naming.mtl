@@ -1,0 +1,156 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module naming('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
+[import common /]
+
+[template public messagesProperties(editionContext : PropertiesEditionContext)]
+[editionContext.model.ecorePackage.name/]Messages
+[/template]
+
+[template public messagesProvider(editionContext : PropertiesEditionContext)]
+[editionContext.model.ecorePackage.name.toUpperFirst()/]Messages
+[/template]
+[template public messagesProviderPackage(editionContext : PropertiesEditionContext, basePackage : String)]	
+[editionContext.model.ecorePackage.eefPackage(basePackage).trim()/].providers
+[/template]
+
+[template public qualifiedMessagesProvider(editionContext : PropertiesEditionContext, basePackage : String)]	
+[editionContext.messagesProviderPackage(basePackage).trim()/].[editionContext.messagesProvider()/]
+[/template]
+
+[template public contributorID(editionContext : PropertiesEditionContext, basePackage : String)]
+[if (not editionContext.associatedGenContext().oclIsUndefined() and not editionContext.associatedGenContext().descriptorsContributorID.oclIsUndefined() and editionContext.associatedGenContext().descriptorsContributorID <> '')]
+[editionContext.associatedGenContext().descriptorsContributorID/]
+[else]
+[editionContext.model.ecorePackage.eefPackage(basePackage).trim()/].properties
+[/if]
+[/template]
+
+[template public pecClass(pec : PropertiesEditionComponent)]
+[pec.name.toJavaClassifier().toUpperFirst().trim()/]PropertiesEditionComponent
+[/template]
+
+[template public subPECClass(pec : PropertiesEditionComponent, view : View)]
+[pec.name.toJavaClassifier().toUpperFirst().trim()/][if (pec.involvedViews()->size() > 1)][view.viewKey(pec).toJavaClassifier().trim()/][/if]PropertiesEditionComponent
+[/template]
+
+[template public pepInterface(view : View)]
+[view.name.toJavaClassifier().toUpperFirst().trim() /]PropertiesEditionPart
+[/template]
+
+[template public pepClass(view : View)]
+[view.name.toJavaClassifier().toUpperFirst().trim()/]PropertiesEditionPartImpl
+[/template]
+
+[template public pepFormClass(view : View)]
+[view.name.toJavaClassifier().toUpperFirst().trim()/]PropertiesEditionPartForm
+[/template]
+
+[template public pecProviderClass(pec : PropertiesEditionComponent)]
+[pec.name.toJavaClassifier().toUpperFirst().trim()/]PropertiesEditionProvider
+[/template]
+
+[template public vrClass(repository : ViewsRepository)]
+[repository.name.toJavaClassifier()/]ViewsRepository
+[/template]
+
+[template public viewClassifier(view : View)]
+[view.name.toJavaClassifier()/]
+[/template]
+
+[template public propertySection(pec : PropertiesEditionComponent, view : View)]
+[pec.name.toJavaClassifier().toUpperFirst().trim()/][view.viewKey(pec).toJavaClassifier().trim()/]PropertySection
+[/template]
+
+[template public completePackage(eClassifier : EClassifier)]
+[ePackage.completePackage()/]
+[/template]
+
+[template public completePackage(ePackage : EPackage)]
+[ePackage.associatedGenPackage().basePackage/].[ePackage.name/]
+[/template]
+
+[template public eefPackage(eClassifier : EClassifier, basePackage : EString)]
+[basePackage/].[eClassifier.ePackage.name/]
+[/template]
+
+[template public eefPackage(ePackage : EPackage, basePackage : EString)]
+[basePackage/].[ePackage.name/]
+[/template]
+
+[template public qualifiedName(eClassifier : EClassifier, basePackage : String)]
+[eClassifier.completePackage()/].[eClassifier.name/]	
+[/template]
+
+[template public metamodelPrefix(ePackage : EPackage)]
+[ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]
+[/template]
+
+[template public metamodelPackage(ePackage : EPackage)]
+[ePackage.metamodelPrefix()/]Package
+[/template]
+
+[template public viewPackage(element : ElementEditor, pec : PropertiesEditionComponent)]
+[element.propertiesEditionElement(pec).model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]Package
+[/template]
+
+[comment FIXEME: once template call on a model navigation bug fix /]
+[template public metamodelFactory(pee : PropertiesEditionElement)]
+[pee.model.eType.ePackage.metamodelPrefix()/]Factory
+[/template]
+
+[template public metamodelFactory(ePackage : EPackage)]
+[ePackage.metamodelPrefix()/]Factory
+[/template]
+
+[template public metamodelPackage(eClassifier : EClassifier)]
+[eClassifier.ePackage.metamodelPackage()/]
+[/template]
+
+[template public qualifiedMetamodelPackage(ePackage : EPackage, basePackage : String)]
+[ePackage.completePackage()/].[ePackage.metamodelPackage()/]
+[/template]
+
+[template public qualifiedMetamodelPackage(eClassifier : EClassifier, basePackage : String)]
+[eClassifier.ePackage.qualifiedMetamodelPackage(basePackage)/]
+[/template]
+
+[template public metamodelGetter(p : PropertiesEditionElement)]
+[p.model.eContainingClass.metamodelPackage().trim()/].eINSTANCE.[p.ecoreCompletePackageGetter()/]
+[/template]
+
+[comment  particular layout for indentation in generation purpose/]
+[template public viewPartConstant(view : View, pec : PropertiesEditionComponent)]
+[view.viewKey(pec).toJavaConstant().trim() /]_PART
+[/template]
+
+[template public viewKey(view : View, pec : PropertiesEditionComponent)]
+[if (view.name = pec.name)]Base[else][view.name/][/if]
+[/template]
+
+[template public viewIdentifier(view : View, pec : PropertiesEditionComponent)]
+[view.viewKey(pec).toJavaIdentifier().trim()/]Part
+[/template]
+
+[template public editorID(editor : ElementEditor)]
+[editor.owningView().owningViewsRepository().vrClass()/].[editor.owningView().viewClassifier()/].[editor.name.toJavaIdentifier()/]
+[/template]	
+
+[comment containingView must be remove when bug # resolved /]
+[template public groupKey(group : ViewElement, containingView : View)  ? (group.oclIsTypeOf(Container) and group.representation.name = 'Group')]
+[containingView.name.toJavaIdentifier().trim().toUpperFirst()/]PropertiesEditionPart_[group.name.toJavaIdentifier().trim().toUpperFirst()/]GroupLabel	
+[/template]
+
+[template public editorKey(editor : ViewElement, containingView : View)]
+[containingView.name.toJavaIdentifier().trim().toUpperFirst()/]PropertiesEditionPart_[editor.name.toJavaIdentifier().trim().toUpperFirst()/]Label
+[/template]

@@ -1,0 +1,66 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module PackagePropertiesEditionProvider('http://www.eclipse.org/emf/eef/components/1.0.0')/]
+
+[import common /]
+[import naming /]
+
+
+[template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
+[comment @main /]
+	[file (peContext.fullFilePath(basePackage).trim(), false)]
+[peContext.licenceText().trim()/]
+package [peContext.model.ecorePackage.eefPackage(basePackage).trim()/].providers;
+
+import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
+ 	
+/**
+ * [peContext.authorText().trim()/]
+ */
+public class [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
+
+	/**
+	 * Default Constructor
+	 */
+	public [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionProvider() {
+		super();
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.explicit)]
+		append(create[component.pecProviderClass()/]());
+[/for]
+	}
+	
+	[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.explicit)]
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * [component.model.name/] instances.
+	 */
+	protected [component.pecProviderClass()/] [component.pecProviderClass().toJavaIdentifier()/];
+
+	/**
+	 * This creates an PropertiesEditionProvider for a [component.model.name/]
+	 */
+	public [component.pecProviderClass()/] create[component.pecProviderClass()/]() {
+		if ([component.pecProviderClass().toJavaIdentifier()/] == null)
+			[component.pecProviderClass().toJavaIdentifier()/] = new [component.pecProviderClass()/]();
+		return [component.pecProviderClass().toJavaIdentifier()/];
+	}
+	
+	[/for]
+
+}	[/file]
+[/template]
+
+[template public fullFilePath(pec : PropertiesEditionContext, basePackage : String)]
+[pec.model.ecorePackage.eefPackage(basePackage).toPath().trim()/]/providers/[pec.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionProvider.java
+[/template]
+
