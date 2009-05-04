@@ -18,7 +18,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PathedPropertiesEditionEvent {
+public class PropertiesEditionEvent {
 	
 	/**
 	 * Describe an event that just change the view state
@@ -61,7 +61,7 @@ public class PathedPropertiesEditionEvent {
 	
 	private Object newValue;
 	
-	private List holders;
+	private List<IPropertiesEditionListener> holders;
 	
 	private int kind;
 	
@@ -73,13 +73,13 @@ public class PathedPropertiesEditionEvent {
 	 * @param holdedNotification
 	 * @param holder
 	 */
-	public PathedPropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state, int kind, Object oldValue, Object newValue) {
+	public PropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state, int kind, Object oldValue, Object newValue) {
 		this.affectedEditor = affectedEditor;
 		this.oldValue = oldValue;
 		this.newValue = newValue;
 		this.state = state;
 		this.kind = kind;
-		holders = new ArrayList();
+		holders = new ArrayList<IPropertiesEditionListener>();
 		holders.add(holder);
 	}
 	
@@ -87,7 +87,7 @@ public class PathedPropertiesEditionEvent {
 	 * @param holdedNotification
 	 * @param holder
 	 */
-	public PathedPropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state, int kind, Object newValue, int newIndex) {		
+	public PropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state, int kind, Object newValue, int newIndex) {		
 		this(holder,affectedEditor, state, kind, null, newValue);
 		this.newIndex=newIndex;
 	}
@@ -138,7 +138,7 @@ public class PathedPropertiesEditionEvent {
 	/**
 	 * @return the holders
 	 */
-	public List getHolders() {
+	public List<IPropertiesEditionListener> getHolders() {
 		return holders;
 	}
 

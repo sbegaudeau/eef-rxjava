@@ -149,12 +149,12 @@ public class ReferencesTable<T extends EObject> {
 	 * The Form tool kit use to use this widget in an Eclipse Forms compliant mode
 	 */
 	private FormToolkit widgetFactory;
-	
+
 	/**
 	 * The main composite
 	 */
 	private Composite composite;
-	
+
 	/**
 	 * The adapter factory.
 	 */
@@ -162,11 +162,21 @@ public class ReferencesTable<T extends EObject> {
 			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	/**
+	 * The help text
+	 */
+	private String helpText;
+
+	public void setHelpText(String helpText) {
+		this.helpText = helpText;
+	}
+
+	/**
 	 * the constructor
 	 * 
 	 * @param labeltoDisplay
 	 *            the label to display
-	 * @param the listener to handle Add, Remove, Move and NavigateTo events
+	 * @param the
+	 *            listener to handle Add, Remove, Move and NavigateTo events
 	 */
 	public ReferencesTable(String labeltoDisplay, ReferencesTableListener<T> referenceListener) {
 		this.labelToDisplay = labeltoDisplay;
@@ -238,14 +248,21 @@ public class ReferencesTable<T extends EObject> {
 		composite.setLayout(formLayout);
 
 		FormData data;
-		
-//		//Create Help Button
-//		data = new FormData();
-//		data.top = new FormAttachment(-2, 0);
-//		data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
-//		Control helpButton = FormUtils.createHelpButton(widgetFactory, composite, "TODO coder la doc", null); //$NON-NLS-1$
-//		helpButton.setLayoutData(data);
-		
+
+		// Create Help Button
+		data = new FormData();
+		data.top = new FormAttachment(-2, 0);
+		data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
+		Control helpButton = null;
+		if (helpText != null) {
+			if (widgetFactory != null) {
+				helpButton = FormUtils.createHelpButton(widgetFactory, composite, helpText, null); //$NON-NLS-1$
+			} else {
+				helpButton = SWTUtils.createHelpButton(composite, helpText, null); //$NON-NLS-1$
+			}
+			helpButton.setLayoutData(data);
+		}
+
 		// ///////////////////////////////////////////////////////////////////////////
 		// Create and place button vertically on the left side
 		// Button : Add Element
@@ -257,8 +274,11 @@ public class ReferencesTable<T extends EObject> {
 		data = new FormData();
 		// data.top = new FormAttachment(addButton, ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		//data.right = new FormAttachment(helpButton, -ITabbedPropertyConstants.HSPACE);
-		data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
+		if (helpText != null) {
+			data.right = new FormAttachment(helpButton, -ITabbedPropertyConstants.HSPACE);
+		} else {
+			data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
+		}
 		removeButton.setLayoutData(data);
 		removeButton.addMouseListener(removeButtonlistener);
 
@@ -299,7 +319,7 @@ public class ReferencesTable<T extends EObject> {
 		data.right = new FormAttachment(upButton, -ITabbedPropertyConstants.HSPACE);
 		downButton.setLayoutData(data);
 		downButton.addMouseListener(downButtonlistener);
-		
+
 		// Create label
 		label = createLabel(composite, labelToDisplay, SWT.NONE);
 		// label.setLayout(new FormLayout());
@@ -320,7 +340,7 @@ public class ReferencesTable<T extends EObject> {
 
 		data = new FormData();
 		data.height = 100;
-		data.top = new FormAttachment(label, ITabbedPropertyConstants.VSPACE);
+		data.top = new FormAttachment(label, ITabbedPropertyConstants.VSPACE + 4);
 		data.left = new FormAttachment(0, ITabbedPropertyConstants.HSPACE);
 		data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
 
@@ -346,12 +366,13 @@ public class ReferencesTable<T extends EObject> {
 	}
 
 	/**
-	 * @param layoutData the layoutData to set
+	 * @param layoutData
+	 *            the layoutData to set
 	 */
 	public void setLayoutData(Object layoutData) {
 		composite.setLayoutData(layoutData);
 	}
-	
+
 	public void refresh() {
 		tableViewer.refresh();
 	}
@@ -375,13 +396,12 @@ public class ReferencesTable<T extends EObject> {
 	// public void setLayoutData(Object data) {
 	// composite.setLayoutData(data);
 	// }
-	
 	/**
 	 * Returns the label provider for the composite
 	 * 
 	 * @return the label provider or <code>null</code>
 	 */
-	public AdapterFactoryLabelProvider getLabelProvider() {	
+	public AdapterFactoryLabelProvider getLabelProvider() {
 		return new AdapterFactoryLabelProvider(adapterFactory);
 	}
 
@@ -399,11 +419,11 @@ public class ReferencesTable<T extends EObject> {
 	/**
 	 * Disable Move capability (Hide Up and Down buttons)
 	 */
-	public void disableMove(){
+	public void disableMove() {
 		upButton.setVisible(false);
 		downButton.setVisible(false);
 	}
-	
+
 	/**
 	 * Listener for the Add Button Specific behavior is implemented in
 	 * {@link ReferencesTable#addButtonPressed()}.
@@ -431,7 +451,6 @@ public class ReferencesTable<T extends EObject> {
 		 */
 		public void mouseUp(MouseEvent e) {
 			referencesTableListener.handleAdd();
-			
 
 		}
 	}
@@ -507,9 +526,9 @@ public class ReferencesTable<T extends EObject> {
 				// Get use case
 
 				int newIndex = listElement.indexOf(tableItems[i].getData()) - 1;
-				if (newIndex>=0 && newIndex < listElement.size()) {
+				if (newIndex >= 0 && newIndex < listElement.size()) {
 					// Move
-					referencesTableListener.handleMove((T)tableItems[i].getData(), newIndex+1 ,newIndex);
+					referencesTableListener.handleMove((T)tableItems[i].getData(), newIndex + 1, newIndex);
 				}
 			}
 
@@ -549,7 +568,7 @@ public class ReferencesTable<T extends EObject> {
 				int newIndex = listElement.indexOf(tableItems[i].getData()) + 1;
 				if (newIndex >= 0 && newIndex < listElement.size()) {
 					// Move
-					referencesTableListener.handleMove((T)tableItems[i].getData(),  newIndex-1, newIndex);
+					referencesTableListener.handleMove((T)tableItems[i].getData(), newIndex - 1, newIndex);
 				}
 			}
 		}

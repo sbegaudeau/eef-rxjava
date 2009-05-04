@@ -1,19 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.emf.eef.runtime">
+<schema targetNamespace="org.eclipse.emf.eef.runtime" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.emf.eef.runtime" id="PropertiesEditionComponentProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionComponentProvider"/>
+         <meta.schema plugin="org.eclipse.emf.eef.runtime" id="PropertiesEditionPartProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider"/>
       </appInfo>
       <documentation>
-         Declare a EEF Component Provider
+         Declare a EEF Part Provider
       </documentation>
    </annotation>
 
    <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
       <complexType>
          <sequence>
-            <element ref="PropertiesEditionComponentProvider"/>
+            <element ref="PropertiesEditionPartProvider"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -42,7 +47,7 @@
       </complexType>
    </element>
 
-   <element name="PropertiesEditionComponentProvider">
+   <element name="PropertiesEditionPartProvider">
       <complexType>
          <attribute name="providerClass" type="string" use="required">
             <annotation>
@@ -50,7 +55,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn="org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider"/>
                </appInfo>
             </annotation>
          </attribute>
@@ -77,7 +82,7 @@
 
    <annotation>
       <appInfo>
-         <meta.section type="apiInfo"/>
+         <meta.section type="apiinfo"/>
       </appInfo>
       <documentation>
          [Enter API information here.]
@@ -93,13 +98,5 @@
       </documentation>
    </annotation>
 
-   <annotation>
-      <appInfo>
-         <meta.section type="copyright"/>
-      </appInfo>
-      <documentation>
-         
-      </documentation>
-   </annotation>
 
 </schema>

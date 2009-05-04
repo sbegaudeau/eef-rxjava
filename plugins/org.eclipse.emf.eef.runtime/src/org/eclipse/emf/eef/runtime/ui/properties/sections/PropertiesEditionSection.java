@@ -90,24 +90,27 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 				eObject = newEObject;
 				if (eObject != null) {
 					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
-							.getProvider(eObject);
-					if (this.propertiesEditionComponent != null)
-						this.propertiesEditionComponent.dispose();
-					this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject,
-							IPropertiesEditionComponent.LIVE_MODE, getDescriptor());
-					if (this.propertiesEditionComponent != null) {
-						this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage
-								.getEditingDomain());
-						this.editionPart = propertiesEditionComponent.getPropertiesEditionPart("Form",	getDescriptor());
-						if (editionPart instanceof IFormPropertiesEditionPart) {
-							for (int i = 0; i < parent.getChildren().length; i++) {
-								Composite child = (Composite)parent.getChildren()[i];
-								child.dispose();
+					.getProvider(eObject);
+					if (provider != null) {
+						if (this.propertiesEditionComponent != null)
+							this.propertiesEditionComponent.dispose();
+						String descriptor = getDescriptor();
+						this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject,
+								IPropertiesEditionComponent.LIVE_MODE, descriptor);
+						if (this.propertiesEditionComponent != null) {
+							this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage
+									.getEditingDomain());
+							this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1,	descriptor);
+							if (editionPart instanceof IFormPropertiesEditionPart) {
+								for (int i = 0; i < parent.getChildren().length; i++) {
+									Composite child = (Composite)parent.getChildren()[i];
+									child.dispose();
+								}
+								((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,
+										getWidgetFactory());
+								parent.layout();
+								this.propertiesEditionComponent.initPart(this.propertiesEditionComponent.translatePart(descriptor), 1, eObject);
 							}
-							((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,
-									getWidgetFactory());
-							parent.layout();
-							this.editionPart.initComponent(eObject);
 						}
 					}
 				}
@@ -128,11 +131,10 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			this.propertiesEditionComponent = null;
 			this.editionPart = null;
 		}
-
 	}
 
 	/**
-	 * For eclipse 3.4
+	 * For eclipse 3.4 ONLY
 	 * 
 	 * @return
 	 */
@@ -143,13 +145,12 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			TabContents tab = (TabContents)descriptor.get(key);
 			if (tab.getSectionAtIndex(0) == this)
 				return key.getId();
-
 		}
 		return null;
 	}
 
 	/**
-	 * For eclipse 3.2
+	 * For eclipse 3.2 & 3.3
 	 * 
 	 * @return
 	 */
@@ -159,7 +160,6 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 //			TabDescriptor key = (TabDescriptor)iterator.next();
 //			if (((Tab)descriptor.get(key)).getSectionAtIndex(0) == this)
 //				return key.getId();
-//
 //		}
 //		return "";
 //	}

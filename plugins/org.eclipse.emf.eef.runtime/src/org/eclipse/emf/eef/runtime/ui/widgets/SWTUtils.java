@@ -28,43 +28,48 @@ import org.eclipse.swt.widgets.ToolItem;
 public class SWTUtils {
 
 	/**
-	 * Image registry key for help image (value
-	 * <code>"dialog_help_image"</code>).
+	 * Image registry key for help image (value <code>"dialog_help_image"</code>).
 	 */
 	public static final String DLG_IMG_HELP = "dialog_help_image"; //$NON-NLS-1$
 
 	/**
 	 * Create a label describing a properties of the view
-	 * @param parent the parent composite
-	 * @param text the label text
-	 * @param required defines if the associated properties is required or not
+	 * 
+	 * @param parent
+	 *            the parent composite
+	 * @param text
+	 *            the label text
+	 * @param required
+	 *            defines if the associated properties is required or not
 	 */
 	public static Label createPartLabel(Composite parent, String text, boolean required) {
-		Label label = new Label(parent,SWT.NONE);
+		Label label = new Label(parent, SWT.NONE);
 		label.setText(text);
 		if (required)
 			label.setFont(JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT));
 		return label;
 	}
 
-    /**
-     * Creates a button with a help image and put the defined tooltip in parameter.
-     * @param parent the parent composite
-     * @param the message to use for tooltip
-     */
+	/**
+	 * Creates a button with a help image and put the defined tooltip in parameter.
+	 * 
+	 * @param parent
+	 *            the parent composite
+	 * @param the
+	 *            message to use for tooltip
+	 */
 	public static Control createHelpButton(final Composite parent, String helpMessage, String helpID) {
 		Image image = JFaceResources.getImage(DLG_IMG_HELP);
 		if (helpID != null && !"".equals(helpID)) {
 			ToolBar result = new ToolBar(parent, SWT.FLAT | SWT.NO_FOCUS);
-	        ((GridLayout) parent.getLayout()).numColumns++;
+			((GridLayout)parent.getLayout()).numColumns++;
 			result.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
 			ToolItem item = new ToolItem(result, SWT.NONE);
 			item.setImage(image);
-			if (helpMessage != null && !"".equals(helpMessage)) 
+			if (helpMessage != null && !"".equals(helpMessage))
 				item.setToolTipText(helpMessage);
 			return result;
-		}
-		else {
+		} else {
 			CLabel result = new CLabel(parent, SWT.NONE);
 			if (helpMessage != null && !"".equals(helpMessage)) {
 				result.setImage(image);

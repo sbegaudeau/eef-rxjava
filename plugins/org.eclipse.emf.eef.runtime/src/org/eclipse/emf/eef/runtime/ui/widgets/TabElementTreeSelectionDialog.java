@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
@@ -42,6 +43,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
@@ -72,7 +74,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	/**
 	 * filters
 	 */
-	protected ViewerFilter[] viewerFilters;
+	protected List<ViewerFilter> viewerFilters;
 
 	/**
 	 * The adapter factory.
@@ -93,8 +95,6 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	/**
 	 * Constructor with parent shell and Element.
 	 * 
-	 * @param parent
-	 *            the Shell.
 	 * @param parentElement
 	 *            the element where we look for a children
 	 * @param filters
@@ -107,9 +107,9 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 *            it used to inform about if the element is abstract in this case the creation button does not
 	 *            appear
 	 */
-	public TabElementTreeSelectionDialog(Shell parent, Object input, ViewerFilter[] filters, String title,
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, String title,
 			EClass restrictToEClass) {
-		super(parent);
+		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
 		this.input = input;
@@ -213,14 +213,12 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		if (specificTabFilter != null) {
 			filters.add(specificTabFilter);
 		}
-		if (viewerFilters != null && viewerFilters.length > 0) {
-			for (int i = 0; i < viewerFilters.length; i++) {
-				filters.add(viewerFilters[i]);
+		if (viewerFilters != null && !viewerFilters.isEmpty()) {
+			for (ViewerFilter filter : viewerFilters) {
+				filters.add(filter);
 			}
 		}
-		if (patternFilter != null) {
-			filters.add(patternFilter);
-		}
+		filters.add(patternFilter);
 		ViewerFilter[] v = filters.toArray(new ViewerFilter[filters.size()]);
 		treeViewer.setFilters(v);
 		treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

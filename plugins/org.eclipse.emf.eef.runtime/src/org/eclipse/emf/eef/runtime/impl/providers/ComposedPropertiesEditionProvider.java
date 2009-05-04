@@ -115,21 +115,4 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionPart(org.eclipse.emf.ecore.EObject,
-	 *      org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent, java.lang.String,
-	 *      java.lang.String)
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(EObject eObject,
-			IPropertiesEditionComponent editionComponent, String part, String kind) {
-		for (Iterator iter = editPropertiesProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionProvider editPropertiesProvider = (IPropertiesEditionProvider)iter.next();
-			if (editPropertiesProvider.provides(eObject))
-				return editPropertiesProvider.getPropertiesEditionPart(eObject, editionComponent, part, kind);
-		}
-		return null;
-	}
-
 }

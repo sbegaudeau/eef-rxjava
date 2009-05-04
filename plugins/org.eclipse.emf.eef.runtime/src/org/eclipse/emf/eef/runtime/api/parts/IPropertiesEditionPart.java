@@ -28,22 +28,30 @@ public interface IPropertiesEditionPart extends IPropertiesEditionListener {
 	 * @return the part view
 	 */
 	public Composite getFigure();
-
+	
 	/**
-	 * Initialize the part with the specified eObject in the specified ResourceSet.
-	 * 
-	 * @param eObject
-	 *            the eObject for the initialization
-	 * @param allResources
-	 *            the resourceSet for the initialization
+	 * Defines the context (edited element, resourceset) of the part
+	 * @param eObject the EObject to edit
+	 * @param allResources the resourceset where edit
 	 */
-	public abstract void initComponent(EObject eObject, ResourceSet allResources);
+	public void setContext(EObject eObject, ResourceSet allResources);
 
-	/**
-	 * Initialize the part with the specified eObject.
-	 * 
-	 * @param eObject
-	 *            the eObject for the initialization
-	 */
-	public void initComponent(EObject eObject);
+
+//	/**
+//	 * Initialize the part with the specified eObject in the specified ResourceSet.
+//	 * 
+//	 * @param eObject
+//	 *            the eObject for the initialization
+//	 * @param allResources
+//	 *            the resourceSet for the initialization
+//	 */
+//	public abstract void initComponent(EObject eObject, ResourceSet allResources);
+//
+//	/**
+//	 * Initialize the part with the specified eObject.
+//	 * 
+//	 * @param eObject
+//	 *            the eObject for the initialization
+//	 */
+//	public void initComponent(EObject eObject);
 }

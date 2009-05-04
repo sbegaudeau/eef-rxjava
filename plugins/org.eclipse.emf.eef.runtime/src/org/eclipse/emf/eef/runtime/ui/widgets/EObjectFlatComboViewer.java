@@ -11,7 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -34,17 +34,17 @@ import org.eclipse.swt.widgets.Text;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EObjectFlatComboViewer extends Composite implements ISelectionProvider {
+public class EObjectFlatComboViewer extends Composite implements ISelectionProvider, IPropertiesFilteredWidget {
 
 	private Text selection;
 
 	protected Button editer;
 
-	protected List filters;
+	protected List<ViewerFilter> filters;
 
-	private List listeners;
+	private List<ISelectionChangedListener> listeners;
 
-	protected List bpFilters;
+	protected List<ViewerFilter> bpFilters;
 
 	protected Object selectedElement;
 
@@ -64,9 +64,9 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		editer = new Button(this, SWT.PUSH);
 		editer.setText("..."); //$NON-NLS-1$
 
-		filters = new ArrayList();
-		bpFilters = new ArrayList();
-		listeners = new ArrayList();
+		filters = new ArrayList<ViewerFilter>();
+		bpFilters = new ArrayList<ViewerFilter>();
+		listeners = new ArrayList<ISelectionChangedListener>();
 
 		// ADD EXTENSION: CNO
 		editer.addSelectionListener(getSelectionAdapter(nullable));
@@ -88,22 +88,21 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			 * org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				EMFModelViewerDialog dialog = new EMFModelViewerDialog(getShell(), labelProvider, input,
-						filters.isEmpty() ? null : (ViewerFilter)filters.get(0), bpFilters.isEmpty() ? null
-								: bpFilters, nullable, false) {
+				EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input, filters
+						.isEmpty() ? null : filters, bpFilters.isEmpty() ? null : bpFilters, nullable, false) {
 
 					public void process(IStructuredSelection selection) {
 						if (selection == null) {
 							selectedElement = null;
 							initComponent();
-							selectionChanged(new StructuredSelection(new ArrayList()));
+							selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
 						} else {
 							selectedElement = selection.getFirstElement();
 							initComponent();
 							if (selectedElement != null)
 								selectionChanged(new StructuredSelection(selectedElement));
 							else
-								selectionChanged(new StructuredSelection(new ArrayList()));
+								selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
 						}
 					}
 				};
@@ -128,7 +127,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 	public ISelection getSelection() {
 		if (selectedElement != null)
 			return new StructuredSelection(selectedElement);
-		return new StructuredSelection(new ArrayList());
+		return new StructuredSelection(Collections.EMPTY_LIST);
 	}
 
 	public void setLabelProvider(ILabelProvider provider) {
@@ -175,11 +174,18 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 
 	protected void selectionChanged(ISelection selection) {
 		if (listeners != null && !listeners.isEmpty()) {
-			for (Iterator iter = listeners.iterator(); iter.hasNext();) {
-				ISelectionChangedListener nextListener = (ISelectionChangedListener)iter.next();
+			for (ISelectionChangedListener nextListener : listeners) {
 				nextListener.selectionChanged(new SelectionChangedEvent(this, selection));
 			}
 		}
+	}
+
+	public void removeBusinessRuleFilter(ViewerFilter filter) {
+		bpFilters.remove(filter);
+	}
+
+	public void removeFilter(ViewerFilter filter) {
+		filters.remove(filter);
 	}
 
 }

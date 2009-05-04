@@ -10,11 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
-import java.util.List;
-
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -24,7 +21,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
@@ -44,8 +41,8 @@ import org.eclipse.swt.widgets.Text;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class AbstractPropertyWizard extends Wizard {
-	
+public class EditPropertyWizard extends Wizard {
+
 	private boolean initState;
 
 	private WizardPage mainPage;
@@ -70,7 +67,7 @@ public class AbstractPropertyWizard extends Wizard {
 	 * @param allResources
 	 *            the resourceSet where the EObject is located.
 	 */
-	public AbstractPropertyWizard(EditingDomain editingDomain, EObject eObject, ResourceSet allResources) {
+	public EditPropertyWizard(EditingDomain editingDomain, EObject eObject, ResourceSet allResources) {
 		this.editingDomain = editingDomain;
 		this.eObject = eObject;
 		this.allResources = allResources;
@@ -142,17 +139,17 @@ public class AbstractPropertyWizard extends Wizard {
 	}
 
 	public void addPages() {
-		mainPage = new AbstractPropertyWizardPage();
+		mainPage = new EditPropertyWizardPage();
 		addPage(mainPage);
-		propertiesEditionComponent.addListener((AbstractPropertyWizardPage)mainPage);
+		propertiesEditionComponent.addListener((EditPropertyWizardPage)mainPage);
 	}
 
-	private class AbstractPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
+	private class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
 
-		protected AbstractPropertyWizardPage() {
+		protected EditPropertyWizardPage() {
 			super("Main page"); //$NON-NLS-1$
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(MessagesTool.getString("AbstractPropertyWizard.description",
+			this.setDescription(MessagesTool.getString("EditPropertyWizard.description",
 					new Object[] {eObject.eClass().getName()}));
 		}
 
@@ -170,11 +167,19 @@ public class AbstractPropertyWizard extends Wizard {
 			scrolledContainer.setExpandVertical(true);
 			scrolledContainer.setContent(container);
 			scrolledContainer.setMinSize(folder.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-//			handleChange();
+//			Diagnostic diag = Diagnostic.OK_INSTANCE;
+//			propertiesEditionComponent.validate(diag);
+//			propertiesEditionComponent.validateRequiredFeatures(diag);
+//			if (diag != null && diag.getSeverity() != Diagnostic.OK){
+//				setMessage(null);
+//				setPageComplete(false);
+//			}
+//			else
+//				updateStatus(null);
 		}
 
 		private void initializeTabs(CTabFolder folder) {
-			//first set initState to true to not handle changes yet
+			// first set initState to true to not handle changes yet
 			initState = true;
 			String[] partsList = propertiesEditionComponent.partsList();
 			for (int i = 0; i < partsList.length; i++) {
@@ -183,16 +188,16 @@ public class AbstractPropertyWizard extends Wizard {
 				IPropertiesEditionPart part;
 				if (editingDomain != null)
 					// FIXME: find a better way to define the SWT constant
-					part = propertiesEditionComponent.getPropertiesEditionPart("SWT", nextComponentKey);
+					part = propertiesEditionComponent.getPropertiesEditionPart(0, nextComponentKey);
 				else
 					// FIXME: find a better way to define the SWT constant
-					part = propertiesEditionComponent.getPropertiesEditionPart("SWT", nextComponentKey);
+					part = propertiesEditionComponent.getPropertiesEditionPart(0, nextComponentKey);
 				if (part instanceof ISWTPropertiesEditionPart) {
 					editComposite = ((ISWTPropertiesEditionPart)part).createFigure(folder);
 					if (allResources == null)
-						((CompositePropertiesEditionPart)part).initComponent(eObject);
+						propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 0, eObject);
 					else
-						((CompositePropertiesEditionPart)part).initComponent(eObject, allResources);
+						propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 0, eObject, allResources);
 
 				}
 				if (null == editComposite)
@@ -204,16 +209,16 @@ public class AbstractPropertyWizard extends Wizard {
 			initState = false;
 		}
 
-		public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+		public void firePropertiesChanged(PropertiesEditionEvent event) {
 			handleChange(event);
 		}
 
-		private void handleChange(PathedPropertiesEditionEvent event) {
+		private void handleChange(PropertiesEditionEvent event) {
 			// do not handle changes if you are in initialization.
 			if (initState)
 				return;
 			Diagnostic diag = propertiesEditionComponent.validateValue(event);
-			if (diag!=null && diag.getSeverity() != Diagnostic.OK)
+			if (diag != null && diag.getSeverity() != Diagnostic.OK)
 				updateStatus(diag.getMessage());
 			else
 				updateStatus(null);

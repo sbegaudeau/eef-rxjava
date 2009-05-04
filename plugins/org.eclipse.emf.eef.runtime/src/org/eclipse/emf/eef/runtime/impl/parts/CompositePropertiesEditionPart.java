@@ -13,20 +13,11 @@ package org.eclipse.emf.eef.runtime.impl.parts;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CLabel;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.forms.IMessageManager;
 
 /**
@@ -58,6 +49,16 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	/**
+	 * The edited element
+	 */
+	protected EObject current;
+	
+	/**
+	 * the current ResourceSet
+	 */
+	protected ResourceSet resourceSet;
+	
+	/**
 	 * Defines if part has changed
 	 */
 	protected boolean partHasChanged = false;
@@ -71,6 +72,16 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	public CompositePropertiesEditionPart(IPropertiesEditionComponent editionComponent) {
 		this.propertiesEditionComponent = editionComponent;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#setContext(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void setContext(EObject eObject, ResourceSet allResources) {
+		this.current = eObject;
+		this.resourceSet = allResources;
+	}
 
 	/**
 	 * Getter for the view
@@ -79,16 +90,6 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 */
 	public Composite getFigure() {
 		return view;
-	}
-
-	/**
-	 * Initialize the part with the specified eObject.
-	 * 
-	 * @param eObject
-	 *            the eObject for the initialization
-	 */
-	public void initComponent(EObject eObject) {
-		initComponent(eObject, eObject.eResource().getResourceSet());
 	}
 
 	/**
@@ -114,5 +115,5 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	protected void setHasChanged(boolean partHasChanged) {
 		this.partHasChanged = partHasChanged;
 	}
-
+	
 }

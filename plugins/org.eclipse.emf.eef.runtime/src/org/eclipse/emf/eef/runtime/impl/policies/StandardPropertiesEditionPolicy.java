@@ -16,7 +16,7 @@ import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.emf.eef.runtime.ui.wizards.AbstractPropertyWizard;
+import org.eclipse.emf.eef.runtime.ui.wizards.EditPropertyWizard;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -37,7 +37,7 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 		IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(
 				eObject);
 		if (provider != null) {
-			AbstractPropertyWizard wizard = new AbstractPropertyWizard(editionContext.getEditingDomain(),
+			EditPropertyWizard wizard = new EditPropertyWizard(editionContext.getEditingDomain(),
 					eObject, editionContext.getEditingDomain().getResourceSet());
 			WizardDialog wDialog = new WizardDialog(new Shell(), wizard);
 			if (wDialog.open() == Window.OK)
@@ -59,7 +59,7 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
 					.getProvider(eObject);
 			if (provider != null) {
-				AbstractPropertyWizard wizard = new AbstractPropertyWizard(null, eObject, editionContext
+				EditPropertyWizard wizard = new EditPropertyWizard(null, eObject, editionContext
 						.getResourceSet());
 				WizardDialog wDialog = new WizardDialog(new Shell(), wizard);
 				if (wDialog.open() == Window.OK)

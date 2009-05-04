@@ -3,4 +3,18 @@
 <plugin>
    <extension-point id="PropertiesEditionProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionProvider" schema="schema/PropertiesEditionProvider.exsd"/>
    <extension-point id="PropertiesEditionPolicyProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider" schema="schema/PropertiesEditionPolicyProvider.exsd"/>
+   <extension-point id="PropertiesEditionPartProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider" schema="schema/PropertiesEditionPartProvider.exsd"/>
+   
+     <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            default="false"
+            id="org.eclipse.emf.eef.validation.context">
+         <selector class="org.eclipse.emf.eef.runtime.impl.validation.EEFValidationClientSelector"/>
+      </clientContext>
+      <binding
+            context="org.eclipse.emf.eef.validation.context"
+            category="org.eclipse.emf.eef.validation"/>
+   </extension>
+ 
 </plugin>

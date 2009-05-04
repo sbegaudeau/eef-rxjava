@@ -114,17 +114,17 @@ public class StringTools {
 		}
 	}
 
-	public static String toL1Case(String nom) {
+	public static String toL1Case(String name) {
 		StringBuffer buf = new StringBuffer();
-		buf.append(nom.substring(0, 1).toLowerCase());
-		buf.append(nom.substring(1));
+		buf.append(name.substring(0, 1).toLowerCase());
+		buf.append(name.substring(1));
 		return buf.toString();
 	}
 
-	public static String toU1Case(String nom) {
+	public static String toU1Case(String name) {
 		StringBuffer buf = new StringBuffer();
-		buf.append(nom.substring(0, 1).toUpperCase());
-		buf.append(nom.substring(1));
+		buf.append(name.substring(0, 1).toUpperCase());
+		buf.append(name.substring(1));
 		return buf.toString();
 	}
 }

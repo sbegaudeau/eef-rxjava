@@ -27,14 +27,14 @@ public interface IFormPropertiesEditionPart {
 	 * @return the created view
 	 */
 	public abstract Composite createFigure(Composite parent, FormToolkit widgetFactory);
-	
-	
+
 	/**
-     * Create all elements of the figure.
-     * This method is the stateless way to populate another composite.
+	 * Create all elements of the figure. This method is the stateless way to populate another composite.
+	 * 
 	 * @param parent
 	 * @param widgetFactory
 	 */
-	public abstract void createControls(FormToolkit widgetFactory, Composite parent, IMessageManager messageManager);
+	public abstract void createControls(FormToolkit widgetFactory, Composite parent,
+			IMessageManager messageManager);
 
 }

@@ -87,14 +87,10 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	public static Image getImage(String key) {
 		ImageRegistry registry = getDefault().getImageRegistry();
 		Image image = registry.get(key);
-
 		if (image == null) {
-
 			ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, key);
-
 			registry.put(key, desc);
 			image = registry.get(key);
-
 		}
 		// if ((image == null) && !DEFAULT_IMAGE.equals(key)) {
 		// image = getImage(DEFAULT_IMAGE);

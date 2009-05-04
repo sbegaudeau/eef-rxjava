@@ -21,12 +21,12 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public abstract class BusinessViewerFilter extends ViewerFilter {
 
 	/**
-	 * name
+	 * the name
 	 */
 	protected String name;
 
 	/**
-	 * description
+	 * the description
 	 */
 	protected String description;
 

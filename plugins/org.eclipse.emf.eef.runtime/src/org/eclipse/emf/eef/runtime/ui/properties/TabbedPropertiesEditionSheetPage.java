@@ -97,8 +97,11 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 		Field descriptorToTabField = null;
 		boolean oldAccessible = false;
 		try {
-			descriptorToTabField = this.getClass().getSuperclass().getSuperclass().getDeclaredField(
-					"descriptorToTab");
+            Class<?> cls = this.getClass();
+            while (!cls.equals(TabbedPropertySheetPage.class)) {
+                cls = cls.getSuperclass();
+            }
+            descriptorToTabField = cls.getDeclaredField("descriptorToTab");
 			oldAccessible = descriptorToTabField.isAccessible();
 			descriptorToTabField.setAccessible(true);
 			return (Map)descriptorToTabField.get(this);
@@ -123,4 +126,10 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 		return null;
 	}
 
+    @Override
+    public void refresh() {
+        if (getCurrentTab() != null) {
+            super.refresh();
+        }
+    }
 }

@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -52,6 +51,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -68,13 +68,13 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 	protected ILabelProvider labelProviderElement;
 
-	private ViewerFilter filter;
+	private List<ViewerFilter> filters;
 
-	private List bpFilters;
+	private List<ViewerFilter> bpFilters;
 
 	private Button filteredContent;
 
-	private List checkButtons;
+	private List<Button> checkButtons;
 
 	private Text fFilter;
 
@@ -86,20 +86,54 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 	/**
 	 * Constructor.
-	 *
-	 * @param parentShell the shell
-	 * @param labelProvider th label provider
-	 * @param input the contents
-	 * @param filter the content filter
-	 * @param bpFilters the business filters
-	 * @param nullable if the viewer can contains empty (null) value
-	 * @param isMulti if the selection can be unique or not
+	 * 
+	 * @param labelProvider
+	 *            the label provider
+	 * @param input
+	 *            the contents
+	 * @param filters
+	 *            the content filters
+	 * @param bpFilters
+	 *            the business filters
+	 * @param nullable
+	 *            if the viewer can contains empty (null) value
+	 * @param isMulti
+	 *            if the selection can be unique or not
 	 */
-	public EMFModelViewerDialog(Shell parentShell, ILabelProvider labelProvider, Object input,
-			ViewerFilter filter, List bpFilters, boolean nullable, boolean isMulti) {
-		super(parentShell);
+	public EMFModelViewerDialog(ILabelProvider labelProvider, Object input, List<ViewerFilter> filters,
+			List<ViewerFilter> bpFilters, boolean nullable, boolean isMulti) {
+		super(Display.getDefault().getActiveShell());
 		this.labelProviderElement = labelProvider;
-		this.filter = filter;
+		this.filters = filters;
+		this.bpFilters = bpFilters;
+		this.input = input;
+		this.nullable = nullable;
+		this.isMulti = isMulti;
+		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL | SWT.RESIZE);
+	}
+
+	/**
+	 * Construtctor with unique static ViewerFilter.
+	 * 
+	 * @param labelProvider
+	 *            the label provider
+	 * @param input
+	 *            the contents
+	 * @param filter
+	 *            the content filter
+	 * @param bpFilters
+	 *            the business filters
+	 * @param nullable
+	 *            if the viewer can contains empty (null) value
+	 * @param isMulti
+	 *            if the selection can be unique or not
+	 */
+	public EMFModelViewerDialog(ILabelProvider labelProvider, Object input, ViewerFilter filter,
+			List<ViewerFilter> bpFilters, boolean nullable, boolean isMulti) {
+		super(Display.getDefault().getActiveShell());
+		this.labelProviderElement = labelProvider;
+		this.filters = new ArrayList<ViewerFilter>();
+		this.filters.add(filter);
 		this.bpFilters = bpFilters;
 		this.input = input;
 		this.nullable = nullable;
@@ -190,9 +224,12 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 		});
 
-		checkButtons = new ArrayList();
-		if (filter != null)
-			elements.addFilter(filter);
+		checkButtons = new ArrayList<Button>();
+		if (filters != null) {
+			for (ViewerFilter filter : filters) {
+				elements.addFilter(filter);
+			}
+		}
 		// business rules
 		if (bpFilters != null && !bpFilters.isEmpty()) {
 			String currentModel = MessagesTool.getString("EMFModelViewerDialog.currentModel");
@@ -219,8 +256,8 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 				if (filterName != null && !filterName.equals(currentModel)
 						&& !filterName.equals(referencedModels) && !filterName.equals(differentContainer)) {
-					((Button)checkButtons.get(i)).setSelection(true);
-					elements.addFilter((ViewerFilter)((Button)checkButtons.get(i)).getData());
+					checkButtons.get(i).setSelection(true);
+					elements.addFilter((ViewerFilter)checkButtons.get(i).getData());
 					for (int j = 0; j < table.getColumns().length; j++) {
 						table.getColumn(j).pack();
 					}
@@ -228,8 +265,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 			}
 
 			// selection listener for business rules
-			for (Iterator iter = checkButtons.iterator(); iter.hasNext();) {
-				final Button b = (Button)iter.next();
+			for (final Button b : checkButtons) {
 				b.addSelectionListener(new SelectionAdapter() {
 					public void widgetSelected(SelectionEvent e) {
 						if (b.getSelection() == false) {
@@ -402,17 +438,18 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		String result = labelProviderElement.getText(element);
 		if (result == null)
 			return StringTools.EMPTY_STRING;
-		StringBuffer buf = new StringBuffer();
-		int bracket = result.indexOf("("); //$NON-NLS-1$
-		if (bracket != -1) {
-			buf.append(result.substring(bracket, result.length()));
-			result = result.substring(0, bracket);
-		}
-		int space = result.lastIndexOf(" "); //$NON-NLS-1$
-		if (space != -1)
-			buf.insert(0, result.substring(space + 1));
-		if (space == -1 && bracket == -1)
-			return result;
-		return buf.toString();
+		return result;
+		// StringBuffer buf = new StringBuffer();
+		//		int bracket = result.indexOf("("); //$NON-NLS-1$
+		// if (bracket != -1) {
+		// buf.append(result.substring(bracket, result.length()));
+		// result = result.substring(0, bracket);
+		// }
+		//		int space = result.lastIndexOf(" "); //$NON-NLS-1$
+		// if (space != -1)
+		// buf.insert(0, result.substring(space + 1));
+		// if (space == -1 && bracket == -1)
+		// return result;
+		// return buf.toString();
 	}
 }

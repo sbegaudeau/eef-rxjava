@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.api.parts;
 
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.forms.IMessageManager;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -28,12 +27,11 @@ public interface ISWTPropertiesEditionPart {
 	public abstract Composite createFigure(Composite parent);
 
 	/**
-	 * Create all elements of the figure.
-	 * This method is the stateless way to populate another composite. 
-     *
+	 * Create all elements of the figure. This method is the stateless way to populate another composite.
+	 * 
 	 * @param parent
-	 *            the parent 
-	 */	 
+	 *            the parent
+	 */
 	public abstract void createControls(Composite parent);
 
 }

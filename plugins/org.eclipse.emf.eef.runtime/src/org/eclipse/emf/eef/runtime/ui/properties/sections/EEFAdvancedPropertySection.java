@@ -23,25 +23,46 @@ import org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class EEFAdvancedPropertySection extends AdvancedPropertySection implements IPropertySourceProvider {
-	
+
 	private AdapterFactory adapterFactory;
-	
+
 	public EEFAdvancedPropertySection() {
 		super();
 	}
 
-	public AdapterFactory getAdapterFactory() {
+	/**
+	 * For eclipse 3.4 ONLY
+	 * 
+	 * @return
+	 */
+	 public AdapterFactory getAdapterFactory() {
 		if (adapterFactory == null) {
 			if (page != null) {
 //				adapterFactory = ((TabbedPropertiesEditionSheetPage)page).getAdapterFactory();
 			}
 		}
 		return adapterFactory;
-	}
+	 }
 	
+	/**
+	 * For eclipse 3.2 & 3.3
+	 * 
+	 * @return
+	 */
+//	public AdapterFactory getAdapterFactory() {
+//		if (adapterFactory == null) {
+//			if (page != null) {
+//				adapterFactory = new ComposedAdapterFactory(
+//						ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+//			}
+//		}
+//		return adapterFactory;
+//	}
+
 	public IPropertySource getPropertySource(Object object) {
 		if (getAdapterFactory() != null) {
-			IItemPropertySource item = (IItemPropertySource)getAdapterFactory().adapt(object, IItemPropertySource.class);
+			IItemPropertySource item = (IItemPropertySource)getAdapterFactory().adapt(object,
+					IItemPropertySource.class);
 			if (item != null)
 				return new PropertySource(object, item);
 		}
@@ -50,8 +71,9 @@ public class EEFAdvancedPropertySection extends AdvancedPropertySection implemen
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	 * 
+	 * @see org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
+	 *      org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public void setInput(IWorkbenchPart part, ISelection selection) {
@@ -59,8 +81,5 @@ public class EEFAdvancedPropertySection extends AdvancedPropertySection implemen
 		if (page != null)
 			page.setPropertySourceProvider(this);
 	}
-	
-	
-		
 
 }

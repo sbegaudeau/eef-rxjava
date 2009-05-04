@@ -21,12 +21,15 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.NullCompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -44,22 +47,11 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	private List listeners;
 
 	/**
-	 * The editing mode
-	 */
-	private String mode;
-
-	/**
-	 * The editing domain where to perform live update
-	 */
-	private EditingDomain liveEditingDomain;
-
-	/**
 	 * Default constructor
 	 */
 	public ComposedPropertiesEditionComponent(String mode) {
 		this.subComponents = new ArrayList();
 		this.listeners = new ArrayList();
-		this.mode = mode;
 	}
 
 	/**
@@ -84,7 +76,6 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setLiveEditingDomain(org.eclipse.emf.edit.domain.EditingDomain)
 	 */
 	public void setLiveEditingDomain(EditingDomain editingDomain) {
-		this.liveEditingDomain = editingDomain;
 		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
 			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
 			component.setLiveEditingDomain(editingDomain);
@@ -103,7 +94,8 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 			String[] partsList2 = subComponent.partsList();
 			for (int i = 0; i < partsList2.length; i++) {
 				String string = partsList2[i];
-				partsList.add(string);
+				if (!partsList.contains(string))
+					partsList.add(string);
 			}
 		}
 		String[] result = new String[partsList.size()];
@@ -115,13 +107,36 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 		return result;
 	}
 
+	
+	
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(Class key, int kind, EObject element, ResourceSet allResource) {
+		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
+			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
+			component.initPart(key, kind, element, allResource);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject)
+	 */
+	public void initPart(Class key, int kind, EObject element) {
+		this.initPart(key, kind, element, element.eResource().getResourceSet());
+	}
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart(java.lang.String,
 	 *      java.lang.String)
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(String kind, String key) {
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
 			IPropertiesEditionComponent subComponent = (IPropertiesEditionComponent)iterator.next();
 			IPropertiesEditionPart propertiesEditionPart = subComponent.getPropertiesEditionPart(kind, key);
@@ -142,8 +157,11 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
 			IPropertiesEditionComponent subComponent = (IPropertiesEditionComponent)iterator.next();
 			CompoundCommand command = subComponent.getPropertiesEditionCommand(editingDomain);
-			if (command != null && command.canExecute())
+			if (command != null && command.canExecute()) {
 				cc.append(command);
+			} else {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform command.", null);
+			}
 
 		}
 		if (cc.isEmpty())
@@ -169,10 +187,10 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		event.addHolder(this);
 		for (Iterator iterator = listeners.iterator(); iterator.hasNext();) {
-			IPropertiesEditionListener listener = (IPropertiesEditionListener) iterator.next();
+			IPropertiesEditionListener listener = (IPropertiesEditionListener)iterator.next();
 			if (!event.hold(listener))
 				listener.firePropertiesChanged(event);
 		}
@@ -231,8 +249,9 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(Notification)
 	 */
-	public Diagnostic validateValue(PathedPropertiesEditionEvent event) {
-		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "EEF validation", 0, "No problem detected", null);
+	public Diagnostic validateValue(PropertiesEditionEvent event) {
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "EEF validation", 0,
+				"No problem detected", null);
 		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
 			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
 			Diagnostic validateValue = component.validateValue(event);
@@ -245,11 +264,12 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "EEF Validation", Status.OK,"No problem detected", null);
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "EEF Validation", Status.OK,
+				"No problem detected", null);
 		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
 			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
 			diagnostic.getChildren().add(component.validate());
@@ -268,5 +288,76 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 			component.dispose();
 		}
 	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Class, int)
+	 * Very strange case ... shouldn't be invoke ...
+	 */
+	public boolean mustBeComposed(Class key, int kind) {
+		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
+			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
+			if (!component.mustBeComposed(key, kind))
+				return false;
+		}
+		return true;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Class, int)
+	 */
+	public boolean isRequired(String key, int kind) {
+		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
+			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
+			if (component.isRequired(key, kind))
+				return true;
+		}
+		return false;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
+			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
+			if (component.getHelpContent(key, kind) != StringTools.EMPTY_STRING)
+				return component.getHelpContent(key, kind);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#translatePart(java.lang.String)
+	 */
+	public Class translatePart(String key) {
+		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
+			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
+			if (component.translatePart(key) != null)
+				return component.translatePart(key);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		for (Iterator iterator = subComponents.iterator(); iterator.hasNext();) {
+			IPropertiesEditionComponent component = (IPropertiesEditionComponent)iterator.next();
+			component.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+		}		
+	}
+	
+	
 
 }

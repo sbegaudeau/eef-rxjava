@@ -40,6 +40,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.model.WorkbenchContentProvider;
@@ -52,12 +53,13 @@ public class ModelChooserDialog extends Dialog {
 
 	private TreeViewer workspaceViewer;
 
-	protected static String DONNEES_MODEL_EXTENSION = "donnees"; //$NON-NLS-1$
+	protected String modelExtension;
 
 	protected IFile selectedModel;
 
-	public ModelChooserDialog(Shell parentShell) {
-		super(parentShell);
+	public ModelChooserDialog(String modelExtension) {
+		super(Display.getDefault().getActiveShell());
+		this.modelExtension = modelExtension;
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL | SWT.RESIZE);
 	}
 
@@ -65,7 +67,7 @@ public class ModelChooserDialog extends Dialog {
 		Shell s = super.getShell();
 		// Rectangle r = s.getBounds();
 		// s.setBounds(-1, -1, 500, 500);
-		s.setText("Rechercher un mod�le de donn�es");
+		s.setText("Rechercher un modele");
 		return s;
 	}
 
@@ -111,7 +113,7 @@ public class ModelChooserDialog extends Dialog {
 	 * @param p_viewer
 	 * @param p_parentElement
 	 * @param p_element
-	 *            L'�l�ment en cours dans le Treeview.
+	 *            L'element en cours dans le Treeview.
 	 * @return
 	 */
 	protected boolean valid(final Viewer p_viewer, final Object p_parentElement, final Object p_element) {
@@ -123,7 +125,7 @@ public class ModelChooserDialog extends Dialog {
 			} else if (p_element instanceof IFolder && !getFiles((IContainer)p_element).isEmpty()) {
 				retour = true;
 			} else if (p_element instanceof IFile
-					&& ((IFile)p_element).getFileExtension().equalsIgnoreCase(DONNEES_MODEL_EXTENSION)) {
+					&& ((IFile)p_element).getFileExtension().equalsIgnoreCase(modelExtension)) {
 				retour = true;
 			}
 		} catch (final Exception p_exception) {
@@ -140,23 +142,23 @@ public class ModelChooserDialog extends Dialog {
 	 * @return La liste des modeles donnees de ce conteneur.
 	 * @throws CoreException
 	 */
-	private static Collection getFiles(final IContainer p_container) throws CoreException {
-		List files = new ArrayList(0);
-		List folders = new ArrayList(0);
+	private Collection<IResource> getFiles(final IContainer p_container) throws CoreException {
+		List<IResource> files = new ArrayList<IResource>();
+		List<IContainer> folders = new ArrayList<IContainer>();
 		IResource children[] = p_container.members();
 		for (int i = 0; i < children.length; i++) {
 			IResource child = children[i];
 			int childType = child.getType();
 			if (childType == IResource.FILE && child.getFileExtension() != null
-					&& child.getFileExtension().equalsIgnoreCase(DONNEES_MODEL_EXTENSION)) {
+					&& child.getFileExtension().equalsIgnoreCase(modelExtension)) {
 				files.add(child);
 			} else if (childType == IResource.FOLDER && !child.getName().startsWith(".")) { //$NON-NLS-1$
-				folders.add(child);
+				folders.add((IContainer)child);
 			}
 		}
-		Iterator iter = folders.iterator();
+		Iterator<IContainer> iter = folders.iterator();
 		while (iter.hasNext()) {
-			files.addAll(getFiles((IContainer)iter.next()));
+			files.addAll(getFiles(iter.next()));
 		}
 		return files;
 	}
@@ -189,7 +191,7 @@ public class ModelChooserDialog extends Dialog {
 					if (selectedElement instanceof IFile) {
 						IFile file = (IFile)selectedElement;
 						String fileExtension = file.getFileExtension().toString();
-						if (fileExtension.equals(DONNEES_MODEL_EXTENSION)) {
+						if (fileExtension.equals(modelExtension)) {
 							setOkButtonEnabled(true);
 							selectedModel = file;
 							return;

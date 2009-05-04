@@ -12,7 +12,9 @@ package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractListViewer;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
@@ -22,7 +24,7 @@ import org.eclipse.swt.widgets.Control;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EENumViewer extends AbstractListViewer {
+public class EMFComboViewer extends AbstractListViewer {
 
 	/**
 	 * This viewer's list control.
@@ -38,7 +40,7 @@ public class EENumViewer extends AbstractListViewer {
 	 * @param parent
 	 *            the parent control
 	 */
-	public EENumViewer(Composite parent) {
+	public EMFComboViewer(Composite parent) {
 		this(parent, SWT.READ_ONLY | SWT.BORDER);
 	}
 
@@ -52,7 +54,7 @@ public class EENumViewer extends AbstractListViewer {
 	 * @param style
 	 *            the SWT style bits
 	 */
-	public EENumViewer(Composite parent, int style) {
+	public EMFComboViewer(Composite parent, int style) {
 		this(new Combo(parent, style));
 	}
 
@@ -63,7 +65,7 @@ public class EENumViewer extends AbstractListViewer {
 	 * @param list
 	 *            the combo control
 	 */
-	public EENumViewer(Combo list) {
+	public EMFComboViewer(Combo list) {
 		this.combo = list;
 		hookControl(list);
 	}
@@ -96,8 +98,10 @@ public class EENumViewer extends AbstractListViewer {
 		combo.remove(index);
 	}
 
-	/*
-	 * (non-Javadoc) Method declared on Viewer.
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.jface.viewers.Viewer#getControl()
 	 */
 	public Control getControl() {
 		return combo;
@@ -120,9 +124,10 @@ public class EENumViewer extends AbstractListViewer {
 		return;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.AbstractListViewer#listSelectAndShow(int[])
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.jface.viewers.AbstractListViewer#listSetSelection(int[])
 	 */
 	protected void listSetSelection(int[] ixs) {
 		for (int idx = 0; idx < ixs.length; idx++) {
@@ -130,8 +135,10 @@ public class EENumViewer extends AbstractListViewer {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
+
+	/**
+	 * {@inheritDoc}
+	 *
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#listDeselectAll()
 	 */
 	protected void listDeselectAll() {
@@ -139,16 +146,18 @@ public class EENumViewer extends AbstractListViewer {
 		combo.clearSelection();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 *
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#listShowSelection()
 	 */
 	protected void listShowSelection() {
 		// nothing
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 *
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#setSelectionToWidget(java.util.List, boolean)
 	 */
 	protected void setSelectionToWidget(List in, boolean reveal) {
@@ -164,7 +173,14 @@ public class EENumViewer extends AbstractListViewer {
 			int[] ixs = new int[1];
 			ixs[0] = -1;
 			String[] literals = getCombo().getItems();
-			String literalToSelect = elem.toString();
+			String literalToSelect = "";
+			// TODO : find a better way to differenciate enum and eObject
+			if (elem instanceof EObject && getLabelProvider() instanceof ILabelProvider) {
+				literalToSelect = ((ILabelProvider)getLabelProvider()).getText(elem);
+			} else {
+				literalToSelect = elem.toString();
+			}
+
 			for (int i = 0; i < literals.length; i++) {
 				String literal = literals[i];
 				if (literal.equals(literalToSelect)) {

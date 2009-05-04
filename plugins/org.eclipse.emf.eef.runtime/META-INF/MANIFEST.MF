@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Properties Runtime Plug-in
 Bundle-SymbolicName: org.eclipse.emf.eef.runtime;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.1.qualifier
 Bundle-Activator: org.eclipse.emf.eef.runtime.EMFPropertiesRuntime
 Bundle-Vendor: Obeo.fr
 Require-Bundle: org.eclipse.ui,
@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.jdt.core,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.views.properties.tabbed;visibility:=reexport
+ org.eclipse.ui.views.properties.tabbed;visibility:=reexport,
+ org.eclipse.emf.validation
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.eef.runtime,
  org.eclipse.emf.eef.runtime.api.component,
@@ -32,6 +33,7 @@ Export-Package: org.eclipse.emf.eef.runtime,
  org.eclipse.emf.eef.runtime.impl.providers,
  org.eclipse.emf.eef.runtime.impl.services,
  org.eclipse.emf.eef.runtime.impl.utils,
+ org.eclipse.emf.eef.runtime.impl.validation,
  org.eclipse.emf.eef.runtime.ui.comparator,
  org.eclipse.emf.eef.runtime.ui.notify,
  org.eclipse.emf.eef.runtime.ui.properties,

@@ -42,37 +42,47 @@ import org.eclipse.ui.internal.forms.Messages;
  */
 public class EEFMessageManager implements IMessageManager {
 	private static final DefaultPrefixProvider DEFAULT_PREFIX_PROVIDER = new DefaultPrefixProvider();
+
 	private ArrayList messages = new ArrayList();
+
 	private Hashtable decorators = new Hashtable();
+
 	private boolean autoUpdate = true;
+
 	private ScrolledForm scrolledForm;
+
 	private IMessagePrefixProvider prefixProvider = DEFAULT_PREFIX_PROVIDER;
+
 	private int decorationPosition = SWT.LEFT | SWT.BOTTOM;
-	private static FieldDecoration standardError = FieldDecorationRegistry
-			.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_ERROR);
-	private static FieldDecoration standardWarning = FieldDecorationRegistry
-			.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_WARNING);
-	private static FieldDecoration standardInformation = FieldDecorationRegistry
-	.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_INFORMATION);
 
-	private static final String[] SINGLE_MESSAGE_SUMMARY_KEYS = {
-			Messages.MessageManager_sMessageSummary,
-			Messages.MessageManager_sMessageSummary,
-			Messages.MessageManager_sWarningSummary,
-			Messages.MessageManager_sErrorSummary };
+	private static FieldDecoration standardError = FieldDecorationRegistry.getDefault().getFieldDecoration(
+			FieldDecorationRegistry.DEC_ERROR);
 
-	private static final String[] MULTIPLE_MESSAGE_SUMMARY_KEYS = {
-			Messages.MessageManager_pMessageSummary,
-			Messages.MessageManager_pMessageSummary,
-			Messages.MessageManager_pWarningSummary,
-			Messages.MessageManager_pErrorSummary };
+	private static FieldDecoration standardWarning = FieldDecorationRegistry.getDefault().getFieldDecoration(
+			FieldDecorationRegistry.DEC_WARNING);
+
+	private static FieldDecoration standardInformation = FieldDecorationRegistry.getDefault()
+			.getFieldDecoration(FieldDecorationRegistry.DEC_INFORMATION);
+
+	private static final String[] SINGLE_MESSAGE_SUMMARY_KEYS = {Messages.MessageManager_sMessageSummary,
+			Messages.MessageManager_sMessageSummary, Messages.MessageManager_sWarningSummary,
+			Messages.MessageManager_sErrorSummary};
+
+	private static final String[] MULTIPLE_MESSAGE_SUMMARY_KEYS = {Messages.MessageManager_pMessageSummary,
+			Messages.MessageManager_pMessageSummary, Messages.MessageManager_pWarningSummary,
+			Messages.MessageManager_pErrorSummary};
 
 	static class Message implements IMessage {
 		Control control;
+
 		Object data;
+
 		Object key;
+
 		String message;
+
 		int type;
+
 		String prefix;
 
 		Message(Object key, String message, int type, Object data) {
@@ -84,7 +94,6 @@ public class EEFMessageManager implements IMessageManager {
 
 		/*
 		 * (non-Javadoc)
-		 * 
 		 * @see org.eclipse.jface.dialogs.IMessage#getKey()
 		 */
 		public Object getKey() {
@@ -93,7 +102,6 @@ public class EEFMessageManager implements IMessageManager {
 
 		/*
 		 * (non-Javadoc)
-		 * 
 		 * @see org.eclipse.jface.dialogs.IMessageProvider#getMessage()
 		 */
 		public String getMessage() {
@@ -102,7 +110,6 @@ public class EEFMessageManager implements IMessageManager {
 
 		/*
 		 * (non-Javadoc)
-		 * 
 		 * @see org.eclipse.jface.dialogs.IMessageProvider#getMessageType()
 		 */
 		public int getMessageType() {
@@ -111,7 +118,6 @@ public class EEFMessageManager implements IMessageManager {
 
 		/*
 		 * (non-Javadoc)
-		 * 
 		 * @see org.eclipse.ui.forms.messages.IMessage#getControl()
 		 */
 		public Control getControl() {
@@ -120,7 +126,6 @@ public class EEFMessageManager implements IMessageManager {
 
 		/*
 		 * (non-Javadoc)
-		 * 
 		 * @see org.eclipse.ui.forms.messages.IMessage#getData()
 		 */
 		public Object getData() {
@@ -129,7 +134,6 @@ public class EEFMessageManager implements IMessageManager {
 
 		/*
 		 * (non-Javadoc)
-		 * 
 		 * @see org.eclipse.ui.forms.messages.IMessage#getPrefix()
 		 */
 		public String getPrefix() {
@@ -150,11 +154,11 @@ public class EEFMessageManager implements IMessageManager {
 						Control label = siblings[j];
 						String ltext = null;
 						if (label instanceof Label) {
-							ltext = ((Label) label).getText();
+							ltext = ((Label)label).getText();
 						} else if (label instanceof Hyperlink) {
-							ltext = ((Hyperlink) label).getText();
+							ltext = ((Hyperlink)label).getText();
 						} else if (label instanceof CLabel) {
-							ltext = ((CLabel) label).getText();
+							ltext = ((CLabel)label).getText();
 						}
 						if (ltext != null) {
 							if (!ltext.endsWith(":")) //$NON-NLS-1$
@@ -171,7 +175,9 @@ public class EEFMessageManager implements IMessageManager {
 
 	class ControlDecorator {
 		private ControlDecoration decoration;
+
 		private ArrayList controlMessages = new ArrayList();
+
 		private String prefix;
 
 		ControlDecorator(Control control) {
@@ -215,8 +221,8 @@ public class EEFMessageManager implements IMessageManager {
 		}
 
 		void addMessage(Object key, String text, Object data, int type) {
-			Message message = EEFMessageManager.this.addMessage(getPrefix(), key,
-					text, data, type, controlMessages);
+			Message message = EEFMessageManager.this.addMessage(getPrefix(), key, text, data, type,
+					controlMessages);
 			message.control = decoration.getControl();
 			if (isAutoUpdate())
 				update();
@@ -247,7 +253,7 @@ public class EEFMessageManager implements IMessageManager {
 				decoration.hide();
 			} else {
 				ArrayList peers = createPeers(controlMessages);
-				int type = ((IMessage) peers.get(0)).getMessageType();
+				int type = ((IMessage)peers.get(0)).getMessageType();
 				String description = createDetails(createPeers(peers), true);
 				if (type == IMessageProvider.ERROR)
 					decoration.setImage(standardError.getImage());
@@ -262,8 +268,7 @@ public class EEFMessageManager implements IMessageManager {
 	}
 
 	/**
-	 * Creates a new instance of the message manager that will work with the
-	 * provided form.
+	 * Creates a new instance of the message manager that will work with the provided form.
 	 * 
 	 * @param scrolledForm
 	 *            the form to control
@@ -272,12 +277,10 @@ public class EEFMessageManager implements IMessageManager {
 		this.scrolledForm = scrolledForm;
 		toolkit.decorateFormHeading(this.scrolledForm.getForm());
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.ui.forms.IMessageManager#addMessage(java.lang.Object,
-	 *      java.lang.String, int)
+	 * @see org.eclipse.ui.forms.IMessageManager#addMessage(java.lang.Object, java.lang.String, int)
 	 */
 	public void addMessage(Object key, String messageText, Object data, int type) {
 		addMessage(null, key, messageText, data, type, messages);
@@ -287,13 +290,11 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.ui.forms.IMessageManager#addMessage(java.lang.Object,
-	 *      java.lang.String, int, org.eclipse.swt.widgets.Control)
+	 * @see org.eclipse.ui.forms.IMessageManager#addMessage(java.lang.Object, java.lang.String, int,
+	 * org.eclipse.swt.widgets.Control)
 	 */
-	public void addMessage(Object key, String messageText, Object data,
-			int type, Control control) {
-		ControlDecorator dec = (ControlDecorator) decorators.get(control);
+	public void addMessage(Object key, String messageText, Object data, int type, Control control) {
+		ControlDecorator dec = (ControlDecorator)decorators.get(control);
 
 		if (dec == null) {
 			dec = new ControlDecorator(control);
@@ -306,7 +307,6 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#removeMessage(java.lang.Object)
 	 */
 	public void removeMessage(Object key) {
@@ -320,7 +320,6 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#removeMessages()
 	 */
 	public void removeMessages() {
@@ -333,12 +332,11 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#removeMessage(java.lang.Object,
-	 *      org.eclipse.swt.widgets.Control)
+	 * org.eclipse.swt.widgets.Control)
 	 */
 	public void removeMessage(Object key, Control control) {
-		ControlDecorator dec = (ControlDecorator) decorators.get(control);
+		ControlDecorator dec = (ControlDecorator)decorators.get(control);
 		if (dec == null)
 			return;
 		if (dec.removeMessage(key))
@@ -348,11 +346,10 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#removeMessages(org.eclipse.swt.widgets.Control)
 	 */
 	public void removeMessages(Control control) {
-		ControlDecorator dec = (ControlDecorator) decorators.get(control);
+		ControlDecorator dec = (ControlDecorator)decorators.get(control);
 		if (dec != null) {
 			if (dec.removeMessages()) {
 				if (isAutoUpdate())
@@ -363,13 +360,12 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#removeAllMessages()
 	 */
 	public void removeAllMessages() {
 		boolean needsUpdate = false;
 		for (Enumeration enm = decorators.elements(); enm.hasMoreElements();) {
-			ControlDecorator control = (ControlDecorator) enm.nextElement();
+			ControlDecorator control = (ControlDecorator)enm.nextElement();
 			if (control.removeMessages())
 				needsUpdate = true;
 		}
@@ -385,8 +381,8 @@ public class EEFMessageManager implements IMessageManager {
 	 * Adds the message if it does not already exist in the provided list.
 	 */
 
-	private Message addMessage(String prefix, Object key, String messageText,
-			Object data, int type, ArrayList list) {
+	private Message addMessage(String prefix, Object key, String messageText, Object data, int type,
+			ArrayList list) {
 		Message message = findMessage(key, list);
 		if (message == null) {
 			message = new Message(key, messageText, type, data);
@@ -406,7 +402,7 @@ public class EEFMessageManager implements IMessageManager {
 
 	private Message findMessage(Object key, ArrayList list) {
 		for (int i = 0; i < list.size(); i++) {
-			Message message = (Message) list.get(i);
+			Message message = (Message)list.get(i);
 			if (message.getKey().equals(key))
 				return message;
 		}
@@ -415,13 +411,12 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#update()
 	 */
 	public void update() {
 		// Update decorations
 		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator) iter.next();
+			ControlDecorator dec = (ControlDecorator)iter.next();
 			dec.update();
 		}
 		// Update the form
@@ -436,7 +431,7 @@ public class EEFMessageManager implements IMessageManager {
 		ArrayList mergedList = new ArrayList();
 		mergedList.addAll(messages);
 		for (Enumeration enm = decorators.elements(); enm.hasMoreElements();) {
-			ControlDecorator dec = (ControlDecorator) enm.nextElement();
+			ControlDecorator dec = (ControlDecorator)enm.nextElement();
 			dec.addAll(mergedList);
 		}
 		update(mergedList);
@@ -444,27 +439,26 @@ public class EEFMessageManager implements IMessageManager {
 
 	private void update(ArrayList mergedList) {
 		pruneControlDecorators();
-		if (mergedList.isEmpty() || mergedList == null) {
+		if (mergedList == null || mergedList.isEmpty()) {
 			scrolledForm.setMessage(null, IMessageProvider.NONE);
 			return;
 		}
 		ArrayList peers = createPeers(mergedList);
-		int maxType = ((IMessage) peers.get(0)).getMessageType();
+		int maxType = ((IMessage)peers.get(0)).getMessageType();
 		String messageText;
-		IMessage[] array = (IMessage[]) peers
-				.toArray(new IMessage[peers.size()]);
-		if (peers.size() == 1 && ((Message) peers.get(0)).prefix == null) {
+		IMessage[] array = (IMessage[])peers.toArray(new IMessage[peers.size()]);
+		if (peers.size() == 1 && ((Message)peers.get(0)).prefix == null) {
 			// a single message
-			IMessage message = (IMessage) peers.get(0);
+			IMessage message = (IMessage)peers.get(0);
 			messageText = message.getMessage();
 			scrolledForm.setMessage(messageText, maxType, array);
 		} else {
 			// show a summary message for the message
 			// and list of errors for the details
 			if (peers.size() > 1)
-				messageText = Messages.bind(
-						MULTIPLE_MESSAGE_SUMMARY_KEYS[maxType],
-						new String[] { peers.size() + "" }); //$NON-NLS-1$
+				messageText = Messages.bind(MULTIPLE_MESSAGE_SUMMARY_KEYS[maxType], new String[] {peers
+						.size()
+						+ ""}); //$NON-NLS-1$
 			else
 				messageText = SINGLE_MESSAGE_SUMMARY_KEYS[maxType];
 			scrolledForm.setMessage(messageText, maxType, array);
@@ -481,7 +475,7 @@ public class EEFMessageManager implements IMessageManager {
 		ArrayList peers = new ArrayList();
 		int maxType = 0;
 		for (int i = 0; i < messages.size(); i++) {
-			Message message = (Message) messages.get(i);
+			Message message = (Message)messages.get(i);
 			if (message.type > maxType) {
 				peers.clear();
 				maxType = message.type;
@@ -499,7 +493,7 @@ public class EEFMessageManager implements IMessageManager {
 		for (int i = 0; i < messages.size(); i++) {
 			if (i > 0)
 				out.println();
-			IMessage m = (IMessage) messages.get(i);
+			IMessage m = (IMessage)messages.get(i);
 			out.print(excludePrefix ? m.getMessage() : getFullMessage(m));
 		}
 		out.flush();
@@ -523,7 +517,6 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#createSummary(org.eclipse.ui.forms.IMessage[])
 	 */
 	public String createSummary(IMessage[] messages) {
@@ -532,7 +525,7 @@ public class EEFMessageManager implements IMessageManager {
 
 	private void pruneControlDecorators() {
 		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator) iter.next();
+			ControlDecorator dec = (ControlDecorator)iter.next();
 			if (dec.isDisposed())
 				iter.remove();
 		}
@@ -540,7 +533,6 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#getMessagePrefixProvider()
 	 */
 	public IMessagePrefixProvider getMessagePrefixProvider() {
@@ -549,20 +541,20 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.ui.forms.IMessageManager#setMessagePrefixProvider(org.eclipse.ui.forms.IMessagePrefixProvider)
+	 * @see
+	 * org.eclipse.ui.forms.IMessageManager#setMessagePrefixProvider(org.eclipse.ui.forms.IMessagePrefixProvider
+	 * )
 	 */
 	public void setMessagePrefixProvider(IMessagePrefixProvider provider) {
 		this.prefixProvider = provider;
 		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator) iter.next();
+			ControlDecorator dec = (ControlDecorator)iter.next();
 			dec.updatePrefix();
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#getDecorationPosition()
 	 */
 	public int getDecorationPosition() {
@@ -571,20 +563,18 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#setDecorationPosition(int)
 	 */
 	public void setDecorationPosition(int position) {
 		this.decorationPosition = position;
 		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator) iter.next();
+			ControlDecorator dec = (ControlDecorator)iter.next();
 			dec.updatePosition();
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#isAutoUpdate()
 	 */
 	public boolean isAutoUpdate() {
@@ -593,7 +583,6 @@ public class EEFMessageManager implements IMessageManager {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.ui.forms.IMessageManager#setAutoUpdate(boolean)
 	 */
 	public void setAutoUpdate(boolean autoUpdate) {

@@ -25,7 +25,7 @@ public class EcoreTool {
 	 */
 	public static boolean containsInstanceOfEClass(EObject element, EClass eClassToCheck) {
 		// Check type and super type matching
-		if(isInstanceOfEClass(element, eClassToCheck)){
+		if (isInstanceOfEClass(element, eClassToCheck)) {
 			return true;
 		}
 		// Check containment
@@ -35,8 +35,8 @@ public class EcoreTool {
 			}
 		}
 		return false;
-	}	
-	
+	}
+
 	/**
 	 * @param eObject
 	 *            the element to check
@@ -53,8 +53,8 @@ public class EcoreTool {
 					return true;
 				}
 			}
-		}		
+		}
 		return false;
-	}	
-	
+	}
+
 }

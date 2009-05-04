@@ -32,7 +32,6 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 	 */
 	public void dispose() {
 		// TODO Auto-generated method stub
-
 	}
 
 	/*
@@ -42,7 +41,6 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public Object[] getElements(Object inputElement) {

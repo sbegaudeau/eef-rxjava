@@ -56,20 +56,4 @@ public interface IPropertiesEditionProvider {
 	public abstract IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode,
 			String part);
 
-	/**
-	 * Returns a stateless {@link IPropertiesEditionPart} able to edit the specified eObject.
-	 * 
-	 * @param eObject
-	 *            the {@link EObject} to edit
-	 * @param editionComponent
-	 *            the component on which the part will be attached
-	 * @param part
-	 *            the part we wan't to edit
-	 * @param kind
-	 *            the kind of the EditionPart
-	 * @return the edition part
-	 */
-	public abstract IPropertiesEditionPart getPropertiesEditionPart(EObject eObject,
-			IPropertiesEditionComponent editionComponent, String part, String kind);
-
 }

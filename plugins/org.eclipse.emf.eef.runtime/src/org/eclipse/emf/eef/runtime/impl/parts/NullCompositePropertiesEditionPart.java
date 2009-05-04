@@ -13,11 +13,10 @@ package org.eclipse.emf.eef.runtime.impl.parts;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -56,23 +55,23 @@ public class NullCompositePropertiesEditionPart extends CompositePropertiesEditi
 		// nothing
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#initComponent(org.eclipse.emf.ecore.EObject,
-	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 */
-	public void initComponent(EObject eObject, ResourceSet allResources) {
-		// nothing
-	}
-
+//	/**
+//	 * {@inheritDoc}
+//	 * 
+//	 * @see org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#initComponent(org.eclipse.emf.ecore.EObject,
+//	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+//	 */
+//	public void initComponent(EObject eObject, ResourceSet allResources) {
+//		// nothing
+//	}
+//
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(
-	 * 	org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent)
+	 * 	org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// nothing
 	}
 
