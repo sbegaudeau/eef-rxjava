@@ -271,7 +271,7 @@ public class EMFListEditUtil {
 		if (containingFeature == null) {
 			// default case
 			boolean containedInCopy = copyToModelMap.values().contains(toTest);
-			boolean isToBeRemoved = elementsToRemove.contains(foundCorrespondingEObject(toTest)); 
+			boolean isToBeRemoved = elementsToRemove.contains(foundCorrespondingEObject(toTest));
 			boolean isToBeAdded = elementsToAdd.contains(foundCorrespondingEObject(toTest));
 			return containedInCopy ? !isToBeRemoved : isToBeAdded;
 		} else {

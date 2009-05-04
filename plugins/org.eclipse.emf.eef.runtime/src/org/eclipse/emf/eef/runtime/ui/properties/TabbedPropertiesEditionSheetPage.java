@@ -52,7 +52,7 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 				this.adapterFactory = ((AdapterFactoryEditingDomain)editingDomain).getAdapterFactory();
 		}
 	}
-	
+
 	protected void initializePage() {
 		editingDomain = null;
 		adapterFactory = null;
@@ -61,13 +61,13 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 				editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
 				if (editingDomain instanceof AdapterFactoryEditingDomain)
 					adapterFactory = ((AdapterFactoryEditingDomain)editingDomain).getAdapterFactory();
-			}
-			else if ((((IEditorPart)editor).getAdapter(IEditingDomainItemProvider.class)) != null) {
-				editingDomain = ((IEditingDomainProvider)((IEditorPart)editor).getAdapter(IEditingDomainItemProvider.class)).getEditingDomain();				
+			} else if ((((IEditorPart)editor).getAdapter(IEditingDomainItemProvider.class)) != null) {
+				editingDomain = ((IEditingDomainProvider)((IEditorPart)editor)
+						.getAdapter(IEditingDomainItemProvider.class)).getEditingDomain();
 				if (editingDomain instanceof AdapterFactoryEditingDomain)
 					adapterFactory = ((AdapterFactoryEditingDomain)editingDomain).getAdapterFactory();
 			}
-				
+
 		}
 	}
 
@@ -97,11 +97,11 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 		Field descriptorToTabField = null;
 		boolean oldAccessible = false;
 		try {
-            Class<?> cls = this.getClass();
-            while (!cls.equals(TabbedPropertySheetPage.class)) {
-                cls = cls.getSuperclass();
-            }
-            descriptorToTabField = cls.getDeclaredField("descriptorToTab");
+			Class<?> cls = this.getClass();
+			while (!cls.equals(TabbedPropertySheetPage.class)) {
+				cls = cls.getSuperclass();
+			}
+			descriptorToTabField = cls.getDeclaredField("descriptorToTab");
 			oldAccessible = descriptorToTabField.isAccessible();
 			descriptorToTabField.setAccessible(true);
 			return (Map)descriptorToTabField.get(this);
@@ -126,10 +126,10 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 		return null;
 	}
 
-    @Override
-    public void refresh() {
-        if (getCurrentTab() != null) {
-            super.refresh();
-        }
-    }
+	@Override
+	public void refresh() {
+		if (getCurrentTab() != null) {
+			super.refresh();
+		}
+	}
 }
