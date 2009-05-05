@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.1 2009/04/30 17:10:27 glefur Exp $
+ * $Id: ComponentsEditor.java,v 1.2 2009/05/05 12:05:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -73,7 +73,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
-import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.eef.components.provider.ComponentsItemProviderAdapterFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.provider.MappingCustomItemProviderAdapterFactory;
@@ -125,7 +124,6 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
-import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
