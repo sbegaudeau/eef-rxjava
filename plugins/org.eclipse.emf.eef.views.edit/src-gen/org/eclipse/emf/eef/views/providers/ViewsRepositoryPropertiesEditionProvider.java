@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionProvider.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
+ * $Id: ViewsRepositoryPropertiesEditionProvider.java,v 1.3 2009/05/05 08:13:17 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -64,32 +64,6 @@ public class ViewsRepositoryPropertiesEditionProvider implements IPropertiesEdit
 				return new ViewsRepositoryBasePropertiesEditionComponent(eObject, mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(eObject, mode);
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionPart(org.eclipse.emf.ecore.EObject,
-	 *      org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent, java.lang.String,
-	 *      java.lang.String)
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(EObject eObject,
-			IPropertiesEditionComponent editionComponent, String part, String kind) {
-		if (eObject instanceof ViewsRepository) {
-			if (ViewsRepositoryPropertiesEditionComponent.SWT_KIND.equals(kind)) {
-				if (ViewsRepositoryBasePropertiesEditionComponent.BASE_PART.equals(part))
-					return new ViewsRepositoryPropertiesEditionPartImpl(editionComponent);
-				if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-					return new DocumentationPropertiesEditionPartImpl(editionComponent);
-			}
-		}
-		if (ViewsRepositoryPropertiesEditionComponent.FORM_KIND.equals(kind)) {
-				if (ViewsRepositoryBasePropertiesEditionComponent.BASE_PART.equals(part))
-					return new ViewsRepositoryPropertiesEditionPartForm(editionComponent);
-				if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-					return new DocumentationPropertiesEditionPartForm(editionComponent);
 		}
 		return null;
 	}
