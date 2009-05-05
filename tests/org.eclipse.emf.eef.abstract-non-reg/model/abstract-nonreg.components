@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_Xxdwcf3BEd25MIHmw1Ckvg" documentation="Edition Context for abstract nonreg GenPackage">
+    <categories xmi:id="_Xxdwcv3BEd25MIHmw1Ckvg" name="common">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_k7oRgA_REd6pf7pzvP9Dvg" name="DocumentedElement" views="_mhLTAA_REd6pf7pzvP9Dvg">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_z6F3EA_gEd6F8avPwHHdZA" name="Documentation" views="_r0FXEA_REd6pf7pzvP9Dvg" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.ecore#//DocumentedElement/documentation"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.ecore#//DocumentedElement"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.genmodel#//abstractnonreg"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_Xxdwgv3BEd25MIHmw1Ckvg" documentation="Views repository for nonreg GenPackage" name="abstractnonreg">
+    <RepositoryKind>SWT</RepositoryKind>
+    <categories xmi:id="_Xxdwg_3BEd25MIHmw1Ckvg" name="common">
+      <views xmi:id="_mhLTAA_REd6pf7pzvP9Dvg" name="DocumentedElement">
+        <elements xsi:type="eef-views:Container" xmi:id="_oCEeAA_REd6pf7pzvP9Dvg" name="Documentation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_r0FXEA_REd6pf7pzvP9Dvg" name="documentation">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>

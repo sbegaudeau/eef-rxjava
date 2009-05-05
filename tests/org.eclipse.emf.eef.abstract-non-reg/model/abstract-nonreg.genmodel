@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.eef.abstract-non-reg/src-gen"
+    editDirectory="/org.eclipse.emf.eef.abstract-non-reg.edit/src-gen" editorDirectory="/org.eclipse.emf.eef.abstract-non-reg.editor/src-gen"
+    modelPluginID="org.eclipse.emf.eef.abstract_non_reg" modelName="Abstract-nonreg"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>abstract-nonreg.ecore</foreignModel>
+  <genPackages prefix="Abstractnonreg" basePackage="org.eclipse.emf.eef.ab" disposableProviderFactory="true"
+      ecorePackage="abstract-nonreg.ecore#/">
+    <genClasses ecoreClass="abstract-nonreg.ecore#//DocumentedElement">
+      <genFeatures createChild="false" propertyDescription="the documentation of that element"
+          ecoreFeature="ecore:EAttribute abstract-nonreg.ecore#//DocumentedElement/documentation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
