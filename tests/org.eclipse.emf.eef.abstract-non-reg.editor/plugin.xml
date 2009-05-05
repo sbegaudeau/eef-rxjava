@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2009/05/05 10:16:06 sbouchet Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.emf.eef.ab.abstractnonreg.presentation.AbstractnonregModelWizardID"
+            name="%_UI_AbstractnonregModelWizard_label"
+            class="org.eclipse.emf.eef.ab.abstractnonreg.presentation.AbstractnonregModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AbstractnonregModelFile.gif">
+         <description>%_UI_AbstractnonregModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.emf.eef.ab.abstractnonreg.presentation.AbstractnonregEditorID"
+            name="%_UI_AbstractnonregEditor_label"
+            icon="icons/full/obj16/AbstractnonregModelFile.gif"
+            extensions="abstractnonreg"
+            class="org.eclipse.emf.eef.ab.abstractnonreg.presentation.AbstractnonregEditor"
+            contributorClass="org.eclipse.emf.eef.ab.abstractnonreg.presentation.AbstractnonregActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
