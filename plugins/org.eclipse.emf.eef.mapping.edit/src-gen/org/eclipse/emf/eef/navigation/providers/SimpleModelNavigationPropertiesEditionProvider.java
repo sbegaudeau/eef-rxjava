@@ -9,14 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionProvider.java,v 1.1 2009/04/30 17:48:59 nlepine Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionProvider.java,v 1.2 2009/05/05 12:07:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.navigation.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;

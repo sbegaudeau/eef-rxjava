@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationCustomPropertiesEditionPartImpl.java,v 1.1 2009/04/30 17:48:59 nlepine Exp $
+ * $Id: SimpleModelNavigationCustomPropertiesEditionPartImpl.java,v 1.2 2009/05/05 12:07:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.navigation.parts.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;

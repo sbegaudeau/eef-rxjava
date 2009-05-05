@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
+ * $Id: StandardElementBindingPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:31 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -151,7 +151,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardElementBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardElementBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -169,6 +169,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardElementBinding.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);

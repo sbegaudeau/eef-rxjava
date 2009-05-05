@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
+ * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:30 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -85,6 +85,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 	
 	/**
 	 * Initialize the semantic model listener for live editing mode
+	 * 
 	 * @return the semantic model listener
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
@@ -112,6 +113,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
@@ -121,18 +123,19 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 	}
 	
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
 	 */
 	public String[] partsList() {
 		return parts;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
@@ -151,9 +154,9 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent
-	 * 		#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
-	 * 						org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == MappingViewsRepository.EMFMultiPropertiesBinding.class) {
@@ -168,11 +171,11 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 * (org.eclipse.emf.edit.domain.EditingDomain)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
+	 *     (org.eclipse.emf.edit.domain.EditingDomain)
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -210,11 +213,10 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 		return cc;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject
-	 * ()
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof EMFMultiPropertiesBinding) {
@@ -231,7 +233,9 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			return null;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
@@ -283,6 +287,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
@@ -291,20 +296,22 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
 	 */
 	public String getHelpContent(String key, int kind) {
-			if (key == MappingViewsRepository.EMFMultiPropertiesBinding.name)
-				return "The name of this property binding"; //$NON-NLS-1$
-			if (key == MappingViewsRepository.EMFMultiPropertiesBinding.views)
-				return "The mapped views"; //$NON-NLS-1$
-			if (key == MappingViewsRepository.EMFMultiPropertiesBinding.model)
-				return "The mapped properties"; //$NON-NLS-1$
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.name)
+			return "The name of this property binding"; //$NON-NLS-1$
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.views)
+			return "The mapped views"; //$NON-NLS-1$
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.model)
+			return "The mapped properties"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
@@ -338,7 +345,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 		else
 			return null;
 	}
-	
+
 
 	/**
 	 * {@inheritDoc}
