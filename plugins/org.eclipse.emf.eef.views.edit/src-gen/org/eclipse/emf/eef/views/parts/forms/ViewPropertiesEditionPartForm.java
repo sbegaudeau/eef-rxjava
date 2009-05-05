@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
+ * $Id: ViewPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:55 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.toolkits.Widget;
-import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.emf.eef.views.providers.ViewsMessages;
@@ -138,7 +137,7 @@ public class ViewPropertiesEditionPartForm extends CompositePropertiesEditionPar
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartForm.this, ViewsViewsRepository.View.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -156,6 +155,7 @@ public class ViewPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	/**
 	 * @param propertiesGroup

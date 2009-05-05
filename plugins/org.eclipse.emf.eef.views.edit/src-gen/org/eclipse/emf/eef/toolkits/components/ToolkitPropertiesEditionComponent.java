@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitPropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
+ * $Id: ToolkitPropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.components;
 
@@ -80,6 +80,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	
 	/**
 	 * Initialize the semantic model listener for live editing mode
+	 * 
 	 * @return the semantic model listener
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
@@ -103,6 +104,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
@@ -112,18 +114,19 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	}
 	
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
 	 */
 	public String[] partsList() {
 		return parts;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
@@ -142,9 +145,9 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent
-	 * 		#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
-	 * 						org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == ToolkitsViewsRepository.Toolkit.class) {
@@ -157,11 +160,11 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 * (org.eclipse.emf.edit.domain.EditingDomain)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
+	 *     (org.eclipse.emf.edit.domain.EditingDomain)
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -177,11 +180,10 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 		return cc;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject
-	 * ()
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Toolkit) {
@@ -196,7 +198,9 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 			return null;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
@@ -228,6 +232,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
@@ -236,16 +241,18 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
 	 */
 	public String getHelpContent(String key, int kind) {
-			if (key == ToolkitsViewsRepository.Toolkit.name)
-				return "The name of the toolkit"; //$NON-NLS-1$
+		if (key == ToolkitsViewsRepository.Toolkit.name)
+			return "The name of the toolkit"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
@@ -279,7 +286,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 		else
 			return null;
 	}
-	
+
 
 	/**
 	 * {@inheritDoc}

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
+ * $Id: ToolkitPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:55 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.parts.forms;
 
@@ -120,7 +120,7 @@ public class ToolkitPropertiesEditionPartForm extends CompositePropertiesEdition
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ToolkitPropertiesEditionPartForm.this, ToolkitsViewsRepository.Toolkit.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -138,6 +138,7 @@ public class ToolkitPropertiesEditionPartForm extends CompositePropertiesEdition
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ToolkitsViewsRepository.Toolkit.name, ToolkitsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 
 	

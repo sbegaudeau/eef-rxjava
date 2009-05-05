@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:39 nlepine Exp $
+ * $Id: ViewsRepositoryPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
@@ -122,7 +122,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewsRepositoryPropertiesEditionPartForm.this, ViewsViewsRepository.ViewsRepository.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -140,6 +140,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createRepositoryKindText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.repositoryKind, ViewsViewsRepository.FORM_KIND));
@@ -172,7 +173,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewsRepositoryPropertiesEditionPartForm.this, ViewsViewsRepository.ViewsRepository.repositoryKind, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, repositoryKind.getText()));
 			}
-			
+
 		});
 		repositoryKind.addKeyListener(new KeyAdapter() {
 
@@ -190,6 +191,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.repositoryKind, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 
 	

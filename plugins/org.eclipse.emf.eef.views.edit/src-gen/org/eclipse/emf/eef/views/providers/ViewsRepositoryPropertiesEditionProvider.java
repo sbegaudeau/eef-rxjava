@@ -9,14 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionProvider.java,v 1.3 2009/05/05 08:13:17 glefur Exp $
+ * $Id: ViewsRepositoryPropertiesEditionProvider.java,v 1.4 2009/05/05 12:07:49 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -58,12 +57,12 @@ public class ViewsRepositoryPropertiesEditionProvider implements IPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof ViewsRepository) {
 			if (ViewsRepositoryBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ViewsRepositoryBasePropertiesEditionComponent(eObject, mode);
+				return new ViewsRepositoryBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new DocumentedElementPropertiesEditionComponent(eObject, mode);
+				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.1 2009/04/30 17:16:51 glefur Exp $
+ * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.2 2009/05/05 12:07:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
