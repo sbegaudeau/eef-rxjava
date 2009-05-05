@@ -18,75 +18,75 @@
 [comment @main /]
 	[file ('properties.plugin.xml', false)]
 	
-  <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
 	[if (editionContext.contributorID(basePackage)->notEmpty())]
 		<propertyContributor contributorId="[editionContext.contributorID(basePackage).trim()/]" labelProvider="org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider">	
 	[else]
-	    <propertyContributor contributorId="org.eclipse.gmf.runtime.diagram.ui.properties" labelProvider="org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider">
+		<propertyContributor contributorId="org.eclipse.gmf.runtime.diagram.ui.properties" labelProvider="org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider">
 	[/if]
-         <propertyCategory
-               category="default">
-         </propertyCategory>
-         <propertyCategory
-               category="extended">
-         </propertyCategory>
-         <propertyCategory
-               category="advanced">
-         </propertyCategory>
-	  </propertyContributor>
-   </extension>
+			<propertyCategory
+				category="default">
+			</propertyCategory>
+			<propertyCategory
+				category="extended">
+			</propertyCategory>
+			<propertyCategory
+				category="advanced">
+			</propertyCategory>
+		</propertyContributor>
+	</extension>
 
-   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
-[if (editionContext.contributorID(basePackage)->notEmpty())]		
-	  <propertyTabs contributorId="[editionContext.contributorID(basePackage).trim()/]">
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+[if (editionContext.contributorID(basePackage)->notEmpty())]
+		<propertyTabs contributorId="[editionContext.contributorID(basePackage).trim()/]">
 [else]
-	  <propertyTabs contributorId="org.eclipse.gmf.runtime.diagram.ui.properties">
-[/if]      
-          <propertyTab
-               label="Base"
-               category="default"
-               id="Base">
-         </propertyTab>         	
-         <propertyTab
-               label="Propriétés"
-               category="extended"
-               id="Proprietes">
-         </propertyTab>	
-         <propertyTab
-               label="Stéréotypes"
-               category="extended"
-               id="Stereotypes">
-         </propertyTab>	
+		<propertyTabs contributorId="org.eclipse.gmf.runtime.diagram.ui.properties">
+[/if]
+			<propertyTab
+				label="Base"
+				category="default"
+				id="Base">
+			</propertyTab>
+			<propertyTab
+				label="Propriétés"
+				category="extended"
+				id="Proprietes">
+			</propertyTab>	
+			<propertyTab
+				label="Stéréotypes"
+				category="extended"
+				id="Stereotypes">
+			</propertyTab>	
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent))]
 [if (pec.explicit)]
-[for (view : View | pec.involvedViews()->asSet())][if (view.viewKey(pec).trim() <> 'Base' and view.viewKey(pec).trim() <> 'Propriétés' and view.viewKey(pec).trim() <> 'Stéréotypes')]
-         <propertyTab
-               label="[view.viewKey(pec).trim() /]"
-               category="extended"
-               id="[view.viewKey(pec).toASCII().trim() /]">
-         </propertyTab>	
+[for (view : View | pec.involvedViews()->asSet())][if (view.viewKey(pec) <> 'Base' and view.viewKey(pec) <> 'Propriétés' and view.viewKey(pec) <> 'Stéréotypes')]
+			<propertyTab
+				label="[view.viewKey(pec).trim()/]"
+				category="extended"
+				id="[view.viewKey(pec).toASCII()/]">
+			</propertyTab>	
 [/if][/for]
 [/if]
 [/for]
-      </propertyTabs>
-   </extension>
-   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
-[if (editionContext.contributorID(basePackage)->notEmpty())]			  
-	  <propertySections contributorId="[editionContext.contributorID(basePackage).trim()/]">
+		</propertyTabs>
+	</extension>
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+[if (editionContext.contributorID(basePackage)->notEmpty())]
+		<propertySections contributorId="[editionContext.contributorID(basePackage).trim()/]">
 [else]
-	  <propertySections contributorId="org.eclipse.gmf.runtime.diagram.ui.properties">
-[/if]      
+		<propertySections contributorId="org.eclipse.gmf.runtime.diagram.ui.properties">
+[/if]
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.mustBeGenerated())]
-[for (view : View | pec.views->asSet()) ? (view.explicit)]	
-         <propertySection
-               class="[pec.model.eefPackage(basePackage).trim()/].properties.[pec.propertySection(view).trim()/]"
-               filter="[pec.model.eefPackage(basePackage).trim()/].properties.[pec.propertySection(view).trim()/]"
-               id="[pec.model.eefPackage(basePackage).trim()/].section.[pec.propertySection(view).trim()/]"
-               tab="[view.viewKey(pec).toASCII().trim() /]">
-        </propertySection>
+[for (view : View | pec.views->asSet()) ? (view.explicit)]
+			<propertySection
+				class="[pec.model.eefPackage(basePackage)/].properties.[pec.propertySection(view)/]"
+				filter="[pec.model.eefPackage(basePackage)/].properties.[pec.propertySection(view)/]"
+				id="[pec.model.eefPackage(basePackage)/].section.[pec.propertySection(view)/]"
+				tab="[view.viewKey(pec).toASCII()/]">
+			</propertySection>
 [/for]
 [/for]
-      </propertySections>
-   </extension>
+		</propertySections>
+	</extension>
 	[/file]
 [/template]

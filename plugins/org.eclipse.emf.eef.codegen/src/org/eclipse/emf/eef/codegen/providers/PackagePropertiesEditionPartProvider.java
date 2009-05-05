@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2009 Obeo.
+ * Copyright (c) 2008, 2009 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.codegen.parts;
-
+package org.eclipse.emf.eef.codegen.providers;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -39,66 +39,66 @@ import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 
 /**
- * Entry point of the 'IPropertiesEditionPart' generation module.
+ * Entry point of the 'PackagePropertiesEditionPartProvider' generation module.
  * 
- * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:jonathan.musset@obeo.fr">Jonathan Musset</a>
  */
-public class IPropertiesEditionPart {
+public class PackagePropertiesEditionPartProvider {
 
-  /**
-   * The name of the module.
-   * @generated
-   */
-  public static final String MODULE_FILE_NAME = "IPropertiesEditionPart";
-  
-  /**
-   * The name of the templates that are to be generated.
-   * @generated
-   */
-  public static final String[] TEMPLATE_NAMES = { "IPropertiesEditionPart", };
+	/**
+	 * The name of the module.
+	 * @generated
+	 */
+	public static final String MODULE_FILE_NAME = "PackagePropertiesEditionPartProvider";
+	
+	/**
+	 * The name of the templates that are to be generated.
+	 * @generated
+	 */
+	public static final String[] TEMPLATE_NAMES = { "PackagePropertiesEditionPartProvider", };
 
-  /**
-   * The root element of the module.
-   */
-  private Module module;
+	/**
+	 * The root element of the module.
+	 */
+	private Module module;
 
-  /**
-   * The model.
-   */
-  private EObject model;
+	/**
+	 * The model.
+	 */
+	private EObject model;
 
-  /**
-   * The output folder.
-   */
-  private File targetFolder;
+	/**
+	 * The output folder.
+	 */
+	private File targetFolder;
 
-  /**
-   * The other arguments.
-   */
-  List<? extends Object> arguments;
+	/**
+	 * The other arguments.
+	 */
+	List<? extends Object> arguments;
 
-  /**
-   * Constructor.
-   * 
-   * @param modelURI
-   *            is the URI of the model.
-   * @param targetFolder
-   *            is the output folder
-   * @param arguments
-   *            are the other arguments
-   * @throws IOException
-   *             Thrown when the output cannot be saved.
-   * @generated
-   */
-  public IPropertiesEditionPart(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
+	/**
+	 * Constructor.
+	 * 
+	 * @param modelURI
+	 *            is the URI of the model.
+	 * @param targetFolder
+	 *            is the output folder
+	 * @param arguments
+	 *            are the other arguments
+	 * @throws IOException
+	 *             Thrown when the output cannot be saved.
+	 * @generated
+	 */
+	public PackagePropertiesEditionPartProvider(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
     final URL templateURL;
     if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(IPropertiesEditionPart.class.getResource(MODULE_FILE_NAME + ".emtl"));
+      templateURL = FileLocator.toFileURL(PackagePropertiesEditionPartProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
     } else {
-      templateURL = IPropertiesEditionPart.class.getResource(MODULE_FILE_NAME + ".emtl");
+      templateURL = PackagePropertiesEditionPartProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
     }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
@@ -111,28 +111,28 @@ public class IPropertiesEditionPart {
     }
   }
 
-  /**
-   * Constructor.
-   * 
-   * @param model
-   *            is the root element of the model.
-   * @param targetFolder
-   *            is the output folder
-   * @param arguments
-   *            are the other arguments
-   * @throws IOException
-   *             Thrown when the output cannot be saved.
-   * @generated
-   */
-  public IPropertiesEditionPart(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
+	/**
+	 * Constructor.
+	 * 
+	 * @param model
+	 *            is the root element of the model.
+	 * @param targetFolder
+	 *            is the output folder
+	 * @param arguments
+	 *            are the other arguments
+	 * @throws IOException
+	 *             Thrown when the output cannot be saved.
+	 * @generated
+	 */
+	public PackagePropertiesEditionPartProvider(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
     final URL templateURL;
     if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(IPropertiesEditionPart.class.getResource(MODULE_FILE_NAME + ".emtl"));
+      templateURL = FileLocator.toFileURL(PackagePropertiesEditionPartProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
     } else {
-      templateURL = IPropertiesEditionPart.class.getResource(MODULE_FILE_NAME + ".emtl");
+      templateURL = PackagePropertiesEditionPartProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
     }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
@@ -145,76 +145,75 @@ public class IPropertiesEditionPart {
     }
   }
 
-  /**
-   * Creates the template URI.
-   * 
-   * @param entry
-   *            is the local path of the EMTL file
-   * @generated
-   */
-  protected URI createTemplateURI(String entry) {
+	/**
+	 * Creates the template URI.
+	 * 
+	 * @param entry
+	 *            is the local path of the EMTL file
+	 * @generated
+	 */
+	protected URI createTemplateURI(String entry) {
     return URI.createFileURI(URI.decode(entry));
   }
 
-  /**
-   * Gets the model.
-   * @return the model root element
-   */
-  public EObject getModel() {
-    return model;
-  }
+	/**
+	 * Gets the model.
+	 * @return the model root element
+	 */
+	public EObject getModel() {
+		return model;
+	}
 
-  /**
-   * Updates the registry used for looking up a package based namespace, in the resource set.
-   * 
-   * @param resourceSet
-   *            is the resource set
-   * @generated
-   */
-  private void registerPackages(ResourceSet resourceSet) {
-    resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
-    resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+	/**
+	 * Updates the registry used for looking up a package based namespace, in the resource set.
+	 * 
+	 * @param resourceSet
+	 *            is the resource set
+	 * @generated
+	 */
+	private void registerPackages(ResourceSet resourceSet) {
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE);
+    resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.ocl.ecore.EcorePackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE.getNsURI(), org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(MtlPackage.eINSTANCE.getNsURI(), MtlPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put("http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore", getOCLStdLibPackage());
   }
-  
-  /**
-   * Returns the package containing the OCL standard library.
-   * 
-   * @return The package containing the OCL standard library.
-   * @generated
-   */
-  private EPackage getOCLStdLibPackage() {
+	
+	/**
+	 * Returns the package containing the OCL standard library.
+	 * 
+	 * @return The package containing the OCL standard library.
+	 * @generated
+	 */
+	private EPackage getOCLStdLibPackage() {
     EcoreEnvironmentFactory factory = new EcoreEnvironmentFactory();
     EcoreEnvironment environment = (EcoreEnvironment)factory.createEnvironment();
     return (EPackage)EcoreUtil.getRootContainer(environment.getOCLStandardLibrary().getBag());
   }
-  
-  /**
-   * Updates the registry used for looking up resources factory in the given resource set.
-   *
-   * @param resourceSet
-   *            The resource set that is to be updated.
-   * @generated
-   */
-  private void registerResourceFactories(ResourceSet resourceSet) {
+	
+	/**
+	 * Updates the registry used for looking up resources factory in the given resource set.
+	 *
+	 * @param resourceSet
+	 *            The resource set that is to be updated.
+	 * @generated
+	 */
+	private void registerResourceFactories(ResourceSet resourceSet) {
     resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
     resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("emtl", new org.eclipse.acceleo.model.mtl.resource.EMtlResourceFactoryImpl());
     resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
   }
 
-  /**
-   * The main method.
-   * 
-   * @param args
-   *            are the arguments
-   * @generated
-   */
-  public static void main(String[] args) {
+	/**
+	 * The main method.
+	 * 
+	 * @param args
+	 *            are the arguments
+	 * @generated
+	 */
+	public static void main(String[] args) {
     try {
       if (args.length < 2) {
         System.out.println("Arguments not valid : {model, folder}.");
@@ -225,7 +224,7 @@ public class IPropertiesEditionPart {
         for (int i = 2; i < args.length; i++) {
           arguments.add(args[i]);
         }
-        IPropertiesEditionPart generator = new IPropertiesEditionPart(modelURI, folder, arguments);
+        PackagePropertiesEditionPartProvider generator = new PackagePropertiesEditionPartProvider(modelURI, folder, arguments);
         generator.doGenerate();
       }
     } catch (IOException e) {
@@ -233,7 +232,7 @@ public class IPropertiesEditionPart {
     }
   }
 
-  /**
+	/**
    * Launches the generation.
    * 
    * @throws IOException
@@ -250,22 +249,22 @@ public class IPropertiesEditionPart {
   }
 
   /**
-   * Loads a model from an {@link org.eclipse.emf.common.util.URI URI} in a given {@link ResourceSet}.
-   * <p>
-   * This will return the first root of the loaded model, other roots can be accessed via the resource's
-   * content.
-   * </p>
-   * 
-   * @param modelURI
-   *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
-   * @param resourceSet
-   *            The {@link ResourceSet} to load the model in.
-   * @return The model loaded from the URI.
-   * @throws IOException
-   *             If the given file does not exist.
-   * @generated
-   */
-  private EObject load(URI modelURI, ResourceSet resourceSet) throws IOException {
+	 * Loads a model from an {@link org.eclipse.emf.common.util.URI URI} in a given {@link ResourceSet}.
+	 * <p>
+	 * This will return the first root of the loaded model, other roots can be accessed via the resource's
+	 * content.
+	 * </p>
+	 * 
+	 * @param modelURI
+	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
+	 * @param resourceSet
+	 *            The {@link ResourceSet} to load the model in.
+	 * @return The model loaded from the URI.
+	 * @throws IOException
+	 *             If the given file does not exist.
+	 * @generated
+	 */
+	private EObject load(URI modelURI, ResourceSet resourceSet) throws IOException {
     EObject result = null;
     final Resource modelResource = createResource(modelURI, resourceSet);
     final Map<String, String> options = new HashMap<String, String>();
@@ -277,17 +276,17 @@ public class IPropertiesEditionPart {
     return result;
   }
 
-  /**
-   * This will create a {@link Resource} given the model extension it is intended for and a ResourceSet.
-   * 
-   * @param modelURI
-   *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
-   * @param resourceSet
-   *            The {@link ResourceSet} to load the model in.
-   * @return The {@link Resource} given the model extension it is intended for.
-   * @generated
-   */
-  private Resource createResource(URI modelURI, ResourceSet resourceSet) {
+	/**
+	 * This will create a {@link Resource} given the model extension it is intended for and a ResourceSet.
+	 * 
+	 * @param modelURI
+	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
+	 * @param resourceSet
+	 *            The {@link ResourceSet} to load the model in.
+	 * @return The {@link Resource} given the model extension it is intended for.
+	 * @generated
+	 */
+	private Resource createResource(URI modelURI, ResourceSet resourceSet) {
     String fileExtension = modelURI.fileExtension();
     if (fileExtension == null || fileExtension.length() == 0) {
       fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;

@@ -30,6 +30,10 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.acceleo.model.mtl.Module;
 import org.eclipse.acceleo.model.mtl.MtlPackage;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.acceleo.engine.service.AcceleoService;
 import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
@@ -90,7 +94,12 @@ public class PackagePropertiesEditionPolicyProvider {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    URL templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    final URL templateURL;
+    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+      templateURL = FileLocator.toFileURL(PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
+    } else {
+      templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -119,7 +128,12 @@ public class PackagePropertiesEditionPolicyProvider {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    URL templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    final URL templateURL;
+    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+      templateURL = FileLocator.toFileURL(PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
+    } else {
+      templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -159,7 +173,6 @@ public class PackagePropertiesEditionPolicyProvider {
    */
   private void registerPackages(ResourceSet resourceSet) {
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
-    resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.ocl.ecore.EcorePackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE.getNsURI(), org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(MtlPackage.eINSTANCE.getNsURI(), MtlPackage.eINSTANCE);

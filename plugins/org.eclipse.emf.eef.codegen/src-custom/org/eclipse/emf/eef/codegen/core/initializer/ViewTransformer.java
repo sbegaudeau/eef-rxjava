@@ -75,12 +75,14 @@ public class ViewTransformer extends AbstractTransformer {
 	public ViewsRepository genPackage2ViewsRepository(GenPackage genPackage, String repositoryKind) {
 		
 		repository = ViewsFactory.eINSTANCE.createViewsRepository();
-		repository.setRepositoryKind(repositoryKind);
+//		repository.setRepositoryKind(repositoryKind);
+//		repository.getRepositoryKind().add("SWT");
+//		repository.getRepositoryKind().add("Form");
 		repository.setName(genPackage.getEcorePackage().getName());
 		repository.setDocumentation("Views repository for " + genPackage.getEcorePackage().getName() + " GenPackage");
-		common = ViewsFactory.eINSTANCE.createCategory();
-		common.setName("common");
-		repository.getCategories().add(common);
+//		common = ViewsFactory.eINSTANCE.createCategory();
+//		common.setName("common");
+//		repository.getCategories().add(common);
 //		initCommonViews(common, genPackage);
 		Category views = ViewsFactory.eINSTANCE.createCategory();
 		views.setName(genPackage.getEcorePackage().getName());
@@ -180,11 +182,11 @@ public class ViewTransformer extends AbstractTransformer {
 				result.setRepresentation(getWidget("MultiValuedEditor"));
 			}
 			else {
-				if (feature.getEType().getName().equals("EBoolean") || feature.getEType().getName().equals("EBool") || feature.getEType().getName().equals("Boolean")) {
+				if (feature.getEType().getName().equals("EBoolean") || feature.getEType().getName().equals("EBool") || feature.getEType().getName().equalsIgnoreCase("Boolean")) {
 					result.setRepresentation(getWidget("Checkbox"));
 				}
 				else if (EcorePackage.eINSTANCE.getEEnum().isInstance(feature.getEType())) {
-					result.setRepresentation(getWidget("EENumViewer"));
+					result.setRepresentation(getWidget("EMFComboViewer"));
 				}
 				// FIXME: HACK
 				else if ("documentation".equals(feature.getName())) {

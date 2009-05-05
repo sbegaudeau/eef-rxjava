@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ui.initializer.actions;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IContainer;
@@ -22,7 +21,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
-import org.eclipse.emf.eef.codegen.core.initializer.PropertiesInitializer;
+import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitializer;
+import org.eclipse.emf.eef.codegen.ui.initializer.ui.InitializeEEFModelsDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -30,7 +30,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -60,7 +59,7 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		if (selectedFile != null) {
-			ContainerSelectionDialog dialog = new ContainerSelectionDialog(shell, selectedFile.getParent(), false, "Select a destination container for models :");
+			InitializeEEFModelsDialog dialog = new InitializeEEFModelsDialog(shell, selectedFile.getParent(), false, "Select a destination container for models :");
 			dialog.setTitle("Container Selection");
 			dialog.open();
 			Object[] result = dialog.getResult();
@@ -68,9 +67,8 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 				try {
 					IContainer container = (IContainer) ResourcesPlugin.getWorkspace().getRoot().getFolder((IPath) result[0]);
 					modelURI = URI.createURI("file:" + selectedFile.getLocationURI().getPath());					
-					PropertiesInitializer initializer;
-					initializer = new PropertiesInitializer(modelURI, container);
-					initializer.initialize();
+					AbstractPropertiesInitializer initializer = dialog.getInitializer();
+					initializer.initialize(modelURI, container);
 					container.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 				} catch (IOException e) {
 					EEFCodegenPlugin.getDefault().logError(e);

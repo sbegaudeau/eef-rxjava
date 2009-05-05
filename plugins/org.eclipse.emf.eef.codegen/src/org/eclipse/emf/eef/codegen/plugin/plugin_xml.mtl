@@ -14,10 +14,9 @@
 [import common /]
 [import naming /]
 
-
 [template public plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
-	[file ('properties.plugin.xml', false)]
+	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
@@ -45,13 +44,13 @@
                label="Base"
                category="default"
                id="Base">
-         </propertyTab>         	
+         </propertyTab>
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent))]
-[for (view : View | pec.involvedViews()->asSet())][if (view.viewKey(pec).trim() <> 'Base')]
+[for (view : View | pec.involvedViews()->asSet())][if (view.viewKey(pec) <> 'Base')]
          <propertyTab
-               label="[view.viewKey(pec).trim() /]"
+               label="[view.viewKey(pec)/]"
                category="extended"
-               id="[view.viewKey(pec).toASCII().trim() /]">
+               id="[view.viewKey(pec).toASCII()/]">
          </propertyTab>	
 [/if][/for]
 [/for]
@@ -62,20 +61,20 @@
       <propertySections
             contributorId="[editionContext.contributorID(basePackage).trim()/]">
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.explicit)]
-[for (view : View | pec.involvedViews()->asSet())]	
+[for (view : View | pec.involvedViews()->asSet())]
          <propertySection
-               tab="[view.viewKey(pec).toASCII().trim() /]"
+               tab="[view.viewKey(pec).toASCII()/]"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="[pec.model.eefPackage(basePackage).trim()/].section.[pec.model.name/]">
-          	   <input
-                    type="[pec.model.qualifiedName(basePackage).trim()/]">
-          	   </input>
+               id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]">
+             <input
+                    type="[pec.model.qualifiedName(basePackage)/]">
+             </input>
          </propertySection>
 [/for]
 [/for]
       </propertySections>
    </extension>
    
-</plugin>
+ </plugin>
 	[/file]
 [/template]

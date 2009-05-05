@@ -15,311 +15,408 @@
 [import common/]
 [import naming/]
 
-[comment ====== Widgets View getters for declaration ====== /]
-[template public getterDeclaration(view : ElementEditor) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable')]
-[view.getterAddSignatureDocumentation()/]
-	[view.getterAddSignature()/];
-	
-	[view.getterRemoveSignatureDocumentation()/]
-	[view.getterRemoveSignature()/];
-[/template]
-
-[template public getterDeclaration(view : ElementEditor) ? (view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
-[view.getterAddSignatureDocumentation()/]
-	[view.getterAddSignature()/];
-	
-	[view.getterRemoveSignatureDocumentation()/]
-	[view.getterRemoveSignature()/];
-	
-	[view.getterMoveSignatureDocumentation()/]
-	[view.getterMoveSignature()/];
-	
-	[view.getterEditSignatureDocumentation()/]
-	[view.getterEditSignature()/];
-	
-	[view.getterTableListSignatureDocumentation()/]
-	[view.getterTableListSignature()/];
-[/template]
-
-[template public getterDeclaration(view : ElementEditor)]
+[comment ====== View getters for declaration ====== /]
+[template public getterDeclaration(view : View)]
 [view.getterSignatureDocumentation()/]
 	[view.getterSignature()/];
 [/template]
 
-[template public getterSignature(view : ElementEditor)]
-public [view.toJavaType().trim()/] [view.viewCompletePackageGetter()/]
+[comment ====== Widgets View getters for declaration ====== /]
+[template public getterDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+[elementEditor.getterAddSignatureDocumentation()/]
+	[elementEditor.getterAddSignature()/];
+	
+	[elementEditor.getterRemoveSignatureDocumentation()/]
+	[elementEditor.getterRemoveSignature()/];
 [/template]
 
-[template public getterAddSignature(view : ElementEditor)]
-public List [view.viewPackageGetter()/]ToAdd()
+[template public getterDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+[elementEditor.getterAddSignatureDocumentation()/]
+	[elementEditor.getterAddSignature()/];
+	
+	[elementEditor.getterRemoveSignatureDocumentation()/]
+	[elementEditor.getterRemoveSignature()/];
+	
+	[elementEditor.getterMoveSignatureDocumentation()/]
+	[elementEditor.getterMoveSignature()/];
+	
+	[elementEditor.getterEditSignatureDocumentation()/]
+	[elementEditor.getterEditSignature()/];
+	
+	[elementEditor.getterTableListSignatureDocumentation()/]
+	[elementEditor.getterTableListSignature()/];
 [/template]
 
-[template public getterRemoveSignature(view : ElementEditor)]
-public List [view.viewPackageGetter()/]ToRemove()
+[template public getterDeclaration(elementEditor : ElementEditor)]
+[elementEditor.getterSignatureDocumentation()/]
+	[elementEditor.getterSignature()/];
 [/template]
 
-[template public getterMoveSignature(view : ElementEditor)]
-public List [view.viewPackageGetter()/]ToMove()
+[template public getterSignature(view : View)]
+public IPropertiesEditionPart get[view.name.toJavaClassifier()/]SubView()
 [/template]
 
-[template public getterEditSignature(view : ElementEditor)]
-public Map [view.viewPackageGetter()/]ToEdit()
+[template public getterSignature(elementEditor : ElementEditor)]
+public [elementEditor.toJavaType().trim()/] [elementEditor.viewCompletePackageGetter()/]
 [/template]
 
-[template public getterTableListSignature(view : ElementEditor)]
-public List [view.viewPackageGetter()/]Table()
+[template public getterAddSignature(elementEditor : ElementEditor)]
+public List [elementEditor.viewPackageGetter()/]ToAdd()
 [/template]
 
-[template public getterSignatureDocumentation(view : ElementEditor)]
+[template public getterRemoveSignature(elementEditor : ElementEditor)]
+public List [elementEditor.viewPackageGetter()/]ToRemove()
+[/template]
+
+[template public getterMoveSignature(elementEditor : ElementEditor)]
+public List [elementEditor.viewPackageGetter()/]ToMove()
+[/template]
+
+[template public getterEditSignature(elementEditor : ElementEditor)]
+public Map [elementEditor.viewPackageGetter()/]ToEdit()
+[/template]
+
+[template public getterTableListSignature(elementEditor : ElementEditor)]
+public List [elementEditor.viewPackageGetter()/]Table()
+[/template]
+
+[template public getterSignatureDocumentation(view : View)]
 /**
-	 * @return the [view.name/]
+	 * @return the [view.name/] SubView
 	 */
 [/template]
 
-[template public getterAddSignatureDocumentation(view : ElementEditor)]
+[template public getterSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * @return the [view.name/] to add
+	 * @return the [elementEditor.name/]
 	 */
 [/template]
 
-[template public getterRemoveSignatureDocumentation(view : ElementEditor)]
+[template public getterAddSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * @return the [view.name/] to remove
+	 * @return the [elementEditor.name/] to add
 	 */
 [/template]
 
-[template public getterMoveSignatureDocumentation(view : ElementEditor)]
+[template public getterRemoveSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * @return the [view.name/] to move
+	 * @return the [elementEditor.name/] to remove
 	 */
 [/template]
 
-[template public getterEditSignatureDocumentation(view : ElementEditor)]
+[template public getterMoveSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * @return the [view.name/] to edit
+	 * @return the [elementEditor.name/] to move
 	 */
 [/template]
 
-[template public getterTableListSignatureDocumentation(view : ElementEditor)]
+[template public getterEditSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * @return the current [view.name/]
+	 * @return the [elementEditor.name/] to edit
+	 */
+[/template]
+
+[template public getterTableListSignatureDocumentation(elementEditor : ElementEditor)]
+/**
+	 * @return the current [elementEditor.name/]
 	 */
 [/template]
 
 [comment ===== error message handling methods ======= /]
 
-[template public setMessageDeclaration(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.setMessageSignature()/];	
+[template public setMessageDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+[elementEditor.setMessageSignature()/];
 [/template]
 
-[template public unsetMessageDeclaration(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.unsetMessageSignature()/];
+[template public unsetMessageDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+[elementEditor.unsetMessageSignature()/];
 [/template]
 
-[template public setMessageSignature(view : ElementEditor)]
-public void setMessageFor[view.name.toJavaClassifier().trim()/] (String msg, int msgLevel)
+[template public setMessageSignature(elementEditor : ElementEditor)]
+public void setMessageFor[elementEditor.name.toJavaClassifier()/](String msg, int msgLevel)
 [/template]
 
-[template public unsetMessageSignature(view : ElementEditor)]
-public void unsetMessageFor[view.name.toJavaClassifier().trim()/] ()
+[template public unsetMessageSignature(elementEditor : ElementEditor)]
+public void unsetMessageFor[elementEditor.name.toJavaClassifier()/]()
 [/template]
 
-[template public setMessageImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.setMessageSignature()/] {
-	messageManager.addMessage("[view.name.toJavaClassifier()/]_key", msg, null, msgLevel, [view.name.toJavaIdentifier()/]);
-}	
-[/template]
-
-[comment delegate implementation for ViewReference/]
-[template public setMessageImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.setMessageSignature()/] {
-	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.setMessageFor[view.name.toJavaClassifier().trim()/] (msg, msgLevel);
-}	
-[/template]
-
-[template public unsetMessageImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.unsetMessageSignature()/] {
-	messageManager.removeMessage("[view.name.toJavaClassifier()/]_key", [view.name.toJavaIdentifier()/]);
-}	
+[template public setMessageImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+	[elementEditor.setMessageSignature()/] {
+		messageManager.addMessage("[elementEditor.name.toJavaClassifier()/]_key", msg, null, msgLevel, [elementEditor.name.toJavaIdentifier()/]);
+	}
 [/template]
 
 [comment delegate implementation for ViewReference/]
-[template public unsetMessageImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.unsetMessageSignature()/] {
-	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.unsetMessageFor[view.name.toJavaClassifier().trim()/]();	
-}	
+[template public setMessageImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+	[elementEditor.setMessageSignature()/] {
+		[referencedView.name.toJavaClassifier().toLowerFirst()/]PropertiesEditionPart.setMessageFor[elementEditor.name.toJavaClassifier()/](msg, msgLevel);
+	}
+[/template]
+
+[template public unsetMessageImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+	[elementEditor.unsetMessageSignature()/] {
+		messageManager.removeMessage("[elementEditor.name.toJavaClassifier()/]_key", [elementEditor.name.toJavaIdentifier()/]);
+	}
+[/template]
+
+[comment delegate implementation for ViewReference/]
+[template public unsetMessageImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+	[elementEditor.unsetMessageSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.unsetMessageFor[elementEditor.name.toJavaClassifier()/]();
+	}
 [/template]
 
 [comment ====== Widgets View setters for declaration ====== /]
-[template public setterDeclaration(view : ElementEditor) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable' or view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
-[view.updateSignatureDocumentation()/]
-	[view.updateSignature()/];
+[template public setterDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+[elementEditor.initSignatureDocumentation()/]
+	[elementEditor.initSignature()/];
+
+[elementEditor.updateSignatureDocumentation()/]
+	[elementEditor.updateSignature()/];
 [/template]
 
-[template public setterSignature(view : ElementEditor)]
-public void [view.viewCompletePackageSetter()/]
+[template public setterDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+[elementEditor.initSignatureDocumentation()/]
+	[elementEditor.initSignature()/];
+
+[elementEditor.updateSignatureDocumentation()/]
+	[elementEditor.updateSignature()/];
 [/template]
 
-[template public updateSignature(view : ElementEditor)]
-public void update[view.viewPackageSignature()/](EObject newValue)
+[template public setterDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio') or elementEditor.representationName('Combo') or elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
+[elementEditor.initSignatureDocumentation()/]
+	[elementEditor.initSignature()/];
+
+[elementEditor.setterSignatureDocumentation()/]
+	[elementEditor.setterSignature()/];
 [/template]
 
-[template public setterDeclaration(view : ElementEditor)]
-[view.setterSignatureDocumentation()/]
-	[view.setterSignature()/];
+[template public setterSignature(elementEditor : ElementEditor)]
+public void [elementEditor.viewCompletePackageSetter()/]
 [/template]
 
-[template public setterSignatureDocumentation(view : ElementEditor)]
+[template public updateSignature(elementEditor : ElementEditor)]
+public void update[elementEditor.viewPackageSignature()/](EObject newValue)
+[/template]
+
+[template public initSignature(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+public void init[elementEditor.viewPackageSignature()/](EEnum eenum, Enumerator current)
+[/template]
+
+[template public initSignature(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+public void init[elementEditor.viewPackageSignature()/](ResourceSet allResources, EObject current)
+[/template]
+
+[template public initSignature(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+public void init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+[/template]
+
+[template public setterDeclaration(elementEditor : ElementEditor)]
+[elementEditor.setterSignatureDocumentation()/]
+	[elementEditor.setterSignature()/];
+[/template]
+
+[template public setterSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * Defines a new [view.name/]
-	 * @param newValue the new [view.name/] to set
+	 * Defines a new [elementEditor.name/]
+	 * @param newValue the new [elementEditor.name/] to set
 	 */
 [/template]
 
-[template public updateSignatureDocumentation(view : ElementEditor)]
+[template public updateSignatureDocumentation(elementEditor : ElementEditor)]
 /**
-	 * Update the [view.name/]
-	 * @param newValue the [view.name/] to update
+	 * Update the [elementEditor.name/]
+	 * @param newValue the [elementEditor.name/] to update
+	 */
+[/template]
+
+[template public initSignatureDocumentation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+/**
+	 * Init the [elementEditor.name/]
+	 * @param eenum the enum to manage
+	 * @param current the current value
+	 */
+[/template]
+
+[template public initSignatureDocumentation(elementEditor : ElementEditor) ? (elementEditor.representationName('Combo'))]
+/**
+	 * Init the [elementEditor.name/]
+	 * @param eClass the eClass to manage
+	 * @param current the current value
+	 */
+[/template]
+
+[template public initSignatureDocumentation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
+/**
+	 * Init the [elementEditor.name/]
+	 * @param allResources the ResourceSet where the widget have to process
+	 * @param current the current value
+	 */
+[/template]
+
+[template public initSignatureDocumentation(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+/**
+	 * Init the [elementEditor.name/]
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
 	 */
 [/template]
 
 [comment ====== Widgets getter implementation ====== /]
-[template public getterImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable')]
-[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterAddSignatureImplementation()/]
+[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+	[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterAddSignatureImplementation()/]
 	
-	[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterRemoveSignatureImplementation()/]
+	[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterRemoveSignatureImplementation()/]
 [/template]
 
-[template public getterImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
-[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterAddSignatureImplementation()/]
+[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+	[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterAddSignatureImplementation()/]
 	
-	[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterRemoveSignatureImplementation()/]
+	[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterRemoveSignatureImplementation()/]
 	
-	[getterEditSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterEditSignatureImplementation()/];
+	[getterEditSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterEditSignatureImplementation()/]
 	
-	[getterMoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterMoveSignatureImplementation()/];
+	[getterMoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterMoveSignatureImplementation()/]
 	
-	[getterTableListSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterTableListSignatureImplementation()/];
+	[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterTableListSignatureImplementation()/]
 [/template]
 
-[template public getterImplementation(view : ElementEditor, fullInterfacePath : String)]
-[getterSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.getterSignatureImplementation()/]
+[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+	[getterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterSignatureImplementation()/]
+[/template]
+
+[comment delegate implementation for SubView/]
+[template public getterForSubViewsImplementationDelegate(view : View, fullInterfacePath : String)]
+[view.getterSignatureDocumentationImplementation(fullInterfacePath)/]
+		[view.getterSignature()/] {
+			return (IPropertiesEditionPart) [view.pepInterface().toLowerFirst()/];
+		}
 [/template]
 
 [comment delegate implementation for ViewReference/]
-[template public getterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable')]
-[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterAddSignature()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToAdd();
-}
+[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+	[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterAddSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToAdd();
+	}
 
-[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterRemoveSignature()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToRemove();
-}
-[/template]
-
-[template public getterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
-[getterAddSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterAddSignature()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToAdd();
-}
-
-[getterRemoveSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterRemoveSignature()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToRemove();
-}
-
-[getterEditSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterEditSignature().trim()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]ToEdit();
-}
-
-[getterTableListSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterTableListSignature().trim()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageGetter()/]Table();
-}
-[/template]
-
-[template public getterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference)]
-[getterSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.getterSignature()/] {
-	return [viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewCompletePackageGetter()/];
-}	
-[/template]
-[template public getterSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[view.viewCompletePackageGetter()/]
-	 */
-[/template]
-
-[template public getterAddSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToAdd()
-	 */
-[/template]
-
-[template public getterRemoveSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToRemove()
-	 */
-[/template]
-
-[template public getterMoveSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToMove()
-	 */
-[/template]
-
-[template public getterEditSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]ToEdit()
-	 */
-[/template]
-
-[template public getterTableListSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[view.viewPackageGetter()/]Table()
-	 */
-[/template]
-
-[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.getterSignature()/] {
-		return [view.name.toJavaIdentifier()/].getText();
+	[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterRemoveSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToRemove();
 	}
 [/template]
 
-[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EENumViewer')]
-[view.getterSignature()/] {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) [view.name.toJavaIdentifier().trim()/].getSelection()).getFirstElement();
+[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+	[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterAddSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToAdd();
+	}
+
+	[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterRemoveSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToRemove();
+	}
+
+	[getterEditSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterEditSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToEdit();
+	}
+
+	[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterTableListSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]Table();
+	}
+[/template]
+
+[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View)]
+	[getterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.getterSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewCompletePackageGetter()/];
+	}
+[/template]
+
+[template public getterSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewCompletePackageGetter()/]
+	 */
+[/template]
+
+[template public getterSignatureDocumentationImplementation(view : View, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#get[view.name.toJavaClassifier()/]SubView()
+	 */
+[/template]
+
+[template public getterAddSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToAdd()
+	 */
+[/template]
+
+[template public getterRemoveSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToRemove()
+	 */
+[/template]
+
+[template public getterMoveSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToMove()
+	 */
+[/template]
+
+[template public getterEditSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToEdit()
+	 */
+[/template]
+
+[template public getterTableListSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]Table()
+	 */
+[/template]
+
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+[elementEditor.getterSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/].getText();
+	}
+[/template]
+
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer'))]
+[elementEditor.getterSignature()/] {
+		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
 		return selection.getInstance();
 	}
 [/template]
 
-[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EObjectFlatComboViewer')]
-[view.getterSignature()/] {
-		if ([view.name.toJavaIdentifier().trim()/].getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) [view.name.toJavaIdentifier().trim()/].getSelection()).getFirstElement();
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer'))]
+[elementEditor.getterSignature()/] {
+		if ([elementEditor.name.toJavaIdentifier()/].getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
 			if (firstElement instanceof EObject)
 				return (EObject) firstElement;
 		}
@@ -327,155 +424,326 @@ public void update[view.viewPackageSignature()/](EObject newValue)
 	}
 [/template]
 
-[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'AdvancedEObjectFlatComboViewer')]
-[view.getterSignature()/] {		
-		return [view.name.toJavaIdentifier().trim()/].getSelection();
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
+[elementEditor.getterSignature()/] {		
+		return [elementEditor.name.toJavaIdentifier()/].getSelection();
 	}
 [/template]
 
-[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Checkbox')]
-[view.getterSignature()/] {
-		return Boolean.valueOf([view.name.toJavaIdentifier().trim()/].getSelection());
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Checkbox'))]
+[elementEditor.getterSignature()/] {
+		return Boolean.valueOf([elementEditor.name.toJavaIdentifier()/].getSelection());
 	}
 [/template]
 
-[template public getterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'MultiValuedEditor')]
-[view.getterSignature()/] {
-		return [view.name.toJavaIdentifier()/]List;
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('MultiValuedEditor'))]
+[elementEditor.getterSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]List;
 	}
 [/template]
 
-[template public getterAddSignatureImplementation(view : ElementEditor)]
-[view.getterAddSignature()/] {
-		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToAdd();
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Radio'))]
+[elementEditor.getterSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]RadioViewer.getSelection();
 	}
 [/template]
 
-[template public getterRemoveSignatureImplementation(view : ElementEditor)]
-[view.getterRemoveSignature()/] {
-		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToRemove();
+[template public getterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Combo'))]
+[elementEditor.getterSignature()/] {
+		if ([elementEditor.name.toJavaIdentifier()/].getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (EObject) firstElement;
+		}
+		return "";
 	}
 [/template]
 
-[template public getterMoveSignatureImplementation(view : ElementEditor)]
-[view.getterMoveSignature()/] {
-		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToMove();
+[template public getterAddSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.getterAddSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToAdd();
 	}
 [/template]
 
-[template public getterEditSignatureImplementation(view : ElementEditor)]
-[view.getterEditSignature().trim()/] {
-		return [view.name.toJavaIdentifier().trim()/]EditUtil.getElementsToRefresh();
+[template public getterRemoveSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.getterRemoveSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToRemove();
 	}
 [/template]
 
-[template public getterTableListSignatureImplementation(view : ElementEditor)]
-[view.getterTableListSignature().trim()/] {
-		return [view.name.toJavaIdentifier().trim()/]EditUtil.getVirtualList();
+[template public getterMoveSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.getterMoveSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToMove();
 	}
 [/template]
 
-[template public getterSignatureImplementation(view : ElementEditor)]
-[view.getterSignature()/] {
-		ERROR [view.representation.name/]
+[template public getterEditSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.getterEditSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToRefresh();
+	}
+[/template]
+
+[template public getterTableListSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.getterTableListSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getVirtualList();
+	}
+[/template]
+
+[template public getterSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.getterSignature()/] {
+		//FIXME ERROR NO VALID CASE INTO template public getterSignatureImplementation(elementEditor : ElementEditor) in viewgetterSetters.mtl module
+		return null;
 	}
 [/template]
 
 [comment ====== Widgets setter implementation ====== /]
-[template public setterImplementation(view : ElementEditor, fullInterfacePath : String) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable' or view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
-[updateSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.updateSignatureImplementation()/]
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignatureImplementation()/]
+
+	[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.updateSignatureImplementation()/]
 [/template]
 
-[template public setterImplementation(view : ElementEditor, fullInterfacePath : String)]
-[setterSignatureDocumentationImplementation(view, fullInterfacePath)/]
-	[view.setterSignatureImplementation()/]
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
+	}
+
+	[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.updateSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
+	}
 [/template]
 
-[comment delegate implementation for ViewReference/]
-[template public setterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference) ? (view.representation.name = 'ReferencesTable' or view.representation.name = 'AdvancedReferencesTable' or view.representation.name = 'TableComposition' or view.representation.name = 'AdvancedTableComposition')]
-[updateSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.updateSignature()/] {
-	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.update[view.viewPackageSignature()/](newValue);
-}
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignatureImplementation()/]
+
+	[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.updateSignatureImplementation()/]
 [/template]
 
-[template public setterImplementationDelegate(view : ElementEditor, fullInterfacePath : String, viewRef : ViewReference)]
-[setterSignatureDocumentationImplementation(view, fullInterfacePath)/]
-[view.setterSignature()/] {
-	[viewRef.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.[view.viewPackageSetter()/](newValue);
-}	
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
+	}
+
+	[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.updateSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
+	}
 [/template]
 
-[template public setterSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignatureImplementation()/]
+
+	[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.setterSignatureImplementation()/]
+[/template]
+
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](eenum, current);	
+	}
+
+	[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.setterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](newValue);
+	}
+[/template]
+
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))] 
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignatureImplementation()/]
+
+	[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.setterSignatureImplementation()/]
+[/template]
+
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+	[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.initSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](allResources, current);	
+	}
+
+	[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.setterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](newValue);
+	}
+[/template]
+
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+	[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.setterSignatureImplementation()/]
+[/template]
+
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View)]
+	[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+	[elementEditor.setterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](newValue);
+	}
+[/template]
+
+[comment Setters/]
+[template public setterSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
 /**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#[view.viewCompletePackageSetter()/]
+	 * @see [fullInterfacePath/]#[elementEditor.viewCompletePackageSetter()/]
 	 */
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Text' or view.representation.name = 'Textarea')]
-[view.setterSignature()/] {
-		[view.name.toJavaIdentifier()/].setText(newValue);
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
+[elementEditor.setterSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/].setText(newValue);
 	}
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EENumViewer')]
-[view.setterSignature()/] {
-		[view.name.toJavaIdentifier().trim()/].modelUpdating(new StructuredSelection(newValue));
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer'))]
+[elementEditor.setterSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(newValue));
 	}
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'EObjectFlatComboViewer')]
-[view.setterSignature()/] {
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer'))]
+[elementEditor.setterSignature()/] {
 		if (newValue != null)
-			[view.name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
 		else
-			[view.name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'AdvancedEObjectFlatComboViewer')]
-[view.setterSignature()/] {
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
+[elementEditor.setterSignature()/] {
 		if (newValue != null){
-			[view.name.toJavaIdentifier().trim()/].setSelection(newValue);
+			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue);
 		}
 	}
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'Checkbox')]
-[view.setterSignature()/] {
-		[view.name.toJavaIdentifier().trim()/].setSelection(newValue.booleanValue());
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Checkbox'))]
+[elementEditor.setterSignature()/] {
+		if (newValue != null) {
+			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue.booleanValue());
+		} else {
+			[elementEditor.name.toJavaIdentifier()/].setSelection(false);
+		}
 	}
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor) ? (view.representation.name = 'MultiValuedEditor')]
-[view.setterSignature()/] {
-		[view.name.toJavaIdentifier()/]List = newValue;
-		[view.name.toJavaIdentifier()/]Text.setText([view.name.toJavaIdentifier()/]List.toString());
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('MultiValuedEditor'))]
+[elementEditor.setterSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/]List = newValue;
+		[elementEditor.name.toJavaIdentifier()/]Text.setText([elementEditor.name.toJavaIdentifier()/]List.toString());
 	}
 [/template]
 
-[template public setterSignatureImplementation(view : ElementEditor)]
-[view.setterSignature()/] {
-		ERROR [view.representation.name/]
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Radio'))]
+[elementEditor.setterSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(newValue);
 	}
 [/template]
 
-[template public updateSignatureDocumentationImplementation(view : ElementEditor, fullInterfacePath : String)]
+[template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Combo'))]
+[elementEditor.setterSignature()/] {
+		if (newValue != null)
+			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(newValue));
+		else
+			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(""));
+	}
+[/template]
+
+[template public setterSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.setterSignature()/] {
+		//FIXME ERROR NO VALID CASE INTO template public setterSignatureImplementation(elementEditor : ElementEditor) in viewGettersSetters.mtl module
+	}
+[/template]
+
+[template public updateSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
 /**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#update[view.viewPackageSignature()/](EObject newValue)
+	 * @see [fullInterfacePath/]#update[elementEditor.viewPackageSignature()/](EObject newValue)
 	 */
 [/template]
 
-[template public updateSignatureImplementation(view : ElementEditor)]
-[view.updateSignature()/] {
-		if([view.name.toJavaIdentifier().trim()/]EditUtil!=null){
-			[view.name.toJavaIdentifier().trim()/]EditUtil.reinit(newValue);
-			[view.name.toJavaIdentifier().trim()/].refresh();
-		}		
+[template public updateSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.updateSignature()/] {
+		if([elementEditor.name.toJavaIdentifier()/]EditUtil!=null){
+			[elementEditor.name.toJavaIdentifier()/]EditUtil.reinit(newValue);
+			[elementEditor.name.toJavaIdentifier()/].refresh();
+		}
+	}
+[/template]
+
+[template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EMFComboViewer'))]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EEnum eenum, Enumerator current)
+	 */
+[/template]
+
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer'))]
+[elementEditor.initSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/].setInput(eenum.getELiterals());
+		[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+	}
+[/template]
+
+[template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('Radio'))]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EEnum eenum, Enumerator current)
+	 */
+[/template]
+
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[elementEditor.initSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setInput(eenum.getELiterals());
+		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(current);
+	}
+[/template]
+
+[template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](ResourceSet allResources, EObject current)
+	 */
+[/template]
+
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+[elementEditor.initSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/].setInput(allResources);
+		if (current != null)
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+	}
+[/template]
+
+[template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+	 */
+[/template]
+
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+[elementEditor.initSignature()/] {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			[elementEditor.name.toJavaIdentifier()/]EditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			[elementEditor.name.toJavaIdentifier()/]EditUtil = new EMFListEditUtil(current, feature);
+		this.[elementEditor.name.toJavaIdentifier()/].setInput([elementEditor.name.toJavaIdentifier()/]EditUtil.getVirtualList());
 	}
 [/template]

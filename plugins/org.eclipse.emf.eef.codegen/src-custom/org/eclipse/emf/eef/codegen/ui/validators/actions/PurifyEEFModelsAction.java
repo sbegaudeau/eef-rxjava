@@ -8,35 +8,39 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.codegen.ui.generators.actions;
+package org.eclipse.emf.eef.codegen.ui.validators.actions;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.CrossReferencer;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
-import org.eclipse.emf.eef.codegen.ui.generators.common.GenerateAll;
+import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
@@ -44,17 +48,16 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class GenerateEEFAction implements IObjectActionDelegate {
+public class PurifyEEFModelsAction implements IObjectActionDelegate {
 
-	private Shell shell;
 	private URI modelURI;
 	private IFile selectedFile;
 	private EEFGenModel eefGenModel;
-	// 10 * genContext + 5 * genRepository + 1
+
 	/**
 	 * Constructor for Action1.
 	 */
-	public GenerateEEFAction() {
+	public PurifyEEFModelsAction() {
 		super();
 		selectedFile = null;
 		eefGenModel = null;
@@ -64,57 +67,67 @@ public class GenerateEEFAction implements IObjectActionDelegate {
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		shell = targetPart.getSite().getShell();
 	}
 
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		try {
-			if (selectedFile != null) {
+		if (selectedFile != null) {
+			try {
 				modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
-				final IContainer target = getGenContainer();
+				IContainer target = getGenContainer();
 				if (target != null) {
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
+					int processCount = 0;
+					Set<Resource> resourcesToSave = new HashSet<Resource>();
+					eefGenModel = getEEFGenModel();
+					if (eefGenModel != null) {
+						int count = 0;
+						if (eefGenModel.getEditionContexts() != null)
+							count += eefGenModel.getEditionContexts().size();
+						if (eefGenModel.getViewsRepositories() != null)
+							count += eefGenModel.getViewsRepositories().size();
+						ResourceSet resourceSet = eefGenModel.eResource().getResourceSet();
+						EcoreUtil.resolveAll(resourceSet);
+						CrossReferencer referencer = new CrossReferencer(resourceSet) {
+							/**
+							 * Serialization ID
+							 */
+							private static final long serialVersionUID = -8116181119811335250L;
 
-						public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-							try {
-								eefGenModel = getEEFGenModel();
-								if (eefGenModel != null) {
-									int count = 2;
-									if (eefGenModel.getEditionContexts() != null)
-										count += eefGenModel.getEditionContexts().size() * 11;
-									if (eefGenModel.getViewsRepositories() != null)
-										count += eefGenModel.getViewsRepositories().size() * 5;
-									monitor.beginTask("Generating EEF Architecture", count);
-									GenerateAll generator = new GenerateAll(target.getLocation().toFile(), getEEFGenModel());
-									generator.doGenerate(monitor);
-									target.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-									monitor.worked(1);
+							{
+								crossReference();
+							}
+						};
+						for (GenViewsRepository genViewsRepository : eefGenModel.getViewsRepositories()) {
+							TreeIterator<EObject> allContents = genViewsRepository.getViewsRepository().eAllContents();
+							while (allContents.hasNext()) {
+								EObject next = allContents.next();
+								if (next instanceof ElementEditor) {
+									ElementEditor elementEditor = (ElementEditor)next;
+									Collection<Setting> references = referencer.get(next);
+									if (references == null || references.size() == 0) {
+										if (elementEditor.eContainer().eGet(elementEditor.eContainingFeature()) instanceof EList) {
+											processCount++;
+											EEFCodegenPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, EEFCodegenPlugin.PLUGIN_ID, elementEditor.getName() + " (" + ((XMIResourceImpl)elementEditor.eResource()).getID(elementEditor) + ") will be removed"));
+											resourcesToSave.add(elementEditor.eContainer().eResource());
+											((EList)elementEditor.eContainer().eGet(elementEditor.eContainingFeature())).remove(elementEditor);
+										}
+									}
 								}
-							} catch (IOException e) {
-								EEFCodegenPlugin.getDefault().logError(e);
-							} catch (CoreException e) {
-								EEFCodegenPlugin.getDefault().logError(e);
 							}
-							finally {
-								monitor.done();
-								selectedFile = null;
-								eefGenModel = null;
-							}
+							selectedFile = null;
+							eefGenModel = null;
 						}
-
-					};
-					new ProgressMonitorDialog(shell).run(true, true, runnable);
+						for (Resource resource : resourcesToSave) {
+							resource.save(Collections.EMPTY_MAP);
+						}
+						EEFCodegenPlugin.getDefault().getLog().log(new Status(IStatus.OK, EEFCodegenPlugin.PLUGIN_ID, "Purification done. " + processCount + " element removed."));
+					}
 				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} catch (InvocationTargetException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} catch (InterruptedException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} catch (IOException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
 		}
 	}
 
@@ -127,10 +140,10 @@ public class GenerateEEFAction implements IObjectActionDelegate {
 			if (sSelection.getFirstElement() instanceof IFile) {
 				this.selectedFile = (IFile) sSelection.getFirstElement();
 			}
-			
+
 		}
 	}
-	
+
 	private EEFGenModel getEEFGenModel() throws IOException {
 		if (eefGenModel != null)
 			return eefGenModel;
@@ -162,8 +175,8 @@ public class GenerateEEFAction implements IObjectActionDelegate {
 			return null;
 		}
 	}
-	
-	
+
+
 	public IContainer getGenContainer() throws IOException {
 		eefGenModel = getEEFGenModel();
 		if (eefGenModel != null) {
@@ -174,6 +187,18 @@ public class GenerateEEFAction implements IObjectActionDelegate {
 		}
 		return null;
 	}
-	
+
+	class EEFElementEditorReferenceError {
+
+		private ElementEditor element;
+
+		public EEFElementEditorReferenceError(ElementEditor element) {
+			this.element = element;
+		}
+
+		public String getErrorMsg() {
+			return "ElementEditor '" + element.getName() + "' (" + ((XMIResourceImpl)element.eResource()).getID(element) + ") seems to not be referenced";
+		}
+	}
 
 }

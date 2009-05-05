@@ -21,6 +21,7 @@
 	if (editor.container.oclIsTypeOf(Container)) then editor.container.editionPart()
 	else editor.container.oclAsType(View).pepFormClass()
 	endif /]
+
 [comment ===== imports management ===== /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'EObjectFlatComboViewer')]
@@ -31,8 +32,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('EObjectFlatComboViewer')).propertiesEditionElement(pec) )]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];	
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('EObjectFlatComboViewer')).involvedPropertiesEditionElement() )]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [/template]
 
@@ -46,12 +47,12 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedEObjectFlatComboViewer')).propertiesEditionElement(pec) )]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedEObjectFlatComboViewer')).involvedPropertiesEditionElement())]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [/template]
 
-[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'EENumViewer')]
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'EMFComboViewer')]
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -59,7 +60,7 @@ import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.emf.eef.runtime.ui.widgets.EENumViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 [/template]
@@ -82,7 +83,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.EENumViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
@@ -93,6 +95,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -117,8 +120,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('ReferencesTable')).propertiesEditionElement(pec) )]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];	
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('ReferencesTable')).involvedPropertiesEditionElement())]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [/template]
 
@@ -142,8 +145,8 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedReferencesTable')).propertiesEditionElement(pec) )]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];	
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedReferencesTable')).involvedPropertiesEditionElement())]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -173,11 +176,11 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TableColumn;
 
-[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('TableComposition')).propertiesEditionElement(pec).model.eType.ePackage->asSet() )]
+[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('TableComposition')).involvedPropertiesEditionElement().model.eType.ePackage->asSet() )]
 import [pec.model.completePackage()/].[ePackage.metamodelFactory()/];
 [/for]
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('TableComposition')).propertiesEditionElement(pec) )]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('TableComposition')).involvedPropertiesEditionElement() )]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [/template]
 
@@ -186,11 +189,11 @@ import java.util.Map;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedTableComposition')).propertiesEditionElement(pec).model.eType.ePackage->asSet() )]
+[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedTableComposition')).involvedPropertiesEditionElement().model.eType.ePackage->asSet() )]
 import [pec.model.completePackage()/].[ePackage.metamodelFactory()/];
 [/for]
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedTableComposition')).propertiesEditionElement(pec) )]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];	
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedTableComposition')).involvedPropertiesEditionElement() )]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [/template]
 
@@ -202,6 +205,18 @@ import org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox;
 import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 [/template]
 
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'Radio')]
+import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+[/template]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'Combo')]
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+[/template]
 
 [comment ====== Widgets declaration ====== /]
 [template public widgetDeclaration(editor : SpecificElementEditor)]
@@ -210,115 +225,169 @@ import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 	// [/protected]
 [/template]
 
-[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.toolkit.name = 'SWT' and editor.representation.name <> 'Table')]
-private [editor.implementationClass().trim()/] [editor.name.toJavaIdentifier().trim()/];
+[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and (editor.representation.name = 'Text' or editor.representation.name = 'Textarea'))]
+private Text [editor.name.toJavaIdentifier()/];
+[/template]
+
+[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Checkbox')]
+private Button [editor.name.toJavaIdentifier()/];
+[/template]
+
+[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Radio')]
+private RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EObjectFlatComboViewer')]
-private EObjectFlatComboViewer [editor.name.toJavaIdentifier().trim()/];
+protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-private AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier().trim()/];
+private AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'ReferencesTable')]
-protected EMFListEditUtil [editor.name.toJavaIdentifier().trim()/]EditUtil;
-	private TableViewer [editor.name.toJavaIdentifier().trim()/];
-	private Button add[editor.name.toJavaIdentifier().trim().toUpperFirst()/];
-	private Button remove[editor.name.toJavaIdentifier().trim().toUpperFirst()/];
+protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	private TableViewer [editor.name.toJavaIdentifier()/];
+	private Button add[editor.name.toJavaClassifier()/];
+	private Button remove[editor.name.toJavaClassifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
-private EMFListEditUtil [editor.name.toJavaIdentifier().trim()/]EditUtil;
-	private ReferencesTable<?[comment editor.propertiesEditionElement(pec).model.eType.name/]> [editor.name.toJavaIdentifier().trim()/];
+private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 [/template]
 
-
-[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EENumViewer')]
-private EENumViewer [editor.name.toJavaIdentifier().trim()/];
+[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
+private EMFComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
-private Text [editor.name.toJavaIdentifier().trim()/]Text;
-	private Button edit[editor.name.toJavaClassifier().trim()/];
-	private EList [editor.name.toJavaIdentifier().trim()/]List;
+private Text [editor.name.toJavaIdentifier()/]Text;
+	private Button edit[editor.name.toJavaClassifier()/];
+	private EList [editor.name.toJavaIdentifier()/]List;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'TableComposition')]
-private EMFListEditUtil [editor.name.toJavaIdentifier().trim()/]EditUtil;
-	private TableViewer [editor.name.toJavaIdentifier().trim()/];
+private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	private TableViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
-private EMFListEditUtil [editor.name.toJavaIdentifier().trim()/]EditUtil;
-	private ReferencesTable<?[comment editor.propertiesEditionElement(pec).model.eType.name/]> [editor.name.toJavaIdentifier().trim()/];
+private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 [/template]
 
+[template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
+private EMFComboViewer [editor.name.toJavaIdentifier()/];
+[/template]
+
+[template public widgetDeclaration(editor : ElementEditor)]
+//FIXME INVALID CASE INTO template public widgetDeclaration(editor : ElementEditor) in viewFormUtils.mtl module
+[/template]
+
+[comment ====== Widgets declaration for View References====== /]
 [template public widgetDeclaration(reference : ViewReference)]
-private [reference.view.name.toJavaClassifier().trim().toUpperFirst()/]PropertiesEditionPartForm  [reference.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart;
-[/template] 
+private [reference.view.oclAsType(views::View).pepInterface()/] [reference.view.oclAsType(views::View).pepInterface().toLowerFirst()/];
+[/template]
+
+[template public widgetDeclaration(subView : View)]
+private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
+[/template]
+
+[template public widgetDeclarationForViewReference(view : View)]
+[for (element : ViewElement | view.eAllContents(views::ViewReference))]
+	[element.oclAsType(ViewReference).widgetDeclaration()/]
+[/for]
+[/template]
+
+[template public widgetDeclarationForSubViews(view : View)]
+[for (element : ViewElement | view.elements->select(oclIsKindOf(views::View)))]
+	[element.oclAsType(View).widgetDeclaration()/]
+[/for]
+[/template]
 
 [comment ====== Widgets implementation ====== /]
+[comment default /]
+[template public implementation(editor : ViewElement)]
+//FIXME INVALID CASE INTO template public implementation(editor : ViewElement, pec : PropertiesEditionComponent) in viewUtils.mtl module
+[/template]
 
+[template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent)]
+//FIXME INVALID CASE INTO template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent) in viewUtils.mtl module
+[/template]
 
-[template public implementation(editor : ViewElement, pec : PropertiesEditionComponent)/]
+[comment ViewReference /]
+[template public implementation(reference : ViewReference)]
+		create[reference.view.name.toJavaClassifier()/](widgetFactory, [reference.widgetContainer().trim()/]);
+[/template]
 
-[template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent)/]
+[template public additionalImplementation(reference : ViewReference, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)][let referencedView : View = reference.view.oclAsType(views::View)]
+	protected void create[reference.view.name.toJavaClassifier()/](FormToolkit widgetFactory, Composite container) {
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([referencedView.owningViewsRepository().vrClass()/].class);
+		[referencedView.pepInterface().toLowerFirst()/] = ([referencedView.pepInterface()/])provider.getPropertiesEditionPart([referencedView.editorID()/].class, [referencedView.owningViewsRepository().vrClass()/].FORM_KIND, propertiesEditionComponent);
+		((IFormPropertiesEditionPart)[referencedView.pepInterface().toLowerFirst()/]).createControls(widgetFactory, container, messageManager);
+	}
+[/let][/template]
 
-[template public implementation(reference : ViewReference, pec : PropertiesEditionComponent)]
-	create[reference.view.name.toJavaClassifier().trim()/](widgetFactory, [reference.widgetContainer().trim()/]);
-[/template] 
+[comment SubViews /]
+[template public implementation(view : View)]
+		if (propertiesEditionComponent.mustBeComposed([view.editorID()/].class, [view.owningViewsRepository().vrClass()/].FORM_KIND))
+			create[view.name.toJavaClassifier()/]SubView(widgetFactory, [view.widgetContainer().trim()/]);
+[/template]
 
-[template public additionalImplementation(reference : ViewReference, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)]
-private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()/](FormToolkit widgetFactory, Composite container) {
-	[reference.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart = new [reference.view.name.toJavaClassifier().trim().toUpperFirst()/]PropertiesEditionPartForm(super.propertiesEditionComponent);
-	[reference.view.name.toJavaClassifier().trim().toLowerFirst()/]PropertiesEditionPart.createControls(widgetFactory, container, messageManager);
-}
-[/template] 
+[template public additionalImplementation(view : View, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)]
+	protected void create[view.name.toJavaClassifier()/]SubView(FormToolkit widgetFactory, Composite container) {
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([view.owningViewsRepository().vrClass()/].class);
+		[view.pepInterface().toLowerFirst()/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([view.editorID()/].class, [view.owningViewsRepository().vrClass()/].FORM_KIND, propertiesEditionComponent);
+		((IFormPropertiesEditionPart)[view.pepInterface().toLowerFirst()/]).createControls(widgetFactory, container, messageManager);
+	}
+[/template]
 
-[template public implementation(editor : SpecificElementEditor, pec : PropertiesEditionComponent)]
+[comment SpecificElementEditor /]
+[template public implementation(editor : SpecificElementEditor)]
 // [protected ('for '.concat(editor.name).concat(' widgets implementation'))]
-	
+		
 		// [/protected]
-[/template] 
+[/template]
 
-[comment  TODO: Manage multiple group name after Unedic non-reg/]
-[template public implementation(editor : Container, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Group')]
-		create[editor.name.toJavaClassifier().trim()/]Group(widgetFactory, [editor.widgetContainer().trim()/]);
+[comment Group /]
+[comment TODO: Manage multiple group name after Unedic non-reg/]
+[template public implementation(editor : Container) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Group')]
+		create[editor.name.toJavaClassifier()/]Group(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (editor.representation.name = 'Group')]
-	private void create[editor.name.toJavaClassifier().trim()/]Group(FormToolkit widgetFactory, final Composite [editor.widgetContainer().trim()/]) {
-		Section [editor.name.toJavaIdentifier().trim()/]Section = widgetFactory.createSection([editor.widgetContainer().trim()/], Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		[editor.name.toJavaIdentifier().trim()/]Section.setText([pec.editionContext().messagesProvider()/].[editor.groupKey(editor.owningView()).trim()/]);
-		GridData [editor.name.toJavaIdentifier().trim()/]SectionData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]SectionData.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier().trim()/]Section.setLayoutData([editor.name.toJavaIdentifier().trim()/]SectionData);
-		Composite [editor.name.toJavaIdentifier().trim()/]Group = widgetFactory.createComposite([editor.name.toJavaIdentifier().trim()/]Section);
-		GridLayout [editor.name.toJavaIdentifier().trim()/]GroupLayout = new GridLayout();
-		[editor.name.toJavaIdentifier().trim()/]GroupLayout.numColumns = 3;
-		[editor.name.toJavaIdentifier().trim()/]Group.setLayout([editor.name.toJavaIdentifier().trim()/]GroupLayout);
-   		[for (element : ViewElement | editor.elements)]
-		[element.implementation(pec).trim()/]
-   		[/for]
-		[editor.name.toJavaIdentifier().trim()/]Section.setClient([editor.name.toJavaIdentifier().trim()/]Group);
-	}   		
+	protected void create[editor.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite [editor.widgetContainer().trim()/]) {
+		Section [editor.name.toJavaIdentifier()/]Section = widgetFactory.createSection([editor.widgetContainer().trim()/], Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		[editor.name.toJavaIdentifier()/]Section.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);
+		GridData [editor.name.toJavaIdentifier()/]SectionData = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]SectionData.horizontalSpan = 3;
+		[editor.name.toJavaIdentifier()/]Section.setLayoutData([editor.name.toJavaIdentifier()/]SectionData);
+		Composite [editor.name.toJavaIdentifier()/]Group = widgetFactory.createComposite([editor.name.toJavaIdentifier()/]Section);
+		GridLayout [editor.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
+		[editor.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
+		[editor.name.toJavaIdentifier()/]Group.setLayout([editor.name.toJavaIdentifier()/]GroupLayout);
+[for (element : ViewElement | editor.elements)]
+[element.implementation()/]
+[/for]
+		[editor.name.toJavaIdentifier()/]Section.setClient([editor.name.toJavaIdentifier()/]Group);
+	}
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Text')]
-		create[editor.name.toJavaClassifier().trim()/]Text(widgetFactory, [editor.widgetContainer().trim()/]);
+[comment Text /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Text')]
+		create[editor.name.toJavaClassifier()/]Text(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Text')]
-	private void create[editor.name.toJavaClassifier().trim()/]Text(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
-		[editor.name.toJavaIdentifier().trim()/] = widgetFactory.createText(parent, "");  //$NON-NLS-1$
-		[editor.name.toJavaIdentifier().trim()/].setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	protected void create[editor.name.toJavaClassifier()/]Text(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		[editor.name.toJavaIdentifier()/] = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		[editor.name.toJavaIdentifier()/].setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		[editor.name.toJavaIdentifier().trim()/].addModifyListener(new ModifyListener() {
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].addModifyListener(new ModifyListener() {
 
 			/**
 			 * {@inheritDoc}
@@ -327,11 +396,11 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.CHANGE, PathedPropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier().trim()/].getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 			}
 			
 		});
-		[editor.name.toJavaIdentifier().trim()/].addFocusListener(new FocusAdapter() {
+		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -340,11 +409,11 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier().trim()/].getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 			}
-			
+
 		});
-		[editor.name.toJavaIdentifier().trim()/].addKeyListener(new KeyAdapter() {
+		[editor.name.toJavaIdentifier()/].addKeyListener(new KeyAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -354,23 +423,29 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier().trim()/].getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 				}
 			}
 			
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, [editor.helpText(pec)/], null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEditable(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 	}
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Checkbox')]
-	create[editor.name.toJavaClassifier().trim()/]Checkbox(widgetFactory, [editor.widgetContainer().trim()/]);
+[comment Checkbox /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Checkbox')]
+		create[editor.name.toJavaClassifier()/]Checkbox(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Checkbox' and editor.container.representation.name='HorizontalBox')]
-	private void create[editor.name.toJavaClassifier().trim()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
-		[editor.name.toJavaIdentifier().trim()/] = widgetFactory.createButton(parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], SWT.CHECK);
-   		[editor.name.toJavaIdentifier().trim()/].addSelectionListener(new SelectionAdapter() {
+	protected void create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
+		[editor.name.toJavaIdentifier()/] = widgetFactory.createButton(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], SWT.CHECK);
+		[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -379,22 +454,21 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, new Boolean([editor.name.toJavaIdentifier().trim()/].getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean([editor.name.toJavaIdentifier()/].getSelection())));
 			}
-   			
-   			
-   		});
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		//[editor.name.toJavaIdentifier().trim()/]Data.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		FormUtils.createHelpButton(widgetFactory, parent, [editor.helpText(pec)/], null); //$NON-NLS-1$
+			
+		});
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		//[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Checkbox')]
-	private void create[editor.name.toJavaClassifier().trim()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
-		[editor.name.toJavaIdentifier().trim()/] = widgetFactory.createButton(parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], SWT.CHECK);
-   		[editor.name.toJavaIdentifier().trim()/].addSelectionListener(new SelectionAdapter() {
+	protected void create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
+		[editor.name.toJavaIdentifier()/] = widgetFactory.createButton(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], SWT.CHECK);
+		[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -403,34 +477,34 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, new Boolean([editor.name.toJavaIdentifier().trim()/].getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean([editor.name.toJavaIdentifier()/].getSelection())));
 			}
-   			
-   			
-   		});
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]Data.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		FormUtils.createHelpButton(widgetFactory, parent, [editor.helpText(pec)/], null); //$NON-NLS-1$
+			
+		});
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Textarea')]
-	create[editor.name.toJavaClassifier().trim()/]Textarea(widgetFactory, [editor.widgetContainer().trim()/]);
+[comment Textarea /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Textarea')]
+		create[editor.name.toJavaClassifier()/]Textarea(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Textarea')]
-	private void create[editor.name.toJavaClassifier().trim()/]Textarea(FormToolkit widgetFactory, Composite parent) {
-		Label [editor.name.toJavaIdentifier().trim()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
-		GridData [editor.name.toJavaIdentifier().trim()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]LabelData.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier().trim()/]Label.setLayoutData([editor.name.toJavaIdentifier().trim()/]LabelData);
-		[editor.name.toJavaIdentifier().trim()/] = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]Data.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier().trim()/]Data.heightHint = 80;
-		[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);		
-		[editor.name.toJavaIdentifier().trim()/].addFocusListener(new FocusAdapter() {
+	protected void create[editor.name.toJavaClassifier()/]Textarea(FormToolkit widgetFactory, Composite parent) {
+		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
+		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
+		[editor.name.toJavaIdentifier()/] = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/]Data.heightHint = 80;
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -439,11 +513,11 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier().trim()/].getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 			}
-			
+
 		});
-		[editor.name.toJavaIdentifier().trim()/].addKeyListener(new KeyAdapter() {
+		[editor.name.toJavaIdentifier()/].addKeyListener(new KeyAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -453,28 +527,44 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier().trim()/].getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 				}
 			}
-			
+
 		});
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEditable(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningView()/]_ReadOnly);
+		[/if]
 	}
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EObjectFlatComboViewer')]
-		create[editor.name.toJavaClassifier().trim()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
+[comment EObjectFlatComboViewer /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EObjectFlatComboViewer')]
+		create[editor.name.toJavaClassifier()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EObjectFlatComboViewer')]
 	/**
 	 * @param [editor.widgetContainer().trim()/]
 	 */
-	protected void create[editor.name.toJavaClassifier().trim()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 	
-		FormUtils.createPartLabel(widgetFactory, parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
-		[editor.name.toJavaIdentifier().trim()/] = new EObjectFlatComboViewer(parent, [editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0/]);
-		[editor.name.toJavaIdentifier().trim()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		[editor.name.toJavaIdentifier().trim()/].addFilter(new ViewerFilter() {
+		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, [editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0/]);
+		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
+
+		// [protected ('for '.concat(editor.name.toJavaIdentifier()).concat(' filters initialisation'))]
+		
+		// [/protected]
+
+		[editor.name.toJavaIdentifier()/].addFilter(new ViewerFilter() {
 
 			/*
 			 * (non-Javadoc)
@@ -482,15 +572,15 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editor.propertiesEditionElement(pec).model.eType.name/]); [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+				return [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editor.involvedPropertiesEditionElement().model.eType.name/]); [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 				
 			}
 
 		});
 
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		[editor.name.toJavaIdentifier().trim()/].addSelectionChangedListener(new ISelectionChangedListener() {
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
@@ -499,62 +589,68 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, get[editor.name.toASCII().substituteAll(' ','').toUpperFirst()/]()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, get[editor.name.toJavaClassifier()/]()));
 			}
 			
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, [editor.helpText(pec)/], null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-		create[editor.name.toJavaClassifier().trim()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
+[comment AdvancedEObjectFlatComboViewer /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
+		create[editor.name.toJavaClassifier()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]	
 	/**
 	 * @param [editor.widgetContainer().trim()/]
 	 */
-	protected void create[editor.name.toJavaClassifier().trim()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		Label [editor.name.toJavaIdentifier().trim()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
+	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		
-		ViewerFilter [editor.name.toJavaIdentifier().trim()/]Filter = new EObjectFilter([editor.viewPackage(pec)/].eINSTANCE.get[editor.propertiesEditionElement(pec).model.eType.name/]());							
-		[editor.name.toJavaIdentifier().trim()/] = new AdvancedEObjectFlatComboViewer<[editor.propertiesEditionElement(pec).model.eType.name/]>([inputPEC.editionContext().messagesProvider().trim()/].[editor.editorKey(editor.owningView()).trim()/], 
-			resourceSet, [editor.name.toJavaIdentifier().trim()/]Filter, [editor.viewPackage(pec)/].eINSTANCE.get[editor.propertiesEditionElement(pec).model.eType.name/](), new EObjectFlatComboViewerListener<[editor.propertiesEditionElement(pec).model.eType.name/]>(){
-			public void handleSet([editor.propertiesEditionElement(pec).model.eType.name/] element){
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, element)); 
+		ViewerFilter [editor.name.toJavaIdentifier()/]Filter = new EObjectFilter([editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]());
+		[editor.name.toJavaIdentifier()/] = new AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], 
+			resourceSet, [editor.name.toJavaIdentifier()/]Filter, [editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
+			public void handleSet([editor.involvedPropertiesEditionElement().model.eType.name/] element){
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
-			public void navigateTo([editor.propertiesEditionElement(pec).model.eType.name/] element){ System.out.println("NavigateTo"); }
+			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element){ }
 		});
-		[editor.name.toJavaIdentifier().trim()/].createControls(parent, widgetFactory);
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);		
-		[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
+		[editor.name.toJavaIdentifier()/].createControls(parent, widgetFactory);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		
-		FormUtils.createHelpButton(widgetFactory, parent, [editor.helpText(pec)/], null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 	
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and (editor.representation.name = 'ReferencesTable' or editor.representation.name = 'AdvancedReferencesTable'))]
-		create[editor.name.toJavaClassifier().trim()/]ReferencesTable(widgetFactory, [editor.widgetContainer().trim()/]);
+[comment ReferencesTable & AdvancedReferencesTable/]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and (editor.representation.name = 'ReferencesTable' or editor.representation.name = 'AdvancedReferencesTable'))]
+		create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'ReferencesTable')]
-	protected void create[editor.name.toJavaIdentifier().trim().toUpperFirst()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {	
-		Label [editor.name.toJavaIdentifier().trim()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
-		GridData [editor.name.toJavaIdentifier().trim()/]LabelData = new GridData();
-		[editor.name.toJavaIdentifier().trim()/]LabelData.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier().trim()/]Label.setLayoutData([editor.name.toJavaIdentifier().trim()/]LabelData);
-		[editor.name.toJavaIdentifier().trim()/] = create[editor.name.toJavaIdentifier().trim().toUpperFirst()/]Viewer(parent, widgetFactory, adapterFactory);
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]Data.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier().trim()/]Data.minimumHeight = 120;
-		[editor.name.toJavaIdentifier().trim()/]Data.heightHint = 120;
-		[editor.name.toJavaIdentifier().trim()/].getTable().setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		create[editor.name.toJavaIdentifier().trim().toUpperFirst()/]ControlPanel(parent, widgetFactory);
+	protected void create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {
+		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData();
+		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
+		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
+		[editor.name.toJavaIdentifier()/] = create[editor.name.toJavaClassifier()/]Viewer(parent, widgetFactory, adapterFactory);
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/]Data.minimumHeight = 120;
+		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
+		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		create[editor.name.toJavaClassifier()/]ControlPanel(parent, widgetFactory);
 	}
 
-	protected TableViewer create[editor.name.toJavaIdentifier().trim().toUpperFirst()/]Viewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
+	protected TableViewer create[editor.name.toJavaClassifier()/]Viewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
 		GridData gd = new GridData();
@@ -574,7 +670,7 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
- 	
+	
 			// [protected ('for table '.concat(editor.name).concat(' label provider'))]
 			
 			public String getColumnText(Object object, int columnIndex) {
@@ -610,15 +706,15 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 		return result;
 	}
 
-	protected void create[editor.name.toJavaIdentifier().trim().toUpperFirst()/]ControlPanel(Composite container, FormToolkit widgetFactory) {
+	protected void create[editor.name.toJavaClassifier()/]ControlPanel(Composite container, FormToolkit widgetFactory) {
 		Composite result = widgetFactory.createComposite(container, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		result.setLayout(layout);
-		add[editor.name.toJavaIdentifier().trim().toUpperFirst()/] = widgetFactory.createButton(result, [inputPEC.editionContext().messagesProvider().trim()/].PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		add[editor.name.toJavaClassifier()/] = widgetFactory.createButton(result, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
-		add[editor.name.toJavaIdentifier().trim().toUpperFirst()/].setLayoutData(addData);
-		add[editor.name.toJavaIdentifier().trim().toUpperFirst()/].addSelectionListener(new SelectionAdapter() {
+		add[editor.name.toJavaClassifier()/].setLayoutData(addData);
+		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/*
 			 * (non-Javadoc)
@@ -626,15 +722,15 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				add[editor.name.toJavaClassifier().trim()/]();
-				[editor.name.toJavaIdentifier().trim()/].refresh();
+				add[editor.name.toJavaClassifier()/]();
+				[editor.name.toJavaIdentifier()/].refresh();
 			}
 
 		});
-		remove[editor.name.toJavaIdentifier().trim().toUpperFirst()/] = widgetFactory.createButton(result, [inputPEC.editionContext().messagesProvider().trim()/].PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		remove[editor.name.toJavaClassifier()/] = widgetFactory.createButton(result, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
-		remove[editor.name.toJavaIdentifier().trim().toUpperFirst()/].setLayoutData(removeData);
-		remove[editor.name.toJavaIdentifier().trim().toUpperFirst()/].addSelectionListener(new SelectionAdapter() {
+		remove[editor.name.toJavaClassifier()/].setLayoutData(removeData);
+		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/*
 			 * (non-Javadoc)
@@ -642,10 +738,10 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if ([editor.name.toJavaIdentifier().trim()/].getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier().trim()/].getSelection();
-					remove[editor.name.toJavaClassifier().trim()/](selection);
-					[editor.name.toJavaIdentifier().trim()/].refresh();
+				if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
+					IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
+					remove[editor.name.toJavaClassifier()/](selection);
+					[editor.name.toJavaIdentifier()/].refresh();
 				}
 			}
 
@@ -655,179 +751,115 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 *
 	 */
-	 protected void add[editor.name.toJavaClassifier().trim()/]() {
+	protected void add[editor.name.toJavaClassifier()/]() {
 		ViewerFilter viewerFilter = new ViewerFilter() {
-	
+
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return element instanceof [editor.propertiesEditionElement(pec).model.eType.name/]  && ![editor.name.toJavaIdentifier().trim()/]EditUtil.getVirtualList().contains(element);
+				return element instanceof [editor.involvedPropertiesEditionElement().model.eType.name/] && ![editor.name.toJavaIdentifier()/]EditUtil.getVirtualList().contains(element);
 			}
-	
+
 		};
 		
 		List filters = new ArrayList();
-	
-		// [protected ('for filters initialisation for '.concat(editor.propertiesEditionElement(pec).model.eType.name))]
+
+		// [protected ('for filters initialisation for '.concat(editor.involvedPropertiesEditionElement().model.eType.name))]
 		
 		// [/protected]
-	
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(view.getShell(), new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
+
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					if (![editor.name.toJavaIdentifier().trim()/]EditUtil.getVirtualList().contains(elem)) {
-						[editor.name.toJavaIdentifier().trim()/]EditUtil.addElement(elem);
-						propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.ADD, null, [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(elem)));
+					if (![editor.name.toJavaIdentifier()/]EditUtil.getVirtualList().contains(elem)) {
+						[editor.name.toJavaIdentifier()/]EditUtil.addElement(elem);
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(elem)));
 					}
 				}
 			}
 	
 		};
 		dialog.open();
-	 }
-	 
-	 /**
-	  * @param selection the [editor.name/] to remove
-	  */
-	  protected void remove[editor.name.toJavaClassifier().trim()/](IStructuredSelection selection) {
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				[editor.name.toJavaIdentifier().trim()/]EditUtil.removeElement(selectedElement);
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.REMOVE, null, [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(selectedElement)));
-			}
-	  }
-[/template]
-
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EENumViewer')]
-	create[editor.name.toJavaClassifier().trim()/]EEnumViewer(widgetFactory, [editor.widgetContainer().trim()/]);
-[/template]
-
-[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EENumViewer')]
-	private void create[editor.name.toJavaClassifier().trim()/]EEnumViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
-		[editor.name.toJavaIdentifier().trim()/] = new EENumViewer(parent);
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/].getCombo().setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		[editor.name.toJavaIdentifier().trim()/].addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, null, get[editor.name.toUpperFirst()/]()));
-			}
-			
-		});
-		FormUtils.createHelpButton(widgetFactory, parent, [editor.helpText(pec)/], null); //$NON-NLS-1$
 	}
-[/template]
-
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
-	create[editor.name.toJavaClassifier().trim()/]MultiValuedEditor(widgetFactory, [editor.widgetContainer().trim()/]);
-[/template]
-
-[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
-	private void create[editor.name.toJavaClassifier().trim()/]MultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
-		[editor.name.toJavaIdentifier().trim()/]Text = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
-		GridData [editor.name.toJavaIdentifier().trim()/]TextData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]TextData.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier().trim()/]Text.setLayoutData([editor.name.toJavaIdentifier().trim()/]TextData);
-		edit[editor.name.toJavaClassifier().trim()/] = widgetFactory.createButton(parent, [pec.editionContext().messagesProvider()/].[editor.editorKey(editor.owningView()).trim()/], SWT.NONE);
-		GridData edit[editor.name.toJavaClassifier().trim()/]Data = new GridData();
-		edit[editor.name.toJavaClassifier().trim()/].setLayoutData(edit[editor.name.toJavaClassifier().trim()/]Data);
-		edit[editor.name.toJavaClassifier().trim()/].addSelectionListener(new SelectionAdapter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				FeatureEditorDialog dialog = new FeatureEditorDialog(view.getShell(), new AdapterFactoryLabelProvider(adapterFactory), [pec.model.name.toJavaIdentifier().trim()/], [editor.propertiesEditionElement(pec).metamodelGetter().trim()/].getEType(), 
-						[editor.name.toJavaIdentifier().trim()/]List, "[pec.model.name/]", null, false, false); //$NON-NLS-1$
-						
-				if (dialog.open() == Window.OK) {
-					[editor.name.toJavaIdentifier().trim()/]List = dialog.getResult();
-					if ([editor.name.toJavaIdentifier().trim()/]List == null) {
-						[editor.name.toJavaIdentifier().trim()/]List = new BasicEList();
-					}
-					[editor.name.toJavaIdentifier().trim()/]Text.setText([editor.name.toJavaIdentifier().trim()/]List.toString());
-					setHasChanged(true);
-				}
-			}
-		});
+	
+	/**
+	 * @param selection the [editor.name/] to remove
+	 */
+	protected void remove[editor.name.toJavaClassifier()/](IStructuredSelection selection) {
+		if (selection.getFirstElement() instanceof EObject) {
+			EObject selectedElement = (EObject) selection.getFirstElement();
+			[editor.name.toJavaIdentifier()/]EditUtil.removeElement(selectedElement);
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement)));
+		}
 	}
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
-	private void create[editor.name.toJavaIdentifier().trim().toUpperFirst()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {	
-		this.[editor.name.toJavaIdentifier().trim()/] = new ReferencesTable<[editor.propertiesEditionElement(pec).model.eType.name/]>([inputPEC.editionContext().messagesProvider().trim()/].[editor.editorKey(editor.owningView()).trim()/], new ReferencesTableListener<[editor.propertiesEditionElement(pec).model.eType.name/]>() {
-			public void handleAdd() {				
-				ViewerFilter [editor.name.toJavaIdentifier().trim()/]Filter = new EObjectFilter([editor.viewPackage(pec)/].eINSTANCE.get[editor.propertiesEditionElement(pec).model.eType.name/]());
-				ViewerFilter viewerFilter = new ViewerFilter() {					
+	protected void create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {	
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
+			public void handleAdd() {
+				ViewerFilter [editor.name.toJavaIdentifier()/]Filter = new EObjectFilter([editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]());
+				ViewerFilter viewerFilter = new ViewerFilter() {
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						if (element instanceof EObject)
-							return (![editor.name.toJavaIdentifier().trim()/]EditUtil.contains((EObject)element));
-						return false;				
+							return (![editor.name.toJavaIdentifier()/]EditUtil.contains((EObject)element));
+						return false;
 					}
-				};				
-				ViewerFilter['[]'/] filters = { [editor.name.toJavaIdentifier().trim()/]Filter, viewerFilter };		
-				TabElementTreeSelectionDialog<[editor.propertiesEditionElement(pec).model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.propertiesEditionElement(pec).model.eType.name/]>(view.getShell(), resourceSet, filters, 
-				"[editor.propertiesEditionElement(pec).model.eType.name/]", [editor.viewPackage(pec)/].eINSTANCE.get[editor.propertiesEditionElement(pec).model.eType.name/]()) {
+				};
+				List filters = new ArrayList();
+				filters.add([editor.name.toJavaIdentifier()/]Filter);
+				filters.add(viewerFilter);
+				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, filters, 
+				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
 					@Override
-					public void process(IStructuredSelection selection) {						
+					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							if (![editor.name.toJavaIdentifier().trim()/]EditUtil.getVirtualList().contains(elem))
-								[editor.name.toJavaIdentifier().trim()/]EditUtil.addElement(elem);
-							propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/],
-								PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.ADD, null, elem));
+							if (![editor.name.toJavaIdentifier()/]EditUtil.getVirtualList().contains(elem))
+								[editor.name.toJavaIdentifier()/]EditUtil.addElement(elem);
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/],
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
-						[editor.name.toJavaIdentifier().trim()/].refresh();												
+						[editor.name.toJavaIdentifier()/].refresh();
 					}
 				};
 				dialog.open();
 			}
-			public void handleEdit([editor.propertiesEditionElement(pec).model.eType.name/] element) { edit[editor.name.toJavaIdentifier().trim().toUpperFirst()/](element); }
-			public void handleMove([editor.propertiesEditionElement(pec).model.eType.name/] element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier().trim()/](element, oldIndex, newIndex); }
-			public void handleRemove([editor.propertiesEditionElement(pec).model.eType.name/] element) { removeFrom[editor.name.toJavaIdentifier().trim().toUpperFirst()/](element); }
-			public void navigateTo([editor.propertiesEditionElement(pec).model.eType.name/] element) { System.out.println("---> navigateTo"); }
+			public void handleEdit([editor.involvedPropertiesEditionElement().model.eType.name/] element) { edit[editor.name.toJavaClassifier()/](element); }
+			public void handleMove([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }
+			public void handleRemove([editor.involvedPropertiesEditionElement().model.eType.name/] element) { removeFrom[editor.name.toJavaClassifier()/](element); }
+			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element) { }
 		});
-		this.[editor.name.toJavaIdentifier().trim()/].createControls(parent, widgetFactory);
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]Data.horizontalSpan = 3;
-		this.[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
-		this.[editor.name.toJavaIdentifier().trim()/].disableMove();
+		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		this.[editor.name.toJavaIdentifier()/].createControls(parent, widgetFactory);
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
+		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		this.[editor.name.toJavaIdentifier()/].disableMove();
 	}
 	
 	/**
 	 * 
 	 */
-	private void move[editor.name.toJavaClassifier().trim()/]([editor.propertiesEditionElement(pec).model.eType.name/] element, int oldIndex, int newIndex) {
-		[if (editor.propertiesEditionElement(pec).model.eType.oclIsTypeOf(ecore::EClass) and not editor.propertiesEditionElement(pec).model.eType.oclAsType(ecore::EClass).abstract)]
-				
-		EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier().trim()/]EditUtil.moveElement(element, oldIndex, newIndex);
-		[editor.name.toJavaIdentifier().trim()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.MOVE, editedElement, newIndex));
-	
-		
-		[/if]		
+	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
+		[editor.name.toJavaIdentifier()/]EditUtil.moveElement(element, oldIndex, newIndex);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
+		[/if]
 	}
 	
 	/**
 	 * 
 	 */
-	private void removeFrom[editor.name.toJavaClassifier().trim()/]([editor.propertiesEditionElement(pec).model.eType.name/] element) {
+	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
-		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 
-		EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier().trim()/]EditUtil.removeElement(element);
-		[editor.name.toJavaIdentifier().trim()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.REMOVE, null, editedElement));
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
+		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// [/protected]
 
@@ -836,19 +868,19 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 * 
 	 */
-	private void edit[editor.name.toJavaClassifier().trim()/]([editor.propertiesEditionElement(pec).model.eType.name/] element) {
+	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
-		// [protected('edit'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
-				 
-		EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(element);
+		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
+		
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier().trim()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				[editor.name.toJavaIdentifier().trim()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+				[editor.name.toJavaIdentifier()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
 
@@ -857,66 +889,138 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	}
 [/template]
 
-[template public implementation(container : Container, pec : PropertiesEditionComponent) ? (container.representation.name = 'VerticalBox')]
-		create[container.name.toJavaClassifier().trim()/]VBox(widgetFactory, [container.widgetContainer().trim()/]);	
+[comment EMFComboViewer /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
+		create[editor.name.toJavaClassifier()/]EEnumViewer(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
-[template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (container.representation.name = 'VerticalBox')]
-	private void create[container.name.toJavaClassifier().trim()/]VBox(FormToolkit widgetFactory, Composite parent) {
-		Composite container = widgetFactory.createComposite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		container.setLayout(layout);
-		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));	
-		VerticalBox [container.name.toJavaClassifier().trim().toLowerFirst()/]VBox = new VerticalBox(container);
-		
-		//create sub figures
-		[for (editor : ElementEditor | container.elements) ]
-		[editor.implementation(pec)/]
-		[/for]	
-		
-		container.pack();		
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
+	protected void create[editor.name.toJavaClassifier()/]EEnumViewer(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
+		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
+		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/].getCombo().setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, get[editor.name.toUpperFirst()/]()));
+			}
+			
+		});
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]
 
-[template public implementation(container : Container, pec : PropertiesEditionComponent) ? (container.representation.name = 'HorizontalBox')]
-		create[container.name.toJavaClassifier().trim()/]HBox(widgetFactory, [container.widgetContainer().trim()/]);	
+[comment MultiValuedEditor /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
+		create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, [editor.widgetContainer().trim()/]);
+[/template]
+
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
+	protected void create[editor.name.toJavaClassifier()/]MultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+		[editor.name.toJavaIdentifier()/]Text = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+		GridData [editor.name.toJavaIdentifier()/]TextData = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]TextData.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/]Text.setLayoutData([editor.name.toJavaIdentifier()/]TextData);
+		edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], SWT.NONE);
+		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
+		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
+		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EObject [pec.model.name.toJavaIdentifier()/] = PropertiesContextService.getInstance().lastElement();
+				FeatureEditorDialog dialog = new FeatureEditorDialog(Display.getDefault().getActiveShell(), new AdapterFactoryLabelProvider(adapterFactory), [pec.model.name.toJavaIdentifier()/], [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), 
+						[editor.name.toJavaIdentifier()/]List, "[pec.model.name/]", null, false, false); //$NON-NLS-1$
+						
+				if (dialog.open() == Window.OK) {
+					[editor.name.toJavaIdentifier()/]List = dialog.getResult();
+					if ([editor.name.toJavaIdentifier()/]List == null) {
+						[editor.name.toJavaIdentifier()/]List = new BasicEList();
+					}
+					[editor.name.toJavaIdentifier()/]Text.setText([editor.name.toJavaIdentifier()/]List.toString());
+					setHasChanged(true);
+				}
+			}
+		});
+	}
+[/template]
+
+[comment VerticalBox /]
+[template public implementation(container : Container) ? (container.representation.name = 'VerticalBox')]
+		create[container.name.toJavaClassifier()/]VBox(widgetFactory, [container.widgetContainer().trim()/]);
+[/template]
+
+[template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (container.representation.name = 'VerticalBox')]
+	protected void create[container.name.toJavaClassifier()/]VBox(FormToolkit widgetFactory, Composite parent) {
+		Composite container = widgetFactory.createComposite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		container.setLayout(layout);
+		container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		VerticalBox [container.name.toJavaIdentifier()/]VBox = new VerticalBox(container);
+		
+		//create sub figures
+		[for (editor : ElementEditor | container.elements) ]
+		[editor.implementation()/]
+		[/for]
+		
+		container.pack();
+	}
+[/template]
+
+[comment HorizontalBox /]
+[template public implementation(container : Container) ? (container.representation.name = 'HorizontalBox')]
+		create[container.name.toJavaClassifier()/]HBox(widgetFactory, [container.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (container.representation.name = 'HorizontalBox')]
-	private void create[container.name.toJavaClassifier().trim()/]HBox(FormToolkit widgetFactory, Composite parent) {	
+	protected void create[container.name.toJavaClassifier()/]HBox(FormToolkit widgetFactory, Composite parent) {
 		Composite container = widgetFactory.createComposite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);
 		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
 		gridData.horizontalSpan=3;
-		container.setLayoutData(gridData);		
-		HorizontalBox [container.name.toJavaClassifier().trim().toLowerFirst()/]HBox = new HorizontalBox(container);
+		container.setLayoutData(gridData);
+		HorizontalBox [container.name.toJavaIdentifier()/]HBox = new HorizontalBox(container);
 		
 		[if (container.elements->select(representation.name='Checkbox')->notEmpty())]
 		//Apply constraint for checkbox
-		GridData constraint = new GridData(GridData.FILL_HORIZONTAL);		
-		constraint.horizontalAlignment = GridData.BEGINNING;		
-		[container.name.toJavaClassifier().trim().toLowerFirst()/]HBox.setLayoutData(constraint);
+		GridData constraint = new GridData(GridData.FILL_HORIZONTAL);
+		constraint.horizontalAlignment = GridData.BEGINNING;
+		[container.name.toJavaIdentifier()/]HBox.setLayoutData(constraint);
 		[/if]
 		
 		//create sub figures
-		[for (editor : ElementEditor | container.elements) ]		
-		[editor.implementation(pec)/]
+		[for (editor : ElementEditor | container.elements) ]
+		[editor.implementation()/]
 		[/for]
 		
-		container.pack();		
+		container.pack();
 	}
 [/template]
 
-[template public implementation(editor : ElementEditor, pec : PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and (editor.representation.name = 'TableComposition' or editor.representation.name = 'AdvancedTableComposition'))]
-		create[editor.name.toJavaClassifier().trim()/]TableComposition(widgetFactory, [editor.widgetContainer().trim()/]);	
+[comment TableComposition & AdvancedTableComposition /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and (editor.representation.name = 'TableComposition' or editor.representation.name = 'AdvancedTableComposition'))]
+		create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'TableComposition')]
 	/**
 	 * @param container
 	 */
-	private void create[editor.name.toJavaClassifier().trim()/]TableComposition(FormToolkit widgetFactory, Composite container) {
+	protected void create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite container) {
 		Composite tableContainer = widgetFactory.createComposite(container, SWT.NONE);
 		GridLayout tableContainerLayout = new GridLayout();
 		GridData tableContainerData = new GridData(GridData.FILL_BOTH);
@@ -924,29 +1028,29 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 		tableContainer.setLayoutData(tableContainerData);
 		tableContainerLayout.numColumns = 2;
 		tableContainer.setLayout(tableContainerLayout);
-		org.eclipse.swt.widgets.Table table[editor.name.toJavaClassifier().trim()/] = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION);
-		table[editor.name.toJavaClassifier().trim()/].setHeaderVisible(true);
-		GridData gd[editor.name.toJavaClassifier().trim()/] = new GridData();
-		gd[editor.name.toJavaClassifier().trim()/].grabExcessHorizontalSpace = true;
-		gd[editor.name.toJavaClassifier().trim()/].horizontalAlignment = GridData.FILL;
-		gd[editor.name.toJavaClassifier().trim()/].grabExcessVerticalSpace = true;
-		gd[editor.name.toJavaClassifier().trim()/].verticalAlignment = GridData.FILL;
-		table[editor.name.toJavaClassifier().trim()/].setLayoutData(gd[editor.name.toJavaClassifier().trim()/]);
-		table[editor.name.toJavaClassifier().trim()/].setLinesVisible(true);
+		org.eclipse.swt.widgets.Table table[editor.name.toJavaClassifier()/] = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION);
+		table[editor.name.toJavaClassifier()/].setHeaderVisible(true);
+		GridData gd[editor.name.toJavaClassifier()/] = new GridData();
+		gd[editor.name.toJavaClassifier()/].grabExcessHorizontalSpace = true;
+		gd[editor.name.toJavaClassifier()/].horizontalAlignment = GridData.FILL;
+		gd[editor.name.toJavaClassifier()/].grabExcessVerticalSpace = true;
+		gd[editor.name.toJavaClassifier()/].verticalAlignment = GridData.FILL;
+		table[editor.name.toJavaClassifier()/].setLayoutData(gd[editor.name.toJavaClassifier()/]);
+		table[editor.name.toJavaClassifier()/].setLinesVisible(true);
 			
-		// [protected ('for columns definition for '.concat(editor.name.toJavaClassifier().trim()))]
+		// [protected ('for columns definition for '.concat(editor.name.toJavaClassifier()))]
 
-		TableColumn name = new TableColumn(table[editor.name.toJavaClassifier().trim()/], SWT.NONE);
+		TableColumn name = new TableColumn(table[editor.name.toJavaClassifier()/], SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
 
 		// [/protected]
 
-		[editor.name.toJavaIdentifier().trim()/] = new TableViewer(table[editor.name.toJavaClassifier().trim()/]);
-		[editor.name.toJavaIdentifier().trim()/].setContentProvider(new ArrayContentProvider());
-		[editor.name.toJavaIdentifier().trim()/].setLabelProvider(new ITableLabelProvider() {
+		[editor.name.toJavaIdentifier()/] = new TableViewer(table[editor.name.toJavaClassifier()/]);
+		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
+		[editor.name.toJavaIdentifier()/].setLabelProvider(new ITableLabelProvider() {
 
-			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier().trim()))]
+			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
 	
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -978,34 +1082,34 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			//[/protected]
 
 		});
-		[editor.name.toJavaIdentifier().trim()/].getTable().addListener(SWT.MouseDoubleClick, new Listener(){
+		[editor.name.toJavaIdentifier()/].getTable().addListener(SWT.MouseDoubleClick, new Listener(){
 
 			public void handleEvent(Event event) {
-				edit[editor.name.toJavaClassifier().trim()/]();
+				edit[editor.name.toJavaClassifier()/]();
 			}
 	
 		});
 
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]Data.minimumHeight = 120;
-		[editor.name.toJavaIdentifier().trim()/]Data.heightHint = 120;
-		[editor.name.toJavaIdentifier().trim()/].getTable().setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.minimumHeight = 120;
+		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
+		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
 
-		create[editor.name.toJavaClassifier().trim()/]Panel(widgetFactory, tableContainer);
+		create[editor.name.toJavaClassifier()/]Panel(widgetFactory, tableContainer);
 	}
 
 	/**
 	 * @param container
 	 */
-	private Composite create[editor.name.toJavaClassifier().trim()/]Panel(FormToolkit widgetFactory, Composite container) {
-		Composite [editor.name.toJavaIdentifier().trim()/]Panel = widgetFactory.createComposite(container, SWT.NONE);
-		GridLayout [editor.name.toJavaIdentifier().trim()/]PanelLayout = new GridLayout();
-		[editor.name.toJavaIdentifier().trim()/]PanelLayout.numColumns = 1;
-		[editor.name.toJavaIdentifier().trim()/]Panel.setLayout([editor.name.toJavaIdentifier().trim()/]PanelLayout);
-		Button add[editor.name.toJavaClassifier().trim()/] = widgetFactory.createButton([editor.name.toJavaIdentifier().trim()/]Panel, [inputPEC.editionContext().messagesProvider().trim()/].PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
-		GridData add[editor.name.toJavaClassifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		add[editor.name.toJavaClassifier().trim()/].setLayoutData(add[editor.name.toJavaClassifier().trim()/]Data);
-		add[editor.name.toJavaClassifier().trim()/].addSelectionListener(new SelectionAdapter() {
+	protected Composite create[editor.name.toJavaClassifier()/]Panel(FormToolkit widgetFactory, Composite container) {
+		Composite [editor.name.toJavaIdentifier()/]Panel = widgetFactory.createComposite(container, SWT.NONE);
+		GridLayout [editor.name.toJavaIdentifier()/]PanelLayout = new GridLayout();
+		[editor.name.toJavaIdentifier()/]PanelLayout.numColumns = 1;
+		[editor.name.toJavaIdentifier()/]Panel.setLayout([editor.name.toJavaIdentifier()/]PanelLayout);
+		Button add[editor.name.toJavaClassifier()/] = widgetFactory.createButton([editor.name.toJavaIdentifier()/]Panel, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
+		GridData add[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		add[editor.name.toJavaClassifier()/].setLayoutData(add[editor.name.toJavaClassifier()/]Data);
+		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/*
 			 * (non-Javadoc)
@@ -1013,13 +1117,13 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				addTo[editor.name.toJavaClassifier().trim()/]();
+				addTo[editor.name.toJavaClassifier()/]();
 			}
 		});
-		Button remove[editor.name.toJavaClassifier().trim()/] = widgetFactory.createButton([editor.name.toJavaIdentifier().trim()/]Panel, [inputPEC.editionContext().messagesProvider().trim()/].PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
-		GridData remove[editor.name.toJavaClassifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		remove[editor.name.toJavaClassifier().trim()/].setLayoutData(remove[editor.name.toJavaClassifier().trim()/]Data);
-		remove[editor.name.toJavaClassifier().trim()/].addSelectionListener(new SelectionAdapter() {
+		Button remove[editor.name.toJavaClassifier()/] = widgetFactory.createButton([editor.name.toJavaIdentifier()/]Panel, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
+		GridData remove[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		remove[editor.name.toJavaClassifier()/].setLayoutData(remove[editor.name.toJavaClassifier()/]Data);
+		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/*
 			 * (non-Javadoc)
@@ -1027,14 +1131,14 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				removeFrom[editor.name.toJavaClassifier().trim()/]();
+				removeFrom[editor.name.toJavaClassifier()/]();
 			}
 
 		});
-		Button edit[editor.name.toJavaClassifier().trim()/] = widgetFactory.createButton([editor.name.toJavaIdentifier().trim()/]Panel, [inputPEC.editionContext().messagesProvider().trim()/].PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
-		GridData edit[editor.name.toJavaClassifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		edit[editor.name.toJavaClassifier().trim()/].setLayoutData(edit[editor.name.toJavaClassifier().trim()/]Data);
-		edit[editor.name.toJavaClassifier().trim()/].addSelectionListener(new SelectionAdapter() {
+		Button edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton([editor.name.toJavaIdentifier()/]Panel, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
+		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
+		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
 			/*
 			 * (non-Javadoc)
@@ -1042,31 +1146,31 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				edit[editor.name.toJavaClassifier().trim()/]();
+				edit[editor.name.toJavaClassifier()/]();
 			}
 
 		});
-		return [editor.name.toJavaIdentifier().trim()/]Panel;
+		return [editor.name.toJavaIdentifier()/]Panel;
 	}
 	
 	/**
 	 * 
 	 */
-	private void addTo[editor.name.toJavaClassifier().trim()/]() {
+	protected void addTo[editor.name.toJavaClassifier()/]() {
 	
-		// [protected('addTo'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 
-	[if (editor.propertiesEditionElement(pec).model.eType.oclIsTypeOf(ecore::EClass) and not editor.propertiesEditionElement(pec).model.eType.oclAsType(ecore::EClass).abstract)]
+	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 
-		[editor.propertiesEditionElement(pec).model.eType.name/] eObject = [editor.propertiesEditionElement(pec).metamodelFactory()/].eINSTANCE.create[editor.propertiesEditionElement(pec).model.eType.name/]();
+		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier().trim()/]EditUtil.addElement(propertiesEditionObject);
-				[editor.name.toJavaIdentifier().trim()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.ADD, null, propertiesEditionObject));
+				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 			}
 		}
 	
@@ -1079,20 +1183,20 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 * 
 	 */
-	private void removeFrom[editor.name.toJavaClassifier().trim()/]() {
+	protected void removeFrom[editor.name.toJavaClassifier()/]() {
 
-		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 
-		if ([editor.name.toJavaIdentifier().trim()/].getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier().trim()/].getSelection();
+		if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
+			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
 			EObject editedElement = null;
 			if (selection.getFirstElement() instanceof EObject) {
 				EObject selectedElement = (EObject) selection.getFirstElement();
-				editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(selectedElement);
-				[editor.name.toJavaIdentifier().trim()/]EditUtil.removeElement(selectedElement);
+				editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement);
+				[editor.name.toJavaIdentifier()/]EditUtil.removeElement(selectedElement);
 			}
-			[editor.name.toJavaIdentifier().trim()/].refresh();
-			propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.REMOVE, null, editedElement));
+			[editor.name.toJavaIdentifier()/].refresh();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		}
 
 		// [/protected]
@@ -1102,23 +1206,23 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 * 
 	 */
-	private void edit[editor.name.toJavaClassifier().trim()/]() {
+	protected void edit[editor.name.toJavaClassifier()/]() {
 
-		// [protected('edit'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 
-		if ([editor.name.toJavaIdentifier().trim()/].getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier().trim()/].getSelection();
+		if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
+			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
 			if (selection.getFirstElement() instanceof EObject) {
 				EObject selectedElement = (EObject) selection.getFirstElement();
-				EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(selectedElement);
+				EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement);
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(selectedElement);
 				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
 				if (editionPolicy != null) {
 					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, selectedElement,resourceSet));
 					if (propertiesEditionObject != null) {
-						[editor.name.toJavaIdentifier().trim()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-						[editor.name.toJavaIdentifier().trim()/].refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+						[editor.name.toJavaIdentifier()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						[editor.name.toJavaIdentifier()/].refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
 			}
@@ -1133,52 +1237,52 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 * @param container
 	 */
-	private void create[editor.name.toJavaClassifier().trim()/]TableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.[editor.name.toJavaIdentifier().trim()/] = new ReferencesTable<[editor.propertiesEditionElement(pec).model.eType.name/]>([inputPEC.editionContext().messagesProvider().trim()/].[editor.editorKey(editor.owningView()).trim()/], new ReferencesTableListener<[editor.propertiesEditionElement(pec).model.eType.name/]>() {			
-			public void handleAdd() { addTo[editor.name.toJavaClassifier().trim()/]();}
-			public void handleEdit([editor.propertiesEditionElement(pec).model.eType.name/] element) { edit[editor.name.toJavaClassifier().trim()/](element); }
-			public void handleMove([editor.propertiesEditionElement(pec).model.eType.name/] element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier().trim()/](element, oldIndex, newIndex); }			
-			public void handleRemove([editor.propertiesEditionElement(pec).model.eType.name/] element) { removeFrom[editor.name.toJavaClassifier().trim()/](element); }
-			public void navigateTo([editor.propertiesEditionElement(pec).model.eType.name/] element) { System.out.println("---> navigateTo"); }
+	protected void create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
+			public void handleAdd() { addTo[editor.name.toJavaClassifier()/]();}
+			public void handleEdit([editor.involvedPropertiesEditionElement().model.eType.name/] element) { edit[editor.name.toJavaClassifier()/](element); }
+			public void handleMove([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }
+			public void handleRemove([editor.involvedPropertiesEditionElement().model.eType.name/] element) { removeFrom[editor.name.toJavaClassifier()/](element); }
+			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element) { }
 		});
-		this.[editor.name.toJavaIdentifier().trim()/].createControls(parent, widgetFactory);
-		GridData [editor.name.toJavaIdentifier().trim()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier().trim()/]Data.horizontalSpan = 3;
-		this.[editor.name.toJavaIdentifier().trim()/].setLayoutData([editor.name.toJavaIdentifier().trim()/]Data);
+		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		this.[editor.name.toJavaIdentifier()/].createControls(parent, widgetFactory);
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
+		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 	}
 	
 	/**
 	 * 
 	 */
-	private void move[editor.name.toJavaClassifier().trim()/]([editor.propertiesEditionElement(pec).model.eType.name/] element, int oldIndex, int newIndex) {
-		[if (editor.propertiesEditionElement(pec).model.eType.oclIsTypeOf(ecore::EClass) and not editor.propertiesEditionElement(pec).model.eType.oclAsType(ecore::EClass).abstract)]
-				
-		EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier().trim()/]EditUtil.moveElement(element, oldIndex, newIndex);
-		[editor.name.toJavaIdentifier().trim()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.MOVE, editedElement, newIndex));	
+	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
+		[editor.name.toJavaIdentifier()/]EditUtil.moveElement(element, oldIndex, newIndex);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
 		
-		[/if]		
+		[/if]
 	}
 	
 	/**
 	 * 
 	 */
-	private void addTo[editor.name.toJavaClassifier().trim()/]() {
+	protected void addTo[editor.name.toJavaClassifier()/]() {
 	
-		// [protected('addTo'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 		
-		[if (editor.propertiesEditionElement(pec).model.eType.oclIsTypeOf(ecore::EClass) and not editor.propertiesEditionElement(pec).model.eType.oclAsType(ecore::EClass).abstract)]
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		
-		[editor.propertiesEditionElement(pec).model.eType.name/] eObject = [editor.propertiesEditionElement(pec).metamodelFactory()/].eINSTANCE.create[editor.propertiesEditionElement(pec).model.eType.name/]();
+		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier().trim()/]EditUtil.addElement(propertiesEditionObject);
-				[editor.name.toJavaIdentifier().trim()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.ADD, null, propertiesEditionObject));
+				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 			}
 		}
 		
@@ -1191,14 +1295,14 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 * 
 	 */
-	private void removeFrom[editor.name.toJavaClassifier().trim()/]([editor.propertiesEditionElement(pec).model.eType.name/] element) {
+	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
-		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 
-		EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier().trim()/]EditUtil.removeElement(element);
-		[editor.name.toJavaIdentifier().trim()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.REMOVE, null, editedElement));
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
+		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// [/protected]
 
@@ -1207,19 +1311,19 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	/**
 	 * 
 	 */
-	private void edit[editor.name.toJavaClassifier().trim()/]([editor.propertiesEditionElement(pec).model.eType.name/] element) {
+	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
-		// [protected('edit'.concat(editor.name.toJavaClassifier().trim()).concat('() method body'))]
+		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 				 
-		EObject editedElement = [editor.name.toJavaIdentifier().trim()/]EditUtil.foundCorrespondingEObject(element);
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier().trim()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				[editor.name.toJavaIdentifier().trim()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PathedPropertiesEditionEvent([editor.editionPart().trim()/].this, [editor.editorID()/], PathedPropertiesEditionEvent.COMMIT, PathedPropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+				[editor.name.toJavaIdentifier()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
 
@@ -1228,3 +1332,60 @@ private void create[reference.view.name.toJavaClassifier().trim().toUpperFirst()
 	}
 [/template]
 
+[comment Combo /]
+[template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
+		create[editor.name.toJavaClassifier()/]EEnumViewer(widgetFactory, [editor.widgetContainer().trim()/]);
+[/template]
+
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
+	protected void create[editor.name.toJavaClassifier()/]EEnumViewer(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
+		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/].getCombo().setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		[editor.name.toJavaIdentifier()/].addFilter(new ViewerFilter() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+			 */
+			public boolean select(Viewer viewer, Object parentElement, Object element) {
+				return [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editor.involvedPropertiesEditionElement().model.eType.name/]); [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+				
+			}
+
+		});
+		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, get[editor.name.toJavaClassifier()/]()));
+			}
+			
+		});
+		[editor.name.toJavaIdentifier()/].setContentProvider(new EMFListContentProvider());
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+	}
+[/template]
+
+[comment Radio /]
+[template public implementation(editor : ElementEditor) ? (editor.representation.name = 'Radio')]
+		create[editor.name.toJavaClassifier()/]RadioViewer([editor.widgetContainer().trim()/]);
+[/template]
+
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (editor.representation.name = 'Radio')]
+	protected void create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
+		[editor.name.toJavaIdentifier()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/]RadioViewer.setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null);
+	}
+[/template]

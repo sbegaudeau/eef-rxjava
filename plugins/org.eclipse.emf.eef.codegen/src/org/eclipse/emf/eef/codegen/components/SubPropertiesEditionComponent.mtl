@@ -10,21 +10,21 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module SubPropertiesEditionComponent('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0','http://www.eclipse.org/emf/2002/Ecore')/]
+[module SubPropertiesEditionComponent('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0','http://www.eclipse.org/emf/2002/Ecore')/]
+
 [import common /]
 [import naming /]
 [import viewCommon /]
 [import componentUtils/]
 [import typeUtils /]
 
-
 [template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.mustBeGenerated())]
-	[for (view : View | pec.views) ? (view.explicit)]
-[file (pec.fullFilePath(basePackage, view).trim(), false)]
-[peContext.licenceText().trim()/]
+	[for (view : View | pec.views) ? (not view.isDynamicView())]
+[file (pec.fullFilePath(view), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
 package [pec.model.eefPackage(basePackage)/].components;
 
 // [protected ('for imports')]
@@ -49,127 +49,120 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
 
 import [pec.model.qualifiedName(basePackage)/];
-
+[comment add import for external ViewReference (stored in another resource)/]
+[view.manageImportForViewReferences(pec, basePackage)/]
 [comment add import for ViewReference/]
 import org.eclipse.emf.ecore.EStructuralFeature;
-[for ( pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];
+[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
+import [pee.model.eType.qualifiedName(basePackage)/];
+[if (pee.navigation.oclIsKindOf(mapping::navigation::SimpleModelNavigation))]
+import [pee.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).discriminatorType.qualifiedName(basePackage)/];
+[/if]
+[/for]
+[for (ePackage : EPackage | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum)).model.eType.ePackage->asSet())]
+import [ePackage.qualifiedMetamodelPackage(basePackage)/];
+import [ePackage.qualifiedMetamodelFactory(basePackage)/];
 [/for]
 [for (v : View | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view)]
-	[for ( pee : PropertiesEditionElement | pec.involvedEditionElementsInView(v).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
-import [pee.model.eType.qualifiedName(basePackage).trim()/];
+[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(v).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
+import [pee.model.eType.qualifiedName(basePackage)/];
 [if (model.eType.oclIsTypeOf(ecore::EEnum))]
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnumLiteral;
 [/if]
-	[/for]
 [/for]
-
-[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(model.eType.oclIsKindOf(EEnum))->size() > 0)]
+[/for]
+[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(model.eType.oclIsKindOf(EEnum))->notEmpty())]
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnumLiteral;
 [/if]
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition')->size() > 0)]
-import org.eclipse.emf.edit.command.AddCommand;
-[/if]
-[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 [/if]
-[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable')->size() > 0)]
+[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable')->notEmpty())]
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 [/if]
-[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'MultiValuedEditor')->size() > 0)]
+[if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'MultiValuedEditor')->notEmpty())]
 import org.eclipse.emf.common.util.EList;
 [/if]
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 [for (ePackage : EPackage | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(ecore::EClass).ePackage))]
 import [ePackage.qualifiedMetamodelPackage(basePackage)/];
 [/for]
-import [pec.model.qualifiedName(basePackage)/];
 [let deferredPec : PropertiesEditionComponent = if (pec.views->includes(view))
 	then pec
 	else pec.referencedBinding.binding->select(views->includes(view))->first().oclAsType(components::PropertiesEditionComponent)
 	endif]
-import [deferredPec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
+import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 [/let]
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PathedPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement;
-[for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EENumViewer')->size() > 0 or element.views->select(representation.name = 'EObjectFlatComboViewer')->size() > 0 or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->size() > 0)]
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+[for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EMFComboViewer')->size() > 0 or element.views->select(representation.name = 'EObjectFlatComboViewer')->size() > 0 or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->size() > 0)]
 import [element.model.eType.qualifiedName(basePackage)/];
 [/for]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->size() > 0))]
 import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [for (vr : ViewsRepository | pec.involvedViews().oclAsType(views::View).owningViewsRepository()->asSet())]
-import [peContext.model.ecorePackage.eefPackage(basePackage)/].parts.[vr.vrClass()/];
+import [vr.vrQualifiedClass()/];
 [/for]
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // [/protected]
 
 /**
- * [peContext.authorText().trim()/]
+ * [peContext.associatedGenModel().authorText().trim()/]
  */
 public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponent {
 
-[if (pec.involvedViews()->size() = 1)]
-	public static final String SWT_KIND = "SWT"; //$NON-NLS-1$
-
-	public static final String FORM_KIND = "Form"; //$NON-NLS-1$
-		
-[/if]
 	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII() /]"; //$NON-NLS-1$
-
+	
 	private String['['/][']'/] parts = {[view.viewPartConstant(pec) /]};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private [pec.model.name/] [pec.model.name.toJavaIdentifier()/];
-
+	
 	/**
 	 * The [view.viewKey(pec)/] part
 	 */
 	private [view.pepInterface()/] [view.viewIdentifier(pec)/];
-
-[for ( v : View | view.referencedViews())]		
-	/**
-	 * The [v.viewKey(pec)/] part
-	 */
-	private [view.pepInterface()/] [v.viewIdentifier(pec)/];		
 	
-[/for]	
-	
-
 	/**
 	 * Default constructor
 	 */
-	public [pec.subPECClass(view) /](EObject [pec.model.name.toJavaIdentifier()/], String mode) {
+	public [pec.subPECClass(view) /](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
 		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
 			this.[pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])[pec.model.name.toJavaIdentifier()/];
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
+			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
 				this.[pec.model.name.toJavaIdentifier()/].eAdapters().add(semanticAdapter);
 			}
 		}
 		listeners = new ArrayList();
-		this.mode = mode;
+		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
+	 * 
 	 * @return the semantic model listener
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
@@ -188,77 +181,108 @@ public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponen
 				
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-				[editionElement.liveUpdater(view, pec).trim()/]
+				[editionElement.liveUpdater(view, pec)/]
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-		[editionElement.liveUpdater(v, pec).trim()/]
-	[/for]
-[/for]
-
+[view.liveUpdaterForReferencedViews(pec)/]
 [/if]
 			}
 
 		};
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 */
+	public java.lang.Class translatePart(String key) {
+		if ([view.viewPartConstant(pec)/].equals(key))
+			return [view.editorID()/].class;
+		return super.translatePart(key);
+	}
+	
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
 	 */
 	public String['['/][']'/] partsList() {
 		return parts;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 * (java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(String kind, String key) {
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ([pec.model.name.toJavaIdentifier()/] != null && [view.viewPartConstant(pec)/].equals(key)) {
-				if ([view.viewIdentifier(pec)/] == null) {
-					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider([pec.model.name.toJavaIdentifier()/]);
-					if (provider != null) {
-						[view.viewIdentifier(pec)/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([pec.model.name.toJavaIdentifier()/], this, key, kind);
-						[for ( v : View | view.referencedViews())]		
-							[v.viewIdentifier(pec)/] = [view.viewIdentifier(pec)/];
-						[/for]
-						listeners.add([view.viewIdentifier(pec)/]);
-					}
+			if ([view.viewIdentifier(pec)/] == null) {
+				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([view.owningViewsRepository().vrClass()/].class);
+				if (provider != null) {
+					[view.viewIdentifier(pec)/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([view.editorID()/].class, kind, this);
+					listeners.add([view.viewIdentifier(pec)/]);
 				}
-				return (IPropertiesEditionPart)[view.viewIdentifier(pec)/];
+			}
+			return (IPropertiesEditionPart)[view.viewIdentifier(pec)/];
 		}
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 * (org.eclipse.emf.edit.domain.EditingDomain)
+[if (not view.container.oclIsUndefined() and view.container.oclIsKindOf(views::ViewElement))]
+[comment not a top level view/]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == [view.editorID()/].class)
+			this.[view.viewIdentifier(pec)/] = ([view.pepInterface()/]) propertiesEditionPart;
+	}
+
+[/if]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		if ([view.viewIdentifier(pec)/] != null && key == [view.editorID()/].class) {
+			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
+			[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
+			[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+			[pee.updater(view, pec)/]
+			[/for]
+		}
+[view.updaterForReferencedViews(pec)/]
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
+	 *     (org.eclipse.emf.edit.domain.EditingDomain)
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ([pec.model.name.toJavaIdentifier()/] != null) {
 [if (view.oclIsTypeOf(views::CustomView))]
 			// [protected ('for getPropertiesEditionCommand body')]
-				
+			
 			// [/protected]
-				
+			
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[editionElement.commandUpdater(view,pec).trim()/]
+			[editionElement.commandUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-		[editionElement.commandUpdater(v, pec).trim()/]
-	[/for]
-[/for]
-
+[view.commandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
 		}
 		if (!cc.isEmpty())
@@ -267,31 +291,25 @@ public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponen
 		return cc;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject
-	 * ()
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof [pec.model.name/]) {
 			[pec.model.name/] [pec.model.name.toJavaIdentifier()/]ToUpdate = ([pec.model.name/])source;
 [if (view.oclIsTypeOf(views::CustomView))]
 			// [protected ('for getPropertiesEditionObject body')]
-				
+			
 			// [/protected]	
-				
+			
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[editionElement.partUpdater(view, pec)/]
+			[editionElement.partUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-		[editionElement.partUpdater(v, pec).trim()/]
-	[/for]
-[/for]
-
+[view.partUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
 			return [pec.model.name.toJavaIdentifier()/]ToUpdate;
 		}
@@ -299,111 +317,143 @@ public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponen
 			return null;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	public void firePropertiesChanged(PathedPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		super.firePropertiesChanged(event);
-		if (PathedPropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
-			Command command = null;
+		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+			CompoundCommand command = new CompoundCommand();
 [if (view.oclIsTypeOf(views::CustomView))]
-				// [protected ('for firePropertiesChanged body')]
-				
-				// [/protected]	
+			// [protected ('for firePropertiesChanged body')]
+			
+			// [/protected]
 				
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[editionElement.liveCommandUpdater(view, pec).trim()/]
+			[editionElement.liveCommandUpdater(view, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-		[editionElement.liveCommandUpdater(v, pec).trim()/]
-	[/for]
-[/for]
+[view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
-
 			if (command != null)
 				liveEditingDomain.getCommandStack().execute(command);
-		} else if (PathedPropertiesEditionEvent.CHANGE == event.getState()) {
+		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-[for (editionElement : PropertiesEditionElement | 
-	pec.involvedEditionElementsInView(view))]
-				[editionElement.liveMessageSetter(view, pec).trim()/]
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+				[editionElement.liveMessageSetter(view, pec)/]
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-		[editionElement.liveMessageSetter(v, pec).trim()/]
-	[/for]
-[/for]
-
+[view.liveMessageSetterForReferencedViews(pec)/]
 			} else {
-[for (editionElement : PropertiesEditionElement | 
-	pec.involvedEditionElementsInView(view))]
-				[editionElement.liveMessageUnsetter(view, pec).trim()/]
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+				[editionElement.liveMessageUnsetter(view, pec)/]
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-		[editionElement.liveMessageUnsetter(v, pec).trim()/]
-	[/for]
-[/for]
-
+[view.livemessageUnsetterForReferencedViews(pec)/]
 			}
 		}
-	}	
-	
+	}
+[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->size() > 0)]
+
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 */
+	public boolean isRequired(String key, int kind) {
+		return [for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | f.model.required)) separator (' || ')]key == [pee.views->first().editorID()/][/for];
+	}
+[/if]
+[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.views->first().oclAsType(views::ElementEditor).helpText(pec).oclIsUndefined() and not (localPee.views->first().oclAsType(views::ElementEditor).helpText(pec) = 'null'))->size() > 0)]
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+		[for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | not f.views->first().oclAsType(views::ElementEditor).helpText(pec).oclIsUndefined() and not (f.views->first().oclAsType(views::ElementEditor).helpText(pec) = 'null')))]
+		if (key == [pee.views->first().editorID()/])
+			return [pee.views->first().oclAsType(views::ElementEditor).helpText(pec)/]; //$NON-NLS-1$
+		[/for]
+		return super.getHelpContent(key, kind);
+	}
+[/if]
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
-	public Diagnostic validateValue(PathedPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditionEvent event) {
 		String newStringValue = event.getNewValue().toString();
-		
 		Diagnostic ret = null;
-		
 		try {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter().trim()/].getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter().trim()/].getEAttributeType(), newValue);
+				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
 			}
 [/for]
 [comment add ViewReference support/]
 [for ( v : View | view.referencedViews())]	
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter().trim()/].getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter().trim()/].getEAttributeType(), newValue);
+				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
 			}
 	[/for]
 [/for]
-
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
 		}
-		
 		return ret;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(mode)) {
+		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
 			return Diagnostician.INSTANCE.validate(copy);
 		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(mode))
+		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			return Diagnostician.INSTANCE.validate([pec.model.name.toJavaIdentifier()/]);
 		else
 			return null;
 	}
 
+[comment work on validation]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateRequiredFeatures()
+	 */
+	public Diagnostic validateRequiredFeatures() {
+		BasicDiagnostic result = new BasicDiagnostic(Diagnostic.OK, "EEF Validation", Status.OK,
+				"No problem detected", null);
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (editionElement.model.required)]
+		if ([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/] == null || [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/].equals("")) //$NON-NLS-1$
+			result.add(new BasicDiagnostic(Diagnostic.ERROR, "EEF Validation", Status.ERROR, 
+				NLS.bind([editionElement.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RequiredFeatureMessage, "[editionElement.views->first().name.toJavaIdentifier()/]"), null)); //$NON-NLS-1$ 
+[/for]
+[if (view.eAllContents(views::SpecificElementEditor)->size() > 0)]
+		// [protected ('additional requirement checks')]
+		
+		// [/protected]
+
+[/if]
+		return result;
+	}
+[/comment]
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -415,13 +465,26 @@ public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponen
 	}
 
 }
-
 [/file]
 	[/for]
 [/if]
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String, view : View)]
-[pec.model.eefPackage(basePackage).toPath().trim()/]/components/[pec.subPECClass(view).trim()/].java
+[template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
+[pec.subPECQualifiedClass(view).toPath()/].java
+[/template]
+
+[template public manageImportForViewReferences(view : View, pec : PropertiesEditionComponent, basePackage : String)]
+[for (v : View | view.referencedViews())]
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)->select(i | i.oclAsType(EObject).eResource() <> pec.oclAsType(EObject).eResource()))]
+import [editionElement.model.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
+[/for]
+[for (viewsRepository : ViewsRepository | v.owningViewsRepository())]
+import [viewsRepository.vrQualifiedClass()/];
+[/for]
+[if (v.referencedViews()->notEmpty())]
+[v.manageImportForViewReferences(v.involvedPropertiesEditionComponent(), basePackage)/]
+[/if]
+[/for]
 [/template]

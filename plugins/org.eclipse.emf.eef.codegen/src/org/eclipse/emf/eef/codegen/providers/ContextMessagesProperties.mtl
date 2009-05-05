@@ -15,9 +15,9 @@
 [import common /]
 [import naming /]
 
-[template public ContextMessagesProperties(editionContext : PropertiesEditionContext, basePackage : String)]
+[template public ContextMessagesProperties(viewsRepository : ViewsRepository)]
 [comment @main /]
-	[file (editionContext.fullFilePath(basePackage).trim(), false)]
+	[file (viewsRepository.fullFilePath(), false)]
 #
 # Generated with Acceleo
 #
@@ -27,16 +27,15 @@
 #[/protected]
 
 # default values ...
-[for (component : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent))]
-[for (group : ViewElement | component.views.eAllContents()) ? (group.oclIsTypeOf(Container) and group.representation.name = 'Group') ]
-[group.groupKey(group.owningView()).trim()/]=[group.name.toUpperFirst()/]
+[for (group : ViewElement | viewsRepository.eAllContents(views::Container)) ? (group.representation.name = 'Group')]
+[group.groupKey(group.owningView())/]=[group.name.toUpperFirst().toUnicode()/]
 [/for]
-[component.model.name/]_ReadOnly=Cette propri\u00E9t\u00E9 est en lecture seule
-[for (element : PropertiesEditionElement | component.properties)][let editor : ElementEditor = element.views->first()]
-[editor.editorKey(editor.owningView()).trim()/]=[editor.name.toUpperFirst()/][if (editor.representation.name <> 'Checkbox' and editor.representation.name <> 'MultiValuedEditor')] : [/if]
+[for (view : View | viewsRepository.eAllContents(views::View))]
+[view.name.toJavaClassifier()/]_ReadOnly=Cette propri\u00E9t\u00E9 est en lecture seule
+[/for]
+[for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
+[editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if (editor.representation.name <> 'Checkbox' and editor.representation.name <> 'MultiValuedEditor')] : [/if]
 
-[/let]
-[/for]
 [/for]
 PropertiesEditionPart_PropertiesGroupLabel=Propri\u00E9t\u00E9s
 PropertiesEditionPart_EditTableViewerLabel=Editer
@@ -54,9 +53,9 @@ PropertiesEditionPart_BigIntegerValueMessage=La propri\u00E9t\u00E9 {0} doit \u0
 PropertiesEditionPart_BigDecimalValueMessage=La propri\u00E9t\u00E9 {0} doit \u00EAtre un BigDecimal
 PropertiesEditionPart_AddTableViewerLabel=Ajouter
 PropertiesEditionPart_AddListViewerLabel=Ajouter
-	[/file]
+[/file]
 [/template]
 
-[template public fullFilePath(editionContext : PropertiesEditionContext, basePackage : String)]
-[editionContext.messagesProviderPackage(basePackage).toPath().trim()/]/[editionContext.messagesProperties().trim()/].properties
+[template public fullFilePath(viewsRepository : ViewsRepository)]
+[viewsRepository.messagesProviderPackage().toPath()/]/[viewsRepository.messagesProperties()/].properties
 [/template]

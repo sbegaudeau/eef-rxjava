@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.codegen.ui.generators.common;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -22,7 +23,11 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
+import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLauncher;
+import org.eclipse.emf.eef.codegen.core.services.PropertiesGeneratorLaunchersServices;
 import org.osgi.framework.Bundle;
 
 
@@ -34,24 +39,14 @@ import org.osgi.framework.Bundle;
 public class GenerateAll {
 
 	/**
-	 * The model URI.
-	 */
-	private URI modelURI;
-
-	/**
 	 * The output folder.
 	 */
 	private File targetFolder;
-
-	/**
-	 * The other arguments.
-	 */
-	List<? extends Object> arguments;
 	
 	/**
 	 * The Generation PSM
 	 */
-	private GenEditionContext context;
+	private EEFGenModel eefGenModel;
 
 	/**
 	 * Constructor.
@@ -60,17 +55,12 @@ public class GenerateAll {
 	 *            is the URI of the model.
 	 * @param targetFolder
 	 *            is the output folder
-	 * @param arguments
-	 *            are the other arguments
 	 * @throws IOException
 	 *             Thrown when the output cannot be saved.
-	 * @generated NOT
 	 */
-	public GenerateAll(URI modelURI, File targetFolder, List<? extends Object> arguments, GenEditionContext context) {
-		this.modelURI = modelURI;
+	public GenerateAll(File targetFolder, EEFGenModel eefGenModel) {
 		this.targetFolder = targetFolder;
-		this.arguments = arguments;
-		this.context = context;
+		this.eefGenModel = eefGenModel;
 	}
 
 	/**
@@ -78,7 +68,6 @@ public class GenerateAll {
 	 * 
 	 * @throws IOException
 	 *             Thrown when the output cannot be saved.
-	 * @generated NOT
 	 */
 	public void doGenerate(IProgressMonitor monitor) throws IOException {
 		if (!targetFolder.exists()) {
@@ -86,75 +75,75 @@ public class GenerateAll {
 			targetFolder.mkdirs();
 		}
 		monitor.worked(1);
-		monitor.subTask("Generating simple components");
-		final URI template1 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/components/SubPropertiesEditionComponent.emtl"));
-		org.eclipse.emf.eef.codegen.components.SubPropertiesEditionComponent gen1 = new org.eclipse.emf.eef.codegen.components.SubPropertiesEditionComponent(context.getPropertiesEditionContext(), targetFolder, arguments) {
-			protected URI createTemplateURI(String entry) {
-				return template1;
-			}
-		};
-		gen1.doGenerate();
-			
-		EObject model = gen1.getModel();
-		
-		monitor.worked(1);
-		monitor.subTask("Generating composed components");
+		EObject model;
+		for (GenEditionContext genEditionContext : eefGenModel.getEditionContexts()) {
+			List arguments = new ArrayList<Object>();
+			arguments.add(getBasePackage(genEditionContext));
+			monitor.subTask("Generating simple components");
+			final URI template1 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/components/SubPropertiesEditionComponent.emtl"));
+			org.eclipse.emf.eef.codegen.components.SubPropertiesEditionComponent gen1 = new org.eclipse.emf.eef.codegen.components.SubPropertiesEditionComponent(genEditionContext.getPropertiesEditionContext(), targetFolder, arguments) {
+				protected URI createTemplateURI(String entry) {
+					return template1;
+				}
+			};
+			gen1.doGenerate();
 
-		if (model != null) {
-			final URI template0 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/components/PropertiesEditionComponent.emtl"));
-			org.eclipse.emf.eef.codegen.components.PropertiesEditionComponent gen0 = new org.eclipse.emf.eef.codegen.components.PropertiesEditionComponent(model, targetFolder, arguments) {
-				protected URI createTemplateURI(String entry) {
-					return template0;
-				}
-			};
-			gen0.doGenerate();
+			model = gen1.getModel();
+
 			monitor.worked(1);
-			monitor.subTask("Generating parts interfaces");
-			
-			final URI template3 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/IPropertiesEditionPart.emtl"));
-			org.eclipse.emf.eef.codegen.parts.IPropertiesEditionPart gen3 = new org.eclipse.emf.eef.codegen.parts.IPropertiesEditionPart(model, targetFolder, arguments) {
-				protected URI createTemplateURI(String entry) {
-					return template3;
-				}
-			};
-			gen3.doGenerate();
-			monitor.worked(1);
-			
-			monitor.subTask("Generating views repository");
-			
-			final URI template3b = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/ViewsRepository.emtl"));
-			org.eclipse.emf.eef.codegen.parts.ViewsRepository gen3b = new org.eclipse.emf.eef.codegen.parts.ViewsRepository(model, targetFolder, arguments) {
-				protected URI createTemplateURI(String entry) {
-					return template3b;
-				}
-			};
-			gen3b.doGenerate();
-			monitor.worked(1);
-			
-			if (context.isSwtViews()) {
-				monitor.subTask("Generating 'SWT' parts");
-				final URI template4 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/PropertiesEditionPart.emtl"));
-				org.eclipse.emf.eef.codegen.parts.PropertiesEditionPart gen4 = new org.eclipse.emf.eef.codegen.parts.PropertiesEditionPart(model, targetFolder, arguments) {
+			monitor.subTask("Generating composed components");
+
+			if (model != null) {
+				final URI template0 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/components/PropertiesEditionComponent.emtl"));
+				org.eclipse.emf.eef.codegen.components.PropertiesEditionComponent gen0 = new org.eclipse.emf.eef.codegen.components.PropertiesEditionComponent(model, targetFolder, arguments) {
 					protected URI createTemplateURI(String entry) {
-						return template4;
+						return template0;
 					}
 				};
-				gen4.doGenerate();
+				gen0.doGenerate();
 				monitor.worked(1);
-			}
-			
-			if (context.isFormViews()) {
-				monitor.subTask("Generating 'Form' parts");
-				final URI template2 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/FormPropertiesEditionPart.emtl"));
-				org.eclipse.emf.eef.codegen.parts.FormPropertiesEditionPart gen2 = new org.eclipse.emf.eef.codegen.parts.FormPropertiesEditionPart(model, targetFolder, arguments) {
+
+				monitor.subTask("Generating dynamic composed components");
+				final URI template14 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/components/DynamicPropertiesEditionComponent.emtl"));
+				org.eclipse.emf.eef.codegen.components.DynamicPropertiesEditionComponent gen14 = new org.eclipse.emf.eef.codegen.components.DynamicPropertiesEditionComponent(model, targetFolder, arguments) {
 					protected URI createTemplateURI(String entry) {
-						return template2;
+						return template14;
 					}
 				};
-				gen2.doGenerate();
+				gen14.doGenerate();
 				monitor.worked(1);
-				
-				if (context.isDescriptorsGenericPropertiesViews()) {
+
+				monitor.subTask("Generating Policies provider");
+				final URI template10 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PackagePropertiesEditionPolicyProvider.emtl"));
+				org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider gen10 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider(model, targetFolder, arguments) {
+					protected URI createTemplateURI(String entry) {
+						return template10;
+					}
+				};
+				gen10.doGenerate();
+				monitor.worked(1);
+
+				monitor.subTask("Generating Global Edition provider");
+				final URI template11 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PackagePropertiesEditionProvider.emtl"));
+				org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider gen11 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider(model, targetFolder, arguments) {
+					protected URI createTemplateURI(String entry) {
+						return template11;
+					}
+				};
+				gen11.doGenerate();
+				monitor.worked(1);
+
+				monitor.subTask("Generating Edition provider");
+				final URI template12 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PropertiesEditionProvider.emtl"));
+				org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider gen12 = new org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider(model, targetFolder, arguments) {
+					protected URI createTemplateURI(String entry) {
+						return template12;
+					}
+				};
+				gen12.doGenerate();
+				monitor.worked(1);
+
+				if (genEditionContext.isDescriptorsGenericPropertiesViews()) {
 					monitor.subTask("Generating plugin.xml configuration");
 					final URI template6 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/plugin/plugin_xml.emtl"));
 					org.eclipse.emf.eef.codegen.plugin.Plugin_xml gen6 = new org.eclipse.emf.eef.codegen.plugin.Plugin_xml(model, targetFolder, arguments) {
@@ -165,81 +154,87 @@ public class GenerateAll {
 					gen6.doGenerate();
 					monitor.worked(1);
 				}
-				
-				if (context.isGmfPropertiesViews()) {
-					monitor.subTask("Generating Properties Section");
-					final URI template7 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/properties/PropertySection.emtl"));
-					org.eclipse.emf.eef.codegen.properties.PropertySection gen7 = new org.eclipse.emf.eef.codegen.properties.PropertySection(model, targetFolder, arguments) {
-						protected URI createTemplateURI(String entry) {
-							return template7;
-						}
-					};
-					gen7.doGenerate();
-					monitor.worked(1);
 
-					monitor.subTask("Generating plugin.xml for GMF configuration");
-					final URI template5 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/plugin/GMF_Plugin_xml.emtl"));
-					org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml gen5 = new org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml(model, targetFolder, arguments) {
-						protected URI createTemplateURI(String entry) {
-							return template5;
-						}
-					};
-					gen5.doGenerate();
-					monitor.worked(1);
-				}
+				monitor.subTask("Generating 'SWT' parts");
+				final URI template4 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/PropertiesEditionPart.emtl"));
+				org.eclipse.emf.eef.codegen.parts.PropertiesEditionPart gen4 = new org.eclipse.emf.eef.codegen.parts.PropertiesEditionPart(model, targetFolder, arguments) {
+					protected URI createTemplateURI(String entry) {
+						return template4;
+					}
+				};
+				gen4.doGenerate();
+				monitor.worked(1);
+				monitor.subTask("Generating 'Form' parts");
+				final URI template2 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/FormPropertiesEditionPart.emtl"));
+				org.eclipse.emf.eef.codegen.parts.FormPropertiesEditionPart gen2 = new org.eclipse.emf.eef.codegen.parts.FormPropertiesEditionPart(model, targetFolder, arguments) {
+					protected URI createTemplateURI(String entry) {
+						return template2;
+					}
+				};
+				gen2.doGenerate();
+				monitor.worked(1);
+
 			}
+		}
+		for (GenViewsRepository genViewsRepository : eefGenModel.getViewsRepositories()) {
+
+			monitor.subTask("Generating parts interfaces");
+			List argumentsEmpty = new ArrayList();
+			List arguments2 = new ArrayList();
+			arguments2.add(genViewsRepository.getBasePackage());
+			final URI template3 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/IPropertiesEditionPart.emtl"));
+			org.eclipse.emf.eef.codegen.parts.IPropertiesEditionPart gen3 = new org.eclipse.emf.eef.codegen.parts.IPropertiesEditionPart(genViewsRepository.getViewsRepository(), targetFolder, argumentsEmpty) {
+				protected URI createTemplateURI(String entry) {
+					return template3;
+				}
+			};
+			gen3.doGenerate();
+			monitor.worked(1);
+			model = gen3.getModel();
+			monitor.subTask("Generating views repository");
+
+			final URI template3b = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/ViewsRepository.emtl"));
+			org.eclipse.emf.eef.codegen.parts.ViewsRepository gen3b = new org.eclipse.emf.eef.codegen.parts.ViewsRepository(model, targetFolder, argumentsEmpty) {
+				protected URI createTemplateURI(String entry) {
+					return template3b;
+				}
+			};
+			gen3b.doGenerate();
+			monitor.worked(1);
+
 			monitor.subTask("Generating internationalization provider");
 			final URI template8 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/ContextMessages.emtl"));
-			org.eclipse.emf.eef.codegen.providers.ContextMessages gen8 = new org.eclipse.emf.eef.codegen.providers.ContextMessages(model, targetFolder, arguments) {
+			org.eclipse.emf.eef.codegen.providers.ContextMessages gen8 = new org.eclipse.emf.eef.codegen.providers.ContextMessages(model, targetFolder, argumentsEmpty) {
 				protected URI createTemplateURI(String entry) {
 					return template8;
 				}
 			};
 			gen8.doGenerate();
 			monitor.worked(1);
-			
+
 			monitor.subTask("Generating internationalization messages");
 			final URI template9 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/ContextMessagesProperties.emtl"));
-			org.eclipse.emf.eef.codegen.providers.ContextMessagesProperties gen9 = new org.eclipse.emf.eef.codegen.providers.ContextMessagesProperties(model, targetFolder, arguments) {
+			org.eclipse.emf.eef.codegen.providers.ContextMessagesProperties gen9 = new org.eclipse.emf.eef.codegen.providers.ContextMessagesProperties(model, targetFolder, argumentsEmpty) {
 				protected URI createTemplateURI(String entry) {
 					return template9;
 				}
 			};
 			gen9.doGenerate();
 			monitor.worked(1);
-			
-			monitor.subTask("Generating Policies provider");
-			final URI template10 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PackagePropertiesEditionPolicyProvider.emtl"));
-			org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider gen10 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider(model, targetFolder, arguments) {
+
+			monitor.subTask("Generating Part provider");
+			final URI template13 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PackagePropertiesEditionPartProvider.emtl"));
+			org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPartProvider gen13 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPartProvider(model, targetFolder, argumentsEmpty) {
 				protected URI createTemplateURI(String entry) {
-					return template10;
+					return template13;
 				}
 			};
-			gen10.doGenerate();
-			monitor.worked(1);
-			
-			monitor.subTask("Generating Global Edition provider");
-			final URI template11 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PackagePropertiesEditionProvider.emtl"));
-			org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider gen11 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider(model, targetFolder, arguments) {
-				protected URI createTemplateURI(String entry) {
-					return template11;
-				}
-			};
-			gen11.doGenerate();
-			monitor.worked(1);
-			
-			monitor.subTask("Generating Edition provider");
-			final URI template12 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/PropertiesEditionProvider.emtl"));
-			org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider gen12 = new org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider(model, targetFolder, arguments) {
-				protected URI createTemplateURI(String entry) {
-					return template12;
-				}
-			};
-			gen12.doGenerate();
+			gen13.doGenerate();
 			monitor.worked(1);
 		}
-			
-		
+		for (AbstractPropertiesGeneratorLauncher launcher : PropertiesGeneratorLaunchersServices.getInstance().getlaunchers()) {
+			launcher.doGenerate(eefGenModel, targetFolder, monitor);
+		}
 	}
 	
 	/**
@@ -251,7 +246,6 @@ public class GenerateAll {
 	 *            is the relative path of the template in the plug-in
 	 * @return the template URI
 	 * @throws IOException
-	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	private URI getTemplateURI(String bundleID, IPath relativePath) throws IOException {
@@ -291,4 +285,20 @@ public class GenerateAll {
 		return result;
 	}
 
+	
+	public String getBasePackage(GenEditionContext genEditionContext) throws IOException {
+		if (genEditionContext != null) {
+			if (genEditionContext.getBasePackage() != null) 
+				return genEditionContext.getBasePackage();
+		}
+		return "";
+	}
+	
+	public String getBasePackage(GenViewsRepository genViewsRepository) throws IOException {
+		if (genViewsRepository != null) {
+			if (genViewsRepository.getBasePackage() != null) 
+				return genViewsRepository.getBasePackage();
+		}
+		return "";
+	}
 }

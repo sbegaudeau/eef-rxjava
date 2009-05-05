@@ -1,0 +1,70 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module PackagePropertiesEditionPartProvider('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0')/]
+
+[import common /]
+[import naming /]
+
+[template public PackagePropertiesEditionPartProvider(v : ViewsRepository)]
+	[comment @main /]
+	[file (v.fullFilePath(), false)]
+[v.associatedGenModel().licenceText().trim()/]
+package [v.vrPackage()/].providers;
+
+import [v.vrPackage()/].parts.[v.vrClass()/];
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+[for (view : View | v.eAllContents(views::View)) ? (not view.involvedPropertiesEditionComponent().oclIsUndefined())]
+import [v.vrPackage()/].parts.forms.[view.pepFormClass()/];
+import [v.vrPackage()/].parts.impl.[view.pepClass()/];
+[/for]
+
+/**
+ * [v.associatedGenModel().authorText().trim()/]
+ *
+ */
+public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
+	
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 */
+	public boolean provides(java.lang.Class key) {
+		return key == [v.vrClass()/].class;
+	}
+
+	
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
+		[for (view : View | v.eAllContents(views::View)) ? (not view.involvedPropertiesEditionComponent().oclIsUndefined())]
+		if (key == [view.editorID()/].class) {
+			if (kind == [v.vrClass()/].SWT_KIND)
+				return new [view.pepClass()/](component);
+			if (kind == [v.vrClass()/].FORM_KIND)
+				return new [view.pepFormClass()/](component);
+		}
+		[/for]
+		return null;
+	}
+
+}
+	[/file]
+[/template]
+
+[template public fullFilePath(repository : ViewsRepository)]
+[repository.vrPackage().toPath()/]/providers/[repository.pepProvider()/].java
+[/template]

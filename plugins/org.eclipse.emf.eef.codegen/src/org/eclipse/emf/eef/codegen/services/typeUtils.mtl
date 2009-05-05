@@ -13,10 +13,19 @@
 [module typeUtils('http://www.eclipse.org/emf/2002/Ecore')/]
 
 [query public isBoolean(a : EAttribute) : Boolean = 
-not oclIsUndefined() and eType.name = 'EBool' or eType.name = 'EBoolean' or eType.name = 'Boolean'/]
+	not oclIsUndefined() and eType.name = 'EBool' or eType.name = 'EBoolean' or eType.name = 'Boolean' or eType.name = 'boolean'/]
 
 [query public isString(a : EAttribute) : Boolean = 
-not oclIsUndefined() and eType.name = 'EString' or eType.name = 'String'/]
+	not oclIsUndefined() and eType.name = 'EString' or eType.name = 'String' or eType.instanceClassName = 'java.lang.String'/]
 
 [query public isInteger(a : EAttribute) : Boolean = 
-not oclIsUndefined() and eType.name = 'EInteger' or eType.name = 'Integer' or eType.name = 'EInt' or eType.instanceClassName = 'int'/]
+	not oclIsUndefined() and eType.name = 'EInteger' or eType.name = 'Integer' or eType.name = 'EInt' or eType.instanceClassName = 'int' or eType.instanceClassName = 'java.lang.Integer'/]
+
+[query public isShort(a : EAttribute) : Boolean = 
+	not oclIsUndefined() and eType.name = 'EShort' or eType.name = 'Short' or eType.instanceClassName = 'java.lang.Short' or eType.instanceClassName = 'short'/]
+
+[query public isEnum(a : EAttribute) : Boolean = 
+	not oclIsUndefined() and eType.oclIsKindOf(ecore::EEnum)/]
+
+[query public isDouble(a : EAttribute) : Boolean = 
+	not oclIsUndefined() and eType.name = 'EDouble' or eType.name = 'Double'/]

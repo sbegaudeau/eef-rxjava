@@ -19,10 +19,10 @@
 [template public PropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
-[if (pec.explicit)]
-	[file (pec.fullFilePath(basePackage).trim(), false)]
-[peContext.licenceText().trim()/]
-package [pec.model.eefPackage(basePackage).trim()/].providers;
+[if (pec.mustBeGenerated())]
+	[file (pec.fullFilePath(basePackage), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [pec.model.eefPackage(basePackage)/].providers;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -30,26 +30,22 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
-import [pec.model.completePackage().trim()/].[pec.model.metamodelPackage().trim()/];
-import [pec.model.qualifiedName(basePackage).trim()/];
+import [pec.model.completePackage()/].[pec.model.metamodelPackage()/];
+import [pec.model.qualifiedName(basePackage)/];
 [if (pec.needComposedEditionComponent())]
-import [pec.model.eefPackage(basePackage).trim()/].components.[pec.pecClass().trim()/];
+import [pec.model.eefPackage(basePackage)/].components.[pec.pecClass()/];
 [/if]
 [for (view : View | pec.views)]
-import [pec.model.eefPackage(basePackage).trim()/].components.[pec.subPECClass(view).trim()/];
-import [pec.model.eefPackage(basePackage).trim()/].parts.impl.[view.pepClass().trim()/];
-import [pec.model.eefPackage(basePackage).trim()/].parts.forms.[view.pepFormClass().trim()/];
+import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit)]	
-import [subPec.model.eefPackage(basePackage).trim()/].components.[subPec.subPECClass(view).trim()/];
-import [subPec.model.eefPackage(basePackage).trim()/].parts.impl.[view.pepClass().trim()/];
-import [subPec.model.eefPackage(basePackage).trim()/].parts.forms.[view.pepFormClass().trim()/];
+	[for (view : View | subPec.views) ? (view.explicit)]
+import [subPec.model.ePackage.completePackage()/].components.[subPec.subPECClass(view)/];
 	[/for]
 [/for]
 
 /**
- * [peContext.authorText().trim()/]
+ * [peContext.associatedGenModel().authorText().trim()/]
  */
 public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 
@@ -59,7 +55,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof [pec.model.name/]) && ([pec.model.metamodelPackage().trim()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == eObject.eClass());
+		return (eObject instanceof [pec.model.name/]) && ([pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == eObject.eClass());
 	}
 	
 	/**
@@ -68,9 +64,9 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof [pec.model.name/]) {
-			return new [pec.pecClass()/](eObject, mode);
+			return new [pec.pecClass()/](eObject, editing_mode);
 		}
 		return null;
 	}
@@ -81,54 +77,16 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof [pec.model.name/]) {
 [for (view : View | pec.views) ? (view.explicit)]
-			if ([pec.subPECClass(view).trim()/].[view.viewPartConstant(pec).trim()/].equals(part))
-				return new [pec.subPECClass(view).trim()/](eObject, mode);
+			if ([pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part))
+				return new [pec.subPECClass(view)/](eObject, editing_mode);
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit)]	
-			if ([subPec.subPECClass(view).trim()/].[view.viewPartConstant(subPec).trim()/].equals(part))
-				return new [subPec.subPECClass(view).trim()/](eObject, mode);
-	[/for]
-[/for]
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionPart(org.eclipse.emf.ecore.EObject,
-	 *      org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent, java.lang.String,
-	 *      java.lang.String)
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(EObject eObject,
-			IPropertiesEditionComponent editionComponent, String part, String kind) {
-		if (eObject instanceof [pec.model.name/]) {
-			if ([pec.pecClass().trim()/].SWT_KIND.equals(kind)) {
-[for (view : View | pec.views) ? (view.explicit)]
-				if ([pec.subPECClass(view).trim()/].[view.viewPartConstant(pec).trim()/].equals(part))
-					return new [view.pepClass().trim()/](editionComponent);
-[/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit)]	
-				if ([subPec.subPECClass(view).trim()/].[view.viewPartConstant(subPec).trim()/].equals(part))
-					return new [view.pepClass().trim()/](editionComponent);
-	[/for]
-[/for]
-			}
-		}
-		if ([pec.pecClass().trim()/].FORM_KIND.equals(kind)) {
-[for (view : View | pec.views) ? (view.explicit)]
-				if ([pec.subPECClass(view).trim()/].[view.viewPartConstant(pec).trim()/].equals(part))
-					return new [view.pepFormClass().trim()/](editionComponent);
-[/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit)]	
-				if ([subPec.subPECClass(view).trim()/].[view.viewPartConstant(subPec).trim()/].equals(part))
-					return new [view.pepFormClass().trim()/](editionComponent);
+	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+			if ([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part))
+				return new [subPec.subPECClass(view)/](eObject, editing_mode);
 	[/for]
 [/for]
 		}
@@ -141,6 +99,6 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String)]
-[pec.model.eefPackage(basePackage).toPath().trim()/]/providers/[pec.pecProviderClass().trim()/].java
+[pec.model.eefPackage(basePackage).toPath()/]/providers/[pec.pecProviderClass()/].java
 [/template]
 

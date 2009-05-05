@@ -10,227 +10,407 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module componentUtils('http://www.eclipse.org/emf/2002/Ecore','http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0')/]
+[module componentUtils('http://www.eclipse.org/emf/2002/Ecore','http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0')/]
 
 [import naming /]
 [import common /]
 [import typeUtils /]
 
 [comment ===== Case : model = any - view = SpecificElementEditor ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]	
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
 // [protected ('for '.concat(editionElement.name).concat(' live update'))]
 				
 				// [/protected]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
 // [protected ('for '.concat(editionElement.name).concat(' live command update'))]
 			
 			// [/protected]
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]	
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
 // [protected ('for '.concat(editionElement.name).concat(' update command'))]
 			
 			// [/protected]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
 // [protected ('for '.concat(editionElement.name).concat(' part update'))]
 			
 			// [/protected]
 [/template]
 
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+// [protected (' for '.concat(editionElement.name).concat(' command update'))]
+		
+		// [/protected]
+[/template]
+
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text')) ]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Integer)msg.getNewValue()).toString());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Short)msg.getNewValue()).toString());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Double)msg.getNewValue()).toString());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
-[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
-if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], new Integer((String)event.getNewValue()));	
-[/if]
-[/template]
-
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))  ]	
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));	
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], new Integer([view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/])));
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Integer((String)event.getNewValue())));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Short((String)event.getNewValue())));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Double((String)event.getNewValue())));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text')) ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Integer([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Short([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Double([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Integer([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).intValue());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Short([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).shortValue());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Double([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).doubleValue());
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[else]
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
 [/template]
 
 [comment ===== Case : model = Attribute(1) - view = Checkbox ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]	
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
 [/if]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]	
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
 [/if]
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]	
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Boolean([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).booleanValue());
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
+[/if]
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
+[if (editionElement.model.oclAsType("EAttribute").eType.instanceClassName = 'boolean')]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].is[editionElement.model.name.toJavaClassifier()/]());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[else]
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
+[/if]
 [/template]
 
 [comment ===== Case : model = Attribute(1) - view = EEnumViewer ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.oclIsKindOf(ecore::EEnum))]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
 [/if]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.oclIsKindOf(ecore::EEnum))]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
 [/if]
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.oclIsKindOf(ecore::EEnum))]
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EENumViewer'))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);	
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
+[/if][/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'EMFComboViewer')]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [/template]
 
 [comment ===== Case : model = Attribute(1) - view = Textarea ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
 [/if]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
 [/if]
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);	
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
+[/if]
 [/template]
 
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[else]
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
+[/if]
+[/template]
 [comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]	
-[if (editionElement.model.oclAsType(ecore::EAttribute).eType.name = 'EString')]
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
+[/if]
+
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString() and editionElement.model.many)]
+[modelName/]ToUpdate.get[editionElement.model.name.toMany().toJavaClassifier()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+[modelName/]ToUpdate.get[editionElement.model.name.toJavaClassifier()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.get[if (editionElement.model.many)][editionElement.model.name.toMany().toJavaClassifier().trim()/][else][editionElement.model.name.toJavaClassifier().trim()/][/if]().addAll(([editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]));
-[/template]
+[comment][template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'MultiValuededitionElement')]
+this.[pec.model.name.toJavaIdentifier()/] = [pec.model.name.toJavaIdentifier()/];
+		this.resourceSet = allResources;
+		[editionElement.views->first().name.toJavaIdentifier()/]List = [pec.model.name.toJavaIdentifier()/].get[if (editionElement.model.many)][editionElement.model.name.toMany().toJavaClassifier()/][else][editionElement.model.name.toJavaClassifier()/][/if]();
+		[editionElement.views->first().name.toJavaIdentifier()/]Text.setText([editionElement.views->first().name.toJavaIdentifier()/]List.toString());
+[/template][/comment]
 
 [comment ===== Case : model = Reference(1) - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]	
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]	
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command = SetCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());	
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]	
-cc.append(SetCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[editionElement.primitiveTypeConverter(view.viewIdentifier(pec)).trim()/]);
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [/template]
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))  ]
-if ([editionElement.metamodelGetter().trim()/].equals(msg.getFeature())) {
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
+					[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+				if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+				if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(RemoveCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+				if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue(), event.getNewIndex()));
+			}
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAdd.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
+			List [editionElement.model.name.toJavaIdentifier()/]ToRemove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemove.iterator(); iter.hasNext();)
+				cc.append(RemoveCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
+			//List [editionElement.model.name.toJavaIdentifier()/]ToMove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMove.iterator(); iter.hasNext();){
+			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+			//	cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+			//}
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsUndefined() and (editionElement.views->first().representation.name = 'ReferencesTable' or editionElement.views->first().representation.name = 'AdvancedReferencesTable' ))]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
+[/template]
+
+[comment ===== Case : model = Reference(*) in Simple Navigation - view = ReferencesTable ===== /]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+			if (PropertiesEditionEvent.ADD == event.getKind()) {
+				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eContainingClass.name.toUpperFirst()/]();
+				command.append(SetCommand.create(liveEditingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], event.getNewValue()));
+				command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
+			}
+			if (PropertiesEditionEvent.REMOVE == event.getKind()){
+				command.append(RemoveCommand.create(liveEditingDomain, event.getNewValue()));
+			}
+		}
+[/template]
+
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
 					[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
 				}
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				if (PathedPropertiesEditionEvent.ADD == event.getKind())
-					command = AddCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());
-				if (PathedPropertiesEditionEvent.REMOVE == event.getKind())
-					command = RemoveCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());
-				if (PathedPropertiesEditionEvent.MOVE == event.getKind())
-					command = MoveCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue(), event.getNewIndex());
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAdd.iterator(); iter.hasNext();) {
+				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eContainingClass.name.toUpperFirst()/]();
+				cc.append(SetCommand.create(editingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], iter.next()));
+				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
 			}
-[/template]
-
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))  ]	
-List [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], iter.next()));
-			List [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], iter.next()));
-			//List [editionElement.model.name.toJavaIdentifier().trim()/]ToMove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToMove();
-			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToMove.iterator(); iter.hasNext();){
-			//	MoveElement moveElement = (MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+			List [editionElement.model.eContainingClass.name.toJavaIdentifier()/]ToRemove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.eContainingClass.name.toJavaIdentifier()/]ToRemove.iterator(); iter.hasNext();) {
+				cc.append(RemoveCommand.create(editingDomain, iter.next()));
+			}
+			//List [editionElement.model.name.toJavaIdentifier()/]ToMove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMove.iterator(); iter.hasNext();){
+			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+			//	cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			//}
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+for (Iterator iter = [modelName/]ToUpdate.get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toMany().toUpperFirst()/]().iterator(); iter.hasNext();) {
+				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/])iter.next();
+				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eContainingClass.name.toUpperFirst()/]();
+				[editionElement.model.eContainingClass.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/]([editionElement.model.name.toJavaIdentifier()/]);
+				[modelName/]ToUpdate.get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toMany().toUpperFirst()/]().add([editionElement.model.eContainingClass.name.toJavaIdentifier()/]);
+			}
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 [/template]
 
 [comment ===== Case : model = Containment(*) - view = TableComposition ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))  ]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 if (msg.getFeature() != null && 
 						(((EStructuralFeature)msg.getFeature()) == [editionElement.metamodelGetter()/]
 						|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]())) {
@@ -238,62 +418,223 @@ if (msg.getFeature() != null &&
 				}
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) )]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				if (PathedPropertiesEditionEvent.SET == event.getKind()) {
+				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
+					
 					// [protected (' for '.concat(editionElement.name).concat(' live update command'))]
-					// TODO: Complete the [pec.model.name.toJavaIdentifier()/] update command					
+					// TODO: Complete the [modelName/] update command
 					// [/protected]
 					
 				}
-				else if (PathedPropertiesEditionEvent.ADD == event.getKind())
-					command = AddCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], event.getNewValue());
-				else if (PathedPropertiesEditionEvent.REMOVE == event.getKind())
-					command = DeleteCommand.create(liveEditingDomain, event.getNewValue());
-				else if (PathedPropertiesEditionEvent.MOVE == event.getKind())
-					command = MoveCommand.create(liveEditingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex());
+				else if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+				else if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
+				else if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex()));
 			}
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))  ]	
-List [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToAdd.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter().trim()/], iter.next()));
-			Map [editionElement.model.name.toJavaIdentifier().trim()/]ToRefresh = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToRefresh.keySet().iterator(); iter.hasNext();) {
-			
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAdd.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
+			Map [editionElement.model.name.toJavaIdentifier()/]ToRefresh = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefresh.keySet().iterator(); iter.hasNext();) {
+				
 				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment'))]
-					
+				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
-				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier().trim()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier().trim()/]ToRefresh.get(nextElement);
-
+				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefresh.get(nextElement);
+				
 				// [/protected]
-
+				
 			}
-			List [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToRemove.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));				
-			List [editionElement.model.name.toJavaIdentifier().trim()/]ToMove = [view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToMove();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier().trim()/]ToMove.iterator(); iter.hasNext();){
-				MoveElement moveElement = (MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, [pec.model.name.toJavaIdentifier()/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+			List [editionElement.model.name.toJavaIdentifier()/]ToRemove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemove.iterator(); iter.hasNext();)
+				cc.append(DeleteCommand.create(editingDomain, iter.next()));
+			List [editionElement.model.name.toJavaIdentifier()/]ToMove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMove.iterator(); iter.hasNext();){
+				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+				cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			}
 [/template]
 
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
+[/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))  ]
-[pec.model.name.toJavaIdentifier()/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec).trim()/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'TableComposition' or editionElement.views->first().representation.name = 'AdvancedTableComposition')]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
+[/template]
+
+[comment ===== Case : model = Attribute(1) - view = Radio ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Radio
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Radio
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], ((EEnumLiteral)[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).getInstance()));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Radio
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Radio
+[/if]
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'Radio')]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[/template]
+
+[comment ===== Case : model = Reference - view = Combo ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
+if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
+cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
+[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'Combo')]
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[/template]
+
+[comment ===== Case : model = any - view = any NEED TO BE THE LAST CHOICE ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
+// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String)]
+// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [modelName/].
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
+// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
+// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
+//FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
 [comment ========= message setter and unsetter /]
 [template public liveMessageSetter(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Text') or editionElement.representationName('Textarea'))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-					[view.viewIdentifier(pec)/].setMessageFor[editionElement.model.name.toJavaClassifier()/](diag.getMessage(), IMessageProvider.ERROR);
+					[view.viewIdentifier(pec)/].setMessageFor[editionElement.views->first().name.toJavaClassifier()/](diag.getMessage(), IMessageProvider.ERROR);
 [/template]
 
 [template public liveMessageUnsetter(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Text') or editionElement.representationName('Textarea'))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-					[view.viewIdentifier(pec)/].unsetMessageFor[editionElement.model.name.toJavaClassifier()/]();
+					[view.viewIdentifier(pec)/].unsetMessageFor[editionElement.views->first().name.toJavaClassifier()/]();
+[/template]
+
+[comment ========== ReferencedViews support ========== /]
+[template public livemessageUnsetterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
+[for ( v : View | view.referencedViews())]	
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+				[editionElement.liveMessageUnsetter(v, pec)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.livemessageUnsetterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if]
+[/for]
+[/template]
+
+[template public liveMessageSetterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
+[for ( v : View | view.referencedViews())]	
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+				[editionElement.liveMessageSetter(v, pec)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.liveMessageSetterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if]
+[/for]
+[/template]
+
+[template public liveCommandUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
+[for ( v : View | view.referencedViews())]	
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+			[editionElement.liveCommandUpdater(v, modelName)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.liveCommandUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), modelName)/][/if]
+[/for]
+[/template]
+
+[template public partUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
+[for ( v : View | view.referencedViews())]	
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+			[editionElement.partUpdater(v, pec, modelName)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.partUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), modelName)/][/if]
+[/for]
+[/template]
+
+[template public commandUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
+[for ( v : View | view.referencedViews())]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+			[editionElement.commandUpdater(v, pec, modelName)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.commandUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), modelName)/][/if]
+[/for]
+[/template]
+
+[template public liveUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
+[for ( v : View | view.referencedViews())]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+				[editionElement.liveUpdater(v, pec)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.liveUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if]
+[/for]
+[/template]
+
+[template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
+[for ( v : View | view.referencedViews())]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+		[editionElement.updater(v, pec)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())]
+[v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), pec)/][/if]
+[/for]
+[/template]
+
+[template public updaterForSubReferencedViews(view : View, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent)]
+[for ( v : View | view.referencedViews())]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+		[editionElement.updater(v, inputPEC)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())][v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), inputPEC)/][/if]
+[/for]
 [/template]

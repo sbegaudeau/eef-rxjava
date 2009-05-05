@@ -20,9 +20,9 @@
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.explicit)]
 	[for (view : View | pec.views) ? (view.explicit)]
-[file (pec.fullFilePath(basePackage, view).trim(), false)]
-[peContext.licenceText().trim()/]
-package [pec.model.eefPackage(basePackage).trim()/].properties;
+[file (pec.fullFilePath(basePackage, view), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [pec.model.eefPackage(basePackage)/].properties;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -42,12 +42,12 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import [pec.model.ePackage.qualifiedMetamodelPackage(basePackage)/];
-import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view).trim() /];
+import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
 
 /**
- * [peContext.authorText().trim()/]
+ * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [pec.propertySection(view).trim()/] extends AbstractPropertySection implements IFilter {
+public class [pec.propertySection(view)/] extends AbstractPropertySection implements IFilter {
 
 	private Composite parent;
 	private IPropertiesEditionComponent propertiesEditionComponent;
@@ -104,7 +104,8 @@ public class [pec.propertySection(view).trim()/] extends AbstractPropertySection
 						[pec.subPECClass(view)/].[view.viewPartConstant(pec)/]);
 				if (this.propertiesEditionComponent != null) {
 					this.propertiesEditionComponent.setLiveEditingDomain(editingDomain);
-					this.editionPart = propertiesEditionComponent.getPropertiesEditionPart("Form", [pec.subPECClass(view)/].[view.viewPartConstant(pec)/]); //$NON-NLS-1$
+					// FIXME: find a better way to define the Form constant
+					this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1, [pec.subPECClass(view)/].[view.viewPartConstant(pec)/]); //$NON-NLS-1$
 					if (editionPart instanceof IFormPropertiesEditionPart) {
 						for (int i = 0; i < parent.getChildren().length; i++) {
 							Composite child = (Composite) parent.getChildren()['['/]i[']'/];
@@ -112,7 +113,7 @@ public class [pec.propertySection(view).trim()/] extends AbstractPropertySection
 						}
 						((IFormPropertiesEditionPart) this.editionPart).createFigure(parent, getWidgetFactory());
 						parent.layout();
-						this.editionPart.initComponent(eObject);
+						propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart([pec.subPECClass(view)/].[view.viewPartConstant(pec)/]), 1, eObject);
 					}
 				}
 			}
@@ -155,6 +156,6 @@ public class [pec.propertySection(view).trim()/] extends AbstractPropertySection
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String, view : View)]
-[pec.model.eefPackage(basePackage).toPath().trim()/]/properties/[pec.propertySection(view).trim()/].java
+[pec.model.eefPackage(basePackage).toPath()/]/properties/[pec.propertySection(view)/].java
 [/template]
 

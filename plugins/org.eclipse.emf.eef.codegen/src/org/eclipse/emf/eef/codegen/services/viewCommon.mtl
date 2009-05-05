@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module viewCommon('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module viewCommon('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 [import common /]
 [import naming /]
 [import viewGettersSetters /]
@@ -22,107 +22,74 @@ TODO: externalise model/controler reference after Unedic non-reg
 [/comment]
 
 [comment --------------- Views related templates --------------- /]
+[template public genDeclaration(elementEditor : ElementEditor)]
+	[elementEditor.getterDeclaration()/]
+	
+	[elementEditor.setterDeclaration()/]
+	
+	[elementEditor.setMessageDeclaration()/]
+	
+	[elementEditor.unsetMessageDeclaration()/]
+	
+[/template]
 
-[template public implementationClass(e : ElementEditor)]
-[if (e.representation.name = 'Checkbox')]
-Button
-[elseif (e.representation.name = 'Textarea')]
-Text
-[else]
-[e.representation.name/]
+[template public genDeclaration(view : View)]
+	[view.getterDeclaration()/]
+[/template]
+
+[template public genDeclarationForViewReference(view : View)]
+[for (viewReference : ViewReference | view.eAllContents(views::ViewReference))]
+	[for (elementEditor : ElementEditor | viewReference.view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
+[elementEditor.genDeclaration()/]
+	[/for]
+[if (viewReference.view.eAllContents(views::ViewReference)->notEmpty())][genDeclarationForViewReference(viewReference.view.oclAsType(views::View))/][/if]
+[/for]
+[/template]
+
+[template public genDeclarationForSubViews(view : View)]
+[view.genDeclaration()/]
+
+[for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
+[elementEditor.genDeclaration()/]
+[/for]
+[/template]
+
+[template public genImports(view : ViewElement)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+import java.util.List;
+import org.eclipse.emf.ecore.EReference;
+[/if]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+import java.util.Map;
+[/if]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'MultiValuedEditor')->size() > 0)]
+import org.eclipse.emf.common.util.EList;
+[/if]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EMFComboViewer' or representation.name = 'Radio')->size() > 0)]
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.common.util.Enumerator;
+[/if]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EObjectFlatComboViewer' or representation.name = 'AdvancedEObjectFlatComboViewer' or representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+[/if]
+[if (view.eAllContents(views::View)->notEmpty())]
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [/if]
 [/template]
 
 [template public widgetContainer(element : ViewElement)]
 [if (element.container.oclIsKindOf(Container) and element.container.representation.name = 'Group')]
-[element.container.name.toJavaIdentifier().trim()/]Group
+[element.container.name.toJavaIdentifier()/]Group
 [elseif (element.container.oclIsKindOf(Container) and element.container.representation.name = 'VerticalBox')]
-[element.container.name.toJavaIdentifier().trim()/]VBox
+[element.container.name.toJavaIdentifier()/]VBox
 [elseif (element.container.oclIsKindOf(Container) and element.container.representation.name = 'HorizontalBox')]
-[element.container.name.toJavaIdentifier().trim()/]HBox
+[element.container.name.toJavaIdentifier()/]HBox
 [elseif (element.container.oclIsKindOf(View))]
 view
 [else]
 ILLEGAL MODEL STATE !
 [/if]
-[/template]
-
-[comment ====== Widgets updaters ====== /]
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? (editor.views->first().oclIsTypeOf(views::SpecificElementEditor))]
-// [protected (' for '.concat(editor.name).concat(' command update'))]
-	
-		// [/protected]
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? (editor.views->first().representation.name = 'MultiValuedEditor' and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-this.[pec.model.name.toJavaIdentifier().trim()/] = [pec.model.name.toJavaIdentifier().trim()/];
-		this.resourceSet = allResources;
-		[editor.views->first().name.toJavaIdentifier().trim()/]List = [pec.model.name.toJavaIdentifier().trim()/].get[if (editor.model.many)][editor.model.name.toMany().toJavaClassifier().trim()/][else][editor.model.name.toJavaClassifier().trim()/][/if]();
-		[editor.views->first().name.toJavaIdentifier().trim()/]Text.setText([editor.views->first().name.toJavaIdentifier().trim()/]List.toString());
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? (editor.model.oclIsTypeOf(ecore::EAttribute) and editor.model.oclAsType(ecore::EAttribute).isString() and (editor.model.upperBound = 0 or editor.model.upperBound = 1) and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-if ([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]() != null){
-			[editor.views->first().name.toJavaIdentifier().trim()/].setText([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]());
-			[if (editor.views->first().readOnly)]
-			[editor.views->first().name.toJavaIdentifier().trim()/].setEditable(false); 
-			[editor.views->first().name.toJavaIdentifier().trim()/].setToolTipText([pec.model.ePackage.name.toUpperFirst()/]Messages.[pec.model.name/]_ReadOnly);
-			[/if]
-		}
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? (editor.model.oclIsTypeOf(ecore::EAttribute) and editor.model.oclAsType(ecore::EAttribute).isBoolean() and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-[editor.views->first().name.toJavaIdentifier().trim()/].setSelection([pec.model.name.toJavaIdentifier().trim()/].is[editor.model.name.toJavaClassifier().trim()/]());
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? (editor.model.oclIsTypeOf(ecore::EAttribute) and editor.model.oclAsType(ecore::EAttribute).isInteger() and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-[editor.views->first().name.toJavaIdentifier().trim()/].setText(String.valueOf([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]()));
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? ((editor.views->first().representation.name = 'EObjectFlatComboViewer') and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-[editor.views->first().name.toJavaIdentifier().trim()/].setInput(allResources);
-		if ([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]() != null){
-			[editor.views->first().name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]()));
-			[if (editor.views->first().readOnly)]
-			[editor.views->first().name.toJavaIdentifier().trim()/].setEnabled(false);
-			[editor.views->first().name.toJavaIdentifier().trim()/].setToolTipText([pec.model.ePackage.name.toUpperFirst()/]Messages.[pec.model.name/]_ReadOnly);
-			[/if]
-		}
-		// [protected ('for '.concat(editor.views->first().name.toJavaIdentifier().trim()).concat(' filters initialisation'))]
-
- 		// [/protected]
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? ((editor.views->first().representation.name = 'AdvancedEObjectFlatComboViewer') and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-[editor.views->first().name.toJavaIdentifier().trim()/].setInput(allResources);
-		if ([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]() != null){
-			[editor.views->first().name.toJavaIdentifier().trim()/].setSelection([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]());
-			[if (editor.views->first().readOnly)]
-			[editor.views->first().name.toJavaIdentifier().trim()/].setEnabled(false);
-			[editor.views->first().name.toJavaIdentifier().trim()/].setToolTipText([pec.model.ePackage.name.toUpperFirst()/]Messages.[pec.model.name/]_ReadOnly);
-			[/if]
-		}
-		// [protected ('for '.concat(editor.views->first().name.toJavaIdentifier().trim()).concat(' filters initialisation'))]
-
- 		// [/protected]
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? ((editor.views->first().representation.name = 'ReferencesTable' or editor.views->first().representation.name = 'AdvancedReferencesTable' ) and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-[editor.views->first().name.toJavaIdentifier().trim()/]EditUtil = new EMFListEditUtil([pec.model.name.toJavaIdentifier().trim()/], [editor.metamodelGetter().trim()/]);
-		this.[editor.views->first().name.toJavaIdentifier().trim()/].setInput([editor.views->first().name.toJavaIdentifier().trim()/]EditUtil.getVirtualList());
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? (editor.views->first().representation.name = 'EENumViewer' and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-[editor.views->first().name.toJavaIdentifier().trim()/].setContentProvider(new ArrayContentProvider());
-		[editor.views->first().name.toJavaIdentifier().trim()/].setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
-		[editor.views->first().name.toJavaIdentifier().trim()/].setInput(((EEnum) [editor.metamodelGetter().trim()/].getEType()).getELiterals());
-		[editor.views->first().name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection([pec.model.name.toJavaIdentifier().trim()/].get[editor.model.name.toJavaClassifier().trim()/]()));
-[/template]
-
-[template public updater(editor : PropertiesEditionElement, pec : PropertiesEditionComponent) ? ((editor.views->first().representation.name = 'TableComposition' or editor.views->first().representation.name = 'AdvancedTableComposition') and not (editor.views->first().oclIsTypeOf(views::SpecificElementEditor)))]
-this.resourceSet = allResources;
-		[editor.views->first().name.toJavaIdentifier().trim()/]EditUtil = new EMFListEditUtil([pec.model.name.toJavaIdentifier().trim()/], [editor.metamodelGetter().trim()/]);
-		[editor.views->first().name.toJavaIdentifier().trim()/].setInput([editor.views->first().name.toJavaIdentifier().trim()/]EditUtil.getVirtualList());
 [/template]
 
 [comment ====== Widgets getters signature ====== /]
@@ -168,61 +135,133 @@ public void remove[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.model.name.toUpperFirst()/](EObject value)
 [/template]
 
-
-
 [comment ====== Widgets getters ====== /]
 
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'MultiValuedEditor')]
-[editor.partSetterSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/]List = newValue;
-		[editor.views->first().name.toJavaIdentifier().trim()/]Text.setText([editor.views->first().name.toJavaIdentifier().trim()/]List.toString());
+[editor.partSetterSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/]List = newValue;
+		[editor.views->first().name.toJavaIdentifier()/]Text.setText([editor.views->first().name.toJavaIdentifier()/]List.toString());
 	}
 [/template]
 
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isString() and (editor.model.upperBound = 0 or editor.model.upperBound = 1))]
-[editor.partSetterSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/].setText(newValue);
+[editor.partSetterSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/].setText(newValue);
 	}
 [/template]
 	
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isBoolean())]
-[editor.partSetterSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/].setSelection(newValue.booleanValue());
+[editor.partSetterSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/].setSelection(newValue.booleanValue());
 	}
 [/template]
 
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isInteger())]
-[editor.partSetterSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/].setText(newValue.toString());  
+[template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isInteger() or editor.model.oclAsType(ecore::EAttribute).isShort())]
+[editor.partSetterSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/].setText(newValue.toString());
 	}
 [/template]
 
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'EObjectFlatComboViewer' or editor.views->first().representation.name = 'AdvancedEObjectFlatComboViewer')]
-[editor.partSetterSignature().trim()/] {
+[editor.partSetterSignature()/] {
 		if (newValue != null)
-			[editor.views->first().name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection(newValue));
+			[editor.views->first().name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
 		else
-			[editor.views->first().name.toJavaIdentifier().trim()/].setSelection(new StructuredSelection(""));
+			[editor.views->first().name.toJavaIdentifier()/].setSelection(new StructuredSelection(""));
 	}
 [/template]
 
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'EENumViewer')]
-[editor.partSetterSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/].modelUpdating(new StructuredSelection(newValue));
+[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'EMFComboViewer')]
+[editor.partSetterSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(newValue));
 	}
 [/template]
 
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'ReferencesTable' or editor.views->first().representation.name = 'AdvancedReferencesTable')]
-[editor.partSetterUpdateSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/]EditUtil.reinit(value);
-		[editor.views->first().name.toJavaIdentifier().trim()/].refresh();
+[editor.partSetterUpdateSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/]EditUtil.reinit(value);
+		[editor.views->first().name.toJavaIdentifier()/].refresh();
 	}
 [/template]
 
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'TableComposition')]
-[editor.partSetterUpdateSignature().trim()/] {
-		[editor.views->first().name.toJavaIdentifier().trim()/]EditUtil.reinit(value);
-		[editor.views->first().name.toJavaIdentifier().trim()/].refresh();
+[editor.partSetterUpdateSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/]EditUtil.reinit(value);
+		[editor.views->first().name.toJavaIdentifier()/].refresh();
 	}
 [/template]
 
+[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'Combo')]
+[editor.partSetterUpdateSignature()/] {
+		[editor.views->first().name.toJavaIdentifier()/]EditUtil.reinit(value);
+		[editor.views->first().name.toJavaIdentifier()/].refresh();
+	}
+[/template]
+
+[comment === ViewReference managing ===/]
+[template public updaterForViewReference(view : View)]
+[for (viewRef : ViewReference | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference)) ]
+		((CompositePropertiesEditionPart)[viewRef.view.oclAsType(views::View).pepInterface().toLowerFirst()/]).initComponent(eObject, allResources);
+[/for]
+[/template]
+
+[template public elementEditorGetterSettersForViewReference(view : View, pec : PropertiesEditionComponent, basePackage : String)]
+[for (viewRef : ViewReference | view.eAllContents(views::ViewReference)->select(oclIsTypeOf(views::ViewReference)))]
+[for (elementEditor : ElementEditor | viewRef.view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
+[elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),viewRef.view.oclAsType(views::View))/]
+
+[elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),viewRef.view.oclAsType(views::View))/]
+
+[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),viewRef.view.oclAsType(views::View))/]
+
+[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), viewRef.view.oclAsType(views::View))/]
+[/for]
+[viewRef.view.oclAsType(views::View).elementEditorGetterSettersForSubViewReference(pec, basePackage, viewRef)/]
+[/for]
+[/template]
+
+[template public elementEditorGetterSettersForSubViewReference(view : View, pec : PropertiesEditionComponent, basePackage : String, initViewRef : ViewReference)]
+[for (viewRef : ViewReference | view.eAllContents(views::ViewReference)->select(oclIsTypeOf(views::ViewReference)))]
+[for (elementEditor : ElementEditor | viewRef.view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
+[elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initViewRef.view.oclAsType(views::View))/]
+
+[elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initViewRef.view.oclAsType(views::View))/]
+
+[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initViewRef.view.oclAsType(views::View))/]
+
+[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), initViewRef.view.oclAsType(views::View))/]
+[/for]
+[viewRef.view.oclAsType(views::View).elementEditorGetterSettersForSubViewReference(pec, basePackage, initViewRef)/]
+[/for]
+[/template]
+
+[template public elementEditorGetterSettersForSubViews(view : View, pec : PropertiesEditionComponent, basePackage : String)]
+[for (subView : View | view.elements->select(oclIsTypeOf(views::View)))]
+[subView.getterForSubViewsImplementationDelegate(pec.model.eefPackage(basePackage).fullPartInterfacePath(view.pepInterface()))/]
+[for (elementEditor : ElementEditor | subView.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = subView))]
+[elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),subView)/]
+
+[elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),subView)/]
+
+[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),subView)/]
+
+[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), subView)/]
+[/for]
+[subView.elementEditorGetterSettersForSubViewsDelegate(pec, basePackage, subView)/]
+[/for]
+[/template]
+
+[template public elementEditorGetterSettersForSubViewsDelegate(view : View, pec : PropertiesEditionComponent, basePackage : String, initView : View)]
+[for (subView : View | view.elements->select(oclIsTypeOf(views::View)))]
+[for (elementEditor : ElementEditor | subView.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = subView))]
+[elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
+
+[elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
+
+[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
+
+[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), initView)/]
+[/for]
+[view.elementEditorGetterSettersForSubViewsDelegate(pec, basePackage, initView)/]
+[/for]
+[/template]

@@ -18,28 +18,33 @@
 
 [template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
-	[file (peContext.fullFilePath(basePackage).trim(), false)]
-[peContext.licenceText().trim()/]
-package [peContext.model.ecorePackage.eefPackage(basePackage).trim()/].providers;
+	[file (peContext.fullFilePath(basePackage), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [peContext.model.ecorePackage.eefPackage(basePackage)/].providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
- 	
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
+	[if (component.model.eefPackage(basePackage) <> peContext.model.ecorePackage.eefPackage(basePackage))]
+import [component.model.eefPackage(basePackage)/].providers.[component.pecProviderClass()/];
+	[/if]
+[/for]
+
 /**
- * [peContext.authorText().trim()/]
+ * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
+public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
 	 */
-	public [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionProvider() {
+	public [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider() {
 		super();
-[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.explicit)]
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
 		append(create[component.pecProviderClass()/]());
 [/for]
 	}
 	
-	[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.explicit)]
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * [component.model.name/] instances.
@@ -55,12 +60,11 @@ public class [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePr
 		return [component.pecProviderClass().toJavaIdentifier()/];
 	}
 	
-	[/for]
-
+[/for]
 }	[/file]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionContext, basePackage : String)]
-[pec.model.ecorePackage.eefPackage(basePackage).toPath().trim()/]/providers/[pec.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionProvider.java
+[pec.model.ecorePackage.eefPackage(basePackage).toPath()/]/providers/[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider.java
 [/template]
 

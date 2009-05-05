@@ -14,41 +14,83 @@
 [import common /]
 [import naming /]
 
-[template public ViewsRepository(pec : PropertiesEditionContext, basePackage : String)]
-
-[for (v : ViewsRepository | views::ViewsRepository.allInstances())]
-	[comment @main /]
-	[file (pec.fullFilePath(v, basePackage).trim(), false)]
-[pec.licenceText().trim()/]
-package [pec.model.ecorePackage.eefPackage(basePackage).trim()/].parts;
+[comment 
+ This template will generate a file for each ViewRepository in the EEF model.
+ /]
+[template public ViewsRepository(viewRepository : ViewsRepository)]
+[comment @main /]
+[file (viewRepository.fullFilePath(), false)]
+[viewRepository.associatedGenModel().licenceText().trim()/]
+package [viewRepository.vrPackage()/].parts;
 
 /**
- * [pec.authorText().trim()/]
+ * [viewRepository.associatedGenModel().authorText().trim()/]
  */
-public class [v.vrClass()/] {
-	
-[for (view : View | v.eAllContents(views::View))]
-    /**
-     * [view.name/] view descriptor
-     *
-     */
-	public static class [view.name.toJavaClassifier()/] {
-		[for (editor : ElementEditor | view.eAllContents(views::ElementEditor))]
+public class [viewRepository.vrClass()/] {
 
-		public static String [editor.name.toJavaIdentifier().trim()/] = "[v.name/]::[view.name/]::[editor.name/]";
-		[/for]
-	
-	}
-	
-[/for]	
+	public static final int SWT_KIND = 0;
+		
+	public static final int FORM_KIND = 1;
 
+	[viewRepository.viewDescriptors()/]
 }
-	[/file]
-	
-[/for]
-	
+[/file]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionContext, repository : ViewsRepository, basePackage : String)]
-[pec.model.ecorePackage.eefPackage(basePackage).toPath().trim()/]/parts/[repository.vrClass().trim()/].java
+[comment 
+ Template used to call recursively on the viewRepository to get views
+ /]
+[template public viewDescriptors(viewRepository : ViewsRepository)]
+[for (view : View | viewRepository.views)]
+[view.viewDescriptor()/]
+[/for]
+[for (category : Category | viewRepository.eAllContents(views::Category))]
+[for (view : View |category.views )]
+[view.viewDescriptor()/]
+[/for]
+[/for]
+[/template]
+
+[comment 
+ Template used to generate code for each views
+ /]
+[template public viewDescriptor(view : View)]
+
+	/**
+	 * [view.name/] view descriptor
+	 */
+	public static class [view.name.toJavaClassifier()/] {
+
+[for (viewElement : ViewElement | view.elements)]
+[viewElement.viewElementDescriptor()/]
+[/for]
+	}
+[/template]
+
+[comment 
+ Template used to generate code for each elementEditor. it calls recursively on the content of each viewElement
+ /]
+[template public viewElementDescriptor(viewElement : ViewElement)]
+[if (viewElement.oclIsTypeOf(views::ElementEditor))]
+public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIdentifier()/] = "[viewElement.oclAsType(views::ElementEditor).qualifiedIdentifier/]";
+
+[elseif (viewElement.oclIsTypeOf(views::Container))]
+[for (ve : ViewElement | viewElement.oclAsType(views::Container).elements)]
+		[ve.viewElementDescriptor()/]
+[/for]
+[elseif (viewElement.oclIsTypeOf(views::View))]
+[for (v : View | viewElement.oclAsType(views::View))]
+		[v.viewDescriptor()/]
+[/for]
+[elseif (viewElement.oclIsTypeOf(views::ViewReference))][comment just ignore viewReferences /]
+[else]
+//TODO FIXME invalid case for template public viewElementDescriptor(viewElement : ViewElement) in module ViewsRepository.mtl, viewElement : [viewElement/]
+[/if]
+[/template]
+
+[comment 
+ Template used to determine the viewRepository's generated file full path
+ /]
+[template public fullFilePath(repository : ViewsRepository)]
+[repository.vrQualifiedClass().toPath()/].java
 [/template]

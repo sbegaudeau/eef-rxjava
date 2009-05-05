@@ -19,62 +19,55 @@
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.needComposedEditionComponent())]
-[file (pec.fullFilePath(basePackage).trim(), false)]
-[peContext.licenceText().trim()/]
-package [pec.model.eefPackage(basePackage).trim()/].components;
+[file (pec.fullFilePath(), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [pec.model.eefPackage(basePackage)/].components;
+
+// [protected ('for imports')]
 
 import org.eclipse.emf.ecore.EObject;
-import [pec.model.qualifiedName(basePackage).trim()/];
+import [pec.model.qualifiedName(basePackage)/];
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 [if (pec.model.eefPackage(basePackage) <> subPec.model.eefPackage(basePackage))]
 	[for (view : View | subPec.views) ? (view.explicit)]	
-import [subPec.model.eefPackage(basePackage)/].components.[subPec.subPECClass(view).trim()/];
+import [subPec.subPECQualifiedClass(view)/];
 	[/for]	
 [/if]
 [/for]
 
+// [/protected]
+
 /**
- * [peContext.authorText().trim()/]
+ * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [pec.pecClass().trim()/] extends ComposedPropertiesEditionComponent {
+public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
-	public static final String SWT_KIND = "SWT";
-
-	public static final String FORM_KIND = "Form";
-		
-	/**
-	 * The EObject to edit
-	 */
-	private [pec.model.name/] [pec.model.name.toJavaIdentifier().trim()/];
-	
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param [pec.model.name.toJavaIdentifier().trim()/]
+	 * @param [pec.model.name.toJavaIdentifier()/]
 	 *            the EObject to edit
 	 */
-	public [pec.pecClass().trim()/](EObject [pec.model.name.toJavaIdentifier().trim()/], String mode) {
-		super(mode);
-		if ([pec.model.name.toJavaIdentifier().trim()/] instanceof [pec.model.name/]) {
-			this.[pec.model.name.toJavaIdentifier().trim()/] = ([pec.model.name/])[pec.model.name.toJavaIdentifier().trim()/];
-[for (view : View | pec.views) ? (view.explicit)]	
-			addSubComponent(new [pec.subPECClass(view).trim()/]([pec.model.name.toJavaIdentifier().trim()/], mode));
+	public [pec.pecClass()/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
+		super(editing_mode);
+		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
+[for (view : View | pec.views) ? (view.explicit)]
+			addSubComponent(new [pec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode));
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit)]	
-			addSubComponent(new [subPec.subPECClass(view).trim()/]([pec.model.name.toJavaIdentifier().trim()/], mode));
+	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]	
+			addSubComponent(new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode));
 	[/for]
 [/for]
 		}
 	}
 }
-
 [/file]
 [/if]
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String)]
-[pec.model.eefPackage(basePackage).toPath().trim()/]/components/[pec.pecClass().trim()/].java
+[template public fullFilePath(pec : PropertiesEditionComponent)]
+[pec.pecQualifiedClass().toPath()/].java
 [/template]

@@ -10,25 +10,25 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module PackagePropertiesEditionPolicyProvider('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel')/]
+[module PackagePropertiesEditionPolicyProvider('http://www.eclipse.org/emf/eef/components/1.0.0')/]
 
 [import common /]
 [import naming /]
 
 [template public PackagePropertiesEditionPolicyProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
-	[file (peContext.fullFilePath(basePackage).trim(), false)]
-[peContext.licenceText().trim()/]
-package [peContext.model.ecorePackage.eefPackage(basePackage).trim()/].providers;
+	[file (peContext.fullFilePath(basePackage), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [peContext.model.ecorePackage.eefPackage(basePackage)/].providers;
 
 import org.eclipse.emf.ecore.EObject;
 import [peContext.model.ecorePackage.qualifiedMetamodelPackage(basePackage)/];
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 
 /**
- * [peContext.authorText().trim()/]
+ * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
+public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -44,5 +44,5 @@ public class [peContext.model.ecorePackage.name.toUpperFirst().trim()/]PackagePr
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionContext, basePackage : String)]
-[pec.model.ecorePackage.eefPackage(basePackage).toPath().trim()/]/providers/[pec.model.ecorePackage.name.toUpperFirst().trim()/]PackagePropertiesEditionPolicyProvider.java
+[pec.model.ecorePackage.eefPackage(basePackage).toPath()/]/providers/[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider.java
 [/template]

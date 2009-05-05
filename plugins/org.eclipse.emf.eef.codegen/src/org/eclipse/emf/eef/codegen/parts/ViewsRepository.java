@@ -30,6 +30,10 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.acceleo.model.mtl.Module;
 import org.eclipse.acceleo.model.mtl.MtlPackage;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.acceleo.engine.service.AcceleoService;
 import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
@@ -90,7 +94,12 @@ public class ViewsRepository {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    URL templateURL = ViewsRepository.class.getResource(MODULE_FILE_NAME + ".emtl");
+    final URL templateURL;
+    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+      templateURL = FileLocator.toFileURL(ViewsRepository.class.getResource(MODULE_FILE_NAME + ".emtl"));
+    } else {
+      templateURL = ViewsRepository.class.getResource(MODULE_FILE_NAME + ".emtl");
+    }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -119,7 +128,12 @@ public class ViewsRepository {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    URL templateURL = ViewsRepository.class.getResource(MODULE_FILE_NAME + ".emtl");
+    final URL templateURL;
+    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+      templateURL = FileLocator.toFileURL(ViewsRepository.class.getResource(MODULE_FILE_NAME + ".emtl"));
+    } else {
+      templateURL = ViewsRepository.class.getResource(MODULE_FILE_NAME + ".emtl");
+    }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -220,13 +234,13 @@ public class ViewsRepository {
   }
 
 	/**
-	 * Launches the generation.
-	 * 
-	 * @throws IOException
-	 *             Thrown when the output cannot be saved.
-	 * @generated
-	 */
-	public void doGenerate() throws IOException {
+   * Launches the generation.
+   * 
+   * @throws IOException
+   *             Thrown when the output cannot be saved.
+   * @generated
+   */
+  public void doGenerate() throws IOException {
     if (!targetFolder.exists()) {
       targetFolder.mkdirs();
     }
@@ -235,7 +249,7 @@ public class ViewsRepository {
     }
   }
 
-	/**
+  /**
 	 * Loads a model from an {@link org.eclipse.emf.common.util.URI URI} in a given {@link ResourceSet}.
 	 * <p>
 	 * This will return the first root of the loaded model, other roots can be accessed via the resource's
