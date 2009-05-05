@@ -58,7 +58,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.components.properties">
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext">
              <input
@@ -66,7 +66,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext">
              <input

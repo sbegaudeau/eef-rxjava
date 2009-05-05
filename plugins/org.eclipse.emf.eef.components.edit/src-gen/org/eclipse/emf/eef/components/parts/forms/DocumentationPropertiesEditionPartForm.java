@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartForm.java,v 1.1 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: DocumentationPropertiesEditionPartForm.java,v 1.2 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -95,7 +95,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
-		documentationData.horizontalSpan = 3;
+		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
 		documentation.setLayoutData(documentationData);
 		documentation.addFocusListener(new FocusAdapter() {
@@ -109,7 +109,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentationPropertiesEditionPartForm.this, ComponentsViewsRepository.Documentation.documentation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
 			}
-			
+
 		});
 		documentation.addKeyListener(new KeyAdapter() {
 
@@ -124,8 +124,10 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentationPropertiesEditionPartForm.this, ComponentsViewsRepository.Documentation.documentation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
 				}
 			}
-			
+
 		});
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.Documentation.documentation, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		
 	}
 
 	

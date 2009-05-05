@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -25,16 +25,13 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
-import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;

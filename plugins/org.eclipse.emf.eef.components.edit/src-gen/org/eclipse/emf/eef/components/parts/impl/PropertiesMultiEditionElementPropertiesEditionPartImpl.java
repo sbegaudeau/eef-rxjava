@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -23,9 +23,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;

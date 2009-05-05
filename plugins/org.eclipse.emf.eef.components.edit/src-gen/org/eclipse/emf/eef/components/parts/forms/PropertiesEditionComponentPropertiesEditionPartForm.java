@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
@@ -162,7 +161,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -180,6 +179,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createHelpIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.FORM_KIND));
@@ -212,7 +212,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 			}
-			
+
 		});
 		helpID.addKeyListener(new KeyAdapter() {
 
@@ -230,6 +230,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createExplicitCheckbox(FormToolkit widgetFactory, Composite parent) {
 		explicit = widgetFactory.createButton(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel, SWT.CHECK);

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.2 2009/04/30 17:49:46 nlepine Exp $
+ * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -80,6 +80,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	
 	/**
 	 * Initialize the semantic model listener for live editing mode
+	 * 
 	 * @return the semantic model listener
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
@@ -102,6 +103,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
@@ -111,18 +113,19 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	}
 	
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
 	 */
 	public String[] partsList() {
 		return parts;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
@@ -141,9 +144,9 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent
-	 * 		#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
-	 * 						org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == ComponentsViewsRepository.PropertiesEditionContext.class) {
@@ -154,11 +157,11 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 * (org.eclipse.emf.edit.domain.EditingDomain)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
+	 *     (org.eclipse.emf.edit.domain.EditingDomain)
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -173,11 +176,10 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		return cc;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject
-	 * ()
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof PropertiesEditionContext) {
@@ -191,7 +193,9 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 			return null;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
@@ -220,6 +224,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
@@ -228,16 +233,18 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
 	 */
 	public String getHelpContent(String key, int kind) {
-			if (key == ComponentsViewsRepository.PropertiesEditionContext.model)
-				return "The GenPackage for this edition context"; //$NON-NLS-1$
+		if (key == ComponentsViewsRepository.PropertiesEditionContext.model)
+			return "The GenPackage for this edition context"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
@@ -267,7 +274,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		else
 			return null;
 	}
-	
+
 
 	/**
 	 * {@inheritDoc}

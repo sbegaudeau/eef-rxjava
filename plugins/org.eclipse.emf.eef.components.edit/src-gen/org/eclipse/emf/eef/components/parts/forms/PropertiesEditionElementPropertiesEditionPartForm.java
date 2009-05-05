@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -25,17 +25,14 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
-import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -173,7 +170,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionElement.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -191,6 +188,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createHelpIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.helpID, ComponentsViewsRepository.FORM_KIND));
@@ -223,7 +221,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionElement.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 			}
-			
+
 		});
 		helpID.addKeyListener(new KeyAdapter() {
 
@@ -241,6 +239,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -412,18 +411,18 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	 */
 	protected void addViews() {
 		ViewerFilter viewerFilter = new ViewerFilter() {
-	
+
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
 				return element instanceof ElementEditor && !viewsEditUtil.getVirtualList().contains(element);
 			}
-	
+
 		};
 		
 		List filters = new ArrayList();
-	
+
 		// Start of user code for filters initialisation for ElementEditor
 		
-		// End of user code	
+		// End of user code
 		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {

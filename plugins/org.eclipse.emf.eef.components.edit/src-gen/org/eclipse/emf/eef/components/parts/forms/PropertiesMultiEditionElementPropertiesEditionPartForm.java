@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -23,9 +23,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
@@ -167,7 +165,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addKeyListener(new KeyAdapter() {
 
@@ -185,6 +183,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createHelpIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, ComponentsViewsRepository.FORM_KIND));
@@ -217,7 +216,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 			}
-			
+
 		});
 		helpID.addKeyListener(new KeyAdapter() {
 
@@ -235,6 +234,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -365,18 +365,18 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 */
 	protected void addModel() {
 		ViewerFilter viewerFilter = new ViewerFilter() {
-	
+
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
 				return element instanceof EStructuralFeature && !modelEditUtil.getVirtualList().contains(element);
 			}
-	
+
 		};
 		
 		List filters = new ArrayList();
-	
+
 		// Start of user code for filters initialisation for EStructuralFeature
 		
-		// End of user code	
+		// End of user code
 		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
