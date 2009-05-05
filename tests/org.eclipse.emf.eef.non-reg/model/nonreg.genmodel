@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.eef.non-reg/src-gen"
+    editDirectory="/org.eclipse.emf.eef.non-reg.edit/src-gen" editorDirectory="/org.eclipse.emf.eef.non-reg.editor/src-gen"
+    modelPluginID="org.eclipse.emf.eef.non_reg" modelName="Nonreg" modelPluginClass=""
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.genmodel#//abstractnonreg ../../org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.genmodel#//middlenonreg">
+  <foreignModel>nonreg.ecore</foreignModel>
+  <genPackages prefix="Nonreg" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
+      ecorePackage="nonreg.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="nonreg.ecore#//TALK_TYPE">
+      <genEnumLiterals ecoreEnumLiteral="nonreg.ecore#//TALK_TYPE/WORKSHOP"/>
+      <genEnumLiterals ecoreEnumLiteral="nonreg.ecore#//TALK_TYPE/DEMONSTRATION"/>
+      <genEnumLiterals ecoreEnumLiteral="nonreg.ecore#//TALK_TYPE/CONFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="nonreg.ecore#//GENDER">
+      <genEnumLiterals ecoreEnumLiteral="nonreg.ecore#//GENDER/MALE"/>
+      <genEnumLiterals ecoreEnumLiteral="nonreg.ecore#//GENDER/FEMALE"/>
+      <genEnumLiterals ecoreEnumLiteral="nonreg.ecore#//GENDER/UNKNOWN"/>
+    </genEnums>
+    <genClasses ecoreClass="nonreg.ecore#//EclipseSummit">
+      <genFeatures createChild="false" propertyDescription="Where the summit take place"
+          ecoreFeature="ecore:EAttribute nonreg.ecore#//EclipseSummit/place"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//EclipseSummit/participants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//EclipseSummit/talks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//EclipseSummit/topics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//EclipseSummit/sites"/>
+    </genClasses>
+    <genClasses ecoreClass="nonreg.ecore#//Person">
+      <genFeatures createChild="false" propertyDescription="The firstname of the person"
+          ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/firstname"/>
+      <genFeatures createChild="false" propertyDescription="The lastname of the person"
+          ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/age"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/eclipseCommiter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Person/assists"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/gender"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/isRegistered"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//Person/accreditations"/>
+    </genClasses>
+    <genClasses ecoreClass="nonreg.ecore#//Talk">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Talk/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Talk/topic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Talk/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Talk/presenter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Talk/creator"/>
+    </genClasses>
+    <genClasses ecoreClass="nonreg.ecore#//Topic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Topic/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Topic/references"/>
+    </genClasses>
+    <genClasses ecoreClass="nonreg.ecore#//Site"/>
+    <genClasses ecoreClass="nonreg.ecore#//Access">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Access/siteAcceded"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Access/Period"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

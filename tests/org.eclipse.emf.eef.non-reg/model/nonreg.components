@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_Xxdwcf3BEd25MIHmw1Ckvg" documentation="Edition Context for nonreg GenPackage">
+    <categories xmi:id="_Xxdwcv3BEd25MIHmw1Ckvg" name="common"/>
+    <categories xmi:id="_Xxdwc_3BEd25MIHmw1Ckvg" name="nonreg">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_XxdwdP3BEd25MIHmw1Ckvg" name="EclipseSummit" views="_Xxdwhf3BEd25MIHmw1Ckvg">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwdf3BEd25MIHmw1Ckvg" name="place" views="_Xxdwh_3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//EclipseSummit/place"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_mqxUoAQwEd6BVZW6nHVchw" name="sites" views="_j0Js0QQwEd6BVZW6nHVchw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//EclipseSummit/sites"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//EclipseSummit"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Xxdwdv3BEd25MIHmw1Ckvg" name="Person" views="_XxdwiP3BEd25MIHmw1Ckvg _i8RcAP3BEd25MIHmw1Ckvg">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwd_3BEd25MIHmw1Ckvg" name="firstname" views="_Xxdwiv3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/firstname"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XxdweP3BEd25MIHmw1Ckvg" name="lastname" views="_Xxdwi_3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/lastname"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwef3BEd25MIHmw1Ckvg" name="age" views="_XxdwjP3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/age"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwev3BEd25MIHmw1Ckvg" name="eclipseCommiter" views="_Xxdwjf3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/eclipseCommiter"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x2Pg8P3BEd25MIHmw1Ckvg" name="assists" views="_pJiPgP3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/assists"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_l_vJcAmoEd63RK4j_abl5w" name="isRegistered" views="_jT-GwQmoEd63RK4j_abl5w" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/isRegistered"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NEDvQAQnEd6XzPgc8upEcA" name="gender" views="_OpTOwAQnEd6XzPgc8upEcA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/gender"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rSZYwA_xEd6er6tzb7G35A" documentation="" name="accreditations" views="_iX_CgQ_xEd6er6tzb7G35A" helpID="">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access/siteAcceded"/>
+          <navigation xsi:type="eef-mapping-navigation:SimpleModelNavigation" xmi:id="_vjsO0A_xEd6er6tzb7G35A">
+            <feature href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/accreditations"/>
+            <discriminatorType xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access"/>
+          </navigation>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Xxdwe_3BEd25MIHmw1Ckvg" name="Talk" views="_Xxdwjv3BEd25MIHmw1Ckvg">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XxdwfP3BEd25MIHmw1Ckvg" name="title" views="_XxdwkP3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Talk/title"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwff3BEd25MIHmw1Ckvg" name="type" views="_Xxdwkf3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Talk/type"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwfv3BEd25MIHmw1Ckvg" name="presenter" views="_Xxdwkv3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Talk/presenter"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_I4fZMQ5YEd69kLGrL9eYuw" name="creator" views="_OA6rkA5YEd69kLGrL9eYuw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Talk/creator"/>
+        </properties>
+        <referencedBinding xmi:id="_LPfagBCBEd6QxswSxOg1BQ">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.components#_k7oRgA_REd6pf7pzvP9Dvg"/>
+        </referencedBinding>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Talk"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Xxdwf_3BEd25MIHmw1Ckvg" name="Topic" views="_Xxdwk_3BEd25MIHmw1Ckvg">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XxdwgP3BEd25MIHmw1Ckvg" name="description" views="_Xxdwlf3BEd25MIHmw1Ckvg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Topic/description"/>
+        </properties>
+        <referencedBinding xmi:id="_MpSfABCBEd6QxswSxOg1BQ">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.components#_k7oRgA_REd6pf7pzvP9Dvg"/>
+        </referencedBinding>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Topic"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_kJX1QAQ4Ed6EJfQgX_hcHw" name="Site" views="_cwN2YAQ4Ed6EJfQgX_hcHw">
+        <referencedBinding xmi:id="_KVoHURPDEd6G2vjYJlEIZg">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_k7oRgA_REd6pf7pzvP9Dvg"/>
+        </referencedBinding>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Site"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_WWuQ4BIyEd6tKsm_l4YRjQ" name="Access" views="_LkPlwRIyEd6tKsm_l4YRjQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Ipz_gBIzEd6tKsm_l4YRjQ" name="Period" views="_S7s7gBIyEd6tKsm_l4YRjQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access/Period"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.genmodel#//nonreg"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_Xxdwgv3BEd25MIHmw1Ckvg" documentation="Views repository for nonreg GenPackage" name="nonreg">
+    <RepositoryKind>SWT</RepositoryKind>
+    <categories xmi:id="_Xxdwg_3BEd25MIHmw1Ckvg" name="common"/>
+    <categories xmi:id="_XxdwhP3BEd25MIHmw1Ckvg" name="nonreg">
+      <views xmi:id="_Xxdwhf3BEd25MIHmw1Ckvg" name="EclipseSummit">
+        <elements xsi:type="eef-views:Container" xmi:id="_Xxdwhv3BEd25MIHmw1Ckvg" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwh_3BEd25MIHmw1Ckvg" name="place">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_j0Js0QQwEd6BVZW6nHVchw" name="sites">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_XxdwiP3BEd25MIHmw1Ckvg" name="Person">
+        <elements xsi:type="eef-views:Container" xmi:id="_Xxdwif3BEd25MIHmw1Ckvg" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwiv3BEd25MIHmw1Ckvg" name="firstname">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwi_3BEd25MIHmw1Ckvg" name="lastname">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_XxdwjP3BEd25MIHmw1Ckvg" name="age">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwjf3BEd25MIHmw1Ckvg" name="eclipseCommiter">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_jT-GwQmoEd63RK4j_abl5w" name="isRegistered">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_OpTOwAQnEd6XzPgc8upEcA" name="gender">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_iX_CgQ_xEd6er6tzb7G35A" name="accreditations">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_Xxdwjv3BEd25MIHmw1Ckvg" name="Talk">
+        <elements xsi:type="eef-views:Container" xmi:id="_Xxdwj_3BEd25MIHmw1Ckvg" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_XxdwkP3BEd25MIHmw1Ckvg" name="title">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwkf3BEd25MIHmw1Ckvg" name="type">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwkv3BEd25MIHmw1Ckvg" name="presenter">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_OA6rkA5YEd69kLGrL9eYuw" name="creator">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_HTW8IRCBEd6QxswSxOg1BQ" name="documentation">
+          <view xsi:type="eef-views:View" href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.components#_mhLTAA_REd6pf7pzvP9Dvg"/>
+        </elements>
+      </views>
+      <views xmi:id="_Xxdwk_3BEd25MIHmw1Ckvg" name="Topic">
+        <elements xsi:type="eef-views:Container" xmi:id="_XxdwlP3BEd25MIHmw1Ckvg" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Xxdwlf3BEd25MIHmw1Ckvg" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_KWumgBCBEd6QxswSxOg1BQ" name="documentation">
+          <view xsi:type="eef-views:View" href="platform:/resource/org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.components#_mhLTAA_REd6pf7pzvP9Dvg"/>
+        </elements>
+      </views>
+      <views xmi:id="_i8RcAP3BEd25MIHmw1Ckvg" name="Presence">
+        <elements xsi:type="eef-views:Container" xmi:id="_l3SboP3BEd25MIHmw1Ckvg" name="presence">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_pJiPgP3BEd25MIHmw1Ckvg" name="assists">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_cwN2YAQ4Ed6EJfQgX_hcHw" name="Site">
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_TgZNwBPDEd6G2vjYJlEIZg" name="namedElement">
+          <view xsi:type="eef-views:View" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_mhLTAA_REd6pf7pzvP9Dvg"/>
+        </elements>
+      </views>
+      <views xmi:id="_LkPlwRIyEd6tKsm_l4YRjQ" name="Access">
+        <elements xsi:type="eef-views:Container" xmi:id="_NajnIBIyEd6tKsm_l4YRjQ" name="period">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_S7s7gBIyEd6tKsm_l4YRjQ" name="period">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>
