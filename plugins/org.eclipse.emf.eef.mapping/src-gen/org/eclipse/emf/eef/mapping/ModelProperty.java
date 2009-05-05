@@ -9,11 +9,9 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelProperty.java,v 1.1 2009/04/30 17:13:53 glefur Exp $
+ * $Id: ModelProperty.java,v 1.2 2009/05/05 12:06:54 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

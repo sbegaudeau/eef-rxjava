@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: ElementBindingReferenceImpl.java,v 1.2 2009/05/05 12:06:55 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;

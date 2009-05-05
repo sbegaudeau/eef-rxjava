@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractElementBindingImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: AbstractElementBindingImpl.java,v 1.2 2009/05/05 12:06:55 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -24,8 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
