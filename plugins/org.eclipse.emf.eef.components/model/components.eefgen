@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="ASCII"?>
-<eef-gen:GenEditionContext xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" basePackage="org.eclipse.emf.eef" genDirectory="/org.eclipse.emf.eef.components.edit/src-gen" swtViews="true" formViews="true" descriptorsGenericPropertiesViews="true" author="&lt;a href=&quot;mailto:nathalie.lepine@obeo.fr&quot;>Nathalie Lepine&lt;/a>" license="/**&#xA; *  Copyright (c) 2008-2009 Obeo.&#xA; *  All rights reserved. This program and the accompanying materials&#xA; *  are made available under the terms of the Eclipse Public License v1.0&#xA; *  which accompanies this distribution, and is available at&#xA; *  http://www.eclipse.org/legal/epl-v10.html&#xA; *  &#xA; *  Contributors:&#xA; *      Obeo - initial API and implementation&#xA; * &#xA; *&#xA; * $Id: components.eefgen,v 1.1 2009/04/30 17:08:52 glefur Exp $&#xA; */">
-  <PropertiesEditionContext href="components.components#_PvwLIAc1Ed6AO86QFJ8SHA"/>
-</eef-gen:GenEditionContext>
+<?xml version="1.0" encoding="UTF-8"?>
+<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.eclipse.emf.eef.components.edit/src-gen" author="&lt;a href=&quot;mailto:nathalie.lepine@obeo.fr&quot;>Nathalie Lepine&lt;/a>" license="/**&#xA; *  Copyright (c) 2008-2009 Obeo.&#xA; *  All rights reserved. This program and the accompanying materials&#xA; *  are made available under the terms of the Eclipse Public License v1.0&#xA; *  which accompanies this distribution, and is available at&#xA; *  http://www.eclipse.org/legal/epl-v10.html&#xA; *  &#xA; *  Contributors:&#xA; *      Obeo - initial API and implementation&#xA; * &#xA; *&#xA; * $Id: components.eefgen,v 1.2 2009/05/05 09:02:46 sbouchet Exp $&#xA; */">
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsGenericPropertiesViews="true">
+    <PropertiesEditionContext href="components.components#_PvwLIAc1Ed6AO86QFJ8SHA"/>
+  </editionContexts>
+  <viewsRepositories basePackage="org.eclipse.emf.eef.components" swtViews="true" formViews="true">
+    <viewsRepository href="components.components#_PvwLRQc1Ed6AO86QFJ8SHA"/>
+  </viewsRepositories>
+</eef-gen:EEFGenModel>
