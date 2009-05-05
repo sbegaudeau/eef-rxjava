@@ -9,14 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionPart.java,v 1.1 2009/04/30 17:49:29 nlepine Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionPart.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
 // Start of user code for imports
-
-import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;

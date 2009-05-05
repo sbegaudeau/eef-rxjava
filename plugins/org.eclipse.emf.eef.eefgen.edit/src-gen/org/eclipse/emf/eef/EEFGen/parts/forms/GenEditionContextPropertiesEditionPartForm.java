@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.1 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -195,7 +195,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
 			}
-			
+
 		});
 		basePackage.addKeyListener(new KeyAdapter() {
 
@@ -213,6 +213,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createDescriptorsContributorIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND));
@@ -245,7 +246,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
 			}
-			
+
 		});
 		descriptorsContributorID.addKeyListener(new KeyAdapter() {
 
@@ -263,6 +264,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createActivationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section activationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);

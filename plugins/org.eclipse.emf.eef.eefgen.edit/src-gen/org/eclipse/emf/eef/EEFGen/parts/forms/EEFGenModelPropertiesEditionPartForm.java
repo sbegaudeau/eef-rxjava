@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.1 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -123,7 +123,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, genDirectory.getText()));
 			}
-			
+
 		});
 		genDirectory.addKeyListener(new KeyAdapter() {
 
@@ -141,6 +141,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.genDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createLegalGroup(FormToolkit widgetFactory, final Composite view) {
 		Section legalSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -187,7 +188,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.author, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, author.getText()));
 			}
-			
+
 		});
 		author.addKeyListener(new KeyAdapter() {
 
@@ -205,6 +206,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createLicenseText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND));
@@ -237,7 +239,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
 			}
-			
+
 		});
 		license.addKeyListener(new KeyAdapter() {
 
@@ -255,6 +257,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 
 	

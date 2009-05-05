@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartForm.java,v 1.1 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartForm.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -201,7 +201,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenViewsRepositoryPropertiesEditionPartForm.this, EEFGenViewsRepository.GenViewsRepository.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
 			}
-			
+
 		});
 		basePackage.addKeyListener(new KeyAdapter() {
 
@@ -219,6 +219,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 			
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+
 	}
 	protected void createHelpStrategyEEnumViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.FORM_KIND));
