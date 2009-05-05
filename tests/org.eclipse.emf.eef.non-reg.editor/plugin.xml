@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2009/05/05 10:37:53 sbouchet Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.emf.eef.nonreg.presentation.NonregModelWizardID"
+            name="%_UI_NonregModelWizard_label"
+            class="org.eclipse.emf.eef.nonreg.presentation.NonregModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/NonregModelFile.gif">
+         <description>%_UI_NonregModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.emf.eef.nonreg.presentation.NonregEditorID"
+            name="%_UI_NonregEditor_label"
+            icon="icons/full/obj16/NonregModelFile.gif"
+            extensions="nonreg"
+            class="org.eclipse.emf.eef.nonreg.presentation.NonregEditor"
+            contributorClass="org.eclipse.emf.eef.nonreg.presentation.NonregActionBarContributor">
+      </editor>
+   </extension>
+    <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eef.nonreg.properties">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eef.nonreg.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>         	
+         <propertyTab
+               label="Presence"
+               category="extended"
+               id="Presence">
+         </propertyTab>	
+         <propertyTab
+               label="Advanced"
+               category="advanced"
+               id="eef.advanced">
+         </propertyTab>	
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.nonreg.properties">
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit">
+          	   <input
+                    type="org.eclipse.emf.eef.nonreg.EclipseSummit">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+          	   <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Presence"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+          	   <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Talk">
+          	   <input
+                    type="org.eclipse.emf.eef.nonreg.Talk">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Topic">
+          	   <input
+                    type="org.eclipse.emf.eef.nonreg.Topic">
+          	   </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Site">
+          	   <input
+                    type="org.eclipse.emf.eef.nonreg.Site">
+          	   </input>
+         </propertySection>
+        <propertySection
+               tab="eef.advanced"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.EEFAdvancedPropertySection"
+               id="eef.advanced">
+          	   <input
+                    type="org.eclipse.emf.ecore.EObject">
+          	   </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+</plugin>
