@@ -98,12 +98,12 @@ Implemented later ...
 [comment]
 Implemented later ...
 [for (view : View | pec.views) ? (pec.mustBeGenerated())]
-			[pec.subPECClass(view).toLowerFirst()/] = new [pec.subPECClass(view)/]([pec.model.name.toJavaIdentifier().trim()/], mode); 
+			[pec.subPECClass(view).toLowerFirst()/] = new [pec.subPECClass(view)/]([pec.model.name.toJavaIdentifier().trim()/], editing_mode); 
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
 [/for][/comment]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
-			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], mode);
+			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.subPECClass(view).toLowerFirst()/]);
 	[/for]
 [/for]
