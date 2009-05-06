@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLauncher;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 
 /**
  * Extension for generating PropertiesSection set up for GMF1 modelers
@@ -40,9 +41,10 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 			try {
 				arguments.add(getBasePackage(genEditionContext));
 				if (genEditionContext.isGmfPropertiesViews()) {
+					PropertiesEditionContext propertiesEditionContext = genEditionContext.getPropertiesEditionContext();
 					monitor.subTask("Generating Properties Section");
 					final URI template7 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/properties/PropertySection.emtl"));
-					org.eclipse.emf.eef.codegen.properties.PropertySection gen7 = new org.eclipse.emf.eef.codegen.properties.PropertySection(genEditionContext, targetFolder, arguments) {
+					org.eclipse.emf.eef.codegen.properties.PropertySection gen7 = new org.eclipse.emf.eef.codegen.properties.PropertySection(propertiesEditionContext, targetFolder, arguments) {
 						protected URI createTemplateURI(String entry) {
 							return template7;
 						}
@@ -52,7 +54,7 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 
 					monitor.subTask("Generating plugin.xml for GMF configuration");
 					final URI template5 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/plugin/GMF_Plugin_xml.emtl"));
-					org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml gen5 = new org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml(genEditionContext, targetFolder, arguments) {
+					org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml gen5 = new org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml(propertiesEditionContext, targetFolder, arguments) {
 						protected URI createTemplateURI(String entry) {
 							return template5;
 						}

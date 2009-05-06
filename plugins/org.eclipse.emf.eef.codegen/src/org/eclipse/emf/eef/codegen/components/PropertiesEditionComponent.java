@@ -94,12 +94,7 @@ public class PropertiesEditionComponent {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    final URL templateURL;
-    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(PropertiesEditionComponent.class.getResource(MODULE_FILE_NAME + ".emtl"));
-    } else {
-      templateURL = PropertiesEditionComponent.class.getResource(MODULE_FILE_NAME + ".emtl");
-    }
+    URL templateURL = PropertiesEditionComponent.class.getResource(MODULE_FILE_NAME + ".emtl");
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -128,12 +123,7 @@ public class PropertiesEditionComponent {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    final URL templateURL;
-    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(PropertiesEditionComponent.class.getResource(MODULE_FILE_NAME + ".emtl"));
-    } else {
-      templateURL = PropertiesEditionComponent.class.getResource(MODULE_FILE_NAME + ".emtl");
-    }
+    URL templateURL = PropertiesEditionComponent.class.getResource(MODULE_FILE_NAME + ".emtl");
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {

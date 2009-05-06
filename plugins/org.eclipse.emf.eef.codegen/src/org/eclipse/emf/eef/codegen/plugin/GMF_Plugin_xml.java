@@ -94,12 +94,7 @@ public class GMF_Plugin_xml {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    final URL templateURL;
-    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(GMF_Plugin_xml.class.getResource(MODULE_FILE_NAME + ".emtl"));
-    } else {
-      templateURL = GMF_Plugin_xml.class.getResource(MODULE_FILE_NAME + ".emtl");
-    }
+    URL templateURL = GMF_Plugin_xml.class.getResource(MODULE_FILE_NAME + ".emtl");
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -128,12 +123,7 @@ public class GMF_Plugin_xml {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    final URL templateURL;
-    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(GMF_Plugin_xml.class.getResource(MODULE_FILE_NAME + ".emtl"));
-    } else {
-      templateURL = GMF_Plugin_xml.class.getResource(MODULE_FILE_NAME + ".emtl");
-    }
+    URL templateURL = GMF_Plugin_xml.class.getResource(MODULE_FILE_NAME + ".emtl");
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {

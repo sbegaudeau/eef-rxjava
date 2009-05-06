@@ -94,12 +94,7 @@ public class PackagePropertiesEditionPolicyProvider {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    final URL templateURL;
-    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
-    } else {
-      templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
-    }
+    URL templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -128,12 +123,7 @@ public class PackagePropertiesEditionPolicyProvider {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    final URL templateURL;
-    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-      templateURL = FileLocator.toFileURL(PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
-    } else {
-      templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
-    }
+    URL templateURL = PackagePropertiesEditionPolicyProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
