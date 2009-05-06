@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
@@ -49,7 +50,7 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 							return template7;
 						}
 					};
-					gen7.doGenerate();
+					gen7.doGenerate(BasicMonitor.toMonitor(monitor));
 					monitor.worked(1);
 
 					monitor.subTask("Generating plugin.xml for GMF configuration");
@@ -59,7 +60,7 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 							return template5;
 						}
 					};
-					gen5.doGenerate();
+					gen5.doGenerate(BasicMonitor.toMonitor(monitor));
 					monitor.worked(1);
 				}
 			} catch (IOException e) {

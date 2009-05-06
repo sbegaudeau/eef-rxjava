@@ -71,10 +71,10 @@
 	 pec.properties->select(views->includes(element))->first()/]
 
 [query public involvedPropertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first() /]
+	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
 
 [query public involvedPropertiesEditionElement(element : ElementEditor) : PropertiesEditionElement =
-	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first() /]
+	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
 
 [query public involvedPropertiesEditionElement(view : ViewElement, pec : PropertiesEditionComponent) : PropertiesEditionElement =
 	 pec.involvedEditionElements().oclAsType(components::PropertiesEditionElement)->select(views.oclAsType(ViewElement)->includes(view))->first()/]

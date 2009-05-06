@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
@@ -86,7 +87,7 @@ public class GenerateAll {
 					return template1;
 				}
 			};
-			gen1.doGenerate();
+			gen1.doGenerate(BasicMonitor.toMonitor(monitor));
 
 			model = gen1.getModel();
 
@@ -100,7 +101,7 @@ public class GenerateAll {
 						return template0;
 					}
 				};
-				gen0.doGenerate();
+				gen0.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
 				monitor.subTask("Generating dynamic composed components");
@@ -110,7 +111,7 @@ public class GenerateAll {
 						return template14;
 					}
 				};
-				gen14.doGenerate();
+				gen14.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
 				monitor.subTask("Generating Policies provider");
@@ -120,7 +121,7 @@ public class GenerateAll {
 						return template10;
 					}
 				};
-				gen10.doGenerate();
+				gen10.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
 				monitor.subTask("Generating Global Edition provider");
@@ -130,7 +131,7 @@ public class GenerateAll {
 						return template11;
 					}
 				};
-				gen11.doGenerate();
+				gen11.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
 				monitor.subTask("Generating Edition provider");
@@ -140,7 +141,7 @@ public class GenerateAll {
 						return template12;
 					}
 				};
-				gen12.doGenerate();
+				gen12.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
 				if (genEditionContext.isDescriptorsGenericPropertiesViews()) {
@@ -151,7 +152,7 @@ public class GenerateAll {
 							return template6;
 						}
 					};
-					gen6.doGenerate();
+					gen6.doGenerate(BasicMonitor.toMonitor(monitor));
 					monitor.worked(1);
 				}
 
@@ -162,7 +163,7 @@ public class GenerateAll {
 						return template4;
 					}
 				};
-				gen4.doGenerate();
+				gen4.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 				monitor.subTask("Generating 'Form' parts");
 				final URI template2 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/parts/FormPropertiesEditionPart.emtl"));
@@ -171,7 +172,7 @@ public class GenerateAll {
 						return template2;
 					}
 				};
-				gen2.doGenerate();
+				gen2.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
 			}
@@ -188,7 +189,7 @@ public class GenerateAll {
 					return template3;
 				}
 			};
-			gen3.doGenerate();
+			gen3.doGenerate(BasicMonitor.toMonitor(monitor));
 			monitor.worked(1);
 			model = gen3.getModel();
 			monitor.subTask("Generating views repository");
@@ -199,7 +200,7 @@ public class GenerateAll {
 					return template3b;
 				}
 			};
-			gen3b.doGenerate();
+			gen3b.doGenerate(BasicMonitor.toMonitor(monitor));
 			monitor.worked(1);
 
 			monitor.subTask("Generating internationalization provider");
@@ -209,7 +210,7 @@ public class GenerateAll {
 					return template8;
 				}
 			};
-			gen8.doGenerate();
+			gen8.doGenerate(BasicMonitor.toMonitor(monitor));
 			monitor.worked(1);
 
 			monitor.subTask("Generating internationalization messages");
@@ -219,7 +220,7 @@ public class GenerateAll {
 					return template9;
 				}
 			};
-			gen9.doGenerate();
+			gen9.doGenerate(BasicMonitor.toMonitor(monitor));
 			monitor.worked(1);
 
 			monitor.subTask("Generating Part provider");
@@ -229,7 +230,7 @@ public class GenerateAll {
 					return template13;
 				}
 			};
-			gen13.doGenerate();
+			gen13.doGenerate(BasicMonitor.toMonitor(monitor));
 			monitor.worked(1);
 		}
 		for (AbstractPropertiesGeneratorLauncher launcher : PropertiesGeneratorLaunchersServices.getInstance().getlaunchers()) {

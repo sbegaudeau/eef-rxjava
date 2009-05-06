@@ -11,6 +11,7 @@
  *******************************************************************************
  /]
 [module GMF_Plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
+
 [import common /]
 [import naming /]
 

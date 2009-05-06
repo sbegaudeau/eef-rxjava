@@ -15,7 +15,6 @@
 [import common /]
 [import naming /]
 
-
 [template public PropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]

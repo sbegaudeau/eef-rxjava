@@ -11,6 +11,7 @@
  *******************************************************************************
  /]
 [module viewUtils('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
 [import common /]
 [import naming /]
 [import viewCommon /]
@@ -20,7 +21,7 @@
 [query public editionPart(editor : ViewElement) : String =
 	if (editor.container.oclIsTypeOf(Container)) then editor.container.editionPart()
 	else editor.container.oclAsType(View).pepClass()
-	endif /]
+	endif/]
 
 [comment ===== imports management ===== /]
 

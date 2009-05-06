@@ -94,7 +94,12 @@ public class PackagePropertiesEditionProvider {
     ResourceSet resourceSet = new ResourceSetImpl();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    URL templateURL = PackagePropertiesEditionProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    final URL templateURL;
+    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+      templateURL = FileLocator.toFileURL(PackagePropertiesEditionProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
+    } else {
+      templateURL = PackagePropertiesEditionProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -123,7 +128,12 @@ public class PackagePropertiesEditionProvider {
     ResourceSet resourceSet = model.eResource().getResourceSet();
     registerResourceFactories(resourceSet);
     registerPackages(resourceSet);
-    URL templateURL = PackagePropertiesEditionProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    final URL templateURL;
+    if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+      templateURL = FileLocator.toFileURL(PackagePropertiesEditionProvider.class.getResource(MODULE_FILE_NAME + ".emtl"));
+    } else {
+      templateURL = PackagePropertiesEditionProvider.class.getResource(MODULE_FILE_NAME + ".emtl");
+    }
     if (templateURL == null) {
       throw new IOException("'" + MODULE_FILE_NAME + ".emtl' not found");
     } else {
@@ -213,7 +223,7 @@ public class PackagePropertiesEditionProvider {
           arguments.add(args[i]);
         }
         PackagePropertiesEditionProvider generator = new PackagePropertiesEditionProvider(modelURI, folder, arguments);
-        generator.doGenerate();
+        generator.doGenerate(new BasicMonitor());
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -223,16 +233,18 @@ public class PackagePropertiesEditionProvider {
   /**
    * Launches the generation.
    * 
+   * @param monitor
+   *             This will be used to display progress information to the user.
    * @throws IOException
    *             Thrown when the output cannot be saved.
    * @generated
    */
-  public void doGenerate() throws IOException {
+  public void doGenerate(Monitor monitor) throws IOException {
     if (!targetFolder.exists()) {
       targetFolder.mkdirs();
     }
     for (int i = 0; i < TEMPLATE_NAMES.length; i++) {
-      AcceleoService.doGenerate(module, TEMPLATE_NAMES[i], model, arguments, targetFolder, false);
+      AcceleoService.doGenerate(module, TEMPLATE_NAMES[i], model, arguments, targetFolder, false, monitor);
     }
   }
 

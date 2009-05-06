@@ -11,6 +11,7 @@
  *******************************************************************************
  /]
 [module ViewsRepository('http://www.eclipse.org/emf/eef/views/1.0.0','http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/2002/Ecore')/]
+
 [import common /]
 [import naming /]
 

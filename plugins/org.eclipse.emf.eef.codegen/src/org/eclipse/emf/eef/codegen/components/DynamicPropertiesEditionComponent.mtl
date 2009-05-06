@@ -15,7 +15,7 @@
 [import common /]
 [import naming /]
 [import viewCommon /]
-[import componentUtils/]
+[import componentUtils /]
 [import typeUtils /]
 
 [template public DynamicPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
@@ -52,9 +52,9 @@ import [subPec.subPECQualifiedClass(subView)/];
  */
 public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionComponent {
 
-	public static String [topLevelView.viewPartConstant(pec)/] = "[topLevelView.viewKey(pec).toASCII() /]"; //$NON-NLS-1$
+	public static String [topLevelView.viewPartConstant(pec)/] = "[topLevelView.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
 	
-	private String['['/][']'/] parts = {[topLevelView.viewPartConstant(pec) /]};
+	private String['['/][']'/] parts = {[topLevelView.viewPartConstant(pec)/]};
 	
 	/**
 	 * The EObject to edit
@@ -131,7 +131,7 @@ Implemented later ...
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
-		if ([topLevelView.viewPartConstant(pec) /].equals(key))
+		if ([topLevelView.viewPartConstant(pec)/].equals(key))
 			return [topLevelView.editorID()/].class;
 		return super.translatePart(key);
 	}

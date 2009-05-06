@@ -15,7 +15,7 @@
 [import common /]
 [import naming /]
 [import viewCommon /]
-[import componentUtils/]
+[import componentUtils /]
 [import typeUtils /]
 
 [template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
@@ -129,11 +129,11 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponent {
+public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent {
 
-	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII() /]"; //$NON-NLS-1$
+	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
 	
-	private String['['/][']'/] parts = {[view.viewPartConstant(pec) /]};
+	private String['['/][']'/] parts = {[view.viewPartConstant(pec)/]};
 	
 	/**
 	 * The EObject to edit
@@ -148,7 +148,7 @@ public class [pec.subPECClass(view) /] extends StandardPropertiesEditionComponen
 	/**
 	 * Default constructor
 	 */
-	public [pec.subPECClass(view) /](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
+	public [pec.subPECClass(view)/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
 		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
 			this.[pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])[pec.model.name.toJavaIdentifier()/];
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {

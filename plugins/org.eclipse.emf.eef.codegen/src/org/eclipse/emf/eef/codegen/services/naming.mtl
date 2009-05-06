@@ -11,6 +11,7 @@
  *******************************************************************************
  /]
 [module naming('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
+
 [import common /]
 
 [template public messagesProperties(viewsRepository : ViewsRepository)]

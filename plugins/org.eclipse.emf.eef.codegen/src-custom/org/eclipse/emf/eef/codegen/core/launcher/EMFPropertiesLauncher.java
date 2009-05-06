@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.codegen.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.codegen.components.SubPropertiesEditionComponent;
@@ -44,32 +46,33 @@ public class EMFPropertiesLauncher {
 	        } else {
 	          URI modelURI = URI.createFileURI(args[0]);
 	          File folder = new File(args[1]);
+	          BasicMonitor monitor = new BasicMonitor();
 	          List<Object> arguments = new ArrayList<Object>();
 	          arguments.add(args[2]);
 	          PropertiesEditionComponent propertiesEditionComponent = new PropertiesEditionComponent(modelURI, folder, arguments);
-	          propertiesEditionComponent.doGenerate();
+	          propertiesEditionComponent.doGenerate(monitor);
 	          SubPropertiesEditionComponent subPropertiesEditionComponent = new SubPropertiesEditionComponent(modelURI, folder, arguments);
-	          subPropertiesEditionComponent.doGenerate();
+	          subPropertiesEditionComponent.doGenerate(monitor);
 	          IPropertiesEditionPart ipropertiesEditionPart = new IPropertiesEditionPart(modelURI, folder, arguments);
-	          ipropertiesEditionPart.doGenerate();
+	          ipropertiesEditionPart.doGenerate(monitor);
 	          PropertiesEditionPart propertiesEditionPart = new PropertiesEditionPart(modelURI, folder, arguments);
-	          propertiesEditionPart.doGenerate();
+	          propertiesEditionPart.doGenerate(monitor);
 	          FormPropertiesEditionPart formPropertiesEditionPart = new FormPropertiesEditionPart(modelURI, folder, arguments);
-	          formPropertiesEditionPart.doGenerate();
+	          formPropertiesEditionPart.doGenerate(monitor);
 	          ContextMessages contextMessages = new ContextMessages(modelURI, folder, arguments);
-	          contextMessages.doGenerate();
+	          contextMessages.doGenerate(monitor);
 	          ContextMessagesProperties contextMessagesProperties = new ContextMessagesProperties(modelURI, folder, arguments);
-	          contextMessagesProperties.doGenerate();
+	          contextMessagesProperties.doGenerate(monitor);
 	          PackagePropertiesEditionProvider packagePropertiesEditionProvider = new PackagePropertiesEditionProvider(modelURI, folder, arguments);
-	          packagePropertiesEditionProvider.doGenerate();
+	          packagePropertiesEditionProvider.doGenerate(monitor);
 	          PackagePropertiesEditionPolicyProvider packagePropertiesEditionPolicyProvider = new PackagePropertiesEditionPolicyProvider(modelURI, folder, arguments);
-	          packagePropertiesEditionPolicyProvider.doGenerate();
+	          packagePropertiesEditionPolicyProvider.doGenerate(monitor);
 	          PropertiesEditionProvider propertiesEditionProvider = new PropertiesEditionProvider(modelURI, folder, arguments);
-	          propertiesEditionProvider.doGenerate();
+	          propertiesEditionProvider.doGenerate(monitor);
 	          GMF_Plugin_xml plugin_xml = new GMF_Plugin_xml(modelURI, folder, arguments);
-	          plugin_xml.doGenerate();
+	          plugin_xml.doGenerate(monitor);
 	          PropertySection propertiesSection = new PropertySection(modelURI, folder, arguments);
-	          propertiesSection.doGenerate();
+	          propertiesSection.doGenerate(monitor);
 	        }
 	      } catch (IOException e) {
 	        e.printStackTrace();
