@@ -1,0 +1,18 @@
+[module umlComponentUtils('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends componentUtils/]
+[import common /]
+[import naming /]
+[import typeUtils /]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
+[if (editionElement.model.oclAsType("EAttribute").eType.instanceClassName = 'boolean')]
+	[if (editionElement.model.name.startsWith('is'))]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].[editionElement.model.name.toJavaClassifier().toLowerFirst()/]());
+	[else]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].is[editionElement.model.name.toJavaClassifier()/]());
+	[/if]
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[else]
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
+[/if]
+[/template]
