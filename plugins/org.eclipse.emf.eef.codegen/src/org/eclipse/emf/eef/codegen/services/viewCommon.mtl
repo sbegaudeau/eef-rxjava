@@ -56,21 +56,21 @@ TODO: externalise model/controler reference after Unedic non-reg
 [/template]
 
 [template public genImports(view : ViewElement)]
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import java.util.List;
 import org.eclipse.emf.ecore.EReference;
 [/if]
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import java.util.Map;
 [/if]
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'MultiValuedEditor')->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'MultiValuedEditor')->notEmpty())]
 import org.eclipse.emf.common.util.EList;
 [/if]
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EMFComboViewer' or representation.name = 'Radio')->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EMFComboViewer' or representation.name = 'Radio')->notEmpty())]
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.common.util.Enumerator;
 [/if]
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EObjectFlatComboViewer' or representation.name = 'AdvancedEObjectFlatComboViewer' or representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EObjectFlatComboViewer' or representation.name = 'AdvancedEObjectFlatComboViewer' or representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 [/if]

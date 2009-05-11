@@ -95,7 +95,7 @@
 	p.eInverse()->select(oclIsKindOf(genmodel::GenPackage))->first().oclAsType(genmodel::GenPackage)/]
 
 [query public associatedGenPackage(pec : PropertiesEditionComponent) : GenPackage = 
-	pec.model.ePackage.eInverse()->select(oclIsKindOf(genmodel::GenPackage))->first()/]
+	pec.model.ePackage.associatedGenPackage()/]
 
 [query public associatedGenContext(peco : PropertiesEditionContext) : GenEditionContext = 
 	peco.eInverse()->select(oclIsKindOf(EEFGen::GenEditionContext))->first().oclAsType(EEFGen::GenEditionContext)/]
@@ -104,22 +104,28 @@
 	pec.associatedGenContext().eefGenModel/]
 
 [query public associatedGenRepository(viewsRepository : ViewsRepository) : GenViewsRepository = 
-	viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->first().oclAsType(EEFGen::GenViewsRepository)/]
+	if (viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->notEmpty())
+	then viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->first().oclAsType(EEFGen::GenViewsRepository)
+	else null
+	endif/]
 
 [query public associatedGenModel(viewsRepository : ViewsRepository) : EEFGenModel = 
-	viewsRepository.associatedGenRepository().eefGenModel/]
+	if not viewsRepository.associatedGenRepository().oclIsUndefined()
+	then viewsRepository.associatedGenRepository().eefGenModel
+	else null
+	endif/]
 
 [comment Defines if a SubPropertiesEditionComponent must be generated. A SubPropertiesEdtionComponent must be generated if :
 	- its 'explicit' property is set to true 
 	- A ElementBindingReference reference it and it contains at least 1 PEE/]
 [query public mustBeGenerated(pec : PropertiesEditionComponent) : Boolean = 
-	(pec.explicit and (pec.eAllContents(components::PropertiesEditionElement)->size() > 0 or pec.referencedBinding->size() > 0)) or pec.eInverse()->select(oclIsTypeOf(mapping::ElementBindingReference))->size() > 0/]
+	(pec.explicit and (pec.eAllContents(components::PropertiesEditionElement)->notEmpty() or pec.referencedBinding->notEmpty())) or pec.eInverse()->select(oclIsTypeOf(mapping::ElementBindingReference))->notEmpty()/]
 
 [comment Defines if a ComposedPropertiesEditionComponent must be generated. A ComposedPropertiesEditionComponent must be generated if :
 	- its 'explicit' property is set to true and it has more than 1 view to manage 
 	- the component has to manage only reference binding /]
 [query public needComposedEditionComponent(pec : PropertiesEditionComponent) : Boolean = 
-	(pec.explicit and pec.involvedViews()->size() > 1) or (pec.views->size() = 0 and pec.involvedViews()->size() > 0)/]
+	(pec.explicit and pec.involvedViews()->size() > 1) or (pec.views->isEmpty() and pec.involvedViews()->notEmpty())/]
 
 [comment Defines if a DynamicPropertiesEditionComponent must be generated. A DynamicPropertiesEdtionComponent must be generated if :
 	- its 'explicit' property is set to true 
@@ -129,7 +135,7 @@
 
 [comment A view is Dynamic if it have subViews ... /]
 [query public isDynamicView(view : View) : Boolean = 
-	view.elements->select(oclIsKindOf(views::View))->size() > 0/]
+	view.elements->select(oclIsKindOf(views::View))->notEmpty()/]
 
 [query public dynamicViews(pec : PropertiesEditionComponent, topLevelView : View) : Sequence(T) = 
 	pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent) and oclAsType(components::PropertiesEditionComponent).mustBeGenerated()).views->select(ancestors()->includes(topLevelView))/]
@@ -139,7 +145,7 @@
 [query public partToManage(pec : PropertiesEditionComponent) : Set(T) = pec.involvedViews()/]
 
 [query public involvedPropertiesEditionComponent(view : View) : PropertiesEditionComponent = 
-	if (view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->size() > 0)
+	if (view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->notEmpty())
 	then view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->first()
 	else null
 	endif/]
@@ -231,10 +237,12 @@ set[editor.model.ecorePackageSignature()/]()
 	endif/]
 
 [template public helpText(editor : ElementEditor, pec : PropertiesEditionComponent)]
+[if (not editor.owningViewsRepository().associatedGenRepository().oclIsUndefined())]
 [if (editor.owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::GENMODEL)]
 [if ((not editor.involvedPropertiesEditionElement(pec).associatedGenFeature().oclIsUndefined()) and (not editor.involvedPropertiesEditionElement(pec).associatedGenFeature().propertyDescription.oclIsUndefined()))]"[editor.involvedPropertiesEditionElement(pec).associatedGenFeature().propertyDescription/]"[else]null[/if]
 [elseif (editor.owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::ECOREMODEL)]
 [if (not editor.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first().model.ecoreHelp().oclIsUndefined())]"[editor.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first().model.ecoreHelp().trim()/]"[else]null[/if]
+[/if]
 [/if]
 [/template]
 
