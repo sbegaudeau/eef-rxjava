@@ -113,10 +113,10 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-[for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EMFComboViewer')->size() > 0 or element.views->select(representation.name = 'EObjectFlatComboViewer')->size() > 0 or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->size() > 0)]
+[for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EMFComboViewer')->notEmpty() or element.views->select(representation.name = 'EObjectFlatComboViewer')->notEmpty() or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->notEmpty())]
 import [element.model.eType.qualifiedName(basePackage)/];
 [/for]
-[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->size() > 0))]
+[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty()))]
 import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
 [for (vr : ViewsRepository | pec.involvedViews().oclAsType(views::View).owningViewsRepository()->asSet())]
@@ -357,7 +357,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			}
 		}
 	}
-[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->size() > 0)]
+[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]
 
 	/**
 	 * {@inheritDoc}
@@ -368,7 +368,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		return [for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | f.model.required)) separator (' || ')]key == [pee.views->first().editorID()/][/for];
 	}
 [/if]
-[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.views->first().oclAsType(views::ElementEditor).helpText(pec).oclIsUndefined() and not (localPee.views->first().oclAsType(views::ElementEditor).helpText(pec) = 'null'))->size() > 0)]
+[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.views->first().oclAsType(views::ElementEditor).helpText(pec).oclIsUndefined() and not (localPee.views->first().oclAsType(views::ElementEditor).helpText(pec) = 'null'))->notEmpty())]
 
 	/**
 	 * {@inheritDoc}
@@ -445,7 +445,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			result.add(new BasicDiagnostic(Diagnostic.ERROR, "EEF Validation", Status.ERROR, 
 				NLS.bind([editionElement.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RequiredFeatureMessage, "[editionElement.views->first().name.toJavaIdentifier()/]"), null)); //$NON-NLS-1$ 
 [/for]
-[if (view.eAllContents(views::SpecificElementEditor)->size() > 0)]
+[if (view.eAllContents(views::SpecificElementEditor)->notEmpty())]
 		// [protected ('additional requirement checks')]
 		
 		// [/protected]
