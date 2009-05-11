@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->notEmpty())]
 import org.eclipse.osgi.util.NLS;
 [/if]
 import org.eclipse.swt.SWT;
@@ -81,7 +81,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->size() > 0)]
+[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
@@ -99,7 +99,7 @@ import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 [for (viewsRepository : ViewsRepository | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view.oclAsType(views::View).owningViewsRepository()->append(view.owningViewsRepository()))]
 import [viewsRepository.vrQualifiedClass()/];
 [/for]
-[if (view.eAllContents(views::ViewReference)->size() > 0 or view.eAllContents(views::View)->size() > 0)]
+[if (view.eAllContents(views::ViewReference)->notEmpty() or view.eAllContents(views::View)->notEmpty())]
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 [for (viewRef : ViewReference | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference)) ]
