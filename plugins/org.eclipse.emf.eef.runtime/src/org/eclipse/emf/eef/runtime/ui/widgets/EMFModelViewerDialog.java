@@ -70,7 +70,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 	private List<ViewerFilter> filters;
 
-	private List<ViewerFilter> bpFilters;
+	private List<ViewerFilter> brFilters;
 
 	private Button filteredContent;
 
@@ -105,36 +105,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		super(Display.getDefault().getActiveShell());
 		this.labelProviderElement = labelProvider;
 		this.filters = filters;
-		this.bpFilters = bpFilters;
-		this.input = input;
-		this.nullable = nullable;
-		this.isMulti = isMulti;
-		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL | SWT.RESIZE);
-	}
-
-	/**
-	 * Construtctor with unique static ViewerFilter.
-	 * 
-	 * @param labelProvider
-	 *            the label provider
-	 * @param input
-	 *            the contents
-	 * @param filter
-	 *            the content filter
-	 * @param bpFilters
-	 *            the business filters
-	 * @param nullable
-	 *            if the viewer can contains empty (null) value
-	 * @param isMulti
-	 *            if the selection can be unique or not
-	 */
-	public EMFModelViewerDialog(ILabelProvider labelProvider, Object input, ViewerFilter filter,
-			List<ViewerFilter> bpFilters, boolean nullable, boolean isMulti) {
-		super(Display.getDefault().getActiveShell());
-		this.labelProviderElement = labelProvider;
-		this.filters = new ArrayList<ViewerFilter>();
-		this.filters.add(filter);
-		this.bpFilters = bpFilters;
+		this.brFilters = bpFilters;
 		this.input = input;
 		this.nullable = nullable;
 		this.isMulti = isMulti;
@@ -231,14 +202,14 @@ public abstract class EMFModelViewerDialog extends Dialog {
 			}
 		}
 		// business rules
-		if (bpFilters != null && !bpFilters.isEmpty()) {
+		if (brFilters != null && !brFilters.isEmpty()) {
 			String currentModel = MessagesTool.getString("EMFModelViewerDialog.currentModel");
 			String referencedModels = MessagesTool.getString("EMFModelViewerDialog.referencedModels");
 			String differentContainer = MessagesTool.getString("EMFModelViewerDialog.differentContainer");
-			for (int i = 0; i < bpFilters.size(); i++) {
+			for (int i = 0; i < brFilters.size(); i++) {
 				String filterName = null;
-				if (bpFilters.get(i) instanceof BusinessViewerFilter) {
-					final BusinessViewerFilter viewerFilter = (BusinessViewerFilter)bpFilters.get(i);
+				if (brFilters.get(i) instanceof BusinessViewerFilter) {
+					final BusinessViewerFilter viewerFilter = (BusinessViewerFilter)brFilters.get(i);
 
 					filteredContent = new Button(container, SWT.CHECK);
 					filterName = viewerFilter.getName();

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.components;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * List of IPropertiesEditionComponentListeners
 	 */
-	protected List listeners;
+	private List<IPropertiesEditionListener> listeners;
 
 	/**
 	 * the semantic listener dedicated to update view
@@ -49,8 +50,9 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class,
+	 *      int, org.eclipse.emf.ecore.EObject)
 	 */
 	public void initPart(Class key, int kind, EObject element) {
 		this.initPart(key, kind, element, element.eResource().getResourceSet());
@@ -58,17 +60,18 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#addListener(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener)
 	 */
 	public void addListener(IPropertiesEditionListener listener) {
-		if (listeners != null)
-			listeners.add(listener);
+		if (listeners == null)
+			listeners = new ArrayList<IPropertiesEditionListener>();
+		listeners.add(listener);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#removeListener(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener)
 	 */
 	public void removeListener(IPropertiesEditionListener listener) {
@@ -78,7 +81,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setLiveEditingDomain(org.eclipse.emf.edit.domain.EditingDomain)
 	 */
 	public void setLiveEditingDomain(EditingDomain editingDomain) {
@@ -87,13 +90,12 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent)
 	 */
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		event.addHolder(this);
-		for (Iterator iterator = listeners.iterator(); iterator.hasNext();) {
-			IPropertiesEditionListener listener = (IPropertiesEditionListener) iterator.next();
+		for (IPropertiesEditionListener listener : listeners) {
 			if (!event.hold(listener))
 				listener.firePropertiesChanged(event);
 		}
@@ -101,8 +103,9 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Class, int)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Class,
+	 *      int)
 	 */
 	public boolean mustBeComposed(Class key, int kind) {
 		return true;
@@ -110,8 +113,9 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Class, int)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Class,
+	 *      int)
 	 */
 	public boolean isRequired(String key, int kind) {
 		return false;
@@ -119,8 +123,9 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getHelpContent(java.lang.String,
+	 *      int)
 	 */
 	public String getHelpContent(String key, int kind) {
 		return StringTools.EMPTY_STRING;
@@ -128,7 +133,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public Class translatePart(String key) {
@@ -137,13 +142,12 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Class,
+	 *      int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		// Default case : nothing to do
 	}
-	
-	
-		
+
 }

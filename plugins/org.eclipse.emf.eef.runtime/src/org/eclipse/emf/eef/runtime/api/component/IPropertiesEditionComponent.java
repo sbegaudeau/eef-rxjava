@@ -38,7 +38,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	public abstract String[] partsList();
 
 	/**
-	 * Return A Edition Part in the given context.
+	 * Return the Edition Part in the given context.
 	 * 
 	 * @param parent
 	 *            the context - the composite where the part will be used

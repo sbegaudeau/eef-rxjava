@@ -94,7 +94,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	protected List<ViewerFilter> filters;
 
-	protected List<ViewerFilter> bpFilters;
+	protected List<ViewerFilter> brFilters;
 
 	/**
 	 * the constructor of this display
@@ -112,7 +112,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		this.callback = callback;
 		this.labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		this.filters = new ArrayList<ViewerFilter>();
-		this.bpFilters = new ArrayList<ViewerFilter>();
+		this.brFilters = new ArrayList<ViewerFilter>();
 	}
 
 	FormToolkit widgetFactory;
@@ -280,7 +280,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	 */
 	protected void browseButtonPressed() {
 		TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input, filters,
-				dialogTitle, restrictToEClass) {
+				brFilters, dialogTitle, restrictToEClass) {
 			@SuppressWarnings("unchecked")
 			@Override
 			public void process(IStructuredSelection selection) {
@@ -320,11 +320,11 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	}
 
 	public void addBusinessRuleFilter(ViewerFilter filter) {
-		bpFilters.add(filter);
+		brFilters.add(filter);
 	}
 
 	public void removeBusinessRuleFilter(ViewerFilter filter) {
-		bpFilters.remove(filter);
+		brFilters.remove(filter);
 	}
 
 	public void removeFilter(ViewerFilter filter) {

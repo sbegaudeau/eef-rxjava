@@ -77,6 +77,11 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	protected List<ViewerFilter> viewerFilters;
 
 	/**
+	 * business rules filters
+	 */
+	private List<ViewerFilter> brFilters;
+
+	/**
 	 * The adapter factory.
 	 */
 	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(
@@ -107,13 +112,14 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 *            it used to inform about if the element is abstract in this case the creation button does not
 	 *            appear
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, String title,
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters , String title,
 			EClass restrictToEClass) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
 		this.input = input;
 		this.viewerFilters = filters;
+		this.brFilters = brFilters;
 		this.title = title;
 		this.restrictToEClass = restrictToEClass;
 	}
@@ -215,6 +221,12 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		}
 		if (viewerFilters != null && !viewerFilters.isEmpty()) {
 			for (ViewerFilter filter : viewerFilters) {
+				filters.add(filter);
+			}
+		}
+		// for now, add the businessRuleFilters to the 'normal' filters
+		if (brFilters != null && !brFilters.isEmpty()) {
+			for (ViewerFilter filter : brFilters) {
 				filters.add(filter);
 			}
 		}
