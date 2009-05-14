@@ -5,30 +5,17 @@ package org.eclipse.emf.eef.ab.abstractnonreg.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
 
 
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -79,7 +66,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 				this.documentedElement.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -117,7 +103,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			return AbstractnonregViewsRepository.DocumentedElement.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -140,7 +125,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(AbstractnonregViewsRepository.class);
 				if (provider != null) {
 					basePart = (DocumentedElementPropertiesEditionPart)provider.getPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -158,10 +143,17 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		if (basePart != null && key == AbstractnonregViewsRepository.DocumentedElement.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			DocumentedElement documentedElement = (DocumentedElement)elt;
+			// init values
 			if (documentedElement.getDocumentation() != null)
 				basePart.setDocumentation(documentedElement.getDocumentation());
 
+			
+			// init filters
+			
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -217,8 +209,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {

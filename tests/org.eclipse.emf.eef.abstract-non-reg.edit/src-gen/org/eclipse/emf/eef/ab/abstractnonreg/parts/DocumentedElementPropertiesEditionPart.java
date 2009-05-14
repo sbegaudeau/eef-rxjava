@@ -20,17 +20,17 @@ public interface DocumentedElementPropertiesEditionPart {
 	 * @return the documentation
 	 */
 	public String getDocumentation();
-	
+
 	/**
 	 * Defines a new documentation
 	 * @param newValue the new documentation to set
 	 */
 	public void setDocumentation(String newValue);
-	
+
 	public void setMessageForDocumentation(String msg, int msgLevel);
-	
+
 	public void unsetMessageForDocumentation();
-	
+
 
 
 
