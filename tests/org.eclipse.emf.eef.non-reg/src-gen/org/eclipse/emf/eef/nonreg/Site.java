@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Site.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: Site.java,v 1.2 2009/05/14 13:53:09 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

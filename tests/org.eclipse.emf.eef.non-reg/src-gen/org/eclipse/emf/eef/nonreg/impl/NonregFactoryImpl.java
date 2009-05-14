@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregFactoryImpl.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: NonregFactoryImpl.java,v 1.2 2009/05/14 13:53:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.nonreg.*;
 import org.eclipse.emf.eef.nonreg.Access;
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.GENDER;
