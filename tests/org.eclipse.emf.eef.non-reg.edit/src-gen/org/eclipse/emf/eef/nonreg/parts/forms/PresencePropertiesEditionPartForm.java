@@ -6,80 +6,41 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 // Start of user code for imports
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.Talk;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IMessageManager;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.events.IExpansionListener;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.events.IExpansionListener;
-
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.nonreg.Talk;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
 /**
@@ -89,6 +50,8 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 
 	private EMFListEditUtil assistsEditUtil;
 	private ReferencesTable<?> assists;
+	private List<ViewerFilter> assistsBusinessFilters;
+	private List<ViewerFilter> assistsFilters;
 
 
 
@@ -133,18 +96,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	protected void createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {	
 		this.assists = new ReferencesTable<Talk>(NonregMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
 			public void handleAdd() {
-				ViewerFilter assistsFilter = new EObjectFilter(NonregPackage.eINSTANCE.getTalk());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!assistsEditUtil.contains((EObject)element));
-						return false;
-					}
-				};
-				List filters = new ArrayList();
-				filters.add(assistsFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, filters, 
+				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, assistsFilters, assistsBusinessFilters,
 				"Talk", NonregPackage.eINSTANCE.getTalk()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -235,7 +187,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	public List getAssistsToAdd() {
 		return assistsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -243,6 +195,15 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 */
 	public List getAssistsToRemove() {
 		return assistsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#getAssistsTable()
+	 */
+	public List getAssistsTable() {
+		return assistsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -270,6 +231,24 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 			assistsEditUtil.reinit(newValue);
 			assists.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#addFilterAssists(ViewerFilter filter)
+	 */
+	public void addFilterToAssists(ViewerFilter filter) {
+		assistsFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#addBusinessFilterAssists(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAssists(ViewerFilter filter) {
+		assistsBusinessFilters.add(filter);
 	}
 
 

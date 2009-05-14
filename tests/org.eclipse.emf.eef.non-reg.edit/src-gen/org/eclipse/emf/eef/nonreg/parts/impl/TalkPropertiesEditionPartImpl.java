@@ -31,15 +31,11 @@ import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -47,17 +43,12 @@ import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.eef.nonreg.Person;
-
 
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
@@ -65,7 +56,6 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
-
 
 // End of user code
 /**
@@ -102,7 +92,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createDocumentedElement(view);
 		
 		// Start of user code for additional ui definition
-		
+
 		// End of user code		
 	}
 
@@ -116,9 +106,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createTitleText(propertiesGroup);
-		createTypeEEnumViewer(propertiesGroup);
+		createTypeEMFComboViewer(propertiesGroup);
 		createPresenterFlatComboViewer(propertiesGroup);
-		createCreatorEEnumViewer(propertiesGroup);
+		createCreatorEMFComboViewer(propertiesGroup);
 	}
 	protected void createTitleText(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_TitleLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.title, NonregViewsRepository.SWT_KIND));
@@ -141,7 +131,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.title, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-	protected void createTypeEEnumViewer(Composite parent) {
+	protected void createTypeEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_TypeLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.type, NonregViewsRepository.SWT_KIND));
 		type = new EMFComboViewer(parent);
 		type.setContentProvider(new ArrayContentProvider());
@@ -158,22 +148,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_PresenterLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.presenter, NonregViewsRepository.SWT_KIND));
 		presenter = new EObjectFlatComboViewer(parent, false);
 		presenter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for presenter filters initialisation
-		
-		// End of user code		
-		presenter.addFilter(new ViewerFilter() {
 
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Person);
-			}
-
-		});
 		presenter.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -185,24 +160,12 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		presenter.setLayoutData(presenterData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.presenter, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-	protected void createCreatorEEnumViewer(Composite parent) {
+	protected void createCreatorEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_CreatorLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.creator, NonregViewsRepository.SWT_KIND));
 		creator = new EMFComboViewer(parent);
 		GridData creatorData = new GridData(GridData.FILL_HORIZONTAL);
 		creator.getCombo().setLayoutData(creatorData);
 		creator.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		creator.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Person);  //$NON-NLS-1$ 				
-			}
-
-		});
 		creator.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
@@ -230,7 +193,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
+
 		// End of user code		
 	}
 
@@ -334,6 +297,24 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			presenter.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#addFilterPresenter(ViewerFilter filter)
+	 */
+	public void addFilterToPresenter(ViewerFilter filter) {
+		presenter.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#addBusinessFilterPresenter(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToPresenter(ViewerFilter filter) {
+		presenter.addBusinessRuleFilter(filter);
+	}
+
 	public void setMessageForPresenter(String msg, int msgLevel) {
 
 	}
@@ -379,6 +360,15 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			creator.modelUpdating(new StructuredSelection(""));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#addFilterCreator(ViewerFilter filter)
+	 */
+	public void addFilterToCreator(ViewerFilter filter) {
+		creator.addFilter(filter);
+	}
+
 	public void setMessageForCreator(String msg, int msgLevel) {
 
 	}
@@ -421,6 +411,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 	// Start of user code additional methods
- 	
+
 	// End of user code
 }

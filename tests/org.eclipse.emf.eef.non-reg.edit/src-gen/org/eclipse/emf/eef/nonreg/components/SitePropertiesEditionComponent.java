@@ -6,9 +6,9 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
 
 // End of user code
 /**

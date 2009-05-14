@@ -5,68 +5,47 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.nonreg.Site;
-
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
-
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.swt.widgets.Text;
 
 // End of user code
 /**
@@ -84,6 +63,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	private TableViewer accreditations;
 	private Button addAccreditations;
 	private Button removeAccreditations;
+	private List<ViewerFilter> accreditationsBusinessFilters;
 
 
 
@@ -264,11 +244,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 				}
 				return ""; //$NON-NLS-1$
 			}
-			// End of user code
+			
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
-
+			// End of user code
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -335,20 +315,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 *
 	 */
 	protected void addAccreditations() {
-		ViewerFilter viewerFilter = new ViewerFilter() {
-
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return element instanceof Site && !accreditationsEditUtil.getVirtualList().contains(element);
-			}
-
-		};
-
-		List filters = new ArrayList();
-
-		// Start of user code for filters initialisation for Site
-		
-		// End of user code
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList(accreditations.getFilters()), accreditationsBusinessFilters, false, true) {
 
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
@@ -562,7 +529,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	public List getAccreditationsToAdd() {
 		return accreditationsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -570,6 +537,15 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 */
 	public List getAccreditationsToRemove() {
 		return accreditationsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsTable()
+	 */
+	public List getAccreditationsTable() {
+		return accreditationsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -597,6 +573,24 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			accreditationsEditUtil.reinit(newValue);
 			accreditations.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addFilterAccreditations(ViewerFilter filter)
+	 */
+	public void addFilterToAccreditations(ViewerFilter filter) {
+		accreditations.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addBusinessFilterAccreditations(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAccreditations(ViewerFilter filter) {
+		accreditationsBusinessFilters.add(filter);
 	}
 
 	public void setMessageForAccreditations(String msg, int msgLevel) {

@@ -5,47 +5,28 @@ package org.eclipse.emf.eef.nonreg.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.nonreg.Talk;
-
-import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.eef.nonreg.TALK_TYPE;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.Person;
+import org.eclipse.emf.eef.nonreg.TALK_TYPE;
+import org.eclipse.emf.eef.nonreg.Talk;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -55,11 +36,9 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.nonreg.TALK_TYPE;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -92,7 +71,6 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				this.talk.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -140,7 +118,6 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			return NonregViewsRepository.Talk.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -163,7 +140,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NonregViewsRepository.class);
 				if (provider != null) {
 					basePart = (TalkPropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.Talk.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -181,16 +158,55 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 		if (basePart != null && key == NonregViewsRepository.Talk.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			Talk talk = (Talk)elt;
+			// init values
 			if (talk.getTitle() != null)
 				basePart.setTitle(talk.getTitle());
 
 			basePart.initType((EEnum) NonregPackage.eINSTANCE.getTalk_Type().getEType(), talk.getType());
 			basePart.initPresenter(allResource, talk.getPresenter());
 			basePart.initCreator(allResource, talk.getCreator());
+			
+			// init filters
+			
+			
+			basePart.addFilterToPresenter(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof Person);
+				}
+
+			});
+			// Start of user code for additional businessfilters for presenter
+			
+			// End of user code
+			basePart.addFilterToCreator(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof String && element.equals("")) || (element instanceof Person);  //$NON-NLS-1$ 					
+				}
+
+			});
+			// Start of user code for additional businessfilters for creator
+			
+			// End of user code
 		}
+		// init values for referenced views
 		if (talk.getDocumentation() != null)
 				basePart.setDocumentation(talk.getDocumentation());
 
+
+		// init filters for referenced views
+		
 
 	}
 
@@ -268,8 +284,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				command.append(SetCommand.create(liveEditingDomain, talk, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {

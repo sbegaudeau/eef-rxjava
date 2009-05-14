@@ -29,9 +29,7 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
@@ -49,6 +47,7 @@ import org.eclipse.emf.eef.nonreg.Site;
 
 
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -59,6 +58,8 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	private Text place;
 	private EMFListEditUtil sitesEditUtil;
 	private ReferencesTable<?> sites;
+	private List<ViewerFilter> sitesBusinessFilters;
+	private List<ViewerFilter> sitesFilters;
 
 
 
@@ -96,7 +97,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createPlaceText(propertiesGroup);
-		createSitesTableComposition(propertiesGroup);
+		createSitesAdvancedTableComposition(propertiesGroup);
 	}
 	protected void createPlaceText(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.EclipseSummitPropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.EclipseSummit.place, NonregViewsRepository.SWT_KIND));
@@ -122,7 +123,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * @param container
 	 */
-	protected void createSitesTableComposition(Composite parent) {
+	protected void createSitesAdvancedTableComposition(Composite parent) {
 		this.sites = new ReferencesTable<Site>(NonregMessages.EclipseSummitPropertiesEditionPart_SitesLabel, new ReferencesTableListener<Site>() {			
 			public void handleAdd() { addToSites();}
 			public void handleEdit(Site element) { editSites(element); }
@@ -178,7 +179,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	 */
 	private void removeFromSites(Site element) {
 
-		// Start of user code for the removeFromSites() method body
+		// Start of user code removeFromSites() method body
 
 		EObject editedElement = sitesEditUtil.foundCorrespondingEObject(element);
 		sitesEditUtil.removeElement(element);
@@ -251,7 +252,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	public List getSitesToAdd() {
 		return sitesEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -260,7 +261,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	public List getSitesToRemove() {
 		return sitesEditUtil.getElementsToRemove();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -269,7 +270,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	public Map getSitesToEdit() {
 		return sitesEditUtil.getElementsToRefresh();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -278,7 +279,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	public List getSitesToMove() {
 		return sitesEditUtil.getElementsToMove();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -313,6 +314,24 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 			sitesEditUtil.reinit(newValue);
 			sites.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart#addFilterSites(ViewerFilter filter)
+	 */
+	public void addFilterToSites(ViewerFilter filter) {
+		sitesFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart#addBusinessFilterSites(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToSites(ViewerFilter filter) {
+		sitesBusinessFilters.add(filter);
 	}
 
 	public void setMessageForSites(String msg, int msgLevel) {

@@ -29,9 +29,7 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
@@ -53,7 +51,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
@@ -72,6 +69,8 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	private EMFListEditUtil assistsEditUtil;
 	private ReferencesTable<?> assists;
+	private List<ViewerFilter> assistsBusinessFilters;
+	private List<ViewerFilter> assistsFilters;
 
 
 
@@ -108,25 +107,12 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		GridLayout presenceGroupLayout = new GridLayout();
 		presenceGroupLayout.numColumns = 3;
 		presenceGroup.setLayout(presenceGroupLayout);
-		createAssistsReferencesTable(presenceGroup);
+		createAssistsAdvancedReferencesTable(presenceGroup);
 	}
-	protected void createAssistsReferencesTable(Composite parent) {
+	protected void createAssistsAdvancedReferencesTable(Composite parent) {
 		this.assists = new ReferencesTable<Talk>(NonregMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
 			public void handleAdd() {
-				ViewerFilter assistsFilter = new EObjectFilter(NonregPackage.eINSTANCE.getTalk());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!assistsEditUtil.contains((EObject)element));
-						return false;
-					}
-
-				};
-				List filters = new ArrayList();
-				filters.add(assistsFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, filters,
+				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, assistsFilters, assistsBusinessFilters,
 				"Talk", NonregPackage.eINSTANCE.getTalk()) {
 
 					public void process(IStructuredSelection selection) {
@@ -171,7 +157,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 */
 	private void removeFromAssists(Talk element) {
 
-		// Start of user code for the removeFromAssists() method body
+		// Start of user code removeFromAssists() method body
 
 		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
 		assistsEditUtil.removeElement(element);
@@ -218,7 +204,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	public List getAssistsToAdd() {
 		return assistsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -226,6 +212,15 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 */
 	public List getAssistsToRemove() {
 		return assistsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#getAssistsTable()
+	 */
+	public List getAssistsTable() {
+		return assistsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -253,6 +248,24 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 			assistsEditUtil.reinit(newValue);
 			assists.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#addFilterAssists(ViewerFilter filter)
+	 */
+	public void addFilterToAssists(ViewerFilter filter) {
+		assistsFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#addBusinessFilterAssists(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAssists(ViewerFilter filter) {
+		assistsBusinessFilters.add(filter);
 	}
 
 	public void setMessageForAssists(String msg, int msgLevel) {
