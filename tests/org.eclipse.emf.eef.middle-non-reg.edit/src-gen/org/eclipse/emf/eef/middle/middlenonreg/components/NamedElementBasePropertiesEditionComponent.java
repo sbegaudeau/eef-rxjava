@@ -5,32 +5,19 @@ package org.eclipse.emf.eef.middle.middlenonreg.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
 
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -47,7 +34,6 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
@@ -82,7 +68,6 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 				this.namedElement.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -123,7 +108,6 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 			return MiddlenonregViewsRepository.NamedElement.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -146,7 +130,7 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MiddlenonregViewsRepository.class);
 				if (provider != null) {
 					basePart = (NamedElementPropertiesEditionPart)provider.getPropertiesEditionPart(MiddlenonregViewsRepository.NamedElement.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -164,13 +148,21 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 		if (basePart != null && key == MiddlenonregViewsRepository.NamedElement.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			NamedElement namedElement = (NamedElement)elt;
+			// init values
 			if (namedElement.getName() != null)
 				basePart.setName(namedElement.getName());
 
+			
+			// init filters
+			
 		}
+		// init values for referenced views
 		if (namedElement.getDocumentation() != null)
 				basePart.setDocumentation(namedElement.getDocumentation());
 
+
+		// init filters for referenced views
+		
 
 	}
 
@@ -233,8 +225,7 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 				command.append(SetCommand.create(liveEditingDomain, namedElement, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
