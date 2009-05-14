@@ -30,9 +30,9 @@ import [pec.model.qualifiedName(basePackage)/];
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 [if (pec.model.eefPackage(basePackage) <> subPec.model.eefPackage(basePackage))]
-	[for (view : View | subPec.views) ? (view.explicit)]	
+	[for (view : View | subPec.views) ? (view.explicit)]
 import [subPec.subPECQualifiedClass(view)/];
-	[/for]	
+	[/for]
 [/if]
 [/for]
 
@@ -56,7 +56,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 			addSubComponent(new [pec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode));
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]	
+	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
 			addSubComponent(new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode));
 	[/for]
 [/for]

@@ -47,6 +47,12 @@
 		// [/protected]
 [/template]
 
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+// [protected (' for '.concat(editionElement.name).concat(' filter update'))]
+		
+		// [/protected]
+[/template]
+
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
@@ -121,6 +127,10 @@ if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaCla
 [/if]
 [/template]
 
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[comment no filters for text /]
+[/template]
+
 [comment ===== Case : model = Attribute(1) - view = Checkbox ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
@@ -166,13 +176,17 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [/if]
 [/template]
 
-[comment ===== Case : model = Attribute(1) - view = EEnumViewer ===== /]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
+[comment no filters for checkbox /]
+[/template]
+
+[comment ===== Case : model = Attribute(1) - view = EMFComboViewer ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 					[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [else]
-//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if]
 [/template]
 
@@ -181,7 +195,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
 [else]
-//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if]
 [/template]
 
@@ -189,7 +203,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
 cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
 [else]
-//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if]
 [/template]
 
@@ -197,11 +211,15 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
 [modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);	
 [else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EEnumViewer
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if][/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'EMFComboViewer')]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'EMFComboViewer')]
+[comment no filters for emfcomboviewer /]
 [/template]
 
 [comment ===== Case : model = Attribute(1) - view = Textarea ===== /]
@@ -251,6 +269,11 @@ if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaCla
 //FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
 [/if]
 [/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[comment no filters for textarea /]
+[/template]
+
 [comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
@@ -276,7 +299,6 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [else]
 //FIXME invalid case in commandUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
-
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
@@ -319,7 +341,30 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [/template]
 
-[comment ===== Case : model = Reference(*) - view = ReferencesTable ===== /]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('EObjectFlatComboViewer'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+
+				}
+
+			});
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedEObjectFlatComboViewer'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]());
+[/template]
+
+[comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 					[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
@@ -354,11 +399,54 @@ List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier
 [modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsUndefined() and (editionElement.views->first().representation.name = 'ReferencesTable' or editionElement.views->first().representation.name = 'AdvancedReferencesTable' ))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsUndefined() and (editionElement.views->first().representation.name = 'ReferencesTable' or editionElement.views->first().representation.name = 'AdvancedReferencesTable'))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
 [/template]
 
-[comment ===== Case : model = Reference(*) in Simple Navigation - view = ReferencesTable ===== /]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('ReferencesTable'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.name.toJavaClassifier()/]Table().contains(element);
+				}
+
+			});
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
+
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedReferencesTable'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (![editionElement.name.toJavaIdentifier()/]EditUtil.contains((EObject)element));
+						return false;
+					}
+
+				}
+
+			});
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
+
+[/template]
+
+[comment ===== Case : model = Reference(*) in Simple Navigation - view = ReferencesTable or AdvancedReferencesTable===== /]
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 			if (PropertiesEditionEvent.ADD == event.getKind()) {
@@ -409,7 +497,7 @@ for (Iterator iter = [modelName/]ToUpdate.get[editionElement.navigation.oclAsTyp
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 [/template]
 
-[comment ===== Case : model = Containment(*) - view = TableComposition ===== /]
+[comment ===== Case : model = Containment(*) - view = TableComposition or AdvancedTableComposition===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 if (msg.getFeature() != null && 
 						(((EStructuralFeature)msg.getFeature()) == [editionElement.metamodelGetter()/]
@@ -469,6 +557,25 @@ List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'TableComposition' or editionElement.views->first().representation.name = 'AdvancedTableComposition')]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+
+				}
+
+			});
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
 [/template]
 
 [comment ===== Case : model = Attribute(1) - view = Radio ===== /]
@@ -533,6 +640,26 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [/template]
 
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]); [if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+					
+				}
+
+			});
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
+
+[/template]
+
 [comment ===== Case : model = any - view = any NEED TO BE THE LAST CHOICE ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
@@ -554,6 +681,10 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 //FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
+//FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+[/template]
+
 [comment ========= message setter and unsetter /]
 [template public liveMessageSetter(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Text') or editionElement.representationName('Textarea'))]
 if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
@@ -567,7 +698,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 
 [comment ========== ReferencedViews support ========== /]
 [template public livemessageUnsetterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
-[for ( v : View | view.referencedViews())]	
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 				[editionElement.liveMessageUnsetter(v, pec)/]
 	[/for]
@@ -576,7 +707,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [/template]
 
 [template public liveMessageSetterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
-[for ( v : View | view.referencedViews())]	
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 				[editionElement.liveMessageSetter(v, pec)/]
 	[/for]
@@ -585,7 +716,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [/template]
 
 [template public liveCommandUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
-[for ( v : View | view.referencedViews())]	
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 			[editionElement.liveCommandUpdater(v, modelName)/]
 	[/for]
@@ -594,7 +725,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [/template]
 
 [template public partUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
-[for ( v : View | view.referencedViews())]	
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 			[editionElement.partUpdater(v, pec, modelName)/]
 	[/for]
@@ -603,7 +734,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [/template]
 
 [template public commandUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
-[for ( v : View | view.referencedViews())]
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 			[editionElement.commandUpdater(v, pec, modelName)/]
 	[/for]
@@ -612,7 +743,7 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [/template]
 
 [template public liveUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
-[for ( v : View | view.referencedViews())]
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 				[editionElement.liveUpdater(v, pec)/]
 	[/for]
@@ -621,20 +752,29 @@ if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
 [/template]
 
 [template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
-[for ( v : View | view.referencedViews())]
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 		[editionElement.updater(v, pec)/]
 	[/for]
-[if (v.referencedViews()->notEmpty())]
-[v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), pec)/][/if]
+[if (v.referencedViews()->notEmpty())][v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), pec)/][/if]
 [/for]
 [/template]
 
 [template public updaterForSubReferencedViews(view : View, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent)]
-[for ( v : View | view.referencedViews())]
+[for (v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 		[editionElement.updater(v, inputPEC)/]
 	[/for]
 [if (v.referencedViews()->notEmpty())][v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), inputPEC)/][/if]
+[/for]
+[/template]
+
+[template public filterUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
+[for (v : View | view.referencedViews())]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+		[editionElement.filterUpdater(v, pec)/]
+	[/for]
+[if (v.referencedViews()->notEmpty())]
+[v.filterUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if]
 [/for]
 [/template]

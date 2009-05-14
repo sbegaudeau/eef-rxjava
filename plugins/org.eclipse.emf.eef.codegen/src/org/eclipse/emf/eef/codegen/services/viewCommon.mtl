@@ -24,18 +24,18 @@ TODO: externalise model/controler reference after Unedic non-reg
 
 [comment --------------- Views related templates --------------- /]
 [template public genDeclaration(elementEditor : ElementEditor)]
-	[elementEditor.getterDeclaration()/]
-	
-	[elementEditor.setterDeclaration()/]
-	
-	[elementEditor.setMessageDeclaration()/]
-	
-	[elementEditor.unsetMessageDeclaration()/]
-	
+[elementEditor.getterDeclaration()/]
+
+[elementEditor.setterDeclaration()/]
+
+[elementEditor.setMessageDeclaration()/]
+
+[elementEditor.unsetMessageDeclaration()/]
+
 [/template]
 
 [template public genDeclaration(view : View)]
-	[view.getterDeclaration()/]
+[view.getterDeclaration()/]
 [/template]
 
 [template public genDeclarationForViewReference(view : View)]
@@ -73,6 +73,7 @@ import org.eclipse.emf.common.util.Enumerator;
 [if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'EObjectFlatComboViewer' or representation.name = 'AdvancedEObjectFlatComboViewer' or representation.name = 'ReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedReferencesTable' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
 [/if]
 [if (view.eAllContents(views::View)->notEmpty())]
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -89,7 +90,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [elseif (element.container.oclIsKindOf(View))]
 view
 [else]
-ILLEGAL MODEL STATE !
+//FIXME ILLEGAL MODEL STATE in template public widgetContainer(element : ViewElement) in module viewCommon.mtl
 [/if]
 [/template]
 
@@ -119,7 +120,6 @@ public List get[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.mode
 [/template]
 
 [comment ====== Widgets setters signature ====== /]
-
 [template public partSetterSignature(editor : PropertiesEditionElement)]
 public void [editor.ecoreCompletePackageSetter()/]
 [/template]
@@ -137,7 +137,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 [/template]
 
 [comment ====== Widgets getters ====== /]
-
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'MultiValuedEditor')]
 [editor.partSetterSignature()/] {
 		[editor.views->first().name.toJavaIdentifier()/]List = newValue;
@@ -150,7 +149,7 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 		[editor.views->first().name.toJavaIdentifier()/].setText(newValue);
 	}
 [/template]
-	
+
 [template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isBoolean())]
 [editor.partSetterSignature()/] {
 		[editor.views->first().name.toJavaIdentifier()/].setSelection(newValue.booleanValue());

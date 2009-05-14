@@ -200,7 +200,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			return [view.editorID()/].class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -255,11 +254,20 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		if ([view.viewIdentifier(pec)/] != null && key == [view.editorID()/].class) {
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
 			[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
+			// init values
 			[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 			[pee.updater(view, pec)/]
 			[/for]
+			
+			// init filters
+			[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+			[pee.filterUpdater(view, pec)/]
+			[/for]
 		}
+		// init values for referenced views
 [view.updaterForReferencedViews(pec)/]
+		// init filters for referenced views
+[view.filterUpdaterForReferencedViews(pec)/]
 	}
 
 	/**
@@ -329,7 +337,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			// [protected ('for firePropertiesChanged body')]
 			
 			// [/protected]
-				
+
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 			[editionElement.liveCommandUpdater(view, pec.model.name.toJavaIdentifier())/]
@@ -337,8 +345,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [comment add ViewReference support/]
 [view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {

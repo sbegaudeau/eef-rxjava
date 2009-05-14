@@ -244,6 +244,7 @@ protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
 private AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
+	private ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'ReferencesTable')]
@@ -251,11 +252,14 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private TableViewer [editor.name.toJavaIdentifier()/];
 	private Button add[editor.name.toJavaClassifier()/];
 	private Button remove[editor.name.toJavaClassifier()/];
+	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
+	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
@@ -276,6 +280,8 @@ private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
+	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
@@ -561,24 +567,6 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
 
-		// [protected ('for '.concat(editor.name.toJavaIdentifier()).concat(' filters initialisation'))]
-		
-		// [/protected]
-
-		[editor.name.toJavaIdentifier()/].addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editor.involvedPropertiesEditionElement().model.eType.name/]); [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-				
-			}
-
-		});
-
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
@@ -610,7 +598,6 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		
-		ViewerFilter [editor.name.toJavaIdentifier()/]Filter = new EObjectFilter([editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]());
 		[editor.name.toJavaIdentifier()/] = new AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], 
 			resourceSet, [editor.name.toJavaIdentifier()/]Filter, [editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
 			public void handleSet([editor.involvedPropertiesEditionElement().model.eType.name/] element){
@@ -753,21 +740,8 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 	 *
 	 */
 	protected void add[editor.name.toJavaClassifier()/]() {
-		ViewerFilter viewerFilter = new ViewerFilter() {
 
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return element instanceof [editor.involvedPropertiesEditionElement().model.eType.name/] && ![editor.name.toJavaIdentifier()/]EditUtil.getVirtualList().contains(element);
-			}
-
-		};
-		
-		List filters = new ArrayList();
-
-		// [protected ('for filters initialisation for '.concat(editor.involvedPropertiesEditionElement().model.eType.name))]
-		
-		// [/protected]
-
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList([editor.name.toJavaIdentifier()/].getFilters()), [editor.name.toJavaIdentifier()/]BusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
@@ -798,18 +772,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 	protected void create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {	
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
 			public void handleAdd() {
-				ViewerFilter [editor.name.toJavaIdentifier()/]Filter = new EObjectFilter([editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (![editor.name.toJavaIdentifier()/]EditUtil.contains((EObject)element));
-						return false;
-					}
-				};
-				List filters = new ArrayList();
-				filters.add([editor.name.toJavaIdentifier()/]Filter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, filters, 
+				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
 				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -892,11 +855,11 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 
 [comment EMFComboViewer /]
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
-		create[editor.name.toJavaClassifier()/]EEnumViewer(widgetFactory, [editor.widgetContainer().trim()/]);
+		create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
-	protected void create[editor.name.toJavaClassifier()/]EEnumViewer(FormToolkit widgetFactory, Composite parent) {
+	protected void create[editor.name.toJavaClassifier()/]EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
 		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
@@ -1335,29 +1298,16 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 
 [comment Combo /]
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
-		create[editor.name.toJavaClassifier()/]EEnumViewer(widgetFactory, [editor.widgetContainer().trim()/]);
+		create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
-	protected void create[editor.name.toJavaClassifier()/]EEnumViewer(FormToolkit widgetFactory, Composite parent) {
+	protected void create[editor.name.toJavaClassifier()/]EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], [if (editor.involvedPropertiesEditionElement(pec).model.required)]true[else]false[/if]);
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].getCombo().setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		[editor.name.toJavaIdentifier()/].addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editor.involvedPropertiesEditionElement().model.eType.name/]); [if (editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-				
-			}
-
-		});
 		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
