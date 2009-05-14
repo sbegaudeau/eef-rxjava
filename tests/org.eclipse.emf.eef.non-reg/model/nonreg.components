@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_Xxdwcf3BEd25MIHmw1Ckvg" documentation="Edition Context for nonreg GenPackage">
-    <categories xmi:id="_Xxdwcv3BEd25MIHmw1Ckvg" name="common"/>
     <categories xmi:id="_Xxdwc_3BEd25MIHmw1Ckvg" name="nonreg">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_XxdwdP3BEd25MIHmw1Ckvg" name="EclipseSummit" views="_Xxdwhf3BEd25MIHmw1Ckvg">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xxdwdf3BEd25MIHmw1Ckvg" name="place" views="_Xxdwh_3BEd25MIHmw1Ckvg">
@@ -87,7 +86,6 @@
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_Xxdwgv3BEd25MIHmw1Ckvg" documentation="Views repository for nonreg GenPackage" name="nonreg">
     <RepositoryKind>SWT</RepositoryKind>
-    <categories xmi:id="_Xxdwg_3BEd25MIHmw1Ckvg" name="common"/>
     <categories xmi:id="_XxdwhP3BEd25MIHmw1Ckvg" name="nonreg">
       <views xmi:id="_Xxdwhf3BEd25MIHmw1Ckvg" name="EclipseSummit">
         <elements xsi:type="eef-views:Container" xmi:id="_Xxdwhv3BEd25MIHmw1Ckvg" name="properties">
