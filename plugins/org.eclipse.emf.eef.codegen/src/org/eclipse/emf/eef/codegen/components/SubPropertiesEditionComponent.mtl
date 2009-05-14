@@ -156,7 +156,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 				this.[pec.model.name.toJavaIdentifier()/].eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -224,7 +223,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([view.owningViewsRepository().vrClass()/].class);
 				if (provider != null) {
 					[view.viewIdentifier(pec)/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([view.editorID()/].class, kind, this);
-					listeners.add([view.viewIdentifier(pec)/]);
+					addListener((IPropertiesEditionListener)[view.viewIdentifier(pec)/]);
 				}
 			}
 			return (IPropertiesEditionPart)[view.viewIdentifier(pec)/];
