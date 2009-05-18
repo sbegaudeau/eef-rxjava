@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitPropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:56 sbouchet Exp $
+ * $Id: ToolkitPropertiesEditionComponent.java,v 1.4 2009/05/18 16:10:14 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -31,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -74,7 +73,6 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 				this.toolkit.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -112,7 +110,6 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 			return ToolkitsViewsRepository.Toolkit.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -135,7 +132,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ToolkitsViewsRepository.class);
 				if (provider != null) {
 					basePart = (ToolkitPropertiesEditionPart)provider.getPropertiesEditionPart(ToolkitsViewsRepository.Toolkit.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -153,10 +150,17 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 		if (basePart != null && key == ToolkitsViewsRepository.Toolkit.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			Toolkit toolkit = (Toolkit)elt;
+			// init values
 			if (toolkit.getName() != null)
 				basePart.setName(toolkit.getName());
 
+			
+			// init filters
+			
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -212,8 +216,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
