@@ -15,8 +15,6 @@ package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.notify.Notification;
@@ -35,6 +33,7 @@ import org.eclipse.emf.eef.components.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -74,7 +73,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 				this.documentedElement.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -112,7 +110,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			return ComponentsViewsRepository.Documentation.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -135,7 +132,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ComponentsViewsRepository.class);
 				if (provider != null) {
 					documentationPart = (DocumentationPropertiesEditionPart)provider.getPropertiesEditionPart(ComponentsViewsRepository.Documentation.class, kind, this);
-					listeners.add(documentationPart);
+					addListener((IPropertiesEditionListener)documentationPart);
 				}
 			}
 			return (IPropertiesEditionPart)documentationPart;
@@ -153,10 +150,17 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		if (documentationPart != null && key == ComponentsViewsRepository.Documentation.class) {
 			((IPropertiesEditionPart)documentationPart).setContext(elt, allResource);
 			DocumentedElement documentedElement = (DocumentedElement)elt;
+			// init values
 			if (documentedElement.getDocumentation() != null)
 				documentationPart.setDocumentation(documentedElement.getDocumentation());
 
+			
+			// init filters
+			
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -212,8 +216,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
