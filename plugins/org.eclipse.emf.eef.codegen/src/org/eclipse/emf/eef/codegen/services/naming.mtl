@@ -103,7 +103,11 @@
 [/template]
 
 [template public viewPackage(element : ElementEditor, pec : PropertiesEditionComponent)]
-[element.propertiesEditionElement(pec).model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]Package
+[element.propertiesEditionElement(pec).editionElementPackage()/]
+[/template]
+
+[template public editionElementPackage(pee : PropertiesEditionElement)]
+[pee.model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]Package
 [/template]
 
 [comment FIXME: once template call on a model navigation bug fix /]
