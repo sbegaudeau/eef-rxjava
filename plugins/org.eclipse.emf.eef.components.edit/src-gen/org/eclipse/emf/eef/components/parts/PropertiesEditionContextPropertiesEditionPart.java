@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPart.java,v 1.3 2009/05/05 12:05:08 sbouchet Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPart.java,v 1.4 2009/05/18 15:31:54 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.components.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
@@ -29,7 +30,7 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 	 * @return the model
 	 */
 	public EObject getModel();
-	
+
 	/**
 	 * Init the model
 	 * @param allResources the ResourceSet where the widget have to process
@@ -37,16 +38,34 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 	 */
 	public void initModel(ResourceSet allResources, EObject current);
 
-/**
+	/**
 	 * Defines a new model
 	 * @param newValue the new model to set
 	 */
 	public void setModel(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the model edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToModel(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the model edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter);
+
+
+
+
+
 
 
 
