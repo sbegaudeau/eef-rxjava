@@ -5,11 +5,6 @@ package org.eclipse.emf.eef.middle.middlenonreg.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
-
- 
-
 
 // End of user code
 /**
