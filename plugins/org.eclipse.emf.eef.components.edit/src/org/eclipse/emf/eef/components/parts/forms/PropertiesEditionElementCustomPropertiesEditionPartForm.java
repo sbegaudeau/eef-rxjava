@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.components.parts.forms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,10 +38,6 @@ public class PropertiesEditionElementCustomPropertiesEditionPartForm extends Pro
 	public PropertiesEditionElementCustomPropertiesEditionPartForm(
 			IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
-	}
-
-	@Override
-	protected void addViews() {
 		ViewerFilter viewerFilter = new ViewerFilter() {
 
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -48,12 +45,16 @@ public class PropertiesEditionElementCustomPropertiesEditionPartForm extends Pro
 			}
 
 		};
+		addFilterToViews(viewerFilter);
+	}
 
-		List filters = new ArrayList();
+	@Override
+	protected void addViews() {
+			
 		EMFModelViewerDialog dialog = new EMFModelViewerDialog(
 				new AdapterFactoryLabelProvider(adapterFactory), EEFUtils.choiceOfValues(adapterFactory,
 						current, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), resourceSet),
-				viewerFilter, filters, false, true) {
+						Arrays.asList(views.getFilters()), viewsBusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject)iter.next();
