@@ -9,20 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.4 2009/05/18 15:58:11 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
@@ -31,7 +30,6 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
@@ -49,7 +47,6 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -76,11 +73,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	private Text name;
 	private Text helpID;
 	protected EMFListEditUtil modelEditUtil;
-	private TableViewer model;
+	protected TableViewer model;
 	private Button addModel;
 	private Button removeModel;
+	protected List<ViewerFilter> modelBusinessFilters;
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
+	protected List<ViewerFilter> viewsBusinessFilters;
+	protected List<ViewerFilter> viewsFilters;
 
 
 
@@ -173,7 +173,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
 		createModelReferencesTable(bindingGroup);
-		createViewsReferencesTable(bindingGroup);
+		createViewsAdvancedReferencesTable(bindingGroup);
 	}
 	/**
 	 * @param parent
@@ -224,11 +224,11 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 				}
 				return ""; //$NON-NLS-1$
 			}
-			// End of user code
+			
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
-
+			// End of user code
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -295,20 +295,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 *
 	 */
 	protected void addModel() {
-		ViewerFilter viewerFilter = new ViewerFilter() {
-
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return element instanceof EStructuralFeature && !modelEditUtil.getVirtualList().contains(element);
-			}
-
-		};
-
-		List filters = new ArrayList();
-
-		// Start of user code for filters initialisation for EStructuralFeature
-		
-		// End of user code
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewerFilter, filters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList(model.getFilters()), modelBusinessFilters, false, true) {
 
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
@@ -332,23 +319,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 			modelEditUtil.removeElement(selectedElement);
 		}
 	}
-	protected void createViewsReferencesTable(Composite parent) {
+	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
-				ViewerFilter viewsFilter = new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!viewsEditUtil.contains((EObject)element));
-						return false;
-					}
-
-				};
-				List filters = new ArrayList();
-				filters.add(viewsFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, filters,
+				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
 				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor()) {
 
 					public void process(IStructuredSelection selection) {
@@ -393,7 +367,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	private void removeFromViews(ElementEditor element) {
 
-		// Start of user code for the removeFromViews() method body
+		// Start of user code removeFromViews() method body
 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
@@ -492,7 +466,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	public List getModelToAdd() {
 		return modelEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -500,6 +474,15 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	public List getModelToRemove() {
 		return modelEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getModelTable()
+	 */
+	public List getModelTable() {
+		return modelEditUtil.getVirtualList();
 	}
 
 	/**
@@ -529,6 +512,24 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 */
+	public void addFilterToModel(ViewerFilter filter) {
+		model.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter) {
+		modelBusinessFilters.add(filter);
+	}
+
 	public void setMessageForModel(String msg, int msgLevel) {
 
 	}
@@ -545,7 +546,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	public List getViewsToAdd() {
 		return viewsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -553,6 +554,15 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	public List getViewsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getViewsTable()
+	 */
+	public List getViewsTable() {
+		return viewsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -580,6 +590,24 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addFilterViews(ViewerFilter filter)
+	 */
+	public void addFilterToViews(ViewerFilter filter) {
+		viewsFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addBusinessFilterViews(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToViews(ViewerFilter filter) {
+		viewsBusinessFilters.add(filter);
 	}
 
 	public void setMessageForViews(String msg, int msgLevel) {
