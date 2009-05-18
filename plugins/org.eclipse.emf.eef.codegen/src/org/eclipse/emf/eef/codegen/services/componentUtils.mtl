@@ -214,11 +214,11 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 //FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if][/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'EMFComboViewer')]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('EMFComboViewer'))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'EMFComboViewer')]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('EMFComboViewer'))]
 [comment no filters for emfcomboviewer /]
 [/template]
 
@@ -342,7 +342,7 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('EObjectFlatComboViewer'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 				/*
 				 * (non-Javadoc)
@@ -361,7 +361,7 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedEObjectFlatComboViewer'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]());
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]());
 [/template]
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
@@ -399,12 +399,12 @@ List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier
 [modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsUndefined() and (editionElement.views->first().representation.name = 'ReferencesTable' or editionElement.views->first().representation.name = 'AdvancedReferencesTable'))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsUndefined() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('ReferencesTable'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and editionElement.representationName('ReferencesTable'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 				/*
 				 * (non-Javadoc)
@@ -422,24 +422,22 @@ List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier
 
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedReferencesTable'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceMany() and editionElement.representationName('AdvancedReferencesTable'))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (![editionElement.name.toJavaIdentifier()/]EditUtil.contains((EObject)element));
-						return false;
-					}
-
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (![view.viewIdentifier(pec)/].get[editionElement.name.toJavaClassifier()/]Table().contains(element));
+					return false;
 				}
 
 			});
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
@@ -495,6 +493,25 @@ for (Iterator iter = [modelName/]ToUpdate.get[editionElement.navigation.oclAsTyp
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.name.toJavaClassifier()/]Table().contains(element);
+				}
+
+			});
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
+
 [/template]
 
 [comment ===== Case : model = Containment(*) - view = TableComposition or AdvancedTableComposition===== /]
@@ -555,12 +572,12 @@ List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier
 [modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'TableComposition' or editionElement.views->first().representation.name = 'AdvancedTableComposition')]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition'))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 					/*
 					 * (non-Javadoc)
@@ -613,8 +630,12 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [/if]
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'Radio')]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Radio'))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+[comment not filters for radio /]
 [/template]
 
 [comment ===== Case : model = Reference - view = Combo ===== /]
@@ -636,7 +657,7 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().representation.name = 'Combo')]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.representationName('Combo'))]
 [view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [/template]
 
@@ -678,11 +699,11 @@ cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamod
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-//FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-//FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
 [comment ========= message setter and unsetter /]
