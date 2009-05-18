@@ -124,7 +124,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
 private AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
-	private ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
+	protected ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and (editor.representation.name = 'AdvancedEObjectFlatComboViewer'))]
@@ -296,10 +296,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'ReferencesTable')]
 protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	private TableViewer [editor.name.toJavaIdentifier()/];
+	protected TableViewer [editor.name.toJavaIdentifier()/];
 	private Button add[editor.name.toJavaClassifier()/];
 	private Button remove[editor.name.toJavaClassifier()/];
-	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'ReferencesTable')]
@@ -486,8 +486,8 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
-	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
-	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
@@ -614,7 +614,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'TableComposition')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	private TableViewer [editor.name.toJavaIdentifier()/];
+	protected TableViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'TableComposition')]
@@ -858,8 +858,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
-	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
-	private List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
