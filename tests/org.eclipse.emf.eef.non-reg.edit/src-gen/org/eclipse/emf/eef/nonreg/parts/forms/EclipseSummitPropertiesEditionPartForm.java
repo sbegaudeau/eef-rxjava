@@ -55,8 +55,8 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	private Text place;
 	private EMFListEditUtil sitesEditUtil;
 	private ReferencesTable<?> sites;
-	private List<ViewerFilter> sitesBusinessFilters;
-	private List<ViewerFilter> sitesFilters;
+	protected List<ViewerFilter> sitesBusinessFilters;
+	protected List<ViewerFilter> sitesFilters;
 
 
 
