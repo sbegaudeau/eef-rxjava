@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.3 2009/05/18 16:08:57 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -108,22 +108,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ViewsRepositoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.viewsRepository, EEFGenViewsRepository.SWT_KIND));
 		viewsRepository = new EObjectFlatComboViewer(parent, false);
 		viewsRepository.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for viewsRepository filters initialisation
 
- 		// End of user code		
-		viewsRepository.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof ViewsRepository);
-			}
-
-		});
 		viewsRepository.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -145,7 +130,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		parametersGroupLayout.numColumns = 3;
 		parametersGroup.setLayout(parametersGroupLayout);
 		createBasePackageText(parametersGroup);
-		createHelpStrategyEEnumViewer(parametersGroup);
+		createHelpStrategyEMFComboViewer(parametersGroup);
 	}
 	protected void createBasePackageText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.SWT_KIND));
@@ -168,7 +153,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-	protected void createHelpStrategyEEnumViewer(Composite parent) {
+	protected void createHelpStrategyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.SWT_KIND));
 		helpStrategy = new EMFComboViewer(parent);
 		helpStrategy.setContentProvider(new ArrayContentProvider());
@@ -248,6 +233,24 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			viewsRepository.setSelection(new StructuredSelection(newValue));
 		else
 			viewsRepository.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#addFilterViewsRepository(ViewerFilter filter)
+	 */
+	public void addFilterToViewsRepository(ViewerFilter filter) {
+		viewsRepository.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#addBusinessFilterViewsRepository(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToViewsRepository(ViewerFilter filter) {
+		viewsRepository.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForViewsRepository(String msg, int msgLevel) {

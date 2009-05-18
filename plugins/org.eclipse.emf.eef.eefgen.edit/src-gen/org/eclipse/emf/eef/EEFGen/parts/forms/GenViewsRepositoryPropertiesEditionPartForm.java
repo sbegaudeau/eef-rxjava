@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartForm.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartForm.java,v 1.3 2009/05/18 16:08:57 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -123,22 +123,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		viewsRepository = new EObjectFlatComboViewer(parent, false);
 		viewsRepository.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for viewsRepository filters initialisation
-
- 		// End of user code
-		viewsRepository.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof ViewsRepository); 				
-			}
-
-		});
-
 		GridData viewsRepositoryData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsRepository.setLayoutData(viewsRepositoryData);
 		viewsRepository.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -167,7 +151,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		parametersGroupLayout.numColumns = 3;
 		parametersGroup.setLayout(parametersGroupLayout);
 		createBasePackageText(widgetFactory, parametersGroup);
-		createHelpStrategyEEnumViewer(widgetFactory, parametersGroup);
+		createHelpStrategyEMFComboViewer(widgetFactory, parametersGroup);
 		parametersSection.setClient(parametersGroup);
 	}
 	protected void createBasePackageText(FormToolkit widgetFactory, Composite parent) {
@@ -221,7 +205,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 
 	}
-	protected void createHelpStrategyEEnumViewer(FormToolkit widgetFactory, Composite parent) {
+	protected void createHelpStrategyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.FORM_KIND));
 		helpStrategy = new EMFComboViewer(parent);
 		helpStrategy.setContentProvider(new ArrayContentProvider());
@@ -340,6 +324,24 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 			viewsRepository.setSelection(new StructuredSelection(newValue));
 		else
 			viewsRepository.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#addFilterViewsRepository(ViewerFilter filter)
+	 */
+	public void addFilterToViewsRepository(ViewerFilter filter) {
+		viewsRepository.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#addBusinessFilterViewsRepository(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToViewsRepository(ViewerFilter filter) {
+		viewsRepository.addBusinessRuleFilter(filter);
 	}
 
 

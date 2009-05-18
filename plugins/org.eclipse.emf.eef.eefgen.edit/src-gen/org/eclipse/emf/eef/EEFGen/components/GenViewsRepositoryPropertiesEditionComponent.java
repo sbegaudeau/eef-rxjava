@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.3 2009/05/18 16:08:57 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -38,6 +36,7 @@ import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -46,6 +45,8 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -78,7 +79,6 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 				this.genViewsRepository.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -127,7 +127,6 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			return EEFGenViewsRepository.GenViewsRepository.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -150,7 +149,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EEFGenViewsRepository.class);
 				if (provider != null) {
 					basePart = (GenViewsRepositoryPropertiesEditionPart)provider.getPropertiesEditionPart(EEFGenViewsRepository.GenViewsRepository.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -168,6 +167,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 		if (basePart != null && key == EEFGenViewsRepository.GenViewsRepository.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			GenViewsRepository genViewsRepository = (GenViewsRepository)elt;
+			// init values
 			if (genViewsRepository.getBasePackage() != null)
 				basePart.setBasePackage(genViewsRepository.getBasePackage());
 
@@ -177,7 +177,31 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 
 			basePart.initHelpStrategy((EEnum) EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEType(), genViewsRepository.getHelpStrategy());
 			basePart.initViewsRepository(allResource, genViewsRepository.getViewsRepository());
+			
+			// init filters
+			
+			
+			
+			
+			basePart.addFilterToViewsRepository(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof ViewsRepository);
+				}
+
+			});
+			// Start of user code for additional businessfilters for viewsRepository
+			
+			// End of user code
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -258,8 +282,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
