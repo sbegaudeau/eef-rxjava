@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPart.java,v 1.2 2009/05/05 12:05:08 sbouchet Exp $
+ * $Id: DocumentationPropertiesEditionPart.java,v 1.3 2009/05/18 15:30:57 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -28,17 +28,17 @@ public interface DocumentationPropertiesEditionPart {
 	 * @return the documentation
 	 */
 	public String getDocumentation();
-	
+
 	/**
 	 * Defines a new documentation
 	 * @param newValue the new documentation to set
 	 */
 	public void setDocumentation(String newValue);
-	
+
 	public void setMessageForDocumentation(String msg, int msgLevel);
-	
+
 	public void unsetMessageForDocumentation();
-	
+
 
 
 
