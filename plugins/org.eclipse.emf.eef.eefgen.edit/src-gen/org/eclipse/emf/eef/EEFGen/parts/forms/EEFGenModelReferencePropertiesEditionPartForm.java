@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionPartForm.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionPartForm.java,v 1.3 2009/05/18 16:07:40 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -100,22 +100,6 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 		referencedEEFGenModel = new EObjectFlatComboViewer(parent, false);
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for referencedEEFGenModel filters initialisation
-
- 		// End of user code
-		referencedEEFGenModel.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EEFGenModel); 				
-			}
-
-		});
-
 		GridData referencedEEFGenModelData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedEEFGenModel.setLayoutData(referencedEEFGenModelData);
 		referencedEEFGenModel.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -176,6 +160,24 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 			referencedEEFGenModel.setSelection(new StructuredSelection(newValue));
 		else
 			referencedEEFGenModel.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#addFilterReferencedEEFGenModel(ViewerFilter filter)
+	 */
+	public void addFilterToReferencedEEFGenModel(ViewerFilter filter) {
+		referencedEEFGenModel.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#addBusinessFilterReferencedEEFGenModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToReferencedEEFGenModel(ViewerFilter filter) {
+		referencedEEFGenModel.addBusinessRuleFilter(filter);
 	}
 
 

@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionComponent.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionComponent.java,v 1.3 2009/05/18 16:07:40 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -36,12 +34,15 @@ import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -74,7 +75,6 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 				this.eEFGenModelReference.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -111,7 +111,6 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 			return EEFGenViewsRepository.EEFGenModelReference.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -134,7 +133,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EEFGenViewsRepository.class);
 				if (provider != null) {
 					basePart = (EEFGenModelReferencePropertiesEditionPart)provider.getPropertiesEditionPart(EEFGenViewsRepository.EEFGenModelReference.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -152,8 +151,29 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 		if (basePart != null && key == EEFGenViewsRepository.EEFGenModelReference.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)elt;
+			// init values
 			basePart.initReferencedEEFGenModel(allResource, eEFGenModelReference.getReferencedContext());
+			
+			// init filters
+			basePart.addFilterToReferencedEEFGenModel(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof EEFGenModel);
+				}
+
+			});
+			// Start of user code for additional businessfilters for reference
+			
+			// End of user code
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -206,8 +226,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 				command.append(SetCommand.create(liveEditingDomain, eEFGenModelReference, EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {

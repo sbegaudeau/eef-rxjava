@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionPartImpl.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionPartImpl.java,v 1.3 2009/05/18 16:07:40 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -92,22 +92,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND));
 		referencedEEFGenModel = new EObjectFlatComboViewer(parent, false);
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for referencedEEFGenModel filters initialisation
 
- 		// End of user code		
-		referencedEEFGenModel.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EEFGenModel);
-			}
-
-		});
 		referencedEEFGenModel.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -162,6 +147,24 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 			referencedEEFGenModel.setSelection(new StructuredSelection(newValue));
 		else
 			referencedEEFGenModel.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#addFilterReferencedEEFGenModel(ViewerFilter filter)
+	 */
+	public void addFilterToReferencedEEFGenModel(ViewerFilter filter) {
+		referencedEEFGenModel.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#addBusinessFilterReferencedEEFGenModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToReferencedEEFGenModel(ViewerFilter filter) {
+		referencedEEFGenModel.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForReferencedEEFGenModel(String msg, int msgLevel) {
