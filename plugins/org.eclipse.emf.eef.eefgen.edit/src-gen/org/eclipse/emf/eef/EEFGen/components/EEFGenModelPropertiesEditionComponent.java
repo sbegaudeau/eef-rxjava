@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.3 2009/05/18 16:02:11 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -35,6 +33,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -74,7 +73,6 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 				this.eEFGenModel.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -118,7 +116,6 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			return EEFGenViewsRepository.EEFGenModel.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -141,7 +138,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EEFGenViewsRepository.class);
 				if (provider != null) {
 					basePart = (EEFGenModelPropertiesEditionPart)provider.getPropertiesEditionPart(EEFGenViewsRepository.EEFGenModel.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -159,6 +156,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		if (basePart != null && key == EEFGenViewsRepository.EEFGenModel.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			EEFGenModel eEFGenModel = (EEFGenModel)elt;
+			// init values
 			if (eEFGenModel.getGenDirectory() != null)
 				basePart.setGenDirectory(eEFGenModel.getGenDirectory());
 
@@ -168,7 +166,15 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			if (eEFGenModel.getLicense() != null)
 				basePart.setLicense(eEFGenModel.getLicense());
 
+			
+			// init filters
+			
+			
+			
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -238,8 +244,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
