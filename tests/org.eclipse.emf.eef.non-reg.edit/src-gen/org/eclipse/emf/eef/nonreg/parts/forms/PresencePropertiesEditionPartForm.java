@@ -5,7 +5,6 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
@@ -31,7 +29,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -50,8 +47,8 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 
 	private EMFListEditUtil assistsEditUtil;
 	private ReferencesTable<?> assists;
-	private List<ViewerFilter> assistsBusinessFilters;
-	private List<ViewerFilter> assistsFilters;
+	protected List<ViewerFilter> assistsBusinessFilters;
+	protected List<ViewerFilter> assistsFilters;
 
 
 
