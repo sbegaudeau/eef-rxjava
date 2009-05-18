@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPart.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionPart.java,v 1.3 2009/05/18 16:03:42 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -28,47 +28,47 @@ public interface EEFGenModelPropertiesEditionPart {
 	 * @return the genDirectory
 	 */
 	public String getGenDirectory();
-	
+
 	/**
 	 * Defines a new genDirectory
 	 * @param newValue the new genDirectory to set
 	 */
 	public void setGenDirectory(String newValue);
-	
+
 	public void setMessageForGenDirectory(String msg, int msgLevel);
-	
+
 	public void unsetMessageForGenDirectory();
-	
+
 	/**
 	 * @return the author
 	 */
 	public String getAuthor();
-	
+
 	/**
 	 * Defines a new author
 	 * @param newValue the new author to set
 	 */
 	public void setAuthor(String newValue);
-	
+
 	public void setMessageForAuthor(String msg, int msgLevel);
-	
+
 	public void unsetMessageForAuthor();
-	
+
 	/**
 	 * @return the license
 	 */
 	public String getLicense();
-	
+
 	/**
 	 * Defines a new license
 	 * @param newValue the new license to set
 	 */
 	public void setLicense(String newValue);
-	
+
 	public void setMessageForLicense(String msg, int msgLevel);
-	
+
 	public void unsetMessageForLicense();
-	
+
 
 
 

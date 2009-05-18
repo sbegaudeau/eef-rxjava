@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionPart.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionPart.java,v 1.3 2009/05/18 16:03:42 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.EEFGen.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
@@ -29,7 +30,7 @@ public interface EEFGenModelReferencePropertiesEditionPart {
 	 * @return the Referenced EEFGenModel
 	 */
 	public EObject getReferencedEEFGenModel();
-	
+
 	/**
 	 * Init the Referenced EEFGenModel
 	 * @param allResources the ResourceSet where the widget have to process
@@ -37,16 +38,34 @@ public interface EEFGenModelReferencePropertiesEditionPart {
 	 */
 	public void initReferencedEEFGenModel(ResourceSet allResources, EObject current);
 
-/**
+	/**
 	 * Defines a new Referenced EEFGenModel
 	 * @param newValue the new Referenced EEFGenModel to set
 	 */
 	public void setReferencedEEFGenModel(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the Referenced EEFGenModel edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToReferencedEEFGenModel(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the Referenced EEFGenModel edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToReferencedEEFGenModel(ViewerFilter filter);
+
+
+
+
+
 
 
 

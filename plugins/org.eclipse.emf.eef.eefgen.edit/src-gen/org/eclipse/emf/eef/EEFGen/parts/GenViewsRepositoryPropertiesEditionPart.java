@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPart.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPart.java,v 1.3 2009/05/18 16:03:42 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -30,7 +31,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * @return the Views repository
 	 */
 	public EObject getViewsRepository();
-	
+
 	/**
 	 * Init the Views repository
 	 * @param allResources the ResourceSet where the widget have to process
@@ -38,36 +39,54 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 */
 	public void initViewsRepository(ResourceSet allResources, EObject current);
 
-/**
+	/**
 	 * Defines a new Views repository
 	 * @param newValue the new Views repository to set
 	 */
 	public void setViewsRepository(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the Views repository edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToViewsRepository(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the Views repository edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToViewsRepository(ViewerFilter filter);
+
+
+
+
+
 	/**
 	 * @return the basePackage
 	 */
 	public String getBasePackage();
-	
+
 	/**
 	 * Defines a new basePackage
 	 * @param newValue the new basePackage to set
 	 */
 	public void setBasePackage(String newValue);
-	
+
 	public void setMessageForBasePackage(String msg, int msgLevel);
-	
+
 	public void unsetMessageForBasePackage();
-	
+
 	/**
 	 * @return the helpStrategy
 	 */
 	public Enumerator getHelpStrategy();
-	
+
 	/**
 	 * Init the helpStrategy
 	 * @param eenum the enum to manage
@@ -75,46 +94,46 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 */
 	public void initHelpStrategy(EEnum eenum, Enumerator current);
 
-/**
+	/**
 	 * Defines a new helpStrategy
 	 * @param newValue the new helpStrategy to set
 	 */
 	public void setHelpStrategy(Enumerator newValue);
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**
 	 * @return the swtViews
 	 */
 	public Boolean getSwtViews();
-	
+
 	/**
 	 * Defines a new swtViews
 	 * @param newValue the new swtViews to set
 	 */
 	public void setSwtViews(Boolean newValue);
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**
 	 * @return the formViews
 	 */
 	public Boolean getFormViews();
-	
+
 	/**
 	 * Defines a new formViews
 	 * @param newValue the new formViews to set
 	 */
 	public void setFormViews(Boolean newValue);
-	
-	
-	
-	
-	
+
+
+
+
+
 
 
 
