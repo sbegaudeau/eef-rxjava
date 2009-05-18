@@ -5,7 +5,6 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +15,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
@@ -35,7 +33,6 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -73,10 +70,10 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	private Button isRegistered;
 	private RadioViewer genderRadioViewer;
 	protected EMFListEditUtil accreditationsEditUtil;
-	private TableViewer accreditations;
+	protected TableViewer accreditations;
 	private Button addAccreditations;
 	private Button removeAccreditations;
-	private List<ViewerFilter> accreditationsBusinessFilters;
+	protected List<ViewerFilter> accreditationsBusinessFilters;
 
 
 
