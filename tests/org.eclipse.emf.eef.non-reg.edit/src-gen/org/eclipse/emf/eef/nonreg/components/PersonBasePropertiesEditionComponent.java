@@ -193,7 +193,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			
 			
 			
-			//FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : gender, Person, Person.
+			
 			basePart.addFilterToAccreditations(new ViewerFilter() {
 
 				/*
