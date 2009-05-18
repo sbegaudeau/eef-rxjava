@@ -32,9 +32,12 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -147,7 +150,24 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			presencePart.initAssists(person, null, NonregPackage.eINSTANCE.getPerson_Assists());
 			
 			// init filters
-			//FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : assists, Presence, Person.
+			presencePart.addFilterToAssists(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!presencePart.getAssistsTable().contains(element));
+					return false;
+				}
+
+			});
+			presencePart.addFilterToAssists(new EObjectFilter(NonregPackage.eINSTANCE.getTalk()));
+			// Start of user code for additional businessfilters for assists
+			
+			// End of user code
 		}
 		// init values for referenced views
 
