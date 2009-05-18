@@ -9,13 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionProvider.java,v 1.2 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionProvider.java,v 1.3 2009/05/18 16:05:43 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
