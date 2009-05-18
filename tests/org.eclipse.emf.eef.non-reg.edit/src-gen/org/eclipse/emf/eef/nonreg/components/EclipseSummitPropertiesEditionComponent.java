@@ -40,6 +40,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -162,7 +164,21 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 			
 			// init filters
 			
-			//FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : sites, EclipseSummit, EclipseSummit.
+			basePart.addFilterToSites(new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
+				}
+
+			});
+			// Start of user code for additional businessfilters for sites
+			
+			// End of user code
 		}
 		// init values for referenced views
 
