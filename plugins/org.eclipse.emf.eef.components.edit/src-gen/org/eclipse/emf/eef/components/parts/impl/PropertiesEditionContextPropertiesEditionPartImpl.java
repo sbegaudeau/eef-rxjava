@@ -9,13 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.4 2009/05/18 16:00:14 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
 
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -31,7 +30,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -95,22 +93,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for model filters initialisation
 
- 		// End of user code		
-		model.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof GenPackage);
-			}
-
-		});
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -165,6 +148,24 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 			model.setSelection(new StructuredSelection(newValue));
 		else
 			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 */
+	public void addFilterToModel(ViewerFilter filter) {
+		model.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter) {
+		model.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForModel(String msg, int msgLevel) {
