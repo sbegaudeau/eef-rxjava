@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: WidgetPropertiesEditionPart.java,v 1.3 2009/05/05 12:07:55 sbouchet Exp $
+ * $Id: WidgetPropertiesEditionPart.java,v 1.4 2009/05/18 16:11:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.parts;
 
@@ -28,17 +28,17 @@ public interface WidgetPropertiesEditionPart {
 	 * @return the Name
 	 */
 	public String getName();
-	
+
 	/**
 	 * Defines a new Name
 	 * @param newValue the new Name to set
 	 */
 	public void setName(String newValue);
-	
+
 	public void setMessageForName(String msg, int msgLevel);
-	
+
 	public void unsetMessageForName();
-	
+
 
 
 
