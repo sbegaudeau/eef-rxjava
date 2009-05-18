@@ -300,7 +300,7 @@
 [/template]
 
 [template public addFilterSignature(elementEditor : ElementEditor)]
-	public void addFilterTo[elementEditor.name.toUpperFirst()/](ViewerFilter filter)
+	public void addFilterTo[elementEditor.viewPackageSignature()/](ViewerFilter filter)
 [/template]
 
 [template public addBusinessFilterSignatureDocumentation(elementEditor : ElementEditor)]
@@ -314,7 +314,7 @@
 [/template]
 
 [template public addBusinessFilterSignature(elementEditor : ElementEditor)]
-	public void addBusinessFilterTo[elementEditor.name.toUpperFirst()/](ViewerFilter filter)
+	public void addBusinessFilterTo[elementEditor.viewPackageSignature()/](ViewerFilter filter)
 [/template]
 
 [comment ====== Widgets getter implementation ====== /]
