@@ -9,13 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentBasePropertiesEditionComponent.java,v 1.3 2009/05/05 12:05:07 sbouchet Exp $
+ * $Id: PropertiesEditionComponentBasePropertiesEditionComponent.java,v 1.4 2009/05/18 15:59:35 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,13 +41,18 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -81,7 +85,6 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 				this.propertiesEditionComponent.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -129,7 +132,6 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 			return ComponentsViewsRepository.PropertiesEditionComponent.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -152,7 +154,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ComponentsViewsRepository.class);
 				if (provider != null) {
 					basePart = (PropertiesEditionComponentPropertiesEditionPart)provider.getPropertiesEditionPart(ComponentsViewsRepository.PropertiesEditionComponent.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -170,6 +172,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 		if (basePart != null && key == ComponentsViewsRepository.PropertiesEditionComponent.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			PropertiesEditionComponent propertiesEditionComponent = (PropertiesEditionComponent)elt;
+			// init values
 			if (propertiesEditionComponent.getName() != null)
 				basePart.setName(propertiesEditionComponent.getName());
 
@@ -180,7 +183,48 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 
 			basePart.setExplicit(propertiesEditionComponent.isExplicit());
 
+			
+			// init filters
+			
+			basePart.addFilterToViews(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!basePart.getViewsTable().contains(element));
+					return false;
+				}
+
+			});
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
+			// Start of user code for additional businessfilters for views
+			
+			// End of user code
+			basePart.addFilterToModel(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof EClassifier);
+				}
+
+			});
+			// Start of user code for additional businessfilters for model
+			
+			// End of user code
+			
+			
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -274,8 +318,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
