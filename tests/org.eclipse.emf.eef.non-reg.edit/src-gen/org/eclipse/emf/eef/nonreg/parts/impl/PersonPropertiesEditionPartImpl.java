@@ -60,10 +60,10 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	private Button isRegistered;
 	private RadioViewer genderRadioViewer;
 	protected EMFListEditUtil accreditationsEditUtil;
-	private TableViewer accreditations;
+	protected TableViewer accreditations;
 	private Button addAccreditations;
 	private Button removeAccreditations;
-	private List<ViewerFilter> accreditationsBusinessFilters;
+	protected List<ViewerFilter> accreditationsBusinessFilters;
 
 
 
