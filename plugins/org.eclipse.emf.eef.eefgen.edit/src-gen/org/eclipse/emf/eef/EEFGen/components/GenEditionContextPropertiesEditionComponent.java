@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionComponent.java,v 1.3 2009/05/05 12:06:10 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionComponent.java,v 1.4 2009/05/18 16:08:20 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -36,6 +34,7 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -43,6 +42,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -75,7 +76,6 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				this.genEditionContext.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -124,7 +124,6 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 			return EEFGenViewsRepository.GenEditionContext.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -147,7 +146,7 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EEFGenViewsRepository.class);
 				if (provider != null) {
 					basePart = (GenEditionContextPropertiesEditionPart)provider.getPropertiesEditionPart(EEFGenViewsRepository.GenEditionContext.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -165,6 +164,7 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 		if (basePart != null && key == EEFGenViewsRepository.GenEditionContext.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			GenEditionContext genEditionContext = (GenEditionContext)elt;
+			// init values
 			if (genEditionContext.getBasePackage() != null)
 				basePart.setBasePackage(genEditionContext.getBasePackage());
 
@@ -176,7 +176,31 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 			basePart.setGmfPropertiesViews(genEditionContext.isGmfPropertiesViews());
 
 			basePart.initPropertiesEditionContext(allResource, genEditionContext.getPropertiesEditionContext());
+			
+			// init filters
+			
+			
+			
+			
+			basePart.addFilterToPropertiesEditionContext(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof PropertiesEditionContext);
+				}
+
+			});
+			// Start of user code for additional businessfilters for propertiesEditionContext
+			
+			// End of user code
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -257,8 +281,7 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				command.append(SetCommand.create(liveEditingDomain, genEditionContext, EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditionContext(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {

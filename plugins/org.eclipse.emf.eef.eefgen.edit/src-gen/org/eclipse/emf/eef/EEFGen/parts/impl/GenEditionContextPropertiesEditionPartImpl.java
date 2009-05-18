@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartImpl.java,v 1.2 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionPartImpl.java,v 1.3 2009/05/18 16:08:20 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -102,22 +102,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND));
 		propertiesEditionContext = new EObjectFlatComboViewer(parent, false);
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for propertiesEditionContext filters initialisation
 
- 		// End of user code		
-		propertiesEditionContext.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof PropertiesEditionContext);
-			}
-
-		});
 		propertiesEditionContext.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -254,6 +239,24 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			propertiesEditionContext.setSelection(new StructuredSelection(newValue));
 		else
 			propertiesEditionContext.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#addFilterPropertiesEditionContext(ViewerFilter filter)
+	 */
+	public void addFilterToPropertiesEditionContext(ViewerFilter filter) {
+		propertiesEditionContext.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#addBusinessFilterPropertiesEditionContext(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToPropertiesEditionContext(ViewerFilter filter) {
+		propertiesEditionContext.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForPropertiesEditionContext(String msg, int msgLevel) {
