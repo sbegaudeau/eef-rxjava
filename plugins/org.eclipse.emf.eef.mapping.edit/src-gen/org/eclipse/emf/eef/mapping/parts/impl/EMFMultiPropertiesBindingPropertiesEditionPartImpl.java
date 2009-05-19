@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:07:30 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.4 2009/05/19 08:28:58 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -63,8 +63,12 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	private Text name;
 	private EMFListEditUtil modelEditUtil;
 	private ReferencesTable<?> model;
+	protected List<ViewerFilter> modelBusinessFilters;
+	protected List<ViewerFilter> modelFilters;
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
+	protected List<ViewerFilter> viewsBusinessFilters;
+	protected List<ViewerFilter> viewsFilters;
 
 
 
@@ -134,26 +138,13 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		GridLayout bindingGroupLayout = new GridLayout();
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
-		createModelReferencesTable(bindingGroup);
-		createViewsReferencesTable(bindingGroup);
+		createModelAdvancedReferencesTable(bindingGroup);
+		createViewsAdvancedReferencesTable(bindingGroup);
 	}
-	protected void createModelReferencesTable(Composite parent) {
+	protected void createModelAdvancedReferencesTable(Composite parent) {
 		this.model = new ReferencesTable<EStructuralFeature>(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener<EStructuralFeature>() {
 			public void handleAdd() {
-				ViewerFilter modelFilter = new EObjectFilter(EcorePackage.eINSTANCE.getEStructuralFeature());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!modelEditUtil.contains((EObject)element));
-						return false;
-					}
-
-				};
-				List filters = new ArrayList();
-				filters.add(modelFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<EStructuralFeature> dialog = new TabElementTreeSelectionDialog<EStructuralFeature>(resourceSet, filters,
+				TabElementTreeSelectionDialog<EStructuralFeature> dialog = new TabElementTreeSelectionDialog<EStructuralFeature>(resourceSet, modelFilters, modelBusinessFilters,
 				"EStructuralFeature", EcorePackage.eINSTANCE.getEStructuralFeature()) {
 
 					public void process(IStructuredSelection selection) {
@@ -194,7 +185,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 */
 	private void removeFromModel(EStructuralFeature element) {
 
-		// Start of user code for the removeFromModel() method body
+		// Start of user code removeFromModel() method body
 
 		EObject editedElement = modelEditUtil.foundCorrespondingEObject(element);
 		modelEditUtil.removeElement(element);
@@ -225,23 +216,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 
 		// End of user code
 	}
-	protected void createViewsReferencesTable(Composite parent) {
+	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
-				ViewerFilter viewsFilter = new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!viewsEditUtil.contains((EObject)element));
-						return false;
-					}
-
-				};
-				List filters = new ArrayList();
-				filters.add(viewsFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, filters,
+				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
 				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor()) {
 
 					public void process(IStructuredSelection selection) {
@@ -286,7 +264,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 */
 	private void removeFromViews(ElementEditor element) {
 
-		// Start of user code for the removeFromViews() method body
+		// Start of user code removeFromViews() method body
 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
@@ -359,7 +337,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	public List getModelToAdd() {
 		return modelEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -367,6 +345,15 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 */
 	public List getModelToRemove() {
 		return modelEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getModelTable()
+	 */
+	public List getModelTable() {
+		return modelEditUtil.getVirtualList();
 	}
 
 	/**
@@ -396,6 +383,24 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 */
+	public void addFilterToModel(ViewerFilter filter) {
+		modelFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter) {
+		modelBusinessFilters.add(filter);
+	}
+
 	public void setMessageForModel(String msg, int msgLevel) {
 
 	}
@@ -412,7 +417,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	public List getViewsToAdd() {
 		return viewsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -420,6 +425,15 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 */
 	public List getViewsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getViewsTable()
+	 */
+	public List getViewsTable() {
+		return viewsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -447,6 +461,24 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addFilterViews(ViewerFilter filter)
+	 */
+	public void addFilterToViews(ViewerFilter filter) {
+		viewsFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addBusinessFilterViews(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToViews(ViewerFilter filter) {
+		viewsBusinessFilters.add(filter);
 	}
 
 	public void setMessageForViews(String msg, int msgLevel) {
