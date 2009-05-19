@@ -39,7 +39,7 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 	public DocumentedElementPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -49,13 +49,13 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createDocumentationGroup(Composite parent) {
@@ -82,11 +82,11 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(AbstractnonregViewsRepository.DocumentedElement.documentation, AbstractnonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**
