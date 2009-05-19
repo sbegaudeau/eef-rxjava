@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:07:56 sbouchet Exp $
+ * $Id: ViewPropertiesEditionPartImpl.java,v 1.4 2009/05/19 08:59:24 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
@@ -121,22 +121,7 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.representation, ViewsViewsRepository.SWT_KIND));
 		representation = new EObjectFlatComboViewer(parent, true);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for representation filters initialisation
 
- 		// End of user code		
-		representation.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
-			}
-
-		});
 		representation.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -225,6 +210,24 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			representation.setSelection(new StructuredSelection(newValue));
 		else
 			representation.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#addFilterRepresentation(ViewerFilter filter)
+	 */
+	public void addFilterToRepresentation(ViewerFilter filter) {
+		representation.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#addBusinessFilterRepresentation(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
+		representation.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForRepresentation(String msg, int msgLevel) {
