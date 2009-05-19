@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingPropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:07:30 sbouchet Exp $
+ * $Id: StandardPropertyBindingPropertiesEditionPartImpl.java,v 1.4 2009/05/19 08:41:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -69,6 +69,8 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	protected EObjectFlatComboViewer model;
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
+	protected List<ViewerFilter> viewsBusinessFilters;
+	protected List<ViewerFilter> viewsFilters;
 
 
 
@@ -139,7 +141,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
 		createModelFlatComboViewer(bindingGroup);
-		createViewsReferencesTable(bindingGroup);
+		createViewsAdvancedReferencesTable(bindingGroup);
 	}
 	/**
 	 * @param bindingGroup
@@ -149,22 +151,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 		SWTUtils.createPartLabel(parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.model, MappingViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for model filters initialisation
 
- 		// End of user code		
-		model.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof ModelProperty);
-			}
-
-		});
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -176,23 +163,10 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 		model.setLayoutData(modelData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.model, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-	protected void createViewsReferencesTable(Composite parent) {
+	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
-				ViewerFilter viewsFilter = new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!viewsEditUtil.contains((EObject)element));
-						return false;
-					}
-
-				};
-				List filters = new ArrayList();
-				filters.add(viewsFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, filters,
+				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
 				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor()) {
 
 					public void process(IStructuredSelection selection) {
@@ -237,7 +211,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	 */
 	private void removeFromViews(ElementEditor element) {
 
-		// Start of user code for the removeFromViews() method body
+		// Start of user code removeFromViews() method body
 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
@@ -339,6 +313,24 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 */
+	public void addFilterToModel(ViewerFilter filter) {
+		model.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter) {
+		model.addBusinessRuleFilter(filter);
+	}
+
 	public void setMessageForModel(String msg, int msgLevel) {
 
 	}
@@ -355,7 +347,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	public List getViewsToAdd() {
 		return viewsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -363,6 +355,15 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	 */
 	public List getViewsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#getViewsTable()
+	 */
+	public List getViewsTable() {
+		return viewsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -390,6 +391,24 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#addFilterViews(ViewerFilter filter)
+	 */
+	public void addFilterToViews(ViewerFilter filter) {
+		viewsFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#addBusinessFilterViews(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToViews(ViewerFilter filter) {
+		viewsBusinessFilters.add(filter);
 	}
 
 	public void setMessageForViews(String msg, int msgLevel) {
