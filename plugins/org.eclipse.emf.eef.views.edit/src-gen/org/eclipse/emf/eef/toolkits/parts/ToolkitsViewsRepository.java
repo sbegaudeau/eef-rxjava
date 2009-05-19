@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsViewsRepository.java,v 1.2 2009/05/05 12:07:53 sbouchet Exp $
+ * $Id: ToolkitsViewsRepository.java,v 1.3 2009/05/19 09:16:41 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.parts;
 

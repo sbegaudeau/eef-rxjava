@@ -9,14 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerBasePropertiesEditionComponent.java,v 1.4 2009/05/19 08:56:39 sbouchet Exp $
+ * $Id: ContainerBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -93,13 +93,17 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					ContainerBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
 					basePart.setRepresentation((EObject)msg.getNewValue());
-				if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
+					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
 					basePart.setName((String)msg.getNewValue());
 
 
 
+				}
 			}
 
 		};
@@ -143,6 +147,17 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == ViewsViewsRepository.Container.class)
+			this.basePart = (ContainerPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -202,7 +217,7 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

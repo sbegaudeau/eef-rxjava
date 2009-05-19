@@ -9,14 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryBasePropertiesEditionComponent.java,v 1.4 2009/05/19 08:43:46 sbouchet Exp $
+ * $Id: CategoryBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -90,11 +90,15 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (ViewsPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					CategoryBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (ViewsPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null)
 					basePart.setName((String)msg.getNewValue());
 
 
 
+				}
 			}
 
 		};
@@ -143,6 +147,17 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == ViewsViewsRepository.Category.class)
+			this.basePart = (CategoryPropertiesEditionPart) propertiesEditionPart;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
@@ -180,7 +195,7 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

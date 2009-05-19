@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: WidgetPropertiesEditionProvider.java,v 1.4 2009/05/18 16:14:19 sbouchet Exp $
+ * $Id: WidgetPropertiesEditionProvider.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 

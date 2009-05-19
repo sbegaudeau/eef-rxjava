@@ -9,14 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewBasePropertiesEditionComponent.java,v 1.4 2009/05/19 08:59:24 sbouchet Exp $
+ * $Id: ViewBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -93,16 +93,20 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					ViewBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
 					basePart.setRepresentation((EObject)msg.getNewValue());
-				if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
+					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
 					basePart.setName((String)msg.getNewValue());
 
-				if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
+					if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
 					basePart.setExplicit((Boolean)msg.getNewValue());
 
 
 
+				}
 			}
 
 		};
@@ -146,6 +150,17 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == ViewsViewsRepository.View.class)
+			this.basePart = (ViewPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -210,7 +225,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

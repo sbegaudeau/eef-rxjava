@@ -9,15 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewPropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:49 sbouchet Exp $
+ * $Id: CustomViewPropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:41 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.CustomView;
+import org.eclipse.emf.eef.views.parts.CustomViewPropertiesEditionPart;
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
 /**
@@ -25,6 +29,20 @@ import org.eclipse.emf.eef.views.CustomView;
  */
 public class CustomViewPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
+	/**
+	 * The Base part
+	 */
+	private CustomViewPropertiesEditionPart basePart;
+
+	/**
+	 * The CustomViewBasePropertiesEditionComponent sub component
+	 */
+	protected CustomViewBasePropertiesEditionComponent customViewBasePropertiesEditionComponent;
+
+	/**
+	 * The DocumentedElementPropertiesEditionComponent sub component
+	 */
+	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
@@ -34,8 +52,46 @@ public class CustomViewPropertiesEditionComponent extends ComposedPropertiesEdit
 	public CustomViewPropertiesEditionComponent(EObject customView, String editing_mode) {
 		super(editing_mode);
 		if (customView instanceof CustomView) {
-			addSubComponent(new CustomViewBasePropertiesEditionComponent(customView, editing_mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(customView, editing_mode));
+			customViewBasePropertiesEditionComponent = new CustomViewBasePropertiesEditionComponent(customView, editing_mode); 
+			addSubComponent(customViewBasePropertiesEditionComponent);
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(customView, editing_mode); 	
+			addSubComponent(documentedElementPropertiesEditionComponent);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * 		getPropertiesEditionPart(int, java.lang.String)
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+		if ("Base".equals(key)) {
+			basePart = (CustomViewPropertiesEditionPart)customViewBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)basePart;
+		}
+		return super.getPropertiesEditionPart(kind, key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (ViewsViewsRepository.CustomView.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			basePart = (CustomViewPropertiesEditionPart)propertiesEditionPart;
+		}
+	}
+
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent
+	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
+		if (key == ViewsViewsRepository.CustomView.class) {
+			super.initPart(key, kind, element, allResource);
 		}
 	}
 }
