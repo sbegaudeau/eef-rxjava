@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferencePropertiesEditionPartImpl.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
+ * $Id: ViewReferencePropertiesEditionPartImpl.java,v 1.6 2009/05/19 14:29:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
@@ -58,7 +58,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 	public ViewReferencePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -68,13 +68,13 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -131,11 +131,11 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewReference.referencedView, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**
