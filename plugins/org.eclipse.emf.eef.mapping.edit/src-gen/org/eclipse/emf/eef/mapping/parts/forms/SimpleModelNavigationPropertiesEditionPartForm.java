@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartForm.java,v 1.2 2009/05/05 12:07:31 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartForm.java,v 1.3 2009/05/19 08:42:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -167,22 +167,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for feature filters initialisation
-
- 		// End of user code
-		feature.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EReference); 				
-			}
-
-		});
-
 		GridData featureData = new GridData(GridData.FILL_HORIZONTAL);
 		feature.setLayoutData(featureData);
 		feature.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -208,22 +192,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.FORM_KIND));
 		discriminatorType = new EObjectFlatComboViewer(parent, true);
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-		// Start of user code for discriminatorType filters initialisation
-
- 		// End of user code
-		discriminatorType.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof EClassifier);  //$NON-NLS-1$ 				
-			}
-
-		});
 
 		GridData discriminatorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		discriminatorType.setLayoutData(discriminatorTypeData);
@@ -313,6 +281,24 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 			feature.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addFilterFeature(ViewerFilter filter)
+	 */
+	public void addFilterToFeature(ViewerFilter filter) {
+		feature.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addBusinessFilterFeature(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToFeature(ViewerFilter filter) {
+		feature.addBusinessRuleFilter(filter);
+	}
+
 
 
 
@@ -352,6 +338,24 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 			discriminatorType.setSelection(new StructuredSelection(newValue));
 		else
 			discriminatorType.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addFilterDiscriminatorType(ViewerFilter filter)
+	 */
+	public void addFilterToDiscriminatorType(ViewerFilter filter) {
+		discriminatorType.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addBusinessFilterDiscriminatorType(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToDiscriminatorType(ViewerFilter filter) {
+		discriminatorType.addBusinessRuleFilter(filter);
 	}
 
 

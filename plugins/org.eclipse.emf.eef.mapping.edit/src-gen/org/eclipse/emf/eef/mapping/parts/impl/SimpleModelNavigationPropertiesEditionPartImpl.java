@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.2 2009/05/05 12:07:30 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.3 2009/05/19 08:42:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -124,22 +124,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.feature, MappingViewsRepository.SWT_KIND));
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for feature filters initialisation
 
- 		// End of user code		
-		feature.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EReference);
-			}
-
-		});
 		feature.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -159,22 +144,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.SWT_KIND));
 		discriminatorType = new EObjectFlatComboViewer(parent, true);
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for discriminatorType filters initialisation
 
- 		// End of user code		
-		discriminatorType.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof EClassifier); //$NON-NLS-1$ 
-			}
-
-		});
 		discriminatorType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -257,6 +227,24 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 			feature.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addFilterFeature(ViewerFilter filter)
+	 */
+	public void addFilterToFeature(ViewerFilter filter) {
+		feature.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addBusinessFilterFeature(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToFeature(ViewerFilter filter) {
+		feature.addBusinessRuleFilter(filter);
+	}
+
 	public void setMessageForFeature(String msg, int msgLevel) {
 
 	}
@@ -300,6 +288,24 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 			discriminatorType.setSelection(new StructuredSelection(newValue));
 		else
 			discriminatorType.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addFilterDiscriminatorType(ViewerFilter filter)
+	 */
+	public void addFilterToDiscriminatorType(ViewerFilter filter) {
+		discriminatorType.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#addBusinessFilterDiscriminatorType(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToDiscriminatorType(ViewerFilter filter) {
+		discriminatorType.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForDiscriminatorType(String msg, int msgLevel) {
