@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditorPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:56 sbouchet Exp $
+ * $Id: SpecificElementEditorPropertiesEditionPartForm.java,v 1.4 2009/05/19 08:58:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
@@ -166,22 +166,6 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 		representation = new EObjectFlatComboViewer(parent, true);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for representation filters initialisation
-
- 		// End of user code
-		representation.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Widget);  //$NON-NLS-1$ 				
-			}
-
-		});
-
 		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
 		representation.setLayoutData(representationData);
 		representation.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -289,6 +273,24 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 			representation.setSelection(new StructuredSelection(newValue));
 		else
 			representation.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#addFilterRepresentation(ViewerFilter filter)
+	 */
+	public void addFilterToRepresentation(ViewerFilter filter) {
+		representation.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#addBusinessFilterRepresentation(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
+		representation.addBusinessRuleFilter(filter);
 	}
 
 
