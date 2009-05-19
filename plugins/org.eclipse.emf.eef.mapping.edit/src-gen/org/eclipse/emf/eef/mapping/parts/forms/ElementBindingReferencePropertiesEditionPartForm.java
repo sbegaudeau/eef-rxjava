@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:31 sbouchet Exp $
+ * $Id: ElementBindingReferencePropertiesEditionPartForm.java,v 1.4 2009/05/19 08:04:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -100,22 +100,6 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 		binding = new EObjectFlatComboViewer(parent, false);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for binding filters initialisation
-
- 		// End of user code
-		binding.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof AbstractElementBinding); 				
-			}
-
-		});
-
 		GridData bindingData = new GridData(GridData.FILL_HORIZONTAL);
 		binding.setLayoutData(bindingData);
 		binding.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -177,6 +161,24 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 			binding.setSelection(new StructuredSelection(newValue));
 		else
 			binding.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#addFilterBinding(ViewerFilter filter)
+	 */
+	public void addFilterToBinding(ViewerFilter filter) {
+		binding.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#addBusinessFilterBinding(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToBinding(ViewerFilter filter) {
+		binding.addBusinessRuleFilter(filter);
 	}
 
 
