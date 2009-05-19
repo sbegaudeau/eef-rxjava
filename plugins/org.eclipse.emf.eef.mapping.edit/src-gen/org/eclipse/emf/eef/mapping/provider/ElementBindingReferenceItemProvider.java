@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceItemProvider.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
+ * $Id: ElementBindingReferenceItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -34,10 +34,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ElementBindingReferenceItemProvider extends
-		DocumentedElementItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class ElementBindingReferenceItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -71,13 +68,12 @@ public class ElementBindingReferenceItemProvider extends
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ElementBindingReference_binding_feature"),
 				getString("_UI_ElementBindingReference_binding_description"),
-				MappingPackage.Literals.ELEMENT_BINDING_REFERENCE__BINDING,
-				true, false, true, null, null, null));
+				MappingPackage.Literals.ELEMENT_BINDING_REFERENCE__BINDING, true, false, true, null, null,
+				null));
 	}
 
 	/**
@@ -88,8 +84,7 @@ public class ElementBindingReferenceItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/ElementBindingReference"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementBindingReference"));
 	}
 
 	/**
@@ -100,7 +95,7 @@ public class ElementBindingReferenceItemProvider extends
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ElementBindingReference) object).getDocumentation();
+		String label = ((ElementBindingReference)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ElementBindingReference_type")
 				: getString("_UI_ElementBindingReference_type") + " " + label;
 	}
@@ -126,8 +121,7 @@ public class ElementBindingReferenceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

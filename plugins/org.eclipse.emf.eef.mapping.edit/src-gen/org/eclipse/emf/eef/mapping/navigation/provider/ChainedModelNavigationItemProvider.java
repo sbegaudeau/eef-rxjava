@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ChainedModelNavigationItemProvider.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
+ * $Id: ChainedModelNavigationItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.provider;
 
@@ -36,10 +36,7 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChainedModelNavigationItemProvider extends
-		StructuredModelNavigationItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ChainedModelNavigationItemProvider extends StructuredModelNavigationItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,14 +71,11 @@ public class ChainedModelNavigationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT);
-			childrenFeatures
-					.add(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT);
+			childrenFeatures.add(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT);
+			childrenFeatures.add(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT);
 		}
 		return childrenFeatures;
 	}
@@ -107,8 +101,7 @@ public class ChainedModelNavigationItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/ChainedModelNavigation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChainedModelNavigation"));
 	}
 
 	/**
@@ -134,11 +127,11 @@ public class ChainedModelNavigationItemProvider extends
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ChainedModelNavigation.class)) {
-		case NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT:
-		case NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), true, false));
-			return;
+			case NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT:
+			case NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -151,25 +144,24 @@ public class ChainedModelNavigationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT,
-				NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
+				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT, NavigationFactory.eINSTANCE
+						.createSimpleModelNavigation()));
 
 		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT,
-				NavigationFactory.eINSTANCE.createChainedModelNavigation()));
+				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT, NavigationFactory.eINSTANCE
+						.createChainedModelNavigation()));
 
 		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT,
-				NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
+				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT, NavigationFactory.eINSTANCE
+						.createSimpleModelNavigation()));
 
 		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT,
-				NavigationFactory.eINSTANCE.createChainedModelNavigation()));
+				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT, NavigationFactory.eINSTANCE
+						.createChainedModelNavigation()));
 	}
 
 	/**
@@ -179,8 +171,7 @@ public class ChainedModelNavigationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -188,9 +179,8 @@ public class ChainedModelNavigationItemProvider extends
 				|| childFeature == NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT;
 
 		if (qualify) {
-			return getString("_UI_CreateChild_text2", new Object[] {
-					getTypeText(childObject), getFeatureText(childFeature),
-					getTypeText(owner) });
+			return getString("_UI_CreateChild_text2", new Object[] {getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}

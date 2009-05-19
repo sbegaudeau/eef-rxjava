@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingEditPlugin.java,v 1.2 2009/04/30 17:48:58 nlepine Exp $
+ * $Id: MappingEditPlugin.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -51,8 +51,7 @@ public final class MappingEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public MappingEditPlugin() {
-		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE,
-				ViewsEditPlugin.INSTANCE, });
+		super(new ResourceLocator[] {EcoreEditPlugin.INSTANCE, ViewsEditPlugin.INSTANCE,});
 	}
 
 	/**
@@ -97,8 +96,7 @@ public final class MappingEditPlugin extends EMFPlugin {
 			// Remember the static instance.
 			//
 			plugin = this;
-			EValidator.Registry.INSTANCE.put(MappingPackage.eINSTANCE,
-					new EEFValidator());
+			EValidator.Registry.INSTANCE.put(MappingPackage.eINSTANCE, new EEFValidator());
 		}
 	}
 
