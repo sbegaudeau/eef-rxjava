@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 
 	private EMFListEditUtil assistsEditUtil;
 	private ReferencesTable<?> assists;
-	protected List<ViewerFilter> assistsBusinessFilters;
-	protected List<ViewerFilter> assistsFilters;
+	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
 
 

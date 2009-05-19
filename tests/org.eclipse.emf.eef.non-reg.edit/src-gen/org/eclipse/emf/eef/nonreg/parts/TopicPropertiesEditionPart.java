@@ -3,7 +3,6 @@
  */
 package org.eclipse.emf.eef.nonreg.parts;
 
-
 // Start of user code for imports
 
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;

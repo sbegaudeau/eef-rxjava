@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -73,7 +74,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	protected TableViewer accreditations;
 	private Button addAccreditations;
 	private Button removeAccreditations;
-	protected List<ViewerFilter> accreditationsBusinessFilters;
+	protected List<ViewerFilter> accreditationsBusinessFilters = new ArrayList<ViewerFilter>();
 
 
 

@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -55,8 +56,8 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	private Text place;
 	private EMFListEditUtil sitesEditUtil;
 	private ReferencesTable<?> sites;
-	protected List<ViewerFilter> sitesBusinessFilters;
-	protected List<ViewerFilter> sitesFilters;
+	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 
 
