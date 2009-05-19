@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.5 2009/05/19 09:16:53 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.6 2009/05/19 14:28:31 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -63,12 +63,12 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	private Text name;
 	private EMFListEditUtil modelEditUtil;
 	private ReferencesTable<?> model;
-	protected List<ViewerFilter> modelBusinessFilters;
-	protected List<ViewerFilter> modelFilters;
+	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
-	protected List<ViewerFilter> viewsBusinessFilters;
-	protected List<ViewerFilter> viewsFilters;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -77,7 +77,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	public EMFMultiPropertiesBindingPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -87,14 +87,14 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 		createBindingGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -296,11 +296,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		// End of user code
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**
