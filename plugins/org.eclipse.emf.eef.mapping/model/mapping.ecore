@@ -50,6 +50,8 @@
         eType="ecore:EClass ../../org.eclipse.emf.eef.views/model/views.ecore#//ElementEditor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//AbstractElementBinding"
         eOpposite="#//AbstractElementBinding/properties"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bindingFilters" upperBound="-1"
+        eType="#//filters/BindingFilter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EMFElementBinding" eSuperTypes="#//AbstractElementBinding">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
@@ -109,5 +111,25 @@
       <eOperations name="evaluate" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CustomModelNavigation" eSuperTypes="#//navigation/ModelNavigation"/>
+  </eSubpackages>
+  <eSubpackages name="filters" nsURI="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0"
+      nsPrefix="eef-mapping-filters">
+    <eClassifiers xsi:type="ecore:EClass" name="BindingFilter" abstract="true" eSuperTypes="#//DocumentedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OCLFilter" eSuperTypes="#//filters/BindingFilter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaFilter" abstract="true" eSuperTypes="#//filters/BindingFilter"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaDeclarationFilter" eSuperTypes="#//filters/JavaFilter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="methodName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaExpressionFilter" eSuperTypes="#//filters/JavaFilter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BusinessFilter" abstract="true" eSuperTypes="#//filters/BindingFilter"/>
+    <eClassifiers xsi:type="ecore:EClass" name="OnlyReferenceTypeFilter" eSuperTypes="#//filters/BusinessFilter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
