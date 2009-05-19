@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionComponent.java,v 1.2 2009/05/05 12:07:30 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionComponent.java,v 1.3 2009/05/19 08:04:20 sbouchet Exp $
  */
 package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -37,6 +35,7 @@ import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.SimpleModelNavigationPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -44,6 +43,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -76,7 +77,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				this.simpleModelNavigation.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -118,7 +118,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			return MappingViewsRepository.SimpleModelNavigation.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -141,7 +140,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 				if (provider != null) {
 					basePart = (SimpleModelNavigationPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.SimpleModelNavigation.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -159,11 +158,48 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 		if (basePart != null && key == MappingViewsRepository.SimpleModelNavigation.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			SimpleModelNavigation simpleModelNavigation = (SimpleModelNavigation)elt;
+			// init values
 			basePart.setIndex(String.valueOf(simpleModelNavigation.getIndex()));
 
 			basePart.initFeature(allResource, simpleModelNavigation.getFeature());
 			basePart.initDiscriminatorType(allResource, simpleModelNavigation.getDiscriminatorType());
+			
+			// init filters
+			
+			basePart.addFilterToFeature(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof EReference);
+				}
+
+			});
+			// Start of user code for additional businessfilters for feature
+			
+			// End of user code
+			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof String && element.equals("")) || (element instanceof EClassifier); //$NON-NLS-1$ 
+				}
+
+			});
+			// Start of user code for additional businessfilters for discriminatorType
+			
+			// End of user code
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -227,8 +263,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				command.append(SetCommand.create(liveEditingDomain, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
