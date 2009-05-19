@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextImpl.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
+ * $Id: GenEditionContextImpl.java,v 1.3 2009/05/19 16:09:22 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -390,7 +390,6 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
