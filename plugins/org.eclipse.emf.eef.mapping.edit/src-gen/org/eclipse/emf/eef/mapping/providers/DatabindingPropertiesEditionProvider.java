@@ -9,13 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingPropertiesEditionProvider.java,v 1.3 2009/05/05 12:07:31 sbouchet Exp $
+ * $Id: DatabindingPropertiesEditionProvider.java,v 1.4 2009/05/19 08:01:35 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.mapping.MappingPackage;
