@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.4 2009/05/19 08:28:57 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -101,15 +101,19 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					EMFMultiPropertiesBindingBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null)
 					basePart.setName((String)msg.getNewValue());
 
-				if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
+					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
 					basePart.updateViews(eMFMultiPropertiesBinding);
-				if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
+					if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
 					basePart.updateModel(eMFMultiPropertiesBinding);
 
 
+				}
 			}
 
 		};
@@ -153,6 +157,17 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.class)
+			this.basePart = (EMFMultiPropertiesBindingPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -255,7 +270,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

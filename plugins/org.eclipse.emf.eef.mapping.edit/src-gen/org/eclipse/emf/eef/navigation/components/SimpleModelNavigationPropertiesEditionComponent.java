@@ -9,14 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionComponent.java,v 1.3 2009/05/19 08:04:20 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:54 glefur Exp $
  */
 package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -94,15 +94,19 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					SimpleModelNavigationPropertiesEditionComponent.this.dispose();
+				else {
+					if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null)
 					basePart.setIndex(((Integer)msg.getNewValue()).toString());
 
-				if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature().equals(msg.getFeature()) && basePart != null)
+					if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature().equals(msg.getFeature()) && basePart != null)
 					basePart.setFeature((EObject)msg.getNewValue());
-				if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType().equals(msg.getFeature()) && basePart != null)
+					if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType().equals(msg.getFeature()) && basePart != null)
 					basePart.setDiscriminatorType((EObject)msg.getNewValue());
 
 
+				}
 			}
 
 		};
@@ -146,6 +150,17 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == MappingViewsRepository.SimpleModelNavigation.class)
+			this.basePart = (SimpleModelNavigationPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -221,7 +236,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

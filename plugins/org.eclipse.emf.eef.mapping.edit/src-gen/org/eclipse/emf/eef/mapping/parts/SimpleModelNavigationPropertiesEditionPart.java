@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPart.java,v 1.3 2009/05/19 08:00:10 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPart.java,v 1.4 2009/05/19 09:16:54 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 

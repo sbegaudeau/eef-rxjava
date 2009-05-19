@@ -9,14 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.4 2009/05/19 08:03:02 sbouchet Exp $
+ * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -92,10 +92,14 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					ElementBindingReferenceBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
 					basePart.setBinding((EObject)msg.getNewValue());
 
 
+				}
 			}
 
 		};
@@ -139,6 +143,17 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == MappingViewsRepository.ElementBindingReference.class)
+			this.basePart = (ElementBindingReferencePropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -192,7 +207,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

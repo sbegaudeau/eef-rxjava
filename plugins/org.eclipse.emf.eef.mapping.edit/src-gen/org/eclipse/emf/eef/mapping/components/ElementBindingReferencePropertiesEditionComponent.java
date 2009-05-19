@@ -9,14 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:29 sbouchet Exp $
+ * $Id: ElementBindingReferencePropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
+import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
@@ -26,6 +30,20 @@ import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComp
 public class ElementBindingReferencePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
+	 * The Base part
+	 */
+	private ElementBindingReferencePropertiesEditionPart basePart;
+
+	/**
+	 * The ElementBindingReferenceBasePropertiesEditionComponent sub component
+	 */
+	protected ElementBindingReferenceBasePropertiesEditionComponent elementBindingReferenceBasePropertiesEditionComponent;
+
+	/**
+	 * The DocumentedElementPropertiesEditionComponent sub component
+	 */
+	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+	/**
 	 * Parameterized constructor
 	 * 
 	 * @param elementBindingReference
@@ -34,8 +52,46 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	public ElementBindingReferencePropertiesEditionComponent(EObject elementBindingReference, String editing_mode) {
 		super(editing_mode);
 		if (elementBindingReference instanceof ElementBindingReference) {
-			addSubComponent(new ElementBindingReferenceBasePropertiesEditionComponent(elementBindingReference, editing_mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(elementBindingReference, editing_mode));
+			elementBindingReferenceBasePropertiesEditionComponent = new ElementBindingReferenceBasePropertiesEditionComponent(elementBindingReference, editing_mode); 
+			addSubComponent(elementBindingReferenceBasePropertiesEditionComponent);
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(elementBindingReference, editing_mode); 	
+			addSubComponent(documentedElementPropertiesEditionComponent);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * 		getPropertiesEditionPart(int, java.lang.String)
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+		if ("Base".equals(key)) {
+			basePart = (ElementBindingReferencePropertiesEditionPart)elementBindingReferenceBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)basePart;
+		}
+		return super.getPropertiesEditionPart(kind, key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (MappingViewsRepository.ElementBindingReference.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			basePart = (ElementBindingReferencePropertiesEditionPart)propertiesEditionPart;
+		}
+	}
+
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent
+	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
+		if (key == MappingViewsRepository.ElementBindingReference.class) {
+			super.initPart(key, kind, element, allResource);
 		}
 	}
 }
