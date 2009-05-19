@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBindingImpl.java,v 1.2 2009/05/05 12:06:55 sbouchet Exp $
+ * $Id: AbstractPropertyBindingImpl.java,v 1.3 2009/05/19 16:58:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -24,13 +24,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.ElementEditor;
 
 /**
@@ -43,6 +46,7 @@ import org.eclipse.emf.eef.views.ElementEditor;
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl#getViews <em>Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl#getBindingFilters <em>Binding Filters</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,6 +82,16 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 	 * @ordered
 	 */
 	protected EList<ElementEditor> views;
+
+	/**
+	 * The cached value of the '{@link #getBindingFilters() <em>Binding Filters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBindingFilters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingFilter> bindingFilters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,6 +199,19 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<BindingFilter> getBindingFilters() {
+		if (bindingFilters == null) {
+			bindingFilters = new EObjectContainmentEList<BindingFilter>(BindingFilter.class, this,
+					MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS);
+		}
+		return bindingFilters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -206,6 +233,8 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 		switch (featureID) {
 			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
 				return basicSetElement(null, msgs);
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				return ((InternalEList<?>)getBindingFilters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -240,6 +269,8 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 				return getViews();
 			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
 				return getElement();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				return getBindingFilters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -263,6 +294,10 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
 				setElement((AbstractElementBinding)newValue);
 				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				getBindingFilters().clear();
+				getBindingFilters().addAll((Collection<? extends BindingFilter>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -284,6 +319,9 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
 				setElement((AbstractElementBinding)null);
 				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				getBindingFilters().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -302,6 +340,8 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl 
 				return views != null && !views.isEmpty();
 			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
 				return getElement() != null;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				return bindingFilters != null && !bindingFilters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBinding.java,v 1.2 2009/05/05 12:06:54 sbouchet Exp $
+ * $Id: AbstractPropertyBinding.java,v 1.3 2009/05/19 16:58:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.ElementEditor;
 
 /**
@@ -28,6 +29,7 @@ import org.eclipse.emf.eef.views.ElementEditor;
  *   <li>{@link org.eclipse.emf.eef.mapping.AbstractPropertyBinding#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.AbstractPropertyBinding#getViews <em>Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.AbstractPropertyBinding#getElement <em>Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.AbstractPropertyBinding#getBindingFilters <em>Binding Filters</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,5 +107,21 @@ public interface AbstractPropertyBinding extends DocumentedElement {
 	 * @generated
 	 */
 	void setElement(AbstractElementBinding value);
+
+	/**
+	 * Returns the value of the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.mapping.filters.BindingFilter}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Binding Filters</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Binding Filters</em>' containment reference list.
+	 * @see org.eclipse.emf.eef.mapping.MappingPackage#getAbstractPropertyBinding_BindingFilters()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<BindingFilter> getBindingFilters();
 
 } // AbstractPropertyBinding

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationPackageImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.2 2009/05/19 16:58:33 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.eef.mapping.MappingPackage;
 
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.mapping.impl.MappingPackageImpl;
 
 import org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation;
@@ -144,14 +146,20 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 				.getEPackage(MappingPackage.eNS_URI) instanceof MappingPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI)
 				: MappingPackage.eINSTANCE);
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE
+				.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(FiltersPackage.eNS_URI)
+				: FiltersPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theNavigationPackage.createPackageContents();
 		theMappingPackage.createPackageContents();
+		theFiltersPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theNavigationPackage.initializePackageContents();
 		theMappingPackage.initializePackageContents();
+		theFiltersPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theNavigationPackage.freeze();

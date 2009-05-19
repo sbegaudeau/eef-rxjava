@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackage.java,v 1.1 2009/04/30 17:13:53 glefur Exp $
+ * $Id: MappingPackage.java,v 1.2 2009/05/19 16:58:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
@@ -457,13 +457,22 @@ public interface MappingPackage extends EPackage {
 	int ABSTRACT_PROPERTY_BINDING__ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Property Binding</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -599,6 +608,15 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMF_PROPERTY_BINDING__ELEMENT = ABSTRACT_PROPERTY_BINDING__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_PROPERTY_BINDING__BINDING_FILTERS = ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
@@ -763,6 +781,15 @@ public interface MappingPackage extends EPackage {
 	int STANDARD_PROPERTY_BINDING__ELEMENT = ABSTRACT_PROPERTY_BINDING__ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_PROPERTY_BINDING__BINDING_FILTERS = ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS;
+
+	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -906,6 +933,15 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMF_MULTI_PROPERTIES_BINDING__ELEMENT = ABSTRACT_PROPERTY_BINDING__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_MULTI_PROPERTIES_BINDING__BINDING_FILTERS = ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference list.
@@ -1192,6 +1228,17 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAbstractPropertyBinding_Element();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.mapping.AbstractPropertyBinding#getBindingFilters <em>Binding Filters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Binding Filters</em>'.
+	 * @see org.eclipse.emf.eef.mapping.AbstractPropertyBinding#getBindingFilters()
+	 * @see #getAbstractPropertyBinding()
+	 * @generated
+	 */
+	EReference getAbstractPropertyBinding_BindingFilters();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.EMFElementBinding <em>EMF Element Binding</em>}'.
@@ -1641,6 +1688,15 @@ public interface MappingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ABSTRACT_PROPERTY_BINDING__ELEMENT = eINSTANCE.getAbstractPropertyBinding_Element();
+
+		/**
+		 * The meta object literal for the '<em><b>Binding Filters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS = eINSTANCE
+				.getAbstractPropertyBinding_BindingFilters();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl <em>EMF Element Binding</em>}' class.

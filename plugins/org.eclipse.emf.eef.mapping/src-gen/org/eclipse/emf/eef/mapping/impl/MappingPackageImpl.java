@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackageImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: MappingPackageImpl.java,v 1.2 2009/05/19 16:58:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -34,6 +34,8 @@ import org.eclipse.emf.eef.mapping.ModelElement;
 import org.eclipse.emf.eef.mapping.ModelProperty;
 import org.eclipse.emf.eef.mapping.StandardElementBinding;
 import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 import org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -203,14 +205,20 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(NavigationPackage.eNS_URI)
 				: NavigationPackage.eINSTANCE);
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE
+				.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(FiltersPackage.eNS_URI)
+				: FiltersPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theMappingPackage.createPackageContents();
 		theNavigationPackage.createPackageContents();
+		theFiltersPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theMappingPackage.initializePackageContents();
 		theNavigationPackage.initializePackageContents();
+		theFiltersPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theMappingPackage.freeze();
@@ -432,6 +440,15 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	 */
 	public EReference getAbstractPropertyBinding_Element() {
 		return (EReference)abstractPropertyBindingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractPropertyBinding_BindingFilters() {
+		return (EReference)abstractPropertyBindingEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -680,6 +697,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		createEAttribute(abstractPropertyBindingEClass, ABSTRACT_PROPERTY_BINDING__NAME);
 		createEReference(abstractPropertyBindingEClass, ABSTRACT_PROPERTY_BINDING__VIEWS);
 		createEReference(abstractPropertyBindingEClass, ABSTRACT_PROPERTY_BINDING__ELEMENT);
+		createEReference(abstractPropertyBindingEClass, ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS);
 
 		emfElementBindingEClass = createEClass(EMF_ELEMENT_BINDING);
 		createEReference(emfElementBindingEClass, EMF_ELEMENT_BINDING__MODEL);
@@ -738,6 +756,8 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		// Obtain other dependent packages
 		NavigationPackage theNavigationPackage = (NavigationPackage)EPackage.Registry.INSTANCE
 				.getEPackage(NavigationPackage.eNS_URI);
+		FiltersPackage theFiltersPackage = (FiltersPackage)EPackage.Registry.INSTANCE
+				.getEPackage(FiltersPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE
 				.getEPackage(EcorePackage.eNS_URI);
 		ViewsPackage theViewsPackage = (ViewsPackage)EPackage.Registry.INSTANCE
@@ -745,6 +765,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 
 		// Add subpackages
 		getESubpackages().add(theNavigationPackage);
+		getESubpackages().add(theFiltersPackage);
 
 		// Create type parameters
 
@@ -850,6 +871,10 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				.getAbstractElementBinding_Properties(), "element", null, 0, 1,
 				AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractPropertyBinding_BindingFilters(), theFiltersPackage.getBindingFilter(),
+				null, "bindingFilters", null, 0, -1, AbstractPropertyBinding.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(emfElementBindingEClass, EMFElementBinding.class, "EMFElementBinding", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
