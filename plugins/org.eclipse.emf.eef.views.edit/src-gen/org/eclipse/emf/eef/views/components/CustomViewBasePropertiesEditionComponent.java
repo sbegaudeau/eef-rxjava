@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewBasePropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:48 sbouchet Exp $
+ * $Id: CustomViewBasePropertiesEditionComponent.java,v 1.4 2009/05/19 09:01:01 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -31,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -74,7 +73,6 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 				this.customView.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -112,7 +110,6 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 			return ViewsViewsRepository.CustomView.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -135,7 +132,7 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ViewsViewsRepository.class);
 				if (provider != null) {
 					basePart = (CustomViewPropertiesEditionPart)provider.getPropertiesEditionPart(ViewsViewsRepository.CustomView.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -153,10 +150,17 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 		if (basePart != null && key == ViewsViewsRepository.CustomView.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			CustomView customView = (CustomView)elt;
+			// init values
 			if (customView.getName() != null)
 				basePart.setName(customView.getName());
 
+			
+			// init filters
+			
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -212,8 +216,7 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
