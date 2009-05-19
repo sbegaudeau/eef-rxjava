@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
+ * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.5 2009/05/19 14:25:47 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -130,7 +130,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPropertiesEditionContext()));
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
