@@ -106,7 +106,7 @@ import [subView.owningViewsRepository().vrPackage()/].parts.[subView.pepInterfac
 public class [view.pepClass()/] extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
 
 [for (element : ViewElement | view.eAllContents()) ? (element.oclIsKindOf(ElementEditor))][let editor : ElementEditor = element.oclAsType(ElementEditor)]
-	[editor.widgetDeclaration()/]
+[editor.widgetDeclaration()/]
 [/let][/for]
 [comment managing ViewReferences/]
 [view.widgetDeclarationForViewReference()/]
@@ -116,7 +116,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	public [view.pepClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -126,16 +126,16 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 [for (aView : ViewElement | view.elements)]
 [aView.implementation()/]
 [/for]
-		
+
 		// [protected ('for additional ui definition')]
 		
 		// [/protected]
-		
+
 	}
 
 [for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(owningView() = view)) ]
@@ -145,12 +145,12 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 [for (subView : View | view.elements->select(oclIsKindOf(views::View))) ]
 [subView.additionalImplementation(pec, inputPEC)/]
 [/for]
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
-		
+
 	}
 [for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = view))]
 
@@ -234,7 +234,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		// [protected ('view visual definition')]
 		
 		// [/protected]
-		
+
 		return view;
 	}
 
@@ -242,7 +242,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
-		
+
 	}
 
 	// [protected ('additional methods')]

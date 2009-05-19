@@ -252,14 +252,14 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
 	private Button add[editor.name.toJavaClassifier()/];
 	private Button remove[editor.name.toJavaClassifier()/];
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'EMFComboViewer')]
@@ -280,8 +280,8 @@ private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters;
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters;
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'Combo')]
@@ -580,7 +580,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, get[editor.name.toJavaClassifier()/]()));
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
@@ -1001,7 +1001,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 		gd[editor.name.toJavaClassifier()/].verticalAlignment = GridData.FILL;
 		table[editor.name.toJavaClassifier()/].setLayoutData(gd[editor.name.toJavaClassifier()/]);
 		table[editor.name.toJavaClassifier()/].setLinesVisible(true);
-			
+
 		// [protected ('for columns definition for '.concat(editor.name.toJavaClassifier()))]
 
 		TableColumn name = new TableColumn(table[editor.name.toJavaClassifier()/], SWT.NONE);
@@ -1030,6 +1030,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
+			//[/protected]
 
 			public void addListener(ILabelProviderListener listener) {
 			}
@@ -1043,7 +1044,6 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 
 			public void removeListener(ILabelProviderListener listener) {
 			}
-			//[/protected]
 
 		});
 		[editor.name.toJavaIdentifier()/].getTable().addListener(SWT.MouseDoubleClick, new Listener(){
