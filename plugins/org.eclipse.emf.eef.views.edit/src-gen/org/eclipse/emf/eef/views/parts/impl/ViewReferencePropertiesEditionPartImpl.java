@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferencePropertiesEditionPartImpl.java,v 1.3 2009/05/05 12:07:56 sbouchet Exp $
+ * $Id: ViewReferencePropertiesEditionPartImpl.java,v 1.4 2009/05/19 09:00:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
@@ -118,22 +118,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		SWTUtils.createPartLabel(parent, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.referencedView, ViewsViewsRepository.SWT_KIND));
 		referencedView = new EObjectFlatComboViewer(parent, false);
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		
-		// Start of user code for referencedView filters initialisation
 
- 		// End of user code		
-		referencedView.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof ViewElement);
-			}
-
-		});
 		referencedView.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -214,6 +199,24 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 			referencedView.setSelection(new StructuredSelection(newValue));
 		else
 			referencedView.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#addFilterReferencedView(ViewerFilter filter)
+	 */
+	public void addFilterToReferencedView(ViewerFilter filter) {
+		referencedView.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#addBusinessFilterReferencedView(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToReferencedView(ViewerFilter filter) {
+		referencedView.addBusinessRuleFilter(filter);
 	}
 
 	public void setMessageForReferencedView(String msg, int msgLevel) {

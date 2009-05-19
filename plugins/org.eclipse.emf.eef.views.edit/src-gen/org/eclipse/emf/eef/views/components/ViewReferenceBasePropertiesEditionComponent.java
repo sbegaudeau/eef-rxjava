@@ -9,13 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferenceBasePropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:49 sbouchet Exp $
+ * $Id: ViewReferenceBasePropertiesEditionComponent.java,v 1.4 2009/05/19 09:00:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -31,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -43,6 +42,8 @@ import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -75,7 +76,6 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 				this.viewReference.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -115,7 +115,6 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 			return ViewsViewsRepository.ViewReference.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -138,7 +137,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ViewsViewsRepository.class);
 				if (provider != null) {
 					basePart = (ViewReferencePropertiesEditionPart)provider.getPropertiesEditionPart(ViewsViewsRepository.ViewReference.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -156,11 +155,33 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 		if (basePart != null && key == ViewsViewsRepository.ViewReference.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			ViewReference viewReference = (ViewReference)elt;
+			// init values
 			if (viewReference.getName() != null)
 				basePart.setName(viewReference.getName());
 
 			basePart.initReferencedView(allResource, viewReference.getView());
+			
+			// init filters
+			
+			basePart.addFilterToReferencedView(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof ViewElement);
+				}
+
+			});
+			// Start of user code for additional businessfilters for view
+			
+			// End of user code
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -220,8 +241,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 				command.append(SetCommand.create(liveEditingDomain, viewReference, ViewsPackage.eINSTANCE.getViewReference_View(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {

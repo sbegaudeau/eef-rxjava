@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferencePropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:55 sbouchet Exp $
+ * $Id: ViewReferencePropertiesEditionPartForm.java,v 1.4 2009/05/19 09:00:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
@@ -161,22 +161,6 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 		referencedView = new EObjectFlatComboViewer(parent, false);
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for referencedView filters initialisation
-
- 		// End of user code
-		referencedView.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof ViewElement); 				
-			}
-
-		});
-
 		GridData referencedViewData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedView.setLayoutData(referencedViewData);
 		referencedView.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -264,6 +248,24 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 			referencedView.setSelection(new StructuredSelection(newValue));
 		else
 			referencedView.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#addFilterReferencedView(ViewerFilter filter)
+	 */
+	public void addFilterToReferencedView(ViewerFilter filter) {
+		referencedView.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#addBusinessFilterReferencedView(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToReferencedView(ViewerFilter filter) {
+		referencedView.addBusinessRuleFilter(filter);
 	}
 
 
