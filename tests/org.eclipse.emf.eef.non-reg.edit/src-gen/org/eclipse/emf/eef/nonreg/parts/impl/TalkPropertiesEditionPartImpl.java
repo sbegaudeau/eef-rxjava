@@ -61,7 +61,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	public TalkPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -71,14 +71,14 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 		createDocumentedElement(view);
-		
+
 		// Start of user code for additional ui definition
 
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -175,11 +175,11 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	}
 
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-		// End of user code		
+		// End of user code
 	}
 
 	/**

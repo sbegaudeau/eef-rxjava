@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,8 +44,8 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	private EMFListEditUtil assistsEditUtil;
 	private ReferencesTable<?> assists;
-	protected List<ViewerFilter> assistsBusinessFilters;
-	protected List<ViewerFilter> assistsFilters;
+	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -53,7 +54,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	public PresencePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -63,13 +64,13 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPresenceGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPresenceGroup(Composite parent) {
@@ -163,11 +164,11 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		// End of user code
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**

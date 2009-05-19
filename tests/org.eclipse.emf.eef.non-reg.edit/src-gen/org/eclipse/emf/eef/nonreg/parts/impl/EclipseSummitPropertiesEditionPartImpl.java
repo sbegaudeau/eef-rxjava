@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,8 +47,8 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	private Text place;
 	private EMFListEditUtil sitesEditUtil;
 	private ReferencesTable<?> sites;
-	protected List<ViewerFilter> sitesBusinessFilters;
-	protected List<ViewerFilter> sitesFilters;
+	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -56,7 +57,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	public EclipseSummitPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -66,13 +67,13 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -199,11 +200,11 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		// End of user code
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**

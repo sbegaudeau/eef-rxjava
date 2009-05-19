@@ -37,7 +37,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	public AccessPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -47,13 +47,13 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPeriodGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPeriodGroup(Composite parent) {
@@ -89,11 +89,11 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Access.period, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**

@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -63,7 +64,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected TableViewer accreditations;
 	private Button addAccreditations;
 	private Button removeAccreditations;
-	protected List<ViewerFilter> accreditationsBusinessFilters;
+	protected List<ViewerFilter> accreditationsBusinessFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -72,7 +73,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	public PersonPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -82,13 +83,13 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -340,11 +341,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**
