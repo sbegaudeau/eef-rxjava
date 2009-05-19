@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionProvider.java,v 1.4 2009/05/18 16:06:19 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionProvider.java,v 1.5 2009/05/19 09:16:32 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 

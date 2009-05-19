@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenViewsRepository.java,v 1.3 2009/05/05 12:06:11 sbouchet Exp $
+ * $Id: EEFGenViewsRepository.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
