@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartForm.java,v 1.4 2009/05/19 09:16:54 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartForm.java,v 1.5 2009/05/19 14:28:22 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -180,7 +180,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartForm.this, MappingViewsRepository.SimpleModelNavigation.feature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFeature()));
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.feature, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
@@ -206,7 +206,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartForm.this, MappingViewsRepository.SimpleModelNavigation.discriminatorType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDiscriminatorType()));
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}

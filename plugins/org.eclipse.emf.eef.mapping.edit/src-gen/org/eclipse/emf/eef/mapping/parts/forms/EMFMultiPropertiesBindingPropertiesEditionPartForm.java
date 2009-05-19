@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartForm.java,v 1.5 2009/05/19 09:16:54 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartForm.java,v 1.6 2009/05/19 14:28:22 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -72,12 +72,12 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	private Text name;
 	private EMFListEditUtil modelEditUtil;
 	private ReferencesTable<?> model;
-	protected List<ViewerFilter> modelBusinessFilters;
-	protected List<ViewerFilter> modelFilters;
+	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
-	protected List<ViewerFilter> viewsBusinessFilters;
-	protected List<ViewerFilter> viewsFilters;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
