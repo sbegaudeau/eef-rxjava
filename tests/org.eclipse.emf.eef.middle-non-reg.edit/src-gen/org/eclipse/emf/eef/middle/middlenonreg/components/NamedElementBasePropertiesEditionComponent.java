@@ -6,6 +6,7 @@ package org.eclipse.emf.eef.middle.middlenonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -85,14 +86,16 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (MiddlenonregPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					NamedElementBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (MiddlenonregPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null)
 					basePart.setName((String)msg.getNewValue());
 
 
-				if (AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && basePart != null)
-					basePart.setDocumentation((String)msg.getNewValue());
 
 
+				}
 			}
 
 		};
@@ -141,6 +144,17 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == MiddlenonregViewsRepository.NamedElement.class)
+			this.basePart = (NamedElementPropertiesEditionPart) propertiesEditionPart;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
@@ -157,8 +171,6 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 			
 		}
 		// init values for referenced views
-		if (namedElement.getDocumentation() != null)
-				basePart.setDocumentation(namedElement.getDocumentation());
 
 
 		// init filters for referenced views
@@ -178,13 +190,12 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 			cc.append(SetCommand.create(editingDomain, namedElement, MiddlenonregPackage.eINSTANCE.getNamedElement_Name(), basePart.getName()));
 
 
-			cc.append(SetCommand.create(editingDomain, namedElement, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), basePart.getDocumentation()));
 
 
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 
@@ -199,7 +210,6 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 			namedElementToUpdate.setName(basePart.getName());
 
 
-			namedElementToUpdate.setDocumentation(basePart.getDocumentation());	
 
 
 			return namedElementToUpdate;
@@ -221,8 +231,6 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 				command.append(SetCommand.create(liveEditingDomain, namedElement, MiddlenonregPackage.eINSTANCE.getNamedElement_Name(), event.getNewValue()));
 
 
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, namedElement, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
 
 
 			liveEditingDomain.getCommandStack().execute(command);
@@ -232,15 +240,13 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 				if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
 
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.setMessageForDocumentation(diag.getMessage(), IMessageProvider.ERROR);
+
 
 			} else {
 				if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
 
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.unsetMessageForDocumentation();
+
 
 			}
 		}

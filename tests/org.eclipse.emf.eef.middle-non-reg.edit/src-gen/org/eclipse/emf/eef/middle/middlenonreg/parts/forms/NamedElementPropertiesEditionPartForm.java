@@ -26,6 +26,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
@@ -180,6 +181,14 @@ public class NamedElementPropertiesEditionPartForm extends CompositePropertiesEd
 	}
 
 
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart#getDocumentedElementReferencedView()
+	 */
+		public IPropertiesEditionPart getDocumentedElementReferencedView() {
+			return (IPropertiesEditionPart) documentedElementPropertiesEditionPart;
+		}
 	/**
 	 * {@inheritDoc}
 	 * 

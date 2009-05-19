@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
@@ -139,6 +140,14 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart#getDocumentedElementReferencedView()
+	 */
+		public IPropertiesEditionPart getDocumentedElementReferencedView() {
+			return (IPropertiesEditionPart) documentedElementPropertiesEditionPart;
+		}
 	/**
 	 * {@inheritDoc}
 	 * 

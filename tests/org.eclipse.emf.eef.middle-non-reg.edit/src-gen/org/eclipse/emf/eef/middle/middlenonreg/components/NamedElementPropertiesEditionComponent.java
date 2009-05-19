@@ -6,9 +6,14 @@ package org.eclipse.emf.eef.middle.middlenonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 
 // End of user code
 /**
@@ -16,6 +21,20 @@ import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropert
  */
 public class NamedElementPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
+	/**
+	 * The Base part
+	 */
+	private NamedElementPropertiesEditionPart basePart;
+
+	/**
+	 * The NamedElementBasePropertiesEditionComponent sub component
+	 */
+	protected NamedElementBasePropertiesEditionComponent namedElementBasePropertiesEditionComponent;
+
+	/**
+	 * The DocumentedElementPropertiesEditionComponent sub component
+	 */
+	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
@@ -25,8 +44,48 @@ public class NamedElementPropertiesEditionComponent extends ComposedPropertiesEd
 	public NamedElementPropertiesEditionComponent(EObject namedElement, String editing_mode) {
 		super(editing_mode);
 		if (namedElement instanceof NamedElement) {
-			addSubComponent(new NamedElementBasePropertiesEditionComponent(namedElement, editing_mode));
-			addSubComponent(new DocumentedElementPropertiesEditionComponent(namedElement, editing_mode));
+			namedElementBasePropertiesEditionComponent = new NamedElementBasePropertiesEditionComponent(namedElement, editing_mode); 
+			addSubComponent(namedElementBasePropertiesEditionComponent);
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(namedElement, editing_mode); 	
+			addSubComponent(documentedElementPropertiesEditionComponent);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * 		getPropertiesEditionPart(int, java.lang.String)
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+		if ("Base".equals(key)) {
+			basePart = (NamedElementPropertiesEditionPart)namedElementBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)basePart;
+		}
+		return super.getPropertiesEditionPart(kind, key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (MiddlenonregViewsRepository.NamedElement.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			basePart = (NamedElementPropertiesEditionPart)propertiesEditionPart;
+		}
+	}
+
+	/** 
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent
+	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
+		if (key == MiddlenonregViewsRepository.NamedElement.class) {
+			super.initPart(key, kind, element, allResource);
+			documentedElementPropertiesEditionComponent.setPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, basePart.getDocumentedElementReferencedView());
+			documentedElementPropertiesEditionComponent.initPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, element, allResource);			
 		}
 	}
 }

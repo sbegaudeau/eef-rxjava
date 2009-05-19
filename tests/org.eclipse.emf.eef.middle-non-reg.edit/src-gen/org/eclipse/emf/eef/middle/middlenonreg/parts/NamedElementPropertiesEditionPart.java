@@ -3,6 +3,8 @@
  */
 package org.eclipse.emf.eef.middle.middlenonreg.parts;
 
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 // Start of user code for imports
 
 
@@ -30,6 +32,10 @@ public interface NamedElementPropertiesEditionPart {
 
 
 
+	/**
+	 * @return the DocumentedElement referenced view
+	 */
+	public IPropertiesEditionPart getDocumentedElementReferencedView();
 	/**
 	 * @return the documentation
 	 */
