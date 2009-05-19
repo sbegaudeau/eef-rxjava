@@ -6,6 +6,7 @@ package org.eclipse.emf.eef.ab.abstractnonreg.providers;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
