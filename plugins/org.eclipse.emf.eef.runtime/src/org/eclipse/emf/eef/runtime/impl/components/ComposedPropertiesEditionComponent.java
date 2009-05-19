@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -157,7 +157,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 
 		}
 		if (cc.isEmpty())
-			cc.append(UnexecutableCommand.INSTANCE);
+			cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

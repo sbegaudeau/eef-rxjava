@@ -349,7 +349,7 @@ public class ReferencesTable<T extends EObject> {
 
 			@SuppressWarnings("unchecked")
 			public void mouseDoubleClick(MouseEvent e) {
-				if (table.getSelection()[0].getData() instanceof EObject) {
+				if (table.getSelection() != null && table.getSelection()[0].getData() instanceof EObject) {
 					// Navigate
 					referencesTableListener.navigateTo((T)table.getSelection()[0].getData());
 				}

@@ -89,25 +89,21 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
-					.getProvider(eObject);
+					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eObject);
 					if (provider != null) {
 						if (this.propertiesEditionComponent != null)
 							this.propertiesEditionComponent.dispose();
 						String descriptor = getDescriptor();
-						this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject,
-								IPropertiesEditionComponent.LIVE_MODE, descriptor);
+						this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);
 						if (this.propertiesEditionComponent != null) {
-							this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage
-									.getEditingDomain());
-							this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1,	descriptor);
+							this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage.getEditingDomain());
+							this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1, descriptor);
 							if (editionPart instanceof IFormPropertiesEditionPart) {
 								for (int i = 0; i < parent.getChildren().length; i++) {
 									Composite child = (Composite)parent.getChildren()[i];
 									child.dispose();
 								}
-								((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,
-										getWidgetFactory());
+								((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,	getWidgetFactory());
 								parent.layout();
 								this.propertiesEditionComponent.initPart(this.propertiesEditionComponent.translatePart(descriptor), 1, eObject);
 							}
