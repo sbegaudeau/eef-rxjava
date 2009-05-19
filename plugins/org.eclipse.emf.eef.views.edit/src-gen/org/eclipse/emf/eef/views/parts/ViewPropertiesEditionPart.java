@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewPropertiesEditionPart.java,v 1.3 2009/05/05 12:07:49 sbouchet Exp $
+ * $Id: ViewPropertiesEditionPart.java,v 1.4 2009/05/19 08:45:28 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.views.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
@@ -29,22 +30,22 @@ public interface ViewPropertiesEditionPart {
 	 * @return the name
 	 */
 	public String getName();
-	
+
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
 	 */
 	public void setName(String newValue);
-	
+
 	public void setMessageForName(String msg, int msgLevel);
-	
+
 	public void unsetMessageForName();
-	
+
 	/**
 	 * @return the representation
 	 */
 	public EObject getRepresentation();
-	
+
 	/**
 	 * Init the representation
 	 * @param allResources the ResourceSet where the widget have to process
@@ -52,31 +53,49 @@ public interface ViewPropertiesEditionPart {
 	 */
 	public void initRepresentation(ResourceSet allResources, EObject current);
 
-/**
+	/**
 	 * Defines a new representation
 	 * @param newValue the new representation to set
 	 */
 	public void setRepresentation(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the representation edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToRepresentation(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the representation edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToRepresentation(ViewerFilter filter);
+
+
+
+
+
 	/**
 	 * @return the explicit
 	 */
 	public Boolean getExplicit();
-	
+
 	/**
 	 * Defines a new explicit
 	 * @param newValue the new explicit to set
 	 */
 	public void setExplicit(Boolean newValue);
-	
-	
-	
-	
-	
+
+
+
+
+
 
 
 

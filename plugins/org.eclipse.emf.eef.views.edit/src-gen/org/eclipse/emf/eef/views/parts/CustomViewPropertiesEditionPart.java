@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewPropertiesEditionPart.java,v 1.3 2009/05/05 12:07:49 sbouchet Exp $
+ * $Id: CustomViewPropertiesEditionPart.java,v 1.4 2009/05/19 08:45:28 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -28,17 +28,17 @@ public interface CustomViewPropertiesEditionPart {
 	 * @return the name
 	 */
 	public String getName();
-	
+
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
 	 */
 	public void setName(String newValue);
-	
+
 	public void setMessageForName(String msg, int msgLevel);
-	
+
 	public void unsetMessageForName();
-	
+
 
 
 
