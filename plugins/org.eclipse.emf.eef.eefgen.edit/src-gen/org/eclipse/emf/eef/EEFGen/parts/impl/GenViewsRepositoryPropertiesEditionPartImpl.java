@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.5 2009/05/19 14:25:59 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -68,7 +68,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	public GenViewsRepositoryPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -78,15 +78,15 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
 		createParametersGroup(view);
 		createActivationGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createReferenceGroup(Composite parent) {
@@ -191,11 +191,11 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.formViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**
