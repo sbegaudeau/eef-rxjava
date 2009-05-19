@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -93,29 +93,33 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (NonregPackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					PersonBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (NonregPackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null)
 					basePart.setFirstname((String)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null)
 					basePart.setLastname((String)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null)
 					basePart.setAge(((Integer)msg.getNewValue()).toString());
 
-				if (NonregPackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
 					basePart.setEclipseCommiter((Boolean)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
 					basePart.setIsRegistered((Boolean)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
 					basePart.setGender((Object)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getPerson_Accreditations().equals(msg.getFeature())) {
+					if (NonregPackage.eINSTANCE.getPerson_Accreditations().equals(msg.getFeature())) {
 					basePart.updateAccreditations(person);
 				}
 
 
+				}
 			}
 
 		};
@@ -159,6 +163,17 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == NonregViewsRepository.Person.class)
+			this.basePart = (PersonPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -257,7 +272,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

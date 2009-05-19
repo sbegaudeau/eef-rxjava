@@ -5,9 +5,14 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import org.eclipse.emf.eef.nonreg.parts.AccessPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -16,14 +21,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.nonreg.parts.AccessPropertiesEditionPart;
-
-
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
 /**

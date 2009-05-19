@@ -5,9 +5,19 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -15,18 +25,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
-
-
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
 
 
 // End of user code
@@ -129,6 +127,14 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	}
 
 
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart#getDocumentedElementReferencedView()
+	 */
+		public IPropertiesEditionPart getDocumentedElementReferencedView() {
+			return (IPropertiesEditionPart) documentedElementPropertiesEditionPart;
+		}
 	/**
 	 * {@inheritDoc}
 	 * 

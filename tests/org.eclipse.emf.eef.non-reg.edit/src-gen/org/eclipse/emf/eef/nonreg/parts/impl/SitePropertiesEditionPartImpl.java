@@ -5,18 +5,19 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
 
 
 // End of user code
@@ -68,6 +69,14 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	}
 
 
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart#getNamedElementReferencedView()
+	 */
+		public IPropertiesEditionPart getNamedElementReferencedView() {
+			return (IPropertiesEditionPart) namedElementPropertiesEditionPart;
+		}
 	/**
 	 * {@inheritDoc}
 	 * 

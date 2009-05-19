@@ -6,7 +6,7 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -80,11 +80,15 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (NonregPackage.eINSTANCE.getAccess_Period().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					AccessPropertiesEditionComponent.this.dispose();
+				else {
+					if (NonregPackage.eINSTANCE.getAccess_Period().equals(msg.getFeature()) && basePart != null)
 					basePart.setPeriod(((Double)msg.getNewValue()).toString());
 
 
 
+				}
 			}
 
 		};
@@ -133,6 +137,17 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == NonregViewsRepository.Access.class)
+			this.basePart = (AccessPropertiesEditionPart) propertiesEditionPart;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
@@ -169,7 +184,7 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

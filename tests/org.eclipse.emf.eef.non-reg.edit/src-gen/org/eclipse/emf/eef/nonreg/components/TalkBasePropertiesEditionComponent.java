@@ -6,7 +6,7 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -88,21 +88,23 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (NonregPackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					TalkBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (NonregPackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null)
 					basePart.setTitle((String)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
 					basePart.setType((Enumerator)msg.getNewValue());
 
-				if (NonregPackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
 					basePart.setPresenter((EObject)msg.getNewValue());
-				if (NonregPackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
+					if (NonregPackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
 					basePart.setCreator((Object)msg.getNewValue());
 
-				if (AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && basePart != null)
-					basePart.setDocumentation((String)msg.getNewValue());
 
 
+				}
 			}
 
 		};
@@ -146,6 +148,17 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == NonregViewsRepository.Talk.class)
+			this.basePart = (TalkPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -201,8 +214,6 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			// End of user code
 		}
 		// init values for referenced views
-		if (talk.getDocumentation() != null)
-				basePart.setDocumentation(talk.getDocumentation());
 
 
 		// init filters for referenced views
@@ -226,13 +237,12 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			cc.append(SetCommand.create(editingDomain, talk, NonregPackage.eINSTANCE.getTalk_Presenter(), basePart.getPresenter()));
 			cc.append(SetCommand.create(editingDomain, talk, NonregPackage.eINSTANCE.getTalk_Creator(), basePart.getCreator()));
 
-			cc.append(SetCommand.create(editingDomain, talk, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), basePart.getDocumentation()));
 
 
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 
@@ -251,7 +261,6 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			talkToUpdate.setPresenter((Person)basePart.getPresenter());
 			talkToUpdate.setCreator((Person)basePart.getCreator());
 
-			talkToUpdate.setDocumentation(basePart.getDocumentation());	
 
 
 			return talkToUpdate;
@@ -280,8 +289,6 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			if (NonregViewsRepository.Talk.creator == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, talk, NonregPackage.eINSTANCE.getTalk_Creator(), event.getNewValue()));
 
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, talk, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
 
 
 			liveEditingDomain.getCommandStack().execute(command);
@@ -294,8 +301,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				
 				
 
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.setMessageForDocumentation(diag.getMessage(), IMessageProvider.ERROR);
+
 
 			} else {
 				if (NonregViewsRepository.Talk.title == event.getAffectedEditor())
@@ -304,8 +310,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				
 				
 
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.unsetMessageForDocumentation();
+
 
 			}
 		}

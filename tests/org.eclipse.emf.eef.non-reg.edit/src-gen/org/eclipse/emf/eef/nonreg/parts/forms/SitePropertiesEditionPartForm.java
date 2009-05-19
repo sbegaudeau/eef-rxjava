@@ -11,6 +11,7 @@ import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -73,6 +74,14 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart#getNamedElementReferencedView()
+	 */
+		public IPropertiesEditionPart getNamedElementReferencedView() {
+			return (IPropertiesEditionPart) namedElementPropertiesEditionPart;
+		}
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -6,7 +6,7 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -82,14 +82,16 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (NonregPackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					TopicBasePropertiesEditionComponent.this.dispose();
+				else {
+					if (NonregPackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null)
 					basePart.setDescription((String)msg.getNewValue());
 
 
-				if (AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && basePart != null)
-					basePart.setDocumentation((String)msg.getNewValue());
 
 
+				}
 			}
 
 		};
@@ -138,6 +140,17 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == NonregViewsRepository.Topic.class)
+			this.basePart = (TopicPropertiesEditionPart) propertiesEditionPart;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
@@ -154,8 +167,6 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 			
 		}
 		// init values for referenced views
-		if (topic.getDocumentation() != null)
-				basePart.setDocumentation(topic.getDocumentation());
 
 
 		// init filters for referenced views
@@ -175,13 +186,12 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 			cc.append(SetCommand.create(editingDomain, topic, NonregPackage.eINSTANCE.getTopic_Description(), basePart.getDescription()));
 
 
-			cc.append(SetCommand.create(editingDomain, topic, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), basePart.getDocumentation()));
 
 
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 
@@ -196,7 +206,6 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 			topicToUpdate.setDescription(basePart.getDescription());	
 
 
-			topicToUpdate.setDocumentation(basePart.getDocumentation());	
 
 
 			return topicToUpdate;
@@ -218,8 +227,6 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 				command.append(SetCommand.create(liveEditingDomain, topic, NonregPackage.eINSTANCE.getTopic_Description(), event.getNewValue()));
 
 
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, topic, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
 
 
 			liveEditingDomain.getCommandStack().execute(command);
@@ -229,15 +236,13 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 				if (NonregViewsRepository.Topic.description == event.getAffectedEditor())
 					basePart.setMessageForDescription(diag.getMessage(), IMessageProvider.ERROR);
 
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.setMessageForDocumentation(diag.getMessage(), IMessageProvider.ERROR);
+
 
 			} else {
 				if (NonregViewsRepository.Topic.description == event.getAffectedEditor())
 					basePart.unsetMessageForDescription();
 
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.unsetMessageForDocumentation();
+
 
 			}
 		}

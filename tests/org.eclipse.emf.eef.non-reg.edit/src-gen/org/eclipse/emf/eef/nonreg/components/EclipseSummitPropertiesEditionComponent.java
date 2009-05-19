@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -91,16 +91,20 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (NonregPackage.eINSTANCE.getEclipseSummit_Place().equals(msg.getFeature()) && basePart != null)
+				if (basePart == null)
+					EclipseSummitPropertiesEditionComponent.this.dispose();
+				else {
+					if (NonregPackage.eINSTANCE.getEclipseSummit_Place().equals(msg.getFeature()) && basePart != null)
 					basePart.setPlace((String)msg.getNewValue());
 
-				if (msg.getFeature() != null && 
+					if (msg.getFeature() != null && 
 						(((EStructuralFeature)msg.getFeature()) == NonregPackage.eINSTANCE.getEclipseSummit_Sites()
 						|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == NonregPackage.eINSTANCE.getSite())) {
 					basePart.updateSites(eclipseSummit);
 				}
 
 
+				}
 			}
 
 		};
@@ -144,6 +148,17 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 			return (IPropertiesEditionPart)basePart;
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == NonregViewsRepository.EclipseSummit.class)
+			this.basePart = (EclipseSummitPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -223,7 +238,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 

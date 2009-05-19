@@ -6,7 +6,7 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -16,10 +16,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.Site;
@@ -33,7 +30,6 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
 /**
@@ -83,14 +79,13 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-
-				if (MiddlenonregPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
-
-				if (AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && basePart != null)
-					basePart.setDocumentation((String)msg.getNewValue());
+				if (basePart == null)
+					SiteBasePropertiesEditionComponent.this.dispose();
+				else {
 
 
+
+				}
 			}
 
 		};
@@ -139,6 +134,17 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == NonregViewsRepository.Site.class)
+			this.basePart = (SitePropertiesEditionPart) propertiesEditionPart;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
@@ -151,11 +157,6 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 			// init filters
 		}
 		// init values for referenced views
-		if (site.getName() != null)
-				basePart.setName(site.getName());
-
-		if (site.getDocumentation() != null)
-				basePart.setDocumentation(site.getDocumentation());
 
 
 		// init filters for referenced views
@@ -174,15 +175,12 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 		CompoundCommand cc = new CompoundCommand();
 		if (site != null) {
 
-			cc.append(SetCommand.create(editingDomain, site, MiddlenonregPackage.eINSTANCE.getNamedElement_Name(), basePart.getName()));
-
-			cc.append(SetCommand.create(editingDomain, site, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), basePart.getDocumentation()));
 
 
 		}
 		if (!cc.isEmpty())
 			return cc;
-		cc.append(UnexecutableCommand.INSTANCE);
+		cc.append(IdentityCommand.INSTANCE);
 		return cc;
 	}
 
@@ -195,9 +193,6 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 		if (source instanceof Site) {
 			Site siteToUpdate = (Site)source;
 
-			siteToUpdate.setName(basePart.getName());
-
-			siteToUpdate.setDocumentation(basePart.getDocumentation());	
 
 
 			return siteToUpdate;
@@ -216,11 +211,6 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
 
-			if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, site, MiddlenonregPackage.eINSTANCE.getNamedElement_Name(), event.getNewValue()));
-
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, site, AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
 
 
 			liveEditingDomain.getCommandStack().execute(command);
@@ -228,17 +218,11 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 
-				if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor())
-					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.setMessageForDocumentation(diag.getMessage(), IMessageProvider.ERROR);
+
 
 			} else {
 
-				if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor())
-					basePart.unsetMessageForName();
-				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor())
-					basePart.unsetMessageForDocumentation();
+
 
 			}
 		}

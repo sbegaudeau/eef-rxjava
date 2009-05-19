@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
@@ -130,6 +131,10 @@ public interface TalkPropertiesEditionPart {
 
 
 
+	/**
+	 * @return the DocumentedElement referenced view
+	 */
+	public IPropertiesEditionPart getDocumentedElementReferencedView();
 	/**
 	 * @return the documentation
 	 */
