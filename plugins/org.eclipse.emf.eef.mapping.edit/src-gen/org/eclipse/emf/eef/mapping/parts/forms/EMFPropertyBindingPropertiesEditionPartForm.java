@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionPartForm.java,v 1.3 2009/05/05 12:07:31 sbouchet Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionPartForm.java,v 1.4 2009/05/19 08:30:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -78,6 +78,8 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	protected EObjectFlatComboViewer model;
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
+	protected List<ViewerFilter> viewsBusinessFilters;
+	protected List<ViewerFilter> viewsFilters;
 
 
 
@@ -194,22 +196,6 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		// Start of user code for model filters initialisation
-
- 		// End of user code
-		model.addFilter(new ViewerFilter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EStructuralFeature); 				
-			}
-
-		});
-
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -230,18 +216,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {	
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
-				ViewerFilter viewsFilter = new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor());
-				ViewerFilter viewerFilter = new ViewerFilter() {
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!viewsEditUtil.contains((EObject)element));
-						return false;
-					}
-				};
-				List filters = new ArrayList();
-				filters.add(viewsFilter);
-				filters.add(viewerFilter);
-				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, filters, 
+				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
 				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -388,6 +363,24 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 */
+	public void addFilterToModel(ViewerFilter filter) {
+		model.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter) {
+		model.addBusinessRuleFilter(filter);
+	}
+
 
 
 
@@ -400,7 +393,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	public List getViewsToAdd() {
 		return viewsEditUtil.getElementsToAdd();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -408,6 +401,15 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	 */
 	public List getViewsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#getViewsTable()
+	 */
+	public List getViewsTable() {
+		return viewsEditUtil.getVirtualList();
 	}
 
 	/**
@@ -435,6 +437,24 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#addFilterViews(ViewerFilter filter)
+	 */
+	public void addFilterToViews(ViewerFilter filter) {
+		viewsFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#addBusinessFilterViews(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToViews(ViewerFilter filter) {
+		viewsBusinessFilters.add(filter);
 	}
 
 
