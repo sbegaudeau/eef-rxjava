@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPart.java,v 1.3 2009/05/05 12:07:30 sbouchet Exp $
+ * $Id: ElementBindingReferencePropertiesEditionPart.java,v 1.4 2009/05/19 08:00:12 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.mapping.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
@@ -29,7 +30,7 @@ public interface ElementBindingReferencePropertiesEditionPart {
 	 * @return the binding
 	 */
 	public EObject getBinding();
-	
+
 	/**
 	 * Init the binding
 	 * @param allResources the ResourceSet where the widget have to process
@@ -37,16 +38,34 @@ public interface ElementBindingReferencePropertiesEditionPart {
 	 */
 	public void initBinding(ResourceSet allResources, EObject current);
 
-/**
+	/**
 	 * Defines a new binding
 	 * @param newValue the new binding to set
 	 */
 	public void setBinding(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the binding edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToBinding(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the binding edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToBinding(ViewerFilter filter);
+
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPart.java,v 1.3 2009/05/05 12:07:31 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPart.java,v 1.4 2009/05/19 08:00:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
@@ -31,27 +32,32 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 * @return the name
 	 */
 	public String getName();
-	
+
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
 	 */
 	public void setName(String newValue);
-	
+
 	public void setMessageForName(String msg, int msgLevel);
-	
+
 	public void unsetMessageForName();
-	
+
 	/**
 	 * @return the model to add
 	 */
 	public List getModelToAdd();
-	
+
 	/**
 	 * @return the model to remove
 	 */
 	public List getModelToRemove();
-	
+
+	/**
+	 * @return the current model
+	 */
+	public List getModelTable();
+
 	/**
 	 * Init the model
 	 * @param current the current value
@@ -60,26 +66,49 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 */
 	public void initModel(EObject current, EReference containingFeature, EReference feature);
 
-/**
+	/**
 	 * Update the model
 	 * @param newValue the model to update
 	 */
 	public void updateModel(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the model edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToModel(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the model edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToModel(ViewerFilter filter);
+
+
+
+
+
 	/**
 	 * @return the views to add
 	 */
 	public List getViewsToAdd();
-	
+
 	/**
 	 * @return the views to remove
 	 */
 	public List getViewsToRemove();
-	
+
+	/**
+	 * @return the current views
+	 */
+	public List getViewsTable();
+
 	/**
 	 * Init the views
 	 * @param current the current value
@@ -88,16 +117,34 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 */
 	public void initViews(EObject current, EReference containingFeature, EReference feature);
 
-/**
+	/**
 	 * Update the views
 	 * @param newValue the views to update
 	 */
 	public void updateViews(EObject newValue);
-	
-	
-	
-	
-	
+
+	/**
+	 * Adds the given filter to the views edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToViews(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the views edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToViews(ViewerFilter filter);
+
+
+
+
+
 
 
 
