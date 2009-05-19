@@ -34,21 +34,35 @@ TODO: externalise model/controler reference after Unedic non-reg
 
 [/template]
 
-[template public genDeclaration(view : View)]
-[view.getterDeclaration()/]
+[template public genDeclarationForSubView(view : View)]
+	[view.getterForSubViewDeclaration()/]
+[/template]
+
+[template public genDeclarationForReferencedView(view : View)]
+	[view.getterForReferencedViewDeclaration()/]
 [/template]
 
 [template public genDeclarationForViewReference(view : View)]
 [for (viewReference : ViewReference | view.eAllContents(views::ViewReference))]
+[viewReference.view.oclAsType(views::View).genDeclarationForReferencedView()/]
 	[for (elementEditor : ElementEditor | viewReference.view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
 [elementEditor.genDeclaration()/]
 	[/for]
-[if (viewReference.view.eAllContents(views::ViewReference)->notEmpty())][genDeclarationForViewReference(viewReference.view.oclAsType(views::View))/][/if]
+[if (viewReference.view.eAllContents(views::ViewReference)->notEmpty())][genDeclarationForViewReferenceDelegate(viewReference.view.oclAsType(views::View))/][/if]
+[/for]
+[/template]
+
+[template public genDeclarationForViewReferenceDelegate(view : View)]
+[for (viewReference : ViewReference | view.eAllContents(views::ViewReference))]
+	[for (elementEditor : ElementEditor | viewReference.view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
+[elementEditor.genDeclaration()/]
+	[/for]
+[if (viewReference.view.eAllContents(views::ViewReference)->notEmpty())][genDeclarationForViewReferenceDelegate(viewReference.view.oclAsType(views::View))/][/if]
 [/for]
 [/template]
 
 [template public genDeclarationForSubViews(view : View)]
-[view.genDeclaration()/]
+[view.genDeclarationForSubView()/]
 
 [for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
 [elementEditor.genDeclaration()/]
@@ -75,7 +89,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ViewerFilter;
 [/if]
-[if (view.eAllContents(views::View)->notEmpty())]
+[if (view.eAllContents(views::View)->notEmpty() or view.eAllContents(views::ViewReference)->notEmpty())]
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [/if]
 [/template]
@@ -207,6 +221,7 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 
 [template public elementEditorGetterSettersForViewReference(view : View, pec : PropertiesEditionComponent, basePackage : String)]
 [for (viewRef : ViewReference | view.eAllContents(views::ViewReference)->select(oclIsTypeOf(views::ViewReference)))]
+[viewRef.view.oclAsType(views::View).getterForReferencedViewImplementation(pec.model.eefPackage(basePackage).fullPartInterfacePath(view.pepInterface()))/]
 [for (elementEditor : ElementEditor | viewRef.view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::ElementEditor)))]
 [elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),viewRef.view.oclAsType(views::View))/]
 
@@ -237,7 +252,7 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 
 [template public elementEditorGetterSettersForSubViews(view : View, pec : PropertiesEditionComponent, basePackage : String)]
 [for (subView : View | view.elements->select(oclIsTypeOf(views::View)))]
-[subView.getterForSubViewsImplementationDelegate(pec.model.eefPackage(basePackage).fullPartInterfacePath(view.pepInterface()))/]
+[subView.getterForSubViewImplementationDelegate(pec.model.eefPackage(basePackage).fullPartInterfacePath(view.pepInterface()))/]
 [for (elementEditor : ElementEditor | subView.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = subView))]
 [elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),subView)/]
 

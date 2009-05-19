@@ -66,7 +66,6 @@ public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionC
 	 */
 	private [topLevelView.pepInterface()/] [topLevelView.viewIdentifier(pec)/];
 
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#partsList()
@@ -82,10 +81,13 @@ Implemented later ...
 [/for][/comment]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
-	private [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
+	/**
+	 * The [subPec.subPECClass(view)/] sub component
+	 */
+	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
+	
 	[/for]
 [/for]
-
 	/**
 	 * Parameterized constructor
 	 * 

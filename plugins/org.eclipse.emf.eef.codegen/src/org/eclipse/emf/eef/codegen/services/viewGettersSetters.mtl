@@ -16,9 +16,14 @@
 [import naming/]
 
 [comment ====== View getters for declaration ====== /]
-[template public getterDeclaration(view : View)]
-[view.getterSignatureDocumentation()/]
-[view.getterSignature()/];
+[template public getterForSubViewDeclaration(view : View)]
+[view.getterForSubViewSignatureDocumentation()/]
+	[view.getterForSubViewSignature()/];
+[/template]
+
+[template public getterForReferencedViewDeclaration(view : View)]
+[view.getterForReferencedViewSignatureDocumentation()/]
+	[view.getterForReferencedViewSignature()/];
 [/template]
 
 [comment ====== Widgets View getters for declaration ====== /]
@@ -56,8 +61,12 @@
 [/template]
 
 [comment ====== Signatures ====== /]
-[template public getterSignature(view : View)]
+[template public getterForSubViewSignature(view : View)]
 	public IPropertiesEditionPart get[view.name.toJavaClassifier()/]SubView()
+[/template]
+
+[template public getterForReferencedViewSignature(view : View)]
+public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public getterSignature(elementEditor : ElementEditor)]
@@ -84,9 +93,15 @@
 	public List [elementEditor.viewPackageGetter()/]Table()
 [/template]
 
-[template public getterSignatureDocumentation(view : View)]
+[template public getterForSubViewSignatureDocumentation(view : View)]
 	/**
 	 * @return the [view.name/] SubView
+	 */
+[/template]
+
+[template public getterForReferencedViewSignatureDocumentation(view : View)]
+/**
+	 * @return the [view.name/] referenced view
 	 */
 [/template]
 
@@ -352,14 +367,21 @@
 [/template]
 
 [comment delegate implementation for SubView/]
-[template public getterForSubViewsImplementationDelegate(view : View, fullInterfacePath : String)]
-[view.getterSignatureDocumentationImplementation(fullInterfacePath)/]
-	[view.getterSignature()/] {
+[template public getterForSubViewImplementationDelegate(view : View, fullInterfacePath : String)]
+[view.getterForSubViewSignatureDocumentationImplementation(fullInterfacePath)/]
+		[view.getterForSubViewSignature()/] {
 			return (IPropertiesEditionPart) [view.pepInterface().toLowerFirst()/];
 		}
 [/template]
 
 [comment delegate implementation for ViewReference/]
+[template public getterForReferencedViewImplementation(view : View, fullInterfacePath : String)]
+[view.getterForReferencedViewSignatureDocumentationImplementation(fullInterfacePath)/]
+		[view.getterForReferencedViewSignature()/] {
+			return (IPropertiesEditionPart) [view.pepInterface().toLowerFirst()/];
+		}
+[/template]
+
 [template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 [getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.getterAddSignature()/] {
@@ -409,11 +431,19 @@
 	 */
 [/template]
 
-[template public getterSignatureDocumentationImplementation(view : View, fullInterfacePath : String)]
+[template public getterForSubViewSignatureDocumentationImplementation(view : View, fullInterfacePath : String)]
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#get[view.name.toJavaClassifier()/]SubView()
+	 */
+[/template]
+
+[template public getterForReferencedViewSignatureDocumentationImplementation(view : View, fullInterfacePath : String)]
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#get[view.name.toJavaClassifier()/]ReferencedView()
 	 */
 [/template]
 

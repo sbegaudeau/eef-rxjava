@@ -162,6 +162,9 @@
 	then not ref.view.oclAsType(views::View).involvedPropertiesEditionComponent().oclIsUndefined()
 	else false
 	endif/]
+	
+[query public isA1stLevelReferencedView(toCheck : View, pec : PropertiesEditionComponent) : Boolean = 
+	pec.views.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsKindOf(views::View)).oclAsType(views::View)->includes(toCheck)/]
 
 [comment ----- StructuralFeatures classification ----- /]
 [query public isReferenceMany(feature : EStructuralFeature) : Boolean = 
