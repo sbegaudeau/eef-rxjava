@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionPartForm.java,v 1.5 2009/05/19 09:17:01 glefur Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionPartForm.java,v 1.6 2009/05/19 14:23:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -82,8 +83,8 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 	protected EObjectFlatComboViewer model;
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
-	protected List<ViewerFilter> viewsBusinessFilters;
-	protected List<ViewerFilter> viewsFilters;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -286,7 +287,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getModel()));
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.model, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}

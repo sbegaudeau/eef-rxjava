@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.5 2009/05/19 09:17:01 glefur Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.6 2009/05/19 14:23:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -86,11 +87,11 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	protected TableViewer model;
 	private Button addModel;
 	private Button removeModel;
-	protected List<ViewerFilter> modelBusinessFilters;
+	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
-	protected List<ViewerFilter> viewsBusinessFilters;
-	protected List<ViewerFilter> viewsFilters;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
