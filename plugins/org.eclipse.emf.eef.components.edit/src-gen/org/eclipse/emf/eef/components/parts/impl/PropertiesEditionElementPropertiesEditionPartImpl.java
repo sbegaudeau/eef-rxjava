@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.5 2009/05/19 09:17:01 glefur Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.6 2009/05/19 14:23:50 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -76,7 +77,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	protected TableViewer views;
 	private Button addViews;
 	private Button removeViews;
-	protected List<ViewerFilter> viewsBusinessFilters;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -85,7 +86,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	public PropertiesEditionElementPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -95,11 +96,11 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 		createBindingGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory) {
 
@@ -112,7 +113,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			}
 			
 		});
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -346,11 +347,11 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		}
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**

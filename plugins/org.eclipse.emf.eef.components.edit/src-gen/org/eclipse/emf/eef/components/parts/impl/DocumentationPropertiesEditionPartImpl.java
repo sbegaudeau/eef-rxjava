@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.3 2009/05/19 09:17:01 glefur Exp $
+ * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.4 2009/05/19 14:23:50 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -46,7 +46,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 	public DocumentationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -56,13 +56,13 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		createControls(view);
 		return view;
 	}
-	
+
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
-		
+
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
 	}
 
 	protected void createDocumentationGroup(Composite parent) {
@@ -89,11 +89,11 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.Documentation.documentation, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
 	}
 
 	/**
