@@ -9,13 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFElementBindingBasePropertiesEditionComponent.java,v 1.3 2009/05/05 12:07:30 sbouchet Exp $
+ * $Id: EMFElementBindingBasePropertiesEditionComponent.java,v 1.4 2009/05/19 08:15:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,13 +40,18 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -80,7 +84,6 @@ public class EMFElementBindingBasePropertiesEditionComponent extends StandardPro
 				this.eMFElementBinding.eAdapters().add(semanticAdapter);
 			}
 		}
-		listeners = new ArrayList();
 		this.editing_mode = editing_mode;
 	}
 	
@@ -122,7 +125,6 @@ public class EMFElementBindingBasePropertiesEditionComponent extends StandardPro
 			return MappingViewsRepository.EMFElementBinding.class;
 		return super.translatePart(key);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -145,7 +147,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends StandardPro
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 				if (provider != null) {
 					basePart = (EMFElementBindingPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.EMFElementBinding.class, kind, this);
-					listeners.add(basePart);
+					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
 			return (IPropertiesEditionPart)basePart;
@@ -163,12 +165,52 @@ public class EMFElementBindingBasePropertiesEditionComponent extends StandardPro
 		if (basePart != null && key == MappingViewsRepository.EMFElementBinding.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			EMFElementBinding eMFElementBinding = (EMFElementBinding)elt;
+			// init values
 			if (eMFElementBinding.getName() != null)
 				basePart.setName(eMFElementBinding.getName());
 
 			basePart.initViews(eMFElementBinding, null, MappingPackage.eINSTANCE.getAbstractElementBinding_Views());
 			basePart.initModel(allResource, eMFElementBinding.getModel());
+			
+			// init filters
+			
+			basePart.addFilterToViews(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!basePart.getViewsTable().contains(element));
+					return false;
+				}
+
+			});
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
+			// Start of user code for additional businessfilters for views
+			
+			// End of user code
+			basePart.addFilterToModel(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return (element instanceof EClassifier);
+				}
+
+			});
+			// Start of user code for additional businessfilters for model
+			
+			// End of user code
 		}
+		// init values for referenced views
+
+		// init filters for referenced views
 
 	}
 
@@ -248,8 +290,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends StandardPro
 				command.append(SetCommand.create(liveEditingDomain, eMFElementBinding, MappingPackage.eINSTANCE.getEMFElementBinding_Model(), event.getNewValue()));
 
 
-			if (command != null)
-				liveEditingDomain.getCommandStack().execute(command);
+			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
