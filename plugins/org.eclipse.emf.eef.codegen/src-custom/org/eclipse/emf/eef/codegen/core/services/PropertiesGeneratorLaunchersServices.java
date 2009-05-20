@@ -20,7 +20,6 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLauncher;
-import org.eclipse.emf.eef.codegen.core.launcher.IPropertiesGeneratorLauncher;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
