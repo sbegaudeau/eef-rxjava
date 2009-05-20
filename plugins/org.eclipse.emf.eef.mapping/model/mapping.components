@@ -119,6 +119,27 @@
         <referencedBinding xmi:id="_Aim5oESNEd6PiZF96n250A" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OnlyReferenceTypeFilter"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_hfHNUEVFEd6OEZjV-T3j6Q" name="OCLFilter" views="_v-Lw4EVDEd6OEZjV-T3j6Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xVR0wEVFEd6OEZjV-T3j6Q" name="OCLExpressionBody" views="_1HhpQEVDEd6OEZjV-T3j6Q">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OCLFilter/body"/>
+        </properties>
+        <referencedBinding xmi:id="_7kW34EVFEd6OEZjV-T3j6Q" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OCLFilter"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_8ydCsEVFEd6OEZjV-T3j6Q" name="JavaExpressionFilter" views="_5nfNcEVDEd6OEZjV-T3j6Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8ydCsUVFEd6OEZjV-T3j6Q" name="JavaExpressionBody" views="_W2clgEVFEd6OEZjV-T3j6Q">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaExpressionFilter/body"/>
+        </properties>
+        <referencedBinding xmi:id="_8ydCskVFEd6OEZjV-T3j6Q" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaExpressionFilter"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_zyGfsEVJEd6OEZjV-T3j6Q" name="JavaDeclarationFilter" views="_bEtVsEVFEd6OEZjV-T3j6Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_zyHGwEVJEd6OEZjV-T3j6Q" name="JavaDeclarationMethodName" views="_bEtVskVFEd6OEZjV-T3j6Q">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaDeclarationFilter/methodName"/>
+        </properties>
+        <referencedBinding xmi:id="_zyHGwUVJEd6OEZjV-T3j6Q" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaDeclarationFilter"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping"/>
   </eef-components:PropertiesEditionContext>
@@ -264,6 +285,30 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_WqYT8ESLEd6PiZF96n250A" name="referencedFeature">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_v-Lw4EVDEd6OEZjV-T3j6Q" name="OCLFilter">
+        <elements xsi:type="eef-views:Container" xmi:id="_xz7xkEVDEd6OEZjV-T3j6Q" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_1HhpQEVDEd6OEZjV-T3j6Q" name="OCLExpressionBody">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_5nfNcEVDEd6OEZjV-T3j6Q" name="JavaExpressionFilter">
+        <elements xsi:type="eef-views:Container" xmi:id="_WWG4kEVFEd6OEZjV-T3j6Q" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_W2clgEVFEd6OEZjV-T3j6Q" name="javaExpressionBody">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_bEtVsEVFEd6OEZjV-T3j6Q" name="JavaDeclarationFilter">
+        <elements xsi:type="eef-views:Container" xmi:id="_bEtVsUVFEd6OEZjV-T3j6Q" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bEtVskVFEd6OEZjV-T3j6Q" name="methodName">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
