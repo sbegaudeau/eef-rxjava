@@ -153,10 +153,6 @@
 [query public mustBeGenerated(view : View, pec : PropertiesEditionComponent) : Boolean =
 	view.oclAsType(ecore::EObject).eResource() = pec.oclAsType(ecore::EObject).eResource()/]
 
-[comment As Quentin said /]
-[query public isSubbindingExisting(view : View) : Boolean = 
-	not view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->exists(not involvedPropertiesEditionElement().oclIsUndefined())/]
-
 [query public needBeGenerated(ref : ViewReference) : Boolean = 
 	if (ref.view.oclIsTypeOf(views::View))
 	then not ref.view.oclAsType(views::View).involvedPropertiesEditionComponent().oclIsUndefined()
@@ -239,13 +235,13 @@ set[editor.model.ecorePackageSignature()/]()
 	else null
 	endif/]
 
-[template public helpText(editor : ElementEditor, pec : PropertiesEditionComponent)]
-[if (not editor.owningViewsRepository().associatedGenRepository().oclIsUndefined())]
-[if (editor.owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::GENMODEL)]
-[if ((not editor.involvedPropertiesEditionElement(pec).associatedGenFeature().oclIsUndefined()) and (not editor.involvedPropertiesEditionElement(pec).associatedGenFeature().propertyDescription.oclIsUndefined()))]"[editor.involvedPropertiesEditionElement(pec).associatedGenFeature().propertyDescription/]"[else]null[/if]
-[elseif (editor.owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::ECOREMODEL)]
-[if (not editor.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first().model.ecoreHelp().oclIsUndefined())]"[editor.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first().model.ecoreHelp().trim()/]"[else]null[/if]
-[/if]
+[template public helpText(pee : PropertiesEditionElement)]
+[if (not pee.views->first().owningViewsRepository().associatedGenRepository().oclIsUndefined())]
+	[if (pee.views->first().owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::GENMODEL)]
+[if ((not pee.associatedGenFeature().oclIsUndefined()) and (not pee.associatedGenFeature().propertyDescription.oclIsUndefined()))]"[pee.associatedGenFeature().propertyDescription/]"[else]null[/if]
+	[elseif (pee.views->first().owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::ECOREMODEL)]
+[if (pee.model.ecoreHelp().oclIsUndefined())]"[pee.model.ecoreHelp().trim()/]"[else]null[/if]
+	[/if]
 [/if]
 [/template]
 

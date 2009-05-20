@@ -375,7 +375,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		return [for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | f.model.required)) separator (' || ')]key == [pee.views->first().editorID()/][/for];
 	}
 [/if]
-[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.views->first().oclAsType(views::ElementEditor).helpText(pec).oclIsUndefined() and not (localPee.views->first().oclAsType(views::ElementEditor).helpText(pec) = 'null'))->notEmpty())]
+[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.helpText().oclIsUndefined() and not (localPee.helpText() = 'null'))->notEmpty())]
 
 	/**
 	 * {@inheritDoc}
@@ -383,9 +383,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
 	 */
 	public String getHelpContent(String key, int kind) {
-		[for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | not f.views->first().oclAsType(views::ElementEditor).helpText(pec).oclIsUndefined() and not (f.views->first().oclAsType(views::ElementEditor).helpText(pec) = 'null')))]
+		[for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | not f.helpText().oclIsUndefined() and not (f.helpText() = 'null')))]
 		if (key == [pee.views->first().editorID()/])
-			return [pee.views->first().oclAsType(views::ElementEditor).helpText(pec)/]; //$NON-NLS-1$
+			return [pee.helpText()/]; //$NON-NLS-1$
 		[/for]
 		return super.getHelpContent(key, kind);
 	}
