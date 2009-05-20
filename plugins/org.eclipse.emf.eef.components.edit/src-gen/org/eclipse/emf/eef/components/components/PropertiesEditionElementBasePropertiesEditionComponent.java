@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:51:44 sbouchet Exp $
+ * $Id: PropertiesEditionElementBasePropertiesEditionComponent.java,v 1.7 2009/05/20 17:57:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
 // Start of user code for imports
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,6 +49,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -207,6 +209,23 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Stan
 				}
 
 			});
+			basePart.addFilterToViews(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					Object result = EEFUtils.choiceOfValues(PropertiesEditionElementBasePropertiesEditionComponent.this.propertiesEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), (ResourceSet)parentElement);
+					if (result instanceof Collection){
+						return ((Collection)result).contains(element);
+					}else if (result instanceof ResourceSet){
+						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
+					}
+					return false;
+				}
+			});
 			// Start of user code for additional businessfilters for views
 			
 			// End of user code
@@ -232,6 +251,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Stan
 		// init filters for referenced views
 
 	}
+
+
 
 	/**
 	 * {@inheritDoc}

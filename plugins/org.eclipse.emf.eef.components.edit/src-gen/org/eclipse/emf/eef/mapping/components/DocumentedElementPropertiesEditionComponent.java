@@ -9,30 +9,44 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.7 2009/05/20 17:57:32 sbouchet Exp $
+ * $Id$
  */
-package org.eclipse.emf.eef.components.components;
+package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+
+import org.eclipse.emf.eef.mapping.DocumentedElement;
+
+
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
-import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
-import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.components.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -41,6 +55,8 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -48,31 +64,31 @@ import org.eclipse.jface.viewers.ViewerFilter;
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class PropertiesEditionContextBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class DocumentedElementPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
-	public static String BASE_PART = "Base"; //$NON-NLS-1$
+	public static String DOCUMENTATION_PART = "Documentation"; //$NON-NLS-1$
 
-	private String[] parts = {BASE_PART};
+	private String[] parts = {DOCUMENTATION_PART};
 
 	/**
 	 * The EObject to edit
 	 */
-	private PropertiesEditionContext propertiesEditionContext;
+	private DocumentedElement documentedElement;
 
 	/**
-	 * The Base part
+	 * The Documentation part
 	 */
-	private PropertiesEditionContextPropertiesEditionPart basePart;
+	private DocumentationPropertiesEditionPart documentationPart;
 
 	/**
 	 * Default constructor
 	 */
-	public PropertiesEditionContextBasePropertiesEditionComponent(EObject propertiesEditionContext, String editing_mode) {
-		if (propertiesEditionContext instanceof PropertiesEditionContext) {
-			this.propertiesEditionContext = (PropertiesEditionContext)propertiesEditionContext;
+	public DocumentedElementPropertiesEditionComponent(EObject documentedElement, String editing_mode) {
+		if (documentedElement instanceof DocumentedElement) {
+			this.documentedElement = (DocumentedElement)documentedElement;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
-				this.propertiesEditionContext.eAdapters().add(semanticAdapter);
+				this.documentedElement.eAdapters().add(semanticAdapter);
 			}
 		}
 		this.editing_mode = editing_mode;
@@ -92,11 +108,12 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (basePart == null)
-					PropertiesEditionContextBasePropertiesEditionComponent.this.dispose();
+				if (documentationPart == null)
+					DocumentedElementPropertiesEditionComponent.this.dispose();
 				else {
-					if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
-						basePart.setModel((EObject)msg.getNewValue());
+					if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null)
+						documentationPart.setDocumentation((String)msg.getNewValue());
+
 
 
 				}
@@ -111,8 +128,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return ComponentsViewsRepository.PropertiesEditionContext.class;
+		if (DOCUMENTATION_PART.equals(key))
+			return ComponentsViewsRepository.Documentation.class;
 		return super.translatePart(key);
 	}
 
@@ -132,15 +149,15 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (propertiesEditionContext != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
+		if (documentedElement != null && DOCUMENTATION_PART.equals(key)) {
+			if (documentationPart == null) {
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ComponentsViewsRepository.class);
 				if (provider != null) {
-					basePart = (PropertiesEditionContextPropertiesEditionPart)provider.getPropertiesEditionPart(ComponentsViewsRepository.PropertiesEditionContext.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
+					documentationPart = (DocumentationPropertiesEditionPart)provider.getPropertiesEditionPart(ComponentsViewsRepository.Documentation.class, kind, this);
+					addListener((IPropertiesEditionListener)documentationPart);
 				}
 			}
-			return (IPropertiesEditionPart)basePart;
+			return (IPropertiesEditionPart)documentationPart;
 		}
 		return null;
 	}
@@ -152,8 +169,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == ComponentsViewsRepository.PropertiesEditionContext.class)
-			this.basePart = (PropertiesEditionContextPropertiesEditionPart) propertiesEditionPart;
+		if (key == ComponentsViewsRepository.Documentation.class)
+			this.documentationPart = (DocumentationPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -163,28 +180,16 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
-		if (basePart != null && key == ComponentsViewsRepository.PropertiesEditionContext.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)elt;
+		if (documentationPart != null && key == ComponentsViewsRepository.Documentation.class) {
+			((IPropertiesEditionPart)documentationPart).setContext(elt, allResource);
+			DocumentedElement documentedElement = (DocumentedElement)elt;
 			// init values
-			basePart.initModel(allResource, propertiesEditionContext.getModel());
+			if (documentedElement.getDocumentation() != null)
+				documentationPart.setDocumentation(documentedElement.getDocumentation());
+
 			
 			// init filters
-			basePart.addFilterToModel(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof GenPackage);
-				}
-
-			});
-			// Start of user code for additional businessfilters for model
-			
-			// End of user code
 		}
 		// init values for referenced views
 
@@ -202,8 +207,9 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (propertiesEditionContext != null) {
-			cc.append(SetCommand.create(editingDomain, propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model(), basePart.getModel()));
+		if (documentedElement != null) {
+			cc.append(SetCommand.create(editingDomain, documentedElement, MappingPackage.eINSTANCE.getDocumentedElement_Documentation(), documentationPart.getDocumentation()));
+
 
 
 		}
@@ -219,12 +225,13 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof PropertiesEditionContext) {
-			PropertiesEditionContext propertiesEditionContextToUpdate = (PropertiesEditionContext)source;
-			propertiesEditionContextToUpdate.setModel((GenPackage)basePart.getModel());
+		if (source instanceof DocumentedElement) {
+			DocumentedElement documentedElementToUpdate = (DocumentedElement)source;
+			documentedElementToUpdate.setDocumentation(documentationPart.getDocumentation());
 
 
-			return propertiesEditionContextToUpdate;
+
+			return documentedElementToUpdate;
 		}
 		else
 			return null;
@@ -239,19 +246,22 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (ComponentsViewsRepository.PropertiesEditionContext.model == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model(), event.getNewValue()));
+			if (ComponentsViewsRepository.Documentation.documentation == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, documentedElement, MappingPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
+
 
 
 			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-
+				if (ComponentsViewsRepository.Documentation.documentation == event.getAffectedEditor())
+					documentationPart.setMessageForDocumentation(diag.getMessage(), IMessageProvider.ERROR);
 
 
 			} else {
-
+				if (ComponentsViewsRepository.Documentation.documentation == event.getAffectedEditor())
+					documentationPart.unsetMessageForDocumentation();
 
 
 			}
@@ -261,20 +271,11 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
-	 */
-	public boolean isRequired(String key, int kind) {
-		return key == ComponentsViewsRepository.PropertiesEditionContext.model;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ComponentsViewsRepository.PropertiesEditionContext.model)
-			return "The GenPackage for this edition context"; //$NON-NLS-1$
+		if (key == ComponentsViewsRepository.Documentation.documentation)
+			return "The documentation of the element"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -287,6 +288,10 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
 		try {
+			if (ComponentsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+				Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+			}
 
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
@@ -306,7 +311,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 			return Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(propertiesEditionContext);
+			return Diagnostician.INSTANCE.validate(documentedElement);
 		else
 			return null;
 	}
@@ -319,7 +324,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
-			propertiesEditionContext.eAdapters().remove(semanticAdapter);
+			documentedElement.eAdapters().remove(semanticAdapter);
 	}
 
 }

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:51:44 sbouchet Exp $
+ * $Id: PropertiesEditionComponentBasePropertiesEditionComponent.java,v 1.7 2009/05/20 17:57:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -242,6 +242,8 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends St
 		// init filters for referenced views
 
 	}
+
+
 
 	/**
 	 * {@inheritDoc}
