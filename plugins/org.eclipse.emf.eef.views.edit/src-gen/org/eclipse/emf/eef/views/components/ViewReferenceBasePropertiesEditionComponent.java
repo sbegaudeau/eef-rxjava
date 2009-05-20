@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferenceBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
+ * $Id: ViewReferenceBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -52,19 +52,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class ViewReferenceBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private ViewReference viewReference;
-	
+
 	/**
 	 * The Base part
 	 */
 	private ViewReferencePropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +78,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,10 +97,10 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 					ViewReferenceBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 					if (ViewsPackage.eINSTANCE.getViewReference_View().equals(msg.getFeature()) && basePart != null)
-					basePart.setReferencedView((EObject)msg.getNewValue());
+						basePart.setReferencedView((EObject)msg.getNewValue());
 
 
 				}
@@ -177,7 +177,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 			basePart.initReferencedView(allResource, viewReference.getView());
 			
 			// init filters
-			
+
 			basePart.addFilterToReferencedView(new ViewerFilter() {
 
 				/*
@@ -262,13 +262,13 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				
+
 
 
 			} else {
 				if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-				
+
 
 
 			}

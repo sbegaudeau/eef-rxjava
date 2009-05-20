@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitPropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
+ * $Id: ToolkitPropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:02 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.components;
 
@@ -49,19 +49,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class ToolkitPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Toolkit toolkit;
-	
+
 	/**
 	 * The Base part
 	 */
 	private ToolkitPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -75,7 +75,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -94,7 +94,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 					ToolkitPropertiesEditionComponent.this.dispose();
 				else {
 					if (ToolkitsPackage.eINSTANCE.getToolkit_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 
 
@@ -171,7 +171,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 			
 			// init filters
-			
+
 		}
 		// init values for referenced views
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
+ * $Id: ViewBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -52,19 +52,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private View view;
-	
+
 	/**
 	 * The Base part
 	 */
 	private ViewPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +78,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,12 +97,12 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 					ViewBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-					basePart.setRepresentation((EObject)msg.getNewValue());
+						basePart.setRepresentation((EObject)msg.getNewValue());
 					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 					if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
-					basePart.setExplicit((Boolean)msg.getNewValue());
+						basePart.setExplicit((Boolean)msg.getNewValue());
 
 
 
@@ -197,8 +197,8 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			// Start of user code for additional businessfilters for representation
 			
 			// End of user code
-			
-			
+
+
 		}
 		// init values for referenced views
 
@@ -273,17 +273,17 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 				if (ViewsViewsRepository.View.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				
+
 
 
 			} else {
-				
+
 				if (ViewsViewsRepository.View.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-				
+
 
 
 			}

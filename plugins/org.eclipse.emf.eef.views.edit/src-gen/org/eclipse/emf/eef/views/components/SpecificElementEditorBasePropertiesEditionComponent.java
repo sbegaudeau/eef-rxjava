@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditorBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:41 glefur Exp $
+ * $Id: SpecificElementEditorBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -52,19 +52,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class SpecificElementEditorBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private SpecificElementEditor specificElementEditor;
-	
+
 	/**
 	 * The Base part
 	 */
 	private SpecificElementEditorPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +78,7 @@ public class SpecificElementEditorBasePropertiesEditionComponent extends Standar
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,12 +97,12 @@ public class SpecificElementEditorBasePropertiesEditionComponent extends Standar
 					SpecificElementEditorBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-					basePart.setRepresentation((EObject)msg.getNewValue());
+						basePart.setRepresentation((EObject)msg.getNewValue());
 					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 					if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null)
-					basePart.setReadOnly((Boolean)msg.getNewValue());
+						basePart.setReadOnly((Boolean)msg.getNewValue());
 
 
 
@@ -197,8 +197,8 @@ public class SpecificElementEditorBasePropertiesEditionComponent extends Standar
 			// Start of user code for additional businessfilters for representation
 			
 			// End of user code
-			
-			
+
+
 		}
 		// init values for referenced views
 
@@ -273,17 +273,17 @@ public class SpecificElementEditorBasePropertiesEditionComponent extends Standar
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 				if (ViewsViewsRepository.SpecificElementEditor.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				
+
 
 
 			} else {
-				
+
 				if (ViewsViewsRepository.SpecificElementEditor.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-				
+
 
 
 			}

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewPropertiesEditionPartImpl.java,v 1.5 2009/05/19 14:29:10 sbouchet Exp $
+ * $Id: CustomViewPropertiesEditionPartImpl.java,v 1.6 2009/05/20 15:52:02 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
