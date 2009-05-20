@@ -111,6 +111,15 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/SimpleModelNavigation"/>
       </bindings>
     </categories>
+    <categories xmi:id="_jgK6oESLEd6PiZF96n250A" name="filters">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_kz4lQESLEd6PiZF96n250A" name="OnlyReferenceTypeFilter" views="_r-iqkESKEd6PiZF96n250A" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_s0gMwESLEd6PiZF96n250A" documentation="" name="referencedFeature" views="_WqYT8ESLEd6PiZF96n250A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OnlyReferenceTypeFilter/reference"/>
+        </properties>
+        <referencedBinding xmi:id="_Aim5oESNEd6PiZF96n250A" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OnlyReferenceTypeFilter"/>
+      </bindings>
+    </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping"/>
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_btT4-Qd2Ed6c_JoEf-t5JA" documentation="Views repository for mapping GenPackage" name="mapping">
@@ -244,6 +253,16 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Tn4JYA_fEd6yj5ZmUZfl5Q" documentation="" name="discriminatorType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+    <categories xmi:id="_q306IESKEd6PiZF96n250A" name="filters">
+      <views xmi:id="_r-iqkESKEd6PiZF96n250A" name="OnlyReferenceTypeFilter">
+        <elements xsi:type="eef-views:Container" xmi:id="_Lsm-0ESLEd6PiZF96n250A" name="Properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_WqYT8ESLEd6PiZF96n250A" name="referencedFeature">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
         </elements>
