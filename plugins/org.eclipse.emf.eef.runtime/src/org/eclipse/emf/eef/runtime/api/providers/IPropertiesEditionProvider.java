@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.runtime.api.providers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 /**
  * Interface to implement by {@link IPropertiesEditionComponent} providers.
