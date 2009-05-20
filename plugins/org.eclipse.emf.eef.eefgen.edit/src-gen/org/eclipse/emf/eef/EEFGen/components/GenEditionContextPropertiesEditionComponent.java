@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionComponent.java,v 1.5 2009/05/19 09:16:32 glefur Exp $
+ * $Id: GenEditionContextPropertiesEditionComponent.java,v 1.6 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -52,19 +52,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class GenEditionContextPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private GenEditionContext genEditionContext;
-	
+
 	/**
 	 * The Base part
 	 */
 	private GenEditionContextPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +78,7 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,19 +97,19 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 					GenEditionContextPropertiesEditionComponent.this.dispose();
 				else {
 					if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null)
-					basePart.setBasePackage((String)msg.getNewValue());
+						basePart.setBasePackage((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().equals(msg.getFeature()) && basePart != null)
-					basePart.setDescriptorsContributorID((String)msg.getNewValue());
+						basePart.setDescriptorsContributorID((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().equals(msg.getFeature()) && basePart != null)
-					basePart.setDescriptorsGenericPropertiesViews((Boolean)msg.getNewValue());
+						basePart.setDescriptorsGenericPropertiesViews((Boolean)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().equals(msg.getFeature()) && basePart != null)
-					basePart.setGmfPropertiesViews((Boolean)msg.getNewValue());
+						basePart.setGmfPropertiesViews((Boolean)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditionContext().equals(msg.getFeature()) && basePart != null)
-					basePart.setPropertiesEditionContext((EObject)msg.getNewValue());
+						basePart.setPropertiesEditionContext((EObject)msg.getNewValue());
 
 
 				}
@@ -193,10 +193,10 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 			basePart.initPropertiesEditionContext(allResource, genEditionContext.getPropertiesEditionContext());
 			
 			// init filters
-			
-			
-			
-			
+
+
+
+
 			basePart.addFilterToPropertiesEditionContext(new ViewerFilter() {
 
 				/*
@@ -304,9 +304,9 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 					basePart.setMessageForBasePackage(diag.getMessage(), IMessageProvider.ERROR);
 				if (EEFGenViewsRepository.GenEditionContext.descriptorsContributorID == event.getAffectedEditor())
 					basePart.setMessageForDescriptorsContributorID(diag.getMessage(), IMessageProvider.ERROR);
-				
-				
-				
+
+
+
 
 
 			} else {
@@ -314,9 +314,9 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 					basePart.unsetMessageForBasePackage();
 				if (EEFGenViewsRepository.GenEditionContext.descriptorsContributorID == event.getAffectedEditor())
 					basePart.unsetMessageForDescriptorsContributorID();
-				
-				
-				
+
+
+
 
 
 			}

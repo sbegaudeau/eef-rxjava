@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionComponent.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -51,19 +51,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class EEFGenModelReferencePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private EEFGenModelReference eEFGenModelReference;
-	
+
 	/**
 	 * The Base part
 	 */
 	private EEFGenModelReferencePropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -77,7 +77,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -96,7 +96,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 					EEFGenModelReferencePropertiesEditionComponent.this.dispose();
 				else {
 					if (EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext().equals(msg.getFeature()) && basePart != null)
-					basePart.setReferencedEEFGenModel((EObject)msg.getNewValue());
+						basePart.setReferencedEEFGenModel((EObject)msg.getNewValue());
 
 
 				}
@@ -245,11 +245,11 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 
 
 			} else {
-				
+
 
 
 			}

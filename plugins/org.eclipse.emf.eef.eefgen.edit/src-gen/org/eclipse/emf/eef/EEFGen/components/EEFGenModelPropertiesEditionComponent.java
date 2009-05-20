@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
+ * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -49,19 +49,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private EEFGenModel eEFGenModel;
-	
+
 	/**
 	 * The Base part
 	 */
 	private EEFGenModelPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -75,7 +75,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -94,13 +94,13 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 					EEFGenModelPropertiesEditionComponent.this.dispose();
 				else {
 					if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null)
-					basePart.setGenDirectory((String)msg.getNewValue());
+						basePart.setGenDirectory((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null)
-					basePart.setAuthor((String)msg.getNewValue());
+						basePart.setAuthor((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null)
-					basePart.setLicense((String)msg.getNewValue());
+						basePart.setLicense((String)msg.getNewValue());
 
 
 
@@ -183,9 +183,9 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 			
 			// init filters
-			
-			
-			
+
+
+
 		}
 		// init values for referenced views
 
@@ -229,7 +229,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 			eEFGenModelToUpdate.setAuthor(basePart.getAuthor());
 
-			eEFGenModelToUpdate.setLicense(basePart.getLicense());
+			eEFGenModelToUpdate.setLicense(basePart.getLicense());	
 
 
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.4 2009/05/19 14:25:47 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -34,6 +34,7 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
@@ -154,7 +155,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		legalGroupLayout.numColumns = 3;
 		legalGroup.setLayout(legalGroupLayout);
 		createAuthorText(widgetFactory, legalGroup);
-		createLicenseText(widgetFactory, legalGroup);
+		createLicenseTextarea(widgetFactory, legalGroup);
 		legalSection.setClient(legalGroup);
 	}
 	protected void createAuthorText(FormToolkit widgetFactory, Composite parent) {
@@ -208,26 +209,16 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 
 	}
-	protected void createLicenseText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND));
-		license = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		license.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+	protected void createLicenseTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label licenseLabel = FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND));
+		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		licenseLabelData.horizontalSpan = 3;
+		licenseLabel.setLayoutData(licenseLabelData);
+		license = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
 		GridData licenseData = new GridData(GridData.FILL_HORIZONTAL);
+		licenseData.horizontalSpan = 2;
+		licenseData.heightHint = 80;
 		license.setLayoutData(licenseData);
-		license.addModifyListener(new ModifyListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-			 */
-			public void modifyText(ModifyEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.license, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, license.getText()));
-			}
-			
-		});
 		license.addFocusListener(new FocusAdapter() {
 
 			/**
@@ -254,10 +245,10 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
+		
 	}
 
 	

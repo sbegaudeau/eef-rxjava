@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.6 2009/05/20 13:14:53 sbouchet Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.7 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -302,7 +302,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 */
 	public void initHelpStrategy(EEnum eenum, Enumerator current) {
 		helpStrategy.setInput(eenum.getELiterals());
-		helpStrategy.setSelection(new StructuredSelection(current));
+		helpStrategy.modelUpdating(new StructuredSelection(current));
 	}
 
 	/**

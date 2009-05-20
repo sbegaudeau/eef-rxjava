@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -55,19 +55,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class GenViewsRepositoryPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private GenViewsRepository genViewsRepository;
-	
+
 	/**
 	 * The Base part
 	 */
 	private GenViewsRepositoryPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -81,7 +81,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -100,19 +100,19 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 					GenViewsRepositoryPropertiesEditionComponent.this.dispose();
 				else {
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null)
-					basePart.setBasePackage((String)msg.getNewValue());
+						basePart.setBasePackage((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
-					basePart.setSwtViews((Boolean)msg.getNewValue());
+						basePart.setSwtViews((Boolean)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null)
-					basePart.setFormViews((Boolean)msg.getNewValue());
+						basePart.setFormViews((Boolean)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && basePart != null)
-					basePart.setHelpStrategy((Enumerator)msg.getNewValue());
+						basePart.setHelpStrategy((Enumerator)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository().equals(msg.getFeature()) && basePart != null)
-					basePart.setViewsRepository((EObject)msg.getNewValue());
+						basePart.setViewsRepository((EObject)msg.getNewValue());
 
 
 				}
@@ -194,10 +194,10 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			basePart.initViewsRepository(allResource, genViewsRepository.getViewsRepository());
 			
 			// init filters
-			
-			
-			
-			
+
+
+
+
 			basePart.addFilterToViewsRepository(new ViewerFilter() {
 
 				/*
@@ -303,19 +303,19 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor())
 					basePart.setMessageForBasePackage(diag.getMessage(), IMessageProvider.ERROR);
-				
-				
-				
-				
+
+
+
+
 
 
 			} else {
 				if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor())
 					basePart.unsetMessageForBasePackage();
-				
-				
-				
-				
+
+
+
+
 
 
 			}

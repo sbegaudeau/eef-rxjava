@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPart.java,v 1.4 2009/05/19 09:16:32 glefur Exp $
+ * $Id: EEFGenModelPropertiesEditionPart.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
