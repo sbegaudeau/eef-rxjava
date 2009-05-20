@@ -384,7 +384,7 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues((EObject)parentElement, [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), allResource);
+					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
 					if (result instanceof Collection){
 						return ((Collection)result).contains(element);
 					}else if (result instanceof ResourceSet){
@@ -458,6 +458,55 @@
 				}
 
 			});
+[for (filter : BindingFilter | editionElement.bindingFilters)]
+[if(filter.oclIsTypeOf(filters::JavaDeclarationFilter))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return [filter.oclAsType(filters::JavaDeclarationFilter).methodName/]();
+				}
+
+			});
+[elseif (filter.oclIsTypeOf(filters::JavaExpressionFilter))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					[filter.oclAsType(filters::JavaExpressionFilter).body/]
+				}
+
+			});
+[elseif (filter.oclIsTypeOf(filters::OnlyReferenceTypeFilter))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
+					if (result instanceof Collection){
+						return ((Collection)result).contains(element);
+					}else if (result instanceof ResourceSet){
+						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
+					}
+					return false;
+				}
+			});
+[elseif (filter.oclIsTypeOf(filters::OCLFilter))]
+			// OCLFilter not implemented yet
+[/if]
+[/for]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
@@ -478,6 +527,55 @@
 				}
 
 			});
+[for (filter : BindingFilter | editionElement.bindingFilters)]
+[if(filter.oclIsTypeOf(filters::JavaDeclarationFilter))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return [filter.oclAsType(filters::JavaDeclarationFilter).methodName/]();
+				}
+
+			});
+[elseif (filter.oclIsTypeOf(filters::JavaExpressionFilter))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					[filter.oclAsType(filters::JavaExpressionFilter).body/]
+				}
+
+			});
+[elseif (filter.oclIsTypeOf(filters::OnlyReferenceTypeFilter))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
+					if (result instanceof Collection){
+						return ((Collection)result).contains(element);
+					}else if (result instanceof ResourceSet){
+						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
+					}
+					return false;
+				}
+			});
+[elseif (filter.oclIsTypeOf(filters::OCLFilter))]
+			// OCLFilter not implemented yet
+[/if]
+[/for]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			

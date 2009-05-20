@@ -252,7 +252,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
-	public void initPart(java.lang.Class key, int kind, EObject elt, final ResourceSet allResource) {
+	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if ([view.viewIdentifier(pec)/] != null && key == [view.editorID()/].class) {
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
 			[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
