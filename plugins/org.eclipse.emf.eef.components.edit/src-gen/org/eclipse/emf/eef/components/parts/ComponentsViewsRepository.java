@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsViewsRepository.java,v 1.4 2009/05/19 09:17:00 glefur Exp $
+ * $Id: ComponentsViewsRepository.java,v 1.5 2009/05/20 15:51:45 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 

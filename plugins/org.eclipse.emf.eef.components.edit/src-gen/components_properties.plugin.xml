@@ -30,27 +30,27 @@
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>	
+         </propertyTab>
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>	
+         </propertyTab>
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>	
+         </propertyTab>
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>	
+         </propertyTab>
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>	
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -74,7 +74,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent">
              <input
@@ -82,7 +82,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent">
              <input
@@ -123,6 +123,5 @@
          </propertySection>
       </propertySections>
    </extension>
-   
  </plugin>
 

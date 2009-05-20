@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.6 2009/05/19 14:23:50 sbouchet Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.7 2009/05/20 15:51:45 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -78,6 +78,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	private Button addViews;
 	private Button removeViews;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -322,7 +323,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	 *
 	 */
 	protected void addViews() {
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList(views.getFilters()), viewsBusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, viewsFilters, viewsBusinessFilters, false, true) {
 
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
@@ -529,7 +530,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#addFilterViews(ViewerFilter filter)
 	 */
 	public void addFilterToViews(ViewerFilter filter) {
-		views.addFilter(filter);
+		viewsFilters.add(filter);
 	}
 
 	/**

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:17:00 glefur Exp $
+ * $Id: PropertiesMultiEditionElementBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:51:44 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -61,19 +61,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private PropertiesMultiEditionElement propertiesMultiEditionElement;
-	
+
 	/**
 	 * The Base part
 	 */
 	private PropertiesMultiEditionElementPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -87,7 +87,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -106,14 +106,14 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 					PropertiesMultiEditionElementBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
-					basePart.updateViews(propertiesMultiEditionElement);
+						basePart.updateViews(propertiesMultiEditionElement);
 					if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
-					basePart.updateModel(propertiesMultiEditionElement);
+						basePart.updateModel(propertiesMultiEditionElement);
 					if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null)
-					basePart.setHelpID((String)msg.getNewValue());
+						basePart.setHelpID((String)msg.getNewValue());
 
 
 
@@ -195,7 +195,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 
 			
 			// init filters
-			
+
 			basePart.addFilterToViews(new ViewerFilter() {
 
 				/*
@@ -229,7 +229,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			// Start of user code for additional businessfilters for model
 			
 			// End of user code
-			
+
 		}
 		// init values for referenced views
 
@@ -342,8 +342,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				
-				
+
+
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.helpID == event.getAffectedEditor())
 					basePart.setMessageForHelpID(diag.getMessage(), IMessageProvider.ERROR);
 
@@ -351,8 +351,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			} else {
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-				
-				
+
+
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.helpID == event.getAffectedEditor())
 					basePart.unsetMessageForHelpID();
 

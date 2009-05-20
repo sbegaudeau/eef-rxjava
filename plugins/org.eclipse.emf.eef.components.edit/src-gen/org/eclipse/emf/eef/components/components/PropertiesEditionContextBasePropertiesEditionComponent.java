@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.5 2009/05/19 09:17:01 glefur Exp $
+ * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:51:44 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -51,19 +51,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class PropertiesEditionContextBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private PropertiesEditionContext propertiesEditionContext;
-	
+
 	/**
 	 * The Base part
 	 */
 	private PropertiesEditionContextPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -77,7 +77,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -96,7 +96,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 					PropertiesEditionContextBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
-					basePart.setModel((EObject)msg.getNewValue());
+						basePart.setModel((EObject)msg.getNewValue());
 
 
 				}
@@ -245,11 +245,11 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 
 
 			} else {
-				
+
 
 
 			}

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.6 2009/05/19 14:23:16 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.7 2009/05/20 15:51:45 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -88,6 +88,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	private Button addModel;
 	private Button removeModel;
 	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
 	private EMFListEditUtil viewsEditUtil;
 	private ReferencesTable<?> views;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
@@ -366,7 +367,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 */
 	protected void addModel() {
 
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList(model.getFilters()), modelBusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, modelFilters, modelBusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
@@ -590,7 +591,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addFilterModel(ViewerFilter filter)
 	 */
 	public void addFilterToModel(ViewerFilter filter) {
-		model.addFilter(filter);
+		modelFilters.add(filter);
 	}
 
 	/**
