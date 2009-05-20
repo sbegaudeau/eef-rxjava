@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.2 2009/05/05 12:05:25 sbouchet Exp $
+ * $Id: ComponentsEditor.java,v 1.3 2009/05/20 14:58:14 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -75,6 +75,8 @@ import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.eef.components.provider.ComponentsItemProviderAdapterFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelItemProviderAdapterFactory;
+import org.eclipse.emf.eef.mapping.filters.provider.FiltersItemProviderAdapterFactory;
+import org.eclipse.emf.eef.mapping.navigation.provider.NavigationItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.provider.MappingCustomItemProviderAdapterFactory;
 import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
 import org.eclipse.emf.eef.runtime.ui.properties.TabbedPropertiesEditionSheetPage;
@@ -596,6 +598,8 @@ public class ComponentsEditor extends MultiPageEditorPart implements IEditingDom
 		adapterFactory.addAdapterFactory(new ViewsItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ToolkitsItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new FiltersItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new NavigationItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
 		//
