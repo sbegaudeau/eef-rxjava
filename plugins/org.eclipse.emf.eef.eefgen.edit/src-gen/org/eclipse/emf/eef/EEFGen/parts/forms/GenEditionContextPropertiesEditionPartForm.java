@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.5 2009/05/19 14:25:47 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.6 2009/05/20 13:14:53 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.providers.EEFGenMessages;
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -32,7 +31,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
