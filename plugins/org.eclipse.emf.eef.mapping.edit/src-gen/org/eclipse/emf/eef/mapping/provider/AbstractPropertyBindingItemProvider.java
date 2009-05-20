@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBindingItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
+ * $Id: AbstractPropertyBindingItemProvider.java,v 1.4 2009/05/20 17:56:57 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -229,15 +229,15 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createOCLFilter()));
+//		newChildDescriptors.add(createChildParameter(
+//				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
+//						.createOCLFilter()));
 
 		newChildDescriptors.add(createChildParameter(
 				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
