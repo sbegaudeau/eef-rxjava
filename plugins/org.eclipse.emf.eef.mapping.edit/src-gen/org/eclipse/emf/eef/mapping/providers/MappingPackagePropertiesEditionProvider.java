@@ -9,12 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.4 2009/05/19 09:16:53 glefur Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.5 2009/05/20 10:13:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -36,6 +37,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		append(createElementBindingReferencePropertiesEditionProvider());
 		append(createEMFMultiPropertiesBindingPropertiesEditionProvider());
 		append(createSimpleModelNavigationPropertiesEditionProvider());
+		append(createOnlyReferenceTypeFilterPropertiesEditionProvider());
 	}
 	
 	/**
@@ -186,6 +188,21 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		if (simpleModelNavigationPropertiesEditionProvider == null)
 			simpleModelNavigationPropertiesEditionProvider = new SimpleModelNavigationPropertiesEditionProvider();
 		return simpleModelNavigationPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * OnlyReferenceTypeFilter instances.
+	 */
+	protected OnlyReferenceTypeFilterPropertiesEditionProvider onlyReferenceTypeFilterPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a OnlyReferenceTypeFilter
+	 */
+	public OnlyReferenceTypeFilterPropertiesEditionProvider createOnlyReferenceTypeFilterPropertiesEditionProvider() {
+		if (onlyReferenceTypeFilterPropertiesEditionProvider == null)
+			onlyReferenceTypeFilterPropertiesEditionProvider = new OnlyReferenceTypeFilterPropertiesEditionProvider();
+		return onlyReferenceTypeFilterPropertiesEditionProvider;
 	}
 	
 }	

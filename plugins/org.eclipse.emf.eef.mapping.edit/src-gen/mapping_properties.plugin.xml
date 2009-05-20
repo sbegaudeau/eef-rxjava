@@ -71,6 +71,11 @@
                category="extended"
                id="Documentation">
          </propertyTab>	
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation">
+         </propertyTab>	
       </propertyTabs>
    </extension>
    <extension
@@ -118,14 +123,6 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
-             <input
-                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
-             </input>
-         </propertySection>
-         <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
@@ -135,6 +132,14 @@
          </propertySection>
          <propertySection
                tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
              <input
@@ -142,7 +147,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
              <input
@@ -166,14 +171,6 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.ElementBindingReference">
-             <input
-                    type="org.eclipse.emf.eef.mapping.ElementBindingReference">
-             </input>
-         </propertySection>
-         <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.ElementBindingReference">
@@ -183,6 +180,14 @@
          </propertySection>
          <propertySection
                tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.ElementBindingReference">
+             <input
+                    type="org.eclipse.emf.eef.mapping.ElementBindingReference">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
              <input
@@ -190,7 +195,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
              <input
@@ -211,6 +216,22 @@
                id="org.eclipse.emf.eef.navigation.section.SimpleModelNavigation">
              <input
                     type="org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter">
              </input>
          </propertySection>
       </propertySections>

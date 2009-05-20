@@ -9,30 +9,47 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.6 2009/05/20 10:13:03 sbouchet Exp $
+ * $Id$
  */
-package org.eclipse.emf.eef.mapping.components;
+package org.eclipse.emf.eef.filters.components;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+
+import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
+
+
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.mapping.AbstractElementBinding;
-import org.eclipse.emf.eef.mapping.ElementBindingReference;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -41,6 +58,9 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -48,7 +68,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class ElementBindingReferenceBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -57,22 +77,22 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	/**
 	 * The EObject to edit
 	 */
-	private ElementBindingReference elementBindingReference;
+	private OnlyReferenceTypeFilter onlyReferenceTypeFilter;
 
 	/**
 	 * The Base part
 	 */
-	private ElementBindingReferencePropertiesEditionPart basePart;
+	private OnlyReferenceTypeFilterPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
 	 */
-	public ElementBindingReferenceBasePropertiesEditionComponent(EObject elementBindingReference, String editing_mode) {
-		if (elementBindingReference instanceof ElementBindingReference) {
-			this.elementBindingReference = (ElementBindingReference)elementBindingReference;
+	public OnlyReferenceTypeFilterBasePropertiesEditionComponent(EObject onlyReferenceTypeFilter, String editing_mode) {
+		if (onlyReferenceTypeFilter instanceof OnlyReferenceTypeFilter) {
+			this.onlyReferenceTypeFilter = (OnlyReferenceTypeFilter)onlyReferenceTypeFilter;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
-				this.elementBindingReference.eAdapters().add(semanticAdapter);
+				this.onlyReferenceTypeFilter.eAdapters().add(semanticAdapter);
 			}
 		}
 		this.editing_mode = editing_mode;
@@ -93,10 +113,10 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 			 */
 			public void notifyChanged(Notification msg) {
 				if (basePart == null)
-					ElementBindingReferenceBasePropertiesEditionComponent.this.dispose();
+					OnlyReferenceTypeFilterBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
-						basePart.setBinding((EObject)msg.getNewValue());
+					if (FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference().equals(msg.getFeature()) && basePart != null)
+						basePart.setReferencedFeature((EObject)msg.getNewValue());
 
 
 				}
@@ -112,7 +132,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
-			return MappingViewsRepository.ElementBindingReference.class;
+			return MappingViewsRepository.OnlyReferenceTypeFilter.class;
 		return super.translatePart(key);
 	}
 
@@ -132,11 +152,11 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (elementBindingReference != null && BASE_PART.equals(key)) {
+		if (onlyReferenceTypeFilter != null && BASE_PART.equals(key)) {
 			if (basePart == null) {
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 				if (provider != null) {
-					basePart = (ElementBindingReferencePropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.ElementBindingReference.class, kind, this);
+					basePart = (OnlyReferenceTypeFilterPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.OnlyReferenceTypeFilter.class, kind, this);
 					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
@@ -152,8 +172,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == MappingViewsRepository.ElementBindingReference.class)
-			this.basePart = (ElementBindingReferencePropertiesEditionPart) propertiesEditionPart;
+		if (key == MappingViewsRepository.OnlyReferenceTypeFilter.class)
+			this.basePart = (OnlyReferenceTypeFilterPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -163,14 +183,14 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
-		if (basePart != null && key == MappingViewsRepository.ElementBindingReference.class) {
+		if (basePart != null && key == MappingViewsRepository.OnlyReferenceTypeFilter.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			ElementBindingReference elementBindingReference = (ElementBindingReference)elt;
+			OnlyReferenceTypeFilter onlyReferenceTypeFilter = (OnlyReferenceTypeFilter)elt;
 			// init values
-			basePart.initBinding(allResource, elementBindingReference.getBinding());
+			basePart.initReferencedFeature(allResource, onlyReferenceTypeFilter.getReference());
 			
 			// init filters
-			basePart.addFilterToBinding(new ViewerFilter() {
+			basePart.addFilterToReferencedFeature(new ViewerFilter() {
 
 				/*
 				 * (non-Javadoc)
@@ -178,11 +198,11 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof AbstractElementBinding);
+					return (element instanceof String && element.equals("")) || (element instanceof EReference); //$NON-NLS-1$ 
 				}
 
 			});
-			// Start of user code for additional businessfilters for binding
+			// Start of user code for additional businessfilters for referencedFeature
 			
 			// End of user code
 		}
@@ -200,8 +220,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (elementBindingReference != null) {
-			cc.append(SetCommand.create(editingDomain, elementBindingReference, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), basePart.getBinding()));
+		if (onlyReferenceTypeFilter != null) {
+			cc.append(SetCommand.create(editingDomain, onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference(), basePart.getReferencedFeature()));
 
 
 		}
@@ -217,12 +237,12 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof ElementBindingReference) {
-			ElementBindingReference elementBindingReferenceToUpdate = (ElementBindingReference)source;
-			elementBindingReferenceToUpdate.setBinding((AbstractElementBinding)basePart.getBinding());
+		if (source instanceof OnlyReferenceTypeFilter) {
+			OnlyReferenceTypeFilter onlyReferenceTypeFilterToUpdate = (OnlyReferenceTypeFilter)source;
+			onlyReferenceTypeFilterToUpdate.setReference((EReference)basePart.getReferencedFeature());
 
 
-			return elementBindingReferenceToUpdate;
+			return onlyReferenceTypeFilterToUpdate;
 		}
 		else
 			return null;
@@ -237,8 +257,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (MappingViewsRepository.ElementBindingReference.binding == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, elementBindingReference, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), event.getNewValue()));
+			if (MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference(), event.getNewValue()));
 
 
 			liveEditingDomain.getCommandStack().execute(command);
@@ -254,26 +274,6 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 
 			}
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
-	 */
-	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.ElementBindingReference.binding;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
-	 */
-	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.ElementBindingReference.binding)
-			return "The referenced element binding"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
 	}
 
 	/**
@@ -304,7 +304,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 			return Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(elementBindingReference);
+			return Diagnostician.INSTANCE.validate(onlyReferenceTypeFilter);
 		else
 			return null;
 	}
@@ -317,7 +317,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
-			elementBindingReference.eAdapters().remove(semanticAdapter);
+			onlyReferenceTypeFilter.eAdapters().remove(semanticAdapter);
 	}
 
 }

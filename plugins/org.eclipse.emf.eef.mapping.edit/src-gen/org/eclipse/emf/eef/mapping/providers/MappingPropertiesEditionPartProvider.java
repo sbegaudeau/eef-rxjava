@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPropertiesEditionPartProvider.java,v 1.3 2009/05/19 09:16:53 glefur Exp $
+ * $Id: MappingPropertiesEditionPartProvider.java,v 1.4 2009/05/20 10:13:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -37,6 +37,8 @@ import org.eclipse.emf.eef.mapping.parts.forms.ModelNavigationPropertiesEditionP
 import org.eclipse.emf.eef.mapping.parts.impl.ModelNavigationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.forms.SimpleModelNavigationPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.impl.OnlyReferenceTypeFilterPropertiesEditionPartImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -117,6 +119,12 @@ public class MappingPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new SimpleModelNavigationPropertiesEditionPartImpl(component);
 			if (kind == MappingViewsRepository.FORM_KIND)
 				return new SimpleModelNavigationPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.OnlyReferenceTypeFilter.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new OnlyReferenceTypeFilterPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new OnlyReferenceTypeFilterPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

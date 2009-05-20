@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFElementBindingPropertiesEditionComponent.java,v 1.4 2009/05/19 09:16:53 glefur Exp $
+ * $Id: EMFElementBindingPropertiesEditionComponent.java,v 1.5 2009/05/20 10:13:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 

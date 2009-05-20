@@ -9,9 +9,9 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementPropertiesEditionProvider.java,v 1.5 2009/05/20 10:13:05 sbouchet Exp $
+ * $Id$
  */
-package org.eclipse.emf.eef.mapping.providers;
+package org.eclipse.emf.eef.filters.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -19,14 +19,16 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
+import org.eclipse.emf.eef.filters.components.OnlyReferenceTypeFilterPropertiesEditionComponent;
+import org.eclipse.emf.eef.filters.components.OnlyReferenceTypeFilterBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class DocumentedElementPropertiesEditionProvider implements IPropertiesEditionProvider {
+public class OnlyReferenceTypeFilterPropertiesEditionProvider implements IPropertiesEditionProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -34,7 +36,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof DocumentedElement) && (MappingPackage.eINSTANCE.getDocumentedElement() == eObject.eClass());
+		return (eObject instanceof OnlyReferenceTypeFilter) && (FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter() == eObject.eClass());
 	}
 	
 	/**
@@ -44,8 +46,8 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 *      java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof DocumentedElement) {
-			return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof OnlyReferenceTypeFilter) {
+			return new OnlyReferenceTypeFilterPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -57,7 +59,9 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 *      java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof DocumentedElement) {
+		if (eObject instanceof OnlyReferenceTypeFilter) {
+			if (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part))
+				return new OnlyReferenceTypeFilterBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}

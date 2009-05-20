@@ -9,11 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPart.java,v 1.6 2009/05/20 10:13:04 sbouchet Exp $
+ * $Id$
  */
 package org.eclipse.emf.eef.mapping.parts;
 
 // Start of user code for imports
+
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -24,43 +27,43 @@ import org.eclipse.jface.viewers.ViewerFilter;
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public interface ElementBindingReferencePropertiesEditionPart {
+public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 
 	/**
-	 * @return the binding
+	 * @return the referencedFeature
 	 */
-	public EObject getBinding();
+	public EObject getReferencedFeature();
 
 	/**
-	 * Init the binding
+	 * Init the referencedFeature
 	 * @param allResources the ResourceSet where the widget have to process
 	 * @param current the current value
 	 */
-	public void initBinding(ResourceSet allResources, EObject current);
+	public void initReferencedFeature(ResourceSet allResources, EObject current);
 
 	/**
-	 * Defines a new binding
-	 * @param newValue the new binding to set
+	 * Defines a new referencedFeature
+	 * @param newValue the new referencedFeature to set
 	 */
-	public void setBinding(EObject newValue);
+	public void setReferencedFeature(EObject newValue);
 
 	/**
-	 * Adds the given filter to the binding edition editor.
+	 * Adds the given filter to the referencedFeature edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
-	public void addFilterToBinding(ViewerFilter filter);
+	public void addFilterToReferencedFeature(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the binding edition editor.
+	 * Adds the given filter to the referencedFeature edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
-	public void addBusinessFilterToBinding(ViewerFilter filter);
+	public void addBusinessFilterToReferencedFeature(ViewerFilter filter);
 
 
 
@@ -72,7 +75,7 @@ public interface ElementBindingReferencePropertiesEditionPart {
 
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 }
 

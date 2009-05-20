@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingMessages.java,v 1.4 2009/05/19 09:16:54 glefur Exp $
+ * $Id: MappingMessages.java,v 1.5 2009/05/20 10:13:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -51,6 +51,8 @@ public class MappingMessages extends NLS {
 
 	public static String SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String OnlyReferenceTypeFilterPropertiesEditionPart_PropertiesGroupLabel;
+
 	public static String Documentation_ReadOnly;
 
 	public static String EMFElementBinding_ReadOnly;
@@ -70,6 +72,8 @@ public class MappingMessages extends NLS {
 	public static String ModelNavigation_ReadOnly;
 
 	public static String SimpleModelNavigation_ReadOnly;
+
+	public static String OnlyReferenceTypeFilter_ReadOnly;
 
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 
@@ -112,6 +116,8 @@ public class MappingMessages extends NLS {
 	public static String SimpleModelNavigationPropertiesEditionPart_FeatureLabel;
 
 	public static String SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel;
+
+	public static String OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 
