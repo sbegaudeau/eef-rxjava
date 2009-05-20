@@ -15,14 +15,10 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory;
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPartProviderFactory;
-import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionProviderFactory;
 
 /**
  * Service that manage all the registered {@link IPropertiesEditionPartProviderFactory}.
