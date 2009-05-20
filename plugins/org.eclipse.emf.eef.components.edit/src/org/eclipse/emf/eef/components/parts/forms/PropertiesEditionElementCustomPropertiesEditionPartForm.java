@@ -38,39 +38,6 @@ public class PropertiesEditionElementCustomPropertiesEditionPartForm extends Pro
 	public PropertiesEditionElementCustomPropertiesEditionPartForm(
 			IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
-		ViewerFilter viewerFilter = new ViewerFilter() {
-
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return element instanceof ElementEditor && !viewsEditUtil.getVirtualList().contains(element);
-			}
-
-		};
-		addFilterToViews(viewerFilter);
-	}
-
-	@Override
-	protected void addViews() {
-			
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(
-				new AdapterFactoryLabelProvider(adapterFactory), EEFUtils.choiceOfValues(adapterFactory,
-						current, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), resourceSet),
-						Arrays.asList(views.getFilters()), viewsBusinessFilters, false, true) {
-			public void process(IStructuredSelection selection) {
-				for (Iterator iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject)iter.next();
-					if (!viewsEditUtil.getVirtualList().contains(elem)) {
-						viewsEditUtil.addElement(elem);
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-								PropertiesEditionElementCustomPropertiesEditionPartForm.this,
-								ComponentsViewsRepository.PropertiesEditionElement.views,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null,
-								viewsEditUtil.foundCorrespondingEObject(elem)));
-					}
-				}
-			}
-
-		};
-		dialog.open();
 	}
 
 	/**
