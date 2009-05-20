@@ -9,13 +9,16 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.5 2009/05/20 10:13:05 sbouchet Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.6 2009/05/20 14:32:06 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
 import org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -38,6 +41,9 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		append(createEMFMultiPropertiesBindingPropertiesEditionProvider());
 		append(createSimpleModelNavigationPropertiesEditionProvider());
 		append(createOnlyReferenceTypeFilterPropertiesEditionProvider());
+		append(createOCLFilterPropertiesEditionProvider());
+		append(createJavaExpressionFilterPropertiesEditionProvider());
+		append(createJavaDeclarationFilterPropertiesEditionProvider());
 	}
 	
 	/**
@@ -203,6 +209,51 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		if (onlyReferenceTypeFilterPropertiesEditionProvider == null)
 			onlyReferenceTypeFilterPropertiesEditionProvider = new OnlyReferenceTypeFilterPropertiesEditionProvider();
 		return onlyReferenceTypeFilterPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * OCLFilter instances.
+	 */
+	protected OCLFilterPropertiesEditionProvider oCLFilterPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a OCLFilter
+	 */
+	public OCLFilterPropertiesEditionProvider createOCLFilterPropertiesEditionProvider() {
+		if (oCLFilterPropertiesEditionProvider == null)
+			oCLFilterPropertiesEditionProvider = new OCLFilterPropertiesEditionProvider();
+		return oCLFilterPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * JavaExpressionFilter instances.
+	 */
+	protected JavaExpressionFilterPropertiesEditionProvider javaExpressionFilterPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a JavaExpressionFilter
+	 */
+	public JavaExpressionFilterPropertiesEditionProvider createJavaExpressionFilterPropertiesEditionProvider() {
+		if (javaExpressionFilterPropertiesEditionProvider == null)
+			javaExpressionFilterPropertiesEditionProvider = new JavaExpressionFilterPropertiesEditionProvider();
+		return javaExpressionFilterPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * JavaDeclarationFilter instances.
+	 */
+	protected JavaDeclarationFilterPropertiesEditionProvider javaDeclarationFilterPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a JavaDeclarationFilter
+	 */
+	public JavaDeclarationFilterPropertiesEditionProvider createJavaDeclarationFilterPropertiesEditionProvider() {
+		if (javaDeclarationFilterPropertiesEditionProvider == null)
+			javaDeclarationFilterPropertiesEditionProvider = new JavaDeclarationFilterPropertiesEditionProvider();
+		return javaDeclarationFilterPropertiesEditionProvider;
 	}
 	
 }	

@@ -9,12 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryPropertiesEditionPart.java,v 1.7 2009/05/20 14:32:06 sbouchet Exp $
+ * $Id$
  */
 package org.eclipse.emf.eef.mapping.parts;
 
 // Start of user code for imports
 
+import java.util.List;
+import java.util.Map;
 
  
 
@@ -22,22 +24,22 @@ package org.eclipse.emf.eef.mapping.parts;
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public interface CategoryPropertiesEditionPart {
+public interface JavaExpressionFilterPropertiesEditionPart {
 
 	/**
-	 * @return the name
+	 * @return the javaExpressionBody
 	 */
-	public String getName();
+	public String getJavaExpressionBody();
 
 	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
+	 * Defines a new javaExpressionBody
+	 * @param newValue the new javaExpressionBody to set
 	 */
-	public void setName(String newValue);
+	public void setJavaExpressionBody(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
+	public void setMessageForJavaExpressionBody(String msg, int msgLevel);
 
-	public void unsetMessageForName();
+	public void unsetMessageForJavaExpressionBody();
 
 
 
@@ -45,7 +47,7 @@ public interface CategoryPropertiesEditionPart {
 
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 }
 

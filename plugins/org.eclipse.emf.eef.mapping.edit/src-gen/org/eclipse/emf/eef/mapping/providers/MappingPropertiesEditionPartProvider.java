@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPropertiesEditionPartProvider.java,v 1.4 2009/05/20 10:13:05 sbouchet Exp $
+ * $Id: MappingPropertiesEditionPartProvider.java,v 1.5 2009/05/20 14:32:06 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -39,6 +39,12 @@ import org.eclipse.emf.eef.mapping.parts.forms.SimpleModelNavigationPropertiesEd
 import org.eclipse.emf.eef.mapping.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.impl.OnlyReferenceTypeFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.forms.OCLFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.impl.OCLFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.forms.JavaExpressionFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.impl.JavaExpressionFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.forms.JavaDeclarationFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.impl.JavaDeclarationFilterPropertiesEditionPartImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -125,6 +131,24 @@ public class MappingPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new OnlyReferenceTypeFilterPropertiesEditionPartImpl(component);
 			if (kind == MappingViewsRepository.FORM_KIND)
 				return new OnlyReferenceTypeFilterPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.OCLFilter.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new OCLFilterPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new OCLFilterPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.JavaExpressionFilter.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new JavaExpressionFilterPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new JavaExpressionFilterPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.JavaDeclarationFilter.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new JavaDeclarationFilterPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new JavaDeclarationFilterPropertiesEditionPartForm(component);
 		}
 		return null;
 	}
