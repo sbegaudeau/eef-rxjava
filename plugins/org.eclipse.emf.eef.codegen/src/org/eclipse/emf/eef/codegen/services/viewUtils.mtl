@@ -300,6 +300,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	private Button add[editor.name.toJavaClassifier()/];
 	private Button remove[editor.name.toJavaClassifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'ReferencesTable')]
@@ -429,7 +430,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 *
 	 */
 	protected void add[editor.name.toJavaClassifier()/]() {
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList([editor.name.toJavaIdentifier()/].getFilters()), [editor.name.toJavaIdentifier()/]BusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters, false, true) {
 
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {

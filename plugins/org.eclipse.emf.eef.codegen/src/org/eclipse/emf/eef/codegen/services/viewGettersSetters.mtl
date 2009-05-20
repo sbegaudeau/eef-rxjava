@@ -847,7 +847,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 */
 [/template]
 
-[template public addFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('AdvancedTableComposition'))]
+[template public addFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.addFilterSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]Filters.add(filter);
 	}

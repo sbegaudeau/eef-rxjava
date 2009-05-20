@@ -253,6 +253,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	private Button add[editor.name.toJavaClassifier()/];
 	private Button remove[editor.name.toJavaClassifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
@@ -591,7 +592,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 		create[editor.name.toJavaClassifier()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
 [/template]
 
-[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]	
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(SpecificElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
 	/**
 	 * @param [editor.widgetContainer().trim()/]
 	 */
@@ -741,7 +742,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 	 */
 	protected void add[editor.name.toJavaClassifier()/]() {
 
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList([editor.name.toJavaIdentifier()/].getFilters()), [editor.name.toJavaIdentifier()/]BusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
