@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module SubPropertiesEditionComponent('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0','http://www.eclipse.org/emf/2002/Ecore')/]
+[module SubPropertiesEditionComponent('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0','http://www.eclipse.org/emf/2002/Ecore','http://www.eclipse.org/emf/eef/mapping/filters/1.0.0')/]
 
 [import common /]
 [import naming /]
@@ -123,6 +123,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 import [vr.vrQualifiedClass()/];
 [/for]
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 // [/protected]
 
@@ -132,19 +134,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent {
 
 	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
-	
+
 	private String['['/][']'/] parts = {[view.viewPartConstant(pec)/]};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private [pec.model.name/] [pec.model.name.toJavaIdentifier()/];
-	
+
 	/**
 	 * The [view.viewKey(pec)/] part
 	 */
 	private [view.pepInterface()/] [view.viewIdentifier(pec)/];
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -158,7 +160,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -180,10 +182,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 					// [protected ('for notifyChanged body')]
 					
 					// [/protected]
-									
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-					[editionElement.liveUpdater(view, pec)/]
+[editionElement.liveUpdater(view, pec)/]
 [/for]
 [comment add ViewReference support/]
 [view.liveUpdaterForReferencedViews(pec)/]
@@ -251,25 +252,43 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
-	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+	public void initPart(java.lang.Class key, int kind, EObject elt, final ResourceSet allResource) {
 		if ([view.viewIdentifier(pec)/] != null && key == [view.editorID()/].class) {
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
 			[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
 			// init values
-			[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[pee.updater(view, pec)/]
-			[/for]
+[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+[pee.updater(view, pec)/]
+[/for]
 			
 			// init filters
-			[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[pee.filterUpdater(view, pec)/]
-			[/for]
+[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+[pee.filterUpdater(view, pec)/]
+[/for]
 		}
 		// init values for referenced views
 [view.updaterForReferencedViews(pec)/]
 		// init filters for referenced views
 [view.filterUpdaterForReferencedViews(pec)/]
 	}
+
+[comment]
+Acceleo bug, the second 'for' block must be : 
+[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->select(oclIsTypeOf(filters::JavaDeclarationFilter))]
+[/comment]
+[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+[for (bindingFilter : BindingFilter | pee.bindingFilters) ? (oclIsTypeOf(filters::JavaDeclarationFilter))]
+	/**
+	 * [bindingFilter.documentation/]
+	 */
+	private boolean [bindingFilter.oclAsType(filters::JavaDeclarationFilter).methodName/](){
+		// [protected ('for user filter '.concat(bindingFilter.oclAsType(filters::JavaDeclarationFilter).methodName))]
+		return false;
+		// [/protected]
+
+	}
+[/for]
+[/for]
 
 	/**
 	 * {@inheritDoc}
@@ -284,10 +303,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			// [protected ('for getPropertiesEditionCommand body')]
 			
 			// [/protected]
-			
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[editionElement.commandUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
+[editionElement.commandUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]
 [view.commandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
@@ -310,11 +328,10 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [if (view.oclIsTypeOf(views::CustomView))]
 			// [protected ('for getPropertiesEditionObject body')]
 			
-			// [/protected]	
-			
+			// [/protected]
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[editionElement.partUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
+[editionElement.partUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]
 [view.partUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
@@ -341,7 +358,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-			[editionElement.liveCommandUpdater(view, pec.model.name.toJavaIdentifier())/]
+[editionElement.liveCommandUpdater(view, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]
 [view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
@@ -351,13 +368,13 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-				[editionElement.liveMessageSetter(view, pec)/]
+[editionElement.liveMessageSetter(view, pec)/]
 [/for]
 [comment add ViewReference support/]
 [view.liveMessageSetterForReferencedViews(pec)/]
 			} else {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-				[editionElement.liveMessageUnsetter(view, pec)/]
+[editionElement.liveMessageUnsetter(view, pec)/]
 [/for]
 [comment add ViewReference support/]
 [view.livemessageUnsetterForReferencedViews(pec)/]
@@ -407,7 +424,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			}
 [/for]
 [comment add ViewReference support/]
-[for ( v : View | view.referencedViews())]	
+[for ( v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
@@ -438,7 +455,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			return null;
 	}
 
-[comment work on validation]
+[comment] Work on validation
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -459,8 +476,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 
 [/if]
 		return result;
-	}
-[/comment]
+	}[/comment]
 	/**
 	 * {@inheritDoc}
 	 * 
