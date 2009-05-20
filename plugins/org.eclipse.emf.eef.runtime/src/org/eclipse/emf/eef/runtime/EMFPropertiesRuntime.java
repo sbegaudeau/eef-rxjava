@@ -12,6 +12,8 @@ package org.eclipse.emf.eef.runtime;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -29,6 +31,9 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 
 	// The shared instance
 	private static EMFPropertiesRuntime plugin;
+	
+	//Shared adapterFactory
+	private static AdapterFactory adapterFactory;
 
 	public static final String ICONS_16x16 = "icons/16x16/";
 
@@ -37,6 +42,8 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	 */
 	public EMFPropertiesRuntime() {
 		plugin = this;
+		adapterFactory = new ComposedAdapterFactory(
+				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 	}
 
 	/*
@@ -63,6 +70,15 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	 */
 	public static EMFPropertiesRuntime getDefault() {
 		return plugin;
+	}
+
+	/**
+	 * Returns the shared adapterFactory
+	 * 
+	 * @return the shared adapterFactory
+	 */
+	public static AdapterFactory getAdapterFactory() {
+		return adapterFactory;
 	}
 
 	/**

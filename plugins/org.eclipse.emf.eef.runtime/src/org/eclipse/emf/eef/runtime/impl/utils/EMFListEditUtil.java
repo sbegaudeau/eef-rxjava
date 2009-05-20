@@ -51,7 +51,7 @@ public class EMFListEditUtil {
 
 	private Map elementsToRefresh;
 
-	private Map copyToModelMap;
+	private Map<EObject, EObject> copyToModelMap;
 
 	private EReference feature;
 
@@ -219,9 +219,8 @@ public class EMFListEditUtil {
 		List<EObject> result = new ArrayList<EObject>();
 		if (list instanceof EList) {
 			EList<EObject> theList = (EList)list;
-			copyToModelMap = new HashMap(theList.size());
-			for (Iterator<EObject> iter = theList.iterator(); iter.hasNext();) {
-				EObject next = iter.next();
+			copyToModelMap = new HashMap<EObject, EObject>(theList.size());
+			for (EObject next : theList) {
 				EObject copy = null;
 				if (containingFeature != null) {
 					// model navigation
