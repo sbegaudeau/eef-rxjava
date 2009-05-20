@@ -783,7 +783,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer'))]
 [elementEditor.initSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/].setInput(eenum.getELiterals());
-		[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+		[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(current));
 	}
 [/template]
 
@@ -795,7 +795,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 */
 [/template]
 
-[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Radio'))]
 [elementEditor.initSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setInput(eenum.getELiterals());
 		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(current);
