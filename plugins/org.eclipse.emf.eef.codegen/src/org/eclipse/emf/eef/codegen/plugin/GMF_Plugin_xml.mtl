@@ -65,7 +65,7 @@
 				label="[view.viewKey(pec).trim()/]"
 				category="extended"
 				id="[view.viewKey(pec).toASCII()/]">
-			</propertyTab>	
+			</propertyTab>
 [/if][/for]
 [/if]
 [/for]

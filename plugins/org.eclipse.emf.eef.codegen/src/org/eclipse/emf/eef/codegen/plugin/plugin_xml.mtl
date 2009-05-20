@@ -52,7 +52,7 @@
                label="[view.viewKey(pec)/]"
                category="extended"
                id="[view.viewKey(pec).toASCII()/]">
-         </propertyTab>	
+         </propertyTab>
 [/if][/for]
 [/for]
       </propertyTabs>
@@ -75,7 +75,6 @@
 [/for]
       </propertySections>
    </extension>
-   
  </plugin>
 	[/file]
 [/template]
