@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TalkItemProvider.java,v 1.1 2009/05/05 10:37:23 sbouchet Exp $
+ * $Id: TalkItemProvider.java,v 1.2 2009/05/21 13:16:01 glefur Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -199,7 +199,7 @@ public class TalkItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Talk)object).getDocumentation();
+		String label = ((Talk)object).getTitle();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Talk_type") :
 			getString("_UI_Talk_type") + " " + label;

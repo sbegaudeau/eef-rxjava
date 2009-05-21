@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TopicItemProvider.java,v 1.1 2009/05/05 10:37:23 sbouchet Exp $
+ * $Id: TopicItemProvider.java,v 1.2 2009/05/21 13:16:01 glefur Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -130,7 +130,7 @@ public class TopicItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Topic)object).getDocumentation();
+		String label = ((Topic)object).getDescription();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Topic_type") :
 			getString("_UI_Topic_type") + " " + label;
