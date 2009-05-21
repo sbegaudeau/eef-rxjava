@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-filters="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_Xxdwcf3BEd25MIHmw1Ckvg" documentation="Edition Context for nonreg GenPackage">
     <categories xmi:id="_Xxdwc_3BEd25MIHmw1Ckvg" name="nonreg">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_XxdwdP3BEd25MIHmw1Ckvg" name="EclipseSummit" views="_Xxdwhf3BEd25MIHmw1Ckvg">
@@ -25,6 +25,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/eclipseCommiter"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x2Pg8P3BEd25MIHmw1Ckvg" name="assists" views="_pJiPgP3BEd25MIHmw1Ckvg">
+          <bindingFilters xsi:type="eef-mapping-filters:JavaDeclarationFilter" xmi:id="_yzXjUUYJEd6jkZ35rdGp2g" methodName="notTalkIsPresenter"/>
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/assists"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_l_vJcAmoEd63RK4j_abl5w" name="isRegistered" views="_jT-GwQmoEd63RK4j_abl5w" helpID="">
