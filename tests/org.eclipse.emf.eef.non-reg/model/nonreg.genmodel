@@ -39,14 +39,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Person/isRegistered"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//Person/accreditations"/>
     </genClasses>
-    <genClasses ecoreClass="nonreg.ecore#//Talk">
+    <genClasses ecoreClass="nonreg.ecore#//Talk" labelFeature="#//nonreg/Talk/title">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Talk/title"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Talk/topic"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Talk/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Talk/presenter"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Talk/creator"/>
     </genClasses>
-    <genClasses ecoreClass="nonreg.ecore#//Topic">
+    <genClasses ecoreClass="nonreg.ecore#//Topic" labelFeature="#//nonreg/Topic/description">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Topic/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Topic/references"/>
     </genClasses>
