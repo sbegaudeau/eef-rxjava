@@ -69,31 +69,25 @@ public class PropertiesEditionPartProviderService implements IPropertiesEditionP
 		return instance;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.unedic.sumatra.donnees.common.properties.providers.IEditPropertiesProviderFactory#getProvider(org
-	 * .eclipse.emf.ecore.EObject)
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#getProvider(java.lang.Class)
 	 */
 	public IPropertiesEditionPartProvider getProvider(Class key) {
 		return editPropertiesPartProviderFactory.getProvider(key);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.unedic.sumatra.donnees.common.properties.providers.IEditPropertiesProviderFactory#provides(org.eclipse
-	 * .emf.ecore.EObject)
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#provides(java.lang.Class)
 	 */
 	public boolean provides(Class key) {
 		return editPropertiesPartProviderFactory.provides(key);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * fr.unedic.sumatra.donnees.common.properties.providers.IEditPropertiesProviderFactory#register(fr.unedic
-	 * .sumatra.donnees.common.properties.providers.IPropertiesEditionProvider)
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#register(org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider)
 	 */
 	public void register(IPropertiesEditionPartProvider editPropertiesProvider) {
 		editPropertiesPartProviderFactory.register(editPropertiesProvider);
