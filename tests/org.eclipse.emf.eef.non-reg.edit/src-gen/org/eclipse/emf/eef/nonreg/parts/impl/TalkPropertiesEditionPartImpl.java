@@ -225,7 +225,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 */
 	public void initType(EEnum eenum, Enumerator current) {
 		type.setInput(eenum.getELiterals());
-		type.setSelection(new StructuredSelection(current));
+		type.modelUpdating(new StructuredSelection(current));
 	}
 
 	/**
