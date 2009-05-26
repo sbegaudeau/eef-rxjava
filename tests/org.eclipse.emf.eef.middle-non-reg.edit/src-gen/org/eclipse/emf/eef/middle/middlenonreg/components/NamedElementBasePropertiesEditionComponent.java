@@ -176,7 +176,13 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 		// init filters for referenced views
 
 
+
 	}
+
+
+
+
+
 
 
 
