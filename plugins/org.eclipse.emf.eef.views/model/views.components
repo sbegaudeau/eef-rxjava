@@ -63,7 +63,7 @@
         <referencedBinding xmi:id="_1IXs0AtmEd6B37SLkBAPJA" binding="_U6-YQAtmEd6B37SLkBAPJA"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//Container"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_C2Y-cgd9Ed6YkIySVKIecQ" name="SpecificElementEditor" views="_C2Y-rQd9Ed6YkIySVKIecQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_C2Y-cgd9Ed6YkIySVKIecQ" name="CustomElementEditor" views="_C2Y-rQd9Ed6YkIySVKIecQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-dAd9Ed6YkIySVKIecQ" name="representation" views="_C2Y-sAd9Ed6YkIySVKIecQ">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ViewElement/representation"/>
         </properties>
@@ -74,7 +74,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ElementEditor/readOnly"/>
         </properties>
         <referencedBinding xmi:id="_1__RUAtmEd6B37SLkBAPJA" binding="_U6-YQAtmEd6B37SLkBAPJA"/>
-        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//SpecificElementEditor"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//CustomElementEditor"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_C2Y-eAd9Ed6YkIySVKIecQ" name="CustomView" views="_C2Y-tAd9Ed6YkIySVKIecQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-fAd9Ed6YkIySVKIecQ" name="name" views="_C2Y-uQd9Ed6YkIySVKIecQ">
@@ -167,7 +167,7 @@
           </elements>
         </elements>
       </views>
-      <views xmi:id="_C2Y-rQd9Ed6YkIySVKIecQ" name="SpecificElementEditor">
+      <views xmi:id="_C2Y-rQd9Ed6YkIySVKIecQ" name="CustomElementEditor">
         <elements xsi:type="eef-views:Container" xmi:id="_C2Y-rgd9Ed6YkIySVKIecQ" name="Properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-sgd9Ed6YkIySVKIecQ" name="name">
