@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsFactoryImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ToolkitsFactoryImpl.java,v 1.2 2009/05/26 08:20:12 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -30,7 +30,8 @@ import org.eclipse.emf.eef.toolkits.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory {
+public class ToolkitsFactoryImpl extends EFactoryImpl implements
+		ToolkitsFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -39,7 +40,7 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	 */
 	public static ToolkitsFactory init() {
 		try {
-			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory)EPackage.Registry.INSTANCE
+			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory) EPackage.Registry.INSTANCE
 					.getEFactory("http://www.eclipse.org/emf/eef/views/toolkits/1.0.0"); //$NON-NLS-1$ 
 			if (theToolkitsFactory != null) {
 				return theToolkitsFactory;
@@ -68,13 +69,13 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ToolkitsPackage.TOOLKIT:
-				return createToolkit();
-			case ToolkitsPackage.WIDGET:
-				return createWidget();
-			default:
-				throw new IllegalArgumentException(
-						"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		case ToolkitsPackage.TOOLKIT:
+			return createToolkit();
+		case ToolkitsPackage.WIDGET:
+			return createWidget();
+		default:
+			throw new IllegalArgumentException(
+					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -104,7 +105,7 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	 * @generated
 	 */
 	public ToolkitsPackage getToolkitsPackage() {
-		return (ToolkitsPackage)getEPackage();
+		return (ToolkitsPackage) getEPackage();
 	}
 
 	/**

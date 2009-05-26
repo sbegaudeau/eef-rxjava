@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: WidgetImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: WidgetImpl.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -143,7 +143,8 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ToolkitsPackage.WIDGET__NAME, oldName, name));
 	}
 
 	/**
@@ -164,7 +165,8 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 		String oldIcon = icon;
 		icon = newIcon;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__ICON, oldIcon, icon));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ToolkitsPackage.WIDGET__ICON, oldIcon, icon));
 	}
 
 	/**
@@ -185,8 +187,9 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 		String oldImplementation = implementation;
 		implementation = newImplementation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__IMPLEMENTATION,
-					oldImplementation, implementation));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ToolkitsPackage.WIDGET__IMPLEMENTATION, oldImplementation,
+					implementation));
 	}
 
 	/**
@@ -197,7 +200,7 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	public Toolkit getToolkit() {
 		if (eContainerFeatureID != ToolkitsPackage.WIDGET__TOOLKIT)
 			return null;
-		return (Toolkit)eContainer();
+		return (Toolkit) eContainer();
 	}
 
 	/**
@@ -205,8 +208,10 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetToolkit(Toolkit newToolkit, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newToolkit, ToolkitsPackage.WIDGET__TOOLKIT, msgs);
+	public NotificationChain basicSetToolkit(Toolkit newToolkit,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newToolkit,
+				ToolkitsPackage.WIDGET__TOOLKIT, msgs);
 		return msgs;
 	}
 
@@ -219,19 +224,20 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 		if (newToolkit != eInternalContainer()
 				|| (eContainerFeatureID != ToolkitsPackage.WIDGET__TOOLKIT && newToolkit != null)) {
 			if (EcoreUtil.isAncestor(this, newToolkit))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newToolkit != null)
-				msgs = ((InternalEObject)newToolkit).eInverseAdd(this, ToolkitsPackage.TOOLKIT__WIDGETS,
-						Toolkit.class, msgs);
+				msgs = ((InternalEObject) newToolkit).eInverseAdd(this,
+						ToolkitsPackage.TOOLKIT__WIDGETS, Toolkit.class, msgs);
 			msgs = basicSetToolkit(newToolkit, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.WIDGET__TOOLKIT,
-					newToolkit, newToolkit));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ToolkitsPackage.WIDGET__TOOLKIT, newToolkit, newToolkit));
 	}
 
 	/**
@@ -240,12 +246,13 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetToolkit((Toolkit)otherEnd, msgs);
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetToolkit((Toolkit) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -256,10 +263,11 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				return basicSetToolkit(null, msgs);
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			return basicSetToolkit(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -270,11 +278,12 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				return eInternalContainer().eInverseRemove(this, ToolkitsPackage.TOOLKIT__WIDGETS,
-						Toolkit.class, msgs);
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			return eInternalContainer().eInverseRemove(this,
+					ToolkitsPackage.TOOLKIT__WIDGETS, Toolkit.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -287,14 +296,14 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ToolkitsPackage.WIDGET__NAME:
-				return getName();
-			case ToolkitsPackage.WIDGET__ICON:
-				return getIcon();
-			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				return getImplementation();
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				return getToolkit();
+		case ToolkitsPackage.WIDGET__NAME:
+			return getName();
+		case ToolkitsPackage.WIDGET__ICON:
+			return getIcon();
+		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+			return getImplementation();
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			return getToolkit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -307,18 +316,18 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ToolkitsPackage.WIDGET__NAME:
-				setName((String)newValue);
-				return;
-			case ToolkitsPackage.WIDGET__ICON:
-				setIcon((String)newValue);
-				return;
-			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				setImplementation((String)newValue);
-				return;
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				setToolkit((Toolkit)newValue);
-				return;
+		case ToolkitsPackage.WIDGET__NAME:
+			setName((String) newValue);
+			return;
+		case ToolkitsPackage.WIDGET__ICON:
+			setIcon((String) newValue);
+			return;
+		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+			setImplementation((String) newValue);
+			return;
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			setToolkit((Toolkit) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -331,18 +340,18 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ToolkitsPackage.WIDGET__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ToolkitsPackage.WIDGET__ICON:
-				setIcon(ICON_EDEFAULT);
-				return;
-			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				setImplementation(IMPLEMENTATION_EDEFAULT);
-				return;
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				setToolkit((Toolkit)null);
-				return;
+		case ToolkitsPackage.WIDGET__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case ToolkitsPackage.WIDGET__ICON:
+			setIcon(ICON_EDEFAULT);
+			return;
+		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+			setImplementation(IMPLEMENTATION_EDEFAULT);
+			return;
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			setToolkit((Toolkit) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -355,15 +364,17 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ToolkitsPackage.WIDGET__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ToolkitsPackage.WIDGET__ICON:
-				return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
-			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT
-						.equals(implementation);
-			case ToolkitsPackage.WIDGET__TOOLKIT:
-				return getToolkit() != null;
+		case ToolkitsPackage.WIDGET__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case ToolkitsPackage.WIDGET__ICON:
+			return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT
+					.equals(icon);
+		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+			return IMPLEMENTATION_EDEFAULT == null ? implementation != null
+					: !IMPLEMENTATION_EDEFAULT.equals(implementation);
+		case ToolkitsPackage.WIDGET__TOOLKIT:
+			return getToolkit() != null;
 		}
 		return super.eIsSet(featureID);
 	}

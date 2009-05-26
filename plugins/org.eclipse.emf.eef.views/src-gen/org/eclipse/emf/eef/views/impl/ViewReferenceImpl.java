@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferenceImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewReferenceImpl.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -74,8 +74,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	 */
 	public ViewElement getView() {
 		if (view != null && view.eIsProxy()) {
-			InternalEObject oldView = (InternalEObject)view;
-			view = (ViewElement)eResolveProxy(oldView);
+			InternalEObject oldView = (InternalEObject) view;
+			view = (ViewElement) eResolveProxy(oldView);
 			if (view != oldView) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -103,8 +103,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 		ViewElement oldView = view;
 		view = newView;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_REFERENCE__VIEW, oldView,
-					view));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.VIEW_REFERENCE__VIEW, oldView, view));
 	}
 
 	/**
@@ -115,10 +115,10 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				if (resolve)
-					return getView();
-				return basicGetView();
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			if (resolve)
+				return getView();
+			return basicGetView();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -131,9 +131,9 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				setView((ViewElement)newValue);
-				return;
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			setView((ViewElement) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -146,9 +146,9 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				setView((ViewElement)null);
-				return;
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			setView((ViewElement) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -161,8 +161,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				return view != null;
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			return view != null;
 		}
 		return super.eIsSet(featureID);
 	}

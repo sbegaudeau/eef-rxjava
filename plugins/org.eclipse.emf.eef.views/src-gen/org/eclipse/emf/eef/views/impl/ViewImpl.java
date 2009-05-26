@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewImpl.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
+ * $Id: ViewImpl.java,v 1.3 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -108,7 +108,8 @@ public class ViewImpl extends ContainerImpl implements View {
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
 				result.insert(0, "::");
-				result.insert(0, ((IdentifiedElement)container).getQualifiedIdentifier());
+				result.insert(0, ((IdentifiedElement) container)
+						.getQualifiedIdentifier());
 				return result.toString();
 			}
 			container = container.eContainer();
@@ -133,7 +134,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	public ViewsRepository getRepository() {
 		if (eContainerFeatureID != ViewsPackage.VIEW__REPOSITORY)
 			return null;
-		return (ViewsRepository)eContainer();
+		return (ViewsRepository) eContainer();
 	}
 
 	/**
@@ -141,8 +142,10 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRepository(ViewsRepository newRepository, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newRepository, ViewsPackage.VIEW__REPOSITORY, msgs);
+	public NotificationChain basicSetRepository(ViewsRepository newRepository,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newRepository,
+				ViewsPackage.VIEW__REPOSITORY, msgs);
 		return msgs;
 	}
 
@@ -155,19 +158,21 @@ public class ViewImpl extends ContainerImpl implements View {
 		if (newRepository != eInternalContainer()
 				|| (eContainerFeatureID != ViewsPackage.VIEW__REPOSITORY && newRepository != null)) {
 			if (EcoreUtil.isAncestor(this, newRepository))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newRepository != null)
-				msgs = ((InternalEObject)newRepository).eInverseAdd(this,
-						ViewsPackage.VIEWS_REPOSITORY__VIEWS, ViewsRepository.class, msgs);
+				msgs = ((InternalEObject) newRepository).eInverseAdd(this,
+						ViewsPackage.VIEWS_REPOSITORY__VIEWS,
+						ViewsRepository.class, msgs);
 			msgs = basicSetRepository(newRepository, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW__REPOSITORY,
-					newRepository, newRepository));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.VIEW__REPOSITORY, newRepository, newRepository));
 	}
 
 	/**
@@ -188,8 +193,8 @@ public class ViewImpl extends ContainerImpl implements View {
 		boolean oldExplicit = explicit;
 		explicit = newExplicit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW__EXPLICIT, oldExplicit,
-					explicit));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.VIEW__EXPLICIT, oldExplicit, explicit));
 	}
 
 	/**
@@ -200,7 +205,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	public Category getCategory() {
 		if (eContainerFeatureID != ViewsPackage.VIEW__CATEGORY)
 			return null;
-		return (Category)eContainer();
+		return (Category) eContainer();
 	}
 
 	/**
@@ -208,8 +213,10 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCategory(Category newCategory, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newCategory, ViewsPackage.VIEW__CATEGORY, msgs);
+	public NotificationChain basicSetCategory(Category newCategory,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newCategory,
+				ViewsPackage.VIEW__CATEGORY, msgs);
 		return msgs;
 	}
 
@@ -222,19 +229,20 @@ public class ViewImpl extends ContainerImpl implements View {
 		if (newCategory != eInternalContainer()
 				|| (eContainerFeatureID != ViewsPackage.VIEW__CATEGORY && newCategory != null)) {
 			if (EcoreUtil.isAncestor(this, newCategory))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newCategory != null)
-				msgs = ((InternalEObject)newCategory).eInverseAdd(this, ViewsPackage.CATEGORY__VIEWS,
-						Category.class, msgs);
+				msgs = ((InternalEObject) newCategory).eInverseAdd(this,
+						ViewsPackage.CATEGORY__VIEWS, Category.class, msgs);
 			msgs = basicSetCategory(newCategory, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW__CATEGORY, newCategory,
-					newCategory));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.VIEW__CATEGORY, newCategory, newCategory));
 	}
 
 	/**
@@ -243,16 +251,17 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ViewsPackage.VIEW__REPOSITORY:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetRepository((ViewsRepository)otherEnd, msgs);
-			case ViewsPackage.VIEW__CATEGORY:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetCategory((Category)otherEnd, msgs);
+		case ViewsPackage.VIEW__REPOSITORY:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetRepository((ViewsRepository) otherEnd, msgs);
+		case ViewsPackage.VIEW__CATEGORY:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetCategory((Category) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -263,12 +272,13 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ViewsPackage.VIEW__REPOSITORY:
-				return basicSetRepository(null, msgs);
-			case ViewsPackage.VIEW__CATEGORY:
-				return basicSetCategory(null, msgs);
+		case ViewsPackage.VIEW__REPOSITORY:
+			return basicSetRepository(null, msgs);
+		case ViewsPackage.VIEW__CATEGORY:
+			return basicSetCategory(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -279,14 +289,16 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
-			case ViewsPackage.VIEW__REPOSITORY:
-				return eInternalContainer().eInverseRemove(this, ViewsPackage.VIEWS_REPOSITORY__VIEWS,
-						ViewsRepository.class, msgs);
-			case ViewsPackage.VIEW__CATEGORY:
-				return eInternalContainer().eInverseRemove(this, ViewsPackage.CATEGORY__VIEWS,
-						Category.class, msgs);
+		case ViewsPackage.VIEW__REPOSITORY:
+			return eInternalContainer().eInverseRemove(this,
+					ViewsPackage.VIEWS_REPOSITORY__VIEWS,
+					ViewsRepository.class, msgs);
+		case ViewsPackage.VIEW__CATEGORY:
+			return eInternalContainer().eInverseRemove(this,
+					ViewsPackage.CATEGORY__VIEWS, Category.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -299,14 +311,14 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-				return getQualifiedIdentifier();
-			case ViewsPackage.VIEW__REPOSITORY:
-				return getRepository();
-			case ViewsPackage.VIEW__EXPLICIT:
-				return isExplicit() ? Boolean.TRUE : Boolean.FALSE;
-			case ViewsPackage.VIEW__CATEGORY:
-				return getCategory();
+		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+			return getQualifiedIdentifier();
+		case ViewsPackage.VIEW__REPOSITORY:
+			return getRepository();
+		case ViewsPackage.VIEW__EXPLICIT:
+			return isExplicit() ? Boolean.TRUE : Boolean.FALSE;
+		case ViewsPackage.VIEW__CATEGORY:
+			return getCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,18 +331,18 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-				setQualifiedIdentifier((String)newValue);
-				return;
-			case ViewsPackage.VIEW__REPOSITORY:
-				setRepository((ViewsRepository)newValue);
-				return;
-			case ViewsPackage.VIEW__EXPLICIT:
-				setExplicit(((Boolean)newValue).booleanValue());
-				return;
-			case ViewsPackage.VIEW__CATEGORY:
-				setCategory((Category)newValue);
-				return;
+		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+			setQualifiedIdentifier((String) newValue);
+			return;
+		case ViewsPackage.VIEW__REPOSITORY:
+			setRepository((ViewsRepository) newValue);
+			return;
+		case ViewsPackage.VIEW__EXPLICIT:
+			setExplicit(((Boolean) newValue).booleanValue());
+			return;
+		case ViewsPackage.VIEW__CATEGORY:
+			setCategory((Category) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -343,18 +355,18 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-				setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
-				return;
-			case ViewsPackage.VIEW__REPOSITORY:
-				setRepository((ViewsRepository)null);
-				return;
-			case ViewsPackage.VIEW__EXPLICIT:
-				setExplicit(EXPLICIT_EDEFAULT);
-				return;
-			case ViewsPackage.VIEW__CATEGORY:
-				setCategory((Category)null);
-				return;
+		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+			setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
+			return;
+		case ViewsPackage.VIEW__REPOSITORY:
+			setRepository((ViewsRepository) null);
+			return;
+		case ViewsPackage.VIEW__EXPLICIT:
+			setExplicit(EXPLICIT_EDEFAULT);
+			return;
+		case ViewsPackage.VIEW__CATEGORY:
+			setCategory((Category) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -367,15 +379,16 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
-			case ViewsPackage.VIEW__REPOSITORY:
-				return getRepository() != null;
-			case ViewsPackage.VIEW__EXPLICIT:
-				return explicit != EXPLICIT_EDEFAULT;
-			case ViewsPackage.VIEW__CATEGORY:
-				return getCategory() != null;
+		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+					: !QUALIFIED_IDENTIFIER_EDEFAULT
+							.equals(getQualifiedIdentifier());
+		case ViewsPackage.VIEW__REPOSITORY:
+			return getRepository() != null;
+		case ViewsPackage.VIEW__EXPLICIT:
+			return explicit != EXPLICIT_EDEFAULT;
+		case ViewsPackage.VIEW__CATEGORY:
+			return getCategory() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -389,10 +402,10 @@ public class ViewImpl extends ContainerImpl implements View {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (derivedFeatureID) {
-				case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -407,10 +420,10 @@ public class ViewImpl extends ContainerImpl implements View {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (baseFeatureID) {
-				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.VIEW__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.VIEW__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

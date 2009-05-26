@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsAdapterFactory.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
+ * $Id: ViewsAdapterFactory.java,v 1.3 2009/05/26 08:20:12 glefur Exp $
  */
 package org.eclipse.emf.eef.views.util;
 
@@ -66,7 +66,7 @@ public class ViewsAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -109,8 +109,8 @@ public class ViewsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSpecificElementEditor(SpecificElementEditor object) {
-			return createSpecificElementEditorAdapter();
+		public Adapter caseCustomElementEditor(CustomElementEditor object) {
+			return createCustomElementEditorAdapter();
 		}
 
 		@Override
@@ -149,7 +149,7 @@ public class ViewsAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
 
 	/**
@@ -237,16 +237,16 @@ public class ViewsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.views.SpecificElementEditor <em>Specific Element Editor</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.views.CustomElementEditor <em>Custom Element Editor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.eef.views.SpecificElementEditor
+	 * @see org.eclipse.emf.eef.views.CustomElementEditor
 	 * @generated
 	 */
-	public Adapter createSpecificElementEditorAdapter() {
+	public Adapter createCustomElementEditorAdapter() {
 		return null;
 	}
 

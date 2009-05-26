@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: IdentifiedElementImpl.java,v 1.1 2009/04/30 17:49:14 nlepine Exp $
+ * $Id: IdentifiedElementImpl.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -33,7 +33,8 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  *
  * @generated
  */
-public abstract class IdentifiedElementImpl extends EObjectImpl implements IdentifiedElement {
+public abstract class IdentifiedElementImpl extends EObjectImpl implements
+		IdentifiedElement {
 	/**
 	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -85,8 +86,8 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-				return getQualifiedIdentifier();
+		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+			return getQualifiedIdentifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -99,9 +100,9 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-				setQualifiedIdentifier((String)newValue);
-				return;
+		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+			setQualifiedIdentifier((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -114,9 +115,9 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-				setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
-				return;
+		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+			setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -129,9 +130,10 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
+		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+					: !QUALIFIED_IDENTIFIER_EDEFAULT
+							.equals(getQualifiedIdentifier());
 		}
 		return super.eIsSet(featureID);
 	}

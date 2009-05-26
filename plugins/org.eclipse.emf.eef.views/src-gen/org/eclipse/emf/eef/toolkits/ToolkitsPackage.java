@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsPackage.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: ToolkitsPackage.java,v 1.2 2009/05/26 08:20:12 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits;
 
@@ -65,7 +65,8 @@ public interface ToolkitsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ToolkitsPackage eINSTANCE = org.eclipse.emf.eef.toolkits.impl.ToolkitsPackageImpl.init();
+	ToolkitsPackage eINSTANCE = org.eclipse.emf.eef.toolkits.impl.ToolkitsPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.toolkits.impl.ToolkitImpl <em>Toolkit</em>}' class.
@@ -325,7 +326,8 @@ public interface ToolkitsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WIDGET__IMPLEMENTATION = eINSTANCE.getWidget_Implementation();
+		EAttribute WIDGET__IMPLEMENTATION = eINSTANCE
+				.getWidget_Implementation();
 
 		/**
 		 * The meta object literal for the '<em><b>Toolkit</b></em>' container reference feature.

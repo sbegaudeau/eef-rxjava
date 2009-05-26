@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsFactory.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ViewsFactory.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -31,7 +31,8 @@ public interface ViewsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ViewsFactory eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsFactoryImpl.init();
+	ViewsFactory eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Repository</em>'.
@@ -79,13 +80,13 @@ public interface ViewsFactory extends EFactory {
 	Container createContainer();
 
 	/**
-	 * Returns a new object of class '<em>Specific Element Editor</em>'.
+	 * Returns a new object of class '<em>Custom Element Editor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Specific Element Editor</em>'.
+	 * @return a new object of class '<em>Custom Element Editor</em>'.
 	 * @generated
 	 */
-	SpecificElementEditor createSpecificElementEditor();
+	CustomElementEditor createCustomElementEditor();
 
 	/**
 	 * Returns a new object of class '<em>Custom View</em>'.

@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsPackage.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
+ * $Id: ViewsPackage.java,v 1.3 2009/05/26 08:20:10 glefur Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -65,7 +65,8 @@ public interface ViewsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ViewsPackage eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsPackageImpl.init();
+	ViewsPackage eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
@@ -525,14 +526,14 @@ public interface ViewsPackage extends EPackage {
 	int CATEGORY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.SpecificElementEditorImpl <em>Specific Element Editor</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.CustomElementEditorImpl <em>Custom Element Editor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.views.impl.SpecificElementEditorImpl
-	 * @see org.eclipse.emf.eef.views.impl.ViewsPackageImpl#getSpecificElementEditor()
+	 * @see org.eclipse.emf.eef.views.impl.CustomElementEditorImpl
+	 * @see org.eclipse.emf.eef.views.impl.ViewsPackageImpl#getCustomElementEditor()
 	 * @generated
 	 */
-	int SPECIFIC_ELEMENT_EDITOR = 6;
+	int CUSTOM_ELEMENT_EDITOR = 6;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -541,7 +542,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR__DOCUMENTATION = ELEMENT_EDITOR__DOCUMENTATION;
+	int CUSTOM_ELEMENT_EDITOR__DOCUMENTATION = ELEMENT_EDITOR__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Representation</b></em>' reference.
@@ -550,7 +551,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR__REPRESENTATION = ELEMENT_EDITOR__REPRESENTATION;
+	int CUSTOM_ELEMENT_EDITOR__REPRESENTATION = ELEMENT_EDITOR__REPRESENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -559,7 +560,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR__CONTAINER = ELEMENT_EDITOR__CONTAINER;
+	int CUSTOM_ELEMENT_EDITOR__CONTAINER = ELEMENT_EDITOR__CONTAINER;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -568,7 +569,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR__NAME = ELEMENT_EDITOR__NAME;
+	int CUSTOM_ELEMENT_EDITOR__NAME = ELEMENT_EDITOR__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
@@ -577,7 +578,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR__QUALIFIED_IDENTIFIER = ELEMENT_EDITOR__QUALIFIED_IDENTIFIER;
+	int CUSTOM_ELEMENT_EDITOR__QUALIFIED_IDENTIFIER = ELEMENT_EDITOR__QUALIFIED_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Read Only</b></em>' attribute.
@@ -586,16 +587,16 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR__READ_ONLY = ELEMENT_EDITOR__READ_ONLY;
+	int CUSTOM_ELEMENT_EDITOR__READ_ONLY = ELEMENT_EDITOR__READ_ONLY;
 
 	/**
-	 * The number of structural features of the '<em>Specific Element Editor</em>' class.
+	 * The number of structural features of the '<em>Custom Element Editor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_ELEMENT_EDITOR_FEATURE_COUNT = ELEMENT_EDITOR_FEATURE_COUNT + 0;
+	int CUSTOM_ELEMENT_EDITOR_FEATURE_COUNT = ELEMENT_EDITOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.CustomViewImpl <em>Custom View</em>}' class.
@@ -1026,14 +1027,14 @@ public interface ViewsPackage extends EPackage {
 	EAttribute getViewElement_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.SpecificElementEditor <em>Specific Element Editor</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.CustomElementEditor <em>Custom Element Editor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Specific Element Editor</em>'.
-	 * @see org.eclipse.emf.eef.views.SpecificElementEditor
+	 * @return the meta object for class '<em>Custom Element Editor</em>'.
+	 * @see org.eclipse.emf.eef.views.CustomElementEditor
 	 * @generated
 	 */
-	EClass getSpecificElementEditor();
+	EClass getCustomElementEditor();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.CustomView <em>Custom View</em>}'.
@@ -1146,7 +1147,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE.getViewsRepository_Views();
+		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE
+				.getViewsRepository_Views();
 
 		/**
 		 * The meta object literal for the '<em><b>Repository Kind</b></em>' attribute list feature.
@@ -1154,7 +1156,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VIEWS_REPOSITORY__REPOSITORY_KIND = eINSTANCE.getViewsRepository_RepositoryKind();
+		EAttribute VIEWS_REPOSITORY__REPOSITORY_KIND = eINSTANCE
+				.getViewsRepository_RepositoryKind();
 
 		/**
 		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
@@ -1162,7 +1165,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEWS_REPOSITORY__CATEGORIES = eINSTANCE.getViewsRepository_Categories();
+		EReference VIEWS_REPOSITORY__CATEGORIES = eINSTANCE
+				.getViewsRepository_Categories();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1222,7 +1226,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE.getElementEditor_ReadOnly();
+		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE
+				.getElementEditor_ReadOnly();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.CategoryImpl <em>Category</em>}' class.
@@ -1300,7 +1305,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEW_ELEMENT__REPRESENTATION = eINSTANCE.getViewElement_Representation();
+		EReference VIEW_ELEMENT__REPRESENTATION = eINSTANCE
+				.getViewElement_Representation();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
@@ -1308,7 +1314,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEW_ELEMENT__CONTAINER = eINSTANCE.getViewElement_Container();
+		EReference VIEW_ELEMENT__CONTAINER = eINSTANCE
+				.getViewElement_Container();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1319,14 +1326,14 @@ public interface ViewsPackage extends EPackage {
 		EAttribute VIEW_ELEMENT__NAME = eINSTANCE.getViewElement_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.SpecificElementEditorImpl <em>Specific Element Editor</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.CustomElementEditorImpl <em>Custom Element Editor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.eef.views.impl.SpecificElementEditorImpl
-		 * @see org.eclipse.emf.eef.views.impl.ViewsPackageImpl#getSpecificElementEditor()
+		 * @see org.eclipse.emf.eef.views.impl.CustomElementEditorImpl
+		 * @see org.eclipse.emf.eef.views.impl.ViewsPackageImpl#getCustomElementEditor()
 		 * @generated
 		 */
-		EClass SPECIFIC_ELEMENT_EDITOR = eINSTANCE.getSpecificElementEditor();
+		EClass CUSTOM_ELEMENT_EDITOR = eINSTANCE.getCustomElementEditor();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.CustomViewImpl <em>Custom View</em>}' class.
@@ -1354,7 +1361,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE.getDocumentedElement_Documentation();
+		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE
+				.getDocumentedElement_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.ViewReferenceImpl <em>View Reference</em>}' class.

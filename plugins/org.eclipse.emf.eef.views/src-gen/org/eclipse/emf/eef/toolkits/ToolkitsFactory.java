@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsFactory.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: ToolkitsFactory.java,v 1.2 2009/05/26 08:20:12 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits;
 
@@ -31,7 +31,8 @@ public interface ToolkitsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ToolkitsFactory eINSTANCE = org.eclipse.emf.eef.toolkits.impl.ToolkitsFactoryImpl.init();
+	ToolkitsFactory eINSTANCE = org.eclipse.emf.eef.toolkits.impl.ToolkitsFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Toolkit</em>'.

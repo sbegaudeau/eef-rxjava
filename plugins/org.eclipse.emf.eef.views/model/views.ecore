@@ -43,7 +43,7 @@
         eOpposite="#//Container/elements"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SpecificElementEditor" eSuperTypes="#//ElementEditor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomElementEditor" eSuperTypes="#//ElementEditor"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomView" eSuperTypes="#//View"/>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ContainerImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ContainerImpl.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -80,8 +80,9 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 */
 	public EList<ViewElement> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentWithInverseEList<ViewElement>(ViewElement.class, this,
-					ViewsPackage.CONTAINER__ELEMENTS, ViewsPackage.VIEW_ELEMENT__CONTAINER);
+			elements = new EObjectContainmentWithInverseEList<ViewElement>(
+					ViewElement.class, this, ViewsPackage.CONTAINER__ELEMENTS,
+					ViewsPackage.VIEW_ELEMENT__CONTAINER);
 		}
 		return elements;
 	}
@@ -93,11 +94,12 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd,
-						msgs);
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getElements())
+					.basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -108,10 +110,12 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,8 +128,8 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return getElements();
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -139,10 +143,10 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends ViewElement>)newValue);
-				return;
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			getElements().clear();
+			getElements().addAll((Collection<? extends ViewElement>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -155,9 +159,9 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				getElements().clear();
-				return;
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			getElements().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -170,8 +174,8 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return elements != null && !elements.isEmpty();
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

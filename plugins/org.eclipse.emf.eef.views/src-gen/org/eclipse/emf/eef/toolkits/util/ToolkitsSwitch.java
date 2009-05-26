@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsSwitch.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: ToolkitsSwitch.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.util;
 
@@ -78,7 +78,8 @@ public class ToolkitsSwitch<T> {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -91,22 +92,22 @@ public class ToolkitsSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ToolkitsPackage.TOOLKIT: {
-				Toolkit toolkit = (Toolkit)theEObject;
-				T result = caseToolkit(toolkit);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case ToolkitsPackage.WIDGET: {
-				Widget widget = (Widget)theEObject;
-				T result = caseWidget(widget);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			default:
-				return defaultCase(theEObject);
+		case ToolkitsPackage.TOOLKIT: {
+			Toolkit toolkit = (Toolkit) theEObject;
+			T result = caseToolkit(toolkit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ToolkitsPackage.WIDGET: {
+			Widget widget = (Widget) theEObject;
+			T result = caseWidget(widget);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 

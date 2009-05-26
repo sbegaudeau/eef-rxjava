@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsPackageImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: ToolkitsPackageImpl.java,v 1.2 2009/05/26 08:20:12 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -37,7 +37,8 @@ import org.eclipse.emf.eef.views.impl.ViewsPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage {
+public class ToolkitsPackageImpl extends EPackageImpl implements
+		ToolkitsPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,12 +103,14 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 */
 	public static ToolkitsPackage init() {
 		if (isInited)
-			return (ToolkitsPackage)EPackage.Registry.INSTANCE.getEPackage(ToolkitsPackage.eNS_URI);
+			return (ToolkitsPackage) EPackage.Registry.INSTANCE
+					.getEPackage(ToolkitsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl)(EPackage.Registry.INSTANCE
+		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(eNS_URI) instanceof ToolkitsPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI) : new ToolkitsPackageImpl());
+				.getEPackage(eNS_URI)
+				: new ToolkitsPackageImpl());
 
 		isInited = true;
 
@@ -115,9 +118,10 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl)(EPackage.Registry.INSTANCE
+		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(ViewsPackage.eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(ViewsPackage.eNS_URI) : ViewsPackage.eINSTANCE);
+				.getEPackage(ViewsPackage.eNS_URI)
+				: ViewsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theToolkitsPackage.createPackageContents();
@@ -148,7 +152,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EReference getToolkit_Widgets() {
-		return (EReference)toolkitEClass.getEStructuralFeatures().get(0);
+		return (EReference) toolkitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -157,7 +161,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getToolkit_Name() {
-		return (EAttribute)toolkitEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) toolkitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -175,7 +179,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getWidget_Name() {
-		return (EAttribute)widgetEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) widgetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -184,7 +188,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getWidget_Icon() {
-		return (EAttribute)widgetEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) widgetEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -193,7 +197,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getWidget_Implementation() {
-		return (EAttribute)widgetEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) widgetEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -202,7 +206,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EReference getWidget_Toolkit() {
-		return (EReference)widgetEClass.getEStructuralFeatures().get(3);
+		return (EReference) widgetEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -211,7 +215,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public ToolkitsFactory getToolkitsFactory() {
-		return (ToolkitsFactory)getEFactoryInstance();
+		return (ToolkitsFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -276,7 +280,9 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(toolkitEClass, Toolkit.class,
+		initEClass(
+				toolkitEClass,
+				Toolkit.class,
 				"Toolkit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(
 				getToolkit_Widgets(),
@@ -288,7 +294,9 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 				ecorePackage.getEString(),
 				"name", null, 1, 1, Toolkit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(widgetEClass, Widget.class,
+		initEClass(
+				widgetEClass,
+				Widget.class,
 				"Widget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getWidget_Name(),

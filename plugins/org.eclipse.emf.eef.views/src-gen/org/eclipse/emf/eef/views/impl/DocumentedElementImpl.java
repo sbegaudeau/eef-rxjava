@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementImpl.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: DocumentedElementImpl.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -36,7 +36,8 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  *
  * @generated
  */
-public abstract class DocumentedElementImpl extends EObjectImpl implements DocumentedElement {
+public abstract class DocumentedElementImpl extends EObjectImpl implements
+		DocumentedElement {
 	/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,7 +96,8 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements Docum
 		documentation = newDocumentation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION, oldDocumentation, documentation));
+					ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION,
+					oldDocumentation, documentation));
 	}
 
 	/**
@@ -106,8 +108,8 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements Docum
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-				return getDocumentation();
+		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+			return getDocumentation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +122,9 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements Docum
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-				setDocumentation((String)newValue);
-				return;
+		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+			setDocumentation((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -135,9 +137,9 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements Docum
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-				setDocumentation(DOCUMENTATION_EDEFAULT);
-				return;
+		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+			setDocumentation(DOCUMENTATION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -150,9 +152,9 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements Docum
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT
-						.equals(documentation);
+		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+			return DOCUMENTATION_EDEFAULT == null ? documentation != null
+					: !DOCUMENTATION_EDEFAULT.equals(documentation);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -50,7 +50,7 @@
           ecoreFeature="ecore:EReference views.ecore#//ViewElement/container"/>
       <genFeatures createChild="false" propertyDescription="The element name" ecoreFeature="ecore:EAttribute views.ecore#//ViewElement/name"/>
     </genClasses>
-    <genClasses ecoreClass="views.ecore#//SpecificElementEditor"/>
+    <genClasses ecoreClass="views.ecore#//CustomElementEditor"/>
     <genClasses ecoreClass="views.ecore#//CustomView"/>
     <genClasses ecoreClass="views.ecore#//DocumentedElement">
       <genFeatures createChild="false" propertyDescription="The documentation of the element"

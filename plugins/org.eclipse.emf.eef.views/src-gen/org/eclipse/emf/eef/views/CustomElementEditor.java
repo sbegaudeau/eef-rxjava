@@ -9,19 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditor.java,v 1.1 2009/04/30 17:16:00 glefur Exp $
+ * $Id: CustomElementEditor.java,v 1.1 2009/05/26 08:20:10 glefur Exp $
  */
 package org.eclipse.emf.eef.views;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Specific Element Editor</b></em>'.
+ * A representation of the model object '<em><b>Custom Element Editor</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.emf.eef.views.ViewsPackage#getSpecificElementEditor()
+ * @see org.eclipse.emf.eef.views.ViewsPackage#getCustomElementEditor()
  * @model
  * @generated
  */
-public interface SpecificElementEditor extends ElementEditor {
-} // SpecificElementEditor
+public interface CustomElementEditor extends ElementEditor {
+} // CustomElementEditor
