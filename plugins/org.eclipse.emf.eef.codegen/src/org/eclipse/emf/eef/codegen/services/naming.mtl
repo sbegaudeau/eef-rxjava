@@ -102,10 +102,6 @@
 [pec.name.toJavaClassifier()/][view.viewKey(pec).toJavaClassifier()/]PropertySection
 [/template]
 
-[template public viewPackage(element : ElementEditor, pec : PropertiesEditionComponent)]
-[element.propertiesEditionElement(pec).editionElementPackage()/]
-[/template]
-
 [template public editionElementPackage(pee : PropertiesEditionElement)]
 [pee.model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]Package
 [/template]

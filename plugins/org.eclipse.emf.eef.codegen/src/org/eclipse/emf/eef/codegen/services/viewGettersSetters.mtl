@@ -630,7 +630,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	}
 [/template]
 
-[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))] 
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignatureImplementation()/]
 

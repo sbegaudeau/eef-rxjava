@@ -600,7 +600,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		
 		[editor.name.toJavaIdentifier()/] = new AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], 
-			resourceSet, [editor.name.toJavaIdentifier()/]Filter, [editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
+			resourceSet, [editor.name.toJavaIdentifier()/]Filter, [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
 			public void handleSet([editor.involvedPropertiesEditionElement().model.eType.name/] element){
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
@@ -770,11 +770,11 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
-	protected void create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {	
+	protected void create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
-				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.viewPackage(pec)/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
+				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {

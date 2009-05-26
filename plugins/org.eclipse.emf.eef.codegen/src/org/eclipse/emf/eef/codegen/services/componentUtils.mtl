@@ -15,6 +15,7 @@
 [import naming /]
 [import common /]
 [import typeUtils /]
+[import filters /]
 
 [comment ===== Case : model = any - view = CustomElementEditor ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
@@ -349,53 +350,7 @@
 
 			});
 [for (filter : BindingFilter | editionElement.bindingFilters)]
-[if(filter.oclIsTypeOf(filters::JavaDeclarationFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return [filter.oclAsType(filters::JavaDeclarationFilter).methodName/]();
-				}
-
-			});
-[elseif (filter.oclIsTypeOf(filters::JavaExpressionFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					[filter.oclAsType(filters::JavaExpressionFilter).body/]
-				}
-
-			});
-[elseif (filter.oclIsTypeOf(filters::OnlyReferenceTypeFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
-					if (result instanceof Collection){
-						return ((Collection)result).contains(element);
-					}else if (result instanceof ResourceSet){
-						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
-					}
-					return false;
-				}
-			});
-[elseif (filter.oclIsTypeOf(filters::OCLFilter))]
-			// OCLFilter not implemented yet
-[/if]
+[filter.filterBody(editionElement,view,pec)/]
 [/for]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
@@ -403,7 +358,7 @@
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedEObjectFlatComboViewer'))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]());
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [/template]
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
@@ -424,14 +379,14 @@
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-			List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAdd.iterator(); iter.hasNext();)
+			List [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
-			List [editionElement.model.name.toJavaIdentifier()/]ToRemove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemove.iterator(); iter.hasNext();)
+			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
-			//List [editionElement.model.name.toJavaIdentifier()/]ToMove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
-			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMove.iterator(); iter.hasNext();){
+			//List [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			//}
@@ -454,58 +409,12 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.name.toJavaClassifier()/]Table().contains(element);
+					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.views->first().viewPackageSignature()/]Table().contains(element);
 				}
 
 			});
 [for (filter : BindingFilter | editionElement.bindingFilters)]
-[if(filter.oclIsTypeOf(filters::JavaDeclarationFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return [filter.oclAsType(filters::JavaDeclarationFilter).methodName/]();
-				}
-
-			});
-[elseif (filter.oclIsTypeOf(filters::JavaExpressionFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					[filter.oclAsType(filters::JavaExpressionFilter).body/]
-				}
-
-			});
-[elseif (filter.oclIsTypeOf(filters::OnlyReferenceTypeFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
-					if (result instanceof Collection){
-						return ((Collection)result).contains(element);
-					}else if (result instanceof ResourceSet){
-						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
-					}
-					return false;
-				}
-			});
-[elseif (filter.oclIsTypeOf(filters::OCLFilter))]
-			// OCLFilter not implemented yet
-[/if]
+[filter.filterBody(editionElement,view,pec)/]
 [/for]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
@@ -522,59 +431,13 @@
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
-						return (![view.viewIdentifier(pec)/].get[editionElement.name.toJavaClassifier()/]Table().contains(element));
+						return (![view.viewIdentifier(pec)/].get[editionElement.views->first().viewPackageSignature()/]Table().contains(element));
 					return false;
 				}
 
 			});
 [for (filter : BindingFilter | editionElement.bindingFilters)]
-[if(filter.oclIsTypeOf(filters::JavaDeclarationFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return [filter.oclAsType(filters::JavaDeclarationFilter).methodName/]();
-				}
-
-			});
-[elseif (filter.oclIsTypeOf(filters::JavaExpressionFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					[filter.oclAsType(filters::JavaExpressionFilter).body/]
-				}
-
-			});
-[elseif (filter.oclIsTypeOf(filters::OnlyReferenceTypeFilter))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.oclAsType(filters::OnlyReferenceTypeFilter).reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
-					if (result instanceof Collection){
-						return ((Collection)result).contains(element);
-					}else if (result instanceof ResourceSet){
-						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
-					}
-					return false;
-				}
-			});
-[elseif (filter.oclIsTypeOf(filters::OCLFilter))]
-			// OCLFilter not implemented yet
-[/if]
+[filter.filterBody(editionElement,view,pec)/]
 [/for]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
@@ -603,18 +466,18 @@
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-			List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAdd.iterator(); iter.hasNext();) {
+			List [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();) {
 				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eContainingClass.name.toUpperFirst()/]();
 				cc.append(SetCommand.create(editingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], iter.next()));
 				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
 			}
-			List [editionElement.model.eContainingClass.name.toJavaIdentifier()/]ToRemove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
-			for (Iterator iter = [editionElement.model.eContainingClass.name.toJavaIdentifier()/]ToRemove.iterator(); iter.hasNext();) {
+			List [editionElement.model.eContainingClass.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.eContainingClass.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();) {
 				cc.append(RemoveCommand.create(editingDomain, iter.next()));
 			}
-			//List [editionElement.model.name.toJavaIdentifier()/]ToMove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
-			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMove.iterator(); iter.hasNext();){
+			//List [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			//}
@@ -642,10 +505,13 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.name.toJavaClassifier()/]Table().contains(element);
+					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.views->first().viewPackageSignature()/]Table().contains(element);
 				}
 
 			});
+[for (filter : BindingFilter | editionElement.bindingFilters)]
+[filter.filterBody(editionElement,view,pec)/]
+[/for]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
@@ -681,11 +547,11 @@
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			List [editionElement.model.name.toJavaIdentifier()/]ToAdd = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAdd.iterator(); iter.hasNext();)
+			List [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
-			Map [editionElement.model.name.toJavaIdentifier()/]ToRefresh = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefresh.keySet().iterator(); iter.hasNext();) {
+			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
 				
 				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment'))]
 				
@@ -695,11 +561,11 @@
 				// [/protected]
 				
 			}
-			List [editionElement.model.name.toJavaIdentifier()/]ToRemove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemove.iterator(); iter.hasNext();)
+			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
 				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List [editionElement.model.name.toJavaIdentifier()/]ToMove = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
-			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMove.iterator(); iter.hasNext();){
+			List [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
+			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			}
@@ -727,6 +593,9 @@
 				}
 
 			});
+[for (filter : BindingFilter | editionElement.bindingFilters)]
+[filter.filterBody(editionElement,view,pec)/]
+[/for]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
@@ -812,6 +681,9 @@
 				}
 
 			});
+[for (filter : BindingFilter | editionElement.bindingFilters)]
+[filter.filterBody(editionElement,view,pec)/]
+[/for]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
