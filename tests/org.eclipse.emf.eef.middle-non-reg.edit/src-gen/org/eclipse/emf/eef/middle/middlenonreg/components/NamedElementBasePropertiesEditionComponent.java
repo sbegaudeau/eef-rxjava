@@ -45,19 +45,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class NamedElementBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private NamedElement namedElement;
-	
+
 	/**
 	 * The Base part
 	 */
 	private NamedElementPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -71,7 +71,7 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -90,7 +90,7 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 					NamedElementBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MiddlenonregPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 
 
@@ -168,15 +168,17 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 
 			
 			// init filters
-			
+
 		}
 		// init values for referenced views
 
 
 		// init filters for referenced views
-		
+
 
 	}
+
+
 
 	/**
 	 * {@inheritDoc}
