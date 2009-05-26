@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBindingItemProvider.java,v 1.4 2009/05/20 17:56:57 sbouchet Exp $
+ * $Id: AbstractPropertyBindingItemProvider.java,v 1.5 2009/05/26 08:19:57 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -44,7 +44,10 @@ import org.eclipse.emf.eef.views.ViewElement;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractPropertyBindingItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AbstractPropertyBindingItemProvider extends
+		DocumentedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -79,12 +82,14 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_AbstractPropertyBinding_name_feature"),
 				getString("_UI_AbstractPropertyBinding_name_description"),
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__NAME, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -106,10 +111,12 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS);
+			childrenFeatures
+					.add(MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS);
 		}
 		return childrenFeatures;
 	}
@@ -129,25 +136,30 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 
 	private ItemPropertyDescriptor initViewsPropertyDescriptors() {
 		return new ItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_AbstractPropertyBinding_views_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_AbstractPropertyBinding_views_feature",
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_AbstractPropertyBinding_views_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_AbstractPropertyBinding_views_feature",
 						"_UI_AbstractPropertyBinding_type"),
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__VIEWS, true, false, true, null, null, null) {
+				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__VIEWS, true,
+				false, true, null, null, null) {
 
 			@Override
 			protected Collection<?> getComboBoxObjects(Object object) {
 				if (object instanceof AbstractPropertyBinding) {
-					AbstractPropertyBinding propertyBinding = (AbstractPropertyBinding)object;
-					List<View> views = new ArrayList<View>(propertyBinding.getElement().getViews());
-					for (ElementBindingReference reference : propertyBinding.getElement()
-							.getReferencedBinding())
+					AbstractPropertyBinding propertyBinding = (AbstractPropertyBinding) object;
+					List<View> views = new ArrayList<View>(propertyBinding
+							.getElement().getViews());
+					for (ElementBindingReference reference : propertyBinding
+							.getElement().getReferencedBinding())
 						views.addAll(reference.getBinding().getViews());
-					Collection<?> comboBoxObjects = super.getComboBoxObjects(object);
+					Collection<?> comboBoxObjects = super
+							.getComboBoxObjects(object);
 					Collection<ViewElement> result = new ArrayList<ViewElement>();
 					for (Object viewElement : comboBoxObjects) {
-						if (ownedBy((ViewElement)viewElement, views))
-							result.add((ViewElement)viewElement);
+						if (ownedBy((ViewElement) viewElement, views))
+							result.add((ViewElement) viewElement);
 					}
 					return result;
 				}
@@ -184,7 +196,8 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/AbstractPropertyBinding"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/AbstractPropertyBinding"));
 	}
 
 	/**
@@ -195,7 +208,7 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AbstractPropertyBinding)object).getName();
+		String label = ((AbstractPropertyBinding) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_AbstractPropertyBinding_type")
 				: getString("_UI_AbstractPropertyBinding_type") + " " + label;
 	}
@@ -212,14 +225,14 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AbstractPropertyBinding.class)) {
-			case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
-			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), false, true));
+			return;
+		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -232,24 +245,29 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated NOT
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-//		newChildDescriptors.add(createChildParameter(
-//				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-//						.createOCLFilter()));
+		//		newChildDescriptors.add(createChildParameter(
+		//				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
+		//						.createOCLFilter()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createJavaDeclarationFilter()));
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE.createJavaDeclarationFilter()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createJavaExpressionFilter()));
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE.createJavaExpressionFilter()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createOnlyReferenceTypeFilter()));
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE
+								.createOnlyReferenceTypeFilter()));
 	}
 
 }

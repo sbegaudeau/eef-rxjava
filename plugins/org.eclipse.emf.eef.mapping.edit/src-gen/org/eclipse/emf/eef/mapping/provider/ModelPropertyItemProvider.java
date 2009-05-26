@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelPropertyItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
+ * $Id: ModelPropertyItemProvider.java,v 1.4 2009/05/26 08:19:57 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -34,7 +34,9 @@ import org.eclipse.emf.eef.mapping.ModelProperty;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelPropertyItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ModelPropertyItemProvider extends DocumentedElementItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -68,11 +70,13 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ModelProperty_binding_feature"),
 				getString("_UI_ModelProperty_binding_description"),
-				MappingPackage.Literals.MODEL_PROPERTY__BINDING, true, false, true, null, null, null));
+				MappingPackage.Literals.MODEL_PROPERTY__BINDING, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -83,7 +87,7 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider imp
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelProperty)object).getDocumentation();
+		String label = ((ModelProperty) object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ModelProperty_type")
 				: getString("_UI_ModelProperty_type") + " " + label;
 	}
@@ -109,7 +113,8 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

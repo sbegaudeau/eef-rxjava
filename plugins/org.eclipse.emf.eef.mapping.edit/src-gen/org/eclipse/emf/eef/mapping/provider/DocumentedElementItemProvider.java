@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
+ * $Id: DocumentedElementItemProvider.java,v 1.4 2009/05/26 08:19:57 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -39,7 +39,9 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DocumentedElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DocumentedElementItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,12 +75,14 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	protected void addDocumentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_DocumentedElement_documentation_feature"),
 				getString("_UI_DocumentedElement_documentation_description"),
-				MappingPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				MappingPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -89,7 +93,8 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DocumentedElement"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/DocumentedElement"));
 	}
 
 	/**
@@ -100,7 +105,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DocumentedElement)object).getDocumentation();
+		String label = ((DocumentedElement) object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_DocumentedElement_type")
 				: getString("_UI_DocumentedElement_type") + " " + label;
 	}
@@ -117,10 +122,10 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DocumentedElement.class)) {
-			case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -133,7 +138,8 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -145,7 +151,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

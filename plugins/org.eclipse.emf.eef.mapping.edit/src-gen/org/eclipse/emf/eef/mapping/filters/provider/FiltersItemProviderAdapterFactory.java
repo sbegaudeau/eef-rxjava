@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersItemProviderAdapterFactory.java,v 1.1 2009/05/19 16:54:34 sbouchet Exp $
+ * $Id: FiltersItemProviderAdapterFactory.java,v 1.2 2009/05/26 08:19:56 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.provider;
 
@@ -43,7 +43,8 @@ import org.eclipse.emf.eef.mapping.filters.util.FiltersAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -122,7 +123,8 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	@Override
 	public Adapter createJavaDeclarationFilterAdapter() {
 		if (javaDeclarationFilterItemProvider == null) {
-			javaDeclarationFilterItemProvider = new JavaDeclarationFilterItemProvider(this);
+			javaDeclarationFilterItemProvider = new JavaDeclarationFilterItemProvider(
+					this);
 		}
 
 		return javaDeclarationFilterItemProvider;
@@ -145,7 +147,8 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	@Override
 	public Adapter createJavaExpressionFilterAdapter() {
 		if (javaExpressionFilterItemProvider == null) {
-			javaExpressionFilterItemProvider = new JavaExpressionFilterItemProvider(this);
+			javaExpressionFilterItemProvider = new JavaExpressionFilterItemProvider(
+					this);
 		}
 
 		return javaExpressionFilterItemProvider;
@@ -168,7 +171,8 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	@Override
 	public Adapter createOnlyReferenceTypeFilterAdapter() {
 		if (onlyReferenceTypeFilterItemProvider == null) {
-			onlyReferenceTypeFilterItemProvider = new OnlyReferenceTypeFilterItemProvider(this);
+			onlyReferenceTypeFilterItemProvider = new OnlyReferenceTypeFilterItemProvider(
+					this);
 		}
 
 		return onlyReferenceTypeFilterItemProvider;
@@ -181,7 +185,8 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -190,7 +195,8 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -224,7 +230,8 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

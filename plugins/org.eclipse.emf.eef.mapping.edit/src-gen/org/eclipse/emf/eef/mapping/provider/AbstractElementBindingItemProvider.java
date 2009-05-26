@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractElementBindingItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
+ * $Id: AbstractElementBindingItemProvider.java,v 1.4 2009/05/26 08:19:57 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -38,7 +38,10 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractElementBindingItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AbstractElementBindingItemProvider extends
+		DocumentedElementItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,12 +76,14 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_AbstractElementBinding_name_feature"),
 				getString("_UI_AbstractElementBinding_name_description"),
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__NAME, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -88,13 +93,13 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * @generated
 	 */
 	protected void addViewsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
 						.getRootAdapterFactory(), getResourceLocator(),
-						getString("_UI_AbstractElementBinding_views_feature"),
-						getString("_UI_AbstractElementBinding_views_description"),
-						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__VIEWS, true, false, true, null,
-						null, null));
+				getString("_UI_AbstractElementBinding_views_feature"),
+				getString("_UI_AbstractElementBinding_views_description"),
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__VIEWS, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -106,12 +111,16 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS);
-			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES);
-			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING);
+			childrenFeatures
+					.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS);
+			childrenFeatures
+					.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES);
+			childrenFeatures
+					.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING);
 		}
 		return childrenFeatures;
 	}
@@ -137,7 +146,8 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/AbstractElementBinding"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/AbstractElementBinding"));
 	}
 
 	/**
@@ -148,7 +158,7 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AbstractElementBinding)object).getName();
+		String label = ((AbstractElementBinding) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_AbstractElementBinding_type")
 				: getString("_UI_AbstractElementBinding_type") + " " + label;
 	}
@@ -165,16 +175,16 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AbstractElementBinding.class)) {
-			case MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
-			case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS:
-			case MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES:
-			case MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), false, true));
+			return;
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS:
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES:
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -187,32 +197,35 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS, MappingFactory.eINSTANCE
-						.createEMFElementBinding()));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+				MappingFactory.eINSTANCE.createEMFElementBinding()));
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS, MappingFactory.eINSTANCE
-						.createStandardElementBinding()));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+				MappingFactory.eINSTANCE.createStandardElementBinding()));
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, MappingFactory.eINSTANCE
-						.createEMFPropertyBinding()));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+				MappingFactory.eINSTANCE.createEMFPropertyBinding()));
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, MappingFactory.eINSTANCE
-						.createStandardPropertyBinding()));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+				MappingFactory.eINSTANCE.createStandardPropertyBinding()));
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, MappingFactory.eINSTANCE
-						.createEMFMultiPropertiesBinding()));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+				MappingFactory.eINSTANCE.createEMFMultiPropertiesBinding()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING,
-				MappingFactory.eINSTANCE.createElementBindingReference()));
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING,
+						MappingFactory.eINSTANCE
+								.createElementBindingReference()));
 	}
 
 }

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomModelNavigationItemProvider.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
+ * $Id: CustomModelNavigationItemProvider.java,v 1.4 2009/05/26 08:19:57 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.provider;
 
@@ -31,7 +31,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CustomModelNavigationItemProvider extends ModelNavigationItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class CustomModelNavigationItemProvider extends
+		ModelNavigationItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -65,7 +68,8 @@ public class CustomModelNavigationItemProvider extends ModelNavigationItemProvid
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomModelNavigation"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/CustomModelNavigation"));
 	}
 
 	/**
@@ -100,7 +104,8 @@ public class CustomModelNavigationItemProvider extends ModelNavigationItemProvid
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

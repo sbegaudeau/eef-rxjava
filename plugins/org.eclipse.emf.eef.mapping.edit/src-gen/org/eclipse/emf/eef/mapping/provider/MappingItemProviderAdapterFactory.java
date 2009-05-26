@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingItemProviderAdapterFactory.java,v 1.3 2009/05/19 16:55:03 sbouchet Exp $
+ * $Id: MappingItemProviderAdapterFactory.java,v 1.4 2009/05/26 08:19:57 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -47,7 +47,9 @@ import org.eclipse.emf.eef.mapping.util.MappingAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MappingItemProviderAdapterFactory extends MappingAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
+public class MappingItemProviderAdapterFactory extends MappingAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable,
+		IChildCreationExtender {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -135,7 +137,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	@Override
 	public Adapter createEMFElementBindingAdapter() {
 		if (emfElementBindingItemProvider == null) {
-			emfElementBindingItemProvider = new EMFElementBindingItemProvider(this);
+			emfElementBindingItemProvider = new EMFElementBindingItemProvider(
+					this);
 		}
 
 		return emfElementBindingItemProvider;
@@ -158,7 +161,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	@Override
 	public Adapter createEMFPropertyBindingAdapter() {
 		if (emfPropertyBindingItemProvider == null) {
-			emfPropertyBindingItemProvider = new EMFPropertyBindingItemProvider(this);
+			emfPropertyBindingItemProvider = new EMFPropertyBindingItemProvider(
+					this);
 		}
 
 		return emfPropertyBindingItemProvider;
@@ -181,7 +185,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	@Override
 	public Adapter createStandardElementBindingAdapter() {
 		if (standardElementBindingItemProvider == null) {
-			standardElementBindingItemProvider = new StandardElementBindingItemProvider(this);
+			standardElementBindingItemProvider = new StandardElementBindingItemProvider(
+					this);
 		}
 
 		return standardElementBindingItemProvider;
@@ -204,7 +209,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	@Override
 	public Adapter createStandardPropertyBindingAdapter() {
 		if (standardPropertyBindingItemProvider == null) {
-			standardPropertyBindingItemProvider = new StandardPropertyBindingItemProvider(this);
+			standardPropertyBindingItemProvider = new StandardPropertyBindingItemProvider(
+					this);
 		}
 
 		return standardPropertyBindingItemProvider;
@@ -250,7 +256,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	@Override
 	public Adapter createElementBindingReferenceAdapter() {
 		if (elementBindingReferenceItemProvider == null) {
-			elementBindingReferenceItemProvider = new ElementBindingReferenceItemProvider(this);
+			elementBindingReferenceItemProvider = new ElementBindingReferenceItemProvider(
+					this);
 		}
 
 		return elementBindingReferenceItemProvider;
@@ -273,7 +280,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	@Override
 	public Adapter createEMFMultiPropertiesBindingAdapter() {
 		if (emfMultiPropertiesBindingItemProvider == null) {
-			emfMultiPropertiesBindingItemProvider = new EMFMultiPropertiesBindingItemProvider(this);
+			emfMultiPropertiesBindingItemProvider = new EMFMultiPropertiesBindingItemProvider(
+					this);
 		}
 
 		return emfMultiPropertiesBindingItemProvider;
@@ -286,7 +294,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -295,7 +304,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -329,7 +339,8 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -351,8 +362,10 @@ public class MappingItemProviderAdapterFactory extends MappingAdapterFactory imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+	public Collection<?> getNewChildDescriptors(Object object,
+			EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object,
+				editingDomain);
 	}
 
 	/**
