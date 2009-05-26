@@ -803,7 +803,6 @@
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
 [editionElement.filterUpdater(v, pec)/]
 [/for]
-[if (v.referencedViews()->notEmpty())]
-[v.filterUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if]
+[comment][if (v.referencedViews()->notEmpty())][v.filterUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if][/comment]
 [/for]
 [/template]
