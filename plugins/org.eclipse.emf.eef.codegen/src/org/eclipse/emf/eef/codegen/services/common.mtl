@@ -468,3 +468,8 @@ Object
 	else modelNavigation.discriminatorType.name
 	endif/]
 
+[query public simpleModelNavigationMetamodelFactory(modelNavigation : SimpleModelNavigation) : String = 
+	if (modelNavigation.discriminatorType.oclIsUndefined())
+	then modelNavigation.feature.eType.ePackage.metamodelPrefix()
+	else modelNavigation.discriminatorType.ePackage.metamodelPrefix()
+	endif/]
