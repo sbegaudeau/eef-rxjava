@@ -21,7 +21,7 @@
 [if (pec.mustBeGenerated())]
 	[file (pec.fullFilePath(basePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].providers;
+package [pec.model.completePackage()/].providers;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -32,10 +32,10 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import [pec.model.completePackage()/].[pec.model.metamodelPackage()/];
 import [pec.model.qualifiedName(basePackage)/];
 [if (pec.needComposedEditionComponent())]
-import [pec.model.eefPackage(basePackage)/].components.[pec.pecClass()/];
+import [pec.model.completePackage()/].components.[pec.pecClass()/];
 [/if]
 [for (view : View | pec.views)]
-import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
+import [pec.model.completePackage()/].components.[pec.subPECClass(view)/];
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 	[for (view : View | subPec.views) ? (view.explicit)]
@@ -98,6 +98,6 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String)]
-[pec.model.eefPackage(basePackage).toPath()/]/providers/[pec.pecProviderClass()/].java
+[pec.model.completePackage().toPath()/]/providers/[pec.pecProviderClass()/].java
 [/template]
 

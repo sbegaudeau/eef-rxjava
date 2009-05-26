@@ -392,6 +392,11 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.getterRemoveSignature()/] {
 		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToRemove();
 	}
+
+[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.getterTableListSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]Table();
+	}
 [/template]
 
 [template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
@@ -608,6 +613,17 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.updateSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
 	}
+
+[addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.addFilterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addFilterTo[elementEditor.viewPackageSignature()/](filter);
+	}
+
+[addBusinessFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.addBusinessFilterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
+	}
+
 [/template]
 
 [template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
@@ -665,6 +681,17 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.setterSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](newValue);
 	}
+
+[addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.addFilterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addFilterTo[elementEditor.viewPackageSignature()/](filter);
+	}
+
+[addBusinessFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.addBusinessFilterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
+	}
+	
 [/template]
 
 [template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]

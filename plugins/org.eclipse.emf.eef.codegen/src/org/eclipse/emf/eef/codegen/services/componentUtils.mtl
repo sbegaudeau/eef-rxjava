@@ -553,7 +553,7 @@
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
 				
-				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment'))]
+				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))]
 				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
@@ -801,7 +801,16 @@
 [template public filterUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
-[editionElement.filterUpdater(v, pec)/]
+[editionElement.filterUpdater(view, pec)/]
+[/for]
+[comment][if (v.referencedViews()->notEmpty())][v.filterUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if][/comment]
+[/for]
+[/template]
+
+[template public javaDeclarationFilterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
+[for (v : View | view.referencedViews())]
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v))]
+[editionElement.javaDeclarationFilter()/]
 [/for]
 [comment][if (v.referencedViews()->notEmpty())][v.filterUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if][/comment]
 [/for]

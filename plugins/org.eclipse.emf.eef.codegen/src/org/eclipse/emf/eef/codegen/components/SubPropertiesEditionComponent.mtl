@@ -17,6 +17,8 @@
 [import viewCommon /]
 [import componentUtils /]
 [import typeUtils /]
+[import filters /]
+
 
 [template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
@@ -25,7 +27,7 @@
 	[for (view : View | pec.views) ? (not view.isDynamicView())]
 [file (pec.fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].components;
+package [pec.model.completePackage()/].components;
 
 // [protected ('for imports')]
 
@@ -124,12 +126,15 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 import [vr.vrQualifiedClass()/];
 [/for]
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.Viewer;
 [comment for filters /]
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.bindingFilters->notEmpty())]
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+[for (bindingFilter : BindingFilter | element.bindingFilters) ? (bindingFilter.oclIsTypeOf(mapping::filters::OnlyReferenceTypeFilter))]
+import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).reference.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
+[/for]
 [/for]
 
 // [/protected]
@@ -278,23 +283,12 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [view.filterUpdaterForReferencedViews(pec)/]
 	}
 
-[comment]
-Acceleo bug, the second 'for' block must be : 
-[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->select(oclIsTypeOf(filters::JavaDeclarationFilter))]
-[/comment]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[for (bindingFilter : BindingFilter | pee.bindingFilters) ? (oclIsTypeOf(filters::JavaDeclarationFilter))]
-	/**
-	 * [bindingFilter.documentation/]
-	 */
-	private boolean [bindingFilter.oclAsType(filters::JavaDeclarationFilter).methodName/](){
-		// [protected ('for user filter '.concat(bindingFilter.oclAsType(filters::JavaDeclarationFilter).methodName))]
-		return false;
-		// [/protected]
+[pee.javaDeclarationFilter()/]
+[/for]
 
-	}
-[/for]
-[/for]
+[view.javaDeclarationFilterForReferencedViews(pec)/]
+
 
 	/**
 	 * {@inheritDoc}

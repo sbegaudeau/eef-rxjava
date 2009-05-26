@@ -73,3 +73,17 @@
 			// OCLFilter not implemented yet
 [/template]
 
+
+[template public javaDeclarationFilter(pee : PropertiesEditionElement)]
+[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->select(oclIsTypeOf(mapping::filters::JavaDeclarationFilter)))]
+	/**
+	 * [bindingFilter.documentation/]
+	 */
+	private boolean [bindingFilter.methodName/](){
+		// [protected ('for user filter '.concat(bindingFilter.methodName))]
+		return false;
+		// [/protected]
+
+	}
+[/for]
+[/template]

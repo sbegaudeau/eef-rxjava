@@ -21,7 +21,7 @@
 [if (pec.needComposedEditionComponent())]
 [file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].components;
+package [pec.model.completePackage()/].components;
 
 // [protected ('for imports')]
 

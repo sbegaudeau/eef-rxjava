@@ -43,7 +43,7 @@
 [/template]
 
 [template public pecQualifiedClass(pec : PropertiesEditionComponent)]
-[pec.editionContext().contextPackage()/].[pec.model.ePackage.name/].components.[pec.pecClass()/]
+[pec.model.completePackage()/].components.[pec.pecClass()/]
 [/template]
 
 [template public pecClass(pec : PropertiesEditionComponent)]
@@ -51,7 +51,7 @@
 [/template]
 
 [template public subPECQualifiedClass(pec : PropertiesEditionComponent, view : View)]
-[pec.editionContext().contextPackage()/].[pec.model.ePackage.name/].components.[pec.subPECClass(view)/]
+[pec.model.completePackage()/].components.[pec.subPECClass(view)/]
 [/template]
 
 [template public subPECClass(pec : PropertiesEditionComponent, view : View)]

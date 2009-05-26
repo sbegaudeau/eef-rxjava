@@ -187,6 +187,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'AdvancedTableComposition')]
 import java.util.Map;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
