@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -123,8 +124,13 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 import [vr.vrQualifiedClass()/];
 [/for]
 import org.eclipse.jface.dialogs.IMessageProvider;
+[comment for filters /]
+[for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.bindingFilters->notEmpty())]
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+[/for]
 
 // [/protected]
 
