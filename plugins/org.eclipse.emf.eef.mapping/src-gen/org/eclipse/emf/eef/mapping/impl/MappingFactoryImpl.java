@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingFactoryImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: MappingFactoryImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -38,7 +38,7 @@ public class MappingFactoryImpl extends EFactoryImpl implements MappingFactory {
 	 */
 	public static MappingFactory init() {
 		try {
-			MappingFactory theMappingFactory = (MappingFactory)EPackage.Registry.INSTANCE
+			MappingFactory theMappingFactory = (MappingFactory) EPackage.Registry.INSTANCE
 					.getEFactory("http://www.eclipse.org/emf/eef/mapping/1.0.0");
 			if (theMappingFactory != null) {
 				return theMappingFactory;
@@ -67,25 +67,25 @@ public class MappingFactoryImpl extends EFactoryImpl implements MappingFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case MappingPackage.DATABINDING:
-				return createDatabinding();
-			case MappingPackage.EMF_ELEMENT_BINDING:
-				return createEMFElementBinding();
-			case MappingPackage.EMF_PROPERTY_BINDING:
-				return createEMFPropertyBinding();
-			case MappingPackage.STANDARD_ELEMENT_BINDING:
-				return createStandardElementBinding();
-			case MappingPackage.STANDARD_PROPERTY_BINDING:
-				return createStandardPropertyBinding();
-			case MappingPackage.CATEGORY:
-				return createCategory();
-			case MappingPackage.ELEMENT_BINDING_REFERENCE:
-				return createElementBindingReference();
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING:
-				return createEMFMultiPropertiesBinding();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName()
-						+ "' is not a valid classifier");
+		case MappingPackage.DATABINDING:
+			return createDatabinding();
+		case MappingPackage.EMF_ELEMENT_BINDING:
+			return createEMFElementBinding();
+		case MappingPackage.EMF_PROPERTY_BINDING:
+			return createEMFPropertyBinding();
+		case MappingPackage.STANDARD_ELEMENT_BINDING:
+			return createStandardElementBinding();
+		case MappingPackage.STANDARD_PROPERTY_BINDING:
+			return createStandardPropertyBinding();
+		case MappingPackage.CATEGORY:
+			return createCategory();
+		case MappingPackage.ELEMENT_BINDING_REFERENCE:
+			return createElementBindingReference();
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING:
+			return createEMFMultiPropertiesBinding();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
@@ -175,7 +175,7 @@ public class MappingFactoryImpl extends EFactoryImpl implements MappingFactory {
 	 * @generated
 	 */
 	public MappingPackage getMappingPackage() {
-		return (MappingPackage)getEPackage();
+		return (MappingPackage) getEPackage();
 	}
 
 	/**

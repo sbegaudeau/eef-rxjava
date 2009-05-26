@@ -116,6 +116,8 @@
       nsPrefix="eef-mapping-filters">
     <eClassifiers xsi:type="ecore:EClass" name="BindingFilter" abstract="true" eSuperTypes="#//DocumentedElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OCLFilter" eSuperTypes="#//filters/BindingFilter">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

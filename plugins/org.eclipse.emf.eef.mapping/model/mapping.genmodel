@@ -122,6 +122,7 @@
         disposableProviderFactory="true" ecorePackage="mapping.ecore#//filters">
       <genClasses image="false" ecoreClass="mapping.ecore#//filters/BindingFilter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//filters/BindingFilter/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//filters/BindingFilter/mandatory"/>
       </genClasses>
       <genClasses ecoreClass="mapping.ecore#//filters/OCLFilter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//filters/OCLFilter/body"/>

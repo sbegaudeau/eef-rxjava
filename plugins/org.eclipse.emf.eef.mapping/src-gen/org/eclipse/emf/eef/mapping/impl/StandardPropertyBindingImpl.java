@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: StandardPropertyBindingImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -38,7 +38,8 @@ import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
  *
  * @generated
  */
-public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl implements StandardPropertyBinding {
+public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl
+		implements StandardPropertyBinding {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -75,12 +76,13 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 */
 	public ModelProperty getModel() {
 		if (model != null && model.eIsProxy()) {
-			InternalEObject oldModel = (InternalEObject)model;
-			model = (ModelProperty)eResolveProxy(oldModel);
+			InternalEObject oldModel = (InternalEObject) model;
+			model = (ModelProperty) eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, oldModel, model));
+							MappingPackage.STANDARD_PROPERTY_BINDING__MODEL,
+							oldModel, model));
 			}
 		}
 		return model;
@@ -100,12 +102,15 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetModel(ModelProperty newModel, NotificationChain msgs) {
+	public NotificationChain basicSetModel(ModelProperty newModel,
+			NotificationChain msgs) {
 		ModelProperty oldModel = model;
 		model = newModel;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, oldModel, newModel);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, oldModel,
+					newModel);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -123,17 +128,20 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 		if (newModel != model) {
 			NotificationChain msgs = null;
 			if (model != null)
-				msgs = ((InternalEObject)model).eInverseRemove(this, MappingPackage.MODEL_PROPERTY__BINDING,
+				msgs = ((InternalEObject) model).eInverseRemove(this,
+						MappingPackage.MODEL_PROPERTY__BINDING,
 						ModelProperty.class, msgs);
 			if (newModel != null)
-				msgs = ((InternalEObject)newModel).eInverseAdd(this, MappingPackage.MODEL_PROPERTY__BINDING,
+				msgs = ((InternalEObject) newModel).eInverseAdd(this,
+						MappingPackage.MODEL_PROPERTY__BINDING,
 						ModelProperty.class, msgs);
 			msgs = basicSetModel(newModel, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, newModel, newModel));
+					MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, newModel,
+					newModel));
 	}
 
 	/**
@@ -142,13 +150,15 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
-				if (model != null)
-					msgs = ((InternalEObject)model).eInverseRemove(this,
-							MappingPackage.MODEL_PROPERTY__BINDING, ModelProperty.class, msgs);
-				return basicSetModel((ModelProperty)otherEnd, msgs);
+		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
+			if (model != null)
+				msgs = ((InternalEObject) model).eInverseRemove(this,
+						MappingPackage.MODEL_PROPERTY__BINDING,
+						ModelProperty.class, msgs);
+			return basicSetModel((ModelProperty) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -159,10 +169,11 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
-				return basicSetModel(null, msgs);
+		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
+			return basicSetModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -175,10 +186,10 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
-				if (resolve)
-					return getModel();
-				return basicGetModel();
+		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
+			if (resolve)
+				return getModel();
+			return basicGetModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,9 +202,9 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
-				setModel((ModelProperty)newValue);
-				return;
+		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
+			setModel((ModelProperty) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -206,9 +217,9 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
-				setModel((ModelProperty)null);
-				return;
+		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
+			setModel((ModelProperty) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -221,8 +232,8 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
-				return model != null;
+		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
+			return model != null;
 		}
 		return super.eIsSet(featureID);
 	}

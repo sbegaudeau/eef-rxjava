@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: BindingFilterImpl.java,v 1.1 2009/05/19 16:58:32 sbouchet Exp $
+ * $Id: BindingFilterImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -32,12 +32,14 @@ import org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.mapping.filters.impl.BindingFilterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.filters.impl.BindingFilterImpl#isMandatory <em>Mandatory</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class BindingFilterImpl extends DocumentedElementImpl implements BindingFilter {
+public abstract class BindingFilterImpl extends DocumentedElementImpl implements
+		BindingFilter {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,6 +59,26 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMandatory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MANDATORY_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMandatory()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean mandatory = MANDATORY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,8 +117,31 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.BINDING_FILTER__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.BINDING_FILTER__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMandatory() {
+		return mandatory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMandatory(boolean newMandatory) {
+		boolean oldMandatory = mandatory;
+		mandatory = newMandatory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.BINDING_FILTER__MANDATORY, oldMandatory,
+					mandatory));
 	}
 
 	/**
@@ -107,8 +152,10 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FiltersPackage.BINDING_FILTER__NAME:
-				return getName();
+		case FiltersPackage.BINDING_FILTER__NAME:
+			return getName();
+		case FiltersPackage.BINDING_FILTER__MANDATORY:
+			return isMandatory() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -121,9 +168,12 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FiltersPackage.BINDING_FILTER__NAME:
-				setName((String)newValue);
-				return;
+		case FiltersPackage.BINDING_FILTER__NAME:
+			setName((String) newValue);
+			return;
+		case FiltersPackage.BINDING_FILTER__MANDATORY:
+			setMandatory(((Boolean) newValue).booleanValue());
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -136,9 +186,12 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FiltersPackage.BINDING_FILTER__NAME:
-				setName(NAME_EDEFAULT);
-				return;
+		case FiltersPackage.BINDING_FILTER__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case FiltersPackage.BINDING_FILTER__MANDATORY:
+			setMandatory(MANDATORY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -151,8 +204,11 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FiltersPackage.BINDING_FILTER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case FiltersPackage.BINDING_FILTER__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case FiltersPackage.BINDING_FILTER__MANDATORY:
+			return mandatory != MANDATORY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -170,6 +226,8 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", mandatory: ");
+		result.append(mandatory);
 		result.append(')');
 		return result.toString();
 	}

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationAdapterFactory.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: NavigationAdapterFactory.java,v 1.2 2009/05/26 08:20:05 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.util;
 
@@ -65,7 +65,7 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -93,7 +93,8 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseStructuredModelNavigation(StructuredModelNavigation object) {
+		public Adapter caseStructuredModelNavigation(
+				StructuredModelNavigation object) {
 			return createStructuredModelNavigationAdapter();
 		}
 
@@ -118,7 +119,7 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
 
 	/**

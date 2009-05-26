@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StructuredModelNavigationImpl.java,v 1.1 2009/04/30 17:13:53 glefur Exp $
+ * $Id: StructuredModelNavigationImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -27,7 +27,8 @@ import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
  *
  * @generated
  */
-public abstract class StructuredModelNavigationImpl extends ModelNavigationImpl implements StructuredModelNavigation {
+public abstract class StructuredModelNavigationImpl extends ModelNavigationImpl
+		implements StructuredModelNavigation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

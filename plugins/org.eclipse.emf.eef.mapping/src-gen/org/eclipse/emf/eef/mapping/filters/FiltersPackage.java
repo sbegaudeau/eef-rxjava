@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersPackage.java,v 1.1 2009/05/19 16:58:32 sbouchet Exp $
+ * $Id: FiltersPackage.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters;
 
@@ -66,7 +66,8 @@ public interface FiltersPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FiltersPackage eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl.init();
+	FiltersPackage eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.filters.impl.BindingFilterImpl <em>Binding Filter</em>}' class.
@@ -97,13 +98,22 @@ public interface FiltersPackage extends EPackage {
 	int BINDING_FILTER__NAME = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_FILTER__MANDATORY = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Binding Filter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_FILTER_FEATURE_COUNT = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int BINDING_FILTER_FEATURE_COUNT = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl <em>OCL Filter</em>}' class.
@@ -132,6 +142,15 @@ public interface FiltersPackage extends EPackage {
 	 * @ordered
 	 */
 	int OCL_FILTER__NAME = BINDING_FILTER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_FILTER__MANDATORY = BINDING_FILTER__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' attribute.
@@ -180,6 +199,15 @@ public interface FiltersPackage extends EPackage {
 	int JAVA_FILTER__NAME = BINDING_FILTER__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_FILTER__MANDATORY = BINDING_FILTER__MANDATORY;
+
+	/**
 	 * The number of structural features of the '<em>Java Filter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,6 +243,15 @@ public interface FiltersPackage extends EPackage {
 	 * @ordered
 	 */
 	int JAVA_DECLARATION_FILTER__NAME = JAVA_FILTER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_DECLARATION_FILTER__MANDATORY = JAVA_FILTER__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Method Name</b></em>' attribute.
@@ -263,6 +300,15 @@ public interface FiltersPackage extends EPackage {
 	int JAVA_EXPRESSION_FILTER__NAME = JAVA_FILTER__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_EXPRESSION_FILTER__MANDATORY = JAVA_FILTER__MANDATORY;
+
+	/**
 	 * The feature id for the '<em><b>Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -309,6 +355,15 @@ public interface FiltersPackage extends EPackage {
 	int BUSINESS_FILTER__NAME = BINDING_FILTER__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_FILTER__MANDATORY = BINDING_FILTER__MANDATORY;
+
+	/**
 	 * The number of structural features of the '<em>Business Filter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -344,6 +399,15 @@ public interface FiltersPackage extends EPackage {
 	 * @ordered
 	 */
 	int ONLY_REFERENCE_TYPE_FILTER__NAME = BUSINESS_FILTER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONLY_REFERENCE_TYPE_FILTER__MANDATORY = BUSINESS_FILTER__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -383,6 +447,17 @@ public interface FiltersPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBindingFilter_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.filters.BindingFilter#isMandatory <em>Mandatory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mandatory</em>'.
+	 * @see org.eclipse.emf.eef.mapping.filters.BindingFilter#isMandatory()
+	 * @see #getBindingFilter()
+	 * @generated
+	 */
+	EAttribute getBindingFilter_Mandatory();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.filters.OCLFilter <em>OCL Filter</em>}'.
@@ -529,6 +604,15 @@ public interface FiltersPackage extends EPackage {
 		EAttribute BINDING_FILTER__NAME = eINSTANCE.getBindingFilter_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINDING_FILTER__MANDATORY = eINSTANCE
+				.getBindingFilter_Mandatory();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl <em>OCL Filter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -572,7 +656,8 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_DECLARATION_FILTER__METHOD_NAME = eINSTANCE.getJavaDeclarationFilter_MethodName();
+		EAttribute JAVA_DECLARATION_FILTER__METHOD_NAME = eINSTANCE
+				.getJavaDeclarationFilter_MethodName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.JavaExpressionFilterImpl <em>Java Expression Filter</em>}' class.
@@ -590,7 +675,8 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_EXPRESSION_FILTER__BODY = eINSTANCE.getJavaExpressionFilter_Body();
+		EAttribute JAVA_EXPRESSION_FILTER__BODY = eINSTANCE
+				.getJavaExpressionFilter_Body();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.BusinessFilterImpl <em>Business Filter</em>}' class.
@@ -610,7 +696,8 @@ public interface FiltersPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl#getOnlyReferenceTypeFilter()
 		 * @generated
 		 */
-		EClass ONLY_REFERENCE_TYPE_FILTER = eINSTANCE.getOnlyReferenceTypeFilter();
+		EClass ONLY_REFERENCE_TYPE_FILTER = eINSTANCE
+				.getOnlyReferenceTypeFilter();
 
 		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -618,7 +705,8 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ONLY_REFERENCE_TYPE_FILTER__REFERENCE = eINSTANCE.getOnlyReferenceTypeFilter_Reference();
+		EReference ONLY_REFERENCE_TYPE_FILTER__REFERENCE = eINSTANCE
+				.getOnlyReferenceTypeFilter_Reference();
 
 	}
 

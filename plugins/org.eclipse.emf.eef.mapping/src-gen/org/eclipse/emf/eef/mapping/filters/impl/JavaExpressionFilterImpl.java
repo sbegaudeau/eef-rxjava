@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilterImpl.java,v 1.1 2009/05/19 16:58:32 sbouchet Exp $
+ * $Id: JavaExpressionFilterImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -35,7 +35,8 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
  *
  * @generated
  */
-public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpressionFilter {
+public class JavaExpressionFilterImpl extends JavaFilterImpl implements
+		JavaExpressionFilter {
 	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -105,8 +106,8 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-				return getBody();
+		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
+			return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,9 +120,9 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpr
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-				setBody((String)newValue);
-				return;
+		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
+			setBody((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -134,9 +135,9 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-				setBody(BODY_EDEFAULT);
-				return;
+		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
+			setBody(BODY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,8 +150,9 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
+		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
+			return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT
+					.equals(body);
 		}
 		return super.eIsSet(featureID);
 	}

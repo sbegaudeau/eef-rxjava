@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFElementBindingImpl.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: EMFElementBindingImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -37,7 +37,8 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public class EMFElementBindingImpl extends AbstractElementBindingImpl implements EMFElementBinding {
+public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
+		EMFElementBinding {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -74,12 +75,13 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 	 */
 	public EClassifier getModel() {
 		if (model != null && model.eIsProxy()) {
-			InternalEObject oldModel = (InternalEObject)model;
-			model = (EClassifier)eResolveProxy(oldModel);
+			InternalEObject oldModel = (InternalEObject) model;
+			model = (EClassifier) eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							MappingPackage.EMF_ELEMENT_BINDING__MODEL, oldModel, model));
+							MappingPackage.EMF_ELEMENT_BINDING__MODEL,
+							oldModel, model));
 			}
 		}
 		return model;
@@ -103,8 +105,8 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 		EClassifier oldModel = model;
 		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.EMF_ELEMENT_BINDING__MODEL,
-					oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.EMF_ELEMENT_BINDING__MODEL, oldModel, model));
 	}
 
 	/**
@@ -115,10 +117,10 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
-				if (resolve)
-					return getModel();
-				return basicGetModel();
+		case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
+			if (resolve)
+				return getModel();
+			return basicGetModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -131,9 +133,9 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
-				setModel((EClassifier)newValue);
-				return;
+		case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
+			setModel((EClassifier) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -146,9 +148,9 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
-				setModel((EClassifier)null);
-				return;
+		case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
+			setModel((EClassifier) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -161,8 +163,8 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
-				return model != null;
+		case MappingPackage.EMF_ELEMENT_BINDING__MODEL:
+			return model != null;
 		}
 		return super.eIsSet(featureID);
 	}

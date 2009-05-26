@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OCLFilterImpl.java,v 1.1 2009/05/19 16:58:32 sbouchet Exp $
+ * $Id: OCLFilterImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -93,8 +93,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 		String oldBody = body;
 		body = newBody;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.OCL_FILTER__BODY, oldBody,
-					body));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.OCL_FILTER__BODY, oldBody, body));
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FiltersPackage.OCL_FILTER__BODY:
-				return getBody();
+		case FiltersPackage.OCL_FILTER__BODY:
+			return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,9 +119,9 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FiltersPackage.OCL_FILTER__BODY:
-				setBody((String)newValue);
-				return;
+		case FiltersPackage.OCL_FILTER__BODY:
+			setBody((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -134,9 +134,9 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FiltersPackage.OCL_FILTER__BODY:
-				setBody(BODY_EDEFAULT);
-				return;
+		case FiltersPackage.OCL_FILTER__BODY:
+			setBody(BODY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,8 +149,9 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FiltersPackage.OCL_FILTER__BODY:
-				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
+		case FiltersPackage.OCL_FILTER__BODY:
+			return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT
+					.equals(body);
 		}
 		return super.eIsSet(featureID);
 	}

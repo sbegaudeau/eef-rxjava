@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingAdapterFactory.java,v 1.1 2009/04/30 17:13:54 glefur Exp $
+ * $Id: MappingAdapterFactory.java,v 1.2 2009/05/26 08:20:05 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.util;
 
@@ -65,7 +65,7 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -98,7 +98,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAbstractPropertyBinding(AbstractPropertyBinding object) {
+		public Adapter caseAbstractPropertyBinding(
+				AbstractPropertyBinding object) {
 			return createAbstractPropertyBindingAdapter();
 		}
 
@@ -118,7 +119,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseStandardPropertyBinding(StandardPropertyBinding object) {
+		public Adapter caseStandardPropertyBinding(
+				StandardPropertyBinding object) {
 			return createStandardPropertyBindingAdapter();
 		}
 
@@ -128,7 +130,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseElementBindingReference(ElementBindingReference object) {
+		public Adapter caseElementBindingReference(
+				ElementBindingReference object) {
 			return createElementBindingReferenceAdapter();
 		}
 
@@ -138,7 +141,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseEMFMultiPropertiesBinding(EMFMultiPropertiesBinding object) {
+		public Adapter caseEMFMultiPropertiesBinding(
+				EMFMultiPropertiesBinding object) {
 			return createEMFMultiPropertiesBindingAdapter();
 		}
 
@@ -158,7 +162,7 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
 
 	/**

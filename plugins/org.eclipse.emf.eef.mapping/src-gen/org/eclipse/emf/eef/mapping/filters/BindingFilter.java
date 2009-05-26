@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: BindingFilter.java,v 1.1 2009/05/19 16:58:32 sbouchet Exp $
+ * $Id: BindingFilter.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.mapping.DocumentedElement;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.mapping.filters.BindingFilter#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.filters.BindingFilter#isMandatory <em>Mandatory</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +58,32 @@ public interface BindingFilter extends DocumentedElement {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mandatory</em>' attribute.
+	 * @see #setMandatory(boolean)
+	 * @see org.eclipse.emf.eef.mapping.filters.FiltersPackage#getBindingFilter_Mandatory()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isMandatory();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.filters.BindingFilter#isMandatory <em>Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mandatory</em>' attribute.
+	 * @see #isMandatory()
+	 * @generated
+	 */
+	void setMandatory(boolean value);
 
 } // BindingFilter
