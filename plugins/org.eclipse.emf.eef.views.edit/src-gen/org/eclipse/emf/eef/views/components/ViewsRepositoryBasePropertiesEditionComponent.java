@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ViewsRepositoryBasePropertiesEditionComponent.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -49,19 +49,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private ViewsRepository viewsRepository;
-
+	
 	/**
 	 * The Base part
 	 */
 	private ViewsRepositoryPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -75,7 +75,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -93,9 +93,9 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 				if (basePart == null)
 					ViewsRepositoryBasePropertiesEditionComponent.this.dispose();
 				else {
-// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
+					// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 					if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
+					basePart.setName((String)msg.getNewValue());
 
 
 
@@ -167,14 +167,14 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			ViewsRepository viewsRepository = (ViewsRepository)elt;
 			// init values
-// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
+			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 			if (viewsRepository.getName() != null)
 				basePart.setName(viewsRepository.getName());
 
 			
 			// init filters
-// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
-
+			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
+			
 		}
 		// init values for referenced views
 
@@ -191,7 +191,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (viewsRepository != null) {
-// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
+			// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
 			cc.append(SetCommand.create(editingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), basePart.getName()));
 
 
@@ -211,7 +211,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof ViewsRepository) {
 			ViewsRepository viewsRepositoryToUpdate = (ViewsRepository)source;
-// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
+			// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
 			viewsRepositoryToUpdate.setName(basePart.getName());
 
 
@@ -231,7 +231,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, viewsRepository.
+			// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, viewsRepository.
 			if (ViewsViewsRepository.ViewsRepository.name == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), event.getNewValue()));
 

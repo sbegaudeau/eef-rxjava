@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsMessages.java,v 1.5 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ViewsMessages.java,v 1.6 2009/05/26 08:49:34 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -33,7 +33,7 @@ public class ViewsMessages extends NLS {
 
 	public static String ContainerPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String SpecificElementEditorPropertiesEditionPart_PropertiesGroupLabel;
+	public static String CustomElementEditorPropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String CustomViewPropertiesEditionPart_PropertiesGroupLabel;
 
@@ -51,7 +51,7 @@ public class ViewsMessages extends NLS {
 
 	public static String Container_ReadOnly;
 
-	public static String SpecificElementEditor_ReadOnly;
+	public static String CustomElementEditor_ReadOnly;
 
 	public static String CustomView_ReadOnly;
 
@@ -81,11 +81,11 @@ public class ViewsMessages extends NLS {
 
 	public static String ContainerPropertiesEditionPart_RepresentationLabel;
 
-	public static String SpecificElementEditorPropertiesEditionPart_NameLabel;
+	public static String CustomElementEditorPropertiesEditionPart_NameLabel;
 
-	public static String SpecificElementEditorPropertiesEditionPart_RepresentationLabel;
+	public static String CustomElementEditorPropertiesEditionPart_RepresentationLabel;
 
-	public static String SpecificElementEditorPropertiesEditionPart_ReadOnlyLabel;
+	public static String CustomElementEditorPropertiesEditionPart_ReadOnlyLabel;
 
 	public static String CustomViewPropertiesEditionPart_NameLabel;
 

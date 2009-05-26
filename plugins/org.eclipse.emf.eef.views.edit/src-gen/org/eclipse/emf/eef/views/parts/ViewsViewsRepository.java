@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsViewsRepository.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ViewsViewsRepository.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -108,17 +108,17 @@ public class ViewsViewsRepository {
 	}
 
 	/**
-	 * SpecificElementEditor view descriptor
+	 * CustomElementEditor view descriptor
 	 */
-	public static class SpecificElementEditor {
+	public static class CustomElementEditor {
 
-		public static String name = "views::SpecificElementEditor::name";
-
-
-		public static String representation = "views::SpecificElementEditor::representation";
+		public static String name = "views::CustomElementEditor::name";
 
 
-		public static String readOnly = "views::SpecificElementEditor::readOnly";
+		public static String representation = "views::CustomElementEditor::representation";
+
+
+		public static String readOnly = "views::CustomElementEditor::readOnly";
 
 
 

@@ -9,35 +9,36 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditorPropertiesEditionComponent.java,v 1.5 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: CustomElementEditorPropertiesEditionComponent.java,v 1.1 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.views.CustomElementEditor;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.views.SpecificElementEditor;
-import org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart;
+import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
+import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class SpecificElementEditorPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+public class CustomElementEditorPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Base part
 	 */
-	private SpecificElementEditorPropertiesEditionPart basePart;
+	private CustomElementEditorPropertiesEditionPart basePart;
 
 	/**
-	 * The SpecificElementEditorBasePropertiesEditionComponent sub component
+	 * The CustomElementEditorBasePropertiesEditionComponent sub component
 	 */
-	protected SpecificElementEditorBasePropertiesEditionComponent specificElementEditorBasePropertiesEditionComponent;
+	protected CustomElementEditorBasePropertiesEditionComponent customElementEditorBasePropertiesEditionComponent;
 
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
@@ -46,15 +47,15 @@ public class SpecificElementEditorPropertiesEditionComponent extends ComposedPro
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param specificElementEditor
+	 * @param customElementEditor
 	 *            the EObject to edit
 	 */
-	public SpecificElementEditorPropertiesEditionComponent(EObject specificElementEditor, String editing_mode) {
+	public CustomElementEditorPropertiesEditionComponent(EObject customElementEditor, String editing_mode) {
 		super(editing_mode);
-		if (specificElementEditor instanceof SpecificElementEditor) {
-			specificElementEditorBasePropertiesEditionComponent = new SpecificElementEditorBasePropertiesEditionComponent(specificElementEditor, editing_mode); 
-			addSubComponent(specificElementEditorBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(specificElementEditor, editing_mode); 	
+		if (customElementEditor instanceof CustomElementEditor) {
+			customElementEditorBasePropertiesEditionComponent = new CustomElementEditorBasePropertiesEditionComponent(customElementEditor, editing_mode); 
+			addSubComponent(customElementEditorBasePropertiesEditionComponent);
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(customElementEditor, editing_mode); 	
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
@@ -66,7 +67,7 @@ public class SpecificElementEditorPropertiesEditionComponent extends ComposedPro
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ("Base".equals(key)) {
-			basePart = (SpecificElementEditorPropertiesEditionPart)specificElementEditorBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			basePart = (CustomElementEditorPropertiesEditionPart)customElementEditorBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
 		return super.getPropertiesEditionPart(kind, key);
@@ -78,9 +79,9 @@ public class SpecificElementEditorPropertiesEditionComponent extends ComposedPro
 	 * setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (ViewsViewsRepository.SpecificElementEditor.class == key) {
+		if (ViewsViewsRepository.CustomElementEditor.class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			basePart = (SpecificElementEditorPropertiesEditionPart)propertiesEditionPart;
+			basePart = (CustomElementEditorPropertiesEditionPart)propertiesEditionPart;
 		}
 	}
 
@@ -90,7 +91,7 @@ public class SpecificElementEditorPropertiesEditionComponent extends ComposedPro
 	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
-		if (key == ViewsViewsRepository.SpecificElementEditor.class) {
+		if (key == ViewsViewsRepository.CustomElementEditor.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

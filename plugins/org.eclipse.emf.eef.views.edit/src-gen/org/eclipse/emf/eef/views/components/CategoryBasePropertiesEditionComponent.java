@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: CategoryBasePropertiesEditionComponent.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -49,19 +49,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private Category category;
-
+	
 	/**
 	 * The Base part
 	 */
 	private CategoryPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -75,7 +75,7 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -94,7 +94,7 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 					CategoryBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
+					basePart.setName((String)msg.getNewValue());
 
 
 
@@ -171,7 +171,7 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 
 			
 			// init filters
-
+			
 		}
 		// init values for referenced views
 

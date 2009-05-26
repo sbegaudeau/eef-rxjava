@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerBasePropertiesEditionComponent.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ContainerBasePropertiesEditionComponent.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -52,19 +52,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class ContainerBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private Container container;
-
+	
 	/**
 	 * The Base part
 	 */
 	private ContainerPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +78,7 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,9 +97,9 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 					ContainerBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-						basePart.setRepresentation((EObject)msg.getNewValue());
+					basePart.setRepresentation((EObject)msg.getNewValue());
 					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
+					basePart.setName((String)msg.getNewValue());
 
 
 
@@ -192,7 +192,7 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 			// Start of user code for additional businessfilters for representation
 			
 			// End of user code
-
+			
 		}
 		// init values for referenced views
 
@@ -260,13 +260,13 @@ public class ContainerBasePropertiesEditionComponent extends StandardPropertiesE
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-
+				
 				if (ViewsViewsRepository.Container.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
 
 
 			} else {
-
+				
 				if (ViewsViewsRepository.Container.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
 

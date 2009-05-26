@@ -9,29 +9,24 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditorPropertiesEditionPartForm.java,v 1.8 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: CustomElementEditorPropertiesEditionPartForm.java,v 1.1 2009/05/26 08:49:31 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart;
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
-import org.eclipse.emf.eef.views.providers.ViewsMessages;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -45,18 +40,46 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IMessageManager;
+import org.eclipse.ui.forms.events.ExpansionEvent;
+import org.eclipse.ui.forms.events.IExpansionListener;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.forms.events.ExpansionEvent;
+import org.eclipse.ui.forms.events.IExpansionListener;
+
+import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclipse.emf.eef.views.providers.ViewsMessages;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.emf.eef.toolkits.Widget;
+
+
+
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class SpecificElementEditorPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, SpecificElementEditorPropertiesEditionPart {
+public class CustomElementEditorPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, CustomElementEditorPropertiesEditionPart {
 
 	private Text name;
 	protected EObjectFlatComboViewer representation;
@@ -66,7 +89,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 
 
 	
-	public SpecificElementEditorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public CustomElementEditorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
@@ -91,7 +114,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(ViewsMessages.SpecificElementEditorPropertiesEditionPart_PropertiesGroupLabel);
+		propertiesSection.setText(ViewsMessages.CustomElementEditorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
@@ -105,7 +128,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 		propertiesSection.setClient(propertiesGroup);
 	}
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.SpecificElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.SpecificElementEditor.name, ViewsViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.name, ViewsViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -120,7 +143,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SpecificElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.SpecificElementEditor.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 			
 		});
@@ -133,7 +156,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SpecificElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.SpecificElementEditor.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -147,12 +170,12 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SpecificElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.SpecificElementEditor.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 			
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.SpecificElementEditor.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 
 	}
 	/**
@@ -160,7 +183,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	 */
 	protected void createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 	
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.SpecificElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.SpecificElementEditor.representation, ViewsViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.representation, ViewsViewsRepository.FORM_KIND));
 		representation = new EObjectFlatComboViewer(parent, true);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -175,14 +198,14 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SpecificElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.SpecificElementEditor.representation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRepresentation()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.representation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRepresentation()));
 			}
 
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.SpecificElementEditor.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 	protected void createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
-		readOnly = widgetFactory.createButton(parent, ViewsMessages.SpecificElementEditorPropertiesEditionPart_ReadOnlyLabel, SWT.CHECK);
+		readOnly = widgetFactory.createButton(parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel, SWT.CHECK);
 		readOnly.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -192,28 +215,27 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SpecificElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.SpecificElementEditor.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
 			}
 			
 		});
 		GridData readOnlyData = new GridData(GridData.FILL_HORIZONTAL);
 		readOnlyData.horizontalSpan = 2;
 		readOnly.setLayoutData(readOnlyData);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.SpecificElementEditor.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// Nothing to do
 		// End of user code		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#getName()
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#getName()
 	 */
 	public String getName() {
 		return name.getText();
@@ -222,7 +244,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#setName(String newValue)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
 		name.setText(newValue);
@@ -239,7 +261,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#getRepresentation()
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#getRepresentation()
 	 */
 	public EObject getRepresentation() {
 		if (representation.getSelection() instanceof StructuredSelection) {
@@ -253,7 +275,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#initRepresentation(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#initRepresentation(ResourceSet allResources, EObject current)
 	 */
 	public void initRepresentation(ResourceSet allResources, EObject current) {
 		representation.setInput(allResources);
@@ -264,7 +286,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#setRepresentation(EObject newValue)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#setRepresentation(EObject newValue)
 	 */
 	public void setRepresentation(EObject newValue) {
 		if (newValue != null)
@@ -276,7 +298,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#addFilterRepresentation(ViewerFilter filter)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#addFilterRepresentation(ViewerFilter filter)
 	 */
 	public void addFilterToRepresentation(ViewerFilter filter) {
 		representation.addFilter(filter);
@@ -285,7 +307,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#addBusinessFilterRepresentation(ViewerFilter filter)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#addBusinessFilterRepresentation(ViewerFilter filter)
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
 		representation.addBusinessRuleFilter(filter);
@@ -298,7 +320,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#getReadOnly()
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#getReadOnly()
 	 */
 	public Boolean getReadOnly() {
 		return Boolean.valueOf(readOnly.getSelection());
@@ -307,7 +329,7 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.SpecificElementEditorPropertiesEditionPart#setReadOnly(Boolean newValue)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#setReadOnly(Boolean newValue)
 	 */
 	public void setReadOnly(Boolean newValue) {
 		if (newValue != null) {
@@ -329,6 +351,6 @@ public class SpecificElementEditorPropertiesEditionPartForm extends CompositePro
 
 	
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 }	

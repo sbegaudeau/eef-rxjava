@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionComponent.java,v 1.5 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ViewsRepositoryPropertiesEditionComponent.java,v 1.6 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 

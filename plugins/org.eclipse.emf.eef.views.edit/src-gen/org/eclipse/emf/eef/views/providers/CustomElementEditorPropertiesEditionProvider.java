@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditorPropertiesEditionProvider.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: CustomElementEditorPropertiesEditionProvider.java,v 1.1 2009/05/26 08:49:34 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -20,15 +20,15 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.SpecificElementEditor;
-import org.eclipse.emf.eef.views.components.SpecificElementEditorPropertiesEditionComponent;
-import org.eclipse.emf.eef.views.components.SpecificElementEditorBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.views.CustomElementEditor;
+import org.eclipse.emf.eef.views.components.CustomElementEditorPropertiesEditionComponent;
+import org.eclipse.emf.eef.views.components.CustomElementEditorBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class SpecificElementEditorPropertiesEditionProvider implements IPropertiesEditionProvider {
+public class CustomElementEditorPropertiesEditionProvider implements IPropertiesEditionProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -36,7 +36,7 @@ public class SpecificElementEditorPropertiesEditionProvider implements IProperti
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof SpecificElementEditor) && (ViewsPackage.eINSTANCE.getSpecificElementEditor() == eObject.eClass());
+		return (eObject instanceof CustomElementEditor) && (ViewsPackage.eINSTANCE.getCustomElementEditor() == eObject.eClass());
 	}
 	
 	/**
@@ -46,8 +46,8 @@ public class SpecificElementEditorPropertiesEditionProvider implements IProperti
 	 *      java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof SpecificElementEditor) {
-			return new SpecificElementEditorPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof CustomElementEditor) {
+			return new CustomElementEditorPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -59,9 +59,9 @@ public class SpecificElementEditorPropertiesEditionProvider implements IProperti
 	 *      java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof SpecificElementEditor) {
-			if (SpecificElementEditorBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new SpecificElementEditorBasePropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof CustomElementEditor) {
+			if (CustomElementEditorBasePropertiesEditionComponent.BASE_PART.equals(part))
+				return new CustomElementEditorBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}

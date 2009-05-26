@@ -9,11 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorPropertiesEditionPart.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
+ * $Id: CustomElementEditorPropertiesEditionPart.java,v 1.1 2009/05/26 08:49:33 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
 // Start of user code for imports
+
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -24,7 +27,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public interface ElementEditorPropertiesEditionPart {
+public interface CustomElementEditorPropertiesEditionPart {
 
 	/**
 	 * @return the name
@@ -102,7 +105,7 @@ public interface ElementEditorPropertiesEditionPart {
 
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 }
 

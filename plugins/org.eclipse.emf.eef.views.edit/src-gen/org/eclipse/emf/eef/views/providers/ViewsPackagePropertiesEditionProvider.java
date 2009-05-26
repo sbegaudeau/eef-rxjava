@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsPackagePropertiesEditionProvider.java,v 1.5 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ViewsPackagePropertiesEditionProvider.java,v 1.6 2009/05/26 08:49:34 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -31,7 +31,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 		append(createElementEditorPropertiesEditionProvider());
 		append(createCategoryPropertiesEditionProvider());
 		append(createContainerPropertiesEditionProvider());
-		append(createSpecificElementEditorPropertiesEditionProvider());
+		append(createCustomElementEditorPropertiesEditionProvider());
 		append(createCustomViewPropertiesEditionProvider());
 		append(createViewReferencePropertiesEditionProvider());
 	}
@@ -128,17 +128,17 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
-	 * SpecificElementEditor instances.
+	 * CustomElementEditor instances.
 	 */
-	protected SpecificElementEditorPropertiesEditionProvider specificElementEditorPropertiesEditionProvider;
+	protected CustomElementEditorPropertiesEditionProvider customElementEditorPropertiesEditionProvider;
 
 	/**
-	 * This creates an PropertiesEditionProvider for a SpecificElementEditor
+	 * This creates an PropertiesEditionProvider for a CustomElementEditor
 	 */
-	public SpecificElementEditorPropertiesEditionProvider createSpecificElementEditorPropertiesEditionProvider() {
-		if (specificElementEditorPropertiesEditionProvider == null)
-			specificElementEditorPropertiesEditionProvider = new SpecificElementEditorPropertiesEditionProvider();
-		return specificElementEditorPropertiesEditionProvider;
+	public CustomElementEditorPropertiesEditionProvider createCustomElementEditorPropertiesEditionProvider() {
+		if (customElementEditorPropertiesEditionProvider == null)
+			customElementEditorPropertiesEditionProvider = new CustomElementEditorPropertiesEditionProvider();
+		return customElementEditorPropertiesEditionProvider;
 	}
 	
 	/**

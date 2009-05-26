@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsPropertiesEditionPartProvider.java,v 1.4 2009/05/20 15:52:01 sbouchet Exp $
+ * $Id: ViewsPropertiesEditionPartProvider.java,v 1.5 2009/05/26 08:49:34 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -29,8 +29,8 @@ import org.eclipse.emf.eef.views.parts.forms.CategoryPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.impl.CategoryPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.forms.ContainerPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.impl.ContainerPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.views.parts.forms.SpecificElementEditorPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.SpecificElementEditorPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.forms.CustomElementEditorPropertiesEditionPartForm;
+import org.eclipse.emf.eef.views.parts.impl.CustomElementEditorPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.forms.CustomViewPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.impl.CustomViewPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.forms.ViewReferencePropertiesEditionPartForm;
@@ -92,11 +92,11 @@ public class ViewsPropertiesEditionPartProvider implements IPropertiesEditionPar
 			if (kind == ViewsViewsRepository.FORM_KIND)
 				return new ContainerPropertiesEditionPartForm(component);
 		}
-		if (key == ViewsViewsRepository.SpecificElementEditor.class) {
+		if (key == ViewsViewsRepository.CustomElementEditor.class) {
 			if (kind == ViewsViewsRepository.SWT_KIND)
-				return new SpecificElementEditorPropertiesEditionPartImpl(component);
+				return new CustomElementEditorPropertiesEditionPartImpl(component);
 			if (kind == ViewsViewsRepository.FORM_KIND)
-				return new SpecificElementEditorPropertiesEditionPartForm(component);
+				return new CustomElementEditorPropertiesEditionPartForm(component);
 		}
 		if (key == ViewsViewsRepository.CustomView.class) {
 			if (kind == ViewsViewsRepository.SWT_KIND)

@@ -30,47 +30,47 @@
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
          <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
-         </propertyTab>
+         </propertyTab>	
       </propertyTabs>
    </extension>
    <extension
@@ -86,14 +86,6 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.ViewsRepository">
-             <input
-                    type="org.eclipse.emf.eef.views.ViewsRepository">
-             </input>
-         </propertySection>
-         <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.ViewsRepository">
@@ -103,6 +95,14 @@
          </propertySection>
          <propertySection
                tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.views.section.ViewsRepository">
+             <input
+                    type="org.eclipse.emf.eef.views.ViewsRepository">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.View">
              <input
@@ -110,7 +110,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.View">
              <input
@@ -150,14 +150,6 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.Container">
-             <input
-                    type="org.eclipse.emf.eef.views.Container">
-             </input>
-         </propertySection>
-         <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.Container">
@@ -168,25 +160,25 @@
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.SpecificElementEditor">
+               id="org.eclipse.emf.eef.views.section.Container">
              <input
-                    type="org.eclipse.emf.eef.views.SpecificElementEditor">
+                    type="org.eclipse.emf.eef.views.Container">
              </input>
          </propertySection>
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.SpecificElementEditor">
+               id="org.eclipse.emf.eef.views.section.CustomElementEditor">
              <input
-                    type="org.eclipse.emf.eef.views.SpecificElementEditor">
+                    type="org.eclipse.emf.eef.views.CustomElementEditor">
              </input>
          </propertySection>
          <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.CustomView">
+               id="org.eclipse.emf.eef.views.section.CustomElementEditor">
              <input
-                    type="org.eclipse.emf.eef.views.CustomView">
+                    type="org.eclipse.emf.eef.views.CustomElementEditor">
              </input>
          </propertySection>
          <propertySection
@@ -199,6 +191,14 @@
          </propertySection>
          <propertySection
                tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.views.section.CustomView">
+             <input
+                    type="org.eclipse.emf.eef.views.CustomView">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.ViewReference">
              <input
@@ -206,7 +206,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.ViewReference">
              <input
@@ -215,5 +215,6 @@
          </propertySection>
       </propertySections>
    </extension>
+   
  </plugin>
 
