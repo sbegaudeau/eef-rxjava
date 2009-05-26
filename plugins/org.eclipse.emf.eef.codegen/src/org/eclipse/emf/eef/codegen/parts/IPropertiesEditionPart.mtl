@@ -52,7 +52,7 @@ public interface [view.pepInterface()/] {
 [comment viewReference Support/]
 [view.genDeclarationForViewReference()/]
 
-[for (viewElement : ViewElement | view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::SpecificElementEditor)))]
+[for (viewElement : ViewElement | view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::CustomElementEditor)))]
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters declaration'))]
 	
 	// [/protected]

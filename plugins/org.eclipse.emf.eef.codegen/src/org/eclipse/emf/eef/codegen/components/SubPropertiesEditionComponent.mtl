@@ -469,7 +469,7 @@ Acceleo bug, the second 'for' block must be :
 			result.add(new BasicDiagnostic(Diagnostic.ERROR, "EEF Validation", Status.ERROR, 
 				NLS.bind([editionElement.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RequiredFeatureMessage, "[editionElement.views->first().name.toJavaIdentifier()/]"), null)); //$NON-NLS-1$ 
 [/for]
-[if (view.eAllContents(views::SpecificElementEditor)->notEmpty())]
+[if (view.eAllContents(views::CustomElementEditor)->notEmpty())]
 		// [protected ('additional requirement checks')]
 		
 		// [/protected]

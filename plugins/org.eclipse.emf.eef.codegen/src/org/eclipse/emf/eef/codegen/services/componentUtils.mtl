@@ -16,38 +16,38 @@
 [import common /]
 [import typeUtils /]
 
-[comment ===== Case : model = any - view = SpecificElementEditor ===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[comment ===== Case : model = any - view = CustomElementEditor ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 					// [protected ('for '.concat(editionElement.name).concat(' live update'))]
 					
 					// [/protected]
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 			// [protected ('for '.concat(editionElement.name).concat(' live command update'))]
 			
 			// [/protected]
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 			// [protected ('for '.concat(editionElement.name).concat(' update command'))]
 			
 			// [/protected]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 			// [protected ('for '.concat(editionElement.name).concat(' part update'))]
 			
 			// [/protected]
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 		// [protected (' for '.concat(editionElement.name).concat(' command update'))]
 		
 		// [/protected]
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::SpecificElementEditor))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 		// [protected (' for '.concat(editionElement.name).concat(' filter update'))]
 		
 		// [/protected]

@@ -185,7 +185,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [comment managing subView/]
 [view.elementEditorGetterSettersForSubViews(pec, basePackage)/]
 
-[for (viewElement : ViewElement | view.eAllContents(views::SpecificElementEditor).oclAsType(views::SpecificElementEditor)->select(owningView() = view))]
+[for (viewElement : ViewElement | view.eAllContents(views::CustomElementEditor).oclAsType(views::CustomElementEditor)->select(owningView() = view))]
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters implementation'))]
 	
 	// [/protected]
