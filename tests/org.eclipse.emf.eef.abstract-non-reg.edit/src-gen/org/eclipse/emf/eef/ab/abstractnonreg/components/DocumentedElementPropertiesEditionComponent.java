@@ -42,19 +42,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class DocumentedElementPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private DocumentedElement documentedElement;
-	
+
 	/**
 	 * The Base part
 	 */
 	private DocumentedElementPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -68,7 +68,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -87,7 +87,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 					DocumentedElementPropertiesEditionComponent.this.dispose();
 				else {
 					if (AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && basePart != null)
-					basePart.setDocumentation((String)msg.getNewValue());
+						basePart.setDocumentation((String)msg.getNewValue());
 
 
 
@@ -164,13 +164,15 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 			
 			// init filters
-			
+
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
 	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -200,7 +202,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof DocumentedElement) {
 			DocumentedElement documentedElementToUpdate = (DocumentedElement)source;
-			documentedElementToUpdate.setDocumentation(basePart.getDocumentation());	
+			documentedElementToUpdate.setDocumentation(basePart.getDocumentation());
 
 
 
