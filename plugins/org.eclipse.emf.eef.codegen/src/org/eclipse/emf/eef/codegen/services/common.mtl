@@ -140,7 +140,6 @@
 [query public dynamicViews(pec : PropertiesEditionComponent, topLevelView : View) : Sequence(T) = 
 	pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent) and oclAsType(components::PropertiesEditionComponent).mustBeGenerated()).views->select(ancestors()->includes(topLevelView))/]
 
-
 [comment TODOGLF: List of parts that a component have to manage/]
 [query public partToManage(pec : PropertiesEditionComponent) : Set(T) = pec.involvedViews()/]
 
@@ -461,3 +460,11 @@ Object
 [template public metamodelGetter(p : PropertiesEditionElement)]
 [p.model.eContainingClass.metamodelPackage()/].eINSTANCE.[p.ecoreCompletePackageGetter()/]
 [/template]
+
+[comment queries for model navigation /]
+[query public simpleModelNavigationType(modelNavigation : SimpleModelNavigation) : String = 
+	if (modelNavigation.discriminatorType.oclIsUndefined())
+	then modelNavigation.feature.eType.name
+	else modelNavigation.discriminatorType.name
+	endif/]
+
