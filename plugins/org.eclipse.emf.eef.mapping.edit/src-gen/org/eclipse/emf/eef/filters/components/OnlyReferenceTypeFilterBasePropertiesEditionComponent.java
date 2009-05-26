@@ -15,40 +15,23 @@ package org.eclipse.emf.eef.filters.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
-
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -58,9 +41,6 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -71,19 +51,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private OnlyReferenceTypeFilter onlyReferenceTypeFilter;
-
+	
 	/**
 	 * The Base part
 	 */
 	private OnlyReferenceTypeFilterPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -97,7 +77,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -116,7 +96,8 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 					OnlyReferenceTypeFilterBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference().equals(msg.getFeature()) && basePart != null)
-						basePart.setReferencedFeature((EObject)msg.getNewValue());
+					basePart.setReferencedFeature((EObject)msg.getNewValue());
+
 
 
 				}
@@ -208,7 +189,10 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 		}
 		// init values for referenced views
 
+
 		// init filters for referenced views
+		
+		
 
 	}
 
@@ -222,6 +206,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 		CompoundCommand cc = new CompoundCommand();
 		if (onlyReferenceTypeFilter != null) {
 			cc.append(SetCommand.create(editingDomain, onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference(), basePart.getReferencedFeature()));
+
 
 
 		}
@@ -240,6 +225,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 		if (source instanceof OnlyReferenceTypeFilter) {
 			OnlyReferenceTypeFilter onlyReferenceTypeFilterToUpdate = (OnlyReferenceTypeFilter)source;
 			onlyReferenceTypeFilterToUpdate.setReference((EReference)basePart.getReferencedFeature());
+
 
 
 			return onlyReferenceTypeFilterToUpdate;
@@ -261,14 +247,17 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 				command.append(SetCommand.create(liveEditingDomain, onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference(), event.getNewValue()));
 
 
+
 			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
+				
 
 
 
 			} else {
+				
 
 
 
@@ -286,6 +275,14 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 		Diagnostic ret = null;
 		try {
 
+			if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {
+				Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
+			}
+			if (MappingViewsRepository.FilterProperties.mandatory == event.getAffectedEditor()) {
+				Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
+			}
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
 		}

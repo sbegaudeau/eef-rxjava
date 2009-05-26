@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.8 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -49,19 +49,19 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 public class DocumentedElementPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String DOCUMENTATION_PART = "Documentation"; //$NON-NLS-1$
-
+	
 	private String[] parts = {DOCUMENTATION_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private DocumentedElement documentedElement;
-
+	
 	/**
 	 * The Documentation part
 	 */
 	private DocumentationPropertiesEditionPart documentationPart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -75,7 +75,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -94,7 +94,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 					DocumentedElementPropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null)
-						documentationPart.setDocumentation((String)msg.getNewValue());
+					documentationPart.setDocumentation((String)msg.getNewValue());
 
 
 
@@ -171,7 +171,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 			
 			// init filters
-
+			
 		}
 		// init values for referenced views
 

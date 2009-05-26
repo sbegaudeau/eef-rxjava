@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.8 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -60,19 +60,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private EMFMultiPropertiesBinding eMFMultiPropertiesBinding;
-
+	
 	/**
 	 * The Base part
 	 */
 	private EMFMultiPropertiesBindingPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -86,7 +86,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -105,12 +105,12 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 					EMFMultiPropertiesBindingBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
+					basePart.setName((String)msg.getNewValue());
 
 					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
-						basePart.updateViews(eMFMultiPropertiesBinding);
+					basePart.updateViews(eMFMultiPropertiesBinding);
 					if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
-						basePart.updateModel(eMFMultiPropertiesBinding);
+					basePart.updateModel(eMFMultiPropertiesBinding);
 
 
 				}
@@ -188,7 +188,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			basePart.initModel(eMFMultiPropertiesBinding, null, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model());
 			
 			// init filters
-
+			
 			basePart.addFilterToViews(new ViewerFilter() {
 
 				/*
@@ -330,15 +330,15 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-
-
+				
+				
 
 
 			} else {
 				if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-
-
+				
+				
 
 
 			}

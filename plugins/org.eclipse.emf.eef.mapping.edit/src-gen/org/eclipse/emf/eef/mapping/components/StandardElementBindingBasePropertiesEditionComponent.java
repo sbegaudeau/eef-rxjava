@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingBasePropertiesEditionComponent.java,v 1.8 2009/05/20 15:51:36 sbouchet Exp $
+ * $Id: StandardElementBindingBasePropertiesEditionComponent.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -60,19 +60,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class StandardElementBindingBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private StandardElementBinding standardElementBinding;
-
+	
 	/**
 	 * The Base part
 	 */
 	private StandardElementBindingPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -86,7 +86,7 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Standa
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -105,12 +105,12 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Standa
 					StandardElementBindingBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
+					basePart.setName((String)msg.getNewValue());
 
 					if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature()))
-						basePart.updateViews(standardElementBinding);
+					basePart.updateViews(standardElementBinding);
 					if (MappingPackage.eINSTANCE.getStandardElementBinding_Model().equals(msg.getFeature()) && basePart != null)
-						basePart.setModel((EObject)msg.getNewValue());
+					basePart.setModel((EObject)msg.getNewValue());
 
 
 				}
@@ -188,7 +188,7 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Standa
 			basePart.initModel(allResource, standardElementBinding.getModel());
 			
 			// init filters
-
+			
 			basePart.addFilterToViews(new ViewerFilter() {
 
 				/*
@@ -311,15 +311,15 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Standa
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (MappingViewsRepository.StandardElementBinding.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-
-
+				
+				
 
 
 			} else {
 				if (MappingViewsRepository.StandardElementBinding.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-
-
+				
+				
 
 
 			}

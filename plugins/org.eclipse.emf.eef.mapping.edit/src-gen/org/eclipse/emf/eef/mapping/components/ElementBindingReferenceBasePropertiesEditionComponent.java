@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.8 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -51,19 +51,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class ElementBindingReferenceBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private ElementBindingReference elementBindingReference;
-
+	
 	/**
 	 * The Base part
 	 */
 	private ElementBindingReferencePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -77,7 +77,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -96,7 +96,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 					ElementBindingReferenceBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
-						basePart.setBinding((EObject)msg.getNewValue());
+					basePart.setBinding((EObject)msg.getNewValue());
 
 
 				}
@@ -245,11 +245,11 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-
+				
 
 
 			} else {
-
+				
 
 
 			}

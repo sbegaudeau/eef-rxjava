@@ -9,16 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.7 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.8 2009/05/26 08:49:54 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
-import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.FilterPropertiesPropertiesEditionProvider;
 import org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -31,6 +32,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	public MappingPackagePropertiesEditionProvider() {
 		super();
 		append(createDocumentedElementPropertiesEditionProvider());
+		append(createFilterPropertiesPropertiesEditionProvider());
 		append(createDatabindingPropertiesEditionProvider());
 		append(createEMFElementBindingPropertiesEditionProvider());
 		append(createEMFPropertyBindingPropertiesEditionProvider());
@@ -59,6 +61,21 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		if (documentedElementPropertiesEditionProvider == null)
 			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
 		return documentedElementPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * BindingFilter instances.
+	 */
+	protected FilterPropertiesPropertiesEditionProvider filterPropertiesPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a BindingFilter
+	 */
+	public FilterPropertiesPropertiesEditionProvider createFilterPropertiesPropertiesEditionProvider() {
+		if (filterPropertiesPropertiesEditionProvider == null)
+			filterPropertiesPropertiesEditionProvider = new FilterPropertiesPropertiesEditionProvider();
+		return filterPropertiesPropertiesEditionProvider;
 	}
 	
 	/**

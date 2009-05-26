@@ -1,0 +1,186 @@
+/**
+ *  Copyright (c) 2008-2009 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
+ * 
+ *
+ * $Id: FilterPropertiesPropertiesEditionPartImpl.java,v 1.1 2009/05/26 08:49:53 glefur Exp $
+ */
+package org.eclipse.emf.eef.mapping.parts.impl;
+
+// Start of user code for imports
+
+import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.providers.MappingMessages;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
+
+// End of user code
+/**
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ */
+public class FilterPropertiesPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, FilterPropertiesPropertiesEditionPart {
+
+	private Text name;
+	private Button mandatory;
+
+
+
+
+	
+	public FilterPropertiesPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+		super(editionComponent);
+	}
+
+	public Composite createFigure(final Composite parent) {
+		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		
+		createControls(view);
+		return view;
+	}
+
+	public void createControls(Composite view) { 
+		createFilterPropertiesGroup(view);
+
+		// Start of user code for additional ui definition
+		
+		// End of user code
+	}
+
+	protected void createFilterPropertiesGroup(Composite parent) {
+		Group filterPropertiesGroup = new Group(parent, SWT.NONE);
+		filterPropertiesGroup.setText(MappingMessages.FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel);
+		GridData filterPropertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		filterPropertiesGroupData.horizontalSpan = 3;
+		filterPropertiesGroup.setLayoutData(filterPropertiesGroupData);
+		GridLayout filterPropertiesGroupLayout = new GridLayout();
+		filterPropertiesGroupLayout.numColumns = 3;
+		filterPropertiesGroup.setLayout(filterPropertiesGroupLayout);
+		createNameText(filterPropertiesGroup);
+		createMandatoryCheckbox(filterPropertiesGroup);
+	}
+	protected void createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.SWT_KIND));
+		name = new Text(parent, SWT.BORDER);
+		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+		name.setLayoutData(nameData);
+		name.addModifyListener(new ModifyListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+			 */
+			public void modifyText(ModifyEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
+			}
+			
+		});
+
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+	protected void createMandatoryCheckbox(Composite parent) {
+		mandatory = new Button(parent, SWT.CHECK);
+		mandatory.setText(MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel);
+		GridData mandatoryData = new GridData(GridData.FILL_HORIZONTAL);
+		mandatoryData.horizontalSpan = 2;
+		mandatory.setLayoutData(mandatoryData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.mandatory, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+
+
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
+		// Start of user code for tab synchronization
+		
+		// End of user code
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.FilterPropertiesPropertiesEditionPart#getName()
+	 */
+	public String getName() {
+		return name.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.FilterPropertiesPropertiesEditionPart#setName(String newValue)
+	 */
+	public void setName(String newValue) {
+		name.setText(newValue);
+	}
+
+	public void setMessageForName(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForName() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.FilterPropertiesPropertiesEditionPart#getMandatory()
+	 */
+	public Boolean getMandatory() {
+		return Boolean.valueOf(mandatory.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.FilterPropertiesPropertiesEditionPart#setMandatory(Boolean newValue)
+	 */
+	public void setMandatory(Boolean newValue) {
+		if (newValue != null) {
+			mandatory.setSelection(newValue.booleanValue());
+		} else {
+			mandatory.setSelection(false);
+		}
+	}
+
+	public void setMessageForMandatory(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForMandatory() {
+
+	}
+
+
+
+
+
+
+
+
+	// Start of user code additional methods
+	
+	// End of user code
+}

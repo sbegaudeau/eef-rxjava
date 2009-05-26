@@ -14,16 +14,14 @@
 package org.eclipse.emf.eef.filters.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
+import org.eclipse.emf.eef.filters.components.FilterPropertiesPropertiesEditionComponent;
+import org.eclipse.emf.eef.filters.components.OCLFilterBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.filters.components.OCLFilterPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.OCLFilter;
-import org.eclipse.emf.eef.filters.components.OCLFilterPropertiesEditionComponent;
-import org.eclipse.emf.eef.filters.components.OCLFilterBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -64,6 +62,8 @@ public class OCLFilterPropertiesEditionProvider implements IPropertiesEditionPro
 				return new OCLFilterBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
+			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part))
+				return new FilterPropertiesPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

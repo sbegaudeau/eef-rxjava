@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersItemProviderAdapterFactory.java,v 1.2 2009/05/26 08:19:56 glefur Exp $
+ * $Id: FiltersItemProviderAdapterFactory.java,v 1.3 2009/05/26 08:49:52 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.provider;
 
@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -31,7 +30,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.mapping.filters.util.FiltersAdapterFactory;
 
 /**

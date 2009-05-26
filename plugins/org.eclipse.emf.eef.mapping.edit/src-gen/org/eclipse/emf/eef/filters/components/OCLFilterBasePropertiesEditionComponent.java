@@ -15,37 +15,22 @@ package org.eclipse.emf.eef.filters.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.mapping.filters.OCLFilter;
-
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.filters.OCLFilter;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OCLFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -55,10 +40,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
 /**
@@ -67,19 +49,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private OCLFilter oCLFilter;
-
+	
 	/**
 	 * The Base part
 	 */
 	private OCLFilterPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -93,7 +75,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -112,7 +94,8 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 					OCLFilterBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (FiltersPackage.eINSTANCE.getOCLFilter_Body().equals(msg.getFeature()) && basePart != null)
-						basePart.setOCLExpressionBody((String)msg.getNewValue());
+					basePart.setOCLExpressionBody((String)msg.getNewValue());
+
 
 
 
@@ -189,11 +172,14 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 
 			
 			// init filters
-
+			
 		}
 		// init values for referenced views
 
+
 		// init filters for referenced views
+		
+		
 
 	}
 
@@ -207,6 +193,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 		CompoundCommand cc = new CompoundCommand();
 		if (oCLFilter != null) {
 			cc.append(SetCommand.create(editingDomain, oCLFilter, FiltersPackage.eINSTANCE.getOCLFilter_Body(), basePart.getOCLExpressionBody()));
+
 
 
 
@@ -226,6 +213,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 		if (source instanceof OCLFilter) {
 			OCLFilter oCLFilterToUpdate = (OCLFilter)source;
 			oCLFilterToUpdate.setBody(basePart.getOCLExpressionBody());	
+
 
 
 
@@ -249,6 +237,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 
 
 
+
 			liveEditingDomain.getCommandStack().execute(command);
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
@@ -257,9 +246,11 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 					basePart.setMessageForOCLExpressionBody(diag.getMessage(), IMessageProvider.ERROR);
 
 
+
 			} else {
 				if (MappingViewsRepository.OCLFilter.oCLExpressionBody == event.getAffectedEditor())
 					basePart.unsetMessageForOCLExpressionBody();
+
 
 
 			}
@@ -280,6 +271,14 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 				ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getOCLFilter_Body().getEAttributeType(), newValue);
 			}
 
+			if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {
+				Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
+			}
+			if (MappingViewsRepository.FilterProperties.mandatory == event.getAffectedEditor()) {
+				Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
+			}
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
 		}

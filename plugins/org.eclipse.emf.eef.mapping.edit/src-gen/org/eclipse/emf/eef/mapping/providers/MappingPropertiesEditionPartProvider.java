@@ -9,42 +9,44 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPropertiesEditionPartProvider.java,v 1.6 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: MappingPropertiesEditionPartProvider.java,v 1.7 2009/05/26 08:49:54 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.parts.forms.CategoryPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.EMFElementBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.EMFMultiPropertiesBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.EMFPropertyBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.ElementBindingReferencePropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.JavaDeclarationFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.JavaExpressionFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.ModelNavigationPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.OCLFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.SimpleModelNavigationPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.StandardPropertyBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.impl.CategoryPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.EMFElementBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.EMFMultiPropertiesBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.EMFPropertyBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.ElementBindingReferencePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.FilterPropertiesPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.JavaDeclarationFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.JavaExpressionFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.ModelNavigationPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.OCLFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.OnlyReferenceTypeFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.StandardPropertyBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.EMFElementBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.EMFElementBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.EMFPropertyBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.EMFPropertyBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.StandardPropertyBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.StandardPropertyBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.CategoryPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.CategoryPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.ElementBindingReferencePropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.ElementBindingReferencePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.EMFMultiPropertiesBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.EMFMultiPropertiesBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.ModelNavigationPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.ModelNavigationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.SimpleModelNavigationPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.OnlyReferenceTypeFilterPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.OCLFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.OCLFilterPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.JavaExpressionFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.JavaExpressionFilterPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.JavaDeclarationFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.JavaDeclarationFilterPropertiesEditionPartImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -71,6 +73,12 @@ public class MappingPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new DocumentationPropertiesEditionPartImpl(component);
 			if (kind == MappingViewsRepository.FORM_KIND)
 				return new DocumentationPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.FilterProperties.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new FilterPropertiesPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new FilterPropertiesPropertiesEditionPartForm(component);
 		}
 		if (key == MappingViewsRepository.EMFElementBinding.class) {
 			if (kind == MappingViewsRepository.SWT_KIND)

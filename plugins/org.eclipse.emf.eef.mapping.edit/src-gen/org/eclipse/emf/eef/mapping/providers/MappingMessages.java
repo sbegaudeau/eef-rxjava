@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingMessages.java,v 1.7 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: MappingMessages.java,v 1.8 2009/05/26 08:49:54 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -22,6 +22,8 @@ public class MappingMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.eef.mapping.providers.mappingMessages"; //$NON-NLS-1$
 
 	public static String DocumentationPropertiesEditionPart_DocumentationGroupLabel;
+
+	public static String FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel;
 
 	public static String EMFElementBindingPropertiesEditionPart_PropertiesGroupLabel;
 
@@ -51,15 +53,17 @@ public class MappingMessages extends NLS {
 
 	public static String SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
 
-	public static String OnlyReferenceTypeFilterPropertiesEditionPart_PropertiesGroupLabel;
+	public static String OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureGroupLabel;
 
-	public static String OCLFilterPropertiesEditionPart_PropertiesGroupLabel;
+	public static String OCLFilterPropertiesEditionPart_FilterExpressionGroupLabel;
 
-	public static String JavaExpressionFilterPropertiesEditionPart_PropertiesGroupLabel;
+	public static String JavaExpressionFilterPropertiesEditionPart_FilterExpressionGroupLabel;
 
-	public static String JavaDeclarationFilterPropertiesEditionPart_PropertiesGroupLabel;
+	public static String JavaDeclarationFilterPropertiesEditionPart_FilterExpressionGroupLabel;
 
 	public static String Documentation_ReadOnly;
+
+	public static String FilterProperties_ReadOnly;
 
 	public static String EMFElementBinding_ReadOnly;
 
@@ -88,6 +92,10 @@ public class MappingMessages extends NLS {
 	public static String JavaDeclarationFilter_ReadOnly;
 
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
+
+	public static String FilterPropertiesPropertiesEditionPart_NameLabel;
+
+	public static String FilterPropertiesPropertiesEditionPart_MandatoryLabel;
 
 	public static String EMFElementBindingPropertiesEditionPart_NameLabel;
 

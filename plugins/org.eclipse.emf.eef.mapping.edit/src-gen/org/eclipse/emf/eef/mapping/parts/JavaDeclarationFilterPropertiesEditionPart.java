@@ -15,8 +15,7 @@ package org.eclipse.emf.eef.mapping.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
  
 
@@ -40,6 +39,40 @@ public interface JavaDeclarationFilterPropertiesEditionPart {
 	public void setMessageForMethodName(String msg, int msgLevel);
 
 	public void unsetMessageForMethodName();
+
+
+
+
+	/**
+	 * @return the Filter properties referenced view
+	 */
+	public IPropertiesEditionPart getFilterPropertiesReferencedView();
+	/**
+	 * @return the Name
+	 */
+	public String getName();
+
+	/**
+	 * Defines a new Name
+	 * @param newValue the new Name to set
+	 */
+	public void setName(String newValue);
+
+	public void setMessageForName(String msg, int msgLevel);
+
+	public void unsetMessageForName();
+
+	/**
+	 * @return the Mandatory
+	 */
+	public Boolean getMandatory();
+
+	/**
+	 * Defines a new Mandatory
+	 * @param newValue the new Mandatory to set
+	 */
+	public void setMandatory(Boolean newValue);
+
 
 
 

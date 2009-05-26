@@ -9,21 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionProvider.java,v 1.8 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: ElementBindingReferencePropertiesEditionProvider.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
-import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
-import org.eclipse.emf.eef.mapping.components.ElementBindingReferencePropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.ElementBindingReferenceBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.ElementBindingReferenceBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.ElementBindingReferencePropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

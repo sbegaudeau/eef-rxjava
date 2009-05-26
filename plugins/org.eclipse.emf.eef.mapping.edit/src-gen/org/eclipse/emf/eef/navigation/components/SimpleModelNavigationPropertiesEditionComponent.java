@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionComponent.java,v 1.7 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionComponent.java,v 1.8 2009/05/26 08:49:55 glefur Exp $
  */
 package org.eclipse.emf.eef.navigation.components;
 
@@ -53,19 +53,19 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class SimpleModelNavigationPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
+	
 	private String[] parts = {BASE_PART};
-
+	
 	/**
 	 * The EObject to edit
 	 */
 	private SimpleModelNavigation simpleModelNavigation;
-
+	
 	/**
 	 * The Base part
 	 */
 	private SimpleModelNavigationPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 */
@@ -79,7 +79,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 		}
 		this.editing_mode = editing_mode;
 	}
-
+	
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -98,12 +98,12 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 					SimpleModelNavigationPropertiesEditionComponent.this.dispose();
 				else {
 					if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null)
-						basePart.setIndex(((Integer)msg.getNewValue()).toString());
+					basePart.setIndex(((Integer)msg.getNewValue()).toString());
 
 					if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature().equals(msg.getFeature()) && basePart != null)
-						basePart.setFeature((EObject)msg.getNewValue());
+					basePart.setFeature((EObject)msg.getNewValue());
 					if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType().equals(msg.getFeature()) && basePart != null)
-						basePart.setDiscriminatorType((EObject)msg.getNewValue());
+					basePart.setDiscriminatorType((EObject)msg.getNewValue());
 
 
 				}
@@ -180,7 +180,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			basePart.initDiscriminatorType(allResource, simpleModelNavigation.getDiscriminatorType());
 			
 			// init filters
-
+			
 			basePart.addFilterToFeature(new ViewerFilter() {
 
 				/*
@@ -284,15 +284,15 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (MappingViewsRepository.SimpleModelNavigation.index == event.getAffectedEditor())
 					basePart.setMessageForIndex(diag.getMessage(), IMessageProvider.ERROR);
-
-
+				
+				
 
 
 			} else {
 				if (MappingViewsRepository.SimpleModelNavigation.index == event.getAffectedEditor())
 					basePart.unsetMessageForIndex();
-
-
+				
+				
 
 
 			}

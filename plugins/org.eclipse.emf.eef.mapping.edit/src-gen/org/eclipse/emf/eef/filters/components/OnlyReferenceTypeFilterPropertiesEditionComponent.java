@@ -16,14 +16,13 @@ package org.eclipse.emf.eef.filters.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
 /**
@@ -46,6 +45,10 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
+	 * The FilterPropertiesPropertiesEditionComponent sub component
+	 */
+	protected FilterPropertiesPropertiesEditionComponent filterPropertiesPropertiesEditionComponent;
+	/**
 	 * Parameterized constructor
 	 * 
 	 * @param onlyReferenceTypeFilter
@@ -58,6 +61,8 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 			addSubComponent(onlyReferenceTypeFilterBasePropertiesEditionComponent);
 			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode); 	
 			addSubComponent(documentedElementPropertiesEditionComponent);
+			filterPropertiesPropertiesEditionComponent = new FilterPropertiesPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode); 	
+			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}
 	
@@ -94,6 +99,8 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == MappingViewsRepository.OnlyReferenceTypeFilter.class) {
 			super.initPart(key, kind, element, allResource);
+			filterPropertiesPropertiesEditionComponent.setPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, kind, basePart.getFilterPropertiesReferencedView());
+			filterPropertiesPropertiesEditionComponent.initPart(MappingViewsRepository.FilterProperties.class, kind, element, allResource);			
 		}
 	}
 }

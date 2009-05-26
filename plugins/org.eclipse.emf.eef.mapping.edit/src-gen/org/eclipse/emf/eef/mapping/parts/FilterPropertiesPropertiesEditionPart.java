@@ -9,13 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id$
+ * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.1 2009/05/26 08:49:55 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
 // Start of user code for imports
 
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
  
 
@@ -23,30 +22,8 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public interface OCLFilterPropertiesEditionPart {
+public interface FilterPropertiesPropertiesEditionPart {
 
-	/**
-	 * @return the OCLExpressionBody
-	 */
-	public String getOCLExpressionBody();
-
-	/**
-	 * Defines a new OCLExpressionBody
-	 * @param newValue the new OCLExpressionBody to set
-	 */
-	public void setOCLExpressionBody(String newValue);
-
-	public void setMessageForOCLExpressionBody(String msg, int msgLevel);
-
-	public void unsetMessageForOCLExpressionBody();
-
-
-
-
-	/**
-	 * @return the Filter properties referenced view
-	 */
-	public IPropertiesEditionPart getFilterPropertiesReferencedView();
 	/**
 	 * @return the Name
 	 */
@@ -72,6 +49,9 @@ public interface OCLFilterPropertiesEditionPart {
 	 * @param newValue the new Mandatory to set
 	 */
 	public void setMandatory(Boolean newValue);
+
+
+
 
 
 

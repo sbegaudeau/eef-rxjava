@@ -15,40 +15,26 @@ package org.eclipse.emf.eef.mapping.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.JavaDeclarationFilterPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.providers.MappingMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.mapping.parts.JavaDeclarationFilterPropertiesEditionPart;
-
-
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 
 // End of user code
 /**
@@ -58,6 +44,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 	private Text methodName;
 
+	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
 
 
 
@@ -77,23 +64,24 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	}
 
 	public void createControls(Composite view) { 
-		createPropertiesGroup(view);
+		createFilterExpressionGroup(view);
+		createFilterProperties(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
 	}
 
-	protected void createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(MappingMessages.JavaDeclarationFilterPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		createMethodNameText(propertiesGroup);
+	protected void createFilterExpressionGroup(Composite parent) {
+		Group filterExpressionGroup = new Group(parent, SWT.NONE);
+		filterExpressionGroup.setText(MappingMessages.JavaDeclarationFilterPropertiesEditionPart_FilterExpressionGroupLabel);
+		GridData filterExpressionGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		filterExpressionGroupData.horizontalSpan = 3;
+		filterExpressionGroup.setLayoutData(filterExpressionGroupData);
+		GridLayout filterExpressionGroupLayout = new GridLayout();
+		filterExpressionGroupLayout.numColumns = 3;
+		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
+		createMethodNameText(filterExpressionGroup);
 	}
 	protected void createMethodNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaDeclarationFilter.methodName, MappingViewsRepository.SWT_KIND));
@@ -116,6 +104,12 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaDeclarationFilter.methodName, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+	protected void createFilterProperties(Composite container) {
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
+		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
+		((ISWTPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(container);
+	}
+
 
 
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
@@ -149,6 +143,61 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	public void unsetMessageForMethodName() {
 
 	}
+
+
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#getFilterPropertiesReferencedView()
+	 */
+		public IPropertiesEditionPart getFilterPropertiesReferencedView() {
+			return (IPropertiesEditionPart) filterPropertiesPropertiesEditionPart;
+		}
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#getName()
+	 */
+	public String getName() {
+		return filterPropertiesPropertiesEditionPart.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#setName(String newValue)
+	 */
+	public void setName(String newValue) {
+		filterPropertiesPropertiesEditionPart.setName(newValue);
+	}
+
+	public void setMessageForName(String msg, int msgLevel) {
+		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
+	}
+
+	public void unsetMessageForName() {
+		filterPropertiesPropertiesEditionPart.unsetMessageForName();
+	}
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#getMandatory()
+	 */
+	public Boolean getMandatory() {
+		return filterPropertiesPropertiesEditionPart.getMandatory();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#setMandatory(Boolean newValue)
+	 */
+	public void setMandatory(Boolean newValue) {
+		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
+	}
+
+
+
 
 
 

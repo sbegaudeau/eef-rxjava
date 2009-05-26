@@ -9,21 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingPropertiesEditionProvider.java,v 1.8 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: StandardElementBindingPropertiesEditionProvider.java,v 1.9 2009/05/26 08:49:54 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.StandardElementBinding;
-import org.eclipse.emf.eef.mapping.components.StandardElementBindingPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.StandardElementBindingBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.StandardElementBindingBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.StandardElementBindingPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

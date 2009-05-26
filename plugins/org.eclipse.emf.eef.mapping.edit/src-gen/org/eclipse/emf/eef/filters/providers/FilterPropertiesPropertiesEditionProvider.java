@@ -9,23 +9,21 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionProvider.java,v 1.9 2009/05/26 08:49:54 glefur Exp $
+ * $Id: FilterPropertiesPropertiesEditionProvider.java,v 1.1 2009/05/26 08:49:55 glefur Exp $
  */
-package org.eclipse.emf.eef.mapping.providers;
+package org.eclipse.emf.eef.filters.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.EMFPropertyBindingBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.EMFPropertyBindingPropertiesEditionComponent;
+import org.eclipse.emf.eef.filters.components.FilterPropertiesPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesEditionProvider {
+public class FilterPropertiesPropertiesEditionProvider implements IPropertiesEditionProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -33,7 +31,7 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof EMFPropertyBinding) && (MappingPackage.eINSTANCE.getEMFPropertyBinding() == eObject.eClass());
+		return (eObject instanceof BindingFilter) && (FiltersPackage.eINSTANCE.getBindingFilter() == eObject.eClass());
 	}
 	
 	/**
@@ -43,8 +41,8 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	 *      java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof EMFPropertyBinding) {
-			return new EMFPropertyBindingPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof BindingFilter) {
+			return new FilterPropertiesPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -56,11 +54,9 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	 *      java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof EMFPropertyBinding) {
-			if (EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new EMFPropertyBindingBasePropertiesEditionComponent(eObject, editing_mode);
-			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof BindingFilter) {
+			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part))
+				return new FilterPropertiesPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}

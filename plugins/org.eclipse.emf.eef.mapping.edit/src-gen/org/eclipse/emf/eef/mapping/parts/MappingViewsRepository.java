@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingViewsRepository.java,v 1.8 2009/05/20 15:51:37 sbouchet Exp $
+ * $Id: MappingViewsRepository.java,v 1.9 2009/05/26 08:49:55 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -29,6 +29,20 @@ public class MappingViewsRepository {
 	public static class Documentation {
 
 		public static String documentation = "mapping::Documentation::documentation";
+
+
+
+	}
+
+	/**
+	 * Filter properties view descriptor
+	 */
+	public static class FilterProperties {
+
+		public static String name = "mapping::Filter properties::Name";
+
+
+		public static String mandatory = "mapping::Filter properties::Mandatory";
 
 
 
@@ -180,6 +194,8 @@ public class MappingViewsRepository {
 
 
 
+
+
 	}
 
 	/**
@@ -188,6 +204,8 @@ public class MappingViewsRepository {
 	public static class OCLFilter {
 
 		public static String oCLExpressionBody = "mapping::OCLFilter::OCLExpressionBody";
+
+
 
 
 
@@ -202,6 +220,8 @@ public class MappingViewsRepository {
 
 
 
+
+
 	}
 
 	/**
@@ -210,6 +230,8 @@ public class MappingViewsRepository {
 	public static class JavaDeclarationFilter {
 
 		public static String methodName = "mapping::JavaDeclarationFilter::methodName";
+
+
 
 
 
