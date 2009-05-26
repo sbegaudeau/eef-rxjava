@@ -449,7 +449,7 @@
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? (editionElement.navigation.oclIsTypeOf(mapping::navigation::SimpleModelNavigation) and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 			if (PropertiesEditionEvent.ADD == event.getKind()) {
-				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eContainingClass.name.toUpperFirst()/]();
+				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
 				command.append(SetCommand.create(liveEditingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], event.getNewValue()));
 				command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
 			}
@@ -556,7 +556,7 @@
 				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment'))]
 				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
-				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefresh.get(nextElement);
+				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
 				
 				// [/protected]
 				
