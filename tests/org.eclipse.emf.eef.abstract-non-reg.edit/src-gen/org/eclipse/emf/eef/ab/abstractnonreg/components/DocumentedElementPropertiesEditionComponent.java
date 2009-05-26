@@ -174,6 +174,9 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 
 
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
