@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SpecificElementEditorItemProvider.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
+ * $Id: CustomElementEditorItemProvider.java,v 1.1 2009/05/26 08:19:52 glefur Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,31 +18,32 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.eef.views.SpecificElementEditor;
+
+import org.eclipse.emf.eef.views.CustomElementEditor;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.views.SpecificElementEditor} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.views.CustomElementEditor} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SpecificElementEditorItemProvider extends
-		ElementEditorItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class CustomElementEditorItemProvider extends ElementEditorItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SpecificElementEditorItemProvider(AdapterFactory adapterFactory) {
+	public CustomElementEditorItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,7 +63,7 @@ public class SpecificElementEditorItemProvider extends
 	}
 
 	/**
-	 * This returns SpecificElementEditor.gif.
+	 * This returns CustomElementEditor.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -70,7 +71,7 @@ public class SpecificElementEditorItemProvider extends
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/SpecificElementEditor")); //$NON-NLS-1$
+				"full/obj16/CustomElementEditor")); //$NON-NLS-1$
 	}
 
 	/**
@@ -81,9 +82,9 @@ public class SpecificElementEditorItemProvider extends
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SpecificElementEditor) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_SpecificElementEditor_type") : //$NON-NLS-1$
-				getString("_UI_SpecificElementEditor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		String label = ((CustomElementEditor) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_CustomElementEditor_type") : //$NON-NLS-1$
+				getString("_UI_CustomElementEditor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerItemProvider.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
+ * $Id: ContainerItemProvider.java,v 1.3 2009/05/26 08:19:52 glefur Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -166,7 +166,7 @@ public class ContainerItemProvider extends ViewElementItemProvider implements
 
 		newChildDescriptors.add(createChildParameter(
 				ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createSpecificElementEditor()));
+				ViewsFactory.eINSTANCE.createCustomElementEditor()));
 
 		newChildDescriptors.add(createChildParameter(
 				ViewsPackage.Literals.CONTAINER__ELEMENTS,

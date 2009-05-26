@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsItemProviderAdapterFactory.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
+ * $Id: ViewsItemProviderAdapterFactory.java,v 1.3 2009/05/26 08:19:52 glefur Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -197,27 +197,27 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.views.SpecificElementEditor} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.views.CustomElementEditor} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SpecificElementEditorItemProvider specificElementEditorItemProvider;
+	protected CustomElementEditorItemProvider customElementEditorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.views.SpecificElementEditor}.
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.views.CustomElementEditor}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSpecificElementEditorAdapter() {
-		if (specificElementEditorItemProvider == null) {
-			specificElementEditorItemProvider = new SpecificElementEditorItemProvider(
+	public Adapter createCustomElementEditorAdapter() {
+		if (customElementEditorItemProvider == null) {
+			customElementEditorItemProvider = new CustomElementEditorItemProvider(
 					this);
 		}
 
-		return specificElementEditorItemProvider;
+		return customElementEditorItemProvider;
 	}
 
 	/**
@@ -378,8 +378,8 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 			categoryItemProvider.dispose();
 		if (containerItemProvider != null)
 			containerItemProvider.dispose();
-		if (specificElementEditorItemProvider != null)
-			specificElementEditorItemProvider.dispose();
+		if (customElementEditorItemProvider != null)
+			customElementEditorItemProvider.dispose();
 		if (customViewItemProvider != null)
 			customViewItemProvider.dispose();
 		if (viewReferenceItemProvider != null)

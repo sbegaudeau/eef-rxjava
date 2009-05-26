@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryItemProvider.java,v 1.2 2009/04/30 17:49:38 nlepine Exp $
+ * $Id: ViewsRepositoryItemProvider.java,v 1.3 2009/05/26 08:19:52 glefur Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -62,31 +62,10 @@ public class ViewsRepositoryItemProvider extends DocumentedElementItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addQualifiedIdentifierPropertyDescriptor(object);
 			addRepositoryKindPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Qualified Identifier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addQualifiedIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_IdentifiedElement_qualifiedIdentifier_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_IdentifiedElement_qualifiedIdentifier_feature", "_UI_IdentifiedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ViewsPackage.Literals.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER,
-						false, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
