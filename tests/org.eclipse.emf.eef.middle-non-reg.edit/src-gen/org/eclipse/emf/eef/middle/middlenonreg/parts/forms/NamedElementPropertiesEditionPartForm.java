@@ -45,7 +45,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEd
  */
 public class NamedElementPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, NamedElementPropertiesEditionPart {
 
-	private Text name;
+	protected Text name;
 
 	private DocumentedElementPropertiesEditionPart documentedElementPropertiesEditionPart;
 

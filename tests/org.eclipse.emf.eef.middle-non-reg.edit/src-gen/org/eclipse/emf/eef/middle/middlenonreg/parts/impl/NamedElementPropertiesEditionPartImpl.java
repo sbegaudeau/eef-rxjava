@@ -37,7 +37,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEd
  */
 public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, NamedElementPropertiesEditionPart {
 
-	private Text name;
+	protected Text name;
 
 	private DocumentedElementPropertiesEditionPart documentedElementPropertiesEditionPart;
 
