@@ -55,6 +55,7 @@ import org.eclipse.ui.dialogs.PatternFilter;
  * 
  * @author Patrick Tessier
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public abstract class TabElementTreeSelectionDialog<T extends EObject> extends Dialog {
 
@@ -68,7 +69,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 */
 	protected Tree tree;
 
-	/** title of the window **/
+	/** title of the window */
 	protected String title = "Element Selection";
 
 	/**
@@ -98,6 +99,11 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	private EClass restrictToEClass;
 
 	/**
+	 * The main resource. It's optional. The first resource is the main resource by default.
+	 */
+	private Resource mainResource;
+
+	/**
 	 * Constructor with parent shell and Element.
 	 * 
 	 * @param parentElement
@@ -112,8 +118,8 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 *            it used to inform about if the element is abstract in this case the creation button does not
 	 *            appear
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters , String title,
-			EClass restrictToEClass) {
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
+			List<ViewerFilter> brFilters, String title, EClass restrictToEClass) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
@@ -122,6 +128,36 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		this.brFilters = brFilters;
 		this.title = title;
 		this.restrictToEClass = restrictToEClass;
+	}
+
+	/**
+	 * Constructor with parent shell and Element.
+	 * 
+	 * @param parentElement
+	 *            the element where we look for a children
+	 * @param filters
+	 *            this is an array of filter see {@link ViewerFilter} or an example {@link OperationFilter}
+	 * @param title
+	 *            title of the window
+	 * @param createElement
+	 *            this is the listener to create an element
+	 * @param abstractElement
+	 *            it used to inform about if the element is abstract in this case the creation button does not
+	 *            appear
+	 * @param mainResource
+	 *            the main resource.
+	 */
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
+			List<ViewerFilter> brFilters, String title, EClass restrictToEClass, Resource mainResource) {
+		super(Display.getDefault().getActiveShell());
+		// add the resize ability to the window
+		setShellStyle(SWT.RESIZE | super.getShellStyle());
+		this.input = input;
+		this.viewerFilters = filters;
+		this.brFilters = brFilters;
+		this.title = title;
+		this.restrictToEClass = restrictToEClass;
+		this.mainResource = mainResource;
 	}
 
 	/**
@@ -144,7 +180,8 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
 				if (input instanceof ResourceSet) {
 					ResourceSet resourceSet = (ResourceSet)input;
-					Resource mainResource = resourceSet.getResources().get(0);
+					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? TabElementTreeSelectionDialog.this.mainResource
+							: resourceSet.getResources().get(0);
 					if (mainResource != null && mainResource == element) {
 						return true;
 					}
@@ -152,7 +189,8 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 				if (element instanceof EObject) {
 					EObject eObject = (EObject)element;
 					ResourceSet resourceSet = (ResourceSet)input;
-					Resource mainResource = resourceSet.getResources().get(0);
+					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? TabElementTreeSelectionDialog.this.mainResource
+							: resourceSet.getResources().get(0);
 					if (mainResource != null && mainResource == eObject.eResource()) {
 						return true;
 					}
