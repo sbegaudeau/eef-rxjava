@@ -164,7 +164,7 @@ public class EMFListEditUtil {
 				moveElement.index = newIndex;
 				elementsToMove.put(foundedCorrespondingEObject, moveElement);
 			}
-			EObject oldElement = (EObject)copy.get(newIndex);
+			EObject oldElement = copy.get(newIndex);
 			if (oldElement != null) {
 				copy.set(newIndex, selectedElement);
 				copy.set(oldIndex, oldElement);
@@ -243,7 +243,7 @@ public class EMFListEditUtil {
 	public EObject foundCorrespondingEObject(EObject searchedObject) {
 		// search in model
 		if (copyToModelMap.containsKey(searchedObject)) {
-			return (EObject)copyToModelMap.get(searchedObject);
+			return copyToModelMap.get(searchedObject);
 		}
 		// search in newly created elements
 		for (Iterator<EObject> iter = elementsToAdd.iterator(); iter.hasNext();) {
