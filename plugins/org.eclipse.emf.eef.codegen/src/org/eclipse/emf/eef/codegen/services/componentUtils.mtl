@@ -210,7 +210,7 @@
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);	
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
 [else]
 //FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if][/template]
@@ -324,7 +324,9 @@
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+			if ([modelName/].eGet([editionElement.metamodelGetter()/]) == null || ![modelName/].eGet([editionElement.metamodelGetter()/]).equals([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])) {
+				cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+			}
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
