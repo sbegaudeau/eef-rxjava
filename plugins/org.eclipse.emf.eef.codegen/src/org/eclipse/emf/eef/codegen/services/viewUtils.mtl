@@ -171,7 +171,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'EMFComboViewer')]
-	private EMFComboViewer [editor.name.toJavaIdentifier()/];
+	protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'EMFComboViewer')]
@@ -225,8 +225,8 @@ import org.eclipse.swt.widgets.Text;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
-	private Text [editor.name.toJavaIdentifier()/]Text;
-	private Button edit[editor.name.toJavaClassifier()/];
+	protected Text [editor.name.toJavaIdentifier()/]Text;
+	protected Button edit[editor.name.toJavaClassifier()/];
 	private EList [editor.name.toJavaIdentifier()/]List;
 [/template]
 
@@ -297,8 +297,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'ReferencesTable')]
 	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
-	private Button add[editor.name.toJavaClassifier()/];
-	private Button remove[editor.name.toJavaClassifier()/];
+	protected Button add[editor.name.toJavaClassifier()/];
+	protected Button remove[editor.name.toJavaClassifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
@@ -485,8 +485,8 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
-	private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	protected ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
@@ -614,7 +614,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'TableComposition')]
-	private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
@@ -857,8 +857,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
-	private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	protected ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
@@ -903,7 +903,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	/**
 	 * 
 	 */
-	private void addTo[editor.name.toJavaClassifier()/]() {
+	protected void addTo[editor.name.toJavaClassifier()/]() {
 
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 
@@ -1036,7 +1036,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Radio')]
-	private RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
+	protected RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (editor.representation.name = 'Radio')]
@@ -1062,7 +1062,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Combo')]
-	private EMFComboViewer [editor.name.toJavaIdentifier()/];
+	protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Combo')]
@@ -1097,7 +1097,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 [comment ===== Case Widget = Text ===== /]
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Text')]
-	private Text [editor.name.toJavaIdentifier()/];
+	protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Text')]
@@ -1134,7 +1134,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 [comment ===== Case Widget = Textarea ===== /]
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and  editor.representation.name = 'Textarea')]
-	private Text [editor.name.toJavaIdentifier()/];
+	protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Textarea')]
@@ -1158,7 +1158,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 [comment ===== Case Widget = Checkbox ===== /]
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Checkbox')]
-	private Button [editor.name.toJavaIdentifier()/];
+	protected Button [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Checkbox')]

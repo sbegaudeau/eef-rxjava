@@ -330,7 +330,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			
 			// [/protected]
 [else]
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (not editionElement.associatedGenFeature().ecoreFeature.derived)]
 [editionElement.partUpdater(view, pec, pec.model.name.toJavaIdentifier())/]
 [/for]
 [comment add ViewReference support/]

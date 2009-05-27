@@ -228,15 +228,15 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and (editor.representation.name = 'Text' or editor.representation.name = 'Textarea'))]
-private Text [editor.name.toJavaIdentifier()/];
+protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Checkbox')]
-private Button [editor.name.toJavaIdentifier()/];
+protected Button [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Radio')]
-private RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
+protected RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'EObjectFlatComboViewer')]
@@ -244,50 +244,50 @@ protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-private AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
+protected AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 	protected ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'ReferencesTable')]
 protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
-	private Button add[editor.name.toJavaClassifier()/];
-	private Button remove[editor.name.toJavaClassifier()/];
+	protected Button add[editor.name.toJavaClassifier()/];
+	protected Button remove[editor.name.toJavaClassifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
 private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	protected ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'EMFComboViewer')]
-private EMFComboViewer [editor.name.toJavaIdentifier()/];
+protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
-private Text [editor.name.toJavaIdentifier()/]Text;
-	private Button edit[editor.name.toJavaClassifier()/];
+protected Text [editor.name.toJavaIdentifier()/]Text;
+	protected Button edit[editor.name.toJavaClassifier()/];
 	private EList [editor.name.toJavaIdentifier()/]List;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'TableComposition')]
-private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
-private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	private ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	protected ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Combo')]
-private EMFComboViewer [editor.name.toJavaIdentifier()/];
+protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor)]

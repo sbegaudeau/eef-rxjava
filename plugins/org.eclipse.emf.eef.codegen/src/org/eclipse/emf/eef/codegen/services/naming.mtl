@@ -125,7 +125,7 @@
 [/template]
 
 [template public editorID(editor : ElementEditor)]
-[editor.owningView().owningViewsRepository().vrClass()/].[for (s : String | editor.editorIDSequence()->excluding(editor.editorIDSequence()->first())->excluding(editor.editorIDSequence()->at(editor.editorIDSequence()->size()))) separator ('.')][s.toJavaClassifier()/][/for].[editor.name.toJavaIdentifier()/]
+[editor.owningView().owningViewsRepository().vrClass()/].[for (s : String | editor.editorIDSequence()->subSequence(2, editor.editorIDSequence()->size() - 1)) separator ('.')][s.toJavaClassifier()/][/for].[editor.name.toJavaIdentifier()/]
 [/template]
 
 [template public editorID(view : View)]
