@@ -38,7 +38,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository
  */
 public class DocumentedElementPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, DocumentedElementPropertiesEditionPart {
 
-	private Text documentation;
+	protected Text documentation;
 
 
 

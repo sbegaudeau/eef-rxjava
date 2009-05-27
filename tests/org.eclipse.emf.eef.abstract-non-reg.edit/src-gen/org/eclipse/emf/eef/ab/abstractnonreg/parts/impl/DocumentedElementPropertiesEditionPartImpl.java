@@ -30,7 +30,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository
  */
 public class DocumentedElementPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DocumentedElementPropertiesEditionPart {
 
-	private Text documentation;
+	protected Text documentation;
 
 
 
