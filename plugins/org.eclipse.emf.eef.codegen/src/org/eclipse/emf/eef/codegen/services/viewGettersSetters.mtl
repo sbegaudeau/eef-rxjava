@@ -717,7 +717,11 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Text') or elementEditor.representationName('Textarea'))]
 [elementEditor.setterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setText(newValue);
+		if (newValue != null) {
+			[elementEditor.name.toJavaIdentifier()/].setText(newValue);
+		} else {
+			[elementEditor.name.toJavaIdentifier()/].setText("");  //$NON-NLS-1$
+		}
 	}
 [/template]
 
@@ -729,16 +733,17 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
-		if (newValue != null)
+		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
-		else
+		} else {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		}
 	}
 [/template]
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
-		if (newValue != null){
+		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue);
 		}
 	}
@@ -757,7 +762,11 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('MultiValuedEditor'))]
 [elementEditor.setterSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]List = newValue;
-		[elementEditor.name.toJavaIdentifier()/]Text.setText([elementEditor.name.toJavaIdentifier()/]List.toString());
+		if (newValue != null) {
+			[elementEditor.name.toJavaIdentifier()/]Text.setText([elementEditor.name.toJavaIdentifier()/]List.toString());
+		} else {
+			[elementEditor.name.toJavaIdentifier()/]Text.setText(""); //$NON-NLS-1$
+		}
 	}
 [/template]
 
@@ -769,16 +778,17 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Combo'))]
 [elementEditor.setterSignature()/] {
-		if (newValue != null)
+		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(newValue));
-		else
-			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(""));
+		} else {
+			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+		}
 	}
 [/template]
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.setterSignature()/] {
-		//FIXME ERROR NO VALID CASE INTO template public setterSignatureImplementation(elementEditor : ElementEditor) in viewGettersSetters.mtl module
+		// FIXME ERROR NO VALID CASE INTO template public setterSignatureImplementation(elementEditor : ElementEditor) in viewGettersSetters.mtl module
 	}
 [/template]
 
