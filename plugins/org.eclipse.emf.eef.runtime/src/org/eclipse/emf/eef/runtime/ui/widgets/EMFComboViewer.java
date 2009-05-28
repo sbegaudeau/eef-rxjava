@@ -126,7 +126,7 @@ public class EMFComboViewer extends AbstractListViewer {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#listSetSelection(int[])
 	 */
 	protected void listSetSelection(int[] ixs) {
@@ -135,10 +135,9 @@ public class EMFComboViewer extends AbstractListViewer {
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#listDeselectAll()
 	 */
 	protected void listDeselectAll() {
@@ -148,7 +147,7 @@ public class EMFComboViewer extends AbstractListViewer {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#listShowSelection()
 	 */
 	protected void listShowSelection() {
@@ -157,7 +156,7 @@ public class EMFComboViewer extends AbstractListViewer {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.jface.viewers.AbstractListViewer#setSelectionToWidget(java.util.List, boolean)
 	 */
 	protected void setSelectionToWidget(List in, boolean reveal) {
@@ -165,11 +164,6 @@ public class EMFComboViewer extends AbstractListViewer {
 			listDeselectAll();
 		} else {
 			Object elem = in.get(0);
-			// For Eclipse 3.2
-			// if (!(elem instanceof AbstractEnumerator)) {
-			// listDeselectAll();
-			// } else {
-			// AbstractEnumerator toSelect = (AbstractEnumerator)elem;
 			int[] ixs = new int[1];
 			ixs[0] = -1;
 			String[] literals = getCombo().getItems();
@@ -192,7 +186,6 @@ public class EMFComboViewer extends AbstractListViewer {
 			if (reveal) {
 				listShowSelection();
 			}
-			// }
 		}
 	}
 
