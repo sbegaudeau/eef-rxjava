@@ -19,9 +19,9 @@
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.needComposedEditionComponent())]
-[file (pec.fullFilePath(), false)]
+[file (pec.fullFilePath(basePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].components;
+package [pec.model.eefPackage(basePackage)/].components;
 
 // [protected ('for imports')]
 
@@ -156,12 +156,21 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 			[for (refView : View | subPec.views->select(explicit))]
 			[if (view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsKindOf(views::View)).oclAsType(views::View)->includes(refView))]
 			[subPec.pecClass().toLowerFirst()/].setPropertiesEditionPart([refView.editorID()/].class, kind, [view.viewIdentifier(pec)/].get[refView.name.toJavaClassifier()/]ReferencedView());
-			[subPec.pecClass().toLowerFirst()/].initPart([refView.editorID()/].class, kind, element, allResource);			
+			[subPec.pecClass().toLowerFirst()/].initPart([refView.editorID()/].class, kind, element, allResource);
 			[/if]
 			[/for]
 		[/for]
 		}
 	[/for]
+	[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(components::PropertiesEditionComponent))]
+            [for (refView : View | subPec.views->select(explicit))]
+            if (key == [refView.editorID()/].class) {
+                    super.initPart(key, kind, element, allResource);
+            [comment what about referenced view resolution in this case ? /]
+            
+            [/for]
+            }
+    [/for]
 	}
 }
 [/file]
@@ -169,6 +178,6 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent)]
-[pec.pecQualifiedClass().toPath()/].java
+[template public fullFilePath(pec : PropertiesEditionComponent, basePackage : EString)]
+[pec.model.eefPackage(basePackage).toPath()/]/components/[pec.pecClass()/].java
 [/template]

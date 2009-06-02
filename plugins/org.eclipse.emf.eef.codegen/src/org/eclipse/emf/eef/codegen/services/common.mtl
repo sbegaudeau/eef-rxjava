@@ -48,12 +48,14 @@
 		 endif
 	else element.container.owningView()
 	endif/]
+	
+[query public hasOwningViewsRepository(view : View) : Boolean = view.ancestors()->select(oclIsTypeOf(views::ViewsRepository))->notEmpty()/]
 
 [query public owningViewsRepository(view : View) : ViewsRepository = 
-	if (view.ancestors()->select(oclIsTypeOf(ViewsRepository))->notEmpty()) then 
-	view.ancestors()->select(oclIsTypeOf(ViewsRepository))->first().oclAsType(ViewsRepository)
-	else null
-	endif/]
+        if (view.hasOwningViewsRepository()) then 
+        view.ancestors()->select(oclIsTypeOf(ViewsRepository))->first().oclAsType(views::ViewsRepository)
+        else null
+        endif/]
 
 [query public owningViewsRepository(element : ViewElement) : ViewsRepository = 
 	element.owningView().owningViewsRepository()/]

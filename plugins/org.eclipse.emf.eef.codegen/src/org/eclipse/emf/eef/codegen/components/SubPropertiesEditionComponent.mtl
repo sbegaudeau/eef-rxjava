@@ -25,9 +25,9 @@
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.mustBeGenerated())]
 	[for (view : View | pec.views) ? (not view.isDynamicView())]
-[file (pec.fullFilePath(view), false)]
+[file (pec.fullFilePath(view, basePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].components;
+package [pec.model.eefPackage(basePackage)/].components;
 
 // [protected ('for imports')]
 
@@ -58,7 +58,7 @@ import [pec.model.qualifiedName(basePackage)/];
 import org.eclipse.emf.ecore.EStructuralFeature;
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
 import [pee.model.eType.qualifiedName(basePackage)/];
-[if (pee.navigation.oclIsKindOf(mapping::navigation::SimpleModelNavigation))]
+[if (not pee.navigation.oclIsUndefined() and pee.navigation.oclIsKindOf(mapping::navigation::SimpleModelNavigation))]
 import [pee.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).discriminatorType.qualifiedName(basePackage)/];
 [/if]
 [/for]
@@ -494,8 +494,8 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
-[pec.subPECQualifiedClass(view).toPath()/].java
+[template public fullFilePath(pec : PropertiesEditionComponent, view : View, basePackage : String)]
+[pec.model.eefPackage(basePackage).toPath()/]/components/[pec.subPECClass(view)/].java
 [/template]
 
 [template public manageImportForViewReferences(view : View, pec : PropertiesEditionComponent, basePackage : String)]
