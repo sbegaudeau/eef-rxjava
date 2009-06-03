@@ -15,6 +15,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
+
 /**
  * 
  */

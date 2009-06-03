@@ -32,25 +32,26 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
 // End of user code
+
 /**
  * 
  */
 public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Site site;
-	
+
 	/**
 	 * The Base part
 	 */
 	private SitePropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -64,7 +65,7 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -160,10 +161,16 @@ public class SiteBasePropertiesEditionComponent extends StandardPropertiesEditio
 
 
 		// init filters for referenced views
-		
-		
+
+
 
 	}
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}

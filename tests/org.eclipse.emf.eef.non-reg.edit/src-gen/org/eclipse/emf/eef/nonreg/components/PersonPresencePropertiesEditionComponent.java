@@ -40,25 +40,26 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * 
  */
 public class PersonPresencePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String PRESENCE_PART = "Presence"; //$NON-NLS-1$
-	
+
 	private String[] parts = {PRESENCE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Person person;
-	
+
 	/**
 	 * The Presence part
 	 */
 	private PresencePropertiesEditionPart presencePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -72,7 +73,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -91,7 +92,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 					PersonPresencePropertiesEditionComponent.this.dispose();
 				else {
 					if (NonregPackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
-					presencePart.updateAssists(person);
+						presencePart.updateAssists(person);
 
 
 				}
@@ -179,6 +180,18 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				}
 
 			});
+			presencePart.addFilterToAssists(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return notTalkIsPresenter();
+				}
+
+			});
 			presencePart.addFilterToAssists(new EObjectFilter(NonregPackage.eINSTANCE.getTalk()));
 			// Start of user code for additional businessfilters for assists
 			
@@ -191,6 +204,20 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	}
 
 	/**
+	 * 
+	 */
+	private boolean notTalkIsPresenter(){
+		// Start of user code for user filter notTalkIsPresenter
+		return false;
+		// End of user code
+
+	}
+
+
+
+
+
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
@@ -199,14 +226,14 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (person != null) {
-			List assistsToAdd = presencePart.getAssistsToAdd();
-			for (Iterator iter = assistsToAdd.iterator(); iter.hasNext();)
+			List assistsToAddFromAssists = presencePart.getAssistsToAdd();
+			for (Iterator iter = assistsToAddFromAssists.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), iter.next()));
-			List assistsToRemove = presencePart.getAssistsToRemove();
-			for (Iterator iter = assistsToRemove.iterator(); iter.hasNext();)
+			List assistsToRemoveFromAssists = presencePart.getAssistsToRemove();
+			for (Iterator iter = assistsToRemoveFromAssists.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), iter.next()));
-			//List assistsToMove = presencePart.getAssistsToMove();
-			//for (Iterator iter = assistsToMove.iterator(); iter.hasNext();){
+			//List assistsToMoveFromAssists = presencePart.getAssistsToMove();
+			//for (Iterator iter = assistsToMoveFromAssists.iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getTalk(), moveElement.getElement(), moveElement.getIndex()));
 			//}
@@ -259,11 +286,11 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 
 
 			} else {
-				
+
 
 
 			}
@@ -286,9 +313,29 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == NonregViewsRepository.Person.firstname)
-			return "The firstname of the person"; //$NON-NLS-1$
+			return "The firstname of the person"
+; //$NON-NLS-1$
 		if (key == NonregViewsRepository.Person.lastname)
-			return "The lastname of the person"; //$NON-NLS-1$
+			return "The lastname of the person"
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.age)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.eclipseCommiter)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Presence.assists)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.isRegistered)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.gender)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.accreditations)
+			return null
+; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 

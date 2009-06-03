@@ -39,14 +39,15 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * 
  */
 public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EclipseSummitPropertiesEditionPart {
 
-	private Text place;
-	private EMFListEditUtil sitesEditUtil;
-	private ReferencesTable<?> sites;
+	protected Text place;
+	protected EMFListEditUtil sitesEditUtil;
+	protected ReferencesTable<?> sites;
 	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
@@ -74,6 +75,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -142,7 +144,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * 
 	 */
-	private void addToSites() {
+	protected void addToSites() {
 
 		// Start of user code addToSites() method body
 
@@ -160,7 +162,8 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 		
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -176,6 +179,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EclipseSummitPropertiesEditionPartImpl.this, NonregViewsRepository.EclipseSummit.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
+
 	}
 
 	/**
@@ -198,6 +202,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 
 		// End of user code
+
 	}
 
 
@@ -205,6 +210,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -222,7 +228,11 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @see org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart#setPlace(String newValue)
 	 */
 	public void setPlace(String newValue) {
-		place.setText(newValue);
+		if (newValue != null) {
+			place.setText(newValue);
+		} else {
+			place.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForPlace(String msg, int msgLevel) {
@@ -341,4 +351,5 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

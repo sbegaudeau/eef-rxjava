@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Composite;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -52,6 +53,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createNamedElement(Composite container) {
@@ -66,6 +68,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 
@@ -138,4 +141,5 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

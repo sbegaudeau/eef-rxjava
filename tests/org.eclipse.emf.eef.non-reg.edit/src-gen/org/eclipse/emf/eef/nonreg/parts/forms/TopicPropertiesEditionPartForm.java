@@ -37,12 +37,13 @@ import org.eclipse.ui.forms.widgets.Section;
 
 
 // End of user code
+
 /**
  * 
  */
 public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TopicPropertiesEditionPart {
 
-	private Text description;
+	protected Text description;
 
 	private DocumentedElementPropertiesEditionPart documentedElementPropertiesEditionPart;
 
@@ -70,7 +71,8 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		createDocumentedElement(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -138,7 +140,8 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -156,7 +159,11 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * @see org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart#setDescription(String newValue)
 	 */
 	public void setDescription(String newValue) {
-		description.setText(newValue);
+		if (newValue != null) {
+			description.setText(newValue);
+		} else {
+			description.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForDescription(String msg, int msgLevel) {
@@ -211,4 +218,5 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

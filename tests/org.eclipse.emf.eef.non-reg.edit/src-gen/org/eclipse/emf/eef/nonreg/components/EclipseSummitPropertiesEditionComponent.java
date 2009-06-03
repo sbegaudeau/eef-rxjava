@@ -44,25 +44,26 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * 
  */
 public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private EclipseSummit eclipseSummit;
-	
+
 	/**
 	 * The Base part
 	 */
 	private EclipseSummitPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -76,7 +77,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -95,13 +96,13 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					EclipseSummitPropertiesEditionComponent.this.dispose();
 				else {
 					if (NonregPackage.eINSTANCE.getEclipseSummit_Place().equals(msg.getFeature()) && basePart != null)
-					basePart.setPlace((String)msg.getNewValue());
+						basePart.setPlace((String)msg.getNewValue());
 
 					if (msg.getFeature() != null && 
-						(((EStructuralFeature)msg.getFeature()) == NonregPackage.eINSTANCE.getEclipseSummit_Sites()
-						|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == NonregPackage.eINSTANCE.getSite())) {
-					basePart.updateSites(eclipseSummit);
-				}
+							(((EStructuralFeature)msg.getFeature()) == NonregPackage.eINSTANCE.getEclipseSummit_Sites()
+							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == NonregPackage.eINSTANCE.getSite())) {
+						basePart.updateSites(eclipseSummit);
+					}
 
 
 				}
@@ -178,7 +179,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 			basePart.initSites(eclipseSummit, null, NonregPackage.eINSTANCE.getEclipseSummit_Sites());
 			
 			// init filters
-			
+
 			basePart.addFilterToSites(new ViewerFilter() {
 
 					/*
@@ -188,6 +189,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
+
 				}
 
 			});
@@ -201,6 +203,12 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 
 	}
 
+
+
+
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -212,24 +220,25 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 		if (eclipseSummit != null) {
 			cc.append(SetCommand.create(editingDomain, eclipseSummit, NonregPackage.eINSTANCE.getEclipseSummit_Place(), basePart.getPlace()));
 
-			List sitesToAdd = basePart.getSitesToAdd();
-			for (Iterator iter = sitesToAdd.iterator(); iter.hasNext();)
+			List sitesToAddFromSites = basePart.getSitesToAdd();
+			for (Iterator iter = sitesToAddFromSites.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, eclipseSummit, NonregPackage.eINSTANCE.getEclipseSummit_Sites(), iter.next()));
-			Map sitesToRefresh = basePart.getSitesToEdit();
-			for (Iterator iter = sitesToRefresh.keySet().iterator(); iter.hasNext();) {
+			Map sitesToRefreshFromSites = basePart.getSitesToEdit();
+			for (Iterator iter = sitesToRefreshFromSites.keySet().iterator(); iter.hasNext();) {
 				
-				// Start of user code for sites reference refreshment
+				// Start of user code for sites reference refreshment from sites
 				
 				Site nextElement = (Site) iter.next();
-				Site sites = (Site) sitesToRefresh.get(nextElement);
+				Site sites = (Site) sitesToRefreshFromSites.get(nextElement);
 				
-				// End of user code				
+				// End of user code
+				
 			}
-			List sitesToRemove = basePart.getSitesToRemove();
-			for (Iterator iter = sitesToRemove.iterator(); iter.hasNext();)
+			List sitesToRemoveFromSites = basePart.getSitesToRemove();
+			for (Iterator iter = sitesToRemoveFromSites.iterator(); iter.hasNext();)
 				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List sitesToMove = basePart.getSitesToMove();
-			for (Iterator iter = sitesToMove.iterator(); iter.hasNext();){
+			List sitesToMoveFromSites = basePart.getSitesToMove();
+			for (Iterator iter = sitesToMoveFromSites.iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, eclipseSummit, NonregPackage.eINSTANCE.getSite(), moveElement.getElement(), moveElement.getIndex()));
 			}
@@ -280,7 +289,8 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					
 					// Start of user code for sites live update command
 					// TODO: Complete the eclipseSummit update command
-					// End of user code					
+					// End of user code
+					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, eclipseSummit, NonregPackage.eINSTANCE.getEclipseSummit_Sites(), event.getNewValue()));
@@ -297,13 +307,13 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (NonregViewsRepository.EclipseSummit.place == event.getAffectedEditor())
 					basePart.setMessageForPlace(diag.getMessage(), IMessageProvider.ERROR);
-				
+
 
 
 			} else {
 				if (NonregViewsRepository.EclipseSummit.place == event.getAffectedEditor())
 					basePart.unsetMessageForPlace();
-				
+
 
 
 			}
@@ -326,7 +336,11 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == NonregViewsRepository.EclipseSummit.place)
-			return "Where the summit take place"; //$NON-NLS-1$
+			return "Where the summit take place"
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.EclipseSummit.sites)
+			return null
+; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 

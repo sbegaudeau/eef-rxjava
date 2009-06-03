@@ -46,25 +46,26 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * 
  */
 public class PersonBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Person person;
-	
+
 	/**
 	 * The Base part
 	 */
 	private PersonPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +79,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,26 +98,26 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 					PersonBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (NonregPackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null)
-					basePart.setFirstname((String)msg.getNewValue());
+						basePart.setFirstname((String)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null)
-					basePart.setLastname((String)msg.getNewValue());
+						basePart.setLastname((String)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null)
-					basePart.setAge(((Integer)msg.getNewValue()).toString());
+						basePart.setAge(((Integer)msg.getNewValue()).toString());
 
 					if (NonregPackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
-					basePart.setEclipseCommiter((Boolean)msg.getNewValue());
+						basePart.setEclipseCommiter((Boolean)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
-					basePart.setIsRegistered((Boolean)msg.getNewValue());
+						basePart.setIsRegistered((Boolean)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
-					basePart.setGender((Object)msg.getNewValue());
+						basePart.setGender((Object)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getPerson_Accreditations().equals(msg.getFeature())) {
-					basePart.updateAccreditations(person);
-				}
+						basePart.updateAccreditations(person);
+					}
 
 
 				}
@@ -203,12 +204,12 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			basePart.initAccreditations(person, NonregPackage.eINSTANCE.getPerson_Accreditations(), NonregPackage.eINSTANCE.getAccess_SiteAcceded());
 			
 			// init filters
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 			basePart.addFilterToAccreditations(new ViewerFilter() {
 
 				/*
@@ -231,6 +232,17 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 	}
 
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -252,18 +264,18 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			cc.append(SetCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Gender(), ((EEnumLiteral)basePart.getGender()).getInstance()));
 
-			List siteAccededToAdd = basePart.getAccreditationsToAdd();
-			for (Iterator iter = siteAccededToAdd.iterator(); iter.hasNext();) {
+			List siteAccededToAddFromAccreditations = basePart.getAccreditationsToAdd();
+			for (Iterator iter = siteAccededToAddFromAccreditations.iterator(); iter.hasNext();) {
 				Access access = NonregFactory.eINSTANCE.createAccess();
 				cc.append(SetCommand.create(editingDomain, access, NonregPackage.eINSTANCE.getAccess_SiteAcceded(), iter.next()));
 				cc.append(AddCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Accreditations(), access));
 			}
-			List accessToRemove = basePart.getAccreditationsToRemove();
-			for (Iterator iter = accessToRemove.iterator(); iter.hasNext();) {
+			List accessToRemoveFromAccreditations = basePart.getAccreditationsToRemove();
+			for (Iterator iter = accessToRemoveFromAccreditations.iterator(); iter.hasNext();) {
 				cc.append(RemoveCommand.create(editingDomain, iter.next()));
 			}
-			//List siteAccededToMove = basePart.getAccreditationsToMove();
-			//for (Iterator iter = siteAccededToMove.iterator(); iter.hasNext();){
+			//List siteAccededToMoveFromAccreditations = basePart.getAccreditationsToMove();
+			//for (Iterator iter = siteAccededToMoveFromAccreditations.iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getSite(), moveElement.getElement(), moveElement.getIndex()));
 			//}
@@ -337,7 +349,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			if (NonregViewsRepository.Person.gender == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Gender(), event.getNewValue()));
 
-			if (NonregViewsRepository.Person.accreditations == event.getAffectedEditor()) {
+		if (NonregViewsRepository.Person.accreditations == event.getAffectedEditor()) {
 			if (PropertiesEditionEvent.ADD == event.getKind()) {
 				Access access = NonregFactory.eINSTANCE.createAccess();
 				command.append(SetCommand.create(liveEditingDomain, access, NonregPackage.eINSTANCE.getAccess_SiteAcceded(), event.getNewValue()));
@@ -359,10 +371,10 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 					basePart.setMessageForLastname(diag.getMessage(), IMessageProvider.ERROR);
 				if (NonregViewsRepository.Person.age == event.getAffectedEditor())
 					basePart.setMessageForAge(diag.getMessage(), IMessageProvider.ERROR);
-				
-				
-				
-				
+
+
+
+
 
 
 			} else {
@@ -372,10 +384,10 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 					basePart.unsetMessageForLastname();
 				if (NonregViewsRepository.Person.age == event.getAffectedEditor())
 					basePart.unsetMessageForAge();
-				
-				
-				
-				
+
+
+
+
 
 
 			}
@@ -398,9 +410,29 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == NonregViewsRepository.Person.firstname)
-			return "The firstname of the person"; //$NON-NLS-1$
+			return "The firstname of the person"
+; //$NON-NLS-1$
 		if (key == NonregViewsRepository.Person.lastname)
-			return "The lastname of the person"; //$NON-NLS-1$
+			return "The lastname of the person"
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.age)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.eclipseCommiter)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Presence.assists)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.isRegistered)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.gender)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Person.accreditations)
+			return null
+; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 

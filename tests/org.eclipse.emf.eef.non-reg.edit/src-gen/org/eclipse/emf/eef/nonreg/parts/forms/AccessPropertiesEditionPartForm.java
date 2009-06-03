@@ -32,12 +32,13 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * 
  */
 public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, AccessPropertiesEditionPart {
 
-	private Text period;
+	protected Text period;
 
 
 
@@ -63,7 +64,8 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createPeriodGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPeriodGroup(FormToolkit widgetFactory, final Composite view) {
@@ -135,7 +137,8 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -153,7 +156,11 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.AccessPropertiesEditionPart#setPeriod(String newValue)
 	 */
 	public void setPeriod(String newValue) {
-		period.setText(newValue);
+		if (newValue != null) {
+			period.setText(newValue);
+		} else {
+			period.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForPeriod(String msg, int msgLevel) {
@@ -174,4 +181,5 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

@@ -30,7 +30,7 @@
                label="Presence"
                category="extended"
                id="Presence">
-         </propertyTab>	
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -119,6 +119,5 @@
          </propertySection>
       </propertySections>
    </extension>
-   
  </plugin>
 

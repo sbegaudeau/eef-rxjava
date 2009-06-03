@@ -23,12 +23,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * 
  */
 public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, AccessPropertiesEditionPart {
 
-	private Text period;
+	protected Text period;
 
 
 
@@ -54,6 +55,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPeriodGroup(Composite parent) {
@@ -94,6 +96,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -111,7 +114,11 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.AccessPropertiesEditionPart#setPeriod(String newValue)
 	 */
 	public void setPeriod(String newValue) {
-		period.setText(newValue);
+		if (newValue != null) {
+			period.setText(newValue);
+		} else {
+			period.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForPeriod(String msg, int msgLevel) {
@@ -132,4 +139,5 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

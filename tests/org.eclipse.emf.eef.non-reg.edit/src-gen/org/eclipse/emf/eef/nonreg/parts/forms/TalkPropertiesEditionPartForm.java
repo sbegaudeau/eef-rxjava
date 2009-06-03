@@ -53,15 +53,16 @@ import org.eclipse.ui.forms.widgets.Section;
 
 
 // End of user code
+
 /**
  * 
  */
 public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TalkPropertiesEditionPart {
 
-	private Text title;
-	private EMFComboViewer type;
+	protected Text title;
+	protected EMFComboViewer type;
 	protected EObjectFlatComboViewer presenter;
-	private EMFComboViewer creator;
+	protected EMFComboViewer creator;
 
 	private DocumentedElementPropertiesEditionPart documentedElementPropertiesEditionPart;
 
@@ -89,7 +90,8 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		createDocumentedElement(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -240,7 +242,8 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -258,7 +261,11 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#setTitle(String newValue)
 	 */
 	public void setTitle(String newValue) {
-		title.setText(newValue);
+		if (newValue != null) {
+			title.setText(newValue);
+		} else {
+			title.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForTitle(String msg, int msgLevel) {
@@ -333,10 +340,11 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#setPresenter(EObject newValue)
 	 */
 	public void setPresenter(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			presenter.setSelection(new StructuredSelection(newValue));
-		else
+		} else {
 			presenter.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -392,10 +400,11 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#setCreator(Object newValue)
 	 */
 	public void setCreator(Object newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			creator.modelUpdating(new StructuredSelection(newValue));
-		else
-			creator.modelUpdating(new StructuredSelection(""));
+		} else {
+			creator.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -455,4 +464,5 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

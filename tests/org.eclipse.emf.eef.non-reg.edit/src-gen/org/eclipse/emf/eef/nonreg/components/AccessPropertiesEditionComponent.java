@@ -33,25 +33,26 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
+
 /**
  * 
  */
 public class AccessPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Access access;
-	
+
 	/**
 	 * The Base part
 	 */
 	private AccessPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -65,7 +66,7 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -84,7 +85,7 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 					AccessPropertiesEditionComponent.this.dispose();
 				else {
 					if (NonregPackage.eINSTANCE.getAccess_Period().equals(msg.getFeature()) && basePart != null)
-					basePart.setPeriod(((Double)msg.getNewValue()).toString());
+						basePart.setPeriod(((Double)msg.getNewValue()).toString());
 
 
 
@@ -160,13 +161,18 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 
 			
 			// init filters
-			
+
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
 	}
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -235,6 +241,18 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 
 			}
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == NonregViewsRepository.Access.period)
+			return null
+; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
 	}
 
 	/**

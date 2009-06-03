@@ -41,13 +41,14 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * 
  */
 public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
 	private EMFListEditUtil assistsEditUtil;
-	private ReferencesTable<?> assists;
+	protected ReferencesTable<?> assists;
 	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
@@ -75,7 +76,8 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		createPresenceGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPresenceGroup(FormToolkit widgetFactory, final Composite view) {
@@ -91,7 +93,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		createAssistsReferencesTable(widgetFactory, presenceGroup);
 		presenceSection.setClient(presenceGroup);
 	}
-	protected void createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {	
+	protected void createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.assists = new ReferencesTable<Talk>(NonregMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, assistsFilters, assistsBusinessFilters,
@@ -146,6 +148,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, NonregViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
+
 	}
 
 	/**
@@ -168,13 +171,15 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		}
 
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -263,4 +268,5 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

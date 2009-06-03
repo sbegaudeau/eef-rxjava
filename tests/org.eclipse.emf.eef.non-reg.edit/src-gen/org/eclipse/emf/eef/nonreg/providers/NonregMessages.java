@@ -105,6 +105,7 @@ public class NonregMessages extends NLS {
 	
 	
 	// End of user code
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, NonregMessages.class);

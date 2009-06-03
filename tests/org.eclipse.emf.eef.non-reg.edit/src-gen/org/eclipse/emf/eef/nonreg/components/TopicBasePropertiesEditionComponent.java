@@ -35,25 +35,26 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
+
 /**
  * 
  */
 public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Topic topic;
-	
+
 	/**
 	 * The Base part
 	 */
 	private TopicPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -67,7 +68,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -86,7 +87,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 					TopicBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (NonregPackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null)
-					basePart.setDescription((String)msg.getNewValue());
+						basePart.setDescription((String)msg.getNewValue());
 
 
 
@@ -164,15 +165,23 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 
 			
 			// init filters
-			
+
 		}
 		// init values for referenced views
 
 
 		// init filters for referenced views
-		
+
+
 
 	}
+
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -203,7 +212,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Topic) {
 			Topic topicToUpdate = (Topic)source;
-			topicToUpdate.setDescription(basePart.getDescription());	
+			topicToUpdate.setDescription(basePart.getDescription());
 
 
 
@@ -255,6 +264,18 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == NonregViewsRepository.Topic.description;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == NonregViewsRepository.Topic.description)
+			return null
+; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
 	}
 
 	/**

@@ -11,6 +11,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -55,8 +56,11 @@ public interface SitePropertiesEditionPart {
 
 
 
+
+
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

@@ -48,14 +48,15 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * 
  */
 public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EclipseSummitPropertiesEditionPart {
 
-	private Text place;
-	private EMFListEditUtil sitesEditUtil;
-	private ReferencesTable<?> sites;
+	protected Text place;
+	protected EMFListEditUtil sitesEditUtil;
+	protected ReferencesTable<?> sites;
 	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
@@ -83,7 +84,8 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -201,7 +203,8 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		}
 		
 			
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -217,6 +220,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EclipseSummitPropertiesEditionPartForm.this, NonregViewsRepository.EclipseSummit.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
+
 	}
 
 	/**
@@ -239,13 +243,15 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		}
 
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -263,7 +269,11 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	 * @see org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart#setPlace(String newValue)
 	 */
 	public void setPlace(String newValue) {
-		place.setText(newValue);
+		if (newValue != null) {
+			place.setText(newValue);
+		} else {
+			place.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForPlace(String msg, int msgLevel) {
@@ -378,4 +388,5 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

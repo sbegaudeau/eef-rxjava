@@ -9,6 +9,7 @@ package org.eclipse.emf.eef.nonreg.parts;
  
 
 // End of user code
+
 /**
  * 
  */
@@ -37,5 +38,6 @@ public interface AccessPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

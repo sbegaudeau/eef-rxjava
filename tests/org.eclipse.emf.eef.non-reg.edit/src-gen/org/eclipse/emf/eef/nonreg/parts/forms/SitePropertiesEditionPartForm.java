@@ -25,6 +25,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -56,7 +57,8 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		createNamedElement(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createNamedElement(FormToolkit widgetFactory, Composite container) {
@@ -70,7 +72,8 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 
@@ -143,4 +146,5 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

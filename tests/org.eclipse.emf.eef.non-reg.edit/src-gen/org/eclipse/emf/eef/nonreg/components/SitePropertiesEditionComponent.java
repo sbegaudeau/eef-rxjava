@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
+
 /**
  * 
  */
@@ -85,8 +86,13 @@ public class SitePropertiesEditionComponent extends ComposedPropertiesEditionCom
 		if (key == NonregViewsRepository.Site.class) {
 			super.initPart(key, kind, element, allResource);
 			namedElementPropertiesEditionComponent.setPropertiesEditionPart(MiddlenonregViewsRepository.NamedElement.class, kind, basePart.getNamedElementReferencedView());
-			namedElementPropertiesEditionComponent.initPart(MiddlenonregViewsRepository.NamedElement.class, kind, element, allResource);			
+			namedElementPropertiesEditionComponent.initPart(MiddlenonregViewsRepository.NamedElement.class, kind, element, allResource);
 		}
+            if (key == MiddlenonregViewsRepository.NamedElement.class) {
+                    super.initPart(key, kind, element, allResource);
+            
+            
+            }
 	}
 }
 

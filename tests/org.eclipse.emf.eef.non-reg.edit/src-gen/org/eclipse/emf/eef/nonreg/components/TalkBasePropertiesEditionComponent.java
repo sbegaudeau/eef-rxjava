@@ -41,25 +41,26 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * 
  */
 public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private Talk talk;
-	
+
 	/**
 	 * The Base part
 	 */
 	private TalkPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -73,7 +74,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -92,15 +93,15 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 					TalkBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (NonregPackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null)
-					basePart.setTitle((String)msg.getNewValue());
+						basePart.setTitle((String)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
-					basePart.setType((Enumerator)msg.getNewValue());
+						basePart.setType((Enumerator)msg.getNewValue());
 
 					if (NonregPackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
-					basePart.setPresenter((EObject)msg.getNewValue());
+						basePart.setPresenter((EObject)msg.getNewValue());
 					if (NonregPackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
-					basePart.setCreator((Object)msg.getNewValue());
+						basePart.setCreator((Object)msg.getNewValue());
 
 
 
@@ -180,8 +181,8 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			basePart.initCreator(allResource, talk.getCreator());
 			
 			// init filters
-			
-			
+
+
 			basePart.addFilterToPresenter(new ViewerFilter() {
 
 				/*
@@ -191,6 +192,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof Person);
+
 				}
 
 			});
@@ -205,7 +207,8 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof String && element.equals("")) || (element instanceof Person);  //$NON-NLS-1$ 					
+					return (element instanceof String && element.equals("")) || (element instanceof Person);  //$NON-NLS-1$ 
+					
 				}
 
 			});
@@ -217,9 +220,20 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 
 
 		// init filters for referenced views
-		
+
+
 
 	}
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -234,7 +248,9 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 
 			cc.append(SetCommand.create(editingDomain, talk, NonregPackage.eINSTANCE.getTalk_Type(), basePart.getType()));
 
-			cc.append(SetCommand.create(editingDomain, talk, NonregPackage.eINSTANCE.getTalk_Presenter(), basePart.getPresenter()));
+			if (talk.eGet(NonregPackage.eINSTANCE.getTalk_Presenter()) == null || !talk.eGet(NonregPackage.eINSTANCE.getTalk_Presenter()).equals(basePart.getPresenter())) {
+				cc.append(SetCommand.create(editingDomain, talk, NonregPackage.eINSTANCE.getTalk_Presenter(), basePart.getPresenter()));
+			}
 			cc.append(SetCommand.create(editingDomain, talk, NonregPackage.eINSTANCE.getTalk_Creator(), basePart.getCreator()));
 
 
@@ -256,7 +272,7 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			Talk talkToUpdate = (Talk)source;
 			talkToUpdate.setTitle(basePart.getTitle());
 
-			talkToUpdate.setType((TALK_TYPE)basePart.getType());	
+			talkToUpdate.setType((TALK_TYPE)basePart.getType());
 
 			talkToUpdate.setPresenter((Person)basePart.getPresenter());
 			talkToUpdate.setCreator((Person)basePart.getCreator());
@@ -297,18 +313,18 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (NonregViewsRepository.Talk.title == event.getAffectedEditor())
 					basePart.setMessageForTitle(diag.getMessage(), IMessageProvider.ERROR);
-				
-				
-				
+
+
+
 
 
 
 			} else {
 				if (NonregViewsRepository.Talk.title == event.getAffectedEditor())
 					basePart.unsetMessageForTitle();
-				
-				
-				
+
+
+
 
 
 
@@ -323,6 +339,27 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == NonregViewsRepository.Talk.title || key == NonregViewsRepository.Talk.presenter;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == NonregViewsRepository.Talk.title)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Talk.type)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Talk.presenter)
+			return null
+; //$NON-NLS-1$
+		if (key == NonregViewsRepository.Talk.creator)
+			return null
+; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
 	}
 
 	/**

@@ -59,22 +59,24 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * 
  */
 public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PersonPropertiesEditionPart {
 
-	private Text firstname;
-	private Text lastname;
-	private Text age;
-	private Button eclipseCommiter;
-	private Button isRegistered;
-	private RadioViewer genderRadioViewer;
+	protected Text firstname;
+	protected Text lastname;
+	protected Text age;
+	protected Button eclipseCommiter;
+	protected Button isRegistered;
+	protected RadioViewer genderRadioViewer;
 	protected EMFListEditUtil accreditationsEditUtil;
 	protected TableViewer accreditations;
-	private Button addAccreditations;
-	private Button removeAccreditations;
+	protected Button addAccreditations;
+	protected Button removeAccreditations;
 	protected List<ViewerFilter> accreditationsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> accreditationsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -100,7 +102,8 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -351,7 +354,8 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
+		// End of user code
+		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -369,6 +373,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				return ""; //$NON-NLS-1$
 			}
 			// End of user code
+
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
@@ -437,7 +442,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 */
 	protected void addAccreditations() {
 
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, Arrays.asList(accreditations.getFilters()), accreditationsBusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, accreditationsFilters, accreditationsBusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
@@ -467,7 +472,8 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -485,7 +491,11 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#setFirstname(String newValue)
 	 */
 	public void setFirstname(String newValue) {
-		firstname.setText(newValue);
+		if (newValue != null) {
+			firstname.setText(newValue);
+		} else {
+			firstname.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForFirstname(String msg, int msgLevel) {
@@ -511,7 +521,11 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#setLastname(String newValue)
 	 */
 	public void setLastname(String newValue) {
-		lastname.setText(newValue);
+		if (newValue != null) {
+			lastname.setText(newValue);
+		} else {
+			lastname.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForLastname(String msg, int msgLevel) {
@@ -537,7 +551,11 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#setAge(String newValue)
 	 */
 	public void setAge(String newValue) {
-		age.setText(newValue);
+		if (newValue != null) {
+			age.setText(newValue);
+		} else {
+			age.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForAge(String msg, int msgLevel) {
@@ -692,7 +710,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addFilterAccreditations(ViewerFilter filter)
 	 */
 	public void addFilterToAccreditations(ViewerFilter filter) {
-		accreditations.addFilter(filter);
+		accreditationsFilters.add(filter);
 	}
 
 	/**
@@ -718,4 +736,5 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

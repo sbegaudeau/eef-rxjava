@@ -28,12 +28,13 @@ import org.eclipse.swt.widgets.Text;
 
 
 // End of user code
+
 /**
  * 
  */
 public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TopicPropertiesEditionPart {
 
-	private Text description;
+	protected Text description;
 
 	private DocumentedElementPropertiesEditionPart documentedElementPropertiesEditionPart;
 
@@ -61,6 +62,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -98,6 +100,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -115,7 +118,11 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * @see org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart#setDescription(String newValue)
 	 */
 	public void setDescription(String newValue) {
-		description.setText(newValue);
+		if (newValue != null) {
+			description.setText(newValue);
+		} else {
+			description.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForDescription(String msg, int msgLevel) {
@@ -170,4 +177,5 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

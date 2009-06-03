@@ -13,6 +13,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * 
  */
@@ -77,5 +78,6 @@ public interface PresencePropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 
