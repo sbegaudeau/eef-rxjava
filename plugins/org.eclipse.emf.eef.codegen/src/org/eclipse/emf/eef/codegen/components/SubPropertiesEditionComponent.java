@@ -178,6 +178,7 @@ public class SubPropertiesEditionComponent {
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+    resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.ocl.ecore.EcorePackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE.getNsURI(), org.eclipse.ocl.expressions.ExpressionsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(MtlPackage.eINSTANCE.getNsURI(), MtlPackage.eINSTANCE);
