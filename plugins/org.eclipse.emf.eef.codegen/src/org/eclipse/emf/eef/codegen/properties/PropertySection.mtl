@@ -101,8 +101,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 				IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eObject);
 				if (this.propertiesEditionComponent != null)
 					this.propertiesEditionComponent.dispose();
-				this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE,
-						[pec.subPECClass(view)/].[view.viewPartConstant(pec)/]);
+				this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);
 				if (this.propertiesEditionComponent != null) {
 					this.propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 					// FIXME: find a better way to define the Form constant
