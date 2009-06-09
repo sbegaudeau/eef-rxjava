@@ -19,7 +19,6 @@
 [import typeUtils /]
 [import filters /]
 
-
 [template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
@@ -94,6 +93,7 @@ import org.eclipse.emf.edit.command.DeleteCommand;
 [if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable')->notEmpty())]
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.ecore.resource.Resource;
 [/if]
 [if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'MultiValuedEditor')->notEmpty())]
 import org.eclipse.emf.common.util.EList;
@@ -118,6 +118,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EMFComboViewer')->notEmpty() or element.views->select(representation.name = 'EObjectFlatComboViewer')->notEmpty() or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->notEmpty())]
 import [element.model.eType.qualifiedName(basePackage)/];
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [/for]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty()))]
 import [pee.model.eType.qualifiedName(basePackage)/];
