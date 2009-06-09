@@ -10,22 +10,18 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ContainerImpl.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
+ * $Id: ContainerImpl.java,v 1.3 2009/06/09 15:47:37 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewsPackage;

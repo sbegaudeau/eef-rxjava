@@ -10,12 +10,11 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: Toolkit.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: Toolkit.java,v 1.2 2009/06/09 15:47:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

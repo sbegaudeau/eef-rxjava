@@ -10,19 +10,19 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsFactoryImpl.java,v 1.2 2009/05/26 08:20:12 glefur Exp $
+ * $Id: ToolkitsFactoryImpl.java,v 1.3 2009/06/09 15:47:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.eef.toolkits.*;
+import org.eclipse.emf.eef.toolkits.Toolkit;
+import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
+import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+import org.eclipse.emf.eef.toolkits.Widget;
 
 /**
  * <!-- begin-user-doc -->

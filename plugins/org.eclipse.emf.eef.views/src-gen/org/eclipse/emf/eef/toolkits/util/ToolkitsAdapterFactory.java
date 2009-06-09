@@ -10,18 +10,17 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsAdapterFactory.java,v 1.2 2009/05/26 08:20:11 glefur Exp $
+ * $Id: ToolkitsAdapterFactory.java,v 1.3 2009/06/09 15:47:37 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.toolkits.*;
+import org.eclipse.emf.eef.toolkits.Toolkit;
+import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+import org.eclipse.emf.eef.toolkits.Widget;
 
 /**
  * <!-- begin-user-doc -->
