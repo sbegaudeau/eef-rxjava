@@ -268,9 +268,15 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
 			[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
 			// init values
+			[if (view.oclIsKindOf(views::CustomView))]
+			// [protected ('for'.concat(view.name).concat(' custom view initialization'))]
+				
+			//[/protected]
+			[else]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [pee.updater(view, pec)/]
 [/for]
+			[/if]
 			
 			// init filters
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
@@ -392,7 +398,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		return [for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | f.model.required)) separator (' || ')]key == [pee.views->first().editorID()/][/for];
 	}
 [/if]
-[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.helpText().oclIsUndefined() and not (localPee.helpText() = 'null'))->notEmpty())]
+[if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | not localPee.helpText().oclIsUndefined() and not (localPee.helpText().trim() = 'null'))->notEmpty())]
 
 	/**
 	 * {@inheritDoc}
@@ -400,9 +406,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
 	 */
 	public String getHelpContent(String key, int kind) {
-		[for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | not f.helpText().oclIsUndefined() and not (f.helpText() = 'null')))]
+		[for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | not f.helpText().oclIsUndefined() and not (f.helpText().trim() = 'null')))]
 		if (key == [pee.views->first().editorID()/])
-			return [pee.helpText()/]; //$NON-NLS-1$
+			return [pee.helpText().trim()/]; //$NON-NLS-1$
 		[/for]
 		return super.getHelpContent(key, kind);
 	}
@@ -444,15 +450,18 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate([pec.model.name.toJavaIdentifier()/]);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate([pec.model.name.toJavaIdentifier()/]);
+		// [protected ('for custom validation check')]
+ 	
+		// [/protected]
+		return validate;
 	}
 
 [comment] Work on validation

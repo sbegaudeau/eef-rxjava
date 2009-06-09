@@ -113,10 +113,19 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 [comment managing ViewReferences/]
 [view.widgetDeclarationForSubViews()/]
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public [view.pepClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -127,6 +136,11 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 [for (aView : ViewElement | view.elements)]
 [aView.implementation()/]
@@ -138,7 +152,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 	}
 
-[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(owningView() = view)) ]
+[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsTypeOf(views::CustomElementEditor) and owningView() = view)) ]
 [aView.additionalImplementation(pec, inputPEC)/]
 [/for]
 
@@ -152,7 +166,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		// [/protected]
 
 	}
-[for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = view))]
+[for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(not oclIsTypeOf(views::CustomElementEditor) and owningView() = view))]
 
 [elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
 
@@ -222,20 +236,42 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	
 	// [/protected]
 
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public [view.pepClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
-	public Composite createFigure(Composite parent) {
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
+	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		
+		createControls(view);
+		return view;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
+	public void createControls(Composite p_view) { 
+		view = new Composite(p_view, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		view.setLayout(layout);
 		// [protected ('view visual definition')]
 		
 		// [/protected]
-
-		return view;
 	}
 
 	public void firePropertiesChanged(PropertiesEditionEvent event) {

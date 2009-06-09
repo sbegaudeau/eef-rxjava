@@ -128,10 +128,19 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [comment managing SubViews/]
 [view.widgetDeclarationForSubViews()/]
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public [view.pepFormClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -143,6 +152,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 [for (aView : ViewElement | view.elements)]
@@ -154,7 +168,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		
 	}
 
-[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(owningView() = view))]
+[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 [aView.additionalImplementation(pec, inputPEC)/]
 [/for]
 
@@ -168,7 +182,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		// [/protected]
 		
 	}
-[for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = view))]
+[for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 
 [elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
 
@@ -236,20 +250,45 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	
 	// [/protected]
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public [view.pepFormClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
-	public Composite createFigure(Composite parent, FormToolkit widgetFactory) {
-		view = widgetFactory.createComposite(parent, SWT.NONE);
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
+	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
+		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+		Form form = scrolledForm.getForm();
+		view = form.getBody();
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		return scrolledForm;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
+	public void createControls(final FormToolkit widgetFactory, Composite p_view, IMessageManager messageManager) {
+		this.messageManager = messageManager;
+		view = widgetFactory.createComposite(p_view, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		view.setLayout(layout);
 		// [protected ('view visual definition')]
 		
 		// [/protected]
-		
-		return view;
+
 	}
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
