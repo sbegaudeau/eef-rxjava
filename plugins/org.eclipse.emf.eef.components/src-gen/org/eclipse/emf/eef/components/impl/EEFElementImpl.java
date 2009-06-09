@@ -9,17 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFElementImpl.java,v 1.1 2009/04/30 17:08:51 glefur Exp $
+ * $Id: EEFElementImpl.java,v 1.2 2009/06/09 15:47:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.EEFElement;
 

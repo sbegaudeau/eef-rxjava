@@ -9,19 +9,20 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsAdapterFactory.java,v 1.1 2009/04/30 17:08:51 glefur Exp $
+ * $Id: ComponentsAdapterFactory.java,v 1.2 2009/06/09 15:47:24 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.components.*;
-
+import org.eclipse.emf.eef.components.ComponentsPackage;
+import org.eclipse.emf.eef.components.EEFElement;
+import org.eclipse.emf.eef.components.PropertiesEditionComponent;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.components.PropertiesEditionElement;
+import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.Databinding;

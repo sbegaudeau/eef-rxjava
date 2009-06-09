@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsSwitch.java,v 1.1 2009/04/30 17:08:51 glefur Exp $
+ * $Id: ComponentsSwitch.java,v 1.2 2009/06/09 15:47:24 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.util;
 
@@ -17,9 +17,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.components.*;
-
+import org.eclipse.emf.eef.components.ComponentsPackage;
+import org.eclipse.emf.eef.components.EEFElement;
+import org.eclipse.emf.eef.components.PropertiesEditionComponent;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.components.PropertiesEditionElement;
+import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.Databinding;

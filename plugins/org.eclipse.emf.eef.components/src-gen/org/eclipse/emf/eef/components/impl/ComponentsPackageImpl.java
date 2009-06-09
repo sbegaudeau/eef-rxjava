@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsPackageImpl.java,v 1.1 2009/04/30 17:08:52 glefur Exp $
+ * $Id: ComponentsPackageImpl.java,v 1.2 2009/06/09 15:47:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.impl;
 
@@ -19,16 +19,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.EEFElement;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
-
 import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 

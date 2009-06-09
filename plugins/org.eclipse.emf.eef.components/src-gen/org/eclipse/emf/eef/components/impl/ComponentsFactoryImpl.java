@@ -9,19 +9,21 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsFactoryImpl.java,v 1.1 2009/04/30 17:08:52 glefur Exp $
+ * $Id: ComponentsFactoryImpl.java,v 1.2 2009/06/09 15:47:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.eef.components.*;
+import org.eclipse.emf.eef.components.ComponentsFactory;
+import org.eclipse.emf.eef.components.ComponentsPackage;
+import org.eclipse.emf.eef.components.PropertiesEditionComponent;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.components.PropertiesEditionElement;
+import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 
 /**
  * <!-- begin-user-doc -->
