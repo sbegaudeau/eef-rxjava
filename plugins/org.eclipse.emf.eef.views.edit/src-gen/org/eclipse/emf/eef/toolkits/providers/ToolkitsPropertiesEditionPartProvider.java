@@ -9,17 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPropertiesEditionPartProvider.java,v 1.5 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ToolkitsPropertiesEditionPartProvider.java,v 1.6 2009/06/09 15:47:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
-import org.eclipse.emf.eef.toolkits.parts.ToolkitsViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.toolkits.parts.ToolkitsViewsRepository;
 import org.eclipse.emf.eef.toolkits.parts.forms.ToolkitPropertiesEditionPartForm;
-import org.eclipse.emf.eef.toolkits.parts.impl.ToolkitPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm;
+import org.eclipse.emf.eef.toolkits.parts.impl.ToolkitPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.toolkits.parts.impl.WidgetPropertiesEditionPartImpl;
 
 /**

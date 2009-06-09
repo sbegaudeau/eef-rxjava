@@ -9,23 +9,28 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorPropertiesEditionPartImpl.java,v 1.1 2009/05/26 08:49:34 glefur Exp $
+ * $Id: CustomElementEditorPropertiesEditionPartImpl.java,v 1.2 2009/06/09 15:47:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
+import org.eclipse.emf.eef.views.providers.ViewsMessages;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -34,30 +39,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.providers.ViewsMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.toolkits.Widget;
-
-
-
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
 /**

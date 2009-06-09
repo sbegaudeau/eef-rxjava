@@ -9,14 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorPropertiesEditionPart.java,v 1.1 2009/05/26 08:49:33 glefur Exp $
+ * $Id: CustomElementEditorPropertiesEditionPart.java,v 1.2 2009/06/09 15:47:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
 // Start of user code for imports
-
-import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;

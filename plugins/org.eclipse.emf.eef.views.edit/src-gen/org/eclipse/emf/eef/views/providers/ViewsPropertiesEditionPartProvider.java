@@ -9,32 +9,32 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsPropertiesEditionPartProvider.java,v 1.5 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ViewsPropertiesEditionPartProvider.java,v 1.6 2009/06/09 15:47:53 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.DocumentationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.views.parts.forms.ViewsRepositoryPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.ViewsRepositoryPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.views.parts.forms.ViewPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.ViewPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.views.parts.forms.ElementEditorPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.ElementEditorPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.emf.eef.views.parts.forms.CategoryPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.CategoryPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.forms.ContainerPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.ContainerPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.forms.CustomElementEditorPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.CustomElementEditorPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.forms.CustomViewPropertiesEditionPartForm;
-import org.eclipse.emf.eef.views.parts.impl.CustomViewPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm;
+import org.eclipse.emf.eef.views.parts.forms.ElementEditorPropertiesEditionPartForm;
+import org.eclipse.emf.eef.views.parts.forms.ViewPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.forms.ViewReferencePropertiesEditionPartForm;
+import org.eclipse.emf.eef.views.parts.forms.ViewsRepositoryPropertiesEditionPartForm;
+import org.eclipse.emf.eef.views.parts.impl.CategoryPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.ContainerPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.CustomElementEditorPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.CustomViewPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.DocumentationPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.ElementEditorPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.ViewPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.impl.ViewReferencePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.views.parts.impl.ViewsRepositoryPropertiesEditionPartImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
