@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationPackageImpl.java,v 1.3 2009/05/26 08:20:05 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.4 2009/06/09 15:47:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -18,15 +18,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
-
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.mapping.impl.MappingPackageImpl;
-
 import org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.CustomModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
@@ -34,7 +30,6 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationFactory;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
-
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**

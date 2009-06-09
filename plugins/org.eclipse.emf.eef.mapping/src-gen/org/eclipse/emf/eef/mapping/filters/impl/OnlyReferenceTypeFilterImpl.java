@@ -9,18 +9,15 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OnlyReferenceTypeFilterImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: OnlyReferenceTypeFilterImpl.java,v 1.3 2009/06/09 15:47:13 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
 

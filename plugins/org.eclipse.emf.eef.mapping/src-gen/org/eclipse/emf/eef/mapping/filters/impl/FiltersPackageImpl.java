@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersPackageImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: FiltersPackageImpl.java,v 1.3 2009/06/09 15:47:14 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -18,11 +18,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
-
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersFactory;
@@ -32,13 +29,9 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
 import org.eclipse.emf.eef.mapping.filters.JavaFilter;
 import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
-
 import org.eclipse.emf.eef.mapping.impl.MappingPackageImpl;
-
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
-
 import org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl;
-
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**

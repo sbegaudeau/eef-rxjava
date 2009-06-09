@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersPackage.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: FiltersPackage.java,v 1.3 2009/06/09 15:47:18 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters;
 
@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
 
 /**

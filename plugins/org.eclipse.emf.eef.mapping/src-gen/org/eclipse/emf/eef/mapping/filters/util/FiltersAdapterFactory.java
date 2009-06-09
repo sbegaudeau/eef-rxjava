@@ -9,20 +9,23 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersAdapterFactory.java,v 1.2 2009/05/26 08:20:05 glefur Exp $
+ * $Id: FiltersAdapterFactory.java,v 1.3 2009/06/09 15:47:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.mapping.DocumentedElement;
-
-import org.eclipse.emf.eef.mapping.filters.*;
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
+import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;
+import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
+import org.eclipse.emf.eef.mapping.filters.JavaFilter;
+import org.eclipse.emf.eef.mapping.filters.OCLFilter;
+import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
 
 /**
  * <!-- begin-user-doc -->

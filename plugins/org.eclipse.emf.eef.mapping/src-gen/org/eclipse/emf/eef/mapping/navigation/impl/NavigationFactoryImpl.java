@@ -9,19 +9,20 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationFactoryImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: NavigationFactoryImpl.java,v 1.3 2009/06/09 15:47:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.eef.mapping.navigation.*;
+import org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation;
+import org.eclipse.emf.eef.mapping.navigation.CustomModelNavigation;
+import org.eclipse.emf.eef.mapping.navigation.NavigationFactory;
+import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
+import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 
 /**
  * <!-- begin-user-doc -->

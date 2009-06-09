@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingSwitch.java,v 1.2 2009/05/26 08:20:05 glefur Exp $
+ * $Id: MappingSwitch.java,v 1.3 2009/06/09 15:47:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.util;
 
@@ -17,8 +17,20 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.mapping.*;
+import org.eclipse.emf.eef.mapping.AbstractElementBinding;
+import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
+import org.eclipse.emf.eef.mapping.Category;
+import org.eclipse.emf.eef.mapping.Databinding;
+import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.mapping.EMFElementBinding;
+import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
+import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
+import org.eclipse.emf.eef.mapping.ElementBindingReference;
+import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.ModelElement;
+import org.eclipse.emf.eef.mapping.ModelProperty;
+import org.eclipse.emf.eef.mapping.StandardElementBinding;
+import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
 
 /**
  * <!-- begin-user-doc -->

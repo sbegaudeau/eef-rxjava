@@ -9,19 +9,25 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingFactoryImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: MappingFactoryImpl.java,v 1.3 2009/06/09 15:47:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.eef.mapping.*;
+import org.eclipse.emf.eef.mapping.Category;
+import org.eclipse.emf.eef.mapping.Databinding;
+import org.eclipse.emf.eef.mapping.EMFElementBinding;
+import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
+import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
+import org.eclipse.emf.eef.mapping.ElementBindingReference;
+import org.eclipse.emf.eef.mapping.MappingFactory;
+import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.StandardElementBinding;
+import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
 
 /**
  * <!-- begin-user-doc -->

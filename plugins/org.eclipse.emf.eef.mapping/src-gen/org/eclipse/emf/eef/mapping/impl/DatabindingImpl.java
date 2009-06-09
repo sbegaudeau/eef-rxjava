@@ -9,22 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingImpl.java,v 1.3 2009/05/26 08:20:04 glefur Exp $
+ * $Id: DatabindingImpl.java,v 1.4 2009/06/09 15:47:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
