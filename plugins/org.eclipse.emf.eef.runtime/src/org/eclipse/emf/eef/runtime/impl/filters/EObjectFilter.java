@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * <Eclass> type.
  * 
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class EObjectFilter extends ViewerFilter {
 
@@ -42,7 +43,8 @@ public class EObjectFilter extends ViewerFilter {
 		if (element instanceof Resource) {
 			TreeIterator<EObject> iter = (((Resource)element)).getAllContents();
 			while (iter.hasNext()) {
-				return EcoreTool.containsInstanceOfEClass(iter.next(), eClassToFilter);
+				if (EcoreTool.containsInstanceOfEClass(iter.next(), eClassToFilter))
+					return true;
 			}
 		}
 		if (element instanceof EObject) {
