@@ -9,16 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsEditorPlugin.java,v 1.1 2009/04/30 17:17:23 glefur Exp $
+ * $Id: ViewsEditorPlugin.java,v 1.2 2009/06/09 15:47:42 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.presentation;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
