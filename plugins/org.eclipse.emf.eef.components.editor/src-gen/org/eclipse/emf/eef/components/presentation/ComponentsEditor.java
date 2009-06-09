@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.3 2009/05/20 14:58:14 sbouchet Exp $
+ * $Id: ComponentsEditor.java,v 1.4 2009/06/09 15:47:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -37,6 +37,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelItemProviderAdapterFactory;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -74,7 +75,6 @@ import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.eef.components.provider.ComponentsItemProviderAdapterFactory;
-import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.filters.provider.FiltersItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.navigation.provider.NavigationItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.provider.MappingCustomItemProviderAdapterFactory;
