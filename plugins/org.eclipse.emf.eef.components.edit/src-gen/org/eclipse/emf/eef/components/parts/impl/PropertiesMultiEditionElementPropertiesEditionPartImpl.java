@@ -9,14 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.8 2009/05/20 17:57:33 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.9 2009/06/09 15:47:31 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 

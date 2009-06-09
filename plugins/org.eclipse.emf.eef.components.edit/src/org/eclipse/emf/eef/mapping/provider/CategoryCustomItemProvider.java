@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryCustomItemProvider.java,v 1.2 2009/05/05 12:05:08 sbouchet Exp $
+ * $Id: CategoryCustomItemProvider.java,v 1.3 2009/06/09 15:47:31 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.eef.mapping.MappingFactory;
 import org.eclipse.emf.eef.mapping.MappingPackage;
