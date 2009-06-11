@@ -460,8 +460,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			validate = Diagnostician.INSTANCE.validate([pec.model.name.toJavaIdentifier()/]);
 		// [protected ('for custom validation check')]
- 	
+		
 		// [/protected]
+
 		return validate;
 	}
 

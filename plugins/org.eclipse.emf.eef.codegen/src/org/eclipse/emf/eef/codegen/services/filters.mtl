@@ -64,7 +64,7 @@
 					}else if (result instanceof ResourceSet){
 						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
 					}
-					return false;
+					return element instanceof Resource;
 				}
 			});
 [/template]
