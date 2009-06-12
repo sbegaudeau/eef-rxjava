@@ -507,7 +507,9 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return element instanceof [editionElement.model.eType.name/] && ![view.viewIdentifier(pec)/].get[editionElement.views->first().viewPackageSignature()/]Table().contains(element);
+					if (element instanceof [editionElement.model.eType.name/])
+						return (![view.viewIdentifier(pec)/].get[editionElement.views->first().viewPackageSignature()/]Table().contains(element));
+					return element instanceof Resource;
 				}
 
 			});
