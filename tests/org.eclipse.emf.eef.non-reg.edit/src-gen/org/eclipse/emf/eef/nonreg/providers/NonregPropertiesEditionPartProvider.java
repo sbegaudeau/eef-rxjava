@@ -11,6 +11,8 @@ import org.eclipse.emf.eef.nonreg.parts.forms.EclipseSummitPropertiesEditionPart
 import org.eclipse.emf.eef.nonreg.parts.impl.EclipseSummitPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.PersonPropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.PersonPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.forms.CompanyPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.CompanyPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.TalkPropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.TalkPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.TopicPropertiesEditionPartForm;
@@ -21,6 +23,10 @@ import org.eclipse.emf.eef.nonreg.parts.forms.SitePropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.SitePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.AccessPropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.AccessPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.forms.TestFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.TestFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.forms.TestVRFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.TestVRFilterPropertiesEditionPartImpl;
 
 /**
  * 
@@ -54,6 +60,12 @@ public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPa
 			if (kind == NonregViewsRepository.FORM_KIND)
 				return new PersonPropertiesEditionPartForm(component);
 		}
+		if (key == NonregViewsRepository.Company.class) {
+			if (kind == NonregViewsRepository.SWT_KIND)
+				return new CompanyPropertiesEditionPartImpl(component);
+			if (kind == NonregViewsRepository.FORM_KIND)
+				return new CompanyPropertiesEditionPartForm(component);
+		}
 		if (key == NonregViewsRepository.Talk.class) {
 			if (kind == NonregViewsRepository.SWT_KIND)
 				return new TalkPropertiesEditionPartImpl(component);
@@ -83,6 +95,18 @@ public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPa
 				return new AccessPropertiesEditionPartImpl(component);
 			if (kind == NonregViewsRepository.FORM_KIND)
 				return new AccessPropertiesEditionPartForm(component);
+		}
+		if (key == NonregViewsRepository.TestFilter.class) {
+			if (kind == NonregViewsRepository.SWT_KIND)
+				return new TestFilterPropertiesEditionPartImpl(component);
+			if (kind == NonregViewsRepository.FORM_KIND)
+				return new TestFilterPropertiesEditionPartForm(component);
+		}
+		if (key == NonregViewsRepository.TestVRFilter.class) {
+			if (kind == NonregViewsRepository.SWT_KIND)
+				return new TestVRFilterPropertiesEditionPartImpl(component);
+			if (kind == NonregViewsRepository.FORM_KIND)
+				return new TestVRFilterPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

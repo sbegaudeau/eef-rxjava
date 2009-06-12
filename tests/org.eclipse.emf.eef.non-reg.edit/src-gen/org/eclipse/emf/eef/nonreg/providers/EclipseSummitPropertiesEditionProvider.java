@@ -26,7 +26,7 @@ public class EclipseSummitPropertiesEditionProvider implements IPropertiesEditio
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof EclipseSummit) && (NonregPackage.eINSTANCE.getEclipseSummit() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -39,7 +39,7 @@ public class EclipseSummitPropertiesEditionProvider implements IPropertiesEditio
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -53,5 +53,6 @@ public class EclipseSummitPropertiesEditionProvider implements IPropertiesEditio
 		}
 		return null;
 	}
-	
-}	
+
+}
+

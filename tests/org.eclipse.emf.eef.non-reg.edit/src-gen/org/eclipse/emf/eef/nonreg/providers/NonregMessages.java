@@ -23,9 +23,13 @@ public class NonregMessages extends NLS {
 
 	public static String AccessPropertiesEditionPart_PeriodGroupLabel;
 
+	public static String TestFilterPropertiesEditionPart_GroupGroupLabel;
+
 	public static String EclipseSummit_ReadOnly;
 
 	public static String Person_ReadOnly;
+
+	public static String Company_ReadOnly;
 
 	public static String Talk_ReadOnly;
 
@@ -36,6 +40,10 @@ public class NonregMessages extends NLS {
 	public static String Site_ReadOnly;
 
 	public static String Access_ReadOnly;
+
+	public static String TestFilter_ReadOnly;
+
+	public static String TestVRFilter_ReadOnly;
 
 	public static String EclipseSummitPropertiesEditionPart_PlaceLabel;
 
@@ -55,6 +63,8 @@ public class NonregMessages extends NLS {
 
 	public static String PersonPropertiesEditionPart_AccreditationsLabel;
 
+	public static String PersonPropertiesEditionPart_WorkForLabel;
+
 	public static String TalkPropertiesEditionPart_TitleLabel;
 
 	public static String TalkPropertiesEditionPart_TypeLabel;
@@ -68,6 +78,14 @@ public class NonregMessages extends NLS {
 	public static String PresencePropertiesEditionPart_AssistsLabel;
 
 	public static String AccessPropertiesEditionPart_PeriodLabel;
+
+	public static String TestFilterPropertiesEditionPart_TestEOFCVLabel;
+
+	public static String TestFilterPropertiesEditionPart_TestARTLabel;
+
+	public static String TestFilterPropertiesEditionPart_TestAEOFCVLabel;
+
+	public static String TestFilterPropertiesEditionPart_TestRTLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 
@@ -103,9 +121,7 @@ public class NonregMessages extends NLS {
 
 	// Start of user code for additionnal NLS Constants
 	
-	
 	// End of user code
-
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, NonregMessages.class);

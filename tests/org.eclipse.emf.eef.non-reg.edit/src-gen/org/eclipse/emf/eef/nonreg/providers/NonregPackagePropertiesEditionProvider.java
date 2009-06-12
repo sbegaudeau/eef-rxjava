@@ -4,6 +4,9 @@
 package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterFlatComboPropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForReferenceTablesPropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForRVPropertiesEditionProvider;
 
 /**
  * 
@@ -21,6 +24,9 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createTopicPropertiesEditionProvider());
 		append(createSitePropertiesEditionProvider());
 		append(createAccessPropertiesEditionProvider());
+		append(createTestFilterFlatComboPropertiesEditionProvider());
+		append(createTestFilterForReferenceTablesPropertiesEditionProvider());
+		append(createTestFilterForRVPropertiesEditionProvider());
 	}
 	
 	/**
@@ -111,6 +117,51 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		if (accessPropertiesEditionProvider == null)
 			accessPropertiesEditionProvider = new AccessPropertiesEditionProvider();
 		return accessPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * ForFilters instances.
+	 */
+	protected TestFilterFlatComboPropertiesEditionProvider testFilterFlatComboPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a ForFilters
+	 */
+	public TestFilterFlatComboPropertiesEditionProvider createTestFilterFlatComboPropertiesEditionProvider() {
+		if (testFilterFlatComboPropertiesEditionProvider == null)
+			testFilterFlatComboPropertiesEditionProvider = new TestFilterFlatComboPropertiesEditionProvider();
+		return testFilterFlatComboPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * ForFilters instances.
+	 */
+	protected TestFilterForReferenceTablesPropertiesEditionProvider testFilterForReferenceTablesPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a ForFilters
+	 */
+	public TestFilterForReferenceTablesPropertiesEditionProvider createTestFilterForReferenceTablesPropertiesEditionProvider() {
+		if (testFilterForReferenceTablesPropertiesEditionProvider == null)
+			testFilterForReferenceTablesPropertiesEditionProvider = new TestFilterForReferenceTablesPropertiesEditionProvider();
+		return testFilterForReferenceTablesPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * ForFilters instances.
+	 */
+	protected TestFilterForRVPropertiesEditionProvider testFilterForRVPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a ForFilters
+	 */
+	public TestFilterForRVPropertiesEditionProvider createTestFilterForRVPropertiesEditionProvider() {
+		if (testFilterForRVPropertiesEditionProvider == null)
+			testFilterForRVPropertiesEditionProvider = new TestFilterForRVPropertiesEditionProvider();
+		return testFilterForRVPropertiesEditionProvider;
 	}
 	
 }	
