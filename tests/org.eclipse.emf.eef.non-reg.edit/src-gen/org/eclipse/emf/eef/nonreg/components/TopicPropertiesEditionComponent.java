@@ -6,17 +6,17 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.nonreg.Topic;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
 import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.Topic;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
-
 /**
  * 
  */
@@ -88,11 +88,11 @@ public class TopicPropertiesEditionComponent extends ComposedPropertiesEditionCo
 			documentedElementPropertiesEditionComponent.setPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, basePart.getDocumentedElementReferencedView());
 			documentedElementPropertiesEditionComponent.initPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, element, allResource);
 		}
-            if (key == AbstractnonregViewsRepository.DocumentedElement.class) {
-                    super.initPart(key, kind, element, allResource);
-            
-            
-            }
+			if (key == AbstractnonregViewsRepository.DocumentedElement.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

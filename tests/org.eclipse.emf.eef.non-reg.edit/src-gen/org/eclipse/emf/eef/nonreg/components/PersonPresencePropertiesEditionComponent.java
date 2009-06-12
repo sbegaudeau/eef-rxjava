@@ -5,42 +5,62 @@ package org.eclipse.emf.eef.nonreg.components;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Collection;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+
+import org.eclipse.emf.eef.nonreg.Person;
+
+
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.nonreg.Talk;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.Viewer;
+
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 // End of user code
-
 /**
  * 
  */
@@ -176,10 +196,11 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
 						return (!presencePart.getAssistsTable().contains(element));
-					return false;
+					return element instanceof Resource;
 				}
 
 			});
+			presencePart.addFilterToAssists(new EObjectFilter(NonregPackage.eINSTANCE.getTalk()));
 			presencePart.addFilterToAssists(new ViewerFilter() {
 
 				/*
@@ -192,7 +213,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				}
 
 			});
-			presencePart.addFilterToAssists(new EObjectFilter(NonregPackage.eINSTANCE.getTalk()));
 			// Start of user code for additional businessfilters for assists
 			
 			// End of user code
@@ -210,7 +230,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		// Start of user code for user filter notTalkIsPresenter
 		return false;
 		// End of user code
-
 	}
 
 
@@ -313,29 +332,9 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == NonregViewsRepository.Person.firstname)
-			return "The firstname of the person"
-; //$NON-NLS-1$
+			return "The firstname of the person"; //$NON-NLS-1$
 		if (key == NonregViewsRepository.Person.lastname)
-			return "The lastname of the person"
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.Person.age)
-			return null
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.Person.eclipseCommiter)
-			return null
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.Presence.assists)
-			return null
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.Person.isRegistered)
-			return null
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.Person.gender)
-			return null
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.Person.accreditations)
-			return null
-; //$NON-NLS-1$
+			return "The lastname of the person"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -361,15 +360,18 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(person);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(person);
+		// Start of user code for custom validation check
+		
+		// End of user code
+		return validate;
 	}
 
 

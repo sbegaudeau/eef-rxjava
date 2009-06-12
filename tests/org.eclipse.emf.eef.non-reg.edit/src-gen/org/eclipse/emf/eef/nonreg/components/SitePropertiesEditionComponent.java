@@ -6,17 +6,17 @@ package org.eclipse.emf.eef.nonreg.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.nonreg.Site;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
 import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
-
 /**
  * 
  */
@@ -88,11 +88,11 @@ public class SitePropertiesEditionComponent extends ComposedPropertiesEditionCom
 			namedElementPropertiesEditionComponent.setPropertiesEditionPart(MiddlenonregViewsRepository.NamedElement.class, kind, basePart.getNamedElementReferencedView());
 			namedElementPropertiesEditionComponent.initPart(MiddlenonregViewsRepository.NamedElement.class, kind, element, allResource);
 		}
-            if (key == MiddlenonregViewsRepository.NamedElement.class) {
-                    super.initPart(key, kind, element, allResource);
-            
-            
-            }
+			if (key == MiddlenonregViewsRepository.NamedElement.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

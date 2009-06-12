@@ -5,32 +5,46 @@ package org.eclipse.emf.eef.nonreg.components;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Collection;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+
+import org.eclipse.emf.eef.nonreg.EclipseSummit;
+
+
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.nonreg.Site;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.NonregFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -39,12 +53,14 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.nonreg.Site;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.Viewer;
+
 
 // End of user code
-
 /**
  * 
  */
@@ -189,7 +205,6 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -231,8 +246,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 				Site nextElement = (Site) iter.next();
 				Site sites = (Site) sitesToRefreshFromSites.get(nextElement);
 				
-				// End of user code
-				
+				// End of user code				
 			}
 			List sitesToRemoveFromSites = basePart.getSitesToRemove();
 			for (Iterator iter = sitesToRemoveFromSites.iterator(); iter.hasNext();)
@@ -289,8 +303,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					
 					// Start of user code for sites live update command
 					// TODO: Complete the eclipseSummit update command
-					// End of user code
-					
+					// End of user code					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, eclipseSummit, NonregPackage.eINSTANCE.getEclipseSummit_Sites(), event.getNewValue()));
@@ -336,11 +349,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == NonregViewsRepository.EclipseSummit.place)
-			return "Where the summit take place"
-; //$NON-NLS-1$
-		if (key == NonregViewsRepository.EclipseSummit.sites)
-			return null
-; //$NON-NLS-1$
+			return "Where the summit take place"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -370,15 +379,18 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(eclipseSummit);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(eclipseSummit);
+		// Start of user code for custom validation check
+		
+		// End of user code
+		return validate;
 	}
 
 
