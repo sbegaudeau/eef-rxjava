@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregFactoryImpl.java,v 1.2 2009/05/14 13:53:17 sbouchet Exp $
+ * $Id: NonregFactoryImpl.java,v 1.3 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.nonreg.*;
 import org.eclipse.emf.eef.nonreg.Access;
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.GENDER;
@@ -73,6 +74,7 @@ public class NonregFactoryImpl extends EFactoryImpl implements NonregFactory {
 			case NonregPackage.TOPIC: return createTopic();
 			case NonregPackage.SITE: return createSite();
 			case NonregPackage.ACCESS: return createAccess();
+			case NonregPackage.COMPANY: return createCompany();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -170,6 +172,16 @@ public class NonregFactoryImpl extends EFactoryImpl implements NonregFactory {
 	public Access createAccess() {
 		AccessImpl access = new AccessImpl();
 		return access;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Company createCompany() {
+		CompanyImpl company = new CompanyImpl();
+		return company;
 	}
 
 	/**

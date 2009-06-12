@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregPackageImpl.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: NonregPackageImpl.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.nonreg.Access;
+import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
@@ -22,6 +23,8 @@ import org.eclipse.emf.eef.nonreg.Person;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.nonreg.Topic;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.impl.SubPackageNonRegForFiltersPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,6 +74,13 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 	 * @generated
 	 */
 	private EClass accessEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass companyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,11 +155,16 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		// Initialize simple dependencies
 		MiddlenonregPackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		SubPackageNonRegForFiltersPackageImpl theSubPackageNonRegForFiltersPackage = (SubPackageNonRegForFiltersPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SubPackageNonRegForFiltersPackage.eNS_URI) instanceof SubPackageNonRegForFiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SubPackageNonRegForFiltersPackage.eNS_URI) : SubPackageNonRegForFiltersPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theNonregPackage.createPackageContents();
+		theSubPackageNonRegForFiltersPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theNonregPackage.initializePackageContents();
+		theSubPackageNonRegForFiltersPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theNonregPackage.freeze();
@@ -209,6 +224,15 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 	 */
 	public EReference getEclipseSummit_Sites() {
 		return (EReference)eclipseSummitEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEclipseSummit_Sponsors() {
+		return (EReference)eclipseSummitEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -290,6 +314,15 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 	 */
 	public EReference getPerson_Accreditations() {
 		return (EReference)personEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPerson_WorkFor() {
+		return (EReference)personEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -414,6 +447,15 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCompany() {
+		return companyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTALK_TYPE() {
 		return talK_TYPEEEnum;
 	}
@@ -461,6 +503,7 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		createEReference(eclipseSummitEClass, ECLIPSE_SUMMIT__TALKS);
 		createEReference(eclipseSummitEClass, ECLIPSE_SUMMIT__TOPICS);
 		createEReference(eclipseSummitEClass, ECLIPSE_SUMMIT__SITES);
+		createEReference(eclipseSummitEClass, ECLIPSE_SUMMIT__SPONSORS);
 
 		personEClass = createEClass(PERSON);
 		createEAttribute(personEClass, PERSON__FIRSTNAME);
@@ -471,6 +514,7 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		createEAttribute(personEClass, PERSON__GENDER);
 		createEAttribute(personEClass, PERSON__IS_REGISTERED);
 		createEReference(personEClass, PERSON__ACCREDITATIONS);
+		createEReference(personEClass, PERSON__WORK_FOR);
 
 		talkEClass = createEClass(TALK);
 		createEAttribute(talkEClass, TALK__TITLE);
@@ -488,6 +532,8 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		accessEClass = createEClass(ACCESS);
 		createEReference(accessEClass, ACCESS__SITE_ACCEDED);
 		createEAttribute(accessEClass, ACCESS__PERIOD);
+
+		companyEClass = createEClass(COMPANY);
 
 		// Create enums
 		talK_TYPEEEnum = createEEnum(TALK_TYPE);
@@ -518,8 +564,12 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		SubPackageNonRegForFiltersPackage theSubPackageNonRegForFiltersPackage = (SubPackageNonRegForFiltersPackage)EPackage.Registry.INSTANCE.getEPackage(SubPackageNonRegForFiltersPackage.eNS_URI);
 		AbstractnonregPackage theAbstractnonregPackage = (AbstractnonregPackage)EPackage.Registry.INSTANCE.getEPackage(AbstractnonregPackage.eNS_URI);
 		MiddlenonregPackage theMiddlenonregPackage = (MiddlenonregPackage)EPackage.Registry.INSTANCE.getEPackage(MiddlenonregPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theSubPackageNonRegForFiltersPackage);
 
 		// Create type parameters
 
@@ -537,6 +587,7 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		initEReference(getEclipseSummit_Talks(), this.getTalk(), null, "talks", null, 0, -1, EclipseSummit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEclipseSummit_Topics(), this.getTopic(), null, "topics", null, 0, -1, EclipseSummit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEclipseSummit_Sites(), this.getSite(), null, "sites", null, 0, -1, EclipseSummit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEclipseSummit_Sponsors(), this.getCompany(), null, "sponsors", null, 0, 1, EclipseSummit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerson_Firstname(), ecorePackage.getEString(), "firstname", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -547,6 +598,7 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		initEAttribute(getPerson_Gender(), this.getGENDER(), "gender", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_IsRegistered(), ecorePackage.getEBoolean(), "isRegistered", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Accreditations(), this.getAccess(), null, "accreditations", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_WorkFor(), this.getCompany(), null, "workFor", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(talkEClass, Talk.class, "Talk", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTalk_Title(), ecorePackage.getEString(), "title", null, 1, 1, Talk.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -564,6 +616,8 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		initEClass(accessEClass, Access.class, "Access", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAccess_SiteAcceded(), this.getSite(), null, "siteAcceded", null, 1, 1, Access.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAccess_Period(), ecorePackage.getEDouble(), "Period", null, 0, 1, Access.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(companyEClass, Company.class, "Company", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(talK_TYPEEEnum, org.eclipse.emf.eef.nonreg.TALK_TYPE.class, "TALK_TYPE");

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregPackage.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: NonregPackage.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
@@ -119,13 +119,22 @@ public interface NonregPackage extends EPackage {
 	int ECLIPSE_SUMMIT__SITES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Sponsors</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLIPSE_SUMMIT__SPONSORS = 5;
+
+	/**
 	 * The number of structural features of the '<em>Eclipse Summit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLIPSE_SUMMIT_FEATURE_COUNT = 5;
+	int ECLIPSE_SUMMIT_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.impl.PersonImpl <em>Person</em>}' class.
@@ -210,13 +219,22 @@ public interface NonregPackage extends EPackage {
 	int PERSON__ACCREDITATIONS = 7;
 
 	/**
+	 * The feature id for the '<em><b>Work For</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__WORK_FOR = 8;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 8;
+	int PERSON_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.impl.TalkImpl <em>Talk</em>}' class.
@@ -412,6 +430,25 @@ public interface NonregPackage extends EPackage {
 	int ACCESS_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.impl.CompanyImpl <em>Company</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.nonreg.impl.CompanyImpl
+	 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getCompany()
+	 * @generated
+	 */
+	int COMPANY = 6;
+
+	/**
+	 * The number of structural features of the '<em>Company</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPANY_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,7 +456,7 @@ public interface NonregPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getTALK_TYPE()
 	 * @generated
 	 */
-	int TALK_TYPE = 6;
+	int TALK_TYPE = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.GENDER <em>GENDER</em>}' enum.
@@ -429,7 +466,7 @@ public interface NonregPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getGENDER()
 	 * @generated
 	 */
-	int GENDER = 7;
+	int GENDER = 8;
 
 
 	/**
@@ -496,6 +533,17 @@ public interface NonregPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEclipseSummit_Sites();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.nonreg.EclipseSummit#getSponsors <em>Sponsors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Sponsors</em>'.
+	 * @see org.eclipse.emf.eef.nonreg.EclipseSummit#getSponsors()
+	 * @see #getEclipseSummit()
+	 * @generated
+	 */
+	EReference getEclipseSummit_Sponsors();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.nonreg.Person <em>Person</em>}'.
@@ -594,6 +642,17 @@ public interface NonregPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPerson_Accreditations();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.nonreg.Person#getWorkFor <em>Work For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Work For</em>'.
+	 * @see org.eclipse.emf.eef.nonreg.Person#getWorkFor()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_WorkFor();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.nonreg.Talk <em>Talk</em>}'.
@@ -735,6 +794,16 @@ public interface NonregPackage extends EPackage {
 	EAttribute getAccess_Period();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.nonreg.Company <em>Company</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Company</em>'.
+	 * @see org.eclipse.emf.eef.nonreg.Company
+	 * @generated
+	 */
+	EClass getCompany();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -827,6 +896,14 @@ public interface NonregPackage extends EPackage {
 		EReference ECLIPSE_SUMMIT__SITES = eINSTANCE.getEclipseSummit_Sites();
 
 		/**
+		 * The meta object literal for the '<em><b>Sponsors</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECLIPSE_SUMMIT__SPONSORS = eINSTANCE.getEclipseSummit_Sponsors();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.nonreg.impl.PersonImpl <em>Person</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -899,6 +976,14 @@ public interface NonregPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSON__ACCREDITATIONS = eINSTANCE.getPerson_Accreditations();
+
+		/**
+		 * The meta object literal for the '<em><b>Work For</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__WORK_FOR = eINSTANCE.getPerson_WorkFor();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.nonreg.impl.TalkImpl <em>Talk</em>}' class.
@@ -1011,6 +1096,16 @@ public interface NonregPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ACCESS__PERIOD = eINSTANCE.getAccess_Period();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.nonreg.impl.CompanyImpl <em>Company</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.nonreg.impl.CompanyImpl
+		 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getCompany()
+		 * @generated
+		 */
+		EClass COMPANY = eINSTANCE.getCompany();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}' enum.

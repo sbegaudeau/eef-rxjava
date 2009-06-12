@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregFactory.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: NonregFactory.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
@@ -78,6 +78,15 @@ public interface NonregFactory extends EFactory {
 	 * @generated
 	 */
 	Access createAccess();
+
+	/**
+	 * Returns a new object of class '<em>Company</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Company</em>'.
+	 * @generated
+	 */
+	Company createCompany();
 
 	/**
 	 * Returns the package supported by this factory.

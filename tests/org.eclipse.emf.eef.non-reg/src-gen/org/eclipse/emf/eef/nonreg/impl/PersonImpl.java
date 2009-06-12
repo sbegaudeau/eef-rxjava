@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: PersonImpl.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.eef.nonreg.Access;
+import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.GENDER;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Person;
@@ -39,6 +40,7 @@ import org.eclipse.emf.eef.nonreg.Talk;
  *   <li>{@link org.eclipse.emf.eef.nonreg.impl.PersonImpl#getGender <em>Gender</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.impl.PersonImpl#isIsRegistered <em>Is Registered</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.impl.PersonImpl#getAccreditations <em>Accreditations</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.nonreg.impl.PersonImpl#getWorkFor <em>Work For</em>}</li>
  * </ul>
  * </p>
  *
@@ -184,6 +186,16 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected EList<Access> accreditations;
+
+	/**
+	 * The cached value of the '{@link #getWorkFor() <em>Work For</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWorkFor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Company workFor;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -359,6 +371,44 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Company getWorkFor() {
+		if (workFor != null && workFor.eIsProxy()) {
+			InternalEObject oldWorkFor = (InternalEObject)workFor;
+			workFor = (Company)eResolveProxy(oldWorkFor);
+			if (workFor != oldWorkFor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, NonregPackage.PERSON__WORK_FOR, oldWorkFor, workFor));
+			}
+		}
+		return workFor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Company basicGetWorkFor() {
+		return workFor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWorkFor(Company newWorkFor) {
+		Company oldWorkFor = workFor;
+		workFor = newWorkFor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NonregPackage.PERSON__WORK_FOR, oldWorkFor, workFor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -392,6 +442,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return isIsRegistered() ? Boolean.TRUE : Boolean.FALSE;
 			case NonregPackage.PERSON__ACCREDITATIONS:
 				return getAccreditations();
+			case NonregPackage.PERSON__WORK_FOR:
+				if (resolve) return getWorkFor();
+				return basicGetWorkFor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -431,6 +484,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 				getAccreditations().clear();
 				getAccreditations().addAll((Collection<? extends Access>)newValue);
 				return;
+			case NonregPackage.PERSON__WORK_FOR:
+				setWorkFor((Company)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -467,6 +523,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case NonregPackage.PERSON__ACCREDITATIONS:
 				getAccreditations().clear();
 				return;
+			case NonregPackage.PERSON__WORK_FOR:
+				setWorkFor((Company)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -495,6 +554,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return isRegistered != IS_REGISTERED_EDEFAULT;
 			case NonregPackage.PERSON__ACCREDITATIONS:
 				return accreditations != null && !accreditations.isEmpty();
+			case NonregPackage.PERSON__WORK_FOR:
+				return workFor != null;
 		}
 		return super.eIsSet(featureID);
 	}

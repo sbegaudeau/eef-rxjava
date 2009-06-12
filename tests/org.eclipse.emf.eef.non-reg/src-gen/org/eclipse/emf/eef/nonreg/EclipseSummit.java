@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseSummit.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: EclipseSummit.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.eef.nonreg.EclipseSummit#getTalks <em>Talks</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.EclipseSummit#getTopics <em>Topics</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.EclipseSummit#getSites <em>Sites</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.nonreg.EclipseSummit#getSponsors <em>Sponsors</em>}</li>
  * </ul>
  * </p>
  *
@@ -120,5 +121,31 @@ public interface EclipseSummit extends EObject {
 	 * @generated
 	 */
 	EList<Site> getSites();
+
+	/**
+	 * Returns the value of the '<em><b>Sponsors</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sponsors</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sponsors</em>' containment reference.
+	 * @see #setSponsors(Company)
+	 * @see org.eclipse.emf.eef.nonreg.NonregPackage#getEclipseSummit_Sponsors()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Company getSponsors();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.nonreg.EclipseSummit#getSponsors <em>Sponsors</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sponsors</em>' containment reference.
+	 * @see #getSponsors()
+	 * @generated
+	 */
+	void setSponsors(Company value);
 
 } // EclipseSummit

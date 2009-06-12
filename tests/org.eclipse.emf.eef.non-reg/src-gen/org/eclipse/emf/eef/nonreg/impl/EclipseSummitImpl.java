@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseSummitImpl.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: EclipseSummitImpl.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Person;
@@ -36,6 +37,7 @@ import org.eclipse.emf.eef.nonreg.Topic;
  *   <li>{@link org.eclipse.emf.eef.nonreg.impl.EclipseSummitImpl#getTalks <em>Talks</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.impl.EclipseSummitImpl#getTopics <em>Topics</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.impl.EclipseSummitImpl#getSites <em>Sites</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.nonreg.impl.EclipseSummitImpl#getSponsors <em>Sponsors</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,6 +103,16 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 	 * @ordered
 	 */
 	protected EList<Site> sites;
+
+	/**
+	 * The cached value of the '{@link #getSponsors() <em>Sponsors</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSponsors()
+	 * @generated
+	 * @ordered
+	 */
+	protected Company sponsors;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,6 +207,49 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Company getSponsors() {
+		return sponsors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSponsors(Company newSponsors, NotificationChain msgs) {
+		Company oldSponsors = sponsors;
+		sponsors = newSponsors;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NonregPackage.ECLIPSE_SUMMIT__SPONSORS, oldSponsors, newSponsors);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSponsors(Company newSponsors) {
+		if (newSponsors != sponsors) {
+			NotificationChain msgs = null;
+			if (sponsors != null)
+				msgs = ((InternalEObject)sponsors).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NonregPackage.ECLIPSE_SUMMIT__SPONSORS, null, msgs);
+			if (newSponsors != null)
+				msgs = ((InternalEObject)newSponsors).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NonregPackage.ECLIPSE_SUMMIT__SPONSORS, null, msgs);
+			msgs = basicSetSponsors(newSponsors, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NonregPackage.ECLIPSE_SUMMIT__SPONSORS, newSponsors, newSponsors));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -206,6 +261,8 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 				return ((InternalEList<?>)getTopics()).basicRemove(otherEnd, msgs);
 			case NonregPackage.ECLIPSE_SUMMIT__SITES:
 				return ((InternalEList<?>)getSites()).basicRemove(otherEnd, msgs);
+			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
+				return basicSetSponsors(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -228,6 +285,8 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 				return getTopics();
 			case NonregPackage.ECLIPSE_SUMMIT__SITES:
 				return getSites();
+			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
+				return getSponsors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,6 +319,9 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 				getSites().clear();
 				getSites().addAll((Collection<? extends Site>)newValue);
 				return;
+			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
+				setSponsors((Company)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -287,6 +349,9 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 			case NonregPackage.ECLIPSE_SUMMIT__SITES:
 				getSites().clear();
 				return;
+			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
+				setSponsors((Company)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -309,6 +374,8 @@ public class EclipseSummitImpl extends EObjectImpl implements EclipseSummit {
 				return topics != null && !topics.isEmpty();
 			case NonregPackage.ECLIPSE_SUMMIT__SITES:
 				return sites != null && !sites.isEmpty();
+			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
+				return sponsors != null;
 		}
 		return super.eIsSet(featureID);
 	}

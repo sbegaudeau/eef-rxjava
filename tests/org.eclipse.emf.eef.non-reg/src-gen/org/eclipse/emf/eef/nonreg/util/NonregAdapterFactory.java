@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregAdapterFactory.java,v 1.2 2009/05/14 13:53:16 sbouchet Exp $
+ * $Id: NonregAdapterFactory.java,v 1.3 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.util;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
+import org.eclipse.emf.eef.nonreg.*;
 import org.eclipse.emf.eef.nonreg.Access;
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
@@ -99,6 +100,10 @@ public class NonregAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAccess(Access object) {
 				return createAccessAdapter();
+			}
+			@Override
+			public Adapter caseCompany(Company object) {
+				return createCompanyAdapter();
 			}
 			@Override
 			public Adapter caseDocumentedElement(DocumentedElement object) {
@@ -209,6 +214,20 @@ public class NonregAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAccessAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.nonreg.Company <em>Company</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.nonreg.Company
+	 * @generated
+	 */
+	public Adapter createCompanyAdapter() {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: Person.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.eef.nonreg.Person#getGender <em>Gender</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.Person#isIsRegistered <em>Is Registered</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.nonreg.Person#getAccreditations <em>Accreditations</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.nonreg.Person#getWorkFor <em>Work For</em>}</li>
  * </ul>
  * </p>
  *
@@ -224,5 +225,31 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	EList<Access> getAccreditations();
+
+	/**
+	 * Returns the value of the '<em><b>Work For</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Work For</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Work For</em>' reference.
+	 * @see #setWorkFor(Company)
+	 * @see org.eclipse.emf.eef.nonreg.NonregPackage#getPerson_WorkFor()
+	 * @model
+	 * @generated
+	 */
+	Company getWorkFor();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.nonreg.Person#getWorkFor <em>Work For</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Work For</em>' reference.
+	 * @see #getWorkFor()
+	 * @generated
+	 */
+	void setWorkFor(Company value);
 
 } // Person
