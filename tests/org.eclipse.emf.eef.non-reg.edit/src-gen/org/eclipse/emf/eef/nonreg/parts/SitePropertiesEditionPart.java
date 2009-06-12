@@ -5,13 +5,15 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import java.util.List;
+import java.util.Map;
 
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
  
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
 // End of user code
-
 /**
  * 
  */
@@ -56,11 +58,8 @@ public interface SitePropertiesEditionPart {
 
 
 
-
-
 	// Start of user code for additional methods
 	
 	// End of user code
-
 }
 

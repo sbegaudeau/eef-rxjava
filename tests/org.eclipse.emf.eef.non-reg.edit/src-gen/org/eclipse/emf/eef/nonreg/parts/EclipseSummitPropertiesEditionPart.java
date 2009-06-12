@@ -8,13 +8,15 @@ package org.eclipse.emf.eef.nonreg.parts;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
+import java.util.List;
 import org.eclipse.emf.ecore.EReference;
+import java.util.Map;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
-
 /**
  * 
  */
@@ -104,6 +106,5 @@ public interface EclipseSummitPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
-
 }
 

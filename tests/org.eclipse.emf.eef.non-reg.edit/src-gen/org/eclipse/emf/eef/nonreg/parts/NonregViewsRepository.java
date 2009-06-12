@@ -17,12 +17,9 @@ public class NonregViewsRepository {
 	 * EclipseSummit view descriptor
 	 */
 	public static class EclipseSummit {
+		public static String place = "nonreg::EclipseSummit::place";	
 
-		public static String place = "nonreg::EclipseSummit::place";
-
-
-		public static String sites = "nonreg::EclipseSummit::sites";
-
+		public static String sites = "nonreg::EclipseSummit::sites";	
 
 
 	}
@@ -31,47 +28,42 @@ public class NonregViewsRepository {
 	 * Person view descriptor
 	 */
 	public static class Person {
+		public static String firstname = "nonreg::Person::firstname";	
 
-		public static String firstname = "nonreg::Person::firstname";
+		public static String lastname = "nonreg::Person::lastname";	
 
+		public static String age = "nonreg::Person::age";	
 
-		public static String lastname = "nonreg::Person::lastname";
+		public static String eclipseCommiter = "nonreg::Person::eclipseCommiter";	
 
+		public static String isRegistered = "nonreg::Person::isRegistered";	
 
-		public static String age = "nonreg::Person::age";
+		public static String gender = "nonreg::Person::gender";	
 
+		public static String accreditations = "nonreg::Person::accreditations";	
 
-		public static String eclipseCommiter = "nonreg::Person::eclipseCommiter";
-
-
-		public static String isRegistered = "nonreg::Person::isRegistered";
-
-
-		public static String gender = "nonreg::Person::gender";
+		public static String workFor = "nonreg::Person::workFor";	
 
 
-		public static String accreditations = "nonreg::Person::accreditations";
+	}
 
-
-
+	/**
+	 * Company view descriptor
+	 */
+	public static class Company {
 	}
 
 	/**
 	 * Talk view descriptor
 	 */
 	public static class Talk {
+		public static String title = "nonreg::Talk::title";	
 
-		public static String title = "nonreg::Talk::title";
+		public static String type = "nonreg::Talk::type";	
 
+		public static String presenter = "nonreg::Talk::presenter";	
 
-		public static String type = "nonreg::Talk::type";
-
-
-		public static String presenter = "nonreg::Talk::presenter";
-
-
-		public static String creator = "nonreg::Talk::creator";
-
+		public static String creator = "nonreg::Talk::creator";	
 
 
 
@@ -82,9 +74,7 @@ public class NonregViewsRepository {
 	 * Topic view descriptor
 	 */
 	public static class Topic {
-
-		public static String description = "nonreg::Topic::description";
-
+		public static String description = "nonreg::Topic::description";	
 
 
 
@@ -95,9 +85,7 @@ public class NonregViewsRepository {
 	 * Presence view descriptor
 	 */
 	public static class Presence {
-
-		public static String assists = "nonreg::Presence::assists";
-
+		public static String assists = "nonreg::Presence::assists";	
 
 
 	}
@@ -108,16 +96,36 @@ public class NonregViewsRepository {
 	public static class Site {
 
 
-
 	}
 
 	/**
 	 * Access view descriptor
 	 */
 	public static class Access {
+		public static String period = "nonreg::Access::period";	
 
-		public static String period = "nonreg::Access::period";
 
+	}
+
+	/**
+	 * testFilter view descriptor
+	 */
+	public static class TestFilter {
+		public static String testEOFCV = "nonreg::testFilter::testEOFCV";	
+
+		public static String testART = "nonreg::testFilter::testART";	
+
+		public static String testAEOFCV = "nonreg::testFilter::testAEOFCV";	
+
+		public static String testRT = "nonreg::testFilter::testRT";	
+
+
+	}
+
+	/**
+	 * testVRFilter view descriptor
+	 */
+	public static class TestVRFilter {
 
 
 	}

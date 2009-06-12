@@ -6,16 +6,18 @@ package org.eclipse.emf.eef.nonreg.parts;
 // Start of user code for imports
 
 import java.util.List;
+import java.util.Map;
 
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EObject;
+import java.util.List;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
-
 /**
  * 
  */
@@ -169,6 +171,46 @@ public interface PersonPropertiesEditionPart {
 
 
 
+	/**
+	 * @return the workFor
+	 */
+	public EObject getWorkFor();
+
+	/**
+	 * Init the workFor
+	 * @param allResources the ResourceSet where the widget have to process
+	 * @param current the current value
+	 */
+	public void initWorkFor(ResourceSet allResources, EObject current);
+
+	/**
+	 * Defines a new workFor
+	 * @param newValue the new workFor to set
+	 */
+	public void setWorkFor(EObject newValue);
+
+	/**
+	 * Adds the given filter to the workFor edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToWorkFor(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the workFor edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToWorkFor(ViewerFilter filter);
+
+
+
+
+
 
 
 
@@ -177,6 +219,5 @@ public interface PersonPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
-
 }
 
