@@ -6,7 +6,6 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 // Start of user code for imports
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,7 +14,10 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.nonreg.Company;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
@@ -24,13 +26,16 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -49,7 +54,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
-
 /**
  * 
  */
@@ -67,15 +71,26 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Button removeAccreditations;
 	protected List<ViewerFilter> accreditationsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> accreditationsFilters = new ArrayList<ViewerFilter>();
+	private AdvancedEObjectFlatComboViewer workFor;
+	protected ViewerFilter workForFilter;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public PersonPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -86,13 +101,17 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -111,6 +130,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		createIsRegisteredCheckbox(propertiesGroup);
 		createGenderRadioViewer(propertiesGroup);
 		createAccreditationsReferencesTable(propertiesGroup);
+		createWorkForAdvancedFlatComboViewer(propertiesGroup);
 	}
 	protected void createFirstnameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.PersonPropertiesEditionPart_FirstnameLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.firstname, NonregViewsRepository.SWT_KIND));
@@ -231,8 +251,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code
-		
+		// End of user code		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -249,12 +268,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 				}
 				return ""; //$NON-NLS-1$
 			}
-			
+
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
 			// End of user code
-
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -345,13 +363,32 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			accreditationsEditUtil.removeElement(selectedElement);
 		}
 	}
+	/**
+	 * @param propertiesGroup
+	 */
+	protected void createWorkForAdvancedFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, NonregMessages.PersonPropertiesEditionPart_WorkForLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.workFor, NonregViewsRepository.SWT_KIND));
+		workFor = new AdvancedEObjectFlatComboViewer<Company>(NonregMessages.PersonPropertiesEditionPart_WorkForLabel,
+			resourceSet, workForFilter, NonregPackage.eINSTANCE.getCompany(), new EObjectFlatComboViewerListener<Company>(){
+
+			public void handleSet(Company element){
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartImpl.this, NonregViewsRepository.Person.workFor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
+			}
+
+			public void navigateTo(Company element){ }
+
+		});
+		workFor.createControls(parent);
+		GridData workForData = new GridData(GridData.FILL_HORIZONTAL);
+		workFor.setLayoutData(workForData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.workFor, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
 
 
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -620,6 +657,63 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getWorkFor()
+	 */
+	public EObject getWorkFor() {
+		return workFor.getSelection();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#initWorkFor(ResourceSet allResources, EObject current)
+	 */
+	public void initWorkFor(ResourceSet allResources, EObject current) {
+		workFor.setInput(allResources);
+		if (current != null)
+			workFor.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#setWorkFor(EObject newValue)
+	 */
+	public void setWorkFor(EObject newValue) {
+		if (newValue != null) {
+			workFor.setSelection(newValue);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addFilterWorkFor(ViewerFilter filter)
+	 */
+	public void addFilterToWorkFor(ViewerFilter filter) {
+		workFor.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addBusinessFilterWorkFor(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToWorkFor(ViewerFilter filter) {
+		workFor.addBusinessRuleFilter(filter);
+	}
+
+	public void setMessageForWorkFor(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForWorkFor() {
+
+	}
+
 
 
 
@@ -628,7 +722,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
-
 }

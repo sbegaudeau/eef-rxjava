@@ -39,7 +39,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
-
 /**
  * 
  */
@@ -55,10 +54,19 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public EclipseSummitPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -69,13 +77,17 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -162,8 +174,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 		
 		
-		// End of user code
-		
+		// End of user code		
 	}
 
 	/**
@@ -179,7 +190,6 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EclipseSummitPropertiesEditionPartImpl.this, NonregViewsRepository.EclipseSummit.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
-
 	}
 
 	/**
@@ -188,7 +198,7 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 	private void editSites(Site element) {
 
 		// Start of user code editSites() method body
-				 
+		
 		EObject editedElement = sitesEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -200,9 +210,8 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EclipseSummitPropertiesEditionPartImpl.this, NonregViewsRepository.EclipseSummit.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
+		
 		// End of user code
-
 	}
 
 
@@ -210,7 +219,6 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -349,7 +357,6 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
-
 }

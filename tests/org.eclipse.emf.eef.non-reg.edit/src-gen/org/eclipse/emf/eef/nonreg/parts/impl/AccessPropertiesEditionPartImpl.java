@@ -23,7 +23,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
-
 /**
  * 
  */
@@ -35,10 +34,19 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public AccessPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -49,13 +57,17 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPeriodGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	protected void createPeriodGroup(Composite parent) {
@@ -96,7 +108,6 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -137,7 +148,6 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
-
 }
