@@ -44,10 +44,19 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public DocumentedElementPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -59,6 +68,11 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createDocumentationGroup(widgetFactory, view);
@@ -144,7 +158,11 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 	 * @see org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart#setDocumentation(String newValue)
 	 */
 	public void setDocumentation(String newValue) {
-		documentation.setText(newValue);
+		if (newValue != null) {
+			documentation.setText(newValue);
+		} else {
+			documentation.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForDocumentation(String msg, int msgLevel) {

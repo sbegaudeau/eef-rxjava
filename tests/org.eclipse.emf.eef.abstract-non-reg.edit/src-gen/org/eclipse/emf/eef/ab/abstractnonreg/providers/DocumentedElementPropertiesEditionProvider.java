@@ -26,7 +26,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof DocumentedElement) && (AbstractnonregPackage.eINSTANCE.getDocumentedElement() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -39,7 +39,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -53,5 +53,6 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 		}
 		return null;
 	}
-	
-}	
+
+}
+

@@ -36,10 +36,19 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public DocumentedElementPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -50,6 +59,11 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
 
@@ -104,7 +118,11 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 	 * @see org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart#setDocumentation(String newValue)
 	 */
 	public void setDocumentation(String newValue) {
-		documentation.setText(newValue);
+		if (newValue != null) {
+			documentation.setText(newValue);
+		} else {
+			documentation.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForDocumentation(String msg, int msgLevel) {
