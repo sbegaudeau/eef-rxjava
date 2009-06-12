@@ -19,7 +19,7 @@
 [template public PropertySection(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
-[if (pec.explicit)]
+[if (pec.explicit and pec.involvedViews()->size() > 1)]
 	[for (view : View | pec.views) ? (view.explicit)]
 [file (pec.fullFilePath(basePackage, view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -83,12 +84,10 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 				!((part instanceof IEditingDomainProvider) || ((part instanceof IAdaptable) && ((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null))) {
 			return;
 		}
-		EObject newEObject = null;
+		
 		Object firstElement = ((IStructuredSelection) selection).getFirstElement();
-		if (firstElement instanceof EObject)
-			newEObject = (EObject) firstElement;
-		else if (firstElement instanceof IAdaptable && ((IAdaptable)firstElement).getAdapter(EObject.class) != null)
-			newEObject = (EObject) ((IAdaptable)firstElement).getAdapter(EObject.class);
+		EObject newEObject = resolveSemanticObject(firstElement);
+		
 		EditingDomain editingDomain = null;
 		if (part instanceof IEditingDomainProvider)
 			editingDomain = ((IEditingDomainProvider) part).getEditingDomain();
@@ -140,12 +139,23 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 	 */
 	public boolean select(Object toTest) {
-		EObject eObjectToTest = null;
-		if (toTest instanceof EObject)
-			eObjectToTest = (EObject) toTest;
-		else if (toTest instanceof IAdaptable && ((IAdaptable) toTest).getAdapter(EObject.class) != null)
-			eObjectToTest = (EObject) ((IAdaptable) toTest).getAdapter(EObject.class);
+		EObject eObjectToTest = resolveSemanticObject(toTest);
 		return eObjectToTest != null && eObjectToTest.eClass() == [pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]();
+	}
+
+	private EObject resolveSemanticObject(Object object){		
+		if (object instanceof EObject){
+			return (EObject) object;
+		}else if (object instanceof IAdaptable){
+			IAdaptable adaptable = (IAdaptable)object;
+			if(adaptable.getAdapter(SemanticAdapter.class)!=null){
+				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable.getAdapter(SemanticAdapter.class);
+				return semanticAdapter.getEObject();
+			}else if(adaptable.getAdapter(EObject.class)!=null){
+				return (EObject) adaptable.getAdapter(EObject.class);
+			}
+		}
+		return null;
 	}
 
 }
