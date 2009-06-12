@@ -137,7 +137,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public getterTableListSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
-	 * @return the current [elementEditor.name/]
+	 * @return the current [elementEditor.name/] table
 	 */
 [/template]
 
@@ -197,6 +197,9 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [elementEditor.addBusinessFilterSignatureDocumentation()/]
 [elementEditor.addBusinessFilterSignature()/];
+
+[elementEditor.isContainedInTableSignatureDocumentation()/]
+[elementEditor.isContainedInTableSignature()/];
 [/template]
 
 [template public setterDeclaration(elementEditor : ElementEditor) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
@@ -332,6 +335,16 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	public void addBusinessFilterTo[elementEditor.viewPackageSignature()/](ViewerFilter filter)
 [/template]
 
+[template public isContainedInTableSignatureDocumentation(elementEditor : ElementEditor)]
+	/**
+	 * @return true if the given element is contained inside the [elementEditor.name/] table
+	 */
+[/template]
+
+[template public isContainedInTableSignature(elementEditor : ElementEditor)]
+	public boolean isContainedIn[elementEditor.viewPackageSignature()/]Table(EObject element)
+[/template]
+
 [comment ====== Widgets getter implementation ====== /]
 [template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 [getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -342,6 +355,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.getterTableListSignatureImplementation()/]
+
 [/template]
 
 [template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
@@ -601,6 +615,9 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [addBusinessFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.addBusinessFilterSignatureImplementation()/]
+
+[isContainedInTableSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.isContainedInTableSignatureImplementation()/]
 [/template]
 
 [template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
@@ -624,6 +641,10 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
 	}
 
+[isContainedInTableSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.isContainedInTableSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.isContainedIn[elementEditor.viewPackageSignature()/]Table(element);
+	}
 [/template]
 
 [template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
@@ -911,10 +932,23 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	}
 [/template]
 
-
 [template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.addBusinessFilterSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]BusinessFilters.add(filter);
 	}
 [/template]
 
+[comment ======== IsContainedInXYZTable signature implementation ======/]
+[template public isContainedInTableSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#isContainedIn[elementEditor.viewPackageSignature()/]Table(EObject element)
+	 */
+[/template]
+
+[template public isContainedInTableSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable') or elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
+[elementEditor.isContainedInTableSignature()/] {
+		return [elementEditor.name.toJavaIdentifier()/]EditUtil.contains(element);
+	}
+[/template]
