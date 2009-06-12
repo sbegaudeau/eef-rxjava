@@ -438,10 +438,10 @@
 				}
 
 			});
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
@@ -507,12 +507,14 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof [editionElement.model.eType.name/])
+					if (element instanceof EObject)
 						return (![view.viewIdentifier(pec)/].get[editionElement.views->first().viewPackageSignature()/]Table().contains(element));
 					return element instanceof Resource;
 				}
 
 			});
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
