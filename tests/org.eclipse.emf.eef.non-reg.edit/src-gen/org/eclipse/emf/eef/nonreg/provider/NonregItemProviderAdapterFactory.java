@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregItemProviderAdapterFactory.java,v 1.1 2009/05/05 10:37:23 sbouchet Exp $
+ * $Id: NonregItemProviderAdapterFactory.java,v 1.2 2009/06/12 13:26:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -12,6 +12,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -23,6 +24,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.emf.eef.nonreg.util.NonregAdapterFactory;
 
 /**
@@ -212,6 +214,29 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Company} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CompanyItemProvider companyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Company}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCompanyAdapter() {
+		if (companyItemProvider == null) {
+			companyItemProvider = new CompanyItemProvider(this);
+		}
+
+		return companyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -316,6 +341,7 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 		if (topicItemProvider != null) topicItemProvider.dispose();
 		if (siteItemProvider != null) siteItemProvider.dispose();
 		if (accessItemProvider != null) accessItemProvider.dispose();
+		if (companyItemProvider != null) companyItemProvider.dispose();
 	}
 
 }

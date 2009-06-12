@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SiteItemProvider.java,v 1.2 2009/06/12 13:26:23 sbouchet Exp $
+ * $Id$
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -21,19 +21,16 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.emf.eef.middle.middlenonreg.provider.NamedElementItemProvider;
-
-import org.eclipse.emf.eef.nonreg.Site;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.nonreg.Site} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.nonreg.Company} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SiteItemProvider
-	extends NamedElementItemProvider
+public class CompanyItemProvider
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -46,7 +43,7 @@ public class SiteItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SiteItemProvider(AdapterFactory adapterFactory) {
+	public CompanyItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -66,14 +63,14 @@ public class SiteItemProvider
 	}
 
 	/**
-	 * This returns Site.gif.
+	 * This returns Company.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Site"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Company"));
 	}
 
 	/**
@@ -84,10 +81,7 @@ public class SiteItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Site)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Site_type") :
-			getString("_UI_Site_type") + " " + label;
+		return getString("_UI_Company_type");
 	}
 
 	/**

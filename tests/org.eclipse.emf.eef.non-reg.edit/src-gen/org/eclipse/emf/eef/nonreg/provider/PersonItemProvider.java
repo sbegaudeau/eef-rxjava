@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonItemProvider.java,v 1.1 2009/05/05 10:37:23 sbouchet Exp $
+ * $Id: PersonItemProvider.java,v 1.2 2009/06/12 13:26:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -12,8 +12,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,6 +27,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Person;
@@ -70,6 +74,7 @@ public class PersonItemProvider
 			addAssistsPropertyDescriptor(object);
 			addGenderPropertyDescriptor(object);
 			addIsRegisteredPropertyDescriptor(object);
+			addWorkForPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -224,6 +229,28 @@ public class PersonItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Work For feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWorkForPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Person_workFor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Person_workFor_feature", "_UI_Person_type"),
+				 NonregPackage.Literals.PERSON__WORK_FOR,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -2,13 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregEditPlugin.java,v 1.1 2009/05/05 10:37:23 sbouchet Exp $
+ * $Id: NonregEditPlugin.java,v 1.2 2009/06/12 13:26:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.eef.ab.abstractnonreg.provider.AbstractnonregEditPlugin;
+
 import org.eclipse.emf.eef.middle.middlenonreg.provider.MiddlenonregEditPlugin;
 
 /**

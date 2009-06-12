@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseSummitItemProvider.java,v 1.1 2009/05/05 10:37:23 sbouchet Exp $
+ * $Id: EclipseSummitItemProvider.java,v 1.2 2009/06/12 13:26:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -12,8 +12,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,6 +27,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
@@ -106,6 +110,7 @@ public class EclipseSummitItemProvider
 			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__TALKS);
 			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__TOPICS);
 			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__SITES);
+			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__SPONSORS);
 		}
 		return childrenFeatures;
 	}
@@ -167,6 +172,7 @@ public class EclipseSummitItemProvider
 			case NonregPackage.ECLIPSE_SUMMIT__TALKS:
 			case NonregPackage.ECLIPSE_SUMMIT__TOPICS:
 			case NonregPackage.ECLIPSE_SUMMIT__SITES:
+			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -203,6 +209,11 @@ public class EclipseSummitItemProvider
 			(createChildParameter
 				(NonregPackage.Literals.ECLIPSE_SUMMIT__SITES,
 				 NonregFactory.eINSTANCE.createSite()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NonregPackage.Literals.ECLIPSE_SUMMIT__SPONSORS,
+				 NonregFactory.eINSTANCE.createCompany()));
 	}
 
 	/**
