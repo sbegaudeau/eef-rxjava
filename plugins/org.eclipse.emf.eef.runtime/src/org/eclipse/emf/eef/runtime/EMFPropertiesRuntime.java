@@ -77,7 +77,7 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	 * 
 	 * @return the shared adapterFactory
 	 */
-	public static AdapterFactory getAdapterFactory() {
+	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
 	}
 

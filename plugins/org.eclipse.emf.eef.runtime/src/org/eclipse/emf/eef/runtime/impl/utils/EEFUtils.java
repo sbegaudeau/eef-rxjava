@@ -45,7 +45,7 @@ public class EEFUtils {
 
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature, ResourceSet allResources) {
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)EMFPropertiesRuntime.getAdapterFactory().adapt(eObject,
+		IItemPropertySource ps = (IItemPropertySource)EMFPropertiesRuntime.getDefault().getAdapterFactory().adapt(eObject,
 				IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);

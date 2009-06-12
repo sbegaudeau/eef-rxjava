@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.runtime.ui.properties.sections;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -30,34 +31,14 @@ public class EEFAdvancedPropertySection extends AdvancedPropertySection implemen
 		super();
 	}
 
-	/**
-	 * For eclipse 3.4 ONLY
-	 * 
-	 * @return
-	 */
-	 public AdapterFactory getAdapterFactory() {
+	public AdapterFactory getAdapterFactory() {
 		if (adapterFactory == null) {
 			if (page != null) {
-//				adapterFactory = ((TabbedPropertiesEditionSheetPage)page).getAdapterFactory();
+				adapterFactory = EMFPropertiesRuntime.getDefault().getAdapterFactory();
 			}
 		}
 		return adapterFactory;
-	 }
-	
-	/**
-	 * For eclipse 3.2 & 3.3
-	 * 
-	 * @return
-	 */
-//	public AdapterFactory getAdapterFactory() {
-//		if (adapterFactory == null) {
-//			if (page != null) {
-//				adapterFactory = new ComposedAdapterFactory(
-//						ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-//			}
-//		}
-//		return adapterFactory;
-//	}
+	}
 
 	public IPropertySource getPropertySource(Object object) {
 		if (getAdapterFactory() != null) {

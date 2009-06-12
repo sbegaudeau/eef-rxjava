@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.properties.sections;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -26,8 +28,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
-import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
-import org.eclipse.ui.views.properties.tabbed.TabContents;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
@@ -130,34 +130,56 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	}
 
 	/**
-	 * For eclipse 3.4 ONLY
-	 * 
+	 * Magic method For eclipse 3.2 & 3.3 & 3.4 & 3.5
 	 * @return
 	 */
 	protected String getDescriptor() {
 		Map descriptor = propertySheetPage.getDescriptor();
 		for (Iterator iterator = descriptor.keySet().iterator(); iterator.hasNext();) {
-			ITabDescriptor key = (ITabDescriptor)iterator.next();
-			TabContents tab = (TabContents)descriptor.get(key);
-			if (tab.getSectionAtIndex(0) == this)
-				return key.getId();
+			Object key = iterator.next();			
+			Object tab = descriptor.get(key);
+			Method getSectionAtIndex=getMethod(tab, "getSectionAtIndex", int.class);					
+			if(getSectionAtIndex!=null){
+				Object result= callMethod(tab, getSectionAtIndex, 0);				
+				if(result == this){
+					Method getId=getMethod(key, "getId");
+					if(getId!=null){
+						String id = (String)callMethod(key, getId);
+						return id;
+					}
+				}
+			}
+		}
+		return "";
+	}
+	
+	/**
+	 * @param source the source object
+	 * @param name the method to get
+	 * @param argsType the method arguments type
+	 * @return the given method
+	 */
+	private Method getMethod(Object source, String name, Class...argsType){
+		try{
+			return source.getClass().getDeclaredMethod(name, argsType);		
+		} catch (Exception e) {
+			EMFPropertiesRuntime.getDefault().logError("Cannot found method "+name, e);
 		}
 		return null;
 	}
-
+	
 	/**
-	 * For eclipse 3.2 & 3.3
-	 * 
-	 * @return
+	 * @param source the source object
+	 * @param name the method to get
+	 * @param argsType the method arguments type
+	 * @return the result of the given method
 	 */
-//	protected String getDescriptor() {
-//		Map descriptor = propertySheetPage.getDescriptor();
-//		for (Iterator iterator = descriptor.keySet().iterator(); iterator.hasNext();) {
-//			TabDescriptor key = (TabDescriptor)iterator.next();
-//			if (((Tab)descriptor.get(key)).getSectionAtIndex(0) == this)
-//				return key.getId();
-//		}
-//		return "";
-//	}
-
+	private Object callMethod(Object source, Method method, Object...args){
+		try{
+			return method.invoke(source, args);
+		} catch (Exception e) {
+			EMFPropertiesRuntime.getDefault().logError("An error occured on "+method.getName()+" call.", e);
+		}
+		return null;
+	}
 }
