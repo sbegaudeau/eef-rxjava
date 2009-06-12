@@ -42,31 +42,23 @@ import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.events.IExpansionListener;
 
 import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
-import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.CompanyPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
-
 
 // End of user code
 /**
  * 
  */
-public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, SitePropertiesEditionPart {
+public class CompanyPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, CompanyPropertiesEditionPart {
 
 
-	private NamedElementPropertiesEditionPart namedElementPropertiesEditionPart;
 
 
 
@@ -75,7 +67,7 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 */
-	public SitePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public CompanyPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
@@ -102,16 +94,9 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
-		createNamedElement(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
 		// End of user code		
-	}
-
-	protected void createNamedElement(FormToolkit widgetFactory, Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MiddlenonregViewsRepository.class);
-		namedElementPropertiesEditionPart = (NamedElementPropertiesEditionPart)provider.getPropertiesEditionPart(MiddlenonregViewsRepository.NamedElement.class, MiddlenonregViewsRepository.FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)namedElementPropertiesEditionPart).createControls(widgetFactory, container, messageManager);
 	}
 
 
@@ -120,66 +105,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		// Start of user code for tab synchronization
 		
 		// End of user code		
-	}
-
-
-/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart#getNamedElementReferencedView()
-	 */
-		public IPropertiesEditionPart getNamedElementReferencedView() {
-			return (IPropertiesEditionPart) namedElementPropertiesEditionPart;
-		}
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart#getName()
-	 */
-	public String getName() {
-		return namedElementPropertiesEditionPart.getName();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart#setName(String newValue)
-	 */
-	public void setName(String newValue) {
-		namedElementPropertiesEditionPart.setName(newValue);
-	}
-
-	public void setMessageForName(String msg, int msgLevel) {
-		namedElementPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		namedElementPropertiesEditionPart.unsetMessageForName();
-	}
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.NamedElementPropertiesEditionPart#getDocumentation()
-	 */
-	public String getDocumentation() {
-		return namedElementPropertiesEditionPart.getDocumentation();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.NamedElementPropertiesEditionPart#setDocumentation(String newValue)
-	 */
-	public void setDocumentation(String newValue) {
-		namedElementPropertiesEditionPart.setDocumentation(newValue);
-	}
-
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-		namedElementPropertiesEditionPart.setMessageForDocumentation(msg, msgLevel);
-	}
-
-	public void unsetMessageForDocumentation() {
-		namedElementPropertiesEditionPart.unsetMessageForDocumentation();
 	}
 
 
