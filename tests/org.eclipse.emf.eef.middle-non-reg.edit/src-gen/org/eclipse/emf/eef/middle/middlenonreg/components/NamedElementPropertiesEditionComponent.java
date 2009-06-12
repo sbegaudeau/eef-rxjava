@@ -85,8 +85,13 @@ public class NamedElementPropertiesEditionComponent extends ComposedPropertiesEd
 		if (key == MiddlenonregViewsRepository.NamedElement.class) {
 			super.initPart(key, kind, element, allResource);
 			documentedElementPropertiesEditionComponent.setPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, basePart.getDocumentedElementReferencedView());
-			documentedElementPropertiesEditionComponent.initPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, element, allResource);			
+			documentedElementPropertiesEditionComponent.initPart(AbstractnonregViewsRepository.DocumentedElement.class, kind, element, allResource);
 		}
+			if (key == AbstractnonregViewsRepository.DocumentedElement.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

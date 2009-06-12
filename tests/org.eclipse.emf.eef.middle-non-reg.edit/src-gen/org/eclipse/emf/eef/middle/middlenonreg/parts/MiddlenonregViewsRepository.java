@@ -17,9 +17,7 @@ public class MiddlenonregViewsRepository {
 	 * NamedElement view descriptor
 	 */
 	public static class NamedElement {
-
-		public static String name = "middlenonreg::NamedElement::name";
-
+		public static String name = "middlenonreg::NamedElement::name";	
 
 
 
