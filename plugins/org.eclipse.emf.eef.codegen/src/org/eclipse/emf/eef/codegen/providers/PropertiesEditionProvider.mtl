@@ -19,9 +19,9 @@
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.mustBeGenerated())]
-	[file (pec.fullFilePath(basePackage), false)]	
+	[file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].providers;
+package [pec.model.completePackage()/].providers;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -56,7 +56,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof [pec.model.name/]) && ([pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -69,7 +69,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -91,13 +91,14 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 		}
 		return null;
 	}
-	
-}	[/file]
+
+}
+[/file]
 [/if]
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String)]
-[pec.model.eefPackage(basePackage).toPath()/]/providers/[pec.pecProviderClass()/].java
+[template public fullFilePath(pec : PropertiesEditionComponent)]
+[pec.model.completePackage().toPath()/]/providers/[pec.pecProviderClass()/].java
 [/template]
 

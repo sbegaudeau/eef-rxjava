@@ -19,9 +19,9 @@
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.needComposedEditionComponent())]
-[file (pec.fullFilePath(basePackage), false)]
+[file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].components;
+package [pec.model.completePackage()/].components;
 
 // [protected ('for imports')]
 
@@ -44,7 +44,7 @@ import [view.pepPackage()/].parts.[view.pepInterface()/];
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
 		[if (view.isA1stLevelReferencedView(pec))]
 import [subPec.pecQualifiedClass()/];
-		[else]		
+		[else]
 import [subPec.subPECQualifiedClass(view)/];
 		[/if]
 	[/for]
@@ -163,14 +163,14 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 		}
 	[/for]
 	[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(components::PropertiesEditionComponent))]
-            [for (refView : View | subPec.views->select(explicit))]
-            if (key == [refView.editorID()/].class) {
-                    super.initPart(key, kind, element, allResource);
-            [comment what about referenced view resolution in this case ? /]
-            
-            [/for]
-            }
-    [/for]
+			[for (refView : View | subPec.views->select(explicit))]
+			if (key == [refView.editorID()/].class) {
+				super.initPart(key, kind, element, allResource);
+			[comment what about referenced view resolution in this case ? /]
+			
+			[/for]
+			}
+	[/for]
 	}
 }
 [/file]
@@ -178,6 +178,6 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent, basePackage : EString)]
-[pec.model.eefPackage(basePackage).toPath()/]/components/[pec.pecClass()/].java
+[template public fullFilePath(pec : PropertiesEditionComponent)]
+[pec.model.completePackage().toPath()/]/components/[pec.pecClass()/].java
 [/template]
