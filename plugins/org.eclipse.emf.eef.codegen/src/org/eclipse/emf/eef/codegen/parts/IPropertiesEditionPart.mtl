@@ -20,7 +20,7 @@
 [template public IPropertiesEditionPart(viewRepository : ViewsRepository)]
 [comment @main /]
 [for (view : View | viewRepository.eAllContents(views::View).oclAsType(views::View))]
-	[file (fullFilePath(view), false)]
+[file (fullFilePath(view), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [view.pepPackage()/].parts;
 
@@ -29,7 +29,7 @@ package [view.pepPackage()/].parts;
 import java.util.List;
 import java.util.Map;
 
-[view.genImports()/] 
+[view.genImports()/]
 [for (viewReference : ViewReference | view.eAllContents(views::ViewReference))]
 [viewReference.view.genImports()/]
 [/for]
@@ -84,7 +84,7 @@ public interface [view.pepInterface()/] {
 	// [/protected]
 
 }
-	[/file]
+[/file]
 [/for]
 [/template]
 
