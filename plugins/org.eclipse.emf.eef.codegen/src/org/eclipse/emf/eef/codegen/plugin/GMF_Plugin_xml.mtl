@@ -17,7 +17,7 @@
 
 [template public GMF_Plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
-	[file ('properties.plugin.xml', false)]
+	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
 	
 	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
 	[if (editionContext.contributorID(basePackage)->notEmpty())]
