@@ -146,7 +146,25 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element){ }
 
-		});
+		}){
+			@Override
+			protected void browseButtonPressed() {
+				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(input, filters,
+						brFilters, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
+					@Override
+					public void process(IStructuredSelection selection) {
+						if (selection != null && !selection.isEmpty()) {
+							handleSelection(([editor.involvedPropertiesEditionElement().model.eType.name/]) selection.getFirstElement());
+						}
+					}
+				};
+				// Select the actual element in dialog
+				if (selection != null) {
+					dialog.setSelection(new StructuredSelection(selection));
+				}
+				dialog.open();
+			}
+		};
 		[editor.name.toJavaIdentifier()/].createControls(parent);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
@@ -500,7 +518,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
-				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
+				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {

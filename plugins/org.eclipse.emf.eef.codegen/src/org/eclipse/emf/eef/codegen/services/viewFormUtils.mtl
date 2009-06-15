@@ -606,7 +606,25 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
 			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element){ }
-		});
+		}){
+			@Override
+			protected void browseButtonPressed() {
+				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(input, filters,
+						brFilters, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
+					@Override
+					public void process(IStructuredSelection selection) {
+						if (selection != null && !selection.isEmpty()) {
+							handleSelection(([editor.involvedPropertiesEditionElement().model.eType.name/]) selection.getFirstElement());
+						}
+					}
+				};
+				// Select the actual element in dialog
+				if (selection != null) {
+					dialog.setSelection(new StructuredSelection(selection));
+				}
+				dialog.open();
+			}
+		};
 		[editor.name.toJavaIdentifier()/].createControls(parent, widgetFactory);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
@@ -617,7 +635,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 		
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
-	
+
 [/template]
 
 [comment ReferencesTable & AdvancedReferencesTable/]
@@ -775,7 +793,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
-				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
+				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
