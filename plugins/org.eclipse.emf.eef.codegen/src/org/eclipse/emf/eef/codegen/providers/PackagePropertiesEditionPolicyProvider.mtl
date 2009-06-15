@@ -36,7 +36,7 @@ public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePrope
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.equals(eObject.eClass().getEPackage());
+		return [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.equals(eObject.eClass().getEPackage()) || [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }

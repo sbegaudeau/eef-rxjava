@@ -766,6 +766,8 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue);
+		} else {
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
 [/template]
