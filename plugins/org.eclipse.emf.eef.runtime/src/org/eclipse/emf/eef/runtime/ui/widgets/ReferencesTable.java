@@ -14,6 +14,7 @@
  *****************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -25,6 +26,7 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
@@ -53,8 +55,9 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
  * @author Patrick Tessier
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class ReferencesTable<T extends EObject> {
+public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWidget {
 
 	/**
 	 * Image for the add element button.
@@ -80,7 +83,7 @@ public class ReferencesTable<T extends EObject> {
 	final protected static Image DOWN_ELEMENT_IMG = EMFPropertiesRuntime
 			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "ArrowDown_16x16.gif");
 
-	/** list of element that we want to display **/
+	/** list of element that we want to display * */
 	private List<T> listElement;
 
 	/**
@@ -93,7 +96,7 @@ public class ReferencesTable<T extends EObject> {
 	 */
 	private Table table;
 
-	/** the table viewer to associate the label provider **/
+	/** the table viewer to associate the label provider * */
 	private TableViewer tableViewer;
 
 	/**
@@ -166,6 +169,12 @@ public class ReferencesTable<T extends EObject> {
 	 */
 	private String helpText;
 
+	/** The business rules filters. */
+	protected List<ViewerFilter> bpFilters;
+
+	/** The filters. */
+	protected List<ViewerFilter> filters;
+
 	public void setHelpText(String helpText) {
 		this.helpText = helpText;
 	}
@@ -184,6 +193,8 @@ public class ReferencesTable<T extends EObject> {
 		this.removeButtonlistener = new RemoveButtonlistener();
 		this.upButtonlistener = new UpButtonlistener();
 		this.downButtonlistener = new DownButtonlistener();
+		bpFilters = new ArrayList<ViewerFilter>();
+		filters = new ArrayList<ViewerFilter>();
 		addTableReferenceListener(referenceListener);
 	}
 
@@ -272,7 +283,8 @@ public class ReferencesTable<T extends EObject> {
 		removeButton.setImage(DELETE_ELEMENT_IMG);
 		removeButton.setToolTipText("Delete selected element(s)");
 		data = new FormData();
-		// data.top = new FormAttachment(addButton, ITabbedPropertyConstants.HSPACE);
+		// data.top = new FormAttachment(addButton,
+		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
 		if (helpText != null) {
 			data.right = new FormAttachment(helpButton, -ITabbedPropertyConstants.HSPACE);
@@ -288,7 +300,8 @@ public class ReferencesTable<T extends EObject> {
 		addButton.setToolTipText("Add a new element");
 
 		data = new FormData();
-		// data.top = new FormAttachment(label, ITabbedPropertyConstants.HSPACE);
+		// data.top = new FormAttachment(label,
+		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
 		data.right = new FormAttachment(removeButton, -ITabbedPropertyConstants.HSPACE);
 		addButton.setLayoutData(data);
@@ -301,7 +314,8 @@ public class ReferencesTable<T extends EObject> {
 		upButton.setToolTipText("Up");
 
 		data = new FormData();
-		// data.top = new FormAttachment(removeButton, ITabbedPropertyConstants.HSPACE);
+		// data.top = new FormAttachment(removeButton,
+		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
 		data.right = new FormAttachment(addButton, -ITabbedPropertyConstants.HSPACE);
 		upButton.setLayoutData(data);
@@ -314,7 +328,8 @@ public class ReferencesTable<T extends EObject> {
 		downButton.setToolTipText("Down");
 
 		data = new FormData();
-		// data.top = new FormAttachment(upButton, ITabbedPropertyConstants.HSPACE);
+		// data.top = new FormAttachment(upButton,
+		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
 		data.right = new FormAttachment(upButton, -ITabbedPropertyConstants.HSPACE);
 		downButton.setLayoutData(data);
@@ -411,7 +426,6 @@ public class ReferencesTable<T extends EObject> {
 	 * @return the label provider or <code>null</code>
 	 */
 	public IContentProvider getContentProvider() {
-
 		return new TableContentProvider();
 
 	}
@@ -604,6 +618,14 @@ public class ReferencesTable<T extends EObject> {
 			downButton.removeMouseListener(downButtonlistener);
 		if (table != null && !table.isDisposed())
 			table.removeListener(SWT.MouseDoubleClick, tableListener);
+		if (filters != null) {
+			filters.clear();
+			filters = null;
+		}
+		if (bpFilters != null) {
+			bpFilters.clear();
+			bpFilters = null;
+		}
 	}
 
 	/**
@@ -625,6 +647,13 @@ public class ReferencesTable<T extends EObject> {
 		initLabelProvider();
 		tableViewer.setContentProvider(getContentProvider());
 		tableViewer.setInput(listElement);
+		for (ViewerFilter filter : filters) {
+			this.tableViewer.addFilter(filter);
+		}
+		for (ViewerFilter filter : bpFilters) {
+			this.tableViewer.addFilter(filter);
+		}
+
 	}
 
 	/**
@@ -656,6 +685,50 @@ public class ReferencesTable<T extends EObject> {
 		void handleEdit(T element);
 
 		void navigateTo(T element);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addBusinessRuleFilter(org.eclipse.
+	 * jface.viewers.ViewerFilter)
+	 */
+	public void addBusinessRuleFilter(ViewerFilter filter) {
+		this.bpFilters.add(filter);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter(org.eclipse.jface.viewers
+	 * .ViewerFilter)
+	 */
+	public void addFilter(ViewerFilter filter) {
+		this.filters.add(filter);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeBusinessRuleFilter(org.eclipse
+	 * .jface.viewers.ViewerFilter)
+	 */
+	public void removeBusinessRuleFilter(ViewerFilter filter) {
+		this.bpFilters.remove(filter);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter(org.eclipse.jface.viewers
+	 * .ViewerFilter)
+	 */
+	public void removeFilter(ViewerFilter filter) {
+		this.filters.remove(filter);
+	}
+
+	protected void refreshFilters() {
+
 	}
 
 }
