@@ -41,6 +41,9 @@
             <discriminatorType xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access"/>
           </navigation>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UbA1gFHVEd6RQr8KB9ly6A" name="workingFor" views="_TR2DcVHUEd6tP4VCSoWX5Q">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/workFor"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Xxdwe_3BEd25MIHmw1Ckvg" name="Talk" views="_Xxdwjv3BEd25MIHmw1Ckvg">
@@ -81,6 +84,72 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access/Period"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Q7bJMFHVEd6RQr8KB9ly6A" name="Company" views="_K02MgFHVEd6RQr8KB9ly6A">
+        <referencedBinding xmi:id="_YUa5IFmuEd68hpcwGHUGFA">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_k7oRgA_REd6pf7pzvP9Dvg"/>
+        </referencedBinding>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Company"/>
+      </bindings>
+    </categories>
+    <categories xmi:id="_RMtPkFmuEd68hpcwGHUGFA" name="filters">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_07fHsESbEd6U16TZCg8XFw" name="testFilterFlatCombo" views="_jSVfsESbEd6U16TZCg8XFw" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_50v8sESbEd6U16TZCg8XFw" name="testFilterForEOFCV" views="_lCyJoESbEd6U16TZCg8XFw">
+          <bindingFilters xsi:type="eef-mapping-filters:JavaExpressionFilter" xmi:id="_99c3cESbEd6U16TZCg8XFw" body="return true;"/>
+          <bindingFilters xsi:type="eef-mapping-filters:JavaDeclarationFilter" xmi:id="_-aL2wESbEd6U16TZCg8XFw" methodName="methodFilterEOFCV"/>
+          <bindingFilters xsi:type="eef-mapping-filters:OCLFilter" xmi:id="_-yisYESbEd6U16TZCg8XFw" body=""/>
+          <bindingFilters xsi:type="eef-mapping-filters:OnlyReferenceTypeFilter" xmi:id="__TVsUESbEd6U16TZCg8XFw">
+            <reference href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/assists"/>
+          </bindingFilters>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters/EOFCV"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3hvE8ElAEd6I07AJhzN5Kw" name="testFilterForAEOFCV" views="_vJuRIUlAEd6I07AJhzN5Kw">
+          <bindingFilters xsi:type="eef-mapping-filters:JavaExpressionFilter" xmi:id="_-zHA0ElAEd6I07AJhzN5Kw" body="return true;"/>
+          <bindingFilters xsi:type="eef-mapping-filters:JavaDeclarationFilter" xmi:id="_-zHA0UlAEd6I07AJhzN5Kw" methodName="methodFilterAEOFCV"/>
+          <bindingFilters xsi:type="eef-mapping-filters:OCLFilter" xmi:id="_-zHA0klAEd6I07AJhzN5Kw" body=""/>
+          <bindingFilters xsi:type="eef-mapping-filters:OnlyReferenceTypeFilter" xmi:id="_-zHA00lAEd6I07AJhzN5Kw">
+            <reference href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/assists"/>
+          </bindingFilters>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters/EOFCV"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_05d0cEk7Ed6ffY1F6-Uj-w" documentation="" name="testFilterForReferenceTables" views="_jSVfsESbEd6U16TZCg8XFw" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_k__20Ek6Ed6ffY1F6-Uj-w" name="testFilterFORART" views="_iAwegEk6Ed6ffY1F6-Uj-w">
+          <bindingFilters xsi:type="eef-mapping-filters:JavaExpressionFilter" xmi:id="_k__20Uk6Ed6ffY1F6-Uj-w" body="return true;"/>
+          <bindingFilters xsi:type="eef-mapping-filters:JavaDeclarationFilter" xmi:id="_k__20kk6Ed6ffY1F6-Uj-w" methodName="methodFilterART"/>
+          <bindingFilters xsi:type="eef-mapping-filters:OCLFilter" xmi:id="_k__200k6Ed6ffY1F6-Uj-w" body=""/>
+          <bindingFilters xsi:type="eef-mapping-filters:OnlyReferenceTypeFilter" xmi:id="_k__21Ek6Ed6ffY1F6-Uj-w">
+            <reference href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/assists"/>
+          </bindingFilters>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters/RT"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2NC0ElBEd6I07AJhzN5Kw" name="testFilterFORRT" views="_yrDC0ElAEd6I07AJhzN5Kw">
+          <bindingFilters xsi:type="eef-mapping-filters:JavaExpressionFilter" xmi:id="_C2NC0UlBEd6I07AJhzN5Kw" body="return true;"/>
+          <bindingFilters xsi:type="eef-mapping-filters:JavaDeclarationFilter" xmi:id="_C2NC0klBEd6I07AJhzN5Kw" methodName="methodFilterRT"/>
+          <bindingFilters xsi:type="eef-mapping-filters:OCLFilter" xmi:id="_C2NC00lBEd6I07AJhzN5Kw" body=""/>
+          <bindingFilters xsi:type="eef-mapping-filters:OnlyReferenceTypeFilter" xmi:id="_C2NC1ElBEd6I07AJhzN5Kw">
+            <reference href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Person/assists"/>
+          </bindingFilters>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters/RT"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_BTg4EEnxEd6ibOm8HBfCXQ" name="testFilterForRV" views="_jSVfsESbEd6U16TZCg8XFw _9HAysEoBEd6ibOm8HBfCXQ">
+        <referencedBinding xmi:id="_6Tnb0EnyEd6ibOm8HBfCXQ" binding="_05d0cEk7Ed6ffY1F6-Uj-w"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//subPackageNonRegForFilters/ForFilters"/>
+      </bindings>
+    </categories>
+    <categories xmi:id="_TTpt8FmuEd68hpcwGHUGFA" name="modelnavigation">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Sav6kFmvEd68hpcwGHUGFA" name="SimpleSource" views="_357jwFmtEd68hpcwGHUGFA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jfJ2wFmvEd68hpcwGHUGFA" name="AdvancedUniqueRef" views="_XzZaQFmvEd68hpcwGHUGFA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//modelNavigation/RealCible/ref"/>
+          <navigation xsi:type="eef-mapping-navigation:SimpleModelNavigation" xmi:id="_rv6MAFmvEd68hpcwGHUGFA">
+            <feature href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//modelNavigation/Source/UniqueRef"/>
+            <discriminatorType xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//modelNavigation/RealCible"/>
+          </navigation>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//modelNavigation/Source"/>
       </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.genmodel#//nonreg"/>
@@ -123,6 +192,14 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_iX_CgQ_xEd6er6tzb7G35A" name="accreditations">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_TR2DcVHUEd6tP4VCSoWX5Q" name="workFor">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_K02MgFHVEd6RQr8KB9ly6A" name="Company">
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_pZojEFmtEd68hpcwGHUGFA" name="name">
+          <view xsi:type="eef-views:View" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_mhLTAA_REd6pf7pzvP9Dvg"/>
         </elements>
       </views>
       <views xmi:id="_Xxdwjv3BEd25MIHmw1Ckvg" name="Talk">
@@ -177,6 +254,41 @@
           </elements>
         </elements>
       </views>
+    </categories>
+    <categories xmi:id="_zowCcFmtEd68hpcwGHUGFA" name="testFilters">
+      <views xmi:id="_jSVfsESbEd6U16TZCg8XFw" name="testFilter">
+        <elements xsi:type="eef-views:Container" xmi:id="_yz39gEnWEd6bUZVjXTa3vg" name="Group">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_lCyJoESbEd6U16TZCg8XFw" name="testEOFCV">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_iAwegEk6Ed6ffY1F6-Uj-w" name="testART">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_vJuRIUlAEd6I07AJhzN5Kw" name="testAEOFCV">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yrDC0ElAEd6I07AJhzN5Kw" name="testRT">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_9HAysEoBEd6ibOm8HBfCXQ" name="testVRFilter">
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_BNCz8EoCEd6ibOm8HBfCXQ" name="VRForFilter" view="_jSVfsESbEd6U16TZCg8XFw"/>
+      </views>
+    </categories>
+    <categories xmi:id="_2X1e4FmtEd68hpcwGHUGFA" name="testModelNavigation">
+      <views xmi:id="_357jwFmtEd68hpcwGHUGFA" name="Source">
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_XzZaQFmvEd68hpcwGHUGFA" name="AdvancedUniqueRef">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
+      </views>
+      <views xmi:id="_IatOcFmuEd68hpcwGHUGFA" name="SuperCible">
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_LUQOcFmuEd68hpcwGHUGFA" name="name">
+          <view xsi:type="eef-views:View" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_mhLTAA_REd6pf7pzvP9Dvg"/>
+        </elements>
+      </views>
+      <views xmi:id="_M_aIsFmuEd68hpcwGHUGFA" name="Cible"/>
     </categories>
   </eef-views:ViewsRepository>
 </xmi:XMI>

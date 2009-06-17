@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregSwitch.java,v 1.3 2009/06/12 13:24:46 sbouchet Exp $
+ * $Id: NonregSwitch.java,v 1.4 2009/06/17 13:31:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.util;
 
@@ -138,6 +138,8 @@ public class NonregSwitch<T> {
 			case NonregPackage.COMPANY: {
 				Company company = (Company)theEObject;
 				T result = caseCompany(company);
+				if (result == null) result = caseNamedElement(company);
+				if (result == null) result = caseDocumentedElement(company);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

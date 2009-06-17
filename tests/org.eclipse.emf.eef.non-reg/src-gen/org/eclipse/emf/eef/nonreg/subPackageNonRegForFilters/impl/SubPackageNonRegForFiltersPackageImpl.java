@@ -19,6 +19,8 @@ import org.eclipse.emf.eef.nonreg.NonregPackage;
 
 import org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl;
 
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+import org.eclipse.emf.eef.nonreg.modelNavigation.impl.ModelNavigationPackageImpl;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersFactory;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
@@ -98,14 +100,17 @@ public class SubPackageNonRegForFiltersPackageImpl extends EPackageImpl implemen
 
 		// Obtain or create and register interdependencies
 		NonregPackageImpl theNonregPackage = (NonregPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(NonregPackage.eNS_URI) instanceof NonregPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(NonregPackage.eNS_URI) : NonregPackage.eINSTANCE);
+		ModelNavigationPackageImpl theModelNavigationPackage = (ModelNavigationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ModelNavigationPackage.eNS_URI) instanceof ModelNavigationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ModelNavigationPackage.eNS_URI) : ModelNavigationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theSubPackageNonRegForFiltersPackage.createPackageContents();
 		theNonregPackage.createPackageContents();
+		theModelNavigationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theSubPackageNonRegForFiltersPackage.initializePackageContents();
 		theNonregPackage.initializePackageContents();
+		theModelNavigationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theSubPackageNonRegForFiltersPackage.freeze();

@@ -13,6 +13,8 @@
         eType="#//Topic" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sites" upperBound="-1"
         eType="#//Site" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sponsors" eType="#//Company"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstname" lowerBound="1"
@@ -26,6 +28,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRegistered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="accreditations" upperBound="-1"
         eType="#//Access" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workFor" eType="#//Company"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Talk" eSuperTypes="../../org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -61,4 +64,34 @@
         eType="#//Site"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Company" eSuperTypes="../../org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.ecore#//NamedElement"/>
+  <eSubpackages name="subPackageNonRegForFilters" nsURI="http://www.eclipse.org/emf/properties/1.0.0/SubPackageNonReg"
+      nsPrefix="eef-subpackage-nonreg">
+    <eClassifiers xsi:type="ecore:EClass" name="ForFilters">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="EOFCV" eType="ecore:EClass ../../org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.ecore#//NamedElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="RT" upperBound="-1" eType="ecore:EClass ../../org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.ecore#//DocumentedElement"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="modelNavigation" nsURI="http://www.eclipse.org/emf/properties/1.0.0/modelnavigation"
+      nsPrefix="eef-modelnavigation">
+    <eClassifiers xsi:type="ecore:EClass" name="Source">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="UniqueRef" eType="#//modelNavigation/SuperCible"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MultipleRef" upperBound="-1"
+          eType="#//modelNavigation/SuperCible"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="MultipleContainment"
+          upperBound="-1" eType="#//modelNavigation/SuperCible" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SuperCible" abstract="true" eSuperTypes="../../org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.ecore#//NamedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="RealCible" eSuperTypes="#//modelNavigation/SuperCible">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//modelNavigation/SuperCible"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConcreteCible" eSuperTypes="#//modelNavigation/SuperCible"/>
+    <eClassifiers xsi:type="ecore:EClass" name="modelNavRoot">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Sources" upperBound="-1"
+          eType="#//modelNavigation/Source" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="Cibles" upperBound="-1"
+          eType="#//modelNavigation/ConcreteCible" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>
