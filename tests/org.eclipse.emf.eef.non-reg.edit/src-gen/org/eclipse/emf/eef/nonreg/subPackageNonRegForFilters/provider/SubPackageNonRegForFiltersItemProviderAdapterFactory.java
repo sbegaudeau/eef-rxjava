@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregItemProviderAdapterFactory.java,v 1.3 2009/06/17 13:32:03 sbouchet Exp $
+ * $Id$
  */
-package org.eclipse.emf.eef.nonreg.provider;
+package org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,6 +12,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -23,7 +24,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.eef.nonreg.util.NonregAdapterFactory;
+
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.util.SubPackageNonRegForFiltersAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -34,7 +36,7 @@ import org.eclipse.emf.eef.nonreg.util.NonregAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NonregItemProviderAdapterFactory extends NonregAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class SubPackageNonRegForFiltersItemProviderAdapterFactory extends SubPackageNonRegForFiltersAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -65,7 +67,7 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NonregItemProviderAdapterFactory() {
+	public SubPackageNonRegForFiltersItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -74,164 +76,26 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.EclipseSummit} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EclipseSummitItemProvider eclipseSummitItemProvider;
+	protected ForFiltersItemProvider forFiltersItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.EclipseSummit}.
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEclipseSummitAdapter() {
-		if (eclipseSummitItemProvider == null) {
-			eclipseSummitItemProvider = new EclipseSummitItemProvider(this);
+	public Adapter createForFiltersAdapter() {
+		if (forFiltersItemProvider == null) {
+			forFiltersItemProvider = new ForFiltersItemProvider(this);
 		}
 
-		return eclipseSummitItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Person} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PersonItemProvider personItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Person}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPersonAdapter() {
-		if (personItemProvider == null) {
-			personItemProvider = new PersonItemProvider(this);
-		}
-
-		return personItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Talk} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TalkItemProvider talkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Talk}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTalkAdapter() {
-		if (talkItemProvider == null) {
-			talkItemProvider = new TalkItemProvider(this);
-		}
-
-		return talkItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Topic} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TopicItemProvider topicItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Topic}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTopicAdapter() {
-		if (topicItemProvider == null) {
-			topicItemProvider = new TopicItemProvider(this);
-		}
-
-		return topicItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Site} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SiteItemProvider siteItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Site}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSiteAdapter() {
-		if (siteItemProvider == null) {
-			siteItemProvider = new SiteItemProvider(this);
-		}
-
-		return siteItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Access} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AccessItemProvider accessItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Access}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAccessAdapter() {
-		if (accessItemProvider == null) {
-			accessItemProvider = new AccessItemProvider(this);
-		}
-
-		return accessItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Company} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CompanyItemProvider companyItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Company}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCompanyAdapter() {
-		if (companyItemProvider == null) {
-			companyItemProvider = new CompanyItemProvider(this);
-		}
-
-		return companyItemProvider;
+		return forFiltersItemProvider;
 	}
 
 	/**
@@ -333,13 +197,7 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
-		if (eclipseSummitItemProvider != null) eclipseSummitItemProvider.dispose();
-		if (personItemProvider != null) personItemProvider.dispose();
-		if (talkItemProvider != null) talkItemProvider.dispose();
-		if (topicItemProvider != null) topicItemProvider.dispose();
-		if (siteItemProvider != null) siteItemProvider.dispose();
-		if (accessItemProvider != null) accessItemProvider.dispose();
-		if (companyItemProvider != null) companyItemProvider.dispose();
+		if (forFiltersItemProvider != null) forFiltersItemProvider.dispose();
 	}
 
 }

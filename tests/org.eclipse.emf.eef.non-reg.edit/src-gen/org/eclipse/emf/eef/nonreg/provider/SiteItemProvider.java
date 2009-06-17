@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SiteItemProvider.java,v 1.2 2009/06/12 13:26:23 sbouchet Exp $
+ * $Id: SiteItemProvider.java,v 1.3 2009/06/17 13:32:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -12,18 +12,14 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.middle.middlenonreg.provider.NamedElementItemProvider;
-
 import org.eclipse.emf.eef.nonreg.Site;
 
 /**

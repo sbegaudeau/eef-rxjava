@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.emf.eef.nonreg.provider;
+package org.eclipse.emf.eef.nonreg.modelNavigation.provider;
 
 
 import java.util.Collection;
@@ -20,15 +20,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.eef.middle.middlenonreg.provider.NamedElementItemProvider;
-import org.eclipse.emf.eef.nonreg.Company;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
+import org.eclipse.emf.eef.nonreg.provider.NonregEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.nonreg.Company} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CompanyItemProvider
+public class SuperCibleItemProvider
 	extends NamedElementItemProvider
 	implements
 		IEditingDomainItemProvider,
@@ -42,7 +43,7 @@ public class CompanyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompanyItemProvider(AdapterFactory adapterFactory) {
+	public SuperCibleItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,17 +63,6 @@ public class CompanyItemProvider
 	}
 
 	/**
-	 * This returns Company.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Company"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,10 +70,10 @@ public class CompanyItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Company)object).getName();
+		String label = ((SuperCible)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Company_type") :
-			getString("_UI_Company_type") + " " + label;
+			getString("_UI_SuperCible_type") :
+			getString("_UI_SuperCible_type") + " " + label;
 	}
 
 	/**

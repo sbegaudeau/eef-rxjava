@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseSummitItemProvider.java,v 1.3 2009/06/17 13:32:03 sbouchet Exp $
+ * $Id$
  */
-package org.eclipse.emf.eef.nonreg.provider;
+package org.eclipse.emf.eef.nonreg.modelNavigation.provider;
 
 
 import java.util.Collection;
@@ -12,8 +12,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -21,20 +24,22 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.emf.eef.nonreg.EclipseSummit;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
+
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+import org.eclipse.emf.eef.nonreg.modelNavigation.modelNavRoot;
+
+import org.eclipse.emf.eef.nonreg.provider.NonregEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.nonreg.EclipseSummit} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.nonreg.modelNavigation.modelNavRoot} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EclipseSummitItemProvider
+public class modelNavRootItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +53,7 @@ public class EclipseSummitItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EclipseSummitItemProvider(AdapterFactory adapterFactory) {
+	public modelNavRootItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,29 +68,29 @@ public class EclipseSummitItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPlacePropertyDescriptor(object);
+			addCiblesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Place feature.
+	 * This adds a property descriptor for the Cibles feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPlacePropertyDescriptor(Object object) {
+	protected void addCiblesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EclipseSummit_place_feature"),
-				 getString("_UI_EclipseSummit_place_description"),
-				 NonregPackage.Literals.ECLIPSE_SUMMIT__PLACE,
+				 getString("_UI_modelNavRoot_Cibles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_modelNavRoot_Cibles_feature", "_UI_modelNavRoot_type"),
+				 ModelNavigationPackage.Literals.MODEL_NAV_ROOT__CIBLES,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -102,11 +107,7 @@ public class EclipseSummitItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__PARTICIPANTS);
-			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__TALKS);
-			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__TOPICS);
-			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__SITES);
-			childrenFeatures.add(NonregPackage.Literals.ECLIPSE_SUMMIT__SPONSORS);
+			childrenFeatures.add(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__SOURCES);
 		}
 		return childrenFeatures;
 	}
@@ -125,14 +126,14 @@ public class EclipseSummitItemProvider
 	}
 
 	/**
-	 * This returns EclipseSummit.gif.
+	 * This returns modelNavRoot.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EclipseSummit"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/modelNavRoot"));
 	}
 
 	/**
@@ -143,10 +144,7 @@ public class EclipseSummitItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EclipseSummit)object).getPlace();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EclipseSummit_type") :
-			getString("_UI_EclipseSummit_type") + " " + label;
+		return getString("_UI_modelNavRoot_type");
 	}
 
 	/**
@@ -160,15 +158,8 @@ public class EclipseSummitItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(EclipseSummit.class)) {
-			case NonregPackage.ECLIPSE_SUMMIT__PLACE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case NonregPackage.ECLIPSE_SUMMIT__PARTICIPANTS:
-			case NonregPackage.ECLIPSE_SUMMIT__TALKS:
-			case NonregPackage.ECLIPSE_SUMMIT__TOPICS:
-			case NonregPackage.ECLIPSE_SUMMIT__SITES:
-			case NonregPackage.ECLIPSE_SUMMIT__SPONSORS:
+		switch (notification.getFeatureID(modelNavRoot.class)) {
+			case ModelNavigationPackage.MODEL_NAV_ROOT__SOURCES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -188,28 +179,8 @@ public class EclipseSummitItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(NonregPackage.Literals.ECLIPSE_SUMMIT__PARTICIPANTS,
-				 NonregFactory.eINSTANCE.createPerson()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(NonregPackage.Literals.ECLIPSE_SUMMIT__TALKS,
-				 NonregFactory.eINSTANCE.createTalk()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(NonregPackage.Literals.ECLIPSE_SUMMIT__TOPICS,
-				 NonregFactory.eINSTANCE.createTopic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(NonregPackage.Literals.ECLIPSE_SUMMIT__SITES,
-				 NonregFactory.eINSTANCE.createSite()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(NonregPackage.Literals.ECLIPSE_SUMMIT__SPONSORS,
-				 NonregFactory.eINSTANCE.createCompany()));
+				(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__SOURCES,
+				 ModelNavigationFactory.eINSTANCE.createSource()));
 	}
 
 	/**
