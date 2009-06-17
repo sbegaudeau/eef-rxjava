@@ -150,7 +150,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			@Override
 			protected void browseButtonPressed() {
 				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(input, filters,
-						brFilters, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/]()) {
+						brFilters, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						if (selection != null && !selection.isEmpty()) {
