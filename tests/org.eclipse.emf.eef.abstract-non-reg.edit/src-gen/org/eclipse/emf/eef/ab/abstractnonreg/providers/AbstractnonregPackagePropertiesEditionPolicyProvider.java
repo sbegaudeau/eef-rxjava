@@ -18,7 +18,7 @@ public class AbstractnonregPackagePropertiesEditionPolicyProvider extends Standa
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return AbstractnonregPackage.eINSTANCE.equals(eObject.eClass().getEPackage());
+		return AbstractnonregPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || AbstractnonregPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }
