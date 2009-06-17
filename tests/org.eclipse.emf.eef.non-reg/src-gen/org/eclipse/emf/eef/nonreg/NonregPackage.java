@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregPackage.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
+ * $Id: NonregPackage.java,v 1.3 2009/06/17 13:30:43 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
@@ -440,13 +440,31 @@ public interface NonregPackage extends EPackage {
 	int COMPANY = 6;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPANY__DOCUMENTATION = MiddlenonregPackage.NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPANY__NAME = MiddlenonregPackage.NAMED_ELEMENT__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Company</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPANY_FEATURE_COUNT = 0;
+	int COMPANY_FEATURE_COUNT = MiddlenonregPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}' enum.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregPackageImpl.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
+ * $Id: NonregPackageImpl.java,v 1.3 2009/06/17 13:30:43 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.nonreg.Person;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.nonreg.Topic;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+import org.eclipse.emf.eef.nonreg.modelNavigation.impl.ModelNavigationPackageImpl;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.impl.SubPackageNonRegForFiltersPackageImpl;
 
@@ -157,14 +159,17 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 
 		// Obtain or create and register interdependencies
 		SubPackageNonRegForFiltersPackageImpl theSubPackageNonRegForFiltersPackage = (SubPackageNonRegForFiltersPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SubPackageNonRegForFiltersPackage.eNS_URI) instanceof SubPackageNonRegForFiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SubPackageNonRegForFiltersPackage.eNS_URI) : SubPackageNonRegForFiltersPackage.eINSTANCE);
+		ModelNavigationPackageImpl theModelNavigationPackage = (ModelNavigationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ModelNavigationPackage.eNS_URI) instanceof ModelNavigationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ModelNavigationPackage.eNS_URI) : ModelNavigationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theNonregPackage.createPackageContents();
 		theSubPackageNonRegForFiltersPackage.createPackageContents();
+		theModelNavigationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theNonregPackage.initializePackageContents();
 		theSubPackageNonRegForFiltersPackage.initializePackageContents();
+		theModelNavigationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theNonregPackage.freeze();
@@ -565,11 +570,13 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 
 		// Obtain other dependent packages
 		SubPackageNonRegForFiltersPackage theSubPackageNonRegForFiltersPackage = (SubPackageNonRegForFiltersPackage)EPackage.Registry.INSTANCE.getEPackage(SubPackageNonRegForFiltersPackage.eNS_URI);
+		ModelNavigationPackage theModelNavigationPackage = (ModelNavigationPackage)EPackage.Registry.INSTANCE.getEPackage(ModelNavigationPackage.eNS_URI);
 		AbstractnonregPackage theAbstractnonregPackage = (AbstractnonregPackage)EPackage.Registry.INSTANCE.getEPackage(AbstractnonregPackage.eNS_URI);
 		MiddlenonregPackage theMiddlenonregPackage = (MiddlenonregPackage)EPackage.Registry.INSTANCE.getEPackage(MiddlenonregPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theSubPackageNonRegForFiltersPackage);
+		getESubpackages().add(theModelNavigationPackage);
 
 		// Create type parameters
 
@@ -579,6 +586,7 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		talkEClass.getESuperTypes().add(theAbstractnonregPackage.getDocumentedElement());
 		topicEClass.getESuperTypes().add(theAbstractnonregPackage.getDocumentedElement());
 		siteEClass.getESuperTypes().add(theMiddlenonregPackage.getNamedElement());
+		companyEClass.getESuperTypes().add(theMiddlenonregPackage.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eclipseSummitEClass, EclipseSummit.class, "EclipseSummit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

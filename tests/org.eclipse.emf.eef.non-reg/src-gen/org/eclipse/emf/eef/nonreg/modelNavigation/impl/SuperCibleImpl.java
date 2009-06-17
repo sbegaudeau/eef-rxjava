@@ -4,32 +4,32 @@
  *
  * $Id$
  */
-package org.eclipse.emf.eef.nonreg.impl;
+package org.eclipse.emf.eef.nonreg.modelNavigation.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.eef.middle.middlenonreg.impl.NamedElementImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.eef.nonreg.Company;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Company</b></em>'.
+ * An implementation of the model object '<em><b>Super Cible</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class CompanyImpl extends NamedElementImpl implements Company {
+public abstract class SuperCibleImpl extends NamedElementImpl implements SuperCible {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CompanyImpl() {
+	protected SuperCibleImpl() {
 		super();
 	}
 
@@ -40,7 +40,7 @@ public class CompanyImpl extends NamedElementImpl implements Company {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return NonregPackage.Literals.COMPANY;
+		return ModelNavigationPackage.Literals.SUPER_CIBLE;
 	}
 
-} //CompanyImpl
+} //SuperCibleImpl

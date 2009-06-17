@@ -6,6 +6,7 @@
  */
 package org.eclipse.emf.eef.nonreg;
 
+import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,5 +19,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Company extends EObject {
+public interface Company extends NamedElement {
 } // Company
