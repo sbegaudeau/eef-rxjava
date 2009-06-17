@@ -31,6 +31,31 @@
                category="extended"
                id="Presence">
          </propertyTab>
+         <propertyTab
+               label="testFilter"
+               category="extended"
+               id="testFilter">
+         </propertyTab>
+         <propertyTab
+               label="testFilter"
+               category="extended"
+               id="testFilter">
+         </propertyTab>
+         <propertyTab
+               label="testFilter"
+               category="extended"
+               id="testFilter">
+         </propertyTab>
+         <propertyTab
+               label="testVRFilter"
+               category="extended"
+               id="testVRFilter">
+         </propertyTab>
+         <propertyTab
+               label="Source"
+               category="extended"
+               id="Source">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -115,6 +140,62 @@
                id="org.eclipse.emf.eef.nonreg.section.Access">
              <input
                     type="org.eclipse.emf.eef.nonreg.Access">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Company">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Company">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Company">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Company">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="testFilter"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="testFilter"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="testFilter"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="testVRFilter"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Source"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.modelNavigation.section.Source">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.modelNavigation.Source">
              </input>
          </propertySection>
       </propertySections>

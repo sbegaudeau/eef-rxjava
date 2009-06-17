@@ -45,6 +45,12 @@ public class NonregMessages extends NLS {
 
 	public static String TestVRFilter_ReadOnly;
 
+	public static String Source_ReadOnly;
+
+	public static String SuperCible_ReadOnly;
+
+	public static String Cible_ReadOnly;
+
 	public static String EclipseSummitPropertiesEditionPart_PlaceLabel;
 
 	public static String EclipseSummitPropertiesEditionPart_SitesLabel;
@@ -86,6 +92,8 @@ public class NonregMessages extends NLS {
 	public static String TestFilterPropertiesEditionPart_TestAEOFCVLabel;
 
 	public static String TestFilterPropertiesEditionPart_TestRTLabel;
+
+	public static String SourcePropertiesEditionPart_AdvancedUniqueRefLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 

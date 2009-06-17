@@ -18,7 +18,7 @@ public class NonregPackagePropertiesEditionPolicyProvider extends StandardProper
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return NonregPackage.eINSTANCE.equals(eObject.eClass().getEPackage());
+		return NonregPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || NonregPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }

@@ -242,13 +242,12 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
-						return (!basePart.getAccreditationsTable().contains(element));
+						return (!basePart.isContainedInAccreditationsTable((EObject)element));
 					return element instanceof Resource;
 				}
 
 			});
 			basePart.addFilterToAccreditations(new EObjectFilter(NonregPackage.eINSTANCE.getSite()));
-
 			// Start of user code for additional businessfilters for accreditations
 			
 			// End of user code
@@ -459,6 +458,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
+		if (event.getNewValue() == null)
+			return null;
 		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
 		try {

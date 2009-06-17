@@ -25,10 +25,13 @@ import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
 
-import org.eclipse.emf.eef.nonreg.Topic;
+import org.eclipse.emf.eef.nonreg.Company;
 
+import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+
 
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -39,7 +42,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.CompanyPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -48,7 +51,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -59,7 +62,7 @@ import org.eclipse.jface.viewers.Viewer;
 /**
  * 
  */
-public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -68,22 +71,22 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	/**
 	 * The EObject to edit
 	 */
-	private Topic topic;
+	private Company company;
 
 	/**
 	 * The Base part
 	 */
-	private TopicPropertiesEditionPart basePart;
+	private CompanyPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
 	 */
-	public TopicBasePropertiesEditionComponent(EObject topic, String editing_mode) {
-		if (topic instanceof Topic) {
-			this.topic = (Topic)topic;
+	public CompanyBasePropertiesEditionComponent(EObject company, String editing_mode) {
+		if (company instanceof Company) {
+			this.company = (Company)company;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
-				this.topic.eAdapters().add(semanticAdapter);
+				this.company.eAdapters().add(semanticAdapter);
 			}
 		}
 		this.editing_mode = editing_mode;
@@ -104,11 +107,8 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 			 */
 			public void notifyChanged(Notification msg) {
 				if (basePart == null)
-					TopicBasePropertiesEditionComponent.this.dispose();
+					CompanyBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (NonregPackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null)
-						basePart.setDescription((String)msg.getNewValue());
-
 
 
 
@@ -125,7 +125,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
-			return NonregViewsRepository.Topic.class;
+			return NonregViewsRepository.Company.class;
 		return super.translatePart(key);
 	}
 
@@ -145,11 +145,11 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (topic != null && BASE_PART.equals(key)) {
+		if (company != null && BASE_PART.equals(key)) {
 			if (basePart == null) {
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NonregViewsRepository.class);
 				if (provider != null) {
-					basePart = (TopicPropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.Topic.class, kind, this);
+					basePart = (CompanyPropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.Company.class, kind, this);
 					addListener((IPropertiesEditionListener)basePart);
 				}
 			}
@@ -165,8 +165,8 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == NonregViewsRepository.Topic.class)
-			this.basePart = (TopicPropertiesEditionPart) propertiesEditionPart;
+		if (key == NonregViewsRepository.Company.class)
+			this.basePart = (CompanyPropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -176,16 +176,12 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
-		if (basePart != null && key == NonregViewsRepository.Topic.class) {
+		if (basePart != null && key == NonregViewsRepository.Company.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Topic topic = (Topic)elt;
+			Company company = (Company)elt;
 			// init values
-			if (topic.getDescription() != null)
-				basePart.setDescription(topic.getDescription());
-
 			
 			// init filters
-
 		}
 		// init values for referenced views
 
@@ -202,7 +198,6 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -211,9 +206,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (topic != null) {
-			cc.append(SetCommand.create(editingDomain, topic, NonregPackage.eINSTANCE.getTopic_Description(), basePart.getDescription()));
-
+		if (company != null) {
 
 
 
@@ -230,14 +223,12 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof Topic) {
-			Topic topicToUpdate = (Topic)source;
-			topicToUpdate.setDescription(basePart.getDescription());
+		if (source instanceof Company) {
+			Company companyToUpdate = (Company)source;
 
 
 
-
-			return topicToUpdate;
+			return companyToUpdate;
 		}
 		else
 			return null;
@@ -252,9 +243,6 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (NonregViewsRepository.Topic.description == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, topic, NonregPackage.eINSTANCE.getTopic_Description(), event.getNewValue()));
-
 
 
 
@@ -262,28 +250,15 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				if (NonregViewsRepository.Topic.description == event.getAffectedEditor())
-					basePart.setMessageForDescription(diag.getMessage(), IMessageProvider.ERROR);
 
 
 
 			} else {
-				if (NonregViewsRepository.Topic.description == event.getAffectedEditor())
-					basePart.unsetMessageForDescription();
 
 
 
 			}
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
-	 */
-	public boolean isRequired(String key, int kind) {
-		return key == NonregViewsRepository.Topic.description;
 	}
 
 	/**
@@ -297,14 +272,10 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
 		try {
-			if (NonregViewsRepository.Topic.description == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getTopic_Description().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getTopic_Description().getEAttributeType(), newValue);
-			}
 
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+			if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor()) {
+				Object newValue = EcoreUtil.createFromString(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newStringValue);
+				ret = Diagnostician.INSTANCE.validate(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
 			}
 		} catch (IllegalArgumentException iae) {
 			ret = BasicDiagnostic.toDiagnostic(iae);
@@ -325,7 +296,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate(topic);
+			validate = Diagnostician.INSTANCE.validate(company);
 		// Start of user code for custom validation check
 		
 		// End of user code
@@ -340,7 +311,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
-			topic.eAdapters().remove(semanticAdapter);
+			company.eAdapters().remove(semanticAdapter);
 	}
 
 }

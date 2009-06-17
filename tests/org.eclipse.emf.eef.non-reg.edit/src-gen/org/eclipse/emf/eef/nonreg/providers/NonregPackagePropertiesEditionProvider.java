@@ -7,6 +7,7 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterFlatComboPropertiesEditionProvider;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForReferenceTablesPropertiesEditionProvider;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForRVPropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.modelNavigation.providers.SimpleSourcePropertiesEditionProvider;
 
 /**
  * 
@@ -24,9 +25,11 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createTopicPropertiesEditionProvider());
 		append(createSitePropertiesEditionProvider());
 		append(createAccessPropertiesEditionProvider());
+		append(createCompanyPropertiesEditionProvider());
 		append(createTestFilterFlatComboPropertiesEditionProvider());
 		append(createTestFilterForReferenceTablesPropertiesEditionProvider());
 		append(createTestFilterForRVPropertiesEditionProvider());
+		append(createSimpleSourcePropertiesEditionProvider());
 	}
 	
 	/**
@@ -121,6 +124,21 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Company instances.
+	 */
+	protected CompanyPropertiesEditionProvider companyPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Company
+	 */
+	public CompanyPropertiesEditionProvider createCompanyPropertiesEditionProvider() {
+		if (companyPropertiesEditionProvider == null)
+			companyPropertiesEditionProvider = new CompanyPropertiesEditionProvider();
+		return companyPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ForFilters instances.
 	 */
 	protected TestFilterFlatComboPropertiesEditionProvider testFilterFlatComboPropertiesEditionProvider;
@@ -162,6 +180,21 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		if (testFilterForRVPropertiesEditionProvider == null)
 			testFilterForRVPropertiesEditionProvider = new TestFilterForRVPropertiesEditionProvider();
 		return testFilterForRVPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Source instances.
+	 */
+	protected SimpleSourcePropertiesEditionProvider simpleSourcePropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Source
+	 */
+	public SimpleSourcePropertiesEditionProvider createSimpleSourcePropertiesEditionProvider() {
+		if (simpleSourcePropertiesEditionProvider == null)
+			simpleSourcePropertiesEditionProvider = new SimpleSourcePropertiesEditionProvider();
+		return simpleSourcePropertiesEditionProvider;
 	}
 	
 }	

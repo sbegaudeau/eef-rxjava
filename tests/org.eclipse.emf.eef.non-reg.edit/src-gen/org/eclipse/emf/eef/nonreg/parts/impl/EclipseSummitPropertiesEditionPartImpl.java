@@ -341,6 +341,15 @@ public class EclipseSummitPropertiesEditionPartImpl extends CompositePropertiesE
 		sitesBusinessFilters.add(filter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart#isContainedInSitesTable(EObject element)
+	 */
+	public boolean isContainedInSitesTable(EObject element) {
+		return sitesEditUtil.contains(element);
+	}
+
 	public void setMessageForSites(String msg, int msgLevel) {
 
 	}

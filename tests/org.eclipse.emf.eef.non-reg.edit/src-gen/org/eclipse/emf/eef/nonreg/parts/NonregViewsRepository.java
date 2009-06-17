@@ -51,6 +51,8 @@ public class NonregViewsRepository {
 	 * Company view descriptor
 	 */
 	public static class Company {
+
+
 	}
 
 	/**
@@ -128,6 +130,28 @@ public class NonregViewsRepository {
 	public static class TestVRFilter {
 
 
+	}
+
+	/**
+	 * Source view descriptor
+	 */
+	public static class Source {
+public static String advancedUniqueRef = "nonreg::Source::AdvancedUniqueRef";	
+
+	}
+
+	/**
+	 * SuperCible view descriptor
+	 */
+	public static class SuperCible {
+
+
+	}
+
+	/**
+	 * Cible view descriptor
+	 */
+	public static class Cible {
 	}
 
 }

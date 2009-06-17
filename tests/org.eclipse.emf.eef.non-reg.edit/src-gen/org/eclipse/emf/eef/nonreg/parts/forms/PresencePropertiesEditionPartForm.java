@@ -150,7 +150,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		this.assists = new ReferencesTable<Talk>(NonregMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, assistsFilters, assistsBusinessFilters,
-				"Talk", NonregPackage.eINSTANCE.getTalk()) {
+				"Talk", NonregPackage.eINSTANCE.getTalk(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -259,6 +259,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		return assistsEditUtil.getVirtualList();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -302,6 +303,15 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 */
 	public void addBusinessFilterToAssists(ViewerFilter filter) {
 		assistsBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#isContainedInAssistsTable(EObject element)
+	 */
+	public boolean isContainedInAssistsTable(EObject element) {
+		return assistsEditUtil.contains(element);
 	}
 
 

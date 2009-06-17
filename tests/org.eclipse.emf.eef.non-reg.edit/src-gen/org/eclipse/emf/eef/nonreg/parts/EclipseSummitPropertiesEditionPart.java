@@ -58,7 +58,7 @@ public interface EclipseSummitPropertiesEditionPart {
 	public Map getSitesToEdit();
 
 	/**
-	 * @return the current sites
+	 * @return the current sites table
 	 */
 	public List getSitesTable();
 
@@ -93,6 +93,11 @@ public interface EclipseSummitPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToSites(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the sites table
+	 */
+	public boolean isContainedInSitesTable(EObject element);
 
 
 

@@ -131,7 +131,7 @@ public interface PersonPropertiesEditionPart {
 	public List getAccreditationsToRemove();
 
 	/**
-	 * @return the current accreditations
+	 * @return the current accreditations table
 	 */
 	public List getAccreditationsTable();
 
@@ -166,6 +166,11 @@ public interface PersonPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToAccreditations(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the accreditations table
+	 */
+	public boolean isContainedInAccreditationsTable(EObject element);
 
 
 

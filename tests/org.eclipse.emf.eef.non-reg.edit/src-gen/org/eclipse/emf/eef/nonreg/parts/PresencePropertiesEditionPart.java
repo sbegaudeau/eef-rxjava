@@ -32,7 +32,7 @@ public interface PresencePropertiesEditionPart {
 	public List getAssistsToRemove();
 
 	/**
-	 * @return the current assists
+	 * @return the current assists table
 	 */
 	public List getAssistsTable();
 
@@ -67,6 +67,11 @@ public interface PresencePropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToAssists(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the assists table
+	 */
+	public boolean isContainedInAssistsTable(EObject element);
 
 
 

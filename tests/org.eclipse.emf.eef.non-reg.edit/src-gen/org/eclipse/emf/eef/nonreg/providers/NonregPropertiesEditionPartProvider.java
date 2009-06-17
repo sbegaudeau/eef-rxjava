@@ -27,6 +27,8 @@ import org.eclipse.emf.eef.nonreg.parts.forms.TestFilterPropertiesEditionPartFor
 import org.eclipse.emf.eef.nonreg.parts.impl.TestFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.TestVRFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.TestVRFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.forms.SourcePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.SourcePropertiesEditionPartImpl;
 
 /**
  * 
@@ -107,6 +109,12 @@ public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPa
 				return new TestVRFilterPropertiesEditionPartImpl(component);
 			if (kind == NonregViewsRepository.FORM_KIND)
 				return new TestVRFilterPropertiesEditionPartForm(component);
+		}
+		if (key == NonregViewsRepository.Source.class) {
+			if (kind == NonregViewsRepository.SWT_KIND)
+				return new SourcePropertiesEditionPartImpl(component);
+			if (kind == NonregViewsRepository.FORM_KIND)
+				return new SourcePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

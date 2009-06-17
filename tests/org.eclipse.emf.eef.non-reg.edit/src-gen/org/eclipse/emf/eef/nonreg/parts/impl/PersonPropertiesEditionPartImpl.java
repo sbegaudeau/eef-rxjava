@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -377,7 +378,25 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 			public void navigateTo(Company element){ }
 
-		});
+		}){
+			@Override
+			protected void browseButtonPressed() {
+				TabElementTreeSelectionDialog<Company> dialog = new TabElementTreeSelectionDialog<Company>(input, filters,
+						brFilters, NonregMessages.PersonPropertiesEditionPart_WorkForLabel, NonregPackage.eINSTANCE.getCompany(), current.eResource()) {
+					@Override
+					public void process(IStructuredSelection selection) {
+						if (selection != null && !selection.isEmpty()) {
+							handleSelection((Company) selection.getFirstElement());
+						}
+					}
+				};
+				// Select the actual element in dialog
+				if (selection != null) {
+					dialog.setSelection(new StructuredSelection(selection));
+				}
+				dialog.open();
+			}
+		};
 		workFor.createControls(parent);
 		GridData workForData = new GridData(GridData.FILL_HORIZONTAL);
 		workFor.setLayoutData(workForData);
@@ -604,6 +623,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return accreditationsEditUtil.getVirtualList();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -649,6 +669,15 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		accreditationsBusinessFilters.add(filter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#isContainedInAccreditationsTable(EObject element)
+	 */
+	public boolean isContainedInAccreditationsTable(EObject element) {
+		return accreditationsEditUtil.contains(element);
+	}
+
 	public void setMessageForAccreditations(String msg, int msgLevel) {
 
 	}
@@ -685,6 +714,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	public void setWorkFor(EObject newValue) {
 		if (newValue != null) {
 			workFor.setSelection(newValue);
+		} else {
+			workFor.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
 
