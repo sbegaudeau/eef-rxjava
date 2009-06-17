@@ -18,7 +18,7 @@ public class MiddlenonregPackagePropertiesEditionPolicyProvider extends Standard
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return MiddlenonregPackage.eINSTANCE.equals(eObject.eClass().getEPackage());
+		return MiddlenonregPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || MiddlenonregPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }
