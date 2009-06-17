@@ -8,7 +8,9 @@ Bundle-Activator: org.eclipse.emf.eef.nonreg.provider.NonregEditPlugin$Implement
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.eef.nonreg.provider
+Export-Package: org.eclipse.emf.eef.nonreg.modelNavigation.provider,
+ org.eclipse.emf.eef.nonreg.provider,
+ org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.eef.non_reg;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
