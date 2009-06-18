@@ -200,7 +200,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		}));
 
 		tabItem = new CTabItem(tabFolder, SWT.NULL);
-		tabItem.setText("All Resources ");
+		tabItem.setText("All Resources");
 		tabItem.setControl(fillModelpage(tabFolder, true, null));
 
 		return tabFolder;
@@ -380,7 +380,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	@Override
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
-		shell.setText("Select " + this.title + ":");
+		shell.setText("Select " + this.title);
 	}
 
 	/**

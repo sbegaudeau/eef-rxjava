@@ -264,7 +264,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 				setSelection((T)structuredSelection.getFirstElement());
 			} else {
 				this.valueText.setText(UNDEFINED_VALUE);
-				this.parent.pack();
+				//this.parent.pack();
 			}
 		}
 	}
@@ -273,7 +273,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		this.selection = selection;
 		String text = labelProvider.getText(selection);
 		this.valueText.setText(text);
-		this.parent.pack();
+		//this.parent.pack();
 	}
 
 	public T getSelection() {
