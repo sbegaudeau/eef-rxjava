@@ -8,6 +8,7 @@ import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilte
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForReferenceTablesPropertiesEditionProvider;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForRVPropertiesEditionProvider;
 import org.eclipse.emf.eef.nonreg.modelNavigation.providers.SimpleSourcePropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.modelNavigation.providers.CiblePropertiesEditionProvider;
 
 /**
  * 
@@ -30,6 +31,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createTestFilterForReferenceTablesPropertiesEditionProvider());
 		append(createTestFilterForRVPropertiesEditionProvider());
 		append(createSimpleSourcePropertiesEditionProvider());
+		append(createCiblePropertiesEditionProvider());
 	}
 	
 	/**
@@ -195,6 +197,21 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		if (simpleSourcePropertiesEditionProvider == null)
 			simpleSourcePropertiesEditionProvider = new SimpleSourcePropertiesEditionProvider();
 		return simpleSourcePropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * ConcreteCible instances.
+	 */
+	protected CiblePropertiesEditionProvider ciblePropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a ConcreteCible
+	 */
+	public CiblePropertiesEditionProvider createCiblePropertiesEditionProvider() {
+		if (ciblePropertiesEditionProvider == null)
+			ciblePropertiesEditionProvider = new CiblePropertiesEditionProvider();
+		return ciblePropertiesEditionProvider;
 	}
 	
 }	

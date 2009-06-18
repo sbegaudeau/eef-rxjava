@@ -16,22 +16,17 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
-import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
-import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
-import org.eclipse.emf.eef.nonreg.modelNavigation.Source;
-import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
+import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.SuperCiblePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
@@ -41,31 +36,31 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 /**
  * 
  */
-public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class CibleSuperCiblePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
-	public static String SOURCE_PART = "Source"; //$NON-NLS-1$
+	public static String SUPERCIBLE_PART = "SuperCible"; //$NON-NLS-1$
 
-	private String[] parts = {SOURCE_PART};
+	private String[] parts = {SUPERCIBLE_PART};
 
 	/**
 	 * The EObject to edit
 	 */
-	private Source source;
+	private ConcreteCible concreteCible;
 
 	/**
-	 * The Source part
+	 * The SuperCible part
 	 */
-	private SourcePropertiesEditionPart sourcePart;
+	private SuperCiblePropertiesEditionPart superCiblePart;
 
 	/**
 	 * Default constructor
 	 */
-	public SimpleSourcePropertiesEditionComponent(EObject source, String editing_mode) {
-		if (source instanceof Source) {
-			this.source = (Source)source;
+	public CibleSuperCiblePropertiesEditionComponent(EObject concreteCible, String editing_mode) {
+		if (concreteCible instanceof ConcreteCible) {
+			this.concreteCible = (ConcreteCible)concreteCible;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				semanticAdapter = initializeSemanticAdapter();
-				this.source.eAdapters().add(semanticAdapter);
+				this.concreteCible.eAdapters().add(semanticAdapter);
 			}
 		}
 		this.editing_mode = editing_mode;
@@ -85,12 +80,10 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
 			public void notifyChanged(Notification msg) {
-				if (sourcePart == null)
-					SimpleSourcePropertiesEditionComponent.this.dispose();
+				if (superCiblePart == null)
+					CibleSuperCiblePropertiesEditionComponent.this.dispose();
 				else {
-					if (ModelNavigationPackage.eINSTANCE.getSource_UniqueRef().equals(msg.getFeature())) {
-						sourcePart.setAdvancedUniqueRef(((RealCible)source.getUniqueRef()).getRef());
-					}
+
 
 
 				}
@@ -105,8 +98,8 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
-		if (SOURCE_PART.equals(key))
-			return NonregViewsRepository.Source.class;
+		if (SUPERCIBLE_PART.equals(key))
+			return NonregViewsRepository.SuperCible.class;
 		return super.translatePart(key);
 	}
 
@@ -126,15 +119,15 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 * (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (source != null && SOURCE_PART.equals(key)) {
-			if (sourcePart == null) {
+		if (concreteCible != null && SUPERCIBLE_PART.equals(key)) {
+			if (superCiblePart == null) {
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NonregViewsRepository.class);
 				if (provider != null) {
-					sourcePart = (SourcePropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.Source.class, kind, this);
-					addListener((IPropertiesEditionListener)sourcePart);
+					superCiblePart = (SuperCiblePropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.SuperCible.class, kind, this);
+					addListener((IPropertiesEditionListener)superCiblePart);
 				}
 			}
-			return (IPropertiesEditionPart)sourcePart;
+			return (IPropertiesEditionPart)superCiblePart;
 		}
 		return null;
 	}
@@ -146,8 +139,8 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == NonregViewsRepository.Source.class)
-			this.sourcePart = (SourcePropertiesEditionPart) propertiesEditionPart;
+		if (key == NonregViewsRepository.SuperCible.class)
+			this.superCiblePart = (SuperCiblePropertiesEditionPart) propertiesEditionPart;
 	}
 
 	/**
@@ -157,20 +150,22 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
-		if (sourcePart != null && key == NonregViewsRepository.Source.class) {
-			((IPropertiesEditionPart)sourcePart).setContext(elt, allResource);
-			Source source = (Source)elt;
+		if (superCiblePart != null && key == NonregViewsRepository.SuperCible.class) {
+			((IPropertiesEditionPart)superCiblePart).setContext(elt, allResource);
+			ConcreteCible concreteCible = (ConcreteCible)elt;
 			// init values
-			sourcePart.initAdvancedUniqueRef(allResource, ((RealCible)source.getUniqueRef()).getRef());
 			
 			// init filters
-			sourcePart.addFilterToAdvancedUniqueRef(new EObjectFilter(ModelNavigationPackage.eINSTANCE.getSuperCible()));
 		}
 		// init values for referenced views
 
+
 		// init filters for referenced views
 
+
+
 	}
+
 
 
 
@@ -185,15 +180,8 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (source != null) {
-			if (sourcePart.getAdvancedUniqueRef() == null) {
-				//cc.append(RemoveCommand.create(editingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), source.getUniqueRef()));
-				cc.append(SetCommand.create(editingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), null));
-			} else if (source.eGet(ModelNavigationPackage.eINSTANCE.getSource_UniqueRef()) == null || !source.eGet(ModelNavigationPackage.eINSTANCE.getSource_UniqueRef()).equals(sourcePart.getAdvancedUniqueRef())) {
-				RealCible realCible = ModelNavigationFactory.eINSTANCE.createRealCible();
-				cc.append(SetCommand.create(editingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), sourcePart.getAdvancedUniqueRef()));
-				cc.append(SetCommand.create(editingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), realCible));
-			}
+		if (concreteCible != null) {
+
 
 
 		}
@@ -209,15 +197,12 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof Source) {
-			Source sourceToUpdate = (Source)source;
-			SuperCible refFromAdvancedUniqueRef = (SuperCible)sourcePart.getAdvancedUniqueRef();
-			RealCible realCibleFromAdvancedUniqueRef = ModelNavigationFactory.eINSTANCE.createRealCible();
-			realCibleFromAdvancedUniqueRef.setRef(refFromAdvancedUniqueRef);
-			sourceToUpdate.setUniqueRef(realCibleFromAdvancedUniqueRef);
+		if (source instanceof ConcreteCible) {
+			ConcreteCible concreteCibleToUpdate = (ConcreteCible)source;
 
 
-			return sourceToUpdate;
+
+			return concreteCibleToUpdate;
 		}
 		else
 			return null;
@@ -232,17 +217,7 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (NonregViewsRepository.Source.advancedUniqueRef == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind() && event.getNewValue() != null) {
-					RealCible realCible = ModelNavigationFactory.eINSTANCE.createRealCible();
-					command.append(SetCommand.create(liveEditingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), event.getNewValue()));
-					command.append(SetCommand.create(liveEditingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), realCible));
-				}
-				if (PropertiesEditionEvent.SET == event.getKind() && event.getNewValue() == null) {
-					command.append(RemoveCommand.create(liveEditingDomain, source.getUniqueRef()));
-					command.append(SetCommand.create(liveEditingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), null));
-				}
-			}
+
 
 
 			liveEditingDomain.getCommandStack().execute(command);
@@ -271,6 +246,10 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 			String newStringValue = event.getNewValue().toString();
 			try {
 
+				if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			}
@@ -291,7 +270,7 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate(source);
+			validate = Diagnostician.INSTANCE.validate(concreteCible);
 		// Start of user code for custom validation check
 		
 		// End of user code
@@ -306,7 +285,7 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
-			source.eAdapters().remove(semanticAdapter);
+			concreteCible.eAdapters().remove(semanticAdapter);
 	}
 
 }

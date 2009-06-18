@@ -29,6 +29,8 @@ import org.eclipse.emf.eef.nonreg.parts.forms.TestVRFilterPropertiesEditionPartF
 import org.eclipse.emf.eef.nonreg.parts.impl.TestVRFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.SourcePropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.SourcePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.forms.SuperCiblePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.SuperCiblePropertiesEditionPartImpl;
 
 /**
  * 
@@ -115,6 +117,12 @@ public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPa
 				return new SourcePropertiesEditionPartImpl(component);
 			if (kind == NonregViewsRepository.FORM_KIND)
 				return new SourcePropertiesEditionPartForm(component);
+		}
+		if (key == NonregViewsRepository.SuperCible.class) {
+			if (kind == NonregViewsRepository.SWT_KIND)
+				return new SuperCiblePropertiesEditionPartImpl(component);
+			if (kind == NonregViewsRepository.FORM_KIND)
+				return new SuperCiblePropertiesEditionPartForm(component);
 		}
 		return null;
 	}
