@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.2 2009/06/17 13:38:11 sbouchet Exp $
+ $Id: plugin.xml,v 1.3 2009/06/18 15:39:54 sbouchet Exp $
 -->
 
 <plugin>
@@ -140,6 +140,11 @@
                label="Source"
                category="extended"
                id="Source">
+         </propertyTab>
+         <propertyTab
+               label="SuperCible"
+               category="extended"
+               id="SuperCible">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -281,6 +286,22 @@
                id="org.eclipse.emf.eef.modelNavigation.section.Source">
              <input
                     type="org.eclipse.emf.eef.nonreg.modelNavigation.Source">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="SuperCible"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.modelNavigation.section.SuperCible">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.modelNavigation.section.SuperCible">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible">
              </input>
          </propertySection>
       </propertySections>
