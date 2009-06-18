@@ -80,6 +80,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnumLiteral;
 [/if]
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -130,6 +131,7 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.Viewer;
 [comment for filters /]
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.bindingFilters->notEmpty())]
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;

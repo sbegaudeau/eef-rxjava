@@ -35,6 +35,7 @@ import [subPec.subPECQualifiedClass(view)/];
 	[/for]
 [/if]
 [/for]
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [for (view : View | pec.views) ? (view.explicit)]

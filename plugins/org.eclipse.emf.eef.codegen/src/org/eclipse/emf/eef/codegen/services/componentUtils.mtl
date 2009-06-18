@@ -366,7 +366,7 @@
 [comment ===== Case : model =  Simple Navigation A (0-1) -> B (0-1) -> C - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 					if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
-						[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]());
+						[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
 					}
 [/template]
 
@@ -403,7 +403,7 @@
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]());
+			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, (([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and editionElement.representationName('EObjectFlatComboViewer'))]
