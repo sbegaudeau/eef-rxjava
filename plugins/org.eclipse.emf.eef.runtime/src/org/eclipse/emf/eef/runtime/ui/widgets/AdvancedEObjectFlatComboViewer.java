@@ -57,6 +57,8 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	/** Image for the add button */
 	protected final org.eclipse.swt.graphics.Image addImage = EMFPropertiesRuntime
 			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "Add_16x16.gif");
+	
+	private static final String UNDEFINED_VALUE = "<UNDEFINED>";
 
 	/**
 	 * the dialog title
@@ -188,7 +190,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		// displayLabel.setLayoutData(data);
 
 		// Value Label
-		String value = "<UNDEFINED>";
+		String value = UNDEFINED_VALUE;
 		if (selection != null) {
 			value = labelProvider.getText(selection);
 		}
@@ -260,6 +262,9 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 			StructuredSelection structuredSelection = (StructuredSelection)selection;
 			if (!structuredSelection.isEmpty()) {
 				setSelection((T)structuredSelection.getFirstElement());
+			} else {
+				this.valueText.setText(UNDEFINED_VALUE);
+				this.parent.pack();
 			}
 		}
 	}
