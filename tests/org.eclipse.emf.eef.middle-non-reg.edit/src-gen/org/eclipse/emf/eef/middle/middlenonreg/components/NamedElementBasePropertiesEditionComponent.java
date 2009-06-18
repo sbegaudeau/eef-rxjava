@@ -275,22 +275,22 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (MiddlenonregViewsRepository.NamedElement.name == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(MiddlenonregPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
 
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
 			}
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
 		}
 		return ret;
 	}
