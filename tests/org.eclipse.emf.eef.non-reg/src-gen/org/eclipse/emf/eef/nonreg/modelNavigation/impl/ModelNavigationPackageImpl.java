@@ -345,7 +345,7 @@ public class ModelNavigationPackageImpl extends EPackageImpl implements ModelNav
 
 		initEClass(modelNavRootEClass, modelNavRoot.class, "modelNavRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getmodelNavRoot_Sources(), this.getSource(), null, "Sources", null, 0, -1, modelNavRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmodelNavRoot_Cibles(), this.getConcreteCible(), null, "Cibles", null, 0, -1, modelNavRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmodelNavRoot_Cibles(), this.getSuperCible(), null, "Cibles", null, 0, -1, modelNavRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //ModelNavigationPackageImpl

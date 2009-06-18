@@ -91,7 +91,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="Sources" upperBound="-1"
           eType="#//modelNavigation/Source" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="Cibles" upperBound="-1"
-          eType="#//modelNavigation/ConcreteCible" containment="true"/>
+          eType="#//modelNavigation/SuperCible" containment="true"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

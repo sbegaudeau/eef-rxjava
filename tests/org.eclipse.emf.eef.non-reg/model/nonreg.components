@@ -150,6 +150,12 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//modelNavigation/Source"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_-vAboFwSEd6TWa8jIv-cpg" name="Cible" views="_IatOcFmuEd68hpcwGHUGFA">
+        <referencedBinding xmi:id="_F304cFwTEd6TWa8jIv-cpg">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_k7oRgA_REd6pf7pzvP9Dvg"/>
+        </referencedBinding>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//modelNavigation/ConcreteCible"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.genmodel#//nonreg"/>
   </eef-components:PropertiesEditionContext>

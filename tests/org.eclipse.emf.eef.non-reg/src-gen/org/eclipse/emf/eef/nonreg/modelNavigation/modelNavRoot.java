@@ -46,7 +46,7 @@ public interface modelNavRoot extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Cibles</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible}.
+	 * The list contents are of type {@link org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cibles</em>' reference list isn't clear,
@@ -58,6 +58,6 @@ public interface modelNavRoot extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ConcreteCible> getCibles();
+	EList<SuperCible> getCibles();
 
 } // modelNavRoot

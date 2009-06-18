@@ -70,7 +70,7 @@
     <nestedGenPackages prefix="ModelNavigation" basePackage="org.eclipse.emf.eef.nonreg"
         disposableProviderFactory="true" ecorePackage="nonreg.ecore#//modelNavigation">
       <genClasses ecoreClass="nonreg.ecore#//modelNavigation/Source">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+        <genFeatures notify="false" children="true" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference nonreg.ecore#//modelNavigation/Source/UniqueRef"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference nonreg.ecore#//modelNavigation/Source/MultipleRef"/>
@@ -84,8 +84,7 @@
       <genClasses ecoreClass="nonreg.ecore#//modelNavigation/ConcreteCible"/>
       <genClasses ecoreClass="nonreg.ecore#//modelNavigation/modelNavRoot">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//modelNavigation/modelNavRoot/Sources"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference nonreg.ecore#//modelNavigation/modelNavRoot/Cibles"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//modelNavigation/modelNavRoot/Cibles"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

@@ -60,7 +60,7 @@ public class modelNavRootImpl extends EObjectImpl implements modelNavRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConcreteCible> cibles;
+	protected EList<SuperCible> cibles;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,9 +98,9 @@ public class modelNavRootImpl extends EObjectImpl implements modelNavRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ConcreteCible> getCibles() {
+	public EList<SuperCible> getCibles() {
 		if (cibles == null) {
-			cibles = new EObjectContainmentEList<ConcreteCible>(ConcreteCible.class, this, ModelNavigationPackage.MODEL_NAV_ROOT__CIBLES);
+			cibles = new EObjectContainmentEList<SuperCible>(SuperCible.class, this, ModelNavigationPackage.MODEL_NAV_ROOT__CIBLES);
 		}
 		return cibles;
 	}
@@ -152,7 +152,7 @@ public class modelNavRootImpl extends EObjectImpl implements modelNavRoot {
 				return;
 			case ModelNavigationPackage.MODEL_NAV_ROOT__CIBLES:
 				getCibles().clear();
-				getCibles().addAll((Collection<? extends ConcreteCible>)newValue);
+				getCibles().addAll((Collection<? extends SuperCible>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
