@@ -181,7 +181,7 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 		if (newValue != null)
 			[editor.views->first().name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
 		else
-			[editor.views->first().name.toJavaIdentifier()/].setSelection(new StructuredSelection(""));
+			[editor.views->first().name.toJavaIdentifier()/].setSelection(new StructuredSelection());
 	}
 [/template]
 

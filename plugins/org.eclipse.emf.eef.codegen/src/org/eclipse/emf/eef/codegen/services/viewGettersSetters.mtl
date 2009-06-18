@@ -757,7 +757,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 [/template]
@@ -767,7 +767,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue);
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 [/template]

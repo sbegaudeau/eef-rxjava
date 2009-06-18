@@ -58,11 +58,11 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.reference.ecorePackageSignature()/](), (ResourceSet)parentElement);
-					if (result instanceof Collection){
+					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.reference.ecorePackageSignature()/]());
+					if (result instanceof Collection) {
 						return ((Collection)result).contains(element);
-					}else if (result instanceof ResourceSet){
-						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
+					} else if (result instanceof ResourceSet && element instanceof EObject) {
+						return ((EObject)element).eResource() != null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
 					}
 					return element instanceof Resource;
 				}
@@ -72,7 +72,6 @@
 [template public filterBody(bindingFilter : OCLFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 			// OCLFilter not implemented yet
 [/template]
-
 
 [template public javaDeclarationFilter(pee : PropertiesEditionElement)]
 [for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->select(oclIsTypeOf(mapping::filters::JavaDeclarationFilter)))]

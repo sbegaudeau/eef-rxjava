@@ -421,28 +421,28 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
-			}
+				if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
+				}
 [/for]
 [comment add ViewReference support/]
 [for ( v : View | view.referencedViews())]
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
-			}
+				if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
+				}
 	[/for]
 [/for]
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
