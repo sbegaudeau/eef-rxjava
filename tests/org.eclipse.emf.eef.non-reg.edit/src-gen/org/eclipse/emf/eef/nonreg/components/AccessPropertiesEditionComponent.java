@@ -268,18 +268,18 @@ public class AccessPropertiesEditionComponent extends StandardPropertiesEditionC
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (NonregViewsRepository.Access.period == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getAccess_Period().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getAccess_Period().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (NonregViewsRepository.Access.period == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getAccess_Period().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getAccess_Period().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}

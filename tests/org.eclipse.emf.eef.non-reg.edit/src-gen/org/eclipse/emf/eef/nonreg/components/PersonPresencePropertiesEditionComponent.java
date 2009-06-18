@@ -201,18 +201,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 
 			});
 			presencePart.addFilterToAssists(new EObjectFilter(NonregPackage.eINSTANCE.getTalk()));
-			presencePart.addFilterToAssists(new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return notTalkIsPresenter(viewer, parentElement, element);
-				}
-
-			});
 			// Start of user code for additional businessfilters for assists
 			
 			// End of user code
@@ -223,14 +211,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 
 	}
 
-	/**
-	 * 
-	 */
-	private boolean notTalkIsPresenter(Viewer viewer, Object parentElement, Object element){
-		// Start of user code for user filter notTalkIsPresenter
-		return true;
-		// End of user code
-	}
 
 
 
@@ -344,14 +324,14 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}

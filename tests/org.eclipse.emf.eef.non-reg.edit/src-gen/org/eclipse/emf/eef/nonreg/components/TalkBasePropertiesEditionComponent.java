@@ -372,26 +372,26 @@ public class TalkBasePropertiesEditionComponent extends StandardPropertiesEditio
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (NonregViewsRepository.Talk.title == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getTalk_Title().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getTalk_Title().getEAttributeType(), newValue);
-			}
-			if (NonregViewsRepository.Talk.type == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getTalk_Type().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getTalk_Type().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (NonregViewsRepository.Talk.title == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getTalk_Title().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getTalk_Title().getEAttributeType(), newValue);
+				}
+				if (NonregViewsRepository.Talk.type == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getTalk_Type().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getTalk_Type().getEAttributeType(), newValue);
+				}
 
-			if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+				if (AbstractnonregViewsRepository.DocumentedElement.documentation == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(AbstractnonregPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
 			}
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
 		}
 		return ret;
 	}

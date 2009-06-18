@@ -71,7 +71,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Presence"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.nonreg.section.Person">
              <input
@@ -79,7 +79,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Presence"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.nonreg.section.Person">
              <input

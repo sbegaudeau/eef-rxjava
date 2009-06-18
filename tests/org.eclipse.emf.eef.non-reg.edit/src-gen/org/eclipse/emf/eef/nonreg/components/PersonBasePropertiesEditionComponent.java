@@ -458,38 +458,38 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (NonregViewsRepository.Person.firstname == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), newValue);
-			}
-			if (NonregViewsRepository.Person.lastname == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), newValue);
-			}
-			if (NonregViewsRepository.Person.age == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Age().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Age().getEAttributeType(), newValue);
-			}
-			if (NonregViewsRepository.Person.eclipseCommiter == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), newValue);
-			}
-			if (NonregViewsRepository.Person.isRegistered == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
-			}
-			if (NonregViewsRepository.Person.gender == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (NonregViewsRepository.Person.firstname == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), newValue);
+				}
+				if (NonregViewsRepository.Person.lastname == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), newValue);
+				}
+				if (NonregViewsRepository.Person.age == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Age().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Age().getEAttributeType(), newValue);
+				}
+				if (NonregViewsRepository.Person.eclipseCommiter == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), newValue);
+				}
+				if (NonregViewsRepository.Person.isRegistered == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
+				}
+				if (NonregViewsRepository.Person.gender == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(NonregPackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(NonregPackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}

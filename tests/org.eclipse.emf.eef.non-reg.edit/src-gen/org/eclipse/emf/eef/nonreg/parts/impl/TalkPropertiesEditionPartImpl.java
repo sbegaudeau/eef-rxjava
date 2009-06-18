@@ -298,7 +298,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		if (newValue != null) {
 			presenter.setSelection(new StructuredSelection(newValue));
 		} else {
-			presenter.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			presenter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 

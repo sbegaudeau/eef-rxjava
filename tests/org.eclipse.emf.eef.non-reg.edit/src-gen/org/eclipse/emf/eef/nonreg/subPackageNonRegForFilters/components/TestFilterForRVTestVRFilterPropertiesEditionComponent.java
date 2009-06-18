@@ -217,11 +217,11 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues(TestFilterForRVTestVRFilterPropertiesEditionComponent.this.forFilters, NonregPackage.eINSTANCE.getPerson_Assists(), (ResourceSet)parentElement);
-					if (result instanceof Collection){
+					Object result = EEFUtils.choiceOfValues(TestFilterForRVTestVRFilterPropertiesEditionComponent.this.forFilters, NonregPackage.eINSTANCE.getPerson_Assists());
+					if (result instanceof Collection) {
 						return ((Collection)result).contains(element);
-					}else if (result instanceof ResourceSet){
-						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
+					} else if (result instanceof ResourceSet && element instanceof EObject) {
+						return ((EObject)element).eResource() != null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
 					}
 					return element instanceof Resource;
 				}
@@ -277,11 +277,11 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues(TestFilterForRVTestVRFilterPropertiesEditionComponent.this.forFilters, NonregPackage.eINSTANCE.getPerson_Assists(), (ResourceSet)parentElement);
-					if (result instanceof Collection){
+					Object result = EEFUtils.choiceOfValues(TestFilterForRVTestVRFilterPropertiesEditionComponent.this.forFilters, NonregPackage.eINSTANCE.getPerson_Assists());
+					if (result instanceof Collection) {
 						return ((Collection)result).contains(element);
-					}else if (result instanceof ResourceSet){
-						return element instanceof EObject && ((EObject)element).eResource() !=null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
+					} else if (result instanceof ResourceSet && element instanceof EObject) {
+						return ((EObject)element).eResource() != null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
 					}
 					return element instanceof Resource;
 				}
@@ -385,14 +385,14 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		if (event.getNewValue() == null)
-			return null;
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}

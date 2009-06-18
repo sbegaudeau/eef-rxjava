@@ -821,7 +821,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			workFor.setSelection(newValue);
 		} else {
-			workFor.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			workFor.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 

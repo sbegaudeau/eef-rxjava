@@ -456,7 +456,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		if (newValue != null) {
 			testEOFCV.setSelection(new StructuredSelection(newValue));
 		} else {
-			testEOFCV.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			testEOFCV.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 
@@ -605,7 +605,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		if (newValue != null) {
 			testAEOFCV.setSelection(newValue);
 		} else {
-			testAEOFCV.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			testAEOFCV.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 

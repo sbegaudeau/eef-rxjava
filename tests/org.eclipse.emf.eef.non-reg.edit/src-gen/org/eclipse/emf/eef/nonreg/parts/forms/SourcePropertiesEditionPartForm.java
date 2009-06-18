@@ -158,7 +158,7 @@ public class SourcePropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			advancedUniqueRef.setSelection(newValue);
 		} else {
-			advancedUniqueRef.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			advancedUniqueRef.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 
