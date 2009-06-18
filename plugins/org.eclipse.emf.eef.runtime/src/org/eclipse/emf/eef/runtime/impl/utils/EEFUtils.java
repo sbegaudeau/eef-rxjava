@@ -24,36 +24,31 @@ import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 public class EEFUtils {
 
 	/**
-	 * //TODO remove this method, use the other one
-	 * 
 	 * @deprecated
 	 */
 	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject,
 			EStructuralFeature feature, ResourceSet allResources) {
+		return choiceOfValues(eObject, feature, allResources);
+	}
+
+	/**
+	 * @deprecated
+	 */
+	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature, ResourceSet allResources) {
+		return choiceOfValues(eObject, feature);
+	}
+	
+	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature){
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)adapterFactory
+		IItemPropertySource ps = (IItemPropertySource)EMFPropertiesRuntime.getDefault().getAdapterFactory()
 				.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)
 				choiceOfValues = propertyDescriptor.getChoiceOfValues(eObject);
 		}
-		if (choiceOfValues == null)
-			choiceOfValues = allResources;
-		return choiceOfValues;
-	}
-
-	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature, ResourceSet allResources) {
-		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)EMFPropertiesRuntime.getDefault().getAdapterFactory().adapt(eObject,
-				IItemPropertySource.class);
-		if (ps != null) {
-			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
-			if (propertyDescriptor != null)
-				choiceOfValues = propertyDescriptor.getChoiceOfValues(eObject);
-		}
-		if (choiceOfValues == null)
-			choiceOfValues = allResources;
+		if (choiceOfValues == null && eObject.eResource() != null && eObject.eResource().getResourceSet() != null)
+			choiceOfValues = eObject.eResource().getResourceSet();
 		return choiceOfValues;
 	}
 
