@@ -68,31 +68,8 @@ public class modelNavRootItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCiblesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Cibles feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCiblesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_modelNavRoot_Cibles_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_modelNavRoot_Cibles_feature", "_UI_modelNavRoot_type"),
-				 ModelNavigationPackage.Literals.MODEL_NAV_ROOT__CIBLES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -108,6 +85,7 @@ public class modelNavRootItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__SOURCES);
+			childrenFeatures.add(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__CIBLES);
 		}
 		return childrenFeatures;
 	}
@@ -160,6 +138,7 @@ public class modelNavRootItemProvider
 
 		switch (notification.getFeatureID(modelNavRoot.class)) {
 			case ModelNavigationPackage.MODEL_NAV_ROOT__SOURCES:
+			case ModelNavigationPackage.MODEL_NAV_ROOT__CIBLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -181,6 +160,16 @@ public class modelNavRootItemProvider
 			(createChildParameter
 				(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__SOURCES,
 				 ModelNavigationFactory.eINSTANCE.createSource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__CIBLES,
+				 ModelNavigationFactory.eINSTANCE.createRealCible()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelNavigationPackage.Literals.MODEL_NAV_ROOT__CIBLES,
+				 ModelNavigationFactory.eINSTANCE.createConcreteCible()));
 	}
 
 	/**

@@ -130,6 +130,7 @@ public class SourceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(ModelNavigationPackage.Literals.SOURCE__UNIQUE_REF);
 			childrenFeatures.add(ModelNavigationPackage.Literals.SOURCE__MULTIPLE_CONTAINMENT);
 		}
 		return childrenFeatures;
