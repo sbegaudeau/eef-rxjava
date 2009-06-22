@@ -240,6 +240,6 @@ public class NamedElementPropertiesEditionPartForm extends CompositePropertiesEd
 
 	
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 }	
