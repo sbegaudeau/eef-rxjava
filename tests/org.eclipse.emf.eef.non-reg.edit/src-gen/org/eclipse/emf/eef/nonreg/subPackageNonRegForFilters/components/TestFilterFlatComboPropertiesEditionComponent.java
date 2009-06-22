@@ -240,7 +240,7 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 	 */
 	private boolean methodFilterEOFCV(Viewer viewer, Object parentElement, Object element){
 		// Start of user code for user filter methodFilterEOFCV
-		return false;
+		return true;
 		// End of user code
 	}
 
@@ -249,7 +249,7 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 	 */
 	private boolean methodFilterAEOFCV(Viewer viewer, Object parentElement, Object element){
 		// Start of user code for user filter methodFilterAEOFCV
-		return false;
+		return true;
 		// End of user code
 	}
 

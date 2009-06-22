@@ -122,7 +122,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
-		
+
 		// End of user code		
 	}
 
@@ -371,7 +371,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table accreditations s columns definition
-		
+
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
@@ -381,17 +381,18 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		result.setLabelProvider(new ITableLabelProvider() {
 	
 			// Start of user code for table accreditations label provider
-			
+
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 				if (object instanceof EObject) {
 					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
+						case 0:
+							return labelProvider.getText(object);
 					}
 				}
 				return ""; //$NON-NLS-1$
 			}
+
 			// End of user code
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
@@ -528,7 +529,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
+
 		// End of user code		
 	}
 
@@ -855,6 +856,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 	
 	// Start of user code additional methods
-	
+
 	// End of user code
 }	

@@ -36,7 +36,6 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
-
 // End of user code
 /**
  * 
@@ -89,7 +88,10 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 					SimpleSourcePropertiesEditionComponent.this.dispose();
 				else {
 					if (ModelNavigationPackage.eINSTANCE.getSource_UniqueRef().equals(msg.getFeature())) {
-						sourcePart.setAdvancedUniqueRef(((RealCible)source.getUniqueRef()).getRef());
+						if (source.getUniqueRef() instanceof RealCible)
+							sourcePart.setAdvancedUniqueRef(((RealCible)source.getUniqueRef()).getRef());
+						else 
+							sourcePart.setAdvancedUniqueRef(null);
 					}
 
 
@@ -161,7 +163,10 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 			((IPropertiesEditionPart)sourcePart).setContext(elt, allResource);
 			Source source = (Source)elt;
 			// init values
-			sourcePart.initAdvancedUniqueRef(allResource, ((RealCible)source.getUniqueRef()).getRef());
+			if (source.getUniqueRef() instanceof RealCible)
+				sourcePart.initAdvancedUniqueRef(allResource, ((RealCible)source.getUniqueRef()).getRef());
+			else 
+				sourcePart.initAdvancedUniqueRef(allResource, null);
 			
 			// init filters
 			sourcePart.addFilterToAdvancedUniqueRef(new EObjectFilter(ModelNavigationPackage.eINSTANCE.getSuperCible()));

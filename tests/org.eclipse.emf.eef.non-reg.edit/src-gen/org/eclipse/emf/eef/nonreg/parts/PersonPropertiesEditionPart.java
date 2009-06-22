@@ -6,16 +6,14 @@ package org.eclipse.emf.eef.nonreg.parts;
 // Start of user code for imports
 
 import java.util.List;
-import java.util.Map;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ViewerFilter;
- 
+
 
 // End of user code
 /**

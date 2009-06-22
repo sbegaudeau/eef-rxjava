@@ -28,8 +28,8 @@ import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
-import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
+import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;

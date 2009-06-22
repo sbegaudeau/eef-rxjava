@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
-import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TestVRFilterPropertiesEditionPart;
@@ -38,7 +37,6 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 
 // End of user code
 /**
@@ -299,7 +297,7 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 	 */
 	private boolean methodFilterART(Viewer viewer, Object parentElement, Object element){
 		// Start of user code for user filter methodFilterART
-		return false;
+		return true;
 		// End of user code
 	}
 
@@ -308,7 +306,7 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 	 */
 	private boolean methodFilterRT(Viewer viewer, Object parentElement, Object element){
 		// Start of user code for user filter methodFilterRT
-		return false;
+		return true;
 		// End of user code
 	}
 
