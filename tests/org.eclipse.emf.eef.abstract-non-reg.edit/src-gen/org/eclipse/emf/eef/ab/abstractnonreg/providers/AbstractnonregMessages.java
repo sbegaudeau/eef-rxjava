@@ -51,7 +51,6 @@ public class AbstractnonregMessages extends NLS {
 
 	// Start of user code for additionnal NLS Constants
 	
-	
 	// End of user code
 	static {
 		// initialize resource bundle

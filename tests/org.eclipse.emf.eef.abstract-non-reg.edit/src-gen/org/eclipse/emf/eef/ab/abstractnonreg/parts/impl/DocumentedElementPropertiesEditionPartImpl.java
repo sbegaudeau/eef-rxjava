@@ -141,6 +141,6 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 }

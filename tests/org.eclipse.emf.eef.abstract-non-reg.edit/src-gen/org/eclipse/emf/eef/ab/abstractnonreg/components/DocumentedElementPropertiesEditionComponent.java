@@ -303,7 +303,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			validate = Diagnostician.INSTANCE.validate(documentedElement);
 		// Start of user code for custom validation check
- 	
+		
 		// End of user code
 		return validate;
 	}
