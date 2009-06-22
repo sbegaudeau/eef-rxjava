@@ -57,7 +57,7 @@ import org.eclipse.ui.dialogs.PatternFilter;
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public abstract class TabElementTreeSelectionDialog<T extends EObject> extends Dialog {
+public abstract class TabElementTreeSelectionDialog<T extends EObject> extends Dialog implements IPropertiesFilteredWidget {
 
 	/**
 	 * the label
@@ -75,7 +75,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	/**
 	 * filters
 	 */
-	protected List<ViewerFilter> viewerFilters;
+	private List<ViewerFilter> viewerFilters;
 
 	/**
 	 * business rules filters
@@ -88,13 +88,11 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(
 			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-	Composite parent;
+	private Composite parent;
 
-	Object input;
+	private Object input;
 
-	TreeViewer activeTreeViewer;
-
-	IStructuredSelection selection;
+	private IStructuredSelection selection;
 
 	private EClass restrictToEClass;
 
@@ -117,6 +115,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 * @param abstractElement
 	 *            it used to inform about if the element is abstract in this case the creation button does not
 	 *            appear
+	 * @deprecated 
 	 */
 	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
 			List<ViewerFilter> brFilters, String title, EClass restrictToEClass) {
@@ -400,5 +399,18 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	}
 
 	public abstract void process(IStructuredSelection selection);
+	
+	public void addBusinessRuleFilter(ViewerFilter filter) {
+		this.brFilters.add(filter);
+	}
+	public void addFilter(ViewerFilter filter) {
+		this.viewerFilters.add(filter);
+	}
+	public void removeBusinessRuleFilter(ViewerFilter filter) {
+		this.brFilters.remove(filter);
+	}
+	public void removeFilter(ViewerFilter filter) {
+		this.viewerFilters.remove(filter);
+	}
 
 }
