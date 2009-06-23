@@ -15,7 +15,6 @@
 [import common /]
 [import naming /]
 
-
 [template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 	[file (peContext.fullFilePath(), false)]
