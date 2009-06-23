@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsFactoryImpl.java,v 1.3 2009/06/09 15:47:36 sbouchet Exp $
+ * $Id: ViewsFactoryImpl.java,v 1.4 2009/06/23 13:58:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -141,7 +141,7 @@ public class ViewsFactoryImpl extends EFactoryImpl implements ViewsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Container createContainer() {
+	public org.eclipse.emf.eef.views.Container createContainer() {
 		ContainerImpl container = new ContainerImpl();
 		return container;
 	}
