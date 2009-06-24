@@ -57,7 +57,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nonreg.ecore#//Access/siteAcceded"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Access/Period"/>
     </genClasses>
-    <genClasses ecoreClass="nonreg.ecore#//Company"/>
+    <genClasses ecoreClass="nonreg.ecore#//Company">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nonreg.ecore#//Company/adress"/>
+    </genClasses>
+    <genClasses ecoreClass="nonreg.ecore#//Adress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nonreg.ecore#//Adress/postalCode"/>
+    </genClasses>
     <nestedGenPackages prefix="SubPackageNonRegForFilters" basePackage="org.eclipse.emf.eef.nonreg"
         disposableProviderFactory="true" ecorePackage="nonreg.ecore#//subPackageNonRegForFilters">
       <genClasses ecoreClass="nonreg.ecore#//subPackageNonRegForFilters/ForFilters">

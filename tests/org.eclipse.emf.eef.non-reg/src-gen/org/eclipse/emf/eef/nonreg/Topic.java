@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Topic.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: Topic.java,v 1.2 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
 
 /**
@@ -38,7 +39,7 @@ public interface Topic extends DocumentedElement {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.eclipse.emf.eef.nonreg.NonregPackage#getTopic_Description()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getDescription();

@@ -7,7 +7,6 @@
 package org.eclipse.emf.eef.nonreg.modelNavigation;
 
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

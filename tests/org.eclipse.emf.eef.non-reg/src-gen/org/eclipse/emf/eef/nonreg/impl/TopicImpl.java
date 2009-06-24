@@ -2,18 +2,24 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TopicImpl.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: TopicImpl.java,v 1.2 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
 import org.eclipse.emf.eef.ab.abstractnonreg.impl.DocumentedElementImpl;
+
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Topic;
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregFactoryImpl.java,v 1.3 2009/06/12 13:24:46 sbouchet Exp $
+ * $Id: NonregFactoryImpl.java,v 1.4 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -10,19 +10,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.eclipse.emf.eef.nonreg.*;
-import org.eclipse.emf.eef.nonreg.Access;
-import org.eclipse.emf.eef.nonreg.EclipseSummit;
-import org.eclipse.emf.eef.nonreg.GENDER;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.Site;
-import org.eclipse.emf.eef.nonreg.TALK_TYPE;
-import org.eclipse.emf.eef.nonreg.Talk;
-import org.eclipse.emf.eef.nonreg.Topic;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,6 +68,7 @@ public class NonregFactoryImpl extends EFactoryImpl implements NonregFactory {
 			case NonregPackage.SITE: return createSite();
 			case NonregPackage.ACCESS: return createAccess();
 			case NonregPackage.COMPANY: return createCompany();
+			case NonregPackage.ADRESS: return createAdress();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -182,6 +176,16 @@ public class NonregFactoryImpl extends EFactoryImpl implements NonregFactory {
 	public Company createCompany() {
 		CompanyImpl company = new CompanyImpl();
 		return company;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adress createAdress() {
+		AdressImpl adress = new AdressImpl();
+		return adress;
 	}
 
 	/**

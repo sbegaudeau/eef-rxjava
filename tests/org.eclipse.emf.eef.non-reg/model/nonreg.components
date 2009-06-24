@@ -85,10 +85,19 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Access"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Q7bJMFHVEd6RQr8KB9ly6A" name="Company" views="_K02MgFHVEd6RQr8KB9ly6A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MUs4UGAQEd6uD5mPeW8T4Q" name="Adress" views="_Jh6noGAQEd6uD5mPeW8T4Q">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Company/adress"/>
+        </properties>
         <referencedBinding xmi:id="_YUa5IFmuEd68hpcwGHUGFA">
           <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_k7oRgA_REd6pf7pzvP9Dvg"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Company"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_-9nfMGDPEd6uD5mPeW8T4Q" name="Adress" views="_0pRhkGDPEd6uD5mPeW8T4Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CX-GMGDQEd6uD5mPeW8T4Q" name="postalCode" views="_77WoEGDPEd6uD5mPeW8T4Q" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Adress/postalCode"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.non-reg/model/nonreg.ecore#//Adress"/>
       </bindings>
     </categories>
     <categories xmi:id="_RMtPkFmuEd68hpcwGHUGFA" name="filters">
@@ -203,6 +212,12 @@
         </elements>
       </views>
       <views xmi:id="_K02MgFHVEd6RQr8KB9ly6A" name="Company">
+        <elements xsi:type="eef-views:Container" xmi:id="_E4FVwGAQEd6uD5mPeW8T4Q" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Jh6noGAQEd6uD5mPeW8T4Q" name="Adress">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
+        </elements>
         <elements xsi:type="eef-views:ViewReference" xmi:id="_pZojEFmtEd68hpcwGHUGFA" name="name">
           <view xsi:type="eef-views:View" href="platform:/resource/org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.components#_mhLTAA_REd6pf7pzvP9Dvg"/>
         </elements>
@@ -255,6 +270,14 @@
         <elements xsi:type="eef-views:Container" xmi:id="_NajnIBIyEd6tKsm_l4YRjQ" name="period">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_S7s7gBIyEd6tKsm_l4YRjQ" name="period">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_0pRhkGDPEd6uD5mPeW8T4Q" name="Adress">
+        <elements xsi:type="eef-views:Container" xmi:id="_6Q2OEGDPEd6uD5mPeW8T4Q" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_77WoEGDPEd6uD5mPeW8T4Q" name="postalCode">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

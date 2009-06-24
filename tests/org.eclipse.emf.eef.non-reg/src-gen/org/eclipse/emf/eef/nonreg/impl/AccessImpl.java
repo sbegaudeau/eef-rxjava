@@ -2,15 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccessImpl.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: AccessImpl.java,v 1.2 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.eef.nonreg.Access;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Site;

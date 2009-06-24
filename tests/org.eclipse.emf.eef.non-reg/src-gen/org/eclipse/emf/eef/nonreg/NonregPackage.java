@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregPackage.java,v 1.3 2009/06/17 13:30:43 sbouchet Exp $
+ * $Id: NonregPackage.java,v 1.4 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
+
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 
 /**
@@ -458,13 +459,50 @@ public interface NonregPackage extends EPackage {
 	int COMPANY__NAME = MiddlenonregPackage.NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Adress</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPANY__ADRESS = MiddlenonregPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Company</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPANY_FEATURE_COUNT = MiddlenonregPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int COMPANY_FEATURE_COUNT = MiddlenonregPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.impl.AdressImpl <em>Adress</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.nonreg.impl.AdressImpl
+	 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getAdress()
+	 * @generated
+	 */
+	int ADRESS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Postal Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADRESS__POSTAL_CODE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Adress</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADRESS_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}' enum.
@@ -474,7 +512,7 @@ public interface NonregPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getTALK_TYPE()
 	 * @generated
 	 */
-	int TALK_TYPE = 7;
+	int TALK_TYPE = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.GENDER <em>GENDER</em>}' enum.
@@ -484,7 +522,7 @@ public interface NonregPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getGENDER()
 	 * @generated
 	 */
-	int GENDER = 8;
+	int GENDER = 9;
 
 
 	/**
@@ -822,6 +860,38 @@ public interface NonregPackage extends EPackage {
 	EClass getCompany();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.nonreg.Company#getAdress <em>Adress</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Adress</em>'.
+	 * @see org.eclipse.emf.eef.nonreg.Company#getAdress()
+	 * @see #getCompany()
+	 * @generated
+	 */
+	EReference getCompany_Adress();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.nonreg.Adress <em>Adress</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Adress</em>'.
+	 * @see org.eclipse.emf.eef.nonreg.Adress
+	 * @generated
+	 */
+	EClass getAdress();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.nonreg.Adress#getPostalCode <em>Postal Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Postal Code</em>'.
+	 * @see org.eclipse.emf.eef.nonreg.Adress#getPostalCode()
+	 * @see #getAdress()
+	 * @generated
+	 */
+	EAttribute getAdress_PostalCode();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1124,6 +1194,32 @@ public interface NonregPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMPANY = eINSTANCE.getCompany();
+
+		/**
+		 * The meta object literal for the '<em><b>Adress</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPANY__ADRESS = eINSTANCE.getCompany_Adress();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.nonreg.impl.AdressImpl <em>Adress</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.nonreg.impl.AdressImpl
+		 * @see org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl#getAdress()
+		 * @generated
+		 */
+		EClass ADRESS = eINSTANCE.getAdress();
+
+		/**
+		 * The meta object literal for the '<em><b>Postal Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADRESS__POSTAL_CODE = eINSTANCE.getAdress_PostalCode();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.nonreg.TALK_TYPE <em>TALK TYPE</em>}' enum.

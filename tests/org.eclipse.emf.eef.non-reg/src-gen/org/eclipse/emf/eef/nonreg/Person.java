@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2009/06/12 13:24:46 sbouchet Exp $
+ * $Id: Person.java,v 1.3 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 

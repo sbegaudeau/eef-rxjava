@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GENDER.java,v 1.1 2009/05/05 10:36:44 sbouchet Exp $
+ * $Id: GENDER.java,v 1.2 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg;
 

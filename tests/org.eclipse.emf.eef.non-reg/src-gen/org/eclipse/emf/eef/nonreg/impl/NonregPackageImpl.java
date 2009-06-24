@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregPackageImpl.java,v 1.3 2009/06/17 13:30:43 sbouchet Exp $
+ * $Id: NonregPackageImpl.java,v 1.4 2009/06/24 16:33:38 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.impl;
 
@@ -11,10 +11,15 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
+
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
+
 import org.eclipse.emf.eef.nonreg.Access;
+import org.eclipse.emf.eef.nonreg.Adress;
 import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.EclipseSummit;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
@@ -23,9 +28,13 @@ import org.eclipse.emf.eef.nonreg.Person;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.nonreg.Topic;
+
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+
 import org.eclipse.emf.eef.nonreg.modelNavigation.impl.ModelNavigationPackageImpl;
+
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
+
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.impl.SubPackageNonRegForFiltersPackageImpl;
 
 /**
@@ -83,6 +92,13 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 	 * @generated
 	 */
 	private EClass companyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass adressEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -461,6 +477,33 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCompany_Adress() {
+		return (EReference)companyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAdress() {
+		return adressEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdress_PostalCode() {
+		return (EAttribute)adressEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTALK_TYPE() {
 		return talK_TYPEEEnum;
 	}
@@ -539,6 +582,10 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		createEAttribute(accessEClass, ACCESS__PERIOD);
 
 		companyEClass = createEClass(COMPANY);
+		createEReference(companyEClass, COMPANY__ADRESS);
+
+		adressEClass = createEClass(ADRESS);
+		createEAttribute(adressEClass, ADRESS__POSTAL_CODE);
 
 		// Create enums
 		talK_TYPEEEnum = createEEnum(TALK_TYPE);
@@ -616,7 +663,7 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		initEReference(getTalk_Creator(), this.getPerson(), null, "creator", null, 0, 1, Talk.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTopic_Description(), ecorePackage.getEString(), "description", null, 1, 1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTopic_Description(), ecorePackage.getEString(), "description", null, 0, 1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTopic_References(), ecorePackage.getEString(), "references", null, 0, -1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(siteEClass, Site.class, "Site", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -626,6 +673,10 @@ public class NonregPackageImpl extends EPackageImpl implements NonregPackage {
 		initEAttribute(getAccess_Period(), ecorePackage.getEDouble(), "Period", null, 0, 1, Access.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(companyEClass, Company.class, "Company", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompany_Adress(), this.getAdress(), null, "adress", null, 0, 1, Company.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(adressEClass, Adress.class, "Adress", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAdress_PostalCode(), ecorePackage.getEInt(), "postalCode", null, 1, 1, Adress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(talK_TYPEEEnum, org.eclipse.emf.eef.nonreg.TALK_TYPE.class, "TALK_TYPE");

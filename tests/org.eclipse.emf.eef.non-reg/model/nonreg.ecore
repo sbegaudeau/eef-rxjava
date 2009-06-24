@@ -43,8 +43,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="creator" eType="#//Person"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Topic" eSuperTypes="../../org.eclipse.emf.eef.abstract-non-reg/model/abstract-nonreg.ecore#//DocumentedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="references" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -64,7 +63,14 @@
         eType="#//Site"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Company" eSuperTypes="../../org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.ecore#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Company" eSuperTypes="../../org.eclipse.emf.eef.middle-non-reg/model/middle-nonreg.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adress" eType="#//Adress"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Adress">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="postalCode" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eSubpackages name="subPackageNonRegForFilters" nsURI="http://www.eclipse.org/emf/properties/1.0.0/SubPackageNonReg"
       nsPrefix="eef-subpackage-nonreg">
     <eClassifiers xsi:type="ecore:EClass" name="ForFilters">

@@ -14,7 +14,9 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
+
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
+
 import org.eclipse.emf.eef.nonreg.modelNavigation.*;
 
 /**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregSwitch.java,v 1.4 2009/06/17 13:31:23 sbouchet Exp $
+ * $Id: NonregSwitch.java,v 1.5 2009/06/24 16:33:37 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.util;
 
@@ -10,16 +10,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
+
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
+
 import org.eclipse.emf.eef.nonreg.*;
-import org.eclipse.emf.eef.nonreg.Access;
-import org.eclipse.emf.eef.nonreg.EclipseSummit;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.Site;
-import org.eclipse.emf.eef.nonreg.Talk;
-import org.eclipse.emf.eef.nonreg.Topic;
 
 /**
  * <!-- begin-user-doc -->
@@ -143,6 +139,12 @@ public class NonregSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case NonregPackage.ADRESS: {
+				Adress adress = (Adress)theEObject;
+				T result = caseAdress(adress);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -249,6 +251,21 @@ public class NonregSwitch<T> {
 	 * @generated
 	 */
 	public T caseCompany(Company object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Adress</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Adress</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdress(Adress object) {
 		return null;
 	}
 

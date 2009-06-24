@@ -24,8 +24,8 @@ import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
 import org.eclipse.emf.eef.nonreg.modelNavigation.Source;
 import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
-
 import org.eclipse.emf.eef.nonreg.modelNavigation.modelNavRoot;
+
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
 
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.impl.SubPackageNonRegForFiltersPackageImpl;

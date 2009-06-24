@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
+
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 
 import org.eclipse.emf.eef.nonreg.NonregPackage;
@@ -20,7 +21,9 @@ import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.impl.NonregPackageImpl;
 
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+
 import org.eclipse.emf.eef.nonreg.modelNavigation.impl.ModelNavigationPackageImpl;
+
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersFactory;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;

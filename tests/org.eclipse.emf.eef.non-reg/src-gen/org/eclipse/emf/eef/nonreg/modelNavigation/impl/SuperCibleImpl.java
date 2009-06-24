@@ -9,7 +9,6 @@ package org.eclipse.emf.eef.nonreg.modelNavigation.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.eef.middle.middlenonreg.impl.NamedElementImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;

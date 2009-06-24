@@ -9,6 +9,7 @@ package org.eclipse.emf.eef.nonreg.modelNavigation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 
 /**
@@ -187,7 +188,6 @@ public interface ModelNavigationPackage extends EPackage {
 	 * @ordered
 	 */
 	int REAL_CIBLE_FEATURE_COUNT = SUPER_CIBLE_FEATURE_COUNT + 1;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.nonreg.modelNavigation.impl.ConcreteCibleImpl <em>Concrete Cible</em>}' class.
