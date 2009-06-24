@@ -22,9 +22,9 @@
 # Generated with Acceleo
 #
 
-#[protected ('for titles customization')]
+# [protected ('for titles customization')]
 
-#[/protected]
+# [/protected]
 
 # default values ...
 [for (group : ViewElement | viewsRepository.eAllContents(views::Container)) ? (group.representation.name = 'Group')]
