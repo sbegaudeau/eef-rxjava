@@ -312,6 +312,15 @@
 [/if]
 [/template]
 
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+[comment no filters for multiValuedEditor /]
+[/template]
+
 [comment ===== Case : model = Reference(1) - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
@@ -335,6 +344,8 @@
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+			// set the button mode
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.BROWSE);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and editionElement.representationName('EObjectFlatComboViewer'))]
@@ -389,7 +400,6 @@
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]
 			if ([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/] == null) {
-				//cc.append(RemoveCommand.create(editingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], [modelName/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()));
 				cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], null));
 			} else if ([modelName/].eGet([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/]) == null || ![modelName/].eGet([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/]).equals([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])) {
 				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
@@ -410,6 +420,8 @@
 				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, (([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
 			else 
 				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, null);
+			// set the button mode
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.BROWSE);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and editionElement.representationName('EObjectFlatComboViewer'))]
@@ -615,9 +627,14 @@
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
 					
-					// [protected (' for '.concat(editionElement.name).concat(' live update command'))]
+					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					// TODO: Complete the [modelName/] update command
-					// [/protected]
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					[comment]// [/protected][/comment]
 					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
@@ -636,12 +653,18 @@
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
 				
-				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))]
+				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
 				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
 				
-				// [/protected]
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
+					}
+				}
+				
+				[comment]// [/protected][/comment]
 				
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
@@ -699,9 +722,14 @@
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
 					
-					// [protected (' for '.concat(editionElement.name).concat(' live update command'))]
+					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					// TODO: Complete the [modelName/] update command
-					// [/protected]
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					[comment]// [/protected][/comment]
 					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
@@ -722,13 +750,18 @@
 			}
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
-				
-				// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))]
+				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
 				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
 				
-				// [/protected]
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
+					}
+				}
+				
+				[comment]// [/protected][/comment]
 				
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
@@ -866,6 +899,59 @@
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+[/template]
+
+[comment ===== Case : model = Containment(1) - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]
+			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]
+			if ([modelName/].eGet([editionElement.metamodelGetter()/]) == null || ![modelName/].eGet([editionElement.metamodelGetter()/]).equals([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])) {
+				cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+			}
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+			// set the button mode
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.CREATE);
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and editionElement.representationName('EObjectFlatComboViewer'))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+
+				}
+
+			});
+[for (filter : BindingFilter | editionElement.bindingFilters)]
+[filter.filterBody(editionElement,view,pec)/]
+[/for]
+			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+			
+			// [/protected]
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and editionElement.representationName('AdvancedEObjectFlatComboViewer'))]
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [/template]
 
 [comment ===== Case : model = any - view = any NEED TO BE THE LAST CHOICE ===== /]

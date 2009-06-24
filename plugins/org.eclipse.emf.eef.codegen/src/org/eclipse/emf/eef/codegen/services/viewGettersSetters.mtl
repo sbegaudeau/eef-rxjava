@@ -217,6 +217,9 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.setterSignatureDocumentation()/]
 [elementEditor.setterSignature()/];
 
+[elementEditor.setterButtonModeSignatureDocumentation()/]
+[elementEditor.setterButtonModeSignature()/];
+
 [elementEditor.addFilterSignatureDocumentation()/]
 [elementEditor.addFilterSignature()/];
 
@@ -244,6 +247,10 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	public void [elementEditor.viewCompletePackageSetter()/]
 [/template]
 
+[template public setterButtonModeSignature(elementEditor : ElementEditor)]
+	public void [elementEditor.viewPackageSetter()/]ButtonMode(ButtonsModeEnum newValue)
+[/template]
+
 [template public updateSignature(elementEditor : ElementEditor)]
 	public void update[elementEditor.viewPackageSignature()/](EObject newValue)
 [/template]
@@ -264,6 +271,13 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	/**
 	 * Defines a new [elementEditor.name/]
 	 * @param newValue the new [elementEditor.name/] to set
+	 */
+[/template]
+
+[template public setterButtonModeSignatureDocumentation(elementEditor : ElementEditor)]
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
 	 */
 [/template]
 
@@ -674,6 +688,9 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.setterSignatureImplementation()/]
 
+[setterButtonModeSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.setterButtonModeSignatureImplementation()/]
+
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.addFilterSignatureImplementation()/]
 
@@ -692,10 +709,10 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.addFilterSignatureImplementation()/]
 [/template]
 
-[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('Combo'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](allResources, current);	
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](allResources, current);
 	}
 
 [setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -712,7 +729,35 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.addBusinessFilterSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
 	}
-	
+
+[/template]
+
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
+[initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.initSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](allResources, current);
+	}
+
+[setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.setterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](newValue);
+	}
+
+[setterButtonModeSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.setterButtonModeSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/]ButtonMode(newValue);
+	}
+
+[addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.addFilterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addFilterTo[elementEditor.viewPackageSignature()/](filter);
+	}
+
+[addBusinessFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.addBusinessFilterSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
+	}
+
 [/template]
 
 [template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
@@ -765,7 +810,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public setterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue);
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
 		} else {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
@@ -815,6 +860,12 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	}
 [/template]
 
+[template public setterButtonModeSignatureImplementation(elementEditor : ElementEditor)]
+[elementEditor.setterButtonModeSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/].setButtonMode(newValue);
+	}
+[/template]
+
 [template public updateSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
 	/**
 	 * {@inheritDoc}
@@ -825,7 +876,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public updateSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.updateSignature()/] {
-		if([elementEditor.name.toJavaIdentifier()/]EditUtil!=null){
+		if([elementEditor.name.toJavaIdentifier()/]EditUtil != null){
 			[elementEditor.name.toJavaIdentifier()/]EditUtil.reinit(newValue);
 			[elementEditor.name.toJavaIdentifier()/].refresh();
 		}
@@ -862,6 +913,14 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	}
 [/template]
 
+[template public setterButtonModeSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageSetter()/]ButtonMode(ButtonsModeEnum newValue)
+	 */
+[/template]
+
 [template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
 	/**
 	 * {@inheritDoc}
@@ -870,11 +929,22 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 */
 [/template]
 
-[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('Combo'))]
 [elementEditor.initSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/].setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+		}
+	}
+[/template]
+
+[template public initSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
+[elementEditor.initSignature()/] {
+		[elementEditor.name.toJavaIdentifier()/].setInput(allResources);
+		if (current != null) {
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+			[elementEditor.name.toJavaIdentifier()/].setMainResource(current.eResource());
+		}
 	}
 [/template]
 

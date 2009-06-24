@@ -120,6 +120,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EMFComboViewer')->notEmpty() or element.views->select(representation.name = 'EObjectFlatComboViewer')->notEmpty() or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->notEmpty())]
 import [element.model.eType.qualifiedName(basePackage)/];
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 [/for]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select(views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty()))]
 import [pee.model.eType.qualifiedName(basePackage)/];
