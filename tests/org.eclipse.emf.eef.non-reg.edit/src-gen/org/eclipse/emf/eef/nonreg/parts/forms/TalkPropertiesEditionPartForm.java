@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -341,8 +342,9 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 */
 	public void initPresenter(ResourceSet allResources, EObject current) {
 		presenter.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			presenter.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -356,6 +358,15 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		} else {
 			presenter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#setPresenterButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setPresenterButtonMode(ButtonsModeEnum newValue) {
+		presenter.setButtonMode(newValue);
 	}
 
 	/**
@@ -401,8 +412,9 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 */
 	public void initCreator(ResourceSet allResources, EObject current) {
 		creator.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			creator.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**

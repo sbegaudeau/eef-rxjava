@@ -7,6 +7,7 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -33,6 +34,12 @@ public interface SourcePropertiesEditionPart {
 	 * @param newValue the new AdvancedUniqueRef to set
 	 */
 	public void setAdvancedUniqueRef(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setAdvancedUniqueRefButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the AdvancedUniqueRef edition editor.

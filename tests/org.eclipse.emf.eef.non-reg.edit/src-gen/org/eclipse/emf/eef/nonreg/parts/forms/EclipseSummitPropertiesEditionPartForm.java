@@ -358,7 +358,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	 * @see org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart#updateSites(EObject newValue)
 	 */
 	public void updateSites(EObject newValue) {
-		if(sitesEditUtil!=null){
+		if(sitesEditUtil != null){
 			sitesEditUtil.reinit(newValue);
 			sites.refresh();
 		}

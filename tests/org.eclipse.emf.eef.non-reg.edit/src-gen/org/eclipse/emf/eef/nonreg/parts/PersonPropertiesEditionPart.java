@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -191,6 +192,12 @@ public interface PersonPropertiesEditionPart {
 	 * @param newValue the new workFor to set
 	 */
 	public void setWorkFor(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setWorkForButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the workFor edition editor.

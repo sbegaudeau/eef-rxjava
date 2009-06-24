@@ -10,6 +10,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -36,6 +37,12 @@ public interface TestFilterPropertiesEditionPart {
 	 * @param newValue the new testEOFCV to set
 	 */
 	public void setTestEOFCV(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setTestEOFCVButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the testEOFCV edition editor.
@@ -132,6 +139,12 @@ public interface TestFilterPropertiesEditionPart {
 	 * @param newValue the new testAEOFCV to set
 	 */
 	public void setTestAEOFCV(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setTestAEOFCVButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the testAEOFCV edition editor.

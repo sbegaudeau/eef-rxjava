@@ -15,6 +15,8 @@ public class NonregMessages extends NLS {
 
 	public static String PersonPropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String CompanyPropertiesEditionPart_PropertiesGroupLabel;
+
 	public static String TalkPropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String TopicPropertiesEditionPart_PropertiesGroupLabel;
@@ -22,6 +24,8 @@ public class NonregMessages extends NLS {
 	public static String PresencePropertiesEditionPart_PresenceGroupLabel;
 
 	public static String AccessPropertiesEditionPart_PeriodGroupLabel;
+
+	public static String AdressPropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String TestFilterPropertiesEditionPart_GroupGroupLabel;
 
@@ -40,6 +44,8 @@ public class NonregMessages extends NLS {
 	public static String Site_ReadOnly;
 
 	public static String Access_ReadOnly;
+
+	public static String Adress_ReadOnly;
 
 	public static String TestFilter_ReadOnly;
 
@@ -71,6 +77,8 @@ public class NonregMessages extends NLS {
 
 	public static String PersonPropertiesEditionPart_WorkForLabel;
 
+	public static String CompanyPropertiesEditionPart_AdressLabel;
+
 	public static String TalkPropertiesEditionPart_TitleLabel;
 
 	public static String TalkPropertiesEditionPart_TypeLabel;
@@ -84,6 +92,8 @@ public class NonregMessages extends NLS {
 	public static String PresencePropertiesEditionPart_AssistsLabel;
 
 	public static String AccessPropertiesEditionPart_PeriodLabel;
+
+	public static String AdressPropertiesEditionPart_PostalCodeLabel;
 
 	public static String TestFilterPropertiesEditionPart_TestEOFCVLabel;
 

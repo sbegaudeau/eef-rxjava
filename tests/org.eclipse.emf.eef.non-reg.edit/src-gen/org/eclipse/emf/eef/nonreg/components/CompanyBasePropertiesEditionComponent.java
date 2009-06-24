@@ -16,10 +16,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.Adress;
 import org.eclipse.emf.eef.nonreg.Company;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.parts.CompanyPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -27,9 +30,11 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 
 // End of user code
@@ -83,6 +88,8 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 				if (basePart == null)
 					CompanyBasePropertiesEditionComponent.this.dispose();
 				else {
+					if (NonregPackage.eINSTANCE.getCompany_Adress().equals(msg.getFeature()) && basePart != null)
+						basePart.setAdress((EObject)msg.getNewValue());
 
 
 
@@ -154,8 +161,12 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			Company company = (Company)elt;
 			// init values
+			basePart.initAdress(allResource, company.getAdress());
+			// set the button mode
+			basePart.setAdressButtonMode(ButtonsModeEnum.CREATE);
 			
 			// init filters
+			basePart.addFilterToAdress(new EObjectFilter(NonregPackage.eINSTANCE.getAdress()));
 		}
 		// init values for referenced views
 
@@ -172,6 +183,7 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -181,6 +193,9 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (company != null) {
+			if (company.eGet(NonregPackage.eINSTANCE.getCompany_Adress()) == null || !company.eGet(NonregPackage.eINSTANCE.getCompany_Adress()).equals(basePart.getAdress())) {
+				cc.append(SetCommand.create(editingDomain, company, NonregPackage.eINSTANCE.getCompany_Adress(), basePart.getAdress()));
+			}
 
 
 
@@ -199,6 +214,7 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Company) {
 			Company companyToUpdate = (Company)source;
+			companyToUpdate.setAdress((Adress)basePart.getAdress());
 
 
 
@@ -217,6 +233,8 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
+			if (NonregViewsRepository.Company.adress == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, company, NonregPackage.eINSTANCE.getCompany_Adress(), event.getNewValue()));
 
 
 
@@ -227,7 +245,9 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
+
 			} else {
+
 
 
 

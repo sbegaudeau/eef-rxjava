@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -224,12 +225,19 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 			Map sitesToRefreshFromSites = basePart.getSitesToEdit();
 			for (Iterator iter = sitesToRefreshFromSites.keySet().iterator(); iter.hasNext();) {
 				
-				// Start of user code for sites reference refreshment from sites
+				
 				
 				Site nextElement = (Site) iter.next();
 				Site sites = (Site) sitesToRefreshFromSites.get(nextElement);
 				
-				// End of user code				
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, sites.eGet(feature)));
+					}
+				}
+				
+				
+				
 			}
 			List sitesToRemoveFromSites = basePart.getSitesToRemove();
 			for (Iterator iter = sitesToRemoveFromSites.iterator(); iter.hasNext();)
@@ -284,9 +292,15 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					Site oldValue = (Site)event.getOldValue();
 					Site newValue = (Site)event.getNewValue();
 					
-					// Start of user code for sites live update command
+					
 					// TODO: Complete the eclipseSummit update command
-					// End of user code					
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					
+					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, eclipseSummit, NonregPackage.eINSTANCE.getEclipseSummit_Sites(), event.getNewValue()));

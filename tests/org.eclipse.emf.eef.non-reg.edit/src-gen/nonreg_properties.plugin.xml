@@ -76,7 +76,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Presence"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.nonreg.section.Person">
              <input
@@ -84,7 +84,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Presence"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.nonreg.section.Person">
              <input
@@ -161,6 +161,14 @@
                id="org.eclipse.emf.eef.nonreg.section.Company">
              <input
                     type="org.eclipse.emf.eef.nonreg.Company">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Adress">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Adress">
              </input>
          </propertySection>
          <propertySection

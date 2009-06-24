@@ -17,22 +17,28 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.nonreg.Company;
+import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.Person;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -82,7 +88,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	protected Button removeAccreditations;
 	protected List<ViewerFilter> accreditationsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> accreditationsFilters = new ArrayList<ViewerFilter>();
-	protected AdvancedEObjectFlatComboViewer workFor;
+	protected AdvancedEObjectFlatComboViewer<Company> workFor;
 	protected ViewerFilter workForFilter;
 
 
@@ -491,33 +497,34 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @param propertiesGroup
 	 */
 	protected void createWorkForFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		Label workForLabel = FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_WorkForLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.workFor, NonregViewsRepository.FORM_KIND));
-		
-		workFor = new AdvancedEObjectFlatComboViewer<Company>(NonregMessages.PersonPropertiesEditionPart_WorkForLabel, 
-			resourceSet, workForFilter, NonregPackage.eINSTANCE.getCompany(), new EObjectFlatComboViewerListener<Company>(){
+		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_WorkForLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.workFor, NonregViewsRepository.FORM_KIND));
+		// create callback listener
+		EObjectFlatComboViewerListener<Company> listener = new EObjectFlatComboViewerListener<Company>(){
 			public void handleSet(Company element){
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.workFor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
 			public void navigateTo(Company element){ }
-		}){
-			@Override
-			protected void browseButtonPressed() {
-				TabElementTreeSelectionDialog<Company> dialog = new TabElementTreeSelectionDialog<Company>(input, filters,
-						brFilters, NonregMessages.PersonPropertiesEditionPart_WorkForLabel, NonregPackage.eINSTANCE.getCompany(), current.eResource()) {
-					@Override
-					public void process(IStructuredSelection selection) {
-						if (selection != null && !selection.isEmpty()) {
-							handleSelection((Company) selection.getFirstElement());
-						}
+			
+			public Company handleCreate() {
+				Company eObject = NonregFactory.eINSTANCE.createCompany();
+				if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null)
+					eObject = ((Person)current).getWorkFor();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.workFor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
 					}
-				};
-				// Select the actual element in dialog
-				if (selection != null) {
-					dialog.setSelection(new StructuredSelection(selection));
+					return (Company)propertiesEditionObject;
 				}
-				dialog.open();
+				return null;
 			}
+			
 		};
+		//create widget
+		workFor = new AdvancedEObjectFlatComboViewer<Company>(NonregMessages.PersonPropertiesEditionPart_WorkForLabel, 
+			resourceSet, workForFilter, NonregPackage.eINSTANCE.getCompany(), listener);
 		workFor.createControls(parent, widgetFactory);
 		GridData workForData = new GridData(GridData.FILL_HORIZONTAL);
 		workFor.setLayoutData(workForData);
@@ -756,7 +763,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#updateAccreditations(EObject newValue)
 	 */
 	public void updateAccreditations(EObject newValue) {
-		if(accreditationsEditUtil!=null){
+		if(accreditationsEditUtil != null){
 			accreditationsEditUtil.reinit(newValue);
 			accreditations.refresh();
 		}
@@ -809,8 +816,10 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 */
 	public void initWorkFor(ResourceSet allResources, EObject current) {
 		workFor.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			workFor.setSelection(new StructuredSelection(current));
+			workFor.setMainResource(current.eResource());
+		}
 	}
 
 	/**
@@ -820,10 +829,19 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 */
 	public void setWorkFor(EObject newValue) {
 		if (newValue != null) {
-			workFor.setSelection(newValue);
+			workFor.setSelection(new StructuredSelection(newValue));
 		} else {
 			workFor.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#setWorkForButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setWorkForButtonMode(ButtonsModeEnum newValue) {
+		workFor.setButtonMode(newValue);
 	}
 
 	/**

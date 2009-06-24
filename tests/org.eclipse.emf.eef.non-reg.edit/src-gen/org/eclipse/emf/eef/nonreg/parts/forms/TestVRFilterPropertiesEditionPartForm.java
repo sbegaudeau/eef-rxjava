@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -117,7 +118,7 @@ public class TestVRFilterPropertiesEditionPartForm extends CompositePropertiesEd
 	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestVRFilterPropertiesEditionPart#initTestEOFCV(ResourceSet allResources, EObject current)
 	 */
 	public void initTestEOFCV(ResourceSet allResources, EObject current) {
-		testFilterPropertiesEditionPart.initTestEOFCV(allResources, current);	
+		testFilterPropertiesEditionPart.initTestEOFCV(allResources, current);
 	}
 
 	/**
@@ -127,6 +128,15 @@ public class TestVRFilterPropertiesEditionPartForm extends CompositePropertiesEd
 	 */
 	public void setTestEOFCV(EObject newValue) {
 		testFilterPropertiesEditionPart.setTestEOFCV(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestVRFilterPropertiesEditionPart#setTestEOFCVButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setTestEOFCVButtonMode(ButtonsModeEnum newValue) {
+		testFilterPropertiesEditionPart.setTestEOFCVButtonMode(newValue);
 	}
 
 	/**
@@ -146,7 +156,7 @@ public class TestVRFilterPropertiesEditionPartForm extends CompositePropertiesEd
 	public void addBusinessFilterToTestEOFCV(ViewerFilter filter) {
 		testFilterPropertiesEditionPart.addBusinessFilterToTestEOFCV(filter);
 	}
-	
+
 
 
 
@@ -241,7 +251,7 @@ public class TestVRFilterPropertiesEditionPartForm extends CompositePropertiesEd
 	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestVRFilterPropertiesEditionPart#initTestAEOFCV(ResourceSet allResources, EObject current)
 	 */
 	public void initTestAEOFCV(ResourceSet allResources, EObject current) {
-		testFilterPropertiesEditionPart.initTestAEOFCV(allResources, current);	
+		testFilterPropertiesEditionPart.initTestAEOFCV(allResources, current);
 	}
 
 	/**
@@ -251,6 +261,15 @@ public class TestVRFilterPropertiesEditionPartForm extends CompositePropertiesEd
 	 */
 	public void setTestAEOFCV(EObject newValue) {
 		testFilterPropertiesEditionPart.setTestAEOFCV(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestVRFilterPropertiesEditionPart#setTestAEOFCVButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setTestAEOFCVButtonMode(ButtonsModeEnum newValue) {
+		testFilterPropertiesEditionPart.setTestAEOFCVButtonMode(newValue);
 	}
 
 	/**
@@ -270,7 +289,7 @@ public class TestVRFilterPropertiesEditionPartForm extends CompositePropertiesEd
 	public void addBusinessFilterToTestAEOFCV(ViewerFilter filter) {
 		testFilterPropertiesEditionPart.addBusinessFilterToTestAEOFCV(filter);
 	}
-	
+
 
 
 

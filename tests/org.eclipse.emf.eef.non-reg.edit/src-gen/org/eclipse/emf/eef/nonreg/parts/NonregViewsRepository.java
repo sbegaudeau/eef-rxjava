@@ -51,6 +51,9 @@ public class NonregViewsRepository {
 	 * Company view descriptor
 	 */
 	public static class Company {
+		public static String adress = "nonreg::Company::Adress";	
+
+
 
 
 	}
@@ -105,6 +108,15 @@ public class NonregViewsRepository {
 	 */
 	public static class Access {
 		public static String period = "nonreg::Access::period";	
+
+
+	}
+
+	/**
+	 * Adress view descriptor
+	 */
+	public static class Adress {
+		public static String postalCode = "nonreg::Adress::postalCode";	
 
 
 	}

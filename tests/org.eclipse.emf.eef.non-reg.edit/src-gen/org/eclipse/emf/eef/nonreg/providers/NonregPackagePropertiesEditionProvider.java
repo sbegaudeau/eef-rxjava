@@ -27,6 +27,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createSitePropertiesEditionProvider());
 		append(createAccessPropertiesEditionProvider());
 		append(createCompanyPropertiesEditionProvider());
+		append(createAdressPropertiesEditionProvider());
 		append(createTestFilterFlatComboPropertiesEditionProvider());
 		append(createTestFilterForReferenceTablesPropertiesEditionProvider());
 		append(createTestFilterForRVPropertiesEditionProvider());
@@ -137,6 +138,21 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		if (companyPropertiesEditionProvider == null)
 			companyPropertiesEditionProvider = new CompanyPropertiesEditionProvider();
 		return companyPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Adress instances.
+	 */
+	protected AdressPropertiesEditionProvider adressPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Adress
+	 */
+	public AdressPropertiesEditionProvider createAdressPropertiesEditionProvider() {
+		if (adressPropertiesEditionProvider == null)
+			adressPropertiesEditionProvider = new AdressPropertiesEditionProvider();
+		return adressPropertiesEditionProvider;
 	}
 	
 	/**

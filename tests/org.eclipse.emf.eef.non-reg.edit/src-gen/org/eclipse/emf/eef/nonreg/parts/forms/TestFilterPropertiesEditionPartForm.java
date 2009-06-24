@@ -16,11 +16,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
+import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregFactory;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -32,6 +34,7 @@ import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -75,7 +78,7 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	protected ReferencesTable<?> testART;
 	protected List<ViewerFilter> testARTBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> testARTFilters = new ArrayList<ViewerFilter>();
-	protected AdvancedEObjectFlatComboViewer testAEOFCV;
+	protected AdvancedEObjectFlatComboViewer<NamedElement> testAEOFCV;
 	protected ViewerFilter testAEOFCVFilter;
 	protected EMFListEditUtil testRTEditUtil;
 	protected TableViewer testRT;
@@ -249,33 +252,34 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	 * @param groupGroup
 	 */
 	protected void createTestAEOFCVFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		Label testAEOFCVLabel = FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.TestFilterPropertiesEditionPart_TestAEOFCVLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.TestFilter.testAEOFCV, NonregViewsRepository.FORM_KIND));
-		
-		testAEOFCV = new AdvancedEObjectFlatComboViewer<NamedElement>(NonregMessages.TestFilterPropertiesEditionPart_TestAEOFCVLabel, 
-			resourceSet, testAEOFCVFilter, MiddlenonregPackage.eINSTANCE.getNamedElement(), new EObjectFlatComboViewerListener<NamedElement>(){
+		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.TestFilterPropertiesEditionPart_TestAEOFCVLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.TestFilter.testAEOFCV, NonregViewsRepository.FORM_KIND));
+		// create callback listener
+		EObjectFlatComboViewerListener<NamedElement> listener = new EObjectFlatComboViewerListener<NamedElement>(){
 			public void handleSet(NamedElement element){
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TestFilterPropertiesEditionPartForm.this, NonregViewsRepository.TestFilter.testAEOFCV, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
 			public void navigateTo(NamedElement element){ }
-		}){
-			@Override
-			protected void browseButtonPressed() {
-				TabElementTreeSelectionDialog<NamedElement> dialog = new TabElementTreeSelectionDialog<NamedElement>(input, filters,
-						brFilters, NonregMessages.TestFilterPropertiesEditionPart_TestAEOFCVLabel, MiddlenonregPackage.eINSTANCE.getNamedElement(), current.eResource()) {
-					@Override
-					public void process(IStructuredSelection selection) {
-						if (selection != null && !selection.isEmpty()) {
-							handleSelection((NamedElement) selection.getFirstElement());
-						}
+			
+			public NamedElement handleCreate() {
+				NamedElement eObject = MiddlenonregFactory.eINSTANCE.createNamedElement();
+				if (current != null && current instanceof ForFilters && ((ForFilters)current).getEOFCV() != null)
+					eObject = ((ForFilters)current).getEOFCV();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TestFilterPropertiesEditionPartForm.this, NonregViewsRepository.TestFilter.testAEOFCV, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
 					}
-				};
-				// Select the actual element in dialog
-				if (selection != null) {
-					dialog.setSelection(new StructuredSelection(selection));
+					return (NamedElement)propertiesEditionObject;
 				}
-				dialog.open();
+				return null;
 			}
+			
 		};
+		//create widget
+		testAEOFCV = new AdvancedEObjectFlatComboViewer<NamedElement>(NonregMessages.TestFilterPropertiesEditionPart_TestAEOFCVLabel, 
+			resourceSet, testAEOFCVFilter, MiddlenonregPackage.eINSTANCE.getNamedElement(), listener);
 		testAEOFCV.createControls(parent, widgetFactory);
 		GridData testAEOFCVData = new GridData(GridData.FILL_HORIZONTAL);
 		testAEOFCV.setLayoutData(testAEOFCVData);
@@ -452,8 +456,9 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	 */
 	public void initTestEOFCV(ResourceSet allResources, EObject current) {
 		testEOFCV.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			testEOFCV.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -467,6 +472,15 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 		} else {
 			testEOFCV.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestFilterPropertiesEditionPart#setTestEOFCVButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setTestEOFCVButtonMode(ButtonsModeEnum newValue) {
+		testEOFCV.setButtonMode(newValue);
 	}
 
 	/**
@@ -540,7 +554,7 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestFilterPropertiesEditionPart#updateTestART(EObject newValue)
 	 */
 	public void updateTestART(EObject newValue) {
-		if(testARTEditUtil!=null){
+		if(testARTEditUtil != null){
 			testARTEditUtil.reinit(newValue);
 			testART.refresh();
 		}
@@ -593,8 +607,10 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	 */
 	public void initTestAEOFCV(ResourceSet allResources, EObject current) {
 		testAEOFCV.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			testAEOFCV.setSelection(new StructuredSelection(current));
+			testAEOFCV.setMainResource(current.eResource());
+		}
 	}
 
 	/**
@@ -604,10 +620,19 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	 */
 	public void setTestAEOFCV(EObject newValue) {
 		if (newValue != null) {
-			testAEOFCV.setSelection(newValue);
+			testAEOFCV.setSelection(new StructuredSelection(newValue));
 		} else {
 			testAEOFCV.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestFilterPropertiesEditionPart#setTestAEOFCVButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setTestAEOFCVButtonMode(ButtonsModeEnum newValue) {
+		testAEOFCV.setButtonMode(newValue);
 	}
 
 	/**
@@ -681,7 +706,7 @@ public class TestFilterPropertiesEditionPartForm extends CompositePropertiesEdit
 	 * @see org.eclipse.emf.eef.subPackageNonRegForFilters.parts.TestFilterPropertiesEditionPart#updateTestRT(EObject newValue)
 	 */
 	public void updateTestRT(EObject newValue) {
-		if(testRTEditUtil!=null){
+		if(testRTEditUtil != null){
 			testRTEditUtil.reinit(newValue);
 			testRT.refresh();
 		}

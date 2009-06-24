@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.nonreg.parts.forms.SitePropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.SitePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.AccessPropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.AccessPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.forms.AdressPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.AdressPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.TestFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.nonreg.parts.impl.TestFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.nonreg.parts.forms.TestVRFilterPropertiesEditionPartForm;
@@ -99,6 +101,12 @@ public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPa
 				return new AccessPropertiesEditionPartImpl(component);
 			if (kind == NonregViewsRepository.FORM_KIND)
 				return new AccessPropertiesEditionPartForm(component);
+		}
+		if (key == NonregViewsRepository.Adress.class) {
+			if (kind == NonregViewsRepository.SWT_KIND)
+				return new AdressPropertiesEditionPartImpl(component);
+			if (kind == NonregViewsRepository.FORM_KIND)
+				return new AdressPropertiesEditionPartForm(component);
 		}
 		if (key == NonregViewsRepository.TestFilter.class) {
 			if (kind == NonregViewsRepository.SWT_KIND)

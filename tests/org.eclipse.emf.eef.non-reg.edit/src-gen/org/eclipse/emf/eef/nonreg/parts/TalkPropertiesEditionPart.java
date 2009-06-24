@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -74,6 +75,12 @@ public interface TalkPropertiesEditionPart {
 	 * @param newValue the new presenter to set
 	 */
 	public void setPresenter(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setPresenterButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the presenter edition editor.

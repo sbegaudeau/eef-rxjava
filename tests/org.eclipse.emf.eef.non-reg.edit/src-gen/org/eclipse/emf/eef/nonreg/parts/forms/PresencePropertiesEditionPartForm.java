@@ -240,7 +240,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#updateAssists(EObject newValue)
 	 */
 	public void updateAssists(EObject newValue) {
-		if(assistsEditUtil!=null){
+		if(assistsEditUtil != null){
 			assistsEditUtil.reinit(newValue);
 			assists.refresh();
 		}

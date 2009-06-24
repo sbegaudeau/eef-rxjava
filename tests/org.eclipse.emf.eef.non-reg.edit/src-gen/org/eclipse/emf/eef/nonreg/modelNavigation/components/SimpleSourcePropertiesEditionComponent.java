@@ -35,6 +35,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 // End of user code
 /**
@@ -167,6 +168,8 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 				sourcePart.initAdvancedUniqueRef(allResource, ((RealCible)source.getUniqueRef()).getRef());
 			else 
 				sourcePart.initAdvancedUniqueRef(allResource, null);
+			// set the button mode
+			sourcePart.setAdvancedUniqueRefButtonMode(ButtonsModeEnum.BROWSE);
 			
 			// init filters
 			sourcePart.addFilterToAdvancedUniqueRef(new EObjectFilter(ModelNavigationPackage.eINSTANCE.getSuperCible()));
@@ -192,7 +195,6 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 		CompoundCommand cc = new CompoundCommand();
 		if (source != null) {
 			if (sourcePart.getAdvancedUniqueRef() == null) {
-				//cc.append(RemoveCommand.create(editingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), source.getUniqueRef()));
 				cc.append(SetCommand.create(editingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), null));
 			} else if (source.eGet(ModelNavigationPackage.eINSTANCE.getSource_UniqueRef()) == null || !source.eGet(ModelNavigationPackage.eINSTANCE.getSource_UniqueRef()).equals(sourcePart.getAdvancedUniqueRef())) {
 				RealCible realCible = ModelNavigationFactory.eINSTANCE.createRealCible();

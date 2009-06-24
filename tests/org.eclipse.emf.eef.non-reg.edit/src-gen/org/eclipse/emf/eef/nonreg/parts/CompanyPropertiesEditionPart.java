@@ -5,7 +5,11 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -13,6 +17,52 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
  * 
  */
 public interface CompanyPropertiesEditionPart {
+
+	/**
+	 * @return the Adress
+	 */
+	public EObject getAdress();
+
+	/**
+	 * Init the Adress
+	 * @param allResources the ResourceSet where the widget have to process
+	 * @param current the current value
+	 */
+	public void initAdress(ResourceSet allResources, EObject current);
+
+	/**
+	 * Defines a new Adress
+	 * @param newValue the new Adress to set
+	 */
+	public void setAdress(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setAdressButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the Adress edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToAdress(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the Adress edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToAdress(ViewerFilter filter);
+
+
+
+
 
 
 

@@ -7,20 +7,25 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
 import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -34,7 +39,7 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SourcePropertiesEditionPart {
 
-	private AdvancedEObjectFlatComboViewer advancedUniqueRef;
+	private AdvancedEObjectFlatComboViewer<SuperCible> advancedUniqueRef;
 	protected ViewerFilter advancedUniqueRefFilter;
 
 
@@ -82,34 +87,32 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 */
 	protected void createAdvancedUniqueRefAdvancedFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.SourcePropertiesEditionPart_AdvancedUniqueRefLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Source.advancedUniqueRef, NonregViewsRepository.SWT_KIND));
-		advancedUniqueRef = new AdvancedEObjectFlatComboViewer<SuperCible>(NonregMessages.SourcePropertiesEditionPart_AdvancedUniqueRefLabel,
-			resourceSet, advancedUniqueRefFilter, ModelNavigationPackage.eINSTANCE.getSuperCible(), new EObjectFlatComboViewerListener<SuperCible>(){
-
+		// create callback listener
+		EObjectFlatComboViewerListener<SuperCible> listener = new EObjectFlatComboViewerListener<SuperCible>(){
 			public void handleSet(SuperCible element){
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedUniqueRef, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
-
 			public void navigateTo(SuperCible element){ }
-
-		}){
-			@Override
-			protected void browseButtonPressed() {
-				TabElementTreeSelectionDialog<SuperCible> dialog = new TabElementTreeSelectionDialog<SuperCible>(input, filters,
-						brFilters, NonregMessages.SourcePropertiesEditionPart_AdvancedUniqueRefLabel, ModelNavigationPackage.eINSTANCE.getSuperCible(), current.eResource()) {
-					@Override
-					public void process(IStructuredSelection selection) {
-						if (selection != null && !selection.isEmpty()) {
-							handleSelection((SuperCible) selection.getFirstElement());
-						}
+			
+			public SuperCible handleCreate() {
+				SuperCible eObject = ModelNavigationFactory.eINSTANCE.createRealCible();
+				if (current != null && current instanceof RealCible && ((RealCible)current).getRef() != null)
+					eObject = ((RealCible)current).getRef();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedUniqueRef, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
 					}
-				};
-				// Select the actual element in dialog
-				if (selection != null) {
-					dialog.setSelection(new StructuredSelection(selection));
+					return (SuperCible)propertiesEditionObject;
 				}
-				dialog.open();
+				return null;
 			}
 		};
+		//create widget
+		advancedUniqueRef = new AdvancedEObjectFlatComboViewer<SuperCible>(NonregMessages.SourcePropertiesEditionPart_AdvancedUniqueRefLabel,
+			resourceSet, advancedUniqueRefFilter, ModelNavigationPackage.eINSTANCE.getSuperCible(), listener);
 		advancedUniqueRef.createControls(parent);
 		GridData advancedUniqueRefData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedUniqueRef.setLayoutData(advancedUniqueRefData);
@@ -139,8 +142,10 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 */
 	public void initAdvancedUniqueRef(ResourceSet allResources, EObject current) {
 		advancedUniqueRef.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			advancedUniqueRef.setSelection(new StructuredSelection(current));
+			advancedUniqueRef.setMainResource(current.eResource());
+		}
 	}
 
 	/**
@@ -150,10 +155,19 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 */
 	public void setAdvancedUniqueRef(EObject newValue) {
 		if (newValue != null) {
-			advancedUniqueRef.setSelection(newValue);
+			advancedUniqueRef.setSelection(new StructuredSelection(newValue));
 		} else {
 			advancedUniqueRef.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#setAdvancedUniqueRefButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setAdvancedUniqueRefButtonMode(ButtonsModeEnum newValue) {
+		advancedUniqueRef.setButtonMode(newValue);
 	}
 
 	/**

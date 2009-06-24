@@ -38,6 +38,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -167,7 +168,11 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 			ForFilters forFilters = (ForFilters)elt;
 			// init values
 			testFilterPart.initTestEOFCV(allResource, forFilters.getEOFCV());
+			// set the button mode
+			testFilterPart.setTestEOFCVButtonMode(ButtonsModeEnum.BROWSE);
 			testFilterPart.initTestAEOFCV(allResource, forFilters.getEOFCV());
+			// set the button mode
+			testFilterPart.setTestAEOFCVButtonMode(ButtonsModeEnum.BROWSE);
 			
 			// init filters
 			testFilterPart.addFilterToTestEOFCV(new ViewerFilter() {
