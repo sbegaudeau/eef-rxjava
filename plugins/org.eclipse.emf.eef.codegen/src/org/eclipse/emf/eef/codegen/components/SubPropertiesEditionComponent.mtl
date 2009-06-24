@@ -273,8 +273,8 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			// init values
 			[if (view.oclIsKindOf(views::CustomView))]
 			// [protected ('for'.concat(view.name).concat(' custom view initialization'))]
-				
-			//[/protected]
+			
+			// [/protected]
 			[else]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [pee.updater(view, pec)/]
