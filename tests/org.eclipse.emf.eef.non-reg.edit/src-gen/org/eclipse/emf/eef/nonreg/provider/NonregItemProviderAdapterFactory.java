@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregItemProviderAdapterFactory.java,v 1.3 2009/06/17 13:32:03 sbouchet Exp $
+ * $Id: NonregItemProviderAdapterFactory.java,v 1.4 2009/06/24 16:34:22 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -235,6 +235,29 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.nonreg.Adress} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AdressItemProvider adressItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.nonreg.Adress}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAdressAdapter() {
+		if (adressItemProvider == null) {
+			adressItemProvider = new AdressItemProvider(this);
+		}
+
+		return adressItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -340,6 +363,7 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 		if (siteItemProvider != null) siteItemProvider.dispose();
 		if (accessItemProvider != null) accessItemProvider.dispose();
 		if (companyItemProvider != null) companyItemProvider.dispose();
+		if (adressItemProvider != null) adressItemProvider.dispose();
 	}
 
 }
