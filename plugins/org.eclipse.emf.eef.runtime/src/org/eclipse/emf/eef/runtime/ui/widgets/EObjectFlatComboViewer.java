@@ -52,8 +52,10 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 
 	protected Object input;
 
-	public EObjectFlatComboViewer(Composite parent, int style, final boolean nullable) {
-		super(parent, style);
+	private ButtonsModeEnum button_mode;
+
+	public EObjectFlatComboViewer(Composite parent, final boolean nullable) {
+		super(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
 		this.setLayout(layout);
@@ -88,32 +90,38 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			 * org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input, filters
-						.isEmpty() ? null : filters, bpFilters.isEmpty() ? null : bpFilters, nullable, false) {
+				if (button_mode != null) {
+					switch (button_mode) {
+						case BROWSE:
+							EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input,
+									filters.isEmpty() ? null : filters, bpFilters.isEmpty() ? null
+											: bpFilters, nullable, false) {
 
-					public void process(IStructuredSelection selection) {
-						if (selection == null) {
-							selectedElement = null;
-							initComponent();
-							selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
-						} else {
-							selectedElement = selection.getFirstElement();
-							initComponent();
-							if (selectedElement != null)
-								selectionChanged(new StructuredSelection(selectedElement));
-							else
-								selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
-						}
+								public void process(IStructuredSelection selection) {
+									if (selection == null) {
+										selectedElement = null;
+										initComponent();
+										selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
+									} else {
+										selectedElement = selection.getFirstElement();
+										initComponent();
+										if (selectedElement != null)
+											selectionChanged(new StructuredSelection(selectedElement));
+										else
+											selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
+									}
+								}
+							};
+							dialog.open();
+							break;
+
+						default:
+							break;
 					}
-				};
-				dialog.open();
+				}
 			}
 		};
 
-	}
-
-	public EObjectFlatComboViewer(Composite parent, boolean nullable) {
-		this(parent, SWT.NONE, nullable);
 	}
 
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
@@ -188,4 +196,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		filters.remove(filter);
 	}
 
+	public void setButtonMode(ButtonsModeEnum button_mode) {
+		this.button_mode = button_mode;
+	}
 }

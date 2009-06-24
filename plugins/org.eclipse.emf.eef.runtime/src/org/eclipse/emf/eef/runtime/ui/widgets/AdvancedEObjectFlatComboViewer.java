@@ -20,9 +20,15 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -35,7 +41,6 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -57,7 +62,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	/** Image for the add button */
 	protected final org.eclipse.swt.graphics.Image addImage = EMFPropertiesRuntime
 			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "Add_16x16.gif");
-	
+
 	private static final String UNDEFINED_VALUE = "<UNDEFINED>";
 
 	/**
@@ -98,6 +103,12 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	protected List<ViewerFilter> brFilters;
 
+	protected FormToolkit widgetFactory;
+
+	private ButtonsModeEnum button_mode;
+
+	private Resource mainResource;
+
 	/**
 	 * the constructor of this display
 	 * 
@@ -116,8 +127,6 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		this.filters = new ArrayList<ViewerFilter>();
 		this.brFilters = new ArrayList<ViewerFilter>();
 	}
-
-	FormToolkit widgetFactory;
 
 	public void createControls(Composite parent, FormToolkit widgetFactory) {
 		this.widgetFactory = widgetFactory;
@@ -234,16 +243,16 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		return button;
 	}
 
-	private Label createLabel(Composite parent, String text, int style) {
-		Label label;
-		if (widgetFactory == null) {
-			label = new Label(parent, SWT.PUSH);
-			label.setText(text);
-		} else {
-			label = widgetFactory.createLabel(parent, text, style);
-		}
-		return label;
-	}
+	// private Label createLabel(Composite parent, String text, int style) {
+	// Label label;
+	// if (widgetFactory == null) {
+	// label = new Label(parent, SWT.PUSH);
+	// label.setText(text);
+	// } else {
+	// label = widgetFactory.createLabel(parent, text, style);
+	// }
+	// return label;
+	// }
 
 	private Text createText(Composite parent, String value, int style) {
 		Text text;
@@ -264,7 +273,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 				setSelection((T)structuredSelection.getFirstElement());
 			} else {
 				this.valueText.setText(UNDEFINED_VALUE);
-				//this.parent.pack();
+				// this.parent.pack();
 			}
 		}
 	}
@@ -272,8 +281,11 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	public void setSelection(T selection) {
 		this.selection = selection;
 		String text = labelProvider.getText(selection);
-		this.valueText.setText(text);
-		//this.parent.pack();
+		if ("".equals(text))
+			this.valueText.setText(UNDEFINED_VALUE);
+		else
+			this.valueText.setText(text);
+		// this.parent.pack();
 	}
 
 	public T getSelection() {
@@ -284,32 +296,67 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	 * Behavior executed when browse button is pressed.
 	 */
 	protected void browseButtonPressed() {
-		TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input, filters,
-				brFilters, dialogTitle, restrictToEClass) {
-			@SuppressWarnings("unchecked")
-			@Override
-			public void process(IStructuredSelection selection) {
-				if (selection != null && !selection.isEmpty()) {
-					handleSelection((T)selection.getFirstElement());
-				}
+		if (button_mode != null) {
+			switch (button_mode) {
+				case BROWSE:
+					TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input,
+							filters, brFilters, dialogTitle, restrictToEClass, mainResource) {
+						@SuppressWarnings("unchecked")
+						@Override
+						public void process(IStructuredSelection selection) {
+							if (selection != null && !selection.isEmpty()) {
+								handleSelection((T)selection.getFirstElement());
+							}
+						}
+					};
+					// Select the actual element in dialog
+					if (selection != null) {
+						dialog.setSelection(new StructuredSelection(selection));
+					}
+					dialog.open();
+					break;
+				case CREATE:
+					handleCreate();
+					break;
+				default:
+					break;
 			}
-		};
-		// Select the actual element in dialog
-		if (selection != null) {
-			dialog.setSelection(new StructuredSelection(selection));
 		}
-		dialog.open();
 	}
+
+	// protected void browseButtonPressed() {
+	// TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input, filters,
+	// brFilters, dialogTitle, restrictToEClass) {
+	// @SuppressWarnings("unchecked")
+	// @Override
+	// public void process(IStructuredSelection selection) {
+	// if (selection != null && !selection.isEmpty()) {
+	// handleSelection((T)selection.getFirstElement());
+	// }
+	// }
+	// };
+	// // Select the actual element in dialog
+	// if (selection != null) {
+	// dialog.setSelection(new StructuredSelection(selection));
+	// }
+	// dialog.open();
+	// }
 
 	public void handleSelection(T selectedElement) {
 		setSelection(selectedElement);
 		callback.handleSet(selectedElement);
 	}
 
-	public interface EObjectFlatComboViewerListener<T extends EObject> {
-		void handleSet(T element);
+	public void handleCreate() {
+		setSelection(callback.handleCreate());
+	}
 
-		void navigateTo(T element);
+	public interface EObjectFlatComboViewerListener<T extends EObject> {
+		public void handleSet(T element);
+
+		public void navigateTo(T element);
+
+		public T handleCreate();
 	}
 
 	/**
@@ -335,4 +382,13 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	public void removeFilter(ViewerFilter filter) {
 		filters.remove(filter);
 	}
+
+	public void setButtonMode(ButtonsModeEnum button_mode) {
+		this.button_mode = button_mode;
+	}
+
+	public void setMainResource(Resource mainResource) {
+		this.mainResource = mainResource;
+	}
+
 }
