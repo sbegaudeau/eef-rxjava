@@ -42,14 +42,14 @@
                id="testFilter">
          </propertyTab>
          <propertyTab
-               label="testVRFilter"
-               category="extended"
-               id="testVRFilter">
-         </propertyTab>
-         <propertyTab
                label="testFilter"
                category="extended"
                id="testFilter">
+         </propertyTab>
+         <propertyTab
+               label="testVRFilter"
+               category="extended"
+               id="testVRFilter">
          </propertyTab>
          <propertyTab
                label="Source"
@@ -188,7 +188,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="testVRFilter"
+               tab="testFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
              <input
@@ -196,7 +196,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="testFilter"
+               tab="testVRFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
              <input

@@ -166,7 +166,7 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.setAdressButtonMode(ButtonsModeEnum.CREATE);
 			
 			// init filters
-			basePart.addFilterToAdress(new EObjectFilter(NonregPackage.eINSTANCE.getAdress()));
+
 		}
 		// init values for referenced views
 
