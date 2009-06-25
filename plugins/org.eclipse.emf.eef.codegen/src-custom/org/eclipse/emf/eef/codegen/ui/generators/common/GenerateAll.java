@@ -221,6 +221,13 @@ public class GenerateAll {
 				}
 			};
 			gen9.doGenerate(BasicMonitor.toMonitor(monitor));
+			final URI template91 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path("/org/eclipse/emf/eef/codegen/providers/ContextMessagesPropertiesFR.emtl"));
+			org.eclipse.emf.eef.codegen.providers.ContextMessagesPropertiesFR gen91 = new org.eclipse.emf.eef.codegen.providers.ContextMessagesPropertiesFR(model, targetFolder, argumentsEmpty) {
+				protected URI createTemplateURI(String entry) {
+					return template91;
+				}
+			};
+			gen91.doGenerate(BasicMonitor.toMonitor(monitor));
 			monitor.worked(1);
 
 			monitor.subTask("Generating Part provider");
