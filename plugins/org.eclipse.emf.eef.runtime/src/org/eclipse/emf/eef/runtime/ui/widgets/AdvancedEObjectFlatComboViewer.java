@@ -24,11 +24,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -105,7 +100,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	protected FormToolkit widgetFactory;
 
-	private ButtonsModeEnum button_mode;
+	private ButtonsModeEnum button_mode = ButtonsModeEnum.BROWSE;
 
 	private Resource mainResource;
 
@@ -296,7 +291,6 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	 * Behavior executed when browse button is pressed.
 	 */
 	protected void browseButtonPressed() {
-		if (button_mode != null) {
 			switch (button_mode) {
 				case BROWSE:
 					TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input,
@@ -321,7 +315,6 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 				default:
 					break;
 			}
-		}
 	}
 
 	// protected void browseButtonPressed() {

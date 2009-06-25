@@ -52,7 +52,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 
 	protected Object input;
 
-	private ButtonsModeEnum button_mode;
+	private ButtonsModeEnum button_mode = ButtonsModeEnum.BROWSE;
 
 	public EObjectFlatComboViewer(Composite parent, final boolean nullable) {
 		super(parent, SWT.NONE);
@@ -90,34 +90,32 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			 * org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (button_mode != null) {
-					switch (button_mode) {
-						case BROWSE:
-							EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input,
-									filters.isEmpty() ? null : filters, bpFilters.isEmpty() ? null
-											: bpFilters, nullable, false) {
+				switch (button_mode) {
+					case BROWSE:
+						EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input, filters
+								.isEmpty() ? null : filters, bpFilters.isEmpty() ? null : bpFilters,
+								nullable, false) {
 
-								public void process(IStructuredSelection selection) {
-									if (selection == null) {
-										selectedElement = null;
-										initComponent();
+							public void process(IStructuredSelection selection) {
+								if (selection == null) {
+									selectedElement = null;
+									initComponent();
+									selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
+								} else {
+									selectedElement = selection.getFirstElement();
+									initComponent();
+									if (selectedElement != null)
+										selectionChanged(new StructuredSelection(selectedElement));
+									else
 										selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
-									} else {
-										selectedElement = selection.getFirstElement();
-										initComponent();
-										if (selectedElement != null)
-											selectionChanged(new StructuredSelection(selectedElement));
-										else
-											selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
-									}
 								}
-							};
-							dialog.open();
-							break;
+							}
+						};
+						dialog.open();
+						break;
 
-						default:
-							break;
-					}
+					default:
+						break;
 				}
 			}
 		};
