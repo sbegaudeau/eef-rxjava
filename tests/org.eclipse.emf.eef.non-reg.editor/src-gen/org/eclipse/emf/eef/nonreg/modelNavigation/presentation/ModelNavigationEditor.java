@@ -70,7 +70,6 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.eef.ab.abstractnonreg.provider.AbstractnonregItemProviderAdapterFactory;
 import org.eclipse.emf.eef.middle.middlenonreg.provider.MiddlenonregItemProviderAdapterFactory;
 import org.eclipse.emf.eef.nonreg.modelNavigation.provider.ModelNavigationItemProviderAdapterFactory;
-import org.eclipse.emf.eef.nonreg.presentation.NonregEditor;
 import org.eclipse.emf.eef.nonreg.presentation.NonregEditorPlugin;
 import org.eclipse.emf.eef.nonreg.provider.NonregItemProviderAdapterFactory;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.provider.SubPackageNonRegForFiltersItemProviderAdapterFactory;
