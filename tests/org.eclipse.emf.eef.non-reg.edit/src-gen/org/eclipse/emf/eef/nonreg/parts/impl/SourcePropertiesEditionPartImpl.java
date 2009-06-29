@@ -7,6 +7,7 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
@@ -96,16 +97,20 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			
 			public SuperCible handleCreate() {
 				SuperCible eObject = ModelNavigationFactory.eINSTANCE.createRealCible();
-				if (current != null && current instanceof RealCible && ((RealCible)current).getRef() != null)
-					eObject = ((RealCible)current).getRef();
+				if (current != null && current instanceof RealCible && ((RealCible)current).getRef() != null) {
+					eObject = (SuperCible) EcoreUtil.copy(((RealCible)current).getRef());
+				}
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
 					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 					if (propertiesEditionObject != null) {
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedUniqueRef, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
+						return (SuperCible)propertiesEditionObject;
 					}
-					return (SuperCible)propertiesEditionObject;
+					if (current != null && current instanceof RealCible && ((RealCible)current).getRef() != null)
+						return eObject;
+					return null;
 				}
 				return null;
 			}

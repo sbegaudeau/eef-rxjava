@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
@@ -70,7 +71,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	protected EObjectFlatComboViewer testEOFCV;
 	protected EMFListEditUtil testARTEditUtil;
-	protected ReferencesTable<?> testART;
+	protected ReferencesTable<? extends EObject> testART;
 	protected List<ViewerFilter> testARTBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> testARTFilters = new ArrayList<ViewerFilter>();
 	private AdvancedEObjectFlatComboViewer<NamedElement> testAEOFCV;
@@ -223,7 +224,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		
 		EObject editedElement = testARTEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
@@ -249,16 +250,20 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 			
 			public NamedElement handleCreate() {
 				NamedElement eObject = MiddlenonregFactory.eINSTANCE.createNamedElement();
-				if (current != null && current instanceof ForFilters && ((ForFilters)current).getEOFCV() != null)
-					eObject = ((ForFilters)current).getEOFCV();
+				if (current != null && current instanceof ForFilters && ((ForFilters)current).getEOFCV() != null) {
+					eObject = (NamedElement) EcoreUtil.copy(((ForFilters)current).getEOFCV());
+				}
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
 					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 					if (propertiesEditionObject != null) {
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TestFilterPropertiesEditionPartImpl.this, NonregViewsRepository.TestFilter.testAEOFCV, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
+						return (NamedElement)propertiesEditionObject;
 					}
-					return (NamedElement)propertiesEditionObject;
+					if (current != null && current instanceof ForFilters && ((ForFilters)current).getEOFCV() != null)
+						return eObject;
+					return null;
 				}
 				return null;
 			}

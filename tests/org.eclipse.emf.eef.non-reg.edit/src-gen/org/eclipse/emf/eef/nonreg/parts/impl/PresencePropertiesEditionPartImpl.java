@@ -43,7 +43,7 @@ import org.eclipse.swt.widgets.Group;
 public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PresencePropertiesEditionPart {
 
 	protected EMFListEditUtil assistsEditUtil;
-	protected ReferencesTable<?> assists;
+	protected ReferencesTable<? extends EObject> assists;
 	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
@@ -165,7 +165,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		
 		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {

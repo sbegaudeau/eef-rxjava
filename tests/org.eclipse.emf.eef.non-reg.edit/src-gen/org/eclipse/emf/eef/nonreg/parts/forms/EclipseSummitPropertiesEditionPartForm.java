@@ -55,7 +55,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 
 	protected Text place;
 	protected EMFListEditUtil sitesEditUtil;
-	protected ReferencesTable<?> sites;
+	protected ReferencesTable<? extends EObject> sites;
 	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 

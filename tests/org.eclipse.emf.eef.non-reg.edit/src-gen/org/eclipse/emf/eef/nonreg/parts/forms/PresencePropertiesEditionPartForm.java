@@ -47,7 +47,7 @@ import org.eclipse.ui.forms.widgets.Section;
 public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
 	private EMFListEditUtil assistsEditUtil;
-	protected ReferencesTable<?> assists;
+	protected ReferencesTable<? extends EObject> assists;
 	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 

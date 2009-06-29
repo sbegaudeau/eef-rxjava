@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
@@ -224,7 +225,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		genderData.horizontalSpan = 2;
 		genderRadioViewer.setLayoutData(genderData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.gender, NonregViewsRepository.SWT_KIND), null);
-	
 	}
 	/**
 	 * @param parent
@@ -384,16 +384,20 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			
 			public Company handleCreate() {
 				Company eObject = NonregFactory.eINSTANCE.createCompany();
-				if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null)
-					eObject = ((Person)current).getWorkFor();
+				if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null) {
+					eObject = (Company) EcoreUtil.copy(((Person)current).getWorkFor());
+				}
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
 					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 					if (propertiesEditionObject != null) {
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartImpl.this, NonregViewsRepository.Person.workFor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
+						return (Company)propertiesEditionObject;
 					}
-					return (Company)propertiesEditionObject;
+					if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null)
+						return eObject;
+					return null;
 				}
 				return null;
 			}

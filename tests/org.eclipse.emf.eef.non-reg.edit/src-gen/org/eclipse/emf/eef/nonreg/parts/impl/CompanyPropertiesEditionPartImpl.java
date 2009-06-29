@@ -7,6 +7,7 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.Adress;
@@ -116,16 +117,20 @@ public class CompanyPropertiesEditionPartImpl extends CompositePropertiesEdition
 			
 			public Adress handleCreate() {
 				Adress eObject = NonregFactory.eINSTANCE.createAdress();
-				if (current != null && current instanceof Company && ((Company)current).getAdress() != null)
-					eObject = ((Company)current).getAdress();
+				if (current != null && current instanceof Company && ((Company)current).getAdress() != null) {
+					eObject = (Adress) EcoreUtil.copy(((Company)current).getAdress());
+				}
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
 					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 					if (propertiesEditionObject != null) {
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CompanyPropertiesEditionPartImpl.this, NonregViewsRepository.Company.adress, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
+						return (Adress)propertiesEditionObject;
 					}
-					return (Adress)propertiesEditionObject;
+					if (current != null && current instanceof Company && ((Company)current).getAdress() != null)
+						return eObject;
+					return null;
 				}
 				return null;
 			}

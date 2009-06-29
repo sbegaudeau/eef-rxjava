@@ -6,14 +6,14 @@ package org.eclipse.emf.eef.nonreg.modelNavigation.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.SuperCiblePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.SuperCiblePropertiesEditionPart;
+import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 
 // End of user code
 /**

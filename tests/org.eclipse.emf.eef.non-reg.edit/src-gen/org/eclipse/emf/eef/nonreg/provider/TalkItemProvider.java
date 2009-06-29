@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TalkItemProvider.java,v 1.5 2009/06/24 16:34:22 sbouchet Exp $
+ * $Id: TalkItemProvider.java,v 1.6 2009/06/29 11:29:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -13,7 +13,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,7 +23,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.ab.abstractnonreg.provider.DocumentedElementItemProvider;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Talk;
 

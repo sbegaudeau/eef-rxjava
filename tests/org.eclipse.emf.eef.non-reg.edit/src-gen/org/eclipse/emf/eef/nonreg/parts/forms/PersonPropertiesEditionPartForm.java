@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
@@ -128,7 +129,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
-
+		
 		// End of user code		
 	}
 
@@ -377,7 +378,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table accreditations s columns definition
-
+		
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
@@ -387,18 +388,17 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		result.setLabelProvider(new ITableLabelProvider() {
 	
 			// Start of user code for table accreditations label provider
-
+			
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 				if (object instanceof EObject) {
 					switch (columnIndex) {
-						case 0:
-							return labelProvider.getText(object);
+					case 0:
+						return labelProvider.getText(object);
 					}
 				}
 				return ""; //$NON-NLS-1$
 			}
-
 			// End of user code
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
@@ -507,16 +507,20 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 			
 			public Company handleCreate() {
 				Company eObject = NonregFactory.eINSTANCE.createCompany();
-				if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null)
-					eObject = ((Person)current).getWorkFor();
+				if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null) {
+					eObject = (Company)EcoreUtil.copy(((Person)current).getWorkFor());
+				}
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
 					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
 					if (propertiesEditionObject != null) {
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.workFor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
+						return (Company)propertiesEditionObject;
 					}
-					return (Company)propertiesEditionObject;
+					if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null)
+						return eObject;
+					return null;
 				}
 				return null;
 			}
@@ -536,7 +540,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
+		
 		// End of user code		
 	}
 
@@ -874,6 +878,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 	
 	// Start of user code additional methods
-
+	
 	// End of user code
 }	
