@@ -87,6 +87,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 [if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
