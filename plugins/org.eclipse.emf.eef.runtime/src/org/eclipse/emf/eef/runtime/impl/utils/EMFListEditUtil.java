@@ -49,7 +49,7 @@ public class EMFListEditUtil {
 
 	}
 
-	private Map elementsToRefresh;
+	private Map<EObject, EObject> elementsToRefresh;
 
 	private Map<EObject, EObject> copyToModelMap;
 
@@ -136,11 +136,12 @@ public class EMFListEditUtil {
 			copy = new ArrayList<EObject>();
 		elementsToAdd = new ArrayList<EObject>();
 		elementsToRemove = new ArrayList<EObject>();
-		elementsToRefresh = new HashMap();
-		elementsToMove = new HashMap();
+		elementsToRefresh = new HashMap<EObject, EObject>();
+		elementsToMove = new HashMap<EObject, MoveElement>();
 	}
 
 	public List getVirtualList() {
+		//todo infer generics -> modify gen
 		return copy;
 	}
 
@@ -197,14 +198,14 @@ public class EMFListEditUtil {
 	/**
 	 * @return the elementsToAdd
 	 */
-	public List getElementsToAdd() {
+	public List<EObject> getElementsToAdd() {
 		return elementsToAdd;
 	}
 
 	/**
 	 * @return the elementsToRemove
 	 */
-	public List getElementsToRemove() {
+	public List<EObject> getElementsToRemove() {
 		return elementsToRemove;
 	}
 
@@ -257,7 +258,7 @@ public class EMFListEditUtil {
 	/**
 	 * @return the elementsToRefresh
 	 */
-	public Map getElementsToRefresh() {
+	public Map<EObject, EObject> getElementsToRefresh() {
 		return elementsToRefresh;
 	}
 
@@ -275,8 +276,7 @@ public class EMFListEditUtil {
 			return containedInCopy ? !isToBeRemoved : isToBeAdded;
 		} else {
 			// model navigation
-			for (Iterator iterator = copyToModelMap.values().iterator(); iterator.hasNext();) {
-				EObject value = (EObject)iterator.next();
+			for (EObject value : copyToModelMap.values()) {
 				if ((value.eGet(feature).equals(toTest) && !elementsToRemove
 						.contains(foundCorrespondingEObject(toTest)))
 						|| elementsToAdd.contains(toTest)) {
