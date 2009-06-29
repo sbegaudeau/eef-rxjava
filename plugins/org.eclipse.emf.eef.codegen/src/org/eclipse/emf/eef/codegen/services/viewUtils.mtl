@@ -120,8 +120,15 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 [for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedEObjectFlatComboViewer')).involvedPropertiesEditionElement() )]
 import [pee.model.eType.qualifiedName(basePackage)/];
+import [pee.model.eContainingClass.qualifiedName(basePackage)/];
+import [pee.model.eType.ePackage.qualifiedMetamodelFactory(basePackage)/];
 [/for]
 [/template]
 
@@ -158,8 +165,9 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 				[else]
 				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 				[/if]
-				if (current != null && current instanceof [editor.involvedPropertiesEditionElement().model.eContainingClass.name/] && (([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]() != null)
-					eObject = (([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]();
+				if (current != null && current instanceof [editor.involvedPropertiesEditionElement().model.eContainingClass.name/] && (([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]() != null) {
+					eObject = ([editor.involvedPropertiesEditionElement().model.eType.name/]) EcoreUtil.copy((([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]());
+				}
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
@@ -517,7 +525,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedReferencesTable')]
 	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	protected ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	protected ReferencesTable<? extends EObject[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
@@ -597,7 +605,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 		
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
@@ -889,7 +897,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'AdvancedTableComposition')]
 	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	protected ReferencesTable<?[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	protected ReferencesTable<? extends EObject[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
@@ -1081,7 +1089,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/]RadioViewer.setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null);
-	
 	}
 [/template]
 
