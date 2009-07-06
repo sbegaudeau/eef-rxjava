@@ -831,9 +831,9 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [elementEditor.setterSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]List = newValue;
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/]Text.setText([elementEditor.name.toJavaIdentifier()/]List.toString());
+			[elementEditor.name.toJavaIdentifier()/].setText([elementEditor.name.toJavaIdentifier()/]List.toString());
 		} else {
-			[elementEditor.name.toJavaIdentifier()/]Text.setText(""); //$NON-NLS-1$
+			[elementEditor.name.toJavaIdentifier()/].setText(""); //$NON-NLS-1$
 		}
 	}
 [/template]
