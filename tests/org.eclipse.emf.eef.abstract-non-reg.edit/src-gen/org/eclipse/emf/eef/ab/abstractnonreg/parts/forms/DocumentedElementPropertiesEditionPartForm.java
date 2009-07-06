@@ -133,7 +133,6 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(AbstractnonregViewsRepository.DocumentedElement.documentation, AbstractnonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		
 	}
 
 	
