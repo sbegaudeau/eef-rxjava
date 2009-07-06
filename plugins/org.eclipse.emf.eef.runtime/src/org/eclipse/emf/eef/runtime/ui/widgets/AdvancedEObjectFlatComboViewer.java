@@ -291,30 +291,30 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	 * Behavior executed when browse button is pressed.
 	 */
 	protected void browseButtonPressed() {
-			switch (button_mode) {
-				case BROWSE:
-					TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input,
-							filters, brFilters, dialogTitle, restrictToEClass, mainResource) {
-						@SuppressWarnings("unchecked")
-						@Override
-						public void process(IStructuredSelection selection) {
-							if (selection != null && !selection.isEmpty()) {
-								handleSelection((T)selection.getFirstElement());
-							}
+		switch (button_mode) {
+			case BROWSE:
+				TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input,
+						filters, brFilters, dialogTitle, restrictToEClass, mainResource) {
+					@SuppressWarnings("unchecked")
+					@Override
+					public void process(IStructuredSelection selection) {
+						if (selection != null && !selection.isEmpty()) {
+							handleSelection((T)selection.getFirstElement());
 						}
-					};
-					// Select the actual element in dialog
-					if (selection != null) {
-						dialog.setSelection(new StructuredSelection(selection));
 					}
-					dialog.open();
-					break;
-				case CREATE:
-					handleCreate();
-					break;
-				default:
-					break;
-			}
+				};
+				// Select the actual element in dialog
+				if (selection != null) {
+					dialog.setSelection(new StructuredSelection(selection));
+				}
+				dialog.open();
+				break;
+			case CREATE:
+				handleCreate();
+				break;
+			default:
+				break;
+		}
 	}
 
 	// protected void browseButtonPressed() {
@@ -382,6 +382,28 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	public void setMainResource(Resource mainResource) {
 		this.mainResource = mainResource;
+	}
+
+	/**
+	 * Sets the viewer readonly
+	 * 
+	 * @param enabled
+	 *            sets the viewer read only or not.
+	 */
+	public void setEnabled(boolean enabled) {
+		browseButton.setEnabled(enabled);
+		valueText.setEnabled(enabled);
+	}
+
+	/**
+	 * Sets the tooltip text on the viewer
+	 * 
+	 * @param tooltip
+	 *            the tooltip text
+	 */
+	public void setToolTipText(String tooltip) {
+		browseButton.setToolTipText(tooltip);
+		valueText.setToolTipText(tooltip);
 	}
 
 }

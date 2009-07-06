@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Control;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class EMFComboViewer extends AbstractListViewer {
 
@@ -203,6 +204,26 @@ public class EMFComboViewer extends AbstractListViewer {
 		updating = true;
 		setSelection(selection);
 		updating = false;
+	}
+	
+	/**
+	 * Sets the viewer readonly or not
+	 * 
+	 * @param enabled
+	 *            to set the viewer readonly or not
+	 */
+	public void setEnabled(boolean enabled) {
+		combo.setEnabled(enabled);
+	}
+
+	/**
+	 * Sets the tooltip text for the viewer
+	 * 
+	 * @param tooltip
+	 *            the tooltip text
+	 */
+	public void setToolTipText(String tooltip) {
+		combo.setToolTipText(tooltip);
 	}
 
 }

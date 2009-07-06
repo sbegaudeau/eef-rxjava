@@ -85,7 +85,7 @@ public class RadioViewer extends Composite {
 
 	public void setInput(Object input) {
 		if (input instanceof Collection) {
-			for (Object value : (Collection)input) {
+			for (Object value : (Collection<?>)input) {
 				createButton(value);
 			}
 		}
@@ -96,4 +96,15 @@ public class RadioViewer extends Composite {
 		layout();
 	}
 
+	/**
+	 * Sets the tooltip text for the viewer
+	 * 
+	 * @param tooltip
+	 *            the tooltip text
+	 */
+	public void setToolTipText(String tooltip) {
+		for (Button button : buttons.values()) {
+			button.setToolTipText(tooltip);
+		}
+	}
 }

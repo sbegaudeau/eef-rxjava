@@ -728,7 +728,34 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 	}
 
 	protected void refreshFilters() {
+	}
 
+	/**
+	 * Sets the tables readonly or not
+	 * 
+	 * @param enabled
+	 *            to set the table readonly or not
+	 */
+	public void setEnabled(boolean enabled) {
+		addButton.setEnabled(enabled);
+		downButton.setEnabled(enabled);
+		removeButton.setEnabled(enabled);
+		table.setEnabled(enabled);
+		upButton.setEnabled(enabled);
+	}
+
+	/**
+	 * Sets the tooltip text for the viewer
+	 * 
+	 * @param tooltip
+	 *            the tooltip text
+	 */
+	public void setToolTipText(String tooltip) {
+		addButton.setToolTipText(tooltip);
+		downButton.setToolTipText(tooltip);
+		removeButton.setToolTipText(tooltip);
+		table.setToolTipText(tooltip);
+		upButton.setToolTipText(tooltip);
 	}
 
 }
