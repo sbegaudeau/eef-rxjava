@@ -85,7 +85,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 * @param [editor.widgetContainer().trim()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, [editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0/]);
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -223,6 +222,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
 		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].getCombo().setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
@@ -264,7 +267,7 @@ import org.eclipse.swt.widgets.Text;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
-	protected Text [editor.name.toJavaIdentifier()/]Text;
+	protected Text [editor.name.toJavaIdentifier()/];
 	protected Button edit[editor.name.toJavaClassifier()/];
 	private EList [editor.name.toJavaIdentifier()/]List;
 [/template]
@@ -275,10 +278,14 @@ import org.eclipse.swt.widgets.Text;
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'MultiValuedEditor')]
 	protected void create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
-		[editor.name.toJavaIdentifier()/]Text = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
-		GridData [editor.name.toJavaIdentifier()/]TextData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]TextData.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier()/]Text.setLayoutData([editor.name.toJavaIdentifier()/]TextData);
+		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
+		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		edit[editor.name.toJavaClassifier()/] = new Button(parent, SWT.NONE);
 		edit[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
@@ -300,7 +307,7 @@ import org.eclipse.swt.widgets.Text;
 					if ([editor.name.toJavaIdentifier()/]List == null) {
 						[editor.name.toJavaIdentifier()/]List = new BasicEList();
 					}
-					[editor.name.toJavaIdentifier()/]Text.setText([editor.name.toJavaIdentifier()/]List.toString());
+					[editor.name.toJavaIdentifier()/].setText([editor.name.toJavaIdentifier()/]List.toString());
 					setHasChanged(true);
 				}
 			}
@@ -367,6 +374,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected TableViewer create[editor.name.toJavaClassifier()/]Viewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		[if (editor.readOnly)]
+		table.setEnabled(false);
+		table.setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -427,6 +438,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		result.setLayout(layout);
 		add[editor.name.toJavaClassifier()/] = new Button(result, SWT.NONE);
 		add[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel);
+		[if (editor.readOnly)]
+		add[editor.name.toJavaClassifier()/].setEnabled(false);
+		add[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		add[editor.name.toJavaClassifier()/].setLayoutData(addData);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -444,6 +459,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		});
 		remove[editor.name.toJavaClassifier()/] = new Button(result, SWT.NONE);
 		remove[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
+		[if (editor.readOnly)]
+		remove[editor.name.toJavaClassifier()/].setEnabled(false);
+		remove[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		remove[editor.name.toJavaClassifier()/].setLayoutData(removeData);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -464,7 +483,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 		});
 	}
-	
+
 	/**
 	 *
 	 */
@@ -562,12 +581,16 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 		});
 		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		this.[editor.name.toJavaIdentifier()/].createControls(parent);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
 		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		this.[editor.name.toJavaIdentifier()/].disableMove();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -579,19 +602,17 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
 		[/if]
 	}
-	
+
 	/**
 	 * 
 	 */
 	private void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
 		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
 		[editor.name.toJavaIdentifier()/].refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// [/protected]
 
 	}
@@ -602,7 +623,6 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 	private void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
@@ -614,7 +634,6 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// [/protected]
 
 	}
@@ -626,7 +645,6 @@ import java.util.Map;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.emf.eef.runtime.ui.wizards.AbstractPropertyWizard;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -634,13 +652,11 @@ import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
-
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.swt.widgets.Event;
-
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TableColumn;
 
@@ -655,6 +671,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'TableComposition')]
 	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public implementation(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'TableComposition')]
@@ -675,6 +693,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table table[editor.name.toJavaClassifier()/] = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
 		table[editor.name.toJavaClassifier()/].setHeaderVisible(true);
+		[if (editor.readOnly)]
+		table[editor.name.toJavaClassifier()/].setEnabled(false);
+		table[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData gd[editor.name.toJavaClassifier()/] = new GridData();
 		gd[editor.name.toJavaClassifier()/].grabExcessHorizontalSpace = true;
 		gd[editor.name.toJavaClassifier()/].horizontalAlignment = GridData.FILL;
@@ -684,11 +706,9 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		table[editor.name.toJavaClassifier()/].setLinesVisible(true);
 		
 		// [protected ('for columns definition for '.concat(editor.name.toJavaClassifier()))]
-
 		TableColumn name = new TableColumn(table[editor.name.toJavaClassifier()/], SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-
 		// [/protected]
 
 		[editor.name.toJavaIdentifier()/] = new TableViewer(table[editor.name.toJavaClassifier()/]);
@@ -696,7 +716,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new ITableLabelProvider() {
 
 			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
-
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 				if (object instanceof EObject) {
@@ -734,12 +753,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			}
 	
 		});
-
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.minimumHeight = 120;
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
 		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
-
 		create[editor.name.toJavaClassifier()/]Panel(tableContainer);
 	}
 
@@ -753,6 +770,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[editor.name.toJavaIdentifier()/]Panel.setLayout([editor.name.toJavaIdentifier()/]PanelLayout);
 		Button add[editor.name.toJavaClassifier()/] = new Button([editor.name.toJavaIdentifier()/]Panel, SWT.NONE);
 		add[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel);
+		[if (editor.readOnly)]
+		add[editor.name.toJavaClassifier()/].setEnabled(false);
+		add[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData add[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		add[editor.name.toJavaClassifier()/].setLayoutData(add[editor.name.toJavaClassifier()/]Data);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -768,6 +789,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		});
 		Button remove[editor.name.toJavaClassifier()/] = new Button([editor.name.toJavaIdentifier()/]Panel, SWT.NONE);
 		remove[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveTableViewerLabel);
+		[if (editor.readOnly)]
+		remove[editor.name.toJavaClassifier()/].setEnabled(false);
+		remove[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData remove[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		remove[editor.name.toJavaClassifier()/].setLayoutData(remove[editor.name.toJavaClassifier()/]Data);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -784,6 +809,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		});
 		Button edit[editor.name.toJavaClassifier()/] = new Button([editor.name.toJavaIdentifier()/]Panel, SWT.NONE);
 		edit[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_EditTableViewerLabel);
+		[if (editor.readOnly)]
+		edit[editor.name.toJavaClassifier()/].setEnabled(false);
+		edit[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
 		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -800,16 +829,14 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		});
 		return [editor.name.toJavaIdentifier()/]Panel;
 	}
-	
+
 	/**
 	 * 
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
-	
+
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-
-	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
@@ -821,11 +848,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 			}
 		}
-		
-	[/if]
-	
+		[/if]
+
 		// [/protected]
-		
+
 	}
 
 	/**
@@ -834,18 +860,16 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void removeFrom[editor.name.toJavaClassifier()/]() {
 
 		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-
 		if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
 			if (selection.getFirstElement() instanceof EObject) {
 				EObject selectedElement = (EObject) selection.getFirstElement();
-				editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement);
+				EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement);
 				[editor.name.toJavaIdentifier()/]EditUtil.removeElement(selectedElement);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 			}
-			[editor.name.toJavaIdentifier()/].refresh();
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		}
-
 		// [/protected]
 
 	}
@@ -856,7 +880,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void edit[editor.name.toJavaClassifier()/]() {
 
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-
 		if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
 			if (selection.getFirstElement() instanceof EObject) {
@@ -874,7 +897,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 				}
 			}
 		}
-
 		// [/protected]
 
 	}
@@ -920,6 +942,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		});
 		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		this.[editor.name.toJavaIdentifier()/].createControls(parent);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
 		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
@@ -930,12 +956,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 */
 	private void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-				
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		[editor.name.toJavaIdentifier()/]EditUtil.moveElement(element, oldIndex, newIndex);
 		[editor.name.toJavaIdentifier()/].refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
-		
 		[/if]
 	}
 
@@ -945,9 +969,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-
-	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
@@ -959,11 +981,9 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 			}
 		}
-		
-	[/if]
-		
+		[/if]
 		// [/protected]
-		
+
 	}
 
 	/**
@@ -972,12 +992,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	private void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
 		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
 		[editor.name.toJavaIdentifier()/].refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// [/protected]
 
 	}
@@ -988,7 +1006,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	private void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -1000,7 +1017,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-		
 		// [/protected]
 
 	}
@@ -1021,12 +1037,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox;
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);	
 		VerticalBox [container.name.toJavaIdentifier()/]VBox = new VerticalBox(container);
-		
 		//create sub figures
 		[for (editor : ElementEditor | container.elements)]
 		[editor.implementation()/]
 		[/for]
-		
 		container.pack();
 	}
 [/template]
@@ -1049,19 +1063,16 @@ import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 		gridData.horizontalSpan=2;
 		container.setLayoutData(gridData);
 		HorizontalBox [container.name.toJavaIdentifier()/]HBox = new HorizontalBox(container);
-		
 		[if (container.elements->select(representation.name='Checkbox')->notEmpty())]
 		//Apply constraint for checkbox
 		GridData constraint = new GridData(GridData.FILL_HORIZONTAL);
 		constraint.horizontalAlignment = GridData.BEGINNING;
 		[container.name.toJavaIdentifier()/]HBox.setLayoutData(constraint);
 		[/if]
-		
 		//create sub figures
 		[for (editor : ElementEditor | container.elements) ]
 		[editor.implementation()/]
 		[/for]
-		
 		parent.pack();
 	}
 [/template]
@@ -1085,6 +1096,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) ? (editor.representation.name = 'Radio')]
 	protected void create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
 		[editor.name.toJavaIdentifier()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/]RadioViewer.setEnabled(false);
+		[editor.name.toJavaIdentifier()/]RadioViewer.setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/]RadioViewer.setLayoutData([editor.name.toJavaIdentifier()/]Data);
@@ -1097,6 +1112,12 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Combo')]
@@ -1111,6 +1132,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 	protected void create[editor.name.toJavaClassifier()/]EMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].getCombo().setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -1128,7 +1153,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 			
 		});
 		[editor.name.toJavaIdentifier()/].setContentProvider(new EMFListContentProvider());
-		
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 	}
 [/template]
@@ -1146,6 +1170,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 	protected void create[editor.name.toJavaClassifier()/]Text(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].addModifyListener(new ModifyListener() {
@@ -1163,10 +1191,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 		});
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
-		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEditable(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 	}
 [/template]
 
@@ -1186,6 +1210,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
 		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
 		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 80;
@@ -1207,6 +1235,10 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 	protected void create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
 		[editor.name.toJavaIdentifier()/] = new Button(parent, SWT.CHECK);
 		[editor.name.toJavaIdentifier()/].setText([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		[if (editor.readOnly)]
+		[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
