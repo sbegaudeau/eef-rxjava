@@ -51,6 +51,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
 
 import [pec.model.qualifiedName(basePackage)/];
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 [comment add import for external ViewReference (stored in another resource)/]
 [view.manageImportForViewReferences(pec, basePackage)/]
 [comment add import for ViewReference/]
@@ -374,7 +375,11 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [comment add ViewReference support/]
 [view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
