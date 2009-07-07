@@ -80,7 +80,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * The [subPec.pecClass()/] sub component
 	 */
 	protected [subPec.pecClass()/] [subPec.pecClass().toLowerFirst()/];
-		[else]		
+		[else]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
 	 */
@@ -104,10 +104,10 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
 		[if (view.isA1stLevelReferencedView(pec))]
-			[subPec.pecClass().toLowerFirst()/] = new [subPec.pecClass()/]([pec.model.name.toJavaIdentifier()/], editing_mode); 	
+			[subPec.pecClass().toLowerFirst()/] = new [subPec.pecClass()/]([pec.model.name.toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.pecClass().toLowerFirst()/]);
-		[else]		
-			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode); 	
+		[else]
+			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.subPECClass(view).toLowerFirst()/]);
 		[/if]
 	[/for]
