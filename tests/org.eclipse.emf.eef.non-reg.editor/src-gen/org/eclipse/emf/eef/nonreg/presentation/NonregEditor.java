@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregEditor.java,v 1.1 2009/05/05 10:37:53 sbouchet Exp $
+ * $Id: NonregEditor.java,v 1.2 2009/07/10 13:14:24 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.presentation;
 
@@ -1362,7 +1362,6 @@ public class NonregEditor
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
 			propertySheetPage =
 				new TabbedPropertiesEditionSheetPage(NonregEditor.this) {
 					@Override
@@ -1371,7 +1370,6 @@ public class NonregEditor
 						getActionBarContributor().shareGlobalActions(this, actionBars);
 					}
 				};
-		}
 
 		return propertySheetPage;
 	}
