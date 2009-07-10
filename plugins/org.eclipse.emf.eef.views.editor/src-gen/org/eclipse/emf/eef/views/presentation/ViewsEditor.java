@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsEditor.java,v 1.2 2009/05/05 12:07:58 sbouchet Exp $
+ * $Id: ViewsEditor.java,v 1.3 2009/07/10 15:08:48 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.presentation;
 
@@ -1072,7 +1072,7 @@ public class ViewsEditor extends MultiPageEditorPart implements IEditingDomainPr
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
+		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
 				new TabbedPropertiesEditionSheetPage(ViewsEditor.this) {
 					@Override
