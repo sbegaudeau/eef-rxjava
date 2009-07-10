@@ -5,6 +5,11 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 

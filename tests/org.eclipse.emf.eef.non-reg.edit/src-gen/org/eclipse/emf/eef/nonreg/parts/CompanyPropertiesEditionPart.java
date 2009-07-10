@@ -5,11 +5,16 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
+import java.util.List;
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
 // End of user code

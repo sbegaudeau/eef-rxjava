@@ -8,6 +8,7 @@ package org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
@@ -58,7 +59,7 @@ public class TestFilterForRVPropertiesEditionComponent extends ComposedPropertie
 			addSubComponent(testFilterForRVTestFilterPropertiesEditionComponent);
 			testFilterForRVTestVRFilterPropertiesEditionComponent = new TestFilterForRVTestVRFilterPropertiesEditionComponent(forFilters, editing_mode); 
 			addSubComponent(testFilterForRVTestVRFilterPropertiesEditionComponent);
-			testFilterForReferenceTablesPropertiesEditionComponent = new TestFilterForReferenceTablesPropertiesEditionComponent(forFilters, editing_mode); 	
+			testFilterForReferenceTablesPropertiesEditionComponent = new TestFilterForReferenceTablesPropertiesEditionComponent(forFilters, editing_mode);
 			addSubComponent(testFilterForReferenceTablesPropertiesEditionComponent);
 		}
 	}

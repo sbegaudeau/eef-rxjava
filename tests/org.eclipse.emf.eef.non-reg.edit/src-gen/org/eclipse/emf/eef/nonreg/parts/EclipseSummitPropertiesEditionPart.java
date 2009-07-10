@@ -8,9 +8,13 @@ package org.eclipse.emf.eef.nonreg.parts;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
+import java.util.List;
 import org.eclipse.emf.ecore.EReference;
+import java.util.Map;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 
 // End of user code

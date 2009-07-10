@@ -8,12 +8,14 @@ package org.eclipse.emf.eef.nonreg.modelNavigation.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.SuperCiblePropertiesEditionPart;
 import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
 /**
@@ -46,7 +48,7 @@ public class CiblePropertiesEditionComponent extends ComposedPropertiesEditionCo
 		if (concreteCible instanceof ConcreteCible) {
 			cibleSuperCiblePropertiesEditionComponent = new CibleSuperCiblePropertiesEditionComponent(concreteCible, editing_mode); 
 			addSubComponent(cibleSuperCiblePropertiesEditionComponent);
-			namedElementPropertiesEditionComponent = new NamedElementPropertiesEditionComponent(concreteCible, editing_mode); 	
+			namedElementPropertiesEditionComponent = new NamedElementPropertiesEditionComponent(concreteCible, editing_mode);
 			addSubComponent(namedElementPropertiesEditionComponent);
 		}
 	}

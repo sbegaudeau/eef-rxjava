@@ -9,11 +9,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.nonreg.Topic;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
 /**
@@ -46,7 +48,7 @@ public class TopicPropertiesEditionComponent extends ComposedPropertiesEditionCo
 		if (topic instanceof Topic) {
 			topicBasePropertiesEditionComponent = new TopicBasePropertiesEditionComponent(topic, editing_mode); 
 			addSubComponent(topicBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(topic, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(topic, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

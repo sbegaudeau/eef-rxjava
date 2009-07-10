@@ -5,28 +5,49 @@ package org.eclipse.emf.eef.nonreg.modelNavigation.components;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Collection;
+
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+
 import org.eclipse.emf.eef.nonreg.modelNavigation.Source;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 
 
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
+import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
 import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
 import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -36,9 +57,15 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.Viewer;
+
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
 /**
@@ -96,6 +123,9 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 							sourcePart.setAdvancedUniqueRef(((RealCible)source.getUniqueRef()).getRef());
 						else 
 							sourcePart.setAdvancedUniqueRef(null);
+					}
+					if (ModelNavigationPackage.eINSTANCE.getSource_MultipleContainment().equals(msg.getFeature())) {
+						sourcePart.updateAdvancedMultipleContainment(source);
 					}
 
 
@@ -173,15 +203,35 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 				sourcePart.initAdvancedUniqueRef(allResource, null);
 			// set the button mode
 			sourcePart.setAdvancedUniqueRefButtonMode(ButtonsModeEnum.BROWSE);
+			sourcePart.initAdvancedMultipleContainment(source, ModelNavigationPackage.eINSTANCE.getSource_MultipleContainment(), ModelNavigationPackage.eINSTANCE.getRealCible_Ref());
 			
 			// init filters
 			sourcePart.addFilterToAdvancedUniqueRef(new EObjectFilter(ModelNavigationPackage.eINSTANCE.getSuperCible()));
+			sourcePart.addFilterToAdvancedMultipleContainment(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!sourcePart.isContainedInAdvancedMultipleContainmentTable((EObject)element));
+					return element instanceof Resource;
+				}
+
+			});
+			sourcePart.addFilterToAdvancedMultipleContainment(new EObjectFilter(ModelNavigationPackage.eINSTANCE.getSuperCible()));
+			// Start of user code for additional businessfilters for AvancedMultipleContainment
+			
+			// End of user code
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
 	}
+
 
 
 
@@ -204,6 +254,21 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 				cc.append(SetCommand.create(editingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), sourcePart.getAdvancedUniqueRef()));
 				cc.append(SetCommand.create(editingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), realCible));
 			}
+			List refToAddFromAdvancedMultipleContainment = sourcePart.getAdvancedMultipleContainmentToAdd();
+			for (Iterator iter = refToAddFromAdvancedMultipleContainment.iterator(); iter.hasNext();) {
+				RealCible realCible = ModelNavigationFactory.eINSTANCE.createRealCible();
+				cc.append(SetCommand.create(editingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), iter.next()));
+				cc.append(AddCommand.create(editingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_MultipleContainment(), realCible));
+			}
+			List realCibleToRemoveFromAdvancedMultipleContainment = sourcePart.getAdvancedMultipleContainmentToRemove();
+			for (Iterator iter = realCibleToRemoveFromAdvancedMultipleContainment.iterator(); iter.hasNext();) {
+				cc.append(RemoveCommand.create(editingDomain, iter.next()));
+			}
+			//List refToMoveFromAdvancedMultipleContainment = sourcePart.getAdvancedMultipleContainmentToMove();
+			//for (Iterator iter = refToMoveFromAdvancedMultipleContainment.iterator(); iter.hasNext();){
+			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+			//	cc.append(MoveCommand.create(editingDomain, source, ModelNavigationPackage.eINSTANCE.getSuperCible(), moveElement.getElement(), moveElement.getIndex()));
+			//}
 
 
 		}
@@ -225,6 +290,12 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 			RealCible realCibleFromAdvancedUniqueRef = ModelNavigationFactory.eINSTANCE.createRealCible();
 			realCibleFromAdvancedUniqueRef.setRef(refFromAdvancedUniqueRef);
 			sourceToUpdate.setUniqueRef(realCibleFromAdvancedUniqueRef);
+			for (Iterator iter = sourceToUpdate.getMultipleContainment().iterator(); iter.hasNext();) {
+				SuperCible ref = (SuperCible)iter.next();
+				RealCible realCible = ModelNavigationFactory.eINSTANCE.createRealCible();
+				realCible.setRef(ref);
+				sourceToUpdate.getMultipleContainment().add(realCible);
+			}
 
 
 			return sourceToUpdate;
@@ -253,16 +324,32 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 					command.append(SetCommand.create(liveEditingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_UniqueRef(), null));
 				}
 			}
+		if (NonregViewsRepository.Source.advancedMultipleContainment == event.getAffectedEditor()) {
+			if (PropertiesEditionEvent.ADD == event.getKind()) {
+				RealCible realCible = ModelNavigationFactory.eINSTANCE.createRealCible();
+				command.append(SetCommand.create(liveEditingDomain, realCible, ModelNavigationPackage.eINSTANCE.getRealCible_Ref(), event.getNewValue()));
+				command.append(AddCommand.create(liveEditingDomain, source, ModelNavigationPackage.eINSTANCE.getSource_MultipleContainment(), realCible));
+			}
+			if (PropertiesEditionEvent.REMOVE == event.getKind()){
+				command.append(RemoveCommand.create(liveEditingDomain, event.getNewValue()));
+			}
+		}
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 
 
 
+
 			} else {
+
 
 
 

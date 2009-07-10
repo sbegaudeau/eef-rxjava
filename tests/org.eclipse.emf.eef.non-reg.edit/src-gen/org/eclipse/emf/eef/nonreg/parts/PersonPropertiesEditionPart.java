@@ -6,14 +6,22 @@ package org.eclipse.emf.eef.nonreg.parts;
 // Start of user code for imports
 
 import java.util.List;
+import java.util.Map;
 
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
+import java.util.List;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 
 // End of user code
@@ -120,6 +128,59 @@ public interface PersonPropertiesEditionPart {
 
 
 	/**
+	 * @return the workFor
+	 */
+	public EObject getWorkFor();
+
+	/**
+	 * Init the workFor
+	 * @param allResources the ResourceSet where the widget have to process
+	 * @param current the current value
+	 */
+	public void initWorkFor(ResourceSet allResources, EObject current);
+
+	/**
+	 * Defines a new workFor
+	 * @param newValue the new workFor to set
+	 */
+	public void setWorkFor(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setWorkForButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the workFor edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToWorkFor(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the workFor edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToWorkFor(ViewerFilter filter);
+
+
+
+
+
+
+
+
+	/**
+	 * @return the Accreditations referenced view
+	 */
+	public IPropertiesEditionPart getAccreditationsReferencedView();
+	/**
 	 * @return the accreditations to add
 	 */
 	public List getAccreditationsToAdd();
@@ -170,55 +231,6 @@ public interface PersonPropertiesEditionPart {
 	 * @return true if the given element is contained inside the accreditations table
 	 */
 	public boolean isContainedInAccreditationsTable(EObject element);
-
-
-
-
-
-	/**
-	 * @return the workFor
-	 */
-	public EObject getWorkFor();
-
-	/**
-	 * Init the workFor
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
-	 */
-	public void initWorkFor(ResourceSet allResources, EObject current);
-
-	/**
-	 * Defines a new workFor
-	 * @param newValue the new workFor to set
-	 */
-	public void setWorkFor(EObject newValue);
-
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 */
-	public void setWorkForButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the workFor edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addFilterToWorkFor(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the workFor edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addBusinessFilterToWorkFor(ViewerFilter filter);
-
-
-
 
 
 

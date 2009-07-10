@@ -28,11 +28,25 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createAccessPropertiesEditionProvider());
 		append(createCompanyPropertiesEditionProvider());
 		append(createAdressPropertiesEditionProvider());
+		append(createAccreditationsPropertiesEditionProvider());
 		append(createTestFilterFlatComboPropertiesEditionProvider());
 		append(createTestFilterForReferenceTablesPropertiesEditionProvider());
 		append(createTestFilterForRVPropertiesEditionProvider());
 		append(createSimpleSourcePropertiesEditionProvider());
 		append(createCiblePropertiesEditionProvider());
+		append(createTextPropertiesEditionProvider());
+		append(createTextAreaPropertiesEditionProvider());
+		append(createCheckboxPropertiesEditionProvider());
+		append(createRadioPropertiesEditionProvider());
+		append(createComboPropertiesEditionProvider());
+		append(createEObjectFlatComboViewerPropertiesEditionProvider());
+		append(createReferencesTablePropertiesEditionProvider());
+		append(createEMFComboViewerPropertiesEditionProvider());
+		append(createMultiValuedEditorPropertiesEditionProvider());
+		append(createTableCompositionPropertiesEditionProvider());
+		append(createAdvancedTableCompositionPropertiesEditionProvider());
+		append(createAdvancedReferencesTablePropertiesEditionProvider());
+		append(createAdvancedEObjectFlatComboViewerPropertiesEditionProvider());
 	}
 	
 	/**
@@ -157,6 +171,21 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected AccreditationsPropertiesEditionProvider accreditationsPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public AccreditationsPropertiesEditionProvider createAccreditationsPropertiesEditionProvider() {
+		if (accreditationsPropertiesEditionProvider == null)
+			accreditationsPropertiesEditionProvider = new AccreditationsPropertiesEditionProvider();
+		return accreditationsPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ForFilters instances.
 	 */
 	protected TestFilterFlatComboPropertiesEditionProvider testFilterFlatComboPropertiesEditionProvider;
@@ -228,6 +257,201 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		if (ciblePropertiesEditionProvider == null)
 			ciblePropertiesEditionProvider = new CiblePropertiesEditionProvider();
 		return ciblePropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Adress instances.
+	 */
+	protected TextPropertiesEditionProvider textPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Adress
+	 */
+	public TextPropertiesEditionProvider createTextPropertiesEditionProvider() {
+		if (textPropertiesEditionProvider == null)
+			textPropertiesEditionProvider = new TextPropertiesEditionProvider();
+		return textPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected TextAreaPropertiesEditionProvider textAreaPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public TextAreaPropertiesEditionProvider createTextAreaPropertiesEditionProvider() {
+		if (textAreaPropertiesEditionProvider == null)
+			textAreaPropertiesEditionProvider = new TextAreaPropertiesEditionProvider();
+		return textAreaPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected CheckboxPropertiesEditionProvider checkboxPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public CheckboxPropertiesEditionProvider createCheckboxPropertiesEditionProvider() {
+		if (checkboxPropertiesEditionProvider == null)
+			checkboxPropertiesEditionProvider = new CheckboxPropertiesEditionProvider();
+		return checkboxPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected RadioPropertiesEditionProvider radioPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public RadioPropertiesEditionProvider createRadioPropertiesEditionProvider() {
+		if (radioPropertiesEditionProvider == null)
+			radioPropertiesEditionProvider = new RadioPropertiesEditionProvider();
+		return radioPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Talk instances.
+	 */
+	protected ComboPropertiesEditionProvider comboPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Talk
+	 */
+	public ComboPropertiesEditionProvider createComboPropertiesEditionProvider() {
+		if (comboPropertiesEditionProvider == null)
+			comboPropertiesEditionProvider = new ComboPropertiesEditionProvider();
+		return comboPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected EObjectFlatComboViewerPropertiesEditionProvider eObjectFlatComboViewerPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public EObjectFlatComboViewerPropertiesEditionProvider createEObjectFlatComboViewerPropertiesEditionProvider() {
+		if (eObjectFlatComboViewerPropertiesEditionProvider == null)
+			eObjectFlatComboViewerPropertiesEditionProvider = new EObjectFlatComboViewerPropertiesEditionProvider();
+		return eObjectFlatComboViewerPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected ReferencesTablePropertiesEditionProvider referencesTablePropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public ReferencesTablePropertiesEditionProvider createReferencesTablePropertiesEditionProvider() {
+		if (referencesTablePropertiesEditionProvider == null)
+			referencesTablePropertiesEditionProvider = new ReferencesTablePropertiesEditionProvider();
+		return referencesTablePropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Talk instances.
+	 */
+	protected EMFComboViewerPropertiesEditionProvider eMFComboViewerPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Talk
+	 */
+	public EMFComboViewerPropertiesEditionProvider createEMFComboViewerPropertiesEditionProvider() {
+		if (eMFComboViewerPropertiesEditionProvider == null)
+			eMFComboViewerPropertiesEditionProvider = new EMFComboViewerPropertiesEditionProvider();
+		return eMFComboViewerPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected MultiValuedEditorPropertiesEditionProvider multiValuedEditorPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public MultiValuedEditorPropertiesEditionProvider createMultiValuedEditorPropertiesEditionProvider() {
+		if (multiValuedEditorPropertiesEditionProvider == null)
+			multiValuedEditorPropertiesEditionProvider = new MultiValuedEditorPropertiesEditionProvider();
+		return multiValuedEditorPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * EclipseSummit instances.
+	 */
+	protected TableCompositionPropertiesEditionProvider tableCompositionPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a EclipseSummit
+	 */
+	public TableCompositionPropertiesEditionProvider createTableCompositionPropertiesEditionProvider() {
+		if (tableCompositionPropertiesEditionProvider == null)
+			tableCompositionPropertiesEditionProvider = new TableCompositionPropertiesEditionProvider();
+		return tableCompositionPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * EclipseSummit instances.
+	 */
+	protected AdvancedTableCompositionPropertiesEditionProvider advancedTableCompositionPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a EclipseSummit
+	 */
+	public AdvancedTableCompositionPropertiesEditionProvider createAdvancedTableCompositionPropertiesEditionProvider() {
+		if (advancedTableCompositionPropertiesEditionProvider == null)
+			advancedTableCompositionPropertiesEditionProvider = new AdvancedTableCompositionPropertiesEditionProvider();
+		return advancedTableCompositionPropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected AdvancedReferencesTablePropertiesEditionProvider advancedReferencesTablePropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public AdvancedReferencesTablePropertiesEditionProvider createAdvancedReferencesTablePropertiesEditionProvider() {
+		if (advancedReferencesTablePropertiesEditionProvider == null)
+			advancedReferencesTablePropertiesEditionProvider = new AdvancedReferencesTablePropertiesEditionProvider();
+		return advancedReferencesTablePropertiesEditionProvider;
+	}
+	
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Person instances.
+	 */
+	protected AdvancedEObjectFlatComboViewerPropertiesEditionProvider advancedEObjectFlatComboViewerPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Person
+	 */
+	public AdvancedEObjectFlatComboViewerPropertiesEditionProvider createAdvancedEObjectFlatComboViewerPropertiesEditionProvider() {
+		if (advancedEObjectFlatComboViewerPropertiesEditionProvider == null)
+			advancedEObjectFlatComboViewerPropertiesEditionProvider = new AdvancedEObjectFlatComboViewerPropertiesEditionProvider();
+		return advancedEObjectFlatComboViewerPropertiesEditionProvider;
 	}
 	
 }	

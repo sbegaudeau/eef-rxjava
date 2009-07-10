@@ -5,28 +5,39 @@ package org.eclipse.emf.eef.nonreg.components;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Collection;
+
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+
 import org.eclipse.emf.eef.nonreg.Person;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.eef.nonreg.GENDER;
-import org.eclipse.emf.eef.nonreg.Site;
-import org.eclipse.emf.eef.nonreg.Access;
 import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,6 +46,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -44,12 +56,15 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.Viewer;
+
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
 /**
@@ -120,11 +135,9 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 					if (NonregPackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
 						basePart.setGender((Object)msg.getNewValue());
 
-					if (NonregPackage.eINSTANCE.getPerson_Accreditations().equals(msg.getFeature())) {
-						basePart.updateAccreditations(person);
-					}
 					if (NonregPackage.eINSTANCE.getPerson_WorkFor().equals(msg.getFeature()) && basePart != null)
 						basePart.setWorkFor((EObject)msg.getNewValue());
+
 
 
 				}
@@ -208,7 +221,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			basePart.setIsRegistered(person.isIsRegistered());
 
 			basePart.initGender((EEnum) NonregPackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
-			basePart.initAccreditations(person, NonregPackage.eINSTANCE.getPerson_Accreditations(), NonregPackage.eINSTANCE.getAccess_SiteAcceded());
 			basePart.initWorkFor(allResource, person.getWorkFor());
 			// set the button mode
 			basePart.setWorkForButtonMode(ButtonsModeEnum.BROWSE);
@@ -220,29 +232,13 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 
 
-			basePart.addFilterToAccreditations(new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInAccreditationsTable((EObject)element));
-					return element instanceof Resource;
-				}
-
-			});
-			basePart.addFilterToAccreditations(new EObjectFilter(NonregPackage.eINSTANCE.getSite()));
-			// Start of user code for additional businessfilters for accreditations
-			
-			// End of user code
 			basePart.addFilterToWorkFor(new EObjectFilter(NonregPackage.eINSTANCE.getCompany()));
 		}
 		// init values for referenced views
 
+
 		// init filters for referenced views
+
 
 	}
 
@@ -279,24 +275,10 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			cc.append(SetCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Gender(), ((EEnumLiteral)basePart.getGender()).getInstance()));
 
-			List siteAccededToAddFromAccreditations = basePart.getAccreditationsToAdd();
-			for (Iterator iter = siteAccededToAddFromAccreditations.iterator(); iter.hasNext();) {
-				Access access = NonregFactory.eINSTANCE.createAccess();
-				cc.append(SetCommand.create(editingDomain, access, NonregPackage.eINSTANCE.getAccess_SiteAcceded(), iter.next()));
-				cc.append(AddCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Accreditations(), access));
-			}
-			List accessToRemoveFromAccreditations = basePart.getAccreditationsToRemove();
-			for (Iterator iter = accessToRemoveFromAccreditations.iterator(); iter.hasNext();) {
-				cc.append(RemoveCommand.create(editingDomain, iter.next()));
-			}
-			//List siteAccededToMoveFromAccreditations = basePart.getAccreditationsToMove();
-			//for (Iterator iter = siteAccededToMoveFromAccreditations.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getSite(), moveElement.getElement(), moveElement.getIndex()));
-			//}
 			if (person.eGet(NonregPackage.eINSTANCE.getPerson_WorkFor()) == null || !person.eGet(NonregPackage.eINSTANCE.getPerson_WorkFor()).equals(basePart.getWorkFor())) {
 				cc.append(SetCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_WorkFor(), basePart.getWorkFor()));
 			}
+
 
 
 		}
@@ -326,13 +308,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			personToUpdate.setGender((GENDER)basePart.getGender());
 
-			for (Iterator iter = personToUpdate.getAccreditations().iterator(); iter.hasNext();) {
-				Site siteAcceded = (Site)iter.next();
-				Access access = NonregFactory.eINSTANCE.createAccess();
-				access.setSiteAcceded(siteAcceded);
-				personToUpdate.getAccreditations().add(access);
-			}
 			personToUpdate.setWorkFor((Company)basePart.getWorkFor());
+
 
 
 			return personToUpdate;
@@ -368,21 +345,16 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			if (NonregViewsRepository.Person.gender == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Gender(), event.getNewValue()));
 
-		if (NonregViewsRepository.Person.accreditations == event.getAffectedEditor()) {
-			if (PropertiesEditionEvent.ADD == event.getKind()) {
-				Access access = NonregFactory.eINSTANCE.createAccess();
-				command.append(SetCommand.create(liveEditingDomain, access, NonregPackage.eINSTANCE.getAccess_SiteAcceded(), event.getNewValue()));
-				command.append(AddCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Accreditations(), access));
-			}
-			if (PropertiesEditionEvent.REMOVE == event.getKind()){
-				command.append(RemoveCommand.create(liveEditingDomain, event.getNewValue()));
-			}
-		}
 			if (NonregViewsRepository.Person.workFor == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_WorkFor(), event.getNewValue()));
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+
+			if (!command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
@@ -423,7 +395,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == NonregViewsRepository.Person.firstname || key == NonregViewsRepository.Person.age || key == NonregViewsRepository.Person.accreditations;
+		return key == NonregViewsRepository.Person.firstname || key == NonregViewsRepository.Person.age;
 	}
 
 	/**

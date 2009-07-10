@@ -1,0 +1,74 @@
+/**
+ * Generated with Acceleo
+ */
+package org.eclipse.emf.eef.nonreg.parts;
+
+// Start of user code for imports
+
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.common.util.Enumerator;
+
+
+// End of user code
+/**
+ * 
+ */
+public interface RadioPropertiesEditionPart {
+
+	/**
+	 * @return the radio
+	 */
+	public Object getRadio();
+
+	/**
+	 * Init the radio
+	 * @param eenum the enum to manage
+	 * @param current the current value
+	 */
+	public void initRadio(EEnum eenum, Enumerator current);
+
+	/**
+	 * Defines a new radio
+	 * @param newValue the new radio to set
+	 */
+	public void setRadio(Object newValue);
+
+
+
+
+
+	/**
+	 * @return the radioRO
+	 */
+	public Object getRadioRO();
+
+	/**
+	 * Init the radioRO
+	 * @param eenum the enum to manage
+	 * @param current the current value
+	 */
+	public void initRadioRO(EEnum eenum, Enumerator current);
+
+	/**
+	 * Defines a new radioRO
+	 * @param newValue the new radioRO to set
+	 */
+	public void setRadioRO(Object newValue);
+
+
+
+
+
+
+
+
+
+
+	// Start of user code for additional methods
+	
+	// End of user code
+}
+

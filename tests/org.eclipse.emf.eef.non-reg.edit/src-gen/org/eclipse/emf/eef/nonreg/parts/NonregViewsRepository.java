@@ -40,9 +40,9 @@ public class NonregViewsRepository {
 
 		public static String gender = "nonreg::Person::gender";	
 
-		public static String accreditations = "nonreg::Person::accreditations";	
-
 		public static String workFor = "nonreg::Person::workFor";	
+
+
 
 
 	}
@@ -122,6 +122,15 @@ public class NonregViewsRepository {
 	}
 
 	/**
+	 * Accreditations view descriptor
+	 */
+	public static class Accreditations {
+		public static String accreditations = "nonreg::Accreditations::accreditations";	
+
+
+	}
+
+	/**
 	 * testFilter view descriptor
 	 */
 	public static class TestFilter {
@@ -148,7 +157,10 @@ public class NonregViewsRepository {
 	 * Source view descriptor
 	 */
 	public static class Source {
-public static String advancedUniqueRef = "nonreg::Source::AdvancedUniqueRef";	
+		public static String advancedUniqueRef = "nonreg::Source::AdvancedUniqueRef";	
+
+		public static String advancedMultipleContainment = "nonreg::Source::AdvancedMultipleContainment";	
+
 
 	}
 
@@ -164,6 +176,136 @@ public static String advancedUniqueRef = "nonreg::Source::AdvancedUniqueRef";
 	 * Cible view descriptor
 	 */
 	public static class Cible {
+	}
+
+	/**
+	 * Text view descriptor
+	 */
+	public static class Text {
+public static String text = "nonreg::Text::text";	
+
+public static String textRO = "nonreg::Text::textRO";	
+
+	}
+
+	/**
+	 * TextArea view descriptor
+	 */
+	public static class TextArea {
+public static String textarea = "nonreg::TextArea::textarea";	
+
+public static String textareaRO = "nonreg::TextArea::textareaRO";	
+
+	}
+
+	/**
+	 * Checkbox view descriptor
+	 */
+	public static class Checkbox {
+public static String checkbox = "nonreg::Checkbox::checkbox";	
+
+public static String checkboxRO = "nonreg::Checkbox::checkboxRO";	
+
+	}
+
+	/**
+	 * Radio view descriptor
+	 */
+	public static class Radio {
+public static String radio = "nonreg::Radio::radio";	
+
+public static String radioRO = "nonreg::Radio::radioRO";	
+
+	}
+
+	/**
+	 * Combo view descriptor
+	 */
+	public static class Combo {
+public static String combo = "nonreg::Combo::combo";	
+
+public static String comboRO = "nonreg::Combo::comboRO";	
+
+	}
+
+	/**
+	 * EObjectFlatComboViewer view descriptor
+	 */
+	public static class EObjectFlatComboViewer {
+public static String eobjectflatcomboviewer = "nonreg::EObjectFlatComboViewer::eobjectflatcomboviewer";	
+
+public static String eobjectflatcomboviewerRO = "nonreg::EObjectFlatComboViewer::eobjectflatcomboviewerRO";	
+
+	}
+
+	/**
+	 * ReferencesTable view descriptor
+	 */
+	public static class ReferencesTable {
+public static String referencestable = "nonreg::ReferencesTable::referencestable";	
+
+public static String referencestableRO = "nonreg::ReferencesTable::referencestableRO";	
+
+	}
+
+	/**
+	 * EMFComboViewer view descriptor
+	 */
+	public static class EMFComboViewer {
+public static String emfcomboviewer = "nonreg::EMFComboViewer::emfcomboviewer";	
+
+public static String emfcomboviewerRO = "nonreg::EMFComboViewer::emfcomboviewerRO";	
+
+	}
+
+	/**
+	 * MultiValuedEditor view descriptor
+	 */
+	public static class MultiValuedEditor {
+public static String multivaluededitor = "nonreg::MultiValuedEditor::multivaluededitor";	
+
+public static String multivaluededitorRO = "nonreg::MultiValuedEditor::multivaluededitorRO";	
+
+	}
+
+	/**
+	 * TableComposition view descriptor
+	 */
+	public static class TableComposition {
+public static String tablecomposition = "nonreg::TableComposition::tablecomposition";	
+
+public static String tablecompositionRO = "nonreg::TableComposition::tablecompositionRO";	
+
+	}
+
+	/**
+	 * AdvancedTableComposition view descriptor
+	 */
+	public static class AdvancedTableComposition {
+public static String advancedtablecomposition = "nonreg::AdvancedTableComposition::advancedtablecomposition";	
+
+public static String advancedtablecompositionRO = "nonreg::AdvancedTableComposition::advancedtablecompositionRO";	
+
+	}
+
+	/**
+	 * AdvancedReferencesTable view descriptor
+	 */
+	public static class AdvancedReferencesTable {
+public static String advancedreferencestable = "nonreg::AdvancedReferencesTable::advancedreferencestable";	
+
+public static String advancedreferencestableRO = "nonreg::AdvancedReferencesTable::advancedreferencestableRO";	
+
+	}
+
+	/**
+	 * AdvancedEObjectFlatComboViewer view descriptor
+	 */
+	public static class AdvancedEObjectFlatComboViewer {
+public static String advancedeobjectflatcomboviewer = "nonreg::AdvancedEObjectFlatComboViewer::advancedeobjectflatcomboviewer";	
+
+public static String advancedeobjectflatcomboviewerRO = "nonreg::AdvancedEObjectFlatComboViewer::advancedeobjectflatcomboviewerRO";	
+
 	}
 
 }

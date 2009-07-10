@@ -5,34 +5,84 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
-import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
-import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.StructuredSelection;
+import java.util.Iterator;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
+import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
+
+
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
 /**
@@ -42,6 +92,10 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	private AdvancedEObjectFlatComboViewer<SuperCible> advancedUniqueRef;
 	protected ViewerFilter advancedUniqueRefFilter;
+	protected EMFListEditUtil advancedMultipleContainmentEditUtil;
+	protected ReferencesTable<? extends EObject> advancedMultipleContainment;
+	protected List<ViewerFilter> advancedMultipleContainmentBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedMultipleContainmentFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -76,15 +130,27 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
-		createAdvancedUniqueRefAdvancedFlatComboViewer(view);
+		createPropsGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
 	}
 
+	protected void createPropsGroup(Composite parent) {
+		Group propsGroup = new Group(parent, SWT.NONE);
+		propsGroup.setText(NonregMessages.SourcePropertiesEditionPart_PropsGroupLabel);
+		GridData propsGroupData = new GridData(GridData.FILL_HORIZONTAL);
+		propsGroupData.horizontalSpan = 3;
+		propsGroup.setLayoutData(propsGroupData);
+		GridLayout propsGroupLayout = new GridLayout();
+		propsGroupLayout.numColumns = 3;
+		propsGroup.setLayout(propsGroupLayout);
+		createAdvancedUniqueRefAdvancedFlatComboViewer(propsGroup);
+		createAdvancedMultipleContainmentAdvancedReferencesTable(propsGroup);
+	}
 	/**
-	 * @param view
+	 * @param propsGroup
 	 */
 	protected void createAdvancedUniqueRefAdvancedFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.SourcePropertiesEditionPart_AdvancedUniqueRefLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Source.advancedUniqueRef, NonregViewsRepository.SWT_KIND));
@@ -122,6 +188,77 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		GridData advancedUniqueRefData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedUniqueRef.setLayoutData(advancedUniqueRefData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Source.advancedUniqueRef, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+	protected void createAdvancedMultipleContainmentAdvancedReferencesTable(Composite parent) {
+		this.advancedMultipleContainment = new ReferencesTable<SuperCible>(NonregMessages.SourcePropertiesEditionPart_AdvancedMultipleContainmentLabel, new ReferencesTableListener<SuperCible>() {
+			public void handleAdd() {
+				TabElementTreeSelectionDialog<SuperCible> dialog = new TabElementTreeSelectionDialog<SuperCible>(resourceSet, advancedMultipleContainmentFilters, advancedMultipleContainmentBusinessFilters,
+				"SuperCible", ModelNavigationPackage.eINSTANCE.getSuperCible(), current.eResource()) {
+
+					public void process(IStructuredSelection selection) {
+						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+							EObject elem = (EObject) iter.next();
+							if (!advancedMultipleContainmentEditUtil.getVirtualList().contains(elem))
+								advancedMultipleContainmentEditUtil.addElement(elem);
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedMultipleContainment,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+						}
+						advancedMultipleContainment.refresh();
+					}
+
+				};
+				dialog.open();
+			}
+			public void handleEdit(SuperCible element) { editAdvancedMultipleContainment(element); }
+			public void handleMove(SuperCible element, int oldIndex, int newIndex) { moveAdvancedMultipleContainment(element, oldIndex, newIndex); }
+			public void handleRemove(SuperCible element) { removeFromAdvancedMultipleContainment(element); }
+			public void navigateTo(SuperCible element) { }
+		});
+		this.advancedMultipleContainment.setHelpText(propertiesEditionComponent.getHelpContent(NonregViewsRepository.Source.advancedMultipleContainment, NonregViewsRepository.SWT_KIND));
+		this.advancedMultipleContainment.createControls(parent);
+		GridData advancedMultipleContainmentData = new GridData(GridData.FILL_HORIZONTAL);
+		advancedMultipleContainmentData.horizontalSpan = 3;
+		this.advancedMultipleContainment.setLayoutData(advancedMultipleContainmentData);
+		this.advancedMultipleContainment.disableMove();
+	}
+
+	/**
+	 * 
+	 */
+	private void moveAdvancedMultipleContainment(SuperCible element, int oldIndex, int newIndex) {
+	}
+
+	/**
+	 * 
+	 */
+	private void removeFromAdvancedMultipleContainment(SuperCible element) {
+
+		// Start of user code removeFromAdvancedMultipleContainment() method body
+		EObject editedElement = advancedMultipleContainmentEditUtil.foundCorrespondingEObject(element);
+		advancedMultipleContainmentEditUtil.removeElement(element);
+		advancedMultipleContainment.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedMultipleContainment, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		// End of user code
+	}
+
+	/**
+	 * 
+	 */
+	private void editAdvancedMultipleContainment(SuperCible element) {
+
+		// Start of user code editAdvancedMultipleContainment() method body
+		EObject editedElement = advancedMultipleContainmentEditUtil.foundCorrespondingEObject(element);
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+			if (propertiesEditionObject != null) {
+				advancedMultipleContainmentEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				advancedMultipleContainment.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedMultipleContainment, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+			}
+		}
+		// End of user code
 	}
 
 
@@ -198,6 +335,96 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	}
 
 	public void unsetMessageForAdvancedUniqueRef() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#getAdvancedMultipleContainmentToAdd()
+	 */
+	public List getAdvancedMultipleContainmentToAdd() {
+		return advancedMultipleContainmentEditUtil.getElementsToAdd();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#getAdvancedMultipleContainmentToRemove()
+	 */
+	public List getAdvancedMultipleContainmentToRemove() {
+		return advancedMultipleContainmentEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#getAdvancedMultipleContainmentTable()
+	 */
+	public List getAdvancedMultipleContainmentTable() {
+		return advancedMultipleContainmentEditUtil.getVirtualList();
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#initAdvancedMultipleContainment(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAdvancedMultipleContainment(EObject current, EReference containingFeature, EReference feature) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			advancedMultipleContainmentEditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			advancedMultipleContainmentEditUtil = new EMFListEditUtil(current, feature);
+		this.advancedMultipleContainment.setInput(advancedMultipleContainmentEditUtil.getVirtualList());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#updateAdvancedMultipleContainment(EObject newValue)
+	 */
+	public void updateAdvancedMultipleContainment(EObject newValue) {
+		if(advancedMultipleContainmentEditUtil != null){
+			advancedMultipleContainmentEditUtil.reinit(newValue);
+			advancedMultipleContainment.refresh();
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#addFilterAdvancedMultipleContainment(ViewerFilter filter)
+	 */
+	public void addFilterToAdvancedMultipleContainment(ViewerFilter filter) {
+		advancedMultipleContainmentFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#addBusinessFilterAdvancedMultipleContainment(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAdvancedMultipleContainment(ViewerFilter filter) {
+		advancedMultipleContainmentBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelNavigation.parts.SourcePropertiesEditionPart#isContainedInAdvancedMultipleContainmentTable(EObject element)
+	 */
+	public boolean isContainedInAdvancedMultipleContainmentTable(EObject element) {
+		return advancedMultipleContainmentEditUtil.contains(element);
+	}
+
+	public void setMessageForAdvancedMultipleContainment(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForAdvancedMultipleContainment() {
 
 	}
 

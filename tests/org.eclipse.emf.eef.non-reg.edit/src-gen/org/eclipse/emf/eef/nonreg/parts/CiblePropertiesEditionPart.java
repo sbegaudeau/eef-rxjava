@@ -5,6 +5,8 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
+import java.util.List;
+import java.util.Map;
 
 
 

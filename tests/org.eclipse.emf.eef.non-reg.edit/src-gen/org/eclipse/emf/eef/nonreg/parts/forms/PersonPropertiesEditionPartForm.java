@@ -6,48 +6,17 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 // Start of user code for imports
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.nonreg.Company;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
-import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -57,19 +26,85 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IMessageManager;
+import org.eclipse.ui.forms.events.ExpansionEvent;
+import org.eclipse.ui.forms.events.IExpansionListener;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.forms.events.ExpansionEvent;
+import org.eclipse.ui.forms.events.IExpansionListener;
+
+import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.emf.eef.nonreg.Company;
+import org.eclipse.emf.eef.nonreg.Person;
+import org.eclipse.emf.eef.nonreg.NonregFactory;
+
+
+
+import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.nonreg.parts.AccreditationsPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.StructuredSelection;
+import java.util.Iterator;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
 /**
@@ -83,15 +118,10 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	protected Button eclipseCommiter;
 	protected Button isRegistered;
 	protected RadioViewer genderRadioViewer;
-	protected EMFListEditUtil accreditationsEditUtil;
-	protected TableViewer accreditations;
-	protected Button addAccreditations;
-	protected Button removeAccreditations;
-	protected List<ViewerFilter> accreditationsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> accreditationsFilters = new ArrayList<ViewerFilter>();
 	protected AdvancedEObjectFlatComboViewer<Company> workFor;
 	protected ViewerFilter workForFilter;
 
+	private AccreditationsPropertiesEditionPart accreditationsPropertiesEditionPart;
 
 
 
@@ -128,6 +158,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+		createAccreditations(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
 		// End of user code		
@@ -149,7 +180,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createEclipseCommiterCheckbox(widgetFactory, propertiesGroup);
 		createIsRegisteredCheckbox(widgetFactory, propertiesGroup);
 		createGenderRadioViewer(propertiesGroup);
-		createAccreditationsReferencesTable(widgetFactory, propertiesGroup);
 		createWorkForFlatComboViewer(propertiesGroup, widgetFactory);
 		propertiesSection.setClient(propertiesGroup);
 	}
@@ -171,7 +201,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.firstname, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, firstname.getText()));
 			}
-			
+
 		});
 		firstname.addFocusListener(new FocusAdapter() {
 
@@ -199,10 +229,9 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.firstname, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, firstname.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.firstname, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createLastnameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_LastnameLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.lastname, NonregViewsRepository.FORM_KIND));
@@ -222,7 +251,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.lastname, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, lastname.getText()));
 			}
-			
+
 		});
 		lastname.addFocusListener(new FocusAdapter() {
 
@@ -250,10 +279,9 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.lastname, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, lastname.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.lastname, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createAgeText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_AgeLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.age, NonregViewsRepository.FORM_KIND));
@@ -273,7 +301,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.age, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, age.getText()));
 			}
-			
+
 		});
 		age.addFocusListener(new FocusAdapter() {
 
@@ -301,10 +329,9 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.age, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, age.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.age, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createEclipseCommiterCheckbox(FormToolkit widgetFactory, Composite parent) {
 		eclipseCommiter = widgetFactory.createButton(parent, NonregMessages.PersonPropertiesEditionPart_EclipseCommiterLabel, SWT.CHECK);
@@ -319,7 +346,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.eclipseCommiter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(eclipseCommiter.getSelection())));
 			}
-			
+
 		});
 		GridData eclipseCommiterData = new GridData(GridData.FILL_HORIZONTAL);
 		eclipseCommiterData.horizontalSpan = 2;
@@ -339,7 +366,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.isRegistered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isRegistered.getSelection())));
 			}
-			
+
 		});
 		GridData isRegisteredData = new GridData(GridData.FILL_HORIZONTAL);
 		isRegisteredData.horizontalSpan = 2;
@@ -353,146 +380,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		genderRadioViewer.setLayoutData(genderData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.gender, NonregViewsRepository.FORM_KIND), null);
 	}
-	protected void createAccreditationsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label accreditationsLabel = FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_AccreditationsLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.accreditations, NonregViewsRepository.FORM_KIND));
-		GridData accreditationsLabelData = new GridData();
-		accreditationsLabelData.horizontalSpan = 3;
-		accreditationsLabel.setLayoutData(accreditationsLabelData);
-		accreditations = createAccreditationsViewer(parent, widgetFactory, adapterFactory);
-		GridData accreditationsData = new GridData(GridData.FILL_HORIZONTAL);
-		accreditationsData.horizontalSpan = 2;
-		accreditationsData.minimumHeight = 120;
-		accreditationsData.heightHint = 120;
-		accreditations.getTable().setLayoutData(accreditationsData);
-		createAccreditationsControlPanel(parent, widgetFactory);
-	}
-
-	protected TableViewer createAccreditationsViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
-		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
-		table.setHeaderVisible(true);
-		GridData gd = new GridData();
-		gd.grabExcessHorizontalSpace = true;
-		gd.horizontalAlignment = GridData.FILL;
-		gd.grabExcessVerticalSpace = true;
-		gd.verticalAlignment = GridData.FILL;
-		table.setLayoutData(gd);
-		table.setLinesVisible(true);
-		// Start of user code for table accreditations s columns definition
-		
-		TableColumn name = new TableColumn(table, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
-		TableViewer result = new TableViewer(table);
-		result.setContentProvider(new ArrayContentProvider());
-		result.setLabelProvider(new ITableLabelProvider() {
-	
-			// Start of user code for table accreditations label provider
-			
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
-			// End of user code
-			public Image getColumnImage(Object element, int columnIndex) {
-				return null;
-			}
-
-			public void addListener(ILabelProviderListener listener) {
-			}
-
-			public void dispose() {
-			}
-
-			public boolean isLabelProperty(Object element, String property) {
-				return false;
-			}
-
-			public void removeListener(ILabelProviderListener listener) {
-			}
-
-		});
-		return result;
-	}
-
-	protected void createAccreditationsControlPanel(Composite container, FormToolkit widgetFactory) {
-		Composite result = widgetFactory.createComposite(container, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 1;
-		result.setLayout(layout);
-		addAccreditations = widgetFactory.createButton(result, NonregMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
-		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
-		addAccreditations.setLayoutData(addData);
-		addAccreditations.addSelectionListener(new SelectionAdapter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				addAccreditations();
-				accreditations.refresh();
-			}
-
-		});
-		removeAccreditations = widgetFactory.createButton(result, NonregMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
-		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
-		removeAccreditations.setLayoutData(removeData);
-		removeAccreditations.addSelectionListener(new SelectionAdapter() {
-
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (accreditations.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) accreditations.getSelection();
-					removeAccreditations(selection);
-					accreditations.refresh();
-				}
-			}
-
-		});
-	}
-	
-	/**
-	 *
-	 */
-	protected void addAccreditations() {
-
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, accreditationsFilters, accreditationsBusinessFilters, false, true) {
-			public void process(IStructuredSelection selection) {
-				for (Iterator iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					if (!accreditationsEditUtil.getVirtualList().contains(elem)) {
-						accreditationsEditUtil.addElement(elem);
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.accreditations, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, accreditationsEditUtil.foundCorrespondingEObject(elem)));
-					}
-				}
-			}
-	
-		};
-		dialog.open();
-	}
-	
-	/**
-	 * @param selection the accreditations to remove
-	 */
-	protected void removeAccreditations(IStructuredSelection selection) {
-		if (selection.getFirstElement() instanceof EObject) {
-			EObject selectedElement = (EObject) selection.getFirstElement();
-			accreditationsEditUtil.removeElement(selectedElement);
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.accreditations, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, accreditationsEditUtil.foundCorrespondingEObject(selectedElement)));
-		}
-	}
 	/**
 	 * @param propertiesGroup
 	 */
@@ -504,7 +391,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PersonPropertiesEditionPartForm.this, NonregViewsRepository.Person.workFor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
 			public void navigateTo(Company element){ }
-			
+
 			public Company handleCreate() {
 				Company eObject = NonregFactory.eINSTANCE.createCompany();
 				if (current != null && current instanceof Person && ((Person)current).getWorkFor() != null) {
@@ -524,7 +411,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 				}
 				return null;
 			}
-			
+
 		};
 		//create widget
 		workFor = new AdvancedEObjectFlatComboViewer<Company>(NonregMessages.PersonPropertiesEditionPart_WorkForLabel, 
@@ -532,8 +419,13 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		workFor.createControls(parent, widgetFactory);
 		GridData workForData = new GridData(GridData.FILL_HORIZONTAL);
 		workFor.setLayoutData(workForData);
-		
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.workFor, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+	}
+
+	protected void createAccreditations(FormToolkit widgetFactory, Composite container) {
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NonregViewsRepository.class);
+		accreditationsPropertiesEditionPart = (AccreditationsPropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.Accreditations.class, NonregViewsRepository.FORM_KIND, propertiesEditionComponent);
+		((IFormPropertiesEditionPart)accreditationsPropertiesEditionPart).createControls(widgetFactory, container, messageManager);
 	}
 
 
@@ -721,92 +613,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsToAdd()
-	 */
-	public List getAccreditationsToAdd() {
-		return accreditationsEditUtil.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsToRemove()
-	 */
-	public List getAccreditationsToRemove() {
-		return accreditationsEditUtil.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsTable()
-	 */
-	public List getAccreditationsTable() {
-		return accreditationsEditUtil.getVirtualList();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#initAccreditations(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initAccreditations(EObject current, EReference containingFeature, EReference feature) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			accreditationsEditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			accreditationsEditUtil = new EMFListEditUtil(current, feature);
-		this.accreditations.setInput(accreditationsEditUtil.getVirtualList());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#updateAccreditations(EObject newValue)
-	 */
-	public void updateAccreditations(EObject newValue) {
-		if(accreditationsEditUtil != null){
-			accreditationsEditUtil.reinit(newValue);
-			accreditations.refresh();
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addFilterAccreditations(ViewerFilter filter)
-	 */
-	public void addFilterToAccreditations(ViewerFilter filter) {
-		accreditationsFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addBusinessFilterAccreditations(ViewerFilter filter)
-	 */
-	public void addBusinessFilterToAccreditations(ViewerFilter filter) {
-		accreditationsBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#isContainedInAccreditationsTable(EObject element)
-	 */
-	public boolean isContainedInAccreditationsTable(EObject element) {
-		return accreditationsEditUtil.contains(element);
-	}
-
-
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getWorkFor()
 	 */
 	public EObject getWorkFor() {
@@ -866,6 +672,90 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		workFor.addBusinessRuleFilter(filter);
 	}
 
+
+
+
+
+
+/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsReferencedView()
+	 */
+		public IPropertiesEditionPart getAccreditationsReferencedView() {
+			return (IPropertiesEditionPart) accreditationsPropertiesEditionPart;
+		}
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsToAdd()
+	 */
+	public List getAccreditationsToAdd() {
+		return accreditationsPropertiesEditionPart.getAccreditationsToAdd();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsToRemove()
+	 */
+	public List getAccreditationsToRemove() {
+		return accreditationsPropertiesEditionPart.getAccreditationsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#getAccreditationsTable()
+	 */
+	public List getAccreditationsTable() {
+		return accreditationsPropertiesEditionPart.getAccreditationsTable();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#initAccreditations(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAccreditations(EObject current, EReference containingFeature, EReference feature) {
+		accreditationsPropertiesEditionPart.initAccreditations(current, containingFeature, feature);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#updateAccreditations(EObject newValue)
+	 */
+	public void updateAccreditations(EObject newValue) {
+		accreditationsPropertiesEditionPart.updateAccreditations(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addFilterAccreditations(ViewerFilter filter)
+	 */
+	public void addFilterToAccreditations(ViewerFilter filter) {
+		accreditationsPropertiesEditionPart.addFilterToAccreditations(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#addBusinessFilterAccreditations(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAccreditations(ViewerFilter filter) {
+		accreditationsPropertiesEditionPart.addBusinessFilterToAccreditations(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart#isContainedInAccreditationsTable(EObject element)
+	 */
+	public boolean isContainedInAccreditationsTable(EObject element) {
+		return accreditationsPropertiesEditionPart.isContainedInAccreditationsTable(element);
+	}
 
 
 

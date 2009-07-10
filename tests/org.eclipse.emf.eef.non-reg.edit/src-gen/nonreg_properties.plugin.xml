@@ -172,6 +172,14 @@
              </input>
          </propertySection>
          <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
                tab="testFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
@@ -212,6 +220,14 @@
              </input>
          </propertySection>
          <propertySection
+               tab="SuperCible"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible">
+             </input>
+         </propertySection>
+         <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
@@ -220,11 +236,107 @@
              </input>
          </propertySection>
          <propertySection
-               tab="SuperCible"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
+               id="org.eclipse.emf.eef.nonreg.section.Adress">
              <input
-                    type="org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible">
+                    type="org.eclipse.emf.eef.nonreg.Adress">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Talk">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Talk">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Talk">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Talk">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.EclipseSummit">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.EclipseSummit">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.nonreg.section.Person">
+             <input
+                    type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
       </propertySections>

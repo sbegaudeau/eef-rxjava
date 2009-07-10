@@ -27,7 +27,11 @@ public class NonregMessages extends NLS {
 
 	public static String AdressPropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String AccreditationsPropertiesEditionPart_ListOfAccreditationsGroupLabel;
+
 	public static String TestFilterPropertiesEditionPart_GroupGroupLabel;
+
+	public static String SourcePropertiesEditionPart_PropsGroupLabel;
 
 	public static String EclipseSummit_ReadOnly;
 
@@ -47,6 +51,8 @@ public class NonregMessages extends NLS {
 
 	public static String Adress_ReadOnly;
 
+	public static String Accreditations_ReadOnly;
+
 	public static String TestFilter_ReadOnly;
 
 	public static String TestVRFilter_ReadOnly;
@@ -56,6 +62,32 @@ public class NonregMessages extends NLS {
 	public static String SuperCible_ReadOnly;
 
 	public static String Cible_ReadOnly;
+
+	public static String Text_ReadOnly;
+
+	public static String TextArea_ReadOnly;
+
+	public static String Checkbox_ReadOnly;
+
+	public static String Radio_ReadOnly;
+
+	public static String Combo_ReadOnly;
+
+	public static String EObjectFlatComboViewer_ReadOnly;
+
+	public static String ReferencesTable_ReadOnly;
+
+	public static String EMFComboViewer_ReadOnly;
+
+	public static String MultiValuedEditor_ReadOnly;
+
+	public static String TableComposition_ReadOnly;
+
+	public static String AdvancedTableComposition_ReadOnly;
+
+	public static String AdvancedReferencesTable_ReadOnly;
+
+	public static String AdvancedEObjectFlatComboViewer_ReadOnly;
 
 	public static String EclipseSummitPropertiesEditionPart_PlaceLabel;
 
@@ -72,8 +104,6 @@ public class NonregMessages extends NLS {
 	public static String PersonPropertiesEditionPart_IsRegisteredLabel;
 
 	public static String PersonPropertiesEditionPart_GenderLabel;
-
-	public static String PersonPropertiesEditionPart_AccreditationsLabel;
 
 	public static String PersonPropertiesEditionPart_WorkForLabel;
 
@@ -95,6 +125,8 @@ public class NonregMessages extends NLS {
 
 	public static String AdressPropertiesEditionPart_PostalCodeLabel;
 
+	public static String AccreditationsPropertiesEditionPart_AccreditationsLabel;
+
 	public static String TestFilterPropertiesEditionPart_TestEOFCVLabel;
 
 	public static String TestFilterPropertiesEditionPart_TestARTLabel;
@@ -104,6 +136,60 @@ public class NonregMessages extends NLS {
 	public static String TestFilterPropertiesEditionPart_TestRTLabel;
 
 	public static String SourcePropertiesEditionPart_AdvancedUniqueRefLabel;
+
+	public static String SourcePropertiesEditionPart_AdvancedMultipleContainmentLabel;
+
+	public static String TextPropertiesEditionPart_TextLabel;
+
+	public static String TextPropertiesEditionPart_TextROLabel;
+
+	public static String TextAreaPropertiesEditionPart_TextareaLabel;
+
+	public static String TextAreaPropertiesEditionPart_TextareaROLabel;
+
+	public static String CheckboxPropertiesEditionPart_CheckboxLabel;
+
+	public static String CheckboxPropertiesEditionPart_CheckboxROLabel;
+
+	public static String RadioPropertiesEditionPart_RadioLabel;
+
+	public static String RadioPropertiesEditionPart_RadioROLabel;
+
+	public static String ComboPropertiesEditionPart_ComboLabel;
+
+	public static String ComboPropertiesEditionPart_ComboROLabel;
+
+	public static String EObjectFlatComboViewerPropertiesEditionPart_EobjectflatcomboviewerLabel;
+
+	public static String EObjectFlatComboViewerPropertiesEditionPart_EobjectflatcomboviewerROLabel;
+
+	public static String ReferencesTablePropertiesEditionPart_ReferencestableLabel;
+
+	public static String ReferencesTablePropertiesEditionPart_ReferencestableROLabel;
+
+	public static String EMFComboViewerPropertiesEditionPart_EmfcomboviewerLabel;
+
+	public static String EMFComboViewerPropertiesEditionPart_EmfcomboviewerROLabel;
+
+	public static String MultiValuedEditorPropertiesEditionPart_MultivaluededitorLabel;
+
+	public static String MultiValuedEditorPropertiesEditionPart_MultivaluededitorROLabel;
+
+	public static String TableCompositionPropertiesEditionPart_TablecompositionLabel;
+
+	public static String TableCompositionPropertiesEditionPart_TablecompositionROLabel;
+
+	public static String AdvancedTableCompositionPropertiesEditionPart_AdvancedtablecompositionLabel;
+
+	public static String AdvancedTableCompositionPropertiesEditionPart_AdvancedtablecompositionROLabel;
+
+	public static String AdvancedReferencesTablePropertiesEditionPart_AdvancedreferencestableLabel;
+
+	public static String AdvancedReferencesTablePropertiesEditionPart_AdvancedreferencestableROLabel;
+
+	public static String AdvancedEObjectFlatComboViewerPropertiesEditionPart_AdvancedeobjectflatcomboviewerLabel;
+
+	public static String AdvancedEObjectFlatComboViewerPropertiesEditionPart_AdvancedeobjectflatcomboviewerROLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 
