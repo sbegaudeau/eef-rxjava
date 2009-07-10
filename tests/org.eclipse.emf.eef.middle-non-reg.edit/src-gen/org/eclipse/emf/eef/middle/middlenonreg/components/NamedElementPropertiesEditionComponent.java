@@ -46,7 +46,7 @@ public class NamedElementPropertiesEditionComponent extends ComposedPropertiesEd
 		if (namedElement instanceof NamedElement) {
 			namedElementBasePropertiesEditionComponent = new NamedElementBasePropertiesEditionComponent(namedElement, editing_mode); 
 			addSubComponent(namedElementBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(namedElement, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(namedElement, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

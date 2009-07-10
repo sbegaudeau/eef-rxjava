@@ -121,7 +121,7 @@ public class NamedElementPropertiesEditionPartForm extends CompositePropertiesEd
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NamedElementPropertiesEditionPartForm.this, MiddlenonregViewsRepository.NamedElement.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addFocusListener(new FocusAdapter() {
 
@@ -149,10 +149,9 @@ public class NamedElementPropertiesEditionPartForm extends CompositePropertiesEd
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NamedElementPropertiesEditionPartForm.this, MiddlenonregViewsRepository.NamedElement.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MiddlenonregViewsRepository.NamedElement.name, MiddlenonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createDocumentedElement(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(AbstractnonregViewsRepository.class);
