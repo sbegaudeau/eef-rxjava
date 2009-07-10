@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.4 2009/06/09 15:47:05 sbouchet Exp $
+ * $Id: ComponentsEditor.java,v 1.5 2009/07/10 15:08:47 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -1080,7 +1080,7 @@ public class ComponentsEditor extends MultiPageEditorPart implements IEditingDom
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
+		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
 				new TabbedPropertiesEditionSheetPage(ComponentsEditor.this) {
 					@Override
