@@ -1790,7 +1790,7 @@ public class ModelNavigationEditor
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
+		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
 				new TabbedPropertiesEditionSheetPage(ModelNavigationEditor.this) {
 					@Override
