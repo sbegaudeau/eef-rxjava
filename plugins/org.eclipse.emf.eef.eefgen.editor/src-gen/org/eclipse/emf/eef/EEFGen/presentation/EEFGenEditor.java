@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenEditor.java,v 1.3 2009/06/09 15:47:47 sbouchet Exp $
+ * $Id: EEFGenEditor.java,v 1.4 2009/07/10 15:08:50 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.presentation;
 
@@ -1127,7 +1127,7 @@ public class EEFGenEditor
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
+		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
 				new TabbedPropertiesEditionSheetPage(EEFGenEditor.this) {
 					@Override
