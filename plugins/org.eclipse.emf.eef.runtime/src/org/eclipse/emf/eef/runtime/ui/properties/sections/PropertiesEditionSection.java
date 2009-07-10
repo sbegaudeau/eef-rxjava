@@ -89,23 +89,29 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eObject);
+					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
+							.getProvider(eObject);
 					if (provider != null) {
 						if (this.propertiesEditionComponent != null)
 							this.propertiesEditionComponent.dispose();
 						String descriptor = getDescriptor();
-						this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);
+						this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject,
+								IPropertiesEditionComponent.LIVE_MODE);
 						if (this.propertiesEditionComponent != null) {
-							this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage.getEditingDomain());
-							this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1, descriptor);
+							this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage
+									.getEditingDomain());
+							this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1,
+									descriptor);
 							if (editionPart instanceof IFormPropertiesEditionPart) {
 								for (int i = 0; i < parent.getChildren().length; i++) {
 									Composite child = (Composite)parent.getChildren()[i];
 									child.dispose();
 								}
-								((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,	getWidgetFactory());
+								((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,
+										getWidgetFactory());
 								parent.layout();
-								this.propertiesEditionComponent.initPart(this.propertiesEditionComponent.translatePart(descriptor), 1, eObject);
+								this.propertiesEditionComponent.initPart(this.propertiesEditionComponent
+										.translatePart(descriptor), 1, eObject);
 							}
 						}
 					}
@@ -127,23 +133,25 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			this.propertiesEditionComponent = null;
 			this.editionPart = null;
 		}
+		
 	}
 
 	/**
 	 * Magic method For eclipse 3.2 & 3.3 & 3.4 & 3.5
+	 * 
 	 * @return
 	 */
 	protected String getDescriptor() {
 		Map descriptor = propertySheetPage.getDescriptor();
 		for (Iterator iterator = descriptor.keySet().iterator(); iterator.hasNext();) {
-			Object key = iterator.next();			
+			Object key = iterator.next();
 			Object tab = descriptor.get(key);
-			Method getSectionAtIndex=getMethod(tab, "getSectionAtIndex", int.class);					
-			if(getSectionAtIndex!=null){
-				Object result= callMethod(tab, getSectionAtIndex, 0);				
-				if(result == this){
-					Method getId=getMethod(key, "getId");
-					if(getId!=null){
+			Method getSectionAtIndex = getMethod(tab, "getSectionAtIndex", int.class);
+			if (getSectionAtIndex != null) {
+				Object result = callMethod(tab, getSectionAtIndex, 0);
+				if (result == this) {
+					Method getId = getMethod(key, "getId");
+					if (getId != null) {
 						String id = (String)callMethod(key, getId);
 						return id;
 					}
@@ -152,33 +160,40 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 		}
 		return "";
 	}
-	
+
 	/**
-	 * @param source the source object
-	 * @param name the method to get
-	 * @param argsType the method arguments type
+	 * @param source
+	 *            the source object
+	 * @param name
+	 *            the method to get
+	 * @param argsType
+	 *            the method arguments type
 	 * @return the given method
 	 */
-	private Method getMethod(Object source, String name, Class...argsType){
-		try{
-			return source.getClass().getDeclaredMethod(name, argsType);		
+	private Method getMethod(Object source, String name, Class... argsType) {
+		try {
+			return source.getClass().getDeclaredMethod(name, argsType);
 		} catch (Exception e) {
-			EMFPropertiesRuntime.getDefault().logError("Cannot found method "+name, e);
+			EMFPropertiesRuntime.getDefault().logError("Cannot found method " + name, e);
 		}
 		return null;
 	}
-	
+
 	/**
-	 * @param source the source object
-	 * @param name the method to get
-	 * @param argsType the method arguments type
+	 * @param source
+	 *            the source object
+	 * @param name
+	 *            the method to get
+	 * @param argsType
+	 *            the method arguments type
 	 * @return the result of the given method
 	 */
-	private Object callMethod(Object source, Method method, Object...args){
-		try{
+	private Object callMethod(Object source, Method method, Object... args) {
+		try {
 			return method.invoke(source, args);
 		} catch (Exception e) {
-			EMFPropertiesRuntime.getDefault().logError("An error occured on "+method.getName()+" call.", e);
+			EMFPropertiesRuntime.getDefault().logError("An error occured on " + method.getName() + " call.",
+					e);
 		}
 		return null;
 	}

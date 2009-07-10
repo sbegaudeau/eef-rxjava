@@ -154,7 +154,6 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 			} else {
 				EMFPropertiesRuntime.getDefault().logError("Cannot perform command.", null);
 			}
-
 		}
 		if (cc.isEmpty())
 			cc.append(IdentityCommand.INSTANCE);
