@@ -114,4 +114,17 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 		return image;
 	}
 
+	/**
+	 * Returns an <code>org.eclipse.swt.graphics.Image</code> identified by its key.<BR>
+	 * By default, it returns a default image. This image is the image placed in the directory
+	 * <em>resources/icons/default.gif</em>
+	 * 
+	 * @param key
+	 *            the key of the image
+	 * @return the Image
+	 */
+	public static ImageDescriptor getImageDescriptor(String key) {
+		return AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, key);
+	}
+
 }
