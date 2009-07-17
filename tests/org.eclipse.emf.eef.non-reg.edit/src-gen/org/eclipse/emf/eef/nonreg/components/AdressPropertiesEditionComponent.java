@@ -56,6 +56,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -177,7 +178,7 @@ public class AdressPropertiesEditionComponent extends StandardPropertiesEditionC
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.Adress.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Adress adress = (Adress)elt;
+			final Adress adress = (Adress)elt;
 			// init values
 			basePart.setPostalCode(String.valueOf(adress.getPostalCode()));
 
@@ -190,7 +191,6 @@ public class AdressPropertiesEditionComponent extends StandardPropertiesEditionC
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -317,6 +317,7 @@ public class AdressPropertiesEditionComponent extends StandardPropertiesEditionC
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

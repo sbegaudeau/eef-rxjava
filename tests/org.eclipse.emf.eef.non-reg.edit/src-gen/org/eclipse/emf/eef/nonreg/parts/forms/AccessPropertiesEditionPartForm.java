@@ -56,6 +56,7 @@ import org.eclipse.emf.eef.nonreg.parts.AccessPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -101,7 +102,8 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createPeriodGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPeriodGroup(FormToolkit widgetFactory, final Composite view) {
@@ -172,7 +174,8 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -215,4 +218,5 @@ public class AccessPropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

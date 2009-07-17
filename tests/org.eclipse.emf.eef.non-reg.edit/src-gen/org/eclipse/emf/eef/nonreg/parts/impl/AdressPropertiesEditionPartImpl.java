@@ -40,6 +40,7 @@ import org.eclipse.emf.eef.nonreg.parts.AdressPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -85,6 +86,7 @@ public class AdressPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -125,6 +127,7 @@ public class AdressPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -167,4 +170,5 @@ public class AdressPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

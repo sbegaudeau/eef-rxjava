@@ -63,6 +63,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -110,7 +111,8 @@ public class ComboPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		createComboROEMFComboViewer(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createComboEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
@@ -164,7 +166,8 @@ public class ComboPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -281,4 +284,5 @@ public class ComboPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

@@ -82,6 +82,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -130,7 +131,8 @@ public class AccreditationsPropertiesEditionPartForm extends CompositeProperties
 		createListOfAccreditationsGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createListOfAccreditationsGroup(FormToolkit widgetFactory, final Composite view) {
@@ -198,6 +200,7 @@ public class AccreditationsPropertiesEditionPartForm extends CompositeProperties
 		accreditations.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AccreditationsPropertiesEditionPartForm.this, NonregViewsRepository.Accreditations.accreditations, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -218,13 +221,15 @@ public class AccreditationsPropertiesEditionPartForm extends CompositeProperties
 			}
 		}
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -323,4 +328,5 @@ public class AccreditationsPropertiesEditionPartForm extends CompositeProperties
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

@@ -82,6 +82,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -130,7 +131,8 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		createPresenceGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPresenceGroup(FormToolkit widgetFactory, final Composite view) {
@@ -198,6 +200,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		assists.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, NonregViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -218,13 +221,15 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 			}
 		}
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -323,4 +328,5 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

@@ -60,6 +60,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -182,7 +183,7 @@ public class ComboPropertiesEditionComponent extends StandardPropertiesEditionCo
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.Combo.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Talk talk = (Talk)elt;
+			final Talk talk = (Talk)elt;
 			// init values
 			basePart.initCombo(allResource, talk.getPresenter());
 			basePart.initComboRO(allResource, talk.getPresenter());
@@ -196,7 +197,8 @@ public class ComboPropertiesEditionComponent extends StandardPropertiesEditionCo
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof Person); 					
+					return (element instanceof Person); 
+					
 				}
 
 			});
@@ -211,7 +213,8 @@ public class ComboPropertiesEditionComponent extends StandardPropertiesEditionCo
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof Person); 					
+					return (element instanceof Person); 
+					
 				}
 
 			});
@@ -224,7 +227,6 @@ public class ComboPropertiesEditionComponent extends StandardPropertiesEditionCo
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -349,6 +351,7 @@ public class ComboPropertiesEditionComponent extends StandardPropertiesEditionCo
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

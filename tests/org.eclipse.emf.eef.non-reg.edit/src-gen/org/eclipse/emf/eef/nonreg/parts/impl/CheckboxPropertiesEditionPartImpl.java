@@ -39,6 +39,7 @@ import org.eclipse.emf.eef.nonreg.parts.CheckboxPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -86,6 +87,7 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createCheckboxCheckbox(Composite parent) {
@@ -112,6 +114,7 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -184,4 +187,5 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

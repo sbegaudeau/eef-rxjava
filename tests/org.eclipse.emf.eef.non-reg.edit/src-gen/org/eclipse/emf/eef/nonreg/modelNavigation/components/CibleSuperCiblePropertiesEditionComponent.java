@@ -53,8 +53,8 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.Viewer;
@@ -62,6 +62,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -181,7 +182,7 @@ public class CibleSuperCiblePropertiesEditionComponent extends StandardPropertie
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (superCiblePart != null && key == NonregViewsRepository.SuperCible.class) {
 			((IPropertiesEditionPart)superCiblePart).setContext(elt, allResource);
-			ConcreteCible concreteCible = (ConcreteCible)elt;
+			final ConcreteCible concreteCible = (ConcreteCible)elt;
 			// init values
 			
 			// init filters
@@ -194,7 +195,6 @@ public class CibleSuperCiblePropertiesEditionComponent extends StandardPropertie
 
 
 	}
-
 
 
 
@@ -307,6 +307,7 @@ public class CibleSuperCiblePropertiesEditionComponent extends StandardPropertie
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

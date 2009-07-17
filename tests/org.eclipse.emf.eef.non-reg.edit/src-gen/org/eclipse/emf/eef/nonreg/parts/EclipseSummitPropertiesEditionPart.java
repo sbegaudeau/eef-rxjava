@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -112,5 +113,6 @@ public interface EclipseSummitPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

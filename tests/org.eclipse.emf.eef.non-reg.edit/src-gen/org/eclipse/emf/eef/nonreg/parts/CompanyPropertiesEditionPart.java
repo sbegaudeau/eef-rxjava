@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -108,8 +109,11 @@ public interface CompanyPropertiesEditionPart {
 
 
 
+
+
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

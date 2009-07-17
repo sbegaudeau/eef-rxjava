@@ -62,17 +62,6 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -84,6 +73,17 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.emf.eef.nonreg.Person;
 
 
+import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -92,6 +92,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEd
 
 
 // End of user code
+
 /**
  * 
  */
@@ -142,7 +143,8 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		createDocumentedElement(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -290,7 +292,8 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -522,4 +525,5 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

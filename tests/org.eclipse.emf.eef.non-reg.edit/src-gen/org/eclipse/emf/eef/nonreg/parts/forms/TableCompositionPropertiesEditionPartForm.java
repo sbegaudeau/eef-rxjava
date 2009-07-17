@@ -79,6 +79,7 @@ import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -132,7 +133,8 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		createTablecompositionROTableComposition(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -163,6 +165,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		name.setText("Label"); //$NON-NLS-1$
 
 		// End of user code
+
 		tablecomposition = new TableViewer(tableTablecomposition);
 		tablecomposition.setContentProvider(new ArrayContentProvider());
 		tablecomposition.setLabelProvider(new ITableLabelProvider() {
@@ -183,6 +186,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 				return null;
 			}
 			//End of user code
+
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -285,6 +289,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -304,6 +309,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionPropertiesEditionPartForm.this, NonregViewsRepository.TableComposition.tablecomposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -329,6 +335,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 			}
 		}
 		// End of user code
+
 	}
 	/**
 	 * @param container
@@ -360,6 +367,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		name.setText("Label"); //$NON-NLS-1$
 
 		// End of user code
+
 		tablecompositionRO = new TableViewer(tableTablecompositionRO);
 		tablecompositionRO.setContentProvider(new ArrayContentProvider());
 		tablecompositionRO.setLabelProvider(new ITableLabelProvider() {
@@ -380,6 +388,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 				return null;
 			}
 			//End of user code
+
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -488,6 +497,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -507,6 +517,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionPropertiesEditionPartForm.this, NonregViewsRepository.TableComposition.tablecompositionRO, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -532,13 +543,15 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 			}
 		}
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -757,4 +770,5 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

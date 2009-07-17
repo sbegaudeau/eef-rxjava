@@ -49,6 +49,7 @@ import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -96,6 +97,7 @@ public class EObjectFlatComboViewerPropertiesEditionPartImpl extends CompositePr
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	/**
@@ -144,6 +146,7 @@ public class EObjectFlatComboViewerPropertiesEditionPartImpl extends CompositePr
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -304,4 +307,5 @@ public class EObjectFlatComboViewerPropertiesEditionPartImpl extends CompositePr
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

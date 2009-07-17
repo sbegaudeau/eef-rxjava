@@ -62,6 +62,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -181,7 +182,7 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (testVRFilterPart != null && key == NonregViewsRepository.TestVRFilter.class) {
 			((IPropertiesEditionPart)testVRFilterPart).setContext(elt, allResource);
-			ForFilters forFilters = (ForFilters)elt;
+			final ForFilters forFilters = (ForFilters)elt;
 			// init values
 			
 			// init filters
@@ -322,6 +323,7 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 		// Start of user code for user filter methodFilterART
 		return true;
 		// End of user code
+
 	}
 
 	/**
@@ -331,8 +333,8 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 		// Start of user code for user filter methodFilterRT
 		return true;
 		// End of user code
-	}
 
+	}
 
 
 
@@ -439,6 +441,7 @@ public class TestFilterForRVTestVRFilterPropertiesEditionComponent extends Stand
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

@@ -11,6 +11,7 @@ import java.util.Map;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -24,5 +25,6 @@ public interface CiblePropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

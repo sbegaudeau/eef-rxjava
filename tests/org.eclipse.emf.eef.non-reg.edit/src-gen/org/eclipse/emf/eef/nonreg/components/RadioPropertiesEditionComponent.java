@@ -63,6 +63,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -187,7 +188,7 @@ public class RadioPropertiesEditionComponent extends StandardPropertiesEditionCo
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.Radio.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Person person = (Person)elt;
+			final Person person = (Person)elt;
 			// init values
 			basePart.initRadio((EEnum) NonregPackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
 			basePart.initRadioRO((EEnum) NonregPackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
@@ -201,7 +202,6 @@ public class RadioPropertiesEditionComponent extends StandardPropertiesEditionCo
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -331,6 +331,7 @@ public class RadioPropertiesEditionComponent extends StandardPropertiesEditionCo
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

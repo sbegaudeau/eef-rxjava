@@ -68,6 +68,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -119,6 +120,7 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createMultivaluededitorMultiValuedEditor(Composite parent) {
@@ -193,6 +195,7 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -267,4 +270,5 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

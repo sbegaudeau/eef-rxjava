@@ -39,29 +39,17 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProvider
 
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
-import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
+import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -80,6 +68,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
@@ -98,25 +87,37 @@ import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregFactory;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
-
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.StructuredSelection;
+import java.util.Iterator;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -174,6 +175,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createGroupGroup(Composite parent) {
@@ -263,6 +265,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		testART.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TestFilterPropertiesEditionPartImpl.this, NonregViewsRepository.TestFilter.testART, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -283,6 +286,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 			}
 		}
 		// End of user code
+
 	}
 	/**
 	 * @param groupGroup
@@ -356,7 +360,8 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
+		// End of user code
+		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -378,6 +383,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 				return null;
 			}
 			// End of user code
+
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -474,6 +480,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -810,4 +817,5 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

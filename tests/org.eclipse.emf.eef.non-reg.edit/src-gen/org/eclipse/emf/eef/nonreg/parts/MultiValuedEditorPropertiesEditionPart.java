@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -55,5 +56,6 @@ public interface MultiValuedEditorPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

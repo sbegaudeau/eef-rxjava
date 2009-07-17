@@ -63,6 +63,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -185,7 +186,7 @@ public class ReferencesTablePropertiesEditionComponent extends StandardPropertie
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.ReferencesTable.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Person person = (Person)elt;
+			final Person person = (Person)elt;
 			// init values
 			basePart.initReferencestable(person, null, NonregPackage.eINSTANCE.getPerson_Assists());
 			basePart.initReferencestableRO(person, null, NonregPackage.eINSTANCE.getPerson_Assists());
@@ -233,7 +234,6 @@ public class ReferencesTablePropertiesEditionComponent extends StandardPropertie
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -381,6 +381,7 @@ public class ReferencesTablePropertiesEditionComponent extends StandardPropertie
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

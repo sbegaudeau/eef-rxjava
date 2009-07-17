@@ -67,6 +67,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -195,7 +196,7 @@ public class AdvancedTableCompositionPropertiesEditionComponent extends Standard
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.AdvancedTableComposition.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			EclipseSummit eclipseSummit = (EclipseSummit)elt;
+			final EclipseSummit eclipseSummit = (EclipseSummit)elt;
 			// init values
 			basePart.initAdvancedtablecomposition(eclipseSummit, null, NonregPackage.eINSTANCE.getEclipseSummit_Sites());
 			basePart.initAdvancedtablecompositionRO(eclipseSummit, null, NonregPackage.eINSTANCE.getEclipseSummit_Sites());
@@ -210,6 +211,7 @@ public class AdvancedTableCompositionPropertiesEditionComponent extends Standard
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
+
 				}
 
 			});
@@ -225,6 +227,7 @@ public class AdvancedTableCompositionPropertiesEditionComponent extends Standard
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
+
 				}
 
 			});
@@ -237,7 +240,6 @@ public class AdvancedTableCompositionPropertiesEditionComponent extends Standard
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -447,6 +449,7 @@ public class AdvancedTableCompositionPropertiesEditionComponent extends Standard
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

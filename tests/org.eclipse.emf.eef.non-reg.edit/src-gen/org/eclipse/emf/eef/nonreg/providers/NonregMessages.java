@@ -226,6 +226,7 @@ public class NonregMessages extends NLS {
 	// Start of user code for additionnal NLS Constants
 	
 	// End of user code
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, NonregMessages.class);

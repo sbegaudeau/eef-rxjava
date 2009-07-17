@@ -59,6 +59,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -181,7 +182,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.Topic.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Topic topic = (Topic)elt;
+			final Topic topic = (Topic)elt;
 			// init values
 			if (topic.getDescription() != null)
 				basePart.setDescription(topic.getDescription());
@@ -198,7 +199,6 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 
 
 	}
-
 
 
 
@@ -327,6 +327,7 @@ public class TopicBasePropertiesEditionComponent extends StandardPropertiesEditi
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

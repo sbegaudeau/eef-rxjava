@@ -51,6 +51,12 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
+import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
+
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
@@ -71,12 +77,6 @@ import org.eclipse.emf.eef.nonreg.Company;
 import org.eclipse.emf.eef.nonreg.Person;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
 
-
-
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
@@ -107,6 +107,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -161,7 +162,8 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createAccreditations(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -433,7 +435,8 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -770,4 +773,5 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

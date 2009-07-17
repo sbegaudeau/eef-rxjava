@@ -69,6 +69,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 
 // End of user code
+
 /**
  * 
  */
@@ -191,7 +192,7 @@ public class TestFilterForReferenceTablesPropertiesEditionComponent extends Stan
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (testFilterPart != null && key == NonregViewsRepository.TestFilter.class) {
 			((IPropertiesEditionPart)testFilterPart).setContext(elt, allResource);
-			ForFilters forFilters = (ForFilters)elt;
+			final ForFilters forFilters = (ForFilters)elt;
 			// init values
 			testFilterPart.initTestART(forFilters, null, SubPackageNonRegForFiltersPackage.eINSTANCE.getForFilters_RT());
 			testFilterPart.initTestRT(forFilters, null, SubPackageNonRegForFiltersPackage.eINSTANCE.getForFilters_RT());
@@ -331,6 +332,7 @@ public class TestFilterForReferenceTablesPropertiesEditionComponent extends Stan
 		// Start of user code for user filter methodFilterART
 		return true;
 		// End of user code
+
 	}
 
 	/**
@@ -340,8 +342,8 @@ public class TestFilterForReferenceTablesPropertiesEditionComponent extends Stan
 		// Start of user code for user filter methodFilterRT
 		return true;
 		// End of user code
-	}
 
+	}
 
 
 
@@ -487,6 +489,7 @@ public class TestFilterForReferenceTablesPropertiesEditionComponent extends Stan
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

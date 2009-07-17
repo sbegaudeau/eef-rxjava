@@ -64,6 +64,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -111,7 +112,8 @@ public class EMFComboViewerPropertiesEditionPartForm extends CompositeProperties
 		createEmfcomboviewerROEMFComboViewer(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createEmfcomboviewerEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
@@ -165,7 +167,8 @@ public class EMFComboViewerPropertiesEditionPartForm extends CompositeProperties
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -244,4 +247,5 @@ public class EMFComboViewerPropertiesEditionPartForm extends CompositeProperties
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

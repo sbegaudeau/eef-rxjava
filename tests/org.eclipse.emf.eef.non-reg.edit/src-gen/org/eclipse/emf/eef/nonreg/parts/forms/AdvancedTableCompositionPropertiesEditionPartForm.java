@@ -67,6 +67,7 @@ import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -120,7 +121,8 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		createAdvancedtablecompositionROTableComposition(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -168,6 +170,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -180,6 +183,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		advancedtablecomposition.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionPropertiesEditionPartForm.this, NonregViewsRepository.AdvancedTableComposition.advancedtablecomposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -199,6 +203,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 			}
 		}
 		// End of user code
+
 	}
 	/**
 	 * @param container
@@ -247,6 +252,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -259,6 +265,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		advancedtablecompositionRO.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionPropertiesEditionPartForm.this, NonregViewsRepository.AdvancedTableComposition.advancedtablecompositionRO, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -278,13 +285,15 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 			}
 		}
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -503,4 +512,5 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

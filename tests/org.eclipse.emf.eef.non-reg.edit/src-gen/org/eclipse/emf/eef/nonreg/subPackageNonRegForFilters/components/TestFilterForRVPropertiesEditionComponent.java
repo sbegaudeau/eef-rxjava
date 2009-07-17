@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.components.TestFilt
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */

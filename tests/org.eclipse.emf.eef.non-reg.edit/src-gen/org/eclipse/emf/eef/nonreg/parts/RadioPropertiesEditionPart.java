@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.Enumerator;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -70,5 +71,6 @@ public interface RadioPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

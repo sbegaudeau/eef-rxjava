@@ -72,6 +72,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 
 // End of user code
+
 /**
  * 
  */
@@ -194,7 +195,7 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (testFilterPart != null && key == NonregViewsRepository.TestFilter.class) {
 			((IPropertiesEditionPart)testFilterPart).setContext(elt, allResource);
-			ForFilters forFilters = (ForFilters)elt;
+			final ForFilters forFilters = (ForFilters)elt;
 			// init values
 			testFilterPart.initTestEOFCV(allResource, forFilters.getEOFCV());
 			// set the button mode
@@ -213,6 +214,7 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof String && element.equals("")) || (element instanceof NamedElement); //$NON-NLS-1$ 
+
 				}
 
 			});
@@ -276,6 +278,7 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 		// Start of user code for user filter methodFilterEOFCV
 		return true;
 		// End of user code
+
 	}
 
 	/**
@@ -285,8 +288,8 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 		// Start of user code for user filter methodFilterAEOFCV
 		return true;
 		// End of user code
-	}
 
+	}
 
 
 
@@ -404,6 +407,7 @@ public class TestFilterFlatComboPropertiesEditionComponent extends StandardPrope
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

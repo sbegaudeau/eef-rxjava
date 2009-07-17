@@ -40,27 +40,15 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -97,17 +85,30 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProvider
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.StructuredSelection;
+import java.util.Iterator;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -153,6 +154,7 @@ public class TestVRFilterPropertiesEditionPartImpl extends CompositePropertiesEd
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createTestFilter(Composite container) {
@@ -167,6 +169,7 @@ public class TestVRFilterPropertiesEditionPartImpl extends CompositePropertiesEd
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 
@@ -454,4 +457,5 @@ public class TestVRFilterPropertiesEditionPartImpl extends CompositePropertiesEd
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

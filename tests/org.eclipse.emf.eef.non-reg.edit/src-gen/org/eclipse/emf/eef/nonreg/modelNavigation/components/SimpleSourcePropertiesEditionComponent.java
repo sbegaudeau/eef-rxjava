@@ -68,6 +68,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -195,7 +196,7 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (sourcePart != null && key == NonregViewsRepository.Source.class) {
 			((IPropertiesEditionPart)sourcePart).setContext(elt, allResource);
-			Source source = (Source)elt;
+			final Source source = (Source)elt;
 			// init values
 			if (source.getUniqueRef() instanceof RealCible)
 				sourcePart.initAdvancedUniqueRef(allResource, ((RealCible)source.getUniqueRef()).getRef());
@@ -231,7 +232,6 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -392,6 +392,7 @@ public class SimpleSourcePropertiesEditionComponent extends StandardPropertiesEd
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

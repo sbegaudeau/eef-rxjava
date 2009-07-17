@@ -63,6 +63,7 @@ import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -120,6 +121,7 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	/**
@@ -154,7 +156,8 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
+		// End of user code
+		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -176,6 +179,7 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 				return null;
 			}
 			// End of user code
+
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -300,7 +304,8 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
+		// End of user code
+		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -322,6 +327,7 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 				return null;
 			}
 			// End of user code
+
 			public void addListener(ILabelProviderListener listener) {
 			}
 
@@ -422,6 +428,7 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -614,4 +621,5 @@ public class ReferencesTablePropertiesEditionPartImpl extends CompositePropertie
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

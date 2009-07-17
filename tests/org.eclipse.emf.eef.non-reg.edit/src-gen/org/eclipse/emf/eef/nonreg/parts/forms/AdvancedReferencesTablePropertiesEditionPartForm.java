@@ -82,6 +82,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -135,7 +136,8 @@ public class AdvancedReferencesTablePropertiesEditionPartForm extends CompositeP
 		createAdvancedreferencestableROReferencesTable(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createAdvancedreferencestableReferencesTable(FormToolkit widgetFactory, Composite parent) {
@@ -190,6 +192,7 @@ public class AdvancedReferencesTablePropertiesEditionPartForm extends CompositeP
 		advancedreferencestable.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTablePropertiesEditionPartForm.this, NonregViewsRepository.AdvancedReferencesTable.advancedreferencestable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -210,6 +213,7 @@ public class AdvancedReferencesTablePropertiesEditionPartForm extends CompositeP
 			}
 		}
 		// End of user code
+
 	}
 	protected void createAdvancedreferencestableROReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.advancedreferencestableRO = new ReferencesTable<Talk>(NonregMessages.AdvancedReferencesTablePropertiesEditionPart_AdvancedreferencestableROLabel, new ReferencesTableListener<Talk>() {
@@ -265,6 +269,7 @@ public class AdvancedReferencesTablePropertiesEditionPartForm extends CompositeP
 		advancedreferencestableRO.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTablePropertiesEditionPartForm.this, NonregViewsRepository.AdvancedReferencesTable.advancedreferencestableRO, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -285,13 +290,15 @@ public class AdvancedReferencesTablePropertiesEditionPartForm extends CompositeP
 			}
 		}
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -476,4 +483,5 @@ public class AdvancedReferencesTablePropertiesEditionPartForm extends CompositeP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

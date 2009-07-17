@@ -65,6 +65,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -191,7 +192,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.EclipseSummit.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			EclipseSummit eclipseSummit = (EclipseSummit)elt;
+			final EclipseSummit eclipseSummit = (EclipseSummit)elt;
 			// init values
 			if (eclipseSummit.getPlace() != null)
 				basePart.setPlace(eclipseSummit.getPlace());
@@ -209,6 +210,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
+
 				}
 
 			});
@@ -221,7 +223,6 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -413,6 +414,7 @@ public class EclipseSummitPropertiesEditionComponent extends StandardPropertiesE
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

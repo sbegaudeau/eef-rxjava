@@ -39,6 +39,26 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProvider
 
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
+import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
+import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -61,30 +81,11 @@ import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.nonreg.modelNavigation.SuperCible;
-import org.eclipse.emf.eef.nonreg.modelNavigation.RealCible;
-import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationFactory;
-
 
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -135,6 +136,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropsGroup(Composite parent) {
@@ -239,6 +241,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		advancedMultipleContainment.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SourcePropertiesEditionPartImpl.this, NonregViewsRepository.Source.advancedMultipleContainment, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -259,6 +262,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			}
 		}
 		// End of user code
+
 	}
 
 
@@ -266,6 +270,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -438,4 +443,5 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

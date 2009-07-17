@@ -59,8 +59,8 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.emf.eef.nonreg.Adress;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.Viewer;
@@ -68,6 +68,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -189,7 +190,7 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.Company.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Company company = (Company)elt;
+			final Company company = (Company)elt;
 			// init values
 			basePart.initAdress(allResource, company.getAdress());
 			// set the button mode
@@ -206,7 +207,6 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 
 
 	}
-
 
 
 
@@ -328,6 +328,7 @@ public class CompanyBasePropertiesEditionComponent extends StandardPropertiesEdi
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

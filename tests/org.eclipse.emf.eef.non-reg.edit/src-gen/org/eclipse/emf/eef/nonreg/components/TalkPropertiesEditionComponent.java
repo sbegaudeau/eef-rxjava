@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */

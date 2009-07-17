@@ -27,8 +27,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
+import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -67,6 +67,7 @@ import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditi
 
 
 // End of user code
+
 /**
  * 
  */
@@ -115,6 +116,7 @@ public class CompanyPropertiesEditionPartImpl extends CompositePropertiesEdition
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -180,6 +182,7 @@ public class CompanyPropertiesEditionPartImpl extends CompositePropertiesEdition
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -322,4 +325,5 @@ public class CompanyPropertiesEditionPartImpl extends CompositePropertiesEdition
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

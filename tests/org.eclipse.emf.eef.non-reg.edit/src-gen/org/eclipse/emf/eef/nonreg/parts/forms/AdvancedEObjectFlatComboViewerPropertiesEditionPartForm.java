@@ -77,6 +77,7 @@ import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -126,7 +127,8 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 		createAdvancedeobjectflatcomboviewerROFlatComboViewer(view, widgetFactory);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -220,7 +222,8 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -365,4 +368,5 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

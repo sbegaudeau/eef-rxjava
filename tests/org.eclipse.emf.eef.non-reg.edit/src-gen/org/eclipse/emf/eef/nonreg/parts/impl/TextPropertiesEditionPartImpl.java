@@ -39,6 +39,7 @@ import org.eclipse.emf.eef.nonreg.parts.TextPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -86,6 +87,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createTextText(Composite parent) {
@@ -138,6 +140,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -210,4 +213,5 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

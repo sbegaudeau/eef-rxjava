@@ -63,6 +63,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEd
 
 
 // End of user code
+
 /**
  * 
  */
@@ -110,7 +111,8 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		createDocumentedElement(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -177,7 +179,8 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -254,4 +257,5 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

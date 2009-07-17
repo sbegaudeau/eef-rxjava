@@ -69,6 +69,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -193,7 +194,7 @@ public class EMFComboViewerPropertiesEditionComponent extends StandardProperties
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == NonregViewsRepository.EMFComboViewer.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			Talk talk = (Talk)elt;
+			final Talk talk = (Talk)elt;
 			// init values
 			basePart.initEmfcomboviewer((EEnum) NonregPackage.eINSTANCE.getTalk_Type().getEType(), talk.getType());
 			basePart.initEmfcomboviewerRO((EEnum) NonregPackage.eINSTANCE.getTalk_Type().getEType(), talk.getType());
@@ -207,7 +208,6 @@ public class EMFComboViewerPropertiesEditionComponent extends StandardProperties
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -337,6 +337,7 @@ public class EMFComboViewerPropertiesEditionComponent extends StandardProperties
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

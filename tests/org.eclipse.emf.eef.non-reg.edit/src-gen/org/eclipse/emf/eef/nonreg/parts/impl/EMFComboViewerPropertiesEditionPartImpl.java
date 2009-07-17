@@ -46,6 +46,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -93,6 +94,7 @@ public class EMFComboViewerPropertiesEditionPartImpl extends CompositeProperties
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createEmfcomboviewerEMFComboViewer(Composite parent) {
@@ -121,6 +123,7 @@ public class EMFComboViewerPropertiesEditionPartImpl extends CompositeProperties
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -207,4 +210,5 @@ public class EMFComboViewerPropertiesEditionPartImpl extends CompositeProperties
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

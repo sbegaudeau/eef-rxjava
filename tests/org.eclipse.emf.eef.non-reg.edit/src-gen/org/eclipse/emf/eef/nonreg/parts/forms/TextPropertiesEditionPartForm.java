@@ -55,6 +55,7 @@ import org.eclipse.emf.eef.nonreg.parts.TextPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -102,7 +103,8 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		createTextROText(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createTextText(FormToolkit widgetFactory, Composite parent) {
@@ -212,7 +214,8 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -285,4 +288,5 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

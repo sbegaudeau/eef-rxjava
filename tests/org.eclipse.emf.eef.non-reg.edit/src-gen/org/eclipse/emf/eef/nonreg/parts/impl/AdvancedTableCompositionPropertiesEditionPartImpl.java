@@ -51,6 +51,7 @@ import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -104,6 +105,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	/**
@@ -152,6 +154,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -165,6 +168,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		advancedtablecomposition.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionPropertiesEditionPartImpl.this, NonregViewsRepository.AdvancedTableComposition.advancedtablecomposition, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -185,6 +189,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 			}
 		}
 		// End of user code
+
 	}
 	/**
 	 * @param container
@@ -234,6 +239,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -247,6 +253,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		advancedtablecompositionRO.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionPropertiesEditionPartImpl.this, NonregViewsRepository.AdvancedTableComposition.advancedtablecompositionRO, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -267,6 +274,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 			}
 		}
 		// End of user code
+
 	}
 
 
@@ -274,6 +282,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -500,4 +509,5 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

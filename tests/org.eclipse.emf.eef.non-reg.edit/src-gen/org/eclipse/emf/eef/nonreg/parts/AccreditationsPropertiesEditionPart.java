@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -86,5 +87,6 @@ public interface AccreditationsPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

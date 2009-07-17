@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 
 // End of user code
+
 /**
  * 
  */
@@ -142,5 +143,6 @@ public interface AdvancedReferencesTablePropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

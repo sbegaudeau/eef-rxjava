@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */

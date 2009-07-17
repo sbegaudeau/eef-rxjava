@@ -79,6 +79,7 @@ import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -136,7 +137,8 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 		createReferencestableROReferencesTable(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createReferencestableReferencesTable(FormToolkit widgetFactory, Composite parent) {
@@ -167,7 +169,8 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
+		// End of user code
+		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -185,6 +188,7 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 				return ""; //$NON-NLS-1$
 			}
 			// End of user code
+
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
@@ -308,7 +312,8 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
-		// End of user code		
+		// End of user code
+		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
@@ -326,6 +331,7 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 				return ""; //$NON-NLS-1$
 			}
 			// End of user code
+
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
@@ -428,7 +434,8 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -613,4 +620,5 @@ public class ReferencesTablePropertiesEditionPartForm extends CompositePropertie
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

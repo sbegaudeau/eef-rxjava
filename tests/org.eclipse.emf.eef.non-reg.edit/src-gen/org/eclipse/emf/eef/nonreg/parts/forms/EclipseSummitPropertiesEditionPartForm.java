@@ -68,6 +68,7 @@ import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -117,7 +118,8 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -229,6 +231,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 			}
 		}
 		// End of user code
+
 	}
 
 	/**
@@ -241,6 +244,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		sites.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EclipseSummitPropertiesEditionPartForm.this, NonregViewsRepository.EclipseSummit.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -260,13 +264,15 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 			}
 		}
 		// End of user code
+
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -412,4 +418,5 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

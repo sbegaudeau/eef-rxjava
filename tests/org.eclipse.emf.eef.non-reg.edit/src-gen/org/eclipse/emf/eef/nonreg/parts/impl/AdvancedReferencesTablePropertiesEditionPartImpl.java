@@ -65,6 +65,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -118,6 +119,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createAdvancedreferencestableAdvancedReferencesTable(Composite parent) {
@@ -174,6 +176,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 		advancedreferencestable.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTablePropertiesEditionPartImpl.this, NonregViewsRepository.AdvancedReferencesTable.advancedreferencestable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -194,6 +197,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 			}
 		}
 		// End of user code
+
 	}
 	protected void createAdvancedreferencestableROAdvancedReferencesTable(Composite parent) {
 		this.advancedreferencestableRO = new ReferencesTable<Talk>(NonregMessages.AdvancedReferencesTablePropertiesEditionPart_AdvancedreferencestableROLabel, new ReferencesTableListener<Talk>() {
@@ -251,6 +255,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 		advancedreferencestableRO.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTablePropertiesEditionPartImpl.this, NonregViewsRepository.AdvancedReferencesTable.advancedreferencestableRO, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
+
 	}
 
 	/**
@@ -271,6 +276,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 			}
 		}
 		// End of user code
+
 	}
 
 
@@ -278,6 +284,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -470,4 +477,5 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

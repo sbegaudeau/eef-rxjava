@@ -42,6 +42,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
@@ -89,6 +90,7 @@ public class RadioPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createRadioRadioViewer(Composite parent) {
@@ -113,6 +115,7 @@ public class RadioPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -197,4 +200,5 @@ public class RadioPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	// Start of user code additional methods
 	
 	// End of user code
+
 }
