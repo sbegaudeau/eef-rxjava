@@ -23,7 +23,7 @@
 	[for (view : View | pec.views) ? (view.explicit)]
 [file (pec.fullFilePath(basePackage, view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].properties;
+package [pec.model.completePackage()/].properties;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -45,6 +45,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import [pec.model.ePackage.qualifiedMetamodelPackage(basePackage)/];
 import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
+
+[additionalImports()/]
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
@@ -81,19 +83,19 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
 		if (!(selection instanceof IStructuredSelection) || 
-				!((part instanceof IEditingDomainProvider) || ((part instanceof IAdaptable) && ((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null))) {
+				!((part instanceof IEditingDomainProvider) || ((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)) {
 			return;
 		}
-		
+
 		Object firstElement = ((IStructuredSelection) selection).getFirstElement();
 		EObject newEObject = resolveSemanticObject(firstElement);
-		
+
 		EditingDomain editingDomain = null;
 		if (part instanceof IEditingDomainProvider)
 			editingDomain = ((IEditingDomainProvider) part).getEditingDomain();
-		else if ((part instanceof IAdaptable) && ((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)
+		else if (((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)
 			editingDomain = (((IEditingDomainProvider)((IAdaptable)part).getAdapter(IEditingDomainProvider.class))).getEditingDomain();
-		
+
 		if (editingDomain != null && newEObject != null && newEObject != eObject) {
 			eObject = newEObject;
 			if (eObject != null) {
@@ -143,20 +145,23 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 		return eObjectToTest != null && eObjectToTest.eClass() == [pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]();
 	}
 
-	private EObject resolveSemanticObject(Object object){		
-		if (object instanceof EObject){
-			return (EObject) object;
-		}else if (object instanceof IAdaptable){
+	private EObject resolveSemanticObject(Object object) {
+		if (object instanceof EObject) {
+			return (EObject)object;
+		} else if (object instanceof IAdaptable) {
 			IAdaptable adaptable = (IAdaptable)object;
-			if(adaptable.getAdapter(SemanticAdapter.class)!=null){
-				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable.getAdapter(SemanticAdapter.class);
+			if (adaptable.getAdapter(SemanticAdapter.class) != null) {
+				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
+						.getAdapter(SemanticAdapter.class);
 				return semanticAdapter.getEObject();
-			}else if(adaptable.getAdapter(EObject.class)!=null){
-				return (EObject) adaptable.getAdapter(EObject.class);
+			} else if (adaptable.getAdapter(EObject.class) != null) {
+				return (EObject)adaptable.getAdapter(EObject.class);
 			}
 		}
 		return null;
 	}
+
+[additionalMethods()/]
 
 }
 [/file]
@@ -166,6 +171,13 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String, view : View)]
-[pec.model.eefPackage(basePackage).toPath()/]/properties/[pec.propertySection(view)/].java
+[pec.model.completePackage().toPath()/]/properties/[pec.propertySection(view)/].java
 [/template]
 
+[comment overrides this template if additional imports is needed/]
+[template public additionalImports()]
+[/template]
+
+[comment overrides this template if additional methods are needed/]
+[template public additionalMethods()]
+[/template]
