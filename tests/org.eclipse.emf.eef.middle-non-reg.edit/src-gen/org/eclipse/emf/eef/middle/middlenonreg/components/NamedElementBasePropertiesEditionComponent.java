@@ -39,6 +39,7 @@ import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
+
 /**
  * 
  */
@@ -161,7 +162,7 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == MiddlenonregViewsRepository.NamedElement.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			NamedElement namedElement = (NamedElement)elt;
+			final NamedElement namedElement = (NamedElement)elt;
 			// init values
 			if (namedElement.getName() != null)
 				basePart.setName(namedElement.getName());
@@ -178,7 +179,6 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 
 
 	}
-
 
 
 
@@ -316,6 +316,7 @@ public class NamedElementBasePropertiesEditionComponent extends StandardProperti
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 

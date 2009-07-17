@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.ab.abstractnonreg.components.DocumentedElementPropert
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 
 // End of user code
+
 /**
  * 
  */
