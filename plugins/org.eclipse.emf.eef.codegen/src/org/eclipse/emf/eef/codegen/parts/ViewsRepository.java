@@ -288,7 +288,7 @@ public class ViewsRepository {
 	 * @param resourceSet
 	 *            The {@link ResourceSet} to load the model in.
 	 * @return The {@link Resource} given the model extension it is intended for.
-	 * @generated
+	 * @generated NOT
 	 */
 	private Resource createResource(URI modelURI, ResourceSet resourceSet) {
     String fileExtension = modelURI.fileExtension();
@@ -304,7 +304,7 @@ public class ViewsRepository {
       resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
           new XMIResourceFactoryImpl());
     }
-    return resourceSet.createResource(modelURI);
+    return resourceSet.getResource(modelURI, true);
   }
 
 }
