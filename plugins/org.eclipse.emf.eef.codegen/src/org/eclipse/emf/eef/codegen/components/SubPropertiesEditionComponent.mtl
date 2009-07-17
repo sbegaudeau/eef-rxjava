@@ -272,7 +272,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if ([view.viewIdentifier(pec)/] != null && key == [view.editorID()/].class) {
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
-			[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
+			final [pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
 			// init values
 			[if (view.oclIsKindOf(views::CustomView))]
 			// [protected ('for'.concat(view.name).concat(' custom view initialization'))]
@@ -300,7 +300,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [/for]
 
 [view.javaDeclarationFilterForReferencedViews(pec)/]
-
 
 	/**
 	 * {@inheritDoc}
