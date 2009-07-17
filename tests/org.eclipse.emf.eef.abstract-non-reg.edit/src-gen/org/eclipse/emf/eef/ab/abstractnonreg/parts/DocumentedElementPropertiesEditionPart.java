@@ -6,6 +6,7 @@ package org.eclipse.emf.eef.ab.abstractnonreg.parts;
 // Start of user code for imports
 
 // End of user code
+
 /**
  * 
  */
@@ -34,5 +35,6 @@ public interface DocumentedElementPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

@@ -56,6 +56,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
+
 /**
  * 
  */
@@ -177,7 +178,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == AbstractnonregViewsRepository.DocumentedElement.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			DocumentedElement documentedElement = (DocumentedElement)elt;
+			final DocumentedElement documentedElement = (DocumentedElement)elt;
 			// init values
 			if (documentedElement.getDocumentation() != null)
 				basePart.setDocumentation(documentedElement.getDocumentation());
@@ -191,7 +192,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -329,6 +329,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		// Start of user code for custom validation check
 		
 		// End of user code
+
 		return validate;
 	}
 
