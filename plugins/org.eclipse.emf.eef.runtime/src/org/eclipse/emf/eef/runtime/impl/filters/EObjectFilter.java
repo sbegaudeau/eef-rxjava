@@ -27,7 +27,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public class EObjectFilter extends ViewerFilter {
 
-	private EClass eClassToFilter;
+	protected EClass eClassToFilter;
 
 	/**
 	 * @param eClassToFilter
