@@ -40,7 +40,7 @@
          </menu>
          <action
                class="org.eclipse.emf.eef.codegen.ui.generators.actions.GenerateEEFAction"
-               enablesFor="1"
+               enablesFor="*"
                id="org.eclipse.emf.eef.codegen.action2"
                label="Generate EEF architecture"
                menubarPath="org.eclipse.emf.eef.ui.menu/generation">

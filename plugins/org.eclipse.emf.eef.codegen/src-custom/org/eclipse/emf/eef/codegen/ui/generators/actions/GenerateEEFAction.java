@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.codegen.ui.generators.actions;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -44,136 +45,47 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class GenerateEEFAction implements IObjectActionDelegate {
+public class GenerateEEFAction extends AbstractGenerateEEFAction {
 
-	private Shell shell;
-	private URI modelURI;
-	private IFile selectedFile;
-	private EEFGenModel eefGenModel;
-	// 10 * genContext + 5 * genRepository + 1
 	/**
 	 * Constructor for Action1.
 	 */
 	public GenerateEEFAction() {
 		super();
-		selectedFile = null;
-		eefGenModel = null;
 	}
 
 	/**
-	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+	 * (non-Javadoc)
+	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#inutEEFGenModel()
 	 */
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		shell = targetPart.getSite().getShell();
-	}
-
-	/**
-	 * @see IActionDelegate#run(IAction)
-	 */
-	public void run(IAction action) {
-		try {
-			if (selectedFile != null) {
-				modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
-				final IContainer target = getGenContainer();
-				if (target != null) {
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
-
-						public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-							try {
-								eefGenModel = getEEFGenModel();
-								if (eefGenModel != null) {
-									int count = 2;
-									if (eefGenModel.getEditionContexts() != null)
-										count += eefGenModel.getEditionContexts().size() * 11;
-									if (eefGenModel.getViewsRepositories() != null)
-										count += eefGenModel.getViewsRepositories().size() * 5;
-									monitor.beginTask("Generating EEF Architecture", count);
-									GenerateAll generator = new GenerateAll(target.getLocation().toFile(), getEEFGenModel());
-									generator.doGenerate(monitor);
-									target.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-									monitor.worked(1);
-								}
-							} catch (IOException e) {
-								EEFCodegenPlugin.getDefault().logError(e);
-							} catch (CoreException e) {
-								EEFCodegenPlugin.getDefault().logError(e);
-							}
-							finally {
-								monitor.done();
-								selectedFile = null;
-								eefGenModel = null;
-							}
-						}
-
-					};
-					new ProgressMonitorDialog(shell).run(true, true, runnable);
-				}
-			}
-		} catch (InvocationTargetException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} catch (InterruptedException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} catch (IOException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		}
-	}
-
-	/**
-	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
-	 */
-	public void selectionChanged(IAction action, ISelection selection) {
-		if (selection instanceof StructuredSelection) {
-			StructuredSelection sSelection = (StructuredSelection) selection;
-			if (sSelection.getFirstElement() instanceof IFile) {
-				this.selectedFile = (IFile) sSelection.getFirstElement();
-			}
-			
-		}
-	}
-	
-	private EEFGenModel getEEFGenModel() throws IOException {
-		if (eefGenModel != null)
-			return eefGenModel;
-		else {
+	protected List<EEFGenModel> initEEFGenModel() throws IOException {
+		if (!selectedFiles.isEmpty()) {
 			ResourceSet resourceSet = new ResourceSetImpl();
-			String fileExtension = modelURI.fileExtension();
-			if (fileExtension == null || fileExtension.length() == 0) {
-				fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;
-			}
-			final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
-			final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
-			if (resourceFactory != null) {
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, resourceFactory);
-			} else {
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, new XMIResourceFactoryImpl());
-			}
-			Resource res = resourceSet.createResource(modelURI);
-			res.load(Collections.EMPTY_MAP);
-			EcoreUtil.resolveAll(resourceSet);
-			if (res.getContents().size() > 0) {
-				EObject object = res.getContents().get(0);
-				if (object instanceof EEFGenModel) {
-					eefGenModel = (EEFGenModel)object;
-					if (eefGenModel != null) {
-						return eefGenModel;
+			for (IFile selectedFile : selectedFiles) {
+				URI modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
+				String fileExtension = modelURI.fileExtension();
+				if (fileExtension == null || fileExtension.length() == 0) {
+					fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;
+				}
+				final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
+				final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
+				if (resourceFactory != null) {
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, resourceFactory);
+				} else {
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, new XMIResourceFactoryImpl());
+				}
+				Resource res = resourceSet.createResource(modelURI);
+				res.load(Collections.EMPTY_MAP);
+				EcoreUtil.resolveAll(resourceSet);
+				if (res.getContents().size() > 0) {
+					EObject object = res.getContents().get(0);
+					if (object instanceof EEFGenModel) {
+						eefGenModels.add((EEFGenModel)object);
 					}
 				}
 			}
-			return null;
 		}
+		return eefGenModels;
 	}
 	
-	
-	public IContainer getGenContainer() throws IOException {
-		eefGenModel = getEEFGenModel();
-		if (eefGenModel != null) {
-			if (eefGenModel.getGenDirectory() != null) {
-				final IContainer target = (IContainer) ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(eefGenModel.getGenDirectory()));
-				return target;
-			}
-		}
-		return null;
-	}
-	
-
 }
