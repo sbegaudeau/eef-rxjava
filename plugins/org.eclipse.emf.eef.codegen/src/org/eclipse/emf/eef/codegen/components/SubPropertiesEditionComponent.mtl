@@ -374,7 +374,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [comment add ViewReference support/]
 [view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
-			if (!command.canExecute()) {
+			if (!command.isEmpty() && !command.canExecute()) {
 				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
