@@ -9,13 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsPackagePropertiesEditionPolicyProvider.java,v 1.7 2009/07/31 12:42:23 glefur Exp $
+ * $Id: ViewsPackagePropertiesEditionPolicyProvider.java,v 1.8 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

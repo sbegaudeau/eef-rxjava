@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferencePropertiesEditionPartForm.java,v 1.10 2009/07/31 12:42:22 glefur Exp $
+ * $Id: ViewReferencePropertiesEditionPartForm.java,v 1.11 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 

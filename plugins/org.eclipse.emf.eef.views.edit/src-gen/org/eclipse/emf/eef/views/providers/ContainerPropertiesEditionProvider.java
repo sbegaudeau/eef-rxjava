@@ -9,17 +9,20 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerPropertiesEditionProvider.java,v 1.9 2009/07/31 12:42:23 glefur Exp $
+ * $Id: ContainerPropertiesEditionProvider.java,v 1.10 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.views.Container;
+
 import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.components.ContainerBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.components.ContainerPropertiesEditionComponent;
+import org.eclipse.emf.eef.views.components.ContainerBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 /**

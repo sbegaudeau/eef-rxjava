@@ -9,13 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.7 2009/07/31 12:42:24 glefur Exp $
+ * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.8 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
