@@ -41,8 +41,8 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.events.IExpansionListener;
 
-import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
+import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
 import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;

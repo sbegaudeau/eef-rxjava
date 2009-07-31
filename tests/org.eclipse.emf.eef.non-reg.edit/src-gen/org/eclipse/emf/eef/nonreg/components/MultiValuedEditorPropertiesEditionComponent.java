@@ -249,7 +249,7 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 // FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, person.
 
 
-			if (!command.canExecute()) {
+			if (!command.isEmpty() && !command.canExecute()) {
 				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);

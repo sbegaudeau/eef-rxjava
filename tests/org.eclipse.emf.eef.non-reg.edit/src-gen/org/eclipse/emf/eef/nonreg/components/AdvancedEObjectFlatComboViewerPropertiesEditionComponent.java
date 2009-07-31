@@ -270,7 +270,7 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionComponent extends St
 				command.append(SetCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_WorkFor(), event.getNewValue()));
 
 
-			if (!command.canExecute()) {
+			if (!command.isEmpty() && !command.canExecute()) {
 				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);

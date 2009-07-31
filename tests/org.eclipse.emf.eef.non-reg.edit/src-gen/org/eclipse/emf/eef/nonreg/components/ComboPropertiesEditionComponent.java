@@ -286,7 +286,7 @@ public class ComboPropertiesEditionComponent extends StandardPropertiesEditionCo
 				command.append(SetCommand.create(liveEditingDomain, talk, NonregPackage.eINSTANCE.getTalk_Presenter(), event.getNewValue()));
 
 
-			if (!command.canExecute()) {
+			if (!command.isEmpty() && !command.canExecute()) {
 				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);

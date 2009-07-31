@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
 import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 
 // End of user code
 

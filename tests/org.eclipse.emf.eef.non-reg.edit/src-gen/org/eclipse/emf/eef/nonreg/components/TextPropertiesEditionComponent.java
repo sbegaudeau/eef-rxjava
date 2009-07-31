@@ -262,7 +262,7 @@ public class TextPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 
 
-			if (!command.canExecute()) {
+			if (!command.isEmpty() && !command.canExecute()) {
 				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
