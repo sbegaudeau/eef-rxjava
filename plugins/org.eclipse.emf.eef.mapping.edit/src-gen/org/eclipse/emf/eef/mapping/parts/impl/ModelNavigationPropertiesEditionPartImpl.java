@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelNavigationPropertiesEditionPartImpl.java,v 1.8 2009/05/26 08:49:53 glefur Exp $
+ * $Id: ModelNavigationPropertiesEditionPartImpl.java,v 1.9 2009/07/31 14:07:29 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -38,10 +39,19 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public ModelNavigationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -52,12 +62,18 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -76,6 +92,7 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 
@@ -88,4 +105,5 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

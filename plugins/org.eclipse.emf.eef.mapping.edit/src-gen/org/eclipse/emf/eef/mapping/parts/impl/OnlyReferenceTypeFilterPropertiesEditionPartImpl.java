@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -42,6 +43,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -54,10 +56,19 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public OnlyReferenceTypeFilterPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -68,6 +79,11 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createReferencedFeatureGroup(view);
 		createFilterProperties(view);
@@ -75,6 +91,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createReferencedFeatureGroup(Composite parent) {
@@ -92,7 +109,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	 * @param referencedFeatureGroup
 	 */
 	protected void createReferencedFeatureFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature, MappingViewsRepository.SWT_KIND));
 		referencedFeature = new EObjectFlatComboViewer(parent, true);
 		referencedFeature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -120,6 +136,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -143,8 +160,9 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	 */
 	public void initReferencedFeature(ResourceSet allResources, EObject current) {
 		referencedFeature.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			referencedFeature.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -153,10 +171,20 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	 * @see org.eclipse.emf.eef.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart#setReferencedFeature(EObject newValue)
 	 */
 	public void setReferencedFeature(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			referencedFeature.setSelection(new StructuredSelection(newValue));
-		else
-			referencedFeature.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			referencedFeature.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart#setReferencedFeatureButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setReferencedFeatureButtonMode(ButtonsModeEnum newValue) {
+		referencedFeature.setButtonMode(newValue);
 	}
 
 	/**
@@ -250,4 +278,5 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

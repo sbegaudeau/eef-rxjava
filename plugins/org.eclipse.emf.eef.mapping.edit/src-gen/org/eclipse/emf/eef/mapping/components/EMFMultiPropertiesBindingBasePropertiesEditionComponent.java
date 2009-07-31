@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingBasePropertiesEditionComponent.java,v 1.10 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -39,6 +40,7 @@ import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -54,25 +56,26 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private EMFMultiPropertiesBinding eMFMultiPropertiesBinding;
-	
+
 	/**
 	 * The Base part
 	 */
 	private EMFMultiPropertiesBindingPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -86,7 +89,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -105,12 +108,12 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 					EMFMultiPropertiesBindingBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
-					basePart.updateViews(eMFMultiPropertiesBinding);
+						basePart.updateViews(eMFMultiPropertiesBinding);
 					if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
-					basePart.updateModel(eMFMultiPropertiesBinding);
+						basePart.updateModel(eMFMultiPropertiesBinding);
 
 
 				}
@@ -179,7 +182,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == MappingViewsRepository.EMFMultiPropertiesBinding.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			EMFMultiPropertiesBinding eMFMultiPropertiesBinding = (EMFMultiPropertiesBinding)elt;
+			final EMFMultiPropertiesBinding eMFMultiPropertiesBinding = (EMFMultiPropertiesBinding)elt;
 			// init values
 			if (eMFMultiPropertiesBinding.getName() != null)
 				basePart.setName(eMFMultiPropertiesBinding.getName());
@@ -188,7 +191,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			basePart.initModel(eMFMultiPropertiesBinding, null, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model());
 			
 			// init filters
-			
+
 			basePart.addFilterToViews(new ViewerFilter() {
 
 				/*
@@ -198,8 +201,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
-						return (!basePart.getViewsTable().contains(element));
-					return false;
+						return (!basePart.isContainedInViewsTable((EObject)element));
+					return element instanceof Resource;
 				}
 
 			});
@@ -216,8 +219,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
-						return (!basePart.getModelTable().contains(element));
-					return false;
+						return (!basePart.isContainedInModelTable((EObject)element));
+					return element instanceof Resource;
 				}
 
 			});
@@ -232,6 +235,12 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 	}
 
+
+
+
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -243,25 +252,25 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 		if (eMFMultiPropertiesBinding != null) {
 			cc.append(SetCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), basePart.getName()));
 
-			List viewsToAdd = basePart.getViewsToAdd();
-			for (Iterator iter = viewsToAdd.iterator(); iter.hasNext();)
+			List viewsToAddFromViews = basePart.getViewsToAdd();
+			for (Iterator iter = viewsToAddFromViews.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
-			List viewsToRemove = basePart.getViewsToRemove();
-			for (Iterator iter = viewsToRemove.iterator(); iter.hasNext();)
+			List viewsToRemoveFromViews = basePart.getViewsToRemove();
+			for (Iterator iter = viewsToRemoveFromViews.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
-			//List viewsToMove = basePart.getViewsToMove();
-			//for (Iterator iter = viewsToMove.iterator(); iter.hasNext();){
+			//List viewsToMoveFromViews = basePart.getViewsToMove();
+			//for (Iterator iter = viewsToMoveFromViews.iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getElementEditor(), moveElement.getElement(), moveElement.getIndex()));
 			//}
-			List modelToAdd = basePart.getModelToAdd();
-			for (Iterator iter = modelToAdd.iterator(); iter.hasNext();)
+			List modelToAddFromModel = basePart.getModelToAdd();
+			for (Iterator iter = modelToAddFromModel.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model(), iter.next()));
-			List modelToRemove = basePart.getModelToRemove();
-			for (Iterator iter = modelToRemove.iterator(); iter.hasNext();)
+			List modelToRemoveFromModel = basePart.getModelToRemove();
+			for (Iterator iter = modelToRemoveFromModel.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model(), iter.next()));
-			//List modelToMove = basePart.getModelToMove();
-			//for (Iterator iter = modelToMove.iterator(); iter.hasNext();){
+			//List modelToMoveFromModel = basePart.getModelToMove();
+			//for (Iterator iter = modelToMoveFromModel.iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getEStructuralFeature(), moveElement.getElement(), moveElement.getIndex()));
 			//}
@@ -324,21 +333,25 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 			}
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
 				if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				
-				
+
+
 
 
 			} else {
 				if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-				
-				
+
+
 
 
 			}
@@ -375,16 +388,18 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -395,15 +410,19 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(eMFMultiPropertiesBinding);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(eMFMultiPropertiesBinding);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 

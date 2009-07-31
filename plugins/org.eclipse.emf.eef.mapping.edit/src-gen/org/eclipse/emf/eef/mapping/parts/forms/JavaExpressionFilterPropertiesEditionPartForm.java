@@ -45,22 +45,32 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class JavaExpressionFilterPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, JavaExpressionFilterPropertiesEditionPart {
 
-	private Text javaExpressionBody;
+	protected Text javaExpressionBody;
 
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public JavaExpressionFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -72,13 +82,19 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createFilterExpressionGroup(widgetFactory, view);
 		createFilterProperties(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
@@ -133,7 +149,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		
 	}
 	protected void createFilterProperties(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
@@ -146,7 +161,8 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -164,7 +180,11 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#setJavaExpressionBody(String newValue)
 	 */
 	public void setJavaExpressionBody(String newValue) {
-		javaExpressionBody.setText(newValue);
+		if (newValue != null) {
+			javaExpressionBody.setText(newValue);
+		} else {
+			javaExpressionBody.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForJavaExpressionBody(String msg, int msgLevel) {
@@ -240,4 +260,5 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

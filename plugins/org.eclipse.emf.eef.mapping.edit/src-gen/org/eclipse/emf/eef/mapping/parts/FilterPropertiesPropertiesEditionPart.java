@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.1 2009/05/26 08:49:55 glefur Exp $
+ * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.2 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -19,6 +19,7 @@ package org.eclipse.emf.eef.mapping.parts;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -62,5 +63,6 @@ public interface FilterPropertiesPropertiesEditionPart {
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

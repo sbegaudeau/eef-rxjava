@@ -37,22 +37,32 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, JavaDeclarationFilterPropertiesEditionPart {
 
-	private Text methodName;
+	protected Text methodName;
 
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public JavaDeclarationFilterPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -63,6 +73,11 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createFilterExpressionGroup(view);
 		createFilterProperties(view);
@@ -70,6 +85,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createFilterExpressionGroup(Composite parent) {
@@ -116,6 +132,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -133,7 +150,11 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#setMethodName(String newValue)
 	 */
 	public void setMethodName(String newValue) {
-		methodName.setText(newValue);
+		if (newValue != null) {
+			methodName.setText(newValue);
+		} else {
+			methodName.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForMethodName(String msg, int msgLevel) {
@@ -209,4 +230,5 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

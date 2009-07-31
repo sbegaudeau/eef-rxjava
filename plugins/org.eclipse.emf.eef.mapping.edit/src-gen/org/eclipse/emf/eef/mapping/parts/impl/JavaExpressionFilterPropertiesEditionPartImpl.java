@@ -36,22 +36,32 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, JavaExpressionFilterPropertiesEditionPart {
 
-	private Text javaExpressionBody;
+	protected Text javaExpressionBody;
 
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public JavaExpressionFilterPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -62,6 +72,11 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createFilterExpressionGroup(view);
 		createFilterProperties(view);
@@ -69,6 +84,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createFilterExpressionGroup(Composite parent) {
@@ -106,6 +122,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -123,7 +140,11 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#setJavaExpressionBody(String newValue)
 	 */
 	public void setJavaExpressionBody(String newValue) {
-		javaExpressionBody.setText(newValue);
+		if (newValue != null) {
+			javaExpressionBody.setText(newValue);
+		} else {
+			javaExpressionBody.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForJavaExpressionBody(String msg, int msgLevel) {
@@ -199,4 +220,5 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

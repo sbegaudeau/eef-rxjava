@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingPropertiesEditionProvider.java,v 1.9 2009/05/26 08:49:54 glefur Exp $
+ * $Id: DatabindingPropertiesEditionProvider.java,v 1.10 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -34,7 +34,7 @@ public class DatabindingPropertiesEditionProvider implements IPropertiesEditionP
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Databinding) && (MappingPackage.eINSTANCE.getDatabinding() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -47,7 +47,7 @@ public class DatabindingPropertiesEditionProvider implements IPropertiesEditionP
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -61,5 +61,6 @@ public class DatabindingPropertiesEditionProvider implements IPropertiesEditionP
 		}
 		return null;
 	}
-	
-}	
+
+}
+

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionProvider.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
+ * $Id: ElementBindingReferencePropertiesEditionProvider.java,v 1.10 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -35,7 +35,7 @@ public class ElementBindingReferencePropertiesEditionProvider implements IProper
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ElementBindingReference) && (MappingPackage.eINSTANCE.getElementBindingReference() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -48,7 +48,7 @@ public class ElementBindingReferencePropertiesEditionProvider implements IProper
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -64,5 +64,6 @@ public class ElementBindingReferencePropertiesEditionProvider implements IProper
 		}
 		return null;
 	}
-	
-}	
+
+}
+

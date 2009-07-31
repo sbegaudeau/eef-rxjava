@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPart.java,v 1.8 2009/05/26 08:49:54 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPart.java,v 1.9 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -17,10 +17,12 @@ package org.eclipse.emf.eef.mapping.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -58,6 +60,12 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * @param newValue the new feature to set
 	 */
 	public void setFeature(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setFeatureButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the feature edition editor.
@@ -100,6 +108,12 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	public void setDiscriminatorType(EObject newValue);
 
 	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setDiscriminatorTypeButtonMode(ButtonsModeEnum newValue);
+
+	/**
 	 * Adds the given filter to the discriminatorType edition editor.
 	 * 
 	 * @param filter
@@ -129,5 +143,6 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 

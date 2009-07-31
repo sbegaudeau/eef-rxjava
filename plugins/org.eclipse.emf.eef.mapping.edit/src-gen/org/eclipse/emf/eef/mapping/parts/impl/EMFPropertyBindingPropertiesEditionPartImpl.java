@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionPartImpl.java,v 1.11 2009/05/26 08:49:53 glefur Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionPartImpl.java,v 1.12 2009/07/31 14:07:29 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -57,15 +58,16 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EMFPropertyBindingPropertiesEditionPart {
 
-	private Text name;
+	protected Text name;
 	protected EObjectFlatComboViewer model;
-	private EMFListEditUtil viewsEditUtil;
-	private ReferencesTable<?> views;
+	protected EMFListEditUtil viewsEditUtil;
+	protected ReferencesTable<? extends EObject> views;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
@@ -73,10 +75,19 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public EMFPropertyBindingPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -87,6 +98,11 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 		createBindingGroup(view);
@@ -94,6 +110,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -144,7 +161,6 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, MappingMessages.EMFPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFPropertyBinding.model, MappingViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -164,7 +180,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
-				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor()) {
+				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor(), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -192,7 +208,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		this.views.setLayoutData(viewsData);
 		this.views.disableMove();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -202,7 +218,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -216,6 +232,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
+
 	}
 
 	/**
@@ -238,6 +255,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		}
 
 		// End of user code
+
 	}
 
 
@@ -245,6 +263,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -262,7 +281,11 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -294,8 +317,9 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
 		model.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			model.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -304,10 +328,20 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			model.setSelection(new StructuredSelection(newValue));
-		else
-			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#setModelButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setModelButtonMode(ButtonsModeEnum newValue) {
+		model.setButtonMode(newValue);
 	}
 
 	/**
@@ -363,6 +397,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		return viewsEditUtil.getVirtualList();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -384,7 +419,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#updateViews(EObject newValue)
 	 */
 	public void updateViews(EObject newValue) {
-		if(viewsEditUtil!=null){
+		if(viewsEditUtil != null){
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
@@ -408,6 +443,15 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		viewsBusinessFilters.add(filter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart#isContainedInViewsTable(EObject element)
+	 */
+	public boolean isContainedInViewsTable(EObject element) {
+		return viewsEditUtil.contains(element);
+	}
+
 	public void setMessageForViews(String msg, int msgLevel) {
 
 	}
@@ -426,4 +470,5 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

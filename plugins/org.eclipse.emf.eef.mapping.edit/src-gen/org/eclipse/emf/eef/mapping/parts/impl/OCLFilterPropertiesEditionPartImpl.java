@@ -36,22 +36,32 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, OCLFilterPropertiesEditionPart {
 
-	private Text oCLExpressionBody;
+	protected Text oCLExpressionBody;
 
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public OCLFilterPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -62,6 +72,11 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createFilterExpressionGroup(view);
 		createFilterProperties(view);
@@ -69,6 +84,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createFilterExpressionGroup(Composite parent) {
@@ -106,6 +122,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -123,7 +140,11 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#setOCLExpressionBody(String newValue)
 	 */
 	public void setOCLExpressionBody(String newValue) {
-		oCLExpressionBody.setText(newValue);
+		if (newValue != null) {
+			oCLExpressionBody.setText(newValue);
+		} else {
+			oCLExpressionBody.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForOCLExpressionBody(String msg, int msgLevel) {
@@ -199,4 +220,5 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

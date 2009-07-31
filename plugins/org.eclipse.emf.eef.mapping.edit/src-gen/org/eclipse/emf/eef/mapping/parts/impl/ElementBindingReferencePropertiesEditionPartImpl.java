@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPartImpl.java,v 1.11 2009/05/26 08:49:53 glefur Exp $
+ * $Id: ElementBindingReferencePropertiesEditionPartImpl.java,v 1.12 2009/07/31 14:07:29 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -38,6 +39,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -49,10 +51,19 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public ElementBindingReferencePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -63,12 +74,18 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createReferenceGroup(Composite parent) {
@@ -86,7 +103,6 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	 * @param referenceGroup
 	 */
 	protected void createBindingFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.SWT_KIND));
 		binding = new EObjectFlatComboViewer(parent, false);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -108,6 +124,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -131,8 +148,9 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	 */
 	public void initBinding(ResourceSet allResources, EObject current) {
 		binding.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			binding.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -141,10 +159,20 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#setBinding(EObject newValue)
 	 */
 	public void setBinding(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			binding.setSelection(new StructuredSelection(newValue));
-		else
-			binding.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			binding.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#setBindingButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setBindingButtonMode(ButtonsModeEnum newValue) {
+		binding.setButtonMode(newValue);
 	}
 
 	/**
@@ -183,4 +211,5 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingPropertiesEditionComponent.java,v 1.8 2009/05/26 08:49:53 glefur Exp $
+ * $Id: DatabindingPropertiesEditionComponent.java,v 1.9 2009/07/31 14:07:29 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -18,10 +18,12 @@ package org.eclipse.emf.eef.mapping.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.mapping.Databinding;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -40,7 +42,7 @@ public class DatabindingPropertiesEditionComponent extends ComposedPropertiesEdi
 	public DatabindingPropertiesEditionComponent(EObject databinding, String editing_mode) {
 		super(editing_mode);
 		if (databinding instanceof Databinding) {
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(databinding, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(databinding, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
@@ -68,6 +70,11 @@ public class DatabindingPropertiesEditionComponent extends ComposedPropertiesEdi
 	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
+			if (key == MappingViewsRepository.Documentation.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

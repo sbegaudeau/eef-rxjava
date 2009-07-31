@@ -18,10 +18,12 @@ package org.eclipse.emf.eef.mapping.parts;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -44,6 +46,12 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	 * @param newValue the new referencedFeature to set
 	 */
 	public void setReferencedFeature(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setReferencedFeatureButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the referencedFeature edition editor.
@@ -106,8 +114,10 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 
 
 
+
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

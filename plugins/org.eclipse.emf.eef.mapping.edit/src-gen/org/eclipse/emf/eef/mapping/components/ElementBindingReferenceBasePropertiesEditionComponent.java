@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.9 2009/05/26 08:49:53 glefur Exp $
+ * $Id: ElementBindingReferenceBasePropertiesEditionComponent.java,v 1.10 2009/07/31 14:07:29 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -41,29 +42,31 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ElementBindingReferenceBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private ElementBindingReference elementBindingReference;
-	
+
 	/**
 	 * The Base part
 	 */
 	private ElementBindingReferencePropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -77,7 +80,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -96,7 +99,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 					ElementBindingReferenceBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
-					basePart.setBinding((EObject)msg.getNewValue());
+						basePart.setBinding((EObject)msg.getNewValue());
 
 
 				}
@@ -165,9 +168,11 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == MappingViewsRepository.ElementBindingReference.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			ElementBindingReference elementBindingReference = (ElementBindingReference)elt;
+			final ElementBindingReference elementBindingReference = (ElementBindingReference)elt;
 			// init values
 			basePart.initBinding(allResource, elementBindingReference.getBinding());
+			// set the button mode
+			basePart.setBindingButtonMode(ButtonsModeEnum.BROWSE);
 			
 			// init filters
 			basePart.addFilterToBinding(new ViewerFilter() {
@@ -179,6 +184,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof AbstractElementBinding);
+
 				}
 
 			});
@@ -192,6 +198,10 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 
 	}
 
+
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -201,7 +211,9 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (elementBindingReference != null) {
-			cc.append(SetCommand.create(editingDomain, elementBindingReference, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), basePart.getBinding()));
+			if (elementBindingReference.eGet(MappingPackage.eINSTANCE.getElementBindingReference_Binding()) == null || !elementBindingReference.eGet(MappingPackage.eINSTANCE.getElementBindingReference_Binding()).equals(basePart.getBinding())) {
+				cc.append(SetCommand.create(editingDomain, elementBindingReference, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), basePart.getBinding()));
+			}
 
 
 		}
@@ -241,15 +253,19 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 				command.append(SetCommand.create(liveEditingDomain, elementBindingReference, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), event.getNewValue()));
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 
 
 			} else {
-				
+
 
 
 			}
@@ -282,12 +298,14 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -298,15 +316,19 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(elementBindingReference);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(elementBindingReference);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 

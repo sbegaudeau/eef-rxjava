@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingPropertiesEditionPartForm.java,v 1.11 2009/05/26 08:49:55 glefur Exp $
+ * $Id: StandardPropertyBindingPropertiesEditionPartForm.java,v 1.12 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -66,15 +67,16 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class StandardPropertyBindingPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, StandardPropertyBindingPropertiesEditionPart {
 
-	private Text name;
+	protected Text name;
 	protected EObjectFlatComboViewer model;
 	private EMFListEditUtil viewsEditUtil;
-	private ReferencesTable<?> views;
+	protected ReferencesTable<? extends EObject> views;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
@@ -82,10 +84,19 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public StandardPropertyBindingPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -97,13 +108,19 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 		createBindingGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -137,7 +154,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addFocusListener(new FocusAdapter() {
 
@@ -165,10 +182,9 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -188,11 +204,9 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.model, MappingViewsRepository.FORM_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -210,11 +224,11 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.model, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
-	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {	
+	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
-				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor()) {
+				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -241,7 +255,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		this.views.setLayoutData(viewsData);
 		this.views.disableMove();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -251,12 +265,11 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
 	}
-	
+
 	/**
 	 * 
 	 */
 	protected void removeFromViews(ElementEditor element) {
-
 		// Start of user code for the removeFromViews() method body
 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
@@ -265,13 +278,13 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
+
 	}
 
 	/**
 	 * 
 	 */
 	protected void editViews(ElementEditor element) {
-
 		// Start of user code editViews() method body
 				 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
@@ -287,6 +300,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		}
 
 		// End of user code
+
 	}
 
 	
@@ -294,7 +308,8 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -312,7 +327,11 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -344,8 +363,9 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
 		model.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			model.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -354,10 +374,20 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			model.setSelection(new StructuredSelection(newValue));
-		else
-			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#setModelButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setModelButtonMode(ButtonsModeEnum newValue) {
+		model.setButtonMode(newValue);
 	}
 
 	/**
@@ -409,6 +439,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		return viewsEditUtil.getVirtualList();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -430,7 +461,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#updateViews(EObject newValue)
 	 */
 	public void updateViews(EObject newValue) {
-		if(viewsEditUtil!=null){
+		if(viewsEditUtil != null){
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
@@ -454,6 +485,15 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		viewsBusinessFilters.add(filter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart#isContainedInViewsTable(EObject element)
+	 */
+	public boolean isContainedInViewsTable(EObject element) {
+		return viewsEditUtil.contains(element);
+	}
+
 
 
 
@@ -468,4 +508,5 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

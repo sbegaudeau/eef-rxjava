@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FilterPropertiesPropertiesEditionPartForm.java,v 1.1 2009/05/26 08:49:55 glefur Exp $
+ * $Id: FilterPropertiesPropertiesEditionPartForm.java,v 1.2 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -45,22 +45,32 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class FilterPropertiesPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, FilterPropertiesPropertiesEditionPart {
 
-	private Text name;
-	private Button mandatory;
+	protected Text name;
+	protected Button mandatory;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public FilterPropertiesPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -72,12 +82,18 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createFilterPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createFilterPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -112,7 +128,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, MappingViewsRepository.FilterProperties.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addFocusListener(new FocusAdapter() {
 
@@ -140,10 +156,9 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, MappingViewsRepository.FilterProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createMandatoryCheckbox(FormToolkit widgetFactory, Composite parent) {
 		mandatory = widgetFactory.createButton(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel, SWT.CHECK);
@@ -158,7 +173,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, MappingViewsRepository.FilterProperties.mandatory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(mandatory.getSelection())));
 			}
-			
+
 		});
 		GridData mandatoryData = new GridData(GridData.FILL_HORIZONTAL);
 		mandatoryData.horizontalSpan = 2;
@@ -170,7 +185,8 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -188,7 +204,11 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 	 * @see org.eclipse.emf.eef.filters.parts.FilterPropertiesPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -235,4 +255,5 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

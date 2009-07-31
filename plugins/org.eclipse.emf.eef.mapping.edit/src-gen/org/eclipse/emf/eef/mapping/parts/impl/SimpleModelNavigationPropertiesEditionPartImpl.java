@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.10 2009/05/26 08:49:53 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.11 2009/07/31 14:07:29 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -44,12 +45,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SimpleModelNavigationPropertiesEditionPart {
 
-	private Text index;
+	protected Text index;
 	protected EObjectFlatComboViewer feature;
 	protected EObjectFlatComboViewer discriminatorType;
 
@@ -57,10 +59,19 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public SimpleModelNavigationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -71,12 +82,18 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -117,7 +134,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * @param propertiesGroup
 	 */
 	protected void createFeatureFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.feature, MappingViewsRepository.SWT_KIND));
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -137,7 +153,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * @param propertiesGroup
 	 */
 	protected void createDiscriminatorTypeFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.SWT_KIND));
 		discriminatorType = new EObjectFlatComboViewer(parent, true);
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -159,6 +174,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -176,7 +192,11 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#setIndex(String newValue)
 	 */
 	public void setIndex(String newValue) {
-		index.setText(newValue);
+		if (newValue != null) {
+			index.setText(newValue);
+		} else {
+			index.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForIndex(String msg, int msgLevel) {
@@ -208,8 +228,9 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 */
 	public void initFeature(ResourceSet allResources, EObject current) {
 		feature.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			feature.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -218,10 +239,20 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#setFeature(EObject newValue)
 	 */
 	public void setFeature(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			feature.setSelection(new StructuredSelection(newValue));
-		else
-			feature.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			feature.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#setFeatureButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setFeatureButtonMode(ButtonsModeEnum newValue) {
+		feature.setButtonMode(newValue);
 	}
 
 	/**
@@ -271,8 +302,9 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 */
 	public void initDiscriminatorType(ResourceSet allResources, EObject current) {
 		discriminatorType.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			discriminatorType.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -281,10 +313,20 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#setDiscriminatorType(EObject newValue)
 	 */
 	public void setDiscriminatorType(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			discriminatorType.setSelection(new StructuredSelection(newValue));
-		else
-			discriminatorType.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			discriminatorType.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#setDiscriminatorTypeButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setDiscriminatorTypeButtonMode(ButtonsModeEnum newValue) {
+		discriminatorType.setButtonMode(newValue);
 	}
 
 	/**
@@ -328,4 +370,5 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		}
  	}
 	// End of user code
+
 }

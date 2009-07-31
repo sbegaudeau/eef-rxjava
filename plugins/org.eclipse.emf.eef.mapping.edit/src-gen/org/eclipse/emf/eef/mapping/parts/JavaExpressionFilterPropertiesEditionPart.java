@@ -20,6 +20,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -79,8 +80,10 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 
 
 
+
 	// Start of user code for additional methods
 	
 	// End of user code
+
 }
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionComponent.java,v 1.8 2009/05/26 08:49:53 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionComponent.java,v 1.9 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -54,7 +55,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 		if (eMFMultiPropertiesBinding instanceof EMFMultiPropertiesBinding) {
 			eMFMultiPropertiesBindingBasePropertiesEditionComponent = new EMFMultiPropertiesBindingBasePropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode); 
 			addSubComponent(eMFMultiPropertiesBindingBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
@@ -93,6 +94,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.class) {
 			super.initPart(key, kind, element, allResource);
 		}
+			if (key == MappingViewsRepository.Documentation.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

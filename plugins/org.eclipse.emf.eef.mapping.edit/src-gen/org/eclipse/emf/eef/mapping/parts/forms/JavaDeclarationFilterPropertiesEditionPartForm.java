@@ -46,22 +46,32 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, JavaDeclarationFilterPropertiesEditionPart {
 
-	private Text methodName;
+	protected Text methodName;
 
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public JavaDeclarationFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -73,13 +83,19 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createFilterExpressionGroup(widgetFactory, view);
 		createFilterProperties(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
@@ -113,7 +129,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaDeclarationFilterPropertiesEditionPartForm.this, MappingViewsRepository.JavaDeclarationFilter.methodName, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, methodName.getText()));
 			}
-			
+
 		});
 		methodName.addFocusListener(new FocusAdapter() {
 
@@ -141,10 +157,9 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaDeclarationFilterPropertiesEditionPartForm.this, MappingViewsRepository.JavaDeclarationFilter.methodName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, methodName.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaDeclarationFilter.methodName, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createFilterProperties(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
@@ -157,7 +172,8 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -175,7 +191,11 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	 * @see org.eclipse.emf.eef.filters.parts.JavaDeclarationFilterPropertiesEditionPart#setMethodName(String newValue)
 	 */
 	public void setMethodName(String newValue) {
-		methodName.setText(newValue);
+		if (newValue != null) {
+			methodName.setText(newValue);
+		} else {
+			methodName.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForMethodName(String msg, int msgLevel) {
@@ -251,4 +271,5 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

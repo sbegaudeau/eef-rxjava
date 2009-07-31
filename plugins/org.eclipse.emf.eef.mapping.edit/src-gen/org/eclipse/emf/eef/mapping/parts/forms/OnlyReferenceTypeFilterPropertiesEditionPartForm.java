@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -46,6 +47,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -58,10 +60,19 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public OnlyReferenceTypeFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -73,13 +84,19 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createReferencedFeatureGroup(widgetFactory, view);
 		createFilterProperties(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createReferencedFeatureGroup(FormToolkit widgetFactory, final Composite view) {
@@ -99,11 +116,9 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 * @param referencedFeatureGroup
 	 */
 	protected void createReferencedFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature, MappingViewsRepository.FORM_KIND));
 		referencedFeature = new EObjectFlatComboViewer(parent, true);
 		referencedFeature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData referencedFeatureData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedFeature.setLayoutData(referencedFeatureData);
 		referencedFeature.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -132,7 +147,8 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -156,8 +172,9 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 */
 	public void initReferencedFeature(ResourceSet allResources, EObject current) {
 		referencedFeature.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			referencedFeature.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -166,10 +183,20 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 * @see org.eclipse.emf.eef.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart#setReferencedFeature(EObject newValue)
 	 */
 	public void setReferencedFeature(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			referencedFeature.setSelection(new StructuredSelection(newValue));
-		else
-			referencedFeature.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			referencedFeature.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart#setReferencedFeatureButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setReferencedFeatureButtonMode(ButtonsModeEnum newValue) {
+		referencedFeature.setButtonMode(newValue);
 	}
 
 	/**
@@ -259,4 +286,5 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	// Start of user code additional methods
 	
 	// End of user code
+
 }	

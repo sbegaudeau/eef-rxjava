@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingPropertiesEditionPart.java,v 1.9 2009/05/26 08:49:55 glefur Exp $
+ * $Id: StandardPropertyBindingPropertiesEditionPart.java,v 1.10 2009/07/31 14:07:30 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -20,10 +20,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -63,6 +65,12 @@ public interface StandardPropertyBindingPropertiesEditionPart {
 	public void setModel(EObject newValue);
 
 	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setModelButtonMode(ButtonsModeEnum newValue);
+
+	/**
 	 * Adds the given filter to the model edition editor.
 	 * 
 	 * @param filter
@@ -95,7 +103,7 @@ public interface StandardPropertyBindingPropertiesEditionPart {
 	public List getViewsToRemove();
 
 	/**
-	 * @return the current views
+	 * @return the current views table
 	 */
 	public List getViewsTable();
 
@@ -131,6 +139,11 @@ public interface StandardPropertyBindingPropertiesEditionPart {
 	 */
 	public void addBusinessFilterToViews(ViewerFilter filter);
 
+	/**
+	 * @return true if the given element is contained inside the views table
+	 */
+	public boolean isContainedInViewsTable(EObject element);
+
 
 
 
@@ -143,5 +156,6 @@ public interface StandardPropertyBindingPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 
