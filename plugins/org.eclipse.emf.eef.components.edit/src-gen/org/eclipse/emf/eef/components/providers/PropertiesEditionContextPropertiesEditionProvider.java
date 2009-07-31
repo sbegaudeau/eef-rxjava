@@ -9,18 +9,21 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionProvider.java,v 1.9 2009/07/31 14:12:53 glefur Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionProvider.java,v 1.10 2009/07/31 14:14:18 glefur Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
-import org.eclipse.emf.eef.components.components.PropertiesEditionContextBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesEditionContextPropertiesEditionComponent;
+import org.eclipse.emf.eef.components.components.PropertiesEditionContextBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

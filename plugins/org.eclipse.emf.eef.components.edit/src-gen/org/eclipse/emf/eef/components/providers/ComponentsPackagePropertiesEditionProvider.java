@@ -9,12 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsPackagePropertiesEditionProvider.java,v 1.8 2009/07/31 14:12:53 glefur Exp $
+ * $Id: ComponentsPackagePropertiesEditionProvider.java,v 1.9 2009/07/31 14:14:18 glefur Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
-import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
