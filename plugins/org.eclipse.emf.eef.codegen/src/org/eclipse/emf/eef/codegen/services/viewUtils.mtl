@@ -1283,12 +1283,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 [/for]
 [/template]
 
-[template public widgetDeclarationForViewReference(view : View)]
-[for (element : View | view.eAllContents(views::ViewReference))]
-[element.oclAsType(ViewReference).widgetDeclaration()/]
-[/for]
-[/template]
-
 [comment ===== SubView support ===== /]
 [template public widgetDeclaration(subView : View)]
 	private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
@@ -1309,12 +1303,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 [template public widgetDeclarationForSubViews(view : View)]
 [for (element : View | view.elements->select(oclIsKindOf(views::View)))]
-[element.oclAsType(View).widgetDeclaration()/]
-[/for]
-[/template]
-
-[template public widgetDeclarationForSubViews(view : View)]
-[for (element : ViewElement | view.elements->select(oclIsKindOf(views::View)))]
 [element.oclAsType(View).widgetDeclaration()/]
 [/for]
 [/template]
