@@ -9,16 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionProvider.java,v 1.6 2009/06/09 15:47:20 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionProvider.java,v 1.7 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.EEFGen.EEFGenModel;
-import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
-import org.eclipse.emf.eef.EEFGen.components.EEFGenModelPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
+import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.components.EEFGenModelPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -33,7 +36,7 @@ public class EEFGenModelPropertiesEditionProvider implements IPropertiesEditionP
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof EEFGenModel) && (EEFGenPackage.eINSTANCE.getEEFGenModel() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -46,7 +49,7 @@ public class EEFGenModelPropertiesEditionProvider implements IPropertiesEditionP
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -60,5 +63,6 @@ public class EEFGenModelPropertiesEditionProvider implements IPropertiesEditionP
 		}
 		return null;
 	}
-	
-}	
+
+}
+

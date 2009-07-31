@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenMessages.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenMessages.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
@@ -111,6 +111,7 @@ public class EEFGenMessages extends NLS {
 	
  	
 	// End of user code
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, EEFGenMessages.class);

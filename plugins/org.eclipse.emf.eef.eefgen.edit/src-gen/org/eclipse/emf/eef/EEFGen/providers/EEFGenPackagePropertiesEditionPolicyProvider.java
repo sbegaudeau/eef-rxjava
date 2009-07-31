@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackagePropertiesEditionPolicyProvider.java,v 1.4 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenPackagePropertiesEditionPolicyProvider.java,v 1.5 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
@@ -28,7 +28,7 @@ public class EEFGenPackagePropertiesEditionPolicyProvider extends StandardProper
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return EEFGenPackage.eINSTANCE.equals(eObject.eClass().getEPackage());
+		return EEFGenPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || EEFGenPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }

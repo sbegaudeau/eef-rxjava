@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -43,6 +44,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -170,7 +172,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == EEFGenViewsRepository.EEFGenModel.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			EEFGenModel eEFGenModel = (EEFGenModel)elt;
+			final EEFGenModel eEFGenModel = (EEFGenModel)elt;
 			// init values
 			if (eEFGenModel.getGenDirectory() != null)
 				basePart.setGenDirectory(eEFGenModel.getGenDirectory());
@@ -192,6 +194,12 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		// init filters for referenced views
 
 	}
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -229,7 +237,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 			eEFGenModelToUpdate.setAuthor(basePart.getAuthor());
 
-			eEFGenModelToUpdate.setLicense(basePart.getLicense());	
+			eEFGenModelToUpdate.setLicense(basePart.getLicense());
 
 
 
@@ -259,7 +267,11 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
@@ -299,24 +311,26 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (EEFGenViewsRepository.EEFGenModel.genDirectory == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newValue);
-			}
-			if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newValue);
-			}
-			if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (EEFGenViewsRepository.EEFGenModel.genDirectory == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -327,15 +341,19 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(eEFGenModel);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(eEFGenModel);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 

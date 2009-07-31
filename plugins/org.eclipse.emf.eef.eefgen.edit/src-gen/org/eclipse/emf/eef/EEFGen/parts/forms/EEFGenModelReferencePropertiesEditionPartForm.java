@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionPartForm.java,v 1.7 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionPartForm.java,v 1.8 2009/07/31 14:18:42 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -42,6 +43,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -53,10 +55,19 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public EEFGenModelReferencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -68,12 +79,18 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
@@ -93,11 +110,9 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * @param referenceGroup
 	 */
 	protected void createReferencedEEFGenModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND));
 		referencedEEFGenModel = new EObjectFlatComboViewer(parent, false);
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData referencedEEFGenModelData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedEEFGenModel.setLayoutData(referencedEEFGenModelData);
 		referencedEEFGenModel.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -120,7 +135,8 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -144,8 +160,9 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 */
 	public void initReferencedEEFGenModel(ResourceSet allResources, EObject current) {
 		referencedEEFGenModel.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			referencedEEFGenModel.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -154,10 +171,20 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#setReferencedEEFGenModel(EObject newValue)
 	 */
 	public void setReferencedEEFGenModel(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			referencedEEFGenModel.setSelection(new StructuredSelection(newValue));
-		else
-			referencedEEFGenModel.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			referencedEEFGenModel.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#setReferencedEEFGenModelButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setReferencedEEFGenModelButtonMode(ButtonsModeEnum newValue) {
+		referencedEEFGenModel.setButtonMode(newValue);
 	}
 
 	/**
@@ -192,4 +219,5 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

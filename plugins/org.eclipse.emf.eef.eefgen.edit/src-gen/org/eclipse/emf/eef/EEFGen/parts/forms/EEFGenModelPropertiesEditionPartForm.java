@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -43,23 +43,33 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EEFGenModelPropertiesEditionPart {
 
-	private Text genDirectory;
-	private Text author;
-	private Text license;
+	protected Text genDirectory;
+	protected Text author;
+	protected Text license;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public EEFGenModelPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -71,13 +81,19 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createParametersGroup(widgetFactory, view);
 		createLegalGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createParametersGroup(FormToolkit widgetFactory, final Composite view) {
@@ -111,7 +127,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, genDirectory.getText()));
 			}
-			
+
 		});
 		genDirectory.addFocusListener(new FocusAdapter() {
 
@@ -139,10 +155,9 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, genDirectory.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.genDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createLegalGroup(FormToolkit widgetFactory, final Composite view) {
 		Section legalSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -176,7 +191,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.author, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, author.getText()));
 			}
-			
+
 		});
 		author.addFocusListener(new FocusAdapter() {
 
@@ -204,10 +219,9 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.author, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, author.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createLicenseTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label licenseLabel = FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND));
@@ -248,14 +262,14 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		
 	}
 
 	
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -273,7 +287,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenDirectory(String newValue)
 	 */
 	public void setGenDirectory(String newValue) {
-		genDirectory.setText(newValue);
+		if (newValue != null) {
+			genDirectory.setText(newValue);
+		} else {
+			genDirectory.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForGenDirectory(String msg, int msgLevel) {
@@ -299,7 +317,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setAuthor(String newValue)
 	 */
 	public void setAuthor(String newValue) {
-		author.setText(newValue);
+		if (newValue != null) {
+			author.setText(newValue);
+		} else {
+			author.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForAuthor(String msg, int msgLevel) {
@@ -325,7 +347,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setLicense(String newValue)
 	 */
 	public void setLicense(String newValue) {
-		license.setText(newValue);
+		if (newValue != null) {
+			license.setText(newValue);
+		} else {
+			license.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForLicense(String msg, int msgLevel) {
@@ -346,4 +372,5 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.7 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.8 2009/07/31 14:18:42 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -53,25 +54,35 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class GenEditionContextPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, GenEditionContextPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer propertiesEditionContext;
-	private Text basePackage;
-	private Text descriptorsContributorID;
-	private Button descriptorsGenericPropertiesViews;
-	private Button gmfPropertiesViews;
+	protected Text basePackage;
+	protected Text descriptorsContributorID;
+	protected Button descriptorsGenericPropertiesViews;
+	protected Button gmfPropertiesViews;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public GenEditionContextPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -83,6 +94,11 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
@@ -90,7 +106,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		createActivationGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
@@ -110,11 +127,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * @param referenceGroup
 	 */
 	protected void createPropertiesEditionContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND));
 		propertiesEditionContext = new EObjectFlatComboViewer(parent, false);
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData propertiesEditionContextData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesEditionContext.setLayoutData(propertiesEditionContextData);
 		propertiesEditionContext.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -164,7 +179,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.basePackage, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, basePackage.getText()));
 			}
-			
+
 		});
 		basePackage.addFocusListener(new FocusAdapter() {
 
@@ -192,10 +207,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createDescriptorsContributorIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND));
@@ -215,7 +229,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
 			}
-			
+
 		});
 		descriptorsContributorID.addFocusListener(new FocusAdapter() {
 
@@ -243,10 +257,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	protected void createActivationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section activationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -275,7 +288,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.descriptorsGenericPropertiesViews, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(descriptorsGenericPropertiesViews.getSelection())));
 			}
-			
+
 		});
 		GridData descriptorsGenericPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptorsGenericPropertiesViewsData.horizontalSpan = 2;
@@ -295,7 +308,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.gmfPropertiesViews, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(gmfPropertiesViews.getSelection())));
 			}
-			
+
 		});
 		GridData gmfPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		gmfPropertiesViewsData.horizontalSpan = 2;
@@ -307,7 +320,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -331,8 +345,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 */
 	public void initPropertiesEditionContext(ResourceSet allResources, EObject current) {
 		propertiesEditionContext.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			propertiesEditionContext.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -341,10 +356,20 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setPropertiesEditionContext(EObject newValue)
 	 */
 	public void setPropertiesEditionContext(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			propertiesEditionContext.setSelection(new StructuredSelection(newValue));
-		else
-			propertiesEditionContext.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			propertiesEditionContext.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setPropertiesEditionContextButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setPropertiesEditionContextButtonMode(ButtonsModeEnum newValue) {
+		propertiesEditionContext.setButtonMode(newValue);
 	}
 
 	/**
@@ -384,7 +409,11 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setBasePackage(String newValue)
 	 */
 	public void setBasePackage(String newValue) {
-		basePackage.setText(newValue);
+		if (newValue != null) {
+			basePackage.setText(newValue);
+		} else {
+			basePackage.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForBasePackage(String msg, int msgLevel) {
@@ -410,7 +439,11 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setDescriptorsContributorID(String newValue)
 	 */
 	public void setDescriptorsContributorID(String newValue) {
-		descriptorsContributorID.setText(newValue);
+		if (newValue != null) {
+			descriptorsContributorID.setText(newValue);
+		} else {
+			descriptorsContributorID.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForDescriptorsContributorID(String msg, int msgLevel) {
@@ -483,4 +516,5 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPart.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionPart.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -17,10 +17,12 @@ package org.eclipse.emf.eef.EEFGen.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -43,6 +45,12 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * @param newValue the new properties Edition Context to set
 	 */
 	public void setPropertiesEditionContext(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setPropertiesEditionContextButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the properties Edition Context edition editor.
@@ -134,5 +142,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 

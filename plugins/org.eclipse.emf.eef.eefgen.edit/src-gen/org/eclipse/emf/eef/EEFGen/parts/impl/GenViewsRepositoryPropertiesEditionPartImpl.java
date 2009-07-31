@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.7 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.8 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -48,25 +49,35 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GenViewsRepositoryPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer viewsRepository;
-	private Text basePackage;
-	private EMFComboViewer helpStrategy;
-	private Button swtViews;
-	private Button formViews;
+	protected Text basePackage;
+	protected EMFComboViewer helpStrategy;
+	protected Button swtViews;
+	protected Button formViews;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public GenViewsRepositoryPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -77,6 +88,11 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
 		createParametersGroup(view);
@@ -85,6 +101,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createReferenceGroup(Composite parent) {
@@ -102,7 +119,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * @param referenceGroup
 	 */
 	protected void createViewsRepositoryFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ViewsRepositoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.viewsRepository, EEFGenViewsRepository.SWT_KIND));
 		viewsRepository = new EObjectFlatComboViewer(parent, false);
 		viewsRepository.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -194,6 +210,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -217,8 +234,9 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 */
 	public void initViewsRepository(ResourceSet allResources, EObject current) {
 		viewsRepository.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			viewsRepository.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -227,10 +245,20 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setViewsRepository(EObject newValue)
 	 */
 	public void setViewsRepository(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			viewsRepository.setSelection(new StructuredSelection(newValue));
-		else
-			viewsRepository.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			viewsRepository.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setViewsRepositoryButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setViewsRepositoryButtonMode(ButtonsModeEnum newValue) {
+		viewsRepository.setButtonMode(newValue);
 	}
 
 	/**
@@ -274,7 +302,11 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setBasePackage(String newValue)
 	 */
 	public void setBasePackage(String newValue) {
-		basePackage.setText(newValue);
+		if (newValue != null) {
+			basePackage.setText(newValue);
+		} else {
+			basePackage.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForBasePackage(String msg, int msgLevel) {
@@ -392,4 +424,5 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

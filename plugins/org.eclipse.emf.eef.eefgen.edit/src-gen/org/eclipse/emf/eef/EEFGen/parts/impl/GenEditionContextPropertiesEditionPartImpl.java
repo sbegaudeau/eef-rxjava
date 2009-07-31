@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartImpl.java,v 1.7 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionPartImpl.java,v 1.8 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -42,25 +43,35 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class GenEditionContextPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GenEditionContextPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer propertiesEditionContext;
-	private Text basePackage;
-	private Text descriptorsContributorID;
-	private Button descriptorsGenericPropertiesViews;
-	private Button gmfPropertiesViews;
+	protected Text basePackage;
+	protected Text descriptorsContributorID;
+	protected Button descriptorsGenericPropertiesViews;
+	protected Button gmfPropertiesViews;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public GenEditionContextPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -71,6 +82,11 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
 		createParametersGroup(view);
@@ -79,6 +95,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createReferenceGroup(Composite parent) {
@@ -96,7 +113,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 * @param referenceGroup
 	 */
 	protected void createPropertiesEditionContextFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND));
 		propertiesEditionContext = new EObjectFlatComboViewer(parent, false);
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -200,6 +216,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -223,8 +240,9 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 */
 	public void initPropertiesEditionContext(ResourceSet allResources, EObject current) {
 		propertiesEditionContext.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			propertiesEditionContext.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -233,10 +251,20 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setPropertiesEditionContext(EObject newValue)
 	 */
 	public void setPropertiesEditionContext(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			propertiesEditionContext.setSelection(new StructuredSelection(newValue));
-		else
-			propertiesEditionContext.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			propertiesEditionContext.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setPropertiesEditionContextButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setPropertiesEditionContextButtonMode(ButtonsModeEnum newValue) {
+		propertiesEditionContext.setButtonMode(newValue);
 	}
 
 	/**
@@ -280,7 +308,11 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setBasePackage(String newValue)
 	 */
 	public void setBasePackage(String newValue) {
-		basePackage.setText(newValue);
+		if (newValue != null) {
+			basePackage.setText(newValue);
+		} else {
+			basePackage.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForBasePackage(String msg, int msgLevel) {
@@ -306,7 +338,11 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setDescriptorsContributorID(String newValue)
 	 */
 	public void setDescriptorsContributorID(String newValue) {
-		descriptorsContributorID.setText(newValue);
+		if (newValue != null) {
+			descriptorsContributorID.setText(newValue);
+		} else {
+			descriptorsContributorID.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForDescriptorsContributorID(String msg, int msgLevel) {
@@ -387,4 +423,5 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

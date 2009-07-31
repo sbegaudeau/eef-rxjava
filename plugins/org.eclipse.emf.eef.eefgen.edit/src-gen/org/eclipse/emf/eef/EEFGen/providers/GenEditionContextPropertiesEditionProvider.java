@@ -9,16 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionProvider.java,v 1.7 2009/06/09 15:47:20 sbouchet Exp $
+ * $Id: GenEditionContextPropertiesEditionProvider.java,v 1.8 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.EEFGen.components.GenEditionContextPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -33,7 +36,7 @@ public class GenEditionContextPropertiesEditionProvider implements IPropertiesEd
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof GenEditionContext) && (EEFGenPackage.eINSTANCE.getGenEditionContext() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -46,7 +49,7 @@ public class GenEditionContextPropertiesEditionProvider implements IPropertiesEd
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -60,5 +63,6 @@ public class GenEditionContextPropertiesEditionProvider implements IPropertiesEd
 		}
 		return null;
 	}
-	
-}	
+
+}
+

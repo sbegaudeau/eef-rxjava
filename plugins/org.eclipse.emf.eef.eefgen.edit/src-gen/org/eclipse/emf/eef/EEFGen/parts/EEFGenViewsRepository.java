@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenViewsRepository.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenViewsRepository.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -27,23 +27,17 @@ public class EEFGenViewsRepository {
 	 * GenEditionContext view descriptor
 	 */
 	public static class GenEditionContext {
-
-		public static String propertiesEditionContext = "EEFGen::GenEditionContext::properties Edition Context";
-
+		public static String propertiesEditionContext = "EEFGen::GenEditionContext::properties Edition Context";	
 
 
-		public static String basePackage = "EEFGen::GenEditionContext::basePackage";
+		public static String basePackage = "EEFGen::GenEditionContext::basePackage";	
+
+		public static String descriptorsContributorID = "EEFGen::GenEditionContext::descriptorsContributorID";	
 
 
-		public static String descriptorsContributorID = "EEFGen::GenEditionContext::descriptorsContributorID";
+		public static String descriptorsGenericPropertiesViews = "EEFGen::GenEditionContext::descriptorsGenericPropertiesViews";	
 
-
-
-		public static String descriptorsGenericPropertiesViews = "EEFGen::GenEditionContext::descriptorsGenericPropertiesViews";
-
-
-		public static String gmfPropertiesViews = "EEFGen::GenEditionContext::gmfPropertiesViews";
-
+		public static String gmfPropertiesViews = "EEFGen::GenEditionContext::gmfPropertiesViews";	
 
 
 	}
@@ -52,9 +46,7 @@ public class EEFGenViewsRepository {
 	 * EEFGenModelReference view descriptor
 	 */
 	public static class EEFGenModelReference {
-
-		public static String referencedEEFGenModel = "EEFGen::EEFGenModelReference::Referenced EEFGenModel";
-
+		public static String referencedEEFGenModel = "EEFGen::EEFGenModelReference::Referenced EEFGenModel";	
 
 
 	}
@@ -63,16 +55,12 @@ public class EEFGenViewsRepository {
 	 * EEFGenModel view descriptor
 	 */
 	public static class EEFGenModel {
-
-		public static String genDirectory = "EEFGen::EEFGenModel::genDirectory";
-
+		public static String genDirectory = "EEFGen::EEFGenModel::genDirectory";	
 
 
-		public static String author = "EEFGen::EEFGenModel::author";
+		public static String author = "EEFGen::EEFGenModel::author";	
 
-
-		public static String license = "EEFGen::EEFGenModel::license";
-
+		public static String license = "EEFGen::EEFGenModel::license";	
 
 
 	}
@@ -81,23 +69,17 @@ public class EEFGenViewsRepository {
 	 * GenViewsRepository view descriptor
 	 */
 	public static class GenViewsRepository {
-
-		public static String viewsRepository = "EEFGen::GenViewsRepository::Views repository";
-
+		public static String viewsRepository = "EEFGen::GenViewsRepository::Views repository";	
 
 
-		public static String basePackage = "EEFGen::GenViewsRepository::basePackage";
+		public static String basePackage = "EEFGen::GenViewsRepository::basePackage";	
+
+		public static String helpStrategy = "EEFGen::GenViewsRepository::helpStrategy";	
 
 
-		public static String helpStrategy = "EEFGen::GenViewsRepository::helpStrategy";
+		public static String swtViews = "EEFGen::GenViewsRepository::swtViews";	
 
-
-
-		public static String swtViews = "EEFGen::GenViewsRepository::swtViews";
-
-
-		public static String formViews = "EEFGen::GenViewsRepository::formViews";
-
+		public static String formViews = "EEFGen::GenViewsRepository::formViews";	
 
 
 	}

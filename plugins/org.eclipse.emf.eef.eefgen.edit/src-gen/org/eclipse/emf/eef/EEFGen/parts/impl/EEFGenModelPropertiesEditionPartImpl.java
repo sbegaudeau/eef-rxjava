@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPartImpl.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenModelPropertiesEditionPartImpl.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -34,23 +34,33 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EEFGenModelPropertiesEditionPart {
 
-	private Text genDirectory;
-	private Text author;
-	private Text license;
+	protected Text genDirectory;
+	protected Text author;
+	protected Text license;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public EEFGenModelPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -61,6 +71,11 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createParametersGroup(view);
 		createLegalGroup(view);
@@ -68,6 +83,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createParametersGroup(Composite parent) {
@@ -153,6 +169,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -170,7 +187,11 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenDirectory(String newValue)
 	 */
 	public void setGenDirectory(String newValue) {
-		genDirectory.setText(newValue);
+		if (newValue != null) {
+			genDirectory.setText(newValue);
+		} else {
+			genDirectory.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForGenDirectory(String msg, int msgLevel) {
@@ -196,7 +217,11 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setAuthor(String newValue)
 	 */
 	public void setAuthor(String newValue) {
-		author.setText(newValue);
+		if (newValue != null) {
+			author.setText(newValue);
+		} else {
+			author.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForAuthor(String msg, int msgLevel) {
@@ -222,7 +247,11 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setLicense(String newValue)
 	 */
 	public void setLicense(String newValue) {
-		license.setText(newValue);
+		if (newValue != null) {
+			license.setText(newValue);
+		} else {
+			license.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForLicense(String msg, int msgLevel) {
@@ -243,4 +272,5 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

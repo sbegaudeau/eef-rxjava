@@ -9,22 +9,22 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPropertiesEditionPartProvider.java,v 1.5 2009/06/09 15:47:21 sbouchet Exp $
+ * $Id: EEFGenPropertiesEditionPartProvider.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
-import org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelPropertiesEditionPartForm;
-import org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelReferencePropertiesEditionPartForm;
-import org.eclipse.emf.eef.EEFGen.parts.forms.GenEditionContextPropertiesEditionPartForm;
-import org.eclipse.emf.eef.EEFGen.parts.forms.GenViewsRepositoryPropertiesEditionPartForm;
-import org.eclipse.emf.eef.EEFGen.parts.impl.EEFGenModelPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.EEFGen.parts.impl.EEFGenModelReferencePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.EEFGen.parts.impl.GenEditionContextPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.EEFGen.parts.impl.GenViewsRepositoryPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.EEFGen.parts.forms.GenEditionContextPropertiesEditionPartForm;
+import org.eclipse.emf.eef.EEFGen.parts.impl.GenEditionContextPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelReferencePropertiesEditionPartForm;
+import org.eclipse.emf.eef.EEFGen.parts.impl.EEFGenModelReferencePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelPropertiesEditionPartForm;
+import org.eclipse.emf.eef.EEFGen.parts.impl.EEFGenModelPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.EEFGen.parts.forms.GenViewsRepositoryPropertiesEditionPartForm;
+import org.eclipse.emf.eef.EEFGen.parts.impl.GenViewsRepositoryPropertiesEditionPartImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

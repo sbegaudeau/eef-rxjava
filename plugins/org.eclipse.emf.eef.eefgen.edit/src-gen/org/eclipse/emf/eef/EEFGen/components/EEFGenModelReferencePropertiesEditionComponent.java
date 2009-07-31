@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferencePropertiesEditionComponent.java,v 1.5 2009/05/20 15:51:51 sbouchet Exp $
+ * $Id: EEFGenModelReferencePropertiesEditionComponent.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -41,10 +42,12 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -165,9 +168,11 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == EEFGenViewsRepository.EEFGenModelReference.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)elt;
+			final EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)elt;
 			// init values
 			basePart.initReferencedEEFGenModel(allResource, eEFGenModelReference.getReferencedContext());
+			// set the button mode
+			basePart.setReferencedEEFGenModelButtonMode(ButtonsModeEnum.BROWSE);
 			
 			// init filters
 			basePart.addFilterToReferencedEEFGenModel(new ViewerFilter() {
@@ -179,6 +184,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof EEFGenModel);
+
 				}
 
 			});
@@ -192,6 +198,10 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 
 	}
 
+
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -201,7 +211,9 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (eEFGenModelReference != null) {
-			cc.append(SetCommand.create(editingDomain, eEFGenModelReference, EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext(), basePart.getReferencedEEFGenModel()));
+			if (eEFGenModelReference.eGet(EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext()) == null || !eEFGenModelReference.eGet(EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext()).equals(basePart.getReferencedEEFGenModel())) {
+				cc.append(SetCommand.create(editingDomain, eEFGenModelReference, EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext(), basePart.getReferencedEEFGenModel()));
+			}
 
 
 		}
@@ -241,7 +253,11 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 				command.append(SetCommand.create(liveEditingDomain, eEFGenModelReference, EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext(), event.getNewValue()));
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
@@ -271,12 +287,14 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -287,15 +305,19 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(eEFGenModelReference);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(eEFGenModelReference);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 
