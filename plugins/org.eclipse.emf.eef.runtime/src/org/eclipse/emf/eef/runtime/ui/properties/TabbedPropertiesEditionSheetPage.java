@@ -11,6 +11,8 @@
 package org.eclipse.emf.eef.runtime.ui.properties;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -128,8 +130,32 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 
 	@Override
 	public void refresh() {
-		if (getCurrentTab() != null) {
-			super.refresh();
-		}
-	}
+        boolean isCurrentTabNull = true;
+        try {
+            try {
+                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab");
+                // We are in eclipse 3.3
+                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null);
+                isCurrentTabNull = searchMethod.invoke(this) == null;
+            } catch (final ClassNotFoundException cnfe) {
+                // We are in eclipse 3.4
+                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null);
+                isCurrentTabNull = searchMethod.invoke(this) == null;
+            }
+        } catch (final SecurityException e) {
+            // Do nothing
+        } catch (final NoSuchMethodException e) {
+            // Do nothing
+        } catch (final IllegalArgumentException e) {
+            // Do nothing
+        } catch (final IllegalAccessException e) {
+            // Do nothing
+        } catch (final InvocationTargetException e) {
+            // Do nothing
+        }
+
+        if (!isCurrentTabNull) {
+            super.refresh();
+        }
+    }
 }
