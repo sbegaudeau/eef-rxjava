@@ -9,19 +9,22 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilterPropertiesEditionProvider.java,v 1.1 2009/07/31 14:07:31 glefur Exp $
+ * $Id: JavaExpressionFilterPropertiesEditionProvider.java,v 1.2 2009/07/31 14:10:32 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
-import org.eclipse.emf.eef.mapping.filters.components.FilterPropertiesPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.filters.components.JavaExpressionFilterBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.filters.components.JavaExpressionFilterPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.filters.components.JavaExpressionFilterBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.filters.components.FilterPropertiesPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

@@ -9,17 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.9 2009/07/31 14:07:30 glefur Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.10 2009/07/31 14:10:32 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
-import org.eclipse.emf.eef.mapping.filters.providers.FilterPropertiesPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.OCLFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.filters.providers.FilterPropertiesPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.filters.providers.OCLFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.mapping.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
