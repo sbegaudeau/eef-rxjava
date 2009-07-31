@@ -32,6 +32,7 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -43,6 +44,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -164,7 +166,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (documentationPart != null && key == ComponentsViewsRepository.Documentation.class) {
 			((IPropertiesEditionPart)documentationPart).setContext(elt, allResource);
-			DocumentedElement documentedElement = (DocumentedElement)elt;
+			final DocumentedElement documentedElement = (DocumentedElement)elt;
 			// init values
 			if (documentedElement.getDocumentation() != null)
 				documentationPart.setDocumentation(documentedElement.getDocumentation());
@@ -178,6 +180,8 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		// init filters for referenced views
 
 	}
+
+
 
 
 
@@ -233,7 +237,11 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
@@ -267,16 +275,18 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (ComponentsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (ComponentsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -287,15 +297,19 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(documentedElement);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(documentedElement);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 

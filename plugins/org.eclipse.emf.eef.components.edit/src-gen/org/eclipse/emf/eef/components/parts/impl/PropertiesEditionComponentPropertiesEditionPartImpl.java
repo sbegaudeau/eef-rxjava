@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionPartImpl.java,v 1.8 2009/05/20 17:57:33 sbouchet Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionPartImpl.java,v 1.9 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -60,17 +61,18 @@ import org.eclipse.swt.widgets.Text;
 
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class PropertiesEditionComponentPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PropertiesEditionComponentPropertiesEditionPart {
 
-	private Text name;
-	private Text helpID;
-	private Button explicit;
+	protected Text name;
+	protected Text helpID;
+	protected Button explicit;
 	protected EObjectFlatComboViewer model;
-	private EMFListEditUtil viewsEditUtil;
-	private ReferencesTable<?> views;
+	protected EMFListEditUtil viewsEditUtil;
+	protected ReferencesTable<? extends EObject> views;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
@@ -78,10 +80,19 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public PropertiesEditionComponentPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -92,6 +103,11 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 		createBindingGroup(view);
@@ -99,6 +115,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -180,7 +197,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.model, ComponentsViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -200,7 +216,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		this.views = new ReferencesTable<View>(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<View> dialog = new TabElementTreeSelectionDialog<View>(resourceSet, viewsFilters, viewsBusinessFilters,
-				"View", ViewsPackage.eINSTANCE.getView()) {
+				"View", ViewsPackage.eINSTANCE.getView(), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -228,7 +244,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		this.views.setLayoutData(viewsData);
 		this.views.disableMove();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -238,7 +254,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -252,6 +268,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 
 		// End of user code
+
 	}
 
 	/**
@@ -274,6 +291,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 
 		// End of user code
+
 	}
 
 
@@ -281,6 +299,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -298,7 +317,11 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -324,7 +347,11 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart#setHelpID(String newValue)
 	 */
 	public void setHelpID(String newValue) {
-		helpID.setText(newValue);
+		if (newValue != null) {
+			helpID.setText(newValue);
+		} else {
+			helpID.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForHelpID(String msg, int msgLevel) {
@@ -386,8 +413,9 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
 		model.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			model.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -396,10 +424,20 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			model.setSelection(new StructuredSelection(newValue));
-		else
-			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart#setModelButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setModelButtonMode(ButtonsModeEnum newValue) {
+		model.setButtonMode(newValue);
 	}
 
 	/**
@@ -455,6 +493,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		return viewsEditUtil.getVirtualList();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -476,7 +515,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart#updateViews(EObject newValue)
 	 */
 	public void updateViews(EObject newValue) {
-		if(viewsEditUtil!=null){
+		if(viewsEditUtil != null){
 			viewsEditUtil.reinit(newValue);
 			views.refresh();
 		}
@@ -500,6 +539,15 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		viewsBusinessFilters.add(filter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart#isContainedInViewsTable(EObject element)
+	 */
+	public boolean isContainedInViewsTable(EObject element) {
+		return viewsEditUtil.contains(element);
+	}
+
 	public void setMessageForViews(String msg, int msgLevel) {
 
 	}
@@ -518,4 +566,5 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	// Start of user code additional methods
 	
 	// End of user code
+
 }

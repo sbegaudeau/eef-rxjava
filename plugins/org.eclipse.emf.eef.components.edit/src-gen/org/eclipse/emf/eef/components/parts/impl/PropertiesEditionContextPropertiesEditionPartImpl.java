@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.8 2009/05/20 17:57:33 sbouchet Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.9 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -41,6 +42,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -52,10 +54,19 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public PropertiesEditionContextPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -66,12 +77,18 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createBindingGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createBindingGroup(Composite parent) {
@@ -89,7 +106,6 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent) {
-
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -111,6 +127,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -134,8 +151,9 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
 		model.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			model.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -144,10 +162,20 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			model.setSelection(new StructuredSelection(newValue));
-		else
-			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#setModelButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setModelButtonMode(ButtonsModeEnum newValue) {
+		model.setButtonMode(newValue);
 	}
 
 	/**
@@ -186,4 +214,5 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

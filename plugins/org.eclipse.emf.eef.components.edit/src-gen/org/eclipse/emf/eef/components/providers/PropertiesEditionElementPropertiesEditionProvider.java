@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionProvider.java,v 1.8 2009/06/09 15:47:30 sbouchet Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionProvider.java,v 1.9 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -35,7 +35,7 @@ public class PropertiesEditionElementPropertiesEditionProvider implements IPrope
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof PropertiesEditionElement) && (ComponentsPackage.eINSTANCE.getPropertiesEditionElement() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -48,7 +48,7 @@ public class PropertiesEditionElementPropertiesEditionProvider implements IPrope
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -64,5 +64,6 @@ public class PropertiesEditionElementPropertiesEditionProvider implements IPrope
 		}
 		return null;
 	}
-	
-}	
+
+}
+

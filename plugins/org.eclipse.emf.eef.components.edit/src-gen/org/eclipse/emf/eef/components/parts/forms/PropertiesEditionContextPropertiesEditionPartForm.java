@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartForm.java,v 1.8 2009/05/20 17:57:33 sbouchet Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartForm.java,v 1.9 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -46,6 +47,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -57,10 +59,19 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public PropertiesEditionContextPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -72,12 +83,18 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createBindingGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
@@ -97,11 +114,9 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	 * @param bindingGroup
 	 */
 	protected void createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.FORM_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -125,7 +140,8 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -149,8 +165,9 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
 		model.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			model.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -159,10 +176,20 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#setModel(EObject newValue)
 	 */
 	public void setModel(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			model.setSelection(new StructuredSelection(newValue));
-		else
-			model.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#setModelButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setModelButtonMode(ButtonsModeEnum newValue) {
+		model.setButtonMode(newValue);
 	}
 
 	/**
@@ -197,4 +224,5 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

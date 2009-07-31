@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPart.java,v 1.7 2009/05/20 17:57:33 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPart.java,v 1.8 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -69,7 +70,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	public List getModelToRemove();
 
 	/**
-	 * @return the current model
+	 * @return the current model table
 	 */
 	public List getModelTable();
 
@@ -105,6 +106,11 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
 
+	/**
+	 * @return true if the given element is contained inside the model table
+	 */
+	public boolean isContainedInModelTable(EObject element);
+
 
 
 
@@ -120,7 +126,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	public List getViewsToRemove();
 
 	/**
-	 * @return the current views
+	 * @return the current views table
 	 */
 	public List getViewsTable();
 
@@ -156,6 +162,11 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 */
 	public void addBusinessFilterToViews(ViewerFilter filter);
 
+	/**
+	 * @return true if the given element is contained inside the views table
+	 */
+	public boolean isContainedInViewsTable(EObject element);
+
 
 
 
@@ -168,5 +179,6 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.6 2009/05/20 17:57:32 sbouchet Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.7 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -55,7 +56,7 @@ public class PropertiesEditionComponentPropertiesEditionComponent extends Compos
 		if (propertiesEditionComponent instanceof PropertiesEditionComponent) {
 			propertiesEditionComponentBasePropertiesEditionComponent = new PropertiesEditionComponentBasePropertiesEditionComponent(propertiesEditionComponent, editing_mode); 
 			addSubComponent(propertiesEditionComponentBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(propertiesEditionComponent, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(propertiesEditionComponent, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
@@ -94,6 +95,11 @@ public class PropertiesEditionComponentPropertiesEditionComponent extends Compos
 		if (key == ComponentsViewsRepository.PropertiesEditionComponent.class) {
 			super.initPart(key, kind, element, allResource);
 		}
+			if (key == ComponentsViewsRepository.Documentation.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

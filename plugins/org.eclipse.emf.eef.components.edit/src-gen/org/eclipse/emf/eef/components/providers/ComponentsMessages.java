@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsMessages.java,v 1.6 2009/05/20 17:57:32 sbouchet Exp $
+ * $Id: ComponentsMessages.java,v 1.7 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -113,6 +113,7 @@ public class ComponentsMessages extends NLS {
 	
  	
 	// End of user code
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, ComponentsMessages.class);

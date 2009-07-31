@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementBasePropertiesEditionComponent.java,v 1.7 2009/05/20 17:57:32 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementBasePropertiesEditionComponent.java,v 1.8 2009/07/31 14:12:53 glefur Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -25,7 +25,8 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -40,6 +41,7 @@ import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -55,6 +57,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -183,7 +186,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == ComponentsViewsRepository.PropertiesMultiEditionElement.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement)elt;
+			final PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement)elt;
 			// init values
 			if (propertiesMultiEditionElement.getName() != null)
 				basePart.setName(propertiesMultiEditionElement.getName());
@@ -205,8 +208,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
-						return (!basePart.getViewsTable().contains(element));
-					return false;
+						return (!basePart.isContainedInViewsTable((EObject)element));
+					return element instanceof Resource;
 				}
 
 			});
@@ -222,10 +225,13 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return element instanceof EStructuralFeature && !basePart.getModelTable().contains(element);
+					if (element instanceof EObject)
+						return (!basePart.isContainedInModelTable((EObject)element));
+					return element instanceof Resource;
 				}
 
 			});
+			basePart.addFilterToModel(new EObjectFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
 			
 			// End of user code
@@ -236,6 +242,11 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 		// init filters for referenced views
 
 	}
+
+
+
+
+
 
 
 
@@ -250,25 +261,25 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 		if (propertiesMultiEditionElement != null) {
 			cc.append(SetCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), basePart.getName()));
 
-			List viewsToAdd = basePart.getViewsToAdd();
-			for (Iterator iter = viewsToAdd.iterator(); iter.hasNext();)
+			List viewsToAddFromViews = basePart.getViewsToAdd();
+			for (Iterator iter = viewsToAddFromViews.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
-			List viewsToRemove = basePart.getViewsToRemove();
-			for (Iterator iter = viewsToRemove.iterator(); iter.hasNext();)
+			List viewsToRemoveFromViews = basePart.getViewsToRemove();
+			for (Iterator iter = viewsToRemoveFromViews.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
-			//List viewsToMove = basePart.getViewsToMove();
-			//for (Iterator iter = viewsToMove.iterator(); iter.hasNext();){
+			//List viewsToMoveFromViews = basePart.getViewsToMove();
+			//for (Iterator iter = viewsToMoveFromViews.iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getElementEditor(), moveElement.getElement(), moveElement.getIndex()));
 			//}
-			List modelToAdd = basePart.getModelToAdd();
-			for (Iterator iter = modelToAdd.iterator(); iter.hasNext();)
+			List modelToAddFromModel = basePart.getModelToAdd();
+			for (Iterator iter = modelToAddFromModel.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model(), iter.next()));
-			List modelToRemove = basePart.getModelToRemove();
-			for (Iterator iter = modelToRemove.iterator(); iter.hasNext();)
+			List modelToRemoveFromModel = basePart.getModelToRemove();
+			for (Iterator iter = modelToRemoveFromModel.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model(), iter.next()));
-			//List modelToMove = basePart.getModelToMove();
-			//for (Iterator iter = modelToMove.iterator(); iter.hasNext();){
+			//List modelToMoveFromModel = basePart.getModelToMove();
+			//for (Iterator iter = modelToMoveFromModel.iterator(); iter.hasNext();){
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, propertiesMultiEditionElement, MappingPackage.eINSTANCE.getEStructuralFeature(), moveElement.getElement(), moveElement.getIndex()));
 			//}
@@ -338,7 +349,11 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
@@ -395,20 +410,22 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (ComponentsViewsRepository.PropertiesMultiEditionElement.name == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
-			}
-			if (ComponentsViewsRepository.PropertiesMultiEditionElement.helpID == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (ComponentsViewsRepository.PropertiesMultiEditionElement.name == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
+				}
+				if (ComponentsViewsRepository.PropertiesMultiEditionElement.helpID == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -419,15 +436,19 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(propertiesMultiEditionElement);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(propertiesMultiEditionElement);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 
