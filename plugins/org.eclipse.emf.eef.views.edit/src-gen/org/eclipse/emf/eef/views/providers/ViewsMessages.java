@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsMessages.java,v 1.6 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ViewsMessages.java,v 1.7 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -129,6 +129,7 @@ public class ViewsMessages extends NLS {
 	
  	
 	// End of user code
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, ViewsMessages.class);

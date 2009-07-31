@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.6 2009/06/09 15:47:55 sbouchet Exp $
+ * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.7 2009/07/31 12:42:24 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
@@ -28,7 +28,7 @@ public class ToolkitsPackagePropertiesEditionPolicyProvider extends StandardProp
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return ToolkitsPackage.eINSTANCE.equals(eObject.eClass().getEPackage());
+		return ToolkitsPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || ToolkitsPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorPropertiesEditionComponent.java,v 1.2 2009/06/09 15:47:56 sbouchet Exp $
+ * $Id: CustomElementEditorPropertiesEditionComponent.java,v 1.3 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -54,7 +55,7 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 		if (customElementEditor instanceof CustomElementEditor) {
 			customElementEditorBasePropertiesEditionComponent = new CustomElementEditorBasePropertiesEditionComponent(customElementEditor, editing_mode); 
 			addSubComponent(customElementEditorBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(customElementEditor, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(customElementEditor, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
@@ -93,6 +94,11 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 		if (key == ViewsViewsRepository.CustomElementEditor.class) {
 			super.initPart(key, kind, element, allResource);
 		}
+			if (key == ViewsViewsRepository.Documentation.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 

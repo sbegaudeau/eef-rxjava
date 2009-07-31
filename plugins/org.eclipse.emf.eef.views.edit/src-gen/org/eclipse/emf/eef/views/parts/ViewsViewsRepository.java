@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsViewsRepository.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
+ * $Id: ViewsViewsRepository.java,v 1.8 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -27,9 +27,7 @@ public class ViewsViewsRepository {
 	 * Documentation view descriptor
 	 */
 	public static class Documentation {
-
-		public static String documentation = "views::Documentation::documentation";
-
+		public static String documentation = "views::Documentation::documentation";	
 
 
 	}
@@ -38,12 +36,9 @@ public class ViewsViewsRepository {
 	 * ViewsRepository view descriptor
 	 */
 	public static class ViewsRepository {
+		public static String name = "views::ViewsRepository::name";	
 
-		public static String name = "views::ViewsRepository::name";
-
-
-		public static String repositoryKind = "views::ViewsRepository::RepositoryKind";
-
+		public static String repositoryKind = "views::ViewsRepository::RepositoryKind";	
 
 
 	}
@@ -52,15 +47,11 @@ public class ViewsViewsRepository {
 	 * View view descriptor
 	 */
 	public static class View {
+		public static String name = "views::View::name";	
 
-		public static String name = "views::View::name";
+		public static String representation = "views::View::representation";	
 
-
-		public static String representation = "views::View::representation";
-
-
-		public static String explicit = "views::View::explicit";
-
+		public static String explicit = "views::View::explicit";	
 
 
 	}
@@ -69,15 +60,11 @@ public class ViewsViewsRepository {
 	 * ElementEditor view descriptor
 	 */
 	public static class ElementEditor {
+		public static String name = "views::ElementEditor::name";	
 
-		public static String name = "views::ElementEditor::name";
+		public static String representation = "views::ElementEditor::representation";	
 
-
-		public static String representation = "views::ElementEditor::representation";
-
-
-		public static String readOnly = "views::ElementEditor::readOnly";
-
+		public static String readOnly = "views::ElementEditor::readOnly";	
 
 
 	}
@@ -86,9 +73,7 @@ public class ViewsViewsRepository {
 	 * Category view descriptor
 	 */
 	public static class Category {
-
-		public static String name = "views::Category::name";
-
+		public static String name = "views::Category::name";	
 
 
 	}
@@ -97,12 +82,9 @@ public class ViewsViewsRepository {
 	 * Container view descriptor
 	 */
 	public static class Container {
+		public static String name = "views::Container::name";	
 
-		public static String name = "views::Container::name";
-
-
-		public static String representation = "views::Container::representation";
-
+		public static String representation = "views::Container::representation";	
 
 
 	}
@@ -111,15 +93,11 @@ public class ViewsViewsRepository {
 	 * CustomElementEditor view descriptor
 	 */
 	public static class CustomElementEditor {
+		public static String name = "views::CustomElementEditor::name";	
 
-		public static String name = "views::CustomElementEditor::name";
+		public static String representation = "views::CustomElementEditor::representation";	
 
-
-		public static String representation = "views::CustomElementEditor::representation";
-
-
-		public static String readOnly = "views::CustomElementEditor::readOnly";
-
+		public static String readOnly = "views::CustomElementEditor::readOnly";	
 
 
 	}
@@ -128,9 +106,7 @@ public class ViewsViewsRepository {
 	 * CustomView view descriptor
 	 */
 	public static class CustomView {
-
-		public static String name = "views::CustomView::name";
-
+		public static String name = "views::CustomView::name";	
 
 
 	}
@@ -139,12 +115,9 @@ public class ViewsViewsRepository {
 	 * ViewReference view descriptor
 	 */
 	public static class ViewReference {
+		public static String name = "views::ViewReference::name";	
 
-		public static String name = "views::ViewReference::name";
-
-
-		public static String referencedView = "views::ViewReference::referencedView";
-
+		public static String referencedView = "views::ViewReference::referencedView";	
 
 
 	}

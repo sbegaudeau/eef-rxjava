@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorPropertiesEditionProvider.java,v 1.2 2009/06/09 15:47:53 sbouchet Exp $
+ * $Id: CustomElementEditorPropertiesEditionProvider.java,v 1.3 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -35,7 +35,7 @@ public class CustomElementEditorPropertiesEditionProvider implements IProperties
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof CustomElementEditor) && (ViewsPackage.eINSTANCE.getCustomElementEditor() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -48,7 +48,7 @@ public class CustomElementEditorPropertiesEditionProvider implements IProperties
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -64,5 +64,6 @@ public class CustomElementEditorPropertiesEditionProvider implements IProperties
 		}
 		return null;
 	}
-	
-}	
+
+}
+

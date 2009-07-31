@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsPackagePropertiesEditionPolicyProvider.java,v 1.6 2009/06/09 15:47:54 sbouchet Exp $
+ * $Id: ViewsPackagePropertiesEditionPolicyProvider.java,v 1.7 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -28,7 +28,7 @@ public class ViewsPackagePropertiesEditionPolicyProvider extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		return ViewsPackage.eINSTANCE.equals(eObject.eClass().getEPackage());
+		return ViewsPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || ViewsPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
 	}
 
 }

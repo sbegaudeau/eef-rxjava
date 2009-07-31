@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerPropertiesEditionPartForm.java,v 1.9 2009/05/26 08:49:32 glefur Exp $
+ * $Id: ContainerPropertiesEditionPartForm.java,v 1.10 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.views.parts.ContainerPropertiesEditionPart;
@@ -50,22 +51,32 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ContainerPropertiesEditionPart {
 
-	private Text name;
+	protected Text name;
 	protected EObjectFlatComboViewer representation;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public ContainerPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -77,12 +88,18 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -117,7 +134,7 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ContainerPropertiesEditionPartForm.this, ViewsViewsRepository.Container.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addFocusListener(new FocusAdapter() {
 
@@ -145,20 +162,17 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ContainerPropertiesEditionPartForm.this, ViewsViewsRepository.Container.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.Container.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	/**
 	 * @param propertiesGroup
 	 */
 	protected void createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ContainerPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Container.representation, ViewsViewsRepository.FORM_KIND));
 		representation = new EObjectFlatComboViewer(parent, true);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
 		representation.setLayoutData(representationData);
 		representation.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -182,7 +196,8 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -200,7 +215,11 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * @see org.eclipse.emf.eef.views.parts.ContainerPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -232,8 +251,9 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 	 */
 	public void initRepresentation(ResourceSet allResources, EObject current) {
 		representation.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			representation.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -242,10 +262,20 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * @see org.eclipse.emf.eef.views.parts.ContainerPropertiesEditionPart#setRepresentation(EObject newValue)
 	 */
 	public void setRepresentation(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			representation.setSelection(new StructuredSelection(newValue));
-		else
-			representation.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			representation.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ContainerPropertiesEditionPart#setRepresentationButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setRepresentationButtonMode(ButtonsModeEnum newValue) {
+		representation.setButtonMode(newValue);
 	}
 
 	/**
@@ -280,4 +310,5 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

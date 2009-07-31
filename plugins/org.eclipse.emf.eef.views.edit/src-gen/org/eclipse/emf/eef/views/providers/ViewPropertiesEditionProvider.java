@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewPropertiesEditionProvider.java,v 1.8 2009/06/09 15:47:54 sbouchet Exp $
+ * $Id: ViewPropertiesEditionProvider.java,v 1.9 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
@@ -35,7 +35,7 @@ public class ViewPropertiesEditionProvider implements IPropertiesEditionProvider
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof View) && (ViewsPackage.eINSTANCE.getView() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -48,7 +48,7 @@ public class ViewPropertiesEditionProvider implements IPropertiesEditionProvider
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -64,5 +64,6 @@ public class ViewPropertiesEditionProvider implements IPropertiesEditionProvider
 		}
 		return null;
 	}
-	
-}	
+
+}
+

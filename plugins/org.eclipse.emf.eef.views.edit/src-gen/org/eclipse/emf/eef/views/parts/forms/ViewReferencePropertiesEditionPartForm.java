@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferencePropertiesEditionPartForm.java,v 1.9 2009/05/26 08:49:31 glefur Exp $
+ * $Id: ViewReferencePropertiesEditionPartForm.java,v 1.10 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts.forms;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart;
@@ -50,22 +51,32 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ViewReferencePropertiesEditionPart {
 
-	private Text name;
+	protected Text name;
 	protected EObjectFlatComboViewer referencedView;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public ViewReferencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
 		Form form = scrolledForm.getForm();
@@ -77,12 +88,18 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 		return scrolledForm;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 		// Start of user code for additional ui definition
 		
-		// End of user code		
+		// End of user code
+		
 	}
 
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
@@ -117,7 +134,7 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewReferencePropertiesEditionPartForm.this, ViewsViewsRepository.ViewReference.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-			
+
 		});
 		name.addFocusListener(new FocusAdapter() {
 
@@ -145,20 +162,17 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewReferencePropertiesEditionPartForm.this, ViewsViewsRepository.ViewReference.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewReference.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
 	}
 	/**
 	 * @param propertiesGroup
 	 */
 	protected void createReferencedViewFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.referencedView, ViewsViewsRepository.FORM_KIND));
 		referencedView = new EObjectFlatComboViewer(parent, false);
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		GridData referencedViewData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedView.setLayoutData(referencedViewData);
 		referencedView.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -182,7 +196,8 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
-		// End of user code		
+		// End of user code
+		
 	}
 
 	/**
@@ -200,7 +215,11 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -232,8 +251,9 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 	 */
 	public void initReferencedView(ResourceSet allResources, EObject current) {
 		referencedView.setInput(allResources);
-		if (current != null)
+		if (current != null) {
 			referencedView.setSelection(new StructuredSelection(current));
+		}
 	}
 
 	/**
@@ -242,10 +262,20 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#setReferencedView(EObject newValue)
 	 */
 	public void setReferencedView(EObject newValue) {
-		if (newValue != null)
+		if (newValue != null) {
 			referencedView.setSelection(new StructuredSelection(newValue));
-		else
-			referencedView.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		} else {
+			referencedView.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart#setReferencedViewButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setReferencedViewButtonMode(ButtonsModeEnum newValue) {
+		referencedView.setButtonMode(newValue);
 	}
 
 	/**
@@ -280,4 +310,5 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 	// Start of user code additional methods
  	
 	// End of user code
+
 }	

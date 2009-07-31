@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsViewsRepository.java,v 1.5 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ToolkitsViewsRepository.java,v 1.6 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.parts;
 
@@ -27,9 +27,7 @@ public class ToolkitsViewsRepository {
 	 * Toolkit view descriptor
 	 */
 	public static class Toolkit {
-
-		public static String name = "toolkits::Toolkit::Name";
-
+		public static String name = "toolkits::Toolkit::Name";	
 
 
 	}
@@ -38,9 +36,7 @@ public class ToolkitsViewsRepository {
 	 * Widget view descriptor
 	 */
 	public static class Widget {
-
-		public static String name = "toolkits::Widget::Name";
-
+		public static String name = "toolkits::Widget::Name";	
 
 
 	}

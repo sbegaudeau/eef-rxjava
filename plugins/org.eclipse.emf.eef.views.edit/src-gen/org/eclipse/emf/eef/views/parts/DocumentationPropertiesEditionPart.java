@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPart.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
+ * $Id: DocumentationPropertiesEditionPart.java,v 1.8 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -19,6 +19,7 @@ package org.eclipse.emf.eef.views.parts;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -47,5 +48,6 @@ public interface DocumentationPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 

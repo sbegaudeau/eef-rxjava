@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.7 2009/05/26 08:49:32 glefur Exp $
+ * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.8 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -43,25 +44,26 @@ import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class DocumentedElementPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String DOCUMENTATION_PART = "Documentation"; //$NON-NLS-1$
-	
+
 	private String[] parts = {DOCUMENTATION_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private DocumentedElement documentedElement;
-	
+
 	/**
 	 * The Documentation part
 	 */
 	private DocumentationPropertiesEditionPart documentationPart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -75,7 +77,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -94,7 +96,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 					DocumentedElementPropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null)
-					documentationPart.setDocumentation((String)msg.getNewValue());
+						documentationPart.setDocumentation((String)msg.getNewValue());
 
 
 
@@ -164,20 +166,24 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (documentationPart != null && key == ViewsViewsRepository.Documentation.class) {
 			((IPropertiesEditionPart)documentationPart).setContext(elt, allResource);
-			DocumentedElement documentedElement = (DocumentedElement)elt;
+			final DocumentedElement documentedElement = (DocumentedElement)elt;
 			// init values
 			if (documentedElement.getDocumentation() != null)
 				documentationPart.setDocumentation(documentedElement.getDocumentation());
 
 			
 			// init filters
-			
+
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
 	}
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -207,7 +213,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof DocumentedElement) {
 			DocumentedElement documentedElementToUpdate = (DocumentedElement)source;
-			documentedElementToUpdate.setDocumentation(documentationPart.getDocumentation());	
+			documentedElementToUpdate.setDocumentation(documentationPart.getDocumentation());
 
 
 
@@ -231,7 +237,11 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
@@ -265,16 +275,18 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (ViewsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (ViewsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -285,15 +297,19 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(documentedElement);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(documentedElement);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 

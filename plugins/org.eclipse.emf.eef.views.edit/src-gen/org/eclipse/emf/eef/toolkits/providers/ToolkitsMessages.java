@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsMessages.java,v 1.6 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ToolkitsMessages.java,v 1.7 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
@@ -69,6 +69,7 @@ public class ToolkitsMessages extends NLS {
 	
  	
 	// End of user code
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, ToolkitsMessages.class);

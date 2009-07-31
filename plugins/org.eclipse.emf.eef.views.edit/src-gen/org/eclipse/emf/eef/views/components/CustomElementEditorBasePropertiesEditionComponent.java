@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorBasePropertiesEditionComponent.java,v 1.1 2009/05/26 08:49:33 glefur Exp $
+ * $Id: CustomElementEditorBasePropertiesEditionComponent.java,v 1.2 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -36,6 +37,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -46,25 +48,26 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class CustomElementEditorBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-	
+
 	private String[] parts = {BASE_PART};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private CustomElementEditor customElementEditor;
-	
+
 	/**
 	 * The Base part
 	 */
 	private CustomElementEditorPropertiesEditionPart basePart;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -78,7 +81,7 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 		}
 		this.editing_mode = editing_mode;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
 	 * 
@@ -97,12 +100,12 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 					CustomElementEditorBasePropertiesEditionComponent.this.dispose();
 				else {
 					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-					basePart.setRepresentation((EObject)msg.getNewValue());
+						basePart.setRepresentation((EObject)msg.getNewValue());
 					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-					basePart.setName((String)msg.getNewValue());
+						basePart.setName((String)msg.getNewValue());
 
 					if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null)
-					basePart.setReadOnly((Boolean)msg.getNewValue());
+						basePart.setReadOnly((Boolean)msg.getNewValue());
 
 
 
@@ -172,9 +175,11 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		if (basePart != null && key == ViewsViewsRepository.CustomElementEditor.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
-			CustomElementEditor customElementEditor = (CustomElementEditor)elt;
+			final CustomElementEditor customElementEditor = (CustomElementEditor)elt;
 			// init values
 			basePart.initRepresentation(allResource, customElementEditor.getRepresentation());
+			// set the button mode
+			basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			if (customElementEditor.getName() != null)
 				basePart.setName(customElementEditor.getName());
 
@@ -191,20 +196,27 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
+
 				}
 
 			});
 			// Start of user code for additional businessfilters for representation
 			
 			// End of user code
-			
-			
+
+
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
 	}
+
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -215,7 +227,9 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (customElementEditor != null) {
-			cc.append(SetCommand.create(editingDomain, customElementEditor, ViewsPackage.eINSTANCE.getViewElement_Representation(), basePart.getRepresentation()));
+			if (customElementEditor.eGet(ViewsPackage.eINSTANCE.getViewElement_Representation()) == null || !customElementEditor.eGet(ViewsPackage.eINSTANCE.getViewElement_Representation()).equals(basePart.getRepresentation())) {
+				cc.append(SetCommand.create(editingDomain, customElementEditor, ViewsPackage.eINSTANCE.getViewElement_Representation(), basePart.getRepresentation()));
+			}
 			cc.append(SetCommand.create(editingDomain, customElementEditor, ViewsPackage.eINSTANCE.getViewElement_Name(), basePart.getName()));
 
 			cc.append(SetCommand.create(editingDomain, customElementEditor, ViewsPackage.eINSTANCE.getElementEditor_ReadOnly(), basePart.getReadOnly()));
@@ -269,21 +283,25 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 
 
 
-			liveEditingDomain.getCommandStack().execute(command);
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				
+
 				if (ViewsViewsRepository.CustomElementEditor.name == event.getAffectedEditor())
 					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-				
+
 
 
 			} else {
-				
+
 				if (ViewsViewsRepository.CustomElementEditor.name == event.getAffectedEditor())
 					basePart.unsetMessageForName();
-				
+
 
 
 			}
@@ -320,20 +338,22 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		String newStringValue = event.getNewValue().toString();
 		Diagnostic ret = null;
-		try {
-			if (ViewsViewsRepository.CustomElementEditor.name == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
-			}
-			if (ViewsViewsRepository.CustomElementEditor.readOnly == event.getAffectedEditor()) {
-				Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newStringValue);
-				ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newValue);
-			}
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (ViewsViewsRepository.CustomElementEditor.name == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
+				}
+				if (ViewsViewsRepository.CustomElementEditor.readOnly == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newValue);
+				}
 
-		} catch (IllegalArgumentException iae) {
-			ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
 		}
 		return ret;
 	}
@@ -344,15 +364,19 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
+		Diagnostic validate = null;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
 			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			return Diagnostician.INSTANCE.validate(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			return Diagnostician.INSTANCE.validate(customElementEditor);
-		else
-			return null;
+			validate = Diagnostician.INSTANCE.validate(customElementEditor);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
 	}
 
 

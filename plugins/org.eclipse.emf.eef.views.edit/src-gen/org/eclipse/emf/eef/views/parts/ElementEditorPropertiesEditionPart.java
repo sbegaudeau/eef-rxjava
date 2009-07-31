@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorPropertiesEditionPart.java,v 1.7 2009/05/26 08:49:33 glefur Exp $
+ * $Id: ElementEditorPropertiesEditionPart.java,v 1.8 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -17,10 +17,12 @@ package org.eclipse.emf.eef.views.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -58,6 +60,12 @@ public interface ElementEditorPropertiesEditionPart {
 	 * @param newValue the new representation to set
 	 */
 	public void setRepresentation(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 */
+	public void setRepresentationButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the representation edition editor.
@@ -104,5 +112,6 @@ public interface ElementEditorPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 

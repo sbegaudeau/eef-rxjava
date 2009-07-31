@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitPropertiesEditionPart.java,v 1.7 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ToolkitPropertiesEditionPart.java,v 1.8 2009/07/31 12:42:23 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.parts;
 
@@ -19,6 +19,7 @@ package org.eclipse.emf.eef.toolkits.parts;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -47,5 +48,6 @@ public interface ToolkitPropertiesEditionPart {
 	// Start of user code for additional methods
  	
 	// End of user code
+
 }
 

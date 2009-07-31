@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryPropertiesEditionPartImpl.java,v 1.7 2009/05/26 08:49:34 glefur Exp $
+ * $Id: ViewsRepositoryPropertiesEditionPartImpl.java,v 1.8 2009/07/31 12:42:24 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 
@@ -33,22 +33,32 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ViewsRepositoryPropertiesEditionPart {
 
-	private Text name;
-	private Text repositoryKind;
+	protected Text name;
+	protected Text repositoryKind;
 
 
 
 
 	
+	/**
+	 * Default constructor
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 */
 	public ViewsRepositoryPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -59,12 +69,18 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		return view;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
 
 		// Start of user code for additional ui definition
 		
 		// End of user code
+
 	}
 
 	protected void createPropertiesGroup(Composite parent) {
@@ -127,6 +143,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		// Start of user code for tab synchronization
 		
 		// End of user code
+
 	}
 
 	/**
@@ -144,7 +161,11 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	 * @see org.eclipse.emf.eef.views.parts.ViewsRepositoryPropertiesEditionPart#setName(String newValue)
 	 */
 	public void setName(String newValue) {
-		name.setText(newValue);
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForName(String msg, int msgLevel) {
@@ -170,7 +191,11 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	 * @see org.eclipse.emf.eef.views.parts.ViewsRepositoryPropertiesEditionPart#setRepositoryKind(String newValue)
 	 */
 	public void setRepositoryKind(String newValue) {
-		repositoryKind.setText(newValue);
+		if (newValue != null) {
+			repositoryKind.setText(newValue);
+		} else {
+			repositoryKind.setText("");  //$NON-NLS-1$
+		}
 	}
 
 	public void setMessageForRepositoryKind(String msg, int msgLevel) {
@@ -191,4 +216,5 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	// Start of user code additional methods
  	
 	// End of user code
+
 }

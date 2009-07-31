@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: WidgetPropertiesEditionProvider.java,v 1.8 2009/06/09 15:47:56 sbouchet Exp $
+ * $Id: WidgetPropertiesEditionProvider.java,v 1.9 2009/07/31 12:42:24 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
@@ -33,7 +33,7 @@ public class WidgetPropertiesEditionProvider implements IPropertiesEditionProvid
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Widget) && (ToolkitsPackage.eINSTANCE.getWidget() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -46,7 +46,7 @@ public class WidgetPropertiesEditionProvider implements IPropertiesEditionProvid
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -60,5 +60,6 @@ public class WidgetPropertiesEditionProvider implements IPropertiesEditionProvid
 		}
 		return null;
 	}
-	
-}	
+
+}
+

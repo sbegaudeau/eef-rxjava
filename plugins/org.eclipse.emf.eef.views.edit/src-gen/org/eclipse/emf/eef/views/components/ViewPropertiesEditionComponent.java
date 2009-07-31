@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewPropertiesEditionComponent.java,v 1.6 2009/05/26 08:49:32 glefur Exp $
+ * $Id: ViewPropertiesEditionComponent.java,v 1.7 2009/07/31 12:42:22 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -54,7 +55,7 @@ public class ViewPropertiesEditionComponent extends ComposedPropertiesEditionCom
 		if (view instanceof View) {
 			viewBasePropertiesEditionComponent = new ViewBasePropertiesEditionComponent(view, editing_mode); 
 			addSubComponent(viewBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(view, editing_mode); 	
+			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(view, editing_mode);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
@@ -93,6 +94,11 @@ public class ViewPropertiesEditionComponent extends ComposedPropertiesEditionCom
 		if (key == ViewsViewsRepository.View.class) {
 			super.initPart(key, kind, element, allResource);
 		}
+			if (key == ViewsViewsRepository.Documentation.class) {
+				super.initPart(key, kind, element, allResource);
+			
+			
+			}
 	}
 }
 
