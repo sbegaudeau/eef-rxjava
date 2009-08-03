@@ -83,4 +83,10 @@
             name="GMF1 PropertiesSection">
       </PropertiesGeneratorLauncher>
    </extension>
+   <extension
+         point="org.eclipse.acceleo.engine.dynamic.templates">
+      <templates
+            path="src/">
+      </templates>
+   </extension>
 </plugin>

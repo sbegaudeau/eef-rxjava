@@ -235,15 +235,15 @@ public class ViewsRepository {
   }
 
 	/**
-	 * Launches the generation.
-	 * 
-	 * @param monitor
-	 *             This will be used to display progress information to the user.
-	 * @throws IOException
-	 *             Thrown when the output cannot be saved.
-	 * @generated
-	 */
-	public void doGenerate(Monitor monitor) throws IOException {
+   * Launches the generation.
+   * 
+   * @param monitor
+   *             This will be used to display progress information to the user.
+   * @throws IOException
+   *             Thrown when the output cannot be saved.
+   * @generated
+   */
+  public void doGenerate(Monitor monitor) throws IOException {
     if (!targetFolder.exists()) {
       targetFolder.mkdirs();
     }
@@ -252,7 +252,7 @@ public class ViewsRepository {
     }
   }
 
-	/**
+  /**
 	 * Loads a model from an {@link org.eclipse.emf.common.util.URI URI} in a given {@link ResourceSet}.
 	 * <p>
 	 * This will return the first root of the loaded model, other roots can be accessed via the resource's

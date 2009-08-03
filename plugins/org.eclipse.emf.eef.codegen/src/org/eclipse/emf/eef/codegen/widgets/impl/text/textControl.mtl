@@ -1,0 +1,96 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module textControl('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0') extends widgetControl/]
+
+[import naming /]
+[import common /]
+[import typeUtils /]
+
+[comment ===== Case : model = Attribute(1) - view = Text ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Integer)msg.getNewValue()).toString());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Short)msg.getNewValue()).toString());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Double)msg.getNewValue()).toString());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
+			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Integer((String)event.getNewValue())));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Short((String)event.getNewValue())));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Double((String)event.getNewValue())));
+[else]
+//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Integer([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Short([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Double([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+[else]
+//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Integer([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).intValue());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Short([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).shortValue());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Double([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).doubleValue());
+[else]
+//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isShort())]
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[else]
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+[/if]
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[comment no filters for text /]
+[/template]
+

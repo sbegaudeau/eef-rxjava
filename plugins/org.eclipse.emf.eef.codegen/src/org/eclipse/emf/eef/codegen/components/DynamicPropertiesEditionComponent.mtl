@@ -15,7 +15,6 @@
 [import common /]
 [import naming /]
 [import viewCommon /]
-[import componentUtils /]
 [import typeUtils /]
 
 [template public DynamicPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
