@@ -15,8 +15,9 @@
 [import common /]
 [import naming /]
 [import viewCommon /]
-[import viewFormUtils /]
 [import viewGettersSetters /]
+[import widgetFormImpl /]
+
 
 [template public FormPropertiesEdionPart(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]

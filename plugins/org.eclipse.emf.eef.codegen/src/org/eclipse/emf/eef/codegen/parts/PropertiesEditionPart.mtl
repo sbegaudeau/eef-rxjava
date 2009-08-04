@@ -15,8 +15,9 @@
 [import naming /]
 [import common /]
 [import viewCommon /]
-[import viewUtils /]
 [import viewGettersSetters /]
+[import widgetSWTImpl /]
+
 
 [template public PropertiesEditionPart(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
