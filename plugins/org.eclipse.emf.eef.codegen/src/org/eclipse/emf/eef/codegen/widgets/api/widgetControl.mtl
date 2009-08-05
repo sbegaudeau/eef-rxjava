@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  
- This module define the widget generation. It is composed of abstract templates that need to be 
+ This module define the widget generation. It is composed of templates that need to be 
  override by the templates that implements wigdets for EEF. 
  /]
 [module widgetControl('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
@@ -24,49 +24,36 @@
 
 [comment liveupdater : templates that override this one must define the behaviour of the generated widget when the associated
 		 feature of the edited element has changed /]
-[template public abstract liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) /]
-
-[comment liveCommandUpdater : templates that override this one must define the command to execute on the edited object when the
-		 value of the widget is modified /]
-[template public abstract liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) /]
-
-[comment commandUpdater : templates that override this one must define the command to execute to set the value of the widget to
-		 the associated feature /]
-[template public abstract commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) /]
-
-[comment partUpdater : templates that override this one must define the setter to apply to set the value of the widget to
-		 the associated feature /]
-[template public abstract partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) /]
-
-[comment partUpdater : templates that override this one must define the operation to execute at the initialization of the 
-		 component for the given widget /]
-[template public abstract updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) /]
-
-[comment filterUpdater : templates that override this one must define the operation to execute at the initialization of the 
-		 component for the filters of the given widget /]
-[template public abstract filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) /]
-
-[comment ===== Case : model = any - view = any NEED TO BE THE LAST CHOICE ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
+[comment liveCommandUpdater : templates that override this one must define the command to execute on the edited object when the
+		 value of the widget is modified /]
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String)]
 // FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [modelName/].
 [/template]
 
+[comment commandUpdater : templates that override this one must define the command to execute to set the value of the widget to
+		 the associated feature /]
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
 // FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
 [/template]
 
+[comment partUpdater : templates that override this one must define the setter to apply to set the value of the widget to
+		 the associated feature /]
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
 // FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
 [/template]
 
+[comment partUpdater : templates that override this one must define the operation to execute at the initialization of the 
+		 component for the given widget /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
+[comment filterUpdater : templates that override this one must define the operation to execute at the initialization of the 
+		 component for the filters of the given widget /]
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]

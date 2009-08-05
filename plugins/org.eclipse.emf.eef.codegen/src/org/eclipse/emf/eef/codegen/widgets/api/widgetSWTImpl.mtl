@@ -16,15 +16,9 @@
 [import naming /]
 [import viewCommon /]
 
+[comment ===== Case DEFAULT = NEED TO BE THE LAST CHOICE ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) /]
 
-[template public abstract widgetDeclaration(editor : ViewElement) /]
-
-[template public abstract implementation(editor : ViewElement) /]
-
-[template public abstract additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent) /]
-
-[comment ===== Case DEFAULT = NEED TO BE THE LAST CHOICE ===== /]
 [template public widgetDeclaration(editor : ElementEditor)]
 //FIXME INVALID CASE INTO template public widgetDeclaration(editor : ElementEditor) in viewUtils.mtl module for elementEditor [editor.name/]
 [/template]

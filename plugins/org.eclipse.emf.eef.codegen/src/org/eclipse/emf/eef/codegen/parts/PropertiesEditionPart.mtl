@@ -15,7 +15,7 @@
 [import naming /]
 [import common /]
 [import viewCommon /]
-[import viewGettersSetters /]
+[import widgetGettersSetters /]
 [import widgetSWTImpl /]
 
 

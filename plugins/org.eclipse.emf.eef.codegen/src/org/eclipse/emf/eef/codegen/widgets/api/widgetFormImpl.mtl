@@ -16,15 +16,10 @@
 [import naming /]
 [import viewCommon /]
 
+
+[comment ====== Widgets implementation ====== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) /]
 
-[template public abctract widgetDeclaration(editor : ElementEditor) /]
-
-[template public abstract implementation(editor : ViewElement) /]
-
-[template public abstract additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) /]
-	
-[comment ====== Widgets implementation ====== /]
 [template public widgetDeclaration(editor : ElementEditor)]
 //FIXME INVALID CASE INTO template public widgetDeclaration(editor : ElementEditor) in viewFormUtils.mtl module
 [/template]

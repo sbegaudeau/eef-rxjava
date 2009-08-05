@@ -14,7 +14,7 @@
 
 [import common /]
 [import naming /]
-[import viewGettersSetters /]
+[import widgetGettersSetters /]
 [import typeUtils /]
 
 [comment]

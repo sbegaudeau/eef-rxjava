@@ -459,8 +459,6 @@ public class GenerateAll {
 				"/org/eclipse/emf/eef/codegen/services/typeUtils.emtl")));
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
 				"/org/eclipse/emf/eef/codegen/services/viewCommon.emtl")));
-		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
-				"/org/eclipse/emf/eef/codegen/services/viewGettersSetters.emtl")));
 		
 		// load widgets services
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
@@ -544,11 +542,34 @@ public class GenerateAll {
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
 				"/org/eclipse/emf/eef/codegen/widgets/impl/textarea/textareaFormImpl.emtl")));
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
-				"/org/eclipse/emf/eef/codegen/widgets/impl/group/groupSWTImpl.emtl")));
+				"/org/eclipse/emf/eef/codegen/widgets/impl/group/groupFormImpl.emtl")));
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
-				"/org/eclipse/emf/eef/codegen/widgets/impl/hbox/hboxSWTImpl.emtl")));
+				"/org/eclipse/emf/eef/codegen/widgets/impl/hbox/hboxFormImpl.emtl")));
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
-				"/org/eclipse/emf/eef/codegen/widgets/impl/vbox/vboxSWTImpl.emtl")));
+				"/org/eclipse/emf/eef/codegen/widgets/impl/vbox/vboxFormImpl.emtl")));
+
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/api/widgetGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/checkbox/checkboxGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/combo/comboGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/emfcomboviewer/emfcomboviewerGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/eobjectflatcomboviewer/eobjectflatcomboviewerGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/multivaluededitor/multivaluededitorGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/radio/radioGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/referencetable/referencetableGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/tablecomposition/tablecompositionGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/text/textGettersSetters.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
+				"/org/eclipse/emf/eef/codegen/widgets/impl/textarea/textareaGettersSetters.emtl")));
 
 		return list;
 	}
