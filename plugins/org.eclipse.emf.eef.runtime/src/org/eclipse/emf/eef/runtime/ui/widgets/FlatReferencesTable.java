@@ -28,6 +28,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -53,12 +54,12 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * Button to edit the feature 
 	 */
 	protected Button editer;
-	
+
 	/**
 	 * Virtual list for widget
 	 */
 	protected EMFListEditUtil viewsEditUtil;
-	
+
 	/**
 	 * The static filters
 	 */
@@ -73,12 +74,12 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * The widget listener
 	 */
 	private List<ISelectionChangedListener> listeners;
-	
+
 	/**
 	 * The labelProvider to use
 	 */
 	protected ILabelProvider delegatedLabelProvider;
-	
+
 	/**
 	 * Label provider able to display lists
 	 */
@@ -93,12 +94,12 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * The edited element
 	 */
 	protected EObject editedElement;
-	
+
 	/**
 	 * The edited feature
 	 */
 	protected EStructuralFeature feature;
-	
+
 	/**
 	 * The input for the choice of values 
 	 */
@@ -148,7 +149,10 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 							feature.getEType(),	viewsEditUtil.getVirtualList(),	"Edit Feature",
 							getChoiceOfValues(), false,	true, filters, brFilters);
 					dialog.open();
-					applyDiff(viewsEditUtil, dialog.getResult());
+					EList<?> newValues = dialog.getResult();
+					if (newValues != null)
+						applyDiff(viewsEditUtil, newValues);
+					selectionChanged(new StructuredSelection(viewsEditUtil.getVirtualList()));
 					refresh();
 					break;
 
@@ -159,7 +163,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		};
 
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -177,7 +181,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		return result;
 	}
 
-	
+
 	/**
 	 * @param list
 	 * @param newValues
@@ -221,7 +225,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 				public void dispose() {
 					delegatedLabelProvider.dispose();
-					
+
 				}
 
 				public Image getImage(Object element) {
@@ -253,11 +257,11 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 				public void removeListener(ILabelProviderListener listener) {
 					delegatedLabelProvider.removeListener(listener);
 				}
-				
+
 			};
 		}
 	}
-	
+
 	/** 
 	 * Defines the mode of the button
 	 * @param button_mode the mode to set
@@ -265,7 +269,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	public void setButtonMode(ButtonsModeEnum button_mode) {
 		this.button_mode = button_mode;
 	}
-	
+
 	/**
 	 * Defines the input for the choice of values
 	 * @param input the input
@@ -275,7 +279,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			this.input = input;
 		}
 	}
-	
+
 	/**
 	 * Initialize the widget
 	 * @param current the editedElement 
@@ -290,7 +294,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			viewsEditUtil = new EMFListEditUtil(current, editedFeature);
 		refresh();
 	}
-	
+
 	/**
 	 * Update this component with new values
 	 * @param newValue the new values
@@ -330,9 +334,9 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	public ISelection getSelection() {
 		// TODO: what this method is supposed to do ???
 		throw new UnsupportedOperationException("Nothing to do for the moment ...");
-///		if (editedElement != null)
-//			return new StructuredSelection(editedElement);
-//		return new StructuredSelection(Collections.EMPTY_LIST);
+		///		if (editedElement != null)
+		//			return new StructuredSelection(editedElement);
+		//		return new StructuredSelection(Collections.EMPTY_LIST);
 	}
 
 	/* (non-Javadoc)
@@ -341,29 +345,29 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	public void setSelection(ISelection pSelection) {
 		// TODO: what this method is supposed to do ???
 		throw new UnsupportedOperationException("Nothing to do for the moment ...");
-//		if (pSelection instanceof StructuredSelection && ((StructuredSelection)pSelection).getFirstElement() instanceof EObject) {
-//			this.editedElement = (EObject) ((StructuredSelection)pSelection).getFirstElement();
-//			selectedElements = (List)editedElement.eGet(feature);
-//			if (listLabelProvider != null)
-//				selection.setText(listLabelProvider.getText(selectedElements));
-//			else {						
-//				StringBuilder result = new StringBuilder("");
-//				final List collec = (List)selectedElements;
-//				if (collec.size() > 0) {
-//					result.append(collec.get(0).toString());
-//					if (collec.size() > 1) {
-//						for (int i = 1; i < collec.size(); i++) {
-//							result.append(", ");
-//							result.append(collec.get(i).toString());
-//						}
-//					}
-//				}
-//				selection.setText(result.toString());
-//			} 
-//		} else
-//			selection.setText(""); //$NON-NLS-1$
+		//		if (pSelection instanceof StructuredSelection && ((StructuredSelection)pSelection).getFirstElement() instanceof EObject) {
+		//			this.editedElement = (EObject) ((StructuredSelection)pSelection).getFirstElement();
+		//			selectedElements = (List)editedElement.eGet(feature);
+		//			if (listLabelProvider != null)
+		//				selection.setText(listLabelProvider.getText(selectedElements));
+		//			else {						
+		//				StringBuilder result = new StringBuilder("");
+		//				final List collec = (List)selectedElements;
+		//				if (collec.size() > 0) {
+		//					result.append(collec.get(0).toString());
+		//					if (collec.size() > 1) {
+		//						for (int i = 1; i < collec.size(); i++) {
+		//							result.append(", ");
+		//							result.append(collec.get(i).toString());
+		//						}
+		//					}
+		//				}
+		//				selection.setText(result.toString());
+		//			} 
+		//		} else
+		//			selection.setText(""); //$NON-NLS-1$
 	}
-	
+
 	public void refresh() {
 		if (viewsEditUtil != null) { 
 			if (listLabelProvider != null)
