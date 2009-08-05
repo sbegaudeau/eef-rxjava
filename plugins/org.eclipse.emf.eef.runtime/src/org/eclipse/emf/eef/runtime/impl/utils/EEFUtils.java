@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -52,4 +56,16 @@ public class EEFUtils {
 		return choiceOfValues;
 	}
 
+	/**
+	 * Convert a treeIterator in EObject
+	 * @param iter the iterator
+	 * @return the result list
+	 */
+	public static List<Object> asList(TreeIterator<Object> iter) {
+		List<Object> result = new ArrayList<Object>();
+		while (iter.hasNext())
+			result.add(iter.next());
+		return result;
+	}
+	
 }

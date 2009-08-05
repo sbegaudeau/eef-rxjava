@@ -195,13 +195,13 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 		});
 
-		checkButtons = new ArrayList<Button>();
 		if (filters != null) {
 			for (ViewerFilter filter : filters) {
 				elements.addFilter(filter);
 			}
 		}
 		// business rules
+		checkButtons = new ArrayList<Button>();
 		if (brFilters != null && !brFilters.isEmpty()) {
 			String currentModel = MessagesTool.getString("EMFModelViewerDialog.currentModel");
 			String referencedModels = MessagesTool.getString("EMFModelViewerDialog.referencedModels");
