@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class FlatReferenceTable extends Composite implements ISelectionProvider, IPropertiesFilteredWidget {
+public class FlatReferencesTable extends Composite implements ISelectionProvider, IPropertiesFilteredWidget {
 
 	/**
 	 * The text displaying the current values of the feature
@@ -110,7 +110,7 @@ public class FlatReferenceTable extends Composite implements ISelectionProvider,
 	 * Default contructor
 	 * @param parent the parent widget
 	 */
-	public FlatReferenceTable(Composite parent) {
+	public FlatReferencesTable(Composite parent) {
 		super(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
