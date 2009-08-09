@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: EEF MTL Standard generator
+Bundle-Name: EEF Standard Acceleo generator
 Bundle-SymbolicName: org.eclipse.emf.eef.codegen;singleton:=true
 Bundle-Version: 0.7.1.qualifier
 Bundle-Activator: org.eclipse.emf.eef.codegen.EEFCodegenPlugin
@@ -24,7 +24,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.eef.eefgen
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.emf.eef.codegen.components,
+Export-Package: org.eclipse.emf.eef.codegen,
+ org.eclipse.emf.eef.codegen.components,
  org.eclipse.emf.eef.codegen.core.initializer,
  org.eclipse.emf.eef.codegen.core.launcher,
  org.eclipse.emf.eef.codegen.core.launcher.gmf,
