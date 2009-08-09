@@ -21,7 +21,7 @@
 [if (pec.mustBeGenerated())]
 	[file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].providers;
+package [pec.providersPackage()/];
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -99,6 +99,6 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
-[pec.model.completePackage().toPath()/]/providers/[pec.pecProviderClass()/].java
+[pec.pecProviderQualifiedClass().toPath()/].java
 [/template]
 

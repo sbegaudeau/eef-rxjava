@@ -17,9 +17,9 @@
 
 [template public PackagePropertiesEditionPolicyProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
-	[file (peContext.fullFilePath(basePackage), false)]
+	[file (peContext.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [peContext.model.ecorePackage.eefPackage(basePackage)/].providers;
+package [peContext.providersPackage()/];
 
 import org.eclipse.emf.ecore.EObject;
 import [peContext.model.ecorePackage.qualifiedMetamodelPackage(basePackage)/];
@@ -43,6 +43,6 @@ public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePrope
 	[/file]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionContext, basePackage : String)]
-[pec.model.ecorePackage.eefPackage(basePackage).toPath()/]/providers/[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider.java
+[template public fullFilePath(pec : PropertiesEditionContext)]
+[pec.pecPolicyProviderQualifiedClass().toPath()/].java
 [/template]

@@ -80,9 +80,9 @@
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.mustBeGenerated())]
 [for (view : View | pec.views->asSet()) ? (view.explicit)]
 			<propertySection
-				class="[pec.model.eefPackage(basePackage)/].properties.[pec.propertySection(view)/]"
-				filter="[pec.model.eefPackage(basePackage)/].properties.[pec.propertySection(view)/]"
-				id="[pec.model.eefPackage(basePackage)/].section.[pec.propertySection(view)/]"
+				class="[pec.qualifiedPropertySection(view)/]"
+				filter="[pec.qualifiedPropertySection(view)/]"
+				id="[pec.editionContext().contextCompletePackage()/].section.[pec.propertySection(view)/]"
 				tab="[view.viewKey(pec).toASCII()/]">
 			</propertySection>
 [/for]

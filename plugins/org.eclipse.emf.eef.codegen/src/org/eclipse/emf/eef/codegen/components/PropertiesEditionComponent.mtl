@@ -21,7 +21,7 @@
 [if (pec.needComposedEditionComponent())]
 [file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].components;
+package [pec.componentsPackage()/];
 
 // [protected ('for imports')]
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [for (view : View | pec.views) ? (view.explicit)]
-import [view.pepPackage()/].parts.[view.pepInterface()/];
+import [view.pepQualifiedInterface()/];
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
@@ -168,7 +168,6 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 			if (key == [refView.editorID()/].class) {
 				super.initPart(key, kind, element, allResource);
 			[comment what about referenced view resolution in this case ? /]
-			
 			[/for]
 			}
 	[/for]
@@ -180,5 +179,5 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
-[pec.model.completePackage().toPath()/]/components/[pec.pecClass()/].java
+[pec.pecQualifiedClass().toPath()/].java
 [/template]

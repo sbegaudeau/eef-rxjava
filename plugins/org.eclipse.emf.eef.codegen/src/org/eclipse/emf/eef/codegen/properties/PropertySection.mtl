@@ -21,9 +21,9 @@
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
 [if (pec.explicit and pec.involvedViews()->size() > 1)]
 	[for (view : View | pec.views) ? (view.explicit)]
-[file (pec.fullFilePath(basePackage, view), false)]
+[file (pec.fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].properties;
+package [pec.editionContext().propertiesPackage()/];
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -170,8 +170,8 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 [/for]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionComponent, basePackage : String, view : View)]
-[pec.model.completePackage().toPath()/]/properties/[pec.propertySection(view)/].java
+[template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
+[pec.qualifiedPropertySection(view).toPath()/].java
 [/template]
 
 [comment overrides this template if additional imports is needed/]

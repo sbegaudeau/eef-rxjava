@@ -22,7 +22,7 @@
 [for (view : View | viewRepository.eAllContents(views::View).oclAsType(views::View))]
 [file (fullFilePath(view), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
-package [view.pepPackage()/].parts;
+package [view.partsPackage()/];
 
 // [protected ('for imports')]
 
@@ -68,7 +68,7 @@ public interface [view.pepInterface()/] {
 [for (view : View | viewRepository.eAllContents(views::CustomView).oclAsType(views::CustomView))]
 	[file (fullFilePath(view), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
-package [view.pepPackage()/].parts;
+package [view.partsPackage()/];
 
 // [protected ('for imports')]
 
@@ -89,5 +89,5 @@ public interface [view.pepInterface()/] {
 [/template]
 
 [template public fullFilePath(view : View)]
-[view.pepPackage().toPath()/]/parts/[view.pepInterface()/].java
+[view.pepQualifiedInterface().toPath()/].java
 [/template]

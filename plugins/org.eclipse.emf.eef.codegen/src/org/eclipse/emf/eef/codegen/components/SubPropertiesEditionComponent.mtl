@@ -26,7 +26,7 @@
 	[for (view : View | pec.views) ? (not view.isDynamicView())]
 [file (pec.fullFilePath(view, basePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].components;
+package [pec.componentsPackage()/];
 
 // [protected ('for imports')]
 
@@ -516,7 +516,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, view : View, basePackage : String)]
-[pec.model.completePackage().toPath()/]/components/[pec.subPECClass(view)/].java
+[pec.subPECQualifiedClass(view).toPath()/].java
 [/template]
 
 [template public manageImportForViewReferences(view : View, pec : PropertiesEditionComponent, basePackage : String)]

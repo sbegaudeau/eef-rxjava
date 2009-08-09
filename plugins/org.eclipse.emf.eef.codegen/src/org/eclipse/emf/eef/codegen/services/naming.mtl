@@ -14,6 +14,141 @@
 
 [import common /]
 
+[comment --------------------------------------------------------------------------
+  Master packages management
+ ---------------------------------------------------------------------------------- /]
+[template public contextPackage(peContext : PropertiesEditionContext)]
+[peContext.associatedGenContext().basePackage/]
+[/template]
+
+[template public contextCompletePackage(peContext : PropertiesEditionContext)]
+[peContext.associatedGenContext().basePackage/].[peContext.model.ecorePackage.name/]
+[/template]
+
+[template public vrPackage(repository : ViewsRepository)]
+[repository.associatedGenRepository().basePackage/]
+[/template]
+
+[comment --------------------------------------------------------------------------
+  Components naming
+ ---------------------------------------------------------------------------------- /]
+[template public componentsPackage(pec : PropertiesEditionComponent)]
+[pec.editionContext().contextCompletePackage()/].components
+[/template]
+
+[template public pecClass(pec : PropertiesEditionComponent)]
+[pec.name.toUpperFirst()/]PropertiesEditionComponent
+[/template]
+
+[template public pecQualifiedClass(pec : PropertiesEditionComponent)]
+[pec.componentsPackage()/].[pec.pecClass()/]
+[/template]
+
+[template public subPECClass(pec : PropertiesEditionComponent, view : View)]
+[pec.name.toUpperFirst()/][if (pec.involvedViews()->size() > 1)][view.viewKey(pec).toJavaClassifier()/][/if]PropertiesEditionComponent
+[/template]
+
+[template public subPECQualifiedClass(pec : PropertiesEditionComponent, view : View)]
+[pec.componentsPackage()/].[pec.subPECClass(view)/]
+[/template]
+
+[template public providersPackage(pec : PropertiesEditionComponent)]
+[pec.editionContext().contextCompletePackage()/].providers
+[/template]
+
+[template public pecProviderClass(pec : PropertiesEditionComponent)]
+[pec.name.toJavaClassifier()/]PropertiesEditionProvider
+[/template]
+
+[template public pecProviderQualifiedClass(pec : PropertiesEditionComponent)]
+[pec.providersPackage()/].[pec.pecProviderClass()/]
+[/template]
+
+[template public providersPackage(pec : PropertiesEditionContext)]
+[pec.contextCompletePackage()/].providers
+[/template]
+
+[template public pecPolicyProviderClass(pec : PropertiesEditionContext)]
+[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider
+[/template]
+
+[template public pecPolicyProviderQualifiedClass(pec : PropertiesEditionContext)]
+[pec.providersPackage()/].[pec.pecPolicyProviderClass()/]
+[/template]
+
+[template public pecPackageProviderClass(pec : PropertiesEditionContext)]
+[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider
+[/template]
+
+[template public pecPackageProviderQualifiedClass(pec : PropertiesEditionContext)]
+[pec.providersPackage()/].[pec.pecPackageProviderClass()/]
+[/template]
+[comment --------------------------------------------------------------------------
+  Parts naming
+ ---------------------------------------------------------------------------------- /]
+[template public partsPackage(repository : ViewsRepository)]
+[repository.vrPackage()/].parts
+[/template]
+
+[template public partsPackage(view : View)]
+[view.owningViewsRepository().vrPackage()/].parts
+[/template]
+
+[template public partsImplPackage(view : View)]
+[view.partsPackage()/].impl
+[/template]
+
+[template public partsFormPackage(view : View)]
+[view.partsPackage()/].forms
+[/template]
+
+[template public pepInterface(view : View)]
+[view.name.toJavaClassifier()/]PropertiesEditionPart
+[/template]
+
+[template public pepQualifiedInterface(view : View)]
+[view.partsPackage()/].[view.pepInterface()/]
+[/template]
+
+[template public pepClass(view : View)]
+[view.name.toJavaClassifier()/]PropertiesEditionPartImpl
+[/template]
+
+[template public pepQualifiedClass(view : View)]
+[view.partsImplPackage()/].[view.pepClass()/]
+[/template]
+
+[template public pepFormClass(view : View)]
+[view.name.toJavaClassifier()/]PropertiesEditionPartForm
+[/template]
+
+[template public pepFormQualifiedClass(view : View)]
+[view.partsFormPackage()/].[view.pepFormClass()/]
+[/template]
+
+[template public vrClass(repository : ViewsRepository)]
+[repository.name.toJavaClassifier()/]ViewsRepository
+[/template]
+
+[template public vrQualifiedClass(repository : ViewsRepository)]
+[repository.partsPackage()/].[repository.vrClass()/]
+[/template]
+
+[template public partsProviderPackage(repository : ViewsRepository)]
+[repository.vrPackage()/].providers
+[/template]
+
+[template public pepProvider(repository : ViewsRepository)]
+[repository.name.toJavaClassifier()/]PropertiesEditionPartProvider
+[/template]
+
+[template public pepQualifiedProvider(repository : ViewsRepository)]
+[repository.partsProviderPackage()/].[repository.pepProvider()/]
+[/template]
+
+[comment --------------------------------------------------------------------------
+  i18n management
+ ---------------------------------------------------------------------------------- /]
 [template public messagesProperties(viewsRepository : ViewsRepository)]
 [viewsRepository.name.toJavaIdentifier()/]Messages
 [/template]
@@ -30,6 +165,30 @@
 [viewsRepository.messagesProviderPackage()/].[viewsRepository.messagesProvider()/]
 [/template]
 
+[comment containingView must be remove when bug # resolved /]
+[template public groupKey(group : ViewElement, containingView : View) ? (group.oclIsTypeOf(Container) and group.representation.name = 'Group')]
+[containingView.name.toJavaClassifier()/]PropertiesEditionPart_[group.name.toJavaClassifier()/]GroupLabel
+[/template]
+
+[template public editorKey(editor : ViewElement, containingView : View)]
+[containingView.name.toJavaClassifier()/]PropertiesEditionPart_[editor.name.toJavaClassifier()/]Label
+[/template]
+
+[comment --------------------------------------------------------------------------
+  Properties management
+ ---------------------------------------------------------------------------------- /]
+[template public propertiesPackage(pec : PropertiesEditionContext)]
+[pec.contextCompletePackage()/].properties
+[/template]
+
+[template public propertySection(pec : PropertiesEditionComponent, view : View)]
+[pec.name.toJavaClassifier()/][view.viewKey(pec).toJavaClassifier()/]PropertySection
+[/template]
+
+[template public qualifiedPropertySection(pec : PropertiesEditionComponent, view : View)]
+[pec.editionContext().propertiesPackage()/].[pec.propertySection(view)/]
+[/template]
+
 [template public contributorID(editionContext : PropertiesEditionContext, basePackage : String)]
 [if (not editionContext.associatedGenContext().oclIsUndefined() and not editionContext.associatedGenContext().descriptorsContributorID.oclIsUndefined() and editionContext.associatedGenContext().descriptorsContributorID <> '')]
 [editionContext.associatedGenContext().descriptorsContributorID/]
@@ -38,68 +197,11 @@
 [/if]
 [/template]
 
-[template public contextPackage(peContext : PropertiesEditionContext)]
-[peContext.associatedGenContext().basePackage/]
-[/template]
-
-[template public pecQualifiedClass(pec : PropertiesEditionComponent)]
-[pec.model.completePackage()/].components.[pec.pecClass()/]
-[/template]
-
-[template public pecClass(pec : PropertiesEditionComponent)]
-[pec.name.toUpperFirst()/]PropertiesEditionComponent
-[/template]
-
-[template public subPECQualifiedClass(pec : PropertiesEditionComponent, view : View)]
-[pec.model.completePackage()/].components.[pec.subPECClass(view)/]
-[/template]
-
-[template public subPECClass(pec : PropertiesEditionComponent, view : View)]
-[pec.name.toUpperFirst()/][if (pec.involvedViews()->size() > 1)][view.viewKey(pec).toJavaClassifier()/][/if]PropertiesEditionComponent
-[/template]
-
-[template public pepPackage(view : View)]
-[view.owningViewsRepository().associatedGenRepository().basePackage/]
-[/template]
-
-[template public vrPackage(repository : ViewsRepository)]
-[repository.associatedGenRepository().basePackage/]
-[/template]
-
-[template public pepInterface(view : View)]
-[view.name.toJavaClassifier()/]PropertiesEditionPart
-[/template]
-
-[template public pepClass(view : View)]
-[view.name.toJavaClassifier()/]PropertiesEditionPartImpl
-[/template]
-
-[template public pepFormClass(view : View)]
-[view.name.toJavaClassifier()/]PropertiesEditionPartForm
-[/template]
-
-[template public pecProviderClass(pec : PropertiesEditionComponent)]
-[pec.name.toJavaClassifier()/]PropertiesEditionProvider
-[/template]
-
-[template public vrClass(repository : ViewsRepository)]
-[repository.name.toJavaClassifier()/]ViewsRepository
-[/template]
-
-[template public vrQualifiedClass(repository : ViewsRepository)]
-[repository.vrPackage()/].parts.[repository.name.toJavaClassifier()/]ViewsRepository
-[/template]
-
-[template public pepProvider(repository : ViewsRepository)]
-[repository.name.toJavaClassifier()/]PropertiesEditionPartProvider
-[/template]
-
+[comment --------------------------------------------------------------------------
+  Misc
+ ---------------------------------------------------------------------------------- /]
 [template public viewClassifier(view : View)]
 [view.name.toJavaClassifier()/]
-[/template]
-
-[template public propertySection(pec : PropertiesEditionComponent, view : View)]
-[pec.name.toJavaClassifier()/][view.viewKey(pec).toJavaClassifier()/]PropertySection
 [/template]
 
 [template public editionElementPackage(pee : PropertiesEditionElement)]
@@ -111,7 +213,6 @@
 [pee.model.eType.ePackage.metamodelPrefix()/]Factory
 [/template]
 
-[comment particular layout for indentation in generation purpose/]
 [template public viewPartConstant(view : View, pec : PropertiesEditionComponent)]
 [view.viewKey(pec).toJavaConstant()/]_PART
 [/template]
@@ -130,13 +231,4 @@
 
 [template public editorID(view : View)]
 [view.owningViewsRepository().vrClass()/].[for (s : String | view.qualifiedIdentifier.substring(view.qualifiedIdentifier.tokenize('::')->first().oclAsType(String).size()+3, view.qualifiedIdentifier.size()).tokenize('::')) separator ('.')][s.toJavaClassifier()/][/for]
-[/template]
-
-[comment containingView must be remove when bug # resolved /]
-[template public groupKey(group : ViewElement, containingView : View) ? (group.oclIsTypeOf(Container) and group.representation.name = 'Group')]
-[containingView.name.toJavaClassifier()/]PropertiesEditionPart_[group.name.toJavaClassifier()/]GroupLabel
-[/template]
-
-[template public editorKey(editor : ViewElement, containingView : View)]
-[containingView.name.toJavaClassifier()/]PropertiesEditionPart_[editor.name.toJavaClassifier()/]Label
 [/template]

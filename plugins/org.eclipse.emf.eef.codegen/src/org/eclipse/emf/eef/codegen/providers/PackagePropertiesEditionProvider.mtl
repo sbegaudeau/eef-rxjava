@@ -19,7 +19,7 @@
 [comment @main /]
 	[file (peContext.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [peContext.model.ecorePackage.completePackage()/].providers;
+package [peContext.providersPackage()/];
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 [for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
@@ -31,7 +31,7 @@ import [component.model.completePackage()/].providers.[component.pecProviderClas
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
+public class [peContext.pecPackageProviderClass()/] extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
@@ -64,6 +64,6 @@ public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePrope
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionContext)]
-[pec.model.ecorePackage.completePackage().toPath()/]/providers/[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider.java
+[pec.pecPackageProviderQualifiedClass().toPath()/].java
 [/template]
 

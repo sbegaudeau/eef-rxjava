@@ -29,7 +29,7 @@
 [if (view.mustBeGenerated(inputPEC))]
 	[file (fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [view.owningViewsRepository().vrPackage()/].parts.impl;
+package [view.partsImplPackage()/];
 
 // [protected ('for imports')]
 
@@ -208,7 +208,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	endif]
 	[file (fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.eefPackage(basePackage)/].parts.impl;
+package [view.partsImplPackage()/];
 
 // [protected ('for imports')]
 import java.util.ArrayList;
@@ -293,5 +293,5 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 [/template]
 
 [template public fullFilePath(view : View)]
-[view.owningViewsRepository().vrPackage().toPath()/]/parts/impl/[view.pepClass()/].java
+[view.pepQualifiedClass().toPath()/].java
 [/template]

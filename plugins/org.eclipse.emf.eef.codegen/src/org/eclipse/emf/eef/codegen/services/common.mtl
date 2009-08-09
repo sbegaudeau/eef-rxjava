@@ -103,6 +103,9 @@
 [query public associatedGenContext(peco : PropertiesEditionContext) : GenEditionContext = 
 	peco.eInverse()->select(oclIsKindOf(EEFGen::GenEditionContext))->first().oclAsType(EEFGen::GenEditionContext)/]
 
+[query public associatedGenContext(peco : PropertiesEditionComponent) : GenEditionContext =  
+		peco.editionContext().associatedGenContext() /]
+
 [query public associatedGenModel(pec : PropertiesEditionContext) : EEFGenModel = 
 	pec.associatedGenContext().eefGenModel/]
 

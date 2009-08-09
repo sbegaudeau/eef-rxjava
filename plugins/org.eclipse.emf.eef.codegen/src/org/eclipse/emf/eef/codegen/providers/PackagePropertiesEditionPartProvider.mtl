@@ -66,5 +66,5 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 [/template]
 
 [template public fullFilePath(repository : ViewsRepository)]
-[repository.vrPackage().toPath()/]/providers/[repository.pepProvider()/].java
+[repository.pepQualifiedProvider().toPath()/].java
 [/template]

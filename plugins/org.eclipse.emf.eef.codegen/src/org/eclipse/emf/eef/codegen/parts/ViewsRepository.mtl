@@ -22,7 +22,7 @@
 [comment @main /]
 [file (viewRepository.fullFilePath(), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
-package [viewRepository.vrPackage()/].parts;
+package [viewRepository.partsPackage()/];
 
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
@@ -83,10 +83,13 @@ public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIde
 // [protected ('for '.concat(viewElement.name).concat(' ElementEditor key'))]
 		
 		// [/protected]
+[comment  TODO: Acceleo Improvment We shouldn't have to check if a collection isn't empty !/]
 [elseif (viewElement.oclIsTypeOf(views::Container))]
-[for (ve : ViewElement | viewElement.oclAsType(views::Container).elements)]
+	[if (viewElement.oclAsType(views::Container).elements->size() > 0)]		
+		[for (ve : ViewElement | viewElement.oclAsType(views::Container).elements)]
 		[ve.viewElementDescriptor()/]
-[/for]
+		[/for]
+	[/if]
 [elseif (viewElement.oclIsTypeOf(views::View))]
 [for (v : View | viewElement.oclAsType(views::View))]
 		[v.viewDescriptor()/]

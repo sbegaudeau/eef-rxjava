@@ -24,7 +24,7 @@
 [if (pec.mustDynamicPecBeGenerated(topLevelView))]
 [file (pec.fullFilePath(topLevelView), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].components;
+package [pec.componentsPackage()/];
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -36,7 +36,7 @@ import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.parts.NullCompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
-import [topLevelView.pepPackage()/].parts.[topLevelView.pepInterface()/];
+import [topLevelView.pepQualifiedInterface()/];
 import [topLevelView.owningViewsRepository().vrQualifiedClass()/];
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 [if (pec.model.eefPackage(basePackage) <> subPec.model.eefPackage(basePackage))]
