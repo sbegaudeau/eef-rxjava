@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsPackageImpl.java,v 1.3 2009/06/09 15:47:38 sbouchet Exp $
+ * $Id: ToolkitsPackageImpl.java,v 1.4 2009/08/22 09:46:00 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -109,9 +109,6 @@ public class ToolkitsPackageImpl extends EPackageImpl implements
 				: new ToolkitsPackageImpl());
 
 		isInited = true;
-
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl) (EPackage.Registry.INSTANCE

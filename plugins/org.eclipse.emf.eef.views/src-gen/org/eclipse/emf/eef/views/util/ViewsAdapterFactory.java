@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsAdapterFactory.java,v 1.4 2009/06/09 15:47:37 sbouchet Exp $
+ * $Id: ViewsAdapterFactory.java,v 1.5 2009/08/22 09:46:00 glefur Exp $
  */
 package org.eclipse.emf.eef.views.util;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.views.*;
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.CustomElementEditor;

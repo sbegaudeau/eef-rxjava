@@ -5,7 +5,7 @@
     modelDirectory="/org.eclipse.emf.eef.views/src-gen" editDirectory="/org.eclipse.emf.eef.views.edit/src-gen"
     editorDirectory="/org.eclipse.emf.eef.views.editor/src-gen" modelPluginID="org.eclipse.emf.eef.views"
     modelName="Views" nonNLSMarkers="true" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false" language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    complianceLevel="5.0" copyrightFields="false" language="">
   <foreignModel>views.ecore</foreignModel>
   <genPackages prefix="Views" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       multipleEditorPages="false" ecorePackage="views.ecore#/">

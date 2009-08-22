@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsPackageImpl.java,v 1.3 2009/05/26 08:20:11 glefur Exp $
+ * $Id: ViewsPackageImpl.java,v 1.4 2009/08/22 09:46:00 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -180,9 +180,6 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 				: new ViewsPackageImpl());
 
 		isInited = true;
-
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl) (EPackage.Registry.INSTANCE
@@ -581,8 +578,6 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		// Obtain other dependent packages
 		ToolkitsPackage theToolkitsPackage = (ToolkitsPackage) EPackage.Registry.INSTANCE
 				.getEPackage(ToolkitsPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theToolkitsPackage);
@@ -654,7 +649,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 				"ElementEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getElementEditor_ReadOnly(),
-				theEcorePackage.getEBoolean(),
+				ecorePackage.getEBoolean(),
 				"readOnly", null, 1, 1, ElementEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
@@ -668,7 +663,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 				"views", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
 				getCategory_Name(),
-				theEcorePackage.getEString(),
+				ecorePackage.getEString(),
 				"name", null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 				getCategory_Repository(),
