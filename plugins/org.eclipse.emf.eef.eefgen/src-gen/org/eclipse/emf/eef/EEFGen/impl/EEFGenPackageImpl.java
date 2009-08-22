@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackageImpl.java,v 1.2 2009/04/30 17:49:09 nlepine Exp $
+ * $Id: EEFGenPackageImpl.java,v 1.3 2009/08/22 09:59:59 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -209,6 +209,15 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenEditionContext_GenerateJunitTestCases() {
+		return (EAttribute)genEditionContextEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEEFGenModelReference() {
 		return eefGenModelReferenceEClass;
 	}
@@ -283,6 +292,15 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 	 */
 	public EReference getEEFGenModel_References() {
 		return (EReference)eefGenModelEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEEFGenModel_TestsGenDirectory() {
+		return (EAttribute)eefGenModelEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -392,6 +410,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID);
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS);
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS);
+		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES);
 
 		eefGenModelReferenceEClass = createEClass(EEF_GEN_MODEL_REFERENCE);
 		createEReference(eefGenModelReferenceEClass, EEF_GEN_MODEL_REFERENCE__REFERENCED_CONTEXT);
@@ -403,6 +422,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		createEAttribute(eefGenModelEClass, EEF_GEN_MODEL__AUTHOR);
 		createEAttribute(eefGenModelEClass, EEF_GEN_MODEL__LICENSE);
 		createEReference(eefGenModelEClass, EEF_GEN_MODEL__REFERENCES);
+		createEAttribute(eefGenModelEClass, EEF_GEN_MODEL__TESTS_GEN_DIRECTORY);
 
 		genViewsRepositoryEClass = createEClass(GEN_VIEWS_REPOSITORY);
 		createEReference(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__VIEWS_REPOSITORY);
@@ -457,6 +477,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		initEAttribute(getGenEditionContext_DescriptorsContributorID(), ecorePackage.getEString(), "descriptorsContributorID", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenEditionContext_DescriptorsGenericPropertiesViews(), ecorePackage.getEBoolean(), "descriptorsGenericPropertiesViews", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenEditionContext_GmfPropertiesViews(), ecorePackage.getEBoolean(), "gmfPropertiesViews", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenEditionContext_GenerateJunitTestCases(), ecorePackage.getEBoolean(), "generateJunitTestCases", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefGenModelReferenceEClass, EEFGenModelReference.class, "EEFGenModelReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEEFGenModelReference_ReferencedContext(), this.getEEFGenModel(), null, "referencedContext", null, 1, 1, EEFGenModelReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -468,6 +489,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		initEAttribute(getEEFGenModel_Author(), ecorePackage.getEString(), "author", null, 0, 1, EEFGenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEEFGenModel_License(), ecorePackage.getEString(), "license", null, 0, 1, EEFGenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEEFGenModel_References(), this.getEEFGenModelReference(), null, "references", null, 0, -1, EEFGenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFGenModel_TestsGenDirectory(), ecorePackage.getEString(), "testsGenDirectory", null, 0, 1, EEFGenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(genViewsRepositoryEClass, GenViewsRepository.class, "GenViewsRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenViewsRepository_ViewsRepository(), theViewsPackage.getViewsRepository(), null, "viewsRepository", null, 1, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

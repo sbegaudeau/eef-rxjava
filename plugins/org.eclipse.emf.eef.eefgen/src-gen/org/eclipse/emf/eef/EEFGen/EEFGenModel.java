@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModel.java,v 1.1 2009/04/30 17:49:10 nlepine Exp $
+ * $Id: EEFGenModel.java,v 1.2 2009/08/22 09:59:59 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getLicense <em>License</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getReferences <em>References</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getTestsGenDirectory <em>Tests Gen Directory</em>}</li>
  * </ul>
  * </p>
  *
@@ -167,5 +168,31 @@ public interface EEFGenModel extends EObject {
 	 * @generated
 	 */
 	EList<EEFGenModelReference> getReferences();
+
+	/**
+	 * Returns the value of the '<em><b>Tests Gen Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Tests Gen Directory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tests Gen Directory</em>' attribute.
+	 * @see #setTestsGenDirectory(String)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getEEFGenModel_TestsGenDirectory()
+	 * @model
+	 * @generated
+	 */
+	String getTestsGenDirectory();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getTestsGenDirectory <em>Tests Gen Directory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Tests Gen Directory</em>' attribute.
+	 * @see #getTestsGenDirectory()
+	 * @generated
+	 */
+	void setTestsGenDirectory(String value);
 
 } // EEFGenModel

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelImpl.java,v 1.1 2009/04/30 17:49:08 nlepine Exp $
+ * $Id: EEFGenModelImpl.java,v 1.2 2009/08/22 09:59:59 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -44,6 +44,7 @@ import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getLicense <em>License</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getReferences <em>References</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getTestsGenDirectory <em>Tests Gen Directory</em>}</li>
  * </ul>
  * </p>
  *
@@ -139,6 +140,26 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 	 * @ordered
 	 */
 	protected EList<EEFGenModelReference> references;
+
+	/**
+	 * The default value of the '{@link #getTestsGenDirectory() <em>Tests Gen Directory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTestsGenDirectory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TESTS_GEN_DIRECTORY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTestsGenDirectory() <em>Tests Gen Directory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTestsGenDirectory()
+	 * @generated
+	 * @ordered
+	 */
+	protected String testsGenDirectory = TESTS_GEN_DIRECTORY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +284,27 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTestsGenDirectory() {
+		return testsGenDirectory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTestsGenDirectory(String newTestsGenDirectory) {
+		String oldTestsGenDirectory = testsGenDirectory;
+		testsGenDirectory = newTestsGenDirectory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY, oldTestsGenDirectory, testsGenDirectory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -313,6 +355,8 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 				return getLicense();
 			case EEFGenPackage.EEF_GEN_MODEL__REFERENCES:
 				return getReferences();
+			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
+				return getTestsGenDirectory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -347,6 +391,9 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 				getReferences().clear();
 				getReferences().addAll((Collection<? extends EEFGenModelReference>)newValue);
 				return;
+			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
+				setTestsGenDirectory((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -377,6 +424,9 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 			case EEFGenPackage.EEF_GEN_MODEL__REFERENCES:
 				getReferences().clear();
 				return;
+			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
+				setTestsGenDirectory(TESTS_GEN_DIRECTORY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -401,6 +451,8 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 				return LICENSE_EDEFAULT == null ? license != null : !LICENSE_EDEFAULT.equals(license);
 			case EEFGenPackage.EEF_GEN_MODEL__REFERENCES:
 				return references != null && !references.isEmpty();
+			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
+				return TESTS_GEN_DIRECTORY_EDEFAULT == null ? testsGenDirectory != null : !TESTS_GEN_DIRECTORY_EDEFAULT.equals(testsGenDirectory);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -421,6 +473,8 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 		result.append(author);
 		result.append(", license: ");
 		result.append(license);
+		result.append(", testsGenDirectory: ");
+		result.append(testsGenDirectory);
 		result.append(')');
 		return result.toString();
 	}

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackage.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
+ * $Id: EEFGenPackage.java,v 1.3 2009/08/22 09:59:59 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -132,13 +132,22 @@ public interface EEFGenPackage extends EPackage {
 	int GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS = 5;
 
 	/**
+	 * The feature id for the '<em><b>Generate Junit Test Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES = 6;
+
+	/**
 	 * The number of structural features of the '<em>Gen Edition Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 6;
+	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 7;
 
 
 	/**
@@ -234,13 +243,22 @@ public interface EEFGenPackage extends EPackage {
 	int EEF_GEN_MODEL__REFERENCES = 5;
 
 	/**
+	 * The feature id for the '<em><b>Tests Gen Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_GEN_MODEL__TESTS_GEN_DIRECTORY = 6;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_GEN_MODEL_FEATURE_COUNT = 6;
+	int EEF_GEN_MODEL_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl <em>Gen Views Repository</em>}' class.
@@ -403,6 +421,17 @@ public interface EEFGenPackage extends EPackage {
 	EAttribute getGenEditionContext_GmfPropertiesViews();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generate Junit Test Cases</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#isGenerateJunitTestCases()
+	 * @see #getGenEditionContext()
+	 * @generated
+	 */
+	EAttribute getGenEditionContext_GenerateJunitTestCases();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference <em>Model Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -498,6 +527,17 @@ public interface EEFGenPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEEFGenModel_References();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getTestsGenDirectory <em>Tests Gen Directory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tests Gen Directory</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenModel#getTestsGenDirectory()
+	 * @see #getEEFGenModel()
+	 * @generated
+	 */
+	EAttribute getEEFGenModel_TestsGenDirectory();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository <em>Gen Views Repository</em>}'.
@@ -666,6 +706,14 @@ public interface EEFGenPackage extends EPackage {
 		EAttribute GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS = eINSTANCE.getGenEditionContext_GmfPropertiesViews();
 
 		/**
+		 * The meta object literal for the '<em><b>Generate Junit Test Cases</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES = eINSTANCE.getGenEditionContext_GenerateJunitTestCases();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -740,6 +788,14 @@ public interface EEFGenPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EEF_GEN_MODEL__REFERENCES = eINSTANCE.getEEFGenModel_References();
+
+		/**
+		 * The meta object literal for the '<em><b>Tests Gen Directory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EEF_GEN_MODEL__TESTS_GEN_DIRECTORY = eINSTANCE.getEEFGenModel_TestsGenDirectory();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl <em>Gen Views Repository</em>}' class.

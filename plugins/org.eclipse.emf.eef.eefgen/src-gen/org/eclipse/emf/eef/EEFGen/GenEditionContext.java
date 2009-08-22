@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContext.java,v 1.2 2009/04/30 17:49:10 nlepine Exp $
+ * $Id: GenEditionContext.java,v 1.3 2009/08/22 09:59:59 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getDescriptorsContributorID <em>Descriptors Contributor ID</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGmfPropertiesViews <em>Gmf Properties Views</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}</li>
  * </ul>
  * </p>
  *
@@ -195,5 +196,31 @@ public interface GenEditionContext extends EObject {
 	 * @generated
 	 */
 	void setGmfPropertiesViews(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Generate Junit Test Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generate Junit Test Cases</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generate Junit Test Cases</em>' attribute.
+	 * @see #setGenerateJunitTestCases(boolean)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_GenerateJunitTestCases()
+	 * @model
+	 * @generated
+	 */
+	boolean isGenerateJunitTestCases();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generate Junit Test Cases</em>' attribute.
+	 * @see #isGenerateJunitTestCases()
+	 * @generated
+	 */
+	void setGenerateJunitTestCases(boolean value);
 
 } // GenEditionContext
