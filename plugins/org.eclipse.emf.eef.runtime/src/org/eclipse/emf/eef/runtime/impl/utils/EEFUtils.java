@@ -57,12 +57,24 @@ public class EEFUtils {
 	}
 
 	/**
-	 * Convert a treeIterator in EObject
+	 * Convert a treeIterator in Object list
 	 * @param iter the iterator
 	 * @return the result list
 	 */
 	public static List<Object> asList(TreeIterator<Object> iter) {
 		List<Object> result = new ArrayList<Object>();
+		while (iter.hasNext())
+			result.add(iter.next());
+		return result;
+	}
+	
+	/**
+	 * Convert a treeIterator in EObject list
+	 * @param iter the iterator
+	 * @return the result list
+	 */
+	public static List<EObject> asEObjectList(TreeIterator<EObject> iter) {
+		List<EObject> result = new ArrayList<EObject>();
 		while (iter.hasNext())
 			result.add(iter.next());
 		return result;
