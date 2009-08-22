@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersPackageImpl.java,v 1.3 2009/06/09 15:47:14 sbouchet Exp $
+ * $Id: FiltersPackageImpl.java,v 1.4 2009/08/22 09:46:08 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -380,8 +380,6 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		// Obtain other dependent packages
 		MappingPackage theMappingPackage = (MappingPackage) EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -433,7 +431,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		initEClass(javaExpressionFilterEClass, JavaExpressionFilter.class,
 				"JavaExpressionFilter", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJavaExpressionFilter_Body(), theEcorePackage
+		initEAttribute(getJavaExpressionFilter_Body(), ecorePackage
 				.getEString(), "body", null, 0, 1, JavaExpressionFilter.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -445,7 +443,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		initEClass(onlyReferenceTypeFilterEClass,
 				OnlyReferenceTypeFilter.class, "OnlyReferenceTypeFilter",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOnlyReferenceTypeFilter_Reference(), theEcorePackage
+		initEReference(getOnlyReferenceTypeFilter_Reference(), ecorePackage
 				.getEReference(), null, "reference", null, 0, 1,
 				OnlyReferenceTypeFilter.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,

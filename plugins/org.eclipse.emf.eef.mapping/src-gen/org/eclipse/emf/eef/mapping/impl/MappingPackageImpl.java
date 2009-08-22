@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackageImpl.java,v 1.3 2009/05/26 08:20:04 glefur Exp $
+ * $Id: MappingPackageImpl.java,v 1.4 2009/08/22 09:46:08 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -800,8 +800,6 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				.getEPackage(NavigationPackage.eNS_URI);
 		FiltersPackage theFiltersPackage = (FiltersPackage) EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
 		ViewsPackage theViewsPackage = (ViewsPackage) EPackage.Registry.INSTANCE
 				.getEPackage(ViewsPackage.eNS_URI);
 
@@ -902,7 +900,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getAbstractElementBinding_Name(), theEcorePackage
+		initEAttribute(getAbstractElementBinding_Name(), ecorePackage
 				.getEString(), "name", null, 1, 1,
 				AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
@@ -966,7 +964,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		initEClass(emfElementBindingEClass, EMFElementBinding.class,
 				"EMFElementBinding", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEMFElementBinding_Model(), theEcorePackage
+		initEReference(getEMFElementBinding_Model(), ecorePackage
 				.getEClassifier(), null, "model", null, 1, 1,
 				EMFElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -975,7 +973,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		initEClass(emfPropertyBindingEClass, EMFPropertyBinding.class,
 				"EMFPropertyBinding", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEMFPropertyBinding_Model(), theEcorePackage
+		initEReference(getEMFPropertyBinding_Model(), ecorePackage
 				.getEStructuralFeature(), null, "model", null, 1, 1,
 				EMFPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -1006,10 +1004,10 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 
 		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCategory_Name(), theEcorePackage.getEString(),
-				"name", null, 1, 1, Category.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name",
+				null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEReference(getCategory_Bindings(),
 				this.getAbstractElementBinding(), this
 						.getAbstractElementBinding_Category(), "bindings",
@@ -1047,7 +1045,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		initEClass(emfMultiPropertiesBindingEClass,
 				EMFMultiPropertiesBinding.class, "EMFMultiPropertiesBinding",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEMFMultiPropertiesBinding_Model(), theEcorePackage
+		initEReference(getEMFMultiPropertiesBinding_Model(), ecorePackage
 				.getEStructuralFeature(), null, "model", null, 1, -1,
 				EMFMultiPropertiesBinding.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,

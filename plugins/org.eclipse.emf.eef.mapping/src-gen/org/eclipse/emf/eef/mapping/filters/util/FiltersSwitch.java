@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersSwitch.java,v 1.3 2009/06/09 15:47:14 sbouchet Exp $
+ * $Id: FiltersSwitch.java,v 1.4 2009/08/22 09:46:08 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.util;
 
@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.mapping.filters.*;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;

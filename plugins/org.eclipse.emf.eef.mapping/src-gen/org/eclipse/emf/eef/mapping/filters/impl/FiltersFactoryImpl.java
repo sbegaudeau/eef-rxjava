@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersFactoryImpl.java,v 1.3 2009/06/09 15:47:13 sbouchet Exp $
+ * $Id: FiltersFactoryImpl.java,v 1.4 2009/08/22 09:46:08 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.mapping.filters.*;
 import org.eclipse.emf.eef.mapping.filters.FiltersFactory;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;

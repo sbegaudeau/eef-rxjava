@@ -5,7 +5,7 @@
     modelDirectory="/org.eclipse.emf.eef.mapping/src-gen" editDirectory="/org.eclipse.emf.eef.mapping.edit/src-gen"
     editorDirectory="/org.eclipse.emf.eef.mapping.editor/src-gen" modelPluginID="org.eclipse.emf.eef.mapping"
     modelName="Mapping" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.emf.eef.views/model/views.genmodel#//views">
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../org.eclipse.emf.eef.views/model/views.genmodel#//views">
   <foreignModel>mapping.ecore</foreignModel>
   <genPackages prefix="Mapping" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       extensibleProviderFactory="true" ecorePackage="mapping.ecore#/">

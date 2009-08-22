@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationPackageImpl.java,v 1.4 2009/06/09 15:47:17 sbouchet Exp $
+ * $Id: NavigationPackageImpl.java,v 1.5 2009/08/22 09:46:08 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -334,10 +334,6 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -360,7 +356,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		initEClass(simpleModelNavigationEClass, SimpleModelNavigation.class,
 				"SimpleModelNavigation", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSimpleModelNavigation_Feature(), theEcorePackage
+		initEReference(getSimpleModelNavigation_Feature(), ecorePackage
 				.getEReference(), null, "feature", null, 1, 1,
 				SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -371,9 +367,9 @@ public class NavigationPackageImpl extends EPackageImpl implements
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getSimpleModelNavigation_DiscriminatorType(),
-				theEcorePackage.getEClassifier(), null, "discriminatorType",
-				null, 0, 1, SimpleModelNavigation.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				ecorePackage.getEClassifier(), null, "discriminatorType", null,
+				0, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(chainedModelNavigationEClass, ChainedModelNavigation.class,
@@ -394,8 +390,9 @@ public class NavigationPackageImpl extends EPackageImpl implements
 				StructuredModelNavigation.class, "StructuredModelNavigation",
 				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(structuredModelNavigationEClass, theEcorePackage
-				.getEClass(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(structuredModelNavigationEClass,
+				ecorePackage.getEClass(), "evaluate", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
 		initEClass(customModelNavigationEClass, CustomModelNavigation.class,
 				"CustomModelNavigation", !IS_ABSTRACT, !IS_INTERFACE,

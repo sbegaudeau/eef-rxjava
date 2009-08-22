@@ -29,7 +29,7 @@
         eOpposite="#//Databinding/bindings"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superElement" eType="#//AbstractElementBinding"
         eOpposite="#//AbstractElementBinding/subElements"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedBinding" upperBound="-1"
         eType="#//ElementBindingReference" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="views" lowerBound="1" upperBound="-1"
@@ -54,10 +54,10 @@
         eType="#//filters/BindingFilter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EMFElementBinding" eSuperTypes="#//AbstractElementBinding">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EMFPropertyBinding" eSuperTypes="#//AbstractPropertyBinding">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="navigation" eType="#//navigation/ModelNavigation"
         containment="true"/>
   </eClassifiers>
@@ -70,7 +70,7 @@
         eOpposite="#//ModelProperty/binding"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//DocumentedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bindings" upperBound="-1"
         eType="#//AbstractElementBinding" containment="true" eOpposite="#//AbstractElementBinding/category"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="databinding" eType="#//Databinding"
@@ -87,7 +87,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EMFMultiPropertiesBinding" eSuperTypes="#//AbstractPropertyBinding">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="navigation" eType="#//navigation/ModelNavigation"
         containment="true"/>
   </eClassifiers>
@@ -96,9 +96,9 @@
     <eClassifiers xsi:type="ecore:EClass" name="ModelNavigation" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="SimpleModelNavigation" eSuperTypes="#//navigation/StructuredModelNavigation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
-          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorType" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ChainedModelNavigation" eSuperTypes="#//navigation/StructuredModelNavigation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="current" lowerBound="1"
@@ -108,7 +108,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="StructuredModelNavigation" abstract="true"
         eSuperTypes="#//navigation/ModelNavigation">
-      <eOperations name="evaluate" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+      <eOperations name="evaluate" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CustomModelNavigation" eSuperTypes="#//navigation/ModelNavigation"/>
   </eSubpackages>
@@ -127,11 +127,11 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="methodName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JavaExpressionFilter" eSuperTypes="#//filters/JavaFilter">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BusinessFilter" abstract="true" eSuperTypes="#//filters/BindingFilter"/>
     <eClassifiers xsi:type="ecore:EClass" name="OnlyReferenceTypeFilter" eSuperTypes="#//filters/BusinessFilter">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
