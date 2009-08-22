@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextItemProvider.java,v 1.2 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: GenEditionContextItemProvider.java,v 1.3 2009/08/22 09:59:56 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -73,6 +73,7 @@ public class GenEditionContextItemProvider
 			addDescriptorsContributorIDPropertyDescriptor(object);
 			addDescriptorsGenericPropertiesViewsPropertyDescriptor(object);
 			addGmfPropertiesViewsPropertyDescriptor(object);
+			addGenerateJunitTestCasesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -188,6 +189,28 @@ public class GenEditionContextItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Generate Junit Test Cases feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGenerateJunitTestCasesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenEditionContext_generateJunitTestCases_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GenEditionContext_generateJunitTestCases_feature", "_UI_GenEditionContext_type"),
+				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns GenEditionContext.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -228,6 +251,7 @@ public class GenEditionContextItemProvider
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID:
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS:
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS:
+			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

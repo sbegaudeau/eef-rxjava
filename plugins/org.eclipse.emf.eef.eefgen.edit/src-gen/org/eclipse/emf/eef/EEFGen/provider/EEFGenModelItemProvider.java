@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelItemProvider.java,v 1.1 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: EEFGenModelItemProvider.java,v 1.2 2009/08/22 09:59:56 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -73,6 +73,7 @@ public class EEFGenModelItemProvider
 			addGenDirectoryPropertyDescriptor(object);
 			addAuthorPropertyDescriptor(object);
 			addLicensePropertyDescriptor(object);
+			addTestsGenDirectoryPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -135,6 +136,28 @@ public class EEFGenModelItemProvider
 				 getString("_UI_EEFGenModel_license_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EEFGenModel_license_feature", "_UI_EEFGenModel_type"),
 				 EEFGenPackage.Literals.EEF_GEN_MODEL__LICENSE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Tests Gen Directory feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTestsGenDirectoryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EEFGenModel_testsGenDirectory_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EEFGenModel_testsGenDirectory_feature", "_UI_EEFGenModel_type"),
+				 EEFGenPackage.Literals.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY,
 				 true,
 				 false,
 				 false,
@@ -215,6 +238,7 @@ public class EEFGenModelItemProvider
 			case EEFGenPackage.EEF_GEN_MODEL__GEN_DIRECTORY:
 			case EEFGenPackage.EEF_GEN_MODEL__AUTHOR:
 			case EEFGenPackage.EEF_GEN_MODEL__LICENSE:
+			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EEFGenPackage.EEF_GEN_MODEL__EDITION_CONTEXTS:

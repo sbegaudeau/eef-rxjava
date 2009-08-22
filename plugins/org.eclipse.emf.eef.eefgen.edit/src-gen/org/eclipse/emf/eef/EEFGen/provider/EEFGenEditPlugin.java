@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenEditPlugin.java,v 1.2 2009/04/30 17:49:28 nlepine Exp $
+ * $Id: EEFGenEditPlugin.java,v 1.3 2009/08/22 09:59:56 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -91,7 +91,7 @@ public final class EEFGenEditPlugin extends EMFPlugin {
 	 * The actual implementation of the Eclipse <b>Plugin</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static class Implementation extends EclipsePlugin {
 		/**
