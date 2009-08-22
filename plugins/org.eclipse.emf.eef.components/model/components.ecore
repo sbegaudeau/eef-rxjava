@@ -7,7 +7,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenPackage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertiesEditionComponent" eSuperTypes="../../org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFElementBinding #//EEFElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="explicit" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="explicit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertiesEditionElement" eSuperTypes="../../org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFPropertyBinding #//EEFElement"/>

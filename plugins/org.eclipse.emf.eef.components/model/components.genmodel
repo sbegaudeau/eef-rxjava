@@ -10,8 +10,7 @@
   <genPackages prefix="Components" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       multipleEditorPages="false" childCreationExtenders="true" ecorePackage="components.ecore#/">
     <genClasses ecoreClass="components.ecore#//PropertiesEditionContext">
-      <genFeatures notify="false" createChild="false" propertyDescription="The GenPackage for this edition context"
-          propertySortChoices="true" ecoreFeature="ecore:EReference components.ecore#//PropertiesEditionContext/model"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference components.ecore#//PropertiesEditionContext/model"/>
     </genClasses>
     <genClasses ecoreClass="components.ecore#//PropertiesEditionComponent">
       <genFeatures createChild="false" propertyDescription="Whether the component can be directly used"
