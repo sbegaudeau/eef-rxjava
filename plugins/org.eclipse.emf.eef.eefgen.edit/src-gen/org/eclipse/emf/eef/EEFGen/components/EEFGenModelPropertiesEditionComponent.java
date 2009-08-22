@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
+ * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -96,13 +96,16 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 					EEFGenModelPropertiesEditionComponent.this.dispose();
 				else {
 					if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null)
-						basePart.setGenDirectory((String)msg.getNewValue());
+						basePart.setGenerationDirectory((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null)
 						basePart.setAuthor((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null)
 						basePart.setLicense((String)msg.getNewValue());
+
+					if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null)
+						basePart.setTestsGenerationDirectory((String)msg.getNewValue());
 
 
 
@@ -175,7 +178,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			final EEFGenModel eEFGenModel = (EEFGenModel)elt;
 			// init values
 			if (eEFGenModel.getGenDirectory() != null)
-				basePart.setGenDirectory(eEFGenModel.getGenDirectory());
+				basePart.setGenerationDirectory(eEFGenModel.getGenDirectory());
 
 			if (eEFGenModel.getAuthor() != null)
 				basePart.setAuthor(eEFGenModel.getAuthor());
@@ -183,8 +186,12 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			if (eEFGenModel.getLicense() != null)
 				basePart.setLicense(eEFGenModel.getLicense());
 
+			if (eEFGenModel.getTestsGenDirectory() != null)
+				basePart.setTestsGenerationDirectory(eEFGenModel.getTestsGenDirectory());
+
 			
 			// init filters
+
 
 
 
@@ -201,6 +208,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -210,11 +218,13 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (eEFGenModel != null) {
-			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), basePart.getGenDirectory()));
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), basePart.getGenerationDirectory()));
 
 			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_Author(), basePart.getAuthor()));
 
 			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), basePart.getLicense()));
+
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), basePart.getTestsGenerationDirectory()));
 
 
 
@@ -233,11 +243,13 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof EEFGenModel) {
 			EEFGenModel eEFGenModelToUpdate = (EEFGenModel)source;
-			eEFGenModelToUpdate.setGenDirectory(basePart.getGenDirectory());
+			eEFGenModelToUpdate.setGenDirectory(basePart.getGenerationDirectory());
 
 			eEFGenModelToUpdate.setAuthor(basePart.getAuthor());
 
 			eEFGenModelToUpdate.setLicense(basePart.getLicense());
+
+			eEFGenModelToUpdate.setTestsGenDirectory(basePart.getTestsGenerationDirectory());
 
 
 
@@ -256,7 +268,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (EEFGenViewsRepository.EEFGenModel.genDirectory == event.getAffectedEditor())
+			if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), event.getNewValue()));
 
 			if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor())
@@ -264,6 +276,9 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 			if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), event.getNewValue()));
+
+			if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), event.getNewValue()));
 
 
 
@@ -275,21 +290,25 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				if (EEFGenViewsRepository.EEFGenModel.genDirectory == event.getAffectedEditor())
-					basePart.setMessageForGenDirectory(diag.getMessage(), IMessageProvider.ERROR);
+				if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor())
+					basePart.setMessageForGenerationDirectory(diag.getMessage(), IMessageProvider.ERROR);
 				if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor())
 					basePart.setMessageForAuthor(diag.getMessage(), IMessageProvider.ERROR);
 				if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor())
 					basePart.setMessageForLicense(diag.getMessage(), IMessageProvider.ERROR);
+				if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor())
+					basePart.setMessageForTestsGenerationDirectory(diag.getMessage(), IMessageProvider.ERROR);
 
 
 			} else {
-				if (EEFGenViewsRepository.EEFGenModel.genDirectory == event.getAffectedEditor())
-					basePart.unsetMessageForGenDirectory();
+				if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor())
+					basePart.unsetMessageForGenerationDirectory();
 				if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor())
 					basePart.unsetMessageForAuthor();
 				if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor())
 					basePart.unsetMessageForLicense();
+				if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor())
+					basePart.unsetMessageForTestsGenerationDirectory();
 
 
 			}
@@ -302,7 +321,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EEFGenViewsRepository.EEFGenModel.genDirectory;
+		return key == EEFGenViewsRepository.EEFGenModel.generationDirectory;
 	}
 
 	/**
@@ -315,7 +334,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EEFGenViewsRepository.EEFGenModel.genDirectory == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newValue);
 				}
@@ -326,6 +345,10 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 				if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newValue);
 				}
 
 			} catch (IllegalArgumentException iae) {

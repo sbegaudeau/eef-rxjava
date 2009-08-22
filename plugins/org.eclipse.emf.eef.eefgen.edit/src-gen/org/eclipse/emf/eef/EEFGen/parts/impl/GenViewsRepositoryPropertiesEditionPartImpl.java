@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.8 2009/07/31 14:18:43 glefur Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPartImpl.java,v 1.9 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -58,8 +58,8 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	protected EObjectFlatComboViewer viewsRepository;
 	protected Text basePackage;
 	protected EMFComboViewer helpStrategy;
-	protected Button swtViews;
-	protected Button formViews;
+	protected Button sWTViews;
+	protected Button formsViews;
 
 
 
@@ -185,24 +185,24 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		GridLayout activationGroupLayout = new GridLayout();
 		activationGroupLayout.numColumns = 3;
 		activationGroup.setLayout(activationGroupLayout);
-		createSwtViewsCheckbox(activationGroup);
-		createFormViewsCheckbox(activationGroup);
+		createSWTViewsCheckbox(activationGroup);
+		createFormsViewsCheckbox(activationGroup);
 	}
-	protected void createSwtViewsCheckbox(Composite parent) {
-		swtViews = new Button(parent, SWT.CHECK);
-		swtViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_SwtViewsLabel);
-		GridData swtViewsData = new GridData(GridData.FILL_HORIZONTAL);
-		swtViewsData.horizontalSpan = 2;
-		swtViews.setLayoutData(swtViewsData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.swtViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	protected void createSWTViewsCheckbox(Composite parent) {
+		sWTViews = new Button(parent, SWT.CHECK);
+		sWTViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_SWTViewsLabel);
+		GridData sWTViewsData = new GridData(GridData.FILL_HORIZONTAL);
+		sWTViewsData.horizontalSpan = 2;
+		sWTViews.setLayoutData(sWTViewsData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.sWTViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-	protected void createFormViewsCheckbox(Composite parent) {
-		formViews = new Button(parent, SWT.CHECK);
-		formViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormViewsLabel);
-		GridData formViewsData = new GridData(GridData.FILL_HORIZONTAL);
-		formViewsData.horizontalSpan = 2;
-		formViews.setLayoutData(formViewsData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.formViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	protected void createFormsViewsCheckbox(Composite parent) {
+		formsViews = new Button(parent, SWT.CHECK);
+		formsViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel);
+		GridData formsViewsData = new GridData(GridData.FILL_HORIZONTAL);
+		formsViewsData.horizontalSpan = 2;
+		formsViews.setLayoutData(formsViewsData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.formsViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
 
@@ -357,60 +357,60 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getSwtViews()
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getSWTViews()
 	 */
-	public Boolean getSwtViews() {
-		return Boolean.valueOf(swtViews.getSelection());
+	public Boolean getSWTViews() {
+		return Boolean.valueOf(sWTViews.getSelection());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setSwtViews(Boolean newValue)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setSWTViews(Boolean newValue)
 	 */
-	public void setSwtViews(Boolean newValue) {
+	public void setSWTViews(Boolean newValue) {
 		if (newValue != null) {
-			swtViews.setSelection(newValue.booleanValue());
+			sWTViews.setSelection(newValue.booleanValue());
 		} else {
-			swtViews.setSelection(false);
+			sWTViews.setSelection(false);
 		}
 	}
 
-	public void setMessageForSwtViews(String msg, int msgLevel) {
+	public void setMessageForSWTViews(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForSwtViews() {
+	public void unsetMessageForSWTViews() {
 
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getFormViews()
-	 */
-	public Boolean getFormViews() {
-		return Boolean.valueOf(formViews.getSelection());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setFormViews(Boolean newValue)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getFormsViews()
 	 */
-	public void setFormViews(Boolean newValue) {
+	public Boolean getFormsViews() {
+		return Boolean.valueOf(formsViews.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setFormsViews(Boolean newValue)
+	 */
+	public void setFormsViews(Boolean newValue) {
 		if (newValue != null) {
-			formViews.setSelection(newValue.booleanValue());
+			formsViews.setSelection(newValue.booleanValue());
 		} else {
-			formViews.setSelection(false);
+			formsViews.setSelection(false);
 		}
 	}
 
-	public void setMessageForFormViews(String msg, int msgLevel) {
+	public void setMessageForFormsViews(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForFormViews() {
+	public void unsetMessageForFormsViews() {
 
 	}
 

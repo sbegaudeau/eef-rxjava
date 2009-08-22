@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -106,10 +106,10 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 						basePart.setBasePackage((String)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
-						basePart.setSwtViews((Boolean)msg.getNewValue());
+						basePart.setSWTViews((Boolean)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null)
-						basePart.setFormViews((Boolean)msg.getNewValue());
+						basePart.setFormsViews((Boolean)msg.getNewValue());
 
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && basePart != null)
 						basePart.setHelpStrategy((Enumerator)msg.getNewValue());
@@ -189,9 +189,9 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			if (genViewsRepository.getBasePackage() != null)
 				basePart.setBasePackage(genViewsRepository.getBasePackage());
 
-			basePart.setSwtViews(genViewsRepository.isSwtViews());
+			basePart.setSWTViews(genViewsRepository.isSwtViews());
 
-			basePart.setFormViews(genViewsRepository.isFormViews());
+			basePart.setFormsViews(genViewsRepository.isFormViews());
 
 			basePart.initHelpStrategy((EEnum) EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEType(), genViewsRepository.getHelpStrategy());
 			basePart.initViewsRepository(allResource, genViewsRepository.getViewsRepository());
@@ -245,9 +245,9 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 		if (genViewsRepository != null) {
 			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), basePart.getBasePackage()));
 
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), basePart.getSwtViews()));
+			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), basePart.getSWTViews()));
 
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(), basePart.getFormViews()));
+			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(), basePart.getFormsViews()));
 
 			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy(), basePart.getHelpStrategy()));
 
@@ -273,9 +273,9 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			GenViewsRepository genViewsRepositoryToUpdate = (GenViewsRepository)source;
 			genViewsRepositoryToUpdate.setBasePackage(basePart.getBasePackage());
 
-			genViewsRepositoryToUpdate.setSwtViews(new Boolean(basePart.getSwtViews()).booleanValue());
+			genViewsRepositoryToUpdate.setSwtViews(new Boolean(basePart.getSWTViews()).booleanValue());
 
-			genViewsRepositoryToUpdate.setFormViews(new Boolean(basePart.getFormViews()).booleanValue());
+			genViewsRepositoryToUpdate.setFormViews(new Boolean(basePart.getFormsViews()).booleanValue());
 
 			genViewsRepositoryToUpdate.setHelpStrategy((HELP_STRATEGY)basePart.getHelpStrategy());
 
@@ -300,10 +300,10 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), event.getNewValue()));
 
-			if (EEFGenViewsRepository.GenViewsRepository.swtViews == event.getAffectedEditor())
+			if (EEFGenViewsRepository.GenViewsRepository.sWTViews == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), event.getNewValue()));
 
-			if (EEFGenViewsRepository.GenViewsRepository.formViews == event.getAffectedEditor())
+			if (EEFGenViewsRepository.GenViewsRepository.formsViews == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(), event.getNewValue()));
 
 			if (EEFGenViewsRepository.GenViewsRepository.helpStrategy == event.getAffectedEditor())
@@ -365,11 +365,11 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.GenViewsRepository.swtViews == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenViewsRepository.sWTViews == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.GenViewsRepository.formViews == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenViewsRepository.formsViews == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().getEAttributeType(), newValue);
 				}

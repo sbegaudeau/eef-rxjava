@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenMessages.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
+ * $Id: EEFGenMessages.java,v 1.7 2009/08/22 11:15:38 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
@@ -53,13 +53,17 @@ public class EEFGenMessages extends NLS {
 
 	public static String GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel;
 
-	public static String GenEditionContextPropertiesEditionPart_DescriptorsGenericPropertiesViewsLabel;
+	public static String GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel;
 
-	public static String GenEditionContextPropertiesEditionPart_GmfPropertiesViewsLabel;
+	public static String GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel;
+
+	public static String GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel;
 
 	public static String EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel;
 
-	public static String EEFGenModelPropertiesEditionPart_GenDirectoryLabel;
+	public static String EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel;
+
+	public static String EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel;
 
 	public static String EEFGenModelPropertiesEditionPart_AuthorLabel;
 
@@ -71,9 +75,9 @@ public class EEFGenMessages extends NLS {
 
 	public static String GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel;
 
-	public static String GenViewsRepositoryPropertiesEditionPart_SwtViewsLabel;
+	public static String GenViewsRepositoryPropertiesEditionPart_SWTViewsLabel;
 
-	public static String GenViewsRepositoryPropertiesEditionPart_FormViewsLabel;
+	public static String GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 

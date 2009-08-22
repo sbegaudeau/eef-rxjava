@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPartImpl.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
+ * $Id: EEFGenModelPropertiesEditionPartImpl.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -40,7 +40,8 @@ import org.eclipse.swt.widgets.Text;
  */
 public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EEFGenModelPropertiesEditionPart {
 
-	protected Text genDirectory;
+	protected Text generationDirectory;
+	protected Text testsGenerationDirectory;
 	protected Text author;
 	protected Text license;
 
@@ -95,14 +96,15 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridLayout parametersGroupLayout = new GridLayout();
 		parametersGroupLayout.numColumns = 3;
 		parametersGroup.setLayout(parametersGroupLayout);
-		createGenDirectoryText(parametersGroup);
+		createGenerationDirectoryText(parametersGroup);
+		createTestsGenerationDirectoryText(parametersGroup);
 	}
-	protected void createGenDirectoryText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.genDirectory, EEFGenViewsRepository.SWT_KIND));
-		genDirectory = new Text(parent, SWT.BORDER);
-		GridData genDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
-		genDirectory.setLayoutData(genDirectoryData);
-		genDirectory.addModifyListener(new ModifyListener() {
+	protected void createGenerationDirectoryText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.SWT_KIND));
+		generationDirectory = new Text(parent, SWT.BORDER);
+		GridData generationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
+		generationDirectory.setLayoutData(generationDirectoryData);
+		generationDirectory.addModifyListener(new ModifyListener() {
 
 			/*
 			 * (non-Javadoc)
@@ -111,12 +113,33 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartImpl.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, genDirectory.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartImpl.this, EEFGenViewsRepository.EEFGenModel.generationDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.genDirectory, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+	protected void createTestsGenerationDirectoryText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.SWT_KIND));
+		testsGenerationDirectory = new Text(parent, SWT.BORDER);
+		GridData testsGenerationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
+		testsGenerationDirectory.setLayoutData(testsGenerationDirectoryData);
+		testsGenerationDirectory.addModifyListener(new ModifyListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+			 */
+			public void modifyText(ModifyEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartImpl.this, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
+			}
+			
+		});
+
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 	protected void createLegalGroup(Composite parent) {
 		Group legalGroup = new Group(parent, SWT.NONE);
@@ -175,30 +198,60 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getGenDirectory()
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getGenerationDirectory()
 	 */
-	public String getGenDirectory() {
-		return genDirectory.getText();
+	public String getGenerationDirectory() {
+		return generationDirectory.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenDirectory(String newValue)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenerationDirectory(String newValue)
 	 */
-	public void setGenDirectory(String newValue) {
+	public void setGenerationDirectory(String newValue) {
 		if (newValue != null) {
-			genDirectory.setText(newValue);
+			generationDirectory.setText(newValue);
 		} else {
-			genDirectory.setText("");  //$NON-NLS-1$
+			generationDirectory.setText("");  //$NON-NLS-1$
 		}
 	}
 
-	public void setMessageForGenDirectory(String msg, int msgLevel) {
+	public void setMessageForGenerationDirectory(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForGenDirectory() {
+	public void unsetMessageForGenerationDirectory() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getTestsGenerationDirectory()
+	 */
+	public String getTestsGenerationDirectory() {
+		return testsGenerationDirectory.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setTestsGenerationDirectory(String newValue)
+	 */
+	public void setTestsGenerationDirectory(String newValue) {
+		if (newValue != null) {
+			testsGenerationDirectory.setText(newValue);
+		} else {
+			testsGenerationDirectory.setText("");  //$NON-NLS-1$
+		}
+	}
+
+	public void setMessageForTestsGenerationDirectory(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForTestsGenerationDirectory() {
 
 	}
 

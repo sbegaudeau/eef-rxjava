@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartImpl.java,v 1.8 2009/07/31 14:18:43 glefur Exp $
+ * $Id: GenEditionContextPropertiesEditionPartImpl.java,v 1.9 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
@@ -52,8 +52,9 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	protected EObjectFlatComboViewer propertiesEditionContext;
 	protected Text basePackage;
 	protected Text descriptorsContributorID;
-	protected Button descriptorsGenericPropertiesViews;
-	protected Button gmfPropertiesViews;
+	protected Button genericPropertiesViewsDescriptors;
+	protected Button gMFSpecificPropertiesViews;
+	protected Button jUnitTestCases;
 
 
 
@@ -191,24 +192,33 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		GridLayout activationGroupLayout = new GridLayout();
 		activationGroupLayout.numColumns = 3;
 		activationGroup.setLayout(activationGroupLayout);
-		createDescriptorsGenericPropertiesViewsCheckbox(activationGroup);
-		createGmfPropertiesViewsCheckbox(activationGroup);
+		createGenericPropertiesViewsDescriptorsCheckbox(activationGroup);
+		createGMFSpecificPropertiesViewsCheckbox(activationGroup);
+		createJUnitTestCasesCheckbox(activationGroup);
 	}
-	protected void createDescriptorsGenericPropertiesViewsCheckbox(Composite parent) {
-		descriptorsGenericPropertiesViews = new Button(parent, SWT.CHECK);
-		descriptorsGenericPropertiesViews.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsGenericPropertiesViewsLabel);
-		GridData descriptorsGenericPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
-		descriptorsGenericPropertiesViewsData.horizontalSpan = 2;
-		descriptorsGenericPropertiesViews.setLayoutData(descriptorsGenericPropertiesViewsData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsGenericPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	protected void createGenericPropertiesViewsDescriptorsCheckbox(Composite parent) {
+		genericPropertiesViewsDescriptors = new Button(parent, SWT.CHECK);
+		genericPropertiesViewsDescriptors.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel);
+		GridData genericPropertiesViewsDescriptorsData = new GridData(GridData.FILL_HORIZONTAL);
+		genericPropertiesViewsDescriptorsData.horizontalSpan = 2;
+		genericPropertiesViewsDescriptors.setLayoutData(genericPropertiesViewsDescriptorsData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
-	protected void createGmfPropertiesViewsCheckbox(Composite parent) {
-		gmfPropertiesViews = new Button(parent, SWT.CHECK);
-		gmfPropertiesViews.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GmfPropertiesViewsLabel);
-		GridData gmfPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
-		gmfPropertiesViewsData.horizontalSpan = 2;
-		gmfPropertiesViews.setLayoutData(gmfPropertiesViewsData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gmfPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	protected void createGMFSpecificPropertiesViewsCheckbox(Composite parent) {
+		gMFSpecificPropertiesViews = new Button(parent, SWT.CHECK);
+		gMFSpecificPropertiesViews.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel);
+		GridData gMFSpecificPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
+		gMFSpecificPropertiesViewsData.horizontalSpan = 2;
+		gMFSpecificPropertiesViews.setLayoutData(gMFSpecificPropertiesViewsData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+	protected void createJUnitTestCasesCheckbox(Composite parent) {
+		jUnitTestCases = new Button(parent, SWT.CHECK);
+		jUnitTestCases.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel);
+		GridData jUnitTestCasesData = new GridData(GridData.FILL_HORIZONTAL);
+		jUnitTestCasesData.horizontalSpan = 2;
+		jUnitTestCases.setLayoutData(jUnitTestCasesData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.jUnitTestCases, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
 
@@ -356,60 +366,90 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getDescriptorsGenericPropertiesViews()
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getGenericPropertiesViewsDescriptors()
 	 */
-	public Boolean getDescriptorsGenericPropertiesViews() {
-		return Boolean.valueOf(descriptorsGenericPropertiesViews.getSelection());
+	public Boolean getGenericPropertiesViewsDescriptors() {
+		return Boolean.valueOf(genericPropertiesViewsDescriptors.getSelection());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setDescriptorsGenericPropertiesViews(Boolean newValue)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setGenericPropertiesViewsDescriptors(Boolean newValue)
 	 */
-	public void setDescriptorsGenericPropertiesViews(Boolean newValue) {
+	public void setGenericPropertiesViewsDescriptors(Boolean newValue) {
 		if (newValue != null) {
-			descriptorsGenericPropertiesViews.setSelection(newValue.booleanValue());
+			genericPropertiesViewsDescriptors.setSelection(newValue.booleanValue());
 		} else {
-			descriptorsGenericPropertiesViews.setSelection(false);
+			genericPropertiesViewsDescriptors.setSelection(false);
 		}
 	}
 
-	public void setMessageForDescriptorsGenericPropertiesViews(String msg, int msgLevel) {
+	public void setMessageForGenericPropertiesViewsDescriptors(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForDescriptorsGenericPropertiesViews() {
+	public void unsetMessageForGenericPropertiesViewsDescriptors() {
 
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getGmfPropertiesViews()
-	 */
-	public Boolean getGmfPropertiesViews() {
-		return Boolean.valueOf(gmfPropertiesViews.getSelection());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setGmfPropertiesViews(Boolean newValue)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getGMFSpecificPropertiesViews()
 	 */
-	public void setGmfPropertiesViews(Boolean newValue) {
+	public Boolean getGMFSpecificPropertiesViews() {
+		return Boolean.valueOf(gMFSpecificPropertiesViews.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setGMFSpecificPropertiesViews(Boolean newValue)
+	 */
+	public void setGMFSpecificPropertiesViews(Boolean newValue) {
 		if (newValue != null) {
-			gmfPropertiesViews.setSelection(newValue.booleanValue());
+			gMFSpecificPropertiesViews.setSelection(newValue.booleanValue());
 		} else {
-			gmfPropertiesViews.setSelection(false);
+			gMFSpecificPropertiesViews.setSelection(false);
 		}
 	}
 
-	public void setMessageForGmfPropertiesViews(String msg, int msgLevel) {
+	public void setMessageForGMFSpecificPropertiesViews(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForGmfPropertiesViews() {
+	public void unsetMessageForGMFSpecificPropertiesViews() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getJUnitTestCases()
+	 */
+	public Boolean getJUnitTestCases() {
+		return Boolean.valueOf(jUnitTestCases.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setJUnitTestCases(Boolean newValue)
+	 */
+	public void setJUnitTestCases(Boolean newValue) {
+		if (newValue != null) {
+			jUnitTestCases.setSelection(newValue.booleanValue());
+		} else {
+			jUnitTestCases.setSelection(false);
+		}
+	}
+
+	public void setMessageForJUnitTestCases(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForJUnitTestCases() {
 
 	}
 

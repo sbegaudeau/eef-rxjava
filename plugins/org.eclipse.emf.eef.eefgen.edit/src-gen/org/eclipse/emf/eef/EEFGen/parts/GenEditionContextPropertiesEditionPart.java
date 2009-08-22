@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPart.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
+ * $Id: GenEditionContextPropertiesEditionPart.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -75,13 +75,13 @@ public interface GenEditionContextPropertiesEditionPart {
 
 
 	/**
-	 * @return the basePackage
+	 * @return the Base package
 	 */
 	public String getBasePackage();
 
 	/**
-	 * Defines a new basePackage
-	 * @param newValue the new basePackage to set
+	 * Defines a new Base package
+	 * @param newValue the new Base package to set
 	 */
 	public void setBasePackage(String newValue);
 
@@ -90,13 +90,13 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void unsetMessageForBasePackage();
 
 	/**
-	 * @return the descriptorsContributorID
+	 * @return the Descriptors contributorID
 	 */
 	public String getDescriptorsContributorID();
 
 	/**
-	 * Defines a new descriptorsContributorID
-	 * @param newValue the new descriptorsContributorID to set
+	 * Defines a new Descriptors contributorID
+	 * @param newValue the new Descriptors contributorID to set
 	 */
 	public void setDescriptorsContributorID(String newValue);
 
@@ -105,30 +105,45 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void unsetMessageForDescriptorsContributorID();
 
 	/**
-	 * @return the descriptorsGenericPropertiesViews
+	 * @return the Generic properties views descriptors
 	 */
-	public Boolean getDescriptorsGenericPropertiesViews();
+	public Boolean getGenericPropertiesViewsDescriptors();
 
 	/**
-	 * Defines a new descriptorsGenericPropertiesViews
-	 * @param newValue the new descriptorsGenericPropertiesViews to set
+	 * Defines a new Generic properties views descriptors
+	 * @param newValue the new Generic properties views descriptors to set
 	 */
-	public void setDescriptorsGenericPropertiesViews(Boolean newValue);
+	public void setGenericPropertiesViewsDescriptors(Boolean newValue);
 
 
 
 
 
 	/**
-	 * @return the gmfPropertiesViews
+	 * @return the GMF specific properties views
 	 */
-	public Boolean getGmfPropertiesViews();
+	public Boolean getGMFSpecificPropertiesViews();
 
 	/**
-	 * Defines a new gmfPropertiesViews
-	 * @param newValue the new gmfPropertiesViews to set
+	 * Defines a new GMF specific properties views
+	 * @param newValue the new GMF specific properties views to set
 	 */
-	public void setGmfPropertiesViews(Boolean newValue);
+	public void setGMFSpecificPropertiesViews(Boolean newValue);
+
+
+
+
+
+	/**
+	 * @return the JUnit test cases
+	 */
+	public Boolean getJUnitTestCases();
+
+	/**
+	 * Defines a new JUnit test cases
+	 * @param newValue the new JUnit test cases to set
+	 */
+	public void setJUnitTestCases(Boolean newValue);
 
 
 

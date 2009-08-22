@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPart.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
+ * $Id: EEFGenModelPropertiesEditionPart.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -26,19 +26,34 @@ package org.eclipse.emf.eef.EEFGen.parts;
 public interface EEFGenModelPropertiesEditionPart {
 
 	/**
-	 * @return the genDirectory
+	 * @return the Generation directory
 	 */
-	public String getGenDirectory();
+	public String getGenerationDirectory();
 
 	/**
-	 * Defines a new genDirectory
-	 * @param newValue the new genDirectory to set
+	 * Defines a new Generation directory
+	 * @param newValue the new Generation directory to set
 	 */
-	public void setGenDirectory(String newValue);
+	public void setGenerationDirectory(String newValue);
 
-	public void setMessageForGenDirectory(String msg, int msgLevel);
+	public void setMessageForGenerationDirectory(String msg, int msgLevel);
 
-	public void unsetMessageForGenDirectory();
+	public void unsetMessageForGenerationDirectory();
+
+	/**
+	 * @return the Tests generation directory
+	 */
+	public String getTestsGenerationDirectory();
+
+	/**
+	 * Defines a new Tests generation directory
+	 * @param newValue the new Tests generation directory to set
+	 */
+	public void setTestsGenerationDirectory(String newValue);
+
+	public void setMessageForTestsGenerationDirectory(String msg, int msgLevel);
+
+	public void unsetMessageForTestsGenerationDirectory();
 
 	/**
 	 * @return the author

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.6 2009/07/31 14:18:42 glefur Exp $
+ * $Id: EEFGenModelPropertiesEditionPartForm.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
@@ -49,7 +49,8 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EEFGenModelPropertiesEditionPart {
 
-	protected Text genDirectory;
+	protected Text generationDirectory;
+	protected Text testsGenerationDirectory;
 	protected Text author;
 	protected Text license;
 
@@ -106,17 +107,18 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		GridLayout parametersGroupLayout = new GridLayout();
 		parametersGroupLayout.numColumns = 3;
 		parametersGroup.setLayout(parametersGroupLayout);
-		createGenDirectoryText(widgetFactory, parametersGroup);
+		createGenerationDirectoryText(widgetFactory, parametersGroup);
+		createTestsGenerationDirectoryText(widgetFactory, parametersGroup);
 		parametersSection.setClient(parametersGroup);
 	}
-	protected void createGenDirectoryText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.genDirectory, EEFGenViewsRepository.FORM_KIND));
-		genDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		genDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	protected void createGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND));
+		generationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		generationDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
-		GridData genDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
-		genDirectory.setLayoutData(genDirectoryData);
-		genDirectory.addModifyListener(new ModifyListener() {
+		GridData generationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
+		generationDirectory.setLayoutData(generationDirectoryData);
+		generationDirectory.addModifyListener(new ModifyListener() {
 
 			/**
 			 * {@inheritDoc}
@@ -125,11 +127,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, genDirectory.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.generationDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
 			}
 
 		});
-		genDirectory.addFocusListener(new FocusAdapter() {
+		generationDirectory.addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -138,11 +140,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, genDirectory.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.generationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
 			}
 
 		});
-		genDirectory.addKeyListener(new KeyAdapter() {
+		generationDirectory.addKeyListener(new KeyAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -152,12 +154,62 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.genDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, genDirectory.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.generationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
 				}
 			}
 
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.genDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+	}
+	protected void createTestsGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND));
+		testsGenerationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		testsGenerationDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData testsGenerationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
+		testsGenerationDirectory.setLayoutData(testsGenerationDirectoryData);
+		testsGenerationDirectory.addModifyListener(new ModifyListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+			 */
+			public void modifyText(ModifyEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
+			}
+
+		});
+		testsGenerationDirectory.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
+			}
+
+		});
+		testsGenerationDirectory.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 */
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
+				}
+			}
+
+		});
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 	protected void createLegalGroup(FormToolkit widgetFactory, final Composite view) {
 		Section legalSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -275,31 +327,61 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getGenDirectory()
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getGenerationDirectory()
 	 */
-	public String getGenDirectory() {
-		return genDirectory.getText();
+	public String getGenerationDirectory() {
+		return generationDirectory.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenDirectory(String newValue)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenerationDirectory(String newValue)
 	 */
-	public void setGenDirectory(String newValue) {
+	public void setGenerationDirectory(String newValue) {
 		if (newValue != null) {
-			genDirectory.setText(newValue);
+			generationDirectory.setText(newValue);
 		} else {
-			genDirectory.setText("");  //$NON-NLS-1$
+			generationDirectory.setText("");  //$NON-NLS-1$
 		}
 	}
 
-	public void setMessageForGenDirectory(String msg, int msgLevel) {
-		messageManager.addMessage("GenDirectory_key", msg, null, msgLevel, genDirectory);
+	public void setMessageForGenerationDirectory(String msg, int msgLevel) {
+		messageManager.addMessage("GenerationDirectory_key", msg, null, msgLevel, generationDirectory);
 	}
 
-	public void unsetMessageForGenDirectory() {
-		messageManager.removeMessage("GenDirectory_key", genDirectory);
+	public void unsetMessageForGenerationDirectory() {
+		messageManager.removeMessage("GenerationDirectory_key", generationDirectory);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getTestsGenerationDirectory()
+	 */
+	public String getTestsGenerationDirectory() {
+		return testsGenerationDirectory.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setTestsGenerationDirectory(String newValue)
+	 */
+	public void setTestsGenerationDirectory(String newValue) {
+		if (newValue != null) {
+			testsGenerationDirectory.setText(newValue);
+		} else {
+			testsGenerationDirectory.setText("");  //$NON-NLS-1$
+		}
+	}
+
+	public void setMessageForTestsGenerationDirectory(String msg, int msgLevel) {
+		messageManager.addMessage("TestsGenerationDirectory_key", msg, null, msgLevel, testsGenerationDirectory);
+	}
+
+	public void unsetMessageForTestsGenerationDirectory() {
+		messageManager.removeMessage("TestsGenerationDirectory_key", testsGenerationDirectory);
 	}
 
 	/**

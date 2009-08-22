@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionPart.java,v 1.6 2009/07/31 14:18:43 glefur Exp $
+ * $Id: GenViewsRepositoryPropertiesEditionPart.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -76,13 +76,13 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 
 	/**
-	 * @return the basePackage
+	 * @return the Base package
 	 */
 	public String getBasePackage();
 
 	/**
-	 * Defines a new basePackage
-	 * @param newValue the new basePackage to set
+	 * Defines a new Base package
+	 * @param newValue the new Base package to set
 	 */
 	public void setBasePackage(String newValue);
 
@@ -91,20 +91,20 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	public void unsetMessageForBasePackage();
 
 	/**
-	 * @return the helpStrategy
+	 * @return the Help strategy
 	 */
 	public Enumerator getHelpStrategy();
 
 	/**
-	 * Init the helpStrategy
+	 * Init the Help strategy
 	 * @param eenum the enum to manage
 	 * @param current the current value
 	 */
 	public void initHelpStrategy(EEnum eenum, Enumerator current);
 
 	/**
-	 * Defines a new helpStrategy
-	 * @param newValue the new helpStrategy to set
+	 * Defines a new Help strategy
+	 * @param newValue the new Help strategy to set
 	 */
 	public void setHelpStrategy(Enumerator newValue);
 
@@ -113,30 +113,30 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 
 	/**
-	 * @return the swtViews
+	 * @return the SWT views
 	 */
-	public Boolean getSwtViews();
+	public Boolean getSWTViews();
 
 	/**
-	 * Defines a new swtViews
-	 * @param newValue the new swtViews to set
+	 * Defines a new SWT views
+	 * @param newValue the new SWT views to set
 	 */
-	public void setSwtViews(Boolean newValue);
+	public void setSWTViews(Boolean newValue);
 
 
 
 
 
 	/**
-	 * @return the formViews
+	 * @return the Forms views
 	 */
-	public Boolean getFormViews();
+	public Boolean getFormsViews();
 
 	/**
-	 * Defines a new formViews
-	 * @param newValue the new formViews to set
+	 * Defines a new Forms views
+	 * @param newValue the new Forms views to set
 	 */
-	public void setFormViews(Boolean newValue);
+	public void setFormsViews(Boolean newValue);
 
 
 
