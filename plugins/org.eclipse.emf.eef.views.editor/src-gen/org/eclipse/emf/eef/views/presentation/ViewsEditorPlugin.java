@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsEditorPlugin.java,v 1.2 2009/06/09 15:47:42 sbouchet Exp $
+ * $Id: ViewsEditorPlugin.java,v 1.3 2009/08/22 09:46:11 glefur Exp $
  */
 package org.eclipse.emf.eef.views.presentation;
 
@@ -48,7 +48,7 @@ public final class ViewsEditorPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ViewsEditorPlugin() {
-		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, });
+		super(new ResourceLocator[] {});
 	}
 
 	/**

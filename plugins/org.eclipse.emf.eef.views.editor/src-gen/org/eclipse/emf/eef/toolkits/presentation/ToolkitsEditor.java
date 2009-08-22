@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsEditor.java,v 1.1 2009/04/30 17:17:23 glefur Exp $
+ * $Id: ToolkitsEditor.java,v 1.2 2009/08/22 09:46:11 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.presentation;
 
@@ -608,7 +608,6 @@ public class ToolkitsEditor extends MultiPageEditorPart implements
 		adapterFactory.addAdapterFactory(new ViewsItemProviderAdapterFactory());
 		adapterFactory
 				.addAdapterFactory(new ToolkitsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory
 				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
