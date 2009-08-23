@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.codegen.ui.generators.actions;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
@@ -91,9 +92,13 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 											if (eefGenModel.getViewsRepositories() != null)
 												count += eefGenModel.getViewsRepositories().size() * 5;
 											monitor.beginTask("Generating EEF Architecture", count);
-											GenerateAll generator = new GenerateAll(target.getLocation().toFile(), eefGenModel);
+											GenerateAll generator = new GenerateAll(target, eefGenModel);
 											generator.doGenerate(monitor);
-											target.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+											for (Iterator<IContainer> iterator = generator.getGenerationTargets().iterator(); 
+												iterator.hasNext();) {
+												IContainer nextContainer = iterator.next();
+												nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+											}
 											monitor.worked(1);
 										}
 									}

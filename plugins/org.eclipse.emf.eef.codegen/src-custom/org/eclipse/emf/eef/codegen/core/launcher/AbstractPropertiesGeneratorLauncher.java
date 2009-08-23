@@ -13,7 +13,10 @@ package org.eclipse.emf.eef.codegen.core.launcher;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -27,7 +30,9 @@ import org.osgi.framework.Bundle;
 public abstract class AbstractPropertiesGeneratorLauncher implements
 		IPropertiesGeneratorLauncher {
 
-
+	/**
+	 * Name of the launcher
+	 */
 	private String name;
 
 	/**
@@ -44,6 +49,18 @@ public abstract class AbstractPropertiesGeneratorLauncher implements
 		this.name = name;
 	}
 	
+	/**
+	 * A set containing the generation target
+	 */
+	protected Set<IContainer> targetContainer = new HashSet<IContainer>();
+	
+	/**
+	 * @return the targetContainer
+	 */
+	public Set<IContainer> getTargetContainer() {
+		return targetContainer;
+	}
+
 	/**
 	 * Finds the template in the plug-in. Returns the template plug-in URI.
 	 * 

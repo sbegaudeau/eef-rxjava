@@ -16,11 +16,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.acceleo.model.mtl.Module;
 import org.eclipse.acceleo.model.mtl.MtlPackage;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -60,6 +63,11 @@ public class GenerateAll {
 	 * The Generation PSM
 	 */
 	private EEFGenModel eefGenModel;
+	
+	/**
+	 * A set containing the target folder for generation
+	 */
+	private Set<IContainer> generationTargets;
 
 	/**
 	 * Constructor.
@@ -71,11 +79,20 @@ public class GenerateAll {
 	 * @throws IOException
 	 *             Thrown when the output cannot be saved.
 	 */
-	public GenerateAll(File targetFolder, EEFGenModel eefGenModel) {
-		this.targetFolder = targetFolder;
+	public GenerateAll(IContainer targetFolder, EEFGenModel eefGenModel) {
+		this.targetFolder = targetFolder.getLocation().toFile();
 		this.eefGenModel = eefGenModel;
+		this.generationTargets = new HashSet<IContainer>();
+		this.generationTargets.add(targetFolder);
 	}
 
+	/**
+	 * @return the generationTargets
+	 */
+	public Set<IContainer> getGenerationTargets() {
+		return generationTargets;
+	}
+	
 	/**
 	 * Launches the generation.
 	 * 
@@ -288,6 +305,8 @@ public class GenerateAll {
 		for (AbstractPropertiesGeneratorLauncher launcher : PropertiesGeneratorLaunchersServices
 				.getInstance().getlaunchers()) {
 			launcher.doGenerate(eefGenModel, targetFolder, monitor);
+			if (!launcher.getTargetContainer().isEmpty())
+				generationTargets.addAll(launcher.getTargetContainer());
 		}
 	}
 
