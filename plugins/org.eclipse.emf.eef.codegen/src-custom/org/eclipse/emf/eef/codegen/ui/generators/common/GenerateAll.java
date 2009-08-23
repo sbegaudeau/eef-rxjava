@@ -94,57 +94,10 @@ public class GenerateAll {
 		ResourceSet resourceSet = eefGenModel.eResource().getResourceSet();
 		registerResourceFactories(resourceSet);
 		registerPackages(resourceSet);
-		List<Module> modules = loadAllModules(allModulesURI, resourceSet);
-		// Map<Module, Set<String>> generationTemplates = new HashMap<Module, Set<String>>();
-		// for (Module module : modules) {
-		// Set<String> templates = null;
-		// if (SubPropertiesEditionComponent.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(SubPropertiesEditionComponent.TEMPLATE_NAMES));
-		// } else if (PropertiesEditionComponent.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(PropertiesEditionComponent.TEMPLATE_NAMES));
-		// } else if (DynamicPropertiesEditionComponent.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(DynamicPropertiesEditionComponent.TEMPLATE_NAMES));
-		// } else if (PackagePropertiesEditionPolicyProvider.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(PackagePropertiesEditionPolicyProvider.TEMPLATE_NAMES));
-		// } else if (PackagePropertiesEditionProvider.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(PackagePropertiesEditionProvider.TEMPLATE_NAMES));
-		// } else if (PropertiesEditionProvider.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(PropertiesEditionProvider.TEMPLATE_NAMES));
-		// } else if (Plugin_xml.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(Plugin_xml.TEMPLATE_NAMES));
-		// } else if (PropertiesEditionPart.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(PropertiesEditionPart.TEMPLATE_NAMES));
-		// } else if (FormPropertiesEditionPart.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(FormPropertiesEditionPart.TEMPLATE_NAMES));
-		// } else if (IPropertiesEditionPart.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(IPropertiesEditionPart.TEMPLATE_NAMES));
-		// } else if (ViewsRepository.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(ViewsRepository.TEMPLATE_NAMES));
-		// } else if (ContextMessages.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(ContextMessages.TEMPLATE_NAMES));
-		// } else if (ContextMessagesProperties.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays.asList(ContextMessagesProperties.TEMPLATE_NAMES));
-		// } else if (ContextMessagesPropertiesFR.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(ContextMessagesPropertiesFR.TEMPLATE_NAMES));
-		// } else if (PackagePropertiesEditionPartProvider.MODULE_FILE_NAME.equals(module.getName())) {
-		// templates = new LinkedHashSet<String>(Arrays
-		// .asList(PackagePropertiesEditionPartProvider.TEMPLATE_NAMES));
-		// }
-		// generationTemplates.put(module, templates);
-		// }
-		// for (GenEditionContext genEditionContext : eefGenModel.getEditionContexts()) {
-		// AcceleoService.doGenerate(generationTemplates, genEditionContext, targetFolder, false,
-		// BasicMonitor.toMonitor(monitor));
-		// }
+		loadAllModules(allModulesURI, resourceSet);
 
 		for (GenEditionContext genEditionContext : eefGenModel.getEditionContexts()) {
-			List arguments = new ArrayList<Object>();
+			List<Object> arguments = new ArrayList<Object>();
 			arguments.add(getBasePackage(genEditionContext));
 			monitor.subTask("Generating simple components");
 			final URI template1 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
@@ -260,8 +213,8 @@ public class GenerateAll {
 		}
 		for (GenViewsRepository genViewsRepository : eefGenModel.getViewsRepositories()) {
 			monitor.subTask("Generating parts interfaces");
-			List argumentsEmpty = new ArrayList();
-			List arguments2 = new ArrayList();
+			List<Object> argumentsEmpty = new ArrayList<Object>();
+			List<Object> arguments2 = new ArrayList<Object>();
 			arguments2.add(genViewsRepository.getBasePackage());
 			final URI template3 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
 					"/org/eclipse/emf/eef/codegen/parts/IPropertiesEditionPart.emtl"));
