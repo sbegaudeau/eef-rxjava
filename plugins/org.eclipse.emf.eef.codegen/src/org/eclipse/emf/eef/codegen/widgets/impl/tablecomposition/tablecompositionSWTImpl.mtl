@@ -333,7 +333,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	/**
 	 * 
 	 */
-	private void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
+	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		[editor.name.toJavaIdentifier()/]EditUtil.moveElement(element, oldIndex, newIndex);
@@ -368,7 +368,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	/**
 	 * 
 	 */
-	private void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
+	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
 		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
@@ -382,7 +382,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	/**
 	 * 
 	 */
-	private void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
+	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
