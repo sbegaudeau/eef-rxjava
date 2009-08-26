@@ -105,12 +105,15 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 [for (ePackage : EPackage | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(ecore::EClass).ePackage))]
 import [ePackage.qualifiedMetamodelPackage(basePackage)/];
 [/for]
+[comment]
 [let deferredPec : PropertiesEditionComponent = if (pec.views->includes(view))
 	then pec
 	else pec.referencedBinding.binding->select(views->includes(view))->first().oclAsType(components::PropertiesEditionComponent)
 	endif]
 import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 [/let]
+[/comment]
+import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;

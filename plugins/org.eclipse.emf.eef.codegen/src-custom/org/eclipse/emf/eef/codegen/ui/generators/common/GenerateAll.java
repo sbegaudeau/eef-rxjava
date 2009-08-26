@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
@@ -108,7 +109,8 @@ public class GenerateAll {
 		EObject model;
 		// fixed acceleo's overriding bug
 		List<URI> allModulesURI = getAllmodulesURI();
-		ResourceSet resourceSet = eefGenModel.eResource().getResourceSet();
+//		ResourceSet resourceSet = eefGenModel.eResource().getResourceSet();
+		ResourceSet resourceSet = new ResourceSetImpl();
 		registerResourceFactories(resourceSet);
 		registerPackages(resourceSet);
 		loadAllModules(allModulesURI, resourceSet);
@@ -542,6 +544,17 @@ public class GenerateAll {
 				"/org/eclipse/emf/eef/codegen/widgets/impl/text/textGettersSetters.emtl")));
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
 				"/org/eclipse/emf/eef/codegen/widgets/impl/textarea/textareaGettersSetters.emtl")));
+		
+		// it becomes urgent to solve the problem
+
+		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
+			"/org/eclipse/emf/eef/tests/codegen/main/cases/ComponentTests.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
+			"/org/eclipse/emf/eef/tests/codegen/services/common/testsNaming.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
+			"/org/eclipse/emf/eef/tests/codegen/services/widgets/api/widgetTest.emtl")));
+		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
+			"/org/eclipse/emf/eef/tests/codegen/services/widgets/impl/text/textTest.emtl")));
 
 		return list;
 	}
