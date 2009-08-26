@@ -100,7 +100,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	protected FormToolkit widgetFactory;
 
-	private ButtonsModeEnum button_mode = ButtonsModeEnum.BROWSE;
+	protected ButtonsModeEnum button_mode = ButtonsModeEnum.BROWSE;
 
 	private Resource mainResource;
 
