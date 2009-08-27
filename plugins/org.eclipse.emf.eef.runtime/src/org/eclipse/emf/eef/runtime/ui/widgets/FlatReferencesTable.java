@@ -186,7 +186,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * @param list
 	 * @param newValues
 	 */
-	private void applyDiff(EMFListEditUtil list, List newValues) {
+	protected void applyDiff(EMFListEditUtil list, List newValues) {
 		List virtualList = new ArrayList(list.getVirtualList());
 		for (Object element : virtualList) {
 			if (element instanceof EObject) {
