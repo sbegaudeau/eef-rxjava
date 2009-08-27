@@ -109,8 +109,7 @@ public class GenerateAll {
 		EObject model;
 		// fixed acceleo's overriding bug
 		List<URI> allModulesURI = getAllmodulesURI();
-//		ResourceSet resourceSet = eefGenModel.eResource().getResourceSet();
-		ResourceSet resourceSet = new ResourceSetImpl();
+		ResourceSet resourceSet = eefGenModel.eResource().getResourceSet();
 		registerResourceFactories(resourceSet);
 		registerPackages(resourceSet);
 		loadAllModules(allModulesURI, resourceSet);

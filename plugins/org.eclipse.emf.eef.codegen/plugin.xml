@@ -86,7 +86,7 @@
    <extension
          point="org.eclipse.acceleo.engine.dynamic.templates">
       <templates
-            path="src/">
+            path="src/org/eclipse/emf/eef/codegen/widgets/impl/">
       </templates>
    </extension>
 </plugin>
