@@ -25,7 +25,7 @@ import [v.vrPackage()/].parts.[v.vrClass()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-[for (view : View | v.eAllContents(views::View)) ? (not view.involvedPropertiesEditionComponent().oclIsUndefined())]
+[for (view : View | v.eAllContents(views::View)) ? (view.elements->size() > 0)]
 import [v.vrPackage()/].parts.forms.[view.pepFormClass()/];
 import [v.vrPackage()/].parts.impl.[view.pepClass()/];
 [/for]
@@ -50,7 +50,7 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
-		[for (view : View | v.eAllContents(views::View)) ? (not view.involvedPropertiesEditionComponent().oclIsUndefined())]
+		[for (view : View | v.eAllContents(views::View)) ? (view.elements->size() > 0)]
 		if (key == [view.editorID()/].class) {
 			if (kind == [v.vrClass()/].SWT_KIND)
 				return new [view.pepClass()/](component);

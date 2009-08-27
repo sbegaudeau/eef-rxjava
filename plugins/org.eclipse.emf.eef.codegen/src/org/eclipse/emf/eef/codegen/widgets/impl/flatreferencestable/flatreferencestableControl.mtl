@@ -24,8 +24,13 @@
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-					command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+					EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
+					if (!elements.getElementsToAdd().isEmpty()) 
+						command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], elements.getElementsToAdd()));
+					if (!elements.getElementsToRemove().isEmpty()) 
+						command.append(RemoveCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], elements.getElementsToRemove()));
+				}
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
@@ -35,11 +40,6 @@
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
-			//List [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
-			//for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
-			//}
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
@@ -65,7 +65,7 @@
 				}
 
 			});
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectStrictFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
@@ -82,9 +82,10 @@
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
-		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-			if (PropertiesEditionEvent.ADD == event.getKind()) {
-				[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
+			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+					[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
+					command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+				}
 				command.append(SetCommand.create(liveEditingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], event.getNewValue()));
 				command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
 			}
@@ -140,7 +141,7 @@
 				}
 
 			});
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectStrictFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
