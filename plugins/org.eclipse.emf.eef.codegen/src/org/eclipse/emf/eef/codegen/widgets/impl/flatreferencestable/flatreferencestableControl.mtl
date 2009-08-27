@@ -25,12 +25,12 @@
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-					EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
-					if (!elements.getElementsToAdd().isEmpty()) 
-						command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], elements.getElementsToAdd()));
-					if (!elements.getElementsToRemove().isEmpty()) 
-						command.append(RemoveCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], elements.getElementsToRemove()));
-				}
+				EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
+				if (!elements.getElementsToAdd().isEmpty()) 
+					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], elements.getElementsToAdd()));
+				if (!elements.getElementsToRemove().isEmpty()) 
+					command.append(RemoveCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], elements.getElementsToRemove()));
+			}
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
@@ -83,16 +83,16 @@
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+				EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
+				for (EObject [editionElement.model.name.toJavaIdentifier()/]ToAdd : elements.getElementsToAdd()) {
 					[editionElement.model.eContainingClass.name.toUpperFirst()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
-					command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+					command.append(SetCommand.create(liveEditingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], [editionElement.model.name.toJavaIdentifier()/]ToAdd));
+					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
+					
 				}
-				command.append(SetCommand.create(liveEditingDomain, [editionElement.model.eContainingClass.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/], event.getNewValue()));
-				command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
+				for (EObject [editionElement.model.name.toJavaIdentifier()/]ToRemove : elements.getElementsToRemove()) 					
+					command.append(RemoveCommand.create(liveEditingDomain, [editionElement.model.name.toJavaIdentifier()/]ToRemove));
 			}
-			if (PropertiesEditionEvent.REMOVE == event.getKind()){
-				command.append(RemoveCommand.create(liveEditingDomain, event.getNewValue()));
-			}
-		}
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]
