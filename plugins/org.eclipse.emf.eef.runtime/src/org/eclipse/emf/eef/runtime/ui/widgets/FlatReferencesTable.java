@@ -152,7 +152,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 					EList<?> newValues = dialog.getResult();
 					if (newValues != null)
 						applyDiff(viewsEditUtil, newValues);
-					selectionChanged(new StructuredSelection(viewsEditUtil.getVirtualList()));
+					selectionChanged(new StructuredSelection(viewsEditUtil));
 					refresh();
 					break;
 
@@ -188,17 +188,19 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 */
 	protected void applyDiff(EMFListEditUtil list, List newValues) {
 		List virtualList = new ArrayList(list.getVirtualList());
-		for (Object element : virtualList) {
-			if (element instanceof EObject) {
-				if (!newValues.contains((EObject) element)) {
-					list.removeElement((EObject) element);
+		if (newValues != null) {
+			for (Object element : virtualList) {
+				if (element instanceof EObject) {
+					if (!newValues.contains((EObject) element)) {
+						list.removeElement((EObject) element);
+					}
 				}
 			}
-		}
-		for (Object element : newValues) {
-			if (element instanceof EObject) {
-				if (!virtualList.contains(element))
-					list.addElement((EObject) element);
+			for (Object element : newValues) {
+				if (element instanceof EObject) {
+					if (!virtualList.contains(element))
+						list.addElement((EObject) element);
+				}
 			}
 		}
 	}
