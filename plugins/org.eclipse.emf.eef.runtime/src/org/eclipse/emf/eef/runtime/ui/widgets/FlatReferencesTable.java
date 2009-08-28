@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -107,6 +108,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	protected EList<?> result;
 
+	private EReference containingFeature;
+
 	/**
 	 * Default contructor
 	 * @param parent the parent widget
@@ -144,9 +147,17 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			public void widgetSelected(SelectionEvent e) {
 				switch (button_mode) {
 				case BROWSE:
+					List currentValues = new ArrayList();
+					for (Iterator iterator = viewsEditUtil.getVirtualList().iterator(); iterator.hasNext();) {
+						EObject object = (EObject) iterator.next();
+						if (containingFeature == null)
+							currentValues.add(viewsEditUtil.foundCorrespondingEObject(object));
+						else
+							currentValues.add(viewsEditUtil.foundCorrespondingEObject(object).eGet(feature));
+					}
 					EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
 							getParent().getShell(),	delegatedLabelProvider,	editedElement,
-							feature.getEType(),	viewsEditUtil.getVirtualList(),	"Edit Feature",
+							feature.getEType(),	currentValues,	"Edit Feature",
 							getChoiceOfValues(), false,	true, filters, brFilters);
 					dialog.open();
 					EList<?> newValues = dialog.getResult();
@@ -289,6 +300,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * @param containingFeature  the containing feature in "rebound" case
 	 */
 	public void initComponent(EObject current, EReference containingFeature, EReference editedFeature) {
+		this.containingFeature = containingFeature;
 		this.feature = editedFeature;
 		if (containingFeature != null)
 			viewsEditUtil = new EMFListEditUtil(current, containingFeature, editedFeature);
