@@ -144,7 +144,19 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 		EObject eObjectToTest = resolveSemanticObject(toTest);
 		return eObjectToTest != null && eObjectToTest.eClass() == [pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]();
 	}
+	
+[pec.resolveSemanticObject()/]
 
+[additionalMethods()/]
+
+}
+[/file]
+	[/for]
+[/if]
+[/for]
+[/template]
+
+[template public resolveSemanticObject(pec : PropertiesEditionComponent)]
 	private EObject resolveSemanticObject(Object object) {
 		if (object instanceof EObject) {
 			return (EObject)object;
@@ -160,14 +172,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 		}
 		return null;
 	}
-
-[additionalMethods()/]
-
-}
-[/file]
-	[/for]
-[/if]
-[/for]
+	
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
