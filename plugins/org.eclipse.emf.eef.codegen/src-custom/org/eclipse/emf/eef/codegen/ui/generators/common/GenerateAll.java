@@ -544,17 +544,6 @@ public class GenerateAll {
 		list.add(getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
 				"/org/eclipse/emf/eef/codegen/widgets/impl/textarea/textareaGettersSetters.emtl")));
 		
-		// it becomes urgent to solve the problem
-
-		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
-			"/org/eclipse/emf/eef/tests/codegen/main/cases/ComponentTests.emtl")));
-		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
-			"/org/eclipse/emf/eef/tests/codegen/services/common/testsNaming.emtl")));
-		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
-			"/org/eclipse/emf/eef/tests/codegen/services/widgets/api/widgetTest.emtl")));
-		list.add(getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
-			"/org/eclipse/emf/eef/tests/codegen/services/widgets/impl/text/textTest.emtl")));
-
 		return list;
 	}
 
