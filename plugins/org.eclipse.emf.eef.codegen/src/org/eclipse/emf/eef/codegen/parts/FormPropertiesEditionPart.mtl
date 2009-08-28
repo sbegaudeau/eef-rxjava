@@ -207,9 +207,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 
 [/for]
 	
-	// [protected ('additional methods')]
-	
-	// [/protected]
+[view.additionalMethods()/]
 
 }	[/file]
 [/if]
@@ -299,14 +297,18 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		
 	}
 	
-	// [protected ('additional methods')]
-	
-	// [/protected]
+[view.additionalMethods()/]
 
 }
 	[/file]
 [/let][/for]
 [/for]
+[/template]
+
+[template public additionalMethods(view : View)]
+	// [protected ('additional methods')]
+	
+	// [/protected]
 [/template]
 
 [template public fullFilePath(view : View)]
