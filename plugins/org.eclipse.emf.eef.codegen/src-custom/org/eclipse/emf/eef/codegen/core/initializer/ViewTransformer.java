@@ -46,7 +46,6 @@ public class ViewTransformer extends AbstractTransformer {
 	private Map<EObject, List<ViewElement>> workingResolvTemp;
 	
 	private ViewsRepository repository;
-	private Category common;
 
 	/* ===== Constructor ===== */
 	
@@ -75,15 +74,10 @@ public class ViewTransformer extends AbstractTransformer {
 	public ViewsRepository genPackage2ViewsRepository(GenPackage genPackage, String repositoryKind) {
 		
 		repository = ViewsFactory.eINSTANCE.createViewsRepository();
-//		repository.setRepositoryKind(repositoryKind);
-//		repository.getRepositoryKind().add("SWT");
-//		repository.getRepositoryKind().add("Form");
+		repository.getRepositoryKind().add("SWT");
+		repository.getRepositoryKind().add("Form");
 		repository.setName(genPackage.getEcorePackage().getName());
 		repository.setDocumentation("Views repository for " + genPackage.getEcorePackage().getName() + " GenPackage");
-//		common = ViewsFactory.eINSTANCE.createCategory();
-//		common.setName("common");
-//		repository.getCategories().add(common);
-//		initCommonViews(common, genPackage);
 		Category views = ViewsFactory.eINSTANCE.createCategory();
 		views.setName(genPackage.getEcorePackage().getName());
 		repository.getCategories().add(views);
@@ -95,29 +89,6 @@ public class ViewTransformer extends AbstractTransformer {
 		
 		return repository;
 		
-	}
-	
-	private void initCommonViews(Category common, GenPackage genPackage) {
-		View proprietes = ViewsFactory.eINSTANCE.createView();
-		proprietes.setName("Propriétés");
-		ElementEditor listeProprietes = ViewsFactory.eINSTANCE.createElementEditor();
-		listeProprietes.setName("liste Propriétés");
-		listeProprietes.setRepresentation(getWidget("Table"));
-		proprietes.getElements().add(listeProprietes);
-		common.getViews().add(proprietes);
-		EPackage metamodel = genPackage.getEcorePackage();
-		addElementToEObject(findEClass(metamodel, "Propriete"), proprietes);
-		addElementToEObject(findEStructuralFeature(metamodel, "listeProprietes"), listeProprietes);
-		
-		View stereotypes = ViewsFactory.eINSTANCE.createView();
-		stereotypes.setName("Stéréotypes");
-		ElementEditor listeStereotypes = ViewsFactory.eINSTANCE.createElementEditor();
-		listeStereotypes.setName("liste Stéréotypes");
-		listeStereotypes.setRepresentation(getWidget("Table"));
-		stereotypes.getElements().add(listeStereotypes);
-		common.getViews().add(stereotypes);
-		addElementToEObject(findEClass(metamodel, "Stereotype"), stereotypes);
-		addElementToEObject(findEStructuralFeature(metamodel, "listeStereotypes"), listeStereotypes);
 	}
 
 	public List<View> genClass2Views(GenClass genClass) {
@@ -201,14 +172,14 @@ public class ViewTransformer extends AbstractTransformer {
 			EReference reference = (EReference) feature;
 			if (reference.isContainment()) {
 				if (reference.isMany())
-					result.setRepresentation(getWidget("Table"));
+					result.setRepresentation(getWidget("AdvancedTableComposition"));
 				else {
 					// I don't now what is it for the moment !
 				}
 			}
 			else {
 				if (reference.isMany())
-					result.setRepresentation(getWidget("ReferencesTable"));
+					result.setRepresentation(getWidget("AdvancedReferencesTable"));
 				else
 					result.setRepresentation(getWidget("EObjectFlatComboViewer"));
 			}

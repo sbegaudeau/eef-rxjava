@@ -46,9 +46,9 @@ public abstract class AbstractTransformer {
 		}
 		if (feature instanceof EReference) {
 			String genConstraint = genConstraint(feature, "significant");
-			if (genConstraint != null && genConstraint.equals("true"))
-				return true;
-			return false;
+			if (genConstraint != null && genConstraint.equals("false"))
+				return false;
+			return true;
 		}
 		return true;
 	}

@@ -38,10 +38,6 @@ public class ComponentTransformer extends AbstractTransformer {
 
 	private Map<EObject, List<ViewElement>> workingResolvTemp;
 	
-	private PropertiesEditionComponent proprietes;
-	
-	private PropertiesEditionComponent stereotypes;
-
 	/* ===== Constructor ===== */
 
 	public ComponentTransformer(Map<EObject, List<ViewElement>> workingResolvTemp) {
@@ -54,10 +50,6 @@ public class ComponentTransformer extends AbstractTransformer {
 		PropertiesEditionContext context = ComponentsFactory.eINSTANCE.createPropertiesEditionContext();
 		context.setModel(genPackage);
 		context.setDocumentation("Edition Context for " + genPackage.getEcorePackage().getName() + " GenPackage");
-		Category common = MappingFactory.eINSTANCE.createCategory();
-		common.setName("common");
-//		initCommonCategory(common,genPackage);
-		context.getCategories().add(common);
 		Category components = MappingFactory.eINSTANCE.createCategory();
 		components.setName(genPackage.getEcorePackage().getName());
 		context.getCategories().add(components);
@@ -67,43 +59,6 @@ public class ComponentTransformer extends AbstractTransformer {
 			}
 		}
 		return context;
-	}
-
-	private void initCommonCategory(Category common, GenPackage genPackage) {
-		EPackage metamodel = genPackage.getEcorePackage();
-		EClass elementModele = findEClass(metamodel, "ElementModele");
-
-		proprietes = ComponentsFactory.eINSTANCE.createPropertiesEditionComponent();
-		proprietes.setName("Proprietes");
-		proprietes.setModel(elementModele);
-		proprietes.setExplicit(false);
-		ViewElement propertiesView = findCommonView(metamodel, "Propriete");
-		if (propertiesView != null)
-			proprietes.getViews().add((View) propertiesView);
-		PropertiesEditionElement elementProprietes = ComponentsFactory.eINSTANCE.createPropertiesEditionElement();
-		elementProprietes.setName("listeProprietes");
-		elementProprietes.setModel(findEStructuralFeature(metamodel, "listeProprietes"));
-		List<ViewElement> listesProprieteViews = workingResolvTemp.get(findEStructuralFeature(metamodel, "listeProprietes"));
-		if (listesProprieteViews != null && listesProprieteViews.size() == 1)
-			elementProprietes.getViews().add((ElementEditor) listesProprieteViews.get(0));
-		proprietes.getProperties().add(elementProprietes);
-		common.getBindings().add(proprietes);
-		
-		stereotypes = ComponentsFactory.eINSTANCE.createPropertiesEditionComponent();
-		stereotypes.setName("Stereotypes");
-		stereotypes.setModel(elementModele);
-		stereotypes.setExplicit(false);
-		ViewElement stereotypeView = findCommonView(metamodel, "Stereotype");
-		if (stereotypeView != null)
-			stereotypes.getViews().add((View) stereotypeView);
-		PropertiesEditionElement elementStereotypes = ComponentsFactory.eINSTANCE.createPropertiesEditionElement();
-		elementStereotypes.setName("listeStereotypes");
-		elementStereotypes.setModel(findEStructuralFeature(metamodel, "listeStereotypes"));
-		List<ViewElement> listesStereotypeViews = workingResolvTemp.get(findEStructuralFeature(metamodel, "listeStereotypes"));
-		if (listesStereotypeViews != null && listesStereotypeViews.size() == 1)
-			elementStereotypes.getViews().add((ElementEditor) listesStereotypeViews.get(0));
-		stereotypes.getProperties().add(elementStereotypes);
-		common.getBindings().add(stereotypes);
 	}
 
 	public PropertiesEditionComponent genClass2Component(GenClass genClass, GenPackage genPackage) {
@@ -120,14 +75,6 @@ public class ComponentTransformer extends AbstractTransformer {
 				if (structuralFeature2EditionElement != null) component.getProperties().add(structuralFeature2EditionElement);
 			}
 		}
-//		if (findEClass(genPackage.getEcorePackage(), "ElementModele").isSuperTypeOf((EClass)component.getModel())) {
-//			ElementBindingReference propertiesBindingReference = MappingFactory.eINSTANCE.createElementBindingReference();
-//			propertiesBindingReference.setBinding(proprietes);
-//			component.getReferencedBinding().add(propertiesBindingReference);
-//			ElementBindingReference stereotypesBindingReference = MappingFactory.eINSTANCE.createElementBindingReference();
-//			stereotypesBindingReference.setBinding(stereotypes);
-//			component.getReferencedBinding().add(stereotypesBindingReference);
-//		}
 		return component;
 
 	}
@@ -174,17 +121,5 @@ public class ComponentTransformer extends AbstractTransformer {
 				return false;
 		}
 	}
-	
-	private ViewElement findCommonView(EPackage metamodel, String name) {
-		List<ViewElement> proprieteViews = workingResolvTemp.get(findEClass(metamodel, name));
-		if (proprieteViews != null && proprieteViews.size() > 0) {
-			for (ViewElement viewElement : proprieteViews) {
-				if (viewElement.eContainer() instanceof org.eclipse.emf.eef.views.Category && "common".equals(((org.eclipse.emf.eef.views.Category)viewElement.eContainer()).getName()))
-					return viewElement;
-			}
-		}
-		return null;
-	}
-
 	
 }
