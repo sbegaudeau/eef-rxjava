@@ -179,10 +179,10 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 [pec.qualifiedPropertySection(view).toPath()/].java
 [/template]
 
-[comment overrides this template if additional imports is needed/]
-[template public additionalImports()]
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports(v : View)]
 [/template]
 
 [comment overrides this template if additional methods are needed/]
-[template public additionalMethods()]
+[template public additionalMethods(v : View)]
 [/template]
