@@ -176,7 +176,7 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 	}
 [/template]
 
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isInteger() or editor.model.oclAsType(ecore::EAttribute).isShort())]
+[template public partSetter(editor : PropertiesEditionElement) ? (editor.model.oclAsType(ecore::EAttribute).isInteger() or editor.model.oclAsType(ecore::EAttribute).isShort()or editor.model.oclAsType(ecore::EAttribute).isLong())]
 [editor.partSetterSignature()/] {
 		[editor.views->first().name.toJavaIdentifier()/].setText(newValue.toString());
 	}

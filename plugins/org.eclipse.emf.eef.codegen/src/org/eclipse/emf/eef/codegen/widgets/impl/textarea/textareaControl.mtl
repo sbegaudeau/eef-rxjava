@@ -57,6 +57,8 @@
 				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isLong())]
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
 [else]

@@ -27,5 +27,8 @@
 [query public isEnum(a : EAttribute) : Boolean = 
 	not oclIsUndefined() and eType.oclIsKindOf(ecore::EEnum)/]
 
+[query public isLong(a : EAttribute) : Boolean = 
+    not oclIsUndefined() and eType.name = 'ELong' or eType.name = 'Long'/]
+
 [query public isDouble(a : EAttribute) : Boolean = 
 	not oclIsUndefined() and eType.name = 'EDouble' or eType.name = 'Double'/]
