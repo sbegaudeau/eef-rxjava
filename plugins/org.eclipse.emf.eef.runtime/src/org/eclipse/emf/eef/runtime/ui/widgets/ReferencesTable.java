@@ -47,9 +47,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 
 /**
- * Base class for a complex section composite. This composite has a label, a table that describes a tree
- * structure, and four buttons on the side of the table to add an element into the table, remove selected
- * element(s), move up or down the selected element.
+ * Base class for a complex section composite. This composite has a label, a
+ * table that describes a tree structure, and four buttons on the side of the
+ * table to add an element into the table, remove selected element(s), move up
+ * or down the selected element.
  * 
  * @author Remi SCHNEKENBURGER
  * @author Patrick Tessier
@@ -57,7 +58,8 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWidget {
+public class ReferencesTable<T extends EObject> implements
+		IPropertiesFilteredWidget {
 
 	/**
 	 * Image for the add element button.
@@ -141,15 +143,19 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 	private Listener tableListener;
 
+	private int upperBound = -1;
+	private int lowerBound = 0;
 	/**
-	 * The listener used by the client to handle business events (Add, Remove, Move, NavigateTo)
+	 * The listener used by the client to handle business events (Add, Remove,
+	 * Move, NavigateTo)
 	 */
 	private ReferencesTableListener<T> referencesTableListener;
 
 	private String labelToDisplay;
 
 	/**
-	 * The Form tool kit use to use this widget in an Eclipse Forms compliant mode
+	 * The Form tool kit use to use this widget in an Eclipse Forms compliant
+	 * mode
 	 */
 	private FormToolkit widgetFactory;
 
@@ -187,7 +193,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 	 * @param the
 	 *            listener to handle Add, Remove, Move and NavigateTo events
 	 */
-	public ReferencesTable(String labeltoDisplay, ReferencesTableListener<T> referenceListener) {
+	public ReferencesTable(String labeltoDisplay,
+			ReferencesTableListener<T> referenceListener) {
 		this.labelToDisplay = labeltoDisplay;
 		this.addButtonlistener = new AddButtonlistener();
 		this.removeButtonlistener = new RemoveButtonlistener();
@@ -198,7 +205,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		addTableReferenceListener(referenceListener);
 	}
 
-	public void addTableReferenceListener(ReferencesTableListener<T> referenceListener) {
+	public void addTableReferenceListener(
+			ReferencesTableListener<T> referenceListener) {
 		this.referencesTableListener = referenceListener;
 	}
 
@@ -252,7 +260,7 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 	public void createControls(Composite parent) {
 		composite = createComposite(parent);
 		if (parent instanceof ExpandableComposite) {
-			((ExpandableComposite)parent).setClient(composite);
+			((ExpandableComposite) parent).setClient(composite);
 		}
 		FormLayout formLayout = new FormLayout();
 		formLayout.marginTop = 7;
@@ -267,9 +275,11 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		Control helpButton = null;
 		if (helpText != null) {
 			if (widgetFactory != null) {
-				helpButton = FormUtils.createHelpButton(widgetFactory, composite, helpText, null); //$NON-NLS-1$
+				helpButton = FormUtils.createHelpButton(widgetFactory,
+						composite, helpText, null); //$NON-NLS-1$
 			} else {
-				helpButton = SWTUtils.createHelpButton(composite, helpText, null); //$NON-NLS-1$
+				helpButton = SWTUtils.createHelpButton(composite, helpText,
+						null); //$NON-NLS-1$
 			}
 			helpButton.setLayoutData(data);
 		}
@@ -287,9 +297,11 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
 		if (helpText != null) {
-			data.right = new FormAttachment(helpButton, -ITabbedPropertyConstants.HSPACE);
+			data.right = new FormAttachment(helpButton,
+					-ITabbedPropertyConstants.HSPACE);
 		} else {
-			data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
+			data.right = new FormAttachment(100,
+					-ITabbedPropertyConstants.HSPACE);
 		}
 		removeButton.setLayoutData(data);
 		removeButton.addMouseListener(removeButtonlistener);
@@ -303,7 +315,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		// data.top = new FormAttachment(label,
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		data.right = new FormAttachment(removeButton, -ITabbedPropertyConstants.HSPACE);
+		data.right = new FormAttachment(removeButton,
+				-ITabbedPropertyConstants.HSPACE);
 		addButton.setLayoutData(data);
 		addButton.addMouseListener(addButtonlistener);
 
@@ -317,7 +330,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		// data.top = new FormAttachment(removeButton,
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		data.right = new FormAttachment(addButton, -ITabbedPropertyConstants.HSPACE);
+		data.right = new FormAttachment(addButton,
+				-ITabbedPropertyConstants.HSPACE);
 		upButton.setLayoutData(data);
 		upButton.addMouseListener(upButtonlistener);
 
@@ -331,7 +345,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		// data.top = new FormAttachment(upButton,
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		data.right = new FormAttachment(upButton, -ITabbedPropertyConstants.HSPACE);
+		data.right = new FormAttachment(upButton,
+				-ITabbedPropertyConstants.HSPACE);
 		downButton.setLayoutData(data);
 		downButton.addMouseListener(downButtonlistener);
 
@@ -340,7 +355,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		// label.setLayout(new FormLayout());
 		data = new FormData();
 		data.left = new FormAttachment(2, 0);
-		data.right = new FormAttachment(downButton, -ITabbedPropertyConstants.HSPACE - 5/* 50 */);
+		data.right = new FormAttachment(downButton,
+				-ITabbedPropertyConstants.HSPACE - 5/* 50 */);
 		data.top = new FormAttachment(0, 0);
 		label.setLayoutData(data);
 
@@ -349,13 +365,17 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		table = createTable(composite, SWT.MULTI | SWT.H_SCROLL | SWT.BORDER);
 		table.setLayout(new FormLayout());
 		table.setVisible(true);
-		table.addListener(SWT.MouseDoubleClick, tableListener = new EditItemListener());
+		table.addListener(SWT.MouseDoubleClick,
+				tableListener = new EditItemListener());
 		// createTable
 		tableViewer = new TableViewer(table);
 
+		// The filters.
+
 		data = new FormData();
 		data.height = 100;
-		data.top = new FormAttachment(label, ITabbedPropertyConstants.VSPACE + 4);
+		data.top = new FormAttachment(label,
+				ITabbedPropertyConstants.VSPACE + 4);
 		data.left = new FormAttachment(0, ITabbedPropertyConstants.HSPACE);
 		data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
 
@@ -364,11 +384,12 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 			@SuppressWarnings("unchecked")
 			public void mouseDoubleClick(MouseEvent e) {
-				if (table.getSelection() != null 
-					    && table.getSelectionCount() != 0 
-					    && table.getSelection()[0].getData() instanceof EObject) {
+				if (table.getSelection() != null
+						&& table.getSelectionCount() != 0
+						&& table.getSelection()[0].getData() instanceof EObject) {
 					// Navigate
-					referencesTableListener.navigateTo((T)table.getSelection()[0].getData());
+					referencesTableListener
+							.navigateTo((T) table.getSelection()[0].getData());
 				}
 			}
 
@@ -390,8 +411,47 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		composite.setLayoutData(layoutData);
 	}
 
+	public void setUpperBound(int value) {
+		if (value < 0)
+			this.upperBound = -1;
+		else
+			this.upperBound = value;
+	}
+
+	public int getUpperBound() {
+		return this.upperBound;
+	}
+
+	public void setLowerBound(int value) {
+		if (value <= 0)
+			this.lowerBound = 0;
+		else
+			this.lowerBound = value;
+	}
+
+	public int getLowerBound() {
+		return this.lowerBound;
+	}
+
 	public void refresh() {
 		tableViewer.refresh();
+		computeAddButtonStatus();
+		computeRemoveButtonStatus();
+	}
+
+	private void computeRemoveButtonStatus() {
+		if (listElement.size() > this.lowerBound)
+			removeButton.setEnabled(true);
+		else
+			removeButton.setEnabled(false);
+
+	}
+
+	private void computeAddButtonStatus() {
+		if (this.upperBound < 0 || listElement.size() < this.upperBound)
+			addButton.setEnabled(true);
+		else
+			addButton.setEnabled(false);
 	}
 
 	/**
@@ -503,7 +563,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 			for (int i = (tableItems.length - 1); i >= 0; i--) {
 				// Remove
-				referencesTableListener.handleRemove((T)tableItems[i].getData());
+				referencesTableListener.handleRemove((T) tableItems[i]
+						.getData());
 			}
 		}
 	}
@@ -544,7 +605,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 				int newIndex = listElement.indexOf(tableItems[i].getData()) - 1;
 				if (newIndex >= 0 && newIndex < listElement.size()) {
 					// Move
-					referencesTableListener.handleMove((T)tableItems[i].getData(), newIndex + 1, newIndex);
+					referencesTableListener.handleMove((T) tableItems[i]
+							.getData(), newIndex + 1, newIndex);
 				}
 			}
 
@@ -584,7 +646,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 				int newIndex = listElement.indexOf(tableItems[i].getData()) + 1;
 				if (newIndex >= 0 && newIndex < listElement.size()) {
 					// Move
-					referencesTableListener.handleMove((T)tableItems[i].getData(), newIndex - 1, newIndex);
+					referencesTableListener.handleMove((T) tableItems[i]
+							.getData(), newIndex - 1, newIndex);
 				}
 			}
 		}
@@ -601,7 +664,7 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 			if (table.getSelection().length > 0) {
 				TableItem item = table.getSelection()[0];
 				// Edit
-				referencesTableListener.handleEdit((T)item.getData());
+				referencesTableListener.handleEdit((T) item.getData());
 			}
 		}
 	}
@@ -655,7 +718,8 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 		for (ViewerFilter filter : bpFilters) {
 			this.tableViewer.addFilter(filter);
 		}
-
+		computeAddButtonStatus();
+		computeRemoveButtonStatus();
 	}
 
 	/**
@@ -691,9 +755,9 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addBusinessRuleFilter(org.eclipse.
-	 * jface.viewers.ViewerFilter)
+	 * 
+	 * @seeorg.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#
+	 * addBusinessRuleFilter(org.eclipse. jface.viewers.ViewerFilter)
 	 */
 	public void addBusinessRuleFilter(ViewerFilter filter) {
 		this.bpFilters.add(filter);
@@ -701,9 +765,10 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter(org.eclipse.jface.viewers
-	 * .ViewerFilter)
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter
+	 * (org.eclipse.jface.viewers .ViewerFilter)
 	 */
 	public void addFilter(ViewerFilter filter) {
 		this.filters.add(filter);
@@ -711,9 +776,9 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeBusinessRuleFilter(org.eclipse
-	 * .jface.viewers.ViewerFilter)
+	 * 
+	 * @seeorg.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#
+	 * removeBusinessRuleFilter(org.eclipse .jface.viewers.ViewerFilter)
 	 */
 	public void removeBusinessRuleFilter(ViewerFilter filter) {
 		this.bpFilters.remove(filter);
@@ -721,9 +786,10 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter(org.eclipse.jface.viewers
-	 * .ViewerFilter)
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter
+	 * (org.eclipse.jface.viewers .ViewerFilter)
 	 */
 	public void removeFilter(ViewerFilter filter) {
 		this.filters.remove(filter);

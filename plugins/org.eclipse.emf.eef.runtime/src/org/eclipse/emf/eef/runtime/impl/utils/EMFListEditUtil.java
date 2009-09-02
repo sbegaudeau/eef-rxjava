@@ -80,7 +80,8 @@ public class EMFListEditUtil {
 	 * @param feature
 	 *            the feature to manage
 	 */
-	public EMFListEditUtil(EObject eObject, EReference containingFeature, EReference feature) {
+	public EMFListEditUtil(EObject eObject, EReference containingFeature,
+			EReference feature) {
 		this.feature = feature;
 		this.containingFeature = containingFeature;
 		init(eObject);
@@ -94,17 +95,24 @@ public class EMFListEditUtil {
 	 */
 	public void reinit(EObject eObject) {
 		// Warn !! this clear all the recorded modification
-		if (feature.isMany() && containingFeature == null) {
+		if (containingFeature == null) {
+			if (feature.isMany()) {
 			// default init case
 			this.copy.clear();
-			for (Iterator<EObject> iterator = clone(eObject.eGet(feature)).iterator(); iterator.hasNext();) {
+			for (Iterator<EObject> iterator = clone(eObject.eGet(feature))
+					.iterator(); iterator.hasNext();) {
 				EObject next = iterator.next();
 				this.copy.add(next);
+			}
+			} else {
+				this.copy.clear();
+				this.copy.addAll(clone(eObject.eGet(feature)));
 			}
 		} else if (containingFeature != null && containingFeature.isMany()) {
 			// model navigation
 			this.copy.clear();
-			for (Iterator<EObject> iterator = clone(eObject.eGet(containingFeature)).iterator(); iterator
+			for (Iterator<EObject> iterator = clone(
+					eObject.eGet(containingFeature)).iterator(); iterator
 					.hasNext();) {
 				EObject next = iterator.next();
 				this.copy.add(next);
@@ -126,9 +134,13 @@ public class EMFListEditUtil {
 	 *            the feature to manage
 	 */
 	private void init(EObject eObject) {
-		if (feature.isMany() && containingFeature == null) {
+		if (containingFeature == null) {
+			if (feature.isMany()) {
 			// default init case
 			this.copy = clone(eObject.eGet(feature));
+			} else {
+				this.copy = clone(eObject.eGet(feature));
+			}
 		} else if (containingFeature != null && containingFeature.isMany()) {
 			// model navigation
 			this.copy = clone(eObject.eGet(containingFeature));
@@ -141,7 +153,7 @@ public class EMFListEditUtil {
 	}
 
 	public List getVirtualList() {
-		//todo infer generics -> modify gen
+		// todo infer generics -> modify gen
 		return copy;
 	}
 
@@ -157,7 +169,8 @@ public class EMFListEditUtil {
 		EObject foundedCorrespondingEObject = foundCorrespondingEObject(selectedElement);
 		if (foundedCorrespondingEObject != null) {
 			if (elementsToMove.containsKey(foundedCorrespondingEObject)) {
-				MoveElement moveElement = elementsToMove.get(foundedCorrespondingEObject);
+				MoveElement moveElement = elementsToMove
+						.get(foundedCorrespondingEObject);
 				moveElement.index = newIndex;
 			} else {
 				MoveElement moveElement = new MoveElement();
@@ -216,16 +229,16 @@ public class EMFListEditUtil {
 		return new ArrayList<MoveElement>(elementsToMove.values());
 	}
 
-	private List<EObject> clone(Object list) {
+	private List<EObject> clone(Object object) {
 		List<EObject> result = new ArrayList<EObject>();
-		if (list instanceof EList) {
-			EList<EObject> theList = (EList)list;
+		if (object instanceof EList) {
+			EList<EObject> theList = (EList) object;
 			copyToModelMap = new HashMap<EObject, EObject>(theList.size());
 			for (EObject next : theList) {
 				EObject copy = null;
 				if (containingFeature != null) {
 					// model navigation
-					EObject obj = (EObject)next.eGet(feature);
+					EObject obj = (EObject) next.eGet(feature);
 					if (obj != null)
 						copy = EcoreUtil.copy(obj);
 				} else {
@@ -236,6 +249,15 @@ public class EMFListEditUtil {
 					result.add(copy);
 					copyToModelMap.put(copy, next);
 				}
+			}
+		} else {
+			copyToModelMap = new HashMap<EObject, EObject>(1);
+			if (object instanceof EObject) {
+				copyToModelMap = new HashMap<EObject, EObject>(1);
+				EObject copy = null;
+				copy = EcoreUtil.copy((EObject) object);
+				copyToModelMap.put(copy, (EObject) object);
+				result.add(copy);
 			}
 		}
 		return result;
@@ -249,7 +271,8 @@ public class EMFListEditUtil {
 		// search in newly created elements
 		for (Iterator<EObject> iter = elementsToAdd.iterator(); iter.hasNext();) {
 			EObject next = iter.next();
-			if (EcoreUtil.equals(searchedObject, next) && searchedObject.equals(next))
+			if (EcoreUtil.equals(searchedObject, next)
+					&& searchedObject.equals(next))
 				return next;
 		}
 		return null;
@@ -271,8 +294,10 @@ public class EMFListEditUtil {
 		if (containingFeature == null) {
 			// default case
 			boolean containedInCopy = copyToModelMap.values().contains(toTest);
-			boolean isToBeRemoved = elementsToRemove.contains(foundCorrespondingEObject(toTest));
-			boolean isToBeAdded = elementsToAdd.contains(foundCorrespondingEObject(toTest));
+			boolean isToBeRemoved = elementsToRemove
+					.contains(foundCorrespondingEObject(toTest));
+			boolean isToBeAdded = elementsToAdd
+					.contains(foundCorrespondingEObject(toTest));
 			return containedInCopy ? !isToBeRemoved : isToBeAdded;
 		} else {
 			// model navigation
