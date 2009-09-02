@@ -364,7 +364,9 @@ public class ReferencesTable<T extends EObject> implements IPropertiesFilteredWi
 
 			@SuppressWarnings("unchecked")
 			public void mouseDoubleClick(MouseEvent e) {
-				if (table.getSelection() != null && table.getSelection()[0].getData() instanceof EObject) {
+				if (table.getSelection() != null 
+					    && table.getSelectionCount() != 0 
+					    && table.getSelection()[0].getData() instanceof EObject) {
 					// Navigate
 					referencesTableListener.navigateTo((T)table.getSelection()[0].getData());
 				}
