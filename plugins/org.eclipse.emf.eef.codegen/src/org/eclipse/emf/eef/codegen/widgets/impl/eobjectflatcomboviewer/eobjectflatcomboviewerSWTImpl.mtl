@@ -68,7 +68,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [comment ===== Case Widget = AdvancedEObjectFlatComboViewer ===== /]
-[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) ? (widget.name = 'AdvancedEObjectFlatComboViewer')]
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'AdvancedEObjectFlatComboViewer')]
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;

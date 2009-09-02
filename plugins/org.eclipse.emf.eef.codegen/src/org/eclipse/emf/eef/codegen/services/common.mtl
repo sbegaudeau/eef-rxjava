@@ -395,7 +395,7 @@ Object
 [/template]
 
 [template public toJavaIdentifier(s : String)]
-[s.toJavaIdentifierDelegate().toLowerFirst().replaceAll('(?i)^((class)|(package)|(default)|(case)|(if)|(else)|(while)|(for)|(do)|(until)|(transient)|(interface)|(super))$','$1_')/]
+[s.toJavaIdentifierDelegate().toLowerFirst().replaceAll('(?i)^((abstract)|(continue)|(for)|(new)|(switch)|(assert)|(default)|(goto)|(package)|(synchronized)|(boolean)|(do)|(if)|(private)|(this)|(break)|(double)|(implements)|(protected)|(throw)|(byte)|(else)|(import)|(public)|(throws)|(case)|(enum)|(instanceof)|(return)|(transient)|(catch)|(extends)|(int)|(short)|(try)|(char)|(final)|(interface)|(static)|(void)|(class)|(finally)|(long)|(strictfp)|(volatile)|(const)|(float)|(native)|(super)|(while))$','$1_')/]
 [/template]
 
 [template public toJavaClassifier(s : String)]
