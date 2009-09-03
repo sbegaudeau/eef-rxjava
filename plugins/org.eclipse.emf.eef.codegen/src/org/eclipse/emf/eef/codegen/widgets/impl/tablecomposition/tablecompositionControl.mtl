@@ -21,7 +21,7 @@
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 					if (msg.getFeature() != null && 
 							(((EStructuralFeature)msg.getFeature()) == [editionElement.metamodelGetter()/]
-							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]())) {
+							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.metamodelGetter()/])) {
 						[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
 					}
 [/template]
@@ -47,7 +47,7 @@
 				else if (PropertiesEditionEvent.REMOVE == event.getKind())
 					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex()));
+					command.append(MoveCommand.create(liveEditingDomain, [modelName/], [editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex()));
 			}
 [/template]
 
@@ -78,7 +78,7 @@
 			List [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+				cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			}
 [/template]
 
@@ -116,7 +116,7 @@
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 					if (msg.getFeature() != null && 
 							(((EStructuralFeature)msg.getFeature()) == [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/]
-							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]())) {
+							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.metamodelGetter()/])) {
 						[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
 					}
 [/template]
@@ -142,7 +142,7 @@
 				else if (PropertiesEditionEvent.REMOVE == event.getKind())
 					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex()));
+					command.append(MoveCommand.create(liveEditingDomain, [modelName/], [editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), event.getNewValue(), event.getNewIndex()));
 			}
 [/template]
 
@@ -175,7 +175,7 @@
 			List [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToMove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToMoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
+				cc.append(MoveCommand.create(editingDomain, [modelName/], [editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), moveElement.getElement(), moveElement.getIndex()));
 			}
 [/template]
 
