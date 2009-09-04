@@ -1,0 +1,42 @@
+!***************  Project CONTRIBUTION  ******************************************************** 
+
+!*** Special entries from eclipse
+
+plugin@org.eclipse.test=v20080313,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,
+fragment@org.eclipse.ant.optional.junit=v20070202,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,
+
+
+!*** Default entries
+
+!*** plugins, features and fragments
+
+feature@org.eclipse.emf.eef.edt=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-edt-feature
+
+feature@org.eclipse.emf.eef.runtime=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-runtime-feature
+feature@org.eclipse.emf.eef.uml=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-uml-feature
+
+plugin@org.eclipse.emf.eef.runtime=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.runtime
+
+plugin@org.eclipse.emf.eef.components=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.components
+plugin@org.eclipse.emf.eef.components.edit=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.components.edit
+plugin@org.eclipse.emf.eef.components.editor=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.components.editor
+
+plugin@org.eclipse.emf.eef.eefgen=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.eefgen
+plugin@org.eclipse.emf.eef.eefgen.edit=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.eefgen.edit
+plugin@org.eclipse.emf.eef.eefgen.editor=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.eefgen.editor
+
+plugin@org.eclipse.emf.eef.mapping=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.mapping
+plugin@org.eclipse.emf.eef.mapping.edit=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.mapping.edit
+
+plugin@org.eclipse.emf.eef.views=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.views
+plugin@org.eclipse.emf.eef.views.edit=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.views.edit
+plugin@org.eclipse.emf.eef.views.editor=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.views.editor
+
+plugin@org.eclipse.emf.eef.codegen=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.codegen
+plugin@org.eclipse.emf.eef.codegen.uml=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.codegen.uml
+
+
+!*** All-in-one data integrity frameworks features (SDK) 
+
+
+!*** EEF Examples plugins
