@@ -451,12 +451,22 @@ Object
 [eClassifier.ePackage.metamodelPackage()/]
 [/template]
 
+[comment @deprecated /]
 [template public qualifiedMetamodelPackage(ePackage : EPackage, basePackage : String)]
 [ePackage.completePackage()/].[ePackage.metamodelPackage()/]
 [/template]
 
+[comment @deprecated /]
 [template public qualifiedMetamodelPackage(eClassifier : EClassifier, basePackage : String)]
 [eClassifier.ePackage.qualifiedMetamodelPackage(basePackage)/]
+[/template]
+
+[template public qualifiedMetamodelPackage(ePackage : EPackage)]
+[ePackage.completePackage()/].[ePackage.metamodelPackage()/]
+[/template]
+
+[template public qualifiedMetamodelPackage(eClassifier : EClassifier)]
+[eClassifier.ePackage.qualifiedMetamodelPackage()/]
 [/template]
 
 [template public qualifiedMetamodelFactory(ePackage : EPackage, basePackage : String)]
