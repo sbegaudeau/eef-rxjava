@@ -1,0 +1,364 @@
+/**
+ * Generated with Acceleo
+ */
+package org.eclipse.emf.samples.conference.components;
+
+// Start of user code for imports
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.MoveCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.Person;
+import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+import org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+
+// End of user code
+
+/**
+ * 
+ */
+public class PersonPresencePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+
+	public static String PRESENCE_PART = "Presence"; //$NON-NLS-1$
+
+	private String[] parts = {PRESENCE_PART};
+
+	/**
+	 * The EObject to edit
+	 */
+	private Person person;
+
+	/**
+	 * The Presence part
+	 */
+	private PresencePropertiesEditionPart presencePart;
+
+	/**
+	 * Default constructor
+	 */
+	public PersonPresencePropertiesEditionComponent(EObject person, String editing_mode) {
+		if (person instanceof Person) {
+			this.person = (Person)person;
+			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				semanticAdapter = initializeSemanticAdapter();
+				this.person.eAdapters().add(semanticAdapter);
+			}
+		}
+		this.editing_mode = editing_mode;
+	}
+
+	/**
+	 * Initialize the semantic model listener for live editing mode
+	 * 
+	 * @return the semantic model listener
+	 */
+	private AdapterImpl initializeSemanticAdapter() {
+		return new EContentAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 */
+			public void notifyChanged(Notification msg) {
+				if (presencePart == null)
+					PersonPresencePropertiesEditionComponent.this.dispose();
+				else {
+					if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
+						presencePart.updateAssists(person);
+					if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && presencePart != null)
+						presencePart.setIsRegistered((Boolean)msg.getNewValue());
+
+
+
+				}
+			}
+
+		};
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 */
+	public java.lang.Class translatePart(String key) {
+		if (PRESENCE_PART.equals(key))
+			return ConferenceViewsRepository.Presence.class;
+		return super.translatePart(key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 */
+	public String[] partsList() {
+		return parts;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
+	 * (java.lang.String, java.lang.String)
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+		if (person != null && PRESENCE_PART.equals(key)) {
+			if (presencePart == null) {
+				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ConferenceViewsRepository.class);
+				if (provider != null) {
+					presencePart = (PresencePropertiesEditionPart)provider.getPropertiesEditionPart(ConferenceViewsRepository.Presence.class, kind, this);
+					addListener((IPropertiesEditionListener)presencePart);
+				}
+			}
+			return (IPropertiesEditionPart)presencePart;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == ConferenceViewsRepository.Presence.class)
+			this.presencePart = (PresencePropertiesEditionPart) propertiesEditionPart;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 */
+	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		if (presencePart != null && key == ConferenceViewsRepository.Presence.class) {
+			((IPropertiesEditionPart)presencePart).setContext(elt, allResource);
+			final Person person = (Person)elt;
+			// init values
+			presencePart.initAssists(person, null, ConferencePackage.eINSTANCE.getPerson_Assists());
+			presencePart.setIsRegistered(person.isIsRegistered());
+
+			
+			// init filters
+			presencePart.addFilterToAssists(new ViewerFilter() {
+
+				/*
+				 * (non-Javadoc)
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!presencePart.isContainedInAssistsTable((EObject)element));
+					return element instanceof Resource;
+				}
+
+			});
+			presencePart.addFilterToAssists(new EObjectFilter(ConferencePackage.eINSTANCE.getTalk()));
+			// Start of user code for additional businessfilters for assists
+			
+			// End of user code
+
+		}
+		// init values for referenced views
+
+		// init filters for referenced views
+
+	}
+
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
+	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 */
+	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
+		CompoundCommand cc = new CompoundCommand();
+		if (person != null) {
+			List assistsToAddFromAssists = presencePart.getAssistsToAdd();
+			for (Iterator iter = assistsToAddFromAssists.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), iter.next()));
+			List assistsToRemoveFromAssists = presencePart.getAssistsToRemove();
+			for (Iterator iter = assistsToRemoveFromAssists.iterator(); iter.hasNext();)
+				cc.append(RemoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), iter.next()));
+			//List assistsToMoveFromAssists = presencePart.getAssistsToMove();
+			//for (Iterator iter = assistsToMoveFromAssists.iterator(); iter.hasNext();){
+			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+			//	cc.append(MoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getTalk(), moveElement.getElement(), moveElement.getIndex()));
+			//}
+			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), presencePart.getIsRegistered()));
+
+
+
+		}
+		if (!cc.isEmpty())
+			return cc;
+		cc.append(IdentityCommand.INSTANCE);
+		return cc;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 */
+	public EObject getPropertiesEditionObject(EObject source) {
+		if (source instanceof Person) {
+			Person personToUpdate = (Person)source;
+			personToUpdate.getAssists().addAll(presencePart.getAssistsToAdd());
+			personToUpdate.setIsRegistered(new Boolean(presencePart.getIsRegistered()).booleanValue());
+
+
+
+			return personToUpdate;
+		}
+		else
+			return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void firePropertiesChanged(PropertiesEditionEvent event) {
+		super.firePropertiesChanged(event);
+		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+			CompoundCommand command = new CompoundCommand();
+			if (ConferenceViewsRepository.Presence.assists == event.getAffectedEditor()) {
+				if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), event.getNewValue()));
+				if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(RemoveCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), event.getNewValue()));
+				if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), event.getNewValue(), event.getNewIndex()));
+			}
+			if (ConferenceViewsRepository.Presence.isRegistered == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), event.getNewValue()));
+
+
+
+			if (!command.isEmpty() && !command.canExecute()) {
+				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+			} else {
+				liveEditingDomain.getCommandStack().execute(command);
+			}
+		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
+			Diagnostic diag = this.validateValue(event);
+			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
+
+
+
+
+			} else {
+
+
+
+
+			}
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 */
+	public boolean isRequired(String key, int kind) {
+		return key == ConferenceViewsRepository.Person.firstname || key == ConferenceViewsRepository.Person.age;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
+	 */
+	public Diagnostic validateValue(PropertiesEditionEvent event) {
+		Diagnostic ret = null;
+		if (event.getNewValue() != null) {
+			String newStringValue = event.getNewValue().toString();
+			try {
+				if (ConferenceViewsRepository.Presence.isRegistered == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
+				}
+
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			}
+		}
+		return ret;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 */
+	public Diagnostic validate() {
+		Diagnostic validate = null;
+		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
+			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
+			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
+			validate =  Diagnostician.INSTANCE.validate(copy);
+		}
+		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+			validate = Diagnostician.INSTANCE.validate(person);
+		// Start of user code for custom validation check
+		
+		// End of user code
+
+		return validate;
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 */
+	public void dispose() {
+		if (semanticAdapter != null)
+			person.eAdapters().remove(semanticAdapter);
+	}
+
+}
