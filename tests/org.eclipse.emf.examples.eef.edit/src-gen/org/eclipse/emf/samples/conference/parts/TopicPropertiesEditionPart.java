@@ -11,7 +11,7 @@ import org.eclipse.emf.common.util.EList;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public interface TopicPropertiesEditionPart {
 

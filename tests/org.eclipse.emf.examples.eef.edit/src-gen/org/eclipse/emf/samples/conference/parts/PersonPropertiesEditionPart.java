@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EEnum;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public interface PersonPropertiesEditionPart {
 
@@ -93,6 +93,21 @@ public interface PersonPropertiesEditionPart {
 	 * @param newValue the new eclipseCommiter to set
 	 */
 	public void setEclipseCommiter(Boolean newValue);
+
+
+
+
+
+	/**
+	 * @return the isRegistered
+	 */
+	public Boolean getIsRegistered();
+
+	/**
+	 * Defines a new isRegistered
+	 * @param newValue the new isRegistered to set
+	 */
+	public void setIsRegistered(Boolean newValue);
 
 
 

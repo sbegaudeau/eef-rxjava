@@ -39,7 +39,7 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class PersonBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
@@ -102,6 +102,9 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 					if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
 						basePart.setGender((Enumerator)msg.getNewValue());
+
+					if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
+						basePart.setIsRegistered((Boolean)msg.getNewValue());
 
 
 
@@ -184,8 +187,11 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			basePart.setEclipseCommiter(person.isEclipseCommiter());
 
 			basePart.initGender((EEnum) ConferencePackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
+			basePart.setIsRegistered(person.isIsRegistered());
+
 			
 			// init filters
+
 
 
 
@@ -197,6 +203,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 		// init filters for referenced views
 
 	}
+
 
 
 
@@ -225,6 +232,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), basePart.getGender()));
 
+			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), basePart.getIsRegistered()));
+
 
 
 		}
@@ -251,6 +260,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			personToUpdate.setEclipseCommiter(new Boolean(basePart.getEclipseCommiter()).booleanValue());
 
 			personToUpdate.setGender((GENDER)basePart.getGender());
+
+			personToUpdate.setIsRegistered(new Boolean(basePart.getIsRegistered()).booleanValue());
 
 
 
@@ -284,6 +295,9 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			if (ConferenceViewsRepository.Person.gender == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), event.getNewValue()));
 
+			if (ConferenceViewsRepository.Person.isRegistered == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), event.getNewValue()));
+
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
@@ -304,6 +318,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 
 
+
 			} else {
 				if (ConferenceViewsRepository.Person.firstname == event.getAffectedEditor())
 					basePart.unsetMessageForFirstname();
@@ -311,6 +326,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 					basePart.unsetMessageForLastname();
 				if (ConferenceViewsRepository.Person.age == event.getAffectedEditor())
 					basePart.unsetMessageForAge();
+
 
 
 
@@ -357,6 +373,10 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 				if (ConferenceViewsRepository.Person.gender == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newValue);
+				}
+				if (ConferenceViewsRepository.Person.isRegistered == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
 				}
 
 			} catch (IllegalArgumentException iae) {

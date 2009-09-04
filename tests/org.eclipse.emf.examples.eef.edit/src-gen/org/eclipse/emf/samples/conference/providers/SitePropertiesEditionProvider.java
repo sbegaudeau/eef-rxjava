@@ -4,14 +4,17 @@
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Site;
 import org.eclipse.emf.samples.conference.components.SitePropertiesEditionComponent;
 
 /**
- * 
+ * @author
  */
 public class SitePropertiesEditionProvider implements IPropertiesEditionProvider {
 

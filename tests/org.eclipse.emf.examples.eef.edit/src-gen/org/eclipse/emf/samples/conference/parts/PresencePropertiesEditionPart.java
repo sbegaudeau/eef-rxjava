@@ -15,24 +15,9 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public interface PresencePropertiesEditionPart {
-
-	/**
-	 * @return the isRegistered
-	 */
-	public Boolean getIsRegistered();
-
-	/**
-	 * Defines a new isRegistered
-	 * @param newValue the new isRegistered to set
-	 */
-	public void setIsRegistered(Boolean newValue);
-
-
-
-
 
 	/**
 	 * @return the assists to add

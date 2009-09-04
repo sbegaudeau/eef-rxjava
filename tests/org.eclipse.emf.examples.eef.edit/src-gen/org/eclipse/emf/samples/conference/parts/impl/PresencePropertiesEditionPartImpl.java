@@ -41,11 +41,10 @@ import org.eclipse.swt.widgets.Group;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PresencePropertiesEditionPart {
 
-	protected Button isRegistered;
 	protected EMFListEditUtil assistsEditUtil;
 	protected ReferencesTable<? extends EObject> assists;
 	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
@@ -101,16 +100,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		GridLayout talksGroupLayout = new GridLayout();
 		talksGroupLayout.numColumns = 3;
 		talksGroup.setLayout(talksGroupLayout);
-		createIsRegisteredCheckbox(talksGroup);
 		createAssistsAdvancedReferencesTable(talksGroup);
-	}
-	protected void createIsRegisteredCheckbox(Composite parent) {
-		isRegistered = new Button(parent, SWT.CHECK);
-		isRegistered.setText(ConferenceMessages.PresencePropertiesEditionPart_IsRegisteredLabel);
-		GridData isRegisteredData = new GridData(GridData.FILL_HORIZONTAL);
-		isRegisteredData.horizontalSpan = 2;
-		isRegistered.setLayoutData(isRegisteredData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Presence.isRegistered, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 	protected void createAssistsAdvancedReferencesTable(Composite parent) {
 		this.assists = new ReferencesTable<Talk>(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
@@ -195,36 +185,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getIsRegistered()
-	 */
-	public Boolean getIsRegistered() {
-		return Boolean.valueOf(isRegistered.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#setIsRegistered(Boolean newValue)
-	 */
-	public void setIsRegistered(Boolean newValue) {
-		if (newValue != null) {
-			isRegistered.setSelection(newValue.booleanValue());
-		} else {
-			isRegistered.setSelection(false);
-		}
-	}
-
-	public void setMessageForIsRegistered(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForIsRegistered() {
 
 	}
 

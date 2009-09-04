@@ -4,7 +4,7 @@
 package org.eclipse.emf.samples.conference.parts;
 
 /**
- * 
+ * @author
  */
 public class ConferenceViewsRepository {
 
@@ -39,6 +39,8 @@ public class ConferenceViewsRepository {
 
 		public static String eclipseCommiter = "conference::Person::eclipseCommiter";	
 
+		public static String isRegistered = "conference::Person::isRegistered";	
+
 
 	}
 
@@ -46,8 +48,6 @@ public class ConferenceViewsRepository {
 	 * Presence view descriptor
 	 */
 	public static class Presence {
-		public static String isRegistered = "conference::Presence::isRegistered";	
-
 		public static String assists = "conference::Presence::assists";	
 
 

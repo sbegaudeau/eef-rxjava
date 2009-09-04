@@ -38,7 +38,7 @@ import org.eclipse.swt.widgets.Text;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TopicPropertiesEditionPart {
 

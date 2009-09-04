@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.eclipse.emf.examples.eef.edit/src-gen">
-  <editionContexts basePackage="org.eclipse.emf.samples" descriptorsGenericPropertiesViews="true">
+<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.eclipse.emf.examples.eef.edit/src-gen" author="" testsGenDirectory="/org.eclipse.emf.sample.eef.tests.junit/src-gen">
+  <editionContexts basePackage="org.eclipse.emf.samples" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
     <PropertiesEditionContext href="conference.components#_KvIaEJkmEd6sxtwdpecy3w"/>
   </editionContexts>
   <viewsRepositories basePackage="org.eclipse.emf.samples.conference" swtViews="true" formViews="true">

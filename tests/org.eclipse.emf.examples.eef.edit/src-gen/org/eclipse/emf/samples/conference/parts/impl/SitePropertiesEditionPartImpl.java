@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Text;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SitePropertiesEditionPart {
 

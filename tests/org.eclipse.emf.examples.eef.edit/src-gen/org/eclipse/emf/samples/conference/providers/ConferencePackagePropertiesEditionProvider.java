@@ -6,7 +6,7 @@ package org.eclipse.emf.samples.conference.providers;
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 
 /**
- * 
+ * @author
  */
 public class ConferencePackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 

@@ -45,7 +45,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class PersonPresencePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
@@ -96,9 +96,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				else {
 					if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
 						presencePart.updateAssists(person);
-					if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && presencePart != null)
-						presencePart.setIsRegistered((Boolean)msg.getNewValue());
-
 
 
 				}
@@ -170,8 +167,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			final Person person = (Person)elt;
 			// init values
 			presencePart.initAssists(person, null, ConferencePackage.eINSTANCE.getPerson_Assists());
-			presencePart.setIsRegistered(person.isIsRegistered());
-
 			
 			// init filters
 			presencePart.addFilterToAssists(new ViewerFilter() {
@@ -192,14 +187,12 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			// Start of user code for additional businessfilters for assists
 			
 			// End of user code
-
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
 	}
-
 
 
 
@@ -225,8 +218,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 			//	cc.append(MoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getTalk(), moveElement.getElement(), moveElement.getIndex()));
 			//}
-			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), presencePart.getIsRegistered()));
-
 
 
 		}
@@ -245,8 +236,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		if (source instanceof Person) {
 			Person personToUpdate = (Person)source;
 			personToUpdate.getAssists().addAll(presencePart.getAssistsToAdd());
-			personToUpdate.setIsRegistered(new Boolean(presencePart.getIsRegistered()).booleanValue());
-
 
 
 			return personToUpdate;
@@ -272,9 +261,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				if (PropertiesEditionEvent.MOVE == event.getKind())
 					command.append(MoveCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), event.getNewValue(), event.getNewIndex()));
 			}
-			if (ConferenceViewsRepository.Presence.isRegistered == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), event.getNewValue()));
-
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
@@ -288,9 +274,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 
 
 
-
 			} else {
-
 
 
 
@@ -317,10 +301,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ConferenceViewsRepository.Presence.isRegistered == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
-				}
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

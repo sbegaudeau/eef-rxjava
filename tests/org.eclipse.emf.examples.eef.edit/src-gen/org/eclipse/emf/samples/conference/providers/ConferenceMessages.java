@@ -6,7 +6,7 @@ package org.eclipse.emf.samples.conference.providers;
 import org.eclipse.osgi.util.NLS;
 
 /**
- * 
+ * @author
  */
 public class ConferenceMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.samples.conference.providers.conferenceMessages"; //$NON-NLS-1$
@@ -51,7 +51,7 @@ public class ConferenceMessages extends NLS {
 
 	public static String PersonPropertiesEditionPart_EclipseCommiterLabel;
 
-	public static String PresencePropertiesEditionPart_IsRegisteredLabel;
+	public static String PersonPropertiesEditionPart_IsRegisteredLabel;
 
 	public static String PresencePropertiesEditionPart_AssistsLabel;
 

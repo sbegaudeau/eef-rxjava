@@ -116,14 +116,14 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoPZkmEd6sxtwdpecy3w" name="eclipseCommiter">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoQJkmEd6sxtwdpecy3w" name="isRegistered">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_OTvo8JkpEd6sxtwdpecy3w" name="Presence">
         <elements xsi:type="eef-views:Container" xmi:id="_Qi9SgJkpEd6sxtwdpecy3w" name="Talks">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoQJkmEd6sxtwdpecy3w" name="isRegistered">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoPpkmEd6sxtwdpecy3w" name="assists">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>

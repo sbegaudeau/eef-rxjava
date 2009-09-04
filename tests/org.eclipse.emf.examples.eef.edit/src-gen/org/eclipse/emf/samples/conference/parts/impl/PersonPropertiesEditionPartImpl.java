@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Text;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PersonPropertiesEditionPart {
 
@@ -43,6 +43,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Text age;
 	protected EMFComboViewer gender;
 	protected Button eclipseCommiter;
+	protected Button isRegistered;
 
 
 
@@ -182,6 +183,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		eclipseStatusGroupLayout.numColumns = 3;
 		eclipseStatusGroup.setLayout(eclipseStatusGroupLayout);
 		createEclipseCommiterCheckbox(eclipseStatusGroup);
+		createIsRegisteredCheckbox(eclipseStatusGroup);
 	}
 	protected void createEclipseCommiterCheckbox(Composite parent) {
 		eclipseCommiter = new Button(parent, SWT.CHECK);
@@ -190,6 +192,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		eclipseCommiterData.horizontalSpan = 2;
 		eclipseCommiter.setLayoutData(eclipseCommiterData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.eclipseCommiter, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+	protected void createIsRegisteredCheckbox(Composite parent) {
+		isRegistered = new Button(parent, SWT.CHECK);
+		isRegistered.setText(ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);
+		GridData isRegisteredData = new GridData(GridData.FILL_HORIZONTAL);
+		isRegisteredData.horizontalSpan = 2;
+		isRegistered.setLayoutData(isRegisteredData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.isRegistered, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
 
@@ -354,6 +364,36 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	}
 
 	public void unsetMessageForEclipseCommiter() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getIsRegistered()
+	 */
+	public Boolean getIsRegistered() {
+		return Boolean.valueOf(isRegistered.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setIsRegistered(Boolean newValue)
+	 */
+	public void setIsRegistered(Boolean newValue) {
+		if (newValue != null) {
+			isRegistered.setSelection(newValue.booleanValue());
+		} else {
+			isRegistered.setSelection(false);
+		}
+	}
+
+	public void setMessageForIsRegistered(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForIsRegistered() {
 
 	}
 

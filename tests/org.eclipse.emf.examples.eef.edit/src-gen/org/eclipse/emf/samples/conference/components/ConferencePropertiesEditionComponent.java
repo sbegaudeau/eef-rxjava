@@ -48,7 +48,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class ConferencePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 

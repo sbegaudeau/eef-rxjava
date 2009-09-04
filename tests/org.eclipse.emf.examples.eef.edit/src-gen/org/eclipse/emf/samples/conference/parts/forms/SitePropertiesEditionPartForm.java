@@ -35,7 +35,7 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, SitePropertiesEditionPart {
 

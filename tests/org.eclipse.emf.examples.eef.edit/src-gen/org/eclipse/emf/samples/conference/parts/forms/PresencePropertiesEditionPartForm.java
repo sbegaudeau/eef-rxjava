@@ -48,11 +48,10 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
-	protected Button isRegistered;
 	private EMFListEditUtil assistsEditUtil;
 	protected ReferencesTable<? extends EObject> assists;
 	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
@@ -110,29 +109,8 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		GridLayout talksGroupLayout = new GridLayout();
 		talksGroupLayout.numColumns = 3;
 		talksGroup.setLayout(talksGroupLayout);
-		createIsRegisteredCheckbox(widgetFactory, talksGroup);
 		createAssistsReferencesTable(widgetFactory, talksGroup);
 		talksSection.setClient(talksGroup);
-	}
-	protected void createIsRegisteredCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isRegistered = widgetFactory.createButton(parent, ConferenceMessages.PresencePropertiesEditionPart_IsRegisteredLabel, SWT.CHECK);
-		isRegistered.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.isRegistered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isRegistered.getSelection())));
-			}
-
-		});
-		GridData isRegisteredData = new GridData(GridData.FILL_HORIZONTAL);
-		isRegisteredData.horizontalSpan = 2;
-		isRegistered.setLayoutData(isRegisteredData);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Presence.isRegistered, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 	protected void createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.assists = new ReferencesTable<Talk>(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
@@ -217,32 +195,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		// End of user code
 		
 	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getIsRegistered()
-	 */
-	public Boolean getIsRegistered() {
-		return Boolean.valueOf(isRegistered.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#setIsRegistered(Boolean newValue)
-	 */
-	public void setIsRegistered(Boolean newValue) {
-		if (newValue != null) {
-			isRegistered.setSelection(newValue.booleanValue());
-		} else {
-			isRegistered.setSelection(false);
-		}
-	}
-
-
-
-
 
 	/**
 	 * {@inheritDoc}

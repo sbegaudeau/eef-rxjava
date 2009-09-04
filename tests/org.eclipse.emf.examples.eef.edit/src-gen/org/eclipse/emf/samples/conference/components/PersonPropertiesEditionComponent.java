@@ -17,7 +17,7 @@ import org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 

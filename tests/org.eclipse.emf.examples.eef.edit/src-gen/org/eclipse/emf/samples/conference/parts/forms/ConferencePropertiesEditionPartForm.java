@@ -50,7 +50,7 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class ConferencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ConferencePropertiesEditionPart {
 

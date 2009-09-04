@@ -4,16 +4,19 @@
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
+import org.eclipse.emf.samples.conference.components.PersonPropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.PersonBasePropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.PersonPresencePropertiesEditionComponent;
-import org.eclipse.emf.samples.conference.components.PersonPropertiesEditionComponent;
 
 /**
- * 
+ * @author
  */
 public class PersonPropertiesEditionProvider implements IPropertiesEditionProvider {
 

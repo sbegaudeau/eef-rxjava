@@ -44,7 +44,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class TalkPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 

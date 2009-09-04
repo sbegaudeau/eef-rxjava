@@ -36,7 +36,7 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 // End of user code
 
 /**
- * 
+ * @author
  */
 public class SitePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
