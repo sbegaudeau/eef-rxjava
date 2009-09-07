@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsFactoryImpl.java,v 1.6 2009/08/22 09:46:00 glefur Exp $
+ * $Id: ViewsFactoryImpl.java,v 1.7 2009/09/07 16:18:09 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.views.*;
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.CustomView;

@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ViewsSwitch.java,v 1.5 2009/08/22 09:46:00 glefur Exp $
+ * $Id: ViewsSwitch.java,v 1.6 2009/09/07 16:18:09 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.util;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.views.*;
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.CustomElementEditor;

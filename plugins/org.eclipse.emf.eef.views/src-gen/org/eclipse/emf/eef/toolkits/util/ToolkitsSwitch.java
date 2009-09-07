@@ -10,7 +10,7 @@
  *      Obeo - initial API and implementation
  *  ******************************************************************************
  *
- * $Id: ToolkitsSwitch.java,v 1.4 2009/08/22 09:46:00 glefur Exp $
+ * $Id: ToolkitsSwitch.java,v 1.5 2009/09/07 16:18:09 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.util;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.toolkits.*;
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
