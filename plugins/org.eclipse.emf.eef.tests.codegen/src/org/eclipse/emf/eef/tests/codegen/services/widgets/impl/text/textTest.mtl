@@ -1,0 +1,24 @@
+[module textTest('http://www.eclipse.org/emf/eef/components/1.0.0') extends widgetTest/]
+[import common /]
+[import naming /]
+[import typeUtils /]
+
+[template public canGenerateTest(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides canGenerateTest ? (peElement.isTextString())]true[/template]
+
+[template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isTextString())]
+CompoundCommand cc = new CompoundCommand();
+		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], "value2"));
+[/template]
+
+[template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isTextString())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.editTextFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], "value2");
+[/template]
+
+[query isTextString(peElement : PropertiesEditionElement) : Boolean = 
+	if (not peElement.model.oclIsTypeOf(ecore::EAttribute))
+	then false
+	else peElement.representationName('Text') and peElement.model.oclAsType(ecore::EAttribute).isString()
+	endif
+	/]

@@ -1,0 +1,16 @@
+[module widgetTest('http://www.eclipse.org/emf/eef/components/1.0.0')/]
+[import common /]
+[import naming /]
+
+[comment defines if a test can be generated for this cas /]
+[template public canGenerateTest(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]false[/template]
+
+[comment defines the command to apply in order to obtain the expected model /]
+[template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'updateExpectedModel' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
+[comment defines the bot command to process to edit the expected feature /]
+[template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'editFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]

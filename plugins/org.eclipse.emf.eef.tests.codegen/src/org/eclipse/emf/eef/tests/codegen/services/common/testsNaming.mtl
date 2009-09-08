@@ -1,0 +1,7 @@
+[module testsNaming('http://www.eclipse.org/emf/eef/components/1.0.0')/]
+
+[import common /]
+
+[template public testCase(pec : PropertiesEditionComponent)]
+[pec.name.toJavaClassifier()/]TestCase
+[/template]
