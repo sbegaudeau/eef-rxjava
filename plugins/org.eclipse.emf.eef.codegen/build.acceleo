@@ -55,11 +55,13 @@
 <!-- target.folder - destination folder -->
 <!-- ===================================================================== -->
 <target name="post.gather.bin.parts">
-		<taskdef name="acceleoCompiler" classname="org.eclipse.acceleo.internal.ide.ui.builders.AcceleoBuilderTask">
-			<classpath refid="@dot.classpath"/>
-		</taskdef>
+	<echo message="Compiling mtl templates...">
+	<taskdef name="acceleoCompiler" classname="org.eclipse.acceleo.internal.ide.ui.builders.AcceleoBuilderTask">
+		<classpath refid="@dot.classpath"/>
+	</taskdef>
 
 	<acceleoCompiler project="${basedir}" target="${target.folder}">
+		<classpath refid="@dot.classpath"/>
 	</acceleoCompiler>
 </target>
  
