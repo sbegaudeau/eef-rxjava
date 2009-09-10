@@ -73,7 +73,9 @@
 
 	<target name="post.compile.@dot">
 		<echo message="Compiling mtl templates..."/>
-		<echo message="Classpath = ${@dot.classpath}"/>
+		<echo message="Classpath = ">
+			${@dot.classpath}"
+		</echo>
 		
 		<taskdef name="acceleoCompiler" classname="org.eclipse.acceleo.internal.ide.ui.builders.AcceleoBuilderTask">
 		</taskdef>
