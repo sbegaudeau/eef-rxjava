@@ -9,15 +9,19 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: BindingFilterImpl.java,v 1.3 2009/06/09 15:47:13 sbouchet Exp $
+ * $Id: BindingFilterImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl;
 
 /**
@@ -151,7 +155,7 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 		case FiltersPackage.BINDING_FILTER__NAME:
 			return getName();
 		case FiltersPackage.BINDING_FILTER__MANDATORY:
-			return isMandatory() ? Boolean.TRUE : Boolean.FALSE;
+			return isMandatory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,7 +172,7 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 			setName((String) newValue);
 			return;
 		case FiltersPackage.BINDING_FILTER__MANDATORY:
-			setMandatory(((Boolean) newValue).booleanValue());
+			setMandatory((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

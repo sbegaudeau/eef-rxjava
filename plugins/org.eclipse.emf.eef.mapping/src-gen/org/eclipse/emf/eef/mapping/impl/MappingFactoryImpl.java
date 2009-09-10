@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingFactoryImpl.java,v 1.4 2009/08/22 09:46:08 glefur Exp $
+ * $Id: MappingFactoryImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.mapping.*;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.EMFElementBinding;

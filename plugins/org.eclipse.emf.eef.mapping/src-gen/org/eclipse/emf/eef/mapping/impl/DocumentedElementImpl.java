@@ -9,14 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementImpl.java,v 1.3 2009/06/09 15:47:16 sbouchet Exp $
+ * $Id: DocumentedElementImpl.java,v 1.4 2009/09/10 10:27:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 

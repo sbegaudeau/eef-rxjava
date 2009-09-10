@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBindingImpl.java,v 1.5 2009/06/09 15:47:15 sbouchet Exp $
+ * $Id: AbstractPropertyBindingImpl.java,v 1.6 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -17,18 +17,25 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
+
 import org.eclipse.emf.eef.views.ElementEditor;
 
 /**
@@ -151,7 +158,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	public AbstractElementBinding getElement() {
-		if (eContainerFeatureID != MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT)
+		if (eContainerFeatureID() != MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT)
 			return null;
 		return (AbstractElementBinding) eContainer();
 	}
@@ -175,7 +182,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 */
 	public void setElement(AbstractElementBinding newElement) {
 		if (newElement != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT && newElement != null)) {
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT && newElement != null)) {
 			if (EcoreUtil.isAncestor(this, newElement))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -252,7 +259,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
 			return eInternalContainer().eInverseRemove(this,
 					MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES,

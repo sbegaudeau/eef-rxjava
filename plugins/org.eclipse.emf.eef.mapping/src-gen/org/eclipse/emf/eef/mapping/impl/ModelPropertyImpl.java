@@ -9,16 +9,20 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelPropertyImpl.java,v 1.4 2009/06/09 15:47:16 sbouchet Exp $
+ * $Id: ModelPropertyImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ModelElement;
 import org.eclipse.emf.eef.mapping.ModelProperty;
@@ -149,7 +153,7 @@ public abstract class ModelPropertyImpl extends DocumentedElementImpl implements
 	 * @generated
 	 */
 	public ModelElement getModelElement() {
-		if (eContainerFeatureID != MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT)
+		if (eContainerFeatureID() != MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT)
 			return null;
 		return (ModelElement) eContainer();
 	}
@@ -173,7 +177,7 @@ public abstract class ModelPropertyImpl extends DocumentedElementImpl implements
 	 */
 	public void setModelElement(ModelElement newModelElement) {
 		if (newModelElement != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT && newModelElement != null)) {
+				|| (eContainerFeatureID() != MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT && newModelElement != null)) {
 			if (EcoreUtil.isAncestor(this, newModelElement))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -241,7 +245,7 @@ public abstract class ModelPropertyImpl extends DocumentedElementImpl implements
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 		case MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT:
 			return eInternalContainer().eInverseRemove(this,
 					MappingPackage.MODEL_ELEMENT__PROPERTIES,

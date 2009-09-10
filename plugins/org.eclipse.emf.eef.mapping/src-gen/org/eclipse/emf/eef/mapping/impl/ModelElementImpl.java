@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelElementImpl.java,v 1.4 2009/06/09 15:47:16 sbouchet Exp $
+ * $Id: ModelElementImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -17,13 +17,18 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ModelElement;
 import org.eclipse.emf.eef.mapping.ModelProperty;
@@ -206,7 +211,7 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements
 	 * @generated
 	 */
 	public ModelElement getSuperElement() {
-		if (eContainerFeatureID != MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT)
+		if (eContainerFeatureID() != MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT)
 			return null;
 		return (ModelElement) eContainer();
 	}
@@ -230,7 +235,7 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements
 	 */
 	public void setSuperElement(ModelElement newSuperElement) {
 		if (newSuperElement != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT && newSuperElement != null)) {
+				|| (eContainerFeatureID() != MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT && newSuperElement != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperElement))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -311,7 +316,7 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 		case MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT:
 			return eInternalContainer().eInverseRemove(this,
 					MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS,

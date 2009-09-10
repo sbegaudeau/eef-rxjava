@@ -9,12 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBinding.java,v 1.2 2009/06/09 15:47:18 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBinding.java,v 1.3 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
 
 /**
@@ -40,7 +42,7 @@ public interface EMFMultiPropertiesBinding extends AbstractPropertyBinding {
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EStructuralFeature}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Model</em>' reference isn't clear,
+	 * If the meaning of the '<em>Model</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

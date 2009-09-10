@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractElementBindingImpl.java,v 1.4 2009/06/09 15:47:16 sbouchet Exp $
+ * $Id: AbstractElementBindingImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -17,21 +17,27 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.views.View;
 
 /**
@@ -171,7 +177,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	public Databinding getDatabinding() {
-		if (eContainerFeatureID != MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING)
+		if (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING)
 			return null;
 		return (Databinding) eContainer();
 	}
@@ -195,7 +201,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	 */
 	public void setDatabinding(Databinding newDatabinding) {
 		if (newDatabinding != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING && newDatabinding != null)) {
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING && newDatabinding != null)) {
 			if (EcoreUtil.isAncestor(this, newDatabinding))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -221,7 +227,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	public AbstractElementBinding getSuperElement() {
-		if (eContainerFeatureID != MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT)
+		if (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT)
 			return null;
 		return (AbstractElementBinding) eContainer();
 	}
@@ -245,7 +251,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	 */
 	public void setSuperElement(AbstractElementBinding newSuperElement) {
 		if (newSuperElement != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT && newSuperElement != null)) {
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT && newSuperElement != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperElement))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -321,7 +327,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	public Category getCategory() {
-		if (eContainerFeatureID != MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY)
+		if (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY)
 			return null;
 		return (Category) eContainer();
 	}
@@ -345,7 +351,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	 */
 	public void setCategory(Category newCategory) {
 		if (newCategory != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY && newCategory != null)) {
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY && newCategory != null)) {
 			if (EcoreUtil.isAncestor(this, newCategory))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -433,7 +439,7 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING:
 			return eInternalContainer().eInverseRemove(this,
 					MappingPackage.DATABINDING__BINDINGS, Databinding.class,

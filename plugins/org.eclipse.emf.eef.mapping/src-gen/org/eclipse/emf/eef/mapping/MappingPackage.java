@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackage.java,v 1.3 2009/05/26 08:20:05 glefur Exp $
+ * $Id: MappingPackage.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
@@ -68,116 +68,6 @@ public interface MappingPackage extends EPackage {
 			.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.DatabindingImpl <em>Databinding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.DatabindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getDatabinding()
-	 * @generated
-	 */
-	int DATABINDING = 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelElementImpl <em>Model Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.ModelElementImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getModelElement()
-	 * @generated
-	 */
-	int MODEL_ELEMENT = 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl <em>Abstract Element Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getAbstractElementBinding()
-	 * @generated
-	 */
-	int ABSTRACT_ELEMENT_BINDING = 2;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl <em>Model Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getModelProperty()
-	 * @generated
-	 */
-	int MODEL_PROPERTY = 3;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl <em>Abstract Property Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getAbstractPropertyBinding()
-	 * @generated
-	 */
-	int ABSTRACT_PROPERTY_BINDING = 4;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl <em>EMF Element Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getEMFElementBinding()
-	 * @generated
-	 */
-	int EMF_ELEMENT_BINDING = 5;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl <em>EMF Property Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getEMFPropertyBinding()
-	 * @generated
-	 */
-	int EMF_PROPERTY_BINDING = 6;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl <em>Standard Element Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getStandardElementBinding()
-	 * @generated
-	 */
-	int STANDARD_ELEMENT_BINDING = 7;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.StandardPropertyBindingImpl <em>Standard Property Binding</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.StandardPropertyBindingImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getStandardPropertyBinding()
-	 * @generated
-	 */
-	int STANDARD_PROPERTY_BINDING = 8;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.CategoryImpl <em>Category</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.CategoryImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getCategory()
-	 * @generated
-	 */
-	int CATEGORY = 9;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ElementBindingReferenceImpl <em>Element Binding Reference</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.ElementBindingReferenceImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getElementBindingReference()
-	 * @generated
-	 */
-	int ELEMENT_BINDING_REFERENCE = 10;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -204,6 +94,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENTED_ELEMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.DatabindingImpl <em>Databinding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.DatabindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getDatabinding()
+	 * @generated
+	 */
+	int DATABINDING = 0;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -240,6 +140,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelElementImpl <em>Model Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.ModelElementImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getModelElement()
+	 * @generated
+	 */
+	int MODEL_ELEMENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -294,6 +204,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_ELEMENT_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl <em>Abstract Element Binding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getAbstractElementBinding()
+	 * @generated
+	 */
+	int ABSTRACT_ELEMENT_BINDING = 2;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -386,6 +306,16 @@ public interface MappingPackage extends EPackage {
 	int ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl <em>Model Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getModelProperty()
+	 * @generated
+	 */
+	int MODEL_PROPERTY = 3;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,6 +350,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_PROPERTY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl <em>Abstract Property Binding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getAbstractPropertyBinding()
+	 * @generated
+	 */
+	int ABSTRACT_PROPERTY_BINDING = 4;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -474,6 +414,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl <em>EMF Element Binding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getEMFElementBinding()
+	 * @generated
+	 */
+	int EMF_ELEMENT_BINDING = 5;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -575,6 +525,16 @@ public interface MappingPackage extends EPackage {
 	int EMF_ELEMENT_BINDING_FEATURE_COUNT = ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl <em>EMF Property Binding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getEMFPropertyBinding()
+	 * @generated
+	 */
+	int EMF_PROPERTY_BINDING = 6;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -645,6 +605,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMF_PROPERTY_BINDING_FEATURE_COUNT = ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl <em>Standard Element Binding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getStandardElementBinding()
+	 * @generated
+	 */
+	int STANDARD_ELEMENT_BINDING = 7;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -746,6 +716,16 @@ public interface MappingPackage extends EPackage {
 	int STANDARD_ELEMENT_BINDING_FEATURE_COUNT = ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.StandardPropertyBindingImpl <em>Standard Property Binding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.StandardPropertyBindingImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getStandardPropertyBinding()
+	 * @generated
+	 */
+	int STANDARD_PROPERTY_BINDING = 8;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,6 +789,16 @@ public interface MappingPackage extends EPackage {
 	int STANDARD_PROPERTY_BINDING_FEATURE_COUNT = ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.CategoryImpl <em>Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.CategoryImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getCategory()
+	 * @generated
+	 */
+	int CATEGORY = 9;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -861,6 +851,16 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATEGORY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ElementBindingReferenceImpl <em>Element Binding Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.mapping.impl.ElementBindingReferenceImpl
+	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getElementBindingReference()
+	 * @generated
+	 */
+	int ELEMENT_BINDING_REFERENCE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.

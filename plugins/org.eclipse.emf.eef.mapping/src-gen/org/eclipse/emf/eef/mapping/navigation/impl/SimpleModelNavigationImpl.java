@@ -9,15 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationImpl.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: SimpleModelNavigationImpl.java,v 1.3 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.mapping.EMFElementBinding;
 import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
@@ -225,7 +227,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 				return getFeature();
 			return basicGetFeature();
 		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
-			return new Integer(getIndex());
+			return getIndex();
 		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
 			if (resolve)
 				return getDiscriminatorType();
@@ -246,7 +248,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 			setFeature((EReference) newValue);
 			return;
 		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
-			setIndex(((Integer) newValue).intValue());
+			setIndex((Integer) newValue);
 			return;
 		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
 			setDiscriminatorType((EClassifier) newValue);

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationPackageImpl.java,v 1.5 2009/08/22 09:46:08 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.6 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -17,12 +17,17 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl;
+
 import org.eclipse.emf.eef.mapping.impl.MappingPackageImpl;
+
 import org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.CustomModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
@@ -30,6 +35,7 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationFactory;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
+
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
@@ -102,20 +108,10 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link NavigationPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -130,8 +126,8 @@ public class NavigationPackageImpl extends EPackageImpl implements
 
 		// Obtain or create and register package
 		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI)
+				.get(eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI)
 				: new NavigationPackageImpl());
 
 		isInited = true;
@@ -162,6 +158,9 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		// Mark meta-data to indicate it can't be changed
 		theNavigationPackage.freeze();
 
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(NavigationPackage.eNS_URI,
+				theNavigationPackage);
 		return theNavigationPackage;
 	}
 

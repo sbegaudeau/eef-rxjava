@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryImpl.java,v 1.4 2009/06/09 15:47:15 sbouchet Exp $
+ * $Id: CategoryImpl.java,v 1.5 2009/09/10 10:27:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
@@ -17,14 +17,19 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
@@ -149,7 +154,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	public Databinding getDatabinding() {
-		if (eContainerFeatureID != MappingPackage.CATEGORY__DATABINDING)
+		if (eContainerFeatureID() != MappingPackage.CATEGORY__DATABINDING)
 			return null;
 		return (Databinding) eContainer();
 	}
@@ -173,7 +178,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	public void setDatabinding(Databinding newDatabinding) {
 		if (newDatabinding != eInternalContainer()
-				|| (eContainerFeatureID != MappingPackage.CATEGORY__DATABINDING && newDatabinding != null)) {
+				|| (eContainerFeatureID() != MappingPackage.CATEGORY__DATABINDING && newDatabinding != null)) {
 			if (EcoreUtil.isAncestor(this, newDatabinding))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
@@ -256,7 +261,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 		case MappingPackage.CATEGORY__DATABINDING:
 			return eInternalContainer().eInverseRemove(this,
 					MappingPackage.DATABINDING__CATEGORIES, Databinding.class,

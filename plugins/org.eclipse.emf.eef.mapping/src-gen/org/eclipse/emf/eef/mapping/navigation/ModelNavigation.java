@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelNavigation.java,v 1.1 2009/04/30 17:13:53 glefur Exp $
+ * $Id: ModelNavigation.java,v 1.2 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation;
 
@@ -26,5 +26,4 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ModelNavigation extends EObject {
-
 } // ModelNavigation

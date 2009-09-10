@@ -9,12 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelNavigationImpl.java,v 1.3 2009/06/09 15:47:17 sbouchet Exp $
+ * $Id: ModelNavigationImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 
