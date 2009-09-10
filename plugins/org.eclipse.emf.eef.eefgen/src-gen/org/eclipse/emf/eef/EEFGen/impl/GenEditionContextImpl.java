@@ -9,20 +9,25 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextImpl.java,v 1.4 2009/08/22 09:59:59 glefur Exp $
+ * $Id: GenEditionContextImpl.java,v 1.5 2009/09/10 10:10:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 
 /**
@@ -239,7 +244,7 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * @generated
 	 */
 	public EEFGenModel getEefGenModel() {
-		if (eContainerFeatureID != EEFGenPackage.GEN_EDITION_CONTEXT__EEF_GEN_MODEL) return null;
+		if (eContainerFeatureID() != EEFGenPackage.GEN_EDITION_CONTEXT__EEF_GEN_MODEL) return null;
 		return (EEFGenModel)eContainer();
 	}
 
@@ -259,7 +264,7 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * @generated
 	 */
 	public void setEefGenModel(EEFGenModel newEefGenModel) {
-		if (newEefGenModel != eInternalContainer() || (eContainerFeatureID != EEFGenPackage.GEN_EDITION_CONTEXT__EEF_GEN_MODEL && newEefGenModel != null)) {
+		if (newEefGenModel != eInternalContainer() || (eContainerFeatureID() != EEFGenPackage.GEN_EDITION_CONTEXT__EEF_GEN_MODEL && newEefGenModel != null)) {
 			if (EcoreUtil.isAncestor(this, newEefGenModel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
@@ -395,7 +400,7 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case EEFGenPackage.GEN_EDITION_CONTEXT__EEF_GEN_MODEL:
 				return eInternalContainer().eInverseRemove(this, EEFGenPackage.EEF_GEN_MODEL__EDITION_CONTEXTS, EEFGenModel.class, msgs);
 		}
@@ -420,11 +425,11 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_CONTRIBUTOR_ID:
 				return getDescriptorsContributorID();
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS:
-				return isDescriptorsGenericPropertiesViews() ? Boolean.TRUE : Boolean.FALSE;
+				return isDescriptorsGenericPropertiesViews();
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS:
-				return isGmfPropertiesViews() ? Boolean.TRUE : Boolean.FALSE;
+				return isGmfPropertiesViews();
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
-				return isGenerateJunitTestCases() ? Boolean.TRUE : Boolean.FALSE;
+				return isGenerateJunitTestCases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -450,13 +455,13 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				setDescriptorsContributorID((String)newValue);
 				return;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS:
-				setDescriptorsGenericPropertiesViews(((Boolean)newValue).booleanValue());
+				setDescriptorsGenericPropertiesViews((Boolean)newValue);
 				return;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS:
-				setGmfPropertiesViews(((Boolean)newValue).booleanValue());
+				setGmfPropertiesViews((Boolean)newValue);
 				return;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
-				setGenerateJunitTestCases(((Boolean)newValue).booleanValue());
+				setGenerateJunitTestCases((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

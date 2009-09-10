@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackage.java,v 1.3 2009/08/22 09:59:59 glefur Exp $
+ * $Id: EEFGenPackage.java,v 1.4 2009/09/10 10:10:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -148,7 +148,6 @@ public interface EEFGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 7;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.

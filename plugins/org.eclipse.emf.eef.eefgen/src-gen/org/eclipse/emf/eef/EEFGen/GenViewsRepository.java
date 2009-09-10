@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepository.java,v 1.1 2009/04/30 17:49:10 nlepine Exp $
+ * $Id: GenViewsRepository.java,v 1.2 2009/09/10 10:10:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.views.ViewsRepository;
 
 /**

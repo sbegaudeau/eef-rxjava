@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContext.java,v 1.3 2009/08/22 09:59:59 glefur Exp $
+ * $Id: GenEditionContext.java,v 1.4 2009/09/10 10:10:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 
 /**

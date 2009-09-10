@@ -9,21 +9,26 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryImpl.java,v 1.1 2009/04/30 17:49:10 nlepine Exp $
+ * $Id: GenViewsRepositoryImpl.java,v 1.2 2009/09/10 10:10:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
+
 import org.eclipse.emf.eef.views.ViewsRepository;
 
 /**
@@ -282,7 +287,7 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 	 * @generated
 	 */
 	public EEFGenModel getEefGenModel() {
-		if (eContainerFeatureID != EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL) return null;
+		if (eContainerFeatureID() != EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL) return null;
 		return (EEFGenModel)eContainer();
 	}
 
@@ -302,7 +307,7 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 	 * @generated
 	 */
 	public void setEefGenModel(EEFGenModel newEefGenModel) {
-		if (newEefGenModel != eInternalContainer() || (eContainerFeatureID != EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL && newEefGenModel != null)) {
+		if (newEefGenModel != eInternalContainer() || (eContainerFeatureID() != EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL && newEefGenModel != null)) {
 			if (EcoreUtil.isAncestor(this, newEefGenModel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
@@ -354,7 +359,7 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL:
 				return eInternalContainer().eInverseRemove(this, EEFGenPackage.EEF_GEN_MODEL__VIEWS_REPOSITORIES, EEFGenModel.class, msgs);
 		}
@@ -375,9 +380,9 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__BASE_PACKAGE:
 				return getBasePackage();
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__SWT_VIEWS:
-				return isSwtViews() ? Boolean.TRUE : Boolean.FALSE;
+				return isSwtViews();
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__FORM_VIEWS:
-				return isFormViews() ? Boolean.TRUE : Boolean.FALSE;
+				return isFormViews();
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__HELP_STRATEGY:
 				return getHelpStrategy();
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL:
@@ -401,10 +406,10 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 				setBasePackage((String)newValue);
 				return;
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__SWT_VIEWS:
-				setSwtViews(((Boolean)newValue).booleanValue());
+				setSwtViews((Boolean)newValue);
 				return;
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__FORM_VIEWS:
-				setFormViews(((Boolean)newValue).booleanValue());
+				setFormViews((Boolean)newValue);
 				return;
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__HELP_STRATEGY:
 				setHelpStrategy((HELP_STRATEGY)newValue);
