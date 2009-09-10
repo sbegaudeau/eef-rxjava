@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,16 +7,18 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ElementEditorImpl.java,v 1.4 2009/06/09 15:47:37 sbouchet Exp $
+ * $Id: ElementEditorImpl.java,v 1.5 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -149,7 +150,7 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
 			return getQualifiedIdentifier();
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-			return isReadOnly() ? Boolean.TRUE : Boolean.FALSE;
+			return isReadOnly();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,7 +167,7 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 			setQualifiedIdentifier((String) newValue);
 			return;
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-			setReadOnly(((Boolean) newValue).booleanValue());
+			setReadOnly((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

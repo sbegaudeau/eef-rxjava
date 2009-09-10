@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,19 +7,23 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ViewImpl.java,v 1.4 2009/06/09 15:47:35 sbouchet Exp $
+ * $Id: ViewImpl.java,v 1.5 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.View;
@@ -128,7 +131,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	public ViewsRepository getRepository() {
-		if (eContainerFeatureID != ViewsPackage.VIEW__REPOSITORY)
+		if (eContainerFeatureID() != ViewsPackage.VIEW__REPOSITORY)
 			return null;
 		return (ViewsRepository) eContainer();
 	}
@@ -152,7 +155,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	 */
 	public void setRepository(ViewsRepository newRepository) {
 		if (newRepository != eInternalContainer()
-				|| (eContainerFeatureID != ViewsPackage.VIEW__REPOSITORY && newRepository != null)) {
+				|| (eContainerFeatureID() != ViewsPackage.VIEW__REPOSITORY && newRepository != null)) {
 			if (EcoreUtil.isAncestor(this, newRepository))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -199,7 +202,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	public Category getCategory() {
-		if (eContainerFeatureID != ViewsPackage.VIEW__CATEGORY)
+		if (eContainerFeatureID() != ViewsPackage.VIEW__CATEGORY)
 			return null;
 		return (Category) eContainer();
 	}
@@ -223,7 +226,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	 */
 	public void setCategory(Category newCategory) {
 		if (newCategory != eInternalContainer()
-				|| (eContainerFeatureID != ViewsPackage.VIEW__CATEGORY && newCategory != null)) {
+				|| (eContainerFeatureID() != ViewsPackage.VIEW__CATEGORY && newCategory != null)) {
 			if (EcoreUtil.isAncestor(this, newCategory))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -287,7 +290,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 		case ViewsPackage.VIEW__REPOSITORY:
 			return eInternalContainer().eInverseRemove(this,
 					ViewsPackage.VIEWS_REPOSITORY__VIEWS,
@@ -312,7 +315,7 @@ public class ViewImpl extends ContainerImpl implements View {
 		case ViewsPackage.VIEW__REPOSITORY:
 			return getRepository();
 		case ViewsPackage.VIEW__EXPLICIT:
-			return isExplicit() ? Boolean.TRUE : Boolean.FALSE;
+			return isExplicit();
 		case ViewsPackage.VIEW__CATEGORY:
 			return getCategory();
 		}
@@ -334,7 +337,7 @@ public class ViewImpl extends ContainerImpl implements View {
 			setRepository((ViewsRepository) newValue);
 			return;
 		case ViewsPackage.VIEW__EXPLICIT:
-			setExplicit(((Boolean) newValue).booleanValue());
+			setExplicit((Boolean) newValue);
 			return;
 		case ViewsPackage.VIEW__CATEGORY:
 			setCategory((Category) newValue);

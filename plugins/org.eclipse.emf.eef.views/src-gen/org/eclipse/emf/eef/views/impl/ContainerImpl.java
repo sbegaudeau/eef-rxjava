@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,20 +7,24 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ContainerImpl.java,v 1.3 2009/06/09 15:47:37 sbouchet Exp $
+ * $Id: ContainerImpl.java,v 1.4 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewsPackage;

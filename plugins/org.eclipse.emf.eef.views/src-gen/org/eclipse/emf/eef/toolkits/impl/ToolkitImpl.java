@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +7,9 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ToolkitImpl.java,v 1.3 2009/06/09 15:47:38 sbouchet Exp $
+ * $Id: ToolkitImpl.java,v 1.4 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -18,13 +17,18 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;

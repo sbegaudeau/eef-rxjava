@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorImpl.java,v 1.2 2009/06/09 15:47:35 sbouchet Exp $
+ * $Id: CustomElementEditorImpl.java,v 1.3 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
 

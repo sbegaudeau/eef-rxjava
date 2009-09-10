@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +7,9 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ViewsAdapterFactory.java,v 1.6 2009/09/07 16:18:09 sbouchet Exp $
+ * $Id: ViewsAdapterFactory.java,v 1.7 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.util;
 

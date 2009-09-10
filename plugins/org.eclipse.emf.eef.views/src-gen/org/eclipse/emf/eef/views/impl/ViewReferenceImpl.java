@@ -9,14 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferenceImpl.java,v 1.3 2009/06/09 15:47:35 sbouchet Exp $
+ * $Id: ViewReferenceImpl.java,v 1.4 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;

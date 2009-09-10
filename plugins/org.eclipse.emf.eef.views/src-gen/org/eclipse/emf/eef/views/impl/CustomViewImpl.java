@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomViewImpl.java,v 1.2 2009/06/09 15:47:37 sbouchet Exp $
+ * $Id: CustomViewImpl.java,v 1.3 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.eef.views.CustomView;
 import org.eclipse.emf.eef.views.ViewsPackage;
 

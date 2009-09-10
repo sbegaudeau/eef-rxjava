@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +7,9 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: Widget.java,v 1.1 2009/04/30 17:16:01 glefur Exp $
+ * $Id: Widget.java,v 1.2 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits;
 

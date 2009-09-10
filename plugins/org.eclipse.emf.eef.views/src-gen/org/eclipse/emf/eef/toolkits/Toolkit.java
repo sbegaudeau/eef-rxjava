@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,13 +7,14 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: Toolkit.java,v 1.2 2009/06/09 15:47:38 sbouchet Exp $
+ * $Id: Toolkit.java,v 1.3 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

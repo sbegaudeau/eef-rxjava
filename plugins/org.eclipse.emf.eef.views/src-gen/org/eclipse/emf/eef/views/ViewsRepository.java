@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +7,9 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ViewsRepository.java,v 1.2 2009/04/30 17:49:14 nlepine Exp $
+ * $Id: ViewsRepository.java,v 1.3 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -59,7 +58,7 @@ public interface ViewsRepository extends DocumentedElement, IdentifiedElement {
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Repository Kind</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Repository Kind</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

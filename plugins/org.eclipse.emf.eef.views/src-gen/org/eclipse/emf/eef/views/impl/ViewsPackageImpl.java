@@ -1,5 +1,4 @@
 /**
- * ******************************************************************************
  *  Copyright (c) 2008 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
@@ -8,9 +7,9 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- *  ******************************************************************************
+ * 
  *
- * $Id: ViewsPackageImpl.java,v 1.5 2009/09/07 16:18:09 sbouchet Exp $
+ * $Id: ViewsPackageImpl.java,v 1.6 2009/09/10 12:39:23 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -18,9 +17,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+
 import org.eclipse.emf.eef.toolkits.impl.ToolkitsPackageImpl;
+
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.CustomView;
@@ -145,20 +148,10 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link ViewsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -173,8 +166,8 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 
 		// Obtain or create and register package
 		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(eNS_URI)
+				.get(eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI)
 				: new ViewsPackageImpl());
 
 		isInited = true;
@@ -196,6 +189,8 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		// Mark meta-data to indicate it can't be changed
 		theViewsPackage.freeze();
 
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(ViewsPackage.eNS_URI, theViewsPackage);
 		return theViewsPackage;
 	}
 
@@ -676,13 +671,13 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 
 		initEClass(
 				containerEClass,
-				Container.class,
+				org.eclipse.emf.eef.views.Container.class,
 				"Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(
 				getContainer_Elements(),
 				this.getViewElement(),
 				this.getViewElement_Container(),
-				"elements", null, 0, -1, Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"elements", null, 0, -1, org.eclipse.emf.eef.views.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
 				viewElementEClass,
