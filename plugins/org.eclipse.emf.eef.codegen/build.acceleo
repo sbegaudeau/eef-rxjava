@@ -108,5 +108,13 @@
 <!-- ===================================================================== -->
 <target name="post.clean">
 </target>
+
+<target name="pre.@dot">
+</target>
+
+<target name="post.@dot">
+</target>
+
+<target name="post.compile.@dot">
 </project>
  
