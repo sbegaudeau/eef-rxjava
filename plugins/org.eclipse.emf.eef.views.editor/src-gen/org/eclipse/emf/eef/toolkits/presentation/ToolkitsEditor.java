@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsEditor.java,v 1.2 2009/08/22 09:46:11 glefur Exp $
+ * $Id: ToolkitsEditor.java,v 1.3 2009/09/10 12:45:20 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.presentation;
 
@@ -51,7 +51,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
-import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
