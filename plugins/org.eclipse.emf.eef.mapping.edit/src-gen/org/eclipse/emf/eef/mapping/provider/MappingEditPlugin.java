@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingEditPlugin.java,v 1.5 2009/08/22 09:46:12 glefur Exp $
+ * $Id: MappingEditPlugin.java,v 1.6 2009/09/10 12:28:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
+
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;

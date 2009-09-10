@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBindingItemProvider.java,v 1.6 2009/05/26 08:49:55 glefur Exp $
+ * $Id: AbstractPropertyBindingItemProvider.java,v 1.7 2009/09/10 12:28:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -31,9 +31,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.filters.FiltersFactory;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewElement;
@@ -134,6 +136,9 @@ public class AbstractPropertyBindingItemProvider extends
 		return super.getChildFeature(object, child);
 	}
 
+	/**
+	 * @generated NOT
+	 */
 	private ItemPropertyDescriptor initViewsPropertyDescriptors() {
 		return new ItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
@@ -249,9 +254,10 @@ public class AbstractPropertyBindingItemProvider extends
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		//		newChildDescriptors.add(createChildParameter(
-		//				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-		//						.createOCLFilter()));
+		//newChildDescriptors
+		//		.add(createChildParameter(
+		//				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
+		//				FiltersFactory.eINSTANCE.createOCLFilter()));
 
 		newChildDescriptors
 				.add(createChildParameter(

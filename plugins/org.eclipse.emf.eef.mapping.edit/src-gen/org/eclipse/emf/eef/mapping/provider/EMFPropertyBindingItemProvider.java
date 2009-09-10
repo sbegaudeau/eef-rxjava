@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingItemProvider.java,v 1.3 2009/05/26 08:19:57 glefur Exp $
+ * $Id: EMFPropertyBindingItemProvider.java,v 1.4 2009/09/10 12:28:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -116,6 +117,9 @@ public class EMFPropertyBindingItemProvider extends
 		return super.getChildFeature(object, child);
 	}
 
+	/**
+	 * @generated NOT
+	 */
 	private ItemPropertyDescriptor initModelPropertyDescriptor() {
 		return new ItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)

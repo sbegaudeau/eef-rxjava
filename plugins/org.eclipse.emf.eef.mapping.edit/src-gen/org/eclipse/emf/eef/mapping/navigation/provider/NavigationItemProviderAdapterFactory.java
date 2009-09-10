@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationItemProviderAdapterFactory.java,v 1.4 2009/05/26 08:19:57 glefur Exp $
+ * $Id: NavigationItemProviderAdapterFactory.java,v 1.5 2009/09/10 12:28:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.provider;
 
@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -30,6 +31,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory;
 
 /**
@@ -206,7 +208,7 @@ public class NavigationItemProviderAdapterFactory extends
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class)
+			if (!(type instanceof Class<?>)
 					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
