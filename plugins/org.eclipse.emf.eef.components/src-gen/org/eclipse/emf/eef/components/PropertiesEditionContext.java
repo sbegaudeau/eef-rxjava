@@ -9,11 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContext.java,v 1.1 2009/04/30 17:08:53 glefur Exp $
+ * $Id: PropertiesEditionContext.java,v 1.2 2009/09/10 09:18:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+
 import org.eclipse.emf.eef.mapping.Databinding;
 
 /**

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentImpl.java,v 1.2 2009/06/09 15:47:25 sbouchet Exp $
+ * $Id: PropertiesEditionComponentImpl.java,v 1.3 2009/09/10 09:18:18 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.impl;
 
@@ -153,7 +153,7 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl
 		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
 			return getHelpID();
 		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-			return isExplicit() ? Boolean.TRUE : Boolean.FALSE;
+			return isExplicit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,7 +170,7 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl
 			setHelpID((String) newValue);
 			return;
 		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-			setExplicit(((Boolean) newValue).booleanValue());
+			setExplicit((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

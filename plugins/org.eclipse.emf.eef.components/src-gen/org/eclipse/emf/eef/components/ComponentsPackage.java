@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsPackage.java,v 1.2 2009/06/09 15:47:25 sbouchet Exp $
+ * $Id: ComponentsPackage.java,v 1.3 2009/09/10 09:18:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.mapping.MappingPackage;
 
 /**
@@ -297,6 +298,15 @@ public interface ComponentsPackage extends EPackage {
 	int PROPERTIES_EDITION_ELEMENT__ELEMENT = MappingPackage.EMF_PROPERTY_BINDING__ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES_EDITION_ELEMENT__BINDING_FILTERS = MappingPackage.EMF_PROPERTY_BINDING__BINDING_FILTERS;
+
+	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -377,6 +387,15 @@ public interface ComponentsPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTIES_MULTI_EDITION_ELEMENT__ELEMENT = MappingPackage.EMF_MULTI_PROPERTIES_BINDING__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES_MULTI_EDITION_ELEMENT__BINDING_FILTERS = MappingPackage.EMF_MULTI_PROPERTIES_BINDING__BINDING_FILTERS;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference list.
