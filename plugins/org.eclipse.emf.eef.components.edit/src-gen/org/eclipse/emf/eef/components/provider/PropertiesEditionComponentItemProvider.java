@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentItemProvider.java,v 1.1 2009/04/30 17:09:48 glefur Exp $
+ * $Id: PropertiesEditionComponentItemProvider.java,v 1.2 2009/09/10 09:57:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.provider;
 
@@ -18,7 +18,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,11 +30,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.MappingFactory;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.provider.EMFElementBindingItemProvider;
 
 /**
@@ -41,7 +45,10 @@ import org.eclipse.emf.eef.mapping.provider.EMFElementBindingItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PropertiesEditionComponentItemProvider extends EMFElementBindingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class PropertiesEditionComponentItemProvider extends
+		EMFElementBindingItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -76,11 +83,13 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 * @generated
 	 */
 	protected void addHelpIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_EEFElement_helpID_feature"),
 				getString("_UI_EEFElement_helpID_description"),
-				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,12 +99,16 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 * @generated
 	 */
 	protected void addExplicitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_PropertiesEditionComponent_explicit_feature"),
-				getString("_UI_PropertiesEditionComponent_explicit_description"),
-				ComponentsPackage.Literals.PROPERTIES_EDITION_COMPONENT__EXPLICIT, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_PropertiesEditionComponent_explicit_feature"),
+						getString("_UI_PropertiesEditionComponent_explicit_description"),
+						ComponentsPackage.Literals.PROPERTIES_EDITION_COMPONENT__EXPLICIT,
+						true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -106,7 +119,8 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertiesEditionComponent"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/PropertiesEditionComponent"));
 	}
 
 	/**
@@ -117,9 +131,10 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PropertiesEditionComponent)object).getName();
+		String label = ((PropertiesEditionComponent) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionComponent_type")
-				: getString("_UI_PropertiesEditionComponent_type") + " " + label;
+				: getString("_UI_PropertiesEditionComponent_type") + " "
+						+ label;
 	}
 
 	/**
@@ -134,11 +149,11 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PropertiesEditionComponent.class)) {
-			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
+		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -151,15 +166,23 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 * @generated NOT
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		//		super.collectNewChildDescriptors(newChildDescriptors, object);
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
+		//super.collectNewChildDescriptors(newChildDescriptors, object);
+		//
+		//newChildDescriptors
+		//		.add(createChildParameter(
+		//				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+		//				ComponentsFactory.eINSTANCE
+		//						.createPropertiesEditionComponent()));
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, ComponentsFactory.eINSTANCE
-						.createPropertiesEditionElement()));
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+				ComponentsFactory.eINSTANCE.createPropertiesEditionElement()));
 
 		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, ComponentsFactory.eINSTANCE
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+				ComponentsFactory.eINSTANCE
 						.createPropertiesMultiEditionElement()));
 
 		newChildDescriptors.add(createChildParameter(

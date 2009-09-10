@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextItemProvider.java,v 1.1 2009/04/30 17:09:48 glefur Exp $
+ * $Id: PropertiesEditionContextItemProvider.java,v 1.2 2009/09/10 09:57:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.provider;
 
@@ -18,7 +18,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,11 +28,13 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.mapping.MappingFactory;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.provider.DatabindingItemProvider;
 
 /**
@@ -39,7 +43,10 @@ import org.eclipse.emf.eef.mapping.provider.DatabindingItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PropertiesEditionContextItemProvider extends DatabindingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class PropertiesEditionContextItemProvider extends
+		DatabindingItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,12 +80,15 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_PropertiesEditionContext_model_feature"),
-				getString("_UI_PropertiesEditionContext_model_description"),
-				ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL, true, false, true, null, null,
-				null));
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PropertiesEditionContext_model_feature",
+						"_UI_PropertiesEditionContext_type"),
+				ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL,
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -89,7 +99,8 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertiesEditionContext"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/PropertiesEditionContext"));
 	}
 
 	/**
@@ -100,7 +111,7 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PropertiesEditionContext)object).getDocumentation();
+		String label = ((PropertiesEditionContext) object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionContext_type")
 				: getString("_UI_PropertiesEditionContext_type") + " " + label;
 	}
@@ -126,14 +137,20 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 * @generated NOT
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		//		super.collectNewChildDescriptors(newChildDescriptors, object);
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
+		//super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES,
-				MappingFactory.eINSTANCE.createCategory()));
-
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
-				ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.DATABINDING__CATEGORIES,
+						MappingFactory.eINSTANCE.createCategory()));
+		
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.DATABINDING__BINDINGS,
+						ComponentsFactory.eINSTANCE
+								.createPropertiesEditionComponent()));
 	}
 
 	/**

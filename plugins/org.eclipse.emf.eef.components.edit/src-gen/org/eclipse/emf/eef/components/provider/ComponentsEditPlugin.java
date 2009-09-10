@@ -9,12 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditPlugin.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: ComponentsEditPlugin.java,v 1.3 2009/09/10 09:57:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.provider;
 
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelEditPlugin;
+
 import org.eclipse.emf.common.EMFPlugin;
+
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
@@ -53,8 +55,9 @@ public final class ComponentsEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ComponentsEditPlugin() {
-		super(new ResourceLocator[] {EcoreEditPlugin.INSTANCE, GenModelEditPlugin.INSTANCE,
-				MappingEditPlugin.INSTANCE, ViewsEditPlugin.INSTANCE,});
+		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE,
+				GenModelEditPlugin.INSTANCE, MappingEditPlugin.INSTANCE,
+				ViewsEditPlugin.INSTANCE, });
 	}
 
 	/**

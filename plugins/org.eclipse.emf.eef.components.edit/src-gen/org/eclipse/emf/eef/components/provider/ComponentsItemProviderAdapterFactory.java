@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsItemProviderAdapterFactory.java,v 1.2 2009/04/30 17:49:48 nlepine Exp $
+ * $Id: ComponentsItemProviderAdapterFactory.java,v 1.3 2009/09/10 09:57:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.provider;
 
@@ -20,10 +20,15 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.command.CommandParameter;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -36,12 +41,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.emf.eef.components.ComponentsFactory;
+
 import org.eclipse.emf.eef.components.util.ComponentsAdapterFactory;
+
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.util.MappingSwitch;
 
 /**
@@ -53,7 +62,9 @@ import org.eclipse.emf.eef.mapping.util.MappingSwitch;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class ComponentsItemProviderAdapterFactory extends
+		ComponentsAdapterFactory implements ComposeableAdapterFactory,
+		IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -109,7 +120,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	@Override
 	public Adapter createPropertiesEditionContextAdapter() {
 		if (propertiesEditionContextItemProvider == null) {
-			propertiesEditionContextItemProvider = new PropertiesEditionContextItemProvider(this);
+			propertiesEditionContextItemProvider = new PropertiesEditionContextItemProvider(
+					this);
 		}
 
 		return propertiesEditionContextItemProvider;
@@ -132,7 +144,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	@Override
 	public Adapter createPropertiesEditionComponentAdapter() {
 		if (propertiesEditionComponentItemProvider == null) {
-			propertiesEditionComponentItemProvider = new PropertiesEditionComponentItemProvider(this);
+			propertiesEditionComponentItemProvider = new PropertiesEditionComponentItemProvider(
+					this);
 		}
 
 		return propertiesEditionComponentItemProvider;
@@ -155,7 +168,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	@Override
 	public Adapter createPropertiesEditionElementAdapter() {
 		if (propertiesEditionElementItemProvider == null) {
-			propertiesEditionElementItemProvider = new PropertiesEditionElementItemProvider(this);
+			propertiesEditionElementItemProvider = new PropertiesEditionElementItemProvider(
+					this);
 		}
 
 		return propertiesEditionElementItemProvider;
@@ -178,7 +192,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	@Override
 	public Adapter createPropertiesMultiEditionElementAdapter() {
 		if (propertiesMultiEditionElementItemProvider == null) {
-			propertiesMultiEditionElementItemProvider = new PropertiesMultiEditionElementItemProvider(this);
+			propertiesMultiEditionElementItemProvider = new PropertiesMultiEditionElementItemProvider(
+					this);
 		}
 
 		return propertiesMultiEditionElementItemProvider;
@@ -191,7 +206,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -200,7 +216,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -234,7 +251,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -299,7 +317,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class MappingChildCreationExtender implements IChildCreationExtender {
+	public static class MappingChildCreationExtender implements
+			IChildCreationExtender {
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
 		 * <!-- begin-user-doc -->
@@ -329,7 +348,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+			CreationSwitch(List<Object> newChildDescriptors,
+					EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
 			}
@@ -341,8 +361,10 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 */
 			@Override
 			public Object caseDatabinding(Databinding object) {
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
-						ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+				newChildDescriptors.add(createChildParameter(
+						MappingPackage.Literals.DATABINDING__BINDINGS,
+						ComponentsFactory.eINSTANCE
+								.createPropertiesEditionComponent()));
 
 				return null;
 			}
@@ -353,18 +375,25 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 * @generated
 			 */
 			@Override
-			public Object caseAbstractElementBinding(AbstractElementBinding object) {
-				newChildDescriptors.add(createChildParameter(
-						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
-						ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+			public Object caseAbstractElementBinding(
+					AbstractElementBinding object) {
+				newChildDescriptors
+						.add(createChildParameter(
+								MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+								ComponentsFactory.eINSTANCE
+										.createPropertiesEditionComponent()));
 
-				newChildDescriptors.add(createChildParameter(
-						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
-						ComponentsFactory.eINSTANCE.createPropertiesEditionElement()));
+				newChildDescriptors
+						.add(createChildParameter(
+								MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+								ComponentsFactory.eINSTANCE
+										.createPropertiesEditionElement()));
 
-				newChildDescriptors.add(createChildParameter(
-						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
-						ComponentsFactory.eINSTANCE.createPropertiesMultiEditionElement()));
+				newChildDescriptors
+						.add(createChildParameter(
+								MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+								ComponentsFactory.eINSTANCE
+										.createPropertiesMultiEditionElement()));
 
 				return null;
 			}
@@ -376,8 +405,10 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 */
 			@Override
 			public Object caseCategory(Category object) {
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS,
-						ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+				newChildDescriptors.add(createChildParameter(
+						MappingPackage.Literals.CATEGORY__BINDINGS,
+						ComponentsFactory.eINSTANCE
+								.createPropertiesEditionComponent()));
 
 				return null;
 			}
@@ -387,7 +418,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected CommandParameter createChildParameter(Object feature, Object child) {
+			protected CommandParameter createChildParameter(Object feature,
+					Object child) {
 				return new CommandParameter(null, feature, child);
 			}
 
@@ -398,9 +430,11 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+		public Collection<Object> getNewChildDescriptors(Object object,
+				EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			new CreationSwitch(result, editingDomain)
+					.doSwitch((EObject) object);
 			return result;
 		}
 

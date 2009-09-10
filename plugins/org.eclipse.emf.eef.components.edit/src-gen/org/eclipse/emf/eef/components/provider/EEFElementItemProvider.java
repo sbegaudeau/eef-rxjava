@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFElementItemProvider.java,v 1.2 2009/04/30 17:49:47 nlepine Exp $
+ * $Id: EEFElementItemProvider.java,v 1.3 2009/09/10 09:57:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.provider;
 
@@ -18,7 +18,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -29,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.EEFElement;
 
@@ -38,7 +41,9 @@ import org.eclipse.emf.eef.components.EEFElement;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EEFElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class EEFElementItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -72,11 +77,13 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addHelpIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_EEFElement_helpID_feature"),
 				getString("_UI_EEFElement_helpID_description"),
-				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -87,7 +94,8 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EEFElement"));
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/EEFElement"));
 	}
 
 	/**
@@ -98,7 +106,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EEFElement)object).getHelpID();
+		String label = ((EEFElement) object).getHelpID();
 		return label == null || label.length() == 0 ? getString("_UI_EEFElement_type")
 				: getString("_UI_EEFElement_type") + " " + label;
 	}
@@ -115,10 +123,10 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements IEdit
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EEFElement.class)) {
-			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+			fireNotifyChanged(new ViewerNotification(notification, notification
+					.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -131,7 +139,8 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
