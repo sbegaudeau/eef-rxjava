@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsItemProviderAdapterFactory.java,v 1.3 2009/05/26 08:19:52 glefur Exp $
+ * $Id: ViewsItemProviderAdapterFactory.java,v 1.4 2009/09/10 12:42:21 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -30,6 +31,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
 
 /**
@@ -318,7 +320,7 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class)
+			if (!(type instanceof Class<?>)
 					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}

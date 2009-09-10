@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorItemProvider.java,v 1.2 2009/06/09 15:47:54 sbouchet Exp $
+ * $Id: CustomElementEditorItemProvider.java,v 1.3 2009/09/10 12:42:21 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,12 +18,14 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.eclipse.emf.eef.views.CustomElementEditor;
 
 /**
