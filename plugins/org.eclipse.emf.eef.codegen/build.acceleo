@@ -61,7 +61,6 @@
 	</taskdef>
 
 	<acceleoCompiler project="${basedir}" target="${target.folder}">
-		<classpath refid="@dot.classpath"/>
 	</acceleoCompiler>
 </target>
  
