@@ -76,6 +76,7 @@
 		<echoproperties/>
 		
 		<taskdef name="acceleoCompiler" classname="org.eclipse.acceleo.internal.ide.ui.builders.AcceleoBuilderTask">
+			<classpath location="${thirdPartyJarsDir}/acceleoCompiler.jar"/>
 		</taskdef>
 
 		<acceleoCompiler project="." target="${target.folder}">
