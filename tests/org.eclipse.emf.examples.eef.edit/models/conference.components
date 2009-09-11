@@ -4,81 +4,81 @@
     <categories xmi:id="_KvJBIJkmEd6sxtwdpecy3w" name="conference">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBIZkmEd6sxtwdpecy3w" name="Conference" views="_KvJoMZkmEd6sxtwdpecy3w">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OJpU8JktEd6sxtwdpecy3w" name="place" views="_KvJoM5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/place"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/place"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_P9i7gJktEd6sxtwdpecy3w" name="sites" views="_KvJoN5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EReference" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/sites"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/sites"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBJ5kmEd6sxtwdpecy3w" name="Person" views="_KvJoOJkmEd6sxtwdpecy3w _OTvo8JkpEd6sxtwdpecy3w">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBKJkmEd6sxtwdpecy3w" name="firstname" views="_KvJoOpkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/firstname"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/firstname"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBKZkmEd6sxtwdpecy3w" name="lastname" views="_KvJoO5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/lastname"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/lastname"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBKpkmEd6sxtwdpecy3w" name="age" views="_KvJoPJkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/age"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/age"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBK5kmEd6sxtwdpecy3w" name="eclipseCommiter" views="_KvJoPZkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/eclipseCommiter"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/eclipseCommiter"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBLJkmEd6sxtwdpecy3w" name="assists" views="_KvJoPpkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EReference" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/assists"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/assists"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBLZkmEd6sxtwdpecy3w" name="gender" views="_KvJoP5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/gender"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/gender"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBLpkmEd6sxtwdpecy3w" name="isRegistered" views="_KvJoQJkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/isRegistered"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/isRegistered"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Person"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBL5kmEd6sxtwdpecy3w" name="Talk" views="_KvJoQZkmEd6sxtwdpecy3w">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBMJkmEd6sxtwdpecy3w" name="title" views="_KvJoQ5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/title"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/title"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBMZkmEd6sxtwdpecy3w" name="topic" views="_KvJoRJkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EReference" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/topic"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/topic"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBMpkmEd6sxtwdpecy3w" name="type" views="_KvJoRZkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/type"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/type"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBM5kmEd6sxtwdpecy3w" name="presenter" views="_KvJoRpkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EReference" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/presenter"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/presenter"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBNJkmEd6sxtwdpecy3w" name="creator" views="_KvJoR5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EReference" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/creator"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/creator"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBNZkmEd6sxtwdpecy3w" name="documentation" views="_KvJoSJkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/documentation"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk/documentation"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Talk"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBNpkmEd6sxtwdpecy3w" name="Topic" views="_KvJoSZkmEd6sxtwdpecy3w">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBN5kmEd6sxtwdpecy3w" name="description" views="_KvJoS5kmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic/description"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic/description"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBOJkmEd6sxtwdpecy3w" name="references" views="_KvKPQJkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic/references"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic/references"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBOZkmEd6sxtwdpecy3w" name="documentation" views="_KvKPQZkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic/documentation"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic/documentation"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Topic"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBOpkmEd6sxtwdpecy3w" name="Site" views="_KvKPQpkmEd6sxtwdpecy3w">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBPJkmEd6sxtwdpecy3w" name="name" views="_KvKPRZkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Site/name"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Site/name"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBO5kmEd6sxtwdpecy3w" name="documentation" views="_KvKPRJkmEd6sxtwdpecy3w">
-          <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Site/documentation"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Site/documentation"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.ecore#//Site"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Site"/>
       </bindings>
     </categories>
-    <model href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.examples.eef/model/conference.genmodel#//conference"/>
+    <model href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.genmodel#//conference"/>
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_KvJBPZkmEd6sxtwdpecy3w" documentation="Views repository for conference GenPackage" name="conference">
     <RepositoryKind>SWT</RepositoryKind>
