@@ -80,7 +80,6 @@
 		</taskdef>
 
 		<acceleoCompiler project="." target="${target.folder}">
-			<classpath refid="@dot.classpath"/>
 		</acceleoCompiler>
 	</target>
 	
