@@ -1,6 +1,13 @@
-/**
+/*******************************************************************************
+ * Copyright (c) 2008, 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.tests.swtbot.finder;
 
 import java.io.IOException;
@@ -20,8 +27,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
+import org.eclipse.emf.eef.runtime.tests.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -40,6 +50,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *****************************************************************************/
 	
 	public static final String PACKAGE_EXPLORER_VIEW_NAME = "Package Explorer";
+	public static final String PROPERTIES_VIEW_NAME = "Properties";
 	public static final String NAVIGATE_MENU_LABEL = "Navigate";
 	public static final String OPEN_MENU_LABEL = "Open";
 	public static final String FINISH_BUTTON_LABEL = "Finish";
@@ -141,6 +152,19 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		return shell(elementType.getName());
 	}
+	
+	/**
+	 * Prepare the model editing
+	 * @param editor The EClass of the edited element
+	 * @param element the element to edit
+	 * @return the shell of the opened wizard
+	 */
+	public SWTBotView prepareLiveEditing(SWTBotEditor editor, EObject element) {
+		SWTBotTreeItem node2 = selectNode(editor, element);
+		node2.select();
+		sleep(1000);
+		return viewByTitle(PROPERTIES_VIEW_NAME);
+	}
 
 	/**
 	 * Select the given element in the given editor
@@ -158,6 +182,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			next = iterator.next();
 			node2 = selectSubNode(node2, next);
 		}
+		node2.select();
 		return node2;
 	}
 
@@ -192,6 +217,21 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		button(FINISH_BUTTON_LABEL).click();
 		waitUntil(Conditions.shellCloses(shell));
 	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * @param shell the shell of the edited wizard 
+	 * @param feature the feature to edit
+ 	 * @param newValue the new value to set to the feature
+	 */
+	public void editPropertyTextFeature(SWTBotView propertyView, String feature, Object newValue, SWTBotTreeItem selectNode) {
+		SWTBot propertyBot = propertyView.bot();
+		propertyBot.textWithLabel(feature).setFocus();
+		propertyBot.textWithLabel(feature).setText(newValue.toString());
+		SWTBotUtils.pressEnterKey(propertyView.getWidget());
+		selectNode.select();
+	}
+
 	
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
@@ -280,5 +320,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(500);
 		return node2;
 	}
+
+
 }
 
