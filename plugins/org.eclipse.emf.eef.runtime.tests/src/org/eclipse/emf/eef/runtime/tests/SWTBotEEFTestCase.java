@@ -29,7 +29,9 @@ import org.eclipse.emf.eef.runtime.tests.swtbot.finder.SWTEEFBot;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Before;
 
 /**
@@ -81,7 +83,20 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 		super.setUp();
 		closeWelcomePage();
 //		openJavaPerspective();
+		openPropertiesView();
 		initWorkspaceForTests();
+	}
+
+	private void openPropertiesView() {
+		bot.menu("Window").menu("Show View").menu("Other...").click();
+
+        SWTBotShell shell = bot.shell("Show View");
+        shell.activate();
+
+        SWTBotTree viewSelectionTree = bot.tree();
+        viewSelectionTree.expandNode("General").select("Properties");
+        bot.button("OK").click();
+        bot.waitUntil(Conditions.shellCloses(shell));
 	}
 
 	protected void openJavaPerspective() {

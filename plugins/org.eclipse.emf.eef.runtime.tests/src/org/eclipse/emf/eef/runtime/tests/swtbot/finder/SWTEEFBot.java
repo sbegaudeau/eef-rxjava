@@ -182,7 +182,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			next = iterator.next();
 			node2 = selectSubNode(node2, next);
 		}
-		node2.select();
 		return node2;
 	}
 
@@ -220,9 +219,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
-	 * @param shell the shell of the edited wizard 
+	 * @param propertyView the properties view
 	 * @param feature the feature to edit
- 	 * @param newValue the new value to set to the feature
+ 	 * @param selectNode the SWTBotTreeItem in the treeview model
 	 */
 	public void editPropertyTextFeature(SWTBotView propertyView, String feature, Object newValue, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
@@ -246,6 +245,18 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		button(FINISH_BUTTON_LABEL).click();
 		waitUntil(Conditions.shellCloses(shell));
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * @param propertyView the properties view
+	 * @param feature the feature to edit
+ 	 * @param selectNode the SWTBotTreeItem in the treeview model
+	 */
+	public void editPropertyCheckboxFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
+		SWTBot propertyBot = propertyView.bot();
+		propertyBot.checkBox(feature).click();
+		selectNode.select();
 	}
 	
 	/*****************************************************************************
