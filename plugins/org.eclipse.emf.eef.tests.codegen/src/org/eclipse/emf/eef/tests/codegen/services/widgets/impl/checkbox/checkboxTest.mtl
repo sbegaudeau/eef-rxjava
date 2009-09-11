@@ -17,6 +17,11 @@ CompoundCommand cc = new CompoundCommand();
 		bot.editCheckboxFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/]);
 [/template]
 
+[template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isCheckboxBoolean())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.editPropertyTextFeature(propertiesView, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], bot.selectNode(modelEditor, firstInstanceOf));
+[/template]
+
 [query isCheckboxBoolean(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EAttribute))
 	then false
