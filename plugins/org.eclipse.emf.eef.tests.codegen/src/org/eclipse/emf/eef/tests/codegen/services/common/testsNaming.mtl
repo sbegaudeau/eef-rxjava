@@ -5,3 +5,7 @@
 [template public testCase(pec : PropertiesEditionComponent)]
 [pec.name.toJavaClassifier()/]TestCase
 [/template]
+
+[template public propertyTestCase(pec : PropertiesEditionComponent)]
+[pec.name.toJavaClassifier()/]PropertiesTestCase
+[/template]

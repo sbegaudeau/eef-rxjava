@@ -16,6 +16,11 @@ CompoundCommand cc = new CompoundCommand();
 		bot.editTextFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], "value2");
 [/template]
 
+[template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isTextString())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.editPropertyTextFeature(propertiesView, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], "value2", bot.selectNode(modelEditor, firstInstanceOf));
+[/template]
+
 [query isTextString(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EAttribute))
 	then false

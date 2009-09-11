@@ -14,3 +14,7 @@
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 		// FIXME : define 'editFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
+
+[template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'editPropertyFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]

@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module ComponentTests('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
+[module ComponentPropertiesTests('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import common /]
 [import naming /]
@@ -24,7 +24,7 @@
 	[for (view : View | pec.views) ? (view.explicit)]
 [file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.model.completePackage()/].tests.junit;
+package [pec.model.completePackage()/].tests.junit.properties;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,15 +55,15 @@ import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
+import org.eclipse.emf.eef.runtime.tests.swtbot.finder.widgets.SWTBotEEFView;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 [additionalImports()/]
 
 /**
  * TestCase for [pec.name/]
  * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [pec.testCase()/] extends SWTBotEEFTestCase {
+public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 	
 	/**
 	 *  The project that contains models for tests 
@@ -174,12 +174,12 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
 	
-    /**
-	 * Test the wizard properties :
+	/**
+	 * Test the properties view :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the wizard properties
+	 * - change the properties in the properties view
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */
@@ -194,14 +194,14 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 				
-		// Open the EEF wizard (by double click) to edit the [pec.model.name/] element
+		// Open the EEF properties view to edit the [pec.model.name/] element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + [pec.model.name.toLowerFirst()/]MetaClass.getName() + " EClass");
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf);
+		SWTBotEEFView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
-		[pec.editFeature(peElement)/]
+		[pec.editPropertyFeature(peElement)/]
 				
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -224,7 +224,7 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
-[pec.model.completePackage().toPath()/]/tests/junit/[pec.testCase()/].java
+[pec.model.completePackage().toPath()/]/tests/junit/properties/[pec.propertyTestCase()/].java
 [/template]
 
 [query public testMustBeGenerated(pec : PropertiesEditionComponent) : Boolean = 

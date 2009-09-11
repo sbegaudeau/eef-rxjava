@@ -9,6 +9,13 @@
       </PropertiesGeneratorLauncher>
    </extension>
    <extension
+         point="org.eclipse.emf.eef.codegen.PropertiesGeneratorLauncher">
+      <PropertiesGeneratorLauncher
+            generatorLauncher="org.eclipse.emf.eef.tests.codegen.core.launcher.ComponentPropertiesTestsGeneratorLauncher"
+            name="EEF SWTBot properties test cases">
+      </PropertiesGeneratorLauncher>
+   </extension>
+   <extension
          point="org.eclipse.acceleo.engine.dynamic.templates">
       <templates
             path="src/">
