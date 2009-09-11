@@ -55,8 +55,8 @@ import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
-import org.eclipse.emf.eef.runtime.tests.swtbot.finder.widgets.SWTBotEEFView;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 [additionalImports()/]
 
 /**
@@ -199,7 +199,7 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + [pec.model.name.toLowerFirst()/]MetaClass.getName() + " EClass");
 		
-		SWTBotEEFView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
 		[pec.editPropertyFeature(peElement)/]
 				
