@@ -14,6 +14,7 @@ feature@org.eclipse.emf.eef.edt=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot
 
 feature@org.eclipse.emf.eef.runtime=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-runtime-feature
 feature@org.eclipse.emf.eef.uml=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-uml-feature
+feature@org.eclipse.emf.eef.tests=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.tests.feature
 
 plugin@org.eclipse.emf.eef.runtime=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.runtime
 
@@ -40,3 +41,10 @@ plugin@org.eclipse.emf.eef.codegen.uml=HEAD,:pserver:anonymous@dev.eclipse.org:/
 
 
 !*** EEF Examples plugins
+
+!*** EEF Tests plugins
+plugin@org.eclipse.emf.eef.tests.codegen=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.tests.codegen
+plugin@org.eclipse.emf.eef.runtime.tests=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.runtime.tests
+
+plugin@org.eclipse.test=v20080313,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,
+fragment@org.eclipse.ant.optional.junit=v20070202,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,
