@@ -43,7 +43,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	/**
 	 *  The project that contains models for tests 
 	 */
-	protected static final String TESTS_PROJECT_NAME = "org.eclipse.emf.sample.eef.tests.junit";
+	protected static final String TESTS_PROJECT_NAME = "org.eclipse.emf.examples.eef.tests.junit";
 	
 	/**
 	 *  The folder that contains the input models for tests 
