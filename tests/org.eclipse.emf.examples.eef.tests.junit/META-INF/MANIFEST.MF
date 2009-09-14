@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: test
-Bundle-SymbolicName: org.eclipse.emf.sample.eef.tests.junit.ok
+Bundle-SymbolicName: org.eclipse.emf.examples.eef.tests.junit
 Bundle-Version: 1.0.0
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
