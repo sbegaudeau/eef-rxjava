@@ -18,6 +18,7 @@
 
   <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-runtime-feature,org.eclipse.emf.eef.runtime,HEAD"/>
   <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef-uml-feature,org.eclipse.emf.eef.uml,HEAD"/>
+  <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.tests.feature,org.eclipse.emf.eef.tests,HEAD"/>
 
   <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.runtime,org.eclipse.emf.eef.runtime,HEAD"/>
 
@@ -44,6 +45,13 @@
 
 
   <!-- !*** EEF Examples plugins -->
+
+  <!-- !*** EEF Tests plugins -->
+  <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.tests.codegen,org.eclipse.emf.eef.tests.codegen,HEAD"/>
+  <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.runtime.tests,org.eclipse.emf.eef.runtime.tests,HEAD"/>
+
+  <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,org.eclipse.test,org.eclipse.test,v20080313"/>
+  <project reference="1.0,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,org.eclipse.ant.optional.junit,org.eclipse.ant.optional.junit,v20070202"/>
 
 </provider>
 </psf>
