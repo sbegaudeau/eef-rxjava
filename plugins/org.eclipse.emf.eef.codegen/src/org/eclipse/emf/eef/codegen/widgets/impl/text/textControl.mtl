@@ -18,7 +18,8 @@
 
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
-					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
+					if(msg.getNewValue()!=null){
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
 						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
@@ -32,6 +33,8 @@
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
+}
+						else{[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");}}
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
