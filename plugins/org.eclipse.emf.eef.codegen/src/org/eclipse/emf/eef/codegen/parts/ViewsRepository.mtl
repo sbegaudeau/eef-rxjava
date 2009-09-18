@@ -30,10 +30,10 @@ package [viewRepository.partsPackage()/];
 public class [viewRepository.vrClass()/] {
 
 	public static final int SWT_KIND = 0;
-		
+
 	public static final int FORM_KIND = 1;
 
-	[viewRepository.viewDescriptors()/]
+[viewRepository.viewDescriptors()/]
 }
 [/file]
 [/template]
@@ -64,10 +64,10 @@ public class [viewRepository.vrClass()/] {
 		// [protected ('for '.concat(view.name).concat(' keys'))]
 		
 		// [/protected]
-		
+
 [else]
 [for (viewElement : ViewElement | view.elements)]
-[viewElement.viewElementDescriptor()/]
+	[viewElement.viewElementDescriptor()/]
 [/for]
 [/if]
 	}
@@ -81,22 +81,19 @@ public class [viewRepository.vrClass()/] {
 public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIdentifier()/] = "[viewElement.oclAsType(views::ElementEditor).qualifiedIdentifier/]";	
 [elseif (viewElement.oclIsTypeOf(views::CustomElementEditor))]
 // [protected ('for '.concat(viewElement.name).concat(' ElementEditor key'))]
-		
-		// [/protected]
-[comment  TODO: Acceleo Improvment We shouldn't have to check if a collection isn't empty !/]
+
+// [/protected]
 [elseif (viewElement.oclIsTypeOf(views::Container))]
-	[if (viewElement.oclAsType(views::Container).elements->size() > 0)]		
-		[for (ve : ViewElement | viewElement.oclAsType(views::Container).elements)]
-		[ve.viewElementDescriptor()/]
-		[/for]
-	[/if]
+[for (ve : ViewElement | viewElement.oclAsType(views::Container).elements)]
+	[ve.viewElementDescriptor()/]
+[/for]
 [elseif (viewElement.oclIsTypeOf(views::View))]
 [for (v : View | viewElement.oclAsType(views::View))]
-		[v.viewDescriptor()/]
+	[v.viewDescriptor()/]
 [/for]
 [elseif (viewElement.oclIsTypeOf(views::ViewReference))][comment just ignore viewReferences /]
 [else]
-		//TODO FIXME invalid case for template public viewElementDescriptor(viewElement : ViewElement) in module ViewsRepository.mtl, viewElement : [viewElement/]
+	//TODO FIXME invalid case for template public viewElementDescriptor(viewElement : ViewElement) in module ViewsRepository.mtl, viewElement : [viewElement/]
 [/if]
 [/template]
 
