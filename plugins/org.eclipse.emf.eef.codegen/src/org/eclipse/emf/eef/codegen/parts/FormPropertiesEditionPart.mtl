@@ -18,7 +18,6 @@
 [import widgetGettersSetters /]
 [import widgetFormImpl /]
 
-
 [template public FormPropertiesEdionPart(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
@@ -300,7 +299,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [view.additionalMethods()/]
 
 }
-	[/file]
+[/file]
 [/let][/for]
 [/for]
 [/template]
