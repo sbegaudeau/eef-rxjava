@@ -82,6 +82,6 @@
 [comment --------------- Views related queries --------------- /]
 
 [query public editionPart(editor : ViewElement) : String =
-	if (editor.container.oclIsTypeOf(Container)) then editor.container.editionPart()
+	if (editor.container.oclIsTypeOf(views::Container)) then editor.container.editionPart()
 	else editor.container.oclAsType(View).pepClass()
 	endif/]

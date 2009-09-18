@@ -166,7 +166,7 @@
 [/template]
 
 [comment containingView must be remove when bug # resolved /]
-[template public groupKey(group : ViewElement, containingView : View) ? (group.oclIsTypeOf(Container) and group.representation.name = 'Group')]
+[template public groupKey(group : ViewElement, containingView : View) ? (group.oclIsTypeOf(views::Container) and group.representation.name = 'Group')]
 [containingView.name.toJavaClassifier()/]PropertiesEditionPart_[group.name.toJavaClassifier()/]GroupLabel
 [/template]
 

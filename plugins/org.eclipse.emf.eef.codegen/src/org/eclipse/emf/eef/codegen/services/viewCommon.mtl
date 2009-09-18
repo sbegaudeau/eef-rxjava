@@ -101,13 +101,13 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [/template]
 
 [template public widgetContainer(element : ViewElement)]
-[if (element.container.oclIsKindOf(Container) and element.container.representation.name = 'Group')]
+[if (element.container.oclIsKindOf(views::Container) and element.container.representation.name = 'Group')]
 [element.container.name.toJavaIdentifier()/]Group
-[elseif (element.container.oclIsKindOf(Container) and element.container.representation.name = 'VerticalBox')]
+[elseif (element.container.oclIsKindOf(views::Container) and element.container.representation.name = 'VerticalBox')]
 [element.container.name.toJavaIdentifier()/]VBox
-[elseif (element.container.oclIsKindOf(Container) and element.container.representation.name = 'HorizontalBox')]
+[elseif (element.container.oclIsKindOf(views::Container) and element.container.representation.name = 'HorizontalBox')]
 [element.container.name.toJavaIdentifier()/]HBox
-[elseif (element.container.oclIsKindOf(View))]
+[elseif (element.container.oclIsKindOf(views::View))]
 view
 [else]
 //FIXME ILLEGAL MODEL STATE in template public widgetContainer(element : ViewElement) in module viewCommon.mtl
