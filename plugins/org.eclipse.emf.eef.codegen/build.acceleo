@@ -72,19 +72,6 @@
 	</target>
 
 	<target name="post.compile.@dot">
-		<echo message="Compiling mtl templates..."/>
-
-		<property name="mypath" refid="@dot.classpath" />
-		<echo message="Classpath = ${mypath}"/>
-		
-		<taskdef name="acceleoCompiler" classname="org.eclipse.acceleo.internal.ide.ui.builders.AcceleoBuilderTask">
-			<classpath>
-				<path location="${thirdPartyJarsDir}/acceleoCompiler.jar"/>
-				<path refid="@dot.classpath"/>
-			</classpath>
-		</taskdef>
-
-		<acceleoCompiler project="." target="${target.folder}"/>
 	</target>
 	
 	<!-- ===================================================================== -->
@@ -117,7 +104,7 @@
 	<!--   target.folder - destination folder                                  -->
 	<!-- ===================================================================== -->
 	<target name="post.gather.bin.parts">
-
+		<eclipse.incrementalBuild project="org.eclipse.emf.eef.codegen" kind="full" />
 	</target>
 
 	<!-- ===================================================================== -->
