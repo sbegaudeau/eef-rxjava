@@ -19,7 +19,7 @@
 [template public PropertySection(peContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
-[if (pec.explicit and pec.involvedViews()->size() > 1)]
+[if (pec.explicit and pec.involvedViews()->size() > 0)]
 	[for (view : View | pec.views) ? (view.explicit)]
 [file (pec.fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
@@ -83,7 +83,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
 		if (!(selection instanceof IStructuredSelection) || 
-				!((part instanceof IEditingDomainProvider) || ((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)) {
+				!((part instanceof IEditingDomainProvider) || part.getAdapter(IEditingDomainProvider.class) != null)) {
 			return;
 		}
 
@@ -93,8 +93,8 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 		EditingDomain editingDomain = null;
 		if (part instanceof IEditingDomainProvider)
 			editingDomain = ((IEditingDomainProvider) part).getEditingDomain();
-		else if (((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)
-			editingDomain = (((IEditingDomainProvider)((IAdaptable)part).getAdapter(IEditingDomainProvider.class))).getEditingDomain();
+		else if (part.getAdapter(IEditingDomainProvider.class) != null)
+			editingDomain = ((IEditingDomainProvider)part.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
 
 		if (editingDomain != null && newEObject != null && newEObject != eObject) {
 			eObject = newEObject;
@@ -172,7 +172,6 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 		}
 		return null;
 	}
-	
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
