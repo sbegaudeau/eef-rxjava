@@ -132,7 +132,7 @@
                   <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
                 </argument>
               </body>
-              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" extends AbstractPropertySection implements IFilter {&#xA;&#xA;&#x9;private Composite parent;&#xA;&#x9;private IPropertiesEditionComponent propertiesEditionComponent;&#xA;&#xA;&#x9;/**&#xA;&#x9; * The current selected object or the first object in the selection when&#xA;&#x9; * multiple objects are selected.&#xA;&#x9; */&#xA;&#x9;protected EObject eObject;&#xA;&#xA;&#x9;/**&#xA;&#x9; * The view manager&#xA;&#x9; */&#xA;&#x9;private IPropertiesEditionPart editionPart = null;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,&#xA;&#x9; *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)&#xA;&#x9; */&#xA;&#x9;public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {&#xA;&#x9;&#x9;super.createControls(parent, aTabbedPropertySheetPage);&#xA;&#x9;&#x9;this.parent = parent;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @see org.eclipse.ui.views.properties.tabbed.ISection#setInput(org.eclipse.ui.IWorkbenchPart,&#xA;&#x9; *      org.eclipse.jface.viewers.ISelection)&#xA;&#x9; */&#xA;&#x9;public void setInput(IWorkbenchPart part, ISelection selection) {&#xA;&#x9;&#x9;super.setInput(part, selection);&#xA;&#x9;&#x9;if (!(selection instanceof IStructuredSelection) || &#xA;&#x9;&#x9;&#x9;&#x9;!((part instanceof IEditingDomainProvider) || ((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)) {&#xA;&#x9;&#x9;&#x9;return;&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;Object firstElement = ((IStructuredSelection) selection).getFirstElement();&#xA;&#x9;&#x9;EObject newEObject = resolveSemanticObject(firstElement);&#xA;&#xA;&#x9;&#x9;EditingDomain editingDomain = null;&#xA;&#x9;&#x9;if (part instanceof IEditingDomainProvider)&#xA;&#x9;&#x9;&#x9;editingDomain = ((IEditingDomainProvider) part).getEditingDomain();&#xA;&#x9;&#x9;else if (((IAdaptable)part).getAdapter(IEditingDomainProvider.class) != null)&#xA;&#x9;&#x9;&#x9;editingDomain = (((IEditingDomainProvider)((IAdaptable)part).getAdapter(IEditingDomainProvider.class))).getEditingDomain();&#xA;&#xA;&#x9;&#x9;if (editingDomain != null &amp;&amp; newEObject != null &amp;&amp; newEObject != eObject) {&#xA;&#x9;&#x9;&#x9;eObject = newEObject;&#xA;&#x9;&#x9;&#x9;if (eObject != null) {&#xA;&#x9;&#x9;&#x9;&#x9;IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eObject);&#xA;&#x9;&#x9;&#x9;&#x9;if (this.propertiesEditionComponent != null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.propertiesEditionComponent.dispose();&#xA;&#x9;&#x9;&#x9;&#x9;this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);&#xA;&#x9;&#x9;&#x9;&#x9;if (this.propertiesEditionComponent != null) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.propertiesEditionComponent.setLiveEditingDomain(editingDomain);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// FIXME: find a better way to define the Form constant&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1, "/>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" extends AbstractPropertySection implements IFilter {&#xA;&#xA;&#x9;private Composite parent;&#xA;&#x9;private IPropertiesEditionComponent propertiesEditionComponent;&#xA;&#xA;&#x9;/**&#xA;&#x9; * The current selected object or the first object in the selection when&#xA;&#x9; * multiple objects are selected.&#xA;&#x9; */&#xA;&#x9;protected EObject eObject;&#xA;&#xA;&#x9;/**&#xA;&#x9; * The view manager&#xA;&#x9; */&#xA;&#x9;private IPropertiesEditionPart editionPart = null;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,&#xA;&#x9; *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)&#xA;&#x9; */&#xA;&#x9;public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {&#xA;&#x9;&#x9;super.createControls(parent, aTabbedPropertySheetPage);&#xA;&#x9;&#x9;this.parent = parent;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @see org.eclipse.ui.views.properties.tabbed.ISection#setInput(org.eclipse.ui.IWorkbenchPart,&#xA;&#x9; *      org.eclipse.jface.viewers.ISelection)&#xA;&#x9; */&#xA;&#x9;public void setInput(IWorkbenchPart part, ISelection selection) {&#xA;&#x9;&#x9;super.setInput(part, selection);&#xA;&#x9;&#x9;if (!(selection instanceof IStructuredSelection) || &#xA;&#x9;&#x9;&#x9;&#x9;!((part instanceof IEditingDomainProvider) || part.getAdapter(IEditingDomainProvider.class) != null)) {&#xA;&#x9;&#x9;&#x9;return;&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;Object firstElement = ((IStructuredSelection) selection).getFirstElement();&#xA;&#x9;&#x9;EObject newEObject = resolveSemanticObject(firstElement);&#xA;&#xA;&#x9;&#x9;EditingDomain editingDomain = null;&#xA;&#x9;&#x9;if (part instanceof IEditingDomainProvider)&#xA;&#x9;&#x9;&#x9;editingDomain = ((IEditingDomainProvider) part).getEditingDomain();&#xA;&#x9;&#x9;else if (part.getAdapter(IEditingDomainProvider.class) != null)&#xA;&#x9;&#x9;&#x9;editingDomain = ((IEditingDomainProvider)part.getAdapter(IEditingDomainProvider.class)).getEditingDomain();&#xA;&#xA;&#x9;&#x9;if (editingDomain != null &amp;&amp; newEObject != null &amp;&amp; newEObject != eObject) {&#xA;&#x9;&#x9;&#x9;eObject = newEObject;&#xA;&#x9;&#x9;&#x9;if (eObject != null) {&#xA;&#x9;&#x9;&#x9;&#x9;IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eObject);&#xA;&#x9;&#x9;&#x9;&#x9;if (this.propertiesEditionComponent != null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.propertiesEditionComponent.dispose();&#xA;&#x9;&#x9;&#x9;&#x9;this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);&#xA;&#x9;&#x9;&#x9;&#x9;if (this.propertiesEditionComponent != null) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.propertiesEditionComponent.setLiveEditingDomain(editingDomain);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// FIXME: find a better way to define the Form constant&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1, "/>
               <body xsi:type="mtl:TemplateInvocation">
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
                 <definition href="../services/naming.emtl#/0/subPECClass"/>
@@ -278,7 +278,7 @@
                 </source>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/size"/>
               </source>
-              <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+              <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="0">
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
               </argument>
               <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/%3E"/>
@@ -308,7 +308,7 @@
       </parameter>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="resolveSemanticObject" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;private EObject resolveSemanticObject(Object object) {&#xA;&#x9;&#x9;if (object instanceof EObject) {&#xA;&#x9;&#x9;&#x9;return (EObject)object;&#xA;&#x9;&#x9;} else if (object instanceof IAdaptable) {&#xA;&#x9;&#x9;&#x9;IAdaptable adaptable = (IAdaptable)object;&#xA;&#x9;&#x9;&#x9;if (adaptable.getAdapter(SemanticAdapter.class) != null) {&#xA;&#x9;&#x9;&#x9;&#x9;SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;.getAdapter(SemanticAdapter.class);&#xA;&#x9;&#x9;&#x9;&#x9;return semanticAdapter.getEObject();&#xA;&#x9;&#x9;&#x9;} else if (adaptable.getAdapter(EObject.class) != null) {&#xA;&#x9;&#x9;&#x9;&#x9;return (EObject)adaptable.getAdapter(EObject.class);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;return null;&#xA;&#x9;}&#xA;&#x9;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;private EObject resolveSemanticObject(Object object) {&#xA;&#x9;&#x9;if (object instanceof EObject) {&#xA;&#x9;&#x9;&#x9;return (EObject)object;&#xA;&#x9;&#x9;} else if (object instanceof IAdaptable) {&#xA;&#x9;&#x9;&#x9;IAdaptable adaptable = (IAdaptable)object;&#xA;&#x9;&#x9;&#x9;if (adaptable.getAdapter(SemanticAdapter.class) != null) {&#xA;&#x9;&#x9;&#x9;&#x9;SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;.getAdapter(SemanticAdapter.class);&#xA;&#x9;&#x9;&#x9;&#x9;return semanticAdapter.getEObject();&#xA;&#x9;&#x9;&#x9;} else if (adaptable.getAdapter(EObject.class) != null) {&#xA;&#x9;&#x9;&#x9;&#x9;return (EObject)adaptable.getAdapter(EObject.class);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;return null;&#xA;&#x9;}"/>
       <parameter name="pec">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
       </parameter>
@@ -4541,7 +4541,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/PropertySection">
       <details key="start" value="794"/>
-      <details key="end" value="6369"/>
+      <details key="end" value="6325"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/PropertySection/@body.0">
       <details key="start" value="888"/>
@@ -4553,7 +4553,7 @@
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/PropertySection/@body.2">
       <details key="start" value="906"/>
-      <details key="end" value="6357"/>
+      <details key="end" value="6313"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/PropertySection/@body.2/@body.0">
       <details key="start" value="1012"/>
@@ -4561,7 +4561,7 @@
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/PropertySection/@body.2/@body.1">
       <details key="start" value="1012"/>
-      <details key="end" value="6350"/>
+      <details key="end" value="6306"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/PropertySection/@body.2/@body.1/@body.0">
       <details key="start" value="1068"/>
@@ -4569,7 +4569,7 @@
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/PropertySection/@body.2/@body.1/@body.1">
       <details key="start" value="1069"/>
-      <details key="end" value="6344"/>
+      <details key="end" value="6300"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.0">
       <details key="start" value="1119"/>
@@ -4577,7 +4577,7 @@
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1">
       <details key="start" value="1119"/>
-      <details key="end" value="6336"/>
+      <details key="end" value="6292"/>
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.0">
       <details key="start" value="1158"/>
@@ -4725,147 +4725,147 @@
     </eAnnotations>
     <eAnnotations source="positions.46" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.16">
       <details key="start" value="2550"/>
-      <details key="end" value="4984"/>
+      <details key="end" value="4940"/>
     </eAnnotations>
     <eAnnotations source="positions.47" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.17">
-      <details key="start" value="4985"/>
-      <details key="end" value="5006"/>
+      <details key="start" value="4941"/>
+      <details key="end" value="4962"/>
     </eAnnotations>
     <eAnnotations source="positions.48" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.17/pec">
-      <details key="start" value="4985"/>
-      <details key="end" value="4988"/>
+      <details key="start" value="4941"/>
+      <details key="end" value="4944"/>
     </eAnnotations>
     <eAnnotations source="positions.49" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.17/view">
-      <details key="start" value="5001"/>
-      <details key="end" value="5005"/>
+      <details key="start" value="4957"/>
+      <details key="end" value="4961"/>
     </eAnnotations>
     <eAnnotations source="positions.50" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.18">
-      <details key="start" value="5008"/>
-      <details key="end" value="5009"/>
+      <details key="start" value="4964"/>
+      <details key="end" value="4965"/>
     </eAnnotations>
     <eAnnotations source="positions.51" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.19">
-      <details key="start" value="5010"/>
-      <details key="end" value="5036"/>
+      <details key="start" value="4966"/>
+      <details key="end" value="4992"/>
     </eAnnotations>
     <eAnnotations source="positions.52" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.19/view">
-      <details key="start" value="5010"/>
-      <details key="end" value="5014"/>
+      <details key="start" value="4966"/>
+      <details key="end" value="4970"/>
     </eAnnotations>
     <eAnnotations source="positions.53" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.19/pec">
-      <details key="start" value="5032"/>
-      <details key="end" value="5035"/>
+      <details key="start" value="4988"/>
+      <details key="end" value="4991"/>
     </eAnnotations>
     <eAnnotations source="positions.54" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.20">
-      <details key="start" value="5038"/>
-      <details key="end" value="5236"/>
+      <details key="start" value="4994"/>
+      <details key="end" value="5192"/>
     </eAnnotations>
     <eAnnotations source="positions.55" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.21">
-      <details key="start" value="5237"/>
-      <details key="end" value="5240"/>
+      <details key="start" value="5193"/>
+      <details key="end" value="5196"/>
     </eAnnotations>
     <eAnnotations source="positions.56" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.22">
-      <details key="start" value="5242"/>
-      <details key="end" value="5243"/>
+      <details key="start" value="5198"/>
+      <details key="end" value="5199"/>
     </eAnnotations>
     <eAnnotations source="positions.57" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.23">
-      <details key="start" value="5244"/>
-      <details key="end" value="5247"/>
+      <details key="start" value="5200"/>
+      <details key="end" value="5203"/>
     </eAnnotations>
     <eAnnotations source="positions.58" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.24">
-      <details key="start" value="5249"/>
-      <details key="end" value="5485"/>
+      <details key="start" value="5205"/>
+      <details key="end" value="5441"/>
     </eAnnotations>
     <eAnnotations source="positions.59" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.25">
-      <details key="start" value="5486"/>
-      <details key="end" value="5507"/>
+      <details key="start" value="5442"/>
+      <details key="end" value="5463"/>
     </eAnnotations>
     <eAnnotations source="positions.60" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.25/pec">
-      <details key="start" value="5486"/>
-      <details key="end" value="5489"/>
+      <details key="start" value="5442"/>
+      <details key="end" value="5445"/>
     </eAnnotations>
     <eAnnotations source="positions.61" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.25/view">
-      <details key="start" value="5502"/>
-      <details key="end" value="5506"/>
+      <details key="start" value="5458"/>
+      <details key="end" value="5462"/>
     </eAnnotations>
     <eAnnotations source="positions.62" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.26">
-      <details key="start" value="5509"/>
-      <details key="end" value="5510"/>
+      <details key="start" value="5465"/>
+      <details key="end" value="5466"/>
     </eAnnotations>
     <eAnnotations source="positions.63" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.27">
-      <details key="start" value="5511"/>
-      <details key="end" value="5537"/>
+      <details key="start" value="5467"/>
+      <details key="end" value="5493"/>
     </eAnnotations>
     <eAnnotations source="positions.64" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.27/view">
-      <details key="start" value="5511"/>
-      <details key="end" value="5515"/>
+      <details key="start" value="5467"/>
+      <details key="end" value="5471"/>
     </eAnnotations>
     <eAnnotations source="positions.65" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.27/pec">
-      <details key="start" value="5533"/>
-      <details key="end" value="5536"/>
+      <details key="start" value="5489"/>
+      <details key="end" value="5492"/>
     </eAnnotations>
     <eAnnotations source="positions.66" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.28">
-      <details key="start" value="5539"/>
-      <details key="end" value="6172"/>
+      <details key="start" value="5495"/>
+      <details key="end" value="6128"/>
     </eAnnotations>
     <eAnnotations source="positions.67" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.29">
-      <details key="start" value="6173"/>
-      <details key="end" value="6201"/>
+      <details key="start" value="6129"/>
+      <details key="end" value="6157"/>
     </eAnnotations>
     <eAnnotations source="positions.68" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.29/@argument.0">
-      <details key="start" value="6173"/>
-      <details key="end" value="6182"/>
+      <details key="start" value="6129"/>
+      <details key="end" value="6138"/>
     </eAnnotations>
     <eAnnotations source="positions.69" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.29/@argument.0/pec">
-      <details key="start" value="6173"/>
-      <details key="end" value="6176"/>
+      <details key="start" value="6129"/>
+      <details key="end" value="6132"/>
     </eAnnotations>
     <eAnnotations source="positions.70" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.30">
-      <details key="start" value="6203"/>
-      <details key="end" value="6217"/>
+      <details key="start" value="6159"/>
+      <details key="end" value="6173"/>
     </eAnnotations>
     <eAnnotations source="positions.71" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.31">
-      <details key="start" value="6218"/>
-      <details key="end" value="6260"/>
+      <details key="start" value="6174"/>
+      <details key="end" value="6216"/>
     </eAnnotations>
     <eAnnotations source="positions.72" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.31/@argument.0">
-      <details key="start" value="6218"/>
-      <details key="end" value="6232"/>
+      <details key="start" value="6174"/>
+      <details key="end" value="6188"/>
     </eAnnotations>
     <eAnnotations source="positions.73" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.31/@argument.0/@source">
+      <details key="start" value="6174"/>
+      <details key="end" value="6183"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.31/@argument.0/@source/pec">
+      <details key="start" value="6174"/>
+      <details key="end" value="6177"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.32">
       <details key="start" value="6218"/>
       <details key="end" value="6227"/>
     </eAnnotations>
-    <eAnnotations source="positions.74" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.31/@argument.0/@source/pec">
-      <details key="start" value="6218"/>
-      <details key="end" value="6221"/>
-    </eAnnotations>
-    <eAnnotations source="positions.75" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.32">
-      <details key="start" value="6262"/>
-      <details key="end" value="6271"/>
-    </eAnnotations>
     <eAnnotations source="positions.76" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.33">
-      <details key="start" value="6272"/>
-      <details key="end" value="6299"/>
+      <details key="start" value="6228"/>
+      <details key="end" value="6255"/>
     </eAnnotations>
     <eAnnotations source="positions.77" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.33/pec">
-      <details key="start" value="6272"/>
-      <details key="end" value="6275"/>
+      <details key="start" value="6228"/>
+      <details key="end" value="6231"/>
     </eAnnotations>
     <eAnnotations source="positions.78" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.34">
-      <details key="start" value="6301"/>
-      <details key="end" value="6303"/>
+      <details key="start" value="6257"/>
+      <details key="end" value="6259"/>
     </eAnnotations>
     <eAnnotations source="positions.79" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.35">
-      <details key="start" value="6304"/>
-      <details key="end" value="6323"/>
+      <details key="start" value="6260"/>
+      <details key="end" value="6279"/>
     </eAnnotations>
     <eAnnotations source="positions.80" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.35/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.81" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.36">
-      <details key="start" value="6325"/>
-      <details key="end" value="6329"/>
+      <details key="start" value="6281"/>
+      <details key="end" value="6285"/>
     </eAnnotations>
     <eAnnotations source="positions.82" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@fileUrl">
       <details key="start" value="1126"/>
@@ -4880,8 +4880,8 @@
       <details key="end" value="1147"/>
     </eAnnotations>
     <eAnnotations source="positions.85" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.2">
-      <details key="start" value="6337"/>
-      <details key="end" value="6337"/>
+      <details key="start" value="6293"/>
+      <details key="end" value="6293"/>
     </eAnnotations>
     <eAnnotations source="positions.86" references="/0/PropertySection/@body.2/@body.1/@body.1/view">
       <details key="start" value="1075"/>
@@ -4904,8 +4904,8 @@
       <details key="end" value="1107"/>
     </eAnnotations>
     <eAnnotations source="positions.91" references="/0/PropertySection/@body.2/@body.1/@body.2">
-      <details key="start" value="6345"/>
-      <details key="end" value="6345"/>
+      <details key="start" value="6301"/>
+      <details key="end" value="6301"/>
     </eAnnotations>
     <eAnnotations source="positions.92" references="/0/PropertySection/@body.2/@body.1/@ifExpr">
       <details key="start" value="1016"/>
@@ -4940,8 +4940,8 @@
       <details key="end" value="1065"/>
     </eAnnotations>
     <eAnnotations source="positions.100" references="/0/PropertySection/@body.2/@body.2">
-      <details key="start" value="6351"/>
-      <details key="end" value="6351"/>
+      <details key="start" value="6307"/>
+      <details key="end" value="6307"/>
     </eAnnotations>
     <eAnnotations source="positions.101" references="/0/PropertySection/@body.2/pec">
       <details key="start" value="912"/>
@@ -4960,8 +4960,8 @@
       <details key="end" value="1008"/>
     </eAnnotations>
     <eAnnotations source="positions.105" references="/0/PropertySection/@body.3">
-      <details key="start" value="6358"/>
-      <details key="end" value="6358"/>
+      <details key="start" value="6314"/>
+      <details key="end" value="6314"/>
     </eAnnotations>
     <eAnnotations source="positions.106" references="/0/PropertySection/peContext">
       <details key="start" value="827"/>
@@ -4972,76 +4972,76 @@
       <details key="end" value="885"/>
     </eAnnotations>
     <eAnnotations source="positions.108" references="/0/resolveSemanticObject">
-      <details key="start" value="6371"/>
-      <details key="end" value="7022"/>
+      <details key="start" value="6327"/>
+      <details key="end" value="6976"/>
     </eAnnotations>
     <eAnnotations source="positions.109" references="/0/resolveSemanticObject/@body.0">
-      <details key="start" value="6445"/>
-      <details key="end" value="7010"/>
+      <details key="start" value="6401"/>
+      <details key="end" value="6964"/>
     </eAnnotations>
     <eAnnotations source="positions.110" references="/0/resolveSemanticObject/pec">
-      <details key="start" value="6410"/>
-      <details key="end" value="6442"/>
+      <details key="start" value="6366"/>
+      <details key="end" value="6398"/>
     </eAnnotations>
     <eAnnotations source="positions.111" references="/0/fullFilePath">
-      <details key="start" value="7024"/>
-      <details key="end" value="7165"/>
+      <details key="start" value="6978"/>
+      <details key="end" value="7119"/>
     </eAnnotations>
     <eAnnotations source="positions.112" references="/0/fullFilePath/@body.0">
-      <details key="start" value="7102"/>
-      <details key="end" value="7102"/>
+      <details key="start" value="7056"/>
+      <details key="end" value="7056"/>
     </eAnnotations>
     <eAnnotations source="positions.113" references="/0/fullFilePath/@body.1">
-      <details key="start" value="7103"/>
-      <details key="end" value="7146"/>
+      <details key="start" value="7057"/>
+      <details key="end" value="7100"/>
     </eAnnotations>
     <eAnnotations source="positions.114" references="/0/fullFilePath/@body.1/@argument.0">
-      <details key="start" value="7103"/>
-      <details key="end" value="7137"/>
+      <details key="start" value="7057"/>
+      <details key="end" value="7091"/>
     </eAnnotations>
     <eAnnotations source="positions.115" references="/0/fullFilePath/@body.1/@argument.0/pec">
-      <details key="start" value="7103"/>
-      <details key="end" value="7106"/>
+      <details key="start" value="7057"/>
+      <details key="end" value="7060"/>
     </eAnnotations>
     <eAnnotations source="positions.116" references="/0/fullFilePath/@body.1/@argument.0/view">
-      <details key="start" value="7132"/>
-      <details key="end" value="7136"/>
+      <details key="start" value="7086"/>
+      <details key="end" value="7090"/>
     </eAnnotations>
     <eAnnotations source="positions.117" references="/0/fullFilePath/@body.2">
-      <details key="start" value="7148"/>
-      <details key="end" value="7153"/>
+      <details key="start" value="7102"/>
+      <details key="end" value="7107"/>
     </eAnnotations>
     <eAnnotations source="positions.118" references="/0/fullFilePath/pec">
-      <details key="start" value="7054"/>
-      <details key="end" value="7086"/>
+      <details key="start" value="7008"/>
+      <details key="end" value="7040"/>
     </eAnnotations>
     <eAnnotations source="positions.119" references="/0/fullFilePath/view">
-      <details key="start" value="7088"/>
-      <details key="end" value="7099"/>
+      <details key="start" value="7042"/>
+      <details key="end" value="7053"/>
     </eAnnotations>
     <eAnnotations source="positions.120" references="/0/additionalImports">
-      <details key="start" value="7235"/>
-      <details key="end" value="7292"/>
+      <details key="start" value="7189"/>
+      <details key="end" value="7246"/>
     </eAnnotations>
     <eAnnotations source="positions.121" references="/0/additionalImports/@body.0">
-      <details key="start" value="7281"/>
-      <details key="end" value="7281"/>
+      <details key="start" value="7235"/>
+      <details key="end" value="7235"/>
     </eAnnotations>
     <eAnnotations source="positions.122" references="/0/additionalImports/v">
-      <details key="start" value="7270"/>
-      <details key="end" value="7278"/>
+      <details key="start" value="7224"/>
+      <details key="end" value="7232"/>
     </eAnnotations>
     <eAnnotations source="positions.123" references="/0/additionalMethods">
-      <details key="start" value="7362"/>
-      <details key="end" value="7419"/>
+      <details key="start" value="7316"/>
+      <details key="end" value="7373"/>
     </eAnnotations>
     <eAnnotations source="positions.124" references="/0/additionalMethods/@body.0">
-      <details key="start" value="7408"/>
-      <details key="end" value="7408"/>
+      <details key="start" value="7362"/>
+      <details key="end" value="7362"/>
     </eAnnotations>
     <eAnnotations source="positions.125" references="/0/additionalMethods/v">
-      <details key="start" value="7397"/>
-      <details key="end" value="7405"/>
+      <details key="start" value="7351"/>
+      <details key="end" value="7359"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
