@@ -23,11 +23,11 @@
 		  project="org.eclipse.emf.eef.codegen"
 		  kind="full" />
 		<echo>
-		copy todir="${build.result.folder}"
-			fileset dir="${target.folder}" includes="**/*.emtl"
+		copy todir="${target.folder}"
+			fileset dir="${build.result.folder}" includes="**/*.emtl"
 		</echo>
-		<copy todir="${build.result.folder}">
-			<fileset dir="${target.folder}" includes="**/*.emtl"/>
+		<copy todir="${target.folder}" verbose="true">
+			<fileset dir="${build.result.folder}" includes="**/*.emtl"/>
 		</copy>
 	</target>
 
