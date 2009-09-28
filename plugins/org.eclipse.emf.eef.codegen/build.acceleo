@@ -18,11 +18,12 @@
 	<!--   target.folder - destination folder                              -->
 	<!-- ================================================================= -->
 	<target name="post.gather.bin.parts">
+		<echo message="Compiling mtl templates"/>
 		<eclipse.incrementalBuild 
 		  project="org.eclipse.emf.eef.codegen"
 		  kind="full" />
-		<copy todir="${target.folder}">
-			<fileset dir="${build.result.folder}" includes="**/*.emtl"/>
+		<copy todir="${build.result.folder}">
+			<fileset dir="${target.folder}" includes="**/*.emtl"/>
 		</copy>
 	</target>
 
