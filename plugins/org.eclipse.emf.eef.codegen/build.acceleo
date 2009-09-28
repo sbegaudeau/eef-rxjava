@@ -21,7 +21,7 @@
 		<eclipse.incrementalBuild 
 		  project="org.eclipse.emf.eef.codegen"
 		  kind="full" />
-		<copy dest="${target.folder}">
+		<copy todir="${target.folder}">
 			<fileset dir="${build.result.folder}" includes="**/*.emtl"/>
 		</copy>
 	</target>
