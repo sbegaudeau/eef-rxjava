@@ -17,7 +17,7 @@
 	<!--   build.result.folder - folder containing the build results       -->
 	<!--   target.folder - destination folder                              -->
 	<!-- ================================================================= -->
-	<target name="post.gather.bin.parts">
+	<target name="post.compile.@dot">
 		<eclipse.incrementalBuild 
 		  project="org.eclipse.emf.eef.codegen"
 		  kind="full" />
