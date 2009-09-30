@@ -112,6 +112,7 @@ public class EditPropertyWizard extends Wizard {
 	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#performCancel()
 	 */
+	@Override
 	public boolean performCancel() {
 		PropertiesContextService.getInstance().pop();
 		return super.performCancel();
@@ -122,21 +123,25 @@ public class EditPropertyWizard extends Wizard {
 	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
 	 */
+	@Override
 	public boolean performFinish() {
 		if (editingDomain != null) {
 			CompoundCommand finishCommand = propertiesEditionComponent
 					.getPropertiesEditionCommand(editingDomain);
 			if (finishCommand.canExecute()) {
 				this.command = finishCommand;
+				PropertiesContextService.getInstance().pop();
 				return true;
 			}
 			return false;
+		} else {
+			eObject = propertiesEditionComponent.getPropertiesEditionObject(eObject);
+			PropertiesContextService.getInstance().pop();
+			return true;
 		}
-		eObject = propertiesEditionComponent.getPropertiesEditionObject(eObject);
-		PropertiesContextService.getInstance().pop();
-		return true;
 	}
 
+	@Override
 	public void addPages() {
 		mainPage = new EditPropertyWizardPage();
 		addPage(mainPage);
@@ -166,15 +171,15 @@ public class EditPropertyWizard extends Wizard {
 			scrolledContainer.setExpandVertical(true);
 			scrolledContainer.setContent(container);
 			scrolledContainer.setMinSize(folder.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-//			Diagnostic diag = Diagnostic.OK_INSTANCE;
-//			propertiesEditionComponent.validate(diag);
-//			propertiesEditionComponent.validateRequiredFeatures(diag);
-//			if (diag != null && diag.getSeverity() != Diagnostic.OK){
-//				setMessage(null);
-//				setPageComplete(false);
-//			}
-//			else
-//				updateStatus(null);
+			// Diagnostic diag = Diagnostic.OK_INSTANCE;
+			// propertiesEditionComponent.validate(diag);
+			// propertiesEditionComponent.validateRequiredFeatures(diag);
+			// if (diag != null && diag.getSeverity() != Diagnostic.OK){
+			// setMessage(null);
+			// setPageComplete(false);
+			// }
+			// else
+			// updateStatus(null);
 		}
 
 		private void initializeTabs(CTabFolder folder) {
@@ -194,9 +199,11 @@ public class EditPropertyWizard extends Wizard {
 				if (part instanceof ISWTPropertiesEditionPart) {
 					editComposite = ((ISWTPropertiesEditionPart)part).createFigure(folder);
 					if (allResources == null)
-						propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 0, eObject);
+						propertiesEditionComponent.initPart(propertiesEditionComponent
+								.translatePart(nextComponentKey), 0, eObject);
 					else
-						propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 0, eObject, allResources);
+						propertiesEditionComponent.initPart(propertiesEditionComponent
+								.translatePart(nextComponentKey), 0, eObject, allResources);
 
 				}
 				if (null == editComposite)
@@ -229,6 +236,7 @@ public class EditPropertyWizard extends Wizard {
 			setPageComplete(message == null);
 		}
 
+		@Override
 		public void setVisible(boolean visible) {
 			super.setVisible(visible);
 			// TODO uncomment when eclipse bug#212446 fixed

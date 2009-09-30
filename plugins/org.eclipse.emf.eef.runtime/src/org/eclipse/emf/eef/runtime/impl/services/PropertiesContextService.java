@@ -29,7 +29,7 @@ public class PropertiesContextService {
 	/**
 	 * The navigation stack.
 	 */
-	private Stack navigationStack;
+	private Stack<ContextEntry> navigationStack;
 
 	/**
 	 * A singleton for the service.
@@ -41,7 +41,7 @@ public class PropertiesContextService {
 	 */
 	private PropertiesContextService() {
 		super();
-		navigationStack = new Stack();
+		navigationStack = new Stack<ContextEntry>();
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class PropertiesContextService {
 	 */
 	public EObject entryPointElement() {
 		if (!navigationStack.isEmpty())
-			return ((ContextEntry)navigationStack.get(0)).getElement();
+			return navigationStack.get(0).getElement();
 		return null;
 	}
 
@@ -91,7 +91,7 @@ public class PropertiesContextService {
 	 */
 	public IPropertiesEditionComponent entryPointComponent() {
 		if (!navigationStack.isEmpty())
-			return ((ContextEntry)navigationStack.get(0)).getPropertiesEditionComponent();
+			return navigationStack.get(0).getPropertiesEditionComponent();
 		return null;
 	}
 
@@ -102,7 +102,7 @@ public class PropertiesContextService {
 	 */
 	public EObject lastElement() {
 		if (!navigationStack.isEmpty())
-			return ((ContextEntry)navigationStack.peek()).getElement();
+			return navigationStack.peek().getElement();
 		return null;
 	}
 
@@ -113,7 +113,7 @@ public class PropertiesContextService {
 	 */
 	public IPropertiesEditionComponent lastComponent() {
 		if (!navigationStack.isEmpty())
-			return ((ContextEntry)navigationStack.peek()).getPropertiesEditionComponent();
+			return navigationStack.peek().getPropertiesEditionComponent();
 		return null;
 	}
 
@@ -124,10 +124,9 @@ public class PropertiesContextService {
 	 *            the searched kind of edition component
 	 * @return all the corresponding edition component in the context
 	 */
-	public List getComponentsInContext(Class kind) {
-		List result = new ArrayList();
-		for (Iterator iter = navigationStack.iterator(); iter.hasNext();) {
-			ContextEntry entry = (ContextEntry)iter.next();
+	public List<IPropertiesEditionComponent> getComponentsInContext(Class kind) {
+		List<IPropertiesEditionComponent> result = new ArrayList<IPropertiesEditionComponent>();
+		for (ContextEntry entry : navigationStack) {
 			if (entry.getPropertiesEditionComponent().getClass().equals(kind))
 				result.add(0, entry.getPropertiesEditionComponent());
 		}
@@ -139,15 +138,8 @@ public class PropertiesContextService {
 	 * 
 	 * @return an {@link Iterator} on the navigation stack
 	 */
-	public Iterator iterator() {
+	public Iterator<ContextEntry> iterator() {
 		return navigationStack.iterator();
-	}
-
-	/**
-	 * Clear the navigation stack
-	 */
-	public void clear() {
-		navigationStack.clear();
 	}
 
 }
