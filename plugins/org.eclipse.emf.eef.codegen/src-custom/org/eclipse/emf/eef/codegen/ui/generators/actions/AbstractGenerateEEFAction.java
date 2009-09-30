@@ -26,16 +26,19 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.ui.generators.common.GenerateAll;
+import org.eclipse.emf.eef.codegen.ui.generators.common.ImportOrganizer;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchSite;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -43,8 +46,10 @@ import org.eclipse.ui.IWorkbenchPart;
 public abstract class AbstractGenerateEEFAction extends Action implements IObjectActionDelegate {
 
 	private Shell shell;
+	private IWorkbenchSite site;
 	protected List<IFile> selectedFiles;
 	protected List<EEFGenModel> eefGenModels;
+	protected ImportOrganizer organizer;
 
 	/**
 	 * 
@@ -52,6 +57,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	public AbstractGenerateEEFAction() {
 		selectedFiles = new ArrayList<IFile>();
 		eefGenModels = new ArrayList<EEFGenModel>();
+		organizer = new ImportOrganizer();
 	}
 
 	/**
@@ -59,6 +65,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		shell = targetPart.getSite().getShell();
+		site = targetPart.getSite();
 	}
 
 	/**
@@ -92,7 +99,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 											if (eefGenModel.getViewsRepositories() != null)
 												count += eefGenModel.getViewsRepositories().size() * 5;
 											monitor.beginTask("Generating EEF Architecture", count);
-											GenerateAll generator = new GenerateAll(target, eefGenModel);
+											final GenerateAll generator = new GenerateAll(target, eefGenModel);
 											generator.doGenerate(monitor);
 											for (Iterator<IContainer> iterator = generator.getGenerationTargets().iterator(); 
 												iterator.hasNext();) {
@@ -100,6 +107,14 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 												nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 											}
 											monitor.worked(1);
+											monitor.beginTask("Organize imports", 1);
+											Display.getDefault().asyncExec(
+													new Runnable() {
+														public void run() {
+															organizer.organizeImports(site, generator.getGenerationTargets());
+														}
+													}
+											);
 										}
 									}
 								}
