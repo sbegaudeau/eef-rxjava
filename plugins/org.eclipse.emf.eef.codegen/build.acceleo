@@ -39,7 +39,7 @@
 				fileset dir="${build.result.folder}" includes="**/*.emtl"
 			</echo>
 		<copy todir="${target.folder}" verbose="true">
-			<fileset dir="${build.result.folder}" />
+			<fileset dir="${build.result.folder}/bin/" includes="**/*.emtl"/>
 		</copy>
 	</target>
 
