@@ -34,7 +34,6 @@
 	<!-- ================================================================= -->
 	<target name="post.gather.bin.parts">
 		<echo message="copying emtl compiled templates" />
-		<eclipse.incrementalBuild project="org.eclipse.emf.eef.codegen" kind="full" />
 		<echo>
 			copy todir="${target.folder}"
 				fileset dir="${build.result.folder}" includes="**/*.emtl"
