@@ -22,8 +22,7 @@
 	<!--                      reference to the classpath structure.            -->
 	<!-- ===================================================================== -->
 	<target name="post.compile.@dot">
-		<echo message="Compiling mtl templates" />
-		<eclipse.incrementalBuild project="org.eclipse.emf.eef.codegen" kind="full" />
+		
 	</target>
 
 	<!-- ================================================================= -->
@@ -33,7 +32,9 @@
 	<!--   target.folder - destination folder                              -->
 	<!-- ================================================================= -->
 	<target name="post.gather.bin.parts">
-		<echo message="copying emtl compiled templates" />
+		<echo message="Compiling mtl templates" />
+		<eclipse.incrementalBuild project="org.eclipse.emf.eef.codegen" kind="full" />
+		<echo message="Copying emtl compiled templates" />
 		<echo>
 			copy todir="${target.folder}"
 				fileset dir="${build.result.folder}" includes="**/*.emtl"
