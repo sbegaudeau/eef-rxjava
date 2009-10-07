@@ -54,8 +54,14 @@
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+			[if (editionElement.model.many)]
+			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toJavaClassifier()/]() != null)
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toJavaClassifier()/]());
+	
+			[else]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
 				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+	[/if]
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
