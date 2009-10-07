@@ -44,24 +44,25 @@
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString() and editionElement.model.many)]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString()]
+	[if (editionElement.model.many)]
 			[modelName/]ToUpdate.get[editionElement.model.name.toMany().toJavaClassifier()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-[elseif (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+	[else]
 			[modelName/]ToUpdate.get[editionElement.model.name.toJavaClassifier()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+	[/if]
 [else]
 //FIXME invalid case in partUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
-			[if (editionElement.model.many)]
+[if (editionElement.model.many)]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toJavaClassifier()/]() != null)
 				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toJavaClassifier()/]());
-	
-			[else]
+[else]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
 				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
-	[/if]
+[/if]
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
