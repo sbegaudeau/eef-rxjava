@@ -1412,7 +1412,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
-          <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
         </eParameters>
       </eOperations>
       <eOperations name="ecoreCompletePackageSetter">
@@ -1886,7 +1886,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
-          <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
         </eParameters>
       </eOperations>
       <eOperations name="metamodelGetter">
@@ -1910,7 +1910,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="modelNavigation">
-          <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
         </eParameters>
       </eOperations>
       <eOperations name="simpleModelNavigationMetamodelFactory">
@@ -1922,7 +1922,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="modelNavigation">
-          <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
         </eParameters>
       </eOperations>
       <eOperations name="contextPackage">
@@ -4236,6 +4236,47 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/ecorePackageSignature"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SimpleModelNavigation_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
+      </eAnnotations>
+      <eOperations name="ecoreCompletePackageGetter">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/common.emtl#/0/ecoreCompletePackageGetter.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="metamodelGetter">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/common.emtl#/0/metamodelGetter"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="simpleModelNavigationType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/common.emtl#/0/simpleModelNavigationType"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="simpleModelNavigationMetamodelFactory">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/common.emtl#/0/simpleModelNavigationMetamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
