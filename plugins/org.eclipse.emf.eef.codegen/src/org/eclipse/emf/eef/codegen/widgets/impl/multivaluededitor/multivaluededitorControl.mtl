@@ -44,7 +44,7 @@
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString()]
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
 	[if (editionElement.model.many)]
 			[modelName/]ToUpdate.get[editionElement.model.name.toMany().toJavaClassifier()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
 	[else]
