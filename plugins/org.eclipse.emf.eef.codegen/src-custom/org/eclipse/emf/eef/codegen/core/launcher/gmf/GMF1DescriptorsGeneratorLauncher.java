@@ -38,7 +38,7 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 	 */
 	public void doGenerate(EEFGenModel eefGenModel, File targetFolder, IProgressMonitor monitor) {
 		for (GenEditionContext genEditionContext : eefGenModel.getEditionContexts()) {
-			List arguments = new ArrayList<Object>();
+			List<String> arguments = new ArrayList<String>();
 			try {
 				arguments.add(getBasePackage(genEditionContext));
 				if (genEditionContext.isGmfPropertiesViews()) {
