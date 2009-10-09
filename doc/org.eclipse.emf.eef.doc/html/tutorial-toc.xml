@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <toc label="Extended Edition Framework Guide">
 	<topic label="Tutorials">
-		<topic href="html/tutorial.html" label="First Generation">
-			<topic href="html/tutorial.html#Tutorial" label="Presentation"></topic>
+		<topic href="html/tutorial.html" label="First generation">
+			<topic href="html/tutorial.html#Environment" label="Environment"></topic>
 			<topic href="html/tutorial.html#EEF_Models_initialization" label="EEF Models initialization"></topic>
 			<topic href="html/tutorial.html#Generation_and_parameterization" label="Generation and parameterization"></topic>
 			<topic href="html/tutorial.html#EEF_Generation_in_EMF_treeview_editor" label="EEF Generation in EMF treeview editor">
