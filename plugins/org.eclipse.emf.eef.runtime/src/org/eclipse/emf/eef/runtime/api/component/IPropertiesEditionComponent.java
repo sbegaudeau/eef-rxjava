@@ -20,7 +20,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 /**
- * A statefull element to edit an EObject divied in one or more parts.
+ * A stateful element to edit an EObject divided in one or more parts.
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */

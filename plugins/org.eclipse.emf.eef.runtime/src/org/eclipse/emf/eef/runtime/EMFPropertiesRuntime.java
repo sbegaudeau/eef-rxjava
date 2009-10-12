@@ -108,9 +108,6 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 			registry.put(key, desc);
 			image = registry.get(key);
 		}
-		// if ((image == null) && !DEFAULT_IMAGE.equals(key)) {
-		// image = getImage(DEFAULT_IMAGE);
-		// }
 		return image;
 	}
 
