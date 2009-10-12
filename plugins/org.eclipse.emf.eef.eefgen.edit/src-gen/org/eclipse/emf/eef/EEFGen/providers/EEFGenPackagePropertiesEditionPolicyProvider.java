@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackagePropertiesEditionPolicyProvider.java,v 1.6 2009/08/22 11:15:38 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
@@ -32,4 +31,3 @@ public class EEFGenPackagePropertiesEditionPolicyProvider extends StandardProper
 	}
 
 }
-

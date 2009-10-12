@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionComponent.java,v 1.8 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -99,12 +98,20 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				if (basePart == null)
 					GenEditionContextPropertiesEditionComponent.this.dispose();
 				else {
-					if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null)
-						basePart.setBasePackage((String)msg.getNewValue());
-
-					if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().equals(msg.getFeature()) && basePart != null)
-						basePart.setDescriptorsContributorID((String)msg.getNewValue());
-
+					if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setBasePackage((String)msg.getNewValue());
+}
+						else
+							basePart.setBasePackage("");
+					}
+					if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setDescriptorsContributorID((String)msg.getNewValue());
+}
+						else
+							basePart.setDescriptorsContributorID("");
+					}
 					if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().equals(msg.getFeature()) && basePart != null)
 						basePart.setGenericPropertiesViewsDescriptors((Boolean)msg.getNewValue());
 
@@ -452,4 +459,3 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 	}
 
 }
-

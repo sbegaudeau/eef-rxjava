@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextPropertiesEditionPartForm.java,v 1.9 2009/08/22 11:15:36 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 

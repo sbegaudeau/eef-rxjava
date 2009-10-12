@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenViewsRepository.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
@@ -19,10 +18,10 @@ package org.eclipse.emf.eef.EEFGen.parts;
 public class EEFGenViewsRepository {
 
 	public static final int SWT_KIND = 0;
-		
+
 	public static final int FORM_KIND = 1;
 
-	
+
 	/**
 	 * GenEditionContext view descriptor
 	 */
@@ -32,14 +31,14 @@ public class EEFGenViewsRepository {
 
 		public static String basePackage = "EEFGen::GenEditionContext::Base package";	
 
-		public static String descriptorsContributorID = "EEFGen::GenEditionContext::Descriptors contributorID";	
+	public static String descriptorsContributorID = "EEFGen::GenEditionContext::Descriptors contributorID";	
 
 
 		public static String genericPropertiesViewsDescriptors = "EEFGen::GenEditionContext::Generic properties views descriptors";	
 
-		public static String gMFSpecificPropertiesViews = "EEFGen::GenEditionContext::GMF specific properties views";	
+	public static String gMFSpecificPropertiesViews = "EEFGen::GenEditionContext::GMF specific properties views";	
 
-		public static String jUnitTestCases = "EEFGen::GenEditionContext::JUnit test cases";	
+	public static String jUnitTestCases = "EEFGen::GenEditionContext::JUnit test cases";	
 
 
 	}
@@ -59,12 +58,12 @@ public class EEFGenViewsRepository {
 	public static class EEFGenModel {
 		public static String generationDirectory = "EEFGen::EEFGenModel::Generation directory";	
 
-		public static String testsGenerationDirectory = "EEFGen::EEFGenModel::Tests generation directory";	
+	public static String testsGenerationDirectory = "EEFGen::EEFGenModel::Tests generation directory";	
 
 
 		public static String author = "EEFGen::EEFGenModel::author";	
 
-		public static String license = "EEFGen::EEFGenModel::license";	
+	public static String license = "EEFGen::EEFGenModel::license";	
 
 
 	}
@@ -78,15 +77,14 @@ public class EEFGenViewsRepository {
 
 		public static String basePackage = "EEFGen::GenViewsRepository::Base package";	
 
-		public static String helpStrategy = "EEFGen::GenViewsRepository::Help strategy";	
+	public static String helpStrategy = "EEFGen::GenViewsRepository::Help strategy";	
 
 
 		public static String sWTViews = "EEFGen::GenViewsRepository::SWT views";	
 
-		public static String formsViews = "EEFGen::GenViewsRepository::Forms views";	
+	public static String formsViews = "EEFGen::GenViewsRepository::Forms views";	
 
 
 	}
 
 }
-

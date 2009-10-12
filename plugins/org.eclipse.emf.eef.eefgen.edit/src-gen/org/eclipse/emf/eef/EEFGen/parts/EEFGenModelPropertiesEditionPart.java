@@ -9,14 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionPart.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.parts;
 
 // Start of user code for imports
 
 
- 
+
 
 // End of user code
 
@@ -91,8 +90,7 @@ public interface EEFGenModelPropertiesEditionPart {
 
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 
 }
-

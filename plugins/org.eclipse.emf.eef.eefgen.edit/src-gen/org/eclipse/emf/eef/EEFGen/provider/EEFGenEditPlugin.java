@@ -9,20 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenEditPlugin.java,v 1.4 2009/09/10 10:16:27 sbouchet Exp $
+ * $Id: EEFGenEditPlugin.java,v 1.5 2009/10/12 21:00:19 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.components.provider.ComponentsEditPlugin;
-
 import org.eclipse.emf.eef.mapping.provider.MappingEditPlugin;
 import org.eclipse.emf.eef.runtime.impl.validation.EEFValidator;
 import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;

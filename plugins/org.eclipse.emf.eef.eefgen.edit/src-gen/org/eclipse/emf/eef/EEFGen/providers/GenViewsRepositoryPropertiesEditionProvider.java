@@ -9,19 +9,15 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionProvider.java,v 1.8 2009/08/22 11:15:38 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.components.GenViewsRepositoryPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -65,4 +61,3 @@ public class GenViewsRepositoryPropertiesEditionProvider implements IPropertiesE
 	}
 
 }
-

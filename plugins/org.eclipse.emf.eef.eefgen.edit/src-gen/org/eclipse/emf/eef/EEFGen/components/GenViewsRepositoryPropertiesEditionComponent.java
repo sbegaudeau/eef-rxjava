@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenViewsRepositoryPropertiesEditionComponent.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -102,9 +101,13 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 				if (basePart == null)
 					GenViewsRepositoryPropertiesEditionComponent.this.dispose();
 				else {
-					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null)
-						basePart.setBasePackage((String)msg.getNewValue());
-
+					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setBasePackage((String)msg.getNewValue());
+}
+						else
+							basePart.setBasePackage("");
+					}
 					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
 						basePart.setSWTViews((Boolean)msg.getNewValue());
 
@@ -418,4 +421,3 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	}
 
 }
-

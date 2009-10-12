@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelPropertiesEditionComponent.java,v 1.7 2009/08/22 11:15:37 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.components;
 
@@ -95,18 +94,34 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 				if (basePart == null)
 					EEFGenModelPropertiesEditionComponent.this.dispose();
 				else {
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null)
-						basePart.setGenerationDirectory((String)msg.getNewValue());
+					if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setGenerationDirectory((String)msg.getNewValue());
+}
+						else
+							basePart.setGenerationDirectory("");
+					}
+					if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setAuthor((String)msg.getNewValue());
+}
+						else
+							basePart.setAuthor("");
+					}
+					if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) 
+							basePart.setLicense((String)msg.getNewValue());
+						else
+							basePart.setLicense((String)"");
+					}
 
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null)
-						basePart.setAuthor((String)msg.getNewValue());
-
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null)
-						basePart.setLicense((String)msg.getNewValue());
-
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null)
-						basePart.setTestsGenerationDirectory((String)msg.getNewValue());
-
+					if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setTestsGenerationDirectory((String)msg.getNewValue());
+}
+						else
+							basePart.setTestsGenerationDirectory("");
+					}
 
 
 				}
@@ -391,4 +406,3 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	}
 
 }
-
