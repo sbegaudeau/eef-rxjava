@@ -205,7 +205,7 @@
 [/template]
 
 [template public editionElementPackage(pee : PropertiesEditionElement)]
-[pee.model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]Package
+[if (pee.model.eType.ePackage.name = 'ecore')]EcorePackage[else][pee.model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(genmodel::GenPackage).prefix/]Package[/if]
 [/template]
 
 [comment FIXME: once template call on a model navigation bug fix /]
