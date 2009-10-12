@@ -11,20 +11,6 @@
 		<echo message="This file must be called with explicit targets" />
 	</target>
 
-	<!-- ===================================================================== -->
-	<!-- Steps to do during the compilation target <name>, after the compile   -->
-	<!-- but before jaring.  Substitute "name" with the name of the compilation-->
-	<!-- target, eg @dot                                                       -->
-	<!-- Available parameters :                                                -->
-	<!--   source.foldern : n = 1 ... N, the source folders                    -->
-	<!--   target.folder  : where the results of the compilation go            -->
-	<!--   <name>.classpath : name = name of the compilation target. A         -->
-	<!--                      reference to the classpath structure.            -->
-	<!-- ===================================================================== -->
-	<target name="post.compile.@dot">
-		
-	</target>
-
 	<!-- ================================================================= -->
 	<!-- Steps to do after the target gather.bin.parts                     -->
 	<!-- Available parameters :                                            -->
@@ -32,16 +18,10 @@
 	<!--   target.folder - destination folder                              -->
 	<!-- ================================================================= -->
 	<target name="post.gather.bin.parts">
-		<echo message="Compiling mtl templates" />
-		<eclipse.incrementalBuild project="org.eclipse.emf.eef.codegen" kind="full" />
-		<echo message="Copying emtl compiled templates" />
-		<echo>
-			copy todir="${target.folder}"
-				fileset dir="${build.result.folder}" includes="**/*.emtl"
-			</echo>
-		<copy todir="${target.folder}" verbose="true">
-			<fileset dir="${build.result.folder}/bin/" includes="**/*.emtl"/>
-		</copy>
+		<eclipse.incrementalBuild 
+		  project="org.eclipse.emf.eef.codegen"
+		  kind="full" />
+		<copydir dest="${target.folder}" src="${basedir}/bin"></copydir>
 	</target>
 
 </project>
