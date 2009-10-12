@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitPropertiesEditionComponent.java,v 1.9 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.components;
 
@@ -95,9 +94,13 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 				if (basePart == null)
 					ToolkitPropertiesEditionComponent.this.dispose();
 				else {
-					if (ToolkitsPackage.eINSTANCE.getToolkit_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
-
+					if (ToolkitsPackage.eINSTANCE.getToolkit_Name().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setName((String)msg.getNewValue());
+}
+						else
+							basePart.setName("");
+					}
 
 
 				}
@@ -333,4 +336,3 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	}
 
 }
-

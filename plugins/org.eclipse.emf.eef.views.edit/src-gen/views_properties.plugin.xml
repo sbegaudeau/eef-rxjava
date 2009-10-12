@@ -150,14 +150,6 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.Container">
-             <input
-                    type="org.eclipse.emf.eef.views.Container">
-             </input>
-         </propertySection>
-         <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.Container">
@@ -168,9 +160,9 @@
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.views.section.CustomElementEditor">
+               id="org.eclipse.emf.eef.views.section.Container">
              <input
-                    type="org.eclipse.emf.eef.views.CustomElementEditor">
+                    type="org.eclipse.emf.eef.views.Container">
              </input>
          </propertySection>
          <propertySection
@@ -183,6 +175,14 @@
          </propertySection>
          <propertySection
                tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.views.section.CustomElementEditor">
+             <input
+                    type="org.eclipse.emf.eef.views.CustomElementEditor">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.CustomView">
              <input
@@ -190,7 +190,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.CustomView">
              <input
@@ -216,4 +216,3 @@
       </propertySections>
    </extension>
  </plugin>
-

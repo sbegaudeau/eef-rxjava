@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorPropertiesEditionComponent.java,v 1.8 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -97,8 +96,6 @@ public class ElementEditorPropertiesEditionComponent extends ComposedPropertiesE
 			if (key == ViewsViewsRepository.Documentation.class) {
 				super.initPart(key, kind, element, allResource);
 			
-			
 			}
 	}
 }
-

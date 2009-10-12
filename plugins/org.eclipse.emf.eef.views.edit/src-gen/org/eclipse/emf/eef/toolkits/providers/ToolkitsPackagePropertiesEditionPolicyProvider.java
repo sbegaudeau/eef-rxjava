@@ -9,13 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPackagePropertiesEditionPolicyProvider.java,v 1.8 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -32,4 +31,3 @@ public class ToolkitsPackagePropertiesEditionPolicyProvider extends StandardProp
 	}
 
 }
-

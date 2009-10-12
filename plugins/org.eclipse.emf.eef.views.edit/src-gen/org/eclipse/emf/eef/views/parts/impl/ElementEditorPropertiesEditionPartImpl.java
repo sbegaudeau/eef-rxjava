@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorPropertiesEditionPartImpl.java,v 1.11 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts.impl;
 

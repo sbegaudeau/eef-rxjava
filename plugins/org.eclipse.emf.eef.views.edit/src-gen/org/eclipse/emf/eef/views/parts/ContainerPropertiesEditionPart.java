@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerPropertiesEditionPart.java,v 1.9 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -99,4 +98,3 @@ public interface ContainerPropertiesEditionPart {
 	// End of user code
 
 }
-

@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorBasePropertiesEditionComponent.java,v 1.3 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -101,9 +100,13 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 				else {
 					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
 						basePart.setRepresentation((EObject)msg.getNewValue());
-					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
-
+					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setName((String)msg.getNewValue());
+}
+						else
+							basePart.setName("");
+					}
 					if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null)
 						basePart.setReadOnly((Boolean)msg.getNewValue());
 
@@ -391,4 +394,3 @@ public class CustomElementEditorBasePropertiesEditionComponent extends StandardP
 	}
 
 }
-

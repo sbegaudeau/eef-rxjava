@@ -9,20 +9,16 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorPropertiesEditionProvider.java,v 1.4 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
-import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.CustomElementEditor;
-import org.eclipse.emf.eef.views.components.CustomElementEditorPropertiesEditionComponent;
+import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.components.CustomElementEditorBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.views.components.CustomElementEditorPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 /**
@@ -69,4 +65,3 @@ public class CustomElementEditorPropertiesEditionProvider implements IProperties
 	}
 
 }
-

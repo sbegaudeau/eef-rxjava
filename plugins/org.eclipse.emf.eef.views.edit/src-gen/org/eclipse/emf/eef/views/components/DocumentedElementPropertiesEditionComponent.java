@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.9 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -95,8 +94,12 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 				if (documentationPart == null)
 					DocumentedElementPropertiesEditionComponent.this.dispose();
 				else {
-					if (ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null)
-						documentationPart.setDocumentation((String)msg.getNewValue());
+					if (ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null){
+						if (msg.getNewValue() != null) 
+							documentationPart.setDocumentation((String)msg.getNewValue());
+						else
+							documentationPart.setDocumentation((String)"");
+					}
 
 
 
@@ -324,4 +327,3 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	}
 
 }
-

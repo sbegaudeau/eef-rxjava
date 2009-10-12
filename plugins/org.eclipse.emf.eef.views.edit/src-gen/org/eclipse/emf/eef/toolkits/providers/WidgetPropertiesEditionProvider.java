@@ -9,16 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: WidgetPropertiesEditionProvider.java,v 1.10 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.toolkits.components.WidgetPropertiesEditionComponent;
@@ -65,4 +61,3 @@ public class WidgetPropertiesEditionProvider implements IPropertiesEditionProvid
 	}
 
 }
-

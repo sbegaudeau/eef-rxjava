@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferenceBasePropertiesEditionComponent.java,v 1.9 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -99,9 +98,13 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 				if (basePart == null)
 					ViewReferenceBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
-
+					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setName((String)msg.getNewValue());
+}
+						else
+							basePart.setName("");
+					}
 					if (ViewsPackage.eINSTANCE.getViewReference_View().equals(msg.getFeature()) && basePart != null)
 						basePart.setReferencedView((EObject)msg.getNewValue());
 
@@ -369,4 +372,3 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	}
 
 }
-

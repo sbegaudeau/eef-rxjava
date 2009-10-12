@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsViewsRepository.java,v 1.7 2009/07/31 13:36:17 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.parts;
 
@@ -19,10 +18,10 @@ package org.eclipse.emf.eef.toolkits.parts;
 public class ToolkitsViewsRepository {
 
 	public static final int SWT_KIND = 0;
-		
+
 	public static final int FORM_KIND = 1;
 
-	
+
 	/**
 	 * Toolkit view descriptor
 	 */
@@ -42,4 +41,3 @@ public class ToolkitsViewsRepository {
 	}
 
 }
-

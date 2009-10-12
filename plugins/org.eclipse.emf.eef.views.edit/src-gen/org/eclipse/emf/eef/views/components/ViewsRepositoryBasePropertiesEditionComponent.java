@@ -9,7 +9,6 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryBasePropertiesEditionComponent.java,v 1.9 2009/07/31 13:36:16 glefur Exp $
  */
 package org.eclipse.emf.eef.views.components;
 
@@ -96,9 +95,13 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 					ViewsRepositoryBasePropertiesEditionComponent.this.dispose();
 				else {
 // FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
-					if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
-
+					if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) {
+							basePart.setName((String)msg.getNewValue());
+}
+						else
+							basePart.setName("");
+					}
 
 
 				}
@@ -350,4 +353,3 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	}
 
 }
-
