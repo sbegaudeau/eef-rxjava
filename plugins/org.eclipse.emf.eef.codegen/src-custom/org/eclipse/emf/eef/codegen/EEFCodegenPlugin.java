@@ -27,7 +27,7 @@ public class EEFCodegenPlugin extends AbstractUIPlugin {
 
 	// The shared instance
 	private static EEFCodegenPlugin plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -54,15 +54,20 @@ public class EEFCodegenPlugin extends AbstractUIPlugin {
 
 	/**
 	 * Returns the shared instance
-	 *
+	 * 
 	 * @return the shared instance
 	 */
 	public static EEFCodegenPlugin getDefault() {
 		return plugin;
 	}
-	
+
 	public void logError(Exception e) {
 		IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, e.getMessage(), e);
+		getLog().log(status);
+	}
+
+	public void logWarning(Exception e) {
+		IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, e.getMessage(), e);
 		getLog().log(status);
 	}
 

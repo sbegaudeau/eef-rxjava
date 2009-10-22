@@ -136,7 +136,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 		} catch (InvocationTargetException e) {
 			EEFCodegenPlugin.getDefault().logError(e);
 		} catch (InterruptedException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
+			EEFCodegenPlugin.getDefault().logWarning(e);
 		} catch (IOException e) {
 			EEFCodegenPlugin.getDefault().logError(e);
 		}
