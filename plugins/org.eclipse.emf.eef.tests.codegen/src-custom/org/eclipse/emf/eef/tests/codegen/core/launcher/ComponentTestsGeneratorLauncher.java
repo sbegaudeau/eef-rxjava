@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.tests.codegen.core.launcher;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,23 +33,35 @@ import org.eclipse.emf.eef.tests.codegen.main.cases.ComponentTests;
  * Extension for generating PropertiesSection set up for GMF1 modelers
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGeneratorLauncher {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.codegen.core.launcher.IPropertiesGeneratorLauncher#doGenerate(org.eclipse.emf.eef.EEFGen.EEFGenModel, java.io.File, org.eclipse.core.runtime.IProgressMonitor)
+	 * 
+	 * @see org.eclipse.emf.eef.codegen.core.launcher.IPropertiesGeneratorLauncher#doGenerate(org.eclipse.emf.eef.EEFGen.EEFGenModel,
+	 *      java.io.File, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void doGenerate(EEFGenModel eefGenModel, File targetFolder, IProgressMonitor monitor) {
 		List<Object> arguments = new ArrayList<Object>();
 		for (GenEditionContext genEditionContext : eefGenModel.getEditionContexts()) {
 			if (genEditionContext.isGenerateJunitTestCases()) {
 				try {
-					PropertiesEditionContext propertiesEditionContext = genEditionContext.getPropertiesEditionContext();
+					PropertiesEditionContext propertiesEditionContext = genEditionContext
+							.getPropertiesEditionContext();
 					monitor.subTask("Generating JUnits TestCases");
-					final URI template = getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path("/org/eclipse/emf/eef/tests/codegen/main/cases/ComponentTests.emtl"));
+					final URI template = getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
+							"/org/eclipse/emf/eef/tests/codegen/main/cases/ComponentTests.emtl"));
 					IContainer testGenContainer = getTestGenContainer(eefGenModel);
-					ComponentTests gen = new ComponentTests(propertiesEditionContext, testGenContainer.getLocation().toFile(), arguments) {
+					if (testGenContainer != null && !testGenContainer.exists()) {
+						EEFCodegenPlugin.getDefault().logWarning(
+								new FileNotFoundException("Cannot find junit test project named \""
+										+ testGenContainer.getProject().getName() + "\""));
+						return;
+					}
+					ComponentTests gen = new ComponentTests(propertiesEditionContext, testGenContainer
+							.getLocation().toFile(), arguments) {
 						protected URI createTemplateURI(String entry) {
 							return template;
 						}
@@ -62,22 +75,25 @@ public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGenerator
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns the container that the EEFGenModel use as generation directory
-	 * @param eefGenModel the eefGenModel
+	 * 
+	 * @param eefGenModel
+	 *            the eefGenModel
 	 * @return the generation directory
-	 * @throws IOException an error occurred during container creation
+	 * @throws IOException
+	 *             an error occurred during container creation
 	 */
 	public IContainer getTestGenContainer(EEFGenModel eefGenModel) throws IOException {
 		if (eefGenModel != null) {
 			if (eefGenModel.getGenDirectory() != null) {
-				final IContainer target = (IContainer) ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(eefGenModel.getTestsGenDirectory()));
+				final IContainer target = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder(
+						new Path(eefGenModel.getTestsGenDirectory()));
 				return target;
 			}
 		}
 		return null;
 	}
-
 
 }
