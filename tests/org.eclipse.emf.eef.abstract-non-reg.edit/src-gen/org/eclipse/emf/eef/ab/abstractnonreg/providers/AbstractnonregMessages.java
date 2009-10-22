@@ -62,4 +62,3 @@ public class AbstractnonregMessages extends NLS {
 		//protect instanciation
 	}
 }
-

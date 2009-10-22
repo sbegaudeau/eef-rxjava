@@ -17,7 +17,7 @@ public class AbstractnonregPackagePropertiesEditionProvider extends ComposedProp
 		super();
 		append(createDocumentedElementPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * DocumentedElement instances.
@@ -32,5 +32,5 @@ public class AbstractnonregPackagePropertiesEditionProvider extends ComposedProp
 			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
 		return documentedElementPropertiesEditionProvider;
 	}
-	
-}	
+
+}

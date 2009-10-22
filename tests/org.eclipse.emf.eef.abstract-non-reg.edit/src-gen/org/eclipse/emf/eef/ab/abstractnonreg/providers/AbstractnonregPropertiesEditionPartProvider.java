@@ -4,18 +4,18 @@
 package org.eclipse.emf.eef.ab.abstractnonreg.providers;
 
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.forms.DocumentedElementPropertiesEditionPartForm;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.impl.DocumentedElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.forms.DocumentedElementPropertiesEditionPartForm;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.impl.DocumentedElementPropertiesEditionPartImpl;
 
 /**
  * 
  *
  */
 public class AbstractnonregPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
-	
+
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
@@ -40,4 +40,3 @@ public class AbstractnonregPropertiesEditionPartProvider implements IPropertiesE
 	}
 
 }
-

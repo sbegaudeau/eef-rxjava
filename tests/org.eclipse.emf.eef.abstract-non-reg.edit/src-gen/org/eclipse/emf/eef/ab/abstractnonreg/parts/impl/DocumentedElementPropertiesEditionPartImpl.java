@@ -5,9 +5,14 @@ package org.eclipse.emf.eef.ab.abstractnonreg.parts.impl;
 
 // Start of user code for imports
 
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
+import org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -15,14 +20,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregMessages;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
-
-
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 
 // End of user code
 

@@ -5,9 +5,15 @@ package org.eclipse.emf.eef.ab.abstractnonreg.parts.forms;
 
 // Start of user code for imports
 
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
+import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
+import org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -23,14 +29,6 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregMessages;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
-
-
-import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository;
 
 // End of user code
 
@@ -44,7 +42,7 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -52,11 +50,11 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 	public DocumentedElementPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -68,11 +66,11 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -80,9 +78,7 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createDocumentationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section documentationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		documentationSection.setText(AbstractnonregMessages.DocumentedElementPropertiesEditionPart_DocumentationGroupLabel);
@@ -137,12 +133,11 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(AbstractnonregViewsRepository.DocumentedElement.documentation, AbstractnonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -180,10 +175,8 @@ public class DocumentedElementPropertiesEditionPartForm extends CompositePropert
 
 
 
-
-	
 	// Start of user code additional methods
 	
 	// End of user code
 
-}	
+}
