@@ -384,7 +384,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="_l3SboP3BEd25MIHmw1Ckvg" name="presence">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_pJiPgP3BEd25MIHmw1Ckvg" name="assists">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
           </elements>
         </elements>
       </views>
