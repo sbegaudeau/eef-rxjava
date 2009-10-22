@@ -3850,7 +3850,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/plugin_xml">
       <details key="start" value="677"/>
-      <details key="end" value="3132"/>
+      <details key="end" value="3131"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/plugin_xml/@body.0">
       <details key="start" value="771"/>
@@ -3862,7 +3862,7 @@
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/plugin_xml/@body.2">
       <details key="start" value="790"/>
-      <details key="end" value="3120"/>
+      <details key="end" value="3119"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/plugin_xml/@body.2/@body.0">
       <details key="start" value="878"/>
@@ -4249,8 +4249,8 @@
       <details key="end" value="867"/>
     </eAnnotations>
     <eAnnotations source="positions.100" references="/0/plugin_xml/@body.3">
-      <details key="start" value="3121"/>
-      <details key="end" value="3121"/>
+      <details key="start" value="3120"/>
+      <details key="end" value="3120"/>
     </eAnnotations>
     <eAnnotations source="positions.101" references="/0/plugin_xml/editionContext">
       <details key="start" value="705"/>

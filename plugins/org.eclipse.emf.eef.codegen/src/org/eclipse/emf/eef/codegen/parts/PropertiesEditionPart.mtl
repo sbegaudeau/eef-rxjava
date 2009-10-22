@@ -197,7 +197,8 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 [view.additionalMethods()/]
 
-}[/file]
+}
+[/file]
 [/if]
 [/let][/for]
 [for (view : View | inputPEC.involvedViews()) ? (inputPEC.explicit and view.oclIsTypeOf(views::CustomView))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
@@ -223,6 +224,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import [pec.model.qualifiedName(basePackage)/];
 import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
+[view.additionalImports()/]
 
 // [/protected]
 
@@ -246,14 +248,13 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 *  createFigure(org.eclipse.swt.widgets.Composite)
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -261,7 +262,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
-	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 *  createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite p_view) { 
 		view = new Composite(p_view, SWT.NONE);
@@ -277,7 +278,6 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
-
 	}
 
 [view.additionalMethods()/]
@@ -296,4 +296,8 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 [template public fullFilePath(view : View)]
 [view.pepQualifiedClass().toPath()/].java
+[/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports(v : View)]
 [/template]

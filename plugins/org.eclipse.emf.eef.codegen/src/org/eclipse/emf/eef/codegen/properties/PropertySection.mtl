@@ -144,7 +144,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 		EObject eObjectToTest = resolveSemanticObject(toTest);
 		return eObjectToTest != null && eObjectToTest.eClass() == [pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]();
 	}
-	
+
 [pec.resolveSemanticObject()/]
 
 [additionalMethods()/]

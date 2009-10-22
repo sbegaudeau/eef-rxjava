@@ -45,7 +45,7 @@ import [subPec.subPECQualifiedClass(subView)/];
 	[/for]
 [/if]
 [/for]
-
+[additionalImports()/]
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
@@ -171,4 +171,8 @@ Implemented later ...
 
 [template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
 [pec.subPECQualifiedClass(view).toPath()/].java
+[/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports(v : View)]
 [/template]

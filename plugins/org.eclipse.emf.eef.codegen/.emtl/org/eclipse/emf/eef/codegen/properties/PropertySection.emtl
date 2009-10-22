@@ -212,7 +212,7 @@
                   <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
                 </argument>
               </body>
-              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="();&#xA;&#x9;}&#xA;&#x9;&#xA;"/>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="();&#xA;&#x9;}&#xA;&#xA;"/>
               <body xsi:type="mtl:TemplateInvocation" definition="/0/resolveSemanticObject">
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
                 <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/PropertySection/@body.2/pec">
@@ -4541,7 +4541,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/PropertySection">
       <details key="start" value="794"/>
-      <details key="end" value="6325"/>
+      <details key="end" value="6324"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/PropertySection/@body.0">
       <details key="start" value="888"/>
@@ -4553,7 +4553,7 @@
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/PropertySection/@body.2">
       <details key="start" value="906"/>
-      <details key="end" value="6313"/>
+      <details key="end" value="6312"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/PropertySection/@body.2/@body.0">
       <details key="start" value="1012"/>
@@ -4561,7 +4561,7 @@
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/PropertySection/@body.2/@body.1">
       <details key="start" value="1012"/>
-      <details key="end" value="6306"/>
+      <details key="end" value="6305"/>
     </eAnnotations>
     <eAnnotations source="positions.6" references="/0/PropertySection/@body.2/@body.1/@body.0">
       <details key="start" value="1068"/>
@@ -4569,7 +4569,7 @@
     </eAnnotations>
     <eAnnotations source="positions.7" references="/0/PropertySection/@body.2/@body.1/@body.1">
       <details key="start" value="1069"/>
-      <details key="end" value="6300"/>
+      <details key="end" value="6299"/>
     </eAnnotations>
     <eAnnotations source="positions.8" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.0">
       <details key="start" value="1119"/>
@@ -4577,7 +4577,7 @@
     </eAnnotations>
     <eAnnotations source="positions.9" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1">
       <details key="start" value="1119"/>
-      <details key="end" value="6292"/>
+      <details key="end" value="6291"/>
     </eAnnotations>
     <eAnnotations source="positions.10" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.0">
       <details key="start" value="1158"/>
@@ -4841,31 +4841,31 @@
     </eAnnotations>
     <eAnnotations source="positions.75" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.32">
       <details key="start" value="6218"/>
-      <details key="end" value="6227"/>
+      <details key="end" value="6226"/>
     </eAnnotations>
     <eAnnotations source="positions.76" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.33">
-      <details key="start" value="6228"/>
-      <details key="end" value="6255"/>
+      <details key="start" value="6227"/>
+      <details key="end" value="6254"/>
     </eAnnotations>
     <eAnnotations source="positions.77" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.33/pec">
-      <details key="start" value="6228"/>
-      <details key="end" value="6231"/>
+      <details key="start" value="6227"/>
+      <details key="end" value="6230"/>
     </eAnnotations>
     <eAnnotations source="positions.78" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.34">
-      <details key="start" value="6257"/>
-      <details key="end" value="6259"/>
+      <details key="start" value="6256"/>
+      <details key="end" value="6258"/>
     </eAnnotations>
     <eAnnotations source="positions.79" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.35">
-      <details key="start" value="6260"/>
-      <details key="end" value="6279"/>
+      <details key="start" value="6259"/>
+      <details key="end" value="6278"/>
     </eAnnotations>
     <eAnnotations source="positions.80" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.35/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.81" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@body.36">
-      <details key="start" value="6281"/>
-      <details key="end" value="6285"/>
+      <details key="start" value="6280"/>
+      <details key="end" value="6284"/>
     </eAnnotations>
     <eAnnotations source="positions.82" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.1/@fileUrl">
       <details key="start" value="1126"/>
@@ -4880,8 +4880,8 @@
       <details key="end" value="1147"/>
     </eAnnotations>
     <eAnnotations source="positions.85" references="/0/PropertySection/@body.2/@body.1/@body.1/@body.2">
-      <details key="start" value="6293"/>
-      <details key="end" value="6293"/>
+      <details key="start" value="6292"/>
+      <details key="end" value="6292"/>
     </eAnnotations>
     <eAnnotations source="positions.86" references="/0/PropertySection/@body.2/@body.1/@body.1/view">
       <details key="start" value="1075"/>
@@ -4904,8 +4904,8 @@
       <details key="end" value="1107"/>
     </eAnnotations>
     <eAnnotations source="positions.91" references="/0/PropertySection/@body.2/@body.1/@body.2">
-      <details key="start" value="6301"/>
-      <details key="end" value="6301"/>
+      <details key="start" value="6300"/>
+      <details key="end" value="6300"/>
     </eAnnotations>
     <eAnnotations source="positions.92" references="/0/PropertySection/@body.2/@body.1/@ifExpr">
       <details key="start" value="1016"/>
@@ -4940,8 +4940,8 @@
       <details key="end" value="1065"/>
     </eAnnotations>
     <eAnnotations source="positions.100" references="/0/PropertySection/@body.2/@body.2">
-      <details key="start" value="6307"/>
-      <details key="end" value="6307"/>
+      <details key="start" value="6306"/>
+      <details key="end" value="6306"/>
     </eAnnotations>
     <eAnnotations source="positions.101" references="/0/PropertySection/@body.2/pec">
       <details key="start" value="912"/>
@@ -4960,8 +4960,8 @@
       <details key="end" value="1008"/>
     </eAnnotations>
     <eAnnotations source="positions.105" references="/0/PropertySection/@body.3">
-      <details key="start" value="6314"/>
-      <details key="end" value="6314"/>
+      <details key="start" value="6313"/>
+      <details key="end" value="6313"/>
     </eAnnotations>
     <eAnnotations source="positions.106" references="/0/PropertySection/peContext">
       <details key="start" value="827"/>
@@ -4972,76 +4972,76 @@
       <details key="end" value="885"/>
     </eAnnotations>
     <eAnnotations source="positions.108" references="/0/resolveSemanticObject">
-      <details key="start" value="6327"/>
-      <details key="end" value="6976"/>
+      <details key="start" value="6326"/>
+      <details key="end" value="6975"/>
     </eAnnotations>
     <eAnnotations source="positions.109" references="/0/resolveSemanticObject/@body.0">
-      <details key="start" value="6401"/>
-      <details key="end" value="6964"/>
+      <details key="start" value="6400"/>
+      <details key="end" value="6963"/>
     </eAnnotations>
     <eAnnotations source="positions.110" references="/0/resolveSemanticObject/pec">
-      <details key="start" value="6366"/>
-      <details key="end" value="6398"/>
+      <details key="start" value="6365"/>
+      <details key="end" value="6397"/>
     </eAnnotations>
     <eAnnotations source="positions.111" references="/0/fullFilePath">
-      <details key="start" value="6978"/>
-      <details key="end" value="7119"/>
+      <details key="start" value="6977"/>
+      <details key="end" value="7118"/>
     </eAnnotations>
     <eAnnotations source="positions.112" references="/0/fullFilePath/@body.0">
-      <details key="start" value="7056"/>
-      <details key="end" value="7056"/>
+      <details key="start" value="7055"/>
+      <details key="end" value="7055"/>
     </eAnnotations>
     <eAnnotations source="positions.113" references="/0/fullFilePath/@body.1">
-      <details key="start" value="7057"/>
-      <details key="end" value="7100"/>
+      <details key="start" value="7056"/>
+      <details key="end" value="7099"/>
     </eAnnotations>
     <eAnnotations source="positions.114" references="/0/fullFilePath/@body.1/@argument.0">
-      <details key="start" value="7057"/>
-      <details key="end" value="7091"/>
-    </eAnnotations>
-    <eAnnotations source="positions.115" references="/0/fullFilePath/@body.1/@argument.0/pec">
-      <details key="start" value="7057"/>
-      <details key="end" value="7060"/>
-    </eAnnotations>
-    <eAnnotations source="positions.116" references="/0/fullFilePath/@body.1/@argument.0/view">
-      <details key="start" value="7086"/>
+      <details key="start" value="7056"/>
       <details key="end" value="7090"/>
     </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/fullFilePath/@body.1/@argument.0/pec">
+      <details key="start" value="7056"/>
+      <details key="end" value="7059"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/fullFilePath/@body.1/@argument.0/view">
+      <details key="start" value="7085"/>
+      <details key="end" value="7089"/>
+    </eAnnotations>
     <eAnnotations source="positions.117" references="/0/fullFilePath/@body.2">
-      <details key="start" value="7102"/>
-      <details key="end" value="7107"/>
+      <details key="start" value="7101"/>
+      <details key="end" value="7106"/>
     </eAnnotations>
     <eAnnotations source="positions.118" references="/0/fullFilePath/pec">
-      <details key="start" value="7008"/>
-      <details key="end" value="7040"/>
+      <details key="start" value="7007"/>
+      <details key="end" value="7039"/>
     </eAnnotations>
     <eAnnotations source="positions.119" references="/0/fullFilePath/view">
-      <details key="start" value="7042"/>
-      <details key="end" value="7053"/>
+      <details key="start" value="7041"/>
+      <details key="end" value="7052"/>
     </eAnnotations>
     <eAnnotations source="positions.120" references="/0/additionalImports">
-      <details key="start" value="7189"/>
-      <details key="end" value="7246"/>
+      <details key="start" value="7188"/>
+      <details key="end" value="7245"/>
     </eAnnotations>
     <eAnnotations source="positions.121" references="/0/additionalImports/@body.0">
-      <details key="start" value="7235"/>
-      <details key="end" value="7235"/>
+      <details key="start" value="7234"/>
+      <details key="end" value="7234"/>
     </eAnnotations>
     <eAnnotations source="positions.122" references="/0/additionalImports/v">
-      <details key="start" value="7224"/>
-      <details key="end" value="7232"/>
+      <details key="start" value="7223"/>
+      <details key="end" value="7231"/>
     </eAnnotations>
     <eAnnotations source="positions.123" references="/0/additionalMethods">
-      <details key="start" value="7316"/>
-      <details key="end" value="7373"/>
+      <details key="start" value="7315"/>
+      <details key="end" value="7372"/>
     </eAnnotations>
     <eAnnotations source="positions.124" references="/0/additionalMethods/@body.0">
-      <details key="start" value="7362"/>
-      <details key="end" value="7362"/>
+      <details key="start" value="7361"/>
+      <details key="end" value="7361"/>
     </eAnnotations>
     <eAnnotations source="positions.125" references="/0/additionalMethods/v">
-      <details key="start" value="7351"/>
-      <details key="end" value="7359"/>
+      <details key="start" value="7350"/>
+      <details key="end" value="7358"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

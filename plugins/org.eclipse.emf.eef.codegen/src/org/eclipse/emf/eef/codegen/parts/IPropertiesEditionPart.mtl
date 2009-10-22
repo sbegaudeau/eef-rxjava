@@ -33,6 +33,7 @@ import java.util.Map;
 [for (viewReference : ViewReference | view.eAllContents(views::ViewReference))]
 [viewReference.view.genImports()/]
 [/for]
+[view.additionalImports()/]
 
 // [/protected]
 
@@ -43,12 +44,11 @@ public interface [view.pepInterface()/] {
 
 [for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 [elementEditor.genDeclaration()/]
-[/for]
 
+[/for]
 [for (subView : View | view.eAllContents(views::View))]
 [subView.genDeclarationForSubViews()/]
 [/for]
-
 [comment viewReference Support/]
 [view.genDeclarationForViewReference()/]
 
@@ -63,7 +63,7 @@ public interface [view.pepInterface()/] {
 	// [/protected]
 
 }
-	[/file]
+[/file]
 [/for]
 [for (view : View | viewRepository.eAllContents(views::CustomView).oclAsType(views::CustomView))]
 	[file (fullFilePath(view), false)]
@@ -90,4 +90,8 @@ public interface [view.pepInterface()/] {
 
 [template public fullFilePath(view : View)]
 [view.pepQualifiedInterface().toPath()/].java
+[/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports(v : View)]
 [/template]

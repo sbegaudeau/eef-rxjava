@@ -21,9 +21,9 @@
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
 					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
 						if (msg.getNewValue() != null) 
-							[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+							[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
 						else
-							[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])"");
+							[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
 					}
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea

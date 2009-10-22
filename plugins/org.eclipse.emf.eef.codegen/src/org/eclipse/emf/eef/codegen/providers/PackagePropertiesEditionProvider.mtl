@@ -42,7 +42,7 @@ public class [peContext.pecPackageProviderClass()/] extends ComposedPropertiesEd
 		append(create[component.pecProviderClass()/]());
 [/for]
 	}
-	
+
 [for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
@@ -58,9 +58,10 @@ public class [peContext.pecPackageProviderClass()/] extends ComposedPropertiesEd
 			[component.pecProviderClass().toJavaIdentifier()/] = new [component.pecProviderClass()/]();
 		return [component.pecProviderClass().toJavaIdentifier()/];
 	}
-	
+
 [/for]
-}	[/file]
+}
+[/file]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionContext)]

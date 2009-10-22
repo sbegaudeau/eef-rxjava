@@ -146,6 +146,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).reference.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
 [/for]
 [/for]
+[additionalImports()/]
 
 // [/protected]
 
@@ -240,7 +241,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ([pec.model.name.toJavaIdentifier()/] != null && [view.viewPartConstant(pec)/].equals(key)) {
@@ -370,7 +371,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			// [protected ('for firePropertiesChanged body')]
 			
 			// [/protected]
-
 [else]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [editionElement.liveCommandUpdater(view, pec.model.name.toJavaIdentifier())/]
@@ -476,7 +476,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		// [protected ('for custom validation check')]
 		
 		// [/protected]
-
 		return validate;
 	}
 
@@ -535,4 +534,8 @@ import [viewsRepository.vrQualifiedClass()/];
 [v.manageImportForViewReferences(v.involvedPropertiesEditionComponent(), basePackage)/]
 [/if]
 [/for]
+[/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports(v : View)]
 [/template]

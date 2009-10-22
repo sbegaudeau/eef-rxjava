@@ -40,7 +40,7 @@ public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePrope
 	}
 
 }
-	[/file]
+[/file]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionContext)]

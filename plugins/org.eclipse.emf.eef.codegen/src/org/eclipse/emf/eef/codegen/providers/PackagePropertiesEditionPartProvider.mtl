@@ -35,7 +35,7 @@ import [v.vrPackage()/].parts.impl.[view.pepClass()/];
  *
  */
 public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
-	
+
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
@@ -62,7 +62,7 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 	}
 
 }
-	[/file]
+[/file]
 [/template]
 
 [template public fullFilePath(repository : ViewsRepository)]

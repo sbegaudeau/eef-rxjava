@@ -3683,7 +3683,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/PackagePropertiesEditionPolicyProvider">
       <details key="start" value="710"/>
-      <details key="end" value="1876"/>
+      <details key="end" value="1875"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/PackagePropertiesEditionPolicyProvider/@body.0">
       <details key="start" value="827"/>
@@ -3695,7 +3695,7 @@
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/PackagePropertiesEditionPolicyProvider/@body.2">
       <details key="start" value="846"/>
-      <details key="end" value="1864"/>
+      <details key="end" value="1863"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/PackagePropertiesEditionPolicyProvider/@body.2/@body.0">
       <details key="start" value="887"/>
@@ -3850,8 +3850,8 @@
       <details key="end" value="862"/>
     </eAnnotations>
     <eAnnotations source="positions.42" references="/0/PackagePropertiesEditionPolicyProvider/@body.3">
-      <details key="start" value="1865"/>
-      <details key="end" value="1865"/>
+      <details key="start" value="1864"/>
+      <details key="end" value="1864"/>
     </eAnnotations>
     <eAnnotations source="positions.43" references="/0/PackagePropertiesEditionPolicyProvider/peContext">
       <details key="start" value="766"/>
@@ -3862,32 +3862,32 @@
       <details key="end" value="824"/>
     </eAnnotations>
     <eAnnotations source="positions.45" references="/0/fullFilePath">
-      <details key="start" value="1878"/>
-      <details key="end" value="2007"/>
+      <details key="start" value="1877"/>
+      <details key="end" value="2006"/>
     </eAnnotations>
     <eAnnotations source="positions.46" references="/0/fullFilePath/@body.0">
-      <details key="start" value="1941"/>
-      <details key="end" value="1941"/>
+      <details key="start" value="1940"/>
+      <details key="end" value="1940"/>
     </eAnnotations>
     <eAnnotations source="positions.47" references="/0/fullFilePath/@body.1">
-      <details key="start" value="1942"/>
-      <details key="end" value="1988"/>
+      <details key="start" value="1941"/>
+      <details key="end" value="1987"/>
     </eAnnotations>
     <eAnnotations source="positions.48" references="/0/fullFilePath/@body.1/@argument.0">
-      <details key="start" value="1942"/>
-      <details key="end" value="1979"/>
+      <details key="start" value="1941"/>
+      <details key="end" value="1978"/>
     </eAnnotations>
     <eAnnotations source="positions.49" references="/0/fullFilePath/@body.1/@argument.0/pec">
-      <details key="start" value="1942"/>
-      <details key="end" value="1945"/>
+      <details key="start" value="1941"/>
+      <details key="end" value="1944"/>
     </eAnnotations>
     <eAnnotations source="positions.50" references="/0/fullFilePath/@body.2">
-      <details key="start" value="1990"/>
-      <details key="end" value="1995"/>
+      <details key="start" value="1989"/>
+      <details key="end" value="1994"/>
     </eAnnotations>
     <eAnnotations source="positions.51" references="/0/fullFilePath/pec">
-      <details key="start" value="1908"/>
-      <details key="end" value="1938"/>
+      <details key="start" value="1907"/>
+      <details key="end" value="1937"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
