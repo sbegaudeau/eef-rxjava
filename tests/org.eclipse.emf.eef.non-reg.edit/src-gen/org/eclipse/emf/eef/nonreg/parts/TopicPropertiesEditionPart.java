@@ -5,9 +5,6 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
@@ -33,7 +30,6 @@ public interface TopicPropertiesEditionPart {
 	public void setMessageForDescription(String msg, int msgLevel);
 
 	public void unsetMessageForDescription();
-
 
 
 
@@ -64,4 +60,3 @@ public interface TopicPropertiesEditionPart {
 	// End of user code
 
 }
-

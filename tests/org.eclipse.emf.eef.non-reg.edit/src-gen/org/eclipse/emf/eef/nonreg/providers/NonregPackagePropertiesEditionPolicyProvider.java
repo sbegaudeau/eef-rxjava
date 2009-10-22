@@ -22,4 +22,3 @@ public class NonregPackagePropertiesEditionPolicyProvider extends StandardProper
 	}
 
 }
-

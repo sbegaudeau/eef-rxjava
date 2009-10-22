@@ -5,64 +5,29 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-
+import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.nonreg.Talk;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 
 // End of user code
 
@@ -71,10 +36,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
  */
 public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PresencePropertiesEditionPart {
 
-	protected EMFListEditUtil assistsEditUtil;
-	protected ReferencesTable<? extends EObject> assists;
-	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
+	protected FlatReferencesTable assists;
 
 
 
@@ -126,85 +88,29 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		GridLayout presenceGroupLayout = new GridLayout();
 		presenceGroupLayout.numColumns = 3;
 		presenceGroup.setLayout(presenceGroupLayout);
-		createAssistsAdvancedReferencesTable(presenceGroup);
+		createAssistsFlatReferencesTable(presenceGroup);
 	}
-	protected void createAssistsAdvancedReferencesTable(Composite parent) {
-		this.assists = new ReferencesTable<Talk>(NonregMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, assistsFilters, assistsBusinessFilters,
-				"Talk", NonregPackage.eINSTANCE.getTalk(), current.eResource()) {
+	/**
+	 * @param parent
+	 */
+	protected void createAssistsFlatReferencesTable(Composite parent) {
+		SWTUtils.createPartLabel(parent, NonregMessages.PresencePropertiesEditionPart_AssistsLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Presence.assists, NonregViewsRepository.SWT_KIND));
+		assists = new FlatReferencesTable(parent);
+		assists.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							if (!assistsEditUtil.getVirtualList().contains(elem))
-								assistsEditUtil.addElement(elem);
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartImpl.this, NonregViewsRepository.Presence.assists,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						assists.refresh();
-					}
+		assists.addSelectionChangedListener(new ISelectionChangedListener() {
 
-				};
-				dialog.open();
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (event.getSelection() instanceof StructuredSelection) 
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartImpl.this, NonregViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
 			}
-			public void handleEdit(Talk element) { editAssists(element); }
-			public void handleMove(Talk element, int oldIndex, int newIndex) { moveAssists(element, oldIndex, newIndex); }
-			public void handleRemove(Talk element) { removeFromAssists(element); }
-			public void navigateTo(Talk element) { }
+
 		});
-		this.assists.setHelpText(propertiesEditionComponent.getHelpContent(NonregViewsRepository.Presence.assists, NonregViewsRepository.SWT_KIND));
-		this.assists.createControls(parent);
 		GridData assistsData = new GridData(GridData.FILL_HORIZONTAL);
-		assistsData.horizontalSpan = 3;
-		this.assists.setLayoutData(assistsData);
-		this.assists.disableMove();
+		assists.setLayoutData(assistsData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Presence.assists, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
-	/**
-	 * 
-	 */
-	private void moveAssists(Talk element, int oldIndex, int newIndex) {
-		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
-		assistsEditUtil.moveElement(element, oldIndex, newIndex);
-		assists.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartImpl.this, NonregViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
-	}
-
-	/**
-	 * 
-	 */
-	private void removeFromAssists(Talk element) {
-
-		// Start of user code removeFromAssists() method body
-		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
-		assistsEditUtil.removeElement(element);
-		assists.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartImpl.this, NonregViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-		// End of user code
-
-	}
-
-	/**
-	 * 
-	 */
-	private void editAssists(Talk element) {
-
-		// Start of user code editAssists() method body
-		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				assistsEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				assists.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartImpl.this, NonregViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
-		// End of user code
-
-	}
 
 
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
@@ -220,7 +126,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#getAssistsToAdd()
 	 */
 	public List getAssistsToAdd() {
-		return assistsEditUtil.getElementsToAdd();
+		return assists.getElementsToAdd();
 	}
 
 	/**
@@ -229,7 +135,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#getAssistsToRemove()
 	 */
 	public List getAssistsToRemove() {
-		return assistsEditUtil.getElementsToRemove();
+		return assists.getElementsToRemove();
 	}
 
 	/**
@@ -238,7 +144,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#getAssistsTable()
 	 */
 	public List getAssistsTable() {
-		return assistsEditUtil.getVirtualList();
+		return assists.getVirtualList();
 	}
 
 
@@ -248,13 +154,9 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#initAssists(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initAssists(EObject current, EReference containingFeature, EReference feature) {
+		assists.initComponent(current, containingFeature, feature);
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			assistsEditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			assistsEditUtil = new EMFListEditUtil(current, feature);
-		this.assists.setInput(assistsEditUtil.getVirtualList());
+			assists.setInput(current.eResource().getResourceSet());
 	}
 
 	/**
@@ -263,10 +165,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#updateAssists(EObject newValue)
 	 */
 	public void updateAssists(EObject newValue) {
-		if(assistsEditUtil != null){
-			assistsEditUtil.reinit(newValue);
-			assists.refresh();
-		}
+		assists.updateComponent(newValue);
 	}
 
 	/**
@@ -275,7 +174,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#addFilterAssists(ViewerFilter filter)
 	 */
 	public void addFilterToAssists(ViewerFilter filter) {
-		assistsFilters.add(filter);
+		assists.addFilter(filter);
 	}
 
 	/**
@@ -284,7 +183,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#addBusinessFilterAssists(ViewerFilter filter)
 	 */
 	public void addBusinessFilterToAssists(ViewerFilter filter) {
-		assistsBusinessFilters.add(filter);
+		assists.addBusinessRuleFilter(filter);
 	}
 
 	/**
@@ -293,7 +192,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @see org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart#isContainedInAssistsTable(EObject element)
 	 */
 	public boolean isContainedInAssistsTable(EObject element) {
-		return assistsEditUtil.contains(element);
+		return assists.virtualListContains(element);
 	}
 
 	public void setMessageForAssists(String msg, int msgLevel) {

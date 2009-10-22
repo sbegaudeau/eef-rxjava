@@ -6,63 +6,34 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 // Start of user code for imports
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-
 import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.Talk;
+import org.eclipse.emf.eef.nonreg.parts.AdvancedReferencesTablePropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.nonreg.parts.AdvancedReferencesTablePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.nonreg.Talk;
-import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
 
 // End of user code
 
@@ -158,7 +129,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * 
 	 */
-	private void moveAdvancedreferencestable(Talk element, int oldIndex, int newIndex) {
+	protected void moveAdvancedreferencestable(Talk element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedreferencestableEditUtil.foundCorrespondingEObject(element);
 		advancedreferencestableEditUtil.moveElement(element, oldIndex, newIndex);
 		advancedreferencestable.refresh();
@@ -168,7 +139,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * 
 	 */
-	private void removeFromAdvancedreferencestable(Talk element) {
+	protected void removeFromAdvancedreferencestable(Talk element) {
 
 		// Start of user code removeFromAdvancedreferencestable() method body
 		EObject editedElement = advancedreferencestableEditUtil.foundCorrespondingEObject(element);
@@ -182,7 +153,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * 
 	 */
-	private void editAdvancedreferencestable(Talk element) {
+	protected void editAdvancedreferencestable(Talk element) {
 
 		// Start of user code editAdvancedreferencestable() method body
 		EObject editedElement = advancedreferencestableEditUtil.foundCorrespondingEObject(element);
@@ -237,7 +208,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * 
 	 */
-	private void moveAdvancedreferencestableRO(Talk element, int oldIndex, int newIndex) {
+	protected void moveAdvancedreferencestableRO(Talk element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedreferencestableROEditUtil.foundCorrespondingEObject(element);
 		advancedreferencestableROEditUtil.moveElement(element, oldIndex, newIndex);
 		advancedreferencestableRO.refresh();
@@ -247,7 +218,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * 
 	 */
-	private void removeFromAdvancedreferencestableRO(Talk element) {
+	protected void removeFromAdvancedreferencestableRO(Talk element) {
 
 		// Start of user code removeFromAdvancedreferencestableRO() method body
 		EObject editedElement = advancedreferencestableROEditUtil.foundCorrespondingEObject(element);
@@ -261,7 +232,7 @@ public class AdvancedReferencesTablePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * 
 	 */
-	private void editAdvancedreferencestableRO(Talk element) {
+	protected void editAdvancedreferencestableRO(Talk element) {
 
 		// Start of user code editAdvancedreferencestableRO() method body
 		EObject editedElement = advancedreferencestableROEditUtil.foundCorrespondingEObject(element);

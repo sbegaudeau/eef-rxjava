@@ -4,70 +4,70 @@
 package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.parts.forms.AccessPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.AccreditationsPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.AdressPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.AdvancedEObjectFlatComboViewerPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.AdvancedReferencesTablePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.AdvancedTableCompositionPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.CheckboxPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.ComboPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.CompanyPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.EMFComboViewerPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.EObjectFlatComboViewerPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.EclipseSummitPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.MultiValuedEditorPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.PersonPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.PresencePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.RadioPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.ReferencesTablePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.SitePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.SourcePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.SuperCiblePropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TableCompositionPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TalkPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TestFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TestVRFilterPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TextAreaPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TextPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.forms.TopicPropertiesEditionPartForm;
+import org.eclipse.emf.eef.nonreg.parts.impl.AccessPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.AccreditationsPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.AdressPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.AdvancedReferencesTablePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.AdvancedTableCompositionPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.CheckboxPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.ComboPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.CompanyPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.EMFComboViewerPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.EObjectFlatComboViewerPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.EclipseSummitPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.MultiValuedEditorPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.PersonPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.PresencePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.RadioPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.ReferencesTablePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.SitePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.SourcePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.SuperCiblePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TableCompositionPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TalkPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TestFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TestVRFilterPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TextAreaPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TextPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.nonreg.parts.impl.TopicPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.nonreg.parts.forms.EclipseSummitPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.EclipseSummitPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.PersonPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.PersonPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.CompanyPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.CompanyPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TalkPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TalkPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TopicPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TopicPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.PresencePropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.PresencePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.SitePropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.SitePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.AccessPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.AccessPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.AdressPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.AdressPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.AccreditationsPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.AccreditationsPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TestFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TestFilterPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TestVRFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TestVRFilterPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.SourcePropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.SourcePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.SuperCiblePropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.SuperCiblePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TextPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TextPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TextAreaPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TextAreaPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.CheckboxPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.CheckboxPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.RadioPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.RadioPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.ComboPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.ComboPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.EObjectFlatComboViewerPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.EObjectFlatComboViewerPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.ReferencesTablePropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.ReferencesTablePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.EMFComboViewerPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.EMFComboViewerPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.MultiValuedEditorPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.MultiValuedEditorPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.TableCompositionPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.TableCompositionPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.AdvancedTableCompositionPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.AdvancedTableCompositionPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.AdvancedReferencesTablePropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.AdvancedReferencesTablePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.nonreg.parts.forms.AdvancedEObjectFlatComboViewerPropertiesEditionPartForm;
-import org.eclipse.emf.eef.nonreg.parts.impl.AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl;
 
 /**
  * 
  *
  */
 public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
-	
+
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
@@ -248,4 +248,3 @@ public class NonregPropertiesEditionPartProvider implements IPropertiesEditionPa
 	}
 
 }
-

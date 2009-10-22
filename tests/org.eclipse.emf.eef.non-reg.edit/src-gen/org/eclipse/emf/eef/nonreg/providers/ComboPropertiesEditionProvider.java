@@ -4,14 +4,11 @@
 package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Talk;
 import org.eclipse.emf.eef.nonreg.components.ComboPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * 
@@ -31,7 +28,7 @@ public class ComboPropertiesEditionProvider implements IPropertiesEditionProvide
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String)
+	 *  java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Talk) {
@@ -44,7 +41,7 @@ public class ComboPropertiesEditionProvider implements IPropertiesEditionProvide
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String, java.lang.String)
+	 *  java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Talk) {
@@ -55,4 +52,3 @@ public class ComboPropertiesEditionProvider implements IPropertiesEditionProvide
 	}
 
 }
-

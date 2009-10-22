@@ -5,9 +5,6 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -51,6 +48,7 @@ public interface ComboPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the comboRO
 	 */
@@ -86,10 +84,8 @@ public interface ComboPropertiesEditionPart {
 
 
 
-
 	// Start of user code for additional methods
 	
 	// End of user code
 
 }
-

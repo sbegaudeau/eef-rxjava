@@ -6,15 +6,13 @@ package org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.components;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.TestVRFilterPropertiesEditionPart;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.components.TestFilterForReferenceTablesPropertiesEditionComponent;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 
 // End of user code
 

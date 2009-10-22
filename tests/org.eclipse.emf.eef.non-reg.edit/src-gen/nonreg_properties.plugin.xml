@@ -220,7 +220,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="SuperCible"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
              <input
@@ -228,7 +228,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="SuperCible"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
              <input
@@ -342,4 +342,3 @@
       </propertySections>
    </extension>
  </plugin>
-

@@ -5,8 +5,6 @@ package org.eclipse.emf.eef.nonreg.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
 
 
 
@@ -36,10 +34,8 @@ public interface AccessPropertiesEditionPart {
 
 
 
-
 	// Start of user code for additional methods
 	
 	// End of user code
 
 }
-

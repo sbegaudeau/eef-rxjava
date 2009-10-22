@@ -5,61 +5,38 @@ package org.eclipse.emf.eef.nonreg.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Collection;
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.nonreg.Person;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
-
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.eef.nonreg.Talk;
-import org.eclipse.emf.eef.nonreg.NonregPackage;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.Person;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.Viewer;
-
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 
 // End of user code
 
@@ -147,7 +124,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (person != null && PRESENCE_PART.equals(key)) {
@@ -188,21 +165,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			presencePart.initAssists(person, null, NonregPackage.eINSTANCE.getPerson_Assists());
 			
 			// init filters
-			presencePart.addFilterToAssists(new ViewerFilter() {
-
-				/*
-				 * (non-Javadoc)
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!presencePart.isContainedInAssistsTable((EObject)element));
-					return element instanceof Resource;
-				}
-
-			});
-			presencePart.addFilterToAssists(new EObjectFilter(NonregPackage.eINSTANCE.getTalk()));
+			presencePart.addFilterToAssists(new EObjectStrictFilter(NonregPackage.eINSTANCE.getTalk()));
 			// Start of user code for additional businessfilters for assists
 			
 			// End of user code
@@ -232,11 +195,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			List assistsToRemoveFromAssists = presencePart.getAssistsToRemove();
 			for (Iterator iter = assistsToRemoveFromAssists.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), iter.next()));
-			//List assistsToMoveFromAssists = presencePart.getAssistsToMove();
-			//for (Iterator iter = assistsToMoveFromAssists.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, person, NonregPackage.eINSTANCE.getTalk(), moveElement.getElement(), moveElement.getIndex()));
-			//}
 
 
 		}
@@ -273,12 +231,11 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
 			if (NonregViewsRepository.Presence.assists == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), event.getNewValue()));
-				if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(RemoveCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), event.getNewValue()));
-				if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), event.getNewValue(), event.getNewIndex()));
+				EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
+				if (!elements.getElementsToAdd().isEmpty()) 
+					command.append(AddCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), elements.getElementsToAdd()));
+				if (!elements.getElementsToRemove().isEmpty()) 
+					command.append(RemoveCommand.create(liveEditingDomain, person, NonregPackage.eINSTANCE.getPerson_Assists(), elements.getElementsToRemove()));
 			}
 
 
@@ -358,7 +315,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -374,4 +330,3 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	}
 
 }
-

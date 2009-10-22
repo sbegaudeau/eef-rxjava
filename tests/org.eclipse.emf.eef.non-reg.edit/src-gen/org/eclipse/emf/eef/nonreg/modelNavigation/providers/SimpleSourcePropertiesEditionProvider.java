@@ -4,14 +4,11 @@
 package org.eclipse.emf.eef.nonreg.modelNavigation.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.Source;
 import org.eclipse.emf.eef.nonreg.modelNavigation.components.SimpleSourcePropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * 

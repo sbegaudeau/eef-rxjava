@@ -6,14 +6,12 @@ package org.eclipse.emf.eef.nonreg.parts;
 // Start of user code for imports
 
 import java.util.List;
-import java.util.Map;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -64,6 +62,7 @@ public interface TestFilterPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToTestEOFCV(ViewerFilter filter);
+
 
 
 
@@ -125,6 +124,7 @@ public interface TestFilterPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the testAEOFCV
 	 */
@@ -166,6 +166,7 @@ public interface TestFilterPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToTestAEOFCV(ViewerFilter filter);
+
 
 
 
@@ -231,10 +232,8 @@ public interface TestFilterPropertiesEditionPart {
 
 
 
-
 	// Start of user code for additional methods
 	
 	// End of user code
 
 }
-

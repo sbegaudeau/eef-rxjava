@@ -5,41 +5,24 @@ package org.eclipse.emf.eef.nonreg.components;
 
 // Start of user code for imports
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Collection;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-
-import org.eclipse.emf.eef.nonreg.Adress;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
-
-
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.nonreg.Adress;
 import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TextPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -48,12 +31,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.Viewer;
-
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 // End of user code
 
@@ -107,12 +85,18 @@ public class TextPropertiesEditionComponent extends StandardPropertiesEditionCom
 				if (basePart == null)
 					TextPropertiesEditionComponent.this.dispose();
 				else {
-					if (NonregPackage.eINSTANCE.getAdress_PostalCode().equals(msg.getFeature()) && basePart != null)
-						basePart.setText(((Integer)msg.getNewValue()).toString());
-
-					if (NonregPackage.eINSTANCE.getAdress_PostalCode().equals(msg.getFeature()) && basePart != null)
-						basePart.setTextRO(((Integer)msg.getNewValue()).toString());
-
+					if (NonregPackage.eINSTANCE.getAdress_PostalCode().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setText(((Integer)msg.getNewValue()).toString());
+						else
+							basePart.setText("");
+					}
+					if (NonregPackage.eINSTANCE.getAdress_PostalCode().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setTextRO(((Integer)msg.getNewValue()).toString());
+						else
+							basePart.setTextRO("");
+					}
 
 
 				}
@@ -145,7 +129,7 @@ public class TextPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (adress != null && BASE_PART.equals(key)) {
@@ -339,7 +323,6 @@ public class TextPropertiesEditionComponent extends StandardPropertiesEditionCom
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -355,4 +338,3 @@ public class TextPropertiesEditionComponent extends StandardPropertiesEditionCom
 	}
 
 }
-

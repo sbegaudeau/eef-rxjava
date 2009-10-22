@@ -6,22 +6,15 @@ package org.eclipse.emf.eef.nonreg.parts;
 // Start of user code for imports
 
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
-import java.util.List;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -46,6 +39,7 @@ public interface PersonPropertiesEditionPart {
 
 	public void unsetMessageForFirstname();
 
+
 	/**
 	 * @return the lastname
 	 */
@@ -60,6 +54,7 @@ public interface PersonPropertiesEditionPart {
 	public void setMessageForLastname(String msg, int msgLevel);
 
 	public void unsetMessageForLastname();
+
 
 	/**
 	 * @return the age
@@ -76,6 +71,7 @@ public interface PersonPropertiesEditionPart {
 
 	public void unsetMessageForAge();
 
+
 	/**
 	 * @return the eclipseCommiter
 	 */
@@ -91,6 +87,7 @@ public interface PersonPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the isRegistered
 	 */
@@ -101,6 +98,7 @@ public interface PersonPropertiesEditionPart {
 	 * @param newValue the new isRegistered to set
 	 */
 	public void setIsRegistered(Boolean newValue);
+
 
 
 
@@ -123,6 +121,7 @@ public interface PersonPropertiesEditionPart {
 	 * @param newValue the new gender to set
 	 */
 	public void setGender(Object newValue);
+
 
 
 
@@ -169,7 +168,6 @@ public interface PersonPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToWorkFor(ViewerFilter filter);
-
 
 
 
@@ -245,4 +243,3 @@ public interface PersonPropertiesEditionPart {
 	// End of user code
 
 }
-

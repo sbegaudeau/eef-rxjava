@@ -7,48 +7,31 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.emf.eef.nonreg.NonregPackage;
+import org.eclipse.emf.eef.nonreg.NonregFactory;
+import org.eclipse.emf.eef.nonreg.Site;
+import org.eclipse.emf.eef.nonreg.parts.AdvancedTableCompositionPropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.nonreg.parts.AdvancedTableCompositionPropertiesEditionPart;
-import java.util.Map;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.eef.nonreg.NonregFactory;
-import org.eclipse.emf.eef.nonreg.Site;
-import org.eclipse.emf.eef.nonreg.Site;
-
-import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
 
 // End of user code
 
@@ -129,7 +112,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	/**
 	 * 
 	 */
-	private void moveAdvancedtablecomposition(Site element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecomposition(Site element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionEditUtil.foundCorrespondingEObject(element);
 		advancedtablecompositionEditUtil.moveElement(element, oldIndex, newIndex);
 		advancedtablecomposition.refresh();
@@ -160,7 +143,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	/**
 	 * 
 	 */
-	private void removeFromAdvancedtablecomposition(Site element) {
+	protected void removeFromAdvancedtablecomposition(Site element) {
 
 		// Start of user code removeFromAdvancedtablecomposition() method body
 		EObject editedElement = advancedtablecompositionEditUtil.foundCorrespondingEObject(element);
@@ -174,7 +157,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	/**
 	 * 
 	 */
-	private void editAdvancedtablecomposition(Site element) {
+	protected void editAdvancedtablecomposition(Site element) {
 
 		// Start of user code editAdvancedtablecomposition() method body
 		EObject editedElement = advancedtablecompositionEditUtil.foundCorrespondingEObject(element);
@@ -214,7 +197,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	/**
 	 * 
 	 */
-	private void moveAdvancedtablecompositionRO(Site element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionRO(Site element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionROEditUtil.foundCorrespondingEObject(element);
 		advancedtablecompositionROEditUtil.moveElement(element, oldIndex, newIndex);
 		advancedtablecompositionRO.refresh();
@@ -245,7 +228,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	/**
 	 * 
 	 */
-	private void removeFromAdvancedtablecompositionRO(Site element) {
+	protected void removeFromAdvancedtablecompositionRO(Site element) {
 
 		// Start of user code removeFromAdvancedtablecompositionRO() method body
 		EObject editedElement = advancedtablecompositionROEditUtil.foundCorrespondingEObject(element);
@@ -259,7 +242,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	/**
 	 * 
 	 */
-	private void editAdvancedtablecompositionRO(Site element) {
+	protected void editAdvancedtablecompositionRO(Site element) {
 
 		// Start of user code editAdvancedtablecompositionRO() method body
 		EObject editedElement = advancedtablecompositionROEditUtil.foundCorrespondingEObject(element);

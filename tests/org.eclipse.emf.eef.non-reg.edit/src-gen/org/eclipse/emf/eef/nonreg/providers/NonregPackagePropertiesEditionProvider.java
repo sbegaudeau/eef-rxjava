@@ -3,12 +3,12 @@
  */
 package org.eclipse.emf.eef.nonreg.providers;
 
-import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterFlatComboPropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForReferenceTablesPropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForRVPropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.modelNavigation.providers.SimpleSourcePropertiesEditionProvider;
 import org.eclipse.emf.eef.nonreg.modelNavigation.providers.CiblePropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.modelNavigation.providers.SimpleSourcePropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterFlatComboPropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForRVPropertiesEditionProvider;
+import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForReferenceTablesPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 
 /**
  * 
@@ -48,7 +48,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createAdvancedReferencesTablePropertiesEditionProvider());
 		append(createAdvancedEObjectFlatComboViewerPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EclipseSummit instances.
@@ -63,7 +63,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			eclipseSummitPropertiesEditionProvider = new EclipseSummitPropertiesEditionProvider();
 		return eclipseSummitPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -78,7 +78,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			personPropertiesEditionProvider = new PersonPropertiesEditionProvider();
 		return personPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Talk instances.
@@ -93,7 +93,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			talkPropertiesEditionProvider = new TalkPropertiesEditionProvider();
 		return talkPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Topic instances.
@@ -108,7 +108,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			topicPropertiesEditionProvider = new TopicPropertiesEditionProvider();
 		return topicPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Site instances.
@@ -123,7 +123,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			sitePropertiesEditionProvider = new SitePropertiesEditionProvider();
 		return sitePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Access instances.
@@ -138,7 +138,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			accessPropertiesEditionProvider = new AccessPropertiesEditionProvider();
 		return accessPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Company instances.
@@ -153,7 +153,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			companyPropertiesEditionProvider = new CompanyPropertiesEditionProvider();
 		return companyPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Adress instances.
@@ -168,7 +168,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			adressPropertiesEditionProvider = new AdressPropertiesEditionProvider();
 		return adressPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -183,7 +183,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			accreditationsPropertiesEditionProvider = new AccreditationsPropertiesEditionProvider();
 		return accreditationsPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ForFilters instances.
@@ -198,7 +198,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			testFilterFlatComboPropertiesEditionProvider = new TestFilterFlatComboPropertiesEditionProvider();
 		return testFilterFlatComboPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ForFilters instances.
@@ -213,7 +213,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			testFilterForReferenceTablesPropertiesEditionProvider = new TestFilterForReferenceTablesPropertiesEditionProvider();
 		return testFilterForReferenceTablesPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ForFilters instances.
@@ -228,7 +228,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			testFilterForRVPropertiesEditionProvider = new TestFilterForRVPropertiesEditionProvider();
 		return testFilterForRVPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Source instances.
@@ -243,7 +243,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			simpleSourcePropertiesEditionProvider = new SimpleSourcePropertiesEditionProvider();
 		return simpleSourcePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ConcreteCible instances.
@@ -258,7 +258,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			ciblePropertiesEditionProvider = new CiblePropertiesEditionProvider();
 		return ciblePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Adress instances.
@@ -273,7 +273,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			textPropertiesEditionProvider = new TextPropertiesEditionProvider();
 		return textPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -288,7 +288,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			textAreaPropertiesEditionProvider = new TextAreaPropertiesEditionProvider();
 		return textAreaPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -303,7 +303,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			checkboxPropertiesEditionProvider = new CheckboxPropertiesEditionProvider();
 		return checkboxPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -318,7 +318,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			radioPropertiesEditionProvider = new RadioPropertiesEditionProvider();
 		return radioPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Talk instances.
@@ -333,7 +333,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			comboPropertiesEditionProvider = new ComboPropertiesEditionProvider();
 		return comboPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -348,7 +348,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			eObjectFlatComboViewerPropertiesEditionProvider = new EObjectFlatComboViewerPropertiesEditionProvider();
 		return eObjectFlatComboViewerPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -363,7 +363,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			referencesTablePropertiesEditionProvider = new ReferencesTablePropertiesEditionProvider();
 		return referencesTablePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Talk instances.
@@ -378,7 +378,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			eMFComboViewerPropertiesEditionProvider = new EMFComboViewerPropertiesEditionProvider();
 		return eMFComboViewerPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -393,7 +393,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			multiValuedEditorPropertiesEditionProvider = new MultiValuedEditorPropertiesEditionProvider();
 		return multiValuedEditorPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EclipseSummit instances.
@@ -408,7 +408,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			tableCompositionPropertiesEditionProvider = new TableCompositionPropertiesEditionProvider();
 		return tableCompositionPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EclipseSummit instances.
@@ -423,7 +423,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			advancedTableCompositionPropertiesEditionProvider = new AdvancedTableCompositionPropertiesEditionProvider();
 		return advancedTableCompositionPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -438,7 +438,7 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			advancedReferencesTablePropertiesEditionProvider = new AdvancedReferencesTablePropertiesEditionProvider();
 		return advancedReferencesTablePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -453,5 +453,5 @@ public class NonregPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			advancedEObjectFlatComboViewerPropertiesEditionProvider = new AdvancedEObjectFlatComboViewerPropertiesEditionProvider();
 		return advancedEObjectFlatComboViewerPropertiesEditionProvider;
 	}
-	
-}	
+
+}
