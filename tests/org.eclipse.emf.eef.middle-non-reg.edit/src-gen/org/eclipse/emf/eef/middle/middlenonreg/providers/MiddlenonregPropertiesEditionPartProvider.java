@@ -4,18 +4,18 @@
 package org.eclipse.emf.eef.middle.middlenonreg.providers;
 
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.forms.NamedElementPropertiesEditionPartForm;
+import org.eclipse.emf.eef.middle.middlenonreg.parts.impl.NamedElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.forms.NamedElementPropertiesEditionPartForm;
-import org.eclipse.emf.eef.middle.middlenonreg.parts.impl.NamedElementPropertiesEditionPartImpl;
 
 /**
  * 
  *
  */
 public class MiddlenonregPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
-	
+
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
@@ -40,4 +40,3 @@ public class MiddlenonregPropertiesEditionPartProvider implements IPropertiesEdi
 	}
 
 }
-

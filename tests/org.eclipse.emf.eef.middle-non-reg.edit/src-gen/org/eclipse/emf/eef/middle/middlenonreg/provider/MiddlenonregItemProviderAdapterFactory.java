@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MiddlenonregItemProviderAdapterFactory.java,v 1.1 2009/05/05 10:35:41 sbouchet Exp $
+ * $Id: MiddlenonregItemProviderAdapterFactory.java,v 1.2 2009/10/22 14:59:32 sbouchet Exp $
  */
 package org.eclipse.emf.eef.middle.middlenonreg.provider;
 
@@ -12,7 +12,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -24,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.middle.middlenonreg.util.MiddlenonregAdapterFactory;
 
 /**

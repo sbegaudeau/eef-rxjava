@@ -62,4 +62,3 @@ public class MiddlenonregMessages extends NLS {
 		//protect instanciation
 	}
 }
-

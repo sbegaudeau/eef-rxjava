@@ -9,10 +9,10 @@ package org.eclipse.emf.eef.middle.middlenonreg.parts;
 public class MiddlenonregViewsRepository {
 
 	public static final int SWT_KIND = 0;
-		
+
 	public static final int FORM_KIND = 1;
 
-	
+
 	/**
 	 * NamedElement view descriptor
 	 */
@@ -20,9 +20,8 @@ public class MiddlenonregViewsRepository {
 		public static String name = "middlenonreg::NamedElement::name";	
 
 
-
+	
 
 	}
 
 }
-

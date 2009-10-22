@@ -2,14 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MiddlenonregEditPlugin.java,v 1.1 2009/05/05 10:35:41 sbouchet Exp $
+ * $Id: MiddlenonregEditPlugin.java,v 1.2 2009/10/22 14:59:31 sbouchet Exp $
  */
 package org.eclipse.emf.eef.middle.middlenonreg.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.eef.ab.abstractnonreg.provider.AbstractnonregEditPlugin;
 
 /**

@@ -31,7 +31,6 @@ public interface NamedElementPropertiesEditionPart {
 
 
 
-
 	/**
 	 * @return the DocumentedElement referenced view
 	 */
@@ -59,4 +58,3 @@ public interface NamedElementPropertiesEditionPart {
 	// End of user code
 
 }
-

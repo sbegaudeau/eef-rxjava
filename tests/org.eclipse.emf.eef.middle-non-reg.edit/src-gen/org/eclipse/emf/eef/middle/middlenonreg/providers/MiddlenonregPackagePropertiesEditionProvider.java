@@ -17,7 +17,7 @@ public class MiddlenonregPackagePropertiesEditionProvider extends ComposedProper
 		super();
 		append(createNamedElementPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * NamedElement instances.
@@ -32,5 +32,5 @@ public class MiddlenonregPackagePropertiesEditionProvider extends ComposedProper
 			namedElementPropertiesEditionProvider = new NamedElementPropertiesEditionProvider();
 		return namedElementPropertiesEditionProvider;
 	}
-	
-}	
+
+}
