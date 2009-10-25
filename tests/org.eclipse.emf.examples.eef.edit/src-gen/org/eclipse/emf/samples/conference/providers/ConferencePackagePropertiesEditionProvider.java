@@ -21,7 +21,7 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 		append(createTopicPropertiesEditionProvider());
 		append(createSitePropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Conference instances.
@@ -36,7 +36,7 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 			conferencePropertiesEditionProvider = new ConferencePropertiesEditionProvider();
 		return conferencePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
@@ -51,7 +51,7 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 			personPropertiesEditionProvider = new PersonPropertiesEditionProvider();
 		return personPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Talk instances.
@@ -66,7 +66,7 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 			talkPropertiesEditionProvider = new TalkPropertiesEditionProvider();
 		return talkPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Topic instances.
@@ -81,7 +81,7 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 			topicPropertiesEditionProvider = new TopicPropertiesEditionProvider();
 		return topicPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Site instances.
@@ -96,5 +96,5 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 			sitePropertiesEditionProvider = new SitePropertiesEditionProvider();
 		return sitePropertiesEditionProvider;
 	}
-	
-}	
+
+}

@@ -35,6 +35,7 @@ public interface ConferencePropertiesEditionPart {
 
 	public void unsetMessageForPlace();
 
+
 	/**
 	 * @return the sites to add
 	 */
@@ -96,7 +97,6 @@ public interface ConferencePropertiesEditionPart {
 	 * @return true if the given element is contained inside the sites table
 	 */
 	public boolean isContainedInSitesTable(EObject element);
-
 
 
 

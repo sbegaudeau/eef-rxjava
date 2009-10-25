@@ -35,6 +35,7 @@ public interface TalkPropertiesEditionPart {
 
 	public void unsetMessageForTitle();
 
+
 	/**
 	 * @return the topic
 	 */
@@ -81,6 +82,7 @@ public interface TalkPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the type
 	 */
@@ -98,6 +100,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param newValue the new type to set
 	 */
 	public void setType(Enumerator newValue);
+
 
 
 
@@ -149,6 +152,7 @@ public interface TalkPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the creator
 	 */
@@ -195,6 +199,7 @@ public interface TalkPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the documentation
 	 */
@@ -209,7 +214,6 @@ public interface TalkPropertiesEditionPart {
 	public void setMessageForDocumentation(String msg, int msgLevel);
 
 	public void unsetMessageForDocumentation();
-
 
 
 

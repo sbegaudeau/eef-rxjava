@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -128,7 +127,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (person != null && PRESENCE_PART.equals(key)) {
@@ -326,7 +325,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 

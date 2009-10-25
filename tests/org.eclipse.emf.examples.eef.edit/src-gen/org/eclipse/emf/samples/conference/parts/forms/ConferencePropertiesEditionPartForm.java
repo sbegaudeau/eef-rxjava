@@ -63,7 +63,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -71,11 +71,11 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	public ConferencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -87,11 +87,11 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -99,9 +99,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createLocalisationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section localisationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		localisationSection.setText(ConferenceMessages.ConferencePropertiesEditionPart_LocalisationGroupLabel);
@@ -247,12 +245,11 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -393,10 +390,8 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-
-	
 	// Start of user code additional methods
 	
 	// End of user code
 
-}	
+}

@@ -86,14 +86,21 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 				if (basePart == null)
 					TopicPropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null)
-						basePart.setDescription((String)msg.getNewValue());
-
+					if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setDescription((String)msg.getNewValue());
+						else
+							basePart.setDescription("");
+					}
 					if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null)
 						basePart.setReferences((EList)msg.getNewValue());
 
-					if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null)
-						basePart.setDocumentation((String)msg.getNewValue());
+					if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) 
+							basePart.setDocumentation((String)msg.getNewValue());
+						else
+							basePart.setDocumentation("");
+					}
 
 
 
@@ -127,7 +134,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (topic != null && BASE_PART.equals(key)) {
@@ -170,6 +177,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 
 			if (topic.getReferences() != null)
 				basePart.setReferences(topic.getReferences());
+
 			if (topic.getDocumentation() != null)
 				basePart.setDocumentation(topic.getDocumentation());
 
@@ -340,7 +348,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 

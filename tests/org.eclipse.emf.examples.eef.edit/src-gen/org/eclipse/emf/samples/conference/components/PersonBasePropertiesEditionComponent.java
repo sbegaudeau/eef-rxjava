@@ -88,15 +88,24 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 				if (basePart == null)
 					PersonBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null)
-						basePart.setFirstname((String)msg.getNewValue());
-
-					if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null)
-						basePart.setLastname((String)msg.getNewValue());
-
-					if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null)
-						basePart.setAge(((Integer)msg.getNewValue()).toString());
-
+					if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setFirstname((String)msg.getNewValue());
+						else
+							basePart.setFirstname("");
+					}
+					if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setLastname((String)msg.getNewValue());
+						else
+							basePart.setLastname("");
+					}
+					if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setAge(((Integer)msg.getNewValue()).toString());
+						else
+							basePart.setAge("");
+					}
 					if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
 						basePart.setEclipseCommiter((Boolean)msg.getNewValue());
 
@@ -138,7 +147,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (person != null && BASE_PART.equals(key)) {
@@ -403,7 +412,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 

@@ -93,9 +93,12 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 				if (basePart == null)
 					TalkPropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null)
-						basePart.setTitle((String)msg.getNewValue());
-
+					if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setTitle((String)msg.getNewValue());
+						else
+							basePart.setTitle("");
+					}
 					if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null)
 						basePart.setTopic((EObject)msg.getNewValue());
 					if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
@@ -105,8 +108,12 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 						basePart.setPresenter((EObject)msg.getNewValue());
 					if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
 						basePart.setCreator((EObject)msg.getNewValue());
-					if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null)
-						basePart.setDocumentation((String)msg.getNewValue());
+					if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) 
+							basePart.setDocumentation((String)msg.getNewValue());
+						else
+							basePart.setDocumentation("");
+					}
 
 
 
@@ -140,7 +147,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (talk != null && BASE_PART.equals(key)) {
@@ -436,7 +443,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 

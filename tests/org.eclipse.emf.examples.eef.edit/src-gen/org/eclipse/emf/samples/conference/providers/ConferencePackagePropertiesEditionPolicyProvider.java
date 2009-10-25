@@ -4,8 +4,8 @@
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
+import org.eclipse.emf.samples.conference.ConferencePackage;
 
 /**
  * @author

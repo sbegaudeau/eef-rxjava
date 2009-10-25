@@ -30,6 +30,7 @@ public interface TopicPropertiesEditionPart {
 
 	public void unsetMessageForDescription();
 
+
 	/**
 	 * @return the references
 	 */
@@ -40,6 +41,7 @@ public interface TopicPropertiesEditionPart {
 	 * @param newValue the new references to set
 	 */
 	public void setReferences(EList newValue);
+
 
 
 
@@ -59,7 +61,6 @@ public interface TopicPropertiesEditionPart {
 	public void setMessageForDocumentation(String msg, int msgLevel);
 
 	public void unsetMessageForDocumentation();
-
 
 
 

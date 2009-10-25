@@ -97,9 +97,12 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 				if (basePart == null)
 					ConferencePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && basePart != null)
-						basePart.setPlace((String)msg.getNewValue());
-
+					if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setPlace((String)msg.getNewValue());
+						else
+							basePart.setPlace("");
+					}
 					if (msg.getFeature() != null && 
 							(((EStructuralFeature)msg.getFeature()) == ConferencePackage.eINSTANCE.getConference_Sites()
 							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == ConferencePackage.eINSTANCE.getConference_Sites())) {
@@ -137,7 +140,7 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (conference != null && BASE_PART.equals(key)) {
@@ -384,7 +387,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 

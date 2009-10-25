@@ -85,11 +85,18 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 				if (basePart == null)
 					SitePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
-
-					if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null)
-						basePart.setDocumentation((String)msg.getNewValue());
+					if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null)
+							basePart.setName((String)msg.getNewValue());
+						else
+							basePart.setName("");
+					}
+					if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null){
+						if (msg.getNewValue() != null) 
+							basePart.setDocumentation((String)msg.getNewValue());
+						else
+							basePart.setDocumentation("");
+					}
 
 
 
@@ -123,7 +130,7 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (site != null && BASE_PART.equals(key)) {
@@ -319,7 +326,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 

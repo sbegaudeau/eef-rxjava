@@ -45,7 +45,7 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -53,11 +53,11 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	public SitePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -69,11 +69,11 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -81,9 +81,7 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(ConferenceMessages.SitePropertiesEditionPart_PropertiesGroupLabel);
@@ -189,12 +187,11 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -262,10 +259,8 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
-
-	
 	// Start of user code additional methods
 	
 	// End of user code
 
-}	
+}

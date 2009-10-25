@@ -30,6 +30,7 @@ public interface SitePropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the documentation
 	 */
@@ -44,7 +45,6 @@ public interface SitePropertiesEditionPart {
 	public void setMessageForDocumentation(String msg, int msgLevel);
 
 	public void unsetMessageForDocumentation();
-
 
 
 
