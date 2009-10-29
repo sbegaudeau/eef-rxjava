@@ -127,7 +127,11 @@ Extension points to declare properties views in the editor project have also to 
 <!-- </source> -->
 
 === EMF treeview editor modification ===
-The standard EMF  codegen generates an editor that uses standard properties views (with grid layout). So, you need to update it to use the EEF properties view (with tabs). 
+The standard EMF  codegen generates an editor that uses standard properties views (with grid layout). So, you need to update it to use the EEF properties view (with tabs).
+
+You might create a dependency between the EEF runtime ('org.eclipse.emf.eef.runtime') and the EMF generated editor plugin.
+
+Open the XYZEditor.java located in the EMF generated xxx.editor plugin. 
 
 *The editor must implement an additional interface : ''"org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor"''
 
