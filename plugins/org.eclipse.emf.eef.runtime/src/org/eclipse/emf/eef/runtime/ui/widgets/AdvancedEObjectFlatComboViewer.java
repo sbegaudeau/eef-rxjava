@@ -157,6 +157,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		data.right = new FormAttachment(100, -5);
 		data.top = new FormAttachment(0, -2);
 		removeButton.setLayoutData(data);
+		removeButton.setToolTipText("Unset the reference value");
 
 		this.browseButton = createButton(parent, "", SWT.PUSH);
 		browseButton.setImage(addImage);
@@ -164,6 +165,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		data.right = new FormAttachment(removeButton, 2);
 		data.top = new FormAttachment(0, -2);
 		browseButton.setLayoutData(data);
+		browseButton.setToolTipText("Set the reference value");
 
 		// listeners setting
 		removeButton.addMouseListener(new MouseAdapter() {
