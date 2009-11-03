@@ -9,14 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilterPropertiesEditionProvider.java,v 1.2 2009/07/31 14:10:32 glefur Exp $
+ * $Id: JavaExpressionFilterPropertiesEditionProvider.java,v 1.3 2009/11/03 11:05:09 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.providers;
 
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
