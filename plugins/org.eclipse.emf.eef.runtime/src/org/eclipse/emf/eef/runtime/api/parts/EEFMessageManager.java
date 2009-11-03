@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2007 IBM Corporation and others.
+ * Copyright (c) 2007 - 2009 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial API and implementatio
- *     Obeo - Add colapsable form title
+ *     IBM Corporation - initial API and implementation
+ *     Obeo - Add collapsible form title
  ******************************************************************************/
 
 package org.eclipse.emf.eef.runtime.api.parts;
@@ -43,9 +43,9 @@ import org.eclipse.ui.internal.forms.Messages;
 public class EEFMessageManager implements IMessageManager {
 	private static final DefaultPrefixProvider DEFAULT_PREFIX_PROVIDER = new DefaultPrefixProvider();
 
-	private ArrayList messages = new ArrayList();
+	private ArrayList<Message> messages = new ArrayList<Message>();
 
-	private Hashtable decorators = new Hashtable();
+	private Hashtable<Control, ControlDecorator> decorators = new Hashtable<Control, ControlDecorator>();
 
 	private boolean autoUpdate = true;
 
@@ -176,7 +176,7 @@ public class EEFMessageManager implements IMessageManager {
 	class ControlDecorator {
 		private ControlDecoration decoration;
 
-		private ArrayList controlMessages = new ArrayList();
+		private ArrayList<Message> controlMessages = new ArrayList<Message>();
 
 		private String prefix;
 
@@ -216,7 +216,7 @@ public class EEFMessageManager implements IMessageManager {
 				prefix = ""; //$NON-NLS-1$
 		}
 
-		void addAll(ArrayList target) {
+		void addAll(ArrayList<Message> target) {
 			target.addAll(controlMessages);
 		}
 
@@ -252,8 +252,8 @@ public class EEFMessageManager implements IMessageManager {
 				decoration.setDescriptionText(null);
 				decoration.hide();
 			} else {
-				ArrayList peers = createPeers(controlMessages);
-				int type = ((IMessage)peers.get(0)).getMessageType();
+				ArrayList<Message> peers = createPeers(controlMessages);
+				int type = peers.get(0).getMessageType();
 				String description = createDetails(createPeers(peers), true);
 				if (type == IMessageProvider.ERROR)
 					decoration.setImage(standardError.getImage());
@@ -294,7 +294,7 @@ public class EEFMessageManager implements IMessageManager {
 	 * org.eclipse.swt.widgets.Control)
 	 */
 	public void addMessage(Object key, String messageText, Object data, int type, Control control) {
-		ControlDecorator dec = (ControlDecorator)decorators.get(control);
+		ControlDecorator dec = decorators.get(control);
 
 		if (dec == null) {
 			dec = new ControlDecorator(control);
@@ -336,7 +336,7 @@ public class EEFMessageManager implements IMessageManager {
 	 * org.eclipse.swt.widgets.Control)
 	 */
 	public void removeMessage(Object key, Control control) {
-		ControlDecorator dec = (ControlDecorator)decorators.get(control);
+		ControlDecorator dec = decorators.get(control);
 		if (dec == null)
 			return;
 		if (dec.removeMessage(key))
@@ -349,7 +349,7 @@ public class EEFMessageManager implements IMessageManager {
 	 * @see org.eclipse.ui.forms.IMessageManager#removeMessages(org.eclipse.swt.widgets.Control)
 	 */
 	public void removeMessages(Control control) {
-		ControlDecorator dec = (ControlDecorator)decorators.get(control);
+		ControlDecorator dec = decorators.get(control);
 		if (dec != null) {
 			if (dec.removeMessages()) {
 				if (isAutoUpdate())
@@ -364,8 +364,8 @@ public class EEFMessageManager implements IMessageManager {
 	 */
 	public void removeAllMessages() {
 		boolean needsUpdate = false;
-		for (Enumeration enm = decorators.elements(); enm.hasMoreElements();) {
-			ControlDecorator control = (ControlDecorator)enm.nextElement();
+		for (Enumeration<ControlDecorator> enm = decorators.elements(); enm.hasMoreElements();) {
+			ControlDecorator control = enm.nextElement();
 			if (control.removeMessages())
 				needsUpdate = true;
 		}
@@ -382,7 +382,7 @@ public class EEFMessageManager implements IMessageManager {
 	 */
 
 	private Message addMessage(String prefix, Object key, String messageText, Object data, int type,
-			ArrayList list) {
+			ArrayList<Message> list) {
 		Message message = findMessage(key, list);
 		if (message == null) {
 			message = new Message(key, messageText, type, data);
@@ -400,9 +400,9 @@ public class EEFMessageManager implements IMessageManager {
 	 * Finds the message with the provided key in the provided list.
 	 */
 
-	private Message findMessage(Object key, ArrayList list) {
+	private Message findMessage(Object key, ArrayList<Message> list) {
 		for (int i = 0; i < list.size(); i++) {
-			Message message = (Message)list.get(i);
+			Message message = list.get(i);
 			if (message.getKey().equals(key))
 				return message;
 		}
@@ -415,8 +415,8 @@ public class EEFMessageManager implements IMessageManager {
 	 */
 	public void update() {
 		// Update decorations
-		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator)iter.next();
+		for (Iterator<ControlDecorator> iter = decorators.values().iterator(); iter.hasNext();) {
+			ControlDecorator dec = iter.next();
 			dec.update();
 		}
 		// Update the form
@@ -428,28 +428,28 @@ public class EEFMessageManager implements IMessageManager {
 	 */
 
 	private void updateForm() {
-		ArrayList mergedList = new ArrayList();
+		ArrayList<Message> mergedList = new ArrayList<Message>();
 		mergedList.addAll(messages);
-		for (Enumeration enm = decorators.elements(); enm.hasMoreElements();) {
-			ControlDecorator dec = (ControlDecorator)enm.nextElement();
+		for (Enumeration<ControlDecorator> enm = decorators.elements(); enm.hasMoreElements();) {
+			ControlDecorator dec = enm.nextElement();
 			dec.addAll(mergedList);
 		}
 		update(mergedList);
 	}
 
-	private void update(ArrayList mergedList) {
+	private void update(ArrayList<Message> mergedList) {
 		pruneControlDecorators();
 		if (mergedList == null || mergedList.isEmpty()) {
 			scrolledForm.setMessage(null, IMessageProvider.NONE);
 			return;
 		}
-		ArrayList peers = createPeers(mergedList);
-		int maxType = ((IMessage)peers.get(0)).getMessageType();
+		ArrayList<Message> peers = createPeers(mergedList);
+		int maxType = peers.get(0).getMessageType();
 		String messageText;
-		IMessage[] array = (IMessage[])peers.toArray(new IMessage[peers.size()]);
-		if (peers.size() == 1 && ((Message)peers.get(0)).prefix == null) {
+		IMessage[] array = peers.toArray(new IMessage[peers.size()]);
+		if (peers.size() == 1 && peers.get(0).prefix == null) {
 			// a single message
-			IMessage message = (IMessage)peers.get(0);
+			IMessage message = peers.get(0);
 			messageText = message.getMessage();
 			scrolledForm.setMessage(messageText, maxType, array);
 		} else {
@@ -471,11 +471,11 @@ public class EEFMessageManager implements IMessageManager {
 		return message.getPrefix() + message.getMessage();
 	}
 
-	private ArrayList createPeers(ArrayList messages) {
-		ArrayList peers = new ArrayList();
+	private ArrayList<Message> createPeers(ArrayList<Message> messages) {
+		ArrayList<Message> peers = new ArrayList<Message>();
 		int maxType = 0;
 		for (int i = 0; i < messages.size(); i++) {
-			Message message = (Message)messages.get(i);
+			Message message = messages.get(i);
 			if (message.type > maxType) {
 				peers.clear();
 				maxType = message.type;
@@ -486,14 +486,14 @@ public class EEFMessageManager implements IMessageManager {
 		return peers;
 	}
 
-	private String createDetails(ArrayList messages, boolean excludePrefix) {
+	private String createDetails(ArrayList<Message> messages, boolean excludePrefix) {
 		StringWriter sw = new StringWriter();
 		PrintWriter out = new PrintWriter(sw);
 
 		for (int i = 0; i < messages.size(); i++) {
 			if (i > 0)
 				out.println();
-			IMessage m = (IMessage)messages.get(i);
+			IMessage m = messages.get(i);
 			out.print(excludePrefix ? m.getMessage() : getFullMessage(m));
 		}
 		out.flush();
@@ -524,8 +524,8 @@ public class EEFMessageManager implements IMessageManager {
 	}
 
 	private void pruneControlDecorators() {
-		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator)iter.next();
+		for (Iterator<ControlDecorator> iter = decorators.values().iterator(); iter.hasNext();) {
+			ControlDecorator dec = iter.next();
 			if (dec.isDisposed())
 				iter.remove();
 		}
@@ -547,8 +547,8 @@ public class EEFMessageManager implements IMessageManager {
 	 */
 	public void setMessagePrefixProvider(IMessagePrefixProvider provider) {
 		this.prefixProvider = provider;
-		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator)iter.next();
+		for (Iterator<ControlDecorator> iter = decorators.values().iterator(); iter.hasNext();) {
+			ControlDecorator dec = iter.next();
 			dec.updatePrefix();
 		}
 	}
@@ -567,8 +567,8 @@ public class EEFMessageManager implements IMessageManager {
 	 */
 	public void setDecorationPosition(int position) {
 		this.decorationPosition = position;
-		for (Iterator iter = decorators.values().iterator(); iter.hasNext();) {
-			ControlDecorator dec = (ControlDecorator)iter.next();
+		for (Iterator<ControlDecorator> iter = decorators.values().iterator(); iter.hasNext();) {
+			ControlDecorator dec = iter.next();
 			dec.updatePosition();
 		}
 	}
