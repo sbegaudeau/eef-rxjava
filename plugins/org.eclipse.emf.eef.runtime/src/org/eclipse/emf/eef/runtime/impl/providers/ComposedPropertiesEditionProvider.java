@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.impl.providers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,13 +28,13 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 	/**
 	 * The managed providers.
 	 */
-	private List editPropertiesProviders;
+	private List<IPropertiesEditionProvider> editPropertiesProviders;
 
 	/**
 	 * Default constructor.
 	 */
 	public ComposedPropertiesEditionProvider() {
-		editPropertiesProviders = new ArrayList();
+		editPropertiesProviders = new ArrayList<IPropertiesEditionProvider>();
 	}
 
 	/**
@@ -44,7 +43,7 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 	 * @param editPropertiesProviders
 	 *            the initialized providers
 	 */
-	public ComposedPropertiesEditionProvider(List editPropertiesProviders) {
+	public ComposedPropertiesEditionProvider(List<IPropertiesEditionProvider> editPropertiesProviders) {
 		this.editPropertiesProviders = editPropertiesProviders;
 	}
 
@@ -61,23 +60,23 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 	/**
 	 * @param clazz
 	 * @param editPropertiesProvider
+	 * @deprecated use the PropertiesEditionProvider extension point
 	 */
 	public void replace(Class clazz, IPropertiesEditionProvider editPropertiesProvider) {
 		for (int i = 0; i < editPropertiesProviders.size(); i++) {
-			IPropertiesEditionProvider provider = (IPropertiesEditionProvider)editPropertiesProviders.get(i);
+			IPropertiesEditionProvider provider = editPropertiesProviders.get(i);
 			if (clazz.isInstance(provider))
 				editPropertiesProviders.set(i, editPropertiesProvider);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		for (Iterator iter = editPropertiesProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionProvider editPropertiesProvider = (IPropertiesEditionProvider)iter.next();
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(eObject))
 				return true;
 		}
@@ -91,8 +90,7 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 	 *      java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode) {
-		for (Iterator iter = editPropertiesProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionProvider editPropertiesProvider = (IPropertiesEditionProvider)iter.next();
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(eObject))
 				return editPropertiesProvider.getPropertiesEditionComponent(eObject, mode);
 		}
@@ -106,8 +104,7 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 	 *      java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part) {
-		for (Iterator iter = editPropertiesProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionProvider editPropertiesProvider = (IPropertiesEditionProvider)iter.next();
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(eObject))
 				return editPropertiesProvider.getPropertiesEditionComponent(eObject, mode, part);
 		}

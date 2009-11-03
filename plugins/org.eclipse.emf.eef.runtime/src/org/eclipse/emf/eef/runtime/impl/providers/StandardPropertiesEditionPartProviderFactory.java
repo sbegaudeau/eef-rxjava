@@ -21,7 +21,6 @@
 package org.eclipse.emf.eef.runtime.impl.providers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -35,14 +34,14 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	/**
 	 * List of managed providers.
 	 */
-	private List editPropertiesPartProviders;
+	private List<IPropertiesEditionPartProvider> editPropertiesPartProviders;
 
 
 	/**
 	 * Default constructor.
 	 */
 	public StandardPropertiesEditionPartProviderFactory() {
-		editPropertiesPartProviders = new ArrayList();
+		editPropertiesPartProviders = new ArrayList<IPropertiesEditionPartProvider>();
 	}
 
 	/**
@@ -51,8 +50,7 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#getProvider(java.lang.Class)
 	 */
 	public IPropertiesEditionPartProvider getProvider(Class key) {
-		for (Iterator iter = editPropertiesPartProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionPartProvider editPropertiesPartProvider = (IPropertiesEditionPartProvider)iter.next();
+		for (IPropertiesEditionPartProvider editPropertiesPartProvider : editPropertiesPartProviders) {
 			if (editPropertiesPartProvider.provides(key))
 				return editPropertiesPartProvider;
 		}
@@ -65,8 +63,7 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#provides(java.lang.Class)
 	 */
 	public boolean provides(Class key) {
-		for (Iterator iter = editPropertiesPartProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionPartProvider editPropertiesPartProvider = (IPropertiesEditionPartProvider)iter.next();
+		for (IPropertiesEditionPartProvider editPropertiesPartProvider : editPropertiesPartProviders) {
 			if (editPropertiesPartProvider.provides(key))
 				return true;
 		}
@@ -79,7 +76,6 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	 */
 	public void register(IPropertiesEditionPartProvider editPropertiesPartProvider) {
 		editPropertiesPartProviders.add(editPropertiesPartProvider);
-
 	}
 
 }

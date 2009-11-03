@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.impl.providers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,14 +25,14 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 	/**
 	 * List of managed providers.
 	 */
-	private List editPropertiesPolicyProviders;
+	private List<IPropertiesEditionPolicyProvider> editPropertiesPolicyProviders;
 
 	/**
 	 * Default constructor.
 	 */
 	public StandardPropertiesEditionPolicyProviderFactory() {
 		super();
-		editPropertiesPolicyProviders = new ArrayList();
+		editPropertiesPolicyProviders = new ArrayList<IPropertiesEditionPolicyProvider>();
 	}
 
 	/**
@@ -42,9 +41,7 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#getProvider(org.eclipse.emf.ecore.EObject)
 	 */
 	public IPropertiesEditionPolicyProvider getProvider(EObject eObject) {
-		for (Iterator iter = editPropertiesPolicyProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionPolicyProvider editPropertiesPolicyProvider = (IPropertiesEditionPolicyProvider)iter
-					.next();
+		for (IPropertiesEditionPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
 			if (editPropertiesPolicyProvider.provides(eObject))
 				return editPropertiesPolicyProvider;
 		}
@@ -57,9 +54,7 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		for (Iterator iter = editPropertiesPolicyProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionPolicyProvider editPropertiesPolicyProvider = (IPropertiesEditionPolicyProvider)iter
-					.next();
+		for (IPropertiesEditionPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
 			if (editPropertiesPolicyProvider.provides(eObject))
 				return true;
 		}

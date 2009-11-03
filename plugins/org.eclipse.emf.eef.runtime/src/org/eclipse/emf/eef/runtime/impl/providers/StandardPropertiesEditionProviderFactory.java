@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.impl.providers;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -28,13 +27,13 @@ public class StandardPropertiesEditionProviderFactory implements IPropertiesEdit
 	/**
 	 * List of managed providers.
 	 */
-	private List editPropertiesProviders;
+	private List<IPropertiesEditionProvider> editPropertiesProviders;
 
 	/**
 	 * Default constructor.
 	 */
 	public StandardPropertiesEditionProviderFactory() {
-		editPropertiesProviders = new ArrayList();
+		editPropertiesProviders = new ArrayList<IPropertiesEditionProvider>();
 	}
 
 	/**
@@ -43,8 +42,7 @@ public class StandardPropertiesEditionProviderFactory implements IPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#getProvider(org.eclipse.emf.ecore.EObject)
 	 */
 	public IPropertiesEditionProvider getProvider(EObject eObject) {
-		for (Iterator iter = editPropertiesProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionProvider editPropertiesProvider = (IPropertiesEditionProvider)iter.next();
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(eObject))
 				return editPropertiesProvider;
 		}
@@ -57,8 +55,7 @@ public class StandardPropertiesEditionProviderFactory implements IPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#provides(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean provides(EObject eObject) {
-		for (Iterator iter = editPropertiesProviders.iterator(); iter.hasNext();) {
-			IPropertiesEditionProvider editPropertiesProvider = (IPropertiesEditionProvider)iter.next();
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(eObject))
 				return true;
 		}
