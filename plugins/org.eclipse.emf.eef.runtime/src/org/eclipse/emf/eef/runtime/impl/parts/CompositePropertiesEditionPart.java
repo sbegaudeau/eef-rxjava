@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.IMessageManager;
 
@@ -114,6 +115,14 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 */
 	protected void setHasChanged(boolean partHasChanged) {
 		this.partHasChanged = partHasChanged;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getObserver(java.lang.String)
+	 */
+	public ISWTObservableValue getObserver(String key) {
+		return null;
 	}
 	
 }

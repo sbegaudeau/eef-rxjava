@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.core,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.views.properties.tabbed;visibility:=reexport,
- org.eclipse.emf.validation
+ org.eclipse.emf.validation,
+ org.eclipse.jface.databinding;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.eef.runtime,
  org.eclipse.emf.eef.runtime.api.adapters,

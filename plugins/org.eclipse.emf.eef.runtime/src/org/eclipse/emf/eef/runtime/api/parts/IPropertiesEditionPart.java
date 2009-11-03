@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.runtime.api.parts;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -37,21 +38,10 @@ public interface IPropertiesEditionPart extends IPropertiesEditionListener {
 	public void setContext(EObject eObject, ResourceSet allResources);
 
 
-//	/**
-//	 * Initialize the part with the specified eObject in the specified ResourceSet.
-//	 * 
-//	 * @param eObject
-//	 *            the eObject for the initialization
-//	 * @param allResources
-//	 *            the resourceSet for the initialization
-//	 */
-//	public abstract void initComponent(EObject eObject, ResourceSet allResources);
-//
-//	/**
-//	 * Initialize the part with the specified eObject.
-//	 * 
-//	 * @param eObject
-//	 *            the eObject for the initialization
-//	 */
-//	public void initComponent(EObject eObject);
+	/**
+	 * Return an observer on the given Element Editor
+	 * @param key the key qualifying the Element Editor
+	 * @return an observer on the given Element Editor
+	 */
+	public ISWTObservableValue getObserver(String key);
 }

@@ -18,13 +18,16 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.ui.filters.PropertiesEditionPartFilter;
 import org.eclipse.emf.eef.runtime.ui.properties.TabbedPropertiesEditionSheetPage;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
@@ -44,6 +47,11 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 * the section's parent
 	 */
 	protected Composite parent;
+	
+	/**
+	 * The section's viewer
+	 */
+	protected PropertiesEditionViewer viewer;
 
 	/**
 	 * The current selected object or the first object in the selection when multiple objects are selected.
@@ -56,14 +64,14 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	protected List eObjectList;
 
 	/**
-	 * The component that have to managed the edition
-	 */
-	private IPropertiesEditionComponent propertiesEditionComponent = null;
-
-	/**
 	 * The view manager
 	 */
 	private IPropertiesEditionPart editionPart = null;
+	
+	/**
+	 * Filters list
+	 */
+	private ViewerFilter[] filters = new ViewerFilter[1];
 
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
@@ -73,6 +81,8 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 		super.createControls(parent, aTabbedPropertySheetPage);
 		this.propertySheetPage = (TabbedPropertiesEditionSheetPage)aTabbedPropertySheetPage;
 		this.parent = parent;
+		this.viewer = new PropertiesEditionViewer(parent, null,SWT.NONE, 1);
+		viewer.setToolkit(getWidgetFactory());
 	}
 
 	/**
@@ -89,32 +99,10 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
-							.getProvider(eObject);
-					if (provider != null) {
-						if (this.propertiesEditionComponent != null)
-							this.propertiesEditionComponent.dispose();
-						String descriptor = getDescriptor();
-						this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject,
-								IPropertiesEditionComponent.LIVE_MODE);
-						if (this.propertiesEditionComponent != null) {
-							this.propertiesEditionComponent.setLiveEditingDomain(propertySheetPage
-									.getEditingDomain());
-							this.editionPart = propertiesEditionComponent.getPropertiesEditionPart(1,
-									descriptor);
-							if (editionPart instanceof IFormPropertiesEditionPart) {
-								for (int i = 0; i < parent.getChildren().length; i++) {
-									Composite child = (Composite)parent.getChildren()[i];
-									child.dispose();
-								}
-								((IFormPropertiesEditionPart)this.editionPart).createFigure(parent,
-										getWidgetFactory());
-								parent.layout();
-								this.propertiesEditionComponent.initPart(this.propertiesEditionComponent
-										.translatePart(descriptor), 1, eObject);
-							}
-						}
-					}
+					viewer.setContentProvider(new PropertiesEditionContentProvider(PropertiesEditionComponentService.getInstance().getProvider((EObject)eObject), IPropertiesEditionComponent.LIVE_MODE));
+					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
+					viewer.setFilters(filters);
+					viewer.setInput(eObject);
 				}
 			}
 		}
@@ -128,9 +116,9 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 */
 	public void dispose() {
 		super.dispose();
-		if (this.propertiesEditionComponent != null) {
-			this.propertiesEditionComponent.dispose();
-			this.propertiesEditionComponent = null;
+		if (this.viewer != null) {
+			this.viewer.getContentProvider().dispose();
+			this.viewer = null;
 			this.editionPart = null;
 		}
 		

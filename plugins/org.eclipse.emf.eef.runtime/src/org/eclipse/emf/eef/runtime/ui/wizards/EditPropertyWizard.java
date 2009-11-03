@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @deprecated Use {@link PropertiesEditionWizard} instead of this class
  */
 public class EditPropertyWizard extends Wizard {
 
