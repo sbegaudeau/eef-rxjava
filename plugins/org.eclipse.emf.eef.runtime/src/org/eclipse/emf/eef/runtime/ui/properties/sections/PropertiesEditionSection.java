@@ -99,7 +99,7 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					viewer.setContentProvider(new PropertiesEditionContentProvider(PropertiesEditionComponentService.getInstance().getProvider((EObject)eObject), IPropertiesEditionComponent.LIVE_MODE));
+					viewer.setContentProvider(new PropertiesEditionContentProvider(PropertiesEditionComponentService.getInstance().getProvider((EObject)eObject), IPropertiesEditionComponent.LIVE_MODE, propertySheetPage.getEditingDomain()));
 					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
 					viewer.setFilters(filters);
 					viewer.setInput(eObject);

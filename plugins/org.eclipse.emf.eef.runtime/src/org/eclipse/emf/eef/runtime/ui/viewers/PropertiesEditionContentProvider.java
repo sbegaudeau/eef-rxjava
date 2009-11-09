@@ -1,6 +1,13 @@
-/**
+/*******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.viewers;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -18,7 +25,7 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 /**
- * @author glefur
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
 public class PropertiesEditionContentProvider implements IContentProvider {
@@ -26,13 +33,25 @@ public class PropertiesEditionContentProvider implements IContentProvider {
 	private IPropertiesEditionProvider propertiesEditionProvider;
 	private IPropertiesEditionComponent propertiesEditionComponent;
 	private String mode;
+	private EditingDomain editingDomain;
 	
 	/**
 	 * @param propertiesEditionProvider
 	 */
-	public PropertiesEditionContentProvider(IPropertiesEditionProvider propertiesEditionProvider, String mode) {
+	public PropertiesEditionContentProvider(IPropertiesEditionProvider propertiesEditionProvider, String mode) throws InstantiationException {
+		if (mode == IPropertiesEditionComponent.LIVE_MODE)
+			throw new InstantiationException("You have to define an EditingDomain when using LIVE_MODE");
 		this.propertiesEditionProvider = propertiesEditionProvider;
 		this.mode = mode;
+	}
+
+	/**
+	 * @param propertiesEditionProvider
+	 */
+	public PropertiesEditionContentProvider(IPropertiesEditionProvider propertiesEditionProvider, String mode, EditingDomain editingDomain) {
+		this.propertiesEditionProvider = propertiesEditionProvider;
+		this.mode = mode;
+		this.editingDomain = editingDomain; 
 	}
 
 	/**
@@ -51,6 +70,8 @@ public class PropertiesEditionContentProvider implements IContentProvider {
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.dispose();
 		this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditionComponent((EObject)newInput, mode);
+		if (mode == IPropertiesEditionComponent.LIVE_MODE)
+			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 		//FIXME: find a better way to manage the context
 		PropertiesContextService.getInstance().push((EObject)newInput, propertiesEditionComponent);
 	}

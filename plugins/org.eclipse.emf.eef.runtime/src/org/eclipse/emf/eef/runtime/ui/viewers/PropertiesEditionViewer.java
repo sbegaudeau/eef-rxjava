@@ -34,9 +34,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.forms.IFormColors;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
@@ -77,6 +79,7 @@ public class PropertiesEditionViewer extends ContentViewer {
 		control = new Composite(scrolledContainer, style);
 		control.setLayout(new FillLayout());
 		folder = new CTabFolder(control, style);
+		// TODO: Find a better way to define Form constant
 		scrolledContainer.setExpandHorizontal(true);
 		scrolledContainer.setExpandVertical(true);
 		scrolledContainer.setContent(control);
@@ -338,8 +341,7 @@ public class PropertiesEditionViewer extends ContentViewer {
 	 * @see org.eclipse.jface.viewers.Viewer#refresh()
 	 */
 	public void refresh() {
-		// TODO Auto-generated method stub
-		
+		// Nothing to do
 	}
 
 	/**
@@ -364,8 +366,14 @@ public class PropertiesEditionViewer extends ContentViewer {
 	 * @param partsList
 	 */
 	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider, String[] partsList) {
+		resetTab();
 		List<String> selectedParts = new ArrayList<String>();
-		boolean hasFilteredTab = false;
+		if (kind == 1) {
+			toolkit.adapt(folder, true, true);
+			toolkit.getColors().initializeSectionToolBarColors();
+			Color selectedColor = toolkit.getColors().getColor(IFormColors.TB_BG);
+			folder.setSelectionBackground(new Color[] {selectedColor, toolkit.getColors().getBackground()}, new int[] {100}, true);
+		}
 		for (int i = 0; i < partsList.length; i++) {
 			String nextComponentKey = partsList[i];
 			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind, nextComponentKey);
@@ -373,8 +381,6 @@ public class PropertiesEditionViewer extends ContentViewer {
 				selectedParts.add(nextComponentKey);
 				addPartTab(propertiesEditionProvider, part,	nextComponentKey);
 			}
-			else
-				hasFilteredTab = true;
 		}
 		if (dynamicTabHeader) {
 			if (selectedParts.size() > 1)
@@ -411,6 +417,20 @@ public class PropertiesEditionViewer extends ContentViewer {
 		tab.setControl(editComposite);
 		tab.setText(key);
 	}
+
+	/**
+	 * Reset all the tabs of the folder.
+	 */
+	private void resetTab() {
+		if (folder.getItemCount() > 0) {
+			CTabItem[] items = folder.getItems();
+			for (int i = 0; i < items.length; i++) {
+				CTabItem cTabItem = items[i];
+				cTabItem.dispose();
+			}
+		}
+	}
+
 	
 	/**
 	 * Compute the optimal size for the scrolled composite

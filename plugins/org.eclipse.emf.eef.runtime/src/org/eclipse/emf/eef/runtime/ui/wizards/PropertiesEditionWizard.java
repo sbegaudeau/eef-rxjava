@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -24,7 +25,6 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentServi
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
@@ -180,9 +180,13 @@ public class PropertiesEditionWizard extends Wizard {
 		}
 		
 		public void setInput(EObject eObject) {
-			viewer.setContentProvider(new PropertiesEditionContentProvider(PropertiesEditionComponentService.getInstance().getProvider((EObject)eObject), IPropertiesEditionComponent.BATCH_MODE));
-			viewer.setInput(eObject);
-			viewer.addPropertiesListener(this);
+			try {
+				viewer.setContentProvider(new PropertiesEditionContentProvider(PropertiesEditionComponentService.getInstance().getProvider((EObject)eObject), IPropertiesEditionComponent.BATCH_MODE));
+				viewer.setInput(eObject);
+				viewer.addPropertiesListener(this);
+			} catch (InstantiationException e) {
+				EMFPropertiesRuntime.getDefault().logError("Trying to use PropertiesEditionWizard in LIVE_MODE.", e);
+			}
 		}
 
 		public void firePropertiesChanged(PropertiesEditionEvent event) {
