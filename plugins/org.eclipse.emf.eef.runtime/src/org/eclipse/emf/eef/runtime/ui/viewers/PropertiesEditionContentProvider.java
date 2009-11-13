@@ -59,7 +59,8 @@ public class PropertiesEditionContentProvider implements IContentProvider {
 	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
 	 */
 	public void dispose() {
-		propertiesEditionComponent.dispose();
+		if (propertiesEditionComponent != null)
+			propertiesEditionComponent.dispose();
 	}
 
 	/**
@@ -70,7 +71,7 @@ public class PropertiesEditionContentProvider implements IContentProvider {
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.dispose();
 		this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditionComponent((EObject)newInput, mode);
-		if (mode == IPropertiesEditionComponent.LIVE_MODE)
+		if (propertiesEditionComponent != null && mode == IPropertiesEditionComponent.LIVE_MODE)
 			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 		//FIXME: find a better way to manage the context
 		PropertiesContextService.getInstance().push((EObject)newInput, propertiesEditionComponent);
@@ -129,7 +130,7 @@ public class PropertiesEditionContentProvider implements IContentProvider {
 		if (propertiesEditionComponent != null)
 			return propertiesEditionComponent.partsList();
 		else
-			return null;
+			return new String[0];
 	}
 
 	/**

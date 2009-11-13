@@ -10,38 +10,46 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.properties.sections;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.ui.filters.PropertiesEditionPartFilter;
-import org.eclipse.emf.eef.runtime.ui.properties.TabbedPropertiesEditionSheetPage;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
+import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionSection extends AbstractPropertySection {
+public class PropertiesEditionSection extends AbstractPropertySection  implements IFilter {
 
 	/**
 	 * the property sheet page for this section.
 	 */
-	private TabbedPropertiesEditionSheetPage propertySheetPage;
+	private TabbedPropertySheetPage propertySheetPage;
 
 	/**
 	 * the section's parent
@@ -52,6 +60,12 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 * The section's viewer
 	 */
 	protected PropertiesEditionViewer viewer;
+
+	
+	/**
+	 * The editingDomain where the viewer must perform editing commands.
+	 */
+	private EditingDomain editingDomain;
 
 	/**
 	 * The current selected object or the first object in the selection when multiple objects are selected.
@@ -72,6 +86,11 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 * Filters list
 	 */
 	private ViewerFilter[] filters = new ViewerFilter[1];
+	
+	/**
+	 * Global Properties Edition Provider
+	 */
+	private IPropertiesEditionProvider propertiesEditionProvider = new RegistryPropertiesEditionProvider();
 
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
@@ -79,7 +98,7 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 */
 	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
-		this.propertySheetPage = (TabbedPropertiesEditionSheetPage)aTabbedPropertySheetPage;
+		this.propertySheetPage = aTabbedPropertySheetPage;
 		this.parent = parent;
 		this.viewer = new PropertiesEditionViewer(parent, null,SWT.NONE, 1);
 		viewer.setToolkit(getWidgetFactory());
@@ -91,15 +110,16 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 */
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
+		initializeEditingDomain(part);
 		if (!(selection instanceof IStructuredSelection)) {
 			return;
 		}
-		if (((IStructuredSelection)selection).getFirstElement() instanceof EObject) {
-			EObject newEObject = (EObject)((IStructuredSelection)selection).getFirstElement();
+		if (resolveSemanticObject(((IStructuredSelection)selection).getFirstElement()) != null) {
+			EObject newEObject = resolveSemanticObject(((IStructuredSelection)selection).getFirstElement());
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					viewer.setContentProvider(new PropertiesEditionContentProvider(PropertiesEditionComponentService.getInstance().getProvider((EObject)eObject), IPropertiesEditionComponent.LIVE_MODE, propertySheetPage.getEditingDomain()));
+					viewer.setContentProvider(new PropertiesEditionContentProvider(propertiesEditionProvider, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
 					viewer.setFilters(filters);
 					viewer.setInput(eObject);
@@ -107,6 +127,30 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			}
 		}
 		eObjectList = ((IStructuredSelection)selection).toList();
+	}
+
+	
+	private void initializeEditingDomain(IWorkbenchPart part) {
+		if (part instanceof ITabbedPropertySheetPageContributor) {
+			ITabbedPropertySheetPageContributor editor = (ITabbedPropertySheetPageContributor)part;
+			if (editor != null && editor instanceof IEditorPart) {
+				if (editor instanceof IEditingDomainProvider)
+					editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
+				else if ((((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)) != null)
+					editingDomain = ((IEditingDomainProvider)((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)).getEditingDomain();
+				else if ((((IEditorPart)editor).getAdapter(EditingDomain.class)) != null)
+					editingDomain = (EditingDomain) ((IEditorPart)editor).getAdapter(EditingDomain.class);
+			}
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+	 */
+	public boolean select(Object toTest) {
+		EObject resolveSemanticObject = resolveSemanticObject(toTest);
+		return propertiesEditionProvider.provides(resolveSemanticObject);
 	}
 
 	/**
@@ -130,7 +174,7 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 * @return
 	 */
 	protected String getDescriptor() {
-		Map descriptor = propertySheetPage.getDescriptor();
+		Map descriptor = getPageDescriptor(propertySheetPage);
 		for (Iterator iterator = descriptor.keySet().iterator(); iterator.hasNext();) {
 			Object key = iterator.next();
 			Object tab = descriptor.get(key);
@@ -147,6 +191,58 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 			}
 		}
 		return "";
+	}
+	
+	private Map getPageDescriptor(TabbedPropertySheetPage propertySheetPage) {
+		Field descriptorToTabField = null;
+		boolean oldAccessible = false;
+		try {
+			Class<?> cls = propertySheetPage.getClass();
+			while (!cls.equals(TabbedPropertySheetPage.class)) {
+				cls = cls.getSuperclass();
+			}
+			descriptorToTabField = cls.getDeclaredField("descriptorToTab");
+			oldAccessible = descriptorToTabField.isAccessible();
+			descriptorToTabField.setAccessible(true);
+			return (Map)descriptorToTabField.get(propertySheetPage);
+
+		} catch (SecurityException e) {
+
+			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+		} catch (NoSuchFieldException e) {
+
+			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+		} catch (IllegalArgumentException e) {
+
+			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+		} catch (IllegalAccessException e) {
+
+			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+		} finally {
+			if (descriptorToTabField != null) {
+				descriptorToTabField.setAccessible(oldAccessible);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @param object
+	 * @return
+	 */
+	private EObject resolveSemanticObject(Object object) {		
+		if (object instanceof EObject){
+			return (EObject) object;
+		}else if (object instanceof IAdaptable){
+			IAdaptable adaptable = (IAdaptable)object;
+			if(adaptable.getAdapter(SemanticAdapter.class)!=null){
+				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable.getAdapter(SemanticAdapter.class);
+				return semanticAdapter.getEObject();
+			}else if(adaptable.getAdapter(EObject.class)!=null){
+				return (EObject) adaptable.getAdapter(EObject.class);
+			}
+		}
+		return null;
 	}
 
 	/**
