@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.ui.generators.common.GenerateAll;
 import org.eclipse.emf.eef.codegen.ui.generators.common.ImportOrganizer;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -49,7 +50,6 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	private IWorkbenchSite site;
 	protected List<IFile> selectedFiles;
 	protected List<EEFGenModel> eefGenModels;
-	protected ImportOrganizer organizer;
 
 	/**
 	 * 
@@ -57,7 +57,6 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	public AbstractGenerateEEFAction() {
 		selectedFiles = new ArrayList<IFile>();
 		eefGenModels = new ArrayList<EEFGenModel>();
-		organizer = new ImportOrganizer();
 	}
 
 	/**
@@ -107,14 +106,16 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 												nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 											}
 											monitor.worked(1);
-											monitor.beginTask("Organize imports", 1);
-											Display.getDefault().asyncExec(
-													new Runnable() {
-														public void run() {
-															organizer.organizeImports(site, generator.getGenerationTargets());
+											if (EEFUtils.isBundleLoaded(EEFUtils.JDT_CORE_SYMBOLIC_NAME)) {
+												monitor.beginTask("Organize imports", 1);
+												Display.getDefault().asyncExec(
+														new Runnable() {
+															public void run() {
+																ImportOrganizer.organizeImports(site, generator.getGenerationTargets());
+															}
 														}
-													}
-											);
+												);
+											}
 										}
 									}
 								}

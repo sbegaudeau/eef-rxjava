@@ -31,7 +31,7 @@ import org.eclipse.ui.IWorkbenchSite;
  */
 public class ImportOrganizer {
 	
-	public void organizeImports(IWorkbenchSite site, Set<IContainer> folders) {
+	public static void organizeImports(IWorkbenchSite site, Set<IContainer> folders) {
 		List<ICompilationUnit> units = new ArrayList<ICompilationUnit>();
 		for (IContainer container : folders) {
 			IJavaElement element = JavaCore.create(container);
