@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 import org.eclipse.emf.eef.runtime.ui.comparator.EMFModelViewerComparator;
 import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
-import org.eclipse.emf.eef.runtime.ui.utils.ScreenTool;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -371,9 +370,9 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	protected Point getInitialSize() {
 		Point point = super.getInitialSize();
 		int width = point.x < 800 ? 800 : point.x;
-		if (width > ScreenTool.getWidth())
-			return new Point(ScreenTool.getWidth(), ScreenTool.getHeight());
-		return new Point(width, ScreenTool.getHeight());
+		if (width > + SWTUtils.getWidth())
+			return new Point(SWTUtils.getWidth(), SWTUtils.getHeight());
+		return new Point(width, SWTUtils.getHeight());
 	}
 
 	protected void configureShell(Shell shell) {

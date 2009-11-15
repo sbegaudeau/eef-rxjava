@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.runtime.ui.filters;
+package org.eclipse.emf.eef.runtime.ui.viewers.filters;
 
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.jface.viewers.Viewer;

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
+import java.awt.Toolkit;
+
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -77,6 +79,22 @@ public class SWTUtils {
 			}
 			return result;
 		}
+	}
+	
+	public static final double HEIGHT = 0.66;
+
+	public static final double WIDTH = 0.66;
+
+	public static int getHeight() {
+		return (int)(HEIGHT * Toolkit.getDefaultToolkit().getScreenSize().height) + 1;
+	}
+
+	public static int getWidth() {
+		return (int)(WIDTH * Toolkit.getDefaultToolkit().getScreenSize().width) + 1;
+	}
+
+	public static int getEntireWidth() {
+		return Toolkit.getDefaultToolkit().getScreenSize().width;
 	}
 
 }

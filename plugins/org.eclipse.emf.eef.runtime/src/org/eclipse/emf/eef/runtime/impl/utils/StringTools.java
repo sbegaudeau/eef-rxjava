@@ -47,28 +47,6 @@ public class StringTools {
 		}
 	}
 
-	public static boolean isWellFormatedConstanteName(String text) {
-		return text.matches("[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$"); //$NON-NLS-1$
-	}
-
-	public static boolean isWellFormatedTypeName(String text) {
-		return text.matches("[A-Z][a-zA-Z0-9_\\-]*$"); //$NON-NLS-1$
-	}
-
-	public static boolean isWellFormatedMemberName(String text) {
-		return text.matches("[a-z][a-zA-Z0-9_\\-]*$"); //$NON-NLS-1$
-	}
-
-	public static boolean isWellFormatedMemberNameForOP(String text) {
-		if (text.startsWith("{")) //$NON-NLS-1$
-			return true;
-		return text.matches("[a-z][a-zA-Z0-9_\\-]*$"); //$NON-NLS-1$
-	}
-
-	public static boolean isWellFormatedMethodName(String text) {
-		return text.matches("[a-z][a-zA-Z0-9]*$"); //$NON-NLS-1$
-	}
-
 	public static boolean isFloat(String text) {
 		try {
 			Float.parseFloat(text);
