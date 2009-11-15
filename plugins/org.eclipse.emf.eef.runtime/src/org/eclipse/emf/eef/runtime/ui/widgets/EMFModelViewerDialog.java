@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.impl.filters.business.BusinessViewerFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.impl.utils.PatternTool;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
@@ -61,6 +62,8 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public abstract class EMFModelViewerDialog extends Dialog {
+
+	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core";
 
 	protected TableViewer elements;
 
@@ -388,13 +391,20 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	protected void patternChanged(final Text text) {
 		elements.addFilter(new ViewerFilter() {
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				String libelle = null;
-				if (labelProviderElement != null) {
-					libelle = formatNomFWithLabelProvider(element);
-				} else {
-					libelle = ModelViewerHelper.getName(element);
+				if (text.getText() == null || text.getText().equals(""))
+					return true;
+				else {
+					String libelle = null;
+					if (labelProviderElement != null) {
+						libelle = formatNomFWithLabelProvider(element);
+					} else {
+						libelle = ModelViewerHelper.getName(element);
+					}
+					if (EEFUtils.isBundleLoaded(JDT_CORE_SYMBOLIC_NAME))
+						return PatternTool.getPattern(libelle, text.getText());
+					else 
+						return text.getText() == null || text.getText().equals("") || libelle.startsWith(text.getText());
 				}
-				return PatternTool.getPattern(libelle, text.getText());
 			}
 		});
 		for (int i = 0; i < elements.getTable().getColumns().length; i++) {

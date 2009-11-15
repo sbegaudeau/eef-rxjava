@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.runtime.impl.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.osgi.framework.Bundle;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -78,6 +80,16 @@ public class EEFUtils {
 		while (iter.hasNext())
 			result.add(iter.next());
 		return result;
+	}
+	
+	/**
+	 * method defining if a bundle is loaded or not
+	 * @param name the searched bundle
+	 * @return <code>true</code> when the bundle is loaded
+	 */
+	public static boolean isBundleLoaded(String name) {
+		Bundle bundle = Platform.getBundle(name);
+		return bundle != null && bundle.getState() == Bundle.ACTIVE;
 	}
 	
 }
