@@ -29,6 +29,8 @@ import org.osgi.framework.Bundle;
  */
 public class EEFUtils {
 
+	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core";
+	
 	/**
 	 * @deprecated
 	 */

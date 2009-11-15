@@ -63,8 +63,6 @@ import org.eclipse.swt.widgets.Text;
  */
 public abstract class EMFModelViewerDialog extends Dialog {
 
-	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core";
-
 	protected TableViewer elements;
 
 	protected ITableLabelProvider labelProvider;
@@ -400,7 +398,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 					} else {
 						libelle = ModelViewerHelper.getName(element);
 					}
-					if (EEFUtils.isBundleLoaded(JDT_CORE_SYMBOLIC_NAME))
+					if (EEFUtils.isBundleLoaded(EEFUtils.JDT_CORE_SYMBOLIC_NAME))
 						return PatternTool.getPattern(libelle, text.getText());
 					else 
 						return text.getText() == null || text.getText().equals("") || libelle.startsWith(text.getText());
