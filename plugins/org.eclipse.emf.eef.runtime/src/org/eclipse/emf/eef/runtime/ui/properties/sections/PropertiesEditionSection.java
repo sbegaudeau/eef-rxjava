@@ -92,6 +92,8 @@ public class PropertiesEditionSection extends AbstractPropertySection  implement
 	 */
 	private IPropertiesEditionProvider propertiesEditionProvider = new RegistryPropertiesEditionProvider();
 
+	private PropertiesEditionContentProvider contentProvider;
+	
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
@@ -119,7 +121,10 @@ public class PropertiesEditionSection extends AbstractPropertySection  implement
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					viewer.setContentProvider(new PropertiesEditionContentProvider(propertiesEditionProvider, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+					if (contentProvider != null)
+						contentProvider.dispose();
+					contentProvider = new PropertiesEditionContentProvider(propertiesEditionProvider, IPropertiesEditionComponent.LIVE_MODE, editingDomain);
+					viewer.setContentProvider(contentProvider);
 					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
 					viewer.setFilters(filters);
 					viewer.setInput(eObject);
