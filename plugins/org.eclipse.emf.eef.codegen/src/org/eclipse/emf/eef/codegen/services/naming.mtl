@@ -83,6 +83,7 @@
 [template public pecPackageProviderQualifiedClass(pec : PropertiesEditionContext)]
 [pec.providersPackage()/].[pec.pecPackageProviderClass()/]
 [/template]
+
 [comment --------------------------------------------------------------------------
   Parts naming
  ---------------------------------------------------------------------------------- /]

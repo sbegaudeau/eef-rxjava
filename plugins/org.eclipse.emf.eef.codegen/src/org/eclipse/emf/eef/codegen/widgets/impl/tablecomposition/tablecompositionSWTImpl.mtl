@@ -215,7 +215,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
+			[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
@@ -224,9 +225,21 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			if (propertiesEditionObject != null) {
 				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
 				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 			}
 		}
+			[else]
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
+			if (propertiesEditionObject != null) {
+				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+			}
+		}
+			[/if]
 		[/if]
 
 		// [/protected]
@@ -348,7 +361,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
+		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
+			[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
@@ -357,9 +371,21 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			if (propertiesEditionObject != null) {
 				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
 				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 			}
 		}
+			[else]
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
+			if (propertiesEditionObject != null) {
+				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+				[editor.name.toJavaIdentifier()/].refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+			}
+		}
+			[/if]
 		[/if]
 		// [/protected]
 
