@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 import org.eclipse.emf.eef.runtime.ui.wizards.EditPropertyWizard;
+import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -37,7 +38,7 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 		IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(
 				eObject);
 		if (provider != null) {
-			EditPropertyWizard wizard = new EditPropertyWizard(editionContext.getEditingDomain(),
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext.getEditingDomain(),
 					eObject, editionContext.getEditingDomain().getResourceSet());
 			WizardDialog wDialog = new WizardDialog(new Shell(), wizard);
 			if (wDialog.open() == Window.OK)
@@ -56,15 +57,17 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 		if (propertiesEditionContext instanceof EObjectPropertiesEditionContext) {
 			EObjectPropertiesEditionContext editionContext = (EObjectPropertiesEditionContext)propertiesEditionContext;
 			EObject eObject = editionContext.getEObject();
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
-					.getProvider(eObject);
-			if (provider != null) {
-				EditPropertyWizard wizard = new EditPropertyWizard(null, eObject, editionContext
-						.getResourceSet());
-				WizardDialog wDialog = new WizardDialog(new Shell(), wizard);
-				if (wDialog.open() == Window.OK)
-					return wizard.getEObject();
-			}
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, eObject, editionContext.getResourceSet());
+			WizardDialog wDialog = new WizardDialog(new Shell(), wizard);
+			if (wDialog.open() == Window.OK)
+				return wizard.getEObject();
+		}
+		else if (propertiesEditionContext instanceof EReferencePropertiesEditionContext) {
+			EReferencePropertiesEditionContext editionContext = (EReferencePropertiesEditionContext)propertiesEditionContext;
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getEReference(), editionContext.getResourceSet());
+			WizardDialog wDialog = new WizardDialog(new Shell(), wizard);
+			if (wDialog.open() == Window.OK)
+				return wizard.getEObject();
 		}
 		return null;
 	}

@@ -44,7 +44,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionSection extends AbstractPropertySection  implements IFilter {
+public class PropertiesEditionSection extends AbstractPropertySection {
 
 	/**
 	 * the property sheet page for this section.
@@ -149,15 +149,6 @@ public class PropertiesEditionSection extends AbstractPropertySection  implement
 		}
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-	 */
-	public boolean select(Object toTest) {
-		EObject resolveSemanticObject = resolveSemanticObject(toTest);
-		return propertiesEditionProvider.provides(resolveSemanticObject);
-	}
-
 	/**
 	 * {@inheritDoc}
 	 * 

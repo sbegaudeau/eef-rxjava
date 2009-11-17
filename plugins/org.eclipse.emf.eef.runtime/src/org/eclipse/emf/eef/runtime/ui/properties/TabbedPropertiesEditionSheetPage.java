@@ -27,6 +27,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @deprecated use {@link TabbedPropertySheetPage} instead now.
  */
 public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 

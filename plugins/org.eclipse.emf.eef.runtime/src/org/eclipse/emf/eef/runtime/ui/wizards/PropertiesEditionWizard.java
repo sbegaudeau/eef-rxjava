@@ -10,11 +10,18 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -22,12 +29,18 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -37,9 +50,13 @@ public class PropertiesEditionWizard extends Wizard {
 
 	private EditPropertyWizardPage mainPage;
 
+	private ElementCreationWizardPage elementCreationPage;
+	
 	protected EditingDomain editingDomain;
 	
 	protected EObject eObject;
+
+	protected EReference eReference;
 
 	protected Command command;
 	
@@ -60,6 +77,20 @@ public class PropertiesEditionWizard extends Wizard {
 		this.eObject = eObject;
 		this.allResources = allResources;
 		this.setWindowTitle(eObject.eClass().getName());
+	}
+
+	/**
+	 * Default constructor - define the eObject to edit.
+	 * 
+	 * @param editingDomain (optional) defines the editingDomain where to perform commands.
+	 * @param eReference the reference where create the EObject.
+	 * @param allResources the resourceSet where the EObject is located.
+	 */
+	public PropertiesEditionWizard(EditingDomain editingDomain, EReference eReference, ResourceSet allResources) {
+		this.editingDomain = editingDomain;
+		this.eReference = eReference;
+		this.allResources = allResources;
+		this.setWindowTitle(eReference.getName());
 	}
 
 	/**
@@ -160,8 +191,56 @@ public class PropertiesEditionWizard extends Wizard {
 
 	@Override
 	public void addPages() {
+		if (inReferenceMode()) {
+			elementCreationPage = new ElementCreationWizardPage();
+			addPage(elementCreationPage);
+		}
 		mainPage = new EditPropertyWizardPage();
 		addPage(mainPage);
+		super.addPages();
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean inReferenceMode() {
+		return eReference != null && eReference.isContainment() && eObject == null;
+	}
+	
+	private class ElementCreationWizardPage extends WizardPage {
+
+		private List<Button> buttons = new ArrayList<Button>();
+		
+		protected ElementCreationWizardPage() {
+			super("Element creation page page"); //$NON-NLS-1$
+			this.setTitle("Element type"); //$NON-NLS-1$
+			this.setDescription("Choose the type of element to create");//$NON-NLS-1$
+		}
+
+		public void createControl(Composite parent) {
+			Composite control = new Composite(parent, SWT.NONE);
+			GridData gd = new GridData(GridData.FILL_BOTH);
+			control.setLayoutData(gd);
+			GridLayout layout = new GridLayout();
+			control.setLayout(layout);
+			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType());
+			for (final EClass eClass : instanciableTypesInHierarchy) {
+				Button button = new Button(control, SWT.RADIO);
+				button.setText(eClass.getName());
+				button.addSelectionListener(new SelectionAdapter() {
+					
+					public void widgetSelected(SelectionEvent e) {
+						eObject = EcoreUtil.create(eClass);
+						mainPage.setInput(eObject);
+					}
+				});
+				buttons.add(button);
+			}
+			buttons.get(0).setSelection(true);
+			eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
+			setControl(control);
+		}
+		
 	}
 
 	private class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
@@ -170,24 +249,27 @@ public class PropertiesEditionWizard extends Wizard {
 		
 		protected EditPropertyWizardPage() {
 			super("Main page"); //$NON-NLS-1$
-			this.setTitle(eObject.eClass().getName());
-			this.setDescription(MessagesTool.getString("EditPropertyWizard.description", new Object[] {eObject.eClass().getName()}));
 		}
 
 		public void createControl(Composite parent) {
-			 viewer = new PropertiesEditionViewer(parent, PropertiesEditionWizard.this.allResources, 0);
-			 viewer.setDynamicTabHeader(true);
-			 setControl(viewer.getControl());
-		}
-		
-		public void setInput(EObject eObject) {
 			try {
+				Composite control = new Composite(parent, SWT.NONE);
+				GridData gd = new GridData(GridData.FILL_BOTH);
+				control.setLayoutData(gd);
+				viewer = new PropertiesEditionViewer(control, PropertiesEditionWizard.this.allResources, 0);
+				viewer.setDynamicTabHeader(true);
 				viewer.setContentProvider(new PropertiesEditionContentProvider(new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.BATCH_MODE));
-				viewer.setInput(eObject);
 				viewer.addPropertiesListener(this);
+				setControl(viewer.getControl());
 			} catch (InstantiationException e) {
 				EMFPropertiesRuntime.getDefault().logError("Trying to use PropertiesEditionWizard in LIVE_MODE.", e);
 			}
+		}
+		
+		public void setInput(EObject eObject) {
+			this.setTitle(eObject.eClass().getName());
+			this.setDescription(MessagesTool.getString("EditPropertyWizard.description", new Object[] {eObject.eClass().getName()}));
+			viewer.setInput(eObject);
 		}
 
 		public void firePropertiesChanged(PropertiesEditionEvent event) {
