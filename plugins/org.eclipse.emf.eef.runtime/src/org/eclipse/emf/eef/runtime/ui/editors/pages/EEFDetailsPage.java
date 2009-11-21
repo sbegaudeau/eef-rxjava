@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -45,7 +44,7 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage {
 	protected ResourceSet allResources;
 	protected PropertiesEditionViewer viewer;
 
-	public EEFDetailsPage(FormToolkit toolkit, EditingDomain editingDomain, AdapterFactory adapterFactory) {
+	public EEFDetailsPage(FormToolkit toolkit, EditingDomain editingDomain) {
 		super();
 		this.toolkit = toolkit; 
 		this.editingDomain = editingDomain;

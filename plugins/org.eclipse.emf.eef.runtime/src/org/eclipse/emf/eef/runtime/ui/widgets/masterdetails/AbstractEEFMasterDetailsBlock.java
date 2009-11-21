@@ -48,8 +48,6 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	protected FormToolkit toolkit;
 	protected AbstractEEFMasterPart masterPart;
 	protected EditingDomain editingDomain;
-	protected AdapterFactory adapterFactory;
-	
 	protected ValidateAction valAction;
 	
 	/**
@@ -57,10 +55,8 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	 * @param editingDomain the editingDomain where to perform model edition
 	 * @param adapterFactory the adapterFactory to use with the model
 	 */
-	public AbstractEEFMasterDetailsBlock(EditingDomain editingDomain, AdapterFactory adapterFactory) {
+	public AbstractEEFMasterDetailsBlock() {
 		super();
-		this.editingDomain = editingDomain;
-		this.adapterFactory = adapterFactory;
 	}
 
 	/**
@@ -153,7 +149,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 			public IDetailsPage getPage(Object key) {
 				if (key.equals(EObject.class))
-					return new EEFDetailsPage(toolkit, editingDomain, adapterFactory);
+					return new EEFDetailsPage(toolkit, editingDomain);
 				return null;
 			}
 		});
@@ -166,6 +162,34 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		return masterPart;
 	}
 	
+	/**
+	 * @return the adapterFactory
+	 */
+	public AdapterFactory getAdapterFactory() {
+		return masterPart.getAdapterFactory();
+	}
+
+	/**
+	 * @param adapterFactory the adapterFactory to set
+	 */
+	public void setAdapterFactory(AdapterFactory adapterFactory) {
+		masterPart.setAdapterFactory(adapterFactory);
+	}
+
+	/**
+	 * @return the editingDomain
+	 */
+	public EditingDomain getEditingDomain() {
+		return editingDomain;
+	}
+
+	/**
+	 * @param editingDomain the editingDomain to set
+	 */
+	public void setEditingDomain(EditingDomain editingDomain) {
+		this.editingDomain = editingDomain;
+	}
+
 	/**
 	 * @param input the input of the model viewer
 	 */

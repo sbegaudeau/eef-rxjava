@@ -12,10 +12,10 @@ package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import java.util.List;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
@@ -60,12 +60,12 @@ public class EEFMDFormPage extends FormPage {
 	 * This keeps track of the editing domain that is used to track all changes
 	 * to the model.
 	 */
-	protected AdapterFactoryEditingDomain editingDomain;
+	private EditingDomain editingDomain;
 
 	/**
 	 * This is the one adapter factory used for providing views of the model.
 	 */
-	protected ComposedAdapterFactory adapterFactory;
+	private AdapterFactory adapterFactory;
 
 	/**
 	 * The master/details block for model edition 
@@ -80,11 +80,9 @@ public class EEFMDFormPage extends FormPage {
 	/**
 	 * @param editor the form editor in which this page will be included
 	 */
-	public EEFMDFormPage(FormEditor editor, String pageTitle, AdapterFactoryEditingDomain editingDomain, ComposedAdapterFactory adapterFactory) {
+	public EEFMDFormPage(FormEditor editor, String pageTitle) {
 		super(editor, PAGE_ID, pageTitle); //$NON-NLS-1$
 		this.editor = editor;
-		this.editingDomain = editingDomain;
-		this.adapterFactory = adapterFactory;
 	}
 	
 	/**
@@ -93,7 +91,7 @@ public class EEFMDFormPage extends FormPage {
 	 */
 	protected void createFormContent(IManagedForm managedForm) {
 		super.createFormContent(managedForm);
-		block = new EEFTreeMasterDetailsBlock(editingDomain, adapterFactory) {
+		block = new EEFTreeMasterDetailsBlock() {
 
 			/**
 			 * {@inheritDoc}
@@ -146,6 +144,34 @@ public class EEFMDFormPage extends FormPage {
 	}
 
 	/**
+	 * @return the editingDomain
+	 */
+	public EditingDomain getEditingDomain() {
+		return editingDomain;
+	}
+
+	/**
+	 * @param editingDomain the editingDomain to set
+	 */
+	public void setEditingDomain(EditingDomain editingDomain) {
+		this.editingDomain = editingDomain;
+	}
+
+	/**
+	 * @return the adapterFactory
+	 */
+	public AdapterFactory getAdapterFactory() {
+		return adapterFactory;
+	}
+
+	/**
+	 * @param adapterFactory the adapterFactory to set
+	 */
+	public void setAdapterFactory(AdapterFactory adapterFactory) {
+		this.adapterFactory = adapterFactory;
+	}
+
+	/**
 	 * Defines the title of the page
 	 * @param title the title to define
 	 */
@@ -158,6 +184,8 @@ public class EEFMDFormPage extends FormPage {
 	 * @param input the input of the page
 	 */
 	public void setInput(Object input) {
+		block.setAdapterFactory(adapterFactory);
+		block.setEditingDomain(editingDomain);
 		block.setInput(input);
 		if (input instanceof ResourceSet) {
 			Resource resource = ((ResourceSet)input).getResources().get(0);

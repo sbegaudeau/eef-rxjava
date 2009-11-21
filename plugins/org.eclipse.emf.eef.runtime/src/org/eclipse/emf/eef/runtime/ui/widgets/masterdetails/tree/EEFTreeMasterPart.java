@@ -10,13 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.tree;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterPart;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -34,11 +30,9 @@ public class EEFTreeMasterPart extends AbstractEEFMasterPart {
 	 * @param managedForm the form where this part will be
 	 * @param container the composite where to create the part
 	 * @param editingDomain the editingDomain where to performs the model edition
-	 * @param adapterFactory the adapterFactory for the edited model
 	 */
-	public EEFTreeMasterPart(FormToolkit toolkit, Composite container,
-			EditingDomain editingDomain, AdapterFactory adapterFactory) {
-		super(toolkit, container, editingDomain, adapterFactory);
+	public EEFTreeMasterPart(FormToolkit toolkit, Composite container) {
+		super(toolkit, container);
 	}
 
 	/**
@@ -48,11 +42,8 @@ public class EEFTreeMasterPart extends AbstractEEFMasterPart {
 	protected TreeViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit) {
 		Tree tree = toolkit.createTree(sectionContainer, SWT.MULTI | SWT.BORDER);
 		TreeViewer result =  new TreeViewer(tree);
-		result.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-
-		result.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		result.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-		new AdapterFactoryTreeEditor(result.getTree(), adapterFactory);
+		result.setContentProvider(new AdapterFactoryContentProvider(getAdapterFactory()));
+		result.setLabelProvider(new AdapterFactoryLabelProvider(getAdapterFactory()));
 		GridData gd = new GridData(GridData.FILL_BOTH);
 		tree.setLayoutData(gd);
 		return result;

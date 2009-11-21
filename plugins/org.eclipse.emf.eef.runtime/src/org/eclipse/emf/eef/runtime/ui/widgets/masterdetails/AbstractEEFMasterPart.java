@@ -11,7 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets.masterdetails;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -28,19 +28,15 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 public abstract class AbstractEEFMasterPart extends SectionPart {
 
 	private TreeViewer modelViewer;
-	protected EditingDomain editingDomain;
-	protected AdapterFactory adapterFactory;
+	private AdapterFactory adapterFactory;
 	
 	/**
 	 * @param managedForm the form where this part will be
 	 * @param container the composite where to create the part
-	 * @param editingDomain the editingDomain where to performs the model edition
 	 * @param adapterFactory the adapterFactory for the edited model
 	 */
-	public AbstractEEFMasterPart(FormToolkit toolkit, Composite container, EditingDomain editingDomain, AdapterFactory adapterFactory) {
+	public AbstractEEFMasterPart(FormToolkit toolkit, Composite container) {
 		super(container, toolkit, ExpandableComposite.TITLE_BAR);
-		this.editingDomain = editingDomain;
-		this.adapterFactory = adapterFactory;
 		Composite sectionContainer = toolkit.createComposite(getSection());
 		createSectionClient(sectionContainer, toolkit);
 		getSection().setText("Model");
@@ -67,6 +63,22 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 */
 	protected abstract TreeViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit);
 	
+	/**
+	 * @return the adapterFactory
+	 */
+	public AdapterFactory getAdapterFactory() {
+		if (adapterFactory == null)
+			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		return adapterFactory;
+	}
+
+	/**
+	 * @param adapterFactory the adapterFactory to set
+	 */
+	public void setAdapterFactory(AdapterFactory adapterFactory) {
+		this.adapterFactory = adapterFactory;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.IEEFMasterPart#getModelViewer()
