@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -253,10 +254,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		if (filters != null) {
 			boolean select = true;
 			for (int j = 0; j < filters.size(); j++) {
-				select = ((ViewerFilter) filters.get(j)).select(this, key, propertiesEditionPart);
-				if (!select) {
-					result = false;
-					break;
+				ViewerFilter viewerFilter = filters.get(j);
+				if (viewerFilter instanceof PropertiesEditionPartFilter) {
+					select = ((ViewerFilter) viewerFilter).select(this, key, propertiesEditionPart);
+					if (!select) {
+						result = false;
+						break;
+					}
 				}
 			}
 		}

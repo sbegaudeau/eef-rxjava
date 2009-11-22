@@ -1,6 +1,13 @@
-/**
+/*******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.views;
 
 import java.util.List;
@@ -30,7 +37,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.part.ViewPart;
 
 /**
- * @author glefur
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
 public class EEFView extends ViewPart implements IEditingDomainProvider {
@@ -166,7 +173,7 @@ public class EEFView extends ViewPart implements IEditingDomainProvider {
 						IEditingDomainProvider editingDomainProvider = (IEditingDomainProvider) part;
 						EditingDomain editingDomain = editingDomainProvider.getEditingDomain();
 						setEditingDomain(editingDomain);
-						block.setInput(editingDomain.getResourceSet());
+						editingDomainChanged(editingDomain);
 					}
 				}
 			}
@@ -212,6 +219,13 @@ public class EEFView extends ViewPart implements IEditingDomainProvider {
 		if (partListener != null)
 			getSite().getPage().removePartListener(partListener);
 		super.dispose();
+	}
+
+	/**
+	 * @param editingDomain the {@link EditingDomain} of the new selected part
+	 */
+	protected void editingDomainChanged(EditingDomain editingDomain) {
+		block.setInput(editingDomain.getResourceSet());
 	}
 	
 	

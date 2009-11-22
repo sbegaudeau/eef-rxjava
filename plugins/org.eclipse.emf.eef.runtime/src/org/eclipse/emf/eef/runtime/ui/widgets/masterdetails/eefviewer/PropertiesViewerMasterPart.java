@@ -10,14 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.eefviewer;
 
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterPart;
-import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
@@ -38,14 +36,10 @@ public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterPart#createSectionClientContents(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
-	protected TreeViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit) {
-		Tree tree = toolkit.createTree(sectionContainer, SWT.MULTI | SWT.BORDER);
-		TreeViewer result =  new TreeViewer(tree);
-		result.setContentProvider(new AdapterFactoryContentProvider(getAdapterFactory()));
-		result.setLabelProvider(new AdapterFactoryLabelProvider(getAdapterFactory()));
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		tree.setLayoutData(gd);
-		return result;
+	protected StructuredViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit) {
+		PropertiesEditionViewer viewer = new PropertiesEditionViewer(sectionContainer, null, SWT.NONE, 1);
+		viewer.setLabelProvider(new AdapterFactoryLabelProvider(getAdapterFactory()));
+		return viewer;
 	}
 
 }
