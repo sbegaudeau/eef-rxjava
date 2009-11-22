@@ -21,9 +21,10 @@
 [comment ===== Case Widget = TableComposition ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'TableComposition')]
 import java.util.Map;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -68,7 +69,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		tableContainer.setLayoutData(tableContainerData);
 		tableContainerLayout.numColumns = 2;
 		tableContainer.setLayout(tableContainerLayout);
-		org.eclipse.swt.widgets.Table table[editor.name.toJavaClassifier()/] = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION);
+		org.eclipse.swt.widgets.Table table[editor.name.toJavaClassifier()/] = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		table[editor.name.toJavaClassifier()/].setHeaderVisible(true);
 		[if (editor.readOnly)]
 		table[editor.name.toJavaClassifier()/].setEnabled(false);
@@ -91,16 +92,35 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		// [/protected]
 
 		[editor.name.toJavaIdentifier()/] = new TableViewer(table[editor.name.toJavaClassifier()/]);
-		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
-		[editor.name.toJavaIdentifier()/].setLabelProvider(new ITableLabelProvider() {
+		[editor.name.toJavaIdentifier()/].setContentProvider(new AdapterFactoryContentProvider(EMFPropertiesRuntime.getDefault().getAdapterFactory()) {
+
+			/**
+			 * {@inheritDoc}
+			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 */
+			@Override
+			public Object[ '[' /][ ']' /] getElements(Object object) {
+				if (object instanceof Collection)
+					return ((Collection) object).toArray();
+				else
+					return super.getElements(object);
+			}
+			
+		});
+		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(EMFPropertiesRuntime.getDefault().getAdapterFactory()) {
 
 			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
+				if (object instanceof ScoreEntry) {
+					ScoreEntry scoreEntry = (ScoreEntry)entriesEditUtil.foundCorrespondingEObject((EObject) object);
+					if (columnIndex == 0)
+						return String.valueOf(scoreEntry.getGame().getEntries().indexOf(scoreEntry));
+					else if (columnIndex == 1)
+						return labelProvider.getText(scoreEntry);
+					else {
+						if (columnIndex - 2 < scoreEntry.getGame().getPlayers().size()) 
+							return String.valueOf(scoreEntry.cumulativeScore(scoreEntry.getGame().getPlayers().get(columnIndex - 2)));
 					}
 				}
 				return ""; //$NON-NLS-1$
@@ -110,19 +130,6 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 				return null;
 			}
 			//[/protected]
-
-			public void addListener(ILabelProviderListener listener) {
-			}
-
-			public void dispose() {
-			}
-
-			public boolean isLabelProperty(Object element, String property) {
-				return false;
-			}
-
-			public void removeListener(ILabelProviderListener listener) {
-			}
 
 		});
 		[editor.name.toJavaIdentifier()/].getTable().addListener(SWT.MouseDoubleClick, new Listener(){
