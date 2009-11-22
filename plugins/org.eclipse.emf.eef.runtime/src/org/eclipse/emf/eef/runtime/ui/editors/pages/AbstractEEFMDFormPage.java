@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock;
-import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.tree.EEFTreeMasterDetailsBlock;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.MenuManager;
@@ -43,7 +42,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public class EEFMDFormPage extends FormPage {
+public abstract class AbstractEEFMDFormPage extends FormPage {
 
 	/**
 	 * The page ID
@@ -75,11 +74,16 @@ public class EEFMDFormPage extends FormPage {
 	 * The form containing this page
 	 */
 	private ScrolledForm form;
+
+	/**
+	 * The managed form
+	 */
+	private IManagedForm managedForm;
 	
 	/**
 	 * @param editor the form editor in which this page will be included
 	 */
-	public EEFMDFormPage(FormEditor editor, String pageTitle) {
+	public AbstractEEFMDFormPage(FormEditor editor, String pageTitle) {
 		super(editor, PAGE_ID, pageTitle); //$NON-NLS-1$
 		this.editor = editor;
 	}
@@ -90,17 +94,8 @@ public class EEFMDFormPage extends FormPage {
 	 */
 	protected void createFormContent(IManagedForm managedForm) {
 		super.createFormContent(managedForm);
-		block = new EEFTreeMasterDetailsBlock() {
-
-			/**
-			 * {@inheritDoc}
-			 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock#additionalPageActions()
-			 */
-			protected List<Action> additionalPageActions() {
-				return EEFMDFormPage.this.additionalPageUserActions();
-			}
-			
-		};
+		block = createMasterDetailsBlock();
+		this.managedForm = managedForm;
 		form = managedForm.getForm();
 		managedForm.getToolkit().decorateFormHeading(form.getForm());
 		block.createContent(managedForm);
@@ -113,6 +108,11 @@ public class EEFMDFormPage extends FormPage {
 		});
 		createContextMenuFor(block.getMasterPart().getModelViewer());
 	}
+
+	/**
+	 * @return the MasterDetailsBlock to use for the page
+	 */
+	protected abstract AbstractEEFMasterDetailsBlock createMasterDetailsBlock();
 
 	/**
 	 * This creates a context menu for the viewer and adds a listener as well registering the menu for extension.
@@ -133,6 +133,13 @@ public class EEFMDFormPage extends FormPage {
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
+	}
+	
+	/**
+	 * @return the form
+	 */
+	public IManagedForm getManagedForm() {
+		return managedForm;
 	}
 
 	/**

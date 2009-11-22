@@ -38,6 +38,7 @@ public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 	 */
 	protected StructuredViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit) {
 		PropertiesEditionViewer viewer = new PropertiesEditionViewer(sectionContainer, null, SWT.NONE, 1);
+		viewer.setToolkit(toolkit);
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(getAdapterFactory()));
 		return viewer;
 	}
