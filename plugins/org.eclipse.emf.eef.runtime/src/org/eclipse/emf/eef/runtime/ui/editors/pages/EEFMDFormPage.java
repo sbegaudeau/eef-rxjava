@@ -30,7 +30,6 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
@@ -139,7 +138,7 @@ public class EEFMDFormPage extends FormPage {
 	/**
 	 * @return the modelViewer
 	 */
-	public TreeViewer getModelViewer() {
+	public StructuredViewer getModelViewer() {
 		return block.getMasterPart().getModelViewer();
 	}
 

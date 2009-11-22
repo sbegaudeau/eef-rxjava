@@ -21,14 +21,14 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public class PropertiesEditionContentProvider implements IContentProvider {
+public class PropertiesEditionContentProvider implements IStructuredContentProvider {
 
 	private IPropertiesEditionProvider propertiesEditionProvider;
 	private IPropertiesEditionComponent propertiesEditionComponent;
@@ -195,6 +195,14 @@ public class PropertiesEditionContentProvider implements IContentProvider {
 	public void initPart(Class key, int kind, EObject element, ResourceSet allResources) {
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.initPart(key, kind, element, allResources);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+	 */
+	public Object[] getElements(Object inputElement) {
+		return new Object[] { inputElement };
 	}
 
 }

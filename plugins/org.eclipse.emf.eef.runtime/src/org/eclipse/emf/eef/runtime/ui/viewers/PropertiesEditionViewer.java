@@ -26,8 +26,8 @@ import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.jface.viewers.ContentViewer;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -38,13 +38,14 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.forms.IFormColors;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionViewer extends ContentViewer {
+public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * Graphical purpose fields
@@ -79,7 +80,6 @@ public class PropertiesEditionViewer extends ContentViewer {
 		control = new Composite(scrolledContainer, style);
 		control.setLayout(new FillLayout());
 		folder = new CTabFolder(control, style);
-		// TODO: Find a better way to define Form constant
 		scrolledContainer.setExpandHorizontal(true);
 		scrolledContainer.setExpandVertical(true);
 		scrolledContainer.setContent(control);
@@ -133,19 +133,6 @@ public class PropertiesEditionViewer extends ContentViewer {
 	public void addPropertiesListener(IPropertiesEditionListener listener) {
 		if (getContentProvider() != null)
 			((PropertiesEditionContentProvider)getContentProvider()).addPropertiesListener(listener);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.jface.viewers.ContentViewer#setInput(java.lang.Object)
-	 */
-	public void setInput(Object input) {
-		if (input instanceof EObject) {
-			super.setInput(input);
-			this.initControl();
-		}
-		else
-			super.setInput(null);
 	}
 	
 	/**
@@ -321,8 +308,11 @@ public class PropertiesEditionViewer extends ContentViewer {
 	 * @see org.eclipse.jface.viewers.Viewer#getSelection()
 	 */
 	public ISelection getSelection() {
-		// TODO Auto-generated method stub
-		return null;
+		Object root = getRoot();
+		if (root != null)
+			return new StructuredSelection(root);
+		else
+			return new StructuredSelection();
 	}
 
 	/**
@@ -334,16 +324,53 @@ public class PropertiesEditionViewer extends ContentViewer {
 		
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.StructuredViewer#setSelectionToWidget(java.util.List, boolean)
+	 */
+	protected void setSelectionToWidget(List l, boolean reveal) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.StructuredViewer#getSelectionFromWidget()
+	 */
+	protected List getSelectionFromWidget() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 	/* ============================== Graphical management ============================== */
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.jface.viewers.Viewer#refresh()
+	 * @see org.eclipse.jface.viewers.StructuredViewer#internalRefresh(java.lang.Object)
 	 */
-	public void refresh() {
-		// Nothing to do
+	protected void internalRefresh(Object element) {
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.Viewer#inputChanged(java.lang.Object, java.lang.Object)
+	 */
+	protected void inputChanged(Object input, Object oldInput) {
+		super.inputChanged(input, oldInput);
+		initControl();
+    }
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.StructuredViewer#reveal(java.lang.Object)
+	 */
+	public void reveal(Object element) {
+		// Nothing to do
+	}
+	
 	/**
 	 * Create the control content 
 	 */
@@ -437,6 +464,34 @@ public class PropertiesEditionViewer extends ContentViewer {
 	 */
 	private void layoutScrolledComposite() {
 		scrolledContainer.setMinSize(folder.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+	}
+
+	/* ================================= Search methods ================================= */
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.StructuredViewer#doFindInputItem(java.lang.Object)
+	 */
+	protected Widget doFindInputItem(Object element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.StructuredViewer#doFindItem(java.lang.Object)
+	 */
+	protected Widget doFindItem(Object element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.StructuredViewer#doUpdateItem(org.eclipse.swt.widgets.Widget, java.lang.Object, boolean)
+	 */
+	protected void doUpdateItem(Widget item, Object element, boolean fullMap) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -12,8 +12,8 @@ package org.eclipse.emf.eef.runtime.ui.widgets.masterdetails;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -27,13 +27,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  */
 public abstract class AbstractEEFMasterPart extends SectionPart {
 
-	private TreeViewer modelViewer;
+	private StructuredViewer modelViewer;
 	private AdapterFactory adapterFactory;
 	
 	/**
-	 * @param managedForm the form where this part will be
+	 * @param toolkit the toolkit to use to create part widgets
 	 * @param container the composite where to create the part
-	 * @param adapterFactory the adapterFactory for the edited model
 	 */
 	public AbstractEEFMasterPart(FormToolkit toolkit, Composite container) {
 		super(container, toolkit, ExpandableComposite.TITLE_BAR);
@@ -61,7 +60,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * @param sectionContainer the parent
 	 * @param toolkit the toolkit to use
 	 */
-	protected abstract TreeViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit);
+	protected abstract StructuredViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit);
 	
 	/**
 	 * @return the adapterFactory
@@ -90,7 +89,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.IEEFMasterPart#getModelViewer()
 	 */
-	public TreeViewer getModelViewer() {
+	public StructuredViewer getModelViewer() {
 		return modelViewer;
 	}
 	
