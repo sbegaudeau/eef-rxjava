@@ -80,6 +80,13 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	}
 
 	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		getSection().setText(title);
+	}
+
+	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.IEEFMasterPart#getModelViewer()
 	 */

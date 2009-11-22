@@ -20,12 +20,23 @@ import org.eclipse.swt.widgets.Composite;
 public class EEFTreeMasterDetailsBlock extends AbstractEEFMasterDetailsBlock {
 
 	/**
-	 * @param editingDomain the editingDomain where to perform model edition
-	 * @param adapterFactory the adapterFactory to use with the model
+	 * Default constructor. 
+	 * The block is orientable.
 	 */
 	public EEFTreeMasterDetailsBlock() {
 		super();
 	}
+
+	/**
+	 * Constructor defining if the orientation of the block can be changed.
+	 * @param isOrientable the block is orientable or not.
+	 * @param showValidationAction defining the visibility of the action.
+	 */
+	public EEFTreeMasterDetailsBlock(boolean isOrientable, boolean showValidationAction) {
+		super(isOrientable, showValidationAction);
+	}
+
+
 
 	/**
 	 * {@inheritDoc}

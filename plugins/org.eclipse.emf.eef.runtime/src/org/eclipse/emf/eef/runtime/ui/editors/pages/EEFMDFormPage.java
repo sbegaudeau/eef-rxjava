@@ -70,7 +70,7 @@ public class EEFMDFormPage extends FormPage {
 	/**
 	 * The master/details block for model edition 
 	 */
-	private AbstractEEFMasterDetailsBlock block;
+	protected AbstractEEFMasterDetailsBlock block;
 
 	/**
 	 * The form containing this page

@@ -48,15 +48,28 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	protected FormToolkit toolkit;
 	protected AbstractEEFMasterPart masterPart;
 	protected EditingDomain editingDomain;
-	protected ValidateAction valAction;
+	protected ValidateAction validateAction;
+	
+	private boolean orientable = true;
+	private boolean showValidateAction = true;
 	
 	/**
-	 * @param page the page where MasterDetailsBlock is used
-	 * @param editingDomain the editingDomain where to perform model edition
-	 * @param adapterFactory the adapterFactory to use with the model
+	 * Default constructor. 
+	 * The block is orientable.
 	 */
 	public AbstractEEFMasterDetailsBlock() {
 		super();
+	}
+
+	/**
+	 * Constructor defining if the orientation of the block can be changed and if the validate action is visible.
+	 * @param isOrientable the block is orientable or not.
+	 * @param showValidationAction defining the visibility of the action.
+	 */
+	public AbstractEEFMasterDetailsBlock(boolean isOrientable, boolean showValidationAction) {
+		this();
+		orientable = isOrientable;
+		this.showValidateAction = showValidationAction;
 	}
 
 	/**
@@ -73,15 +86,17 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		Section section = masterPart.getSection();
 		section.setLayout(EEFFormLayoutFactory.createClearGridLayout(false, 1));
 		section.setLayoutData(new GridData(GridData.FILL_BOTH));
-		masterPart.addSelectionChangeListener(new ISelectionChangedListener() {
+		if (showValidateAction) {
+			masterPart.addSelectionChangeListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				ISelection selection = event.getSelection();
-				if (selection instanceof IStructuredSelection)
-					valAction.updateSelection((IStructuredSelection) selection);
-			}
-			
-		});
+				public void selectionChanged(SelectionChangedEvent event) {
+					ISelection selection = event.getSelection();
+					if (selection instanceof IStructuredSelection)
+						validateAction.updateSelection((IStructuredSelection) selection);
+				}
+
+			});
+		}
 	}
 
 	/**
@@ -97,37 +112,39 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	 */
 	protected void createToolBarActions(IManagedForm managedForm) {
 		final ScrolledForm form = managedForm.getForm();
-
-		valAction = new ValidateAction();
-		valAction.setToolTipText("Validate the current selection");
-		valAction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "validate.gif"));
-		
-		Action haction = new Action("hor", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
-			public void run() {
-				sashForm.setOrientation(SWT.HORIZONTAL);
-				form.reflow(true);
-			}
-		};
-		haction.setChecked(true);
-		haction.setToolTipText(
+		if (showValidateAction) {
+			validateAction = new ValidateAction();
+			validateAction.setToolTipText("Validate the current selection");
+			validateAction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "validate.gif"));
+			form.getToolBarManager().add(validateAction);
+		}
+		if (orientable) {
+			Action haction = new Action("hor", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
+				public void run() {
+					sashForm.setOrientation(SWT.HORIZONTAL);
+					form.reflow(true);
+				}
+			};
+			haction.setChecked(true);
+			haction.setToolTipText(
 					MessagesTool.getString("AbstractEEFMasterDetailsBlock.horizontal_layout")
-					); //$NON-NLS-1$
-		haction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "th_horizontal.gif"));
-		haction.setDisabledImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "disabled/th_horizontal.gif"));
+			); //$NON-NLS-1$
+			haction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "th_horizontal.gif"));
+			haction.setDisabledImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "disabled/th_horizontal.gif"));
+			form.getToolBarManager().add(haction);
 
-		Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
-			public void run() {
-				sashForm.setOrientation(SWT.VERTICAL);
-				form.reflow(true);
-			}
-		};
-		vaction.setChecked(false);
-		vaction.setToolTipText(MessagesTool.getString("AbstractEEFMasterDetailsBlock.vertical_layout")); //$NON-NLS-1$
-		vaction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "th_vertical.gif"));
-		vaction.setDisabledImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "disabled/th_vertical.gif"));
-		form.getToolBarManager().add(valAction);
-		form.getToolBarManager().add(haction);
-		form.getToolBarManager().add(vaction);
+			Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
+				public void run() {
+					sashForm.setOrientation(SWT.VERTICAL);
+					form.reflow(true);
+				}
+			};
+			vaction.setChecked(false);
+			vaction.setToolTipText(MessagesTool.getString("AbstractEEFMasterDetailsBlock.vertical_layout")); //$NON-NLS-1$
+			vaction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "th_vertical.gif"));
+			vaction.setDisabledImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "disabled/th_vertical.gif"));
+			form.getToolBarManager().add(vaction);
+		}
 		if (additionalPageActions() != null) {
 			for (Action additionalAction : additionalPageActions()) {
 				form.getToolBarManager().add(additionalAction);
@@ -161,7 +178,15 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	public AbstractEEFMasterPart getMasterPart() {
 		return masterPart;
 	}
-	
+		
+	/**
+	 * Defines the orientation of the block.
+	 * @param orientation the orientation to set
+	 */
+	public void setOrientation(int orientation) {
+		sashForm.setOrientation(orientation);
+	}
+		
 	/**
 	 * @return the adapterFactory
 	 */
