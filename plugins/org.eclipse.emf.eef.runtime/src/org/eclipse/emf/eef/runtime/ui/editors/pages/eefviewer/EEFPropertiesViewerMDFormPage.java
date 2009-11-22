@@ -26,7 +26,9 @@ public class EEFPropertiesViewerMDFormPage extends AbstractEEFMDFormPage {
 	 */
 	public static final String PAGE_ID = "EEF-md-form-page"; //$NON-NLS-1$
 	
-	
+	private boolean orientable = true;
+	private boolean showValidateAction = true;
+
 	/**
 	 * @param editor the form editor in which this page will be included
 	 * @param pageTitle the title of the page
@@ -35,14 +37,22 @@ public class EEFPropertiesViewerMDFormPage extends AbstractEEFMDFormPage {
 		super(editor, pageTitle);
 	}
 
-
+	/**
+	 * @param editor the form editor in which this page will be included
+	 * @param pageTitle the title of the page
+	 */
+	public EEFPropertiesViewerMDFormPage(FormEditor editor, String pageTitle, boolean isOrientable, boolean showValidatePage) {
+		super(editor, pageTitle);
+		this.orientable = isOrientable;
+		this.showValidateAction = showValidatePage;
+	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.AbstractEEFMDFormPage#createMasterDetailsBlock()
 	 */
 	protected AbstractEEFMasterDetailsBlock createMasterDetailsBlock() {
-		return new PropertiesViewerMasterDetailsBlock();
+		return new PropertiesViewerMasterDetailsBlock(orientable, showValidateAction);
 	}
 	
 	

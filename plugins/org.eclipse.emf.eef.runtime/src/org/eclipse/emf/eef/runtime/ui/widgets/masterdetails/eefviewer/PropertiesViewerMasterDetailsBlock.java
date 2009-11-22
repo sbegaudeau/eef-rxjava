@@ -34,8 +34,7 @@ public class PropertiesViewerMasterDetailsBlock extends
 	 * @param isOrientable the block is orientable or not.
 	 * @param showValidationAction defining the visibility of the action.
 	 */
-	public PropertiesViewerMasterDetailsBlock(boolean isOrientable,
-			boolean showValidationAction) {
+	public PropertiesViewerMasterDetailsBlock(boolean isOrientable,	boolean showValidationAction) {
 		super(isOrientable, showValidationAction);
 	}
 
