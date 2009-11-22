@@ -30,6 +30,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -208,6 +209,10 @@ public class ReferencesTable<T extends EObject> implements
 	public void addTableReferenceListener(
 			ReferencesTableListener<T> referenceListener) {
 		this.referencesTableListener = referenceListener;
+	}
+	
+	public void addSelectionListener(SelectionListener selectionListener) {
+		this.table.addSelectionListener(selectionListener);
 	}
 
 	public void createControls(Composite parent, FormToolkit widgetFactory) {

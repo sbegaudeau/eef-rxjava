@@ -107,6 +107,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	}
 	
 	/**
+	 * @return the toolkit
+	 */
+	public FormToolkit getToolkit() {
+		return toolkit;
+	}
+
+	/**
 	 * @param toolkit the toolkit to set
 	 */
 	public void setToolkit(FormToolkit toolkit) {

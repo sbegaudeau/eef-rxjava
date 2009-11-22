@@ -21,7 +21,7 @@ import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.TreeSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -71,15 +71,16 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage {
 		if (newEObject != null && newEObject != eObject) {
 			eObject = newEObject;
 			if (eObject != null) {
-				viewer.setToolkit(toolkit);
+				if (viewer.getToolkit() == null)
+					viewer.setToolkit(toolkit);
 				viewer.setInput(eObject);
 			}
 		}
 	}
 
 	private EObject getEObjectFromSelection(ISelection selection) {
-		if (selection instanceof TreeSelection && (((TreeSelection)selection).getFirstElement() instanceof EObject))
-			return (EObject) ((TreeSelection)selection).getFirstElement();
+		if (selection instanceof StructuredSelection && (((StructuredSelection)selection).getFirstElement() instanceof EObject))
+			return (EObject) ((StructuredSelection)selection).getFirstElement();
 		if (selection instanceof EObject)
 			return (EObject) selection;
 		if (selection instanceof IAdaptable && ((IAdaptable)selection).getAdapter(EObject.class) != null)

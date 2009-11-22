@@ -55,6 +55,11 @@ public class PropertiesEditionEvent {
 	 */
 	public static final int MOVE = 7;    	
 	
+	/**
+	 * The selection of a ElementEditor has changed
+	 */
+	public static final int SELECTION_CHANGED = 8;    	
+	
 	private String affectedEditor;
 	
 	private Object oldValue;
