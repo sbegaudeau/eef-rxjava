@@ -32,6 +32,8 @@ import org.eclipse.emf.samples.conference.Site;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -81,25 +83,34 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					SitePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setName((String)msg.getNewValue());
-						else
-							basePart.setName("");
-					}
-					if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) 
-							basePart.setDocumentation((String)msg.getNewValue());
-						else
-							basePart.setDocumentation("");
-					}
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
+							if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setName((String)msg.getNewValue());
+								else
+									basePart.setName("");
+							}
+							if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null) 
+									basePart.setDocumentation((String)msg.getNewValue());
+								else
+									basePart.setDocumentation("");
+							}
 
 
 
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 

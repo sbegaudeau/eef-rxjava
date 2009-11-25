@@ -40,6 +40,8 @@ import org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -89,34 +91,43 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					TalkPropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setTitle((String)msg.getNewValue());
-						else
-							basePart.setTitle("");
-					}
-					if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null)
-						basePart.setTopic((EObject)msg.getNewValue());
-					if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
-						basePart.setType((Enumerator)msg.getNewValue());
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
+							if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setTitle((String)msg.getNewValue());
+								else
+									basePart.setTitle("");
+							}
+							if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null)
+								basePart.setTopic((EObject)msg.getNewValue());
+						if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
+							basePart.setType((Enumerator)msg.getNewValue());
 
-					if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
-						basePart.setPresenter((EObject)msg.getNewValue());
-					if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
-						basePart.setCreator((EObject)msg.getNewValue());
-					if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) 
-							basePart.setDocumentation((String)msg.getNewValue());
-						else
-							basePart.setDocumentation("");
-					}
+							if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
+								basePart.setPresenter((EObject)msg.getNewValue());
+							if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
+								basePart.setCreator((EObject)msg.getNewValue());
+							if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null) 
+									basePart.setDocumentation((String)msg.getNewValue());
+								else
+									basePart.setDocumentation("");
+							}
 
 
 
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 

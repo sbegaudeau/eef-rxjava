@@ -40,6 +40,8 @@ import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -89,14 +91,23 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (presencePart == null)
 					PersonPresencePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
-						presencePart.updateAssists(person);
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
+						if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
+								presencePart.updateAssists(person);
 
 
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 

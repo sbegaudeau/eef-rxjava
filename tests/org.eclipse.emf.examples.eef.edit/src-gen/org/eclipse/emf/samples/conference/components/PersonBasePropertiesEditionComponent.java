@@ -35,6 +35,8 @@ import org.eclipse.emf.samples.conference.Person;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -84,39 +86,48 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					PersonBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setFirstname((String)msg.getNewValue());
-						else
-							basePart.setFirstname("");
-					}
-					if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setLastname((String)msg.getNewValue());
-						else
-							basePart.setLastname("");
-					}
-					if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setAge(((Integer)msg.getNewValue()).toString());
-						else
-							basePart.setAge("");
-					}
-					if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
-						basePart.setEclipseCommiter((Boolean)msg.getNewValue());
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
+							if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setFirstname((String)msg.getNewValue());
+								else
+									basePart.setFirstname("");
+							}
+							if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setLastname((String)msg.getNewValue());
+								else
+									basePart.setLastname("");
+							}
+							if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setAge(((Integer)msg.getNewValue()).toString());
+								else
+									basePart.setAge("");
+							}
+							if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
+								basePart.setEclipseCommiter((Boolean)msg.getNewValue());
 
-					if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
-						basePart.setGender((Enumerator)msg.getNewValue());
+						if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
+							basePart.setGender((Enumerator)msg.getNewValue());
 
-					if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
-						basePart.setIsRegistered((Boolean)msg.getNewValue());
+							if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
+								basePart.setIsRegistered((Boolean)msg.getNewValue());
 
 
 
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 

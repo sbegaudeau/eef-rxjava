@@ -33,6 +33,8 @@ import org.eclipse.emf.samples.conference.Topic;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -82,28 +84,37 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					TopicPropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setDescription((String)msg.getNewValue());
-						else
-							basePart.setDescription("");
-					}
-					if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null)
-						basePart.setReferences((EList)msg.getNewValue());
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
+							if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setDescription((String)msg.getNewValue());
+								else
+									basePart.setDescription("");
+							}
+							if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null)
+								basePart.setReferences((EList)msg.getNewValue());
 
-					if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) 
-							basePart.setDocumentation((String)msg.getNewValue());
-						else
-							basePart.setDocumentation("");
-					}
+							if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null) 
+									basePart.setDocumentation((String)msg.getNewValue());
+								else
+									basePart.setDocumentation("");
+							}
 
 
 
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 
@@ -257,8 +268,8 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			if (ConferenceViewsRepository.Topic.description == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), event.getNewValue()));
 
-			if (ConferenceViewsRepository.Topic.references == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), event.getNewValue()));
+					if (ConferenceViewsRepository.Topic.references == event.getAffectedEditor())
+						command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), event.getNewValue()));
 
 			if (ConferenceViewsRepository.Topic.documentation == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), event.getNewValue()));

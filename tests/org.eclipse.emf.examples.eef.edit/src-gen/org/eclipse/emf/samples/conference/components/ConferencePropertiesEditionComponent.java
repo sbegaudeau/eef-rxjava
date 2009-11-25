@@ -44,6 +44,8 @@ import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -93,23 +95,32 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					ConferencePropertiesEditionComponent.this.dispose();
 				else {
-					if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null)
-							basePart.setPlace((String)msg.getNewValue());
-						else
-							basePart.setPlace("");
-					}
-					if (msg.getFeature() != null && 
-							(((EStructuralFeature)msg.getFeature()) == ConferencePackage.eINSTANCE.getConference_Sites()
-							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == ConferencePackage.eINSTANCE.getConference_Sites())) {
-						basePart.updateSites(conference);
-					}
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
+							if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && basePart != null){
+								if (msg.getNewValue() != null)
+									basePart.setPlace((String)msg.getNewValue());
+								else
+									basePart.setPlace("");
+							}
+							if (msg.getFeature() != null && 
+									(((EStructuralFeature)msg.getFeature()) == ConferencePackage.eINSTANCE.getConference_Sites()
+									|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == ConferencePackage.eINSTANCE.getConference_Sites())) {
+								basePart.updateSites(conference);
+							}
 
 
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 
