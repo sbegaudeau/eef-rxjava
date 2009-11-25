@@ -19,8 +19,8 @@
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
-						[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+						if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
+								[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')) and not editionElement.model.derived)]
@@ -106,9 +106,9 @@
 
 [comment ===== Case : model = Reference(*) in Simple Navigation - view = ReferencesTable or AdvancedReferencesTable===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-					if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
-						[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
-					}
+							if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
+								[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+							}
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.hasModelNavigation() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')) and not editionElement.model.derived)]

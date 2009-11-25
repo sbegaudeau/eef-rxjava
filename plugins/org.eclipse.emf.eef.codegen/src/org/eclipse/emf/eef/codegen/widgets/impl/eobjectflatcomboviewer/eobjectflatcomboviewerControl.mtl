@@ -19,8 +19,8 @@
 
 [comment ===== Case : model = Reference(1) - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
-						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+							if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+								[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]
@@ -72,12 +72,12 @@
 
 [comment ===== Case : model =  Simple Navigation A (0-1) -> B (0-1) -> C - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-					if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
-						if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
-							[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
-						else 
-							[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](null);
-					}
+							if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
+								if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
+									[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
+								else 
+									[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](null);
+							}
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]
@@ -148,8 +148,8 @@
 
 [comment ===== Case : model = Containment(1), Simple navigation or not - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-					if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
-						[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+						if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+							[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) and not editionElement.model.derived)]

@@ -196,7 +196,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if ([view.viewIdentifier(pec)/] == null)
 					[pec.subPECClass(view)/].this.dispose();
 				else {
@@ -205,12 +205,21 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 					
 					// [/protected]
 [else]
+                    Runnable updateRunnable = new Runnable() {
+                        public void run() {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [editionElement.liveUpdater(view, pec)/]
 [/for]
 [comment add ViewReference support/]
 [view.liveUpdaterForReferencedViews(pec)/]
 [/if]
+						}
+					};
+                    if (null == Display.getCurrent()) {
+                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+                    } else {
+                        updateRunnable.run();
+                    }
 				}
 			}
 
