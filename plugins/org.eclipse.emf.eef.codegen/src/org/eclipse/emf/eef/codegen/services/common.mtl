@@ -292,7 +292,7 @@ set[view.viewPackageSignature()/]
 [/template]
 
 [template public toJavaType(view : ViewElement)]
-[if (view.representationName('Text') or view.representationName('Textarea'))]
+[if (view.representationName('Text') or view.representationName('Textarea') or view.representationName('ImageViewer'))]
 String
 [elseif (view.representationName('EMFComboViewer'))]
 Enumerator

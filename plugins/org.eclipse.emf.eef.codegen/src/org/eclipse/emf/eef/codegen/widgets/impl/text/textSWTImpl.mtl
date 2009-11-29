@@ -18,15 +18,15 @@
 [comment I don't see a better way to get specific swt services for the moment /]
 [import widgetSWTImpl /]
 
-[template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Text')]
+[template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('Text'))]
 	protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
-[template public implementation(editor : ElementEditor) overrides implementation ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Text')]
+[template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('Text'))]
 		create[editor.name.toJavaClassifier()/]Text([editor.widgetContainer().trim()/]);
 [/template]
 
-[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (not (editor.oclIsTypeOf(CustomElementEditor)) and editor.representation.name = 'Text')]
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representationName('Text'))]
 	protected void create[editor.name.toJavaClassifier()/]Text(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER);

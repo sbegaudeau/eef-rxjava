@@ -31,7 +31,7 @@
 		[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
 									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](((Double)msg.getNewValue()).toString());
 		[else]
-							//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+									//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 		[/if]
 								else
 									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
@@ -51,7 +51,7 @@
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
 				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], new Double((String)event.getNewValue())));
 [else]
-//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+				//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
 [/template]
 
@@ -67,7 +67,7 @@
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
 			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], new Double([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
 [else]
-//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+			//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
 [/template]
 
@@ -83,7 +83,7 @@
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
 			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Double([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).doubleValue());
 [else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+			//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
 [/template]
 
@@ -100,7 +100,7 @@
 [elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
 [else]
-//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
+			//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Text
 [/if]
 [/template]
 

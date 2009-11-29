@@ -18,15 +18,15 @@
 [comment I don't see a better way to get specific form services for the moment /]
 [import widgetFormImpl /]
 
-[template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Text')]
+[template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('Text'))]
 protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
-[template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Text')]
+[template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('Text'))]
 		create[editor.name.toJavaClassifier()/]Text(widgetFactory, [editor.widgetContainer().trim()/]);
 [/template]
 
-[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Text')]
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representationName('Text'))]
 	protected void create[editor.name.toJavaClassifier()/]Text(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[editor.name.toJavaIdentifier()/] = widgetFactory.createText(parent, ""); //$NON-NLS-1$
