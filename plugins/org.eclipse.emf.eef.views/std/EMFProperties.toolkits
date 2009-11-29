@@ -11,4 +11,5 @@
   <widgets name="AdvancedReferencesTable"/>
   <widgets name="AdvancedEObjectFlatComboViewer"/>
   <widgets name="FlatReferencesTable"/>
+  <widgets name="ImageViewer"/>
 </eef-views:Toolkit>
