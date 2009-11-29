@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -36,7 +37,31 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	private static AdapterFactory adapterFactory;
 
 	public static final String ICONS_16x16 = "icons/16x16/";
+	
+	private static ImageRegistry registry = null;
 
+	/**
+	 * @return the Image associated to the key
+	 */
+	public Image getRegisteredImage(String key) {
+		return getImageRegistry().get(key);
+	}
+
+	/**
+	 * @param key
+	 * @param path
+	 */
+	public void registerImage(String key, String path) {
+		getImageRegistry().remove(key);
+		getImageRegistry().put(key, ImageDescriptor.createFromFile(null, path));
+	}
+	
+	public ImageRegistry getImageRegistry() {
+		if (registry == null)
+			registry = new ImageRegistry();
+		return registry;
+	}
+	
 	/**
 	 * The constructor
 	 */
@@ -60,6 +85,7 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
+		registry.dispose();
 		super.stop(context);
 	}
 
