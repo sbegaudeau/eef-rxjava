@@ -581,6 +581,49 @@
       </expression>
       <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
     </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Query" name="isEcoreDataType" visibility="Public">
+      <parameter name="a">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+      </parameter>
+      <expression xsi:type="ocl.ecore:OperationCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <source xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+        </source>
+        <argument xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/ePackage"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ecore">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+        </argument>
+        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+      </expression>
+      <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+    </ownedModuleElement>
   </mtl:Module>
   <ecore:EPackage name="additions">
     <eClassifiers xsi:type="ecore:EClass" name="String_Class">
@@ -944,6 +987,16 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
         </eParameters>
       </eOperations>
+      <eOperations name="isEcoreDataType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/isEcoreDataType"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="a">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+        </eParameters>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EAttribute_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -996,6 +1049,13 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/isDouble"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+      </eOperations>
+      <eOperations name="isEcoreDataType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/isEcoreDataType"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
     </eClassifiers>
@@ -1052,6 +1112,15 @@
       <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
     </eClassifiers>
   </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
   </ocl.ecore:Variable>
@@ -1583,139 +1652,187 @@
     </eAnnotations>
     <eAnnotations source="positions.126" references="/0/isLong">
       <details key="start" value="1502"/>
-      <details key="end" value="1626"/>
+      <details key="end" value="1623"/>
     </eAnnotations>
     <eAnnotations source="positions.127" references="/0/isLong/a">
       <details key="start" value="1523"/>
       <details key="end" value="1537"/>
     </eAnnotations>
     <eAnnotations source="positions.128" references="/0/isLong/@expression">
-      <details key="start" value="1556"/>
-      <details key="end" value="1624"/>
+      <details key="start" value="1553"/>
+      <details key="end" value="1621"/>
     </eAnnotations>
     <eAnnotations source="positions.129" references="/0/isLong/@expression/@source">
-      <details key="start" value="1556"/>
-      <details key="end" value="1601"/>
+      <details key="start" value="1553"/>
+      <details key="end" value="1598"/>
     </eAnnotations>
     <eAnnotations source="positions.130" references="/0/isLong/@expression/@source/@source">
-      <details key="start" value="1556"/>
-      <details key="end" value="1576"/>
+      <details key="start" value="1553"/>
+      <details key="end" value="1573"/>
     </eAnnotations>
     <eAnnotations source="positions.131" references="/0/isLong/@expression/@source/@source/@source">
-      <details key="start" value="1560"/>
-      <details key="end" value="1576"/>
+      <details key="start" value="1557"/>
+      <details key="end" value="1573"/>
     </eAnnotations>
     <eAnnotations source="positions.132" references="/0/isLong/@expression/@source/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.133" references="/0/isLong/@expression/@source/@argument.0">
-      <details key="start" value="1581"/>
-      <details key="end" value="1601"/>
+      <details key="start" value="1578"/>
+      <details key="end" value="1598"/>
     </eAnnotations>
     <eAnnotations source="positions.134" references="/0/isLong/@expression/@source/@argument.0/@source">
-      <details key="start" value="1581"/>
-      <details key="end" value="1591"/>
+      <details key="start" value="1578"/>
+      <details key="end" value="1588"/>
     </eAnnotations>
     <eAnnotations source="positions.135" references="/0/isLong/@expression/@source/@argument.0/@source/@source">
-      <details key="start" value="1581"/>
-      <details key="end" value="1586"/>
+      <details key="start" value="1578"/>
+      <details key="end" value="1583"/>
     </eAnnotations>
     <eAnnotations source="positions.136" references="/0/isLong/@expression/@source/@argument.0/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.137" references="/0/isLong/@expression/@source/@argument.0/@argument.0">
-      <details key="start" value="1594"/>
-      <details key="end" value="1601"/>
+      <details key="start" value="1591"/>
+      <details key="end" value="1598"/>
     </eAnnotations>
     <eAnnotations source="positions.138" references="/0/isLong/@expression/@argument.0">
-      <details key="start" value="1605"/>
-      <details key="end" value="1624"/>
+      <details key="start" value="1602"/>
+      <details key="end" value="1621"/>
     </eAnnotations>
     <eAnnotations source="positions.139" references="/0/isLong/@expression/@argument.0/@source">
-      <details key="start" value="1605"/>
-      <details key="end" value="1615"/>
+      <details key="start" value="1602"/>
+      <details key="end" value="1612"/>
     </eAnnotations>
     <eAnnotations source="positions.140" references="/0/isLong/@expression/@argument.0/@source/@source">
-      <details key="start" value="1605"/>
-      <details key="end" value="1610"/>
+      <details key="start" value="1602"/>
+      <details key="end" value="1607"/>
     </eAnnotations>
     <eAnnotations source="positions.141" references="/0/isLong/@expression/@argument.0/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.142" references="/0/isLong/@expression/@argument.0/@argument.0">
-      <details key="start" value="1618"/>
-      <details key="end" value="1624"/>
+      <details key="start" value="1615"/>
+      <details key="end" value="1621"/>
     </eAnnotations>
     <eAnnotations source="positions.143" references="/0/isDouble">
-      <details key="start" value="1628"/>
-      <details key="end" value="1755"/>
+      <details key="start" value="1625"/>
+      <details key="end" value="1752"/>
     </eAnnotations>
     <eAnnotations source="positions.144" references="/0/isDouble/a">
-      <details key="start" value="1651"/>
-      <details key="end" value="1665"/>
+      <details key="start" value="1648"/>
+      <details key="end" value="1662"/>
     </eAnnotations>
     <eAnnotations source="positions.145" references="/0/isDouble/@expression">
-      <details key="start" value="1681"/>
-      <details key="end" value="1753"/>
+      <details key="start" value="1678"/>
+      <details key="end" value="1750"/>
     </eAnnotations>
     <eAnnotations source="positions.146" references="/0/isDouble/@expression/@source">
-      <details key="start" value="1681"/>
-      <details key="end" value="1728"/>
+      <details key="start" value="1678"/>
+      <details key="end" value="1725"/>
     </eAnnotations>
     <eAnnotations source="positions.147" references="/0/isDouble/@expression/@source/@source">
-      <details key="start" value="1681"/>
-      <details key="end" value="1701"/>
+      <details key="start" value="1678"/>
+      <details key="end" value="1698"/>
     </eAnnotations>
     <eAnnotations source="positions.148" references="/0/isDouble/@expression/@source/@source/@source">
-      <details key="start" value="1685"/>
-      <details key="end" value="1701"/>
+      <details key="start" value="1682"/>
+      <details key="end" value="1698"/>
     </eAnnotations>
     <eAnnotations source="positions.149" references="/0/isDouble/@expression/@source/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.150" references="/0/isDouble/@expression/@source/@argument.0">
-      <details key="start" value="1706"/>
-      <details key="end" value="1728"/>
+      <details key="start" value="1703"/>
+      <details key="end" value="1725"/>
     </eAnnotations>
     <eAnnotations source="positions.151" references="/0/isDouble/@expression/@source/@argument.0/@source">
-      <details key="start" value="1706"/>
-      <details key="end" value="1716"/>
+      <details key="start" value="1703"/>
+      <details key="end" value="1713"/>
     </eAnnotations>
     <eAnnotations source="positions.152" references="/0/isDouble/@expression/@source/@argument.0/@source/@source">
-      <details key="start" value="1706"/>
-      <details key="end" value="1711"/>
+      <details key="start" value="1703"/>
+      <details key="end" value="1708"/>
     </eAnnotations>
     <eAnnotations source="positions.153" references="/0/isDouble/@expression/@source/@argument.0/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.154" references="/0/isDouble/@expression/@source/@argument.0/@argument.0">
-      <details key="start" value="1719"/>
-      <details key="end" value="1728"/>
+      <details key="start" value="1716"/>
+      <details key="end" value="1725"/>
     </eAnnotations>
     <eAnnotations source="positions.155" references="/0/isDouble/@expression/@argument.0">
-      <details key="start" value="1732"/>
-      <details key="end" value="1753"/>
+      <details key="start" value="1729"/>
+      <details key="end" value="1750"/>
     </eAnnotations>
     <eAnnotations source="positions.156" references="/0/isDouble/@expression/@argument.0/@source">
-      <details key="start" value="1732"/>
-      <details key="end" value="1742"/>
+      <details key="start" value="1729"/>
+      <details key="end" value="1739"/>
     </eAnnotations>
     <eAnnotations source="positions.157" references="/0/isDouble/@expression/@argument.0/@source/@source">
-      <details key="start" value="1732"/>
-      <details key="end" value="1737"/>
+      <details key="start" value="1729"/>
+      <details key="end" value="1734"/>
     </eAnnotations>
     <eAnnotations source="positions.158" references="/0/isDouble/@expression/@argument.0/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
     <eAnnotations source="positions.159" references="/0/isDouble/@expression/@argument.0/@argument.0">
-      <details key="start" value="1745"/>
-      <details key="end" value="1753"/>
+      <details key="start" value="1742"/>
+      <details key="end" value="1750"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/isEcoreDataType">
+      <details key="start" value="1754"/>
+      <details key="end" value="1870"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/isEcoreDataType/a">
+      <details key="start" value="1784"/>
+      <details key="end" value="1798"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/isEcoreDataType/@expression">
+      <details key="start" value="1814"/>
+      <details key="end" value="1868"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/isEcoreDataType/@expression/@source">
+      <details key="start" value="1814"/>
+      <details key="end" value="1834"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/isEcoreDataType/@expression/@source/@source">
+      <details key="start" value="1818"/>
+      <details key="end" value="1834"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/isEcoreDataType/@expression/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/isEcoreDataType/@expression/@argument.0">
+      <details key="start" value="1839"/>
+      <details key="end" value="1868"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/isEcoreDataType/@expression/@argument.0/@source">
+      <details key="start" value="1839"/>
+      <details key="end" value="1858"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/isEcoreDataType/@expression/@argument.0/@source/@source">
+      <details key="start" value="1839"/>
+      <details key="end" value="1853"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/isEcoreDataType/@expression/@argument.0/@source/@source/@source">
+      <details key="start" value="1839"/>
+      <details key="end" value="1844"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/isEcoreDataType/@expression/@argument.0/@source/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/isEcoreDataType/@expression/@argument.0/@argument.0">
+      <details key="start" value="1861"/>
+      <details key="end" value="1868"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
