@@ -23,15 +23,14 @@ import org.osgi.framework.BundleContext;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * The activator class controls the plug-in life cycle
- * @deprecated use {@link EEFRuntimePlugin}
  */
-public class EMFPropertiesRuntime extends AbstractUIPlugin {
+public class EEFRuntimePlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime";
 
 	// The shared instance
-	private static EMFPropertiesRuntime plugin;
+	private static EEFRuntimePlugin plugin;
 
 	// Shared adapterFactory
 	private static AdapterFactory adapterFactory;
@@ -65,14 +64,14 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	/**
 	 * The constructor
 	 */
-	public EMFPropertiesRuntime() {
+	public EEFRuntimePlugin() {
 		plugin = this;
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext )
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
@@ -80,11 +79,12 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext )
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		registry.dispose();
+		if (registry != null)
+			registry.dispose();
 		super.stop(context);
 	}
 
@@ -93,7 +93,7 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static EMFPropertiesRuntime getDefault() {
+	public static EEFRuntimePlugin getDefault() {
 		return plugin;
 	}
 
