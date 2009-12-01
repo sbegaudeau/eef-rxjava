@@ -51,7 +51,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
 
 import [pec.model.qualifiedName(basePackage)/];
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 [comment add import for external ViewReference (stored in another resource)/]
 [view.manageImportForViewReferences(pec, basePackage)/]
 [comment add import for ViewReference/]
@@ -86,6 +86,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.common.util.WrappedException;
 [if (pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EReference;
@@ -207,8 +208,8 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 					
 					// [/protected]
 [else]
-                    Runnable updateRunnable = new Runnable() {
-                        public void run() {
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [editionElement.liveUpdater(view, pec)/]
 [/for]
@@ -217,11 +218,11 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [/if]
 						}
 					};
-                    if (null == Display.getCurrent()) {
-                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-                    } else {
-                        updateRunnable.run();
-                    }
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
@@ -299,7 +300,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [pee.updater(view, pec)/]
 [/for]
 			[/if]
-			
 			// init filters
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [pee.filterUpdater(view, pec)/]
@@ -325,7 +325,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if ([pec.model.name.toJavaIdentifier()/] != null) {
+		if (([pec.model.name.toJavaIdentifier()/] != null) && ([view.viewIdentifier(pec)/] != null)) { 
 [if (view.oclIsTypeOf(views::CustomView))]
 			// [protected ('for getPropertiesEditionCommand body')]
 			
@@ -390,7 +390,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -456,15 +456,17 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [/for]
 [comment add ViewReference support/]
 [for ( v : View | view.referencedViews())]
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
 				if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
 				}
-	[/for]
+[/for]
 [/for]
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
