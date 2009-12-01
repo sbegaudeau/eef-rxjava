@@ -21,7 +21,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -65,26 +65,26 @@ public class ReferencesTable<T extends EObject> implements
 	/**
 	 * Image for the add element button.
 	 */
-	final protected static Image NEW_ELEMENT_IMG = EMFPropertiesRuntime
-			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "Add_16x16.gif");
+	final protected static Image NEW_ELEMENT_IMG = EEFRuntimePlugin
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
 
 	/**
 	 * Image for the delete element button.
 	 */
-	final protected static Image DELETE_ELEMENT_IMG = EMFPropertiesRuntime
-			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "Delete_16x16.gif");
+	final protected static Image DELETE_ELEMENT_IMG = EEFRuntimePlugin
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
 
 	/**
 	 * Image for the up button.
 	 */
-	final protected static Image UP_ELEMENT_IMG = EMFPropertiesRuntime
-			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "ArrowUp_16x16.gif");
+	final protected static Image UP_ELEMENT_IMG = EEFRuntimePlugin
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowUp_16x16.gif");
 
 	/**
 	 * Image for the down button.
 	 */
-	final protected static Image DOWN_ELEMENT_IMG = EMFPropertiesRuntime
-			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "ArrowDown_16x16.gif");
+	final protected static Image DOWN_ELEMENT_IMG = EEFRuntimePlugin
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowDown_16x16.gif");
 
 	/** list of element that we want to display * */
 	private List<T> listElement;

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: EMF Properties Runtime Plug-in
+Bundle-Name: EEF Runtime Plug-in
 Bundle-SymbolicName: org.eclipse.emf.eef.runtime;singleton:=true
 Bundle-Version: 0.7.1.qualifier
-Bundle-Activator: org.eclipse.emf.eef.runtime.EMFPropertiesRuntime
+Bundle-Activator: org.eclipse.emf.eef.runtime.EEFRuntimePlugin
 Bundle-Vendor: Obeo.fr
 Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,

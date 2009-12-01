@@ -13,7 +13,7 @@ package org.eclipse.emf.eef.runtime.ui.properties.sections;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -34,7 +34,7 @@ public class EEFAdvancedPropertySection extends AdvancedPropertySection implemen
 	public AdapterFactory getAdapterFactory() {
 		if (adapterFactory == null) {
 			if (page != null) {
-				adapterFactory = EMFPropertiesRuntime.getDefault().getAdapterFactory();
+				adapterFactory = EEFRuntimePlugin.getDefault().getAdapterFactory();
 			}
 		}
 		return adapterFactory;

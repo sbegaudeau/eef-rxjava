@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -51,15 +50,15 @@ public class PropertiesEditionWizard extends Wizard {
 	private EditPropertyWizardPage mainPage;
 
 	private ElementCreationWizardPage elementCreationPage;
-	
+
 	protected EditingDomain editingDomain;
-	
+
 	protected EObject eObject;
 
 	protected EReference eReference;
 
 	protected Command command;
-	
+
 	protected ResourceSet allResources;
 
 	/**
@@ -82,11 +81,15 @@ public class PropertiesEditionWizard extends Wizard {
 	/**
 	 * Default constructor - define the eObject to edit.
 	 * 
-	 * @param editingDomain (optional) defines the editingDomain where to perform commands.
-	 * @param eReference the reference where create the EObject.
-	 * @param allResources the resourceSet where the EObject is located.
+	 * @param editingDomain
+	 *            (optional) defines the editingDomain where to perform commands.
+	 * @param eReference
+	 *            the reference where create the EObject.
+	 * @param allResources
+	 *            the resourceSet where the EObject is located.
 	 */
-	public PropertiesEditionWizard(EditingDomain editingDomain, EReference eReference, ResourceSet allResources) {
+	public PropertiesEditionWizard(EditingDomain editingDomain, EReference eReference,
+			ResourceSet allResources) {
 		this.editingDomain = editingDomain;
 		this.eReference = eReference;
 		this.allResources = allResources;
@@ -121,7 +124,7 @@ public class PropertiesEditionWizard extends Wizard {
 		for (int i = 0; i < getPages().length; i++) {
 			if (getPages()[i] instanceof EditPropertyWizardPage) {
 				((EditPropertyWizardPage)getPages()[i]).viewer.addPropertiesListener(listener);
-			}			
+			}
 		}
 	}
 
@@ -148,8 +151,9 @@ public class PropertiesEditionWizard extends Wizard {
 				CompoundCommand finishCommand = new CompoundCommand();
 				for (int i = 0; i < getPages().length; i++) {
 					if (getPages()[i] instanceof EditPropertyWizardPage) {
-						finishCommand.append(((EditPropertyWizardPage)getPages()[i]).viewer.getPropertiesEditionCommand(editingDomain));
-					}			
+						finishCommand.append(((EditPropertyWizardPage)getPages()[i]).viewer
+								.getPropertiesEditionCommand(editingDomain));
+					}
 				}
 				if (finishCommand.canExecute()) {
 					this.command = finishCommand;
@@ -160,10 +164,12 @@ public class PropertiesEditionWizard extends Wizard {
 			} else {
 				for (int i = 0; i < getPages().length; i++) {
 					if (getPages()[i] instanceof EditPropertyWizardPage) {
-						//FIXME: Warning, architecture must be redefined to do an iterative eobject build
+						// FIXME: Warning, architecture must be redefined to do
+						// an iterative eobject build
 						// Finally ... it could work ...
-						eObject = ((EditPropertyWizardPage)getPages()[i]).viewer.getPropertiesEditionObject(eObject);
-					}			
+						eObject = ((EditPropertyWizardPage)getPages()[i]).viewer
+								.getPropertiesEditionObject(eObject);
+					}
 				}
 				PropertiesContextService.getInstance().pop();
 				return true;
@@ -174,13 +180,14 @@ public class PropertiesEditionWizard extends Wizard {
 					PropertiesEditionViewer viewer = ((EditPropertyWizardPage)getPages()[i]).viewer;
 					if (viewer != null)
 						viewer.getContentProvider().dispose();
-				}			
+				}
 			}
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#createPageControls(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -206,11 +213,11 @@ public class PropertiesEditionWizard extends Wizard {
 	private boolean inReferenceMode() {
 		return eReference != null && eReference.isContainment() && eObject == null;
 	}
-	
+
 	private class ElementCreationWizardPage extends WizardPage {
 
 		private List<Button> buttons = new ArrayList<Button>();
-		
+
 		protected ElementCreationWizardPage() {
 			super("Element creation page page"); //$NON-NLS-1$
 			this.setTitle("Element type"); //$NON-NLS-1$
@@ -223,12 +230,13 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayoutData(gd);
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
-			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType());
+			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference
+					.getEType());
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
 				button.setText(eClass.getName());
 				button.addSelectionListener(new SelectionAdapter() {
-					
+
 					public void widgetSelected(SelectionEvent e) {
 						eObject = EcoreUtil.create(eClass);
 						mainPage.setInput(eObject);
@@ -240,13 +248,13 @@ public class PropertiesEditionWizard extends Wizard {
 			eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
 			setControl(control);
 		}
-		
+
 	}
 
 	private class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
 
 		private PropertiesEditionViewer viewer;
-		
+
 		protected EditPropertyWizardPage() {
 			super("Main page"); //$NON-NLS-1$
 		}
@@ -258,17 +266,20 @@ public class PropertiesEditionWizard extends Wizard {
 				control.setLayoutData(gd);
 				viewer = new PropertiesEditionViewer(control, PropertiesEditionWizard.this.allResources, 0);
 				viewer.setDynamicTabHeader(true);
-				viewer.setContentProvider(new PropertiesEditionContentProvider(new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.BATCH_MODE));
+				viewer.setContentProvider(new PropertiesEditionContentProvider(
+						new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.BATCH_MODE));
 				viewer.addPropertiesListener(this);
 				setControl(viewer.getControl());
 			} catch (InstantiationException e) {
-				EMFPropertiesRuntime.getDefault().logError("Trying to use PropertiesEditionWizard in LIVE_MODE.", e);
+				EEFRuntimePlugin.getDefault().logError("Trying to use PropertiesEditionWizard in LIVE_MODE.",
+						e);
 			}
 		}
-		
+
 		public void setInput(EObject eObject) {
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(MessagesTool.getString("EditPropertyWizard.description", new Object[] {eObject.eClass().getName()}));
+			this.setDescription(MessagesTool.getString("EditPropertyWizard.description",
+					new Object[] {eObject.eClass().getName()}));
 			viewer.setInput(eObject);
 		}
 
@@ -280,7 +291,7 @@ public class PropertiesEditionWizard extends Wizard {
 			// do not handle changes if you are in initialization.
 			if (viewer.isInitializing())
 				return;
-			
+
 			Diagnostic diag = viewer.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK)
 				updateStatus(diag.getMessage());

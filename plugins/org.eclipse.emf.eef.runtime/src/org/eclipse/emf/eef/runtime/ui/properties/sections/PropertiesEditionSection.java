@@ -20,16 +20,14 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
-import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -77,11 +75,6 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 */
 	protected List eObjectList;
 
-	/**
-	 * The view manager
-	 */
-	private IPropertiesEditionPart editionPart = null;
-	
 	/**
 	 * Filters list
 	 */
@@ -159,7 +152,6 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 		if (this.viewer != null) {
 			this.viewer.getContentProvider().dispose();
 			this.viewer = null;
-			this.editionPart = null;
 		}
 		
 	}
@@ -204,16 +196,16 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 
 		} catch (SecurityException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} catch (NoSuchFieldException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} catch (IllegalArgumentException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} catch (IllegalAccessException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} finally {
 			if (descriptorToTabField != null) {
 				descriptorToTabField.setAccessible(oldAccessible);
@@ -254,7 +246,7 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 		try {
 			return source.getClass().getDeclaredMethod(name, argsType);
 		} catch (Exception e) {
-			EMFPropertiesRuntime.getDefault().logError("Cannot found method " + name, e);
+			EEFRuntimePlugin.getDefault().logError("Cannot found method " + name, e);
 		}
 		return null;
 	}
@@ -272,7 +264,7 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 		try {
 			return method.invoke(source, args);
 		} catch (Exception e) {
-			EMFPropertiesRuntime.getDefault().logError("An error occured on " + method.getName() + " call.",
+			EEFRuntimePlugin.getDefault().logError("An error occured on " + method.getName() + " call.",
 					e);
 		}
 		return null;

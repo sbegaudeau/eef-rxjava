@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -51,12 +51,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPropertiesFilteredWidget {
 
 	/** Image for the remove button */
-	protected final org.eclipse.swt.graphics.Image deleteImage = EMFPropertiesRuntime
-			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "Delete_16x16.gif");
+	protected final org.eclipse.swt.graphics.Image deleteImage = EEFRuntimePlugin
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
 
 	/** Image for the add button */
-	protected final org.eclipse.swt.graphics.Image addImage = EMFPropertiesRuntime
-			.getImage(EMFPropertiesRuntime.ICONS_16x16 + "Add_16x16.gif");
+	protected final org.eclipse.swt.graphics.Image addImage = EEFRuntimePlugin
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
 
 	private static final String UNDEFINED_VALUE = "<UNDEFINED>";
 

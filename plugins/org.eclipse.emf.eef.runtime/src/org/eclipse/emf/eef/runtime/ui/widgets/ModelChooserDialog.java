@@ -22,11 +22,10 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.IWrapperItemProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
 import org.eclipse.jface.dialogs.Dialog;
@@ -88,7 +87,7 @@ public class ModelChooserDialog extends Dialog {
 		if (EEFUtils.isBundleLoaded("org.eclipse.ui.ide")) 
 			workspaceViewer.setContentProvider(new WorkbenchContentProvider());
 		else
-			workspaceViewer.setContentProvider(new AdapterFactoryContentProvider(EMFPropertiesRuntime.getDefault().getAdapterFactory()));
+			workspaceViewer.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 			
 		workspaceViewer.setLabelProvider(new WorkbenchLabelProvider());
 		workspaceViewer.addFilter(new ViewerFilter() {

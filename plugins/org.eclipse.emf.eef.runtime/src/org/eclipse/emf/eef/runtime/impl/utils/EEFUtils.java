@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.osgi.framework.Bundle;
 
 /**
@@ -54,7 +54,7 @@ public class EEFUtils {
 	
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature){
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)EMFPropertiesRuntime.getDefault().getAdapterFactory()
+		IItemPropertySource ps = (IItemPropertySource)EEFRuntimePlugin.getDefault().getAdapterFactory()
 				.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);

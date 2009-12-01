@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -152,7 +152,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 			if (command != null && command.canExecute()) {
 				cc.append(command);
 			} else {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform command.", null);
 			}
 		}
 		if (cc.isEmpty())

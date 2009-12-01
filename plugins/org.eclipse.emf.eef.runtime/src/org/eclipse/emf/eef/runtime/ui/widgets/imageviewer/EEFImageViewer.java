@@ -13,7 +13,7 @@ package org.eclipse.emf.eef.runtime.ui.widgets.imageviewer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -89,8 +89,8 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 	 */
 	private void updateImage(String imagePath) {
 		this.imagePath = imagePath;
-		EMFPropertiesRuntime.getDefault().registerImage(key, imagePath);
-		viewerCanvas.setBackgroundImage(EMFPropertiesRuntime.getDefault().getRegisteredImage(key));
+		EEFRuntimePlugin.getDefault().registerImage(key, imagePath);
+		viewerCanvas.setBackgroundImage(EEFRuntimePlugin.getDefault().getRegisteredImage(key));
 	}
 	
 	/**

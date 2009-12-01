@@ -16,7 +16,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.editors.pages.EEFDetailsPage;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
@@ -115,7 +115,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		if (showValidateAction) {
 			validateAction = new ValidateAction();
 			validateAction.setToolTipText("Validate the current selection");
-			validateAction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "validate.gif"));
+			validateAction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "validate.gif"));
 			form.getToolBarManager().add(validateAction);
 		}
 		if (orientable) {
@@ -129,8 +129,8 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 			haction.setToolTipText(
 					MessagesTool.getString("AbstractEEFMasterDetailsBlock.horizontal_layout")
 			); //$NON-NLS-1$
-			haction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "th_horizontal.gif"));
-			haction.setDisabledImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "disabled/th_horizontal.gif"));
+			haction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_horizontal.gif"));
+			haction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_horizontal.gif"));
 			form.getToolBarManager().add(haction);
 
 			Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
@@ -141,8 +141,8 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 			};
 			vaction.setChecked(false);
 			vaction.setToolTipText(MessagesTool.getString("AbstractEEFMasterDetailsBlock.vertical_layout")); //$NON-NLS-1$
-			vaction.setImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "th_vertical.gif"));
-			vaction.setDisabledImageDescriptor(EMFPropertiesRuntime.getImageDescriptor(EMFPropertiesRuntime.ICONS_16x16 + "disabled/th_vertical.gif"));
+			vaction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_vertical.gif"));
+			vaction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_vertical.gif"));
 			form.getToolBarManager().add(vaction);
 		}
 		if (additionalPageActions() != null) {

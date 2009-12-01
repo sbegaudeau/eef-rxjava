@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -41,7 +41,7 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 	private EditingDomain editingDomain;
 
 	/**
-	 * Contructor for this property sheet page.
+	 * Constructor for this property sheet page.
 	 * 
 	 * @param tabbedPropertySheetPageContributor
 	 *            the editor contributor of the property sheet page.
@@ -111,16 +111,16 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 
 		} catch (SecurityException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} catch (NoSuchFieldException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} catch (IllegalArgumentException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} catch (IllegalAccessException e) {
 
-			EMFPropertiesRuntime.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
 		} finally {
 			if (descriptorToTabField != null) {
 				descriptorToTabField.setAccessible(oldAccessible);

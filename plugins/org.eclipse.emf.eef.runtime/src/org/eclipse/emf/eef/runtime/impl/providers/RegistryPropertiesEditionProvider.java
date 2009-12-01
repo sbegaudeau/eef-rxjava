@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
@@ -37,7 +37,7 @@ public class RegistryPropertiesEditionProvider extends ComposedPropertiesEdition
 	 */
 	private void registerProviders() {
 		IExtensionPoint extensionPoint = Platform.getExtensionRegistry().getExtensionPoint(
-				EMFPropertiesRuntime.PLUGIN_ID, PropertiesEditionComponentService.EXTENSION_NAME);
+				EEFRuntimePlugin.PLUGIN_ID, PropertiesEditionComponentService.EXTENSION_NAME);
 
 		IExtension[] extensions = extensionPoint.getExtensions();
 		for (int extensionIndex = 0; extensionIndex < extensions.length; extensionIndex++) {

@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory;
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPartProviderFactory;
@@ -98,7 +98,7 @@ public class PropertiesEditionPartProviderService implements IPropertiesEditionP
 	 */
 	private void configureService() {
 		IExtensionPoint extensionPoint = Platform.getExtensionRegistry().getExtensionPoint(
-				EMFPropertiesRuntime.PLUGIN_ID, EXTENSION_NAME);
+				EEFRuntimePlugin.PLUGIN_ID, EXTENSION_NAME);
 
 		IExtension[] extensions = extensionPoint.getExtensions();
 		for (int extensionIndex = 0; extensionIndex < extensions.length; extensionIndex++) {
