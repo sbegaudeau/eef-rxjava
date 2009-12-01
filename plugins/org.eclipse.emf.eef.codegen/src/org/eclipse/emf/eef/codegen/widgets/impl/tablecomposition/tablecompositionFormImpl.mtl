@@ -23,7 +23,7 @@
 import java.util.Map;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -92,7 +92,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		// [/protected]
 
 		[editor.name.toJavaIdentifier()/] = new TableViewer(table[editor.name.toJavaClassifier()/]);
-		[editor.name.toJavaIdentifier()/].setContentProvider(new AdapterFactoryContentProvider(EMFPropertiesRuntime.getDefault().getAdapterFactory()) {
+		[editor.name.toJavaIdentifier()/].setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
 
 			/**
 			 * {@inheritDoc}
@@ -107,7 +107,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			}
 			
 		});
-		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(EMFPropertiesRuntime.getDefault().getAdapterFactory()) {
+		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
 
 			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
 			public String getColumnText(Object object, int columnIndex) {
