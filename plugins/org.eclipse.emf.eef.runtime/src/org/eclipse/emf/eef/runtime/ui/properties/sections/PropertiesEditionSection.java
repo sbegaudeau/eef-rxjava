@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvi
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
+import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -42,7 +43,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionSection extends AbstractPropertySection {
+public class PropertiesEditionSection extends AbstractPropertySection implements IFilter {
 
 	/**
 	 * the property sheet page for this section.
@@ -80,6 +81,20 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 	 */
 	private ViewerFilter[] filters = new ViewerFilter[1];
 	
+	/**
+	 * global register edition provider
+	 */
+	private RegistryPropertiesEditionProvider provider;
+	
+	/**
+	 * @return the Global ProviderEditionProvider
+	 */
+	public RegistryPropertiesEditionProvider getProvider() {
+		if (provider == null)
+			provider = new RegistryPropertiesEditionProvider();
+		return provider;
+	}
+
 	/**
 	 * Global Properties Edition Provider
 	 */
@@ -268,5 +283,17 @@ public class PropertiesEditionSection extends AbstractPropertySection {
 					e);
 		}
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+	 */
+	public boolean select(Object toTest) {
+		EObject eObj = resolveSemanticObject(toTest);
+		if (eObj != null) {
+			return getProvider().provides(eObj);		
+		}
+		return false;
 	}
 }
