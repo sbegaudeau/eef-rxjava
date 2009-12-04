@@ -42,6 +42,7 @@ public interface ViewReferencePropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the referencedView
 	 */
@@ -92,6 +93,13 @@ public interface ViewReferencePropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	

@@ -12,13 +12,13 @@
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
+import org.eclipse.emf.eef.toolkits.parts.ToolkitsViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.toolkits.parts.ToolkitsViewsRepository;
 import org.eclipse.emf.eef.toolkits.parts.forms.ToolkitPropertiesEditionPartForm;
-import org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm;
 import org.eclipse.emf.eef.toolkits.parts.impl.ToolkitPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm;
 import org.eclipse.emf.eef.toolkits.parts.impl.WidgetPropertiesEditionPartImpl;
 
 /**
@@ -26,7 +26,7 @@ import org.eclipse.emf.eef.toolkits.parts.impl.WidgetPropertiesEditionPartImpl;
  *
  */
 public class ToolkitsPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
-	
+
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)

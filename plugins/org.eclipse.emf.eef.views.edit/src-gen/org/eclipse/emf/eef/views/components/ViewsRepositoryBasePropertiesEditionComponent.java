@@ -20,14 +20,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -36,11 +38,14 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.emf.eef.views.parts.ViewsRepositoryPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -61,7 +66,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	/**
 	 * The Base part
 	 */
-	private ViewsRepositoryPropertiesEditionPart basePart;
+	protected ViewsRepositoryPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -90,24 +95,40 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					ViewsRepositoryBasePropertiesEditionComponent.this.dispose();
 				else {
-// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
-					if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setName((String)msg.getNewValue());
-}
-						else
-							basePart.setName("");
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
+		if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+
+
 	}
 
 	/**
@@ -134,7 +155,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (viewsRepository != null && BASE_PART.equals(key)) {
@@ -172,13 +193,12 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final ViewsRepository viewsRepository = (ViewsRepository)elt;
 			// init values
-// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
+// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 			if (viewsRepository.getName() != null)
-				basePart.setName(viewsRepository.getName());
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), viewsRepository.getName()));
 
-			
 			// init filters
-// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
+// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 
 		}
 		// init values for referenced views
@@ -200,10 +220,9 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (viewsRepository != null) {
-// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
-			cc.append(SetCommand.create(editingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), basePart.getName()));
-
+		if ((viewsRepository != null) && (basePart != null)) { 
+// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
+			cc.append(SetCommand.create(editingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 
 
 		}
@@ -221,8 +240,8 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof ViewsRepository) {
 			ViewsRepository viewsRepositoryToUpdate = (ViewsRepository)source;
-// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
-			viewsRepositoryToUpdate.setName(basePart.getName());
+// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
+			viewsRepositoryToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
 
 
 
@@ -241,14 +260,14 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : RepositoryKind, ViewsRepository, viewsRepository.
-			if (ViewsViewsRepository.ViewsRepository.name == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), event.getNewValue()));
-
+// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, viewsRepository.
+			if (ViewsViewsRepository.ViewsRepository.name == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -315,6 +334,8 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -337,7 +358,6 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -352,4 +372,12 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			viewsRepository.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

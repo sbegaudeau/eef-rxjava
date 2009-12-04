@@ -43,7 +43,7 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -140,7 +140,7 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -158,6 +158,15 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ToolkitsMessages.Toolkit_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

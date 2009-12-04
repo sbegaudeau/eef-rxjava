@@ -39,6 +39,7 @@ public interface ViewsRepositoryPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the RepositoryKind
 	 */
@@ -58,6 +59,13 @@ public interface ViewsRepositoryPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	

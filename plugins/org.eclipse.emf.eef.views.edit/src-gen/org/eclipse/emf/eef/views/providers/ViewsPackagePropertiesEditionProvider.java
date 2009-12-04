@@ -34,7 +34,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 		append(createCustomViewPropertiesEditionProvider());
 		append(createViewReferencePropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * DocumentedElement instances.
@@ -49,7 +49,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
 		return documentedElementPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ViewsRepository instances.
@@ -64,7 +64,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			viewsRepositoryPropertiesEditionProvider = new ViewsRepositoryPropertiesEditionProvider();
 		return viewsRepositoryPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * View instances.
@@ -79,7 +79,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			viewPropertiesEditionProvider = new ViewPropertiesEditionProvider();
 		return viewPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ElementEditor instances.
@@ -94,7 +94,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			elementEditorPropertiesEditionProvider = new ElementEditorPropertiesEditionProvider();
 		return elementEditorPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Category instances.
@@ -109,7 +109,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			categoryPropertiesEditionProvider = new CategoryPropertiesEditionProvider();
 		return categoryPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Container instances.
@@ -124,7 +124,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			containerPropertiesEditionProvider = new ContainerPropertiesEditionProvider();
 		return containerPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * CustomElementEditor instances.
@@ -139,7 +139,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			customElementEditorPropertiesEditionProvider = new CustomElementEditorPropertiesEditionProvider();
 		return customElementEditorPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * CustomView instances.
@@ -154,7 +154,7 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			customViewPropertiesEditionProvider = new CustomViewPropertiesEditionProvider();
 		return customViewPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ViewReference instances.
@@ -169,5 +169,5 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 			viewReferencePropertiesEditionProvider = new ViewReferencePropertiesEditionProvider();
 		return viewReferencePropertiesEditionProvider;
 	}
-	
-}	
+
+}

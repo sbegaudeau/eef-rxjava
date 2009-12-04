@@ -13,8 +13,8 @@
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

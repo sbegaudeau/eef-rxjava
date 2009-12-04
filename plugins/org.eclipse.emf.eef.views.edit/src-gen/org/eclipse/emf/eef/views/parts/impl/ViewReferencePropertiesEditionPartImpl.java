@@ -53,7 +53,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -170,7 +170,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -262,6 +262,15 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ViewsMessages.ViewReference_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

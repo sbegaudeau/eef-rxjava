@@ -20,14 +20,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -36,11 +38,14 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.parts.ToolkitPropertiesEditionPart;
 import org.eclipse.emf.eef.toolkits.parts.ToolkitsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -61,7 +66,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	/**
 	 * The Base part
 	 */
-	private ToolkitPropertiesEditionPart basePart;
+	protected ToolkitPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -90,23 +95,39 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					ToolkitPropertiesEditionComponent.this.dispose();
 				else {
-					if (ToolkitsPackage.eINSTANCE.getToolkit_Name().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setName((String)msg.getNewValue());
-}
-						else
-							basePart.setName("");
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ToolkitsPackage.eINSTANCE.getToolkit_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+
+
 	}
 
 	/**
@@ -133,7 +154,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (toolkit != null && BASE_PART.equals(key)) {
@@ -172,9 +193,8 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 			final Toolkit toolkit = (Toolkit)elt;
 			// init values
 			if (toolkit.getName() != null)
-				basePart.setName(toolkit.getName());
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), toolkit.getName()));
 
-			
 			// init filters
 
 		}
@@ -196,9 +216,8 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (toolkit != null) {
-			cc.append(SetCommand.create(editingDomain, toolkit, ToolkitsPackage.eINSTANCE.getToolkit_Name(), basePart.getName()));
-
+		if ((toolkit != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, toolkit, ToolkitsPackage.eINSTANCE.getToolkit_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 
 
 		}
@@ -216,7 +235,7 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Toolkit) {
 			Toolkit toolkitToUpdate = (Toolkit)source;
-			toolkitToUpdate.setName(basePart.getName());
+			toolkitToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
 
 
 
@@ -235,13 +254,13 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (ToolkitsViewsRepository.Toolkit.name == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, toolkit, ToolkitsPackage.eINSTANCE.getToolkit_Name(), event.getNewValue()));
-
+			if (ToolkitsViewsRepository.Toolkit.name == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, toolkit, ToolkitsPackage.eINSTANCE.getToolkit_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -298,6 +317,8 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -320,7 +341,6 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -335,4 +355,12 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 			toolkit.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

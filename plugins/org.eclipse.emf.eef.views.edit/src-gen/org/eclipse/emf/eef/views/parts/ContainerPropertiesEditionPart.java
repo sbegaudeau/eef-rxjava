@@ -42,6 +42,7 @@ public interface ContainerPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the representation
 	 */
@@ -92,6 +93,13 @@ public interface ContainerPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	

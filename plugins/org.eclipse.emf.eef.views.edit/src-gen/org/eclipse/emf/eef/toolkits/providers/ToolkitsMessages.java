@@ -26,7 +26,11 @@ public class ToolkitsMessages extends NLS {
 
 	public static String Toolkit_ReadOnly;
 
+	public static String Toolkit_Part_Title;
+
 	public static String Widget_ReadOnly;
+
+	public static String Widget_Part_Title;
 
 	public static String ToolkitPropertiesEditionPart_NameLabel;
 

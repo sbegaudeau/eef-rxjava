@@ -27,7 +27,7 @@ public class ToolkitsPackagePropertiesEditionProvider extends ComposedProperties
 		append(createToolkitPropertiesEditionProvider());
 		append(createWidgetPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Toolkit instances.
@@ -42,7 +42,7 @@ public class ToolkitsPackagePropertiesEditionProvider extends ComposedProperties
 			toolkitPropertiesEditionProvider = new ToolkitPropertiesEditionProvider();
 		return toolkitPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Widget instances.
@@ -57,5 +57,5 @@ public class ToolkitsPackagePropertiesEditionProvider extends ComposedProperties
 			widgetPropertiesEditionProvider = new WidgetPropertiesEditionProvider();
 		return widgetPropertiesEditionProvider;
 	}
-	
-}	
+
+}

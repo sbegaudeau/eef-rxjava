@@ -13,10 +13,13 @@
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.views.DocumentedElement;
+
 import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 /**
@@ -37,7 +40,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String)
+	 *  java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof DocumentedElement) {
@@ -50,7 +53,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String, java.lang.String)
+	 *  java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof DocumentedElement) {

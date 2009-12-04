@@ -13,8 +13,8 @@
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

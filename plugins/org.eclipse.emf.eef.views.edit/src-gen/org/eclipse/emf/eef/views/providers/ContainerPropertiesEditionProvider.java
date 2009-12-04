@@ -13,12 +13,15 @@
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.views.Container;
+
 import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.emf.eef.views.components.ContainerBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.components.ContainerPropertiesEditionComponent;
+import org.eclipse.emf.eef.views.components.ContainerBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 /**
@@ -39,7 +42,7 @@ public class ContainerPropertiesEditionProvider implements IPropertiesEditionPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String)
+	 *  java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Container) {
@@ -52,7 +55,7 @@ public class ContainerPropertiesEditionProvider implements IPropertiesEditionPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String, java.lang.String)
+	 *  java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Container) {

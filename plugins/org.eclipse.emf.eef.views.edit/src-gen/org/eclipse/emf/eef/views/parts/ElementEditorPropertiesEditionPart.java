@@ -42,6 +42,7 @@ public interface ElementEditorPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the representation
 	 */
@@ -88,6 +89,7 @@ public interface ElementEditorPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the readOnly
 	 */
@@ -107,6 +109,13 @@ public interface ElementEditorPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	

@@ -55,7 +55,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -181,7 +181,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -303,6 +303,15 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ViewsMessages.CustomElementEditor_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

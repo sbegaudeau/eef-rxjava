@@ -53,7 +53,7 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -170,7 +170,7 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -262,6 +262,15 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ViewsMessages.Container_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

@@ -44,7 +44,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -163,7 +163,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -193,7 +193,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		if (newValue != null) {
 			repositoryKind.setText(newValue);
 		} else {
-			repositoryKind.setText("");  //$NON-NLS-1$
+			repositoryKind.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -211,6 +211,15 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ViewsMessages.ViewsRepository_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

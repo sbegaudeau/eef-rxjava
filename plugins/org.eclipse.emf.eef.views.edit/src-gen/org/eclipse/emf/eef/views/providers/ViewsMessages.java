@@ -40,21 +40,39 @@ public class ViewsMessages extends NLS {
 
 	public static String Documentation_ReadOnly;
 
+	public static String Documentation_Part_Title;
+
 	public static String ViewsRepository_ReadOnly;
+
+	public static String ViewsRepository_Part_Title;
 
 	public static String View_ReadOnly;
 
+	public static String View_Part_Title;
+
 	public static String ElementEditor_ReadOnly;
+
+	public static String ElementEditor_Part_Title;
 
 	public static String Category_ReadOnly;
 
+	public static String Category_Part_Title;
+
 	public static String Container_ReadOnly;
+
+	public static String Container_Part_Title;
 
 	public static String CustomElementEditor_ReadOnly;
 
+	public static String CustomElementEditor_Part_Title;
+
 	public static String CustomView_ReadOnly;
 
+	public static String CustomView_Part_Title;
+
 	public static String ViewReference_ReadOnly;
+
+	public static String ViewReference_Part_Title;
 
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 

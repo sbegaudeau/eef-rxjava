@@ -42,6 +42,7 @@ public interface ViewPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the representation
 	 */
@@ -88,6 +89,7 @@ public interface ViewPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the explicit
 	 */
@@ -107,6 +109,13 @@ public interface ViewPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	

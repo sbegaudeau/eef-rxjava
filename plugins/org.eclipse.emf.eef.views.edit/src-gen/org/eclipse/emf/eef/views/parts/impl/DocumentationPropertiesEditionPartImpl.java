@@ -42,7 +42,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -148,6 +148,15 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ViewsMessages.Documentation_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

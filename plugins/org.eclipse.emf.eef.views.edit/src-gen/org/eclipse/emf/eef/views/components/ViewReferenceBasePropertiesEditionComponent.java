@@ -20,14 +20,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -37,6 +39,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -45,6 +48,8 @@ import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -65,7 +70,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	/**
 	 * The Base part
 	 */
-	private ViewReferencePropertiesEditionPart basePart;
+	protected ViewReferencePropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -94,25 +99,41 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					ViewReferenceBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setName((String)msg.getNewValue());
-}
-						else
-							basePart.setName("");
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-					if (ViewsPackage.eINSTANCE.getViewReference_View().equals(msg.getFeature()) && basePart != null)
-						basePart.setReferencedView((EObject)msg.getNewValue());
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+		if (ViewsPackage.eINSTANCE.getViewReference_View().equals(msg.getFeature()) && basePart != null)
+			basePart.setReferencedView((EObject)msg.getNewValue());
+
+
 	}
 
 	/**
@@ -139,7 +160,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (viewReference != null && BASE_PART.equals(key)) {
@@ -178,12 +199,12 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 			final ViewReference viewReference = (ViewReference)elt;
 			// init values
 			if (viewReference.getName() != null)
-				basePart.setName(viewReference.getName());
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), viewReference.getName()));
 
+			// init part
 			basePart.initReferencedView(allResource, viewReference.getView());
 			// set the button mode
 			basePart.setReferencedViewButtonMode(ButtonsModeEnum.BROWSE);
-			
 			// init filters
 
 			basePart.addFilterToReferencedView(new ViewerFilter() {
@@ -222,9 +243,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (viewReference != null) {
-			cc.append(SetCommand.create(editingDomain, viewReference, ViewsPackage.eINSTANCE.getViewElement_Name(), basePart.getName()));
-
+		if ((viewReference != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, viewReference, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 			if (viewReference.eGet(ViewsPackage.eINSTANCE.getViewReference_View()) == null || !viewReference.eGet(ViewsPackage.eINSTANCE.getViewReference_View()).equals(basePart.getReferencedView())) {
 				cc.append(SetCommand.create(editingDomain, viewReference, ViewsPackage.eINSTANCE.getViewReference_View(), basePart.getReferencedView()));
 			}
@@ -245,7 +265,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof ViewReference) {
 			ViewReference viewReferenceToUpdate = (ViewReference)source;
-			viewReferenceToUpdate.setName(basePart.getName());
+			viewReferenceToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
 
 			viewReferenceToUpdate.setView((ViewElement)basePart.getReferencedView());
 
@@ -265,15 +285,15 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, viewReference, ViewsPackage.eINSTANCE.getViewElement_Name(), event.getNewValue()));
-
+			if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, viewReference, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 			if (ViewsViewsRepository.ViewReference.referencedView == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, viewReference, ViewsPackage.eINSTANCE.getViewReference_View(), event.getNewValue()));
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -334,6 +354,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -356,7 +378,6 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -371,4 +392,12 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 			viewReference.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

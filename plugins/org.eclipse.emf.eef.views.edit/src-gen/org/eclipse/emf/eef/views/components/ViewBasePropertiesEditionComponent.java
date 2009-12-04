@@ -20,14 +20,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -37,6 +39,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -45,6 +48,8 @@ import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -65,7 +70,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 	/**
 	 * The Base part
 	 */
-	private ViewPropertiesEditionPart basePart;
+	protected ViewPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -94,28 +99,44 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					ViewBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-						basePart.setRepresentation((EObject)msg.getNewValue());
-					if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setName((String)msg.getNewValue());
-}
-						else
-							basePart.setName("");
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-					if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
-						basePart.setExplicit((Boolean)msg.getNewValue());
-
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
+			basePart.setRepresentation((EObject)msg.getNewValue());
+		if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+		if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
+			basePart.setExplicit((Boolean)msg.getNewValue());
+
+
+
 	}
 
 	/**
@@ -142,7 +163,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (view != null && BASE_PART.equals(key)) {
@@ -180,15 +201,15 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final View view = (View)elt;
 			// init values
+			// init part
 			basePart.initRepresentation(allResource, view.getRepresentation());
 			// set the button mode
 			basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			if (view.getName() != null)
-				basePart.setName(view.getName());
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), view.getName()));
 
 			basePart.setExplicit(view.isExplicit());
 
-			
 			// init filters
 			basePart.addFilterToRepresentation(new ViewerFilter() {
 
@@ -229,12 +250,11 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (view != null) {
+		if ((view != null) && (basePart != null)) { 
 			if (view.eGet(ViewsPackage.eINSTANCE.getViewElement_Representation()) == null || !view.eGet(ViewsPackage.eINSTANCE.getViewElement_Representation()).equals(basePart.getRepresentation())) {
 				cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Representation(), basePart.getRepresentation()));
 			}
-			cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Name(), basePart.getName()));
-
+			cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 			cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getView_Explicit(), basePart.getExplicit()));
 
 
@@ -255,7 +275,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 		if (source instanceof View) {
 			View viewToUpdate = (View)source;
 			viewToUpdate.setRepresentation((Widget)basePart.getRepresentation());
-			viewToUpdate.setName(basePart.getName());
+			viewToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
 
 			viewToUpdate.setExplicit(new Boolean(basePart.getExplicit()).booleanValue());
 
@@ -278,16 +298,16 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			CompoundCommand command = new CompoundCommand();
 			if (ViewsViewsRepository.View.representation == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Representation(), event.getNewValue()));
-			if (ViewsViewsRepository.View.name == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Name(), event.getNewValue()));
-
+			if (ViewsViewsRepository.View.name == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 			if (ViewsViewsRepository.View.explicit == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getView_Explicit(), event.getNewValue()));
 
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -356,6 +376,8 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -378,7 +400,6 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -393,4 +414,12 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			view.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }
