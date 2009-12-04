@@ -28,7 +28,10 @@
 	not oclIsUndefined() and eType.oclIsKindOf(ecore::EEnum)/]
 
 [query public isLong(a : EAttribute) : Boolean = 
-    not oclIsUndefined() and eType.name = 'ELong' or eType.name = 'Long'/]
+	not oclIsUndefined() and eType.name = 'ELong' or eType.name = 'Long'/]
 
 [query public isDouble(a : EAttribute) : Boolean = 
 	not oclIsUndefined() and eType.name = 'EDouble' or eType.name = 'Double'/]
+
+[query public isPrimitiveType(a : EStructuralFeature) : Boolean = 
+	not oclIsUndefined() and eType.instanceClassName = 'byte' or eType.instanceClassName = 'short' or eType.instanceClassName = 'int' or eType.instanceClassName = 'long' or eType.instanceClassName = 'float' or eType.instanceClassName = 'double' or eType.instanceClassName = 'char' or eType.instanceClassName = 'boolean'/]
