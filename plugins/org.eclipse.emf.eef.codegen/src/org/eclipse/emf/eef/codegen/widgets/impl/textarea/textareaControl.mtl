@@ -18,56 +18,31 @@
 
 [comment ===== Case : model = Attribute(1) - view = Textarea ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
 							if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
-								if (msg.getNewValue() != null) 
-									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
-								else
+								if (msg.getNewValue() != null) {
+									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), msg.getNewValue()));
+								} else {
 									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
+								}
 							}
-[else]
-//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
-[/if]
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
-[else]
-//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
-[/if]
+			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
+			}
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
-[else]
-//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
-[/if]
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-[else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
-[/if]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EcoreUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
-[elseif (editionElement.model.oclAsType(ecore::EAttribute).isInteger())]
-			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
-[elseif (editionElement.model.oclAsType(ecore::EAttribute).isLong())]
-			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
-[elseif (editionElement.model.oclAsType(ecore::EAttribute).isDouble())]
-			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](String.valueOf([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]()));
-[else]
-//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Textarea
-[/if]
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]

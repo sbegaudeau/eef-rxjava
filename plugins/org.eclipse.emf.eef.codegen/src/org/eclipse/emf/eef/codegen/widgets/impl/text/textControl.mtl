@@ -14,6 +14,7 @@
 
 [import naming /]
 [import common /]
+[import typeUtils /]
 
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
@@ -28,20 +29,25 @@
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], EEFConverterUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
 			}
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], EEFConverterUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EcoreUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[if (editionElement.model.isPrimitiveType())]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[else]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/if]
+
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
-			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.model.eType.ePackage.name.toUpperFirst()/]Package.eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
