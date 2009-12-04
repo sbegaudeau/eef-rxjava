@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -52,7 +52,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	private Text selection;
 
 	/**
-	 * Button to edit the feature 
+	 * Button to edit the feature
 	 */
 	protected Button editer;
 
@@ -102,7 +102,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	protected EStructuralFeature feature;
 
 	/**
-	 * The input for the choice of values 
+	 * The input for the choice of values
 	 */
 	protected Object input;
 
@@ -111,8 +111,10 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	private EReference containingFeature;
 
 	/**
-	 * Default contructor
-	 * @param parent the parent widget
+	 * Default constructor
+	 * 
+	 * @param parent
+	 *            the parent widget
 	 */
 	public FlatReferencesTable(Composite parent) {
 		super(parent, SWT.NONE);
@@ -146,29 +148,30 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				switch (button_mode) {
-				case BROWSE:
-					List currentValues = new ArrayList();
-					for (Iterator iterator = viewsEditUtil.getVirtualList().iterator(); iterator.hasNext();) {
-						EObject object = (EObject) iterator.next();
-						if (containingFeature == null)
-							currentValues.add(viewsEditUtil.foundCorrespondingEObject(object));
-						else
-							currentValues.add(viewsEditUtil.foundCorrespondingEObject(object).eGet(feature));
-					}
-					EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-							getParent().getShell(),	delegatedLabelProvider,	editedElement,
-							feature.getEType(),	currentValues,	"Edit Feature",
-							getChoiceOfValues(), false,	true, filters, brFilters);
-					dialog.open();
-					EList<?> newValues = dialog.getResult();
-					if (newValues != null)
-						applyDiff(viewsEditUtil, newValues);
-					selectionChanged(new StructuredSelection(viewsEditUtil));
-					refresh();
-					break;
+					case BROWSE:
+						List currentValues = new ArrayList();
+						for (Iterator iterator = viewsEditUtil.getVirtualList().iterator(); iterator
+								.hasNext();) {
+							EObject object = (EObject)iterator.next();
+							if (containingFeature == null)
+								currentValues.add(viewsEditUtil.foundCorrespondingEObject(object));
+							else
+								currentValues.add(viewsEditUtil.foundCorrespondingEObject(object).eGet(
+										feature));
+						}
+						EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(getParent().getShell(),
+								delegatedLabelProvider, editedElement, feature.getEType(), currentValues,
+								"Edit Feature", getChoiceOfValues(), false, true, filters, brFilters);
+						dialog.open();
+						EList<?> newValues = dialog.getResult();
+						if (newValues != null)
+							applyDiff(viewsEditUtil, newValues);
+						selectionChanged(new StructuredSelection(viewsEditUtil));
+						refresh();
+						break;
 
-				default:
-					break;
+					default:
+						break;
 				}
 			}
 		};
@@ -184,14 +187,13 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		if (input instanceof List)
 			result = new ArrayList((List)input);
 		else if (input instanceof ResourceSet)
-			result = new ArrayList(EEFUtils.asList(	EcoreUtil.getAllContents((ResourceSet)input, true)));
+			result = new ArrayList(EEFUtil.asList(EcoreUtil.getAllContents((ResourceSet)input, true)));
 		else if (input instanceof Resource)
-			result = new ArrayList(EEFUtils.asList(	EcoreUtil.getAllContents((Resource)input, true)));
+			result = new ArrayList(EEFUtil.asList(EcoreUtil.getAllContents((Resource)input, true)));
 		else
 			result = new ArrayList();
 		return result;
 	}
-
 
 	/**
 	 * @param list
@@ -202,30 +204,29 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		if (newValues != null) {
 			for (Object element : virtualList) {
 				if (element instanceof EObject) {
-					if (!newValues.contains((EObject) element)) {
-						list.removeElement((EObject) element);
+					if (!newValues.contains(element)) {
+						list.removeElement((EObject)element);
 					}
 				}
 			}
 			for (Object element : newValues) {
 				if (element instanceof EObject) {
 					if (!virtualList.contains(element))
-						list.addElement((EObject) element);
+						list.addElement((EObject)element);
 				}
 			}
 		}
 	}
 
-
 	/****************************************************************************************************************************************
-	 * 
 	 * Widget configuration
-	 * 
 	 ****************************************************************************************************************************************/
 
 	/**
 	 * Defines the labelProvider of the widget
-	 * @param provider the labelProvider to use
+	 * 
+	 * @param provider
+	 *            the labelProvider to use
 	 */
 	public void setLabelProvider(ILabelProvider provider) {
 		this.delegatedLabelProvider = provider;
@@ -275,9 +276,11 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		}
 	}
 
-	/** 
+	/**
 	 * Defines the mode of the button
-	 * @param button_mode the mode to set
+	 * 
+	 * @param button_mode
+	 *            the mode to set
 	 */
 	public void setButtonMode(ButtonsModeEnum button_mode) {
 		this.button_mode = button_mode;
@@ -285,7 +288,9 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/**
 	 * Defines the input for the choice of values
-	 * @param input the input
+	 * 
+	 * @param input
+	 *            the input
 	 */
 	public void setInput(Object input) {
 		if (this.input != input) {
@@ -295,9 +300,13 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/**
 	 * Initialize the widget
-	 * @param current the editedElement 
-	 * @param editedFeature the feature to edit
-	 * @param containingFeature  the containing feature in "rebound" case
+	 * 
+	 * @param current
+	 *            the editedElement
+	 * @param editedFeature
+	 *            the feature to edit
+	 * @param containingFeature
+	 *            the containing feature in "rebound" case
 	 */
 	public void initComponent(EObject current, EReference containingFeature, EReference editedFeature) {
 		this.containingFeature = containingFeature;
@@ -311,82 +320,89 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/**
 	 * Update this component with new values
-	 * @param newValue the new values
+	 * 
+	 * @param newValue
+	 *            the new values
 	 */
 	public void updateComponent(EObject newValue) {
-		if(viewsEditUtil != null){
+		if (viewsEditUtil != null) {
 			viewsEditUtil.reinit(newValue);
 			refresh();
 		}
 	}
 
-
-
 	/****************************************************************************************************************************************
-	 * 
 	 * Selection management
-	 * 
 	 ****************************************************************************************************************************************/
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener(org.eclipse.jface.viewers.
+	 * ISelectionChangedListener)
 	 */
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.add(listener);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ISelectionProvider#removeSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.jface.viewers.ISelectionProvider#removeSelectionChangedListener(org.eclipse.jface.viewers
+	 * .ISelectionChangedListener)
 	 */
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.remove(listener);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
 	 */
 	public ISelection getSelection() {
 		// TODO: what this method is supposed to do ???
 		throw new UnsupportedOperationException("Nothing to do for the moment ...");
-		///		if (editedElement != null)
-		//			return new StructuredSelection(editedElement);
-		//		return new StructuredSelection(Collections.EMPTY_LIST);
+		// / if (editedElement != null)
+		// return new StructuredSelection(editedElement);
+		// return new StructuredSelection(Collections.EMPTY_LIST);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#setSelection(org.eclipse.jface.viewers.ISelection)
 	 */
 	public void setSelection(ISelection pSelection) {
 		// TODO: what this method is supposed to do ???
 		throw new UnsupportedOperationException("Nothing to do for the moment ...");
-		//		if (pSelection instanceof StructuredSelection && ((StructuredSelection)pSelection).getFirstElement() instanceof EObject) {
-		//			this.editedElement = (EObject) ((StructuredSelection)pSelection).getFirstElement();
-		//			selectedElements = (List)editedElement.eGet(feature);
-		//			if (listLabelProvider != null)
-		//				selection.setText(listLabelProvider.getText(selectedElements));
-		//			else {						
-		//				StringBuilder result = new StringBuilder("");
-		//				final List collec = (List)selectedElements;
-		//				if (collec.size() > 0) {
-		//					result.append(collec.get(0).toString());
-		//					if (collec.size() > 1) {
-		//						for (int i = 1; i < collec.size(); i++) {
-		//							result.append(", ");
-		//							result.append(collec.get(i).toString());
-		//						}
-		//					}
-		//				}
-		//				selection.setText(result.toString());
-		//			} 
-		//		} else
+		// if (pSelection instanceof StructuredSelection &&
+		// ((StructuredSelection)pSelection).getFirstElement() instanceof EObject) {
+		// this.editedElement = (EObject) ((StructuredSelection)pSelection).getFirstElement();
+		// selectedElements = (List)editedElement.eGet(feature);
+		// if (listLabelProvider != null)
+		// selection.setText(listLabelProvider.getText(selectedElements));
+		// else {
+		// StringBuilder result = new StringBuilder("");
+		// final List collec = (List)selectedElements;
+		// if (collec.size() > 0) {
+		// result.append(collec.get(0).toString());
+		// if (collec.size() > 1) {
+		// for (int i = 1; i < collec.size(); i++) {
+		// result.append(", ");
+		// result.append(collec.get(i).toString());
+		// }
+		// }
+		// }
+		// selection.setText(result.toString());
+		// }
+		// } else
 		//			selection.setText(""); //$NON-NLS-1$
 	}
 
 	public void refresh() {
-		if (viewsEditUtil != null) { 
+		if (viewsEditUtil != null) {
 			if (listLabelProvider != null)
 				selection.setText(listLabelProvider.getText(viewsEditUtil.getVirtualList()));
-			else {						
+			else {
 				StringBuilder result = new StringBuilder("");
 				final List collec = viewsEditUtil.getVirtualList();
 				if (collec.size() > 0) {
@@ -399,14 +415,16 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 					}
 				}
 				selection.setText(result.toString());
-			} 
+			}
 		} else
 			selection.setText(""); //$NON-NLS-1$
 	}
 
 	/**
 	 * The selection has changed
-	 * @param selection the new selection
+	 * 
+	 * @param selection
+	 *            the new selection
 	 */
 	protected void selectionChanged(ISelection selection) {
 		if (listeners != null && !listeners.isEmpty()) {
@@ -417,40 +435,51 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	}
 
 	/****************************************************************************************************************************************
-	 * 
 	 * Filter management
-	 * 
 	 ****************************************************************************************************************************************/
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter(org.eclipse.jface.viewers.ViewerFilter)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter(org.eclipse.jface.viewers
+	 * .ViewerFilter)
 	 */
 	public void addFilter(ViewerFilter filter) {
 		filters.add(filter);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter(org.eclipse.jface.viewers.ViewerFilter)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter(org.eclipse.jface.viewers
+	 * .ViewerFilter)
 	 */
 	public void removeFilter(ViewerFilter filter) {
 		filters.remove(filter);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addBusinessRuleFilter(org.eclipse.jface.viewers.ViewerFilter)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addBusinessRuleFilter(org.eclipse.
+	 * jface.viewers.ViewerFilter)
 	 */
 	public void addBusinessRuleFilter(ViewerFilter filter) {
 		brFilters.add(filter);
 	}
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeBusinessRuleFilter(org.eclipse.jface.viewers.ViewerFilter)
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeBusinessRuleFilter(org.eclipse
+	 * .jface.viewers.ViewerFilter)
 	 */
 	public void removeBusinessRuleFilter(ViewerFilter filter) {
 		brFilters.remove(filter);
 	}
 
 	/**
-	 * Clear the list of static filters 
+	 * Clear the list of static filters
 	 */
 	public void resetFilters() {
 		filters.clear();
@@ -463,6 +492,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	public List getElementsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
 	}
+
 	public List getVirtualList() {
 		return viewsEditUtil.getVirtualList();
 	}

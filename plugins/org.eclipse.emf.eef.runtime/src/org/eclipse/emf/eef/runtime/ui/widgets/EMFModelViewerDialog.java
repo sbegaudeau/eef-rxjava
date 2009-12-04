@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.impl.filters.business.BusinessViewerFilter;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.impl.utils.PatternTool;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 import org.eclipse.emf.eef.runtime.ui.comparator.EMFModelViewerComparator;
 import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -370,7 +370,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	protected Point getInitialSize() {
 		Point point = super.getInitialSize();
 		int width = point.x < 800 ? 800 : point.x;
-		if (width > + SWTUtils.getWidth())
+		if (width > +SWTUtils.getWidth())
 			return new Point(SWTUtils.getWidth(), SWTUtils.getHeight());
 		return new Point(width, SWTUtils.getHeight());
 	}
@@ -397,10 +397,11 @@ public abstract class EMFModelViewerDialog extends Dialog {
 					} else {
 						libelle = ModelViewerHelper.getName(element);
 					}
-					if (EEFUtils.isBundleLoaded(EEFUtils.JDT_CORE_SYMBOLIC_NAME))
+					if (EEFUtil.isBundleLoaded(EEFUtil.JDT_CORE_SYMBOLIC_NAME))
 						return PatternTool.getPattern(libelle, text.getText());
-					else 
-						return text.getText() == null || text.getText().equals("") || libelle.startsWith(text.getText());
+					else
+						return text.getText() == null || text.getText().equals("")
+								|| libelle.startsWith(text.getText());
 				}
 			}
 		});

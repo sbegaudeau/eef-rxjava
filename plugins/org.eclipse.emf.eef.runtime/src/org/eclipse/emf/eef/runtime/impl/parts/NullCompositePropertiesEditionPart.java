@@ -54,21 +54,21 @@ public class NullCompositePropertiesEditionPart extends CompositePropertiesEditi
 		// nothing
 	}
 
-//	/**
-//	 * {@inheritDoc}
-//	 * 
-//	 * @see org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#initComponent(org.eclipse.emf.ecore.EObject,
-//	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-//	 */
-//	public void initComponent(EObject eObject, ResourceSet allResources) {
-//		// nothing
-//	}
-//
+	// /**
+	// * {@inheritDoc}
+	// *
+	// * @see
+	// org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#initComponent(org.eclipse.emf.ecore.EObject,
+	// * org.eclipse.emf.ecore.resource.ResourceSet)
+	// */
+	// public void initComponent(EObject eObject, ResourceSet allResources) {
+	// // nothing
+	// }
+	//
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(
-	 * 	org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent)
 	 */
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// nothing
@@ -92,5 +92,14 @@ public class NullCompositePropertiesEditionPart extends CompositePropertiesEditi
 	public List typeValidation() {
 		// Nothing to do
 		return new ArrayList();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return "";
 	}
 }

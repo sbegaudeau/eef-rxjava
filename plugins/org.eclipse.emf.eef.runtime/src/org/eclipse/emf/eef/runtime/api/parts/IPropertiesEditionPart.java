@@ -29,19 +29,30 @@ public interface IPropertiesEditionPart extends IPropertiesEditionListener {
 	 * @return the part view
 	 */
 	public Composite getFigure();
-	
+
 	/**
 	 * Defines the context (edited element, resourceset) of the part
-	 * @param eObject the EObject to edit
-	 * @param allResources the resourceset where edit
+	 * 
+	 * @param eObject
+	 *            the EObject to edit
+	 * @param allResources
+	 *            the resourceset where edit
 	 */
 	public void setContext(EObject eObject, ResourceSet allResources);
 
-
 	/**
 	 * Return an observer on the given Element Editor
-	 * @param key the key qualifying the Element Editor
+	 * 
+	 * @param key
+	 *            the key qualifying the Element Editor
 	 * @return an observer on the given Element Editor
 	 */
 	public ISWTObservableValue getObserver(String key);
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 }

@@ -40,12 +40,8 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	/**
 	 * Return the Edition Part in the given context.
 	 * 
-	 * @param parent
-	 *            the context - the composite where the part will be used
-	 * @param allResources
-	 *            the resourceSet where is the EObject
 	 * @param kind
-	 *            the kind ot the expected Part
+	 *            the kind of the expected Part
 	 * @param key
 	 *            the Part key
 	 * @return the Part created in the parent
@@ -81,14 +77,14 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the kind of the part
 	 * @param element
 	 *            the element which initialize the part
-	 * @param allResource
-	 *            the resource where the part has to process
 	 */
 	public abstract void initPart(Class key, int kind, EObject element);
 
 	/**
 	 * Return a copy of the EObject updated.
 	 * 
+	 * @param source
+	 *            the eobject to edit
 	 * @return a copy of the edited EObject with features updated with the values defined in the sub-component
 	 *         parts
 	 */
@@ -193,4 +189,13 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @return the key identifying the part
 	 */
 	public Class translatePart(String key);
+
+	/**
+	 * Returns the internationalized text for the specified tab ( in wizards )
+	 * 
+	 * @param key
+	 *            the tab key
+	 * @return the internationalized message
+	 */
+	public String getTabText(String key);
 }

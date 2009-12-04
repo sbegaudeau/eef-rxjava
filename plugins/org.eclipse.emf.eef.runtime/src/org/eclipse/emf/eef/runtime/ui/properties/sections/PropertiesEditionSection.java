@@ -54,13 +54,12 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * the section's parent
 	 */
 	protected Composite parent;
-	
+
 	/**
 	 * The section's viewer
 	 */
 	protected PropertiesEditionViewer viewer;
 
-	
 	/**
 	 * The editingDomain where the viewer must perform editing commands.
 	 */
@@ -80,7 +79,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * Filters list
 	 */
 	private ViewerFilter[] filters = new ViewerFilter[1];
-	
+
 	/**
 	 * global register edition provider
 	 */
@@ -101,7 +100,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	private IPropertiesEditionProvider propertiesEditionProvider = new RegistryPropertiesEditionProvider();
 
 	private PropertiesEditionContentProvider contentProvider;
-	
+
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
@@ -110,7 +109,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		super.createControls(parent, aTabbedPropertySheetPage);
 		this.propertySheetPage = aTabbedPropertySheetPage;
 		this.parent = parent;
-		this.viewer = new PropertiesEditionViewer(parent, null,SWT.NONE, 1);
+		this.viewer = new PropertiesEditionViewer(parent, null, SWT.NONE, 1);
 		viewer.setToolkit(getWidgetFactory());
 	}
 
@@ -131,7 +130,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 				if (eObject != null) {
 					if (contentProvider != null)
 						contentProvider.dispose();
-					contentProvider = new PropertiesEditionContentProvider(propertiesEditionProvider, IPropertiesEditionComponent.LIVE_MODE, editingDomain);
+					contentProvider = new PropertiesEditionContentProvider(propertiesEditionProvider,
+							IPropertiesEditionComponent.LIVE_MODE, editingDomain);
 					viewer.setContentProvider(contentProvider);
 					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
 					viewer.setFilters(filters);
@@ -142,21 +142,21 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		eObjectList = ((IStructuredSelection)selection).toList();
 	}
 
-	
 	private void initializeEditingDomain(IWorkbenchPart part) {
 		if (part instanceof ITabbedPropertySheetPageContributor) {
 			ITabbedPropertySheetPageContributor editor = (ITabbedPropertySheetPageContributor)part;
-			if (editor != null && editor instanceof IEditorPart) {
+			if (editor instanceof IEditorPart) {
 				if (editor instanceof IEditingDomainProvider)
 					editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
 				else if ((((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)) != null)
-					editingDomain = ((IEditingDomainProvider)((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)).getEditingDomain();
+					editingDomain = ((IEditingDomainProvider)((IEditorPart)editor)
+							.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
 				else if ((((IEditorPart)editor).getAdapter(EditingDomain.class)) != null)
-					editingDomain = (EditingDomain) ((IEditorPart)editor).getAdapter(EditingDomain.class);
+					editingDomain = (EditingDomain)((IEditorPart)editor).getAdapter(EditingDomain.class);
 			}
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -168,7 +168,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 			this.viewer.getContentProvider().dispose();
 			this.viewer = null;
 		}
-		
+
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 			Object tab = descriptor.get(key);
 			Method getSectionAtIndex = getMethod(tab, "getSectionAtIndex", int.class);
 			if (getSectionAtIndex != null) {
-				Object result = callMethod(tab, getSectionAtIndex, 0);
+				Object result = callMethod(tab, getSectionAtIndex, new Integer(0));
 				if (result == this) {
 					Method getId = getMethod(key, "getId");
 					if (getId != null) {
@@ -195,7 +195,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		}
 		return "";
 	}
-	
+
 	private Map getPageDescriptor(TabbedPropertySheetPage propertySheetPage) {
 		Field descriptorToTabField = null;
 		boolean oldAccessible = false;
@@ -233,16 +233,17 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * @param object
 	 * @return
 	 */
-	private EObject resolveSemanticObject(Object object) {		
-		if (object instanceof EObject){
-			return (EObject) object;
-		}else if (object instanceof IAdaptable){
+	private EObject resolveSemanticObject(Object object) {
+		if (object instanceof EObject) {
+			return (EObject)object;
+		} else if (object instanceof IAdaptable) {
 			IAdaptable adaptable = (IAdaptable)object;
-			if(adaptable.getAdapter(SemanticAdapter.class)!=null){
-				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable.getAdapter(SemanticAdapter.class);
+			if (adaptable.getAdapter(SemanticAdapter.class) != null) {
+				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
+						.getAdapter(SemanticAdapter.class);
 				return semanticAdapter.getEObject();
-			}else if(adaptable.getAdapter(EObject.class)!=null){
-				return (EObject) adaptable.getAdapter(EObject.class);
+			} else if (adaptable.getAdapter(EObject.class) != null) {
+				return (EObject)adaptable.getAdapter(EObject.class);
 			}
 		}
 		return null;
@@ -279,8 +280,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		try {
 			return method.invoke(source, args);
 		} catch (Exception e) {
-			EEFRuntimePlugin.getDefault().logError("An error occured on " + method.getName() + " call.",
-					e);
+			EEFRuntimePlugin.getDefault().logError("An error occured on " + method.getName() + " call.", e);
 		}
 		return null;
 	}

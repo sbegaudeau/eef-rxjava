@@ -343,4 +343,18 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String key) {
+		for (IPropertiesEditionComponent component : subComponents) {
+			IPropertiesEditionPart part = component.getPropertiesEditionPart(0, key);
+			if (part != null)
+				return part.getTitle();
+		}
+		return key;
+	}
+
 }

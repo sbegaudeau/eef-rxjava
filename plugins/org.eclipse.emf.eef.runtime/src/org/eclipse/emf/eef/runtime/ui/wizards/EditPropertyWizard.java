@@ -211,7 +211,7 @@ public class EditPropertyWizard extends Wizard {
 					editComposite = new Composite(folder, SWT.NONE);
 				CTabItem tab = new CTabItem(folder, SWT.NONE);
 				tab.setControl(editComposite);
-				tab.setText(nextComponentKey);
+				tab.setText(propertiesEditionComponent.getTabText(nextComponentKey));
 			}
 			initState = false;
 		}

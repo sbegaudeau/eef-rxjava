@@ -54,25 +54,33 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	private FormToolkit toolkit;
 
 	private CTabFolder folder = null;
+
 	private ScrolledComposite scrolledContainer;
+
 	private Composite control;
+
 	private boolean dynamicTabHeader = true;
+
 	/**
 	 * The expected kind for the part.
 	 */
 	private int kind;
-		
+
 	private List<ViewerFilter> filters;
-	
+
 	private boolean initState = false;
 
 	protected ResourceSet allResources;
-	
+
 	/**
-	 * Create an Viewer for EEF properties editing in the given parent composite. 
-     * @param parent the parent control
-     * @param style the SWT style bits
-     * @param kind the kind of the part
+	 * Create an Viewer for EEF properties editing in the given parent composite.
+	 * 
+	 * @param parent
+	 *            the parent control
+	 * @param style
+	 *            the SWT style bits
+	 * @param kind
+	 *            the kind of the part
 	 */
 	public PropertiesEditionViewer(Composite parent, ResourceSet allResources, int style, int kind) {
 		FillLayout parentLayout = new FillLayout();
@@ -87,12 +95,14 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		this.allResources = allResources;
 		this.kind = kind;
 	}
-	
+
 	/**
-	 * Create an Viewer for EEF properties editing in
-	 * the given parent composite 
-     * @param parent the parent control
-     * @param kind the kind of the part
+	 * Create an Viewer for EEF properties editing in the given parent composite
+	 * 
+	 * @param parent
+	 *            the parent control
+	 * @param kind
+	 *            the kind of the part
 	 */
 	public PropertiesEditionViewer(Composite parent, ResourceSet allResources, int kind) {
 		this(parent, allResources, SWT.BORDER, kind);
@@ -100,12 +110,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.Viewer#getControl()
 	 */
 	public Control getControl() {
 		return control;
 	}
-	
+
 	/**
 	 * @return the toolkit
 	 */
@@ -114,12 +125,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	}
 
 	/**
-	 * @param toolkit the toolkit to set
+	 * @param toolkit
+	 *            the toolkit to set
 	 */
 	public void setToolkit(FormToolkit toolkit) {
 		this.toolkit = toolkit;
 	}
-	
+
 	/**
 	 * @return <code>true</code> if the viewer is initializing
 	 */
@@ -129,26 +141,28 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * Defines if the tab headers are visible when there is more than 1 tab.
-	 * @param dynamic the dynamic tab header
+	 * 
+	 * @param dynamic
+	 *            the dynamic tab header
 	 */
 	public void setDynamicTabHeader(boolean dynamic) {
 		dynamicTabHeader = dynamic;
 	}
-	
+
 	/**
-	 * @param listener the properties listener to add
+	 * @param listener
+	 *            the properties listener to add
 	 */
 	public void addPropertiesListener(IPropertiesEditionListener listener) {
 		if (getContentProvider() != null)
 			((PropertiesEditionContentProvider)getContentProvider()).addPropertiesListener(listener);
 	}
-	
+
 	/**
 	 * Returns the root element.
 	 * <p>
-	 * The default implementation of this framework method forwards to
-	 * <code>getInput</code>. Override if the root element is different from
-	 * the viewer's input element.
+	 * The default implementation of this framework method forwards to <code>getInput</code>. Override if the
+	 * root element is different from the viewer's input element.
 	 * </p>
 	 * 
 	 * @return the root element, or <code>null</code> if none
@@ -156,9 +170,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	protected Object getRoot() {
 		return getInput();
 	}
-	
+
 	/* =============================== Filters management =============================== */
-	
+
 	/**
 	 * Returns this viewer's filters.
 	 * 
@@ -175,9 +189,8 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	}
 
 	/**
-	 * Adds the given filter to this viewer, and triggers refiltering and
-	 * resorting of the elements. If you want to add more than one filter
-	 * consider using {@link StructuredViewer#setFilters(ViewerFilter[])}.
+	 * Adds the given filter to this viewer, and triggers refiltering and resorting of the elements. If you
+	 * want to add more than one filter consider using {@link StructuredViewer#setFilters(ViewerFilter[])}.
 	 * 
 	 * @param filter
 	 *            a viewer filter
@@ -191,12 +204,10 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		refresh();
 	}
 
-	
 	/**
-	 * Removes the given filter from this viewer, and triggers refiltering and
-	 * resorting of the elements if required. Has no effect if the identical
-	 * filter is not registered. If you want to remove more than one filter
-	 * consider using {@link StructuredViewer#setFilters(ViewerFilter[])}.
+	 * Removes the given filter from this viewer, and triggers refiltering and resorting of the elements if
+	 * required. Has no effect if the identical filter is not registered. If you want to remove more than one
+	 * filter consider using {@link StructuredViewer#setFilters(ViewerFilter[])}.
 	 * 
 	 * @param filter
 	 *            a viewer filter
@@ -222,8 +233,8 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	}
 
 	/**
-	 * Sets the filters, replacing any previous filters, and triggers
-	 * refiltering and resorting of the elements.
+	 * Sets the filters, replacing any previous filters, and triggers refiltering and resorting of the
+	 * elements.
 	 * 
 	 * @param filters
 	 *            an array of viewer filters
@@ -237,10 +248,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			refresh();
 		}
 	}
-	
+
 	/**
-	 * Discards this viewer's filters and triggers refiltering and resorting of
-	 * the elements.
+	 * Discards this viewer's filters and triggers refiltering and resorting of the elements.
 	 */
 	public void resetFilters() {
 		if (filters != null) {
@@ -263,7 +273,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			for (int j = 0; j < filters.size(); j++) {
 				ViewerFilter viewerFilter = filters.get(j);
 				if (viewerFilter instanceof PropertiesEditionPartFilter) {
-					select = ((ViewerFilter) viewerFilter).select(this, key, propertiesEditionPart);
+					select = viewerFilter.select(this, key, propertiesEditionPart);
 					if (!select) {
 						result = false;
 						break;
@@ -275,34 +285,42 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	}
 
 	/* ========================== Component edition management ========================== */
-	
+
 	/**
 	 * Compute the edition command to perform to update the model
-	 * @param editingDomain the editingDomain where the command have to be performed
+	 * 
+	 * @param editingDomain
+	 *            the editingDomain where the command have to be performed
 	 * @return the command to perform
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		if (getContentProvider() != null)
-			return ((PropertiesEditionContentProvider)getContentProvider()).getPropertiesEditionCommand(editingDomain);
+			return ((PropertiesEditionContentProvider)getContentProvider())
+					.getPropertiesEditionCommand(editingDomain);
 		else
 			return null;
 	}
-	
+
 	/**
 	 * Update and return the given EObject
-	 * @param eObject the EObject to update
+	 * 
+	 * @param eObject
+	 *            the EObject to update
 	 * @return the updated EObject
 	 */
 	public EObject getPropertiesEditionObject(EObject eObject) {
 		if (getContentProvider() != null)
-			return ((PropertiesEditionContentProvider)getContentProvider()).getPropertiesEditionObject(eObject);
+			return ((PropertiesEditionContentProvider)getContentProvider())
+					.getPropertiesEditionObject(eObject);
 		else
 			return null;
 	}
 
 	/**
 	 * Validate the model and return the resulting Diagnostic
-	 * @param event the event triggering the validation
+	 * 
+	 * @param event
+	 *            the event triggering the validation
 	 * @return the resulting value
 	 */
 	public Diagnostic validateValue(PropertiesEditionEvent event) {
@@ -316,6 +334,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.Viewer#getSelection()
 	 */
 	public ISelection getSelection() {
@@ -328,24 +347,27 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.Viewer#setSelection(org.eclipse.jface.viewers.ISelection, boolean)
 	 */
 	public void setSelection(ISelection selection, boolean reveal) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.StructuredViewer#setSelectionToWidget(java.util.List, boolean)
 	 */
 	protected void setSelectionToWidget(List l, boolean reveal) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.StructuredViewer#getSelectionFromWidget()
 	 */
 	protected List getSelectionFromWidget() {
@@ -353,13 +375,11 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		return null;
 	}
 
-
-
-	
 	/* ============================== Graphical management ============================== */
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.StructuredViewer#internalRefresh(java.lang.Object)
 	 */
 	protected void internalRefresh(Object element) {
@@ -367,23 +387,25 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.Viewer#inputChanged(java.lang.Object, java.lang.Object)
 	 */
 	protected void inputChanged(Object input, Object oldInput) {
 		super.inputChanged(input, oldInput);
 		initControl();
-    }
+	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.StructuredViewer#reveal(java.lang.Object)
 	 */
 	public void reveal(Object element) {
 		// Nothing to do
 	}
-	
+
 	/**
-	 * Create the control content 
+	 * Create the control content
 	 */
 	protected void initControl() {
 		if (getContentProvider() != null) {
@@ -396,28 +418,32 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			initState = false;
 		}
 	}
-	
+
 	/**
-	 * Initialize the control of the viewer in "Tabbed case".
-	 * Defines one tab for each PropertiesEditionPart of the component.
+	 * Initialize the control of the viewer in "Tabbed case". Defines one tab for each PropertiesEditionPart
+	 * of the component.
+	 * 
 	 * @param propertiesEditionProvider
 	 * @param partsList
 	 */
-	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider, String[] partsList) {
+	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider,
+			String[] partsList) {
 		resetTab();
 		List<String> selectedParts = new ArrayList<String>();
 		if (kind == 1) {
 			toolkit.adapt(folder, true, true);
 			toolkit.getColors().initializeSectionToolBarColors();
 			Color selectedColor = toolkit.getColors().getColor(IFormColors.TB_BG);
-			folder.setSelectionBackground(new Color[] {selectedColor, toolkit.getColors().getBackground()}, new int[] {100}, true);
+			folder.setSelectionBackground(new Color[] {selectedColor, toolkit.getColors().getBackground()},
+					new int[] {100}, true);
 		}
 		for (int i = 0; i < partsList.length; i++) {
 			String nextComponentKey = partsList[i];
-			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind, nextComponentKey);
+			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind,
+					nextComponentKey);
 			if (selectPart(nextComponentKey, part)) {
 				selectedParts.add(nextComponentKey);
-				addPartTab(propertiesEditionProvider, part,	nextComponentKey);
+				addPartTab(propertiesEditionProvider, part, nextComponentKey);
 			}
 		}
 		if (dynamicTabHeader) {
@@ -431,13 +457,18 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * Create a new tab in the folder for a given PropertiesEditionPart.
-	 * @param propertiesEditionProvider the EEF properties provider
-	 * @param key the key of the part
-	 * @param tabText the title of the tab
+	 * 
+	 * @param propertiesEditionProvider
+	 *            the EEF properties provider
+	 * @param key
+	 *            the key of the part
+	 * @param tabText
+	 *            the title of the tab
 	 */
-	private void addPartTab(PropertiesEditionContentProvider propertiesEditionProvider,	IPropertiesEditionPart part, String key) {
+	private void addPartTab(PropertiesEditionContentProvider propertiesEditionProvider,
+			IPropertiesEditionPart part, String key) {
 		Composite editComposite = null;
-		if (part instanceof ISWTPropertiesEditionPart) 
+		if (part instanceof ISWTPropertiesEditionPart)
 			editComposite = ((ISWTPropertiesEditionPart)part).createFigure(folder);
 		if (part instanceof IFormPropertiesEditionPart) {
 			Assert.isNotNull(toolkit, "A widget factory must be set in viewer to use 'Form' style.");
@@ -445,11 +476,12 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		}
 		if (editComposite != null) {
 			if (allResources == null && getInput() != null)
-				propertiesEditionProvider.initPart(propertiesEditionProvider.translatePart(key), kind, ((EObject)getInput()));
+				propertiesEditionProvider.initPart(propertiesEditionProvider.translatePart(key), kind,
+						((EObject)getInput()));
 			else
-				propertiesEditionProvider.initPart(propertiesEditionProvider.translatePart(key), kind, ((EObject)getInput()), allResources);
-		}
-		else
+				propertiesEditionProvider.initPart(propertiesEditionProvider.translatePart(key), kind,
+						((EObject)getInput()), allResources);
+		} else
 			editComposite = new Composite(folder, SWT.NONE);
 		CTabItem tab = new CTabItem(folder, SWT.NONE);
 		tab.setControl(editComposite);
@@ -469,7 +501,6 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		}
 	}
 
-	
 	/**
 	 * Compute the optimal size for the scrolled composite
 	 */
@@ -480,6 +511,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	/* ================================= Search methods ================================= */
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.StructuredViewer#doFindInputItem(java.lang.Object)
 	 */
 	protected Widget doFindInputItem(Object element) {
@@ -489,6 +521,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.StructuredViewer#doFindItem(java.lang.Object)
 	 */
 	protected Widget doFindItem(Object element) {
@@ -498,11 +531,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.jface.viewers.StructuredViewer#doUpdateItem(org.eclipse.swt.widgets.Widget, java.lang.Object, boolean)
+	 * 
+	 * @see org.eclipse.jface.viewers.StructuredViewer#doUpdateItem(org.eclipse.swt.widgets.Widget,
+	 *      java.lang.Object, boolean)
 	 */
 	protected void doUpdateItem(Widget item, Object element, boolean fullMap) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
