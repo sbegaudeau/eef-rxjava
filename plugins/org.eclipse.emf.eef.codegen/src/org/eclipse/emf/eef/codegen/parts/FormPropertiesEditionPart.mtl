@@ -201,6 +201,15 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	// [/protected]
 [/for]
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return [view.owningViewsRepository().messagesProvider()/].[view.name.toJavaClassifier()/]_Part_Title;
+	}
+
 [view.additionalMethods()/]
 
 }
@@ -287,6 +296,17 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
 		
+		// [/protected]
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		// [protected ('for title')]
+		return "CustomTitle";
 		// [/protected]
 	}
 

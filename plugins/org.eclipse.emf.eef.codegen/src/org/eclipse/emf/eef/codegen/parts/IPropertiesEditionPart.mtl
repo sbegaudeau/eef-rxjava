@@ -56,8 +56,15 @@ public interface [view.pepInterface()/] {
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters declaration'))]
 	
 	// [/protected]
-
 [/for]
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// [protected ('for additional methods')]
 	
 	// [/protected]
@@ -78,6 +85,13 @@ package [view.partsPackage()/];
  * [viewRepository.associatedGenModel().authorText().trim()/]
  */
 public interface [view.pepInterface()/] {
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// [protected (' for getters and setters declaration')]
 	
