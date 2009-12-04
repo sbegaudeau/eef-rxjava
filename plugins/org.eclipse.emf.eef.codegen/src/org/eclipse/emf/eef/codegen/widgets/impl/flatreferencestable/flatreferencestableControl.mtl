@@ -19,8 +19,8 @@
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
-						if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
-							[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
+			[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable') and not editionElement.model.derived)]

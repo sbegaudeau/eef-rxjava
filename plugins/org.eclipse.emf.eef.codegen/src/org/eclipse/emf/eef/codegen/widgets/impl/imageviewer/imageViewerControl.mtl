@@ -19,16 +19,16 @@
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
 [comment @Override widgetControl.liveUpdater /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
-							if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
-		[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-								if (msg.getNewValue() != null)
-									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
-		[else]
-								//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
-		[/if]
-								else
-									[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
-							}
+		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
+[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
+			if (msg.getNewValue() != null)
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
+[else]
+//FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
+[/if]
+			else
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
+		}
 [/template]
 
 [comment @Override widgetControl.liveCommandUpdater /]
