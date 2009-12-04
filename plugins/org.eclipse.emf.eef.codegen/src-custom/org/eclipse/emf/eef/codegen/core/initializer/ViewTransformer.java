@@ -39,15 +39,15 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class ViewTransformer extends AbstractTransformer {
-	
+
 	private Map<String, EObject> toolkits;
-	
+
 	private Map<EObject, List<ViewElement>> workingResolvTemp;
-	
+
 	private ViewsRepository repository;
 
 	/* ===== Constructor ===== */
-	
+
 	public ViewTransformer(Map<String, EObject> toolkits) {
 		this.toolkits = toolkits;
 		workingResolvTemp = new HashMap<EObject, List<ViewElement>>();
@@ -57,7 +57,7 @@ public class ViewTransformer extends AbstractTransformer {
 	public Map<EObject, List<ViewElement>> getWorkingResolvTemp() {
 		return workingResolvTemp;
 	}
-	
+
 	public void addElementToEObject(EObject source, ViewElement element) {
 		if (workingResolvTemp.get(source) != null)
 			workingResolvTemp.get(source).add(element);
@@ -67,16 +67,17 @@ public class ViewTransformer extends AbstractTransformer {
 			workingResolvTemp.put(source, list);
 		}
 	}
-	
+
 	/* ===== Transformation ===== */
-	
+
 	public ViewsRepository genPackage2ViewsRepository(GenPackage genPackage, String repositoryKind) {
-		
+
 		repository = ViewsFactory.eINSTANCE.createViewsRepository();
 		repository.getRepositoryKind().add("SWT");
 		repository.getRepositoryKind().add("Form");
 		repository.setName(genPackage.getEcorePackage().getName());
-		repository.setDocumentation("Views repository for " + genPackage.getEcorePackage().getName() + " GenPackage");
+		repository.setDocumentation("Views repository for " + genPackage.getEcorePackage().getName()
+				+ " GenPackage");
 		Category views = ViewsFactory.eINSTANCE.createCategory();
 		views.setName(genPackage.getEcorePackage().getName());
 		repository.getCategories().add(views);
@@ -85,9 +86,9 @@ public class ViewTransformer extends AbstractTransformer {
 				views.getViews().addAll(genClass2Views(genClass));
 			}
 		}
-		
+
 		return repository;
-		
+
 	}
 
 	public List<View> genClass2Views(GenClass genClass) {
@@ -129,7 +130,7 @@ public class ViewTransformer extends AbstractTransformer {
 		}
 		return result;
 	}
-	
+
 	public View genClass2AdditionalView(GenClass genClass) {
 		View newView = null;
 		GenAnnotation genAnnotation = genClass.getGenAnnotation("component");
@@ -141,7 +142,7 @@ public class ViewTransformer extends AbstractTransformer {
 			}
 		}
 		return newView;
-		
+
 	}
 
 	public ElementEditor eStructuralFeature2ViewElement(EStructuralFeature feature) {
@@ -150,33 +151,30 @@ public class ViewTransformer extends AbstractTransformer {
 		if (feature instanceof EAttribute) {
 			if (feature.isMany()) {
 				result.setRepresentation(getWidget("MultiValuedEditor"));
-			}
-			else {
-				if (feature.getEType().getName().equals("EBoolean") || feature.getEType().getName().equals("EBool") || feature.getEType().getName().equalsIgnoreCase("Boolean")) {
+			} else {
+				if (feature.getEType().getName().equals("EBoolean")
+						|| feature.getEType().getName().equals("EBool")
+						|| feature.getEType().getName().equalsIgnoreCase("Boolean")) {
 					result.setRepresentation(getWidget("Checkbox"));
-				}
-				else if (EcorePackage.eINSTANCE.getEEnum().isInstance(feature.getEType())) {
+				} else if (EcorePackage.eINSTANCE.getEEnum().isInstance(feature.getEType())) {
 					result.setRepresentation(getWidget("EMFComboViewer"));
 				}
 				// FIXME: HACK
 				else if ("documentation".equals(feature.getName())) {
 					result.setRepresentation(getWidget("Textarea"));
-				}
-				else {
+				} else {
 					result.setRepresentation(getWidget("Text"));
 				}
-				}
-		}
-		else if (feature instanceof EReference) {
-			EReference reference = (EReference) feature;
+			}
+		} else if (feature instanceof EReference) {
+			EReference reference = (EReference)feature;
 			if (reference.isContainment()) {
 				if (reference.isMany())
 					result.setRepresentation(getWidget("AdvancedTableComposition"));
 				else {
 					// I don't now what is it for the moment !
 				}
-			}
-			else {
+			} else {
 				if (reference.isMany())
 					result.setRepresentation(getWidget("AdvancedReferencesTable"));
 				else
@@ -186,13 +184,13 @@ public class ViewTransformer extends AbstractTransformer {
 		addElementToEObject(feature, result);
 		return result;
 	}
-	
+
 	/* ===== Widgets management ===== */
-	
+
 	private Widget getWidget(String name) {
 		if (name != null) {
 			for (Iterator<String> iterator = toolkits.keySet().iterator(); iterator.hasNext();) {
-				String key = (String) iterator.next();
+				String key = (String)iterator.next();
 				EObject toolkit = toolkits.get(key);
 				TreeIterator<EObject> iter = toolkit.eAllContents();
 				while (iter.hasNext()) {
@@ -204,9 +202,9 @@ public class ViewTransformer extends AbstractTransformer {
 		}
 		return null;
 	}
-	
+
 	/* ===== GenConstraint management ===== */
-	
+
 	private Map<String, List<EStructuralFeature>> genClassGroups(GenClass genClass) {
 		Map<String, List<EStructuralFeature>> result = new HashMap<String, List<EStructuralFeature>>();
 		for (EStructuralFeature feature : genClass.getEcoreClass().getEAllStructuralFeatures()) {
@@ -214,26 +212,24 @@ public class ViewTransformer extends AbstractTransformer {
 				String groupConstraint = genConstraint(feature, "group");
 				if (groupConstraint != null) {
 					addToGroup(result, feature, groupConstraint);
-				}
-				else {
+				} else {
 					// FIXME: HACK
 					String docConstraint = genConstraint(feature, "documentation");
 					if ("true".equals(docConstraint))
-						addToGroup(result, feature,"view");
+						addToGroup(result, feature, "view");
 					else
-						addToGroup(result, feature,"properties");
+						addToGroup(result, feature, "properties");
 				}
 			}
 		}
-		
-		
+
 		return result;
 	}
-	
+
 	/* ===== Misc utilities ===== */
 
-	private void addToGroup(Map<String, List<EStructuralFeature>> result,
-			EStructuralFeature feature, String genConstraint) {
+	private void addToGroup(Map<String, List<EStructuralFeature>> result, EStructuralFeature feature,
+			String genConstraint) {
 		if (result.get(genConstraint) != null)
 			result.get(genConstraint).add(feature);
 		else {
@@ -242,6 +238,5 @@ public class ViewTransformer extends AbstractTransformer {
 			result.put(genConstraint, list);
 		}
 	}
-	
-	
-} 
+
+}

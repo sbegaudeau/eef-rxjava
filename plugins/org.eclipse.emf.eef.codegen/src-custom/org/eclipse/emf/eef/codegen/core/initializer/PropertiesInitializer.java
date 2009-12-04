@@ -50,8 +50,11 @@ import org.eclipse.emf.eef.views.resources.ViewsResourceFactory;
 public class PropertiesInitializer extends AbstractPropertiesInitializer {
 
 	private static final String SWT_TOOLKIT_NAME = "SWT";
+
 	private static final String EMF_PROPERTIES_TOOLKIT_NAME = "EMFProperties";
+
 	private static String swt_pathmap = null;
+
 	private static String emfproperties_pathmap = null;
 
 	private static String findToolkitPath(EObject view, String str) {
@@ -73,29 +76,29 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		return emfproperties_pathmap;
 	}
 
-
 	/**
-	 * Updates the registry used for looking up a package based namespace, in
-	 * the resource set.
+	 * Updates the registry used for looking up a package based namespace, in the resource set.
 	 * 
 	 * @param resourceSet
 	 *            is the resource set
 	 * @generated
 	 */
 	private void registerPackages(ResourceSet resourceSet) {
-		resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(),
+		resourceSet.getPackageRegistry().put(
+				org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(),
 				org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(),
+				org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(GenModelPackage.eINSTANCE.getNsURI(), GenModelFactory.eINSTANCE);
 		resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE.getNsURI(),
 				org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE.getNsURI(),
+		resourceSet.getPackageRegistry().put(
+				org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE.getNsURI(),
 				org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE);
 
 	}
 
 	/**
-	 * 
 	 * @param modelURI
 	 * @param resourceSet
 	 * @return
@@ -114,32 +117,31 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 	}
 
 	/**
-	 * Updates the registry used for looking up resources factory in the given
-	 * resource set.
+	 * Updates the registry used for looking up resources factory in the given resource set.
 	 * 
 	 * @param resourceSet
 	 *            The resource set that is to be updated.
 	 * @generated
 	 */
 	private void registerResourceFactories(ResourceSet resourceSet) {
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("views", new ViewsResourceFactory());
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("components", new ComponentsResourceFactory());
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION,
-				new XMIResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore",
+				new EcoreResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("views",
+				new ViewsResourceFactory());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("components",
+				new ComponentsResourceFactory());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+				Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 	}
 
 	/**
-	 * This will create a {@link Resource} given the model extension it is
-	 * intended for and a ResourceSet.
+	 * This will create a {@link Resource} given the model extension it is intended for and a ResourceSet.
 	 * 
 	 * @param modelURI
-	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is
-	 *            stored.
+	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
 	 * @param resourceSet
 	 *            The {@link ResourceSet} to load the model in.
-	 * @return The {@link Resource} given the model extension it is intended
-	 *         for.
+	 * @return The {@link Resource} given the model extension it is intended for.
 	 * @generated
 	 */
 	private Resource createResource(URI modelURI, ResourceSet resourceSet) {
@@ -150,9 +152,11 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
 		final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
 		if (resourceFactory != null) {
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, resourceFactory);
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
+					resourceFactory);
 		} else {
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, new XMIResourceFactoryImpl());
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
+					new XMIResourceFactoryImpl());
 		}
 		return resourceSet.createResource(modelURI);
 	}
@@ -162,26 +166,26 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 	 * 
 	 * @param args
 	 *            are the arguments
-	 * @throws CoreException 
+	 * @throws CoreException
 	 * @generated
 	 */
-//	public static void main(String[] args) {
-//		try {
-//			if (args.length != 2) {
-//				System.out.println("Arguments not valid : {model, folder}.");
-//			} else {
-//				modelURI = URI.createURI("file:/" + args[0]);
-//				File folder = new File(args[1]);
-//				PropertiesInitializer initializer = new PropertiesInitializer(modelURI, folder);
-//				initializer.initialize();
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	// public static void main(String[] args) {
+	// try {
+	// if (args.length != 2) {
+	// System.out.println("Arguments not valid : {model, folder}.");
+	// } else {
+	// modelURI = URI.createURI("file:/" + args[0]);
+	// File folder = new File(args[1]);
+	// PropertiesInitializer initializer = new PropertiesInitializer(modelURI, folder);
+	// initializer.initialize();
+	// }
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	// }
 
 	public void initialize(URI modelURI, IContainer targetFolder) throws IOException, CoreException {
-		
+
 		ResourceSet resourceSet = new ResourceSetImpl();
 		registerResourceFactories(resourceSet);
 		registerPackages(resourceSet);
@@ -190,14 +194,16 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		if (!targetFolder.exists()) {
 			if (targetFolder instanceof IFolder)
 				((IFolder)targetFolder).create(true, true, new NullProgressMonitor());
-			else 
+			else
 				return;
 		}
 
 		Map<String, EObject> toolkits = new HashMap<String, EObject>();
 		View instanceView = ViewsFactory.eINSTANCE.createView();
-		toolkits.put(SWT_TOOLKIT_NAME, load(URI.createURI(getSWTPathmap(instanceView), false), model.eResource().getResourceSet()));
-		toolkits.put(EMF_PROPERTIES_TOOLKIT_NAME, load(URI.createURI(getEMFPropertiesPathmap(instanceView), false), model.eResource().getResourceSet()));
+		toolkits.put(SWT_TOOLKIT_NAME, load(URI.createURI(getSWTPathmap(instanceView), false), model
+				.eResource().getResourceSet()));
+		toolkits.put(EMF_PROPERTIES_TOOLKIT_NAME, load(URI.createURI(getEMFPropertiesPathmap(instanceView),
+				false), model.eResource().getResourceSet()));
 
 		ViewTransformer viewTransformer = new ViewTransformer(toolkits);
 		TreeIterator<EObject> allContents = model.eAllContents();
@@ -206,28 +212,31 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		while (allContents.hasNext()) {
 			EObject next = allContents.next();
 			if (next instanceof GenPackage) {
-				GenPackage genPack = (GenPackage) next;
+				GenPackage genPack = (GenPackage)next;
 				if (genPack.eContents().size() >= 1) {
-					ViewsRepository repository = viewTransformer.genPackage2ViewsRepository(genPack, SWT_TOOLKIT_NAME);
+					ViewsRepository repository = viewTransformer.genPackage2ViewsRepository(genPack,
+							SWT_TOOLKIT_NAME);
 					repositories.add(repository);
-					ComponentTransformer componentTransformer = new ComponentTransformer(viewTransformer.getWorkingResolvTemp());
+					ComponentTransformer componentTransformer = new ComponentTransformer(viewTransformer
+							.getWorkingResolvTemp());
 					PropertiesEditionContext context = componentTransformer.genPackage2Context(genPack);
 					contexts.add(context);
-					
+
 				}
 			}
 		}
-		String componentsFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment() + ".components";
+		String componentsFilePath = targetFolder.getFullPath() + "/"
+				+ model.eResource().getURI().trimFileExtension().lastSegment() + ".components";
 		URI componentsModelUri = URI.createPlatformResourceURI(componentsFilePath, false);
 		Resource componentsResource = model.eResource().getResourceSet().createResource(componentsModelUri);
-		for (PropertiesEditionContext context : contexts) 
-			componentsResource.getContents().add(context);								
-		for (ViewsRepository repository : repositories) 
+		for (PropertiesEditionContext context : contexts)
+			componentsResource.getContents().add(context);
+		for (ViewsRepository repository : repositories)
 			componentsResource.getContents().add(repository);
 		componentsResource.save(Collections.EMPTY_MAP);
 		EEFGenModel eefGenModel = createEEFGenModel(repositories, contexts, targetFolder);
-		String eefgenFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment()
-		+ ".eefgen";
+		String eefgenFilePath = targetFolder.getFullPath() + "/"
+				+ model.eResource().getURI().trimFileExtension().lastSegment() + ".eefgen";
 		URI eefgenModelUri = URI.createPlatformResourceURI(eefgenFilePath, false);
 		Resource eefgenResource = model.eResource().getResourceSet().createResource(eefgenModelUri);
 		eefgenResource.getContents().add(eefGenModel);
@@ -235,20 +244,22 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		return;
 
 	}
-	
-	private EEFGenModel createEEFGenModel(List<ViewsRepository> repositories, List<PropertiesEditionContext> contexts, IContainer targetFolder) {
+
+	private EEFGenModel createEEFGenModel(List<ViewsRepository> repositories,
+			List<PropertiesEditionContext> contexts, IContainer targetFolder) {
 		EEFGenModel eefGenModel = EEFGenFactory.eINSTANCE.createEEFGenModel();
 		eefGenModel.setGenDirectory(findGenDirectory(targetFolder));
-		for (PropertiesEditionContext context : contexts) 
+		for (PropertiesEditionContext context : contexts)
 			eefGenModel.getEditionContexts().add(createGenEditionContext(context));
 		String contextPackage = "";
 		if (contexts.size() > 0)
-			contextPackage = findBasePackage(contexts.get(0).getModel()) + "." + contexts.get(0).getModel().getEcorePackage().getName().toLowerCase();
-		for (ViewsRepository repository : repositories) 
+			contextPackage = findBasePackage(contexts.get(0).getModel()) + "."
+					+ contexts.get(0).getModel().getEcorePackage().getName().toLowerCase();
+		for (ViewsRepository repository : repositories)
 			eefGenModel.getViewsRepositories().add(createGenViewsRepository(repository, contextPackage));
 		return eefGenModel;
 	}
-	
+
 	private GenEditionContext createGenEditionContext(PropertiesEditionContext context) {
 		GenEditionContext genEditionContext = EEFGenFactory.eINSTANCE.createGenEditionContext();
 		genEditionContext.setPropertiesEditionContext(context);
@@ -257,8 +268,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		genEditionContext.setDescriptorsGenericPropertiesViews(true);
 		return genEditionContext;
 	}
-	
-	
+
 	private GenViewsRepository createGenViewsRepository(ViewsRepository repository, String contextPackage) {
 		GenViewsRepository genViewsRepository = EEFGenFactory.eINSTANCE.createGenViewsRepository();
 		genViewsRepository.setViewsRepository(repository);
@@ -267,15 +277,15 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		genViewsRepository.setFormViews(true);
 		return genViewsRepository;
 	}
-	
+
 	private String findBasePackage(GenPackage genPackage) {
 		if (genPackage.getBasePackage() != null)
 			return genPackage.getBasePackage();
 		return "";
 	}
-	
+
 	private String findGenDirectory(IContainer targetFolder) {
 		return targetFolder.getFullPath().removeLastSegments(1).toString() + "/src-gen";
-	}	
+	}
 
 }
