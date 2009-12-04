@@ -211,12 +211,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [else]
 					Runnable updateRunnable = new Runnable() {
 						public void run() {
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[editionElement.liveUpdater(view, pec)/]
-[/for]
-[comment add ViewReference support/]
-[view.liveUpdaterForReferencedViews(pec)/]
-[/if]
+							runUpdateRunnable(msg);
 						}
 					};
 					if (null == Display.getCurrent()) {
@@ -228,6 +223,18 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+[editionElement.liveUpdater(view, pec)/]
+[/for]
+[comment add ViewReference support/]
+[view.liveUpdaterForReferencedViews(pec)/]
+[/if]
 	}
 
 	/**
