@@ -36,6 +36,8 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 [for (view : View | viewsRepository.eAllContents(views::View))]
 	public static String [view.name.toJavaClassifier()/]_ReadOnly;
 
+	public static String [view.name.toJavaClassifier()/]_Part_Title;
+
 [/for]
 [for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
 	public static String [editor.editorKey(editor.owningView())/];
