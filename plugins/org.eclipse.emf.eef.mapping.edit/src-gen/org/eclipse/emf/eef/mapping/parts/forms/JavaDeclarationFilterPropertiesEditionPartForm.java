@@ -58,7 +58,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -66,11 +66,11 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	public JavaDeclarationFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -82,11 +82,11 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -95,9 +95,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
 		Section filterExpressionSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		filterExpressionSection.setText(MappingMessages.JavaDeclarationFilterPropertiesEditionPart_FilterExpressionGroupLabel);
@@ -168,12 +166,11 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	}
 
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -194,7 +191,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		if (newValue != null) {
 			methodName.setText(newValue);
 		} else {
-			methodName.setText("");  //$NON-NLS-1$
+			methodName.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -205,7 +202,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	public void unsetMessageForMethodName() {
 		messageManager.removeMessage("MethodName_key", methodName);
 	}
-
 
 /**
 	 * {@inheritDoc}
@@ -267,9 +263,17 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 
 
 
-	
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.JavaDeclarationFilter_Part_Title;
+	}
+
 	// Start of user code additional methods
 	
 	// End of user code
 
-}	
+}

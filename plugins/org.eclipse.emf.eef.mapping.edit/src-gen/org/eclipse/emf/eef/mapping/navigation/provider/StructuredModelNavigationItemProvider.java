@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StructuredModelNavigationItemProvider.java,v 1.5 2009/09/10 12:28:39 sbouchet Exp $
+ * $Id: StructuredModelNavigationItemProvider.java,v 1.6 2009/12/04 16:04:44 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.provider;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;

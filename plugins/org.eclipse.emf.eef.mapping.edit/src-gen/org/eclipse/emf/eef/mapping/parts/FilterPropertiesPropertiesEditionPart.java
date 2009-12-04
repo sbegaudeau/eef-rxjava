@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.3 2009/07/31 14:10:32 glefur Exp $
+ * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.4 2009/12/04 16:05:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -40,6 +40,7 @@ public interface FilterPropertiesPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the Mandatory
 	 */
@@ -60,9 +61,15 @@ public interface FilterPropertiesPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
 	
 	// End of user code
 
 }
-

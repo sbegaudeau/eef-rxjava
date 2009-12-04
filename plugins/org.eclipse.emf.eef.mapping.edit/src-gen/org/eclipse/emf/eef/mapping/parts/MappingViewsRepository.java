@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingViewsRepository.java,v 1.11 2009/07/31 14:10:32 glefur Exp $
+ * $Id: MappingViewsRepository.java,v 1.12 2009/12/04 16:05:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -19,10 +19,10 @@ package org.eclipse.emf.eef.mapping.parts;
 public class MappingViewsRepository {
 
 	public static final int SWT_KIND = 0;
-		
+
 	public static final int FORM_KIND = 1;
 
-	
+
 	/**
 	 * Documentation view descriptor
 	 */
@@ -38,7 +38,7 @@ public class MappingViewsRepository {
 	public static class FilterProperties {
 		public static String name = "mapping::Filter properties::Name";	
 
-		public static String mandatory = "mapping::Filter properties::Mandatory";	
+	public static String mandatory = "mapping::Filter properties::Mandatory";	
 
 
 	}
@@ -52,7 +52,7 @@ public class MappingViewsRepository {
 
 		public static String model = "mapping::EMFElementBinding::model";	
 
-		public static String views = "mapping::EMFElementBinding::views";	
+	public static String views = "mapping::EMFElementBinding::views";	
 
 
 	}
@@ -66,7 +66,7 @@ public class MappingViewsRepository {
 
 		public static String model = "mapping::EMFPropertyBinding::model";	
 
-		public static String views = "mapping::EMFPropertyBinding::views";	
+	public static String views = "mapping::EMFPropertyBinding::views";	
 
 
 	}
@@ -80,7 +80,7 @@ public class MappingViewsRepository {
 
 		public static String model = "mapping::StandardElementBinding::model";	
 
-		public static String views = "mapping::StandardElementBinding::views";	
+	public static String views = "mapping::StandardElementBinding::views";	
 
 
 	}
@@ -94,7 +94,7 @@ public class MappingViewsRepository {
 
 		public static String model = "mapping::StandardPropertyBinding::model";	
 
-		public static String views = "mapping::StandardPropertyBinding::views";	
+	public static String views = "mapping::StandardPropertyBinding::views";	
 
 
 	}
@@ -126,7 +126,7 @@ public class MappingViewsRepository {
 
 		public static String model = "mapping::EMFMultiPropertiesBinding::model";	
 
-		public static String views = "mapping::EMFMultiPropertiesBinding::views";	
+	public static String views = "mapping::EMFMultiPropertiesBinding::views";	
 
 
 	}
@@ -135,7 +135,7 @@ public class MappingViewsRepository {
 	 * ModelNavigation view descriptor
 	 */
 	public static class ModelNavigation {
-
+	
 	}
 
 	/**
@@ -144,9 +144,9 @@ public class MappingViewsRepository {
 	public static class SimpleModelNavigation {
 		public static String index = "mapping::SimpleModelNavigation::index";	
 
-		public static String feature = "mapping::SimpleModelNavigation::feature";	
+	public static String feature = "mapping::SimpleModelNavigation::feature";	
 
-		public static String discriminatorType = "mapping::SimpleModelNavigation::discriminatorType";	
+	public static String discriminatorType = "mapping::SimpleModelNavigation::discriminatorType";	
 
 
 	}
@@ -158,7 +158,7 @@ public class MappingViewsRepository {
 		public static String referencedFeature = "mapping::OnlyReferenceTypeFilter::referencedFeature";	
 
 
-
+	
 
 	}
 
@@ -169,7 +169,7 @@ public class MappingViewsRepository {
 		public static String oCLExpressionBody = "mapping::OCLFilter::OCLExpressionBody";	
 
 
-
+	
 
 	}
 
@@ -180,7 +180,7 @@ public class MappingViewsRepository {
 		public static String javaExpressionBody = "mapping::JavaExpressionFilter::javaExpressionBody";	
 
 
-
+	
 
 	}
 
@@ -191,9 +191,8 @@ public class MappingViewsRepository {
 		public static String methodName = "mapping::JavaDeclarationFilter::methodName";	
 
 
-
+	
 
 	}
 
 }
-

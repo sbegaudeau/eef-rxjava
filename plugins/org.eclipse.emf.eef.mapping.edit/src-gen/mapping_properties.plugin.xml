@@ -2,6 +2,22 @@
 <?eclipse version="3.0"?>
 
  <plugin>
+ 
+  <!-- EEF extensions -->
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.mapping.providers.MappingPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.mapping.providers.MappingPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+ 
+   <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -77,11 +93,6 @@
                id="Documentation">
          </propertyTab>
          <propertyTab
-               label="Filter properties"
-               category="extended"
-               id="Filter properties">
-         </propertyTab>
-         <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation">
@@ -115,6 +126,11 @@
                label="Documentation"
                category="extended"
                id="Documentation">
+         </propertyTab>
+         <propertyTab
+               label="Filter properties"
+               category="extended"
+               id="Filter properties">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -155,27 +171,19 @@
              </input>
          </propertySection>
          <propertySection
+               tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
+             </input>
+         </propertySection>
+         <propertySection
                tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
              <input
                     type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
-             </input>
-         </propertySection>
-         <propertySection
-               tab="Documentation"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding">
-             <input
-                    type="org.eclipse.emf.eef.mapping.EMFPropertyBinding">
-             </input>
-         </propertySection>
-         <propertySection
-               tab="Documentation"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
-             <input
-                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
              </input>
          </propertySection>
          <propertySection
@@ -189,9 +197,9 @@
          <propertySection
                tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
+               id="org.eclipse.emf.eef.mapping.section.StandardElementBinding">
              <input
-                    type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
+                    type="org.eclipse.emf.eef.mapping.StandardElementBinding">
              </input>
          </propertySection>
          <propertySection
@@ -204,6 +212,14 @@
          </propertySection>
          <propertySection
                tab="Documentation"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding">
+             <input
+                    type="org.eclipse.emf.eef.mapping.StandardPropertyBinding">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.Category">
              <input
@@ -211,7 +227,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.Category">
              <input
@@ -235,7 +251,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
              <input
@@ -243,7 +259,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding">
              <input
@@ -267,7 +283,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Filter properties"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter">
              <input
@@ -275,7 +291,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Filter properties"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter">
              <input
@@ -288,14 +304,6 @@
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter">
-             </input>
-         </propertySection>
-         <propertySection
-               tab="Filter properties"
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.filters.section.OCLFilter">
-             <input
-                    type="org.eclipse.emf.eef.mapping.filters.OCLFilter">
              </input>
          </propertySection>
          <propertySection
@@ -317,6 +325,14 @@
          <propertySection
                tab="Filter properties"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.OCLFilter">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.OCLFilter">
+             </input>
+         </propertySection>
+         <propertySection
+               tab="Base"
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter">
@@ -331,7 +347,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
+               tab="Filter properties"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter">
              <input
@@ -339,7 +355,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Filter properties"
+               tab="Documentation"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter">
              <input
@@ -355,7 +371,7 @@
              </input>
          </propertySection>
          <propertySection
-               tab="Documentation"
+               tab="Filter properties"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter">
              <input
@@ -365,4 +381,3 @@
       </propertySections>
    </extension>
  </plugin>
-

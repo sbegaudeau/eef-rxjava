@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractPropertyBindingItemProvider.java,v 1.7 2009/09/10 12:28:39 sbouchet Exp $
+ * $Id: AbstractPropertyBindingItemProvider.java,v 1.8 2009/12/04 16:04:43 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -31,11 +31,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
-
 import org.eclipse.emf.eef.mapping.filters.FiltersFactory;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewElement;

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.11 2009/07/31 14:10:32 glefur Exp $
+ * $Id: DocumentedElementPropertiesEditionComponent.java,v 1.12 2009/12/04 16:04:44 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -32,7 +34,7 @@ import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -42,6 +44,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -62,7 +66,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	/**
 	 * The Documentation part
 	 */
-	private DocumentationPropertiesEditionPart documentationPart;
+	protected DocumentationPropertiesEditionPart documentationPart;
 
 	/**
 	 * Default constructor
@@ -91,19 +95,39 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (documentationPart == null)
 					DocumentedElementPropertiesEditionComponent.this.dispose();
 				else {
-					if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null)
-						documentationPart.setDocumentation((String)msg.getNewValue());
-
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null){
+			if (msg.getNewValue() != null) {
+				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				documentationPart.setDocumentation("");
+			}
+		}
+
+
 	}
 
 	/**
@@ -130,7 +154,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (documentedElement != null && DOCUMENTATION_PART.equals(key)) {
@@ -169,9 +193,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			final DocumentedElement documentedElement = (DocumentedElement)elt;
 			// init values
 			if (documentedElement.getDocumentation() != null)
-				documentationPart.setDocumentation(documentedElement.getDocumentation());
-
-			
+				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), documentedElement.getDocumentation()));
 			// init filters
 
 		}
@@ -193,9 +215,8 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (documentedElement != null) {
-			cc.append(SetCommand.create(editingDomain, documentedElement, MappingPackage.eINSTANCE.getDocumentedElement_Documentation(), documentationPart.getDocumentation()));
-
+		if ((documentedElement != null) && (documentationPart != null)) { 
+			cc.append(SetCommand.create(editingDomain, documentedElement, MappingPackage.eINSTANCE.getDocumentedElement_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), documentationPart.getDocumentation())));
 
 
 		}
@@ -213,8 +234,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof DocumentedElement) {
 			DocumentedElement documentedElementToUpdate = (DocumentedElement)source;
-			documentedElementToUpdate.setDocumentation(documentationPart.getDocumentation());
-
+			documentedElementToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), documentationPart.getDocumentation()));
 
 
 			return documentedElementToUpdate;
@@ -232,13 +252,13 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (MappingViewsRepository.Documentation.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, documentedElement, MappingPackage.eINSTANCE.getDocumentedElement_Documentation(), event.getNewValue()));
-
+			if (MappingViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, documentedElement, MappingPackage.eINSTANCE.getDocumentedElement_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -286,6 +306,8 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -308,7 +330,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -323,5 +344,12 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			documentedElement.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return documentationPart.getTitle();
+	}
 }
-

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.12 2009/07/31 14:10:31 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.13 2009/12/04 16:05:13 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -58,7 +58,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -195,7 +195,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		if (newValue != null) {
 			index.setText(newValue);
 		} else {
-			index.setText("");  //$NON-NLS-1$
+			index.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -361,6 +361,15 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.SimpleModelNavigation_Part_Title;
+	}
 
 	// Start of user code additional methods
  	public void setDiscriminatorInput(SimpleModelNavigation simpleModelNavigation, ResourceSet allResources){

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingMessages.java,v 1.10 2009/07/31 14:10:32 glefur Exp $
+ * $Id: MappingMessages.java,v 1.11 2009/12/04 16:05:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -63,33 +63,63 @@ public class MappingMessages extends NLS {
 
 	public static String Documentation_ReadOnly;
 
+	public static String Documentation_Part_Title;
+
 	public static String FilterProperties_ReadOnly;
+
+	public static String FilterProperties_Part_Title;
 
 	public static String EMFElementBinding_ReadOnly;
 
+	public static String EMFElementBinding_Part_Title;
+
 	public static String EMFPropertyBinding_ReadOnly;
+
+	public static String EMFPropertyBinding_Part_Title;
 
 	public static String StandardElementBinding_ReadOnly;
 
+	public static String StandardElementBinding_Part_Title;
+
 	public static String StandardPropertyBinding_ReadOnly;
+
+	public static String StandardPropertyBinding_Part_Title;
 
 	public static String Category_ReadOnly;
 
+	public static String Category_Part_Title;
+
 	public static String ElementBindingReference_ReadOnly;
+
+	public static String ElementBindingReference_Part_Title;
 
 	public static String EMFMultiPropertiesBinding_ReadOnly;
 
+	public static String EMFMultiPropertiesBinding_Part_Title;
+
 	public static String ModelNavigation_ReadOnly;
+
+	public static String ModelNavigation_Part_Title;
 
 	public static String SimpleModelNavigation_ReadOnly;
 
+	public static String SimpleModelNavigation_Part_Title;
+
 	public static String OnlyReferenceTypeFilter_ReadOnly;
+
+	public static String OnlyReferenceTypeFilter_Part_Title;
 
 	public static String OCLFilter_ReadOnly;
 
+	public static String OCLFilter_Part_Title;
+
 	public static String JavaExpressionFilter_ReadOnly;
 
+	public static String JavaExpressionFilter_Part_Title;
+
 	public static String JavaDeclarationFilter_ReadOnly;
+
+	public static String JavaDeclarationFilter_Part_Title;
 
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 
@@ -191,4 +221,3 @@ public class MappingMessages extends NLS {
 		//protect instanciation
 	}
 }
-

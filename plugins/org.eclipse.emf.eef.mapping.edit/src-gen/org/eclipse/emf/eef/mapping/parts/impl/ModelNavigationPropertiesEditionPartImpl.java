@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelNavigationPropertiesEditionPartImpl.java,v 1.10 2009/07/31 14:10:31 glefur Exp $
+ * $Id: ModelNavigationPropertiesEditionPartImpl.java,v 1.11 2009/12/04 16:05:14 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -38,7 +38,7 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -101,6 +101,15 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.ModelNavigation_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

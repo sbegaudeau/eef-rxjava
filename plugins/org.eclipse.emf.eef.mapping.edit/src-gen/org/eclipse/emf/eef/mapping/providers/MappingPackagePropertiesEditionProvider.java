@@ -9,17 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.10 2009/07/31 14:10:32 glefur Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.11 2009/12/04 16:05:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.FilterPropertiesPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.OCLFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.mapping.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -47,7 +41,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		append(createJavaExpressionFilterPropertiesEditionProvider());
 		append(createJavaDeclarationFilterPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * DocumentedElement instances.
@@ -62,7 +56,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
 		return documentedElementPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * BindingFilter instances.
@@ -77,7 +71,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			filterPropertiesPropertiesEditionProvider = new FilterPropertiesPropertiesEditionProvider();
 		return filterPropertiesPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Databinding instances.
@@ -92,7 +86,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			databindingPropertiesEditionProvider = new DatabindingPropertiesEditionProvider();
 		return databindingPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFElementBinding instances.
@@ -107,7 +101,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			eMFElementBindingPropertiesEditionProvider = new EMFElementBindingPropertiesEditionProvider();
 		return eMFElementBindingPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFPropertyBinding instances.
@@ -122,7 +116,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			eMFPropertyBindingPropertiesEditionProvider = new EMFPropertyBindingPropertiesEditionProvider();
 		return eMFPropertyBindingPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * StandardElementBinding instances.
@@ -137,7 +131,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			standardElementBindingPropertiesEditionProvider = new StandardElementBindingPropertiesEditionProvider();
 		return standardElementBindingPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * StandardPropertyBinding instances.
@@ -152,7 +146,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			standardPropertyBindingPropertiesEditionProvider = new StandardPropertyBindingPropertiesEditionProvider();
 		return standardPropertyBindingPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Category instances.
@@ -167,7 +161,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			categoryPropertiesEditionProvider = new CategoryPropertiesEditionProvider();
 		return categoryPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ElementBindingReference instances.
@@ -182,7 +176,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			elementBindingReferencePropertiesEditionProvider = new ElementBindingReferencePropertiesEditionProvider();
 		return elementBindingReferencePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFMultiPropertiesBinding instances.
@@ -197,7 +191,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			eMFMultiPropertiesBindingPropertiesEditionProvider = new EMFMultiPropertiesBindingPropertiesEditionProvider();
 		return eMFMultiPropertiesBindingPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * SimpleModelNavigation instances.
@@ -212,7 +206,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			simpleModelNavigationPropertiesEditionProvider = new SimpleModelNavigationPropertiesEditionProvider();
 		return simpleModelNavigationPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * OnlyReferenceTypeFilter instances.
@@ -227,7 +221,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			onlyReferenceTypeFilterPropertiesEditionProvider = new OnlyReferenceTypeFilterPropertiesEditionProvider();
 		return onlyReferenceTypeFilterPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * OCLFilter instances.
@@ -242,7 +236,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			oCLFilterPropertiesEditionProvider = new OCLFilterPropertiesEditionProvider();
 		return oCLFilterPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * JavaExpressionFilter instances.
@@ -257,7 +251,7 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			javaExpressionFilterPropertiesEditionProvider = new JavaExpressionFilterPropertiesEditionProvider();
 		return javaExpressionFilterPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * JavaDeclarationFilter instances.
@@ -272,5 +266,5 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 			javaDeclarationFilterPropertiesEditionProvider = new JavaDeclarationFilterPropertiesEditionProvider();
 		return javaDeclarationFilterPropertiesEditionProvider;
 	}
-	
-}	
+
+}

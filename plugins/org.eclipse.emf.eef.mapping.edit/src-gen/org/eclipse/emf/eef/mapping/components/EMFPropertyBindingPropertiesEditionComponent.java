@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionComponent.java,v 1.10 2009/07/31 14:10:32 glefur Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionComponent.java,v 1.11 2009/12/04 16:04:44 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -59,11 +59,11 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 * 		getPropertiesEditionPart(int, java.lang.String)
+	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ("Base".equals(key)) {
@@ -76,7 +76,7 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 * setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (MappingViewsRepository.EMFPropertyBinding.class == key) {
@@ -87,8 +87,8 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent
-	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == MappingViewsRepository.EMFPropertyBinding.class) {
@@ -97,8 +97,6 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 			if (key == MappingViewsRepository.Documentation.class) {
 				super.initPart(key, kind, element, allResource);
 			
-			
 			}
 	}
 }
-

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingPropertiesEditionPartImpl.java,v 1.13 2009/07/31 14:10:31 glefur Exp $
+ * $Id: StandardElementBindingPropertiesEditionPartImpl.java,v 1.14 2009/12/04 16:05:13 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -74,7 +74,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -212,7 +212,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * 
 	 */
-	private void moveViews(View element, int oldIndex, int newIndex) {
+	protected void moveViews(View element, int oldIndex, int newIndex) {
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.moveElement(element, oldIndex, newIndex);
 		views.refresh();
@@ -222,7 +222,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * 
 	 */
-	private void removeFromViews(View element) {
+	protected void removeFromViews(View element) {
 
 		// Start of user code removeFromViews() method body
 
@@ -238,7 +238,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * 
 	 */
-	private void editViews(View element) {
+	protected void editViews(View element) {
 
 		// Start of user code editViews() method body
 				 
@@ -284,7 +284,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -466,6 +466,15 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.StandardElementBinding_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

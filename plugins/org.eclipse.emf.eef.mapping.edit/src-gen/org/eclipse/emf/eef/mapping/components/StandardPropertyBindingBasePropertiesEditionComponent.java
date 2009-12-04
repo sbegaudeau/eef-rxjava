@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingBasePropertiesEditionComponent.java,v 1.11 2009/07/31 14:10:31 glefur Exp $
+ * $Id: StandardPropertyBindingBasePropertiesEditionComponent.java,v 1.12 2009/12/04 16:04:44 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -24,7 +24,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -40,7 +42,7 @@ import org.eclipse.emf.eef.mapping.ModelProperty;
 import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -51,10 +53,13 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -75,7 +80,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	/**
 	 * The Base part
 	 */
-	private StandardPropertyBindingPropertiesEditionPart basePart;
+	protected StandardPropertyBindingPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -104,23 +109,43 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					StandardPropertyBindingBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null)
-						basePart.setName((String)msg.getNewValue());
-
-					if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
-						basePart.updateViews(standardPropertyBinding);
-					if (MappingPackage.eINSTANCE.getStandardPropertyBinding_Model().equals(msg.getFeature()) && basePart != null)
-						basePart.setModel((EObject)msg.getNewValue());
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+		if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
+			basePart.updateViews(standardPropertyBinding);
+		if (MappingPackage.eINSTANCE.getStandardPropertyBinding_Model().equals(msg.getFeature()) && basePart != null)
+			basePart.setModel((EObject)msg.getNewValue());
+
+
 	}
 
 	/**
@@ -147,7 +172,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (standardPropertyBinding != null && BASE_PART.equals(key)) {
@@ -186,13 +211,13 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 			final StandardPropertyBinding standardPropertyBinding = (StandardPropertyBinding)elt;
 			// init values
 			if (standardPropertyBinding.getName() != null)
-				basePart.setName(standardPropertyBinding.getName());
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), standardPropertyBinding.getName()));
 
 			basePart.initViews(standardPropertyBinding, null, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
+			// init part
 			basePart.initModel(allResource, standardPropertyBinding.getModel());
 			// set the button mode
 			basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
-			
 			// init filters
 
 			basePart.addFilterToViews(new ViewerFilter() {
@@ -250,9 +275,8 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (standardPropertyBinding != null) {
-			cc.append(SetCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), basePart.getName()));
-
+		if ((standardPropertyBinding != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 			List viewsToAddFromViews = basePart.getViewsToAdd();
 			for (Iterator iter = viewsToAddFromViews.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
@@ -284,7 +308,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof StandardPropertyBinding) {
 			StandardPropertyBinding standardPropertyBindingToUpdate = (StandardPropertyBinding)source;
-			standardPropertyBindingToUpdate.setName(basePart.getName());
+			standardPropertyBindingToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
 
 			standardPropertyBindingToUpdate.getViews().addAll(basePart.getViewsToAdd());
 			standardPropertyBindingToUpdate.setModel((ModelProperty)basePart.getModel());
@@ -305,9 +329,9 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (MappingViewsRepository.StandardPropertyBinding.name == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), event.getNewValue()));
-
+			if (MappingViewsRepository.StandardPropertyBinding.name == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 			if (MappingViewsRepository.StandardPropertyBinding.views == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), event.getNewValue()));
@@ -321,7 +345,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -386,6 +410,8 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -408,7 +434,6 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -423,5 +448,12 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 			standardPropertyBinding.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }
-

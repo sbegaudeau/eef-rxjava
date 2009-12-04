@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionPart.java,v 1.11 2009/07/31 14:10:32 glefur Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionPart.java,v 1.12 2009/12/04 16:05:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -45,6 +45,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	public void setMessageForName(String msg, int msgLevel);
 
 	public void unsetMessageForName();
+
 
 	/**
 	 * @return the model
@@ -87,6 +88,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
+
 
 
 
@@ -153,9 +155,15 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
  	
 	// End of user code
 
 }
-

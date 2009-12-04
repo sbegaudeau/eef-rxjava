@@ -55,7 +55,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -274,6 +274,15 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.OnlyReferenceTypeFilter_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPart.java,v 1.10 2009/07/31 14:10:32 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPart.java,v 1.11 2009/12/04 16:05:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -42,6 +42,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	public void setMessageForIndex(String msg, int msgLevel);
 
 	public void unsetMessageForIndex();
+
 
 	/**
 	 * @return the feature
@@ -84,6 +85,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToFeature(ViewerFilter filter);
+
 
 
 
@@ -140,9 +142,15 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
  	
 	// End of user code
 
 }
-

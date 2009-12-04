@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartForm.java,v 1.12 2009/07/31 14:10:32 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartForm.java,v 1.13 2009/12/04 16:05:12 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -67,7 +67,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -75,11 +75,11 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	public SimpleModelNavigationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -91,11 +91,11 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -103,9 +103,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(MappingMessages.SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel);
@@ -220,12 +218,11 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -246,7 +243,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		if (newValue != null) {
 			index.setText(newValue);
 		} else {
-			index.setText("");  //$NON-NLS-1$
+			index.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -403,8 +400,15 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 
 
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.SimpleModelNavigation_Part_Title;
+	}
 
-	
 	// Start of user code additional methods
  	public void setDiscriminatorInput(SimpleModelNavigation simpleModelNavigation, ResourceSet allResources){
 		discriminatorType.setInput(EEFUtils.choiceOfValues(adapterFactory, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), allResources));
@@ -414,4 +418,4 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
  	}
 	// End of user code
 
-}	
+}

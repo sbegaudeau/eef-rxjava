@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPart.java,v 1.11 2009/07/31 14:10:32 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPart.java,v 1.12 2009/12/04 16:05:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -43,6 +43,7 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	public void setMessageForName(String msg, int msgLevel);
 
 	public void unsetMessageForName();
+
 
 	/**
 	 * @return the model to add
@@ -95,6 +96,7 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 * @return true if the given element is contained inside the model table
 	 */
 	public boolean isContainedInModelTable(EObject element);
+
 
 
 
@@ -161,9 +163,15 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
  	
 	// End of user code
 
 }
-

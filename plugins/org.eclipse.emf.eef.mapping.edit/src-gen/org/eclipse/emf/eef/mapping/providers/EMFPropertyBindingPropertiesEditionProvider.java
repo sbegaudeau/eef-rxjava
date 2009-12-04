@@ -9,20 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionProvider.java,v 1.12 2009/11/03 11:05:09 sbouchet Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionProvider.java,v 1.13 2009/12/04 16:05:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
+import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.EMFPropertyBindingBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.EMFPropertyBindingPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
-import org.eclipse.emf.eef.mapping.components.EMFPropertyBindingPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.EMFPropertyBindingBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -42,7 +40,7 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String)
+	 *  java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof EMFPropertyBinding) {
@@ -55,7 +53,7 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String, java.lang.String)
+	 *  java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof EMFPropertyBinding) {
@@ -68,4 +66,3 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	}
 
 }
-

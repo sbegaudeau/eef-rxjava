@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryPropertiesEditionPartImpl.java,v 1.11 2009/07/31 14:10:31 glefur Exp $
+ * $Id: CategoryPropertiesEditionPartImpl.java,v 1.12 2009/12/04 16:05:14 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -44,7 +44,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -141,7 +141,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -159,6 +159,15 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.Category_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

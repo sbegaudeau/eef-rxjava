@@ -48,7 +48,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -216,6 +216,15 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.OCLFilter_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

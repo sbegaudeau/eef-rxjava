@@ -59,7 +59,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -67,11 +67,11 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	public OnlyReferenceTypeFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -83,11 +83,11 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -96,9 +96,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createReferencedFeatureGroup(FormToolkit widgetFactory, final Composite view) {
 		Section referencedFeatureSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referencedFeatureSection.setText(MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureGroupLabel);
@@ -143,12 +141,11 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	}
 
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -221,7 +218,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 
 
 
-
 /**
 	 * {@inheritDoc}
 	 * 
@@ -282,9 +278,17 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 
 
 
-	
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.OnlyReferenceTypeFilter_Part_Title;
+	}
+
 	// Start of user code additional methods
 	
 	// End of user code
 
-}	
+}

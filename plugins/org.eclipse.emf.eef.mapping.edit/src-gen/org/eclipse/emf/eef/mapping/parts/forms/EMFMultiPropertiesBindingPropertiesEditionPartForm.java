@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartForm.java,v 1.13 2009/07/31 14:10:32 glefur Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartForm.java,v 1.14 2009/12/04 16:05:12 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -81,7 +81,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -89,11 +89,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	public EMFMultiPropertiesBindingPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -105,11 +105,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -118,9 +118,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_PropertiesGroupLabel);
@@ -351,13 +349,12 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// Nothing to do
 		// End of user code
-		
 	}
 
 	/**
@@ -378,7 +375,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -567,10 +564,17 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 
 
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.EMFMultiPropertiesBinding_Part_Title;
+	}
 
-	
 	// Start of user code additional methods
  	
 	// End of user code
 
-}	
+}

@@ -49,7 +49,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -153,7 +153,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		if (newValue != null) {
 			methodName.setText(newValue);
 		} else {
-			methodName.setText("");  //$NON-NLS-1$
+			methodName.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -226,6 +226,15 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.JavaDeclarationFilter_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

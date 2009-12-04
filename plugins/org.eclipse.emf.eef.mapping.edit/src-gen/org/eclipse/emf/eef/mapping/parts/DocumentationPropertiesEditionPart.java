@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPart.java,v 1.11 2009/07/31 14:10:32 glefur Exp $
+ * $Id: DocumentationPropertiesEditionPart.java,v 1.12 2009/12/04 16:05:15 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -45,9 +45,15 @@ public interface DocumentationPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
  	
 	// End of user code
 
 }
-

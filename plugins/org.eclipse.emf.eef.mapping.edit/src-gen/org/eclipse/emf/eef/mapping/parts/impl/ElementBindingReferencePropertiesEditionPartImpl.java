@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferencePropertiesEditionPartImpl.java,v 1.13 2009/07/31 14:10:31 glefur Exp $
+ * $Id: ElementBindingReferencePropertiesEditionPartImpl.java,v 1.14 2009/12/04 16:05:13 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -50,7 +50,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -207,6 +207,15 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MappingMessages.ElementBindingReference_Part_Title;
+	}
 
 	// Start of user code additional methods
  	
