@@ -17,7 +17,6 @@
 
 [import naming /]
 [import common /]
-[import typeUtils /]
 [import filters /]
 
 [comment ===== Widget generation API ===== /]
@@ -25,37 +24,37 @@
 [comment liveupdater : templates that override this one must define the behaviour of the generated widget when the associated
 		 feature of the edited element has changed /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
 [comment liveCommandUpdater : templates that override this one must define the command to execute on the edited object when the
 		 value of the widget is modified /]
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String)]
-// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [modelName/].
+// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [modelName/].
 [/template]
 
 [comment commandUpdater : templates that override this one must define the command to execute to set the value of the widget to
 		 the associated feature /]
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
-// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
+// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
 [/template]
 
 [comment partUpdater : templates that override this one must define the setter to apply to set the value of the widget to
 		 the associated feature /]
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
-// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
+// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
 [/template]
 
 [comment partUpdater : templates that override this one must define the operation to execute at the initialization of the 
 		 component for the given widget /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
 [comment filterUpdater : templates that override this one must define the operation to execute at the initialization of the 
 		 component for the filters of the given widget /]
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
+// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
 [comment ========= message setter and unsetter /]
@@ -72,18 +71,18 @@
 [comment ========== ReferencedViews support ========== /]
 [template public livemessageUnsetterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
-	[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(views->first().ownedBy(v)))]
+[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 				[editionElement.liveMessageUnsetter(v, pec)/]
-	[/for]
+[/for]
 [comment][if (v.referencedViews()->notEmpty())][v.livemessageUnsetterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if][/comment]
 [/for]
 [/template]
 
 [template public liveMessageSetterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
-	[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(views->first().ownedBy(v)))]
+[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 				[editionElement.liveMessageSetter(v, pec)/]
-	[/for]
+[/for]
 [comment][if (v.referencedViews()->notEmpty())][v.liveMessageSetterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent))/][/if][/comment]
 [/for]
 [/template]
