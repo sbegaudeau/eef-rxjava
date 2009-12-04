@@ -88,7 +88,7 @@ public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGenerator
 	public IContainer getTestGenContainer(EEFGenModel eefGenModel) throws IOException {
 		if (eefGenModel != null) {
 			if (eefGenModel.getGenDirectory() != null) {
-				final IContainer target = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder(
+				final IContainer target = ResourcesPlugin.getWorkspace().getRoot().getFolder(
 						new Path(eefGenModel.getTestsGenDirectory()));
 				return target;
 			}
