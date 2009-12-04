@@ -246,11 +246,11 @@ set[editor.model.ecorePackageSignature()/]()
 
 [template public helpText(pee : PropertiesEditionElement)]
 [if (not pee.views->first().owningViewsRepository().associatedGenRepository().oclIsUndefined())]
-	[if (pee.views->first().owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::GENMODEL)]
+[if (pee.views->first().owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::GENMODEL)]
 [if ((not pee.associatedGenFeature().oclIsUndefined()) and (not pee.associatedGenFeature().propertyDescription.oclIsUndefined()))]"[pee.associatedGenFeature().propertyDescription/]"[else]null[/if]
-	[elseif (pee.views->first().owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::ECOREMODEL)]
+[elseif (pee.views->first().owningViewsRepository().associatedGenRepository().helpStrategy = EEFGen::HELP_STRATEGY::ECOREMODEL)]
 [if (pee.model.ecoreHelp().oclIsUndefined())]"[pee.model.ecoreHelp().trim()/]"[else]null[/if]
-	[/if]
+[/if]
 [/if]
 [/template]
 
@@ -373,7 +373,7 @@ Object
    endif
    ) /]
    
-[comment TODO: try to define this in a better 'Acceleo' way /]
+[comment TODO: try to define this in a better 'Acceleo' way (s.first(1).isAlphanum() not working/]
 [query public startsWithADigit(s : String) : Boolean =
 	s.firstChar() = '0' 
 	or s.firstChar() = '1' 
@@ -394,8 +394,9 @@ Object
 [if (s.startsWithADigit())]_[/if][for (str : String | s.toASCII().tokenize(' '))][str.toUpperFirst()/][/for]
 [/template]
 
+[comment === escape some special keywords (java and EEF) /]
 [template public toJavaIdentifier(s : String)]
-[s.toJavaIdentifierDelegate().toLowerFirst().replaceAll('(?i)^((abstract)|(continue)|(for)|(new)|(switch)|(assert)|(default)|(goto)|(package)|(synchronized)|(boolean)|(do)|(if)|(private)|(this)|(break)|(double)|(implements)|(protected)|(throw)|(byte)|(else)|(import)|(public)|(throws)|(case)|(enum)|(instanceof)|(return)|(transient)|(catch)|(extends)|(int)|(short)|(try)|(char)|(final)|(interface)|(static)|(void)|(class)|(finally)|(long)|(strictfp)|(volatile)|(const)|(float)|(native)|(super)|(while))$','$1_')/]
+[s.toJavaIdentifierDelegate().toLowerFirst().replaceAll('(?i)^((title)|(parent)|(abstract)|(continue)|(for)|(new)|(switch)|(assert)|(default)|(goto)|(package)|(synchronized)|(boolean)|(do)|(if)|(private)|(this)|(break)|(double)|(implements)|(protected)|(throw)|(byte)|(else)|(import)|(public)|(throws)|(case)|(enum)|(instanceof)|(return)|(transient)|(catch)|(extends)|(int)|(short)|(try)|(char)|(final)|(interface)|(static)|(void)|(class)|(finally)|(long)|(strictfp)|(volatile)|(const)|(float)|(native)|(super)|(while))$','$1_')/]
 [/template]
 
 [template public toJavaClassifier(s : String)]
