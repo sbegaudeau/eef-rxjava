@@ -75,19 +75,19 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
-		[if (view.isA1stLevelReferencedView(pec))]
+[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[if (view.isA1stLevelReferencedView(pec))]
 	/**
 	 * The [subPec.pecClass()/] sub component
 	 */
 	protected [subPec.pecClass()/] [subPec.pecClass().toLowerFirst()/];
-		[else]
+[else]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
 	 */
 	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
-		[/if]
-	[/for]
+[/if]
+[/for]
 [/for]
 	/**
 	 * Parameterized constructor
@@ -103,31 +103,31 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
-		[if (view.isA1stLevelReferencedView(pec))]
+[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[if (view.isA1stLevelReferencedView(pec))]
 			[subPec.pecClass().toLowerFirst()/] = new [subPec.pecClass()/]([pec.model.name.toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.pecClass().toLowerFirst()/]);
-		[else]
+[else]
 			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.subPECClass(view).toLowerFirst()/]);
-		[/if]
-	[/for]
+[/if]
+[/for]
 [/for]
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-	[for (view : View | pec.views) ? (view.explicit)]
+[for (view : View | pec.views) ? (view.explicit)]
 		if ("[view.viewKey(pec).toASCII()/]".equals(key)) {
 			[view.viewIdentifier(pec)/] = ([view.pepInterface()/])[pec.subPECClass(view).toLowerFirst()/].getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)[view.viewIdentifier(pec)/];
 		}
-	[/for]
+[/for]
 		return super.getPropertiesEditionPart(kind, key);
 	}
 
@@ -137,12 +137,12 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-	[for (view : View | pec.views) ? (view.explicit)]
+[for (view : View | pec.views) ? (view.explicit)]
 		if ([view.editorID()/].class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			[view.viewIdentifier(pec)/] = ([view.pepInterface()/])propertiesEditionPart;
 		}
-	[/for]
+[/for]
 	}
 
 	/** 
@@ -151,27 +151,27 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
-	[for (view : View | pec.views)]
+[for (view : View | pec.views)]
 		if (key == [view.editorID()/].class) {
 			super.initPart(key, kind, element, allResource);
-		[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(components::PropertiesEditionComponent))]
-			[for (refView : View | subPec.views->select(explicit))]
-			[if (view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsKindOf(views::View)).oclAsType(views::View)->includes(refView))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(components::PropertiesEditionComponent))]
+[for (refView : View | subPec.views->select(explicit))]
+[if (view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsKindOf(views::View)).oclAsType(views::View)->includes(refView))]
 			[subPec.pecClass().toLowerFirst()/].setPropertiesEditionPart([refView.editorID()/].class, kind, [view.viewIdentifier(pec)/].get[refView.name.toJavaClassifier()/]ReferencedView());
 			[subPec.pecClass().toLowerFirst()/].initPart([refView.editorID()/].class, kind, element, allResource);
-			[/if]
-			[/for]
-		[/for]
+[/if]
+[/for]
+[/for]
 		}
-	[/for]
-	[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(components::PropertiesEditionComponent))]
-			[for (refView : View | subPec.views->select(explicit))]
+[/for]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(components::PropertiesEditionComponent))]
+[for (refView : View | subPec.views->select(explicit))]
 			if (key == [refView.editorID()/].class) {
 				super.initPart(key, kind, element, allResource);
 			[comment what about referenced view resolution in this case ? /]
-			[/for]
+[/for]
 			}
-	[/for]
+[/for]
 	}
 }
 [/file]

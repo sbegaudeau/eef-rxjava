@@ -142,7 +142,8 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.bindingFilters->notEmpty())]
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.util.EEFUtil;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 [for (bindingFilter : BindingFilter | element.bindingFilters) ? (bindingFilter.oclIsTypeOf(mapping::filters::OnlyReferenceTypeFilter))]
 import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).reference.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
 [/for]
@@ -170,7 +171,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	/**
 	 * The [view.viewKey(pec)/] part
 	 */
-	private [view.pepInterface()/] [view.viewIdentifier(pec)/];
+	protected [view.pepInterface()/] [view.viewIdentifier(pec)/];
 
 	/**
 	 * Default constructor
@@ -524,6 +525,14 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			[pec.model.name.toJavaIdentifier()/].eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return [view.viewIdentifier(pec)/].getTitle();
+	}
 }
 [/file]
 	[/for]
