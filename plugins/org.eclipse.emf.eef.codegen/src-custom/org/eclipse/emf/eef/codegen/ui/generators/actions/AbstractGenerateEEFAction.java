@@ -27,7 +27,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.ui.generators.common.GenerateAll;
 import org.eclipse.emf.eef.codegen.ui.generators.common.ImportOrganizer;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -106,7 +106,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 												nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 											}
 											monitor.worked(1);
-											if (EEFUtils.isBundleLoaded(EEFUtils.JDT_CORE_SYMBOLIC_NAME)) {
+											if (EEFUtil.isBundleLoaded(EEFUtil.JDT_CORE_SYMBOLIC_NAME)) {
 												monitor.beginTask("Organize imports", 1);
 												Display.getDefault().asyncExec(
 														new Runnable() {
