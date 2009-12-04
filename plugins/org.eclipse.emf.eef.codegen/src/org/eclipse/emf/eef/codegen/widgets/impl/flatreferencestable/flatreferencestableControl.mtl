@@ -76,7 +76,7 @@
 					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.model.eContainingClass.name.toJavaIdentifier()/]));
 					
 				}
-				for (EObject [editionElement.model.name.toJavaIdentifier()/]ToRemove : elements.getElementsToRemove()) 					
+				for (EObject [editionElement.model.name.toJavaIdentifier()/]ToRemove : elements.getElementsToRemove()) 
 					command.append(RemoveCommand.create(liveEditingDomain, [editionElement.model.name.toJavaIdentifier()/]ToRemove));
 			}
 [/template]

@@ -62,7 +62,7 @@
 [comment @Override widgetControl.updater /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]() != null)
+			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)
 				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](EcoreUtil.getIdentification([pec.model.name.toJavaIdentifier()/]), [pec.model.name.toJavaIdentifier()/].getPics());
 [else]
 			//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer

@@ -39,7 +39,8 @@
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+			// init part
+			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 			// set the button mode
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.BROWSE);
 [/template]
@@ -112,6 +113,7 @@
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+			// init part
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
 				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, (([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
 			else 
@@ -168,7 +170,8 @@
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+			// init part
+			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 			// set the button mode
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.CREATE);
 [/template]
@@ -176,5 +179,3 @@
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 [comment no filters on creation/]
 [/template]
-
-
