@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPart.java,v 1.9 2009/07/31 14:14:18 glefur Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPart.java,v 1.10 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -79,9 +79,15 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
  	
 	// End of user code
 
 }
-

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.10 2009/07/31 14:14:18 glefur Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.11 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -53,7 +53,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -210,6 +210,15 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ComponentsMessages.PropertiesEditionContext_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

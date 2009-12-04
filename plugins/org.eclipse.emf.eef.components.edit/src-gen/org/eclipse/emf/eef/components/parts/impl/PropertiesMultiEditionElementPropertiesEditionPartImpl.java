@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.11 2009/07/31 14:14:18 glefur Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.12 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -87,7 +87,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -374,7 +374,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
-	private void moveViews(ElementEditor element, int oldIndex, int newIndex) {
+	protected void moveViews(ElementEditor element, int oldIndex, int newIndex) {
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.moveElement(element, oldIndex, newIndex);
 		views.refresh();
@@ -384,7 +384,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
-	private void removeFromViews(ElementEditor element) {
+	protected void removeFromViews(ElementEditor element) {
 
 		// Start of user code removeFromViews() method body
 
@@ -400,7 +400,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
-	private void editViews(ElementEditor element) {
+	protected void editViews(ElementEditor element) {
 
 		// Start of user code editViews() method body
 				 
@@ -446,7 +446,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -476,7 +476,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		if (newValue != null) {
 			helpID.setText(newValue);
 		} else {
-			helpID.setText("");  //$NON-NLS-1$
+			helpID.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -674,6 +674,15 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ComponentsMessages.PropertiesMultiEditionElement_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

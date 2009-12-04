@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.9 2009/07/31 14:14:18 glefur Exp $
+ * $Id: PropertiesEditionContextBasePropertiesEditionComponent.java,v 1.10 2009/12/04 15:49:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -33,7 +34,7 @@ import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -45,6 +46,8 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -65,7 +68,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	/**
 	 * The Base part
 	 */
-	private PropertiesEditionContextPropertiesEditionPart basePart;
+	protected PropertiesEditionContextPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -94,18 +97,34 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					PropertiesEditionContextBasePropertiesEditionComponent.this.dispose();
 				else {
-					if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
-						basePart.setModel((EObject)msg.getNewValue());
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
+			basePart.setModel((EObject)msg.getNewValue());
+
+
 	}
 
 	/**
@@ -132,7 +151,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (propertiesEditionContext != null && BASE_PART.equals(key)) {
@@ -170,10 +189,10 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)elt;
 			// init values
+			// init part
 			basePart.initModel(allResource, propertiesEditionContext.getModel());
 			// set the button mode
 			basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
-			
 			// init filters
 			basePart.addFilterToModel(new ViewerFilter() {
 
@@ -210,7 +229,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (propertiesEditionContext != null) {
+		if ((propertiesEditionContext != null) && (basePart != null)) { 
 			if (propertiesEditionContext.eGet(ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model()) == null || !propertiesEditionContext.eGet(ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model()).equals(basePart.getModel())) {
 				cc.append(SetCommand.create(editingDomain, propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model(), basePart.getModel()));
 			}
@@ -254,7 +273,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -305,6 +324,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -327,7 +348,6 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -342,5 +362,12 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Stan
 			propertiesEditionContext.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }
-

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsMessages.java,v 1.8 2009/07/31 14:14:18 glefur Exp $
+ * $Id: ComponentsMessages.java,v 1.9 2009/12/04 15:49:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -39,13 +39,23 @@ public class ComponentsMessages extends NLS {
 
 	public static String Documentation_ReadOnly;
 
+	public static String Documentation_Part_Title;
+
 	public static String PropertiesEditionContext_ReadOnly;
+
+	public static String PropertiesEditionContext_Part_Title;
 
 	public static String PropertiesEditionComponent_ReadOnly;
 
+	public static String PropertiesEditionComponent_Part_Title;
+
 	public static String PropertiesEditionElement_ReadOnly;
 
+	public static String PropertiesEditionElement_Part_Title;
+
 	public static String PropertiesMultiEditionElement_ReadOnly;
+
+	public static String PropertiesMultiEditionElement_Part_Title;
 
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 
@@ -123,4 +133,3 @@ public class ComponentsMessages extends NLS {
 		//protect instanciation
 	}
 }
-

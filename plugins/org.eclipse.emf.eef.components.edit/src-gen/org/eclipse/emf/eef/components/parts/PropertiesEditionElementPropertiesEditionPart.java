@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPart.java,v 1.9 2009/07/31 14:14:18 glefur Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPart.java,v 1.10 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -46,6 +46,7 @@ public interface PropertiesEditionElementPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the helpID
 	 */
@@ -60,6 +61,7 @@ public interface PropertiesEditionElementPropertiesEditionPart {
 	public void setMessageForHelpID(String msg, int msgLevel);
 
 	public void unsetMessageForHelpID();
+
 
 	/**
 	 * @return the model
@@ -102,6 +104,7 @@ public interface PropertiesEditionElementPropertiesEditionPart {
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
+
 
 
 
@@ -168,9 +171,15 @@ public interface PropertiesEditionElementPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
+
 	// Start of user code for additional methods
  	
 	// End of user code
 
 }
-

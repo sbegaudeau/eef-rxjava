@@ -9,20 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionProvider.java,v 1.11 2009/11/03 11:04:18 sbouchet Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionProvider.java,v 1.12 2009/12/04 15:49:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
-import org.eclipse.emf.eef.components.components.PropertiesEditionContextPropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesEditionContextBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.components.components.PropertiesEditionContextPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -42,7 +40,7 @@ public class PropertiesEditionContextPropertiesEditionProvider implements IPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String)
+	 *  java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof PropertiesEditionContext) {
@@ -55,7 +53,7 @@ public class PropertiesEditionContextPropertiesEditionProvider implements IPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *      java.lang.String, java.lang.String)
+	 *  java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof PropertiesEditionContext) {
@@ -68,4 +66,3 @@ public class PropertiesEditionContextPropertiesEditionProvider implements IPrope
 	}
 
 }
-

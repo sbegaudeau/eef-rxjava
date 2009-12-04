@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionPartImpl.java,v 1.10 2009/07/31 14:14:18 glefur Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionPartImpl.java,v 1.11 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -79,7 +79,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -248,7 +248,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	/**
 	 * 
 	 */
-	private void moveViews(View element, int oldIndex, int newIndex) {
+	protected void moveViews(View element, int oldIndex, int newIndex) {
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.moveElement(element, oldIndex, newIndex);
 		views.refresh();
@@ -258,7 +258,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	/**
 	 * 
 	 */
-	private void removeFromViews(View element) {
+	protected void removeFromViews(View element) {
 
 		// Start of user code removeFromViews() method body
 
@@ -274,7 +274,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	/**
 	 * 
 	 */
-	private void editViews(View element) {
+	protected void editViews(View element) {
 
 		// Start of user code editViews() method body
 		
@@ -320,7 +320,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -350,7 +350,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		if (newValue != null) {
 			helpID.setText(newValue);
 		} else {
-			helpID.setText("");  //$NON-NLS-1$
+			helpID.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -562,6 +562,15 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ComponentsMessages.PropertiesEditionComponent_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

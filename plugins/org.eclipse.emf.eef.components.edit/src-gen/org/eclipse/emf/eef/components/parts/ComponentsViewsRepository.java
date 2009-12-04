@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsViewsRepository.java,v 1.8 2009/07/31 14:14:18 glefur Exp $
+ * $Id: ComponentsViewsRepository.java,v 1.9 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts;
 
@@ -19,10 +19,10 @@ package org.eclipse.emf.eef.components.parts;
 public class ComponentsViewsRepository {
 
 	public static final int SWT_KIND = 0;
-		
+
 	public static final int FORM_KIND = 1;
 
-	
+
 	/**
 	 * Documentation view descriptor
 	 */
@@ -47,14 +47,14 @@ public class ComponentsViewsRepository {
 	public static class PropertiesEditionComponent {
 		public static String name = "components::PropertiesEditionComponent::name";	
 
-		public static String helpID = "components::PropertiesEditionComponent::helpID";	
+	public static String helpID = "components::PropertiesEditionComponent::helpID";	
 
-		public static String explicit = "components::PropertiesEditionComponent::explicit";	
+	public static String explicit = "components::PropertiesEditionComponent::explicit";	
 
 
 		public static String model = "components::PropertiesEditionComponent::model";	
 
-		public static String views = "components::PropertiesEditionComponent::views";	
+	public static String views = "components::PropertiesEditionComponent::views";	
 
 
 	}
@@ -65,12 +65,12 @@ public class ComponentsViewsRepository {
 	public static class PropertiesEditionElement {
 		public static String name = "components::PropertiesEditionElement::name";	
 
-		public static String helpID = "components::PropertiesEditionElement::helpID";	
+	public static String helpID = "components::PropertiesEditionElement::helpID";	
 
 
 		public static String model = "components::PropertiesEditionElement::model";	
 
-		public static String views = "components::PropertiesEditionElement::views";	
+	public static String views = "components::PropertiesEditionElement::views";	
 
 
 	}
@@ -81,15 +81,14 @@ public class ComponentsViewsRepository {
 	public static class PropertiesMultiEditionElement {
 		public static String name = "components::PropertiesMultiEditionElement::name";	
 
-		public static String helpID = "components::PropertiesMultiEditionElement::helpID";	
+	public static String helpID = "components::PropertiesMultiEditionElement::helpID";	
 
 
 		public static String model = "components::PropertiesMultiEditionElement::model";	
 
-		public static String views = "components::PropertiesMultiEditionElement::views";	
+	public static String views = "components::PropertiesMultiEditionElement::views";	
 
 
 	}
 
 }
-

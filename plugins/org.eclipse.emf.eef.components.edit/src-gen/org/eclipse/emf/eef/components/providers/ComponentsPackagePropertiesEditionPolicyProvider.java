@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsPackagePropertiesEditionPolicyProvider.java,v 1.7 2009/07/31 14:14:18 glefur Exp $
+ * $Id: ComponentsPackagePropertiesEditionPolicyProvider.java,v 1.8 2009/12/04 15:49:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -32,4 +32,3 @@ public class ComponentsPackagePropertiesEditionPolicyProvider extends StandardPr
 	}
 
 }
-

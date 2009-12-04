@@ -9,14 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditPlugin.java,v 1.3 2009/09/10 09:57:41 sbouchet Exp $
+ * $Id: ComponentsEditPlugin.java,v 1.4 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.provider;
 
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenModelEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;

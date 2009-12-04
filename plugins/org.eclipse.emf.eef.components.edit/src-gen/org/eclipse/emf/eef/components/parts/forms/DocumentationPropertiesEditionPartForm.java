@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartForm.java,v 1.7 2009/07/31 14:14:18 glefur Exp $
+ * $Id: DocumentationPropertiesEditionPartForm.java,v 1.8 2009/12/04 15:49:08 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -52,7 +52,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -60,11 +60,11 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	public DocumentationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -76,11 +76,11 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -88,9 +88,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createDocumentationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section documentationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		documentationSection.setText(ComponentsMessages.DocumentationPropertiesEditionPart_DocumentationGroupLabel);
@@ -145,12 +143,11 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.Documentation.documentation, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -188,10 +185,17 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ComponentsMessages.Documentation_Part_Title;
+	}
 
-	
 	// Start of user code additional methods
  	
 	// End of user code
 
-}	
+}

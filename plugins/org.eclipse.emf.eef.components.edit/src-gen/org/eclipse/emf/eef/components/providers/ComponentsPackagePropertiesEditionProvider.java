@@ -9,12 +9,12 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsPackagePropertiesEditionProvider.java,v 1.9 2009/07/31 14:14:18 glefur Exp $
+ * $Id: ComponentsPackagePropertiesEditionProvider.java,v 1.10 2009/12/04 15:49:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
-import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -32,7 +32,7 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 		append(createPropertiesEditionElementPropertiesEditionProvider());
 		append(createPropertiesMultiEditionElementPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * DocumentedElement instances.
@@ -47,7 +47,7 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
 		return documentedElementPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesEditionContext instances.
@@ -62,7 +62,7 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 			propertiesEditionContextPropertiesEditionProvider = new PropertiesEditionContextPropertiesEditionProvider();
 		return propertiesEditionContextPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesEditionComponent instances.
@@ -77,7 +77,7 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 			propertiesEditionComponentPropertiesEditionProvider = new PropertiesEditionComponentPropertiesEditionProvider();
 		return propertiesEditionComponentPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesEditionElement instances.
@@ -92,7 +92,7 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 			propertiesEditionElementPropertiesEditionProvider = new PropertiesEditionElementPropertiesEditionProvider();
 		return propertiesEditionElementPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesMultiEditionElement instances.
@@ -107,5 +107,5 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 			propertiesMultiEditionElementPropertiesEditionProvider = new PropertiesMultiEditionElementPropertiesEditionProvider();
 		return propertiesMultiEditionElementPropertiesEditionProvider;
 	}
-	
-}	
+
+}
