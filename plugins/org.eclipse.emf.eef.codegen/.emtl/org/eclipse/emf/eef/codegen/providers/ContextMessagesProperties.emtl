@@ -102,6 +102,18 @@
             </argument>
           </body>
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="_ReadOnly=This property is read only&#xA;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../services/common.emtl#/0/toJavaClassifier"/>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="view" referredVariable="/0/ContextMessagesProperties/@body.2/@body.5/view">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="_Part_Title=Base&#xA;"/>
           <loopVariable name="view">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
           </loopVariable>
@@ -3777,6 +3789,9 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewsRepository"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
@@ -3815,7 +3830,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/ContextMessagesProperties">
       <details key="start" value="733"/>
-      <details key="end" value="2692"/>
+      <details key="end" value="2740"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/ContextMessagesProperties/@body.0">
       <details key="start" value="812"/>
@@ -3827,7 +3842,7 @@
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/ContextMessagesProperties/@body.2">
       <details key="start" value="831"/>
-      <details key="end" value="2680"/>
+      <details key="end" value="2728"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/ContextMessagesProperties/@body.2/@body.0">
       <details key="start" value="878"/>
@@ -3939,7 +3954,7 @@
     </eAnnotations>
     <eAnnotations source="positions.31" references="/0/ContextMessagesProperties/@body.2/@body.5">
       <details key="start" value="1192"/>
-      <details key="end" value="1330"/>
+      <details key="end" value="1378"/>
     </eAnnotations>
     <eAnnotations source="positions.32" references="/0/ContextMessagesProperties/@body.2/@body.5/@body.0">
       <details key="start" value="1256"/>
@@ -3961,201 +3976,217 @@
       <details key="start" value="1287"/>
       <details key="end" value="1324"/>
     </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/ContextMessagesProperties/@body.2/@body.5/view">
+    <eAnnotations source="positions.37" references="/0/ContextMessagesProperties/@body.2/@body.5/@body.3">
+      <details key="start" value="1325"/>
+      <details key="end" value="1353"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/ContextMessagesProperties/@body.2/@body.5/@body.3/@argument.0">
+      <details key="start" value="1325"/>
+      <details key="end" value="1334"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/ContextMessagesProperties/@body.2/@body.5/@body.3/@argument.0/view">
+      <details key="start" value="1325"/>
+      <details key="end" value="1329"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/ContextMessagesProperties/@body.2/@body.5/@body.4">
+      <details key="start" value="1355"/>
+      <details key="end" value="1372"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/ContextMessagesProperties/@body.2/@body.5/view">
       <details key="start" value="1198"/>
       <details key="end" value="1209"/>
     </eAnnotations>
-    <eAnnotations source="positions.38" references="/0/ContextMessagesProperties/@body.2/@body.5/@iterSet">
+    <eAnnotations source="positions.42" references="/0/ContextMessagesProperties/@body.2/@body.5/@iterSet">
       <details key="start" value="1212"/>
       <details key="end" value="1253"/>
     </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/ContextMessagesProperties/@body.2/@body.5/@iterSet/viewsRepository">
+    <eAnnotations source="positions.43" references="/0/ContextMessagesProperties/@body.2/@body.5/@iterSet/viewsRepository">
       <details key="start" value="1212"/>
       <details key="end" value="1227"/>
     </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/ContextMessagesProperties/@body.2/@body.5/@iterSet/@argument.0">
+    <eAnnotations source="positions.44" references="/0/ContextMessagesProperties/@body.2/@body.5/@iterSet/@argument.0">
       <details key="start" value="1241"/>
       <details key="end" value="1252"/>
     </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/ContextMessagesProperties/@body.2/@body.6">
-      <details key="start" value="1331"/>
-      <details key="end" value="1331"/>
+    <eAnnotations source="positions.45" references="/0/ContextMessagesProperties/@body.2/@body.6">
+      <details key="start" value="1379"/>
+      <details key="end" value="1379"/>
     </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/ContextMessagesProperties/@body.2/@body.7">
-      <details key="start" value="1331"/>
-      <details key="end" value="1614"/>
+    <eAnnotations source="positions.46" references="/0/ContextMessagesProperties/@body.2/@body.7">
+      <details key="start" value="1379"/>
+      <details key="end" value="1662"/>
     </eAnnotations>
-    <eAnnotations source="positions.43" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.0">
-      <details key="start" value="1415"/>
-      <details key="end" value="1415"/>
-    </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1">
-      <details key="start" value="1416"/>
-      <details key="end" value="1453"/>
-    </eAnnotations>
-    <eAnnotations source="positions.45" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1/editor">
-      <details key="start" value="1416"/>
-      <details key="end" value="1422"/>
-    </eAnnotations>
-    <eAnnotations source="positions.46" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1/@argument.1">
-      <details key="start" value="1433"/>
-      <details key="end" value="1452"/>
-    </eAnnotations>
-    <eAnnotations source="positions.47" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1/@argument.1/editor">
-      <details key="start" value="1433"/>
-      <details key="end" value="1439"/>
-    </eAnnotations>
-    <eAnnotations source="positions.48" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.2">
-      <details key="start" value="1455"/>
-      <details key="end" value="1456"/>
-    </eAnnotations>
-    <eAnnotations source="positions.49" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3">
-      <details key="start" value="1457"/>
-      <details key="end" value="1495"/>
-    </eAnnotations>
-    <eAnnotations source="positions.50" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3/@argument.0">
-      <details key="start" value="1457"/>
-      <details key="end" value="1483"/>
-    </eAnnotations>
-    <eAnnotations source="positions.51" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3/@argument.0/@source">
-      <details key="start" value="1457"/>
-      <details key="end" value="1468"/>
-    </eAnnotations>
-    <eAnnotations source="positions.52" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3/@argument.0/@source/editor">
-      <details key="start" value="1457"/>
+    <eAnnotations source="positions.47" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.0">
+      <details key="start" value="1463"/>
       <details key="end" value="1463"/>
     </eAnnotations>
-    <eAnnotations source="positions.53" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4">
-      <details key="start" value="1497"/>
-      <details key="end" value="1606"/>
+    <eAnnotations source="positions.48" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1">
+      <details key="start" value="1464"/>
+      <details key="end" value="1501"/>
     </eAnnotations>
-    <eAnnotations source="positions.54" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@body.0">
-      <details key="start" value="1598"/>
+    <eAnnotations source="positions.49" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1/editor">
+      <details key="start" value="1464"/>
+      <details key="end" value="1470"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1/@argument.1">
+      <details key="start" value="1481"/>
+      <details key="end" value="1500"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.1/@argument.1/editor">
+      <details key="start" value="1481"/>
+      <details key="end" value="1487"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.2">
+      <details key="start" value="1503"/>
+      <details key="end" value="1504"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3">
+      <details key="start" value="1505"/>
+      <details key="end" value="1543"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3/@argument.0">
+      <details key="start" value="1505"/>
+      <details key="end" value="1531"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3/@argument.0/@source">
+      <details key="start" value="1505"/>
+      <details key="end" value="1516"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.3/@argument.0/@source/editor">
+      <details key="start" value="1505"/>
+      <details key="end" value="1511"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4">
+      <details key="start" value="1545"/>
+      <details key="end" value="1654"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@body.0">
+      <details key="start" value="1646"/>
+      <details key="end" value="1649"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr">
+      <details key="start" value="1549"/>
+      <details key="end" value="1645"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source">
+      <details key="start" value="1550"/>
+      <details key="end" value="1590"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@source">
+      <details key="start" value="1550"/>
+      <details key="end" value="1576"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@source/@source">
+      <details key="start" value="1550"/>
+      <details key="end" value="1571"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@source/@source/editor">
+      <details key="start" value="1550"/>
+      <details key="end" value="1556"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@argument.0">
+      <details key="start" value="1580"/>
+      <details key="end" value="1590"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0">
+      <details key="start" value="1595"/>
+      <details key="end" value="1644"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@source">
+      <details key="start" value="1595"/>
+      <details key="end" value="1621"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@source/@source">
+      <details key="start" value="1595"/>
+      <details key="end" value="1616"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@source/@source/editor">
+      <details key="start" value="1595"/>
       <details key="end" value="1601"/>
     </eAnnotations>
-    <eAnnotations source="positions.55" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr">
-      <details key="start" value="1501"/>
-      <details key="end" value="1597"/>
+    <eAnnotations source="positions.69" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@argument.0">
+      <details key="start" value="1625"/>
+      <details key="end" value="1644"/>
     </eAnnotations>
-    <eAnnotations source="positions.56" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source">
-      <details key="start" value="1502"/>
-      <details key="end" value="1542"/>
+    <eAnnotations source="positions.70" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.5">
+      <details key="start" value="1654"/>
+      <details key="end" value="1656"/>
     </eAnnotations>
-    <eAnnotations source="positions.57" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@source">
-      <details key="start" value="1502"/>
-      <details key="end" value="1528"/>
+    <eAnnotations source="positions.71" references="/0/ContextMessagesProperties/@body.2/@body.7/editor">
+      <details key="start" value="1385"/>
+      <details key="end" value="1407"/>
     </eAnnotations>
-    <eAnnotations source="positions.58" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@source/@source">
-      <details key="start" value="1502"/>
-      <details key="end" value="1523"/>
+    <eAnnotations source="positions.72" references="/0/ContextMessagesProperties/@body.2/@body.7/@iterSet">
+      <details key="start" value="1410"/>
+      <details key="end" value="1460"/>
     </eAnnotations>
-    <eAnnotations source="positions.59" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@source/@source/editor">
-      <details key="start" value="1502"/>
-      <details key="end" value="1508"/>
+    <eAnnotations source="positions.73" references="/0/ContextMessagesProperties/@body.2/@body.7/@iterSet/viewsRepository">
+      <details key="start" value="1410"/>
+      <details key="end" value="1425"/>
     </eAnnotations>
-    <eAnnotations source="positions.60" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@source/@argument.0">
-      <details key="start" value="1532"/>
-      <details key="end" value="1542"/>
+    <eAnnotations source="positions.74" references="/0/ContextMessagesProperties/@body.2/@body.7/@iterSet/@argument.0">
+      <details key="start" value="1439"/>
+      <details key="end" value="1459"/>
     </eAnnotations>
-    <eAnnotations source="positions.61" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0">
-      <details key="start" value="1547"/>
-      <details key="end" value="1596"/>
+    <eAnnotations source="positions.75" references="/0/ContextMessagesProperties/@body.2/@body.8">
+      <details key="start" value="1663"/>
+      <details key="end" value="2721"/>
     </eAnnotations>
-    <eAnnotations source="positions.62" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@source">
-      <details key="start" value="1547"/>
-      <details key="end" value="1573"/>
-    </eAnnotations>
-    <eAnnotations source="positions.63" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@source/@source">
-      <details key="start" value="1547"/>
-      <details key="end" value="1568"/>
-    </eAnnotations>
-    <eAnnotations source="positions.64" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@source/@source/editor">
-      <details key="start" value="1547"/>
-      <details key="end" value="1553"/>
-    </eAnnotations>
-    <eAnnotations source="positions.65" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.4/@ifExpr/@argument.0/@argument.0">
-      <details key="start" value="1577"/>
-      <details key="end" value="1596"/>
-    </eAnnotations>
-    <eAnnotations source="positions.66" references="/0/ContextMessagesProperties/@body.2/@body.7/@body.5">
-      <details key="start" value="1606"/>
-      <details key="end" value="1608"/>
-    </eAnnotations>
-    <eAnnotations source="positions.67" references="/0/ContextMessagesProperties/@body.2/@body.7/editor">
-      <details key="start" value="1337"/>
-      <details key="end" value="1359"/>
-    </eAnnotations>
-    <eAnnotations source="positions.68" references="/0/ContextMessagesProperties/@body.2/@body.7/@iterSet">
-      <details key="start" value="1362"/>
-      <details key="end" value="1412"/>
-    </eAnnotations>
-    <eAnnotations source="positions.69" references="/0/ContextMessagesProperties/@body.2/@body.7/@iterSet/viewsRepository">
-      <details key="start" value="1362"/>
-      <details key="end" value="1377"/>
-    </eAnnotations>
-    <eAnnotations source="positions.70" references="/0/ContextMessagesProperties/@body.2/@body.7/@iterSet/@argument.0">
-      <details key="start" value="1391"/>
-      <details key="end" value="1411"/>
-    </eAnnotations>
-    <eAnnotations source="positions.71" references="/0/ContextMessagesProperties/@body.2/@body.8">
-      <details key="start" value="1615"/>
-      <details key="end" value="2673"/>
-    </eAnnotations>
-    <eAnnotations source="positions.72" references="/0/ContextMessagesProperties/@body.2/@fileUrl">
+    <eAnnotations source="positions.76" references="/0/ContextMessagesProperties/@body.2/@fileUrl">
       <details key="start" value="838"/>
       <details key="end" value="868"/>
     </eAnnotations>
-    <eAnnotations source="positions.73" references="/0/ContextMessagesProperties/@body.2/@fileUrl/viewsRepository">
+    <eAnnotations source="positions.77" references="/0/ContextMessagesProperties/@body.2/@fileUrl/viewsRepository">
       <details key="start" value="838"/>
       <details key="end" value="853"/>
     </eAnnotations>
-    <eAnnotations source="positions.74" references="/0/ContextMessagesProperties/@body.3">
-      <details key="start" value="2681"/>
-      <details key="end" value="2681"/>
+    <eAnnotations source="positions.78" references="/0/ContextMessagesProperties/@body.3">
+      <details key="start" value="2729"/>
+      <details key="end" value="2729"/>
     </eAnnotations>
-    <eAnnotations source="positions.75" references="/0/ContextMessagesProperties/viewsRepository">
+    <eAnnotations source="positions.79" references="/0/ContextMessagesProperties/viewsRepository">
       <details key="start" value="776"/>
       <details key="end" value="809"/>
     </eAnnotations>
-    <eAnnotations source="positions.76" references="/0/fullFilePath">
-      <details key="start" value="2694"/>
-      <details key="end" value="2876"/>
+    <eAnnotations source="positions.80" references="/0/fullFilePath">
+      <details key="start" value="2742"/>
+      <details key="end" value="2924"/>
     </eAnnotations>
-    <eAnnotations source="positions.77" references="/0/fullFilePath/@body.0">
-      <details key="start" value="2760"/>
-      <details key="end" value="2760"/>
+    <eAnnotations source="positions.81" references="/0/fullFilePath/@body.0">
+      <details key="start" value="2808"/>
+      <details key="end" value="2808"/>
     </eAnnotations>
-    <eAnnotations source="positions.78" references="/0/fullFilePath/@body.1">
-      <details key="start" value="2761"/>
-      <details key="end" value="2811"/>
+    <eAnnotations source="positions.82" references="/0/fullFilePath/@body.1">
+      <details key="start" value="2809"/>
+      <details key="end" value="2859"/>
     </eAnnotations>
-    <eAnnotations source="positions.79" references="/0/fullFilePath/@body.1/@argument.0">
-      <details key="start" value="2761"/>
-      <details key="end" value="2802"/>
+    <eAnnotations source="positions.83" references="/0/fullFilePath/@body.1/@argument.0">
+      <details key="start" value="2809"/>
+      <details key="end" value="2850"/>
     </eAnnotations>
-    <eAnnotations source="positions.80" references="/0/fullFilePath/@body.1/@argument.0/viewsRepository">
-      <details key="start" value="2761"/>
-      <details key="end" value="2776"/>
+    <eAnnotations source="positions.84" references="/0/fullFilePath/@body.1/@argument.0/viewsRepository">
+      <details key="start" value="2809"/>
+      <details key="end" value="2824"/>
     </eAnnotations>
-    <eAnnotations source="positions.81" references="/0/fullFilePath/@body.2">
-      <details key="start" value="2813"/>
-      <details key="end" value="2814"/>
+    <eAnnotations source="positions.85" references="/0/fullFilePath/@body.2">
+      <details key="start" value="2861"/>
+      <details key="end" value="2862"/>
     </eAnnotations>
-    <eAnnotations source="positions.82" references="/0/fullFilePath/@body.3">
-      <details key="start" value="2815"/>
-      <details key="end" value="2851"/>
+    <eAnnotations source="positions.86" references="/0/fullFilePath/@body.3">
+      <details key="start" value="2863"/>
+      <details key="end" value="2899"/>
     </eAnnotations>
-    <eAnnotations source="positions.83" references="/0/fullFilePath/@body.3/viewsRepository">
-      <details key="start" value="2815"/>
-      <details key="end" value="2830"/>
+    <eAnnotations source="positions.87" references="/0/fullFilePath/@body.3/viewsRepository">
+      <details key="start" value="2863"/>
+      <details key="end" value="2878"/>
     </eAnnotations>
-    <eAnnotations source="positions.84" references="/0/fullFilePath/@body.4">
-      <details key="start" value="2853"/>
-      <details key="end" value="2864"/>
+    <eAnnotations source="positions.88" references="/0/fullFilePath/@body.4">
+      <details key="start" value="2901"/>
+      <details key="end" value="2912"/>
     </eAnnotations>
-    <eAnnotations source="positions.85" references="/0/fullFilePath/viewsRepository">
-      <details key="start" value="2724"/>
-      <details key="end" value="2757"/>
+    <eAnnotations source="positions.89" references="/0/fullFilePath/viewsRepository">
+      <details key="start" value="2772"/>
+      <details key="end" value="2805"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

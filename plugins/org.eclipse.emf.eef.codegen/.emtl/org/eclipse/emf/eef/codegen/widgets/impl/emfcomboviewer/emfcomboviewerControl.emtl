@@ -623,10 +623,9 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".get"/>
-      <body xsi:type="mtl:TemplateInvocation">
+      <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/common.emtl#/0/toJavaClassifier"/>
-        <argument xsi:type="ocl.ecore:PropertyCallExp">
+        <source xsi:type="ocl.ecore:PropertyCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:PropertyCallExp">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
@@ -636,7 +635,7 @@
             <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
-        </argument>
+        </source>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="());"/>
       <overrides href="../../api/widgetControl.emtl#/0/updater"/>
@@ -3008,16 +3007,16 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
         </eParameters>
       </eOperations>
-      <eOperations name="isEcoreDataType">
+      <eOperations name="isPrimitiveType">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/typeUtils.emtl#/0/isEcoreDataType"/>
+          <references href="../../../services/typeUtils.emtl#/0/isPrimitiveType"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="a">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
         </eParameters>
       </eOperations>
       <eOperations name="liveMessageSetter">
@@ -4597,6 +4596,15 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
+      <eOperations name="isPrimitiveType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/typeUtils.emtl#/0/isPrimitiveType"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="SimpleModelNavigation_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -4826,15 +4834,6 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="../../../services/typeUtils.emtl#/0/isDouble"/>
-        </eAnnotations>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-      </eOperations>
-      <eOperations name="isEcoreDataType">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/typeUtils.emtl#/0/isEcoreDataType"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -5751,7 +5750,7 @@
     </eAnnotations>
     <eAnnotations source="positions.187" references="/0/updater">
       <details key="start" value="3767"/>
-      <details key="end" value="4207"/>
+      <details key="end" value="4203"/>
     </eAnnotations>
     <eAnnotations source="positions.188" references="/0/updater/@body.0">
       <details key="start" value="3957"/>
@@ -5827,23 +5826,23 @@
     </eAnnotations>
     <eAnnotations source="positions.206" references="/0/updater/@body.9">
       <details key="start" value="4145"/>
-      <details key="end" value="4189"/>
+      <details key="end" value="4185"/>
     </eAnnotations>
-    <eAnnotations source="positions.207" references="/0/updater/@body.9/@argument.0">
+    <eAnnotations source="positions.207" references="/0/updater/@body.9/@source">
       <details key="start" value="4145"/>
       <details key="end" value="4170"/>
     </eAnnotations>
-    <eAnnotations source="positions.208" references="/0/updater/@body.9/@argument.0/@source">
+    <eAnnotations source="positions.208" references="/0/updater/@body.9/@source/@source">
       <details key="start" value="4145"/>
       <details key="end" value="4165"/>
     </eAnnotations>
-    <eAnnotations source="positions.209" references="/0/updater/@body.9/@argument.0/@source/editionElement">
+    <eAnnotations source="positions.209" references="/0/updater/@body.9/@source/@source/editionElement">
       <details key="start" value="4145"/>
       <details key="end" value="4159"/>
     </eAnnotations>
     <eAnnotations source="positions.210" references="/0/updater/@body.10">
-      <details key="start" value="4191"/>
-      <details key="end" value="4195"/>
+      <details key="start" value="4187"/>
+      <details key="end" value="4191"/>
     </eAnnotations>
     <eAnnotations source="positions.211" references="/0/updater/editionElement">
       <details key="start" value="3792"/>
@@ -5870,40 +5869,40 @@
       <details key="end" value="3953"/>
     </eAnnotations>
     <eAnnotations source="positions.217" references="/0/filterUpdater">
-      <details key="start" value="4209"/>
-      <details key="end" value="4464"/>
+      <details key="start" value="4205"/>
+      <details key="end" value="4460"/>
     </eAnnotations>
     <eAnnotations source="positions.218" references="/0/filterUpdater/@body.0">
-      <details key="start" value="4411"/>
-      <details key="end" value="4411"/>
+      <details key="start" value="4407"/>
+      <details key="end" value="4407"/>
     </eAnnotations>
     <eAnnotations source="positions.219" references="/0/filterUpdater/@body.1">
-      <details key="start" value="4452"/>
-      <details key="end" value="4452"/>
+      <details key="start" value="4448"/>
+      <details key="end" value="4448"/>
     </eAnnotations>
     <eAnnotations source="positions.220" references="/0/filterUpdater/editionElement">
-      <details key="start" value="4240"/>
-      <details key="end" value="4281"/>
+      <details key="start" value="4236"/>
+      <details key="end" value="4277"/>
     </eAnnotations>
     <eAnnotations source="positions.221" references="/0/filterUpdater/view">
-      <details key="start" value="4283"/>
-      <details key="end" value="4294"/>
+      <details key="start" value="4279"/>
+      <details key="end" value="4290"/>
     </eAnnotations>
     <eAnnotations source="positions.222" references="/0/filterUpdater/pec">
-      <details key="start" value="4296"/>
-      <details key="end" value="4328"/>
+      <details key="start" value="4292"/>
+      <details key="end" value="4324"/>
     </eAnnotations>
     <eAnnotations source="positions.223" references="/0/filterUpdater/@guard">
-      <details key="start" value="4357"/>
-      <details key="end" value="4408"/>
+      <details key="start" value="4353"/>
+      <details key="end" value="4404"/>
     </eAnnotations>
     <eAnnotations source="positions.224" references="/0/filterUpdater/@guard/editionElement">
-      <details key="start" value="4357"/>
-      <details key="end" value="4371"/>
+      <details key="start" value="4353"/>
+      <details key="end" value="4367"/>
     </eAnnotations>
     <eAnnotations source="positions.225" references="/0/filterUpdater/@guard/@argument.1">
-      <details key="start" value="4391"/>
-      <details key="end" value="4407"/>
+      <details key="start" value="4387"/>
+      <details key="end" value="4403"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

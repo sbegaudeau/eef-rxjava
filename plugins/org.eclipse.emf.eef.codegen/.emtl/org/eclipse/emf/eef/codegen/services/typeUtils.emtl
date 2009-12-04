@@ -581,9 +581,9 @@
       </expression>
       <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="isEcoreDataType" visibility="Public">
+    <ownedModuleElement xsi:type="mtl:Query" name="isPrimitiveType" visibility="Public">
       <parameter name="a">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
       </parameter>
       <expression xsi:type="ocl.ecore:OperationCallExp">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
@@ -591,36 +591,186 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
           <source xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                        <source xsi:type="ocl.ecore:OperationCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                          </source>
+                          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
+                        </source>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                        <source xsi:type="ocl.ecore:PropertyCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                          </source>
+                          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+                        </source>
+                        <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="byte">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        </argument>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:PropertyCallExp">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                          </source>
+                          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="short">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="int">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="long">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="float">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
             </source>
-            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
+            <argument xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="double">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
           </source>
-          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="char">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
         </source>
         <argument xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
           <source xsi:type="ocl.ecore:PropertyCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <source xsi:type="ocl.ecore:PropertyCallExp">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
-              <source xsi:type="ocl.ecore:PropertyCallExp">
-                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
-                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
-                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
-                </source>
-                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/27">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
               </source>
-              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/ePackage"/>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
             </source>
-            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
           </source>
-          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ecore">
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="boolean">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           </argument>
           <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
         </argument>
-        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/or"/>
       </expression>
       <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
     </ownedModuleElement>
@@ -987,14 +1137,14 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
         </eParameters>
       </eOperations>
-      <eOperations name="isEcoreDataType">
+      <eOperations name="isPrimitiveType">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/isEcoreDataType"/>
+        <eAnnotations source="MTL" references="/0/isPrimitiveType"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="a">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
@@ -1051,11 +1201,16 @@
         <eAnnotations source="MTL" references="/0/isDouble"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
-      <eOperations name="isEcoreDataType">
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EStructuralFeature_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+      </eAnnotations>
+      <eOperations name="isPrimitiveType">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL" references="/0/isEcoreDataType"/>
+        <eAnnotations source="MTL" references="/0/isPrimitiveType"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
     </eClassifiers>
@@ -1137,10 +1292,10 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
@@ -1786,53 +1941,217 @@
       <details key="start" value="1742"/>
       <details key="end" value="1750"/>
     </eAnnotations>
-    <eAnnotations source="positions.160" references="/0/isEcoreDataType">
+    <eAnnotations source="positions.160" references="/0/isPrimitiveType">
       <details key="start" value="1754"/>
+      <details key="end" value="2139"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/isPrimitiveType/a">
+      <details key="start" value="1784"/>
+      <details key="end" value="1806"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/isPrimitiveType/@expression">
+      <details key="start" value="1822"/>
+      <details key="end" value="2137"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/isPrimitiveType/@expression/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="2098"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/isPrimitiveType/@expression/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="2062"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/isPrimitiveType/@expression/@source/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="2024"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="1987"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="1951"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="1916"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="1879"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@source">
+      <details key="start" value="1822"/>
+      <details key="end" value="1842"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@source/@source">
+      <details key="start" value="1826"/>
+      <details key="end" value="1842"/>
+    </eAnnotations>
+    <eAnnotations source="positions.172" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.173" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@argument.0">
+      <details key="start" value="1847"/>
+      <details key="end" value="1879"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@argument.0/@source">
+      <details key="start" value="1847"/>
       <details key="end" value="1870"/>
     </eAnnotations>
-    <eAnnotations source="positions.161" references="/0/isEcoreDataType/a">
-      <details key="start" value="1784"/>
-      <details key="end" value="1798"/>
+    <eAnnotations source="positions.175" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="1847"/>
+      <details key="end" value="1852"/>
     </eAnnotations>
-    <eAnnotations source="positions.162" references="/0/isEcoreDataType/@expression">
-      <details key="start" value="1814"/>
-      <details key="end" value="1868"/>
-    </eAnnotations>
-    <eAnnotations source="positions.163" references="/0/isEcoreDataType/@expression/@source">
-      <details key="start" value="1814"/>
-      <details key="end" value="1834"/>
-    </eAnnotations>
-    <eAnnotations source="positions.164" references="/0/isEcoreDataType/@expression/@source/@source">
-      <details key="start" value="1818"/>
-      <details key="end" value="1834"/>
-    </eAnnotations>
-    <eAnnotations source="positions.165" references="/0/isEcoreDataType/@expression/@source/@source/self">
+    <eAnnotations source="positions.176" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@argument.0/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
-    <eAnnotations source="positions.166" references="/0/isEcoreDataType/@expression/@argument.0">
-      <details key="start" value="1839"/>
-      <details key="end" value="1868"/>
+    <eAnnotations source="positions.177" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="1873"/>
+      <details key="end" value="1879"/>
     </eAnnotations>
-    <eAnnotations source="positions.167" references="/0/isEcoreDataType/@expression/@argument.0/@source">
-      <details key="start" value="1839"/>
-      <details key="end" value="1858"/>
+    <eAnnotations source="positions.178" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@argument.0">
+      <details key="start" value="1883"/>
+      <details key="end" value="1916"/>
     </eAnnotations>
-    <eAnnotations source="positions.168" references="/0/isEcoreDataType/@expression/@argument.0/@source/@source">
-      <details key="start" value="1839"/>
-      <details key="end" value="1853"/>
+    <eAnnotations source="positions.179" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@argument.0/@source">
+      <details key="start" value="1883"/>
+      <details key="end" value="1906"/>
     </eAnnotations>
-    <eAnnotations source="positions.169" references="/0/isEcoreDataType/@expression/@argument.0/@source/@source/@source">
-      <details key="start" value="1839"/>
-      <details key="end" value="1844"/>
+    <eAnnotations source="positions.180" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="1883"/>
+      <details key="end" value="1888"/>
     </eAnnotations>
-    <eAnnotations source="positions.170" references="/0/isEcoreDataType/@expression/@argument.0/@source/@source/@source/self">
+    <eAnnotations source="positions.181" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@argument.0/@source/@source/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
     </eAnnotations>
-    <eAnnotations source="positions.171" references="/0/isEcoreDataType/@expression/@argument.0/@argument.0">
-      <details key="start" value="1861"/>
-      <details key="end" value="1868"/>
+    <eAnnotations source="positions.182" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="1909"/>
+      <details key="end" value="1916"/>
+    </eAnnotations>
+    <eAnnotations source="positions.183" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@argument.0">
+      <details key="start" value="1920"/>
+      <details key="end" value="1951"/>
+    </eAnnotations>
+    <eAnnotations source="positions.184" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@argument.0/@source">
+      <details key="start" value="1920"/>
+      <details key="end" value="1943"/>
+    </eAnnotations>
+    <eAnnotations source="positions.185" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="1920"/>
+      <details key="end" value="1925"/>
+    </eAnnotations>
+    <eAnnotations source="positions.186" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@argument.0/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.187" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="1946"/>
+      <details key="end" value="1951"/>
+    </eAnnotations>
+    <eAnnotations source="positions.188" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@argument.0">
+      <details key="start" value="1955"/>
+      <details key="end" value="1987"/>
+    </eAnnotations>
+    <eAnnotations source="positions.189" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@argument.0/@source">
+      <details key="start" value="1955"/>
+      <details key="end" value="1978"/>
+    </eAnnotations>
+    <eAnnotations source="positions.190" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="1955"/>
+      <details key="end" value="1960"/>
+    </eAnnotations>
+    <eAnnotations source="positions.191" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@argument.0/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.192" references="/0/isPrimitiveType/@expression/@source/@source/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="1981"/>
+      <details key="end" value="1987"/>
+    </eAnnotations>
+    <eAnnotations source="positions.193" references="/0/isPrimitiveType/@expression/@source/@source/@source/@argument.0">
+      <details key="start" value="1991"/>
+      <details key="end" value="2024"/>
+    </eAnnotations>
+    <eAnnotations source="positions.194" references="/0/isPrimitiveType/@expression/@source/@source/@source/@argument.0/@source">
+      <details key="start" value="1991"/>
+      <details key="end" value="2014"/>
+    </eAnnotations>
+    <eAnnotations source="positions.195" references="/0/isPrimitiveType/@expression/@source/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="1991"/>
+      <details key="end" value="1996"/>
+    </eAnnotations>
+    <eAnnotations source="positions.196" references="/0/isPrimitiveType/@expression/@source/@source/@source/@argument.0/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.197" references="/0/isPrimitiveType/@expression/@source/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="2017"/>
+      <details key="end" value="2024"/>
+    </eAnnotations>
+    <eAnnotations source="positions.198" references="/0/isPrimitiveType/@expression/@source/@source/@argument.0">
+      <details key="start" value="2028"/>
+      <details key="end" value="2062"/>
+    </eAnnotations>
+    <eAnnotations source="positions.199" references="/0/isPrimitiveType/@expression/@source/@source/@argument.0/@source">
+      <details key="start" value="2028"/>
+      <details key="end" value="2051"/>
+    </eAnnotations>
+    <eAnnotations source="positions.200" references="/0/isPrimitiveType/@expression/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="2028"/>
+      <details key="end" value="2033"/>
+    </eAnnotations>
+    <eAnnotations source="positions.201" references="/0/isPrimitiveType/@expression/@source/@source/@argument.0/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.202" references="/0/isPrimitiveType/@expression/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="2054"/>
+      <details key="end" value="2062"/>
+    </eAnnotations>
+    <eAnnotations source="positions.203" references="/0/isPrimitiveType/@expression/@source/@argument.0">
+      <details key="start" value="2066"/>
+      <details key="end" value="2098"/>
+    </eAnnotations>
+    <eAnnotations source="positions.204" references="/0/isPrimitiveType/@expression/@source/@argument.0/@source">
+      <details key="start" value="2066"/>
+      <details key="end" value="2089"/>
+    </eAnnotations>
+    <eAnnotations source="positions.205" references="/0/isPrimitiveType/@expression/@source/@argument.0/@source/@source">
+      <details key="start" value="2066"/>
+      <details key="end" value="2071"/>
+    </eAnnotations>
+    <eAnnotations source="positions.206" references="/0/isPrimitiveType/@expression/@source/@argument.0/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.207" references="/0/isPrimitiveType/@expression/@source/@argument.0/@argument.0">
+      <details key="start" value="2092"/>
+      <details key="end" value="2098"/>
+    </eAnnotations>
+    <eAnnotations source="positions.208" references="/0/isPrimitiveType/@expression/@argument.0">
+      <details key="start" value="2102"/>
+      <details key="end" value="2137"/>
+    </eAnnotations>
+    <eAnnotations source="positions.209" references="/0/isPrimitiveType/@expression/@argument.0/@source">
+      <details key="start" value="2102"/>
+      <details key="end" value="2125"/>
+    </eAnnotations>
+    <eAnnotations source="positions.210" references="/0/isPrimitiveType/@expression/@argument.0/@source/@source">
+      <details key="start" value="2102"/>
+      <details key="end" value="2107"/>
+    </eAnnotations>
+    <eAnnotations source="positions.211" references="/0/isPrimitiveType/@expression/@argument.0/@source/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+    </eAnnotations>
+    <eAnnotations source="positions.212" references="/0/isPrimitiveType/@expression/@argument.0/@argument.0">
+      <details key="start" value="2128"/>
+      <details key="end" value="2137"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
