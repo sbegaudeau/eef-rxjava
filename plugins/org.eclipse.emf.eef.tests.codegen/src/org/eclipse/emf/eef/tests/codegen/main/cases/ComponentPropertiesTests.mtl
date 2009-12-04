@@ -50,7 +50,7 @@ import [pec.model.qualifiedMetamodelPackage()/];
 [for (viewRepository : ViewsRepository | pec.views.owningViewsRepository()->asSet())]
 import [viewRepository.qualifiedMessagesProvider()/];
 [/for]
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -108,7 +108,7 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 	/**
 	 * The ResourceSet where to operate
 	 */
-	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EMFPropertiesRuntime.getDefault().getAdapterFactory(), new BasicCommandStack());
+	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EEFRuntimePlugin.getDefault().getAdapterFactory(), new BasicCommandStack());
 	
 	/**
 	 * The EClass of the type to edit
@@ -193,7 +193,7 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-				
+		
 		// Open the EEF properties view to edit the [pec.model.name/] element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
@@ -202,7 +202,7 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
 		[pec.editPropertyFeature(peElement)/]
-				
+		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
 		
