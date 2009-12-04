@@ -30,7 +30,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
  *
  */
 public class EEFGenPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
-	
+
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)

@@ -20,7 +20,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -31,7 +33,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -40,7 +42,10 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -61,7 +66,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	/**
 	 * The Base part
 	 */
-	private EEFGenModelPropertiesEditionPart basePart;
+	protected EEFGenModelPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -90,44 +95,60 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					EEFGenModelPropertiesEditionComponent.this.dispose();
 				else {
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setGenerationDirectory((String)msg.getNewValue());
-}
-						else
-							basePart.setGenerationDirectory("");
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setAuthor((String)msg.getNewValue());
-}
-						else
-							basePart.setAuthor("");
-					}
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) 
-							basePart.setLicense((String)msg.getNewValue());
-						else
-							basePart.setLicense((String)"");
-					}
-
-					if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setTestsGenerationDirectory((String)msg.getNewValue());
-}
-						else
-							basePart.setTestsGenerationDirectory("");
-					}
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setGenerationDirectory("");
+			}
+		}
+		if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setAuthor(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setAuthor("");
+			}
+		}
+		if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setLicense(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setLicense("");
+			}
+		}
+		if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setTestsGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setTestsGenerationDirectory("");
+			}
+		}
+
+
 	}
 
 	/**
@@ -154,7 +175,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (eEFGenModel != null && BASE_PART.equals(key)) {
@@ -193,18 +214,16 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			final EEFGenModel eEFGenModel = (EEFGenModel)elt;
 			// init values
 			if (eEFGenModel.getGenDirectory() != null)
-				basePart.setGenerationDirectory(eEFGenModel.getGenDirectory());
+				basePart.setGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getGenDirectory()));
 
 			if (eEFGenModel.getAuthor() != null)
-				basePart.setAuthor(eEFGenModel.getAuthor());
+				basePart.setAuthor(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getAuthor()));
 
 			if (eEFGenModel.getLicense() != null)
-				basePart.setLicense(eEFGenModel.getLicense());
-
+				basePart.setLicense(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getLicense()));
 			if (eEFGenModel.getTestsGenDirectory() != null)
-				basePart.setTestsGenerationDirectory(eEFGenModel.getTestsGenDirectory());
+				basePart.setTestsGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getTestsGenDirectory()));
 
-			
 			// init filters
 
 
@@ -232,15 +251,11 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (eEFGenModel != null) {
-			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), basePart.getGenerationDirectory()));
-
-			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_Author(), basePart.getAuthor()));
-
-			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), basePart.getLicense()));
-
-			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), basePart.getTestsGenerationDirectory()));
-
+		if ((eEFGenModel != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getGenerationDirectory())));
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_Author(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getAuthor())));
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getLicense())));
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTestsGenerationDirectory())));
 
 
 		}
@@ -258,13 +273,12 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof EEFGenModel) {
 			EEFGenModel eEFGenModelToUpdate = (EEFGenModel)source;
-			eEFGenModelToUpdate.setGenDirectory(basePart.getGenerationDirectory());
+			eEFGenModelToUpdate.setGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getGenerationDirectory()));
 
-			eEFGenModelToUpdate.setAuthor(basePart.getAuthor());
+			eEFGenModelToUpdate.setAuthor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getAuthor()));
 
-			eEFGenModelToUpdate.setLicense(basePart.getLicense());
-
-			eEFGenModelToUpdate.setTestsGenDirectory(basePart.getTestsGenerationDirectory());
+			eEFGenModelToUpdate.setLicense((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getLicense()));
+			eEFGenModelToUpdate.setTestsGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTestsGenerationDirectory()));
 
 
 
@@ -283,22 +297,22 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), event.getNewValue()));
-
-			if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_Author(), event.getNewValue()));
-
-			if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), event.getNewValue()));
-
-			if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), event.getNewValue()));
-
+			if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
+			if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_Author(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
+			if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
+			if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -368,6 +382,8 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -390,7 +406,6 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -405,4 +420,12 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			eEFGenModel.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

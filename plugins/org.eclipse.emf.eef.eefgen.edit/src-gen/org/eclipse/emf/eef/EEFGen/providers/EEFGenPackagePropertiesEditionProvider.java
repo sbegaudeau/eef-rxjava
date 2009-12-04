@@ -29,7 +29,7 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 		append(createEEFGenModelPropertiesEditionProvider());
 		append(createGenViewsRepositoryPropertiesEditionProvider());
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * GenEditionContext instances.
@@ -44,7 +44,7 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			genEditionContextPropertiesEditionProvider = new GenEditionContextPropertiesEditionProvider();
 		return genEditionContextPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EEFGenModelReference instances.
@@ -59,7 +59,7 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			eEFGenModelReferencePropertiesEditionProvider = new EEFGenModelReferencePropertiesEditionProvider();
 		return eEFGenModelReferencePropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EEFGenModel instances.
@@ -74,7 +74,7 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			eEFGenModelPropertiesEditionProvider = new EEFGenModelPropertiesEditionProvider();
 		return eEFGenModelPropertiesEditionProvider;
 	}
-	
+
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * GenViewsRepository instances.
@@ -89,5 +89,5 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 			genViewsRepositoryPropertiesEditionProvider = new GenViewsRepositoryPropertiesEditionProvider();
 		return genViewsRepositoryPropertiesEditionProvider;
 	}
-	
-}	
+
+}

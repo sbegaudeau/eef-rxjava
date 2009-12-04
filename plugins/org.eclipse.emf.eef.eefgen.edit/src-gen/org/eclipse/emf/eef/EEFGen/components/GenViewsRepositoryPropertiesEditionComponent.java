@@ -21,8 +21,10 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -34,7 +36,7 @@ import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -44,10 +46,13 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -68,7 +73,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	/**
 	 * The Base part
 	 */
-	private GenViewsRepositoryPropertiesEditionPart basePart;
+	protected GenViewsRepositoryPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -97,34 +102,50 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					GenViewsRepositoryPropertiesEditionComponent.this.dispose();
 				else {
-					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null){
-						if (msg.getNewValue() != null) {
-							basePart.setBasePackage((String)msg.getNewValue());
-}
-						else
-							basePart.setBasePackage("");
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
-						basePart.setSWTViews((Boolean)msg.getNewValue());
-
-					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null)
-						basePart.setFormsViews((Boolean)msg.getNewValue());
-
-					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && basePart != null)
-						basePart.setHelpStrategy((Enumerator)msg.getNewValue());
-
-					if (EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository().equals(msg.getFeature()) && basePart != null)
-						basePart.setViewsRepository((EObject)msg.getNewValue());
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setBasePackage("");
+			}
+		}
+		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
+			basePart.setSWTViews((Boolean)msg.getNewValue());
+
+		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null)
+			basePart.setFormsViews((Boolean)msg.getNewValue());
+
+		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && basePart != null)
+			basePart.setHelpStrategy((Enumerator)msg.getNewValue());
+
+		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository().equals(msg.getFeature()) && basePart != null)
+			basePart.setViewsRepository((EObject)msg.getNewValue());
+
+
 	}
 
 	/**
@@ -151,7 +172,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 * (java.lang.String, java.lang.String)
+	 *  (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (genViewsRepository != null && BASE_PART.equals(key)) {
@@ -190,17 +211,17 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			final GenViewsRepository genViewsRepository = (GenViewsRepository)elt;
 			// init values
 			if (genViewsRepository.getBasePackage() != null)
-				basePart.setBasePackage(genViewsRepository.getBasePackage());
+				basePart.setBasePackage(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genViewsRepository.getBasePackage()));
 
 			basePart.setSWTViews(genViewsRepository.isSwtViews());
 
 			basePart.setFormsViews(genViewsRepository.isFormViews());
 
 			basePart.initHelpStrategy((EEnum) EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEType(), genViewsRepository.getHelpStrategy());
+			// init part
 			basePart.initViewsRepository(allResource, genViewsRepository.getViewsRepository());
 			// set the button mode
 			basePart.setViewsRepositoryButtonMode(ButtonsModeEnum.BROWSE);
-			
 			// init filters
 
 
@@ -245,9 +266,8 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (genViewsRepository != null) {
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), basePart.getBasePackage()));
-
+		if ((genViewsRepository != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getBasePackage())));
 			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), basePart.getSWTViews()));
 
 			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(), basePart.getFormsViews()));
@@ -274,7 +294,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof GenViewsRepository) {
 			GenViewsRepository genViewsRepositoryToUpdate = (GenViewsRepository)source;
-			genViewsRepositoryToUpdate.setBasePackage(basePart.getBasePackage());
+			genViewsRepositoryToUpdate.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getBasePackage()));
 
 			genViewsRepositoryToUpdate.setSwtViews(new Boolean(basePart.getSWTViews()).booleanValue());
 
@@ -300,9 +320,9 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), event.getNewValue()));
-
+			if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 			if (EEFGenViewsRepository.GenViewsRepository.sWTViews == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), event.getNewValue()));
 
@@ -317,7 +337,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -383,6 +403,8 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -405,7 +427,6 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 		// Start of user code for custom validation check
 		
 		// End of user code
-
 		return validate;
 	}
 
@@ -420,4 +441,12 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			genViewsRepository.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

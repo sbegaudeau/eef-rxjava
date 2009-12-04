@@ -47,7 +47,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -212,7 +212,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		if (newValue != null) {
 			generationDirectory.setText(newValue);
 		} else {
-			generationDirectory.setText("");  //$NON-NLS-1$
+			generationDirectory.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -242,7 +242,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		if (newValue != null) {
 			testsGenerationDirectory.setText(newValue);
 		} else {
-			testsGenerationDirectory.setText("");  //$NON-NLS-1$
+			testsGenerationDirectory.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -272,7 +272,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		if (newValue != null) {
 			author.setText(newValue);
 		} else {
-			author.setText("");  //$NON-NLS-1$
+			author.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -320,6 +320,15 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return EEFGenMessages.EEFGenModel_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

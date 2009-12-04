@@ -58,7 +58,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -320,7 +320,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		if (newValue != null) {
 			basePackage.setText(newValue);
 		} else {
-			basePackage.setText("");  //$NON-NLS-1$
+			basePackage.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -350,7 +350,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		if (newValue != null) {
 			descriptorsContributorID.setText(newValue);
 		} else {
-			descriptorsContributorID.setText("");  //$NON-NLS-1$
+			descriptorsContributorID.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -458,6 +458,15 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return EEFGenMessages.GenEditionContext_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

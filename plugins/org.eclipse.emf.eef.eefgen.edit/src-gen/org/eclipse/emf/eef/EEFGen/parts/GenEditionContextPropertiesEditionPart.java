@@ -73,6 +73,7 @@ public interface GenEditionContextPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the Base package
 	 */
@@ -87,6 +88,7 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void setMessageForBasePackage(String msg, int msgLevel);
 
 	public void unsetMessageForBasePackage();
+
 
 	/**
 	 * @return the Descriptors contributorID
@@ -103,6 +105,7 @@ public interface GenEditionContextPropertiesEditionPart {
 
 	public void unsetMessageForDescriptorsContributorID();
 
+
 	/**
 	 * @return the Generic properties views descriptors
 	 */
@@ -118,6 +121,7 @@ public interface GenEditionContextPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the GMF specific properties views
 	 */
@@ -128,6 +132,7 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * @param newValue the new GMF specific properties views to set
 	 */
 	public void setGMFSpecificPropertiesViews(Boolean newValue);
+
 
 
 
@@ -152,6 +157,13 @@ public interface GenEditionContextPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	

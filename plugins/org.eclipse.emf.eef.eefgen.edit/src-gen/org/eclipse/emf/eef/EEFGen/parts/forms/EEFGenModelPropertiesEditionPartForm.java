@@ -56,7 +56,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -64,11 +64,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	public EEFGenModelPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -80,11 +80,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
 		return scrolledForm;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 * 			createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -93,9 +93,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		// Start of user code for additional ui definition
 		
 		// End of user code
-		
 	}
-
 	protected void createParametersGroup(FormToolkit widgetFactory, final Composite view) {
 		Section parametersSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		parametersSection.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_ParametersGroupLabel);
@@ -315,12 +313,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
-	
+
 	public void firePropertiesChanged(PropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-		
 	}
 
 	/**
@@ -341,7 +338,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		if (newValue != null) {
 			generationDirectory.setText(newValue);
 		} else {
-			generationDirectory.setText("");  //$NON-NLS-1$
+			generationDirectory.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -371,7 +368,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		if (newValue != null) {
 			testsGenerationDirectory.setText(newValue);
 		} else {
-			testsGenerationDirectory.setText("");  //$NON-NLS-1$
+			testsGenerationDirectory.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -401,7 +398,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		if (newValue != null) {
 			author.setText(newValue);
 		} else {
-			author.setText("");  //$NON-NLS-1$
+			author.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -448,10 +445,17 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return EEFGenMessages.EEFGenModel_Part_Title;
+	}
 
-	
 	// Start of user code additional methods
  	
 	// End of user code
 
-}	
+}

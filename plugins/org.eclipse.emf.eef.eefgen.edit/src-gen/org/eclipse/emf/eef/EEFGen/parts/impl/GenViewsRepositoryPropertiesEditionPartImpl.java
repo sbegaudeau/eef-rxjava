@@ -63,7 +63,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -304,7 +304,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		if (newValue != null) {
 			basePackage.setText(newValue);
 		} else {
-			basePackage.setText("");  //$NON-NLS-1$
+			basePackage.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -419,6 +419,15 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return EEFGenMessages.GenViewsRepository_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

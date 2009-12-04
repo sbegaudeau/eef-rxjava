@@ -40,11 +40,19 @@ public class EEFGenMessages extends NLS {
 
 	public static String GenEditionContext_ReadOnly;
 
+	public static String GenEditionContext_Part_Title;
+
 	public static String EEFGenModelReference_ReadOnly;
+
+	public static String EEFGenModelReference_Part_Title;
 
 	public static String EEFGenModel_ReadOnly;
 
+	public static String EEFGenModel_Part_Title;
+
 	public static String GenViewsRepository_ReadOnly;
+
+	public static String GenViewsRepository_Part_Title;
 
 	public static String GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel;
 

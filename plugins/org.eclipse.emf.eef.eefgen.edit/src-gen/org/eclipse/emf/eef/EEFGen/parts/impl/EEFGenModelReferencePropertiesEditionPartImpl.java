@@ -49,7 +49,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -206,6 +206,15 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return EEFGenMessages.EEFGenModelReference_Part_Title;
+	}
 
 	// Start of user code additional methods
  	

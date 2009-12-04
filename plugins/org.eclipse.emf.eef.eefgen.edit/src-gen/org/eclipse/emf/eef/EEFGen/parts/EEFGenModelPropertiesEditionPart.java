@@ -39,6 +39,7 @@ public interface EEFGenModelPropertiesEditionPart {
 
 	public void unsetMessageForGenerationDirectory();
 
+
 	/**
 	 * @return the Tests generation directory
 	 */
@@ -54,6 +55,7 @@ public interface EEFGenModelPropertiesEditionPart {
 
 	public void unsetMessageForTestsGenerationDirectory();
 
+
 	/**
 	 * @return the author
 	 */
@@ -68,6 +70,7 @@ public interface EEFGenModelPropertiesEditionPart {
 	public void setMessageForAuthor(String msg, int msgLevel);
 
 	public void unsetMessageForAuthor();
+
 
 	/**
 	 * @return the license
@@ -88,6 +91,13 @@ public interface EEFGenModelPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
 	

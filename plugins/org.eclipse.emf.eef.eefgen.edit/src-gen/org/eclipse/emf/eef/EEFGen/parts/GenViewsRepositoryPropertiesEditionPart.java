@@ -74,6 +74,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the Base package
 	 */
@@ -88,6 +89,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	public void setMessageForBasePackage(String msg, int msgLevel);
 
 	public void unsetMessageForBasePackage();
+
 
 	/**
 	 * @return the Help strategy
@@ -111,6 +113,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the SWT views
 	 */
@@ -121,6 +124,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * @param newValue the new SWT views to set
 	 */
 	public void setSWTViews(Boolean newValue);
+
 
 
 
@@ -145,6 +149,13 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 
 
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	
