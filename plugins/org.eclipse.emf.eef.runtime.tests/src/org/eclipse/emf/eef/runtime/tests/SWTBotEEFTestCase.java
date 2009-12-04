@@ -24,8 +24,8 @@ import org.eclipse.emf.compare.match.metamodel.MatchModel;
 import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.tests.swtbot.finder.SWTEEFBot;
+import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -36,7 +36,6 @@ import org.junit.Before;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 
@@ -64,12 +63,11 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	 * Process to initialize the workspace for the tests
 	 * 
 	 * @throws CoreException
-	 *             an error occured during the tests initialization
+	 *             an error occurred during the tests initialization
 	 * @throws IOException
-	 *             an error occured during the tests initialization
+	 *             an error occurred during the tests initialization
 	 */
-	protected abstract void initWorkspaceForTests() throws CoreException,
-			IOException;
+	protected abstract void initWorkspaceForTests() throws CoreException, IOException;
 
 	/*****************************************************************************
 	 * * Test lifecycle * *
@@ -82,7 +80,7 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	public void setUp() throws Exception {
 		super.setUp();
 		closeWelcomePage();
-//		openJavaPerspective();
+		// openJavaPerspective();
 		openPropertiesView();
 		initWorkspaceForTests();
 	}
@@ -90,13 +88,13 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	private void openPropertiesView() {
 		bot.menu("Window").menu("Show View").menu("Other...").click();
 
-        SWTBotShell shell = bot.shell("Show View");
-        shell.activate();
+		SWTBotShell shell = bot.shell("Show View");
+		shell.activate();
 
-        SWTBotTree viewSelectionTree = bot.tree();
-        viewSelectionTree.expandNode("General").select("Properties");
-        bot.button("OK").click();
-        bot.waitUntil(Conditions.shellCloses(shell));
+		SWTBotTree viewSelectionTree = bot.tree();
+		viewSelectionTree.expandNode("General").select("Properties");
+		bot.button("OK").click();
+		bot.waitUntil(Conditions.shellCloses(shell));
 	}
 
 	protected void openJavaPerspective() {
@@ -113,8 +111,7 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	 *****************************************************************************/
 
 	/**
-	 * This method close the welcome page if we use the workspace of test for
-	 * the first time
+	 * This method close the welcome page if we use the workspace of test for the first time
 	 */
 	protected void closeWelcomePage() {
 		try {
@@ -131,16 +128,11 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	 * @throws Exception
 	 *             something wrong during comparison
 	 */
-	private DiffModel compareToActiveModel(Resource expectedModel)
-			throws Exception {
+	private DiffModel compareToActiveModel(Resource expectedModel) throws Exception {
 		bot.reloadActiveModel();
 		Map<String, Object> options = new HashMap<String, Object>();
-		options
-				.put(
-						org.eclipse.emf.compare.match.MatchOptions.OPTION_IGNORE_XMI_ID,
-						true);
-		MatchModel match = MatchService.doResourceMatch(
-				bot.getActiveResource(), expectedModel, options);
+		options.put(org.eclipse.emf.compare.match.MatchOptions.OPTION_IGNORE_XMI_ID, Boolean.TRUE);
+		MatchModel match = MatchService.doResourceMatch(bot.getActiveResource(), expectedModel, options);
 		DiffModel diff = DiffService.doDiff(match);
 		return diff;
 	}
@@ -154,12 +146,9 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	public void assertExpectedModelReached(Resource expectedModel) {
 		try {
 			DiffModel compareToActiveModel = compareToActiveModel(expectedModel);
-			List<EObject> diffList = EEFUtils
-					.asEObjectList(compareToActiveModel.eAllContents());
+			List<EObject> diffList = EEFUtil.asEObjectList(compareToActiveModel.eAllContents());
 			List<EObject> result = filterAbnormalDiffElement(diffList);
-			assertEquals(
-					"The active model isn't the same that the expected model",
-					result.size(), 0);
+			assertEquals("The active model isn't the same that the expected model", result.size(), 0);
 		} catch (Exception e) {
 			// How to do that ???
 			assertTrue("Error during model comparison", false);
@@ -176,8 +165,7 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	private List<EObject> filterAbnormalDiffElement(List<EObject> diffList) {
 		List<EObject> result = new ArrayList<EObject>();
 		for (EObject object : diffList) {
-			if (!(object instanceof DiffGroup)
-					|| (((DiffGroup) object).eContents().size() > 0))
+			if (!(object instanceof DiffGroup) || (((DiffGroup)object).eContents().size() > 0))
 				result.add(object);
 		}
 		return result;

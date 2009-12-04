@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
@@ -39,38 +39,36 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
-  *
  */
 public class SWTEEFBot extends SWTWorkbenchBot {
-	
+
 	/*****************************************************************************
-	 *																			 *
-	 * UI Constants																 *
-	 * 																			 *
+	 * * UI Constants * *
 	 *****************************************************************************/
-	
+
 	public static final String PACKAGE_EXPLORER_VIEW_NAME = "Package Explorer";
+
 	public static final String PROPERTIES_VIEW_NAME = "Properties";
+
 	public static final String NAVIGATE_MENU_LABEL = "Navigate";
+
 	public static final String OPEN_MENU_LABEL = "Open";
+
 	public static final String FINISH_BUTTON_LABEL = "Finish";
 
 	/*****************************************************************************
-	 *																			 *
-	 * Bot members																 *
-	 * 																			 *
+	 * * Bot members * *
 	 *****************************************************************************/
 
 	private Resource activeResource = null;
-	
+
 	/**
 	 * @return the URI of the input model
 	 */
 	public String getInputModelURI() {
 		if (activeResource != null)
 			return activeResource.getURI().toString();
-		else
-			return null;
+		return null;
 	}
 
 	/**
@@ -81,32 +79,29 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	}
 
 	/*****************************************************************************
-	 *																			 *
-	 * Bot settings																 *
-	 * 																			 *
+	 * * Bot settings * *
 	 *****************************************************************************/
-	
+
 	public void defineActiveModel(Resource resource) {
 		this.activeResource = resource;
 	}
-	
+
 	public void unloadActiveModel() {
 		this.activeResource.unload();
 	}
-	
+
 	public void reloadActiveModel() throws IOException {
 		this.activeResource.unload();
 		this.activeResource.load(Collections.EMPTY_MAP);
 	}
 
 	/*****************************************************************************
-	 *																			 *
-	 * Bot operation															 *
-	 * 																			 *
+	 * * Bot operation * *
 	 *****************************************************************************/
-	
+
 	/**
-	 * @param file the file to open
+	 * @param file
+	 *            the file to open
 	 * @return the editor editing the file
 	 */
 	public SWTBotEditor openFile(IFile file) {
@@ -130,20 +125,24 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Open the editor on the input model
+	 * 
 	 * @return the associated editor
 	 */
 	public SWTBotEditor openActiveModel() {
 		IFile file = EEFTestsResourceUtils.workspaceFile(activeResource);
 		return openFile(file);
 	}
-	
+
 	/**
 	 * Prepare the model editing
-	 * @param elementType The EClass of the edited element
-	 * @param element the element to edit
+	 * 
+	 * @param elementType
+	 *            The EClass of the edited element
+	 * @param element
+	 *            the element to edit
 	 * @return the shell of the opened wizard
 	 */
 	public SWTBotShell prepareBatchEditing(SWTBotEditor editor, EClass elementType, EObject element) {
@@ -152,11 +151,14 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		return shell(elementType.getName());
 	}
-	
+
 	/**
 	 * Prepare the model editing
-	 * @param editor The EClass of the edited element
-	 * @param element the element to edit
+	 * 
+	 * @param editor
+	 *            The EClass of the edited element
+	 * @param element
+	 *            the element to edit
 	 * @return the shell of the opened wizard
 	 */
 	public SWTBotView prepareLiveEditing(SWTBotEditor editor, EObject element) {
@@ -168,8 +170,11 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 
 	/**
 	 * Select the given element in the given editor
-	 * @param editor the editor where the bot must process
-	 * @param element the element to select
+	 * 
+	 * @param editor
+	 *            the editor where the bot must process
+	 * @param element
+	 *            the element to select
 	 * @return the selected node
 	 */
 	public SWTBotTreeItem selectNode(SWTBotEditor editor, EObject element) {
@@ -187,7 +192,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 
 	/**
 	 * This method save the model and close the editor
-	 * @param editor the modelEditor
+	 * 
+	 * @param editor
+	 *            the modelEditor
 	 */
 	public void finalizeEdition(SWTBotEditor editor) {
 		activateEclipseShell();
@@ -195,18 +202,20 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(3000);
 		editor.close();
 	}
-	
+
 	/*****************************************************************************
-	 *																			 *
-	 * EEF features editing testing												 *
-	 * 																			 *
+	 * * EEF features editing testing * *
 	 *****************************************************************************/
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
-	 * @param shell the shell of the edited wizard 
-	 * @param feature the feature to edit
- 	 * @param newValue the new value to set to the feature
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
 	 */
 	public void editTextFeature(SWTBotShell shell, String feature, Object newValue) {
 		shell.activate();
@@ -216,14 +225,19 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		button(FINISH_BUTTON_LABEL).click();
 		waitUntil(Conditions.shellCloses(shell));
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
-	 * @param propertyView the properties view
-	 * @param feature the feature to edit
- 	 * @param selectNode the SWTBotTreeItem in the treeview model
+	 * 
+	 * @param propertyView
+	 *            the properties view
+	 * @param feature
+	 *            the feature to edit
+	 * @param selectNode
+	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyTextFeature(SWTBotView propertyView, String feature, Object newValue, SWTBotTreeItem selectNode) {
+	public void editPropertyTextFeature(SWTBotView propertyView, String feature, Object newValue,
+			SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.textWithLabel(feature).setFocus();
 		propertyBot.textWithLabel(feature).setText(newValue.toString());
@@ -231,12 +245,15 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		selectNode.select();
 	}
 
-	
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
-	 * @param shell the shell of the edited wizard 
-	 * @param feature the feature to edit
- 	 * @param newValue the new value to set to the feature
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
 	 */
 	public void editCheckboxFeature(SWTBotShell shell, String feature) {
 		shell.activate();
@@ -246,25 +263,27 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		button(FINISH_BUTTON_LABEL).click();
 		waitUntil(Conditions.shellCloses(shell));
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
-	 * @param propertyView the properties view
-	 * @param feature the feature to edit
- 	 * @param selectNode the SWTBotTreeItem in the treeview model
+	 * 
+	 * @param propertyView
+	 *            the properties view
+	 * @param feature
+	 *            the feature to edit
+	 * @param selectNode
+	 *            the SWTBotTreeItem in the treeview model
 	 */
 	public void editPropertyCheckboxFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.checkBox(feature).click();
 		selectNode.select();
 	}
-	
+
 	/*****************************************************************************
-	 *																			 *
-	 * Bot utils																 *
-	 * 																			 *
+	 * * Bot utils * *
 	 *****************************************************************************/
-	
+
 	/**
 	 * Active the main shell (Workbench shell)
 	 */
@@ -274,9 +293,10 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			// Heuristic : the eclipse shell is the first shell
 			shells[0].activate();
 	}
-	
+
 	/**
-	 * @param modelElement the element to process
+	 * @param modelElement
+	 *            the element to process
 	 * @return a list containing the element to expand
 	 */
 	private List<Object> getExpansionPath(EObject modelElement) {
@@ -284,14 +304,15 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		result.add(modelElement);
 		EObject container = modelElement.eContainer();
 		while (container != null) {
-			result.add(0,container);
+			result.add(0, container);
 			container = container.eContainer();
 		}
 		return result;
 	}
-	
+
 	/**
-	 * @param file the file to process
+	 * @param file
+	 *            the file to process
 	 * @return a list containing the element to expand
 	 */
 	private List<IResource> getExpansionPath(IFile file) {
@@ -309,7 +330,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 
 	/**
 	 * Return the label of the given IResource
-	 * @param resource the resource to process
+	 * 
+	 * @param resource
+	 *            the resource to process
 	 * @return the label of the resource
 	 */
 	private String getNodeText(IResource resource) {
@@ -318,13 +341,17 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 
 	/**
 	 * Select the object <code>next</code> as a subnode of the <code>currentNode</code>
-	 * @param currentNode the currentNode
-	 * @param next the subnode to select
+	 * 
+	 * @param currentNode
+	 *            the currentNode
+	 * @param next
+	 *            the subnode to select
 	 * @return the selected node
 	 */
 	private SWTBotTreeItem selectSubNode(SWTBotTreeItem currentNode, Object next) {
-		AdapterFactory adapterFactory = EMFPropertiesRuntime.getDefault().getAdapterFactory();
-		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(next, IItemLabelProvider.class);
+		AdapterFactory adapterFactory = EEFRuntimePlugin.getDefault().getAdapterFactory();
+		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(next,
+				IItemLabelProvider.class);
 		String text = labelProvider.getText(next);
 		SWTBotTreeItem node2 = currentNode.getNode(text);
 		node2.select();
@@ -332,6 +359,4 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		return node2;
 	}
 
-
 }
-
