@@ -25,7 +25,7 @@ import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitialize
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class PropertiesInitializerStrategyServices {
-	
+
 	/**
 	 * The extension name.
 	 */
@@ -51,7 +51,6 @@ public class PropertiesInitializerStrategyServices {
 	 */
 	private static final String EXTENSION_ATTRIBUTE_CLASS = "strategyClass"; //$NON-NLS-1$
 
-	
 	/**
 	 * The instance of the service
 	 */
@@ -61,7 +60,7 @@ public class PropertiesInitializerStrategyServices {
 	 * The discovered strategies
 	 */
 	private List<AbstractPropertiesInitializer> strategies;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -69,21 +68,19 @@ public class PropertiesInitializerStrategyServices {
 		configureService();
 	}
 
-
 	/**
 	 * @return the service instance
 	 */
 	public static PropertiesInitializerStrategyServices getInstance() {
 		return instance;
 	}
-	
+
 	/**
 	 * @return the strategies
 	 */
 	public List<AbstractPropertiesInitializer> getStrategies() {
 		return strategies;
 	}
-
 
 	/**
 	 * Load all the providers registered by extension point.
@@ -102,7 +99,8 @@ public class PropertiesInitializerStrategyServices {
 
 				if (EXTENSION_ELEMENT_NAME.equals(cfg.getName())) {
 					try {
-						AbstractPropertiesInitializer initializer = (AbstractPropertiesInitializer) cfg.createExecutableExtension(EXTENSION_ATTRIBUTE_CLASS);
+						AbstractPropertiesInitializer initializer = (AbstractPropertiesInitializer)cfg
+								.createExecutableExtension(EXTENSION_ATTRIBUTE_CLASS);
 						String nameAttribute = cfg.getAttribute(EXTENSION_ATTRIBUTE_NAME);
 						if (nameAttribute != null)
 							initializer.setName(nameAttribute);
@@ -118,6 +116,5 @@ public class PropertiesInitializerStrategyServices {
 		}
 
 	}
-
 
 }

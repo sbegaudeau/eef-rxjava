@@ -23,12 +23,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.Bundle;
 
-
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public abstract class AbstractPropertiesGeneratorLauncher implements
-		IPropertiesGeneratorLauncher {
+public abstract class AbstractPropertiesGeneratorLauncher implements IPropertiesGeneratorLauncher {
 
 	/**
 	 * Name of the launcher
@@ -43,17 +41,18 @@ public abstract class AbstractPropertiesGeneratorLauncher implements
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * A set containing the generation target
 	 */
 	protected Set<IContainer> targetContainer = new HashSet<IContainer>();
-	
+
 	/**
 	 * @return the targetContainer
 	 */
@@ -102,7 +101,8 @@ public abstract class AbstractPropertiesGeneratorLauncher implements
 		}
 		URI result;
 		if (url != null) {
-			result = URI.createPlatformPluginURI(new Path(bundleID).append(new Path(url.getPath())).toString(), false);
+			result = URI.createPlatformPluginURI(new Path(bundleID).append(new Path(url.getPath()))
+					.toString(), false);
 		} else {
 			result = URI.createPlatformResourceURI(new Path(bundleID).append(relativePath).toString(), false);
 		}

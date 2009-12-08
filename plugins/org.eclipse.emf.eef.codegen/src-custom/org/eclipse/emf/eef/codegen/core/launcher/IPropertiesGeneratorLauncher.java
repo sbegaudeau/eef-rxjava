@@ -21,5 +21,5 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 public interface IPropertiesGeneratorLauncher {
 
 	public void doGenerate(EEFGenModel eefGenModel, File targetFolder, IProgressMonitor monitor);
-	
+
 }

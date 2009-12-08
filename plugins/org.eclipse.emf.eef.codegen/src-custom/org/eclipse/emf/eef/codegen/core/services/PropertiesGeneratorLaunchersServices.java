@@ -25,7 +25,7 @@ import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLaun
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class PropertiesGeneratorLaunchersServices {
-	
+
 	/**
 	 * The extension name.
 	 */
@@ -46,7 +46,6 @@ public class PropertiesGeneratorLaunchersServices {
 	 */
 	private static final String EXTENSION_ATTRIBUTE_CLASS = "generatorLauncher"; //$NON-NLS-1$
 
-	
 	/**
 	 * The instance of the service
 	 */
@@ -56,7 +55,7 @@ public class PropertiesGeneratorLaunchersServices {
 	 * The discovered strategies
 	 */
 	private List<AbstractPropertiesGeneratorLauncher> launchers;
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -64,21 +63,19 @@ public class PropertiesGeneratorLaunchersServices {
 		configureService();
 	}
 
-
 	/**
 	 * @return the service instance
 	 */
 	public static PropertiesGeneratorLaunchersServices getInstance() {
 		return instance;
 	}
-	
+
 	/**
 	 * @return the strategies
 	 */
 	public List<AbstractPropertiesGeneratorLauncher> getlaunchers() {
 		return launchers;
 	}
-
 
 	/**
 	 * Load all the providers registered by extension point.
@@ -97,7 +94,8 @@ public class PropertiesGeneratorLaunchersServices {
 
 				if (EXTENSION_ELEMENT_NAME.equals(cfg.getName())) {
 					try {
-						AbstractPropertiesGeneratorLauncher launcher = (AbstractPropertiesGeneratorLauncher) cfg.createExecutableExtension(EXTENSION_ATTRIBUTE_CLASS);
+						AbstractPropertiesGeneratorLauncher launcher = (AbstractPropertiesGeneratorLauncher)cfg
+								.createExecutableExtension(EXTENSION_ATTRIBUTE_CLASS);
 						String nameAttribute = cfg.getAttribute(EXTENSION_ATTRIBUTE_NAME);
 						if (nameAttribute != null)
 							launcher.setName(nameAttribute);
@@ -110,6 +108,5 @@ public class PropertiesGeneratorLaunchersServices {
 		}
 
 	}
-
 
 }

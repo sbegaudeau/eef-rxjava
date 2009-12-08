@@ -41,8 +41,7 @@ public class EEFLauncher {
 	public static void main(String[] args) {
 		try {
 			if (args.length != 3) {
-				System.out
-						.println("Arguments not valid : {model, folder, basePackage}.");
+				System.out.println("Arguments not valid : {model, folder, basePackage}.");
 			} else {
 				URI modelURI = URI.createFileURI(args[0]);
 				File folder = new File(args[1]);
@@ -55,20 +54,19 @@ public class EEFLauncher {
 				SubPropertiesEditionComponent subPropertiesEditionComponent = new SubPropertiesEditionComponent(
 						modelURI, folder, arguments);
 				subPropertiesEditionComponent.doGenerate(monitor);
-				IPropertiesEditionPart ipropertiesEditionPart = new IPropertiesEditionPart(
-						modelURI, folder, arguments);
+				IPropertiesEditionPart ipropertiesEditionPart = new IPropertiesEditionPart(modelURI, folder,
+						arguments);
 				ipropertiesEditionPart.doGenerate(monitor);
-				PropertiesEditionPart propertiesEditionPart = new PropertiesEditionPart(
-						modelURI, folder, arguments);
+				PropertiesEditionPart propertiesEditionPart = new PropertiesEditionPart(modelURI, folder,
+						arguments);
 				propertiesEditionPart.doGenerate(monitor);
-				FormPropertiesEditionPart formPropertiesEditionPart = new FormPropertiesEditionPart(
-						modelURI, folder, arguments);
-				formPropertiesEditionPart.doGenerate(monitor);
-				ContextMessages contextMessages = new ContextMessages(modelURI,
+				FormPropertiesEditionPart formPropertiesEditionPart = new FormPropertiesEditionPart(modelURI,
 						folder, arguments);
+				formPropertiesEditionPart.doGenerate(monitor);
+				ContextMessages contextMessages = new ContextMessages(modelURI, folder, arguments);
 				contextMessages.doGenerate(monitor);
-				ContextMessagesProperties contextMessagesProperties = new ContextMessagesProperties(
-						modelURI, folder, arguments);
+				ContextMessagesProperties contextMessagesProperties = new ContextMessagesProperties(modelURI,
+						folder, arguments);
 				contextMessagesProperties.doGenerate(monitor);
 				PackagePropertiesEditionProvider packagePropertiesEditionProvider = new PackagePropertiesEditionProvider(
 						modelURI, folder, arguments);
@@ -76,14 +74,12 @@ public class EEFLauncher {
 				PackagePropertiesEditionPolicyProvider packagePropertiesEditionPolicyProvider = new PackagePropertiesEditionPolicyProvider(
 						modelURI, folder, arguments);
 				packagePropertiesEditionPolicyProvider.doGenerate(monitor);
-				PropertiesEditionProvider propertiesEditionProvider = new PropertiesEditionProvider(
-						modelURI, folder, arguments);
-				propertiesEditionProvider.doGenerate(monitor);
-				GMF_Plugin_xml plugin_xml = new GMF_Plugin_xml(modelURI,
+				PropertiesEditionProvider propertiesEditionProvider = new PropertiesEditionProvider(modelURI,
 						folder, arguments);
+				propertiesEditionProvider.doGenerate(monitor);
+				GMF_Plugin_xml plugin_xml = new GMF_Plugin_xml(modelURI, folder, arguments);
 				plugin_xml.doGenerate(monitor);
-				PropertySection propertiesSection = new PropertySection(
-						modelURI, folder, arguments);
+				PropertySection propertiesSection = new PropertySection(modelURI, folder, arguments);
 				propertiesSection.doGenerate(monitor);
 			}
 		} catch (IOException e) {
