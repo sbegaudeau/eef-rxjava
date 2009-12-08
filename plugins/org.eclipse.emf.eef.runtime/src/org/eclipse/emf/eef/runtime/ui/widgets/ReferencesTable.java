@@ -210,7 +210,7 @@ public class ReferencesTable<T extends EObject> implements
 			ReferencesTableListener<T> referenceListener) {
 		this.referencesTableListener = referenceListener;
 	}
-	
+
 	public void addSelectionListener(SelectionListener selectionListener) {
 		this.table.addSelectionListener(selectionListener);
 	}
@@ -829,6 +829,15 @@ public class ReferencesTable<T extends EObject> implements
 		removeButton.setToolTipText(tooltip);
 		table.setToolTipText(tooltip);
 		upButton.setToolTipText(tooltip);
+	}
+
+	/**
+	 * Returns the table.
+	 * 
+	 * @return the table.
+	 */
+	public Table getTable() {
+		return table;
 	}
 
 }
