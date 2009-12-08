@@ -61,6 +61,10 @@ public class PropertiesEditionWizard extends Wizard {
 
 	protected ResourceSet allResources;
 
+	private Diagnostic oldFailedDiagnostic = null;
+
+	private Object oldFailedEvent = null;
+
 	/**
 	 * Default constructor - define the eObject to edit.
 	 * 
@@ -291,12 +295,38 @@ public class PropertiesEditionWizard extends Wizard {
 			// do not handle changes if you are in initialization.
 			if (viewer.isInitializing())
 				return;
-
 			Diagnostic diag = viewer.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK)
-				updateStatus(diag.getMessage());
-			else
+			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
+				updateStatus(computeMessage(diag));
+				oldFailedDiagnostic = diag;
+				oldFailedEvent = event.getAffectedEditor();
+			} else {
+				if (oldFailedDiagnostic != null) {
+					if (oldFailedEvent != null
+							&& oldFailedEvent.equals(event.getAffectedEditor())) {
+						updateStatus(null);
+						oldFailedDiagnostic = null;
+						oldFailedEvent = null;
+					} else {
+						updateStatus(computeMessage(oldFailedDiagnostic));
+					}
+
+				} else
 				updateStatus(null);
+		}
+		}
+
+		private String computeMessage(Diagnostic diag) {
+			for (Diagnostic child : diag.getChildren()) {
+				if (child.getSeverity() != Diagnostic.OK) {
+					if (child.getChildren().isEmpty()) {
+						return child.getMessage();
+					} else {
+						return computeMessage(child);
+					}
+				}
+			}
+			return diag.getMessage();
 		}
 
 		private void updateStatus(final String message) {
