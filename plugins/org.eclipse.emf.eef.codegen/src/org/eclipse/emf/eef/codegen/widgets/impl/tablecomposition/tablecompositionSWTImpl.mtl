@@ -341,6 +341,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
 		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		this.[editor.name.toJavaIdentifier()/].setLowerBound([editor.involvedPropertiesEditionElement(pec).model.lowerBound/]);
+		this.[editor.name.toJavaIdentifier()/].setUpperBound([editor.involvedPropertiesEditionElement(pec).model.upperBound/]);
 	}
 
 	/**

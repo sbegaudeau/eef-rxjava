@@ -112,15 +112,10 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof ScoreEntry) {
-					ScoreEntry scoreEntry = (ScoreEntry)entriesEditUtil.foundCorrespondingEObject((EObject) object);
-					if (columnIndex == 0)
-						return String.valueOf(scoreEntry.getGame().getEntries().indexOf(scoreEntry));
-					else if (columnIndex == 1)
-						return labelProvider.getText(scoreEntry);
-					else {
-						if (columnIndex - 2 < scoreEntry.getGame().getPlayers().size()) 
-							return String.valueOf(scoreEntry.cumulativeScore(scoreEntry.getGame().getPlayers().get(columnIndex - 2)));
+				if (object instanceof EObject) {
+					switch (columnIndex) {
+					case 0:
+						return labelProvider.getText(object);
 					}
 				}
 				return ""; //$NON-NLS-1$
@@ -344,6 +339,8 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
 		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		this.[editor.name.toJavaIdentifier()/].setLowerBound([editor.involvedPropertiesEditionElement(pec).model.lowerBound/]);
+		this.[editor.name.toJavaIdentifier()/].setUpperBound([editor.involvedPropertiesEditionElement(pec).model.upperBound/]);
 	}
 
 	/**
