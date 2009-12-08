@@ -370,7 +370,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	protected Point getInitialSize() {
 		Point point = super.getInitialSize();
 		int width = point.x < 800 ? 800 : point.x;
-		if (width > +SWTUtils.getWidth())
+		if (width > SWTUtils.getWidth())
 			return new Point(SWTUtils.getWidth(), SWTUtils.getHeight());
 		return new Point(width, SWTUtils.getHeight());
 	}
