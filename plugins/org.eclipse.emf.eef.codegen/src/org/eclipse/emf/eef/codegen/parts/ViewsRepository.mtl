@@ -76,7 +76,7 @@ public class [viewRepository.vrClass()/] {
  /]
 [template public viewElementDescriptor(viewElement : ViewElement)]
 [if (viewElement.oclIsTypeOf(views::ElementEditor))]
-public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIdentifier()/] = "[viewElement.oclAsType(views::ElementEditor).qualifiedIdentifier/]";	
+public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIdentifier()/] = "[viewElement.oclAsType(views::ElementEditor).qualifiedIdentifier/]";
 [elseif (viewElement.oclIsTypeOf(views::CustomElementEditor))]
 // [protected ('for '.concat(viewElement.name).concat(' ElementEditor key'))]
 
