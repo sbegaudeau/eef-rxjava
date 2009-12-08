@@ -17,8 +17,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 
 public interface IPropertiesInitializer {
-	
+
 	public void initialize(URI modelURI, IContainer targetFolder) throws IOException, CoreException;
 
-	
 }

@@ -35,11 +35,11 @@ import org.eclipse.emf.eef.views.ViewElement;
 public class ComponentTransformer extends AbstractTransformer {
 
 	private Map<EObject, List<ViewElement>> workingResolvTemp;
-	
+
 	/* ===== Constructor ===== */
 
 	public ComponentTransformer(Map<EObject, List<ViewElement>> workingResolvTemp) {
-		this.workingResolvTemp = workingResolvTemp;	
+		this.workingResolvTemp = workingResolvTemp;
 	}
 
 	/* ===== Transformation ===== */
@@ -47,7 +47,8 @@ public class ComponentTransformer extends AbstractTransformer {
 	public PropertiesEditionContext genPackage2Context(GenPackage genPackage) {
 		PropertiesEditionContext context = ComponentsFactory.eINSTANCE.createPropertiesEditionContext();
 		context.setModel(genPackage);
-		context.setDocumentation("Edition Context for " + genPackage.getEcorePackage().getName() + " GenPackage");
+		context.setDocumentation("Edition Context for " + genPackage.getEcorePackage().getName()
+				+ " GenPackage");
 		Category components = MappingFactory.eINSTANCE.createCategory();
 		components.setName(genPackage.getEcorePackage().getName());
 		context.getCategories().add(components);
@@ -68,16 +69,20 @@ public class ComponentTransformer extends AbstractTransformer {
 			component.getViews().add((View)viewElement);
 		}
 		for (EStructuralFeature feature : genClass.getEcoreClass().getEAllStructuralFeatures()) {
-			if (isSignificant(feature) && !feature.isDerived() && !inheritedMember(feature, genClass.getEcoreClass())) {
-				PropertiesEditionElement structuralFeature2EditionElement = eStructuralFeature2EditionElement(list, feature);
-				if (structuralFeature2EditionElement != null) component.getProperties().add(structuralFeature2EditionElement);
+			if (isSignificant(feature) && !feature.isDerived()
+					&& !inheritedMember(feature, genClass.getEcoreClass())) {
+				PropertiesEditionElement structuralFeature2EditionElement = eStructuralFeature2EditionElement(
+						list, feature);
+				if (structuralFeature2EditionElement != null)
+					component.getProperties().add(structuralFeature2EditionElement);
 			}
 		}
 		return component;
 
 	}
 
-	public PropertiesEditionElement eStructuralFeature2EditionElement(List<ViewElement> concerningViews, EStructuralFeature feature) {
+	public PropertiesEditionElement eStructuralFeature2EditionElement(List<ViewElement> concerningViews,
+			EStructuralFeature feature) {
 		PropertiesEditionElement element = ComponentsFactory.eINSTANCE.createPropertiesEditionElement();
 		element.setName(feature.getName());
 		element.setModel(feature);
@@ -85,18 +90,16 @@ public class ComponentTransformer extends AbstractTransformer {
 		if (list != null) {
 			for (ViewElement viewElement : list) {
 				if (inConcerningViews(concerningViews, viewElement))
-					element.getViews().add((ElementEditor) viewElement);
+					element.getViews().add((ElementEditor)viewElement);
 			}
-		}
-		else {
+		} else {
 			System.err.println("No view found for : " + feature.toString());
 			return null;
 		}
 		return element;
 
 	}
-	
-	
+
 	/* ===== Misc utilities ===== */
 	private boolean inConcerningViews(List<ViewElement> concerningViews, ViewElement toCheck) {
 		for (ViewElement viewElement : concerningViews) {
@@ -115,9 +118,9 @@ public class ComponentTransformer extends AbstractTransformer {
 			Container next = toCheck.getContainer();
 			if (next != null)
 				return inConcerningView(concerningView, next);
-			else 
+			else
 				return false;
 		}
 	}
-	
+
 }

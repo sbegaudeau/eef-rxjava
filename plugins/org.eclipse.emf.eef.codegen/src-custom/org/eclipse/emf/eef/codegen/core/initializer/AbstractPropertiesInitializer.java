@@ -19,7 +19,7 @@ public abstract class AbstractPropertiesInitializer implements IPropertiesInitia
 	 * The name of the initializer
 	 */
 	private String name;
-	
+
 	/**
 	 * The description of the initializer
 	 */
@@ -33,7 +33,8 @@ public abstract class AbstractPropertiesInitializer implements IPropertiesInitia
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -47,11 +48,11 @@ public abstract class AbstractPropertiesInitializer implements IPropertiesInitia
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	
 }

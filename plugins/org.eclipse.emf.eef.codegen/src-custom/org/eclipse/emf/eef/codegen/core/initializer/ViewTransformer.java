@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.codegen.core.initializer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -187,10 +186,9 @@ public class ViewTransformer extends AbstractTransformer {
 
 	/* ===== Widgets management ===== */
 
-	private Widget getWidget(String name) {
+	protected Widget getWidget(String name) {
 		if (name != null) {
-			for (Iterator<String> iterator = toolkits.keySet().iterator(); iterator.hasNext();) {
-				String key = (String)iterator.next();
+			for (String key : toolkits.keySet()) {
 				EObject toolkit = toolkits.get(key);
 				TreeIterator<EObject> iter = toolkit.eAllContents();
 				while (iter.hasNext()) {

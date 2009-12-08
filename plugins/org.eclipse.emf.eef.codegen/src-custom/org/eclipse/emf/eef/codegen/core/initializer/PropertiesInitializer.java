@@ -161,14 +161,14 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		return resourceSet.createResource(modelURI);
 	}
 
-	/**
-	 * The main method.
-	 * 
-	 * @param args
-	 *            are the arguments
-	 * @throws CoreException
-	 * @generated
-	 */
+	// /**
+	// * The main method.
+	// *
+	// * @param args
+	// * are the arguments
+	// * @throws CoreException
+	// * @generated
+	// */
 	// public static void main(String[] args) {
 	// try {
 	// if (args.length != 2) {
