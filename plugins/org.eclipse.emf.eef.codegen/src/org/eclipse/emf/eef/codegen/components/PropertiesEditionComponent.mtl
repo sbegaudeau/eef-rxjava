@@ -104,7 +104,6 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [for (view : View | pec.views) ? (view.explicit)]
 			[pec.subPECClass(view).toLowerFirst()/] = ([pec.subPECClass(view)/])provider.getPropertiesEditionComponent([pec.model.name.toJavaIdentifier()/], editing_mode, [pec.subPECClass(view)/].[view.viewPartConstant(pec)/]); 
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
-			
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
@@ -127,7 +126,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 	[for (view : View | pec.views) ? (view.explicit)]
-		if ("[view.viewKey(pec).toASCII()/]".equals(key)) {
+		if ([pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(key)) {
 			[view.viewIdentifier(pec)/] = ([view.pepInterface()/])[pec.subPECClass(view).toLowerFirst()/].getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)[view.viewIdentifier(pec)/];
 		}
