@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.2 2009/04/30 17:49:29 nlepine Exp $
+ $Id: plugin.xml,v 1.3 2009/12/10 15:36:49 sbouchet Exp $
 -->
 
 <plugin>
@@ -28,6 +28,8 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
+   
+   <!-- EEF extensions -->
    
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
@@ -47,5 +49,71 @@
             providerClass="org.eclipse.emf.eef.EEFGen.providers.EEFGenPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
-   
-</plugin>
+
+   <!-- Tabbed properties views extension -->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.EEFGen.EEFGenModelReference">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.EEFGen.EEFGenModel">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.EEFGen.GenViewsRepository">
+             </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+ </plugin>
+
