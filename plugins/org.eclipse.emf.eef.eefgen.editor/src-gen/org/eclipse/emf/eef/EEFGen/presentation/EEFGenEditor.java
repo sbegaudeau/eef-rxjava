@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenEditor.java,v 1.4 2009/07/10 15:08:50 sbouchet Exp $
+ * $Id: EEFGenEditor.java,v 1.5 2009/12/10 15:36:59 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.presentation;
 
@@ -80,7 +80,6 @@ import org.eclipse.emf.eef.components.provider.ComponentsItemProviderAdapterFact
 import org.eclipse.emf.eef.mapping.navigation.provider.NavigationItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.provider.MappingCustomItemProviderAdapterFactory;
 import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
-import org.eclipse.emf.eef.runtime.ui.properties.TabbedPropertiesEditionSheetPage;
 import org.eclipse.emf.eef.toolkits.provider.ToolkitsItemProviderAdapterFactory;
 import org.eclipse.emf.eef.views.provider.ViewsItemProviderAdapterFactory;
 import org.eclipse.jface.action.IMenuListener;
@@ -1129,7 +1128,7 @@ public class EEFGenEditor
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
-				new TabbedPropertiesEditionSheetPage(EEFGenEditor.this) {
+				new TabbedPropertySheetPage(EEFGenEditor.this) {
 					@Override
 					public void setActionBars(IActionBars actionBars) {
 						super.setActionBars(actionBars);
