@@ -12,10 +12,8 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 /**
  * @author glefur
- *
  */
-public class MappingCustomPropertiesEditionPartProvider extends
-		MappingPropertiesEditionPartProvider {
+public class MappingCustomPropertiesEditionPartProvider extends MappingPropertiesEditionPartProvider {
 
 	@Override
 	public IPropertiesEditionPart getPropertiesEditionPart(Class key, int kind,
@@ -28,7 +26,5 @@ public class MappingCustomPropertiesEditionPartProvider extends
 		}
 		return super.getPropertiesEditionPart(key, kind, component);
 	}
-	
-	
 
 }
