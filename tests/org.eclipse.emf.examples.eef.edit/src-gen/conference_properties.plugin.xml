@@ -45,7 +45,7 @@
          <propertyTab
                label="Presence"
                category="extended"
-               id="org.eclipse.emf.samples.conference.Person.Presence"
+               id="Presence"
                afterTab="Base">
          </propertyTab>
       </propertyTabs>
@@ -73,7 +73,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.samples.conference.section.Person"
-               tab="org.eclipse.emf.samples.conference.Person.Presence">
+               tab="Presence">
              <input
                     type="org.eclipse.emf.samples.conference.Person">
              </input>
