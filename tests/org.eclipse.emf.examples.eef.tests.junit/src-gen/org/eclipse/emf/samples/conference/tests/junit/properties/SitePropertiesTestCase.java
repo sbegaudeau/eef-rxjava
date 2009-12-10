@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.tests.junit.properties;
 
 import java.io.IOException;
@@ -23,27 +30,27 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.samples.conference.ConferencePackage;
-import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
+import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 
 
 /**
  * TestCase for Site
- * 
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 *  The project that contains models for tests 
 	 */
-	protected static final String TESTS_PROJECT_NAME = "org.eclipse.emf.sample.eef.tests.junit";
+	protected static final String TESTS_PROJECT_NAME = "org.eclipse.emf.examples.eef.tests.junit";
 	
 	/**
 	 *  The folder that contains the input models for tests 
@@ -83,7 +90,7 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The ResourceSet where to operate
 	 */
-	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EMFPropertiesRuntime.getDefault().getAdapterFactory(), new BasicCommandStack());
+	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EEFRuntimePlugin.getDefault().getAdapterFactory(), new BasicCommandStack());
 	
 	/**
 	 * The EClass of the type to edit
@@ -169,7 +176,7 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-				
+		
 		// Open the EEF properties view to edit the Site element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
 		if (firstInstanceOf == null)
@@ -179,7 +186,7 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		
 		// Change value of the name feature of the Site element 
 		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.SitePropertiesEditionPart_NameLabel, "value2", bot.selectNode(modelEditor, firstInstanceOf));
-				
+		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
 		

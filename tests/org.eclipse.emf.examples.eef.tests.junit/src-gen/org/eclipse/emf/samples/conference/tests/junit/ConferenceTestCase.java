@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
@@ -23,20 +30,20 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.samples.conference.ConferencePackage;
-import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
+import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 
 
 /**
  * TestCase for Conference
- * 
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ConferenceTestCase extends SWTBotEEFTestCase {
 	
@@ -62,7 +69,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 * The expected model
-	 */	 
+	 */
 	protected static final String EXPECTED_MODEL_NAME = "expected.conference";
 
 	/**
@@ -83,7 +90,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The ResourceSet where to operate
 	 */
-	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EMFPropertiesRuntime.getDefault().getAdapterFactory(), new BasicCommandStack());
+	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EEFRuntimePlugin.getDefault().getAdapterFactory(), new BasicCommandStack());
 	
 	/**
 	 * The EClass of the type to edit
@@ -169,7 +176,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-				
+		
 		// Open the EEF wizard (by double click) to edit the Conference element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (firstInstanceOf == null)
@@ -179,7 +186,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		
 		// Change value of the place feature of the Conference element 
 		bot.editTextFeature(wizardShell, ConferenceMessages.ConferencePropertiesEditionPart_PlaceLabel, "value2");
-				
+		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
 		
