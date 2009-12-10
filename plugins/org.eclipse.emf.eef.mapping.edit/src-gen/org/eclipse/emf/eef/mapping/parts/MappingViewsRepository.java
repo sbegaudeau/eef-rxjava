@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingViewsRepository.java,v 1.12 2009/12/04 16:05:15 sbouchet Exp $
+ * $Id: MappingViewsRepository.java,v 1.13 2009/12/10 16:31:36 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 
@@ -27,7 +27,7 @@ public class MappingViewsRepository {
 	 * Documentation view descriptor
 	 */
 	public static class Documentation {
-		public static String documentation = "mapping::Documentation::documentation";	
+		public static String documentation = "mapping::Documentation::documentation";
 
 
 	}
@@ -36,9 +36,9 @@ public class MappingViewsRepository {
 	 * Filter properties view descriptor
 	 */
 	public static class FilterProperties {
-		public static String name = "mapping::Filter properties::Name";	
+		public static String name = "mapping::Filter properties::Name";
 
-	public static String mandatory = "mapping::Filter properties::Mandatory";	
+	public static String mandatory = "mapping::Filter properties::Mandatory";
 
 
 	}
@@ -47,12 +47,12 @@ public class MappingViewsRepository {
 	 * EMFElementBinding view descriptor
 	 */
 	public static class EMFElementBinding {
-		public static String name = "mapping::EMFElementBinding::name";	
+		public static String name = "mapping::EMFElementBinding::name";
 
 
-		public static String model = "mapping::EMFElementBinding::model";	
+		public static String model = "mapping::EMFElementBinding::model";
 
-	public static String views = "mapping::EMFElementBinding::views";	
+	public static String views = "mapping::EMFElementBinding::views";
 
 
 	}
@@ -61,12 +61,12 @@ public class MappingViewsRepository {
 	 * EMFPropertyBinding view descriptor
 	 */
 	public static class EMFPropertyBinding {
-		public static String name = "mapping::EMFPropertyBinding::name";	
+		public static String name = "mapping::EMFPropertyBinding::name";
 
 
-		public static String model = "mapping::EMFPropertyBinding::model";	
+		public static String model = "mapping::EMFPropertyBinding::model";
 
-	public static String views = "mapping::EMFPropertyBinding::views";	
+	public static String views = "mapping::EMFPropertyBinding::views";
 
 
 	}
@@ -75,12 +75,12 @@ public class MappingViewsRepository {
 	 * StandardElementBinding view descriptor
 	 */
 	public static class StandardElementBinding {
-		public static String name = "mapping::StandardElementBinding::name";	
+		public static String name = "mapping::StandardElementBinding::name";
 
 
-		public static String model = "mapping::StandardElementBinding::model";	
+		public static String model = "mapping::StandardElementBinding::model";
 
-	public static String views = "mapping::StandardElementBinding::views";	
+	public static String views = "mapping::StandardElementBinding::views";
 
 
 	}
@@ -89,12 +89,12 @@ public class MappingViewsRepository {
 	 * StandardPropertyBinding view descriptor
 	 */
 	public static class StandardPropertyBinding {
-		public static String name = "mapping::StandardPropertyBinding::name";	
+		public static String name = "mapping::StandardPropertyBinding::name";
 
 
-		public static String model = "mapping::StandardPropertyBinding::model";	
+		public static String model = "mapping::StandardPropertyBinding::model";
 
-	public static String views = "mapping::StandardPropertyBinding::views";	
+	public static String views = "mapping::StandardPropertyBinding::views";
 
 
 	}
@@ -103,7 +103,7 @@ public class MappingViewsRepository {
 	 * Category view descriptor
 	 */
 	public static class Category {
-		public static String name = "mapping::Category::name";	
+		public static String name = "mapping::Category::name";
 
 
 	}
@@ -112,7 +112,7 @@ public class MappingViewsRepository {
 	 * ElementBindingReference view descriptor
 	 */
 	public static class ElementBindingReference {
-		public static String binding = "mapping::ElementBindingReference::binding";	
+		public static String binding = "mapping::ElementBindingReference::binding";
 
 
 	}
@@ -121,12 +121,12 @@ public class MappingViewsRepository {
 	 * EMFMultiPropertiesBinding view descriptor
 	 */
 	public static class EMFMultiPropertiesBinding {
-		public static String name = "mapping::EMFMultiPropertiesBinding::name";	
+		public static String name = "mapping::EMFMultiPropertiesBinding::name";
 
 
-		public static String model = "mapping::EMFMultiPropertiesBinding::model";	
+		public static String model = "mapping::EMFMultiPropertiesBinding::model";
 
-	public static String views = "mapping::EMFMultiPropertiesBinding::views";	
+	public static String views = "mapping::EMFMultiPropertiesBinding::views";
 
 
 	}
@@ -142,11 +142,11 @@ public class MappingViewsRepository {
 	 * SimpleModelNavigation view descriptor
 	 */
 	public static class SimpleModelNavigation {
-		public static String index = "mapping::SimpleModelNavigation::index";	
+		public static String index = "mapping::SimpleModelNavigation::index";
 
-	public static String feature = "mapping::SimpleModelNavigation::feature";	
+	public static String feature = "mapping::SimpleModelNavigation::feature";
 
-	public static String discriminatorType = "mapping::SimpleModelNavigation::discriminatorType";	
+	public static String discriminatorType = "mapping::SimpleModelNavigation::discriminatorType";
 
 
 	}
@@ -155,7 +155,7 @@ public class MappingViewsRepository {
 	 * OnlyReferenceTypeFilter view descriptor
 	 */
 	public static class OnlyReferenceTypeFilter {
-		public static String referencedFeature = "mapping::OnlyReferenceTypeFilter::referencedFeature";	
+		public static String referencedFeature = "mapping::OnlyReferenceTypeFilter::referencedFeature";
 
 
 	
@@ -166,7 +166,7 @@ public class MappingViewsRepository {
 	 * OCLFilter view descriptor
 	 */
 	public static class OCLFilter {
-		public static String oCLExpressionBody = "mapping::OCLFilter::OCLExpressionBody";	
+		public static String oCLExpressionBody = "mapping::OCLFilter::OCLExpressionBody";
 
 
 	
@@ -177,7 +177,7 @@ public class MappingViewsRepository {
 	 * JavaExpressionFilter view descriptor
 	 */
 	public static class JavaExpressionFilter {
-		public static String javaExpressionBody = "mapping::JavaExpressionFilter::javaExpressionBody";	
+		public static String javaExpressionBody = "mapping::JavaExpressionFilter::javaExpressionBody";
 
 
 	
@@ -188,7 +188,7 @@ public class MappingViewsRepository {
 	 * JavaDeclarationFilter view descriptor
 	 */
 	public static class JavaDeclarationFilter {
-		public static String methodName = "mapping::JavaDeclarationFilter::methodName";	
+		public static String methodName = "mapping::JavaDeclarationFilter::methodName";
 
 
 	
