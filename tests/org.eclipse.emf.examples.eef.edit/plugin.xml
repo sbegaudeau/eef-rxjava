@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.2 2009/12/10 12:38:25 sbouchet Exp $
+ $Id: plugin.xml,v 1.3 2009/12/10 12:47:02 sbouchet Exp $
 -->
 
 <plugin>
@@ -67,7 +67,7 @@
          <propertyTab
                label="Presence"
                category="extended"
-               id="org.eclipse.emf.samples.conference.Person.Presence"
+               id="Presence"
                afterTab="Base">
          </propertyTab>
       </propertyTabs>
@@ -95,7 +95,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.samples.conference.section.Person"
-               tab="org.eclipse.emf.samples.conference.Person.Presence">
+               tab="Presence">
              <input
                     type="org.eclipse.emf.samples.conference.Person">
              </input>
