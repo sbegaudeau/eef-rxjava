@@ -26,7 +26,7 @@ public class ToolkitsViewsRepository {
 	 * Toolkit view descriptor
 	 */
 	public static class Toolkit {
-		public static String name = "toolkits::Toolkit::Name";	
+		public static String name = "toolkits::Toolkit::Name";
 
 
 	}
@@ -35,7 +35,7 @@ public class ToolkitsViewsRepository {
 	 * Widget view descriptor
 	 */
 	public static class Widget {
-		public static String name = "toolkits::Widget::Name";	
+		public static String name = "toolkits::Widget::Name";
 
 
 	}

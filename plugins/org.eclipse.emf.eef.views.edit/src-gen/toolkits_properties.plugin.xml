@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
  <plugin>
- 
+
   <!-- EEF extensions -->
   <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
@@ -16,7 +16,7 @@
             providerClass="org.eclipse.emf.eef.toolkits.providers.ToolkitsPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
- 
+
    <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -49,17 +49,17 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.toolkits.properties">
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.toolkits.section.Toolkit">
+               id="org.eclipse.emf.eef.toolkits.section.Toolkit"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.toolkits.Toolkit">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.toolkits.section.Widget">
+               id="org.eclipse.emf.eef.toolkits.section.Widget"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.toolkits.Widget">
              </input>

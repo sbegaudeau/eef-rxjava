@@ -17,7 +17,9 @@ package org.eclipse.emf.eef.views.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.parts.ContainerPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -52,20 +54,21 @@ public class ContainerPropertiesEditionComponent extends ComposedPropertiesEditi
 	public ContainerPropertiesEditionComponent(EObject container, String editing_mode) {
 		super(editing_mode);
 		if (container instanceof Container) {
-			containerBasePropertiesEditionComponent = new ContainerBasePropertiesEditionComponent(container, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(container);
+			containerBasePropertiesEditionComponent = (ContainerBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(container, editing_mode, ContainerBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(containerBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(container, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(container, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (ContainerBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (ContainerPropertiesEditionPart)containerBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -93,9 +96,9 @@ public class ContainerPropertiesEditionComponent extends ComposedPropertiesEditi
 		if (key == ViewsViewsRepository.Container.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-			if (key == ViewsViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == ViewsViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

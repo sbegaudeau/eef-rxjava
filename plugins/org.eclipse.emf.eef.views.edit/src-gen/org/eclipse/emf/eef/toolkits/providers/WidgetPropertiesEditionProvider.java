@@ -13,11 +13,8 @@
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.toolkits.components.WidgetPropertiesEditionComponent;

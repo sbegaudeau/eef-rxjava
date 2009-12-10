@@ -17,7 +17,9 @@ package org.eclipse.emf.eef.views.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -52,20 +54,21 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 	public CustomElementEditorPropertiesEditionComponent(EObject customElementEditor, String editing_mode) {
 		super(editing_mode);
 		if (customElementEditor instanceof CustomElementEditor) {
-			customElementEditorBasePropertiesEditionComponent = new CustomElementEditorBasePropertiesEditionComponent(customElementEditor, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(customElementEditor);
+			customElementEditorBasePropertiesEditionComponent = (CustomElementEditorBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(customElementEditor, editing_mode, CustomElementEditorBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(customElementEditorBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(customElementEditor, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(customElementEditor, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (CustomElementEditorBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (CustomElementEditorPropertiesEditionPart)customElementEditorBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -93,9 +96,9 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 		if (key == ViewsViewsRepository.CustomElementEditor.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-			if (key == ViewsViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == ViewsViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }
