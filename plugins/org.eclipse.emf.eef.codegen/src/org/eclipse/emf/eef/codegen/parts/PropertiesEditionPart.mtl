@@ -74,7 +74,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProvider
 
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
-[for (widget : Widget | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet())]
+[for (widget : Widget | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet()) ? (not widget.oclIsUndefined())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
 [for (widget : Widget | view.eAllContents(views::Container).oclAsType(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
