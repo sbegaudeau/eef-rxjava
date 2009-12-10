@@ -178,7 +178,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);
-		license = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		license = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData licenseData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseData.horizontalSpan = 2;
 		licenseData.heightHint = 80;

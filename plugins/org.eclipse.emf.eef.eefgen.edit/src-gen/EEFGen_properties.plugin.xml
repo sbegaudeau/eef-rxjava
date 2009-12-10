@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
  <plugin>
- 
+
   <!-- EEF extensions -->
   <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
@@ -16,7 +16,7 @@
             providerClass="org.eclipse.emf.eef.EEFGen.providers.EEFGenPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
- 
+
    <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -49,33 +49,33 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.EEFGen.properties">
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext">
+               id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference">
+               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.EEFGen.EEFGenModelReference">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel">
+               id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.EEFGen.EEFGenModel">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository">
+               id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.EEFGen.GenViewsRepository">
              </input>

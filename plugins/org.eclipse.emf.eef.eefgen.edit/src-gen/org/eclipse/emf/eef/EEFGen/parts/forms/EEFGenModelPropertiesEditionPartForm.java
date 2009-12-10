@@ -277,7 +277,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);
-		license = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		license = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData licenseData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseData.horizontalSpan = 2;
 		licenseData.heightHint = 80;
@@ -292,21 +292,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
-			}
-
-		});
-		license.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
-				}
 			}
 
 		});
