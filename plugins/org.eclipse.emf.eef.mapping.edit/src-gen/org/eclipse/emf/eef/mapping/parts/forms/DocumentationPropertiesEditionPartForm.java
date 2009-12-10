@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartForm.java,v 1.11 2009/12/04 16:05:11 sbouchet Exp $
+ * $Id: DocumentationPropertiesEditionPartForm.java,v 1.12 2009/12/10 16:36:40 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -27,8 +27,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -107,7 +105,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
-		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -122,21 +120,6 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentationPropertiesEditionPartForm.this, MappingViewsRepository.Documentation.documentation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
-			}
-
-		});
-		documentation.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentationPropertiesEditionPartForm.this, MappingViewsRepository.Documentation.documentation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
-				}
 			}
 
 		});

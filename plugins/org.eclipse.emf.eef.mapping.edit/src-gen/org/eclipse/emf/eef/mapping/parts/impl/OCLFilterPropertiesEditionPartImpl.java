@@ -103,7 +103,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyLabelData.horizontalSpan = 3;
 		oCLExpressionBodyLabel.setLayoutData(oCLExpressionBodyLabelData);
-		oCLExpressionBody = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		oCLExpressionBody = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData oCLExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyData.horizontalSpan = 2;
 		oCLExpressionBodyData.heightHint = 80;

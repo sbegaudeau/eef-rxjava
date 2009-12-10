@@ -103,7 +103,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyLabelData.horizontalSpan = 3;
 		javaExpressionBodyLabel.setLayoutData(javaExpressionBodyLabelData);
-		javaExpressionBody = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		javaExpressionBody = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData javaExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyData.horizontalSpan = 2;
 		javaExpressionBodyData.heightHint = 80;

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.14 2009/12/04 16:05:14 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.15 2009/12/10 16:36:45 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -200,12 +200,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	protected void removeFromModel(EStructuralFeature element) {
 
 		// Start of user code removeFromModel() method body
-
 		EObject editedElement = modelEditUtil.foundCorrespondingEObject(element);
 		modelEditUtil.removeElement(element);
 		model.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -216,10 +214,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	protected void editModel(EStructuralFeature element) {
 
 		// Start of user code editModel() method body
-				 
 		EObject editedElement = modelEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
@@ -228,7 +225,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}
@@ -281,12 +277,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	protected void removeFromViews(ElementEditor element) {
 
 		// Start of user code removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -297,10 +291,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	protected void editViews(ElementEditor element) {
 
 		// Start of user code editViews() method body
-				 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
@@ -309,7 +302,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}

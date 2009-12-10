@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.12 2009/12/04 16:05:14 sbouchet Exp $
+ * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.13 2009/12/10 16:36:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -97,7 +97,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
-		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;

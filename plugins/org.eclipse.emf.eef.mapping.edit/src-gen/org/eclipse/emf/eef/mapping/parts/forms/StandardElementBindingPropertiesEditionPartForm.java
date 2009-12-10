@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingPropertiesEditionPartForm.java,v 1.14 2009/12/04 16:05:11 sbouchet Exp $
+ * $Id: StandardElementBindingPropertiesEditionPartForm.java,v 1.15 2009/12/10 16:36:40 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -269,12 +269,10 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 	 */
 	protected void removeFromViews(View element) {
 		// Start of user code for the removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardElementBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -284,7 +282,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 	 */
 	protected void editViews(View element) {
 		// Start of user code editViews() method body
-				 
+		
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -296,7 +294,6 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardElementBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}

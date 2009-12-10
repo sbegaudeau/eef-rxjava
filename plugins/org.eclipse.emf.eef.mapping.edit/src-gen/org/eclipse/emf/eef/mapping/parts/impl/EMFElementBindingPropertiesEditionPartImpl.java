@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFElementBindingPropertiesEditionPartImpl.java,v 1.14 2009/12/04 16:05:13 sbouchet Exp $
+ * $Id: EMFElementBindingPropertiesEditionPartImpl.java,v 1.15 2009/12/10 16:36:48 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -225,12 +225,10 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 	protected void removeFromViews(View element) {
 
 		// Start of user code removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFElementBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -241,10 +239,9 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 	protected void editViews(View element) {
 
 		// Start of user code editViews() method body
-				 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
@@ -253,7 +250,6 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFElementBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}

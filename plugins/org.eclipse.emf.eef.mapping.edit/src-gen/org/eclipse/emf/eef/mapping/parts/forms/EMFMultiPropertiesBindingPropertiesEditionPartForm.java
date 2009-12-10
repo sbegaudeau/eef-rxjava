@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartForm.java,v 1.14 2009/12/04 16:05:12 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartForm.java,v 1.15 2009/12/10 16:36:41 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -239,12 +239,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	protected void removeFromModel(EStructuralFeature element) {
 		// Start of user code for the removeFromModel() method body
-
 		EObject editedElement = modelEditUtil.foundCorrespondingEObject(element);
 		modelEditUtil.removeElement(element);
 		model.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -254,7 +252,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	protected void editModel(EStructuralFeature element) {
 		// Start of user code editModel() method body
-				 
+		
 		EObject editedElement = modelEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -266,7 +264,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}
@@ -317,12 +314,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	protected void removeFromViews(ElementEditor element) {
 		// Start of user code for the removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -332,7 +327,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	protected void editViews(ElementEditor element) {
 		// Start of user code editViews() method body
-				 
+		
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -344,7 +339,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}

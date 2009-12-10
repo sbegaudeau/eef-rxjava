@@ -31,8 +31,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -113,7 +111,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyLabelData.horizontalSpan = 3;
 		oCLExpressionBodyLabel.setLayoutData(oCLExpressionBodyLabelData);
-		oCLExpressionBody = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		oCLExpressionBody = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData oCLExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyData.horizontalSpan = 2;
 		oCLExpressionBodyData.heightHint = 80;
@@ -128,21 +126,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLFilterPropertiesEditionPartForm.this, MappingViewsRepository.OCLFilter.oCLExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oCLExpressionBody.getText()));
-			}
-
-		});
-		oCLExpressionBody.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLFilterPropertiesEditionPartForm.this, MappingViewsRepository.OCLFilter.oCLExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oCLExpressionBody.getText()));
-				}
 			}
 
 		});

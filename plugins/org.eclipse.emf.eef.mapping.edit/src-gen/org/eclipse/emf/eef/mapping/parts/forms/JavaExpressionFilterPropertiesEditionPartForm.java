@@ -31,8 +31,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -113,7 +111,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyLabelData.horizontalSpan = 3;
 		javaExpressionBodyLabel.setLayoutData(javaExpressionBodyLabelData);
-		javaExpressionBody = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		javaExpressionBody = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData javaExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyData.horizontalSpan = 2;
 		javaExpressionBodyData.heightHint = 80;
@@ -128,21 +126,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartForm.this, MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
-			}
-
-		});
-		javaExpressionBody.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartForm.this, MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
-				}
 			}
 
 		});
