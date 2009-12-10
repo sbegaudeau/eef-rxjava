@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.5 2009/07/10 15:08:47 sbouchet Exp $
+ * $Id: ComponentsEditor.java,v 1.6 2009/12/10 16:54:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -79,7 +79,6 @@ import org.eclipse.emf.eef.mapping.filters.provider.FiltersItemProviderAdapterFa
 import org.eclipse.emf.eef.mapping.navigation.provider.NavigationItemProviderAdapterFactory;
 import org.eclipse.emf.eef.mapping.provider.MappingCustomItemProviderAdapterFactory;
 import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
-import org.eclipse.emf.eef.runtime.ui.properties.TabbedPropertiesEditionSheetPage;
 import org.eclipse.emf.eef.toolkits.provider.ToolkitsItemProviderAdapterFactory;
 import org.eclipse.emf.eef.views.provider.ViewsItemProviderAdapterFactory;
 import org.eclipse.jface.action.IMenuListener;
@@ -1082,7 +1081,7 @@ public class ComponentsEditor extends MultiPageEditorPart implements IEditingDom
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
-				new TabbedPropertiesEditionSheetPage(ComponentsEditor.this) {
+				new TabbedPropertySheetPage(ComponentsEditor.this) {
 					@Override
 					public void setActionBars(IActionBars actionBars) {
 						super.setActionBars(actionBars);
