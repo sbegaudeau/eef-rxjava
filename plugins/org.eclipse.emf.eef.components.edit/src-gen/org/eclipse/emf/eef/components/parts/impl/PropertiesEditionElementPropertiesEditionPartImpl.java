@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.13 2009/12/04 15:49:08 sbouchet Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartImpl.java,v 1.14 2009/12/10 15:51:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -268,7 +268,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 				}
 				return ""; //$NON-NLS-1$
 			}
-			
+
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}

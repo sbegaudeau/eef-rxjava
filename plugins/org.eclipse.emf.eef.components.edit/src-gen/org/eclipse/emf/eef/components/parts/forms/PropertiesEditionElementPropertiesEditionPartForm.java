@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionElementPropertiesEditionPartForm.java,v 1.13 2009/12/04 15:49:08 sbouchet Exp $
+ * $Id: PropertiesEditionElementPropertiesEditionPartForm.java,v 1.14 2009/12/10 15:51:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -317,7 +317,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table views s columns definition
-		
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(200);
 		name.setText("Views"); //$NON-NLS-1$

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionPartForm.java,v 1.11 2009/12/04 15:49:08 sbouchet Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionPartForm.java,v 1.12 2009/12/10 15:51:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -349,12 +349,10 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 	 */
 	protected void removeFromViews(View element) {
 		// Start of user code for the removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -376,7 +374,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}

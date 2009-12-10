@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.12 2009/12/04 15:49:08 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.13 2009/12/10 15:51:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -242,7 +242,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 				}
 				return ""; //$NON-NLS-1$
 			}
-			
+
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
 			}
@@ -387,12 +387,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	protected void removeFromViews(ElementEditor element) {
 
 		// Start of user code removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -403,10 +401,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	protected void editViews(ElementEditor element) {
 
 		// Start of user code editViews() method body
-				 
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
 			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			if (propertiesEditionObject != null) {
@@ -415,7 +412,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}

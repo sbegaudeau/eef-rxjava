@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.9 2009/12/04 15:49:07 sbouchet Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.10 2009/12/10 15:51:26 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -22,7 +22,9 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -54,20 +56,21 @@ public class PropertiesEditionComponentPropertiesEditionComponent extends Compos
 	public PropertiesEditionComponentPropertiesEditionComponent(EObject propertiesEditionComponent, String editing_mode) {
 		super(editing_mode);
 		if (propertiesEditionComponent instanceof PropertiesEditionComponent) {
-			propertiesEditionComponentBasePropertiesEditionComponent = new PropertiesEditionComponentBasePropertiesEditionComponent(propertiesEditionComponent, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(propertiesEditionComponent);
+			propertiesEditionComponentBasePropertiesEditionComponent = (PropertiesEditionComponentBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(propertiesEditionComponent, editing_mode, PropertiesEditionComponentBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(propertiesEditionComponentBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(propertiesEditionComponent, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(propertiesEditionComponent, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (PropertiesEditionComponentBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (PropertiesEditionComponentPropertiesEditionPart)propertiesEditionComponentBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -95,9 +98,9 @@ public class PropertiesEditionComponentPropertiesEditionComponent extends Compos
 		if (key == ComponentsViewsRepository.PropertiesEditionComponent.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-			if (key == ComponentsViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == ComponentsViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

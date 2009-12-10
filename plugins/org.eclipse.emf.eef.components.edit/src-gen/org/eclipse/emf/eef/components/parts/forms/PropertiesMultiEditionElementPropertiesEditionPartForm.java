@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.12 2009/12/04 15:49:08 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartForm.java,v 1.13 2009/12/10 15:51:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.parts.forms;
 
@@ -288,7 +288,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table model s columns definition
-		
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
@@ -452,12 +451,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 */
 	protected void removeFromViews(ElementEditor element) {
 		// Start of user code for the removeFromViews() method body
-
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		viewsEditUtil.removeElement(element);
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
 		// End of user code
 
 	}
@@ -467,7 +464,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 */
 	protected void editViews(ElementEditor element) {
 		// Start of user code editViews() method body
-				 
+		
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -479,7 +476,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-
 		// End of user code
 
 	}
