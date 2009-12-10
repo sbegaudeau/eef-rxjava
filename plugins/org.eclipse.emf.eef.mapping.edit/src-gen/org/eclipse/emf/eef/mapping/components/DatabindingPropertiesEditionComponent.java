@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingPropertiesEditionComponent.java,v 1.11 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: DatabindingPropertiesEditionComponent.java,v 1.12 2009/12/10 16:26:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -42,11 +44,12 @@ public class DatabindingPropertiesEditionComponent extends ComposedPropertiesEdi
 	public DatabindingPropertiesEditionComponent(EObject databinding, String editing_mode) {
 		super(editing_mode);
 		if (databinding instanceof Databinding) {
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(databinding, editing_mode);
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(databinding);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(databinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
@@ -70,9 +73,9 @@ public class DatabindingPropertiesEditionComponent extends ComposedPropertiesEdi
 	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
-			if (key == MappingViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MappingViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

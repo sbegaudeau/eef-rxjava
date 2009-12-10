@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OCLFilterPropertiesEditionComponent.java,v 1.1 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: OCLFilterPropertiesEditionComponent.java,v 1.2 2009/12/10 16:26:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OCLFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -57,22 +59,23 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 	public OCLFilterPropertiesEditionComponent(EObject oCLFilter, String editing_mode) {
 		super(editing_mode);
 		if (oCLFilter instanceof OCLFilter) {
-			oCLFilterBasePropertiesEditionComponent = new OCLFilterBasePropertiesEditionComponent(oCLFilter, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(oCLFilter);
+			oCLFilterBasePropertiesEditionComponent = (OCLFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, OCLFilterBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(oCLFilterBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(oCLFilter, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			filterPropertiesPropertiesEditionComponent = new FilterPropertiesPropertiesEditionComponent(oCLFilter, editing_mode);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (OCLFilterBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (OCLFilterPropertiesEditionPart)oCLFilterBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -102,13 +105,13 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 			filterPropertiesPropertiesEditionComponent.setPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, kind, basePart.getFilterPropertiesReferencedView());
 			filterPropertiesPropertiesEditionComponent.initPart(MappingViewsRepository.FilterProperties.class, kind, element, allResource);
 		}
-			if (key == MappingViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
-			if (key == MappingViewsRepository.FilterProperties.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MappingViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
+		if (key == MappingViewsRepository.FilterProperties.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

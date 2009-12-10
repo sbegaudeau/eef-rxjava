@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryPropertiesEditionComponent.java,v 1.11 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: CategoryPropertiesEditionComponent.java,v 1.12 2009/12/10 16:26:18 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -53,20 +55,21 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 	public CategoryPropertiesEditionComponent(EObject category, String editing_mode) {
 		super(editing_mode);
 		if (category instanceof Category) {
-			categoryBasePropertiesEditionComponent = new CategoryBasePropertiesEditionComponent(category, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(category);
+			categoryBasePropertiesEditionComponent = (CategoryBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, CategoryBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(categoryBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(category, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (CategoryBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (CategoryPropertiesEditionPart)categoryBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -94,9 +97,9 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 		if (key == MappingViewsRepository.Category.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-			if (key == MappingViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MappingViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

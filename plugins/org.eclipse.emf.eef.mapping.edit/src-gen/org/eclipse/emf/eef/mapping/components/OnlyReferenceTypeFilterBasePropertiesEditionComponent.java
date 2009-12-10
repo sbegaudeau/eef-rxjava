@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OnlyReferenceTypeFilterBasePropertiesEditionComponent.java,v 1.1 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: OnlyReferenceTypeFilterBasePropertiesEditionComponent.java,v 1.2 2009/12/10 16:26:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 

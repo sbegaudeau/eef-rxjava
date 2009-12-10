@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilterPropertiesEditionComponent.java,v 1.1 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: JavaExpressionFilterPropertiesEditionComponent.java,v 1.2 2009/12/10 16:26:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
 import org.eclipse.emf.eef.mapping.parts.JavaExpressionFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -57,22 +59,23 @@ public class JavaExpressionFilterPropertiesEditionComponent extends ComposedProp
 	public JavaExpressionFilterPropertiesEditionComponent(EObject javaExpressionFilter, String editing_mode) {
 		super(editing_mode);
 		if (javaExpressionFilter instanceof JavaExpressionFilter) {
-			javaExpressionFilterBasePropertiesEditionComponent = new JavaExpressionFilterBasePropertiesEditionComponent(javaExpressionFilter, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(javaExpressionFilter);
+			javaExpressionFilterBasePropertiesEditionComponent = (JavaExpressionFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(javaExpressionFilter, editing_mode, JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(javaExpressionFilterBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(javaExpressionFilter, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaExpressionFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			filterPropertiesPropertiesEditionComponent = new FilterPropertiesPropertiesEditionComponent(javaExpressionFilter, editing_mode);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaExpressionFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (JavaExpressionFilterPropertiesEditionPart)javaExpressionFilterBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -102,13 +105,13 @@ public class JavaExpressionFilterPropertiesEditionComponent extends ComposedProp
 			filterPropertiesPropertiesEditionComponent.setPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, kind, basePart.getFilterPropertiesReferencedView());
 			filterPropertiesPropertiesEditionComponent.initPart(MappingViewsRepository.FilterProperties.class, kind, element, allResource);
 		}
-			if (key == MappingViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
-			if (key == MappingViewsRepository.FilterProperties.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MappingViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
+		if (key == MappingViewsRepository.FilterProperties.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

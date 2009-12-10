@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaDeclarationFilterPropertiesEditionComponent.java,v 1.1 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: JavaDeclarationFilterPropertiesEditionComponent.java,v 1.2 2009/12/10 16:26:19 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;
 import org.eclipse.emf.eef.mapping.parts.JavaDeclarationFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -57,22 +59,23 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	public JavaDeclarationFilterPropertiesEditionComponent(EObject javaDeclarationFilter, String editing_mode) {
 		super(editing_mode);
 		if (javaDeclarationFilter instanceof JavaDeclarationFilter) {
-			javaDeclarationFilterBasePropertiesEditionComponent = new JavaDeclarationFilterBasePropertiesEditionComponent(javaDeclarationFilter, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter);
+			javaDeclarationFilterBasePropertiesEditionComponent = (JavaDeclarationFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(javaDeclarationFilterBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(javaDeclarationFilter, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			filterPropertiesPropertiesEditionComponent = new FilterPropertiesPropertiesEditionComponent(javaDeclarationFilter, editing_mode);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (JavaDeclarationFilterPropertiesEditionPart)javaDeclarationFilterBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -102,13 +105,13 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 			filterPropertiesPropertiesEditionComponent.setPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, kind, basePart.getFilterPropertiesReferencedView());
 			filterPropertiesPropertiesEditionComponent.initPart(MappingViewsRepository.FilterProperties.class, kind, element, allResource);
 		}
-			if (key == MappingViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
-			if (key == MappingViewsRepository.FilterProperties.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MappingViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
+		if (key == MappingViewsRepository.FilterProperties.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

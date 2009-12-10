@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionComponent.java,v 1.11 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionComponent.java,v 1.12 2009/12/10 16:26:17 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
 import org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -53,20 +55,21 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	public EMFPropertyBindingPropertiesEditionComponent(EObject eMFPropertyBinding, String editing_mode) {
 		super(editing_mode);
 		if (eMFPropertyBinding instanceof EMFPropertyBinding) {
-			eMFPropertyBindingBasePropertiesEditionComponent = new EMFPropertyBindingBasePropertiesEditionComponent(eMFPropertyBinding, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eMFPropertyBinding);
+			eMFPropertyBindingBasePropertiesEditionComponent = (EMFPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(eMFPropertyBindingBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = new DocumentedElementPropertiesEditionComponent(eMFPropertyBinding, editing_mode);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (EMFPropertyBindingPropertiesEditionPart)eMFPropertyBindingBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -94,9 +97,9 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 		if (key == MappingViewsRepository.EMFPropertyBinding.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-			if (key == MappingViewsRepository.Documentation.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MappingViewsRepository.Documentation.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }
