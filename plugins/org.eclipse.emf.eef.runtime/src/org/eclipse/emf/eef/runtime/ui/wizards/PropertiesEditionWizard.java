@@ -165,19 +165,18 @@ public class PropertiesEditionWizard extends Wizard {
 					return true;
 				}
 				return false;
-			} else {
-				for (int i = 0; i < getPages().length; i++) {
-					if (getPages()[i] instanceof EditPropertyWizardPage) {
-						// FIXME: Warning, architecture must be redefined to do
-						// an iterative eobject build
-						// Finally ... it could work ...
-						eObject = ((EditPropertyWizardPage)getPages()[i]).viewer
-								.getPropertiesEditionObject(eObject);
-					}
-				}
-				PropertiesContextService.getInstance().pop();
-				return true;
 			}
+			for (int i = 0; i < getPages().length; i++) {
+				if (getPages()[i] instanceof EditPropertyWizardPage) {
+					// FIXME: Warning, architecture must be redefined to do
+					// an iterative eobject build
+					// Finally ... it could work ...
+					eObject = ((EditPropertyWizardPage)getPages()[i]).viewer
+							.getPropertiesEditionObject(eObject);
+				}
+			}
+			PropertiesContextService.getInstance().pop();
+			return true;
 		} finally {
 			for (int i = 0; i < getPages().length; i++) {
 				if (getPages()[i] instanceof EditPropertyWizardPage) {
@@ -302,8 +301,7 @@ public class PropertiesEditionWizard extends Wizard {
 				oldFailedEvent = event.getAffectedEditor();
 			} else {
 				if (oldFailedDiagnostic != null) {
-					if (oldFailedEvent != null
-							&& oldFailedEvent.equals(event.getAffectedEditor())) {
+					if (oldFailedEvent != null && oldFailedEvent.equals(event.getAffectedEditor())) {
 						updateStatus(null);
 						oldFailedDiagnostic = null;
 						oldFailedEvent = null;
@@ -312,8 +310,8 @@ public class PropertiesEditionWizard extends Wizard {
 					}
 
 				} else
-				updateStatus(null);
-		}
+					updateStatus(null);
+			}
 		}
 
 		private String computeMessage(Diagnostic diag) {
