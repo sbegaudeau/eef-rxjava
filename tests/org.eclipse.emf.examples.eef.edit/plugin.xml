@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2009/09/04 09:09:04 glefur Exp $
+ $Id: plugin.xml,v 1.2 2009/12/10 12:38:25 sbouchet Exp $
 -->
 
 <plugin>
@@ -39,6 +39,7 @@
             providerClass="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
+   <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -66,7 +67,8 @@
          <propertyTab
                label="Presence"
                category="extended"
-               id="Presence">
+               id="org.eclipse.emf.samples.conference.Person.Presence"
+               afterTab="Base">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -75,54 +77,53 @@
       <propertySections
             contributorId="org.eclipse.emf.samples.conference.properties">
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.samples.conference.section.Conference">
+               id="org.eclipse.emf.samples.conference.section.Conference"
+               tab="Base">
              <input
                     type="org.eclipse.emf.samples.conference.Conference">
              </input>
          </propertySection>
          <propertySection
-               tab="Presence"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.samples.conference.section.Person">
+               id="org.eclipse.emf.samples.conference.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.samples.conference.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.samples.conference.section.Person">
+               id="org.eclipse.emf.samples.conference.section.Person"
+               tab="org.eclipse.emf.samples.conference.Person.Presence">
              <input
                     type="org.eclipse.emf.samples.conference.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.samples.conference.section.Talk">
+               id="org.eclipse.emf.samples.conference.section.Talk"
+               tab="Base">
              <input
                     type="org.eclipse.emf.samples.conference.Talk">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.samples.conference.section.Topic">
+               id="org.eclipse.emf.samples.conference.section.Topic"
+               tab="Base">
              <input
                     type="org.eclipse.emf.samples.conference.Topic">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.samples.conference.section.Site">
+               id="org.eclipse.emf.samples.conference.section.Site"
+               tab="Base">
              <input
                     type="org.eclipse.emf.samples.conference.Site">
              </input>
          </propertySection>
       </propertySections>
    </extension>
-
 </plugin>

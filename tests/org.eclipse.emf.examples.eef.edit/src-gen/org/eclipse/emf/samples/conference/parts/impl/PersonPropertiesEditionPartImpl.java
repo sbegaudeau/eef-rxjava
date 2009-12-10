@@ -1,40 +1,32 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts.impl;
 
 // Start of user code for imports
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Text;
 
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PersonPropertiesEditionPart {
 
@@ -48,7 +40,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -228,7 +220,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		if (newValue != null) {
 			firstname.setText(newValue);
 		} else {
-			firstname.setText("");  //$NON-NLS-1$
+			firstname.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -258,7 +250,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		if (newValue != null) {
 			lastname.setText(newValue);
 		} else {
-			lastname.setText("");  //$NON-NLS-1$
+			lastname.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -288,7 +280,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		if (newValue != null) {
 			age.setText(newValue);
 		} else {
-			age.setText("");  //$NON-NLS-1$
+			age.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -403,6 +395,15 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ConferenceMessages.Person_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

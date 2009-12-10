@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts;
 
 // Start of user code for imports
@@ -16,24 +23,24 @@ import org.eclipse.jface.viewers.ViewerFilter;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the title
 	 */
-	public String getTitle();
+	public String getTitle_();
 
 	/**
 	 * Defines a new title
 	 * @param newValue the new title to set
 	 */
-	public void setTitle(String newValue);
+	public void setTitle_(String newValue);
 
-	public void setMessageForTitle(String msg, int msgLevel);
+	public void setMessageForTitle_(String msg, int msgLevel);
 
-	public void unsetMessageForTitle();
+	public void unsetMessageForTitle_();
 
 
 	/**
@@ -218,6 +225,14 @@ public interface TalkPropertiesEditionPart {
 
 
 
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
 	

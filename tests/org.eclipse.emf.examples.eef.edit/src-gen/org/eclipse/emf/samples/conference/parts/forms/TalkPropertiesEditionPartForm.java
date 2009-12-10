@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
@@ -50,11 +57,11 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TalkPropertiesEditionPart {
 
-	protected Text title;
+	protected Text title_;
 	protected EObjectFlatComboViewer topic;
 	protected EMFComboViewer type;
 	protected EObjectFlatComboViewer presenter;
@@ -111,7 +118,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createTitleText(widgetFactory, propertiesGroup);
+		createTitle_Text(widgetFactory, propertiesGroup);
 		createTopicFlatComboViewer(propertiesGroup, widgetFactory);
 		createTypeEMFComboViewer(widgetFactory, propertiesGroup);
 		createPresenterFlatComboViewer(propertiesGroup, widgetFactory);
@@ -119,14 +126,14 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		createDocumentationTextarea(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
-	protected void createTitleText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_TitleLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.title, ConferenceViewsRepository.FORM_KIND));
-		title = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		title.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	protected void createTitle_Text(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.FORM_KIND));
+		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		title_.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
-		GridData titleData = new GridData(GridData.FILL_HORIZONTAL);
-		title.setLayoutData(titleData);
-		title.addModifyListener(new ModifyListener() {
+		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
+		title_.setLayoutData(title_Data);
+		title_.addModifyListener(new ModifyListener() {
 
 			/**
 			 * {@inheritDoc}
@@ -135,11 +142,11 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.title, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title_.getText()));
 			}
 
 		});
-		title.addFocusListener(new FocusAdapter() {
+		title_.addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -148,11 +155,11 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.title, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, title.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, title_.getText()));
 			}
 
 		});
-		title.addKeyListener(new KeyAdapter() {
+		title_.addKeyListener(new KeyAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -162,12 +169,12 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.title, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, title.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, title_.getText()));
 				}
 			}
 
 		});
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 	/**
 	 * @param propertiesGroup
@@ -268,7 +275,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
-		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -286,21 +293,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 
 		});
-		documentation.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartForm.this, ConferenceViewsRepository.Talk.documentation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
-				}
-			}
-
-		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -314,31 +306,31 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getTitle_()
 	 */
-	public String getTitle() {
-		return title.getText();
+	public String getTitle_() {
+		return title_.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setTitle(String newValue)
+	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setTitle_(String newValue)
 	 */
-	public void setTitle(String newValue) {
+	public void setTitle_(String newValue) {
 		if (newValue != null) {
-			title.setText(newValue);
+			title_.setText(newValue);
 		} else {
-			title.setText("");  //$NON-NLS-1$
+			title_.setText(""); //$NON-NLS-1$
 		}
 	}
 
-	public void setMessageForTitle(String msg, int msgLevel) {
-		messageManager.addMessage("Title_key", msg, null, msgLevel, title);
+	public void setMessageForTitle_(String msg, int msgLevel) {
+		messageManager.addMessage("Title__key", msg, null, msgLevel, title_);
 	}
 
-	public void unsetMessageForTitle() {
-		messageManager.removeMessage("Title_key", title);
+	public void unsetMessageForTitle_() {
+		messageManager.removeMessage("Title__key", title_);
 	}
 
 	/**
@@ -618,6 +610,15 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ConferenceMessages.Talk_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

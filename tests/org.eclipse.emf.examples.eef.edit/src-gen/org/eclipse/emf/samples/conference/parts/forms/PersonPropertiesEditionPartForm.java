@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
@@ -47,7 +54,7 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PersonPropertiesEditionPart {
 
@@ -367,7 +374,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			firstname.setText(newValue);
 		} else {
-			firstname.setText("");  //$NON-NLS-1$
+			firstname.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -397,7 +404,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			lastname.setText(newValue);
 		} else {
-			lastname.setText("");  //$NON-NLS-1$
+			lastname.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -427,7 +434,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			age.setText(newValue);
 		} else {
-			age.setText("");  //$NON-NLS-1$
+			age.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -528,6 +535,15 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ConferenceMessages.Person_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

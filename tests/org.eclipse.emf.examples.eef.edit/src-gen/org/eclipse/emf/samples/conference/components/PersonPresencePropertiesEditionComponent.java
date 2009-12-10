@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
@@ -14,6 +21,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -24,7 +32,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -46,7 +54,7 @@ import org.eclipse.ui.PlatformUI;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class PersonPresencePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
@@ -62,7 +70,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	/**
 	 * The Presence part
 	 */
-	private PresencePropertiesEditionPart presencePart;
+	protected PresencePropertiesEditionPart presencePart;
 
 	/**
 	 * Default constructor
@@ -95,23 +103,30 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				if (presencePart == null)
 					PersonPresencePropertiesEditionComponent.this.dispose();
 				else {
-                    Runnable updateRunnable = new Runnable() {
-                        public void run() {
-						if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
-								presencePart.updateAssists(person);
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
 						}
 					};
-                    if (null == Display.getCurrent()) {
-                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-                    } else {
-                        updateRunnable.run();
-                    }
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
+			presencePart.updateAssists(person);
+
+
 	}
 
 	/**
@@ -177,7 +192,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			final Person person = (Person)elt;
 			// init values
 			presencePart.initAssists(person, null, ConferencePackage.eINSTANCE.getPerson_Assists());
-			
 			// init filters
 			presencePart.addFilterToAssists(new ViewerFilter() {
 
@@ -216,7 +230,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (person != null) {
+		if ((person != null) && (presencePart != null)) { 
 			List assistsToAddFromAssists = presencePart.getAssistsToAdd();
 			for (Iterator iter = assistsToAddFromAssists.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), iter.next()));
@@ -274,7 +288,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -314,6 +328,8 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -350,4 +366,12 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			person.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return presencePart.getTitle();
+	}
 }

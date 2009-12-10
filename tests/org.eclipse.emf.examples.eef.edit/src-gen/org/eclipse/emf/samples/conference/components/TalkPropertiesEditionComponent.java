@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
@@ -12,15 +19,17 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -30,6 +39,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
 import org.eclipse.emf.samples.conference.TALK_TYPE;
@@ -46,7 +56,7 @@ import org.eclipse.ui.PlatformUI;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class TalkPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
@@ -62,7 +72,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 	/**
 	 * The Base part
 	 */
-	private TalkPropertiesEditionPart basePart;
+	protected TalkPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -95,43 +105,51 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 				if (basePart == null)
 					TalkPropertiesEditionComponent.this.dispose();
 				else {
-                    Runnable updateRunnable = new Runnable() {
-                        public void run() {
-							if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null)
-									basePart.setTitle((String)msg.getNewValue());
-								else
-									basePart.setTitle("");
-							}
-							if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null)
-								basePart.setTopic((EObject)msg.getNewValue());
-						if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
-							basePart.setType((Enumerator)msg.getNewValue());
-
-							if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
-								basePart.setPresenter((EObject)msg.getNewValue());
-							if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
-								basePart.setCreator((EObject)msg.getNewValue());
-							if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null) 
-									basePart.setDocumentation((String)msg.getNewValue());
-								else
-									basePart.setDocumentation("");
-							}
-
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
 						}
 					};
-                    if (null == Display.getCurrent()) {
-                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-                    } else {
-                        updateRunnable.run();
-                    }
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setTitle_("");
+			}
+		}
+		if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null)
+			basePart.setTopic((EObject)msg.getNewValue());
+		if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && basePart != null)
+			basePart.setType((Enumerator)msg.getNewValue());
+
+		if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
+			basePart.setPresenter((EObject)msg.getNewValue());
+		if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
+			basePart.setCreator((EObject)msg.getNewValue());
+		if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setDocumentation("");
+			}
+		}
+
+
 	}
 
 	/**
@@ -197,22 +215,23 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			final Talk talk = (Talk)elt;
 			// init values
 			if (talk.getTitle() != null)
-				basePart.setTitle(talk.getTitle());
+				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), talk.getTitle()));
 
+			// init part
 			basePart.initTopic(allResource, talk.getTopic());
 			// set the button mode
 			basePart.setTopicButtonMode(ButtonsModeEnum.BROWSE);
 			basePart.initType((EEnum) ConferencePackage.eINSTANCE.getTalk_Type().getEType(), talk.getType());
+			// init part
 			basePart.initPresenter(allResource, talk.getPresenter());
 			// set the button mode
 			basePart.setPresenterButtonMode(ButtonsModeEnum.BROWSE);
+			// init part
 			basePart.initCreator(allResource, talk.getCreator());
 			// set the button mode
 			basePart.setCreatorButtonMode(ButtonsModeEnum.BROWSE);
 			if (talk.getDocumentation() != null)
-				basePart.setDocumentation(talk.getDocumentation());
-
-			
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), talk.getDocumentation()));
 			// init filters
 
 			basePart.addFilterToTopic(new ViewerFilter() {
@@ -289,9 +308,8 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (talk != null) {
-			cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Title(), basePart.getTitle()));
-
+		if ((talk != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Title(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTitle_())));
 			if (talk.eGet(ConferencePackage.eINSTANCE.getTalk_Topic()) == null || !talk.eGet(ConferencePackage.eINSTANCE.getTalk_Topic()).equals(basePart.getTopic())) {
 				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Topic(), basePart.getTopic()));
 			}
@@ -303,8 +321,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			if (talk.eGet(ConferencePackage.eINSTANCE.getTalk_Creator()) == null || !talk.eGet(ConferencePackage.eINSTANCE.getTalk_Creator()).equals(basePart.getCreator())) {
 				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Creator(), basePart.getCreator()));
 			}
-			cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), basePart.getDocumentation()));
-
+			cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation())));
 
 
 		}
@@ -322,15 +339,14 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Talk) {
 			Talk talkToUpdate = (Talk)source;
-			talkToUpdate.setTitle(basePart.getTitle());
+			talkToUpdate.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTitle_()));
 
 			talkToUpdate.setTopic((Topic)basePart.getTopic());
 			talkToUpdate.setType((TALK_TYPE)basePart.getType());
 
 			talkToUpdate.setPresenter((Person)basePart.getPresenter());
 			talkToUpdate.setCreator((Person)basePart.getCreator());
-			talkToUpdate.setDocumentation(basePart.getDocumentation());
-
+			talkToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation()));
 
 
 			return talkToUpdate;
@@ -348,9 +364,9 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (ConferenceViewsRepository.Talk.title == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Title(), event.getNewValue()));
-
+			if (ConferenceViewsRepository.Talk.title_ == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Title(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 			if (ConferenceViewsRepository.Talk.topic == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Topic(), event.getNewValue()));
 			if (ConferenceViewsRepository.Talk.type == event.getAffectedEditor())
@@ -360,21 +376,21 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Presenter(), event.getNewValue()));
 			if (ConferenceViewsRepository.Talk.creator == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Creator(), event.getNewValue()));
-			if (ConferenceViewsRepository.Talk.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), event.getNewValue()));
-
+			if (ConferenceViewsRepository.Talk.documentation == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
 		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
 			Diagnostic diag = this.validateValue(event);
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				if (ConferenceViewsRepository.Talk.title == event.getAffectedEditor())
-					basePart.setMessageForTitle(diag.getMessage(), IMessageProvider.ERROR);
+				if (ConferenceViewsRepository.Talk.title_ == event.getAffectedEditor())
+					basePart.setMessageForTitle_(diag.getMessage(), IMessageProvider.ERROR);
 
 
 
@@ -384,8 +400,8 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 
 			} else {
-				if (ConferenceViewsRepository.Talk.title == event.getAffectedEditor())
-					basePart.unsetMessageForTitle();
+				if (ConferenceViewsRepository.Talk.title_ == event.getAffectedEditor())
+					basePart.unsetMessageForTitle_();
 
 
 
@@ -404,7 +420,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ConferenceViewsRepository.Talk.title || key == ConferenceViewsRepository.Talk.topic || key == ConferenceViewsRepository.Talk.presenter || key == ConferenceViewsRepository.Talk.documentation;
+		return key == ConferenceViewsRepository.Talk.title_ || key == ConferenceViewsRepository.Talk.topic || key == ConferenceViewsRepository.Talk.presenter || key == ConferenceViewsRepository.Talk.documentation;
 	}
 
 	/**
@@ -417,7 +433,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ConferenceViewsRepository.Talk.title == event.getAffectedEditor()) {
+				if (ConferenceViewsRepository.Talk.title_ == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Title().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTalk_Title().getEAttributeType(), newValue);
 				}
@@ -432,6 +448,8 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -468,4 +486,12 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			talk.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

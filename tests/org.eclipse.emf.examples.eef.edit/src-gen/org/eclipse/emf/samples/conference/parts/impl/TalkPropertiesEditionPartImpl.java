@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts.impl;
 
 // Start of user code for imports
@@ -41,11 +48,11 @@ import org.eclipse.swt.widgets.Text;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TalkPropertiesEditionPart {
 
-	protected Text title;
+	protected Text title_;
 	protected EObjectFlatComboViewer topic;
 	protected EMFComboViewer type;
 	protected EObjectFlatComboViewer presenter;
@@ -55,7 +62,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -102,19 +109,19 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createTitleText(propertiesGroup);
+		createTitle_Text(propertiesGroup);
 		createTopicFlatComboViewer(propertiesGroup);
 		createTypeEMFComboViewer(propertiesGroup);
 		createPresenterFlatComboViewer(propertiesGroup);
 		createCreatorFlatComboViewer(propertiesGroup);
 		createDocumentationTextarea(propertiesGroup);
 	}
-	protected void createTitleText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_TitleLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.title, ConferenceViewsRepository.SWT_KIND));
-		title = new Text(parent, SWT.BORDER);
-		GridData titleData = new GridData(GridData.FILL_HORIZONTAL);
-		title.setLayoutData(titleData);
-		title.addModifyListener(new ModifyListener() {
+	protected void createTitle_Text(Composite parent) {
+		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.SWT_KIND));
+		title_ = new Text(parent, SWT.BORDER);
+		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
+		title_.setLayoutData(title_Data);
+		title_.addModifyListener(new ModifyListener() {
 
 			/*
 			 * (non-Javadoc)
@@ -123,12 +130,12 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, ConferenceViewsRepository.Talk.title, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title_.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 	/**
 	 * @param propertiesGroup
@@ -201,7 +208,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
-		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -220,30 +227,30 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getTitle_()
 	 */
-	public String getTitle() {
-		return title.getText();
+	public String getTitle_() {
+		return title_.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setTitle(String newValue)
+	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setTitle_(String newValue)
 	 */
-	public void setTitle(String newValue) {
+	public void setTitle_(String newValue) {
 		if (newValue != null) {
-			title.setText(newValue);
+			title_.setText(newValue);
 		} else {
-			title.setText("");  //$NON-NLS-1$
+			title_.setText(""); //$NON-NLS-1$
 		}
 	}
 
-	public void setMessageForTitle(String msg, int msgLevel) {
+	public void setMessageForTitle_(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForTitle() {
+	public void unsetMessageForTitle_() {
 
 	}
 
@@ -542,6 +549,15 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ConferenceMessages.Talk_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

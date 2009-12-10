@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
@@ -50,7 +57,7 @@ import org.eclipse.ui.forms.widgets.Section;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ConferencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ConferencePropertiesEditionPart {
 
@@ -180,6 +187,8 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		GridData sitesData = new GridData(GridData.FILL_HORIZONTAL);
 		sitesData.horizontalSpan = 3;
 		this.sites.setLayoutData(sitesData);
+		this.sites.setLowerBound(0);
+		this.sites.setUpperBound(-1);
 	}
 
 	/**
@@ -270,7 +279,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		if (newValue != null) {
 			place.setText(newValue);
 		} else {
-			place.setText("");  //$NON-NLS-1$
+			place.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -389,6 +398,15 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return ConferenceMessages.Conference_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

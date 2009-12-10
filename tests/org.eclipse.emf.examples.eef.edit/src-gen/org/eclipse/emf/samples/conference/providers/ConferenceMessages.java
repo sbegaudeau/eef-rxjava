@@ -1,12 +1,19 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.osgi.util.NLS;
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ConferenceMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.samples.conference.providers.conferenceMessages"; //$NON-NLS-1$
@@ -27,15 +34,27 @@ public class ConferenceMessages extends NLS {
 
 	public static String Conference_ReadOnly;
 
+	public static String Conference_Part_Title;
+
 	public static String Person_ReadOnly;
+
+	public static String Person_Part_Title;
 
 	public static String Presence_ReadOnly;
 
+	public static String Presence_Part_Title;
+
 	public static String Talk_ReadOnly;
+
+	public static String Talk_Part_Title;
 
 	public static String Topic_ReadOnly;
 
+	public static String Topic_Part_Title;
+
 	public static String Site_ReadOnly;
+
+	public static String Site_Part_Title;
 
 	public static String ConferencePropertiesEditionPart_PlaceLabel;
 
@@ -55,7 +74,7 @@ public class ConferenceMessages extends NLS {
 
 	public static String PresencePropertiesEditionPart_AssistsLabel;
 
-	public static String TalkPropertiesEditionPart_TitleLabel;
+	public static String TalkPropertiesEditionPart_Title_Label;
 
 	public static String TalkPropertiesEditionPart_TopicLabel;
 

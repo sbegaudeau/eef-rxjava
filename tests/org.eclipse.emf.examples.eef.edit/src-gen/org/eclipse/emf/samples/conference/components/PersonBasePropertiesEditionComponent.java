@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
@@ -12,15 +19,17 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -29,6 +38,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.GENDER;
 import org.eclipse.emf.samples.conference.Person;
@@ -41,7 +51,7 @@ import org.eclipse.ui.PlatformUI;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class PersonBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
@@ -57,7 +67,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	/**
 	 * The Base part
 	 */
-	private PersonPropertiesEditionPart basePart;
+	protected PersonPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -90,48 +100,58 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 				if (basePart == null)
 					PersonBasePropertiesEditionComponent.this.dispose();
 				else {
-                    Runnable updateRunnable = new Runnable() {
-                        public void run() {
-							if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null)
-									basePart.setFirstname((String)msg.getNewValue());
-								else
-									basePart.setFirstname("");
-							}
-							if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null)
-									basePart.setLastname((String)msg.getNewValue());
-								else
-									basePart.setLastname("");
-							}
-							if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null)
-									basePart.setAge(((Integer)msg.getNewValue()).toString());
-								else
-									basePart.setAge("");
-							}
-							if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
-								basePart.setEclipseCommiter((Boolean)msg.getNewValue());
-
-						if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
-							basePart.setGender((Enumerator)msg.getNewValue());
-
-							if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
-								basePart.setIsRegistered((Boolean)msg.getNewValue());
-
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
 						}
 					};
-                    if (null == Display.getCurrent()) {
-                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-                    } else {
-                        updateRunnable.run();
-                    }
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setFirstname(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setFirstname("");
+			}
+		}
+		if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setLastname(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setLastname("");
+			}
+		}
+		if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setAge(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+			} else {
+				basePart.setAge("");
+			}
+		}
+		if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null)
+			basePart.setEclipseCommiter((Boolean)msg.getNewValue());
+
+		if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
+			basePart.setGender((Enumerator)msg.getNewValue());
+
+		if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
+			basePart.setIsRegistered((Boolean)msg.getNewValue());
+
+
+
 	}
 
 	/**
@@ -197,19 +217,18 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			final Person person = (Person)elt;
 			// init values
 			if (person.getFirstname() != null)
-				basePart.setFirstname(person.getFirstname());
+				basePart.setFirstname(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), person.getFirstname()));
 
 			if (person.getLastname() != null)
-				basePart.setLastname(person.getLastname());
+				basePart.setLastname(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), person.getLastname()));
 
-			basePart.setAge(String.valueOf(person.getAge()));
+			basePart.setAge(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), person.getAge()));
 
 			basePart.setEclipseCommiter(person.isEclipseCommiter());
 
 			basePart.initGender((EEnum) ConferencePackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
 			basePart.setIsRegistered(person.isIsRegistered());
 
-			
 			// init filters
 
 
@@ -241,13 +260,10 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (person != null) {
-			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Firstname(), basePart.getFirstname()));
-
-			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Lastname(), basePart.getLastname()));
-
-			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Age(), new Integer(basePart.getAge())));
-
+		if ((person != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Firstname(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getFirstname())));
+			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Lastname(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getLastname())));
+			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Age(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEInt(), basePart.getAge())));
 			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), basePart.getEclipseCommiter()));
 
 			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), basePart.getGender()));
@@ -271,11 +287,11 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Person) {
 			Person personToUpdate = (Person)source;
-			personToUpdate.setFirstname(basePart.getFirstname());
+			personToUpdate.setFirstname((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getFirstname()));
 
-			personToUpdate.setLastname(basePart.getLastname());
+			personToUpdate.setLastname((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getLastname()));
 
-			personToUpdate.setAge(new Integer(basePart.getAge()).intValue());
+			personToUpdate.setAge(EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), basePart.getAge()));
 
 			personToUpdate.setEclipseCommiter(new Boolean(basePart.getEclipseCommiter()).booleanValue());
 
@@ -300,15 +316,15 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (ConferenceViewsRepository.Person.firstname == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Firstname(), event.getNewValue()));
-
-			if (ConferenceViewsRepository.Person.lastname == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Lastname(), event.getNewValue()));
-
-			if (ConferenceViewsRepository.Person.age == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Age(), new Integer((String)event.getNewValue())));
-
+			if (ConferenceViewsRepository.Person.firstname == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Firstname(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
+			if (ConferenceViewsRepository.Person.lastname == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Lastname(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
+			if (ConferenceViewsRepository.Person.age == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Age(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			}
 			if (ConferenceViewsRepository.Person.eclipseCommiter == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), event.getNewValue()));
 
@@ -321,7 +337,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -401,6 +417,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -437,4 +455,12 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			person.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

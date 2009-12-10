@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
@@ -12,14 +19,16 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -28,6 +37,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Topic;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
@@ -39,7 +49,7 @@ import org.eclipse.ui.PlatformUI;
 // End of user code
 
 /**
- * @author
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class TopicPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
@@ -55,7 +65,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	/**
 	 * The Base part
 	 */
-	private TopicPropertiesEditionPart basePart;
+	protected TopicPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -88,37 +98,45 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 				if (basePart == null)
 					TopicPropertiesEditionComponent.this.dispose();
 				else {
-                    Runnable updateRunnable = new Runnable() {
-                        public void run() {
-							if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null)
-									basePart.setDescription((String)msg.getNewValue());
-								else
-									basePart.setDescription("");
-							}
-							if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null)
-								basePart.setReferences((EList)msg.getNewValue());
-
-							if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
-								if (msg.getNewValue() != null) 
-									basePart.setDocumentation((String)msg.getNewValue());
-								else
-									basePart.setDocumentation("");
-							}
-
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
 						}
 					};
-                    if (null == Display.getCurrent()) {
-                        PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-                    } else {
-                        updateRunnable.run();
-                    }
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setDescription(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setDescription("");
+			}
+		}
+		if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null)
+			basePart.setReferences((EList)msg.getNewValue());
+
+		if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setDocumentation("");
+			}
+		}
+
+
 	}
 
 	/**
@@ -184,15 +202,13 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			final Topic topic = (Topic)elt;
 			// init values
 			if (topic.getDescription() != null)
-				basePart.setDescription(topic.getDescription());
+				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDescription()));
 
 			if (topic.getReferences() != null)
 				basePart.setReferences(topic.getReferences());
 
 			if (topic.getDocumentation() != null)
-				basePart.setDocumentation(topic.getDocumentation());
-
-			
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDocumentation()));
 			// init filters
 
 
@@ -218,13 +234,11 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (topic != null) {
-			cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), basePart.getDescription()));
-
+		if ((topic != null) && (basePart != null)) { 
+			cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDescription())));
 			cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), basePart.getReferences()));
 
-			cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), basePart.getDocumentation()));
-
+			cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation())));
 
 
 		}
@@ -242,12 +256,11 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Topic) {
 			Topic topicToUpdate = (Topic)source;
-			topicToUpdate.setDescription(basePart.getDescription());
+			topicToUpdate.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDescription()));
 
 			topicToUpdate.getReferences().addAll(basePart.getReferences());
 
-			topicToUpdate.setDocumentation(basePart.getDocumentation());
-
+			topicToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation()));
 
 
 			return topicToUpdate;
@@ -265,19 +278,19 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 		super.firePropertiesChanged(event);
 		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			CompoundCommand command = new CompoundCommand();
-			if (ConferenceViewsRepository.Topic.description == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), event.getNewValue()));
-
+			if (ConferenceViewsRepository.Topic.description == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 					if (ConferenceViewsRepository.Topic.references == event.getAffectedEditor())
 						command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), event.getNewValue()));
 
-			if (ConferenceViewsRepository.Topic.documentation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), event.getNewValue()));
-
+			if (ConferenceViewsRepository.Topic.documentation == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
+				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 			} else {
 				liveEditingDomain.getCommandStack().execute(command);
 			}
@@ -337,6 +350,8 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -373,4 +388,12 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			topic.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }
