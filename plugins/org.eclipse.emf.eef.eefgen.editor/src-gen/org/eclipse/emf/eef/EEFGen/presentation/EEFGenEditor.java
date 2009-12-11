@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenEditor.java,v 1.5 2009/12/10 15:36:59 sbouchet Exp $
+ * $Id: EEFGenEditor.java,v 1.6 2009/12/11 11:05:37 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.presentation;
 
@@ -198,7 +198,7 @@ public class EEFGenEditor
 	/**
 	 * @generated NOT
 	 */
-	public static final String PROPERTIES_CONTRIBUTOR = "org.eclipse.emf.eef.EEFGen.properties";
+	public static final String PROPERTIES_CONTRIBUTOR = "org.eclipse.emf.eef.properties";
 
 	/**
 	 * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content outline viewer.
