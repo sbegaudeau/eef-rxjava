@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.6 2009/12/10 16:54:27 sbouchet Exp $
+ * $Id: ComponentsEditor.java,v 1.7 2009/12/11 11:05:49 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -186,7 +186,7 @@ public class ComponentsEditor extends MultiPageEditorPart implements IEditingDom
 	/**
 	 * @generated NOT
 	 */
-	public static final String PROPERTIES_CONTRIBUTOR = "org.eclipse.emf.eef.components.properties";
+	public static final String PROPERTIES_CONTRIBUTOR = "org.eclipse.emf.eef.properties";
 
 	/**
 	 * This is the viewer that shadows the selection in the content outline.
