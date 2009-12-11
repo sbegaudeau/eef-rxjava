@@ -12,7 +12,7 @@
       Obeo - initial API and implementation
  
 
- $Id: plugin.xml,v 1.4 2009/12/11 10:35:25 sbouchet Exp $
+ $Id: plugin.xml,v 1.5 2009/12/11 11:05:41 sbouchet Exp $
 -->
 
 <plugin>
@@ -54,7 +54,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+            contributorId="org.eclipse.emf.eef.properties">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -69,7 +69,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+            contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
                label="Base"
                category="default"
@@ -80,7 +80,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+            contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext"
