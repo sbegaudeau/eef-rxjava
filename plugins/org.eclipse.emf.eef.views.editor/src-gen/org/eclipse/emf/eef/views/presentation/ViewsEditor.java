@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsEditor.java,v 1.4 2009/08/22 09:46:11 glefur Exp $
+ * $Id: ViewsEditor.java,v 1.5 2009/12/11 11:05:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.presentation;
 
@@ -238,7 +238,7 @@ public class ViewsEditor extends MultiPageEditorPart
 	/**
 	 * @generated NOT
 	 */
-	public static final String PROPERTIES_CONTRIBUTOR = "org.eclipse.emf.eef.views.properties";
+	public static final String PROPERTIES_CONTRIBUTOR = "org.eclipse.emf.eef.properties";
 
 	/**
 	 * This listens for when the outline becomes active
