@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.13 2009/12/10 15:51:27 sbouchet Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionPartImpl.java,v 1.14 2009/12/15 13:00:46 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -98,6 +99,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -113,12 +115,15 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createBindingGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -138,6 +143,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		createNameText(propertiesGroup);
 		createHelpIDText(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.name, ComponentsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -159,6 +165,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.name, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createHelpIDText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, ComponentsViewsRepository.SWT_KIND));
 		helpID = new Text(parent, SWT.BORDER);
@@ -180,6 +187,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_BindingGroupLabel);
@@ -192,6 +200,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		createModelReferencesTable(bindingGroup);
 		createViewsAdvancedReferencesTable(bindingGroup);
 	}
+
 	/**
 	 * @param parent
 	 */
@@ -338,6 +347,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 			modelEditUtil.removeElement(selectedElement);
 		}
 	}
+
 	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
@@ -417,7 +427,13 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

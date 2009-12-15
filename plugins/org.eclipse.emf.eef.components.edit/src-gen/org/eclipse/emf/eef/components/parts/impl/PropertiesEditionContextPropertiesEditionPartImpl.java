@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.12 2009/12/10 15:51:27 sbouchet Exp $
+ * $Id: PropertiesEditionContextPropertiesEditionPartImpl.java,v 1.13 2009/12/15 13:00:45 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -64,6 +65,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -79,11 +81,13 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createBindingGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -102,6 +106,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		bindingGroup.setLayout(bindingGroupLayout);
 		createModelFlatComboViewer(bindingGroup);
 	}
+
 	/**
 	 * @param bindingGroup
 	 */
@@ -123,7 +128,13 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

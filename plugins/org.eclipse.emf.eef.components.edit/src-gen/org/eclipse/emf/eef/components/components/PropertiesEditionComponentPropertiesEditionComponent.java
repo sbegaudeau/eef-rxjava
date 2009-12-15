@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.10 2009/12/10 15:51:26 sbouchet Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionComponent.java,v 1.11 2009/12/15 13:00:40 glefur Exp $
  */
 package org.eclipse.emf.eef.components.components;
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesEditionComponentPropertiesEditionPartImpl.java,v 1.12 2009/12/10 15:51:27 sbouchet Exp $
+ * $Id: PropertiesEditionComponentPropertiesEditionPartImpl.java,v 1.13 2009/12/15 13:00:46 glefur Exp $
  */
 package org.eclipse.emf.eef.components.parts.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart;
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -90,6 +91,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -105,12 +107,15 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createBindingGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -131,6 +136,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		createHelpIDText(propertiesGroup);
 		createExplicitCheckbox(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.name, ComponentsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -152,6 +158,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.name, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createHelpIDText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.SWT_KIND));
 		helpID = new Text(parent, SWT.BORDER);
@@ -173,6 +180,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createExplicitCheckbox(Composite parent) {
 		explicit = new Button(parent, SWT.CHECK);
 		explicit.setText(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel);
@@ -181,6 +189,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		explicit.setLayoutData(explicitData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.explicit, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_BindingGroupLabel);
@@ -193,6 +202,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		createModelFlatComboViewer(bindingGroup);
 		createViewsAdvancedReferencesTable(bindingGroup);
 	}
+
 	/**
 	 * @param bindingGroup
 	 */
@@ -212,6 +222,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		model.setLayoutData(modelData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<View>(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
 			public void handleAdd() {
@@ -291,7 +302,13 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
