@@ -106,7 +106,10 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
 	 */
 	public ISelection getSelection() {
-		return new StructuredSelection(imagePath);
+		if (imagePath != null)
+			return new StructuredSelection(imagePath);
+		else
+			return new StructuredSelection("");
 	}
 
 	/**
