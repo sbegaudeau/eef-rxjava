@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryBasePropertiesEditionComponent.java,v 1.13 2009/12/10 16:26:18 sbouchet Exp $
+ * $Id: CategoryBasePropertiesEditionComponent.java,v 1.14 2009/12/15 13:00:20 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -36,15 +36,15 @@ import org.eclipse.emf.eef.mapping.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
@@ -189,6 +189,7 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
 		if (basePart != null && key == MappingViewsRepository.Category.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final Category category = (Category)elt;
@@ -203,6 +204,7 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 
 		// init filters for referenced views
 
+		setInitializing(false);
 	}
 
 
@@ -249,35 +251,31 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
-		super.firePropertiesChanged(event);
-		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-			CompoundCommand command = new CompoundCommand();
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		if (!isInitializing()) {
+			Diagnostic valueDiagnostic = validateValue(event);
+			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
+				CompoundCommand command = new CompoundCommand();
 			if (MappingViewsRepository.Category.name == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, category, MappingPackage.eINSTANCE.getCategory_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
 
 
-			if (!command.isEmpty() && !command.canExecute()) {
-				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-			} else {
-				liveEditingDomain.getCommandStack().execute(command);
+				if (!command.isEmpty() && !command.canExecute()) {
+					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
+				} else {
+					liveEditingDomain.getCommandStack().execute(command);
+				}
 			}
-		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
-			Diagnostic diag = this.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				if (MappingViewsRepository.Category.name == event.getAffectedEditor())
-					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-
-
-			} else {
-				if (MappingViewsRepository.Category.name == event.getAffectedEditor())
-					basePart.unsetMessageForName();
-
-
+			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
+			else {
+				Diagnostic validate = validate();
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
 			}
+			super.firePropertiesChanged(event);
 		}
 	}
 
@@ -293,10 +291,10 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		Diagnostic ret = null;
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
@@ -320,14 +318,14 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		Diagnostic validate = null;
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
-			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			validate =  Diagnostician.INSTANCE.validate(copy);
+			EObject copy = EcoreUtil.copy(category);
+			copy = getPropertiesEditionObject(copy);
+			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate(category);
+			validate = EEFRuntimePlugin.getEEFValidator().validate(category);
 		// Start of user code for custom validation check
 		
 		// End of user code

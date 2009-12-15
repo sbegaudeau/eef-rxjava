@@ -20,10 +20,10 @@ import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OCLFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -59,6 +59,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -74,12 +75,15 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createFilterExpressionGroup(view);
+
 		createFilterProperties(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -98,6 +102,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
 		createOCLExpressionBodyTextarea(filterExpressionGroup);
 	}
+
 	protected void createOCLExpressionBodyTextarea(Composite parent) {
 		Label oCLExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.SWT_KIND));
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -110,6 +115,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		oCLExpressionBody.setLayoutData(oCLExpressionBodyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createFilterProperties(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -118,7 +124,13 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

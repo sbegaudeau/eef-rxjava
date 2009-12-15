@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -66,6 +67,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -81,12 +83,15 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createReferencedFeatureGroup(view);
+
 		createFilterProperties(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -105,6 +110,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		referencedFeatureGroup.setLayout(referencedFeatureGroupLayout);
 		createReferencedFeatureFlatComboViewer(referencedFeatureGroup);
 	}
+
 	/**
 	 * @param referencedFeatureGroup
 	 */
@@ -124,6 +130,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		referencedFeature.setLayoutData(referencedFeatureData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createFilterProperties(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -132,7 +139,13 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

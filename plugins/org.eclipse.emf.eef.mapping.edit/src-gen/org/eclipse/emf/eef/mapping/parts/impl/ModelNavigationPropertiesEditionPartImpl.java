@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelNavigationPropertiesEditionPartImpl.java,v 1.12 2009/12/10 16:36:44 sbouchet Exp $
+ * $Id: ModelNavigationPropertiesEditionPartImpl.java,v 1.13 2009/12/15 13:00:24 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -18,8 +18,8 @@ package org.eclipse.emf.eef.mapping.parts.impl;
 import org.eclipse.emf.eef.mapping.parts.ModelNavigationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -49,6 +49,7 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -64,11 +65,13 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -88,7 +91,13 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

@@ -20,6 +20,7 @@ import org.eclipse.emf.eef.mapping.parts.JavaDeclarationFilterPropertiesEditionP
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -60,6 +61,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -75,12 +77,15 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createFilterExpressionGroup(view);
+
 		createFilterProperties(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -99,6 +104,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
 		createMethodNameText(filterExpressionGroup);
 	}
+
 	protected void createMethodNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaDeclarationFilter.methodName, MappingViewsRepository.SWT_KIND));
 		methodName = new Text(parent, SWT.BORDER);
@@ -120,6 +126,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaDeclarationFilter.methodName, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createFilterProperties(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -128,7 +135,13 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

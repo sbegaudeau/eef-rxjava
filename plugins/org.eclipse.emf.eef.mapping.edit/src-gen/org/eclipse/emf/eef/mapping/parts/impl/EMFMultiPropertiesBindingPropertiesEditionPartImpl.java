@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.15 2009/12/10 16:36:45 sbouchet Exp $
+ * $Id: EMFMultiPropertiesBindingPropertiesEditionPartImpl.java,v 1.16 2009/12/15 13:00:25 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEdit
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -83,6 +84,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -98,12 +100,15 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createBindingGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -122,6 +127,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFMultiPropertiesBinding.name, MappingViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -143,6 +149,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_BindingGroupLabel);
@@ -155,6 +162,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		createModelAdvancedReferencesTable(bindingGroup);
 		createViewsAdvancedReferencesTable(bindingGroup);
 	}
+
 	protected void createModelAdvancedReferencesTable(Composite parent) {
 		this.model = new ReferencesTable<EStructuralFeature>(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener<EStructuralFeature>() {
 			public void handleAdd() {
@@ -228,6 +236,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		// End of user code
 
 	}
+
 	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
@@ -307,7 +316,13 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

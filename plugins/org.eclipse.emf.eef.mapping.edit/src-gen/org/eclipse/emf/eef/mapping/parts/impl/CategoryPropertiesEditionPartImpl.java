@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryPropertiesEditionPartImpl.java,v 1.13 2009/12/10 16:36:43 sbouchet Exp $
+ * $Id: CategoryPropertiesEditionPartImpl.java,v 1.14 2009/12/15 13:00:24 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.mapping.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -55,6 +56,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -70,11 +72,13 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -93,6 +97,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.CategoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Category.name, MappingViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -116,7 +121,13 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

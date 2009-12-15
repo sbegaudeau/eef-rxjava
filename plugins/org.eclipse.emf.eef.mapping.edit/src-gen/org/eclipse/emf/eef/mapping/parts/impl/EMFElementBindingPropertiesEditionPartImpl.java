@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFElementBindingPropertiesEditionPartImpl.java,v 1.15 2009/12/10 16:36:48 sbouchet Exp $
+ * $Id: EMFElementBindingPropertiesEditionPartImpl.java,v 1.16 2009/12/15 13:00:26 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -85,6 +86,7 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -100,12 +102,15 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createBindingGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -124,6 +129,7 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.EMFElementBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFElementBinding.name, MappingViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -145,6 +151,7 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFElementBinding.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(MappingMessages.EMFElementBindingPropertiesEditionPart_BindingGroupLabel);
@@ -157,6 +164,7 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		createModelFlatComboViewer(bindingGroup);
 		createViewsAdvancedReferencesTable(bindingGroup);
 	}
+
 	/**
 	 * @param bindingGroup
 	 */
@@ -176,6 +184,7 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		model.setLayoutData(modelData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFElementBinding.model, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<View>(MappingMessages.EMFElementBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
 			public void handleAdd() {
@@ -255,7 +264,13 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

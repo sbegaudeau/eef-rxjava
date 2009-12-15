@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaDeclarationFilterPropertiesEditionComponent.java,v 1.2 2009/12/10 16:26:19 sbouchet Exp $
+ * $Id: JavaDeclarationFilterPropertiesEditionComponent.java,v 1.3 2009/12/15 13:00:23 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 

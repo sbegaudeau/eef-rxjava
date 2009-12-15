@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.14 2009/12/10 16:36:44 sbouchet Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionPartImpl.java,v 1.15 2009/12/15 13:00:24 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.SimpleModelNavigationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -69,6 +70,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -84,11 +86,13 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -109,6 +113,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		createFeatureFlatComboViewer(propertiesGroup);
 		createDiscriminatorTypeFlatComboViewer(propertiesGroup);
 	}
+
 	protected void createIndexText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_IndexLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.index, MappingViewsRepository.SWT_KIND));
 		index = new Text(parent, SWT.BORDER);
@@ -130,6 +135,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.index, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param propertiesGroup
 	 */
@@ -149,6 +155,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		feature.setLayoutData(featureData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.feature, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param propertiesGroup
 	 */
@@ -170,7 +177,13 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

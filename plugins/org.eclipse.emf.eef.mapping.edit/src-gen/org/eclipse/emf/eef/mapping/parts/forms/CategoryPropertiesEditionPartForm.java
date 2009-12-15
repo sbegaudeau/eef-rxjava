@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CategoryPropertiesEditionPartForm.java,v 1.12 2009/12/10 16:36:41 sbouchet Exp $
+ * $Id: CategoryPropertiesEditionPartForm.java,v 1.13 2009/12/15 13:00:15 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.eef.mapping.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -35,7 +35,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -64,6 +63,7 @@ public class CategoryPropertiesEditionPartForm extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -74,18 +74,20 @@ public class CategoryPropertiesEditionPartForm extends CompositePropertiesEditio
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -103,6 +105,7 @@ public class CategoryPropertiesEditionPartForm extends CompositePropertiesEditio
 		createNameText(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
+
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.CategoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Category.name, MappingViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -155,7 +158,13 @@ public class CategoryPropertiesEditionPartForm extends CompositePropertiesEditio
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// Nothing to do

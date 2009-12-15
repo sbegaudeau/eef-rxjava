@@ -20,10 +20,10 @@ import org.eclipse.emf.eef.mapping.parts.JavaExpressionFilterPropertiesEditionPa
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -59,6 +59,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -74,12 +75,15 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createFilterExpressionGroup(view);
+
 		createFilterProperties(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -98,6 +102,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
 		createJavaExpressionBodyTextarea(filterExpressionGroup);
 	}
+
 	protected void createJavaExpressionBodyTextarea(Composite parent) {
 		Label javaExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.SWT_KIND));
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -110,6 +115,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		javaExpressionBody.setLayoutData(javaExpressionBodyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createFilterProperties(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -118,7 +124,13 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

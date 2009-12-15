@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.13 2009/12/10 16:36:46 sbouchet Exp $
+ * $Id: DocumentationPropertiesEditionPartImpl.java,v 1.14 2009/12/15 13:00:25 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.impl;
 
@@ -19,8 +19,8 @@ import org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -54,6 +54,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -69,11 +70,13 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -92,6 +95,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		documentationGroup.setLayout(documentationGroupLayout);
 		createDocumentationTextarea(documentationGroup);
 	}
+
 	protected void createDocumentationTextarea(Composite parent) {
 		Label documentationLabel = SWTUtils.createPartLabel(parent, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Documentation.documentation, MappingViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -106,7 +110,13 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

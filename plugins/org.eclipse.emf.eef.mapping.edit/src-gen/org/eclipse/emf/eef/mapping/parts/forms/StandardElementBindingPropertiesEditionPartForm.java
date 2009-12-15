@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingPropertiesEditionPartForm.java,v 1.15 2009/12/10 16:36:40 sbouchet Exp $
+ * $Id: StandardElementBindingPropertiesEditionPartForm.java,v 1.16 2009/12/15 13:00:14 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.StandardElementBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -60,7 +60,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -94,6 +93,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -104,19 +104,22 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+
 		createBindingGroup(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -134,6 +137,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 		createNameText(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
+
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardElementBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardElementBinding.name, MappingViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -184,6 +188,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardElementBinding.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bindingSection.setText(MappingMessages.StandardElementBindingPropertiesEditionPart_BindingGroupLabel);
@@ -198,6 +203,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 		createViewsReferencesTable(widgetFactory, bindingGroup);
 		bindingSection.setClient(bindingGroup);
 	}
+
 	/**
 	 * @param bindingGroup
 	 */
@@ -222,6 +228,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardElementBinding.model, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.views = new ReferencesTable<View>(MappingMessages.StandardElementBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
 			public void handleAdd() {
@@ -299,7 +306,13 @@ public class StandardElementBindingPropertiesEditionPartForm extends CompositePr
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// Nothing to do

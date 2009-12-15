@@ -20,7 +20,7 @@ import org.eclipse.emf.eef.mapping.parts.JavaExpressionFilterPropertiesEditionPa
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -36,7 +36,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -66,6 +65,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -76,19 +76,22 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createFilterExpressionGroup(widgetFactory, view);
+
 		createFilterProperties(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -106,6 +109,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		createJavaExpressionBodyTextarea(widgetFactory, filterExpressionGroup);
 		filterExpressionSection.setClient(filterExpressionGroup);
 	}
+
 	protected void createJavaExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label javaExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.FORM_KIND));
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -131,15 +135,22 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createFilterProperties(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(widgetFactory, container, messageManager);
+		((IFormPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(widgetFactory, container);
 	}
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

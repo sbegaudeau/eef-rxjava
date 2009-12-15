@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FilterPropertiesPropertiesEditionPartForm.java,v 1.5 2009/12/10 16:36:43 sbouchet Exp $
+ * $Id: FilterPropertiesPropertiesEditionPartForm.java,v 1.6 2009/12/15 13:00:17 glefur Exp $
  */
 package org.eclipse.emf.eef.mapping.parts.forms;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -38,7 +38,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -68,6 +67,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -78,18 +78,20 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createFilterPropertiesGroup(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -108,6 +110,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 		createMandatoryCheckbox(widgetFactory, filterPropertiesGroup);
 		filterPropertiesSection.setClient(filterPropertiesGroup);
 	}
+
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -158,6 +161,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createMandatoryCheckbox(FormToolkit widgetFactory, Composite parent) {
 		mandatory = widgetFactory.createButton(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel, SWT.CHECK);
 		mandatory.addSelectionListener(new SelectionAdapter() {
@@ -180,7 +184,13 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
