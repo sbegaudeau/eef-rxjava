@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPar
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.providers.EEFGenMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -60,6 +61,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -75,11 +77,13 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -98,6 +102,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		referenceGroup.setLayout(referenceGroupLayout);
 		createReferencedEEFGenModelFlatComboViewer(referenceGroup);
 	}
+
 	/**
 	 * @param referenceGroup
 	 */
@@ -119,7 +124,13 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

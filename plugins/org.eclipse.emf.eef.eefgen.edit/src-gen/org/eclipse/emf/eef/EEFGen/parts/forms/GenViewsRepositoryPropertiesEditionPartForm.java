@@ -25,7 +25,7 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.providers.EEFGenMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -52,7 +52,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -85,6 +84,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -95,20 +95,24 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
+
 		createParametersGroup(widgetFactory, view);
+
 		createActivationGroup(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -126,6 +130,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		createViewsRepositoryFlatComboViewer(referenceGroup, widgetFactory);
 		referenceSection.setClient(referenceGroup);
 	}
+
 	/**
 	 * @param referenceGroup
 	 */
@@ -150,6 +155,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.viewsRepository, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createParametersGroup(FormToolkit widgetFactory, final Composite view) {
 		Section parametersSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		parametersSection.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ParametersGroupLabel);
@@ -164,6 +170,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		createHelpStrategyEMFComboViewer(widgetFactory, parametersGroup);
 		parametersSection.setClient(parametersGroup);
 	}
+
 	protected void createBasePackageText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.FORM_KIND));
 		basePackage = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -214,6 +221,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createHelpStrategyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.FORM_KIND));
 		helpStrategy = new EMFComboViewer(parent);
@@ -236,6 +244,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createActivationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section activationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		activationSection.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ActivationGroupLabel);
@@ -250,6 +259,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		createFormsViewsCheckbox(widgetFactory, activationGroup);
 		activationSection.setClient(activationGroup);
 	}
+
 	protected void createSWTViewsCheckbox(FormToolkit widgetFactory, Composite parent) {
 		sWTViews = widgetFactory.createButton(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_SWTViewsLabel, SWT.CHECK);
 		sWTViews.addSelectionListener(new SelectionAdapter() {
@@ -270,6 +280,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		sWTViews.setLayoutData(sWTViewsData);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.sWTViews, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createFormsViewsCheckbox(FormToolkit widgetFactory, Composite parent) {
 		formsViews = widgetFactory.createButton(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel, SWT.CHECK);
 		formsViews.addSelectionListener(new SelectionAdapter() {
@@ -292,7 +303,13 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

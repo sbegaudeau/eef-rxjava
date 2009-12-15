@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.providers.EEFGenMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -69,6 +70,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -84,13 +86,17 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
+
 		createParametersGroup(view);
+
 		createActivationGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -109,6 +115,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		referenceGroup.setLayout(referenceGroupLayout);
 		createPropertiesEditionContextFlatComboViewer(referenceGroup);
 	}
+
 	/**
 	 * @param referenceGroup
 	 */
@@ -128,6 +135,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		propertiesEditionContext.setLayoutData(propertiesEditionContextData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createParametersGroup(Composite parent) {
 		Group parametersGroup = new Group(parent, SWT.NONE);
 		parametersGroup.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ParametersGroupLabel);
@@ -140,6 +148,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		createBasePackageText(parametersGroup);
 		createDescriptorsContributorIDText(parametersGroup);
 	}
+
 	protected void createBasePackageText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.SWT_KIND));
 		basePackage = new Text(parent, SWT.BORDER);
@@ -161,6 +170,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createDescriptorsContributorIDText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND));
 		descriptorsContributorID = new Text(parent, SWT.BORDER);
@@ -182,6 +192,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createActivationGroup(Composite parent) {
 		Group activationGroup = new Group(parent, SWT.NONE);
 		activationGroup.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ActivationGroupLabel);
@@ -195,6 +206,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		createGMFSpecificPropertiesViewsCheckbox(activationGroup);
 		createJUnitTestCasesCheckbox(activationGroup);
 	}
+
 	protected void createGenericPropertiesViewsDescriptorsCheckbox(Composite parent) {
 		genericPropertiesViewsDescriptors = new Button(parent, SWT.CHECK);
 		genericPropertiesViewsDescriptors.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel);
@@ -203,6 +215,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		genericPropertiesViewsDescriptors.setLayoutData(genericPropertiesViewsDescriptorsData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createGMFSpecificPropertiesViewsCheckbox(Composite parent) {
 		gMFSpecificPropertiesViews = new Button(parent, SWT.CHECK);
 		gMFSpecificPropertiesViews.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel);
@@ -211,6 +224,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		gMFSpecificPropertiesViews.setLayoutData(gMFSpecificPropertiesViewsData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createJUnitTestCasesCheckbox(Composite parent) {
 		jUnitTestCases = new Button(parent, SWT.CHECK);
 		jUnitTestCases.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel);
@@ -221,7 +235,13 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

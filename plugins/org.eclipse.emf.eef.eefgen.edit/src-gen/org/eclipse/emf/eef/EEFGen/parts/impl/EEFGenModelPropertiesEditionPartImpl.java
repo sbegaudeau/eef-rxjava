@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.providers.EEFGenMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -58,6 +59,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -73,12 +75,15 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createParametersGroup(view);
+
 		createLegalGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -98,6 +103,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		createGenerationDirectoryText(parametersGroup);
 		createTestsGenerationDirectoryText(parametersGroup);
 	}
+
 	protected void createGenerationDirectoryText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.SWT_KIND));
 		generationDirectory = new Text(parent, SWT.BORDER);
@@ -119,6 +125,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createTestsGenerationDirectoryText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.SWT_KIND));
 		testsGenerationDirectory = new Text(parent, SWT.BORDER);
@@ -140,6 +147,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createLegalGroup(Composite parent) {
 		Group legalGroup = new Group(parent, SWT.NONE);
 		legalGroup.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_LegalGroupLabel);
@@ -152,6 +160,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		createAuthorText(legalGroup);
 		createLicenseTextarea(legalGroup);
 	}
+
 	protected void createAuthorText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.SWT_KIND));
 		author = new Text(parent, SWT.BORDER);
@@ -173,6 +182,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createLicenseTextarea(Composite parent) {
 		Label licenseLabel = SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.SWT_KIND));
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -187,7 +197,13 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
