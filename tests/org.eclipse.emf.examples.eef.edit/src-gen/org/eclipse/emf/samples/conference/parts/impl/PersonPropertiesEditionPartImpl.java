@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -66,6 +67,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -81,12 +83,15 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createIdentityGroup(view);
+
 		createEclipseStatusGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -108,6 +113,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		createAgeText(identityGroup);
 		createGenderEMFComboViewer(identityGroup);
 	}
+
 	protected void createFirstnameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.firstname, ConferenceViewsRepository.SWT_KIND));
 		firstname = new Text(parent, SWT.BORDER);
@@ -129,6 +135,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.firstname, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createLastnameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.lastname, ConferenceViewsRepository.SWT_KIND));
 		lastname = new Text(parent, SWT.BORDER);
@@ -150,6 +157,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.lastname, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createAgeText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.age, ConferenceViewsRepository.SWT_KIND));
 		age = new Text(parent, SWT.BORDER);
@@ -171,6 +179,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.age, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createGenderEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.gender, ConferenceViewsRepository.SWT_KIND));
 		gender = new EMFComboViewer(parent);
@@ -180,6 +189,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		gender.getCombo().setLayoutData(genderData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.gender, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createEclipseStatusGroup(Composite parent) {
 		Group eclipseStatusGroup = new Group(parent, SWT.NONE);
 		eclipseStatusGroup.setText(ConferenceMessages.PersonPropertiesEditionPart_EclipseStatusGroupLabel);
@@ -192,6 +202,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		createEclipseCommiterCheckbox(eclipseStatusGroup);
 		createIsRegisteredCheckbox(eclipseStatusGroup);
 	}
+
 	protected void createEclipseCommiterCheckbox(Composite parent) {
 		eclipseCommiter = new Button(parent, SWT.CHECK);
 		eclipseCommiter.setText(ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);
@@ -200,6 +211,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		eclipseCommiter.setLayoutData(eclipseCommiterData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.eclipseCommiter, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createIsRegisteredCheckbox(Composite parent) {
 		isRegistered = new Button(parent, SWT.CHECK);
 		isRegistered.setText(ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);
@@ -210,7 +222,13 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

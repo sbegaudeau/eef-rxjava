@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -69,6 +70,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -84,11 +86,13 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -109,6 +113,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		createReferencesMultiValuedEditor(propertiesGroup);
 		createDocumentationTextarea(propertiesGroup);
 	}
+
 	protected void createDescriptionText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.description, ConferenceViewsRepository.SWT_KIND));
 		description = new Text(parent, SWT.BORDER);
@@ -130,6 +135,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Topic.description, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createReferencesMultiValuedEditor(Composite parent) {
 		references = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
 		GridData referencesData = new GridData(GridData.FILL_HORIZONTAL);
@@ -162,6 +168,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			}
 		});
 	}
+
 	protected void createDocumentationTextarea(Composite parent) {
 		Label documentationLabel = SWTUtils.createPartLabel(parent, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.documentation, ConferenceViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -176,7 +183,13 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

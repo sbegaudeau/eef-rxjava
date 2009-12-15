@@ -60,9 +60,9 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 		super(editing_mode);
 		if (person instanceof Person) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(person);
-			personBasePropertiesEditionComponent = (PersonBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(person, editing_mode, PersonBasePropertiesEditionComponent.BASE_PART); 
+			personBasePropertiesEditionComponent = (PersonBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(person, editing_mode, PersonBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(personBasePropertiesEditionComponent);
-			personPresencePropertiesEditionComponent = (PersonPresencePropertiesEditionComponent)provider.getPropertiesEditionComponent(person, editing_mode, PersonPresencePropertiesEditionComponent.PRESENCE_PART); 
+			personPresencePropertiesEditionComponent = (PersonPresencePropertiesEditionComponent)provider.getPropertiesEditionComponent(person, editing_mode, PersonPresencePropertiesEditionComponent.PRESENCE_PART);
 			addSubComponent(personPresencePropertiesEditionComponent);
 		}
 	}
