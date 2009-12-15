@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 [if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->notEmpty())]
 import org.eclipse.osgi.util.NLS;
@@ -139,6 +139,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -149,19 +150,21 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 [for (aView : ViewElement | view.elements)]
 [aView.implementation()/]
+
 [/for]
 		// [protected ('for additional ui definition')]
 		
@@ -169,13 +172,20 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	}
 [for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 [aView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
 
 [for (subView : View | view.elements->select(oclIsKindOf(views::View)))]
 [subView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
@@ -263,6 +273,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -279,6 +290,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
 	 */
@@ -293,7 +305,12 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		// [/protected]
 	}
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]

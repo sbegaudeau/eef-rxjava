@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 [if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->notEmpty())]
 import org.eclipse.osgi.util.NLS;
@@ -123,6 +123,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -138,12 +139,14 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 [for (aView : ViewElement | view.elements)]
 [aView.implementation()/]
+
 [/for]
 
 		// [protected ('for additional ui definition')]
@@ -154,13 +157,20 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 [for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsTypeOf(views::CustomElementEditor) and owningView() = view)) ]
 [aView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
 
 [for (subView : View | view.elements->select(oclIsKindOf(views::View))) ]
 [subView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
@@ -255,6 +265,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -269,6 +280,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 *  createControls(org.eclipse.swt.widgets.Composite)
 	 */
@@ -282,7 +294,12 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 		// [/protected]
 	}
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]

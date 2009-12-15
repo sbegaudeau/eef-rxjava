@@ -121,6 +121,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.views->select(representation.name = 'EMFComboViewer')->notEmpty() or element.views->select(representation.name = 'EObjectFlatComboViewer')->notEmpty() or element.views->select(representation.name = 'AdvancedEObjectFlatComboViewer')->notEmpty())]
@@ -295,6 +296,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
 		if ([view.viewIdentifier(pec)/] != null && key == [view.editorID()/].class) {
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
 			final [pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
@@ -317,6 +319,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [view.updaterForReferencedViews(pec)/]
 		// init filters for referenced views
 [view.filterUpdaterForReferencedViews(pec)/]
+		setInitializing(false);
 	}
 
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
@@ -380,12 +383,13 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
-		super.firePropertiesChanged(event);
-		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-			CompoundCommand command = new CompoundCommand();
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		if (!isInitializing()) {
+			Diagnostic valueDiagnostic = validateValue(event);
+			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
+				CompoundCommand command = new CompoundCommand();
 [if (view.oclIsTypeOf(views::CustomView))]
 			// [protected ('for firePropertiesChanged body')]
 			
@@ -397,26 +401,19 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [comment add ViewReference support/]
 [view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/]
 [/if]
-			if (!command.isEmpty() && !command.canExecute()) {
-				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-			} else {
-				liveEditingDomain.getCommandStack().execute(command);
+				if (!command.isEmpty() && !command.canExecute()) {
+					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
+				} else {
+					liveEditingDomain.getCommandStack().execute(command);
+				}
 			}
-		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
-			Diagnostic diag = this.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[editionElement.liveMessageSetter(view, pec)/]
-[/for]
-[comment add ViewReference support/]
-[view.liveMessageSetterForReferencedViews(pec)/]
-			} else {
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[editionElement.liveMessageUnsetter(view, pec)/]
-[/for]
-[comment add ViewReference support/]
-[view.livemessageUnsetterForReferencedViews(pec)/]
+			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
+			else {
+				Diagnostic validate = validate();
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
 			}
+			super.firePropertiesChanged(event);
 		}
 	}
 [if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]
@@ -449,10 +446,10 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		Diagnostic ret = null;
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
@@ -486,14 +483,14 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		Diagnostic validate = null;
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
-			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			validate =  Diagnostician.INSTANCE.validate(copy);
+			EObject copy = EcoreUtil.copy([pec.model.name.toJavaIdentifier()/]);
+			copy = getPropertiesEditionObject(copy);
+			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate([pec.model.name.toJavaIdentifier()/]);
+			validate = EEFRuntimePlugin.getEEFValidator().validate([pec.model.name.toJavaIdentifier()/]);
 		// [protected ('for custom validation check')]
 		
 		// [/protected]

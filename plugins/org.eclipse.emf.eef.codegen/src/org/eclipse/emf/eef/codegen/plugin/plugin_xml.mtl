@@ -22,7 +22,7 @@
 <?eclipse version="3.0"?>
 
  <plugin>
- 
+
   <!-- EEF extensions -->
   <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
@@ -43,9 +43,8 @@
             providerClass="[repository.pepQualifiedProvider()/]">
       </PropertiesEditionPartProvider>
    </extension>
-  
 [/for]
- 
+
    <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -72,12 +71,8 @@
                id="Base">
          </propertyTab>
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent))]
-[for (view : View | pec.involvedViews()->asSet())][if (view.viewKey(pec) <> 'Base')]
-         <propertyTab
-               label="[view.viewKey(pec)/]"
-               category="extended"
-               id="[view.viewKey(pec).toASCII()/]">
-         </propertyTab>
+[for (view : View | pec.involvedViews()->asOrderedSet())][if (view.viewKey(pec) <> 'Base')]
+[editionContext.propertyTab(basePackage, view, pec)/]
 [/if][/for]
 [/for]
       </propertyTabs>
@@ -87,11 +82,15 @@
       <propertySections
             contributorId="[editionContext.contributorID(basePackage).trim()/]">
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.explicit)]
-[for (view : View | pec.involvedViews()->asSet())]
+[for (view : View | pec.involvedViews()->asOrderedSet())]
          <propertySection
-               tab="[view.viewKey(pec).toASCII()/]"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]">
+               id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
+[if (pec.involvedViews()->indexOf(view) = 1)]
+               tab="Base">
+[else]
+               tab="[view.viewKey(pec).toASCII().substituteAll(' ', '_')/]">
+[/if]
              <input
                     type="[pec.model.qualifiedName(basePackage)/]">
              </input>
@@ -103,3 +102,22 @@
  </plugin>
 [/file]
 [/template]
+[template public propertyTab(editionContext : PropertiesEditionContext, basePackage : String, view : View, pec : PropertiesEditionComponent)]
+         <propertyTab
+               label="[view.viewKey(pec)/]"
+               category="extended"
+               id="[view.viewKey(pec).toASCII().substituteAll(' ', '_')/]"
+[if (pec.involvedViews()->indexOf(view) = 2)]
+               afterTab="Base">
+[else]
+               afterTab="[pec.previousView(view).name.toASCII().substituteAll(' ', '_')/]">
+[/if]
+         </propertyTab>
+[/template]
+
+[template public labelProvider(editionContext : PropertiesEditionContext)]
+org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
+[/template]
+
+[query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
+	pec.involvedViews()->at(pec.involvedViews()->indexOf(view)).oclAsType(views::View)/]
