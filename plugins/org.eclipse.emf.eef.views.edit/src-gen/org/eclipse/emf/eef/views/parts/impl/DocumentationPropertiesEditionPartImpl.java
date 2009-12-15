@@ -15,8 +15,8 @@ package org.eclipse.emf.eef.views.parts.impl;
 // Start of user code for imports
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.views.parts.DocumentationPropertiesEditionPart;
@@ -53,6 +53,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -68,11 +69,13 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -91,12 +94,13 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		documentationGroup.setLayout(documentationGroupLayout);
 		createDocumentationTextarea(documentationGroup);
 	}
+
 	protected void createDocumentationTextarea(Composite parent) {
 		Label documentationLabel = SWTUtils.createPartLabel(parent, ViewsMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Documentation.documentation, ViewsViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
-		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -105,7 +109,13 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

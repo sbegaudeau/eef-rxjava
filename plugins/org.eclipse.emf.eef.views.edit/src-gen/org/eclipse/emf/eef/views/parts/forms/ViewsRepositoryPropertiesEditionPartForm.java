@@ -15,7 +15,7 @@ package org.eclipse.emf.eef.views.parts.forms;
 // Start of user code for imports
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -34,7 +34,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -64,6 +63,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -74,18 +74,20 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -104,6 +106,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 		createRepositoryKindText(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
+
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.name, ViewsViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -154,6 +157,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createRepositoryKindText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.repositoryKind, ViewsViewsRepository.FORM_KIND));
 		repositoryKind = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -206,7 +210,13 @@ public class ViewsRepositoryPropertiesEditionPartForm extends CompositePropertie
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// Nothing to do

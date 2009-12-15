@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -66,6 +67,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -81,11 +83,13 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -106,6 +110,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		createRepresentationFlatComboViewer(propertiesGroup);
 		createReadOnlyCheckbox(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ViewsMessages.ElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ElementEditor.name, ViewsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -127,6 +132,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param propertiesGroup
 	 */
@@ -146,6 +152,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		representation.setLayoutData(representationData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.representation, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createReadOnlyCheckbox(Composite parent) {
 		readOnly = new Button(parent, SWT.CHECK);
 		readOnly.setText(ViewsMessages.ElementEditorPropertiesEditionPart_ReadOnlyLabel);
@@ -156,7 +163,13 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code

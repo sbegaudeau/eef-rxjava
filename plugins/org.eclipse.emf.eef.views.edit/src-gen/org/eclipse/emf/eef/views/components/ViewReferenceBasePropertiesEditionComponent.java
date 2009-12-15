@@ -31,12 +31,13 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
@@ -45,7 +46,6 @@ import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -194,6 +194,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
 		if (basePart != null && key == ViewsViewsRepository.ViewReference.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final ViewReference viewReference = (ViewReference)elt;
@@ -228,6 +229,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 
 		// init filters for referenced views
 
+		setInitializing(false);
 	}
 
 
@@ -279,12 +281,13 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
-		super.firePropertiesChanged(event);
-		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-			CompoundCommand command = new CompoundCommand();
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		if (!isInitializing()) {
+			Diagnostic valueDiagnostic = validateValue(event);
+			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
+				CompoundCommand command = new CompoundCommand();
 			if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, viewReference, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
@@ -292,26 +295,19 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 				command.append(SetCommand.create(liveEditingDomain, viewReference, ViewsPackage.eINSTANCE.getViewReference_View(), event.getNewValue()));
 
 
-			if (!command.isEmpty() && !command.canExecute()) {
-				EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-			} else {
-				liveEditingDomain.getCommandStack().execute(command);
+				if (!command.isEmpty() && !command.canExecute()) {
+					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
+				} else {
+					liveEditingDomain.getCommandStack().execute(command);
+				}
 			}
-		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
-			Diagnostic diag = this.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor())
-					basePart.setMessageForName(diag.getMessage(), IMessageProvider.ERROR);
-
-
-
-			} else {
-				if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor())
-					basePart.unsetMessageForName();
-
-
-
+			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
+			else {
+				Diagnostic validate = validate();
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
 			}
+			super.firePropertiesChanged(event);
 		}
 	}
 
@@ -340,10 +336,10 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		Diagnostic ret = null;
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
@@ -367,14 +363,14 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		Diagnostic validate = null;
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
-			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			validate =  Diagnostician.INSTANCE.validate(copy);
+			EObject copy = EcoreUtil.copy(viewReference);
+			copy = getPropertiesEditionObject(copy);
+			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate(viewReference);
+			validate = EEFRuntimePlugin.getEEFValidator().validate(viewReference);
 		// Start of user code for custom validation check
 		
 		// End of user code
