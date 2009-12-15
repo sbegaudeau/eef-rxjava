@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 /**
  * A stateful element to edit an EObject divided in one or more parts.
@@ -95,7 +95,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * 
 	 * @return a list of errors message
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event);
+	public Diagnostic validateValue(IPropertiesEditionEvent event);
 
 	/**
 	 * Return the diagnostic object linked to the edited element.

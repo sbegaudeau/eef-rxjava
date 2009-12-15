@@ -13,23 +13,24 @@ package org.eclipse.emf.eef.runtime.impl.notify;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionEvent {
-	
+public class PropertiesEditionEvent implements IPropertiesEditionEvent{
+
 	/**
 	 * Describe an event that just change the view state
 	 */
 	public static final int CHANGE = 0;
-	
+
 	/**
 	 * Describe an event that change the model
 	 */
 	public static final int COMMIT = 1;
-	
+
 	/**
 	 * A value has been set
 	 */
@@ -53,32 +54,33 @@ public class PropertiesEditionEvent {
 	/**
 	 * A value has been moved
 	 */
-	public static final int MOVE = 7;    	
-	
+	public static final int MOVE = 7;
+
 	/**
 	 * The selection of a ElementEditor has changed
 	 */
-	public static final int SELECTION_CHANGED = 8;    	
-	
-	private String affectedEditor;
-	
-	private Object oldValue;
-	
-	private Object newValue;
-	
-	private List<IPropertiesEditionListener> holders;
-	
-	private int kind;
-	
-	private int state;
-	
-	private int newIndex;
-	
+	public static final int SELECTION_CHANGED = 8;
+
+	protected String affectedEditor;
+
+	protected Object oldValue;
+
+	protected Object newValue;
+
+	protected List<IPropertiesEditionListener> holders;
+
+	protected int kind;
+
+	protected int state;
+
+	protected int newIndex;
+
 	/**
 	 * @param holdedNotification
 	 * @param holder
 	 */
-	public PropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state, int kind, Object oldValue, Object newValue) {
+	public PropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state,
+			int kind, Object oldValue, Object newValue) {
 		this.affectedEditor = affectedEditor;
 		this.oldValue = oldValue;
 		this.newValue = newValue;
@@ -87,23 +89,24 @@ public class PropertiesEditionEvent {
 		holders = new ArrayList<IPropertiesEditionListener>();
 		holders.add(holder);
 	}
-	
+
 	/**
 	 * @param holdedNotification
 	 * @param holder
 	 */
-	public PropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state, int kind, Object newValue, int newIndex) {		
-		this(holder,affectedEditor, state, kind, null, newValue);
-		this.newIndex=newIndex;
+	public PropertiesEditionEvent(IPropertiesEditionListener holder, String affectedEditor, int state,
+			int kind, Object newValue, int newIndex) {
+		this(holder, affectedEditor, state, kind, null, newValue);
+		this.newIndex = newIndex;
 	}
-	
+
 	/**
 	 * @param newHolder
 	 */
 	public void addHolder(IPropertiesEditionListener newHolder) {
 		holders.add(newHolder);
 	}
-	
+
 	/**
 	 * @param toTest
 	 * @return
@@ -132,7 +135,7 @@ public class PropertiesEditionEvent {
 	public Object getNewValue() {
 		return newValue;
 	}
-	
+
 	/**
 	 * @return the newIndex
 	 */
@@ -160,6 +163,5 @@ public class PropertiesEditionEvent {
 	public int getKind() {
 		return kind;
 	}
-	
-	
+
 }

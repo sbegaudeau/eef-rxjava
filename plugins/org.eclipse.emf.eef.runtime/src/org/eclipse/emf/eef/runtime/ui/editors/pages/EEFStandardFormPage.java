@@ -36,7 +36,6 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class EEFStandardFormPage extends FormPage {
 
@@ -44,15 +43,14 @@ public class EEFStandardFormPage extends FormPage {
 	 * The page ID
 	 */
 	public static final String PAGE_ID = "EEF-std-form-page"; //$NON-NLS-1$
-	
-//	/**
-//	 * The form editor in which this page will be included
-//	 */
-//	private FormEditor editor;
-//	
+
+	// /**
+	// * The form editor in which this page will be included
+	// */
+	// private FormEditor editor;
+	//	
 	/**
-	 * This keeps track of the editing domain that is used to track all changes
-	 * to the model.
+	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 */
 	protected AdapterFactoryEditingDomain editingDomain;
 
@@ -60,17 +58,17 @@ public class EEFStandardFormPage extends FormPage {
 	 * This is the one adapter factory used for providing views of the model.
 	 */
 	protected ComposedAdapterFactory adapterFactory;
-	
+
 	/**
 	 * The edited eObject
 	 */
 	protected EObject eObject;
-	
+
 	/**
 	 * The associated controler
 	 */
 	protected IPropertiesEditionComponent propertiesEditionComponent;
-	
+
 	/**
 	 * The resource set where to edit the eObject
 	 */
@@ -80,29 +78,32 @@ public class EEFStandardFormPage extends FormPage {
 	 * The form containing this page
 	 */
 	private ScrolledForm form;
-	
+
 	/**
 	 * The form toolkit to use
 	 */
 	private FormToolkit toolkit;
-	
+
 	/**
-	 * The folder for the tab 
+	 * The folder for the tab
 	 */
 	private CTabFolder folder;
 
 	/**
-	 * @param editor the form editor in which this page will be included
+	 * @param editor
+	 *            the form editor in which this page will be included
 	 */
-	public EEFStandardFormPage(FormEditor editor, String pageTitle, AdapterFactoryEditingDomain editingDomain, ComposedAdapterFactory adapterFactory) {
+	public EEFStandardFormPage(FormEditor editor, String pageTitle,
+			AdapterFactoryEditingDomain editingDomain, ComposedAdapterFactory adapterFactory) {
 		super(editor, PAGE_ID, pageTitle); //$NON-NLS-1$
-//		this.editor = editor;
+		// this.editor = editor;
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.forms.editor.FormPage#createFormContent(org.eclipse.ui.forms.IManagedForm)
 	 */
 	protected void createFormContent(IManagedForm managedForm) {
@@ -112,31 +113,36 @@ public class EEFStandardFormPage extends FormPage {
 		toolkit.decorateFormHeading(form.getForm());
 		form.setLayout(EEFFormLayoutFactory.createDetailsGridLayout(false, 1));
 		form.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
+
 	}
 
 	/**
 	 * Defines the title of the page
-	 * @param title the title to define
+	 * 
+	 * @param title
+	 *            the title to define
 	 */
 	public void setPageTitle(String title) {
 		if (title != null && form != null)
 			form.setText(title);
 	}
-	
+
 	/**
-	 * @param input the input of the page
+	 * @param input
+	 *            the input of the page
 	 */
 	public void setInput(EObject newEObject) {
-//		setPageTitle(resource.getURI().toString());
-//		form.setImage((new AdapterFactoryLabelProvider(adapterFactory)).getImage(resource));
+		// setPageTitle(resource.getURI().toString());
+		// form.setImage((new AdapterFactoryLabelProvider(adapterFactory)).getImage(resource));
 		eObject = newEObject;
 		if (eObject != null) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eObject);
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance()
+					.getProvider(eObject);
 			if (provider != null) {
 				if (this.propertiesEditionComponent != null)
 					this.propertiesEditionComponent.dispose();
-				this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);
+				this.propertiesEditionComponent = provider.getPropertiesEditionComponent(eObject,
+						IPropertiesEditionComponent.LIVE_MODE);
 				if (this.propertiesEditionComponent != null) {
 					this.propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 					if (this.propertiesEditionComponent.partsList().length > 1)
@@ -147,7 +153,7 @@ public class EEFStandardFormPage extends FormPage {
 			}
 		}
 	}
-	
+
 	private void initializeContents() {
 		Composite container = toolkit.createComposite(form, SWT.FLAT);
 		FillLayout containerLayout = new FillLayout();
@@ -162,11 +168,14 @@ public class EEFStandardFormPage extends FormPage {
 		else
 			part = propertiesEditionComponent.getPropertiesEditionPart(1, nextComponentKey);
 		if (part instanceof IFormPropertiesEditionPart) {
-			editComposite = ((IFormPropertiesEditionPart)part).createFigure(folder, toolkit);
+			editComposite = ((IFormPropertiesEditionPart)part).createFigure(toolkit
+					.createScrolledForm(folder), toolkit);
 			if (allResources == null)
-				propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 1, eObject);
+				propertiesEditionComponent.initPart(propertiesEditionComponent
+						.translatePart(nextComponentKey), 1, eObject);
 			else
-				propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 1, eObject, allResources);
+				propertiesEditionComponent.initPart(propertiesEditionComponent
+						.translatePart(nextComponentKey), 1, eObject, allResources);
 
 		}
 		if (null == editComposite)
@@ -178,11 +187,12 @@ public class EEFStandardFormPage extends FormPage {
 		FillLayout containerLayout = new FillLayout();
 		container.setLayout(containerLayout);
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
-		folder = new CTabFolder(container, SWT.FLAT|SWT.TOP);
+		folder = new CTabFolder(container, SWT.FLAT | SWT.TOP);
 		toolkit.adapt(folder, true, true);
 		toolkit.getColors().initializeSectionToolBarColors();
 		Color selectedColor = toolkit.getColors().getColor(IFormColors.TB_BG);
-		folder.setSelectionBackground(new Color[] {selectedColor, toolkit.getColors().getBackground()}, new int[] {100}, true);
+		folder.setSelectionBackground(new Color[] {selectedColor, toolkit.getColors().getBackground()},
+				new int[] {100}, true);
 		if (folder.getItemCount() > 0) {
 			int itemCount = folder.getItemCount();
 			for (int i = 0; i < itemCount; i++) {
@@ -190,7 +200,7 @@ public class EEFStandardFormPage extends FormPage {
 				item.dispose();
 			}
 		}
-			
+
 		// first set initState to true to not handle changes yet
 		String[] partsList = propertiesEditionComponent.partsList();
 		for (int i = 0; i < partsList.length; i++) {
@@ -202,11 +212,14 @@ public class EEFStandardFormPage extends FormPage {
 			else
 				part = propertiesEditionComponent.getPropertiesEditionPart(1, nextComponentKey);
 			if (part instanceof IFormPropertiesEditionPart) {
-				editComposite = ((IFormPropertiesEditionPart)part).createFigure(folder, toolkit);
+				editComposite = ((IFormPropertiesEditionPart)part).createFigure(toolkit
+						.createScrolledForm(folder), toolkit);
 				if (allResources == null)
-					propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 1, eObject);
+					propertiesEditionComponent.initPart(propertiesEditionComponent
+							.translatePart(nextComponentKey), 1, eObject);
 				else
-					propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(nextComponentKey), 1, eObject, allResources);
+					propertiesEditionComponent.initPart(propertiesEditionComponent
+							.translatePart(nextComponentKey), 1, eObject, allResources);
 
 			}
 			if (null == editComposite)
@@ -215,7 +228,7 @@ public class EEFStandardFormPage extends FormPage {
 			tab.setControl(editComposite);
 			tab.setText(nextComponentKey);
 		}
-		if (folder.getItemCount() > 0) 
+		if (folder.getItemCount() > 0)
 			folder.setSelection(folder.getItem(0));
 	}
 

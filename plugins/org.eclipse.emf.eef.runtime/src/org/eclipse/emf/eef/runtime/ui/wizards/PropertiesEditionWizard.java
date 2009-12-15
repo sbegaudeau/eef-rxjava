@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -24,17 +23,19 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -60,10 +61,8 @@ public class PropertiesEditionWizard extends Wizard {
 	protected Command command;
 
 	protected ResourceSet allResources;
-
-	private Diagnostic oldFailedDiagnostic = null;
-
-	private Object oldFailedEvent = null;
+	
+	private PropertiesEditionMessageManager messageManager;
 
 	/**
 	 * Default constructor - define the eObject to edit.
@@ -80,6 +79,7 @@ public class PropertiesEditionWizard extends Wizard {
 		this.eObject = eObject;
 		this.allResources = allResources;
 		this.setWindowTitle(eObject.eClass().getName());
+		initMessageManager();
 	}
 
 	/**
@@ -98,6 +98,21 @@ public class PropertiesEditionWizard extends Wizard {
 		this.eReference = eReference;
 		this.allResources = allResources;
 		this.setWindowTitle(eReference.getName());
+		initMessageManager();
+	}
+
+	private void initMessageManager() {
+		messageManager = new PropertiesEditionMessageManager() {
+			
+			@Override
+			protected void updateStatus(String message) {
+				if (mainPage != null) {
+					mainPage.setMessage(null);
+					mainPage.setErrorMessage(message);
+					mainPage.setPageComplete(message == null);
+				}
+			}
+		};
 	}
 
 	/**
@@ -262,17 +277,26 @@ public class PropertiesEditionWizard extends Wizard {
 			super("Main page"); //$NON-NLS-1$
 		}
 
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
+		 */
 		public void createControl(Composite parent) {
 			try {
-				Composite control = new Composite(parent, SWT.NONE);
-				GridData gd = new GridData(GridData.FILL_BOTH);
-				control.setLayoutData(gd);
-				viewer = new PropertiesEditionViewer(control, PropertiesEditionWizard.this.allResources, 0);
+				ScrolledComposite scrolledContainer = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
+				scrolledContainer.setExpandHorizontal(true);
+				scrolledContainer.setExpandVertical(true);
+				Composite container = new Composite(scrolledContainer, SWT.FLAT);
+				GridLayout containerLayout = new GridLayout();
+				container.setLayout(containerLayout);
+				viewer = new PropertiesEditionViewer(container, PropertiesEditionWizard.this.allResources, 0);
 				viewer.setDynamicTabHeader(true);
 				viewer.setContentProvider(new PropertiesEditionContentProvider(
 						new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.BATCH_MODE));
-				viewer.addPropertiesListener(this);
+				scrolledContainer.setContent(container);
 				setControl(viewer.getControl());
+				
 			} catch (InstantiationException e) {
 				EEFRuntimePlugin.getDefault().logError("Trying to use PropertiesEditionWizard in LIVE_MODE.",
 						e);
@@ -284,47 +308,23 @@ public class PropertiesEditionWizard extends Wizard {
 			this.setDescription(MessagesTool.getString("EditPropertyWizard.description",
 					new Object[] {eObject.eClass().getName()}));
 			viewer.setInput(eObject);
+			viewer.addPropertiesListener(this);
 		}
 
-		public void firePropertiesChanged(PropertiesEditionEvent event) {
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+		 */
+		public void firePropertiesChanged(IPropertiesEditionEvent event) {
 			handleChange(event);
 		}
 
-		private void handleChange(PropertiesEditionEvent event) {
+		private void handleChange(IPropertiesEditionEvent event) {
 			// do not handle changes if you are in initialization.
 			if (viewer.isInitializing())
 				return;
-			Diagnostic diag = viewer.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				updateStatus(computeMessage(diag));
-				oldFailedDiagnostic = diag;
-				oldFailedEvent = event.getAffectedEditor();
-			} else {
-				if (oldFailedDiagnostic != null) {
-					if (oldFailedEvent != null && oldFailedEvent.equals(event.getAffectedEditor())) {
-						updateStatus(null);
-						oldFailedDiagnostic = null;
-						oldFailedEvent = null;
-					} else {
-						updateStatus(computeMessage(oldFailedDiagnostic));
-					}
-
-				} else
-					updateStatus(null);
-			}
-		}
-
-		private String computeMessage(Diagnostic diag) {
-			for (Diagnostic child : diag.getChildren()) {
-				if (child.getSeverity() != Diagnostic.OK) {
-					if (child.getChildren().isEmpty()) {
-						return child.getMessage();
-					} else {
-						return computeMessage(child);
-					}
-				}
-			}
-			return diag.getMessage();
+			messageManager.processMessage(event);
 		}
 
 		private void updateStatus(final String message) {

@@ -23,19 +23,26 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -43,7 +50,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionSection extends AbstractPropertySection implements IFilter {
+public class PropertiesEditionSection extends AbstractPropertySection implements IFilter, IPropertiesEditionListener {
 
 	/**
 	 * the property sheet page for this section.
@@ -76,6 +83,16 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	protected List eObjectList;
 
 	/**
+	 * The form containing the viewer
+	 */
+	private Form scrolledForm;
+
+	/**
+     * Manager for error message
+     */
+	private PropertiesEditionMessageManager messageManager;
+
+	/**
 	 * Filters list
 	 */
 	private ViewerFilter[] filters = new ViewerFilter[1];
@@ -84,7 +101,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * global register edition provider
 	 */
 	private RegistryPropertiesEditionProvider provider;
-	
+
 	/**
 	 * @return the Global ProviderEditionProvider
 	 */
@@ -109,7 +126,25 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		super.createControls(parent, aTabbedPropertySheetPage);
 		this.propertySheetPage = aTabbedPropertySheetPage;
 		this.parent = parent;
-		this.viewer = new PropertiesEditionViewer(parent, null, SWT.NONE, 1);
+		scrolledForm = getWidgetFactory().createForm(parent);
+		scrolledForm.getBody().setLayout(new GridLayout());		
+		scrolledForm.getBody().setLayoutData(new GridData(GridData.FILL_BOTH));
+		Composite container = getWidgetFactory().createComposite(scrolledForm.getBody());
+		GridLayout containerLayout = new GridLayout();
+		container.setLayout(containerLayout);
+		container.setLayoutData(new GridData(GridData.FILL_BOTH));
+		getWidgetFactory().decorateFormHeading(scrolledForm);
+		messageManager = new PropertiesEditionMessageManager() {
+
+			@Override
+			protected void updateStatus(String message) {
+				if (message != null)
+					scrolledForm.setMessage(message, IMessageProvider.ERROR);
+				else
+					scrolledForm.setMessage("");
+			}
+		};
+		this.viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
 		viewer.setToolkit(getWidgetFactory());
 	}
 
@@ -136,6 +171,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
 					viewer.setFilters(filters);
 					viewer.setInput(eObject);
+					viewer.addPropertiesListener(this);
 				}
 			}
 		}
@@ -287,13 +323,26 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 	 */
 	public boolean select(Object toTest) {
 		EObject eObj = resolveSemanticObject(toTest);
 		if (eObj != null) {
-			return getProvider().provides(eObj);		
+			return getProvider().provides(eObj);
 		}
 		return false;
 	}
+
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		handleChange(event);
+	}
+
+	private void handleChange(IPropertiesEditionEvent event) {
+		// do not handle changes if you are in initialization.
+		if (viewer.isInitializing())
+			return;
+		messageManager.processMessage(event);
+	}
+
 }

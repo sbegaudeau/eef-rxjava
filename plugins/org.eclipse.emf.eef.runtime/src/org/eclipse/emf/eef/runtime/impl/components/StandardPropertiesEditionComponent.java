@@ -17,9 +17,9 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
 /**
@@ -46,6 +46,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * the editing mode
 	 */
 	protected String editing_mode;
+	
+	/**
+	 * Is the component is current initializing
+	 */
+	protected boolean initializing = false;
 
 	/**
 	 * {@inheritDoc}
@@ -90,9 +95,9 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		event.addHolder(this);
 		for (IPropertiesEditionListener listener : listeners) {
 			if (!event.hold(listener))
@@ -137,6 +142,20 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 */
 	public Class translatePart(String key) {
 		return null;
+	}
+	
+	/**
+	 * @return the initializing
+	 */
+	public boolean isInitializing() {
+		return initializing;
+	}
+
+	/**
+	 * @param initializing the initializing to set
+	 */
+	public void setInitializing(boolean initializing) {
+		this.initializing = initializing;
 	}
 
 	/**

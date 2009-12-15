@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
@@ -216,11 +216,11 @@ public class EditPropertyWizard extends Wizard {
 			initState = false;
 		}
 
-		public void firePropertiesChanged(PropertiesEditionEvent event) {
+		public void firePropertiesChanged(IPropertiesEditionEvent event) {
 			handleChange(event);
 		}
 
-		private void handleChange(PropertiesEditionEvent event) {
+		private void handleChange(IPropertiesEditionEvent event) {
 			// do not handle changes if you are in initialization.
 			if (initState)
 				return;

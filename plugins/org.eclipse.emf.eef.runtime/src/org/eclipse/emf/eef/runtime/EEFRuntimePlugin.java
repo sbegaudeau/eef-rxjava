@@ -10,9 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime;
 
+import java.util.Map;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -34,6 +39,9 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 
 	// Shared adapterFactory
 	private static AdapterFactory adapterFactory;
+	
+	// Shared diagnostician
+	private static Diagnostician diagnostician;
 
 	public static final String ICONS_16x16 = "icons/16x16/";
 
@@ -67,6 +75,19 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	public EEFRuntimePlugin() {
 		plugin = this;
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		diagnostician = new Diagnostician() {
+
+			/**
+			 * {@inheritDoc}
+			 * @see org.eclipse.emf.ecore.util.Diagnostician#doValidateContents(org.eclipse.emf.ecore.EObject, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+			 */
+			@Override
+			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+				//Do nothing
+				return true;
+			}
+			
+		};
 	}
 
 	/*
@@ -104,6 +125,13 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 */
 	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
+	}
+
+	/**
+	 * @return the diagnostician
+	 */
+	public static Diagnostician getEEFValidator() {
+		return diagnostician;
 	}
 
 	/**

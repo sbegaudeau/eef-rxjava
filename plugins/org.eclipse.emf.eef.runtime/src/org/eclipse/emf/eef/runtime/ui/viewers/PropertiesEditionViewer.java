@@ -21,11 +21,11 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -37,6 +37,7 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Widget;
@@ -82,16 +83,11 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param kind
 	 *            the kind of the part
 	 */
-	public PropertiesEditionViewer(Composite parent, ResourceSet allResources, int style, int kind) {
-		FillLayout parentLayout = new FillLayout();
-		parent.setLayout(parentLayout);
-		scrolledContainer = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
-		control = new Composite(scrolledContainer, style);
+	public PropertiesEditionViewer(Composite container, ResourceSet allResources, int style, int kind) {
+		control = new Composite(container, style);
 		control.setLayout(new FillLayout());
+		control.setLayoutData(new GridData(GridData.FILL_BOTH));
 		folder = new CTabFolder(control, style);
-		scrolledContainer.setExpandHorizontal(true);
-		scrolledContainer.setExpandVertical(true);
-		scrolledContainer.setContent(control);
 		this.allResources = allResources;
 		this.kind = kind;
 	}
@@ -104,8 +100,8 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param kind
 	 *            the kind of the part
 	 */
-	public PropertiesEditionViewer(Composite parent, ResourceSet allResources, int kind) {
-		this(parent, allResources, SWT.BORDER, kind);
+	public PropertiesEditionViewer(Composite container, ResourceSet allResources, int kind) {
+		this(container, allResources, SWT.BORDER, kind);
 	}
 
 	/**
@@ -297,8 +293,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		if (getContentProvider() != null)
 			return ((PropertiesEditionContentProvider)getContentProvider())
 					.getPropertiesEditionCommand(editingDomain);
-		else
-			return null;
+		return null;
 	}
 
 	/**
@@ -312,8 +307,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		if (getContentProvider() != null)
 			return ((PropertiesEditionContentProvider)getContentProvider())
 					.getPropertiesEditionObject(eObject);
-		else
-			return null;
+		return null;
 	}
 
 	/**
@@ -323,11 +317,10 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 *            the event triggering the validation
 	 * @return the resulting value
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		if (getContentProvider() != null)
 			return ((PropertiesEditionContentProvider)getContentProvider()).validateValue(event);
-		else
-			return null;
+		return null;
 	}
 
 	/* ============================== Selection management ============================== */
@@ -341,8 +334,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		Object root = getRoot();
 		if (root != null)
 			return new StructuredSelection(root);
-		else
-			return new StructuredSelection();
+		return new StructuredSelection();
 	}
 
 	/**
@@ -414,7 +406,6 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			initState = true;
 			String[] partsList = propertiesEditionProvider.partsList();
 			initTabbedControl(propertiesEditionProvider, partsList);
-			layoutScrolledComposite();
 			initState = false;
 		}
 	}
@@ -499,13 +490,6 @@ public class PropertiesEditionViewer extends StructuredViewer {
 				cTabItem.dispose();
 			}
 		}
-	}
-
-	/**
-	 * Compute the optimal size for the scrolled composite
-	 */
-	private void layoutScrolledComposite() {
-		scrolledContainer.setMinSize(folder.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	}
 
 	/* ================================= Search methods ================================= */

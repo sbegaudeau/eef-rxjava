@@ -23,6 +23,6 @@ public interface IPropertiesEditionListener {
 	 * @param event
 	 *            the object
 	 */
-	void firePropertiesChanged(PropertiesEditionEvent event);
+	void firePropertiesChanged(IPropertiesEditionEvent event);
 
 }
