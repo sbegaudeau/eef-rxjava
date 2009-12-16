@@ -25,18 +25,18 @@ import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
-import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
-import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -65,7 +65,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	/**
 	 * The section's viewer
 	 */
-	protected PropertiesEditionViewer viewer;
+//	protected PropertiesEditionViewer viewer;
+	private Composite container;
 
 	/**
 	 * The editingDomain where the viewer must perform editing commands.
@@ -101,6 +102,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * global register edition provider
 	 */
 	private RegistryPropertiesEditionProvider provider;
+	
+	private IPropertiesEditionComponent propertiesEditionComponent;
 
 	/**
 	 * @return the Global ProviderEditionProvider
@@ -129,7 +132,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		scrolledForm = getWidgetFactory().createForm(parent);
 		scrolledForm.getBody().setLayout(new GridLayout());		
 		scrolledForm.getBody().setLayoutData(new GridData(GridData.FILL_BOTH));
-		Composite container = getWidgetFactory().createComposite(scrolledForm.getBody());
+		container = getWidgetFactory().createComposite(scrolledForm.getBody());
 		GridLayout containerLayout = new GridLayout();
 		container.setLayout(containerLayout);
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -144,8 +147,6 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 					scrolledForm.setMessage("");
 			}
 		};
-		this.viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
-		viewer.setToolkit(getWidgetFactory());
 	}
 
 	/**
@@ -163,19 +164,42 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 			if (newEObject != eObject) {
 				eObject = newEObject;
 				if (eObject != null) {
-					if (contentProvider != null)
-						contentProvider.dispose();
-					contentProvider = new PropertiesEditionContentProvider(propertiesEditionProvider,
-							IPropertiesEditionComponent.LIVE_MODE, editingDomain);
-					viewer.setContentProvider(contentProvider);
-					filters[0] = new PropertiesEditionPartFilter(getDescriptor());
-					viewer.setFilters(filters);
-					viewer.setInput(eObject);
-					viewer.addPropertiesListener(this);
+					disposeComponent();
+					String descriptor = getDescriptor();
+					refreshComponent(descriptor);
 				}
 			}
 		}
 		eObjectList = ((IStructuredSelection)selection).toList();
+	}
+
+	private void refreshComponent(String descriptor) {
+		propertiesEditionComponent = getProvider().getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE, descriptor);
+		if (propertiesEditionComponent != null) {
+			PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
+			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
+			propertiesEditionComponent.addListener(this);
+			IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent.getPropertiesEditionPart(1, descriptor);
+			if (propertiesEditionPart instanceof IFormPropertiesEditionPart) {
+				for (int i = 0; i < container.getChildren().length; i++) {
+					Composite child = (Composite)container.getChildren()[i];
+					child.dispose();
+				}
+				Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart).createFigure(container, getWidgetFactory());
+				if (editComposite != null) {
+					editComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
+					container.layout();
+					propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(descriptor), 1, eObject);
+				}
+			}
+		}
+	}
+
+	private void disposeComponent() {
+		if (propertiesEditionComponent != null) {
+			propertiesEditionComponent.dispose();
+			PropertiesContextService.getInstance().pop();
+		}
 	}
 
 	private void initializeEditingDomain(IWorkbenchPart part) {
@@ -200,11 +224,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 */
 	public void dispose() {
 		super.dispose();
-		if (this.viewer != null) {
-			this.viewer.getContentProvider().dispose();
-			this.viewer = null;
-		}
-
+		disposeComponent();
 	}
 
 	/**
@@ -340,8 +360,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 
 	private void handleChange(IPropertiesEditionEvent event) {
 		// do not handle changes if you are in initialization.
-		if (viewer.isInitializing())
-			return;
+//		if (viewer.isInitializing())
+//			return;
 		messageManager.processMessage(event);
 	}
 

@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class EEFUtil {
 		if (choiceOfValues == null && eObject.eResource() != null
 				&& eObject.eResource().getResourceSet() != null)
 			choiceOfValues = eObject.eResource().getResourceSet();
+		if (choiceOfValues instanceof Collection)
+			((Collection)choiceOfValues).removeAll(null);
 		return choiceOfValues;
 	}
 
