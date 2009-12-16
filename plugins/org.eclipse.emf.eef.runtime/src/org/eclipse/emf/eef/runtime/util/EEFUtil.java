@@ -47,8 +47,16 @@ public class EEFUtil {
 		if (choiceOfValues == null && eObject.eResource() != null
 				&& eObject.eResource().getResourceSet() != null)
 			choiceOfValues = eObject.eResource().getResourceSet();
-		if (choiceOfValues instanceof Collection)
-			((Collection)choiceOfValues).removeAll(null);
+		
+		// We cannot set a array with a "null" value in a viewer. We remove it to prevent a assertion failed
+		if (choiceOfValues instanceof Collection) {
+			List result = new ArrayList();
+			for (Object object : (Collection)choiceOfValues) {
+				if (object != null)
+					result.add(object);
+			}
+			return result;
+		}
 		return choiceOfValues;
 	}
 
