@@ -52,7 +52,7 @@ private [reference.view.oclAsType(views::View).pepInterface()/] [reference.view.
 	protected void create[reference.view.name.toJavaClassifier()/](FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([referencedView.owningViewsRepository().vrClass()/].class);
 		[referencedView.pepInterface().toLowerFirst()/] = ([referencedView.pepInterface()/])provider.getPropertiesEditionPart([referencedView.editorID()/].class, [referencedView.owningViewsRepository().vrClass()/].FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)[referencedView.pepInterface().toLowerFirst()/]).createControls(widgetFactory, container, messageManager);
+		((IFormPropertiesEditionPart)[referencedView.pepInterface().toLowerFirst()/]).createControls(widgetFactory, container);
 	}
 [/let][/template]
 
@@ -76,7 +76,7 @@ private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
 	protected void create[view.name.toJavaClassifier()/]SubView(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([view.owningViewsRepository().vrClass()/].class);
 		[view.pepInterface().toLowerFirst()/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([view.editorID()/].class, [view.owningViewsRepository().vrClass()/].FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)[view.pepInterface().toLowerFirst()/]).createControls(widgetFactory, container, messageManager);
+		((IFormPropertiesEditionPart)[view.pepInterface().toLowerFirst()/]).createControls(widgetFactory, container);
 	}
 [/template]
 

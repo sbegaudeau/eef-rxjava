@@ -29,7 +29,8 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
-import [pec.model.completePackage()/].[pec.model.metamodelPackage()/];
+import [pec.model.
+completePackage()/].[pec.model.metamodelPackage()/];
 import [pec.model.qualifiedName(basePackage)/];
 [if (pec.needComposedEditionComponent())]
 import [pec.model.completePackage()/].components.[pec.pecClass()/];
@@ -55,6 +56,15 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof [pec.model.name/]) && ([pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && [pec.providePart()/];
 	}
 
 	/**
@@ -96,6 +106,17 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [/file]
 [/if]
 [/for]
+[/template]
+
+[template public providePart(pec : PropertiesEditionComponent)]
+[for (view : View | pec.views) separator (' || ') ?  (view.explicit)]
+[pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part)
+[/for]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
+	[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part);
+	[/for]
+[/for]	
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
