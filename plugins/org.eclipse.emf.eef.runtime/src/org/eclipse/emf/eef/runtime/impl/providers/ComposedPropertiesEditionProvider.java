@@ -110,5 +110,17 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 		}
 		return null;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
+			if (editPropertiesProvider.provides(eObject, part))
+				return true;
+		}
+		return false;
+	}
 
 }

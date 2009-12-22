@@ -28,6 +28,17 @@ public interface IPropertiesEditionProvider {
 	 * @return <code>true</code> if this provider provides the eObject; <code>false</code> otherwise.
 	 */
 	public abstract boolean provides(EObject eObject);
+	
+	/**
+	 * Indicates whether this provider provides the specified {@link EObject}.
+	 * 
+	 * @param eObject
+	 *            the {@link EObject} to provide
+	 * @param part
+	 *            the editing mode
+	 * @return <code>true</code> if this provider provides the eObject; <code>false</code> otherwise.
+	 */
+	public abstract boolean provides(EObject eObject, String mode);
 
 	/**
 	 * Returns a stateful {@link IPropertiesEditionComponent} able to edit the specified eObject.
@@ -35,10 +46,10 @@ public interface IPropertiesEditionProvider {
 	 * @param eObject
 	 *            the {@link EObject} to edit
 	 * @param mode
-	 *            the editing mode
+	 *            the given part
 	 * @return the edition component
 	 */
-	public abstract IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode);
+	public abstract IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String part);
 
 	/**
 	 * Returns a stateful {@link IPropertiesEditionComponent} able to edit the specified eObject for a
