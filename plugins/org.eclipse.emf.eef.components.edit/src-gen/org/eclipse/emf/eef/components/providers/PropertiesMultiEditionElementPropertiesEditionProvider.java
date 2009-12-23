@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionProvider.java,v 1.14 2009/12/15 13:00:43 glefur Exp $
+ * $Id: PropertiesMultiEditionElementPropertiesEditionProvider.java,v 1.15 2009/12/23 15:59:27 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.providers;
 
@@ -34,6 +34,17 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof PropertiesMultiEditionElement) && (ComponentsPackage.eINSTANCE.getPropertiesMultiEditionElement() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part)
+ || 
+DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
