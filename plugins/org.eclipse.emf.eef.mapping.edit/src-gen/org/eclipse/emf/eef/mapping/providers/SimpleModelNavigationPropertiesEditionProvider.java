@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationPropertiesEditionProvider.java,v 1.3 2009/12/15 13:00:33 glefur Exp $
+ * $Id: SimpleModelNavigationPropertiesEditionProvider.java,v 1.4 2009/12/23 15:59:52 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -32,6 +32,15 @@ public class SimpleModelNavigationPropertiesEditionProvider implements IProperti
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof SimpleModelNavigation) && (NavigationPackage.eINSTANCE.getSimpleModelNavigation() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (SimpleModelNavigationPropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**

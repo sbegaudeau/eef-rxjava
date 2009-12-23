@@ -9,17 +9,21 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingPropertiesEditionProvider.java,v 1.15 2009/12/15 13:00:33 glefur Exp $
+ * $Id: DatabindingPropertiesEditionProvider.java,v 1.16 2009/12/23 15:59:52 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.mapping.Databinding;
+
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.Databinding;
+import org.eclipse.emf.eef.mapping.components.CategoryBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DatabindingPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -33,6 +37,15 @@ public class DatabindingPropertiesEditionProvider implements IPropertiesEditionP
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Databinding) && (MappingPackage.eINSTANCE.getDatabinding() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject); 	
 	}
 
 	/**

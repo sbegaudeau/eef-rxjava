@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingViewsRepository.java,v 1.14 2009/12/15 13:00:27 glefur Exp $
+ * $Id: MappingViewsRepository.java,v 1.15 2009/12/23 15:59:51 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 

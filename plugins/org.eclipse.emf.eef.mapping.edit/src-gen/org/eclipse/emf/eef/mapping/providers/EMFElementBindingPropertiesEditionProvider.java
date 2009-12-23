@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFElementBindingPropertiesEditionProvider.java,v 1.15 2009/12/15 13:00:30 glefur Exp $
+ * $Id: EMFElementBindingPropertiesEditionProvider.java,v 1.16 2009/12/23 15:59:51 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -34,6 +34,17 @@ public class EMFElementBindingPropertiesEditionProvider implements IPropertiesEd
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof EMFElementBinding) && (MappingPackage.eINSTANCE.getEMFElementBinding() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (EMFElementBindingBasePropertiesEditionComponent.BASE_PART.equals(part)
+ || 
+DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OnlyReferenceTypeFilterPropertiesEditionProvider.java,v 1.3 2009/12/15 13:00:34 glefur Exp $
+ * $Id: OnlyReferenceTypeFilterPropertiesEditionProvider.java,v 1.4 2009/12/23 15:59:52 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -35,6 +35,18 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider implements IProper
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof OnlyReferenceTypeFilter) && (FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part)
+ || 
+DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+ || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**

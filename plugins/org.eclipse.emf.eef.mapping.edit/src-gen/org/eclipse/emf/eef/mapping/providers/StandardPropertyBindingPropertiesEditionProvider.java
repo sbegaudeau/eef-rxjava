@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardPropertyBindingPropertiesEditionProvider.java,v 1.15 2009/12/15 13:00:32 glefur Exp $
+ * $Id: StandardPropertyBindingPropertiesEditionProvider.java,v 1.16 2009/12/23 15:59:52 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -34,6 +34,17 @@ public class StandardPropertyBindingPropertiesEditionProvider implements IProper
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof StandardPropertyBinding) && (MappingPackage.eINSTANCE.getStandardPropertyBinding() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part)
+ || 
+DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
