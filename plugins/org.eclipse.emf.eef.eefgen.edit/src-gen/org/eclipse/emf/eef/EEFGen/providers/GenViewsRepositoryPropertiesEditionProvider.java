@@ -32,6 +32,15 @@ public class GenViewsRepositoryPropertiesEditionProvider implements IPropertiesE
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof GenViewsRepository) && (EEFGenPackage.eINSTANCE.getGenViewsRepository() == eObject.eClass());
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (GenViewsRepositoryPropertiesEditionComponent.BASE_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
