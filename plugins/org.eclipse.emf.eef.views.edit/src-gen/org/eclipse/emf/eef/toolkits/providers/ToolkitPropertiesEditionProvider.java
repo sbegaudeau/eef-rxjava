@@ -32,6 +32,15 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Toolkit) && (ToolkitsPackage.eINSTANCE.getToolkit() == eObject.eClass());
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject) && (ToolkitPropertiesEditionComponent.BASE_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
