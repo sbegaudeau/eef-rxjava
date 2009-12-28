@@ -11,16 +11,13 @@
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
-import org.eclipse.emf.samples.conference.components.PersonPropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.PersonBasePropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.PersonPresencePropertiesEditionComponent;
+import org.eclipse.emf.samples.conference.components.PersonPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -42,8 +39,8 @@ public class PersonPropertiesEditionProvider implements IPropertiesEditionProvid
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && PersonBasePropertiesEditionComponent.BASE_PART.equals(part) ||
-				PersonPresencePropertiesEditionComponent.PRESENCE_PART.equals(part);
+		return provides(eObject) && (PersonBasePropertiesEditionComponent.BASE_PART.equals(part)
+ || PersonPresencePropertiesEditionComponent.PRESENCE_PART.equals(part));
 	}
 
 	/**

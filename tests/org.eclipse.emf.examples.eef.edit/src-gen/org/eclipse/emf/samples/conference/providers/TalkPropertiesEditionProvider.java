@@ -37,8 +37,7 @@ public class TalkPropertiesEditionProvider implements IPropertiesEditionProvider
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && TalkPropertiesEditionComponent.BASE_PART.equals(part)
-;
+		return provides(eObject) && (TalkPropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
