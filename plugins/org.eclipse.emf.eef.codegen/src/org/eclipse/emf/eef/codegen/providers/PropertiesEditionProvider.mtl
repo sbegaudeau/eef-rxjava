@@ -64,7 +64,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && [pec.providePart()/];
+		return provides(eObject) && ([pec.providePart().trim()/]);
 	}
 
 	/**
@@ -109,14 +109,29 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [/template]
 
 [template public providePart(pec : PropertiesEditionComponent)]
-[for (view : View | pec.views) separator (' || ') ?  (view.explicit)]
-[pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part)
-[/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
+[let view : View = pec.views->select(v:views::View | v.explicit)->first()]
+[if (not view.oclIsUndefined())]
+[for (v : View | pec.views) separator (' || ') ?  (v.explicit)]
+[pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part)
+[/for]	
+[/if]
+[if (pec.referencedBinding->size()>0)]
+[let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent)]
+[if (not subPec.oclIsUndefined())]
+[let view2 : View = subPec.views->select(v:views::View | v.explicit and v.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))->first()]	
+[if (not view2.oclIsUndefined())]
+[if (not view.oclIsUndefined())] || [/if]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))  separator (' || ')]
 	[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
-[subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part);
+[subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part)
 	[/for]
 [/for]	
+[/if]
+[/let]		
+[/if]
+[/let]
+[/if]	
+[/let]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
