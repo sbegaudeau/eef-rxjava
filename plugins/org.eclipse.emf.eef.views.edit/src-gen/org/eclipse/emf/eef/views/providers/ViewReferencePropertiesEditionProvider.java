@@ -41,9 +41,7 @@ public class ViewReferencePropertiesEditionProvider implements IPropertiesEditio
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (ViewReferenceBasePropertiesEditionComponent.BASE_PART.equals(part)
- || 
-DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return provides(eObject)&& (ViewReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
