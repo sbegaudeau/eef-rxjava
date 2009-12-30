@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.7 2009/12/23 15:59:51 nlepine Exp $
+ * $Id: FilterPropertiesPropertiesEditionPart.java,v 1.8 2009/12/30 16:41:04 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.parts;
 

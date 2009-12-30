@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OCLFilterBasePropertiesEditionComponent.java,v 1.4 2009/12/23 15:59:49 nlepine Exp $
+ * $Id: OCLFilterBasePropertiesEditionComponent.java,v 1.5 2009/12/30 16:41:03 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
