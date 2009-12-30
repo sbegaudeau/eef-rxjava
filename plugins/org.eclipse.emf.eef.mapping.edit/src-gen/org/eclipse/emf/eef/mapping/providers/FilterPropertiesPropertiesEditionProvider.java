@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FilterPropertiesPropertiesEditionProvider.java,v 1.4 2009/12/23 15:59:51 nlepine Exp $
+ * $Id: FilterPropertiesPropertiesEditionProvider.java,v 1.5 2009/12/30 16:40:30 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -40,7 +40,7 @@ public class FilterPropertiesPropertiesEditionProvider implements IPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+		return provides(eObject)&& (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**

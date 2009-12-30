@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBindingPropertiesEditionProvider.java,v 1.16 2009/12/23 15:59:51 nlepine Exp $
+ * $Id: EMFPropertyBindingPropertiesEditionProvider.java,v 1.17 2009/12/30 16:40:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -42,9 +42,7 @@ public class EMFPropertyBindingPropertiesEditionProvider implements IPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part)
- || 
-DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return provides(eObject)&& (EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**

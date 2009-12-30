@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.14 2009/12/23 15:59:52 nlepine Exp $
+ * $Id: MappingPackagePropertiesEditionProvider.java,v 1.15 2009/12/30 16:40:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 

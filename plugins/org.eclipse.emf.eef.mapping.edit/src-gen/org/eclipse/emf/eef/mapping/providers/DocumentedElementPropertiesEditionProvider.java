@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementPropertiesEditionProvider.java,v 1.15 2009/12/23 15:59:51 nlepine Exp $
+ * $Id: DocumentedElementPropertiesEditionProvider.java,v 1.16 2009/12/30 16:40:30 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -40,7 +40,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return provides(eObject)&& (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
