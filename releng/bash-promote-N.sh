@@ -1,7 +1,8 @@
-BUILD_LOC=/home/data/users/sbouchet
-PROMO_LOGS_DIR=/home/data/users/sbouchet/promo_logs
-RELENG_DIR=/opt/users/hudsonbuild/.hudson/jobs/cbi-emf-eef-0.7-nightly/workspace/build/org.eclipse.eef.releng
-logFile=/home/data/users/sbouchet/cronLog.txt
+#!/bin/bash
+BUILD_LOC="/home/data/users/sbouchet"
+PROMO_LOGS_DIR="/home/data/users/sbouchet/promo_logs"
+RELENG_DIR="/opt/users/hudsonbuild/.hudson/jobs/cbi-emf-eef-0.7-nightly/workspace/build/org.eclipse.eef.releng"
+logFile="/home/data/users/sbouchet/cronLog.txt"
 
 echo "[`date +%Y/%m/%d\ %H:%M`]: getting last successful build" >> $logFile
 mkdir -p $BUILD_LOC
