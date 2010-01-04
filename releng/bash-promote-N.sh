@@ -1,5 +1,5 @@
 #!/bin/bash
-BUILD_LOC="/home/data/users/sbouchet"
+BUILD_LOC="/home/data/users/sbouchet/tmp/"
 PROMO_LOGS_DIR="/home/data/users/sbouchet/promo_logs"
 RELENG_DIR="/opt/users/hudsonbuild/.hudson/jobs/cbi-emf-eef-0.7-nightly/workspace/build/org.eclipse.eef.releng"
 ANT="/opt/public/common/apache-ant-1.7.1/bin/ant"
