@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceEditor.java,v 1.1 2009/09/04 09:10:02 glefur Exp $
+ * $Id: ConferenceEditor.java,v 1.2 2010/01/04 15:21:21 sbouchet Exp $
  */
 package org.eclipse.emf.samples.conference.presentation;
 
@@ -67,7 +67,6 @@ import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
-import org.eclipse.emf.eef.runtime.ui.properties.TabbedPropertiesEditionSheetPage;
 import org.eclipse.emf.samples.conference.provider.ConferenceItemProviderAdapterFactory;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -1363,9 +1362,9 @@ public class ConferenceEditor
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
+		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
 			propertySheetPage =
-				new TabbedPropertiesEditionSheetPage(ConferenceEditor.this);
+				new TabbedPropertySheetPage(ConferenceEditor.this);
 		}
 
 		return propertySheetPage;
