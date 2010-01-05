@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2009 Obeo.
+ *  Copyright (c) 2008-2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,9 +7,7 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- * 
  *
- * $Id: MappingPackagePropertiesEditionProvider.java,v 1.15 2009/12/30 16:40:29 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 

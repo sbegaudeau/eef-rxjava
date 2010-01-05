@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2009 Obeo.
+ *  Copyright (c) 2008-2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,9 +7,7 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- * 
  *
- * $Id: StandardElementBindingPropertiesEditionProvider.java,v 1.17 2009/12/30 16:40:30 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.providers;
 
@@ -35,14 +33,14 @@ public class StandardElementBindingPropertiesEditionProvider implements IPropert
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof StandardElementBinding) && (MappingPackage.eINSTANCE.getStandardElementBinding() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (StandardElementBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return provides(eObject) && (StandardElementBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**

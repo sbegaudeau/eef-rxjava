@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2009 Obeo.
+ *  Copyright (c) 2008-2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,9 +7,7 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- * 
  *
- * $Id: OCLFilterPropertiesEditionComponent.java,v 1.5 2009/12/30 16:41:03 nlepine Exp $
  */
 package org.eclipse.emf.eef.mapping.components;
 
@@ -50,6 +48,7 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * The FilterPropertiesPropertiesEditionComponent sub component
 	 */
 	protected FilterPropertiesPropertiesEditionComponent filterPropertiesPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -68,7 +67,7 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
