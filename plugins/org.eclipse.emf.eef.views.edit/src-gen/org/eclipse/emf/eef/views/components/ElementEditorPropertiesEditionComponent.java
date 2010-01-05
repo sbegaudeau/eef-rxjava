@@ -45,6 +45,7 @@ public class ElementEditorPropertiesEditionComponent extends ComposedPropertiesE
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -61,7 +62,7 @@ public class ElementEditorPropertiesEditionComponent extends ComposedPropertiesE
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#

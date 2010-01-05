@@ -32,7 +32,7 @@ public class WidgetPropertiesEditionProvider implements IPropertiesEditionProvid
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Widget) && (ToolkitsPackage.eINSTANCE.getWidget() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
