@@ -30,7 +30,7 @@ public class SitePropertiesEditionProvider implements IPropertiesEditionProvider
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Site) && (ConferencePackage.eINSTANCE.getSite() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 

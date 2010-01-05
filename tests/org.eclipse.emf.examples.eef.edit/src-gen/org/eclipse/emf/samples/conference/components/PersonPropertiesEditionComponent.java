@@ -50,6 +50,7 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 	 */
 	protected PersonPresencePropertiesEditionComponent personPresencePropertiesEditionComponent;
 
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -66,7 +67,7 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 			addSubComponent(personPresencePropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#

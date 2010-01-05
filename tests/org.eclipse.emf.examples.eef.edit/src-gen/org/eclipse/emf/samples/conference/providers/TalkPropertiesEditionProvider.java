@@ -30,7 +30,7 @@ public class TalkPropertiesEditionProvider implements IPropertiesEditionProvider
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Talk) && (ConferencePackage.eINSTANCE.getTalk() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 

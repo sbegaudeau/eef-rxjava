@@ -30,7 +30,7 @@ public class ConferencePropertiesEditionProvider implements IPropertiesEditionPr
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Conference) && (ConferencePackage.eINSTANCE.getConference() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
