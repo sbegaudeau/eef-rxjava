@@ -18,19 +18,18 @@
 [import filters /]
 
 [comment ===== Case : model = Containment(*) - view = TableComposition or AdvancedTableComposition===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == [editionElement.metamodelGetter()/])) {
 [comment suspicious code]	|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]())) {[/comment]
 			[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
 		}
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
-					
 					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					// TODO: Complete the [modelName/] update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -39,7 +38,6 @@
 						}
 					}
 					[comment]// [/protected][/comment]
-					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
@@ -50,26 +48,21 @@
 			}
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
 			List [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
-				
 				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
-				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
-				
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
 					}
 				}
-				
 				[comment]// [/protected][/comment]
-				
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
@@ -81,15 +74,15 @@
 			}
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
 			[modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd());
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 					/*
@@ -125,7 +118,6 @@
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
-					
 					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					// TODO: Complete the [modelName/] update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -134,7 +126,6 @@
 						}
 					}
 					[comment]// [/protected][/comment]
-					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], event.getNewValue()));
@@ -155,18 +146,14 @@
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
 				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
-				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
-				
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
 					}
 				}
-				
 				[comment]// [/protected][/comment]
-				
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
@@ -218,7 +205,7 @@
 [/template]
 
 [comment ===== Case : model = Containment(1) - view = TableComposition or AdvancedTableComposition===== /]
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 					if (msg.getFeature() != null && 
 							(((EStructuralFeature)msg.getFeature()) == [editionElement.metamodelGetter()/]
 							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == [editionElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/]())) {
@@ -226,12 +213,11 @@
 					}
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
-					
 					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					[comment]// TODO: Complete the [modelName/] update command[/comment]
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -240,7 +226,6 @@
 						}
 					}
 					[comment]// [/protected][/comment]
-					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
@@ -251,7 +236,7 @@
 			}
 [/template]
 
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
 			List [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd();
 			if ([editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/] != null
 					&& [editionElement.model.name.toJavaIdentifier()/]ToAddFrom[editionElement.views->first().viewPackageSignature()/].size() == 1) {
@@ -261,20 +246,15 @@
 			}
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
-				
 				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
-				
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
-				
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
 					}
 				}
-				
 				[comment]// [/protected][/comment]
-				
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
@@ -286,27 +266,26 @@
 			}
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
+[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
 			if ([view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd() != null && [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd().size() == 1) {
 				[modelName/]ToUpdate.set[editionElement.model.name.toMany().toUpperFirst()/](([editionElement.model.eType.name/]) [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToAdd().get(0));
 			}
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 					/*
 					 * (non-Javadoc)
-					 * 
+					 *
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-
 				}
 
 			});

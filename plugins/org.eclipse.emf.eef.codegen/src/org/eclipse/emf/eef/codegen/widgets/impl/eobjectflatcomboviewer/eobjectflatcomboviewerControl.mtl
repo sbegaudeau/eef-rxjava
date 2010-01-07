@@ -55,7 +55,6 @@
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-
 				}
 
 			});
@@ -76,7 +75,7 @@
 							if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
 								if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
 									[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
-								else 
+								else
 									[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](null);
 							}
 [/template]
@@ -116,7 +115,7 @@
 			// init part
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
 				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, (([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
-			else 
+			else
 				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, null);
 			// set the button mode
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.BROWSE);
@@ -132,7 +131,6 @@
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-
 				}
 
 			});
