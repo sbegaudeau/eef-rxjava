@@ -1,10 +1,8 @@
 !***************  Project CONTRIBUTION  ******************************************************** 
 
 !*** Special entries from eclipse
-
 plugin@org.eclipse.test=v20080313,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,
 fragment@org.eclipse.ant.optional.junit=v20070202,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,
-
 
 !*** Default entries
 
@@ -36,9 +34,9 @@ plugin@org.eclipse.emf.eef.views.editor=HEAD,:pserver:anonymous@dev.eclipse.org:
 plugin@org.eclipse.emf.eef.codegen=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.codegen
 plugin@org.eclipse.emf.eef.codegen.uml=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/plugins/org.eclipse.emf.eef.codegen.uml
 
+plugin@org.eclipse.emf.eef.doc=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/doc/org.eclipse.emf.eef.doc
 
 !*** All-in-one data integrity frameworks features (SDK) 
-
 
 !*** EEF Examples plugins
 
@@ -49,4 +47,3 @@ plugin@org.eclipse.emf.examples.eef.tests.junit=HEAD,:pserver:anonymous@dev.ecli
 plugin@org.eclipse.emf.examples.eef=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/tests/org.eclipse.emf.examples.eef
 plugin@org.eclipse.emf.examples.eef.edit=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/tests/org.eclipse.emf.examples.eef.edit
 plugin@org.eclipse.emf.examples.eef.editor=HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,,org.eclipse.emf/org.eclipse.emf.eef/tests/org.eclipse.emf.examples.eef.editor
-
