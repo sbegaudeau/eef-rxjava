@@ -220,7 +220,6 @@ public class ElementEditorBasePropertiesEditionComponent extends StandardPropert
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
-
 				}
 
 			});

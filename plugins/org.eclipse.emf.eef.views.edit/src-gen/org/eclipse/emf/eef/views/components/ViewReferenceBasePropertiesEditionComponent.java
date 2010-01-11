@@ -216,7 +216,6 @@ public class ViewReferenceBasePropertiesEditionComponent extends StandardPropert
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof ViewElement);
-
 				}
 
 			});
