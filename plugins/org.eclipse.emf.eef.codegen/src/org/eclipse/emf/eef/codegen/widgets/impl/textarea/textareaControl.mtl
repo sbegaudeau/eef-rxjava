@@ -1,6 +1,6 @@
 [comment 
  *******************************************************************************
- * Copyright (c) 2008-2009 Obeo.
+ * Copyright (c) 2008-2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,12 +29,12 @@
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
 			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
 			}
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
