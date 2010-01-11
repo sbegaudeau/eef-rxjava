@@ -108,21 +108,22 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
 		[if (view.isA1stLevelReferencedView(pec))]
-			[subPec.pecClass().toLowerFirst()/] = ([subPec.pecClass()/])provider.getPropertiesEditionComponent([pec.model.name.toJavaIdentifier()/], editing_mode, [subPec.pecClass()/].[view.viewPartConstant(pec)/]);
+			[subPec.pecClass().toLowerFirst()/] = ([subPec.pecClass()/])provider.getPropertiesEditionComponent([pec.model.name.toJavaIdentifier()/], editing_mode, [subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/]);
 			addSubComponent([subPec.pecClass().toLowerFirst()/]);
 		[else]
-			[subPec.pecClass().toLowerFirst()/] = ([subPec.pecClass()/])provider.getPropertiesEditionComponent([pec.model.name.toJavaIdentifier()/], editing_mode, [subPec.pecClass()/].[view.viewPartConstant(pec)/]);
+			[subPec.pecClass().toLowerFirst()/] = ([subPec.pecClass()/])provider.getPropertiesEditionComponent([pec.model.name.toJavaIdentifier()/], editing_mode, [subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/]);
 			addSubComponent([subPec.subPECClass(view).toLowerFirst()/]);
 		[/if]
 	[/for]
 [/for]
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  getPropertiesEditionPart(int, java.lang.String)
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 [for (view : View | pec.views) ? (view.explicit)]
@@ -136,8 +137,10 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 [for (view : View | pec.views) ? (view.explicit)]
@@ -148,10 +151,12 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [/for]
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 [for (view : View | pec.views)]

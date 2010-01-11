@@ -53,14 +53,14 @@ import [subPec.subPECQualifiedClass(subView)/];
 public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionComponent {
 
 	public static String [topLevelView.viewPartConstant(pec)/] = "[topLevelView.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
-	
+
 	private String['['/][']'/] parts = {[topLevelView.viewPartConstant(pec)/]};
-	
+
 	/**
 	 * The EObject to edit
 	 */
 	private [pec.model.name/] [pec.model.name.toJavaIdentifier()/];
-	
+
 	/**
 	 * The [topLevelView.viewKey(pec)/] part
 	 */
@@ -76,16 +76,17 @@ public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionC
 
 [comment]
 Implemented later ...
-[for (view : View | pec.views) ? (pec.mustBeGenerated())]	
+[for (view : View | pec.views) ? (pec.mustBeGenerated())]
 			private [pec.subPECClass(view)/] [pec.subPECClass(view).toLowerFirst()/];
-[/for][/comment]
+[/for]
+[/comment]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
 	 */
 	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
-	
+
 	[/for]
 [/for]
 	/**
@@ -102,7 +103,8 @@ Implemented later ...
 [for (view : View | pec.views) ? (pec.mustBeGenerated())]
 			[pec.subPECClass(view).toLowerFirst()/] = new [pec.subPECClass(view)/]([pec.model.name.toJavaIdentifier().trim()/], editing_mode); 
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
-[/for][/comment]
+[/for]
+[/comment]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
 			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode);
@@ -111,11 +113,12 @@ Implemented later ...
 [/for]
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 * 		getPropertiesEditionPart(int, java.lang.String)
+	 *  getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ([topLevelView.viewPartConstant(pec)/].equals(key) && [pec.model.name.toJavaIdentifier()/] == null) {
@@ -129,7 +132,8 @@ Implemented later ...
 	}
 
 	/**
-	 * {@inheritDoc} 
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
 	public java.lang.Class translatePart(String key) {
@@ -140,6 +144,7 @@ Implemented later ...
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#mustBeComposed(java.lang.Class, int)
 	 */
 	public boolean mustBeComposed(java.lang.Class key, int kind) {
@@ -148,8 +153,9 @@ Implemented later ...
 
 	/** 
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent
-	 *	#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *  #initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == [topLevelView.editorID()/].class) {
