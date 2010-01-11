@@ -258,18 +258,13 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 			Map sitesToRefreshFromSites = basePart.getSitesToEdit();
 			for (Iterator iter = sitesToRefreshFromSites.keySet().iterator(); iter.hasNext();) {
 				
-				
-				
 				Site nextElement = (Site) iter.next();
 				Site sites = (Site) sitesToRefreshFromSites.get(nextElement);
-				
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, sites.eGet(feature)));
 					}
 				}
-				
-				
 				
 			}
 			List sitesToRemoveFromSites = basePart.getSitesToRemove();
@@ -326,14 +321,12 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 					Site oldValue = (Site)event.getOldValue();
 					Site newValue = (Site)event.getNewValue();
 					
-					
 					// TODO: Complete the conference update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					
 					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())

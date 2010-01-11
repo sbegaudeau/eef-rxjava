@@ -244,7 +244,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof Topic);
-
 				}
 
 			});
@@ -261,7 +260,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof Person);
-
 				}
 
 			});
@@ -277,7 +275,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof String && element.equals("")) || (element instanceof Person); //$NON-NLS-1$ 
-
 				}
 
 			});

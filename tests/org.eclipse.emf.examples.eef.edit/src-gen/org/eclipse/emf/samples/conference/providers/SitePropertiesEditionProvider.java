@@ -30,14 +30,14 @@ public class SitePropertiesEditionProvider implements IPropertiesEditionProvider
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Site) && (ConferencePackage.eINSTANCE.getSite() == eObject.eClass());
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (SitePropertiesEditionComponent.BASE_PART.equals(part));
+		return provides(eObject)&& (SitePropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
