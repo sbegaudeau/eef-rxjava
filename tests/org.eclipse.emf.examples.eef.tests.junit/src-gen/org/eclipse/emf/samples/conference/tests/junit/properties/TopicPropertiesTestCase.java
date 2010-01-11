@@ -59,7 +59,7 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 *  The folder that contains the expected models for tests 
-	 */	 
+	 */
 	protected static final String EXPECTED_MODEL_FOLDER = "expected";
 	
 	/**
@@ -69,7 +69,7 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 * The expected model
-	 */	 
+	 */
 	protected static final String EXPECTED_MODEL_NAME = "expected.conference";
 
 	/**
