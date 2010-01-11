@@ -436,9 +436,11 @@ Object
 [eClassifier.completePackage()/].[eClassifier.name/]
 [/template]
 
-[template public metamodelPrefix(ePackage : EPackage)]
-[ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->first().oclAsType(genmodel::GenPackage).prefix/]
-[/template]
+[query public metamodelPrefix(ePackage : EPackage) : String =
+	if ePackage.nsURI= 'http://www.eclipse.org/emf/2002/Ecore'
+	then 'Ecore'
+	else ePackage.eInverse(genmodel::GenPackage)->first().prefix.toUpperFirst()
+	endif/]
 
 [template public metamodelPackage(ePackage : EPackage)]
 [ePackage.metamodelPrefix()/]Package
