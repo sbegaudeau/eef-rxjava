@@ -202,7 +202,6 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof AbstractElementBinding);
-
 				}
 
 			});

@@ -246,7 +246,6 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof ModelProperty);
-
 				}
 
 			});

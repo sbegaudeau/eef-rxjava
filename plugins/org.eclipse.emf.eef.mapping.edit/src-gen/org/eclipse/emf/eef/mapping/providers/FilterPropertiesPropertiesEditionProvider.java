@@ -31,14 +31,14 @@ public class FilterPropertiesPropertiesEditionProvider implements IPropertiesEdi
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof BindingFilter) && (FiltersPackage.eINSTANCE.getBindingFilter() == eObject.eClass());
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+		return provides(eObject)&& (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**

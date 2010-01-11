@@ -222,7 +222,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof EReference);
-
 				}
 
 			});
@@ -238,7 +237,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof String && element.equals("")) || (element instanceof EClassifier); //$NON-NLS-1$ 
-
 				}
 
 			});

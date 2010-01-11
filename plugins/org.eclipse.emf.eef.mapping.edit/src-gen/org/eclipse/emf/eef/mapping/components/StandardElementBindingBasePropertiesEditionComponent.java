@@ -246,7 +246,6 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Standa
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof ModelElement);
-
 				}
 
 			});

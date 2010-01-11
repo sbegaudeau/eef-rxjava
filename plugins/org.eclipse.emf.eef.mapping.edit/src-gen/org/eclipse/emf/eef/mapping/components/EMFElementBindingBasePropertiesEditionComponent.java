@@ -246,7 +246,6 @@ public class EMFElementBindingBasePropertiesEditionComponent extends StandardPro
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof EClassifier);
-
 				}
 
 			});

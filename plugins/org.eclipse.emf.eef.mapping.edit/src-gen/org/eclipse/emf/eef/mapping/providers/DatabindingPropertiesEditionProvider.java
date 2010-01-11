@@ -32,14 +32,14 @@ public class DatabindingPropertiesEditionProvider implements IPropertiesEditionP
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Databinding) && (MappingPackage.eINSTANCE.getDatabinding() == eObject.eClass());
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) ;
+		return provides(eObject);
 	}
 
 	/**

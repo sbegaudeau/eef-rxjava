@@ -204,7 +204,6 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof String && element.equals("")) || (element instanceof EReference); //$NON-NLS-1$ 
-
 				}
 
 			});
