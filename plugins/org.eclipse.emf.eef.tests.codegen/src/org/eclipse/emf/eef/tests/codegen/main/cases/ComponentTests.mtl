@@ -1,6 +1,6 @@
 [comment 
  *******************************************************************************
- * Copyright (c) 2008-2009 Obeo.
+ * Copyright (c) 2008-2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,7 @@
 [import widgetTest /]
 
 [template public PropertySection(peContext : PropertiesEditionContext)]
-
-	[comment @main /]
+[comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (pec.mustBeGenerated() and pec.testMustBeGenerated())]
 	[for (view : View | pec.views) ? (view.explicit)]
 [file (pec.fullFilePath(), false)]
