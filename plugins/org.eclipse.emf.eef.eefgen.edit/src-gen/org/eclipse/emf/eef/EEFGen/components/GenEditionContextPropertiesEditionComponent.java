@@ -244,7 +244,6 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof PropertiesEditionContext);
-
 				}
 
 			});

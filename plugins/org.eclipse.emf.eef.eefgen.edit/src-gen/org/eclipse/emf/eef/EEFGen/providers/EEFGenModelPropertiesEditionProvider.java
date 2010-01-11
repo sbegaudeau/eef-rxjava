@@ -31,14 +31,14 @@ public class EEFGenModelPropertiesEditionProvider implements IPropertiesEditionP
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof EEFGenModel) && (EEFGenPackage.eINSTANCE.getEEFGenModel() == eObject.eClass());
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject) && (EEFGenModelPropertiesEditionComponent.BASE_PART.equals(part));
+		return provides(eObject)&& (EEFGenModelPropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**

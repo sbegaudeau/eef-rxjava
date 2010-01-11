@@ -236,7 +236,6 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof ViewsRepository);
-
 				}
 
 			});

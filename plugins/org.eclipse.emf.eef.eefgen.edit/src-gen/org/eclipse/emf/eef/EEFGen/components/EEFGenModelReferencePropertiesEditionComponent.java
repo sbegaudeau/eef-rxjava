@@ -202,7 +202,6 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					return (element instanceof EEFGenModel);
-
 				}
 
 			});
