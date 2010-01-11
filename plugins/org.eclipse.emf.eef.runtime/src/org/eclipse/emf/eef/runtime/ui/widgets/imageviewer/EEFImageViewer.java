@@ -91,6 +91,7 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 		this.imagePath = imagePath;
 		EEFRuntimePlugin.getDefault().registerImage(key, imagePath);
 		viewerCanvas.setBackgroundImage(EEFRuntimePlugin.getDefault().getRegisteredImage(key));
+		viewerCanvas.redraw();
 	}
 	
 	/**
