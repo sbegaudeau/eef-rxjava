@@ -172,15 +172,6 @@ public class EditPropertyWizard extends Wizard {
 			scrolledContainer.setExpandVertical(true);
 			scrolledContainer.setContent(container);
 			scrolledContainer.setMinSize(folder.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-			// Diagnostic diag = Diagnostic.OK_INSTANCE;
-			// propertiesEditionComponent.validate(diag);
-			// propertiesEditionComponent.validateRequiredFeatures(diag);
-			// if (diag != null && diag.getSeverity() != Diagnostic.OK){
-			// setMessage(null);
-			// setPageComplete(false);
-			// }
-			// else
-			// updateStatus(null);
 		}
 
 		private void initializeTabs(CTabFolder folder) {

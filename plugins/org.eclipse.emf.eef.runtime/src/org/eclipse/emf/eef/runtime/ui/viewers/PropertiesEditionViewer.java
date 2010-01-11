@@ -34,7 +34,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
-import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -55,8 +54,6 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	private FormToolkit toolkit;
 
 	private CTabFolder folder = null;
-
-	private ScrolledComposite scrolledContainer;
 
 	private Composite control;
 
@@ -88,6 +85,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		control.setLayout(new FillLayout());
 		control.setLayoutData(new GridData(GridData.FILL_BOTH));
 		folder = new CTabFolder(control, style);
+	    folder.setSimple(false);
 		this.allResources = allResources;
 		this.kind = kind;
 	}
@@ -424,9 +422,11 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		if (kind == 1) {
 			toolkit.adapt(folder, true, true);
 			toolkit.getColors().initializeSectionToolBarColors();
-			Color selectedColor = toolkit.getColors().getColor(IFormColors.TB_BG);
-			folder.setSelectionBackground(new Color[] {selectedColor, toolkit.getColors().getBackground()},
-					new int[] {100}, true);
+		    folder.setSelectionBackground(new Color []{
+		      toolkit.getColors().getColor(IFormColors.H_GRADIENT_END),
+		      toolkit.getColors().getColor(IFormColors.H_GRADIENT_START) }, new int []{ 25 }, true);
+		    folder.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
+		    folder.setSelectionForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 		}
 		for (int i = 0; i < partsList.length; i++) {
 			String nextComponentKey = partsList[i];
