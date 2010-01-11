@@ -84,7 +84,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 *            the kind of the part
 	 */
 	public PropertiesEditionViewer(Composite container, ResourceSet allResources, int style, int kind) {
-		control = new Composite(container, style);
+		control = new Composite(container, SWT.NONE);
 		control.setLayout(new FillLayout());
 		control.setLayoutData(new GridData(GridData.FILL_BOTH));
 		folder = new CTabFolder(control, style);
