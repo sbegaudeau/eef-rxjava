@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.FileDialog;
  */
 public class EEFImageViewer extends Composite implements ISelectionProvider {
 
-	private static final String[] EXTENSIONS = new String[] { "*.png", "*.bmp", "*.jpeg", "*.jpg", "*.gif", "*.*" };
+	private static final String[] EXTENSIONS = new String[] { "*.png", "*.bmp", "*.jpeg", "*.jpg", "*.gif", "*.*" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
 	
 	private Canvas viewerCanvas;
 	
@@ -109,7 +109,7 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 		if (imagePath != null)
 			return new StructuredSelection(imagePath);
 		else
-			return new StructuredSelection("");
+			return new StructuredSelection(""); //$NON-NLS-1$
 	}
 
 	/**

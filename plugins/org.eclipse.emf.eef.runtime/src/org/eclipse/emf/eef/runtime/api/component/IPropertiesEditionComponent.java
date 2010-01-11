@@ -26,9 +26,9 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
  */
 public interface IPropertiesEditionComponent extends IPropertiesEditionListener {
 
-	public static final String BATCH_MODE = "Batch";
+	public static final String BATCH_MODE = "Batch";  //$NON-NLS-1$
 
-	public static final String LIVE_MODE = "Live";
+	public static final String LIVE_MODE = "Live";  //$NON-NLS-1$
 
 	/**
 	 * Returns the Edition Parts list.

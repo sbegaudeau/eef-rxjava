@@ -39,6 +39,7 @@ import org.eclipse.ui.internal.forms.Messages;
 /**
  * @see IMessageManager
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @deprecated this class mustn't be used with the new validation system.
  */
 public class EEFMessageManager implements IMessageManager {
 	private static final DefaultPrefixProvider DEFAULT_PREFIX_PROVIDER = new DefaultPrefixProvider();

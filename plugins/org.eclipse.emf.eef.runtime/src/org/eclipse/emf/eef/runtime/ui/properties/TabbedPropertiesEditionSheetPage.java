@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -104,23 +105,23 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 			while (!cls.equals(TabbedPropertySheetPage.class)) {
 				cls = cls.getSuperclass();
 			}
-			descriptorToTabField = cls.getDeclaredField("descriptorToTab");
+			descriptorToTabField = cls.getDeclaredField("descriptorToTab"); //$NON-NLS-1$
 			oldAccessible = descriptorToTabField.isAccessible();
 			descriptorToTabField.setAccessible(true);
 			return (Map)descriptorToTabField.get(this);
 
 		} catch (SecurityException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} catch (NoSuchFieldException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} catch (IllegalArgumentException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} catch (IllegalAccessException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} finally {
 			if (descriptorToTabField != null) {
 				descriptorToTabField.setAccessible(oldAccessible);
@@ -134,13 +135,13 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
         boolean isCurrentTabNull = true;
         try {
             try {
-                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab");
+                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab"); //$NON-NLS-1$
                 // We are in eclipse 3.3
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null);
+                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null); //$NON-NLS-1$
                 isCurrentTabNull = searchMethod.invoke(this) == null;
             } catch (final ClassNotFoundException cnfe) {
                 // We are in eclipse 3.4
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null);
+                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null); //$NON-NLS-1$
                 isCurrentTabNull = searchMethod.invoke(this) == null;
             }
         } catch (final SecurityException e) {

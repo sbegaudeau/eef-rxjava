@@ -47,7 +47,7 @@ public abstract class AbstractEEFMDFormPage extends FormPage {
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-md-form-page"; //$NON-NLS-1$
+	public static final String PAGE_ID = "EEF-md-form-page";  //$NON-NLS-1$
 	
 	/**
 	 * The form editor in which this page will be included
@@ -84,7 +84,7 @@ public abstract class AbstractEEFMDFormPage extends FormPage {
 	 * @param editor the form editor in which this page will be included
 	 */
 	public AbstractEEFMDFormPage(FormEditor editor, String pageTitle) {
-		super(editor, PAGE_ID, pageTitle); //$NON-NLS-1$
+		super(editor, PAGE_ID, pageTitle); 
 		this.editor = editor;
 	}
 	
@@ -121,8 +121,8 @@ public abstract class AbstractEEFMDFormPage extends FormPage {
 	 * @generated
 	 */
 	protected void createContextMenuFor(StructuredViewer viewer) {
-		MenuManager contextMenu = new MenuManager("#PopUp");
-		contextMenu.add(new Separator("additions"));
+		MenuManager contextMenu = new MenuManager("#PopUp"); //$NON-NLS-1$
+		contextMenu.add(new Separator("additions")); //$NON-NLS-1$
 		contextMenu.setRemoveAllWhenShown(true);
 		contextMenu.addMenuListener((IMenuListener) editor);
 		Menu menu= contextMenu.createContextMenu(viewer.getControl());

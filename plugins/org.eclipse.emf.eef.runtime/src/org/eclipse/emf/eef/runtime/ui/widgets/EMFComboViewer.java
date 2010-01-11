@@ -168,7 +168,7 @@ public class EMFComboViewer extends AbstractListViewer {
 			int[] ixs = new int[1];
 			ixs[0] = -1;
 			String[] literals = getCombo().getItems();
-			String literalToSelect = "";
+			String literalToSelect = ""; //$NON-NLS-1$
 			// TODO : find a better way to differenciate enum and eObject
 			if (elem instanceof EObject && getLabelProvider() instanceof ILabelProvider) {
 				literalToSelect = ((ILabelProvider)getLabelProvider()).getText(elem);

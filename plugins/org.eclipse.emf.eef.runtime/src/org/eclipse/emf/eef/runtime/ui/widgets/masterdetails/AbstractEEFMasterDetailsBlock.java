@@ -19,7 +19,7 @@ import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.editors.pages.EEFDetailsPage;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
-import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -114,35 +114,33 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		final ScrolledForm form = managedForm.getForm();
 		if (showValidateAction) {
 			validateAction = new ValidateAction();
-			validateAction.setToolTipText("Validate the current selection");
-			validateAction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "validate.gif"));
+			validateAction.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_validate_action_tooltip);
+			validateAction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "validate.gif")); //$NON-NLS-1$
 			form.getToolBarManager().add(validateAction);
 		}
 		if (orientable) {
-			Action haction = new Action("hor", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
+			Action haction = new Action("hor", IAction.AS_RADIO_BUTTON) {  //$NON-NLS-1$
 				public void run() {
 					sashForm.setOrientation(SWT.HORIZONTAL);
 					form.reflow(true);
 				}
 			};
 			haction.setChecked(true);
-			haction.setToolTipText(
-					MessagesTool.getString("AbstractEEFMasterDetailsBlock.horizontal_layout")
-			); //$NON-NLS-1$
-			haction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_horizontal.gif"));
-			haction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_horizontal.gif"));
+			haction.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_horizontal_layout);
+			haction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_horizontal.gif")); //$NON-NLS-1$
+			haction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_horizontal.gif")); //$NON-NLS-1$
 			form.getToolBarManager().add(haction);
 
-			Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
+			Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) {  //$NON-NLS-1$
 				public void run() {
 					sashForm.setOrientation(SWT.VERTICAL);
 					form.reflow(true);
 				}
 			};
 			vaction.setChecked(false);
-			vaction.setToolTipText(MessagesTool.getString("AbstractEEFMasterDetailsBlock.vertical_layout")); //$NON-NLS-1$
-			vaction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_vertical.gif"));
-			vaction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_vertical.gif"));
+			vaction.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_vertical_layout);
+			vaction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_vertical.gif")); //$NON-NLS-1$
+			vaction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_vertical.gif")); //$NON-NLS-1$
 			form.getToolBarManager().add(vaction);
 		}
 		if (additionalPageActions() != null) {

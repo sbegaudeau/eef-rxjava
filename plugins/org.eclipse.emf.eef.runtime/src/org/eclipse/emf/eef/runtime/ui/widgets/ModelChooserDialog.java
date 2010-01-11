@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.IWrapperItemProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -70,7 +70,7 @@ public class ModelChooserDialog extends Dialog {
 		Shell s = super.getShell();
 		// Rectangle r = s.getBounds();
 		// s.setBounds(-1, -1, 500, 500);
-		s.setText("Rechercher un modele");
+		s.setText(EEFRuntimeUIMessages.ModelChooserDialog_title);
 		return s;
 	}
 
@@ -81,10 +81,10 @@ public class ModelChooserDialog extends Dialog {
 		GridLayout containerLayout = new GridLayout();
 		container.setLayout(containerLayout);
 		Label label = new Label(container, SWT.NONE);
-		label.setText(MessagesTool.getString("ModelChooserDialog.text"));
+		label.setText(EEFRuntimeUIMessages.ModelChooserDialog_choose_model);
 		workspaceViewer = new TreeViewer(container);
 		workspaceViewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
-		if (EEFUtil.isBundleLoaded("org.eclipse.ui.ide")) 
+		if (EEFUtil.isBundleLoaded("org.eclipse.ui.ide"))  //$NON-NLS-1$
 			workspaceViewer.setContentProvider(new WorkbenchContentProvider());
 		else
 			workspaceViewer.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -159,7 +159,7 @@ public class ModelChooserDialog extends Dialog {
 			if (childType == IResource.FILE && child.getFileExtension() != null
 					&& child.getFileExtension().equalsIgnoreCase(modelExtension)) {
 				files.add(child);
-			} else if (childType == IResource.FOLDER && !child.getName().startsWith(".")) { //$NON-NLS-1$
+			} else if (childType == IResource.FOLDER && !child.getName().startsWith(".")) {  //$NON-NLS-1$
 				folders.add((IContainer)child);
 			}
 		}

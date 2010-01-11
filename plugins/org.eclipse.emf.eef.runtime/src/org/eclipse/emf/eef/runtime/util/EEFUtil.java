@@ -33,7 +33,7 @@ import org.osgi.framework.Bundle;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">stephane bouchet</a>
  */
 public class EEFUtil {
-	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core";
+	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core"; //$NON-NLS-1$
 
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature) {
 		Object choiceOfValues = null;

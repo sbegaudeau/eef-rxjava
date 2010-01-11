@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -52,18 +53,18 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	/** Image for the remove button */
 	protected final org.eclipse.swt.graphics.Image deleteImage = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif"); //$NON-NLS-1$
 
 	/** Image for the add button */
 	protected final org.eclipse.swt.graphics.Image addImage = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif"); //$NON-NLS-1$
 
-	private static final String UNDEFINED_VALUE = "<UNDEFINED>";
+	private static final String UNDEFINED_VALUE = "<UNDEFINED>"; //$NON-NLS-1$
 
 	/**
 	 * the dialog title
 	 */
-	private String dialogTitle = "";
+	private String dialogTitle = ""; //$NON-NLS-1$
 
 	/** Associated text */
 	protected Text valueText;
@@ -151,21 +152,21 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	}
 
 	private void createButtons(Composite parent) {
-		Button removeButton = createButton(parent, "", SWT.PUSH);
+		Button removeButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		removeButton.setImage(deleteImage);
 		FormData data = new FormData();
 		data.right = new FormAttachment(100, -5);
 		data.top = new FormAttachment(0, -2);
 		removeButton.setLayoutData(data);
-		removeButton.setToolTipText("Unset the reference value");
+		removeButton.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
 
-		this.browseButton = createButton(parent, "", SWT.PUSH);
+		this.browseButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		browseButton.setImage(addImage);
 		data = new FormData();
 		data.right = new FormAttachment(removeButton, 2);
 		data.top = new FormAttachment(0, -2);
 		browseButton.setLayoutData(data);
-		browseButton.setToolTipText("Set the reference value");
+		browseButton.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_set_tooltip);
 
 		// listeners setting
 		removeButton.addMouseListener(new MouseAdapter() {
@@ -278,7 +279,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	public void setSelection(T selection) {
 		this.selection = selection;
 		String text = labelProvider.getText(selection);
-		if ("".equals(text))
+		if ("".equals(text)) //$NON-NLS-1$
 			this.valueText.setText(UNDEFINED_VALUE);
 		else
 			this.valueText.setText(text);

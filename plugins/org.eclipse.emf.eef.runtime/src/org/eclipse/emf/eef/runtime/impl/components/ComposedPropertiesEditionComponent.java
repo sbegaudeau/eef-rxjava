@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -28,6 +27,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.NullCompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFRuntimeMessages;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
 /**
@@ -152,7 +152,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 			if (command != null && command.canExecute()) {
 				cc.append(command);
 			} else {
-				EEFRuntimePlugin.getDefault().logError("Cannot perform command.", null);
+				EEFRuntimePlugin.getDefault().logError(EEFRuntimeMessages.ComposedPropertiesEditionComponent_cmd_not_performed, null);
 			}
 		}
 		if (cc.isEmpty())
@@ -240,8 +240,8 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "EEF validation", 0,
-				"No problem detected", null);
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, EEFRuntimeMessages.ComposedPropertiesEditionComponent_eef_validation_diagnostic, 0,
+				EEFRuntimeMessages.ComposedPropertiesEditionComponent_no_problem, null);
 		for (IPropertiesEditionComponent component : subComponents) {
 			Diagnostic validateValue = component.validateValue(event);
 			if (validateValue != null)
@@ -257,8 +257,8 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "EEF Validation", Status.OK,
-				"No problem detected", null);
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, EEFRuntimeMessages.ComposedPropertiesEditionComponent_eef_validation_diagnostic, Status.OK,
+				EEFRuntimeMessages.ComposedPropertiesEditionComponent_no_problem, null);
 		for (IPropertiesEditionComponent component : subComponents) {
 			diagnostic.getChildren().add(component.validate());
 		}

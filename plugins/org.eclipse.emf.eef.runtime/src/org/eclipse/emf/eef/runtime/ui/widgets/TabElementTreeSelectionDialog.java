@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EcoreTool;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -70,7 +71,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	protected Tree tree;
 
 	/** title of the window */
-	protected String title = "Element Selection";
+	protected String title = EEFRuntimeUIMessages.TabElementTreeSelectionDialog_title;
 
 	/**
 	 * filters
@@ -172,7 +173,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		tabFolder.setMaximized(true);
 
 		CTabItem tabItem = new CTabItem(tabFolder, SWT.NULL);
-		tabItem.setText("Model Resource");
+		tabItem.setText(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_model_resource_tab_title);
 		tabItem.setControl(fillModelpage(tabFolder, false, new ViewerFilter() {
 			// Filter elements only in main Resource
 			@Override
@@ -199,7 +200,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		}));
 
 		tabItem = new CTabItem(tabFolder, SWT.NULL);
-		tabItem.setText("All Resources");
+		tabItem.setText(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_all_resources_tab_title);
 		tabItem.setControl(fillModelpage(tabFolder, true, null));
 
 		return tabFolder;
@@ -379,7 +380,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	@Override
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
-		shell.setText("Select " + this.title);
+		shell.setText(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_shell_title + this.title);
 	}
 
 	/**

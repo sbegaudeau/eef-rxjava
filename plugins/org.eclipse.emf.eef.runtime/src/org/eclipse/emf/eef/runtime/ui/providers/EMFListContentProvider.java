@@ -64,7 +64,7 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 
 	private List asList(TreeIterator iter) {
 		List result = new ArrayList();
-		result.add(""); //$NON-NLS-1$
+		result.add("");  //$NON-NLS-1$
 		while (iter.hasNext())
 			result.add(iter.next());
 		return result;

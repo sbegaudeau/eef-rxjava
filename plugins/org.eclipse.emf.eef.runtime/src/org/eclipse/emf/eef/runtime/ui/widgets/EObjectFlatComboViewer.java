@@ -64,7 +64,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
 		editer = new Button(this, SWT.PUSH);
-		editer.setText("..."); //$NON-NLS-1$
+		editer.setText("...");  //$NON-NLS-1$
 
 		filters = new ArrayList<ViewerFilter>();
 		bpFilters = new ArrayList<ViewerFilter>();
@@ -144,7 +144,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		if (this.input != input) {
 			this.input = input;
 			this.selectedElement = null;
-			this.selection.setText(""); //$NON-NLS-1$
+			this.selection.setText("");  //$NON-NLS-1$
 		}
 	}
 
@@ -175,7 +175,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			else
 				selection.setText(selectedElement.toString());
 		} else
-			selection.setText(""); //$NON-NLS-1$
+			selection.setText("");  //$NON-NLS-1$
 	}
 
 	protected void selectionChanged(ISelection selection) {

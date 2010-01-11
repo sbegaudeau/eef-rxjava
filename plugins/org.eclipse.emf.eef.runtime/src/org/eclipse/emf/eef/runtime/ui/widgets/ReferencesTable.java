@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -66,25 +67,25 @@ public class ReferencesTable<T extends EObject> implements
 	 * Image for the add element button.
 	 */
 	final protected static Image NEW_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif"); //$NON-NLS-1$
 
 	/**
 	 * Image for the delete element button.
 	 */
 	final protected static Image DELETE_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif");
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif"); //$NON-NLS-1$
 
 	/**
 	 * Image for the up button.
 	 */
 	final protected static Image UP_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowUp_16x16.gif");
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowUp_16x16.gif"); //$NON-NLS-1$
 
 	/**
 	 * Image for the down button.
 	 */
 	final protected static Image DOWN_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowDown_16x16.gif");
+			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowDown_16x16.gif"); //$NON-NLS-1$
 
 	/** list of element that we want to display * */
 	private List<T> listElement;
@@ -281,10 +282,10 @@ public class ReferencesTable<T extends EObject> implements
 		if (helpText != null) {
 			if (widgetFactory != null) {
 				helpButton = FormUtils.createHelpButton(widgetFactory,
-						composite, helpText, null); //$NON-NLS-1$
+						composite, helpText, null); 
 			} else {
 				helpButton = SWTUtils.createHelpButton(composite, helpText,
-						null); //$NON-NLS-1$
+						null); 
 			}
 			helpButton.setLayoutData(data);
 		}
@@ -293,10 +294,10 @@ public class ReferencesTable<T extends EObject> implements
 		// Create and place button vertically on the left side
 		// Button : Add Element
 		// Button Delete Element
-		removeButton = createButton(composite, "", SWT.PUSH);
+		removeButton = createButton(composite, "", SWT.PUSH); //$NON-NLS-1$
 		removeButton.setVisible(true);
 		removeButton.setImage(DELETE_ELEMENT_IMG);
-		removeButton.setToolTipText("Delete selected element(s)");
+		removeButton.setToolTipText(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip);
 		data = new FormData();
 		// data.top = new FormAttachment(addButton,
 		// ITabbedPropertyConstants.HSPACE);
@@ -311,10 +312,10 @@ public class ReferencesTable<T extends EObject> implements
 		removeButton.setLayoutData(data);
 		removeButton.addMouseListener(removeButtonlistener);
 
-		addButton = createButton(composite, "", SWT.PUSH);
+		addButton = createButton(composite, "", SWT.PUSH); //$NON-NLS-1$
 		addButton.setVisible(true);
 		addButton.setImage(NEW_ELEMENT_IMG);
-		addButton.setToolTipText("Add a new element");
+		addButton.setToolTipText(EEFRuntimeUIMessages.ReferencesTable_add_tooltip);
 
 		data = new FormData();
 		// data.top = new FormAttachment(label,
@@ -326,10 +327,10 @@ public class ReferencesTable<T extends EObject> implements
 		addButton.addMouseListener(addButtonlistener);
 
 		// Button Up
-		upButton = createButton(composite, "", SWT.PUSH);
+		upButton = createButton(composite, "", SWT.PUSH); //$NON-NLS-1$
 		upButton.setVisible(true);
 		upButton.setImage(UP_ELEMENT_IMG);
-		upButton.setToolTipText("Up");
+		upButton.setToolTipText(EEFRuntimeUIMessages.ReferencesTable_up_tooltip);
 
 		data = new FormData();
 		// data.top = new FormAttachment(removeButton,
@@ -341,10 +342,10 @@ public class ReferencesTable<T extends EObject> implements
 		upButton.addMouseListener(upButtonlistener);
 
 		// Button Down
-		downButton = createButton(composite, "", SWT.PUSH);
+		downButton = createButton(composite, "", SWT.PUSH); //$NON-NLS-1$
 		downButton.setVisible(true);
 		downButton.setImage(DOWN_ELEMENT_IMG);
-		downButton.setToolTipText("Down");
+		downButton.setToolTipText(EEFRuntimeUIMessages.ReferencesTable_down_tooltip);
 
 		data = new FormData();
 		// data.top = new FormAttachment(upButton,

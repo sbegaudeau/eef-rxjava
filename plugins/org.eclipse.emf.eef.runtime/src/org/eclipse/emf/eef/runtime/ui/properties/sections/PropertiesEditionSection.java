@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -144,7 +145,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 				if (message != null)
 					scrolledForm.setMessage(message, IMessageProvider.ERROR);
 				else
-					scrolledForm.setMessage("");
+					scrolledForm.setMessage(""); //$NON-NLS-1$
 			}
 		};
 	}
@@ -237,11 +238,11 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		for (Iterator iterator = descriptor.keySet().iterator(); iterator.hasNext();) {
 			Object key = iterator.next();
 			Object tab = descriptor.get(key);
-			Method getSectionAtIndex = getMethod(tab, "getSectionAtIndex", int.class);
+			Method getSectionAtIndex = getMethod(tab, "getSectionAtIndex", int.class); //$NON-NLS-1$
 			if (getSectionAtIndex != null) {
 				Object result = callMethod(tab, getSectionAtIndex, new Integer(0));
 				if (result == this) {
-					Method getId = getMethod(key, "getId");
+					Method getId = getMethod(key, "getId"); //$NON-NLS-1$
 					if (getId != null) {
 						String id = (String)callMethod(key, getId);
 						return id;
@@ -249,7 +250,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 				}
 			}
 		}
-		return "";
+		return ""; //$NON-NLS-1$
 	}
 
 	private Map getPageDescriptor(TabbedPropertySheetPage propertySheetPage) {
@@ -260,23 +261,23 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 			while (!cls.equals(TabbedPropertySheetPage.class)) {
 				cls = cls.getSuperclass();
 			}
-			descriptorToTabField = cls.getDeclaredField("descriptorToTab");
+			descriptorToTabField = cls.getDeclaredField("descriptorToTab"); //$NON-NLS-1$
 			oldAccessible = descriptorToTabField.isAccessible();
 			descriptorToTabField.setAccessible(true);
 			return (Map)descriptorToTabField.get(propertySheetPage);
 
 		} catch (SecurityException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} catch (NoSuchFieldException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} catch (IllegalArgumentException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} catch (IllegalAccessException e) {
 
-			EEFRuntimePlugin.getDefault().logError("Error while getting descriptorToTab", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} finally {
 			if (descriptorToTabField != null) {
 				descriptorToTabField.setAccessible(oldAccessible);
@@ -318,7 +319,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		try {
 			return source.getClass().getDeclaredMethod(name, argsType);
 		} catch (Exception e) {
-			EEFRuntimePlugin.getDefault().logError("Cannot found method " + name, e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_method_not_found + name, e);
 		}
 		return null;
 	}
@@ -336,7 +337,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		try {
 			return method.invoke(source, args);
 		} catch (Exception e) {
-			EEFRuntimePlugin.getDefault().logError("An error occured on " + method.getName() + " call.", e);
+			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_error_occured_on + method.getName() + EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
 		}
 		return null;
 	}

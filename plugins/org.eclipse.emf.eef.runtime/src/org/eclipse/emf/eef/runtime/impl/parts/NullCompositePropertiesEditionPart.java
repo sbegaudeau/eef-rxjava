@@ -89,6 +89,6 @@ public class NullCompositePropertiesEditionPart extends CompositePropertiesEditi
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 */
 	public String getTitle() {
-		return "";
+		return ""; //$NON-NLS-1$
 	}
 }

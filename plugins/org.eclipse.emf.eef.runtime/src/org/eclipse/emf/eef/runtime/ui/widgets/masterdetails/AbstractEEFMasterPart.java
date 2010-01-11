@@ -12,8 +12,9 @@ package org.eclipse.emf.eef.runtime.ui.widgets.masterdetails;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -38,7 +39,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 		super(container, toolkit, ExpandableComposite.TITLE_BAR);
 		Composite sectionContainer = toolkit.createComposite(getSection());
 		createSectionClient(sectionContainer, toolkit);
-		getSection().setText("Model");
+		getSection().setText(EEFRuntimeUIMessages.AbstractEEFMasterPart_part_title);
 		getSection().setClient(sectionContainer);
 		
 	}
@@ -52,7 +53,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 		sectionContainer.setLayout(new GridLayout());
 		modelViewer = null;
 		modelViewer = createSectionClientContents(sectionContainer, toolkit);
-		assert modelViewer != null : "The viewer of the master part cannot be null";
+		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_part_cannot_be_null;
 	}
 
 	/**
@@ -97,7 +98,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * @param input the input of the model viewer
 	 */
 	public void setInput(Object input) {
-		assert modelViewer != null : "The viewer cannot be null when defining the input model";
+		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_input_model_definition;
 		modelViewer.setInput(input);
 	}
 	
@@ -105,7 +106,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * @param listener add a listener to the mode viewer
 	 */
 	public void addSelectionChangeListener(ISelectionChangedListener listener) {
-		assert modelViewer != null : "The viewer cannot be null when adding selection change listeners";
+		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_selection_listener_adding;
 		modelViewer.addSelectionChangedListener(listener);
 	}
 	
@@ -113,7 +114,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * @param listener remove a listener to the mode viewer
 	 */
 	public void removeSelectionChangeListener(ISelectionChangedListener listener) {
-		assert modelViewer != null : "The viewer cannot be null when adding selection change listeners";
+		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_selection_listener_adding;
 		modelViewer.removeSelectionChangedListener(listener);
 	}
 
@@ -121,7 +122,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * @param filter add a filter to the model viewer
 	 */
 	public void addFilter(ViewerFilter filter) {
-		assert modelViewer != null : "The viewer cannot be null when adding filters";
+		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_filter_adding;
 		modelViewer.addFilter(filter);
 	}
 		

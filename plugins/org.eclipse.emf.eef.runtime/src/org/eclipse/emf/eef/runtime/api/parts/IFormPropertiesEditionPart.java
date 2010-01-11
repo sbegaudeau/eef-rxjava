@@ -11,9 +11,7 @@
 package org.eclipse.emf.eef.runtime.api.parts;
 
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>

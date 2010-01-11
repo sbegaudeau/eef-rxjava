@@ -19,11 +19,11 @@ import org.eclipse.swt.graphics.RGB;
  */
 public class StringTools {
 
-	public static final String EMPTY_STRING = ""; //$NON-NLS-1$
+	public static final String EMPTY_STRING = "";  //$NON-NLS-1$
 
 	public static RGB toRGB(String s) {
 		if (s != null) {
-			StringTokenizer st = new StringTokenizer(s, ","); //$NON-NLS-1$
+			StringTokenizer st = new StringTokenizer(s, EEFRuntimeMessages.StringTools_color_delim); 
 			if (st.countTokens() == 3) {
 				try {
 					int red = Integer.parseInt(st.nextToken());

@@ -27,7 +27,7 @@ public class EEFTreeMDFormPage extends AbstractEEFMDFormPage {
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-md-form-page"; //$NON-NLS-1$
+	public static final String PAGE_ID = "EEF-md-form-page";  //$NON-NLS-1$
 	
 	/**
 	 * @param editor the form editor in which this page will be included

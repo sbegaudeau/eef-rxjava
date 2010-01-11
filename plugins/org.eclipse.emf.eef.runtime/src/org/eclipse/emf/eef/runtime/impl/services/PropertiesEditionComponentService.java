@@ -31,17 +31,17 @@ public class PropertiesEditionComponentService implements IPropertiesEditionProv
 	/**
 	 * The extension name.
 	 */
-	public static final String EXTENSION_NAME = "PropertiesEditionProvider"; //$NON-NLS-1$
+	public static final String EXTENSION_NAME = "PropertiesEditionProvider";  //$NON-NLS-1$
 
 	/**
 	 * The extension's element name.
 	 */
-	public static final String EXTENSION_ELEMENT_NAME = "PropertiesEditionComponentProvider"; //$NON-NLS-1$
+	public static final String EXTENSION_ELEMENT_NAME = "PropertiesEditionComponentProvider";  //$NON-NLS-1$
 
 	/**
 	 * The element's attribute name.
 	 */
-	public static final String EXTENSION_ATTRIBUTE_NAME = "providerClass"; //$NON-NLS-1$
+	public static final String EXTENSION_ATTRIBUTE_NAME = "providerClass";  //$NON-NLS-1$
 
 	/**
 	 * A singleton for the service.

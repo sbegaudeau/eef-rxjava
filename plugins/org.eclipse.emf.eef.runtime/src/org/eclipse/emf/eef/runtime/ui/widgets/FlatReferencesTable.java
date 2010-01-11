@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -126,7 +127,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
 		editer = new Button(this, SWT.PUSH);
-		editer.setText("..."); //$NON-NLS-1$
+		editer.setText("...");  //$NON-NLS-1$
 
 		filters = new ArrayList<ViewerFilter>();
 		brFilters = new ArrayList<ViewerFilter>();
@@ -161,7 +162,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 						}
 						EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(getParent().getShell(),
 								delegatedLabelProvider, editedElement, feature.getEType(), currentValues,
-								"Edit Feature", getChoiceOfValues(), false, true, filters, brFilters);
+								EEFRuntimeUIMessages.FlatReferencesTable_featureEditor_title, getChoiceOfValues(), false, true, filters, brFilters);
 						dialog.open();
 						EList<?> newValues = dialog.getResult();
 						if (newValues != null)
@@ -248,13 +249,13 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 				public String getText(Object element) {
 					if (element instanceof List) {
-						StringBuilder result = new StringBuilder("");
+						StringBuilder result = new StringBuilder(""); //$NON-NLS-1$
 						final List collec = (List)element;
 						if (collec.size() > 0) {
 							result.append(delegatedLabelProvider.getText(collec.get(0)));
 							if (collec.size() > 1) {
 								for (int i = 1; i < collec.size(); i++) {
-									result.append(", ");
+									result.append(", "); //$NON-NLS-1$
 									result.append(delegatedLabelProvider.getText(collec.get(i)));
 								}
 							}
@@ -361,7 +362,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 */
 	public ISelection getSelection() {
 		// TODO: what this method is supposed to do ???
-		throw new UnsupportedOperationException("Nothing to do for the moment ...");
+		throw new UnsupportedOperationException(EEFRuntimeUIMessages.FlatReferencesTable_nothing_to_do);
 		// / if (editedElement != null)
 		// return new StructuredSelection(editedElement);
 		// return new StructuredSelection(Collections.EMPTY_LIST);
@@ -373,7 +374,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 */
 	public void setSelection(ISelection pSelection) {
 		// TODO: what this method is supposed to do ???
-		throw new UnsupportedOperationException("Nothing to do for the moment ...");
+		throw new UnsupportedOperationException(EEFRuntimeUIMessages.FlatReferencesTable_nothing_to_do);
 		// if (pSelection instanceof StructuredSelection &&
 		// ((StructuredSelection)pSelection).getFirstElement() instanceof EObject) {
 		// this.editedElement = (EObject) ((StructuredSelection)pSelection).getFirstElement();
@@ -395,7 +396,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		// selection.setText(result.toString());
 		// }
 		// } else
-		//			selection.setText(""); //$NON-NLS-1$
+		//			selection.setText(""); 
 	}
 
 	public void refresh() {
@@ -403,13 +404,13 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			if (listLabelProvider != null)
 				selection.setText(listLabelProvider.getText(viewsEditUtil.getVirtualList()));
 			else {
-				StringBuilder result = new StringBuilder("");
+				StringBuilder result = new StringBuilder(""); //$NON-NLS-1$
 				final List collec = viewsEditUtil.getVirtualList();
 				if (collec.size() > 0) {
 					result.append(collec.get(0).toString());
 					if (collec.size() > 1) {
 						for (int i = 1; i < collec.size(); i++) {
-							result.append(", ");
+							result.append(", "); //$NON-NLS-1$
 							result.append(collec.get(i).toString());
 						}
 					}
@@ -417,7 +418,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 				selection.setText(result.toString());
 			}
 		} else
-			selection.setText(""); //$NON-NLS-1$
+			selection.setText("");  //$NON-NLS-1$
 	}
 
 	/**

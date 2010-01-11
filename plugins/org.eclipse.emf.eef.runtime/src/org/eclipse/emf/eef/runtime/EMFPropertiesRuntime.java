@@ -28,7 +28,7 @@ import org.osgi.framework.BundleContext;
 public class EMFPropertiesRuntime extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime";
+	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime";  //$NON-NLS-1$
 
 	// The shared instance
 	private static EMFPropertiesRuntime plugin;
@@ -36,7 +36,7 @@ public class EMFPropertiesRuntime extends AbstractUIPlugin {
 	// Shared adapterFactory
 	private static AdapterFactory adapterFactory;
 
-	public static final String ICONS_16x16 = "icons/16x16/";
+	public static final String ICONS_16x16 = "icons/16x16/";  //$NON-NLS-1$
 
 	private static ImageRegistry registry = null;
 

@@ -24,7 +24,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -152,10 +152,9 @@ public class EditPropertyWizard extends Wizard {
 	private class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
 
 		protected EditPropertyWizardPage() {
-			super("Main page"); //$NON-NLS-1$
+			super(EEFRuntimeUIMessages.EditPropertyWizard_main_page_title); 
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(MessagesTool.getString("EditPropertyWizard.description",
-					new Object[] {eObject.eClass().getName()}));
+			this.setDescription(EEFRuntimeUIMessages.EditPropertyWizard_main_page_description + eObject.eClass().getName());
 		}
 
 		public void createControl(Composite parent) {

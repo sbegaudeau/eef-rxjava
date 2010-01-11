@@ -27,7 +27,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
@@ -237,9 +237,9 @@ public class PropertiesEditionWizard extends Wizard {
 		private List<Button> buttons = new ArrayList<Button>();
 
 		protected ElementCreationWizardPage() {
-			super("Element creation page page"); //$NON-NLS-1$
-			this.setTitle("Element type"); //$NON-NLS-1$
-			this.setDescription("Choose the type of element to create");//$NON-NLS-1$
+			super(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_key); 
+			this.setTitle(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_title); 
+			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_description);
 		}
 
 		public void createControl(Composite parent) {
@@ -274,7 +274,7 @@ public class PropertiesEditionWizard extends Wizard {
 		private PropertiesEditionViewer viewer;
 
 		protected EditPropertyWizardPage() {
-			super("Main page"); //$NON-NLS-1$
+			super(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_key); 
 		}
 
 		/**
@@ -298,15 +298,14 @@ public class PropertiesEditionWizard extends Wizard {
 				setControl(viewer.getControl());
 				
 			} catch (InstantiationException e) {
-				EEFRuntimePlugin.getDefault().logError("Trying to use PropertiesEditionWizard in LIVE_MODE.",
+				EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionWizard_error_wizard_live_mode,
 						e);
 			}
 		}
 
 		public void setInput(EObject eObject) {
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(MessagesTool.getString("EditPropertyWizard.description",
-					new Object[] {eObject.eClass().getName()}));
+			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description + eObject.eClass().getName());
 			viewer.setInput(eObject);
 			viewer.addPropertiesListener(this);
 		}

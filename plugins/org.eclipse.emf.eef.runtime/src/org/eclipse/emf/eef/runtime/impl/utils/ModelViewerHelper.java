@@ -37,7 +37,7 @@ public class ModelViewerHelper {
 		return lastSelection;
 	}
 
-	public static final String NAME = "nom"; //$NON-NLS-1$
+	public static final String NAME = EEFRuntimeMessages.ModelViewerHelper_name_feature; 
 
 	public static String getName(Object element) {
 		if (element instanceof EObject) {
@@ -52,7 +52,7 @@ public class ModelViewerHelper {
 			}
 			if (eobj instanceof EClass) {
 				String type = ((EClass)eobj).getName();
-				if (type != null && type != "") { //$NON-NLS-1$
+				if (type != null && type != "") {  //$NON-NLS-1$
 					return type;
 				}
 			}

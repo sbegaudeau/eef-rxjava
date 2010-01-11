@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -462,7 +463,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		if (part instanceof ISWTPropertiesEditionPart)
 			editComposite = ((ISWTPropertiesEditionPart)part).createFigure(folder);
 		if (part instanceof IFormPropertiesEditionPart) {
-			Assert.isNotNull(toolkit, "A widget factory must be set in viewer to use 'Form' style.");
+			Assert.isNotNull(toolkit, EEFRuntimeUIMessages.PropertiesEditionViewer_widget_factory_not_defined);
 			editComposite = ((IFormPropertiesEditionPart)part).createFigure(folder, toolkit);
 		}
 		if (editComposite != null) {

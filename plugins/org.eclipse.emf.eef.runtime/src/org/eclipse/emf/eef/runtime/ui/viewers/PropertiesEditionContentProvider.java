@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
@@ -43,7 +44,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	public PropertiesEditionContentProvider(IPropertiesEditionProvider propertiesEditionProvider, String mode)
 			throws InstantiationException {
 		if (mode == IPropertiesEditionComponent.LIVE_MODE)
-			throw new InstantiationException("You have to define an EditingDomain when using LIVE_MODE");
+			throw new InstantiationException(EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
 		this.propertiesEditionProvider = propertiesEditionProvider;
 		this.mode = mode;
 	}

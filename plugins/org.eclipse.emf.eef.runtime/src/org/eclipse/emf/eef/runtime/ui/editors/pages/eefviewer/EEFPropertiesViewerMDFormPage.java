@@ -24,7 +24,7 @@ public class EEFPropertiesViewerMDFormPage extends AbstractEEFMDFormPage {
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-md-form-page"; //$NON-NLS-1$
+	public static final String PAGE_ID = "EEF-md-form-page";  //$NON-NLS-1$
 	
 	private boolean orientable = true;
 	private boolean showValidateAction = true;

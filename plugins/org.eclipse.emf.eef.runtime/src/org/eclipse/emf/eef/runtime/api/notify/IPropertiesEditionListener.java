@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.api.notify;
 
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>

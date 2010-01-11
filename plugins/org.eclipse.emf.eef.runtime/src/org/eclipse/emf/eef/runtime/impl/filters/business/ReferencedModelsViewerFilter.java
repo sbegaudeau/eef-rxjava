@@ -12,7 +12,7 @@ package org.eclipse.emf.eef.runtime.impl.filters.business;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFRuntimeMessages;
 import org.eclipse.jface.viewers.Viewer;
 
 /**
@@ -28,7 +28,7 @@ public class ReferencedModelsViewerFilter extends BusinessViewerFilter {
 	 */
 	public ReferencedModelsViewerFilter(EObject eObject, boolean nullable) {
 		super(eObject, nullable);
-		name = MessagesTool.getString("ReferencedModelsViewerFilter.name");
+		name = EEFRuntimeMessages.ReferencedModelsViewerFilter_name;
 	}
 
 	/*
@@ -37,7 +37,7 @@ public class ReferencedModelsViewerFilter extends BusinessViewerFilter {
 	 * java.lang.Object)
 	 */
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		if (nullable && element instanceof String && element.equals("")) //$NON-NLS-1$
+		if (nullable && element instanceof String && element.equals(""))  //$NON-NLS-1$
 			return true;
 		if (current.eResource() != null)
 			return (element instanceof EObject && ((EObject)element).eResource() != null && !current

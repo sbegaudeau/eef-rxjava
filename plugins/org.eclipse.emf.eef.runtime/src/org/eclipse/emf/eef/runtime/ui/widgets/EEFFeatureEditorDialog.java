@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.provider.ItemProvider;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.eef.runtime.impl.filters.business.BusinessViewerFilter;
-import org.eclipse.emf.eef.runtime.ui.utils.MessagesTool;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IContentProvider;
@@ -126,7 +126,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
 		shell.setText(EMFEditUIPlugin.INSTANCE.getString(
-				"_UI_FeatureEditorDialog_title", new Object[] { displayName,
+				"_UI_FeatureEditorDialog_title", new Object[] { displayName, //$NON-NLS-1$
 						labelProvider.getText(object) }));
 		shell.setImage(labelProvider.getImage(object));
 	}
@@ -159,8 +159,8 @@ public class EEFFeatureEditorDialog extends Dialog {
 
 		Label choiceLabel = new Label(choiceComposite, SWT.NONE);
 		choiceLabel.setText(choiceOfValues == null ? EMFEditUIPlugin.INSTANCE
-				.getString("_UI_Value_label") : EMFEditUIPlugin.INSTANCE
-				.getString("_UI_Choices_label"));
+				.getString("_UI_Value_label") : EMFEditUIPlugin.INSTANCE //$NON-NLS-1$
+				.getString("_UI_Choices_label")); //$NON-NLS-1$
 		GridData choiceLabelGridData = new GridData();
 		choiceLabelGridData.verticalAlignment = SWT.FILL;
 		choiceLabelGridData.horizontalAlignment = SWT.FILL;
@@ -195,12 +195,9 @@ public class EEFFeatureEditorDialog extends Dialog {
 			// business rules
 			List<Button> checkButtons = new ArrayList<Button>();
 			if (brFilters != null && !brFilters.isEmpty()) {
-				String currentModel = MessagesTool
-						.getString("EMFModelViewerDialog.currentModel");
-				String referencedModels = MessagesTool
-						.getString("EMFModelViewerDialog.referencedModels");
-				String differentContainer = MessagesTool
-						.getString("EMFModelViewerDialog.differentContainer");
+				String currentModel = EEFRuntimeUIMessages.EEFFeatureEditorDialog_current_model_filter_title;
+				String referencedModels = EEFRuntimeUIMessages.EEFFeatureEditorDialog_referenced_models_filter_title;
+				String differentContainer = EEFRuntimeUIMessages.EEFFeatureEditorDialog_different_container_filter_title;
 				for (int i = 0; i < brFilters.size(); i++) {
 					String filterName = null;
 					if (brFilters.get(i) instanceof BusinessViewerFilter) {
@@ -213,7 +210,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 						if (filterName != null) {
 							filteredContent.setText(filterName);
 						} else {
-							filteredContent.setText("Filter name"); //$NON-NLS-1$
+							filteredContent.setText(EEFRuntimeUIMessages.EEFFeatureEditorDialog_filter_name);
 						}
 
 						filteredContent.setData(viewerFilter);
@@ -288,7 +285,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 		new Label(controlButtons, SWT.NONE);
 
 		final Button addButton = new Button(controlButtons, SWT.PUSH);
-		addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label"));
+		addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")); //$NON-NLS-1$
 		GridData addButtonGridData = new GridData();
 		addButtonGridData.verticalAlignment = SWT.FILL;
 		addButtonGridData.horizontalAlignment = SWT.FILL;
@@ -296,7 +293,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 
 		final Button removeButton = new Button(controlButtons, SWT.PUSH);
 		removeButton.setText(EMFEditUIPlugin.INSTANCE
-				.getString("_UI_Remove_label"));
+				.getString("_UI_Remove_label")); //$NON-NLS-1$
 		GridData removeButtonGridData = new GridData();
 		removeButtonGridData.verticalAlignment = SWT.FILL;
 		removeButtonGridData.horizontalAlignment = SWT.FILL;
@@ -308,7 +305,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 		spaceLabel.setLayoutData(spaceLabelGridData);
 
 		final Button upButton = new Button(controlButtons, SWT.PUSH);
-		upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label"));
+		upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label")); //$NON-NLS-1$
 		GridData upButtonGridData = new GridData();
 		upButtonGridData.verticalAlignment = SWT.FILL;
 		upButtonGridData.horizontalAlignment = SWT.FILL;
@@ -316,7 +313,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 
 		final Button downButton = new Button(controlButtons, SWT.PUSH);
 		downButton
-				.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label"));
+				.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label")); //$NON-NLS-1$
 		GridData downButtonGridData = new GridData();
 		downButtonGridData.verticalAlignment = SWT.FILL;
 		downButtonGridData.horizontalAlignment = SWT.FILL;
@@ -338,7 +335,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 
 		Label featureLabel = new Label(featureComposite, SWT.NONE);
 		featureLabel.setText(EMFEditUIPlugin.INSTANCE
-				.getString("_UI_Feature_label"));
+				.getString("_UI_Feature_label")); //$NON-NLS-1$
 		GridData featureLabelGridData = new GridData();
 		featureLabelGridData.horizontalSpan = 2;
 		featureLabelGridData.horizontalAlignment = SWT.FILL;
@@ -397,7 +394,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 									(EDataType) eClassifier, choiceText
 											.getText());
 							values.getChildren().add(value);
-							choiceText.setText("");
+							choiceText.setText(""); //$NON-NLS-1$
 							featureTableViewer
 									.setSelection(new StructuredSelection(value));
 							event.doit = false;
@@ -405,7 +402,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 							// Ignore
 						}
 					} else if (event.character == '\33') {
-						choiceText.setText("");
+						choiceText.setText(""); //$NON-NLS-1$
 						event.doit = false;
 					}
 				}
@@ -461,7 +458,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 						Object value = EcoreUtil.createFromString(
 								(EDataType) eClassifier, choiceText.getText());
 						values.getChildren().add(value);
-						choiceText.setText("");
+						choiceText.setText(""); //$NON-NLS-1$
 						featureTableViewer
 								.setSelection(new StructuredSelection(value));
 					} catch (RuntimeException exception) {

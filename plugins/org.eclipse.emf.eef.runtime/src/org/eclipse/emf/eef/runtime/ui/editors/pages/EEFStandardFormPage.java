@@ -42,7 +42,7 @@ public class EEFStandardFormPage extends FormPage {
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-std-form-page"; //$NON-NLS-1$
+	public static final String PAGE_ID = "EEF-std-form-page";  //$NON-NLS-1$
 
 	// /**
 	// * The form editor in which this page will be included
@@ -95,7 +95,7 @@ public class EEFStandardFormPage extends FormPage {
 	 */
 	public EEFStandardFormPage(FormEditor editor, String pageTitle,
 			AdapterFactoryEditingDomain editingDomain, ComposedAdapterFactory adapterFactory) {
-		super(editor, PAGE_ID, pageTitle); //$NON-NLS-1$
+		super(editor, PAGE_ID, pageTitle); 
 		// this.editor = editor;
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
