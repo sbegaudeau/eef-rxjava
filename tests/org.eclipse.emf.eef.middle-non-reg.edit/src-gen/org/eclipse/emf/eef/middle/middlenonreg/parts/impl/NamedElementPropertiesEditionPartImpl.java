@@ -11,6 +11,7 @@ import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository
 import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
 import org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -41,7 +42,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -52,6 +53,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -67,12 +69,15 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createDocumentedElement(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -91,6 +96,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createNameText(propertiesGroup);
 	}
+
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, MiddlenonregMessages.NamedElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MiddlenonregViewsRepository.NamedElement.name, MiddlenonregViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -112,6 +118,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MiddlenonregViewsRepository.NamedElement.name, MiddlenonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createDocumentedElement(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(AbstractnonregViewsRepository.class);
 		documentedElementPropertiesEditionPart = (DocumentedElementPropertiesEditionPart)provider.getPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, AbstractnonregViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -120,7 +127,13 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -145,7 +158,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		if (newValue != null) {
 			name.setText(newValue);
 		} else {
-			name.setText("");  //$NON-NLS-1$
+			name.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -197,6 +210,15 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return MiddlenonregMessages.NamedElement_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -2,6 +2,22 @@
 <?eclipse version="3.0"?>
 
  <plugin>
+
+  <!-- EEF extensions -->
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.middle.middlenonreg.providers.MiddlenonregPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+
+   <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -26,6 +42,12 @@
                category="default"
                id="Base">
          </propertyTab>
+         <propertyTab
+               label="DocumentedElement"
+               category="extended"
+               id="DocumentedElement"
+               afterTab="Base">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -33,17 +55,17 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.middle.middlenonreg.properties">
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.middle.middlenonreg.section.NamedElement">
+               id="org.eclipse.emf.eef.middle.middlenonreg.section.NamedElement"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.middle.middlenonreg.NamedElement">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.middle.middlenonreg.section.NamedElement">
+               id="org.eclipse.emf.eef.middle.middlenonreg.section.NamedElement"
+               tab="DocumentedElement">
              <input
                     type="org.eclipse.emf.eef.middle.middlenonreg.NamedElement">
              </input>

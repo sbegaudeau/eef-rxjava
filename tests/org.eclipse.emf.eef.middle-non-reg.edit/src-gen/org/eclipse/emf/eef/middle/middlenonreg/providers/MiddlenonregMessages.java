@@ -15,6 +15,8 @@ public class MiddlenonregMessages extends NLS {
 
 	public static String NamedElement_ReadOnly;
 
+	public static String NamedElement_Part_Title;
+
 	public static String NamedElementPropertiesEditionPart_NameLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;

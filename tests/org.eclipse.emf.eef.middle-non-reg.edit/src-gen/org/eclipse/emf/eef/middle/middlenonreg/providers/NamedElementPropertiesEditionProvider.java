@@ -25,6 +25,15 @@ public class NamedElementPropertiesEditionProvider implements IPropertiesEdition
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof NamedElement) && (MiddlenonregPackage.eINSTANCE.getNamedElement() == eObject.eClass());
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (NamedElementBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.BASE_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
