@@ -1128,7 +1128,7 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="metamodelFactory" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=""/>
-      <body xsi:type="mtl:TemplateInvocation">
+      <body xsi:type="mtl:QueryInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="common.emtl#/0/metamodelPrefix"/>
         <argument xsi:type="ocl.ecore:PropertyCallExp">
