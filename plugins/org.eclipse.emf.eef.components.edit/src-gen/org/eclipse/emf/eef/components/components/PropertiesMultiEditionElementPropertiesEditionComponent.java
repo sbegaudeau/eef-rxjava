@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2009 Obeo.
+ *  Copyright (c) 2008-2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,9 +7,7 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- * 
  *
- * $Id: PropertiesMultiEditionElementPropertiesEditionComponent.java,v 1.13 2009/12/30 15:17:55 nlepine Exp $
  */
 package org.eclipse.emf.eef.components.components;
 
@@ -63,11 +61,12 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  getPropertiesEditionPart(int, java.lang.String)
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(key)) {
@@ -79,8 +78,10 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.class == key) {
@@ -89,10 +90,12 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 		}
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.class) {
