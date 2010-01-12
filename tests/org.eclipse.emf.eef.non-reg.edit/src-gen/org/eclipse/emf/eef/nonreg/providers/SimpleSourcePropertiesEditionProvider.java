@@ -4,9 +4,9 @@
 package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.nonreg.components.SimpleSourcePropertiesEditionComponent;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
 import org.eclipse.emf.eef.nonreg.modelNavigation.Source;
-import org.eclipse.emf.eef.nonreg.modelNavigation.components.SimpleSourcePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
@@ -22,6 +22,15 @@ public class SimpleSourcePropertiesEditionProvider implements IPropertiesEdition
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Source) && (ModelNavigationPackage.eINSTANCE.getSource() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (SimpleSourcePropertiesEditionComponent.SOURCE_PART.equals(part));
 	}
 
 	/**

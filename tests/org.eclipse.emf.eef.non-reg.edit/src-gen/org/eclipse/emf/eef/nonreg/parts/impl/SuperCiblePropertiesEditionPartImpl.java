@@ -8,11 +8,12 @@ package org.eclipse.emf.eef.nonreg.parts.impl;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.NamedElementPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.SuperCiblePropertiesEditionPart;
+import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.swt.SWT;
@@ -32,7 +33,7 @@ public class SuperCiblePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -43,6 +44,7 @@ public class SuperCiblePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -58,11 +60,13 @@ public class SuperCiblePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createNamedElement(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -78,7 +82,13 @@ public class SuperCiblePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -151,6 +161,15 @@ public class SuperCiblePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.SuperCible_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

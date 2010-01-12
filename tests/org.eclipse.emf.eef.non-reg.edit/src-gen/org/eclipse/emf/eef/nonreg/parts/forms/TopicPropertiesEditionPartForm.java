@@ -11,7 +11,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -22,14 +22,11 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -60,6 +57,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -70,19 +68,22 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+
 		createDocumentedElement(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -100,12 +101,13 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		createDescriptionTextarea(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
+
 	protected void createDescriptionTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label descriptionLabel = FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.TopicPropertiesEditionPart_DescriptionLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Topic.description, NonregViewsRepository.FORM_KIND));
 		GridData descriptionLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptionLabelData.horizontalSpan = 3;
 		descriptionLabel.setLayoutData(descriptionLabelData);
-		description = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+		description = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptionData.horizontalSpan = 2;
 		descriptionData.heightHint = 80;
@@ -123,32 +125,24 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 			}
 
 		});
-		description.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TopicPropertiesEditionPartForm.this, NonregViewsRepository.Topic.description, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, description.getText()));
-				}
-			}
-
-		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Topic.description, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createDocumentedElement(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(AbstractnonregViewsRepository.class);
 		documentedElementPropertiesEditionPart = (DocumentedElementPropertiesEditionPart)provider.getPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, AbstractnonregViewsRepository.FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)documentedElementPropertiesEditionPart).createControls(widgetFactory, container, messageManager);
+		((IFormPropertiesEditionPart)documentedElementPropertiesEditionPart).createControls(widgetFactory, container);
 	}
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -222,6 +216,15 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Topic_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

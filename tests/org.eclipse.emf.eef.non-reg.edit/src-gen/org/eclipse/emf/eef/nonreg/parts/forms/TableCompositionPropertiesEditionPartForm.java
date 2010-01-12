@@ -6,19 +6,22 @@ package org.eclipse.emf.eef.nonreg.parts.forms;
 // Start of user code for imports
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.nonreg.NonregFactory;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TableCompositionPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -27,10 +30,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -44,7 +44,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -79,6 +78,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -89,19 +89,22 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createTablecompositionTableComposition(widgetFactory, view);
+
 		createTablecompositionROTableComposition(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -117,7 +120,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		tableContainer.setLayoutData(tableContainerData);
 		tableContainerLayout.numColumns = 2;
 		tableContainer.setLayout(tableContainerLayout);
-		org.eclipse.swt.widgets.Table tableTablecomposition = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION);
+		org.eclipse.swt.widgets.Table tableTablecomposition = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		tableTablecomposition.setHeaderVisible(true);
 		GridData gdTablecomposition = new GridData();
 		gdTablecomposition.grabExcessHorizontalSpace = true;
@@ -136,8 +139,22 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		// End of user code
 
 		tablecomposition = new TableViewer(tableTablecomposition);
-		tablecomposition.setContentProvider(new ArrayContentProvider());
-		tablecomposition.setLabelProvider(new ITableLabelProvider() {
+		tablecomposition.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
+
+			/**
+			 * {@inheritDoc}
+			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 */
+			@Override
+			public Object[] getElements(Object object) {
+				if (object instanceof Collection)
+					return ((Collection) object).toArray();
+				else
+					return super.getElements(object);
+			}
+			
+		});
+		tablecomposition.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
 
 			//Start of user code for label provider definition for Tablecomposition
 			public String getColumnText(Object object, int columnIndex) {
@@ -155,19 +172,6 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 				return null;
 			}
 			//End of user code
-
-			public void addListener(ILabelProviderListener listener) {
-			}
-
-			public void dispose() {
-			}
-
-			public boolean isLabelProperty(Object element, String property) {
-				return false;
-			}
-
-			public void removeListener(ILabelProviderListener listener) {
-			}
 
 		});
 		tablecomposition.getTable().addListener(SWT.MouseDoubleClick, new Listener(){
@@ -306,6 +310,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		// End of user code
 
 	}
+
 	/**
 	 * @param container
 	 */
@@ -317,7 +322,7 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		tableContainer.setLayoutData(tableContainerData);
 		tableContainerLayout.numColumns = 2;
 		tableContainer.setLayout(tableContainerLayout);
-		org.eclipse.swt.widgets.Table tableTablecompositionRO = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION);
+		org.eclipse.swt.widgets.Table tableTablecompositionRO = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		tableTablecompositionRO.setHeaderVisible(true);
 		tableTablecompositionRO.setEnabled(false);
 		tableTablecompositionRO.setToolTipText(NonregMessages.TableComposition_ReadOnly);
@@ -338,8 +343,22 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 		// End of user code
 
 		tablecompositionRO = new TableViewer(tableTablecompositionRO);
-		tablecompositionRO.setContentProvider(new ArrayContentProvider());
-		tablecompositionRO.setLabelProvider(new ITableLabelProvider() {
+		tablecompositionRO.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
+
+			/**
+			 * {@inheritDoc}
+			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 */
+			@Override
+			public Object[] getElements(Object object) {
+				if (object instanceof Collection)
+					return ((Collection) object).toArray();
+				else
+					return super.getElements(object);
+			}
+			
+		});
+		tablecompositionRO.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
 
 			//Start of user code for label provider definition for TablecompositionRO
 			public String getColumnText(Object object, int columnIndex) {
@@ -357,19 +376,6 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 				return null;
 			}
 			//End of user code
-
-			public void addListener(ILabelProviderListener listener) {
-			}
-
-			public void dispose() {
-			}
-
-			public boolean isLabelProperty(Object element, String property) {
-				return false;
-			}
-
-			public void removeListener(ILabelProviderListener listener) {
-			}
 
 		});
 		tablecompositionRO.getTable().addListener(SWT.MouseDoubleClick, new Listener(){
@@ -516,7 +522,13 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -732,6 +744,15 @@ public class TableCompositionPropertiesEditionPartForm extends CompositeProperti
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.TableComposition_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -12,7 +12,9 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.PresencePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -50,24 +52,26 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 	public PersonPropertiesEditionComponent(EObject person, String editing_mode) {
 		super(editing_mode);
 		if (person instanceof Person) {
-			personBasePropertiesEditionComponent = new PersonBasePropertiesEditionComponent(person, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(person);
+			personBasePropertiesEditionComponent = (PersonBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(person, editing_mode, PersonBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(personBasePropertiesEditionComponent);
-			personPresencePropertiesEditionComponent = new PersonPresencePropertiesEditionComponent(person, editing_mode); 
+			personPresencePropertiesEditionComponent = (PersonPresencePropertiesEditionComponent)provider.getPropertiesEditionComponent(person, editing_mode, PersonPresencePropertiesEditionComponent.PRESENCE_PART);
 			addSubComponent(personPresencePropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  getPropertiesEditionPart(int, java.lang.String)
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (PersonBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (PersonPropertiesEditionPart)personBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
-		if ("Presence".equals(key)) {
+		if (PersonPresencePropertiesEditionComponent.PRESENCE_PART.equals(key)) {
 			presencePart = (PresencePropertiesEditionPart)personPresencePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)presencePart;
 		}
@@ -76,8 +80,10 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (NonregViewsRepository.Person.class == key) {
@@ -90,10 +96,12 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 		}
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == NonregViewsRepository.Person.class) {

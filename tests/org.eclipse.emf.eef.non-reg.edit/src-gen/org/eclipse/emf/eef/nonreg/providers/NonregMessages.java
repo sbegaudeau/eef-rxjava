@@ -35,59 +35,115 @@ public class NonregMessages extends NLS {
 
 	public static String EclipseSummit_ReadOnly;
 
+	public static String EclipseSummit_Part_Title;
+
 	public static String Person_ReadOnly;
+
+	public static String Person_Part_Title;
 
 	public static String Company_ReadOnly;
 
+	public static String Company_Part_Title;
+
 	public static String Talk_ReadOnly;
+
+	public static String Talk_Part_Title;
 
 	public static String Topic_ReadOnly;
 
+	public static String Topic_Part_Title;
+
 	public static String Presence_ReadOnly;
+
+	public static String Presence_Part_Title;
 
 	public static String Site_ReadOnly;
 
+	public static String Site_Part_Title;
+
 	public static String Access_ReadOnly;
+
+	public static String Access_Part_Title;
 
 	public static String Adress_ReadOnly;
 
+	public static String Adress_Part_Title;
+
 	public static String Accreditations_ReadOnly;
+
+	public static String Accreditations_Part_Title;
 
 	public static String TestFilter_ReadOnly;
 
+	public static String TestFilter_Part_Title;
+
 	public static String TestVRFilter_ReadOnly;
+
+	public static String TestVRFilter_Part_Title;
 
 	public static String Source_ReadOnly;
 
+	public static String Source_Part_Title;
+
 	public static String SuperCible_ReadOnly;
+
+	public static String SuperCible_Part_Title;
 
 	public static String Cible_ReadOnly;
 
+	public static String Cible_Part_Title;
+
 	public static String Text_ReadOnly;
+
+	public static String Text_Part_Title;
 
 	public static String TextArea_ReadOnly;
 
+	public static String TextArea_Part_Title;
+
 	public static String Checkbox_ReadOnly;
+
+	public static String Checkbox_Part_Title;
 
 	public static String Radio_ReadOnly;
 
+	public static String Radio_Part_Title;
+
 	public static String Combo_ReadOnly;
+
+	public static String Combo_Part_Title;
 
 	public static String EObjectFlatComboViewer_ReadOnly;
 
+	public static String EObjectFlatComboViewer_Part_Title;
+
 	public static String ReferencesTable_ReadOnly;
+
+	public static String ReferencesTable_Part_Title;
 
 	public static String EMFComboViewer_ReadOnly;
 
+	public static String EMFComboViewer_Part_Title;
+
 	public static String MultiValuedEditor_ReadOnly;
+
+	public static String MultiValuedEditor_Part_Title;
 
 	public static String TableComposition_ReadOnly;
 
+	public static String TableComposition_Part_Title;
+
 	public static String AdvancedTableComposition_ReadOnly;
+
+	public static String AdvancedTableComposition_Part_Title;
 
 	public static String AdvancedReferencesTable_ReadOnly;
 
+	public static String AdvancedReferencesTable_Part_Title;
+
 	public static String AdvancedEObjectFlatComboViewer_ReadOnly;
+
+	public static String AdvancedEObjectFlatComboViewer_Part_Title;
 
 	public static String EclipseSummitPropertiesEditionPart_PlaceLabel;
 
@@ -109,7 +165,7 @@ public class NonregMessages extends NLS {
 
 	public static String CompanyPropertiesEditionPart_AdressLabel;
 
-	public static String TalkPropertiesEditionPart_TitleLabel;
+	public static String TalkPropertiesEditionPart_Title_Label;
 
 	public static String TalkPropertiesEditionPart_TypeLabel;
 

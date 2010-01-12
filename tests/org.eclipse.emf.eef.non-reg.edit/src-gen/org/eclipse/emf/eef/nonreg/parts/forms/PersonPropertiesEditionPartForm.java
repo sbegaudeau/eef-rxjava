@@ -22,7 +22,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
@@ -55,7 +55,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -92,6 +91,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -102,19 +102,22 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+
 		createAccreditations(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -138,6 +141,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createWorkForFlatComboViewer(propertiesGroup, widgetFactory);
 		propertiesSection.setClient(propertiesGroup);
 	}
+
 	protected void createFirstnameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_FirstnameLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.firstname, NonregViewsRepository.FORM_KIND));
 		firstname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -188,6 +192,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.firstname, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createLastnameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_LastnameLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.lastname, NonregViewsRepository.FORM_KIND));
 		lastname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -238,6 +243,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.lastname, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createAgeText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.PersonPropertiesEditionPart_AgeLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Person.age, NonregViewsRepository.FORM_KIND));
 		age = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -288,6 +294,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.age, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createEclipseCommiterCheckbox(FormToolkit widgetFactory, Composite parent) {
 		eclipseCommiter = widgetFactory.createButton(parent, NonregMessages.PersonPropertiesEditionPart_EclipseCommiterLabel, SWT.CHECK);
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
@@ -308,6 +315,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		eclipseCommiter.setLayoutData(eclipseCommiterData);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.eclipseCommiter, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createIsRegisteredCheckbox(FormToolkit widgetFactory, Composite parent) {
 		isRegistered = widgetFactory.createButton(parent, NonregMessages.PersonPropertiesEditionPart_IsRegisteredLabel, SWT.CHECK);
 		isRegistered.addSelectionListener(new SelectionAdapter() {
@@ -328,6 +336,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		isRegistered.setLayoutData(isRegisteredData);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.isRegistered, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createGenderRadioViewer(Composite parent) {
 		genderRadioViewer = new RadioViewer(parent, SWT.CHECK);
 		GridData genderData = new GridData(GridData.FILL_HORIZONTAL);
@@ -335,6 +344,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		genderRadioViewer.setLayoutData(genderData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.gender, NonregViewsRepository.FORM_KIND), null);
 	}
+
 	/**
 	 * @param propertiesGroup
 	 */
@@ -377,15 +387,22 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Person.workFor, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+
 	protected void createAccreditations(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NonregViewsRepository.class);
 		accreditationsPropertiesEditionPart = (AccreditationsPropertiesEditionPart)provider.getPropertiesEditionPart(NonregViewsRepository.Accreditations.class, NonregViewsRepository.FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)accreditationsPropertiesEditionPart).createControls(widgetFactory, container, messageManager);
+		((IFormPropertiesEditionPart)accreditationsPropertiesEditionPart).createControls(widgetFactory, container);
 	}
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -409,7 +426,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			firstname.setText(newValue);
 		} else {
-			firstname.setText("");  //$NON-NLS-1$
+			firstname.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -439,7 +456,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			lastname.setText(newValue);
 		} else {
-			lastname.setText("");  //$NON-NLS-1$
+			lastname.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -469,7 +486,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		if (newValue != null) {
 			age.setText(newValue);
 		} else {
-			age.setText("");  //$NON-NLS-1$
+			age.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -719,6 +736,15 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Person_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

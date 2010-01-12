@@ -23,6 +23,15 @@ public class MultiValuedEditorPropertiesEditionProvider implements IPropertiesEd
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Person) && (NonregPackage.eINSTANCE.getPerson() == eObject.eClass());
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (MultiValuedEditorPropertiesEditionComponent.BASE_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}

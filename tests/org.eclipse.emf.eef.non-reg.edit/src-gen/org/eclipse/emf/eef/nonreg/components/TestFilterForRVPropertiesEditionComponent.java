@@ -12,7 +12,9 @@ import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.TestVRFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -54,26 +56,28 @@ public class TestFilterForRVPropertiesEditionComponent extends ComposedPropertie
 	public TestFilterForRVPropertiesEditionComponent(EObject forFilters, String editing_mode) {
 		super(editing_mode);
 		if (forFilters instanceof ForFilters) {
-			testFilterForRVTestFilterPropertiesEditionComponent = new TestFilterForRVTestFilterPropertiesEditionComponent(forFilters, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(forFilters);
+			testFilterForRVTestFilterPropertiesEditionComponent = (TestFilterForRVTestFilterPropertiesEditionComponent)provider.getPropertiesEditionComponent(forFilters, editing_mode, TestFilterForRVTestFilterPropertiesEditionComponent.TESTFILTER_PART);
 			addSubComponent(testFilterForRVTestFilterPropertiesEditionComponent);
-			testFilterForRVTestVRFilterPropertiesEditionComponent = new TestFilterForRVTestVRFilterPropertiesEditionComponent(forFilters, editing_mode); 
+			testFilterForRVTestVRFilterPropertiesEditionComponent = (TestFilterForRVTestVRFilterPropertiesEditionComponent)provider.getPropertiesEditionComponent(forFilters, editing_mode, TestFilterForRVTestVRFilterPropertiesEditionComponent.TESTVRFILTER_PART);
 			addSubComponent(testFilterForRVTestVRFilterPropertiesEditionComponent);
-			testFilterForReferenceTablesPropertiesEditionComponent = new TestFilterForReferenceTablesPropertiesEditionComponent(forFilters, editing_mode);
+			testFilterForReferenceTablesPropertiesEditionComponent = (TestFilterForReferenceTablesPropertiesEditionComponent)provider.getPropertiesEditionComponent(forFilters, editing_mode, TestFilterForReferenceTablesPropertiesEditionComponent.TESTFILTER_PART);
 			addSubComponent(testFilterForReferenceTablesPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  getPropertiesEditionPart(int, java.lang.String)
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("testFilter".equals(key)) {
+		if (TestFilterForRVTestFilterPropertiesEditionComponent.TESTFILTER_PART.equals(key)) {
 			testFilterPart = (TestFilterPropertiesEditionPart)testFilterForRVTestFilterPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)testFilterPart;
 		}
-		if ("testVRFilter".equals(key)) {
+		if (TestFilterForRVTestVRFilterPropertiesEditionComponent.TESTVRFILTER_PART.equals(key)) {
 			testVRFilterPart = (TestVRFilterPropertiesEditionPart)testFilterForRVTestVRFilterPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)testVRFilterPart;
 		}
@@ -82,8 +86,10 @@ public class TestFilterForRVPropertiesEditionComponent extends ComposedPropertie
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (NonregViewsRepository.TestFilter.class == key) {
@@ -96,10 +102,12 @@ public class TestFilterForRVPropertiesEditionComponent extends ComposedPropertie
 		}
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == NonregViewsRepository.TestFilter.class) {
@@ -110,9 +118,9 @@ public class TestFilterForRVPropertiesEditionComponent extends ComposedPropertie
 			testFilterForReferenceTablesPropertiesEditionComponent.setPropertiesEditionPart(NonregViewsRepository.TestFilter.class, kind, testVRFilterPart.getTestFilterReferencedView());
 			testFilterForReferenceTablesPropertiesEditionComponent.initPart(NonregViewsRepository.TestFilter.class, kind, element, allResource);
 		}
-			if (key == NonregViewsRepository.TestFilter.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == NonregViewsRepository.TestFilter.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

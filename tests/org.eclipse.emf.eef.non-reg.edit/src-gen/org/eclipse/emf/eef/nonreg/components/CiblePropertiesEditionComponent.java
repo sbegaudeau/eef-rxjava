@@ -7,13 +7,16 @@ package org.eclipse.emf.eef.nonreg.components;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.SuperCiblePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -45,20 +48,22 @@ public class CiblePropertiesEditionComponent extends ComposedPropertiesEditionCo
 	public CiblePropertiesEditionComponent(EObject concreteCible, String editing_mode) {
 		super(editing_mode);
 		if (concreteCible instanceof ConcreteCible) {
-			cibleSuperCiblePropertiesEditionComponent = new CibleSuperCiblePropertiesEditionComponent(concreteCible, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(concreteCible);
+			cibleSuperCiblePropertiesEditionComponent = (CibleSuperCiblePropertiesEditionComponent)provider.getPropertiesEditionComponent(concreteCible, editing_mode, CibleSuperCiblePropertiesEditionComponent.SUPERCIBLE_PART);
 			addSubComponent(cibleSuperCiblePropertiesEditionComponent);
-			namedElementPropertiesEditionComponent = new NamedElementPropertiesEditionComponent(concreteCible, editing_mode);
+			namedElementPropertiesEditionComponent = (NamedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(concreteCible, editing_mode, NamedElementBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(namedElementPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  getPropertiesEditionPart(int, java.lang.String)
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("SuperCible".equals(key)) {
+		if (CibleSuperCiblePropertiesEditionComponent.SUPERCIBLE_PART.equals(key)) {
 			superCiblePart = (SuperCiblePropertiesEditionPart)cibleSuperCiblePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)superCiblePart;
 		}
@@ -67,8 +72,10 @@ public class CiblePropertiesEditionComponent extends ComposedPropertiesEditionCo
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (NonregViewsRepository.SuperCible.class == key) {
@@ -77,10 +84,12 @@ public class CiblePropertiesEditionComponent extends ComposedPropertiesEditionCo
 		}
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == NonregViewsRepository.SuperCible.class) {
@@ -88,9 +97,9 @@ public class CiblePropertiesEditionComponent extends ComposedPropertiesEditionCo
 			namedElementPropertiesEditionComponent.setPropertiesEditionPart(MiddlenonregViewsRepository.NamedElement.class, kind, superCiblePart.getNamedElementReferencedView());
 			namedElementPropertiesEditionComponent.initPart(MiddlenonregViewsRepository.NamedElement.class, kind, element, allResource);
 		}
-			if (key == MiddlenonregViewsRepository.NamedElement.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MiddlenonregViewsRepository.NamedElement.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

@@ -2,6 +2,22 @@
 <?eclipse version="3.0"?>
 
  <plugin>
+
+  <!-- EEF extensions -->
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.nonreg.providers.NonregPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.nonreg.providers.NonregPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+
+   <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -29,37 +45,44 @@
          <propertyTab
                label="Presence"
                category="extended"
-               id="Presence">
+               id="Presence"
+               afterTab="Base">
          </propertyTab>
          <propertyTab
                label="testFilter"
                category="extended"
-               id="testFilter">
+               id="testFilter"
+               afterTab="testFilter">
          </propertyTab>
          <propertyTab
                label="testFilter"
                category="extended"
-               id="testFilter">
+               id="testFilter"
+               afterTab="testFilter">
+         </propertyTab>
+         <propertyTab
+               label="testFilter"
+               category="extended"
+               id="testFilter"
+               afterTab="testFilter">
          </propertyTab>
          <propertyTab
                label="testVRFilter"
                category="extended"
-               id="testVRFilter">
-         </propertyTab>
-         <propertyTab
-               label="testFilter"
-               category="extended"
-               id="testFilter">
+               id="testVRFilter"
+               afterTab="Base">
          </propertyTab>
          <propertyTab
                label="Source"
                category="extended"
-               id="Source">
+               id="Source"
+               afterTab="Source">
          </propertyTab>
          <propertyTab
                label="SuperCible"
                category="extended"
-               id="SuperCible">
+               id="SuperCible"
+               afterTab="SuperCible">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -68,273 +91,273 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.nonreg.properties">
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit">
+               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.EclipseSummit">
              </input>
          </propertySection>
          <propertySection
-               tab="Presence"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Presence">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Talk">
+               id="org.eclipse.emf.eef.nonreg.section.Talk"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Talk">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Talk">
+               id="org.eclipse.emf.eef.nonreg.section.Talk"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Talk">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Topic">
+               id="org.eclipse.emf.eef.nonreg.section.Topic"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Topic">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Topic">
+               id="org.eclipse.emf.eef.nonreg.section.Topic"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Topic">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Site">
+               id="org.eclipse.emf.eef.nonreg.section.Site"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Site">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Site">
+               id="org.eclipse.emf.eef.nonreg.section.Site"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Site">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Access">
+               id="org.eclipse.emf.eef.nonreg.section.Access"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Access">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Company">
+               id="org.eclipse.emf.eef.nonreg.section.Company"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Company">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Company">
+               id="org.eclipse.emf.eef.nonreg.section.Company"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Company">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Adress">
+               id="org.eclipse.emf.eef.nonreg.section.Adress"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Adress">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="testFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
              </input>
          </propertySection>
          <propertySection
-               tab="testFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
              </input>
          </propertySection>
          <propertySection
-               tab="testVRFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
              </input>
          </propertySection>
          <propertySection
-               tab="testFilter"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters">
+               id="org.eclipse.emf.eef.subPackageNonRegForFilters.section.ForFilters"
+               tab="testVRFilter">
              <input
                     type="org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters">
              </input>
          </propertySection>
          <propertySection
-               tab="Source"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.modelNavigation.section.Source">
+               id="org.eclipse.emf.eef.modelNavigation.section.Source"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.modelNavigation.Source">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
+               id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible">
              </input>
          </propertySection>
          <propertySection
-               tab="SuperCible"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible">
+               id="org.eclipse.emf.eef.modelNavigation.section.ConcreteCible"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Adress">
+               id="org.eclipse.emf.eef.nonreg.section.Adress"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Adress">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Talk">
+               id="org.eclipse.emf.eef.nonreg.section.Talk"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Talk">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Talk">
+               id="org.eclipse.emf.eef.nonreg.section.Talk"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Talk">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit">
+               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.EclipseSummit">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit">
+               id="org.eclipse.emf.eef.nonreg.section.EclipseSummit"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.EclipseSummit">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>
          </propertySection>
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.nonreg.section.Person">
+               id="org.eclipse.emf.eef.nonreg.section.Person"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.nonreg.Person">
              </input>

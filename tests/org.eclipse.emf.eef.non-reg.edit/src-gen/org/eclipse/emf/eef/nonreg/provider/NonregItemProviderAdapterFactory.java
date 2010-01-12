@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NonregItemProviderAdapterFactory.java,v 1.4 2009/06/24 16:34:22 sbouchet Exp $
+ * $Id: NonregItemProviderAdapterFactory.java,v 1.5 2010/01/12 09:40:46 sbouchet Exp $
  */
 package org.eclipse.emf.eef.nonreg.provider;
 
@@ -307,7 +307,7 @@ public class NonregItemProviderAdapterFactory extends NonregAdapterFactory imple
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

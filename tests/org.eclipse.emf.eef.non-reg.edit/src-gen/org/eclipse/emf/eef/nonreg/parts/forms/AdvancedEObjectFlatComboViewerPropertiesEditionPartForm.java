@@ -16,7 +16,7 @@ import org.eclipse.emf.eef.nonreg.parts.AdvancedEObjectFlatComboViewerProperties
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -33,7 +33,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -64,6 +63,7 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -74,19 +74,22 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createAdvancedeobjectflatcomboviewerFlatComboViewer(view, widgetFactory);
+
 		createAdvancedeobjectflatcomboviewerROFlatComboViewer(view, widgetFactory);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -132,6 +135,7 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 		advancedeobjectflatcomboviewer.setLayoutData(advancedeobjectflatcomboviewerData);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.AdvancedEObjectFlatComboViewer.advancedeobjectflatcomboviewer, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 
 	/**
 	 * @param view
@@ -179,7 +183,13 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -321,6 +331,15 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartForm extends Com
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.AdvancedEObjectFlatComboViewer_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

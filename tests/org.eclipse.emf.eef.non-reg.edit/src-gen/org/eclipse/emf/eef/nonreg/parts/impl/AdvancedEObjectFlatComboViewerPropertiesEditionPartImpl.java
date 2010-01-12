@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.nonreg.parts.AdvancedEObjectFlatComboViewerProperties
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -49,7 +50,7 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl extends Com
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -60,6 +61,7 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl extends Com
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -75,12 +77,15 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl extends Com
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createAdvancedeobjectflatcomboviewerAdvancedFlatComboViewer(view);
+
 		createAdvancedeobjectflatcomboviewerROAdvancedFlatComboViewer(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -128,6 +133,7 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl extends Com
 		advancedeobjectflatcomboviewer.setLayoutData(advancedeobjectflatcomboviewerData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.AdvancedEObjectFlatComboViewer.advancedeobjectflatcomboviewer, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param view
 	 */
@@ -172,7 +178,13 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl extends Com
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -325,6 +337,15 @@ public class AdvancedEObjectFlatComboViewerPropertiesEditionPartImpl extends Com
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.AdvancedEObjectFlatComboViewer_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

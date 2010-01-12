@@ -12,6 +12,7 @@ import org.eclipse.emf.eef.nonreg.parts.ComboPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -40,7 +41,7 @@ public class ComboPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -51,6 +52,7 @@ public class ComboPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -66,12 +68,15 @@ public class ComboPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createComboEMFComboViewer(view);
+
 		createComboROEMFComboViewer(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -101,6 +106,7 @@ public class ComboPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		combo.setContentProvider(new EMFListContentProvider());
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Combo.combo, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createComboROEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.ComboPropertiesEditionPart_ComboROLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Combo.comboRO, NonregViewsRepository.SWT_KIND));
 		comboRO = new EMFComboViewer(parent);
@@ -127,7 +133,13 @@ public class ComboPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -252,6 +264,15 @@ public class ComboPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Combo_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

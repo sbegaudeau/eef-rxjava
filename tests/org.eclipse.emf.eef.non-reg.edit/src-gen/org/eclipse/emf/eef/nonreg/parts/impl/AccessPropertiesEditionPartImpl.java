@@ -9,6 +9,7 @@ import org.eclipse.emf.eef.nonreg.parts.AccessPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -34,7 +35,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -45,6 +46,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -60,11 +62,13 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPeriodGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -83,6 +87,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		periodGroup.setLayout(periodGroupLayout);
 		createPeriodText(periodGroup);
 	}
+
 	protected void createPeriodText(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.AccessPropertiesEditionPart_PeriodLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Access.period, NonregViewsRepository.SWT_KIND));
 		period = new Text(parent, SWT.BORDER);
@@ -106,7 +111,13 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -131,7 +142,7 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		if (newValue != null) {
 			period.setText(newValue);
 		} else {
-			period.setText("");  //$NON-NLS-1$
+			period.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -149,6 +160,15 @@ public class AccessPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Access_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

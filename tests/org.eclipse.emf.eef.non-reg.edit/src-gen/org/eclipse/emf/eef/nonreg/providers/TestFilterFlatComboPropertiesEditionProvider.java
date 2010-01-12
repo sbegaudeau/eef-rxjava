@@ -4,9 +4,9 @@
 package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.nonreg.components.TestFilterFlatComboPropertiesEditionComponent;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.components.TestFilterFlatComboPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
@@ -22,6 +22,15 @@ public class TestFilterFlatComboPropertiesEditionProvider implements IProperties
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ForFilters) && (SubPackageNonRegForFiltersPackage.eINSTANCE.getForFilters() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (TestFilterFlatComboPropertiesEditionComponent.TESTFILTER_PART.equals(part));
 	}
 
 	/**

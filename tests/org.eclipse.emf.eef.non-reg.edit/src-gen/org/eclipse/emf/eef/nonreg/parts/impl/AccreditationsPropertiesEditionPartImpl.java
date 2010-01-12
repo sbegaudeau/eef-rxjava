@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.nonreg.parts.AccreditationsPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -51,7 +52,7 @@ public class AccreditationsPropertiesEditionPartImpl extends CompositeProperties
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -62,6 +63,7 @@ public class AccreditationsPropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -77,11 +79,13 @@ public class AccreditationsPropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createListOfAccreditationsGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -100,6 +104,7 @@ public class AccreditationsPropertiesEditionPartImpl extends CompositeProperties
 		listOfAccreditationsGroup.setLayout(listOfAccreditationsGroupLayout);
 		createAccreditationsAdvancedReferencesTable(listOfAccreditationsGroup);
 	}
+
 	protected void createAccreditationsAdvancedReferencesTable(Composite parent) {
 		this.accreditations = new ReferencesTable<Site>(NonregMessages.AccreditationsPropertiesEditionPart_AccreditationsLabel, new ReferencesTableListener<Site>() {
 			public void handleAdd() {
@@ -179,7 +184,13 @@ public class AccreditationsPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -282,6 +293,15 @@ public class AccreditationsPropertiesEditionPartImpl extends CompositeProperties
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Accreditations_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

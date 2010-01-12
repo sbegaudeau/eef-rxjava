@@ -9,8 +9,8 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TextAreaPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -33,7 +33,7 @@ public class TextAreaPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -44,6 +44,7 @@ public class TextAreaPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -59,12 +60,15 @@ public class TextAreaPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createTextareaTextarea(view);
+
 		createTextareaROTextarea(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -77,19 +81,20 @@ public class TextAreaPropertiesEditionPartImpl extends CompositePropertiesEditio
 		GridData textareaLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaLabelData.horizontalSpan = 3;
 		textareaLabel.setLayoutData(textareaLabelData);
-		textarea = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		textarea = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData textareaData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaData.horizontalSpan = 2;
 		textareaData.heightHint = 80;
 		textarea.setLayoutData(textareaData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.TextArea.textarea, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createTextareaROTextarea(Composite parent) {
 		Label textareaROLabel = SWTUtils.createPartLabel(parent, NonregMessages.TextAreaPropertiesEditionPart_TextareaROLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.TextArea.textareaRO, NonregViewsRepository.SWT_KIND));
 		GridData textareaROLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaROLabelData.horizontalSpan = 3;
 		textareaROLabel.setLayoutData(textareaROLabelData);
-		textareaRO = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		textareaRO = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		textareaRO.setEnabled(false);
 		textareaRO.setToolTipText(NonregMessages.TextArea_ReadOnly);
 		GridData textareaROData = new GridData(GridData.FILL_HORIZONTAL);
@@ -100,7 +105,13 @@ public class TextAreaPropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -173,6 +184,15 @@ public class TextAreaPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.TextArea_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -9,6 +9,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TextPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -34,7 +35,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -45,6 +46,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -60,12 +62,15 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createTextText(view);
+
 		createTextROText(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -94,6 +99,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Text.text, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createTextROText(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.TextPropertiesEditionPart_TextROLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Text.textRO, NonregViewsRepository.SWT_KIND));
 		textRO = new Text(parent, SWT.BORDER);
@@ -119,7 +125,13 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -144,7 +156,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		if (newValue != null) {
 			text.setText(newValue);
 		} else {
-			text.setText("");  //$NON-NLS-1$
+			text.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -174,7 +186,7 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		if (newValue != null) {
 			textRO.setText(newValue);
 		} else {
-			textRO.setText("");  //$NON-NLS-1$
+			textRO.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -192,6 +204,15 @@ public class TextPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Text_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -17,7 +17,7 @@ import org.eclipse.emf.eef.nonreg.parts.EclipseSummitPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -41,7 +41,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -74,6 +73,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -84,18 +84,20 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -114,6 +116,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		createSitesTableComposition(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
+
 	protected void createPlaceText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.EclipseSummitPropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.EclipseSummit.place, NonregViewsRepository.FORM_KIND));
 		place = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -164,6 +167,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.EclipseSummit.place, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param container
 	 */
@@ -180,6 +184,8 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		GridData sitesData = new GridData(GridData.FILL_HORIZONTAL);
 		sitesData.horizontalSpan = 3;
 		this.sites.setLayoutData(sitesData);
+		this.sites.setLowerBound(0);
+		this.sites.setUpperBound(-1);
 	}
 
 	/**
@@ -246,7 +252,13 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -270,7 +282,7 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 		if (newValue != null) {
 			place.setText(newValue);
 		} else {
-			place.setText("");  //$NON-NLS-1$
+			place.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -389,6 +401,15 @@ public class EclipseSummitPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.EclipseSummit_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

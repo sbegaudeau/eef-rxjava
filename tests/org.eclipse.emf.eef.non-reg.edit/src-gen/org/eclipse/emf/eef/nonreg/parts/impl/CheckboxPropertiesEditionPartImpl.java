@@ -9,8 +9,8 @@ import org.eclipse.emf.eef.nonreg.parts.CheckboxPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -32,7 +32,7 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -43,6 +43,7 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -58,12 +59,15 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createCheckboxCheckbox(view);
+
 		createCheckboxROCheckbox(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -79,6 +83,7 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 		checkbox.setLayoutData(checkboxData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Checkbox.checkbox, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createCheckboxROCheckbox(Composite parent) {
 		checkboxRO = new Button(parent, SWT.CHECK);
 		checkboxRO.setText(NonregMessages.CheckboxPropertiesEditionPart_CheckboxROLabel);
@@ -91,7 +96,13 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -164,6 +175,15 @@ public class CheckboxPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Checkbox_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

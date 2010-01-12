@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.nonreg.parts.AdvancedTableCompositionPropertiesEditio
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -52,7 +53,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -63,6 +64,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -78,12 +80,15 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createAdvancedtablecompositionAdvancedTableComposition(view);
+
 		createAdvancedtablecompositionROAdvancedTableComposition(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -107,6 +112,8 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		GridData advancedtablecompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionData.horizontalSpan = 3;
 		this.advancedtablecomposition.setLayoutData(advancedtablecompositionData);
+		this.advancedtablecomposition.setLowerBound(0);
+		this.advancedtablecomposition.setUpperBound(-1);
 	}
 
 	/**
@@ -174,6 +181,7 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		// End of user code
 
 	}
+
 	/**
 	 * @param container
 	 */
@@ -192,6 +200,8 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 		GridData advancedtablecompositionROData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionROData.horizontalSpan = 3;
 		this.advancedtablecompositionRO.setLayoutData(advancedtablecompositionROData);
+		this.advancedtablecompositionRO.setLowerBound(0);
+		this.advancedtablecompositionRO.setUpperBound(-1);
 	}
 
 	/**
@@ -261,7 +271,13 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -488,6 +504,15 @@ public class AdvancedTableCompositionPropertiesEditionPartImpl extends Composite
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.AdvancedTableComposition_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

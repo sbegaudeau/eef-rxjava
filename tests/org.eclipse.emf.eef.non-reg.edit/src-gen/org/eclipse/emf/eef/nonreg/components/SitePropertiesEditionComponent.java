@@ -7,13 +7,16 @@ package org.eclipse.emf.eef.nonreg.components;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.middle.middlenonreg.parts.MiddlenonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.SitePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
 
 // End of user code
 
@@ -45,20 +48,22 @@ public class SitePropertiesEditionComponent extends ComposedPropertiesEditionCom
 	public SitePropertiesEditionComponent(EObject site, String editing_mode) {
 		super(editing_mode);
 		if (site instanceof Site) {
-			siteBasePropertiesEditionComponent = new SiteBasePropertiesEditionComponent(site, editing_mode); 
+			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(site);
+			siteBasePropertiesEditionComponent = (SiteBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(site, editing_mode, SiteBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(siteBasePropertiesEditionComponent);
-			namedElementPropertiesEditionComponent = new NamedElementPropertiesEditionComponent(site, editing_mode);
+			namedElementPropertiesEditionComponent = (NamedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(site, editing_mode, NamedElementBasePropertiesEditionComponent.BASE_PART);
 			addSubComponent(namedElementPropertiesEditionComponent);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  getPropertiesEditionPart(int, java.lang.String)
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ("Base".equals(key)) {
+		if (SiteBasePropertiesEditionComponent.BASE_PART.equals(key)) {
 			basePart = (SitePropertiesEditionPart)siteBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
@@ -67,8 +72,10 @@ public class SitePropertiesEditionComponent extends ComposedPropertiesEditionCom
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (NonregViewsRepository.Site.class == key) {
@@ -77,10 +84,12 @@ public class SitePropertiesEditionComponent extends ComposedPropertiesEditionCom
 		}
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *  initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == NonregViewsRepository.Site.class) {
@@ -88,9 +97,9 @@ public class SitePropertiesEditionComponent extends ComposedPropertiesEditionCom
 			namedElementPropertiesEditionComponent.setPropertiesEditionPart(MiddlenonregViewsRepository.NamedElement.class, kind, basePart.getNamedElementReferencedView());
 			namedElementPropertiesEditionComponent.initPart(MiddlenonregViewsRepository.NamedElement.class, kind, element, allResource);
 		}
-			if (key == MiddlenonregViewsRepository.NamedElement.class) {
-				super.initPart(key, kind, element, allResource);
-			
-			}
+		if (key == MiddlenonregViewsRepository.NamedElement.class) {
+			super.initPart(key, kind, element, allResource);
+		
+		}
 	}
 }

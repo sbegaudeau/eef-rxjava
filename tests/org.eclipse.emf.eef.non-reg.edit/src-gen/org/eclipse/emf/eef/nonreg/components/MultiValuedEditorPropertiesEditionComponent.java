@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -21,15 +22,18 @@ import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Person;
 import org.eclipse.emf.eef.nonreg.parts.MultiValuedEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -50,7 +54,7 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	/**
 	 * The Base part
 	 */
-	private MultiValuedEditorPropertiesEditionPart basePart;
+	protected MultiValuedEditorPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -79,18 +83,34 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					MultiValuedEditorPropertiesEditionComponent.this.dispose();
 				else {
-// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor.
-// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor.
-
-
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
+					}
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor.
+// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor.
+
+
 	}
 
 	/**
@@ -151,21 +171,22 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
 		if (basePart != null && key == NonregViewsRepository.MultiValuedEditor.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final Person person = (Person)elt;
 			// init values
-// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor.
-// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor.
-			
+// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor.
+// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor.
 			// init filters
-// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor.
-// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in viewCommon.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor.
+// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor.
+// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor.
 		}
 		// init values for referenced views
 
 		// init filters for referenced views
 
+		setInitializing(false);
 	}
 
 
@@ -181,9 +202,9 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (person != null) {
-// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor, person.
-// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in componentUtils.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor, person.
+		if ((person != null) && (basePart != null)) { 
+// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in widgetControl.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor, person.
+// FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in widgetControl.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor, person.
 
 
 		}
@@ -201,8 +222,8 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Person) {
 			Person personToUpdate = (Person)source;
-// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor, person.
-// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in componentUtils.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor, person.
+// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitor, MultiValuedEditor, MultiValuedEditor, person.
+// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, MultiValuedEditor, person.
 
 
 			return personToUpdate;
@@ -214,34 +235,30 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
-		super.firePropertiesChanged(event);
-		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-			CompoundCommand command = new CompoundCommand();
-// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : multivaluededitor, MultiValuedEditor, person.
-// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in componentUtils.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, person.
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		if (!isInitializing()) {
+			Diagnostic valueDiagnostic = validateValue(event);
+			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
+				CompoundCommand command = new CompoundCommand();
+// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in widgetControl.mtl module, with the values : multivaluededitor, MultiValuedEditor, person.
+// FIXME INVALID CASE INTO template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) in widgetControl.mtl module, with the values : multivaluededitorRO, MultiValuedEditor, person.
 
 
-			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
-			} else {
-				liveEditingDomain.getCommandStack().execute(command);
+				if (!command.isEmpty() && !command.canExecute()) {
+					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
+				} else {
+					liveEditingDomain.getCommandStack().execute(command);
+				}
 			}
-		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
-			Diagnostic diag = this.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-
-
-
-
-			} else {
-
-
-
-
+			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
+			else {
+				Diagnostic validate = validate();
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
 			}
+			super.firePropertiesChanged(event);
 		}
 	}
 
@@ -270,10 +287,10 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		Diagnostic ret = null;
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
@@ -288,6 +305,8 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -299,14 +318,14 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		Diagnostic validate = null;
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
-			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			validate =  Diagnostician.INSTANCE.validate(copy);
+			EObject copy = EcoreUtil.copy(person);
+			copy = getPropertiesEditionObject(copy);
+			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate(person);
+			validate = EEFRuntimePlugin.getEEFValidator().validate(person);
 		// Start of user code for custom validation check
 		
 		// End of user code
@@ -324,4 +343,12 @@ public class MultiValuedEditorPropertiesEditionComponent extends StandardPropert
 			person.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

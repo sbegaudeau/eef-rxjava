@@ -25,6 +25,15 @@ public class CompanyPropertiesEditionProvider implements IPropertiesEditionProvi
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Company) && (NonregPackage.eINSTANCE.getCompany() == eObject.eClass());
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (CompanyBasePropertiesEditionComponent.BASE_PART.equals(part) || NamedElementBasePropertiesEditionComponent.BASE_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}

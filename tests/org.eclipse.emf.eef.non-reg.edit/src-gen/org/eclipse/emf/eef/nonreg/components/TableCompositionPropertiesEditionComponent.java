@@ -15,11 +15,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -32,17 +32,20 @@ import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.Site;
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TableCompositionPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EMFPropertiesRuntime;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -63,7 +66,7 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 	/**
 	 * The Base part
 	 */
-	private TableCompositionPropertiesEditionPart basePart;
+	protected TableCompositionPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
@@ -92,26 +95,40 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 			 */
-			public void notifyChanged(Notification msg) {
+			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
 					TableCompositionPropertiesEditionComponent.this.dispose();
 				else {
-					if (msg.getFeature() != null && 
-							(((EStructuralFeature)msg.getFeature()) == NonregPackage.eINSTANCE.getEclipseSummit_Sites()
-							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == NonregPackage.eINSTANCE.getEclipseSummit_Sites())) {
-						basePart.updateTablecomposition(eclipseSummit);
+					Runnable updateRunnable = new Runnable() {
+						public void run() {
+							runUpdateRunnable(msg);
+						}
+					};
+					if (null == Display.getCurrent()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+					} else {
+						updateRunnable.run();
 					}
-					if (msg.getFeature() != null && 
-							(((EStructuralFeature)msg.getFeature()) == NonregPackage.eINSTANCE.getEclipseSummit_Sites()
-							|| ((EStructuralFeature)msg.getFeature()).getEContainingClass() == NonregPackage.eINSTANCE.getEclipseSummit_Sites())) {
-						basePart.updateTablecompositionRO(eclipseSummit);
-					}
-
-
 				}
 			}
 
 		};
+	}
+
+	/**
+	 * Used to update the views
+	 */
+	protected void runUpdateRunnable(final Notification msg) {
+		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == NonregPackage.eINSTANCE.getEclipseSummit_Sites())) {
+
+			basePart.updateTablecomposition(eclipseSummit);
+		}
+		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == NonregPackage.eINSTANCE.getEclipseSummit_Sites())) {
+
+			basePart.updateTablecompositionRO(eclipseSummit);
+		}
+
+
 	}
 
 	/**
@@ -172,13 +189,13 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
 		if (basePart != null && key == NonregViewsRepository.TableComposition.class) {
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final EclipseSummit eclipseSummit = (EclipseSummit)elt;
 			// init values
 			basePart.initTablecomposition(eclipseSummit, null, NonregPackage.eINSTANCE.getEclipseSummit_Sites());
 			basePart.initTablecompositionRO(eclipseSummit, null, NonregPackage.eINSTANCE.getEclipseSummit_Sites());
-			
 			// init filters
 			basePart.addFilterToTablecomposition(new ViewerFilter() {
 
@@ -217,6 +234,7 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 
 		// init filters for referenced views
 
+		setInitializing(false);
 	}
 
 
@@ -232,25 +250,20 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
-		if (eclipseSummit != null) {
+		if ((eclipseSummit != null) && (basePart != null)) { 
 			List sitesToAddFromTablecomposition = basePart.getTablecompositionToAdd();
 			for (Iterator iter = sitesToAddFromTablecomposition.iterator(); iter.hasNext();)
 				cc.append(AddCommand.create(editingDomain, eclipseSummit, NonregPackage.eINSTANCE.getEclipseSummit_Sites(), iter.next()));
 			Map sitesToRefreshFromTablecomposition = basePart.getTablecompositionToEdit();
 			for (Iterator iter = sitesToRefreshFromTablecomposition.keySet().iterator(); iter.hasNext();) {
 				
-				
-				
 				Site nextElement = (Site) iter.next();
 				Site sites = (Site) sitesToRefreshFromTablecomposition.get(nextElement);
-				
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, sites.eGet(feature)));
 					}
 				}
-				
-				
 				
 			}
 			List sitesToRemoveFromTablecomposition = basePart.getTablecompositionToRemove();
@@ -267,18 +280,13 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 			Map sitesToRefreshFromTablecompositionRO = basePart.getTablecompositionROToEdit();
 			for (Iterator iter = sitesToRefreshFromTablecompositionRO.keySet().iterator(); iter.hasNext();) {
 				
-				
-				
 				Site nextElement = (Site) iter.next();
 				Site sites = (Site) sitesToRefreshFromTablecompositionRO.get(nextElement);
-				
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, sites.eGet(feature)));
 					}
 				}
-				
-				
 				
 			}
 			List sitesToRemoveFromTablecompositionRO = basePart.getTablecompositionROToRemove();
@@ -319,17 +327,17 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
-		super.firePropertiesChanged(event);
-		if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-			CompoundCommand command = new CompoundCommand();
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		if (!isInitializing()) {
+			Diagnostic valueDiagnostic = validateValue(event);
+			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
+				CompoundCommand command = new CompoundCommand();
 			if (NonregViewsRepository.TableComposition.tablecomposition == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					Site oldValue = (Site)event.getOldValue();
 					Site newValue = (Site)event.getNewValue();
-					
 					
 					// TODO: Complete the eclipseSummit update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -337,7 +345,6 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					
 					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
@@ -352,14 +359,12 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 					Site oldValue = (Site)event.getOldValue();
 					Site newValue = (Site)event.getNewValue();
 					
-					
 					// TODO: Complete the eclipseSummit update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					
 					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
@@ -371,40 +376,37 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 			}
 
 
-			if (!command.isEmpty() && !command.canExecute()) {
-				EMFPropertiesRuntime.getDefault().logError("Cannot perform model change command.", null);
-			} else {
-				liveEditingDomain.getCommandStack().execute(command);
+				if (!command.isEmpty() && !command.canExecute()) {
+					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
+				} else {
+					liveEditingDomain.getCommandStack().execute(command);
+				}
 			}
-		} else if (PropertiesEditionEvent.CHANGE == event.getState()) {
-			Diagnostic diag = this.validateValue(event);
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-
-
-
-
-			} else {
-
-
-
-
+			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
+			else {
+				Diagnostic validate = validate();
+				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
 			}
+			super.firePropertiesChanged(event);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public Diagnostic validateValue(PropertiesEditionEvent event) {
-		Diagnostic ret = null;
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
 		}
 		return ret;
@@ -416,14 +418,14 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		Diagnostic validate = null;
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
 		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(PropertiesContextService.getInstance().entryPointElement());
-			copy = PropertiesContextService.getInstance().entryPointComponent().getPropertiesEditionObject(copy);
-			validate =  Diagnostician.INSTANCE.validate(copy);
+			EObject copy = EcoreUtil.copy(eclipseSummit);
+			copy = getPropertiesEditionObject(copy);
+			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = Diagnostician.INSTANCE.validate(eclipseSummit);
+			validate = EEFRuntimePlugin.getEEFValidator().validate(eclipseSummit);
 		// Start of user code for custom validation check
 		
 		// End of user code
@@ -441,4 +443,12 @@ public class TableCompositionPropertiesEditionComponent extends StandardProperti
 			eclipseSummit.eAdapters().remove(semanticAdapter);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

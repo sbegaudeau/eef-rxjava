@@ -14,8 +14,8 @@ import org.eclipse.emf.eef.nonreg.NonregPackage;
 import org.eclipse.emf.eef.nonreg.parts.MultiValuedEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.jface.window.Window;
@@ -46,7 +46,7 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -57,6 +57,7 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -72,12 +73,15 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createMultivaluededitorMultiValuedEditor(view);
+
 		createMultivaluededitorROMultiValuedEditor(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -117,6 +121,7 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 			}
 		});
 	}
+
 	protected void createMultivaluededitorROMultiValuedEditor(Composite parent) {
 		multivaluededitorRO = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
 		multivaluededitorRO.setEnabled(false);
@@ -153,7 +158,13 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -228,6 +239,15 @@ public class MultiValuedEditorPropertiesEditionPartImpl extends CompositePropert
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.MultiValuedEditor_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

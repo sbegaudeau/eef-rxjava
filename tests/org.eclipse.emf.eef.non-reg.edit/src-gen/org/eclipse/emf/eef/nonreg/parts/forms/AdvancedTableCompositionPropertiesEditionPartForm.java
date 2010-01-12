@@ -17,7 +17,7 @@ import org.eclipse.emf.eef.nonreg.parts.AdvancedTableCompositionPropertiesEditio
 import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -32,7 +32,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -67,6 +66,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -77,19 +77,22 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createAdvancedtablecompositionTableComposition(widgetFactory, view);
+
 		createAdvancedtablecompositionROTableComposition(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -110,6 +113,8 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		GridData advancedtablecompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionData.horizontalSpan = 3;
 		this.advancedtablecomposition.setLayoutData(advancedtablecompositionData);
+		this.advancedtablecomposition.setLowerBound(0);
+		this.advancedtablecomposition.setUpperBound(-1);
 	}
 
 	/**
@@ -174,6 +179,7 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		// End of user code
 
 	}
+
 	/**
 	 * @param container
 	 */
@@ -192,6 +198,8 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 		GridData advancedtablecompositionROData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionROData.horizontalSpan = 3;
 		this.advancedtablecompositionRO.setLayoutData(advancedtablecompositionROData);
+		this.advancedtablecompositionRO.setLowerBound(0);
+		this.advancedtablecompositionRO.setUpperBound(-1);
 	}
 
 	/**
@@ -258,7 +266,13 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -474,6 +488,15 @@ public class AdvancedTableCompositionPropertiesEditionPartForm extends Composite
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.AdvancedTableComposition_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

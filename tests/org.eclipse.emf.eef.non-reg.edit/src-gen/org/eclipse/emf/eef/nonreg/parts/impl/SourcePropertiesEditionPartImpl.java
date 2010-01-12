@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.SourcePropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -62,7 +63,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -73,6 +74,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -88,11 +90,13 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropsGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -112,6 +116,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		createAdvancedUniqueRefAdvancedFlatComboViewer(propsGroup);
 		createAdvancedMultipleContainmentAdvancedReferencesTable(propsGroup);
 	}
+
 	/**
 	 * @param propsGroup
 	 */
@@ -152,6 +157,7 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		advancedUniqueRef.setLayoutData(advancedUniqueRefData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Source.advancedUniqueRef, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createAdvancedMultipleContainmentAdvancedReferencesTable(Composite parent) {
 		this.advancedMultipleContainment = new ReferencesTable<SuperCible>(NonregMessages.SourcePropertiesEditionPart_AdvancedMultipleContainmentLabel, new ReferencesTableListener<SuperCible>() {
 			public void handleAdd() {
@@ -227,7 +233,13 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -400,6 +412,15 @@ public class SourcePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Source_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

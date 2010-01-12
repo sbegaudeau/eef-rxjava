@@ -11,10 +11,10 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TopicPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -40,7 +40,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -51,6 +51,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -66,12 +67,15 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createDocumentedElement(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -90,18 +94,20 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		createDescriptionTextarea(propertiesGroup);
 	}
+
 	protected void createDescriptionTextarea(Composite parent) {
 		Label descriptionLabel = SWTUtils.createPartLabel(parent, NonregMessages.TopicPropertiesEditionPart_DescriptionLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Topic.description, NonregViewsRepository.SWT_KIND));
 		GridData descriptionLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptionLabelData.horizontalSpan = 3;
 		descriptionLabel.setLayoutData(descriptionLabelData);
-		description = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		description = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptionData.horizontalSpan = 2;
 		descriptionData.heightHint = 80;
 		description.setLayoutData(descriptionData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Topic.description, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createDocumentedElement(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(AbstractnonregViewsRepository.class);
 		documentedElementPropertiesEditionPart = (DocumentedElementPropertiesEditionPart)provider.getPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, AbstractnonregViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -110,7 +116,13 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -187,6 +199,15 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Topic_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

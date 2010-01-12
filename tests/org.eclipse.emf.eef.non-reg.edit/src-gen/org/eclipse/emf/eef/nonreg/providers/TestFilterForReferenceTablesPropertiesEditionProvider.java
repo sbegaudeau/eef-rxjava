@@ -4,9 +4,9 @@
 package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.nonreg.components.TestFilterForReferenceTablesPropertiesEditionComponent;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.SubPackageNonRegForFiltersPackage;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.components.TestFilterForReferenceTablesPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
@@ -22,6 +22,15 @@ public class TestFilterForReferenceTablesPropertiesEditionProvider implements IP
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ForFilters) && (SubPackageNonRegForFiltersPackage.eINSTANCE.getForFilters() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (TestFilterForReferenceTablesPropertiesEditionComponent.TESTFILTER_PART.equals(part));
 	}
 
 	/**

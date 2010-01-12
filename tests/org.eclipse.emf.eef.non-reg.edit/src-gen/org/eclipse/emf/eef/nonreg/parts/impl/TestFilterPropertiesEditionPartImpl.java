@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.nonreg.parts.TestFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.ForFilters;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
@@ -87,7 +88,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -98,6 +99,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -113,11 +115,13 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createGroupGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -139,6 +143,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		createTestAEOFCVAdvancedFlatComboViewer(groupGroup);
 		createTestRTReferencesTable(groupGroup);
 	}
+
 	/**
 	 * @param groupGroup
 	 */
@@ -158,6 +163,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		testEOFCV.setLayoutData(testEOFCVData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.TestFilter.testEOFCV, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createTestARTAdvancedReferencesTable(Composite parent) {
 		this.testART = new ReferencesTable<DocumentedElement>(NonregMessages.TestFilterPropertiesEditionPart_TestARTLabel, new ReferencesTableListener<DocumentedElement>() {
 			public void handleAdd() {
@@ -235,6 +241,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		// End of user code
 
 	}
+
 	/**
 	 * @param groupGroup
 	 */
@@ -275,6 +282,7 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		testAEOFCV.setLayoutData(testAEOFCVData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.TestFilter.testAEOFCV, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param parent
 	 */
@@ -423,7 +431,13 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -760,6 +774,15 @@ public class TestFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.TestFilter_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -9,7 +9,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TextPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -25,7 +25,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -54,6 +53,7 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
@@ -64,19 +64,22 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite view, IMessageManager messageManager) {
+	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
 		createTextText(widgetFactory, view);
+
 		createTextROText(widgetFactory, view);
+
 		// Start of user code for additional ui definition
 		
 		// End of user code
@@ -131,6 +134,7 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Text.text, NonregViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createTextROText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, NonregMessages.TextPropertiesEditionPart_TextROLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Text.textRO, NonregViewsRepository.FORM_KIND));
 		textRO = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -185,7 +189,13 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -209,7 +219,7 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		if (newValue != null) {
 			text.setText(newValue);
 		} else {
-			text.setText("");  //$NON-NLS-1$
+			text.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -239,7 +249,7 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		if (newValue != null) {
 			textRO.setText(newValue);
 		} else {
-			textRO.setText("");  //$NON-NLS-1$
+			textRO.setText(""); //$NON-NLS-1$
 		}
 	}
 
@@ -255,6 +265,15 @@ public class TextPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Text_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

@@ -3,11 +3,6 @@
  */
 package org.eclipse.emf.eef.nonreg.providers;
 
-import org.eclipse.emf.eef.nonreg.modelNavigation.providers.CiblePropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.modelNavigation.providers.SimpleSourcePropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterFlatComboPropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForRVPropertiesEditionProvider;
-import org.eclipse.emf.eef.nonreg.subPackageNonRegForFilters.providers.TestFilterForReferenceTablesPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 
 /**

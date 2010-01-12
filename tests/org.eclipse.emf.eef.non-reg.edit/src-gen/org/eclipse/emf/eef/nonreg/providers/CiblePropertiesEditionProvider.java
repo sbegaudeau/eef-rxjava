@@ -5,10 +5,10 @@ package org.eclipse.emf.eef.nonreg.providers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.middle.middlenonreg.components.NamedElementBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.nonreg.components.CiblePropertiesEditionComponent;
+import org.eclipse.emf.eef.nonreg.components.CibleSuperCiblePropertiesEditionComponent;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ConcreteCible;
 import org.eclipse.emf.eef.nonreg.modelNavigation.ModelNavigationPackage;
-import org.eclipse.emf.eef.nonreg.modelNavigation.components.CiblePropertiesEditionComponent;
-import org.eclipse.emf.eef.nonreg.modelNavigation.components.CibleSuperCiblePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
@@ -24,6 +24,15 @@ public class CiblePropertiesEditionProvider implements IPropertiesEditionProvide
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ConcreteCible) && (ModelNavigationPackage.eINSTANCE.getConcreteCible() == eObject.eClass());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part) {
+		return provides(eObject)&& (CibleSuperCiblePropertiesEditionComponent.SUPERCIBLE_PART.equals(part) || NamedElementBasePropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**

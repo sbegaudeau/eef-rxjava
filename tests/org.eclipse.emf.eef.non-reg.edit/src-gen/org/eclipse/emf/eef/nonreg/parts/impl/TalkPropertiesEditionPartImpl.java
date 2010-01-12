@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.nonreg.parts.NonregViewsRepository;
 import org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart;
 import org.eclipse.emf.eef.nonreg.providers.NonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -51,7 +52,7 @@ import org.eclipse.swt.widgets.Text;
  */
 public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TalkPropertiesEditionPart {
 
-	protected Text title;
+	protected Text title_;
 	protected EMFComboViewer type;
 	protected EObjectFlatComboViewer presenter;
 	protected EMFComboViewer creator;
@@ -60,7 +61,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -71,6 +72,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -86,12 +88,15 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
+
 		createDocumentedElement(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -108,17 +113,18 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createTitleText(propertiesGroup);
+		createTitle_Text(propertiesGroup);
 		createTypeEMFComboViewer(propertiesGroup);
 		createPresenterFlatComboViewer(propertiesGroup);
 		createCreatorEMFComboViewer(propertiesGroup);
 	}
-	protected void createTitleText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_TitleLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.title, NonregViewsRepository.SWT_KIND));
-		title = new Text(parent, SWT.BORDER);
-		GridData titleData = new GridData(GridData.FILL_HORIZONTAL);
-		title.setLayoutData(titleData);
-		title.addModifyListener(new ModifyListener() {
+
+	protected void createTitle_Text(Composite parent) {
+		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.title_, NonregViewsRepository.SWT_KIND));
+		title_ = new Text(parent, SWT.BORDER);
+		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
+		title_.setLayoutData(title_Data);
+		title_.addModifyListener(new ModifyListener() {
 
 			/*
 			 * (non-Javadoc)
@@ -127,13 +133,14 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			 */
 			public void modifyText(ModifyEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, NonregViewsRepository.Talk.title, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, NonregViewsRepository.Talk.title_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title_.getText()));
 			}
 			
 		});
 
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.title, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.title_, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createTypeEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_TypeLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.type, NonregViewsRepository.SWT_KIND));
 		type = new EMFComboViewer(parent);
@@ -143,6 +150,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		type.getCombo().setLayoutData(typeData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.type, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	/**
 	 * @param propertiesGroup
 	 */
@@ -162,6 +170,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		presenter.setLayoutData(presenterData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.presenter, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createCreatorEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, NonregMessages.TalkPropertiesEditionPart_CreatorLabel, propertiesEditionComponent.isRequired(NonregViewsRepository.Talk.creator, NonregViewsRepository.SWT_KIND));
 		creator = new EMFComboViewer(parent);
@@ -184,6 +193,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		creator.setContentProvider(new EMFListContentProvider());
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NonregViewsRepository.Talk.creator, NonregViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
+
 	protected void createDocumentedElement(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(AbstractnonregViewsRepository.class);
 		documentedElementPropertiesEditionPart = (DocumentedElementPropertiesEditionPart)provider.getPropertiesEditionPart(AbstractnonregViewsRepository.DocumentedElement.class, AbstractnonregViewsRepository.SWT_KIND, propertiesEditionComponent);
@@ -192,7 +202,13 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -202,30 +218,30 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#getTitle_()
 	 */
-	public String getTitle() {
-		return title.getText();
+	public String getTitle_() {
+		return title_.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#setTitle(String newValue)
+	 * @see org.eclipse.emf.eef.nonreg.parts.TalkPropertiesEditionPart#setTitle_(String newValue)
 	 */
-	public void setTitle(String newValue) {
+	public void setTitle_(String newValue) {
 		if (newValue != null) {
-			title.setText(newValue);
+			title_.setText(newValue);
 		} else {
-			title.setText("");  //$NON-NLS-1$
+			title_.setText(""); //$NON-NLS-1$
 		}
 	}
 
-	public void setMessageForTitle(String msg, int msgLevel) {
+	public void setMessageForTitle_(String msg, int msgLevel) {
 
 	}
 
-	public void unsetMessageForTitle() {
+	public void unsetMessageForTitle_() {
 
 	}
 
@@ -436,6 +452,15 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return NonregMessages.Talk_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

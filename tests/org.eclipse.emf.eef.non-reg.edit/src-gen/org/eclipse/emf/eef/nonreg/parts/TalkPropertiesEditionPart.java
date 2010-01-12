@@ -25,17 +25,17 @@ public interface TalkPropertiesEditionPart {
 	/**
 	 * @return the title
 	 */
-	public String getTitle();
+	public String getTitle_();
 
 	/**
 	 * Defines a new title
 	 * @param newValue the new title to set
 	 */
-	public void setTitle(String newValue);
+	public void setTitle_(String newValue);
 
-	public void setMessageForTitle(String msg, int msgLevel);
+	public void setMessageForTitle_(String msg, int msgLevel);
 
-	public void unsetMessageForTitle();
+	public void unsetMessageForTitle_();
 
 
 	/**
@@ -162,6 +162,14 @@ public interface TalkPropertiesEditionPart {
 
 
 
+
+
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
 	
