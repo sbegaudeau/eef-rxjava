@@ -2,6 +2,22 @@
 <?eclipse version="3.0"?>
 
  <plugin>
+
+  <!-- EEF extensions -->
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+
+   <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -33,9 +49,9 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.ab.abstractnonreg.properties">
          <propertySection
-               tab="Base"
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.ab.abstractnonreg.section.DocumentedElement">
+               id="org.eclipse.emf.eef.ab.abstractnonreg.section.DocumentedElement"
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement">
              </input>

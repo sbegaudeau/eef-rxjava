@@ -15,6 +15,8 @@ public class AbstractnonregMessages extends NLS {
 
 	public static String DocumentedElement_ReadOnly;
 
+	public static String DocumentedElement_Part_Title;
+
 	public static String DocumentedElementPropertiesEditionPart_DocumentationLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;

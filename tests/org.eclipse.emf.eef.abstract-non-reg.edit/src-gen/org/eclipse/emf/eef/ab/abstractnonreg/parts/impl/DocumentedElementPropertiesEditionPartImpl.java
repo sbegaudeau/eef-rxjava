@@ -9,8 +9,8 @@ import org.eclipse.emf.eef.ab.abstractnonreg.parts.AbstractnonregViewsRepository
 import org.eclipse.emf.eef.ab.abstractnonreg.parts.DocumentedElementPropertiesEditionPart;
 import org.eclipse.emf.eef.ab.abstractnonreg.providers.AbstractnonregMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -33,7 +33,7 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 
 
 
-	
+
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -44,6 +44,7 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 */
@@ -59,11 +60,13 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControls(Composite view) { 
 		createDocumentationGroup(view);
+
 
 		// Start of user code for additional ui definition
 		
@@ -82,12 +85,13 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 		documentationGroup.setLayout(documentationGroupLayout);
 		createDocumentationTextarea(documentationGroup);
 	}
+
 	protected void createDocumentationTextarea(Composite parent) {
 		Label documentationLabel = SWTUtils.createPartLabel(parent, AbstractnonregMessages.DocumentedElementPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(AbstractnonregViewsRepository.DocumentedElement.documentation, AbstractnonregViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
-		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		documentation = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -96,7 +100,13 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 	}
 
 
-	public void firePropertiesChanged(PropertiesEditionEvent event) {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
@@ -139,6 +149,15 @@ public class DocumentedElementPropertiesEditionPartImpl extends CompositePropert
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 */
+	public String getTitle() {
+		return AbstractnonregMessages.DocumentedElement_Part_Title;
+	}
 
 	// Start of user code additional methods
 	

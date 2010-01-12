@@ -17,7 +17,7 @@ public class AbstractnonregViewsRepository {
 	 * DocumentedElement view descriptor
 	 */
 	public static class DocumentedElement {
-		public static String documentation = "abstractnonreg::DocumentedElement::documentation";	
+		public static String documentation = "abstractnonreg::DocumentedElement::documentation";
 
 
 	}
