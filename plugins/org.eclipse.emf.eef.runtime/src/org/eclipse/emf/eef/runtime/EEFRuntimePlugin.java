@@ -59,7 +59,8 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 * @param path
 	 */
 	public void registerImage(String key, String path) {
-		getImageRegistry().remove(key);
+		if (getImageRegistry().get(key) != null)
+			getImageRegistry().remove(key);
 		getImageRegistry().put(key, ImageDescriptor.createFromFile(null, path));
 	}
 
