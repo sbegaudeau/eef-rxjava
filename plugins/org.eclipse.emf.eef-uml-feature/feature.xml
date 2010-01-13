@@ -6,7 +6,7 @@
       provider-name="Eclipse.org">
 
    <description>
-      Extended Editing Framework
+      Extended Editing Framework - UML specific code generators
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
@@ -215,6 +215,10 @@ Agreement more than one year after the cause of action arose.
 Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
+
+   <requires>
+      <import plugin="org.eclipse.uml2.uml"/>
+   </requires>
 
    <plugin
          id="org.eclipse.emf.eef.codegen.uml"
