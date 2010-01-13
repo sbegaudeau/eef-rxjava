@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.eef.edt"
-      label="Extended Editing Framework - Developpement Tools (Incubation)"
+      label="%name"
       version="0.8.0.qualifier"
-      provider-name="Eclipse.org">
+      provider-name="%ProviderName">
 
    <description>
       Extended Editing Framework - Developpement Tools.
@@ -221,9 +221,18 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
+   <url>
+      <update label="%updateSiteName" url="http://download.eclipse.org/modeling/emft/eef/updates/releases"/>
+   </url>
+
    <includes
          id="org.eclipse.emf.eef.runtime"
          version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.eef.uml"
+         version="0.0.0"
+         optional="true"/>
 
    <requires>
       <import feature="org.eclipse.acceleo" version="0.9.0" match="greaterOrEqual"/>
