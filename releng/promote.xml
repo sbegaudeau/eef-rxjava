@@ -14,7 +14,7 @@
 			ant -f promote.xml -Dpromote.properties=promote.properties.R2_0_branch
 		-->
 		<property name="promote.properties" value="promote.properties" />
-		<property file="${promote.properties}"/>
+		<property file="${promote.properties}" />
 
 		<!-- load build properties -->
 		<property file="build.properties" />
