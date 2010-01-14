@@ -74,9 +74,6 @@
 	<target name="cleanUp">
 		<delete dir="${buildDir}/eclipse" failonerror="false" />
 		<delete dir="${buildDir}/testing" failonerror="false" />
-		<delete dir="${buildDir}/compilelogs" failonerror="false" />
-		<delete dir="${buildDir}/testresults/consolelogs" failonerror="false" />
-		<delete dir="${buildDir}/testresults/html" failonerror="false" />
 		<delete>
 			<fileset dir="${writableBuildRoot}">
 				<include name="**/*AllFeatures*.zip" />
