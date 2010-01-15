@@ -58,7 +58,7 @@
 			${writableBuildRoot}/${topprojectName}/${projectName}/downloads/drops/${version}/${buildType}${buildTimestamp} or
 			${writableBuildRoot}/${topprojectName}/${projectName}/${subprojectName}/downloads/drops/${version}/${buildType}${buildTimestamp}
 		-->
-	<property name="buildDir" value="${writableBuildRoot}/athena" />
+	<property name="buildDir" value="${writableBuildRoot}/${buildType}${buildTimestamp}" />
 
 	<!-- invoke a new Eclipse process and launch the build from the common.releng folder -->
 	<target name="run" depends="init">
@@ -68,7 +68,7 @@
 	</target>
 
 	<target name="init">
-		<delete dir="${buildDir}" failonerror="false" />
+		<delete dir="${writableBuildRoot}/" includes="${buildType}*/**" includeemptydirs="true" />
 	</target>
 
 	<target name="cleanUp">
@@ -76,8 +76,8 @@
 		<delete dir="${buildDir}/testing" failonerror="false" />
 		<delete>
 			<fileset dir="${writableBuildRoot}">
-				<include name="**/*AllFeatures*.zip" />
-				<include name="**/*Master*.zip" />
+				<include name="**/*AllFeatures*.zip*" />
+				<include name="**/*Master*.zip*" />
 			</fileset>
 		</delete>
 	</target>
