@@ -9,7 +9,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.eef.runtime.tests.utils;
+package org.eclipse.emf.eef.runtime.tests.swtbot.utils;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
