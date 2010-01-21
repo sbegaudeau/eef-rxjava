@@ -39,8 +39,6 @@ import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-
-
 /**
  * TestCase for Conference
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -71,7 +69,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	 * The expected model
 	 */
 	protected static final String EXPECTED_MODEL_NAME = "expected.conference";
-
+	
 	/**
 	 * The test project
 	 */
@@ -134,7 +132,6 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		expectedFile.delete(true, true, monitor);
 		testProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
-	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -156,16 +153,15 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
-    /**
-	 * Test the wizard properties :
+	/**
+	 * Test the editor properties :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the wizard properties
+	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */
+	 */	
 	public void testEditConferencePlace() throws Exception {
 		
 		// Import the input model
@@ -185,7 +181,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, conferenceMetaClass, firstInstanceOf);
 		
 		// Change value of the place feature of the Conference element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.ConferencePropertiesEditionPart_PlaceLabel, "value2");
+		bot.editTextFeature(wizardShell, ConferenceMessages.ConferencePropertiesEditionPart_PlaceLabel, "value2");	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -195,7 +191,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		
 		// Delete the input model
 		deleteModels();
-
+	
 	}
 	
 

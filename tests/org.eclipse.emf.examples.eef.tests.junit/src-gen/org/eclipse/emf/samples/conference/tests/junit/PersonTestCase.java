@@ -39,8 +39,6 @@ import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-
-
 /**
  * TestCase for Person
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -71,7 +69,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * The expected model
 	 */
 	protected static final String EXPECTED_MODEL_NAME = "expected.conference";
-
+	
 	/**
 	 * The test project
 	 */
@@ -134,7 +132,6 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		expectedFile.delete(true, true, monitor);
 		testProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
-	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -156,16 +153,15 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
-    /**
-	 * Test the wizard properties :
+	/**
+	 * Test the editor properties :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the wizard properties
+	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */
+	 */	
 	public void testEditPersonFirstname() throws Exception {
 		
 		// Import the input model
@@ -185,7 +181,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
 		
 		// Change value of the firstname feature of the Person element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, "value2");
+		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, "value2");	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -195,7 +191,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		
 		// Delete the input model
 		deleteModels();
-
+	
 	}
 	
 	/**
@@ -219,16 +215,15 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
-    /**
-	 * Test the wizard properties :
+	/**
+	 * Test the editor properties :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the wizard properties
+	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */
+	 */	
 	public void testEditPersonLastname() throws Exception {
 		
 		// Import the input model
@@ -248,7 +243,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
 		
 		// Change value of the lastname feature of the Person element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, "value2");
+		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, "value2");	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -258,7 +253,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		
 		// Delete the input model
 		deleteModels();
-
+	
 	}
 	
 	/**
@@ -283,16 +278,15 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
-    /**
-	 * Test the wizard properties :
+	/**
+	 * Test the editor properties :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the wizard properties
+	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */
+	 */	
 	public void testEditPersonEclipseCommiter() throws Exception {
 		
 		// Import the input model
@@ -312,7 +306,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
 		
 		// Change value of the eclipseCommiter feature of the Person element 
-		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);
+		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -322,7 +316,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		
 		// Delete the input model
 		deleteModels();
-
+	
 	}
 	
 	/**
@@ -347,16 +341,15 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
-    /**
-	 * Test the wizard properties :
+	/**
+	 * Test the editor properties :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the wizard properties
+	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */
+	 */	
 	public void testEditPersonIsRegistered() throws Exception {
 		
 		// Import the input model
@@ -376,7 +369,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
 		
 		// Change value of the isRegistered feature of the Person element 
-		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);
+		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -386,7 +379,7 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		
 		// Delete the input model
 		deleteModels();
-
+	
 	}
 	
 

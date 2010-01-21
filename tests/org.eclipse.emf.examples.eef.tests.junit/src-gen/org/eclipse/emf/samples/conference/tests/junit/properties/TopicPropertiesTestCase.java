@@ -39,8 +39,6 @@ import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-
-
 /**
  * TestCase for Topic
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -59,7 +57,7 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 *  The folder that contains the expected models for tests 
-	 */
+	 */	 
 	protected static final String EXPECTED_MODEL_FOLDER = "expected";
 	
 	/**
@@ -71,7 +69,7 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	 * The expected model
 	 */
 	protected static final String EXPECTED_MODEL_NAME = "expected.conference";
-
+	
 	/**
 	 * The test project
 	 */
@@ -134,7 +132,6 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 		expectedFile.delete(true, true, monitor);
 		testProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
-	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -156,16 +153,15 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
 	/**
-	 * Test the properties view :
+	 * Test the editor properties :
 	 * - init the input model
 	 * - calculate the expected model
 	 * - initialize the model editor
-	 * - change the properties in the properties view
+	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */
+	 */	
 	public void testEditTopicDescription() throws Exception {
 		
 		// Import the input model
@@ -185,7 +181,7 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
 		// Change value of the description feature of the Topic element 
-		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, "value2", bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, "value2", bot.selectNode(modelEditor, firstInstanceOf));	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -195,7 +191,7 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 		
 		// Delete the input model
 		deleteModels();
-
+	
 	}
 	
 
