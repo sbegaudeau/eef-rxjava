@@ -21,17 +21,17 @@
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isTextString())]
 CompoundCommand cc = new CompoundCommand();
 		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], "value2"));
+		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], UPDATED_VALUE));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isTextString())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editTextFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], "value2");
+		bot.editTextFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], UPDATED_VALUE);
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isTextString())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyTextFeature(propertiesView, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], "value2", bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyTextFeature(propertiesView, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [query isTextString(peElement : PropertiesEditionElement) : Boolean = 

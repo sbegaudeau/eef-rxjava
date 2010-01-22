@@ -70,7 +70,7 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		// Open the EEF properties view to edit the [pec.model.name/] element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + [pec.model.name.toLowerFirst()/]MetaClass.getName() + " EClass");
+			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		

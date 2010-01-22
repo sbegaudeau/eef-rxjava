@@ -70,7 +70,7 @@ package [pec.model.completePackage()/].tests.junit;
 		// Open the EEF wizard (by double click) to edit the [pec.model.name/] element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + [pec.model.name.toLowerFirst()/]MetaClass.getName() + " EClass");
+			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 		
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf);
 		
