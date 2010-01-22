@@ -36,7 +36,7 @@ public class InputModelInvalidException extends Exception {
 	 */
 	public InputModelInvalidException(String info) {
 		super();
-		this.messageInfo = info;
+		this.messageInfo = "The input model doesn't contain enough instance of " + info+ " EClass";
 	}
 
 	/**

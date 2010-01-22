@@ -28,10 +28,12 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.swtbot.utils.SWTBotUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
+import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -41,20 +43,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class SWTEEFBot extends SWTWorkbenchBot {
-
-	/*****************************************************************************
-	 * * UI Constants * *
-	 *****************************************************************************/
-
-	public static final String PACKAGE_EXPLORER_VIEW_NAME = "Package Explorer";
-
-	public static final String PROPERTIES_VIEW_NAME = "Properties";
-
-	public static final String NAVIGATE_MENU_LABEL = "Navigate";
-
-	public static final String OPEN_MENU_LABEL = "Open";
-
-	public static final String FINISH_BUTTON_LABEL = "Finish";
 
 	/*****************************************************************************
 	 * * Bot members * *
@@ -105,7 +93,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @return the editor editing the file
 	 */
 	public SWTBotEditor openFile(IFile file) {
-		SWTBotTree wizardTree = viewByTitle(PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
+		SWTBotTree wizardTree = viewByTitle(UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
 		sleep(500);
 		List<IResource> expansionPath = getExpansionPath(file);
 		Iterator<IResource> iter = expansionPath.iterator();
@@ -118,7 +106,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 				treeItem.expand();
 			}
 			treeItem.select();
-			menu(NAVIGATE_MENU_LABEL).menu(OPEN_MENU_LABEL).click();
+			menu(UIConstants.NAVIGATE_MENU).menu(UIConstants.OPEN_MENU).click();
 			sleep(500);
 			SWTBotEditor editor = editorByTitle(activeResource.getURI().lastSegment());
 			return editor;
@@ -165,7 +153,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		SWTBotTreeItem node2 = selectNode(editor, element);
 		node2.select();
 		sleep(1000);
-		return viewByTitle(PROPERTIES_VIEW_NAME);
+		return viewByTitle(UIConstants.PROPERTIES_VIEW_NAME);
 	}
 
 	/**
@@ -198,7 +186,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void finalizeEdition(SWTBotEditor editor) {
 		activateEclipseShell();
-		menu("File").menu("Save").click();
+		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
 		sleep(3000);
 		editor.close();
 	}
@@ -222,7 +210,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(500);
 		textWithLabel(feature).setText(newValue.toString());
 		sleep(1000);
-		button(FINISH_BUTTON_LABEL).click();
+		button(UIConstants.FINISH_BUTTON).click();
 		waitUntil(Conditions.shellCloses(shell));
 	}
 
@@ -260,7 +248,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(500);
 		checkBox(feature).click();
 		sleep(1000);
-		button(FINISH_BUTTON_LABEL).click();
+		button(UIConstants.FINISH_BUTTON).click();
 		waitUntil(Conditions.shellCloses(shell));
 	}
 
@@ -278,6 +266,38 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.checkBox(feature).click();
 		selectNode.select();
+	}
+	
+	public void openPropertiesView() {
+		menu(UIConstants.WINDOW_MENU).menu(UIConstants.SHOW_VIEW_MENU).menu(UIConstants.OTHER_MENU).click();
+
+		SWTBotShell shell = shell(UIConstants.SHOW_VIEW_MENU);
+		shell.activate();
+
+		SWTBotTree viewSelectionTree = tree();
+		viewSelectionTree.expandNode(UIConstants.GENERAL_MENU).select(UIConstants.PROPERTIES_VIEW_NAME);
+		button(UIConstants.OK_BUTTON).click();
+		waitUntil(Conditions.shellCloses(shell));
+	}
+
+	public void openJavaPerspective() {
+		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU).click();
+		SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
+		openPerspectiveShell.activate();
+
+		table().select(UIConstants.JAVA_LABEL);
+		button(UIConstants.OK_BUTTON).click();
+	}
+	
+	/**
+	 * This method close the welcome page if we use the workspace of test for the first time
+	 */
+	public void closeWelcomePage() {
+		try {
+			viewByTitle(UIConstants.WELCOME_LABEL).close();
+		} catch (WidgetNotFoundException e) {
+			// do nothing
+		}
 	}
 
 	/*****************************************************************************

@@ -16,7 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
 import org.eclipse.emf.compare.diff.metamodel.DiffModel;
 import org.eclipse.emf.compare.diff.service.DiffService;
@@ -24,14 +31,14 @@ import org.eclipse.emf.compare.match.metamodel.MatchModel;
 import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.swtbot.finder.SWTEEFBot;
+import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
 import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Before;
 
 /**
@@ -54,11 +61,62 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	 * the model editor
 	 */
 	protected SWTBotEditor editor;
+	
+	/**
+	 * The ResourceSet where to operate
+	 */
+	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(EEFRuntimePlugin.getDefault().getAdapterFactory(), new BasicCommandStack());
+	
+	/**
+	 * The test project
+	 */
+	private IProject testProject;
+	
+	/**
+	 * The workspace folder containing the input model 
+	 */
+	private IFolder modelFolder;
+	
+	/**
+	 * The expectedModel 
+	 */
+	protected Resource expectedModel;
+
+	/**
+	 * @return The project that contains models for tests 
+	 */
+	protected abstract String getTestsProjectName();
+	
+	/**
+	 *  @return The folder that contains the input models for tests 
+	 */
+	protected abstract String getInputModelFolder();
+	
+	/**
+	 *  @return The folder that contains the expected models for tests 
+	 */
+	protected abstract String getExpectedModelFolder();
+	
+	/**
+	 * @return The input model
+	 */
+	protected abstract String getInputModelName();
+	
+	/**
+	 * T@return he expected model
+	 */
+	protected abstract String getExpectedModelName();
+	
+	/**
+	 * 
+	 * @return the import models folder
+	 */
+	protected abstract String getImportModelsFolder();
 
 	/*****************************************************************************
 	 * * Tests specialization * *
 	 *****************************************************************************/
-
+	
 	/**
 	 * Process to initialize the workspace for the tests
 	 * 
@@ -67,7 +125,45 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	 * @throws IOException
 	 *             an error occurred during the tests initialization
 	 */
-	protected abstract void initWorkspaceForTests() throws CoreException, IOException;
+	protected void initWorkspaceForTests() throws CoreException, IOException {
+		List<String> names = new ArrayList<String>();
+		names.add(getInputModelFolder());
+		testProject = EEFTestsResourceUtils.createTestProject(getTestsProjectName(), names);
+		modelFolder = testProject.getFolder(getInputModelFolder());
+	}
+
+	/**
+	 * Import the input model
+	 * @throws CoreException error during model import
+	 * @throws IOException error during model import
+	 */
+	protected void initializeInputModel() throws CoreException, IOException  {
+		EEFTestsResourceUtils.importModel(getTestsProjectName(), getImportModelsFolder() + "/" + getInputModelFolder() + "/" + getInputModelName(), modelFolder);
+		URI fileURI = URI.createPlatformResourceURI(getTestsProjectName() + "/" + getInputModelFolder() + "/" + getInputModelName(), true);
+		Resource activeResource = editingDomain.getResourceSet().getResource(fileURI, true);
+		bot.defineActiveModel(activeResource);
+	}
+	
+	/**
+	 * Delete the test models
+	 * @throws CoreException error during model deleting
+	 */
+	protected void deleteModels() throws CoreException {
+		IFile inputFile = EEFTestsResourceUtils.workspaceFile(bot.getActiveResource());
+		bot.unloadActiveModel();
+		NullProgressMonitor monitor = new NullProgressMonitor();
+		inputFile.delete(true, true, monitor);
+		IFile expectedFile = EEFTestsResourceUtils.workspaceFile(expectedModel);
+		expectedModel.unload();
+		expectedFile.delete(true, true, monitor);
+		testProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+	}
+	
+	protected void createExpectedModel() {
+		URI fileURI = URI.createPlatformResourceURI(getTestsProjectName() + "/" + getExpectedModelFolder() + "/" + getExpectedModelName(), true);
+		expectedModel = editingDomain.getResourceSet().createResource(fileURI);
+		expectedModel.getContents().addAll(EcoreUtil.copyAll(bot.getActiveResource().getContents()));
+	}
 
 	/*****************************************************************************
 	 * * Test lifecycle * *
@@ -79,47 +175,15 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		closeWelcomePage();
+		bot.closeWelcomePage();
 		// openJavaPerspective();
-		openPropertiesView();
+		bot.openPropertiesView();
 		initWorkspaceForTests();
-	}
-
-	private void openPropertiesView() {
-		bot.menu("Window").menu("Show View").menu("Other...").click();
-
-		SWTBotShell shell = bot.shell("Show View");
-		shell.activate();
-
-		SWTBotTree viewSelectionTree = bot.tree();
-		viewSelectionTree.expandNode("General").select("Properties");
-		bot.button("OK").click();
-		bot.waitUntil(Conditions.shellCloses(shell));
-	}
-
-	protected void openJavaPerspective() {
-		bot.menu("Window").menu("Open Perspective").menu("Other...").click();
-		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
-		openPerspectiveShell.activate();
-
-		bot.table().select("Java");
-		bot.button("OK").click();
 	}
 
 	/*****************************************************************************
 	 * * Utils methods * *
 	 *****************************************************************************/
-
-	/**
-	 * This method close the welcome page if we use the workspace of test for the first time
-	 */
-	protected void closeWelcomePage() {
-		try {
-			bot.viewByTitle("Welcome").close();
-		} catch (WidgetNotFoundException e) {
-			// do nothing
-		}
-	}
 
 	/**
 	 * @param the
