@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <emf-samples-conference:Conference xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:emf-samples-conference="http://www.eclipse.org/emf/samples/eef/1.0.0" place="value1">
   <participants firstname="value1" lastname="value1" age="17" eclipseCommiter="true" isRegistered="true"/>
-  <talks title="value1"/>
-  <topics description="value1"/>
-  <sites documentation="" name="value1"/>
+  <talks title="value1" topic="//@topics.0" presenter="//@participants.0" documentation="value1"/>
+  <topics description="value1" documentation="value1"/>
+  <sites documentation="value1" name="value1"/>
 </emf-samples-conference:Conference>

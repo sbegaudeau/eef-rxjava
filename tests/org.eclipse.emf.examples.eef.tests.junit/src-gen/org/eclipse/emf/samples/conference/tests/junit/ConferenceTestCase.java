@@ -29,7 +29,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ConferenceTestCase extends SWTBotEEFTestCase {
-		
+	
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -89,7 +89,6 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
-		
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -101,14 +100,13 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		
 		EObject conference = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, conferenceMetaClass);
 		if (conference == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + conferenceMetaClass.getName() + " EClass");
-		
+			throw new InputModelInvalidException(conferenceMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
+		
 		cc.append(SetCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Place(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
-	
 	/**
 	 * Test the editor properties :
 	 * - init the input model
@@ -149,5 +147,6 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-	
+
+
 }
