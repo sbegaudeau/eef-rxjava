@@ -147,6 +147,66 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForTalkDocumentation() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		
+		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), UPDATED_VALUE));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTalkDocumentation() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		// Create the expected model
+		initializeExpectedModelForTalkDocumentation();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Talk element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf);
+		
+		// Change value of the documentation feature of the Talk element 
+		bot.editTextFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel, UPDATED_VALUE);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
 
 
 }
