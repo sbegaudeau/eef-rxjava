@@ -36,17 +36,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import [pec.model.qualifiedMetamodelPackage()/];
 [for (viewRepository : ViewsRepository | pec.views.owningViewsRepository()->asSet())]
 import [viewRepository.qualifiedMessagesProvider()/];
 [/for]
+[for (peElement : components::PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement))]
+[if (peElement.model.eType.oclIsKindOf(ecore::EClass))]import [peElement.model.eType.qualifiedName()/];
+[/if]	
+[/for]
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
+import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 [/template]
 

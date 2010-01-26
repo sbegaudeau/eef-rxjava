@@ -41,6 +41,9 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 [editFeaturePropertySection(pec, peElement)/]
 [comparePropertySection(pec, peElement)/]
 [/for]
+[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)) ? (pec.canGenerateTest(peElement) <> 'false')]
+[additionnalMethodsForWidgets(pec, peElement)/]
+[/for]
 [additionalMethods()/]
 
 }

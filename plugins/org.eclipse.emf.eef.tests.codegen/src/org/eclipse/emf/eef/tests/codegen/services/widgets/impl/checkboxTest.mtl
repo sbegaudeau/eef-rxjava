@@ -35,6 +35,9 @@ CompoundCommand cc = new CompoundCommand();
 		bot.editPropertyCheckboxFeature(propertiesView, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
+[template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
 [query isCheckboxBoolean(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EAttribute))
 	then false

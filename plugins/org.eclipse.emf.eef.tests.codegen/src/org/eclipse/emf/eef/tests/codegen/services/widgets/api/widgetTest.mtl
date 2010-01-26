@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module widgetTest('http://www.eclipse.org/emf/eef/components/1.0.0')/]
+[module widgetTest('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import common /]
 [import naming /]
@@ -30,4 +30,12 @@
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 		// FIXME : define 'editPropertyFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
+[template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
+[template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement)]
+		// FIXME : define 'editFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
