@@ -82,6 +82,13 @@
 [query public involvedPropertiesEditionElement(view : ViewElement, pec : PropertiesEditionComponent) : PropertiesEditionElement =
 	 pec.involvedEditionElements().oclAsType(components::PropertiesEditionElement)->select(views.oclAsType(ViewElement)->includes(view))->first()/]
 
+[comment] 
+@param PropertiesEditionElement the  PEE of the composition
+@param EStructuralFeature : the feature of the composition 
+[/comment]
+[query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =
+	 peElement.element.category.databinding.categories.bindings->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : components::PropertiesEditionElement | pee.model=f)->first()/]
+
 [query public relatedComponent(view : View, pec : PropertiesEditionComponent) : PropertiesEditionComponent =
 	if (pec.views->includes(view))
 	then pec.oclAsType(components::PropertiesEditionComponent)
@@ -432,6 +439,11 @@ Object
 [basePackage/].[ePackage.name/]
 [/template]
 
+[template public qualifiedName(eClassifier : EClassifier)]
+[eClassifier.completePackage()/].[eClassifier.name/]
+[/template]
+
+[comment]@deprecated[/comment]
 [template public qualifiedName(eClassifier : EClassifier, basePackage : String)]
 [eClassifier.completePackage()/].[eClassifier.name/]
 [/template]
