@@ -206,12 +206,34 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the new value to set to the feature
 	 */
 	public void editTextFeature(SWTBotShell shell, String feature, Object newValue) {
-		shell.activate();
+		activateShell(shell);
 		sleep(500);
-		textWithLabel(feature).setText(newValue.toString());
+		editTextWithLabel(feature, newValue);
 		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+
+	/**
+	 * @param shell
+	 */
+	public void activateShell(SWTBotShell shell) {
+		shell.activate();
+	}
+
+	/**
+	 * @param shell
+	 */
+	public void closeShellWithFinishButton(SWTBotShell shell) {
 		button(UIConstants.FINISH_BUTTON).click();
 		waitUntil(Conditions.shellCloses(shell));
+	}
+
+	/**
+	 * @param feature
+	 * @param newValue
+	 */
+	public void editTextWithLabel(String feature, Object newValue) {
+		textWithLabel(feature).setText(newValue.toString());
 	}
 
 	/**
@@ -244,12 +266,18 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the new value to set to the feature
 	 */
 	public void editCheckboxFeature(SWTBotShell shell, String feature) {
-		shell.activate();
+		activateShell(shell);
 		sleep(500);
-		checkBox(feature).click();
+		editCheckBox(feature);
 		sleep(1000);
-		button(UIConstants.FINISH_BUTTON).click();
-		waitUntil(Conditions.shellCloses(shell));
+		closeShellWithFinishButton(shell);
+	}
+
+	/**
+	 * @param feature
+	 */
+	private void editCheckBox(String feature) {
+		checkBox(feature).click();
 	}
 
 	/**
@@ -272,7 +300,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		menu(UIConstants.WINDOW_MENU).menu(UIConstants.SHOW_VIEW_MENU).menu(UIConstants.OTHER_MENU).click();
 
 		SWTBotShell shell = shell(UIConstants.SHOW_VIEW_MENU);
-		shell.activate();
+		activateShell(shell);
 
 		SWTBotTree viewSelectionTree = tree();
 		viewSelectionTree.expandNode(UIConstants.GENERAL_MENU).select(UIConstants.PROPERTIES_VIEW_NAME);
@@ -283,7 +311,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void openJavaPerspective() {
 		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU).click();
 		SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
-		openPerspectiveShell.activate();
+		activateShell(openPerspectiveShell);
 
 		table().select(UIConstants.JAVA_LABEL);
 		button(UIConstants.OK_BUTTON).click();
