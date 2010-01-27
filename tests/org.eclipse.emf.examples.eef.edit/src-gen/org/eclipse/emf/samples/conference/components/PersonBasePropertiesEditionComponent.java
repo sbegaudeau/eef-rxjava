@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -150,6 +151,9 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 		if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
 			basePart.setIsRegistered((Boolean)msg.getNewValue());
 
+		if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && basePart != null)
+			basePart.setGenderRadio((Object)msg.getNewValue());
+
 
 
 	}
@@ -230,7 +234,9 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			basePart.initGender((EEnum) ConferencePackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
 			basePart.setIsRegistered(person.isIsRegistered());
 
+			basePart.initGenderRadio((EEnum) ConferencePackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
 			// init filters
+
 
 
 
@@ -244,6 +250,7 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 		setInitializing(false);
 	}
+
 
 
 
@@ -271,6 +278,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), basePart.getGender()));
 
 			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), basePart.getIsRegistered()));
+
+			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ((EEnumLiteral)basePart.getGenderRadio()).getInstance()));
 
 
 
@@ -300,6 +309,8 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			personToUpdate.setGender((GENDER)basePart.getGender());
 
 			personToUpdate.setIsRegistered(new Boolean(basePart.getIsRegistered()).booleanValue());
+
+			personToUpdate.setGender((GENDER)basePart.getGenderRadio());
 
 
 
@@ -336,6 +347,9 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			if (ConferenceViewsRepository.Person.isRegistered == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), event.getNewValue()));
+
+			if (ConferenceViewsRepository.Person.genderRadio == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), event.getNewValue()));
 
 
 
@@ -397,6 +411,10 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 				if (ConferenceViewsRepository.Person.isRegistered == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
+				}
+				if (ConferenceViewsRepository.Person.genderRadio == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newValue);
 				}
 
 			} catch (IllegalArgumentException iae) {

@@ -9,6 +9,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_P9i7gJktEd6sxtwdpecy3w" name="sites" views="_KvJoN5kmEd6sxtwdpecy3w">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/sites"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9TY00AtvEd-6CbiGXfSZfQ" name="sitesTC" views="_64anMAtvEd-6CbiGXfSZfQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/sites"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBJ5kmEd6sxtwdpecy3w" name="Person" views="_KvJoOJkmEd6sxtwdpecy3w _OTvo8JkpEd6sxtwdpecy3w">
@@ -32,6 +35,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBLpkmEd6sxtwdpecy3w" name="isRegistered" views="_KvJoQJkmEd6sxtwdpecy3w">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/isRegistered"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FqmmIAtqEd-sR-uBDRwH_A" name="genderRadio" views="_AvJYwQtqEd-sR-uBDRwH_A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/gender"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person"/>
       </bindings>
@@ -93,6 +99,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoN5kmEd6sxtwdpecy3w" name="sites">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_64anMAtvEd-6CbiGXfSZfQ" name="sitesTC">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.4"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_KvJoOJkmEd6sxtwdpecy3w" name="Person">
@@ -109,6 +118,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoP5kmEd6sxtwdpecy3w" name="gender">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_AvJYwQtqEd-sR-uBDRwH_A" name="genderRadio">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_cxbP8JkoEd6sxtwdpecy3w" name="Eclipse Status">
