@@ -206,7 +206,9 @@ public class SiteTestCase extends SWTBotEEFTestCase {
 	
 	}
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
 
 
 }

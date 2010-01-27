@@ -130,7 +130,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Open the EEF properties view to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + personMetaClass.getName() + " EClass");
+			throw new InputModelInvalidException(personMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
@@ -188,7 +188,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Open the EEF properties view to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + personMetaClass.getName() + " EClass");
+			throw new InputModelInvalidException(personMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
@@ -247,7 +247,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Open the EEF properties view to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + personMetaClass.getName() + " EClass");
+			throw new InputModelInvalidException(personMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
@@ -306,7 +306,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Open the EEF properties view to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException("The input model doesn't contain enough instance of " + personMetaClass.getName() + " EClass");
+			throw new InputModelInvalidException(personMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
@@ -323,6 +323,14 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
+
 
 
 }

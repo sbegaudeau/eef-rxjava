@@ -214,18 +214,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	
 	}
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
-/**
-	 * Edit the table composition
-	 * @param wizardShell
-	 */
-	protected void editTableCompositionFeature(SWTBotShell wizardShell) {
-		bot.activateShell(wizardShell);
-		bot.sleep(500);
-		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
-		editTableCompositionForSiteFeature();
-		bot.closeShellWithFinishButton(wizardShell);
-	}
-	
+
 	/**
 	 * Edit the feature in the table composition
 	 */
@@ -242,6 +231,17 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		bot.editTextWithLabel(ConferenceMessages.SitePropertiesEditionPart_NameLabel, site.getName());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
+	/**
+	 * Edit the table composition
+	 * @param wizardShell
+	 */
+	protected void editTableCompositionFeature(SWTBotShell wizardShell) {
+		bot.activateShell(wizardShell);
+		bot.sleep(500);
+		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		editTableCompositionForSiteFeature();
+		bot.closeShellWithFinishButton(wizardShell);
+	}
 
 
 }
