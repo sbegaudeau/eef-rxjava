@@ -269,6 +269,64 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeExpectedModelForPersonGender() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		
+		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getInstance()));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditPersonGender() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		// Create the expected model
+		initializeExpectedModelForPersonGender();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF properties view to edit the Person element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		
+		// Change value of the gender feature of the Person element 
+		bot.editPropertyEMFComboViewerFeature(propertiesView, ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getLiteral(), bot.selectNode(modelEditor, firstInstanceOf));	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForPersonIsRegistered() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -328,6 +386,8 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - GENDER) 
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
 
