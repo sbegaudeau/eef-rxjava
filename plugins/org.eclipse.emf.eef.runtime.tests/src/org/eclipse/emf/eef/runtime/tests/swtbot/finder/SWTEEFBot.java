@@ -212,6 +212,32 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void editEMFComboViewerFeature(SWTBotShell shell, String feature, Object newValue) {
+		activateShell(shell);
+		sleep(500);
+		editEMFComboViewer(feature, newValue);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	/**
+	 * @param feature
+	 * @param newValue
+	 */
+	public void editEMFComboViewer(String feature, Object newValue) {
+		comboBox().setSelection(newValue.toString());
+	}
 
 	/**
 	 * @param shell
@@ -293,6 +319,22 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editPropertyCheckboxFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.checkBox(feature).click();
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param propertyView
+	 *            the properties view
+	 * @param feature
+	 *            the feature to edit
+	 * @param selectNode
+	 *            the SWTBotTreeItem in the treeview model
+	 */
+	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
+		SWTBot propertyBot = propertyView.bot();
+		propertyBot.comboBox().setSelection(feature);
 		selectNode.select();
 	}
 	
