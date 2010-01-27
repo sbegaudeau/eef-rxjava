@@ -41,6 +41,10 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 [editFeaturePropertySection(pec, peElement)/]
 [comparePropertySection(pec, peElement)/]
 [/for]
+[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)) ? (pec.canGenerateTest(peElement) <> 'false')]
+[additionnalMethodsForWidgets(pec, peElement)/]
+[additionalMethodsPropertiesForTableComposition(pec, peElement)/]
+[/for]
 [additionalMethods()/]
 
 }
@@ -59,7 +63,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 [/template]
 
 [comment overrides this template if additional methods are needed/]
-[template public additionalMethods() overrides additionalMethods]
+[template public additionalMethods()]
 [/template]
 
 [template public packagePropertySection(pec : PropertiesEditionComponent)]

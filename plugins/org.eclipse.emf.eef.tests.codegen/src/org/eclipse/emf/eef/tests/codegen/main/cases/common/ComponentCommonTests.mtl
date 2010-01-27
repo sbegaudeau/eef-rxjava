@@ -168,10 +168,6 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 [query public testMustBeGenerated(pec : PropertiesEditionComponent) : Boolean = 
 	pec.properties->select(pee : mapping::AbstractPropertyBinding | pee.oclIsKindOf(components::PropertiesEditionElement) and pec.canGenerateTest(pee.oclAsType(components::PropertiesEditionElement)) <> 'false')->notEmpty()/]
 
-[comment overrides this template if additional methods are needed/]
-[template public additionalMethods()]
-[/template]
-
 [template public commentTestPropertySection()]
 	/**
 	 * Test the editor properties :

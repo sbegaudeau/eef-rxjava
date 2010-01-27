@@ -34,23 +34,11 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isTableComposition())]
-// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyTextFeature(propertiesView, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element
+		editTableCompositionFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides additionnalMethodsForWidgets ? (peElement.isTableComposition())]
-/**
-	 * Edit the table composition
-	 * @param wizardShell
-	 */
-	protected void editTableCompositionFeature(SWTBotShell wizardShell) {
-		bot.activateShell(wizardShell);
-		bot.sleep(500);
-		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
-		editTableCompositionForSiteFeature();
-		bot.closeShellWithFinishButton(wizardShell);
-	}
-	
 	/**
 	 * Edit the feature in the table composition
 	 */
@@ -65,6 +53,35 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 		[/for]
 		bot.closeShellWithFinishButton(shellTable);
 	}	
+[/template]
+
+[comment overrides this template if additional methods are needed/]
+[template public additionalMethodsForTableComposition(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides additionalMethodsForTableComposition ? (peElement.isTableComposition())]
+	/**
+	 * Edit the table composition
+	 * @param wizardShell
+	 */
+	protected void editTableCompositionFeature(SWTBotShell wizardShell) {
+		bot.activateShell(wizardShell);
+		bot.sleep(500);
+		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		editTableCompositionForSiteFeature();
+		bot.closeShellWithFinishButton(wizardShell);
+	}
+[/template]
+
+[comment overrides this template if additional methods are needed/]
+[template public additionalMethodsPropertiesForTableComposition(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides additionalMethodsPropertiesForTableComposition ? (peElement.isTableComposition())]
+	/**
+	 * Edit the table composition
+	 * @param wizardShell
+	 */
+	protected void editTableCompositionFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
+		SWTBot propertyBot = propertyView.bot();
+		propertyBot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		editTableCompositionForSiteFeature();
+		selectNode.select();
+	}
 [/template]
 
 [query isTableComposition(peElement : PropertiesEditionElement) : Boolean = 
