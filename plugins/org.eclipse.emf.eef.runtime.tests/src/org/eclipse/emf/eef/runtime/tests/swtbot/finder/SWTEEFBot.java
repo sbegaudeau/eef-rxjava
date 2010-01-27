@@ -232,11 +232,37 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	}
 	
 	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void editRadioFeature(SWTBotShell shell, String feature, Object newValue) {
+		activateShell(shell);
+		sleep(500);
+		editRadio(feature, newValue);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	/**
 	 * @param feature
 	 * @param newValue
 	 */
 	public void editEMFComboViewer(String feature, Object newValue) {
 		comboBox().setSelection(newValue.toString());
+	}
+	
+	/**
+	 * @param feature
+	 * @param newValue
+	 */
+	public void editRadio(String feature, Object newValue) {
+		radio(newValue.toString()).click();
 	}
 
 	/**
@@ -335,6 +361,22 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.comboBox().setSelection(feature);
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param propertyView
+	 *            the properties view
+	 * @param feature
+	 *            the feature to edit
+	 * @param selectNode
+	 *            the SWTBotTreeItem in the treeview model
+	 */
+	public void editPropertyRadioFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
+		SWTBot propertyBot = propertyView.bot();
+		propertyBot.radio(feature).click();
 		selectNode.select();
 	}
 	
