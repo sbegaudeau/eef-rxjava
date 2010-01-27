@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.samples.conference.tests.junit.properties;
+package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -23,12 +23,12 @@ import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
  * TestCase for Person
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
+public class CopyOfPersonTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 * The EClass of the type to edit
@@ -116,37 +116,37 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditPersonFirstname() throws Exception {
-		
-		// Import the input model
-		initializeInputModel();
-		
-		// Create the expected model
-		initializeExpectedModelForPersonFirstname();
-		
-		// Open the input model with the treeview editor
-		SWTBotEditor modelEditor = bot.openActiveModel();
-		
-		// Open the EEF properties view to edit the Person element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
-		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
-		
-		// Change value of the firstname feature of the Person element 
-		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
-		
-		// Save the changement
-		bot.finalizeEdition(modelEditor);
-		
-		// Compare real model with expected model
-		assertExpectedModelReached(expectedModel);
-		
-		// Delete the input model
-		deleteModels();
-	
-	}
+//	public void testEditPersonFirstname() throws Exception {
+//		
+//		// Import the input model
+//		initializeInputModel();
+//		
+//		// Create the expected model
+//		initializeExpectedModelForPersonFirstname();
+//		
+//		// Open the input model with the treeview editor
+//		SWTBotEditor modelEditor = bot.openActiveModel();
+//		
+//		// Open the EEF wizard (by double click) to edit the Person element
+//		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+//		if (firstInstanceOf == null)
+//			throw new InputModelInvalidException(personMetaClass.getName());
+//		
+//		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+//		
+//		// Change value of the firstname feature of the Person element 
+//		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, UPDATED_VALUE);	
+//		
+//		// Save the changement
+//		bot.finalizeEdition(modelEditor);
+//		
+//		// Compare real model with expected model
+//		assertExpectedModelReached(expectedModel);
+//		
+//		// Delete the input model
+//		deleteModels();
+//	
+//	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -174,37 +174,37 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditPersonLastname() throws Exception {
-		
-		// Import the input model
-		initializeInputModel();
-		
-		// Create the expected model
-		initializeExpectedModelForPersonLastname();
-		
-		// Open the input model with the treeview editor
-		SWTBotEditor modelEditor = bot.openActiveModel();
-		
-		// Open the EEF properties view to edit the Person element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
-		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
-		
-		// Change value of the lastname feature of the Person element 
-		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
-		
-		// Save the changement
-		bot.finalizeEdition(modelEditor);
-		
-		// Compare real model with expected model
-		assertExpectedModelReached(expectedModel);
-		
-		// Delete the input model
-		deleteModels();
-	
-	}
+//	public void testEditPersonLastname() throws Exception {
+//		
+//		// Import the input model
+//		initializeInputModel();
+//		
+//		// Create the expected model
+//		initializeExpectedModelForPersonLastname();
+//		
+//		// Open the input model with the treeview editor
+//		SWTBotEditor modelEditor = bot.openActiveModel();
+//		
+//		// Open the EEF wizard (by double click) to edit the Person element
+//		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+//		if (firstInstanceOf == null)
+//			throw new InputModelInvalidException(personMetaClass.getName());
+//		
+//		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+//		
+//		// Change value of the lastname feature of the Person element 
+//		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, UPDATED_VALUE);	
+//		
+//		// Save the changement
+//		bot.finalizeEdition(modelEditor);
+//		
+//		// Compare real model with expected model
+//		assertExpectedModelReached(expectedModel);
+//		
+//		// Delete the input model
+//		deleteModels();
+//	
+//	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -233,37 +233,37 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditPersonEclipseCommiter() throws Exception {
-		
-		// Import the input model
-		initializeInputModel();
-		
-		// Create the expected model
-		initializeExpectedModelForPersonEclipseCommiter();
-		
-		// Open the input model with the treeview editor
-		SWTBotEditor modelEditor = bot.openActiveModel();
-		
-		// Open the EEF properties view to edit the Person element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
-		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
-		
-		// Change value of the eclipseCommiter feature of the Person element 
-		bot.editPropertyCheckboxFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel, bot.selectNode(modelEditor, firstInstanceOf));	
-		
-		// Save the changement
-		bot.finalizeEdition(modelEditor);
-		
-		// Compare real model with expected model
-		assertExpectedModelReached(expectedModel);
-		
-		// Delete the input model
-		deleteModels();
-	
-	}
+//	public void testEditPersonEclipseCommiter() throws Exception {
+//		
+//		// Import the input model
+//		initializeInputModel();
+//		
+//		// Create the expected model
+//		initializeExpectedModelForPersonEclipseCommiter();
+//		
+//		// Open the input model with the treeview editor
+//		SWTBotEditor modelEditor = bot.openActiveModel();
+//		
+//		// Open the EEF wizard (by double click) to edit the Person element
+//		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+//		if (firstInstanceOf == null)
+//			throw new InputModelInvalidException(personMetaClass.getName());
+//		
+//		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+//		
+//		// Change value of the eclipseCommiter feature of the Person element 
+//		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);	
+//		
+//		// Save the changement
+//		bot.finalizeEdition(modelEditor);
+//		
+//		// Compare real model with expected model
+//		assertExpectedModelReached(expectedModel);
+//		
+//		// Delete the input model
+//		deleteModels();
+//	
+//	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -278,7 +278,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getInstance()));
+		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getDefaultValue()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -302,15 +302,15 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF properties view to edit the Person element
+		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
 		
 		// Change value of the gender feature of the Person element 
-		bot.editPropertyEMFComboViewerFeature(propertiesView, ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getLiteral(), bot.selectNode(modelEditor, firstInstanceOf));	
+		bot.editEMFComboViewerFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1));	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -350,95 +350,37 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditPersonIsRegistered() throws Exception {
-		
-		// Import the input model
-		initializeInputModel();
-		
-		// Create the expected model
-		initializeExpectedModelForPersonIsRegistered();
-		
-		// Open the input model with the treeview editor
-		SWTBotEditor modelEditor = bot.openActiveModel();
-		
-		// Open the EEF properties view to edit the Person element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
-		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
-		
-		// Change value of the isRegistered feature of the Person element 
-		bot.editPropertyCheckboxFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel, bot.selectNode(modelEditor, firstInstanceOf));	
-		
-		// Save the changement
-		bot.finalizeEdition(modelEditor);
-		
-		// Compare real model with expected model
-		assertExpectedModelReached(expectedModel);
-		
-		// Delete the input model
-		deleteModels();
-	
-	}
-	/**
-	 * Create the expected model from the input model
-	 * @throws InputModelInvalidException error during expected model initialization
-	 * @throws IOException error during expected model serialization
-	 */
-	protected void initializeExpectedModelForPersonGenderRadio() throws InputModelInvalidException, IOException {
-		// Create the expected model content by applying the attempted command on a copy of the input model content
-		createExpectedModel();
-		
-		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
-		if (person == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getInstance()));
-		editingDomain.getCommandStack().execute(cc);
-		expectedModel.save(Collections.EMPTY_MAP);
-	}
-	/**
-	 * Test the editor properties :
-	 * - init the input model
-	 * - calculate the expected model
-	 * - initialize the model editor
-	 * - change the properties in the editor properties
-	 * - compare the expected and the real model : if they are equals the test pass
-	 * - delete the models
-	 */	
-	public void testEditPersonGenderRadio() throws Exception {
-		
-		// Import the input model
-		initializeInputModel();
-		
-		// Create the expected model
-		initializeExpectedModelForPersonGenderRadio();
-		
-		// Open the input model with the treeview editor
-		SWTBotEditor modelEditor = bot.openActiveModel();
-		
-		// Open the EEF properties view to edit the Person element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
-		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
-		
-		// Change value of the genderRadio feature of the Person element 
-		bot.editPropertyRadioFeature(propertiesView, ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getLiteral(), bot.selectNode(modelEditor, firstInstanceOf));	
-		
-		// Save the changement
-		bot.finalizeEdition(modelEditor);
-		
-		// Compare real model with expected model
-		assertExpectedModelReached(expectedModel);
-		
-		// Delete the input model
-		deleteModels();
-	
-	}
+//	public void testEditPersonIsRegistered() throws Exception {
+//		
+//		// Import the input model
+//		initializeInputModel();
+//		
+//		// Create the expected model
+//		initializeExpectedModelForPersonIsRegistered();
+//		
+//		// Open the input model with the treeview editor
+//		SWTBotEditor modelEditor = bot.openActiveModel();
+//		
+//		// Open the EEF wizard (by double click) to edit the Person element
+//		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+//		if (firstInstanceOf == null)
+//			throw new InputModelInvalidException(personMetaClass.getName());
+//		
+//		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+//		
+//		// Change value of the isRegistered feature of the Person element 
+//		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);	
+//		
+//		// Save the changement
+//		bot.finalizeEdition(modelEditor);
+//		
+//		// Compare real model with expected model
+//		assertExpectedModelReached(expectedModel);
+//		
+//		// Delete the input model
+//		deleteModels();
+//	
+//	}
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
@@ -448,8 +390,6 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - GENDER) 
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
-
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Radio - GENDER) 
 
 
 
