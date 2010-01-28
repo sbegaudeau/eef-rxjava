@@ -21,12 +21,12 @@
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isRadioEnum())]
 CompoundCommand cc = new CompoundCommand();
 		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], [peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]().getEEnumLiteral(1).getInstance()));
+		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], [peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]().getEEnumLiteralByLiteral(enumValueFor[peElement.model.name.toUpperFirst()/].toString()).getInstance()));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isRadioEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editRadioFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], [peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]().getEEnumLiteral(1));
+		bot.editRadioFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], enumValueFor[peElement.model.name.toUpperFirst()/]);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isRadioEnum())]
@@ -36,7 +36,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isRadioEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyRadioFeature(propertiesView, [peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]().getEEnumLiteral(1).getLiteral(), bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyRadioFeature(propertiesView, enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
