@@ -22,6 +22,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -86,6 +88,19 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	/*****************************************************************************
 	 * * Bot operation * *
 	 *****************************************************************************/
+	
+	/**
+	 * Get another literal value of the enumeration
+	 */
+	public Object changeEnumLiteralValue(EEnum enumeration, String text) {
+		for (EEnumLiteral eEnumLiteral : enumeration.getELiterals()) {
+			if (!eEnumLiteral.getLiteral().equals(text.toString())) {
+				return eEnumLiteral.getLiteral();
+			}
+		}
+		return text;
+	}
+
 
 	/**
 	 * @param file
@@ -254,7 +269,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param newValue
 	 */
 	public void editEMFComboViewer(String feature, Object newValue) {
-		comboBox().setSelection(newValue.toString());
+		comboBoxWithLabel(feature).setSelection(newValue.toString());
 	}
 	
 	/**
@@ -358,9 +373,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
+	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, Object feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.comboBox().setSelection(feature);
+		propertyBot.comboBox().setSelection(feature.toString());
 		selectNode.select();
 	}
 	
@@ -374,9 +389,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyRadioFeature(SWTBotView propertyView, String feature, SWTBotTreeItem selectNode) {
+	public void editPropertyRadioFeature(SWTBotView propertyView, Object feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.radio(feature).click();
+		propertyBot.radio(feature.toString()).click();
 		selectNode.select();
 	}
 	
