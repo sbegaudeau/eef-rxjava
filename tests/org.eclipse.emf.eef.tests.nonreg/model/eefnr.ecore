@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="eefnr"
+    nsURI="http://www.eclipse.org/emf/eef/nonreg/1.0.0" nsPrefix="eefnr">
+  <eClassifiers xsi:type="ecore:EClass" name="Root">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="samples" upperBound="-1"
+        eType="#//AbstractSample" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractSample" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textRequiredProperty" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textOptionalProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="checkboxRequiredProperty"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="checkboxOptionalProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textareaRequiredProperty"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textareaOptionalProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radioRequiredProperty"
+        lowerBound="1" eType="#//ENUM_SAMPLE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radioOptionalProperty"
+        eType="#//ENUM_SAMPLE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eobjectflatcomboviewerRequiredProperty"
+        lowerBound="1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eobjectflatcomboviewerOptionalProperty"
+        eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencestableRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencestableOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emfcomboviewerRequiredProperty"
+        lowerBound="1" eType="#//ENUM_SAMPLE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emfcomboviewerOptionalProperty"
+        eType="#//ENUM_SAMPLE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multivaluededitorRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multivaluededitorOptionalProperty"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TextSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionOptionalProperty"
+        upperBound="-1" eType="#//TotalSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedreferencestableRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedreferencestableOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerRequiredPropery"
+        lowerBound="1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerOptionalPropery"
+        eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionOptionalProperty"
+        upperBound="-1" eType="#//TotalSample" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textRequiredProperty" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textOptionalProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckboxSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="checkboxRequiredProperty"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="checkboxOptionalProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextareaSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textareaRequiredProperty"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textareaOptionalProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RadioSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radioRequiredProperty"
+        lowerBound="1" eType="#//ENUM_SAMPLE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radioOptionalProperty"
+        eType="#//ENUM_SAMPLE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EObjectFlatComboViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eobjectflatcomboviewerRequiredPropery"
+        lowerBound="1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eobjectflatcomboviewerOptionalPropery"
+        eType="#//TotalSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferencesTableSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencestableRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencestableOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EMFComboViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emfcomboviewerRequiredProperty"
+        lowerBound="1" eType="#//ENUM_SAMPLE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emfcomboviewerOptionalProperty"
+        eType="#//ENUM_SAMPLE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiValuedEditorSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multivaluededitorRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multivaluededitorOptionalProperty"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TableCompositionEditorSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionOptionalProperty"
+        upperBound="-1" eType="#//TotalSample" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdvancedReferencesTableSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedreferencestableRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedreferencestableOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdvancedEObjectFlatComboViewerSample"
+      eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerRequiredProperty"
+        lowerBound="1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerOptionalProperty"
+        eType="#//TotalSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdvancedTableCompositionEditorSample"
+      eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionOptionalProperty"
+        upperBound="-1" eType="#//TotalSample" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ENUM_SAMPLE">
+    <eLiterals name="literal1"/>
+    <eLiterals name="literal2" value="1"/>
+    <eLiterals name="literal3" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>
