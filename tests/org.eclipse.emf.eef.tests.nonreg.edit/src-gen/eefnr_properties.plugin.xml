@@ -168,6 +168,14 @@
                     type="org.eclipse.emf.eef.eefnr.FlatReferencesTableSample">
              </input>
          </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.Sample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.Sample">
+             </input>
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

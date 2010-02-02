@@ -37,6 +37,7 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 		append(createAdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider());
 		append(createAdvancedTableCompositionEditorSamplePropertiesEditionProvider());
 		append(createFlatReferenceTableSamplePropertiesEditionProvider());
+		append(createSamplePropertiesEditionProvider());
 	}
 
 	/**
@@ -262,6 +263,21 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 		if (flatReferenceTableSamplePropertiesEditionProvider == null)
 			flatReferenceTableSamplePropertiesEditionProvider = new FlatReferenceTableSamplePropertiesEditionProvider();
 		return flatReferenceTableSamplePropertiesEditionProvider;
+	}
+
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * Sample instances.
+	 */
+	protected SamplePropertiesEditionProvider samplePropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a Sample
+	 */
+	public SamplePropertiesEditionProvider createSamplePropertiesEditionProvider() {
+		if (samplePropertiesEditionProvider == null)
+			samplePropertiesEditionProvider = new SamplePropertiesEditionProvider();
+		return samplePropertiesEditionProvider;
 	}
 
 }

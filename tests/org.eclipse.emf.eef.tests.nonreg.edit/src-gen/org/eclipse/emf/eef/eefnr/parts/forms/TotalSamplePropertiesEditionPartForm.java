@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TextSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -140,6 +141,22 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	protected ReferencesTable<? extends EObject> advancedtablecompositionOptionalProperty;
 	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected EMFListEditUtil tablecompositionWithSameTypeRequiredPropertyEditUtil;
+	protected ReferencesTable<? extends EObject> tablecompositionWithSameTypeRequiredProperty;
+	protected List<ViewerFilter> tablecompositionWithSameTypeRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionWithSameTypeRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected EMFListEditUtil tablecompositionWithSameTypeOptionalPropertyEditUtil;
+	protected ReferencesTable<? extends EObject> tablecompositionWithSameTypeOptionalProperty;
+	protected List<ViewerFilter> tablecompositionWithSameTypeOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionWithSameTypeOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected EMFListEditUtil advancedtablecompositionWithSameTypeRequiredPropertyEditUtil;
+	protected ReferencesTable<? extends EObject> advancedtablecompositionWithSameTypeRequiredProperty;
+	protected List<ViewerFilter> advancedtablecompositionWithSameTypeRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedtablecompositionWithSameTypeRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected EMFListEditUtil advancedtablecompositionWithSameTypeOptionalPropertyEditUtil;
+	protected ReferencesTable<? extends EObject> advancedtablecompositionWithSameTypeOptionalProperty;
+	protected List<ViewerFilter> advancedtablecompositionWithSameTypeOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedtablecompositionWithSameTypeOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -218,6 +235,10 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		createAdvancedeobjectflatcomboviewerOptionalProperyFlatComboViewer(propertiesGroup, widgetFactory);
 		createAdvancedtablecompositionRequiredPropertyTableComposition(widgetFactory, propertiesGroup);
 		createAdvancedtablecompositionOptionalPropertyTableComposition(widgetFactory, propertiesGroup);
+		createTablecompositionWithSameTypeRequiredPropertyTableComposition(widgetFactory, propertiesGroup);
+		createTablecompositionWithSameTypeOptionalPropertyTableComposition(widgetFactory, propertiesGroup);
+		createAdvancedtablecompositionWithSameTypeRequiredPropertyTableComposition(widgetFactory, propertiesGroup);
+		createAdvancedtablecompositionWithSameTypeOptionalPropertyTableComposition(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
 
@@ -827,12 +848,12 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @param container
 	 */
 	protected void createTablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.tablecompositionRequiredProperty = new ReferencesTable<TextSample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionRequiredPropertyLabel, new ReferencesTableListener<TextSample>() {			
+		this.tablecompositionRequiredProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToTablecompositionRequiredProperty();}
-			public void handleEdit(TextSample element) { editTablecompositionRequiredProperty(element); }
-			public void handleMove(TextSample element, int oldIndex, int newIndex) { moveTablecompositionRequiredProperty(element, oldIndex, newIndex); }
-			public void handleRemove(TextSample element) { removeFromTablecompositionRequiredProperty(element); }
-			public void navigateTo(TextSample element) { }
+			public void handleEdit(Sample element) { editTablecompositionRequiredProperty(element); }
+			public void handleMove(Sample element, int oldIndex, int newIndex) { moveTablecompositionRequiredProperty(element, oldIndex, newIndex); }
+			public void handleRemove(Sample element) { removeFromTablecompositionRequiredProperty(element); }
+			public void navigateTo(Sample element) { }
 		});
 		this.tablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		this.tablecompositionRequiredProperty.createControls(parent, widgetFactory);
@@ -846,7 +867,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveTablecompositionRequiredProperty(TextSample element, int oldIndex, int newIndex) {
+	protected void moveTablecompositionRequiredProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 		tablecompositionRequiredPropertyEditUtil.moveElement(element, oldIndex, newIndex);
 		tablecompositionRequiredProperty.refresh();
@@ -876,7 +897,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromTablecompositionRequiredProperty(TextSample element) {
+	protected void removeFromTablecompositionRequiredProperty(Sample element) {
 		// Start of user code for the removeFromTablecompositionRequiredProperty() method body
 		EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 		tablecompositionRequiredPropertyEditUtil.removeElement(element);
@@ -889,7 +910,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editTablecompositionRequiredProperty(TextSample element) {
+	protected void editTablecompositionRequiredProperty(Sample element) {
 		// Start of user code editTablecompositionRequiredProperty() method body
 		EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
@@ -910,12 +931,12 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @param container
 	 */
 	protected void createTablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.tablecompositionOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+		this.tablecompositionOptionalProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToTablecompositionOptionalProperty();}
-			public void handleEdit(TotalSample element) { editTablecompositionOptionalProperty(element); }
-			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveTablecompositionOptionalProperty(element, oldIndex, newIndex); }
-			public void handleRemove(TotalSample element) { removeFromTablecompositionOptionalProperty(element); }
-			public void navigateTo(TotalSample element) { }
+			public void handleEdit(Sample element) { editTablecompositionOptionalProperty(element); }
+			public void handleMove(Sample element, int oldIndex, int newIndex) { moveTablecompositionOptionalProperty(element, oldIndex, newIndex); }
+			public void handleRemove(Sample element) { removeFromTablecompositionOptionalProperty(element); }
+			public void navigateTo(Sample element) { }
 		});
 		this.tablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		this.tablecompositionOptionalProperty.createControls(parent, widgetFactory);
@@ -929,7 +950,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveTablecompositionOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveTablecompositionOptionalProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 		tablecompositionOptionalPropertyEditUtil.moveElement(element, oldIndex, newIndex);
 		tablecompositionOptionalProperty.refresh();
@@ -959,7 +980,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromTablecompositionOptionalProperty(TotalSample element) {
+	protected void removeFromTablecompositionOptionalProperty(Sample element) {
 		// Start of user code for the removeFromTablecompositionOptionalProperty() method body
 		EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 		tablecompositionOptionalPropertyEditUtil.removeElement(element);
@@ -972,7 +993,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editTablecompositionOptionalProperty(TotalSample element) {
+	protected void editTablecompositionOptionalProperty(Sample element) {
 		// Start of user code editTablecompositionOptionalProperty() method body
 		EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
@@ -1195,12 +1216,12 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @param container
 	 */
 	protected void createAdvancedtablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.advancedtablecompositionRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+		this.advancedtablecompositionRequiredProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToAdvancedtablecompositionRequiredProperty();}
-			public void handleEdit(TotalSample element) { editAdvancedtablecompositionRequiredProperty(element); }
-			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionRequiredProperty(element, oldIndex, newIndex); }
-			public void handleRemove(TotalSample element) { removeFromAdvancedtablecompositionRequiredProperty(element); }
-			public void navigateTo(TotalSample element) { }
+			public void handleEdit(Sample element) { editAdvancedtablecompositionRequiredProperty(element); }
+			public void handleMove(Sample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionRequiredProperty(element, oldIndex, newIndex); }
+			public void handleRemove(Sample element) { removeFromAdvancedtablecompositionRequiredProperty(element); }
+			public void navigateTo(Sample element) { }
 		});
 		this.advancedtablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		this.advancedtablecompositionRequiredProperty.createControls(parent, widgetFactory);
@@ -1214,7 +1235,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveAdvancedtablecompositionRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionRequiredProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 		advancedtablecompositionRequiredPropertyEditUtil.moveElement(element, oldIndex, newIndex);
 		advancedtablecompositionRequiredProperty.refresh();
@@ -1244,7 +1265,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromAdvancedtablecompositionRequiredProperty(TotalSample element) {
+	protected void removeFromAdvancedtablecompositionRequiredProperty(Sample element) {
 		// Start of user code for the removeFromAdvancedtablecompositionRequiredProperty() method body
 		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 		advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
@@ -1257,7 +1278,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editAdvancedtablecompositionRequiredProperty(TotalSample element) {
+	protected void editAdvancedtablecompositionRequiredProperty(Sample element) {
 		// Start of user code editAdvancedtablecompositionRequiredProperty() method body
 		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
@@ -1278,12 +1299,12 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * @param container
 	 */
 	protected void createAdvancedtablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.advancedtablecompositionOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+		this.advancedtablecompositionOptionalProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToAdvancedtablecompositionOptionalProperty();}
-			public void handleEdit(TotalSample element) { editAdvancedtablecompositionOptionalProperty(element); }
-			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionOptionalProperty(element, oldIndex, newIndex); }
-			public void handleRemove(TotalSample element) { removeFromAdvancedtablecompositionOptionalProperty(element); }
-			public void navigateTo(TotalSample element) { }
+			public void handleEdit(Sample element) { editAdvancedtablecompositionOptionalProperty(element); }
+			public void handleMove(Sample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionOptionalProperty(element, oldIndex, newIndex); }
+			public void handleRemove(Sample element) { removeFromAdvancedtablecompositionOptionalProperty(element); }
+			public void navigateTo(Sample element) { }
 		});
 		this.advancedtablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		this.advancedtablecompositionOptionalProperty.createControls(parent, widgetFactory);
@@ -1297,7 +1318,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveAdvancedtablecompositionOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionOptionalProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 		advancedtablecompositionOptionalPropertyEditUtil.moveElement(element, oldIndex, newIndex);
 		advancedtablecompositionOptionalProperty.refresh();
@@ -1327,7 +1348,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromAdvancedtablecompositionOptionalProperty(TotalSample element) {
+	protected void removeFromAdvancedtablecompositionOptionalProperty(Sample element) {
 		// Start of user code for the removeFromAdvancedtablecompositionOptionalProperty() method body
 		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 		advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
@@ -1340,7 +1361,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editAdvancedtablecompositionOptionalProperty(TotalSample element) {
+	protected void editAdvancedtablecompositionOptionalProperty(Sample element) {
 		// Start of user code editAdvancedtablecompositionOptionalProperty() method body
 		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
@@ -1351,6 +1372,327 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedtablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
 				advancedtablecompositionOptionalProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * @param container
+	 */
+	protected void createTablecompositionWithSameTypeRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.tablecompositionWithSameTypeRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionWithSameTypeRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+			public void handleAdd() { addToTablecompositionWithSameTypeRequiredProperty();}
+			public void handleEdit(TotalSample element) { editTablecompositionWithSameTypeRequiredProperty(element); }
+			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveTablecompositionWithSameTypeRequiredProperty(element, oldIndex, newIndex); }
+			public void handleRemove(TotalSample element) { removeFromTablecompositionWithSameTypeRequiredProperty(element); }
+			public void navigateTo(TotalSample element) { }
+		});
+		this.tablecompositionWithSameTypeRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, EefnrViewsRepository.FORM_KIND));
+		this.tablecompositionWithSameTypeRequiredProperty.createControls(parent, widgetFactory);
+		GridData tablecompositionWithSameTypeRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		tablecompositionWithSameTypeRequiredPropertyData.horizontalSpan = 3;
+		this.tablecompositionWithSameTypeRequiredProperty.setLayoutData(tablecompositionWithSameTypeRequiredPropertyData);
+		this.tablecompositionWithSameTypeRequiredProperty.setLowerBound(1);
+		this.tablecompositionWithSameTypeRequiredProperty.setUpperBound(-1);
+	}
+
+	/**
+	 * 
+	 */
+	protected void moveTablecompositionWithSameTypeRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
+		EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+		tablecompositionWithSameTypeRequiredPropertyEditUtil.moveElement(element, oldIndex, newIndex);
+		tablecompositionWithSameTypeRequiredProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
+	}
+
+	/**
+	 * 
+	 */
+	protected void addToTablecompositionWithSameTypeRequiredProperty() {
+		// Start of user code addToTablecompositionWithSameTypeRequiredProperty() method body
+		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+			if (propertiesEditionObject != null) {
+				tablecompositionWithSameTypeRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+				tablecompositionWithSameTypeRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void removeFromTablecompositionWithSameTypeRequiredProperty(TotalSample element) {
+		// Start of user code for the removeFromTablecompositionWithSameTypeRequiredProperty() method body
+		EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+		tablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
+		tablecompositionWithSameTypeRequiredProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void editTablecompositionWithSameTypeRequiredProperty(TotalSample element) {
+		// Start of user code editTablecompositionWithSameTypeRequiredProperty() method body
+		EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+			if (propertiesEditionObject != null) {
+				tablecompositionWithSameTypeRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				tablecompositionWithSameTypeRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * @param container
+	 */
+	protected void createTablecompositionWithSameTypeOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.tablecompositionWithSameTypeOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionWithSameTypeOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+			public void handleAdd() { addToTablecompositionWithSameTypeOptionalProperty();}
+			public void handleEdit(TotalSample element) { editTablecompositionWithSameTypeOptionalProperty(element); }
+			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveTablecompositionWithSameTypeOptionalProperty(element, oldIndex, newIndex); }
+			public void handleRemove(TotalSample element) { removeFromTablecompositionWithSameTypeOptionalProperty(element); }
+			public void navigateTo(TotalSample element) { }
+		});
+		this.tablecompositionWithSameTypeOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, EefnrViewsRepository.FORM_KIND));
+		this.tablecompositionWithSameTypeOptionalProperty.createControls(parent, widgetFactory);
+		GridData tablecompositionWithSameTypeOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		tablecompositionWithSameTypeOptionalPropertyData.horizontalSpan = 3;
+		this.tablecompositionWithSameTypeOptionalProperty.setLayoutData(tablecompositionWithSameTypeOptionalPropertyData);
+		this.tablecompositionWithSameTypeOptionalProperty.setLowerBound(0);
+		this.tablecompositionWithSameTypeOptionalProperty.setUpperBound(-1);
+	}
+
+	/**
+	 * 
+	 */
+	protected void moveTablecompositionWithSameTypeOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
+		EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+		tablecompositionWithSameTypeOptionalPropertyEditUtil.moveElement(element, oldIndex, newIndex);
+		tablecompositionWithSameTypeOptionalProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
+	}
+
+	/**
+	 * 
+	 */
+	protected void addToTablecompositionWithSameTypeOptionalProperty() {
+		// Start of user code addToTablecompositionWithSameTypeOptionalProperty() method body
+		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+			if (propertiesEditionObject != null) {
+				tablecompositionWithSameTypeOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+				tablecompositionWithSameTypeOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void removeFromTablecompositionWithSameTypeOptionalProperty(TotalSample element) {
+		// Start of user code for the removeFromTablecompositionWithSameTypeOptionalProperty() method body
+		EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+		tablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
+		tablecompositionWithSameTypeOptionalProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void editTablecompositionWithSameTypeOptionalProperty(TotalSample element) {
+		// Start of user code editTablecompositionWithSameTypeOptionalProperty() method body
+		EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+			if (propertiesEditionObject != null) {
+				tablecompositionWithSameTypeOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				tablecompositionWithSameTypeOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * @param container
+	 */
+	protected void createAdvancedtablecompositionWithSameTypeRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.advancedtablecompositionWithSameTypeRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+			public void handleAdd() { addToAdvancedtablecompositionWithSameTypeRequiredProperty();}
+			public void handleEdit(TotalSample element) { editAdvancedtablecompositionWithSameTypeRequiredProperty(element); }
+			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionWithSameTypeRequiredProperty(element, oldIndex, newIndex); }
+			public void handleRemove(TotalSample element) { removeFromAdvancedtablecompositionWithSameTypeRequiredProperty(element); }
+			public void navigateTo(TotalSample element) { }
+		});
+		this.advancedtablecompositionWithSameTypeRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, EefnrViewsRepository.FORM_KIND));
+		this.advancedtablecompositionWithSameTypeRequiredProperty.createControls(parent, widgetFactory);
+		GridData advancedtablecompositionWithSameTypeRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		advancedtablecompositionWithSameTypeRequiredPropertyData.horizontalSpan = 3;
+		this.advancedtablecompositionWithSameTypeRequiredProperty.setLayoutData(advancedtablecompositionWithSameTypeRequiredPropertyData);
+		this.advancedtablecompositionWithSameTypeRequiredProperty.setLowerBound(1);
+		this.advancedtablecompositionWithSameTypeRequiredProperty.setUpperBound(-1);
+	}
+
+	/**
+	 * 
+	 */
+	protected void moveAdvancedtablecompositionWithSameTypeRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
+		EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+		advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.moveElement(element, oldIndex, newIndex);
+		advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
+	}
+
+	/**
+	 * 
+	 */
+	protected void addToAdvancedtablecompositionWithSameTypeRequiredProperty() {
+		// Start of user code addToAdvancedtablecompositionWithSameTypeRequiredProperty() method body
+		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+			if (propertiesEditionObject != null) {
+				advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+				advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void removeFromAdvancedtablecompositionWithSameTypeRequiredProperty(TotalSample element) {
+		// Start of user code for the removeFromAdvancedtablecompositionWithSameTypeRequiredProperty() method body
+		EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+		advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
+		advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void editAdvancedtablecompositionWithSameTypeRequiredProperty(TotalSample element) {
+		// Start of user code editAdvancedtablecompositionWithSameTypeRequiredProperty() method body
+		EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+			if (propertiesEditionObject != null) {
+				advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+			}
+		}
+		// End of user code
+
+	}
+
+	/**
+	 * @param container
+	 */
+	protected void createAdvancedtablecompositionWithSameTypeOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.advancedtablecompositionWithSameTypeOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
+			public void handleAdd() { addToAdvancedtablecompositionWithSameTypeOptionalProperty();}
+			public void handleEdit(TotalSample element) { editAdvancedtablecompositionWithSameTypeOptionalProperty(element); }
+			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionWithSameTypeOptionalProperty(element, oldIndex, newIndex); }
+			public void handleRemove(TotalSample element) { removeFromAdvancedtablecompositionWithSameTypeOptionalProperty(element); }
+			public void navigateTo(TotalSample element) { }
+		});
+		this.advancedtablecompositionWithSameTypeOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, EefnrViewsRepository.FORM_KIND));
+		this.advancedtablecompositionWithSameTypeOptionalProperty.createControls(parent, widgetFactory);
+		GridData advancedtablecompositionWithSameTypeOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		advancedtablecompositionWithSameTypeOptionalPropertyData.horizontalSpan = 3;
+		this.advancedtablecompositionWithSameTypeOptionalProperty.setLayoutData(advancedtablecompositionWithSameTypeOptionalPropertyData);
+		this.advancedtablecompositionWithSameTypeOptionalProperty.setLowerBound(0);
+		this.advancedtablecompositionWithSameTypeOptionalProperty.setUpperBound(-1);
+	}
+
+	/**
+	 * 
+	 */
+	protected void moveAdvancedtablecompositionWithSameTypeOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
+		EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+		advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.moveElement(element, oldIndex, newIndex);
+		advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
+	}
+
+	/**
+	 * 
+	 */
+	protected void addToAdvancedtablecompositionWithSameTypeOptionalProperty() {
+		// Start of user code addToAdvancedtablecompositionWithSameTypeOptionalProperty() method body
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void removeFromAdvancedtablecompositionWithSameTypeOptionalProperty(TotalSample element) {
+		// Start of user code for the removeFromAdvancedtablecompositionWithSameTypeOptionalProperty() method body
+		EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+		advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
+		advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		// End of user code
+
+	}
+
+	/**
+	 * 
+	 */
+	protected void editAdvancedtablecompositionWithSameTypeOptionalProperty(TotalSample element) {
+		// Start of user code editAdvancedtablecompositionWithSameTypeOptionalProperty() method body
+		EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+		if (editionPolicy != null) {
+			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+			if (propertiesEditionObject != null) {
+				advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+				advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
 		// End of user code
@@ -2758,6 +3100,418 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
+	}
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToAdd()
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyToAdd() {
+		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToAdd();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToRemove()
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyToRemove() {
+		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToEdit()
+	 */
+	public Map getTablecompositionWithSameTypeRequiredPropertyToEdit() {
+		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRefresh();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToMove()
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyToMove() {
+		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToMove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyTable()
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyTable() {
+		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getVirtualList();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#initTablecompositionWithSameTypeRequiredProperty(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initTablecompositionWithSameTypeRequiredProperty(EObject current, EReference containingFeature, EReference feature) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			tablecompositionWithSameTypeRequiredPropertyEditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			tablecompositionWithSameTypeRequiredPropertyEditUtil = new EMFListEditUtil(current, feature);
+		this.tablecompositionWithSameTypeRequiredProperty.setInput(tablecompositionWithSameTypeRequiredPropertyEditUtil.getVirtualList());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionWithSameTypeRequiredProperty(EObject newValue)
+	 */
+	public void updateTablecompositionWithSameTypeRequiredProperty(EObject newValue) {
+		if(tablecompositionWithSameTypeRequiredPropertyEditUtil != null){
+			tablecompositionWithSameTypeRequiredPropertyEditUtil.reinit(newValue);
+			tablecompositionWithSameTypeRequiredProperty.refresh();
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 */
+	public void addFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
+		tablecompositionWithSameTypeRequiredPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
+		tablecompositionWithSameTypeRequiredPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element)
+	 */
+	public boolean isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element) {
+		return tablecompositionWithSameTypeRequiredPropertyEditUtil.contains(element);
+	}
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToAdd()
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyToAdd() {
+		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToAdd();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToRemove()
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyToRemove() {
+		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToEdit()
+	 */
+	public Map getTablecompositionWithSameTypeOptionalPropertyToEdit() {
+		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRefresh();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToMove()
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyToMove() {
+		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToMove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyTable()
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyTable() {
+		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getVirtualList();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#initTablecompositionWithSameTypeOptionalProperty(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initTablecompositionWithSameTypeOptionalProperty(EObject current, EReference containingFeature, EReference feature) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			tablecompositionWithSameTypeOptionalPropertyEditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			tablecompositionWithSameTypeOptionalPropertyEditUtil = new EMFListEditUtil(current, feature);
+		this.tablecompositionWithSameTypeOptionalProperty.setInput(tablecompositionWithSameTypeOptionalPropertyEditUtil.getVirtualList());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionWithSameTypeOptionalProperty(EObject newValue)
+	 */
+	public void updateTablecompositionWithSameTypeOptionalProperty(EObject newValue) {
+		if(tablecompositionWithSameTypeOptionalPropertyEditUtil != null){
+			tablecompositionWithSameTypeOptionalPropertyEditUtil.reinit(newValue);
+			tablecompositionWithSameTypeOptionalProperty.refresh();
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 */
+	public void addFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
+		tablecompositionWithSameTypeOptionalPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
+		tablecompositionWithSameTypeOptionalPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element)
+	 */
+	public boolean isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element) {
+		return tablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
+	}
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd() {
+		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToAdd();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove() {
+		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit()
+	 */
+	public Map getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit() {
+		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRefresh();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove() {
+		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToMove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyTable()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyTable() {
+		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getVirtualList();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#initAdvancedtablecompositionWithSameTypeRequiredProperty(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAdvancedtablecompositionWithSameTypeRequiredProperty(EObject current, EReference containingFeature, EReference feature) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			advancedtablecompositionWithSameTypeRequiredPropertyEditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			advancedtablecompositionWithSameTypeRequiredPropertyEditUtil = new EMFListEditUtil(current, feature);
+		this.advancedtablecompositionWithSameTypeRequiredProperty.setInput(advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getVirtualList());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionWithSameTypeRequiredProperty(EObject newValue)
+	 */
+	public void updateAdvancedtablecompositionWithSameTypeRequiredProperty(EObject newValue) {
+		if(advancedtablecompositionWithSameTypeRequiredPropertyEditUtil != null){
+			advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.reinit(newValue);
+			advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 */
+	public void addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
+		advancedtablecompositionWithSameTypeRequiredPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
+		advancedtablecompositionWithSameTypeRequiredPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element)
+	 */
+	public boolean isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element) {
+		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.contains(element);
+	}
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd() {
+		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToAdd();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove() {
+		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRemove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit()
+	 */
+	public Map getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit() {
+		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRefresh();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove() {
+		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToMove();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyTable()
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyTable() {
+		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getVirtualList();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#initAdvancedtablecompositionWithSameTypeOptionalProperty(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAdvancedtablecompositionWithSameTypeOptionalProperty(EObject current, EReference containingFeature, EReference feature) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		if (containingFeature != null)
+			advancedtablecompositionWithSameTypeOptionalPropertyEditUtil = new EMFListEditUtil(current, containingFeature, feature);
+		else
+			advancedtablecompositionWithSameTypeOptionalPropertyEditUtil = new EMFListEditUtil(current, feature);
+		this.advancedtablecompositionWithSameTypeOptionalProperty.setInput(advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getVirtualList());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionWithSameTypeOptionalProperty(EObject newValue)
+	 */
+	public void updateAdvancedtablecompositionWithSameTypeOptionalProperty(EObject newValue) {
+		if(advancedtablecompositionWithSameTypeOptionalPropertyEditUtil != null){
+			advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.reinit(newValue);
+			advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 */
+	public void addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
+		advancedtablecompositionWithSameTypeOptionalPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 */
+	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
+		advancedtablecompositionWithSameTypeOptionalPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element)
+	 */
+	public boolean isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element) {
+		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
 	}
 
 

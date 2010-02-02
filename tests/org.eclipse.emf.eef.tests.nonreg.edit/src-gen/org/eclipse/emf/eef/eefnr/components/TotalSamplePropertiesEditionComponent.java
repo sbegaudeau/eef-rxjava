@@ -43,7 +43,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.TextSample;
+import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
@@ -222,6 +222,22 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
 		}
+		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeRequiredProperty())) {
+
+			basePart.updateTablecompositionWithSameTypeRequiredProperty(totalSample);
+		}
+		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty())) {
+
+			basePart.updateTablecompositionWithSameTypeOptionalProperty(totalSample);
+		}
+		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty())) {
+
+			basePart.updateAdvancedtablecompositionWithSameTypeRequiredProperty(totalSample);
+		}
+		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty())) {
+
+			basePart.updateAdvancedtablecompositionWithSameTypeOptionalProperty(totalSample);
+		}
 
 
 	}
@@ -339,6 +355,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.setAdvancedeobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
 			basePart.initAdvancedtablecompositionRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty());
 			basePart.initAdvancedtablecompositionOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty());
+			basePart.initTablecompositionWithSameTypeRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeRequiredProperty());
+			basePart.initTablecompositionWithSameTypeOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty());
+			basePart.initAdvancedtablecompositionWithSameTypeRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty());
+			basePart.initAdvancedtablecompositionWithSameTypeOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty());
 			// init filters
 
 
@@ -426,7 +446,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TextSample);
+						return (element instanceof Sample);
 
 				}
 
@@ -442,7 +462,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
+						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
 
 				}
 
@@ -524,7 +544,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TotalSample);
+						return (element instanceof Sample);
 
 				}
 
@@ -540,12 +560,76 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
+						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
 
 				}
 
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
+			
+			// End of user code
+			basePart.addFilterToTablecompositionWithSameTypeRequiredProperty(new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof TotalSample);
+
+				}
+
+			});
+			// Start of user code for additional businessfilters for tablecompositionWithSameTypeRequiredProperty
+			
+			// End of user code
+			basePart.addFilterToTablecompositionWithSameTypeOptionalProperty(new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
+
+				}
+
+			});
+			// Start of user code for additional businessfilters for tablecompositionWithSameTypeOptionalProperty
+			
+			// End of user code
+			basePart.addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof TotalSample);
+
+				}
+
+			});
+			// Start of user code for additional businessfilters for advancedtablecompositionWithSameTypeRequiredProperty
+			
+			// End of user code
+			basePart.addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(new ViewerFilter() {
+
+					/*
+					 * (non-Javadoc)
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
+
+				}
+
+			});
+			// Start of user code for additional businessfilters for advancedtablecompositionWithSameTypeOptionalProperty
 			
 			// End of user code
 		}
@@ -555,6 +639,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 		setInitializing(false);
 	}
+
+
+
+
 
 
 
@@ -646,8 +734,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			Map tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToEdit();
 			for (Iterator iter = tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.keySet().iterator(); iter.hasNext();) {
 				
-				TextSample nextElement = (TextSample) iter.next();
-				TextSample tablecompositionRequiredProperty = (TextSample) tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.get(nextElement);
+				Sample nextElement = (Sample) iter.next();
+				Sample tablecompositionRequiredProperty = (Sample) tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionRequiredProperty.eGet(feature)));
@@ -661,7 +749,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			List tablecompositionRequiredPropertyToMoveFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToMove();
 			for (Iterator iter = tablecompositionRequiredPropertyToMoveFromTablecompositionRequiredProperty.iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTextSample(), moveElement.getElement(), moveElement.getIndex()));
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
 			}
 			List tablecompositionOptionalPropertyToAddFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToAdd();
 			for (Iterator iter = tablecompositionOptionalPropertyToAddFromTablecompositionOptionalProperty.iterator(); iter.hasNext();)
@@ -669,8 +757,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			Map tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToEdit();
 			for (Iterator iter = tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty.keySet().iterator(); iter.hasNext();) {
 				
-				TotalSample nextElement = (TotalSample) iter.next();
-				TotalSample tablecompositionOptionalProperty = (TotalSample) tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty.get(nextElement);
+				Sample nextElement = (Sample) iter.next();
+				Sample tablecompositionOptionalProperty = (Sample) tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionOptionalProperty.eGet(feature)));
@@ -684,7 +772,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			List tablecompositionOptionalPropertyToMoveFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToMove();
 			for (Iterator iter = tablecompositionOptionalPropertyToMoveFromTablecompositionOptionalProperty.iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
 			}
 			List advancedreferencestableRequiredPropertyToAddFromAdvancedreferencestableRequiredProperty = basePart.getAdvancedreferencestableRequiredPropertyToAdd();
 			for (Iterator iter = advancedreferencestableRequiredPropertyToAddFromAdvancedreferencestableRequiredProperty.iterator(); iter.hasNext();)
@@ -720,8 +808,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			Map advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty = basePart.getAdvancedtablecompositionRequiredPropertyToEdit();
 			for (Iterator iter = advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty.keySet().iterator(); iter.hasNext();) {
 				
-				TotalSample nextElement = (TotalSample) iter.next();
-				TotalSample advancedtablecompositionRequiredProperty = (TotalSample) advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty.get(nextElement);
+				Sample nextElement = (Sample) iter.next();
+				Sample advancedtablecompositionRequiredProperty = (Sample) advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, advancedtablecompositionRequiredProperty.eGet(feature)));
@@ -735,7 +823,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			List advancedtablecompositionRequiredPropertyToMoveFromAdvancedtablecompositionRequiredProperty = basePart.getAdvancedtablecompositionRequiredPropertyToMove();
 			for (Iterator iter = advancedtablecompositionRequiredPropertyToMoveFromAdvancedtablecompositionRequiredProperty.iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
 			}
 			List advancedtablecompositionOptionalPropertyToAddFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToAdd();
 			for (Iterator iter = advancedtablecompositionOptionalPropertyToAddFromAdvancedtablecompositionOptionalProperty.iterator(); iter.hasNext();)
@@ -743,8 +831,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			Map advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToEdit();
 			for (Iterator iter = advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty.keySet().iterator(); iter.hasNext();) {
 				
-				TotalSample nextElement = (TotalSample) iter.next();
-				TotalSample advancedtablecompositionOptionalProperty = (TotalSample) advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty.get(nextElement);
+				Sample nextElement = (Sample) iter.next();
+				Sample advancedtablecompositionOptionalProperty = (Sample) advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
 					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, advancedtablecompositionOptionalProperty.eGet(feature)));
@@ -757,6 +845,98 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				cc.append(DeleteCommand.create(editingDomain, iter.next()));
 			List advancedtablecompositionOptionalPropertyToMoveFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToMove();
 			for (Iterator iter = advancedtablecompositionOptionalPropertyToMoveFromAdvancedtablecompositionOptionalProperty.iterator(); iter.hasNext();){
+				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
+			}
+			List tablecompositionOnSameTypeRequiredPropertyToAddFromTablecompositionWithSameTypeRequiredProperty = basePart.getTablecompositionWithSameTypeRequiredPropertyToAdd();
+			for (Iterator iter = tablecompositionOnSameTypeRequiredPropertyToAddFromTablecompositionWithSameTypeRequiredProperty.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeRequiredProperty(), iter.next()));
+			Map tablecompositionOnSameTypeRequiredPropertyToRefreshFromTablecompositionWithSameTypeRequiredProperty = basePart.getTablecompositionWithSameTypeRequiredPropertyToEdit();
+			for (Iterator iter = tablecompositionOnSameTypeRequiredPropertyToRefreshFromTablecompositionWithSameTypeRequiredProperty.keySet().iterator(); iter.hasNext();) {
+				
+				TotalSample nextElement = (TotalSample) iter.next();
+				TotalSample tablecompositionOnSameTypeRequiredProperty = (TotalSample) tablecompositionOnSameTypeRequiredPropertyToRefreshFromTablecompositionWithSameTypeRequiredProperty.get(nextElement);
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionOnSameTypeRequiredProperty.eGet(feature)));
+					}
+				}
+				
+			}
+			List tablecompositionOnSameTypeRequiredPropertyToRemoveFromTablecompositionWithSameTypeRequiredProperty = basePart.getTablecompositionWithSameTypeRequiredPropertyToRemove();
+			for (Iterator iter = tablecompositionOnSameTypeRequiredPropertyToRemoveFromTablecompositionWithSameTypeRequiredProperty.iterator(); iter.hasNext();)
+				cc.append(DeleteCommand.create(editingDomain, iter.next()));
+			List tablecompositionOnSameTypeRequiredPropertyToMoveFromTablecompositionWithSameTypeRequiredProperty = basePart.getTablecompositionWithSameTypeRequiredPropertyToMove();
+			for (Iterator iter = tablecompositionOnSameTypeRequiredPropertyToMoveFromTablecompositionWithSameTypeRequiredProperty.iterator(); iter.hasNext();){
+				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
+			}
+			List tablecompositionOnSameTypeOptionalPropertyToAddFromTablecompositionWithSameTypeOptionalProperty = basePart.getTablecompositionWithSameTypeOptionalPropertyToAdd();
+			for (Iterator iter = tablecompositionOnSameTypeOptionalPropertyToAddFromTablecompositionWithSameTypeOptionalProperty.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty(), iter.next()));
+			Map tablecompositionOnSameTypeOptionalPropertyToRefreshFromTablecompositionWithSameTypeOptionalProperty = basePart.getTablecompositionWithSameTypeOptionalPropertyToEdit();
+			for (Iterator iter = tablecompositionOnSameTypeOptionalPropertyToRefreshFromTablecompositionWithSameTypeOptionalProperty.keySet().iterator(); iter.hasNext();) {
+				
+				TotalSample nextElement = (TotalSample) iter.next();
+				TotalSample tablecompositionOnSameTypeOptionalProperty = (TotalSample) tablecompositionOnSameTypeOptionalPropertyToRefreshFromTablecompositionWithSameTypeOptionalProperty.get(nextElement);
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionOnSameTypeOptionalProperty.eGet(feature)));
+					}
+				}
+				
+			}
+			List tablecompositionOnSameTypeOptionalPropertyToRemoveFromTablecompositionWithSameTypeOptionalProperty = basePart.getTablecompositionWithSameTypeOptionalPropertyToRemove();
+			for (Iterator iter = tablecompositionOnSameTypeOptionalPropertyToRemoveFromTablecompositionWithSameTypeOptionalProperty.iterator(); iter.hasNext();)
+				cc.append(DeleteCommand.create(editingDomain, iter.next()));
+			List tablecompositionOnSameTypeOptionalPropertyToMoveFromTablecompositionWithSameTypeOptionalProperty = basePart.getTablecompositionWithSameTypeOptionalPropertyToMove();
+			for (Iterator iter = tablecompositionOnSameTypeOptionalPropertyToMoveFromTablecompositionWithSameTypeOptionalProperty.iterator(); iter.hasNext();){
+				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
+			}
+			List advancedtablecompositionOnSameTypeRequiredPropertyToAddFromAdvancedtablecompositionWithSameTypeRequiredProperty = basePart.getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd();
+			for (Iterator iter = advancedtablecompositionOnSameTypeRequiredPropertyToAddFromAdvancedtablecompositionWithSameTypeRequiredProperty.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty(), iter.next()));
+			Map advancedtablecompositionOnSameTypeRequiredPropertyToRefreshFromAdvancedtablecompositionWithSameTypeRequiredProperty = basePart.getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit();
+			for (Iterator iter = advancedtablecompositionOnSameTypeRequiredPropertyToRefreshFromAdvancedtablecompositionWithSameTypeRequiredProperty.keySet().iterator(); iter.hasNext();) {
+				
+				TotalSample nextElement = (TotalSample) iter.next();
+				TotalSample advancedtablecompositionOnSameTypeRequiredProperty = (TotalSample) advancedtablecompositionOnSameTypeRequiredPropertyToRefreshFromAdvancedtablecompositionWithSameTypeRequiredProperty.get(nextElement);
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, advancedtablecompositionOnSameTypeRequiredProperty.eGet(feature)));
+					}
+				}
+				
+			}
+			List advancedtablecompositionOnSameTypeRequiredPropertyToRemoveFromAdvancedtablecompositionWithSameTypeRequiredProperty = basePart.getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove();
+			for (Iterator iter = advancedtablecompositionOnSameTypeRequiredPropertyToRemoveFromAdvancedtablecompositionWithSameTypeRequiredProperty.iterator(); iter.hasNext();)
+				cc.append(DeleteCommand.create(editingDomain, iter.next()));
+			List advancedtablecompositionOnSameTypeRequiredPropertyToMoveFromAdvancedtablecompositionWithSameTypeRequiredProperty = basePart.getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove();
+			for (Iterator iter = advancedtablecompositionOnSameTypeRequiredPropertyToMoveFromAdvancedtablecompositionWithSameTypeRequiredProperty.iterator(); iter.hasNext();){
+				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
+				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
+			}
+			List advancedtablecompositionOnSametypeOptionalPropertyToAddFromAdvancedtablecompositionWithSameTypeOptionalProperty = basePart.getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd();
+			for (Iterator iter = advancedtablecompositionOnSametypeOptionalPropertyToAddFromAdvancedtablecompositionWithSameTypeOptionalProperty.iterator(); iter.hasNext();)
+				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty(), iter.next()));
+			Map advancedtablecompositionOnSametypeOptionalPropertyToRefreshFromAdvancedtablecompositionWithSameTypeOptionalProperty = basePart.getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit();
+			for (Iterator iter = advancedtablecompositionOnSametypeOptionalPropertyToRefreshFromAdvancedtablecompositionWithSameTypeOptionalProperty.keySet().iterator(); iter.hasNext();) {
+				
+				TotalSample nextElement = (TotalSample) iter.next();
+				TotalSample advancedtablecompositionOnSametypeOptionalProperty = (TotalSample) advancedtablecompositionOnSametypeOptionalPropertyToRefreshFromAdvancedtablecompositionWithSameTypeOptionalProperty.get(nextElement);
+				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
+					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+						cc.append(SetCommand.create(editingDomain, nextElement, feature, advancedtablecompositionOnSametypeOptionalProperty.eGet(feature)));
+					}
+				}
+				
+			}
+			List advancedtablecompositionOnSametypeOptionalPropertyToRemoveFromAdvancedtablecompositionWithSameTypeOptionalProperty = basePart.getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove();
+			for (Iterator iter = advancedtablecompositionOnSametypeOptionalPropertyToRemoveFromAdvancedtablecompositionWithSameTypeOptionalProperty.iterator(); iter.hasNext();)
+				cc.append(DeleteCommand.create(editingDomain, iter.next()));
+			List advancedtablecompositionOnSametypeOptionalPropertyToMoveFromAdvancedtablecompositionWithSameTypeOptionalProperty = basePart.getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove();
+			for (Iterator iter = advancedtablecompositionOnSametypeOptionalPropertyToMoveFromAdvancedtablecompositionWithSameTypeOptionalProperty.iterator(); iter.hasNext();){
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
 			}
@@ -813,6 +993,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			totalSampleToUpdate.setAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)basePart.getAdvancedeobjectflatcomboviewerOptionalPropery());
 			totalSampleToUpdate.getAdvancedtablecompositionRequiredProperty().addAll(basePart.getAdvancedtablecompositionRequiredPropertyToAdd());
 			totalSampleToUpdate.getAdvancedtablecompositionOptionalProperty().addAll(basePart.getAdvancedtablecompositionOptionalPropertyToAdd());
+			totalSampleToUpdate.getTablecompositionOnSameTypeRequiredProperty().addAll(basePart.getTablecompositionWithSameTypeRequiredPropertyToAdd());
+			totalSampleToUpdate.getTablecompositionOnSameTypeOptionalProperty().addAll(basePart.getTablecompositionWithSameTypeOptionalPropertyToAdd());
+			totalSampleToUpdate.getAdvancedtablecompositionOnSameTypeRequiredProperty().addAll(basePart.getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd());
+			totalSampleToUpdate.getAdvancedtablecompositionOnSametypeOptionalProperty().addAll(basePart.getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd());
 
 
 			return totalSampleToUpdate;
@@ -889,8 +1073,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
-					TextSample oldValue = (TextSample)event.getOldValue();
-					TextSample newValue = (TextSample)event.getNewValue();
+					Sample oldValue = (Sample)event.getOldValue();
+					Sample newValue = (Sample)event.getNewValue();
 					
 					// TODO: Complete the totalSample update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -905,12 +1089,12 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				else if (PropertiesEditionEvent.REMOVE == event.getKind())
 					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTextSample(), event.getNewValue(), event.getNewIndex()));
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
 			}
 			if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
-					TotalSample oldValue = (TotalSample)event.getOldValue();
-					TotalSample newValue = (TotalSample)event.getNewValue();
+					Sample oldValue = (Sample)event.getOldValue();
+					Sample newValue = (Sample)event.getNewValue();
 					
 					// TODO: Complete the totalSample update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -925,7 +1109,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				else if (PropertiesEditionEvent.REMOVE == event.getKind())
 					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), event.getNewValue(), event.getNewIndex()));
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
 			}
 			if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.ADD == event.getKind())
@@ -949,8 +1133,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery(), event.getNewValue()));
 			if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
-					TotalSample oldValue = (TotalSample)event.getOldValue();
-					TotalSample newValue = (TotalSample)event.getNewValue();
+					Sample oldValue = (Sample)event.getOldValue();
+					Sample newValue = (Sample)event.getNewValue();
 					
 					// TODO: Complete the totalSample update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
@@ -965,9 +1149,29 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				else if (PropertiesEditionEvent.REMOVE == event.getKind())
 					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), event.getNewValue(), event.getNewIndex()));
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
 			}
 			if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
+				if (PropertiesEditionEvent.SET == event.getKind()) {
+					Sample oldValue = (Sample)event.getOldValue();
+					Sample newValue = (Sample)event.getNewValue();
+					
+					// TODO: Complete the totalSample update command
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					
+				}
+				else if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(), event.getNewValue()));
+				else if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
+				else if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
+			}
+			if (EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					TotalSample oldValue = (TotalSample)event.getOldValue();
 					TotalSample newValue = (TotalSample)event.getNewValue();
@@ -981,7 +1185,67 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(), event.getNewValue()));
+					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeRequiredProperty(), event.getNewValue()));
+				else if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
+				else if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), event.getNewValue(), event.getNewIndex()));
+			}
+			if (EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty == event.getAffectedEditor()) {
+				if (PropertiesEditionEvent.SET == event.getKind()) {
+					TotalSample oldValue = (TotalSample)event.getOldValue();
+					TotalSample newValue = (TotalSample)event.getNewValue();
+					
+					// TODO: Complete the totalSample update command
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					
+				}
+				else if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty(), event.getNewValue()));
+				else if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
+				else if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), event.getNewValue(), event.getNewIndex()));
+			}
+			if (EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty == event.getAffectedEditor()) {
+				if (PropertiesEditionEvent.SET == event.getKind()) {
+					TotalSample oldValue = (TotalSample)event.getOldValue();
+					TotalSample newValue = (TotalSample)event.getNewValue();
+					
+					// TODO: Complete the totalSample update command
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					
+				}
+				else if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty(), event.getNewValue()));
+				else if (PropertiesEditionEvent.REMOVE == event.getKind())
+					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
+				else if (PropertiesEditionEvent.MOVE == event.getKind())
+					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), event.getNewValue(), event.getNewIndex()));
+			}
+			if (EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty == event.getAffectedEditor()) {
+				if (PropertiesEditionEvent.SET == event.getKind()) {
+					TotalSample oldValue = (TotalSample)event.getOldValue();
+					TotalSample newValue = (TotalSample)event.getNewValue();
+					
+					// TODO: Complete the totalSample update command
+					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
+						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
+							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+						}
+					}
+					
+				}
+				else if (PropertiesEditionEvent.ADD == event.getKind())
+					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty(), event.getNewValue()));
 				else if (PropertiesEditionEvent.REMOVE == event.getKind())
 					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
@@ -1011,7 +1275,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.TotalSample.textRequiredProperty || key == EefnrViewsRepository.TotalSample.checkboxRequiredProperty || key == EefnrViewsRepository.TotalSample.textareaRequiredProperty || key == EefnrViewsRepository.TotalSample.radioRequiredProperty || key == EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty || key == EefnrViewsRepository.TotalSample.referencestableRequiredProperty || key == EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty || key == EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty || key == EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty || key == EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty || key == EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery || key == EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty;
+		return key == EefnrViewsRepository.TotalSample.textRequiredProperty || key == EefnrViewsRepository.TotalSample.checkboxRequiredProperty || key == EefnrViewsRepository.TotalSample.textareaRequiredProperty || key == EefnrViewsRepository.TotalSample.radioRequiredProperty || key == EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty || key == EefnrViewsRepository.TotalSample.referencestableRequiredProperty || key == EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty || key == EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty || key == EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty || key == EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty || key == EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery || key == EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty || key == EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty || key == EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty;
 	}
 
 	/**

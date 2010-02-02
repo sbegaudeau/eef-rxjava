@@ -937,6 +937,274 @@ public interface TotalSamplePropertiesEditionPart {
 
 
 
+	/**
+	 * @return the tablecompositionWithSameTypeRequiredProperty to add
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyToAdd();
+
+	/**
+	 * @return the tablecompositionWithSameTypeRequiredProperty to remove
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyToRemove();
+
+	/**
+	 * @return the tablecompositionWithSameTypeRequiredProperty to move
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyToMove();
+
+	/**
+	 * @return the tablecompositionWithSameTypeRequiredProperty to edit
+	 */
+	public Map getTablecompositionWithSameTypeRequiredPropertyToEdit();
+
+	/**
+	 * @return the current tablecompositionWithSameTypeRequiredProperty table
+	 */
+	public List getTablecompositionWithSameTypeRequiredPropertyTable();
+
+	/**
+	 * Init the tablecompositionWithSameTypeRequiredProperty
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initTablecompositionWithSameTypeRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+
+	/**
+	 * Update the tablecompositionWithSameTypeRequiredProperty
+	 * @param newValue the tablecompositionWithSameTypeRequiredProperty to update
+	 */
+	public void updateTablecompositionWithSameTypeRequiredProperty(EObject newValue);
+
+	/**
+	 * Adds the given filter to the tablecompositionWithSameTypeRequiredProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the tablecompositionWithSameTypeRequiredProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the tablecompositionWithSameTypeRequiredProperty table
+	 */
+	public boolean isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element);
+
+
+
+
+
+
+	/**
+	 * @return the tablecompositionWithSameTypeOptionalProperty to add
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyToAdd();
+
+	/**
+	 * @return the tablecompositionWithSameTypeOptionalProperty to remove
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyToRemove();
+
+	/**
+	 * @return the tablecompositionWithSameTypeOptionalProperty to move
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyToMove();
+
+	/**
+	 * @return the tablecompositionWithSameTypeOptionalProperty to edit
+	 */
+	public Map getTablecompositionWithSameTypeOptionalPropertyToEdit();
+
+	/**
+	 * @return the current tablecompositionWithSameTypeOptionalProperty table
+	 */
+	public List getTablecompositionWithSameTypeOptionalPropertyTable();
+
+	/**
+	 * Init the tablecompositionWithSameTypeOptionalProperty
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initTablecompositionWithSameTypeOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+
+	/**
+	 * Update the tablecompositionWithSameTypeOptionalProperty
+	 * @param newValue the tablecompositionWithSameTypeOptionalProperty to update
+	 */
+	public void updateTablecompositionWithSameTypeOptionalProperty(EObject newValue);
+
+	/**
+	 * Adds the given filter to the tablecompositionWithSameTypeOptionalProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the tablecompositionWithSameTypeOptionalProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the tablecompositionWithSameTypeOptionalProperty table
+	 */
+	public boolean isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element);
+
+
+
+
+
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to add
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd();
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to remove
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove();
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to move
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove();
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to edit
+	 */
+	public Map getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit();
+
+	/**
+	 * @return the current advancedtablecompositionWithSameTypeRequiredProperty table
+	 */
+	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyTable();
+
+	/**
+	 * Init the advancedtablecompositionWithSameTypeRequiredProperty
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initAdvancedtablecompositionWithSameTypeRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+
+	/**
+	 * Update the advancedtablecompositionWithSameTypeRequiredProperty
+	 * @param newValue the advancedtablecompositionWithSameTypeRequiredProperty to update
+	 */
+	public void updateAdvancedtablecompositionWithSameTypeRequiredProperty(EObject newValue);
+
+	/**
+	 * Adds the given filter to the advancedtablecompositionWithSameTypeRequiredProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the advancedtablecompositionWithSameTypeRequiredProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the advancedtablecompositionWithSameTypeRequiredProperty table
+	 */
+	public boolean isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element);
+
+
+
+
+
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to add
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd();
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to remove
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove();
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to move
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove();
+
+	/**
+	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to edit
+	 */
+	public Map getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit();
+
+	/**
+	 * @return the current advancedtablecompositionWithSameTypeOptionalProperty table
+	 */
+	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyTable();
+
+	/**
+	 * Init the advancedtablecompositionWithSameTypeOptionalProperty
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initAdvancedtablecompositionWithSameTypeOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+
+	/**
+	 * Update the advancedtablecompositionWithSameTypeOptionalProperty
+	 * @param newValue the advancedtablecompositionWithSameTypeOptionalProperty to update
+	 */
+	public void updateAdvancedtablecompositionWithSameTypeOptionalProperty(EObject newValue);
+
+	/**
+	 * Adds the given filter to the advancedtablecompositionWithSameTypeOptionalProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the advancedtablecompositionWithSameTypeOptionalProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 */
+	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the advancedtablecompositionWithSameTypeOptionalProperty table
+	 */
+	public boolean isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element);
+
+
+
+
+
+
 
 
 

@@ -48,6 +48,8 @@ public class EefnrMessages extends NLS {
 
 	public static String FlatReferenceTableSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String SamplePropertiesEditionPart_PropertiesGroupLabel;
+
 	public static String Root_ReadOnly;
 
 	public static String Root_Part_Title;
@@ -108,6 +110,10 @@ public class EefnrMessages extends NLS {
 
 	public static String FlatReferenceTableSample_Part_Title;
 
+	public static String Sample_ReadOnly;
+
+	public static String Sample_Part_Title;
+
 	public static String RootPropertiesEditionPart_SamplesLabel;
 
 	public static String TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel;
@@ -157,6 +163,14 @@ public class EefnrMessages extends NLS {
 	public static String TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel;
 
 	public static String TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel;
+
+	public static String TotalSamplePropertiesEditionPart_TablecompositionWithSameTypeRequiredPropertyLabel;
+
+	public static String TotalSamplePropertiesEditionPart_TablecompositionWithSameTypeOptionalPropertyLabel;
+
+	public static String TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeRequiredPropertyLabel;
+
+	public static String TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeOptionalPropertyLabel;
 
 	public static String TextSamplePropertiesEditionPart_TextRequiredPropertyLabel;
 
@@ -209,6 +223,10 @@ public class EefnrMessages extends NLS {
 	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableRequiredPropertyLabel;
 
 	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableOptionalPropertyLabel;
+
+	public static String SamplePropertiesEditionPart_TextRequiredPropertyLabel;
+
+	public static String SamplePropertiesEditionPart_TextOptionalPropertyLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 

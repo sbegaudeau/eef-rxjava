@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.eefnr.parts.forms.MultiValuedEditorSamplePropertiesEd
 import org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.RootPropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.SamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextareaSamplePropertiesEditionPartForm;
@@ -37,6 +38,7 @@ import org.eclipse.emf.eef.eefnr.parts.impl.MultiValuedEditorSamplePropertiesEdi
 import org.eclipse.emf.eef.eefnr.parts.impl.RadioSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.ReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.RootPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.SamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TableCompositionEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextareaSamplePropertiesEditionPartImpl;
@@ -154,6 +156,12 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 				return new FlatReferenceTableSamplePropertiesEditionPartImpl(component);
 			if (kind == EefnrViewsRepository.FORM_KIND)
 				return new FlatReferenceTableSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.Sample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new SamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new SamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}
