@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrAdapterFactory.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
+ * $Id: EefnrAdapterFactory.java,v 1.3 2010/02/02 10:03:51 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -134,6 +134,10 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFlatReferencesTableSample(FlatReferencesTableSample object) {
 				return createFlatReferencesTableSampleAdapter();
+			}
+			@Override
+			public Adapter caseSample(Sample object) {
+				return createSampleAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -376,6 +380,20 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFlatReferencesTableSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.Sample <em>Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.Sample
+	 * @generated
+	 */
+	public Adapter createSampleAdapter() {
 		return null;
 	}
 

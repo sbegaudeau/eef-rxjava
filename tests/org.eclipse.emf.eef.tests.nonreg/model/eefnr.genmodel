@@ -15,7 +15,9 @@
     <genClasses ecoreClass="eefnr.ecore#//Root">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//Root/samples"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="eefnr.ecore#//AbstractSample"/>
+    <genClasses image="false" ecoreClass="eefnr.ecore#//AbstractSample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//AbstractSample/name"/>
+    </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//TotalSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TotalSample/textRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TotalSample/textOptionalProperty"/>
@@ -33,14 +35,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TotalSample/emfcomboviewerOptionalProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TotalSample/multivaluededitorRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TotalSample/multivaluededitorOptionalProperty"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/tablecompositionRequiredProperty"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/tablecompositionOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/tablecompositionOnSameTypeRequiredProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/tablecompositionOnSameTypeOptionalProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedreferencestableRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedreferencestableOptionalProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedeobjectflatcomboviewerRequiredPropery"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedeobjectflatcomboviewerOptionalPropery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedtablecompositionOnSameTypeRequiredProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedtablecompositionOnSametypeOptionalProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedtablecompositionRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/advancedtablecompositionOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/tablecompositionRequiredProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TotalSample/tablecompositionOptionalProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//TextSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSample/textRequiredProperty"/>
@@ -93,6 +99,10 @@
     <genClasses ecoreClass="eefnr.ecore#//FlatReferencesTableSample">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableOptionalProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//Sample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//Sample/textRequiredProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//Sample/textOptionalProperty"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

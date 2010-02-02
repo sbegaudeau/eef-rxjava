@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
+ * $Id: EefnrSwitch.java,v 1.3 2010/02/02 10:03:51 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -194,6 +194,13 @@ public class EefnrSwitch<T> {
 				FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)theEObject;
 				T result = caseFlatReferencesTableSample(flatReferencesTableSample);
 				if (result == null) result = caseAbstractSample(flatReferencesTableSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.SAMPLE: {
+				Sample sample = (Sample)theEObject;
+				T result = caseSample(sample);
+				if (result == null) result = caseAbstractSample(sample);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -438,6 +445,21 @@ public class EefnrSwitch<T> {
 	 * @generated
 	 */
 	public T caseFlatReferencesTableSample(FlatReferencesTableSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSample(Sample object) {
 		return null;
 	}
 

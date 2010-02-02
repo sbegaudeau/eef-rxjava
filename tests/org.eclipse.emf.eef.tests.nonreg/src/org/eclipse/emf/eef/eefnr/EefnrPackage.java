@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackage.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
+ * $Id: EefnrPackage.java,v 1.3 2010/02/02 10:03:51 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -99,13 +99,22 @@ public interface EefnrPackage extends EPackage {
 	int ABSTRACT_SAMPLE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_SAMPLE__NAME = 0;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_SAMPLE_FEATURE_COUNT = 0;
+	int ABSTRACT_SAMPLE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl <em>Total Sample</em>}' class.
@@ -116,6 +125,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int TOTAL_SAMPLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOTAL_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Text Required Property</b></em>' attribute.
@@ -262,22 +280,22 @@ public interface EefnrPackage extends EPackage {
 	int TOTAL_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 15;
 
 	/**
-	 * The feature id for the '<em><b>Tablecomposition Required Property</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Tablecomposition On Same Type Required Property</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 16;
+	int TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 16;
 
 	/**
-	 * The feature id for the '<em><b>Tablecomposition Optional Property</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Tablecomposition On Same Type Optional Property</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 17;
+	int TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Advancedreferencestable Required Property</b></em>' reference list.
@@ -316,13 +334,31 @@ public interface EefnrPackage extends EPackage {
 	int TOTAL_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 21;
 
 	/**
+	 * The feature id for the '<em><b>Advancedtablecomposition On Same Type Required Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 22;
+
+	/**
+	 * The feature id for the '<em><b>Advancedtablecomposition On Sametype Optional Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 23;
+
+	/**
 	 * The feature id for the '<em><b>Advancedtablecomposition Required Property</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 22;
+	int TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Advancedtablecomposition Optional Property</b></em>' containment reference list.
@@ -331,7 +367,25 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 23;
+	int TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 25;
+
+	/**
+	 * The feature id for the '<em><b>Tablecomposition Required Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 26;
+
+	/**
+	 * The feature id for the '<em><b>Tablecomposition Optional Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 27;
 
 	/**
 	 * The number of structural features of the '<em>Total Sample</em>' class.
@@ -340,7 +394,7 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOTAL_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 24;
+	int TOTAL_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 28;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.TextSampleImpl <em>Text Sample</em>}' class.
@@ -351,6 +405,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int TEXT_SAMPLE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Text Required Property</b></em>' attribute.
@@ -390,6 +453,15 @@ public interface EefnrPackage extends EPackage {
 	int CHECKBOX_SAMPLE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKBOX_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Checkbox Required Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -425,6 +497,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int TEXTAREA_SAMPLE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXTAREA_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Textarea Required Property</b></em>' attribute.
@@ -464,6 +545,15 @@ public interface EefnrPackage extends EPackage {
 	int RADIO_SAMPLE = 6;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RADIO_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Radio Required Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -499,6 +589,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int EOBJECT_FLAT_COMBO_VIEWER_SAMPLE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Eobjectflatcomboviewer Required Propery</b></em>' reference.
@@ -538,6 +637,15 @@ public interface EefnrPackage extends EPackage {
 	int REFERENCES_TABLE_SAMPLE = 8;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCES_TABLE_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Referencestable Required Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -573,6 +681,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int EMF_COMBO_VIEWER_SAMPLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_COMBO_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Emfcomboviewer Required Property</b></em>' attribute.
@@ -612,6 +729,15 @@ public interface EefnrPackage extends EPackage {
 	int MULTI_VALUED_EDITOR_SAMPLE = 10;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_VALUED_EDITOR_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Multivaluededitor Required Property</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -647,6 +773,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int TABLE_COMPOSITION_EDITOR_SAMPLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COMPOSITION_EDITOR_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Tablecomposition Required Property</b></em>' containment reference list.
@@ -686,6 +821,15 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_REFERENCES_TABLE_SAMPLE = 12;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_REFERENCES_TABLE_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Advancedreferencestable Required Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -721,6 +865,15 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Advancedeobjectflatcomboviewer Required Property</b></em>' reference.
@@ -760,6 +913,15 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE = 14;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Advancedtablecomposition Required Property</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -797,6 +959,15 @@ public interface EefnrPackage extends EPackage {
 	int FLAT_REFERENCES_TABLE_SAMPLE = 15;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLAT_REFERENCES_TABLE_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Flatreferencestable Required Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -824,6 +995,52 @@ public interface EefnrPackage extends EPackage {
 	int FLAT_REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SampleImpl <em>Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.SampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSample()
+	 * @generated
+	 */
+	int SAMPLE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Required Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__TEXT_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Text Optional Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE__TEXT_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -831,7 +1048,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 16;
+	int ENUM_SAMPLE = 17;
 
 
 	/**
@@ -864,6 +1081,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAbstractSample();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.AbstractSample#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AbstractSample#getName()
+	 * @see #getAbstractSample()
+	 * @generated
+	 */
+	EAttribute getAbstractSample_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.TotalSample <em>Total Sample</em>}'.
@@ -1052,6 +1280,28 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getTotalSample_MultivaluededitorOptionalProperty();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionOnSameTypeRequiredProperty <em>Tablecomposition On Same Type Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tablecomposition On Same Type Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionOnSameTypeRequiredProperty()
+	 * @see #getTotalSample()
+	 * @generated
+	 */
+	EReference getTotalSample_TablecompositionOnSameTypeRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionOnSameTypeOptionalProperty <em>Tablecomposition On Same Type Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tablecomposition On Same Type Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionOnSameTypeOptionalProperty()
+	 * @see #getTotalSample()
+	 * @generated
+	 */
+	EReference getTotalSample_TablecompositionOnSameTypeOptionalProperty();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionRequiredProperty <em>Tablecomposition Required Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1116,6 +1366,28 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOnSameTypeRequiredProperty <em>Advancedtablecomposition On Same Type Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Advancedtablecomposition On Same Type Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOnSameTypeRequiredProperty()
+	 * @see #getTotalSample()
+	 * @generated
+	 */
+	EReference getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOnSametypeOptionalProperty <em>Advancedtablecomposition On Sametype Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Advancedtablecomposition On Sametype Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOnSametypeOptionalProperty()
+	 * @see #getTotalSample()
+	 * @generated
+	 */
+	EReference getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionRequiredProperty <em>Advancedtablecomposition Required Property</em>}'.
@@ -1556,6 +1828,38 @@ public interface EefnrPackage extends EPackage {
 	EReference getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.Sample <em>Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.Sample
+	 * @generated
+	 */
+	EClass getSample();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.Sample#getTextRequiredProperty <em>Text Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.Sample#getTextRequiredProperty()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_TextRequiredProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.Sample#getTextOptionalProperty <em>Text Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.Sample#getTextOptionalProperty()
+	 * @see #getSample()
+	 * @generated
+	 */
+	EAttribute getSample_TextOptionalProperty();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1614,6 +1918,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ABSTRACT_SAMPLE = eINSTANCE.getAbstractSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_SAMPLE__NAME = eINSTANCE.getAbstractSample_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl <em>Total Sample</em>}' class.
@@ -1754,6 +2066,22 @@ public interface EefnrPackage extends EPackage {
 		EAttribute TOTAL_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY = eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Tablecomposition On Same Type Required Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY = eINSTANCE.getTotalSample_TablecompositionOnSameTypeRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Tablecomposition On Same Type Optional Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY = eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty();
+
+		/**
 		 * The meta object literal for the '<em><b>Tablecomposition Required Property</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1800,6 +2128,22 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TOTAL_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY = eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery();
+
+		/**
+		 * The meta object literal for the '<em><b>Advancedtablecomposition On Same Type Required Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY = eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Advancedtablecomposition On Sametype Optional Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY = eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty();
 
 		/**
 		 * The meta object literal for the '<em><b>Advancedtablecomposition Required Property</b></em>' containment reference list feature.
@@ -2154,6 +2498,32 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY = eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SampleImpl <em>Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.SampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSample()
+		 * @generated
+		 */
+		EClass SAMPLE = eINSTANCE.getSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Required Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__TEXT_REQUIRED_PROPERTY = eINSTANCE.getSample_TextRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Optional Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAMPLE__TEXT_OPTIONAL_PROPERTY = eINSTANCE.getSample_TextOptionalProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
