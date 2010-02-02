@@ -86,7 +86,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
-		return "expected.conference";
+		return "expected.[pec.model.ePackage.metamodelPrefix().toLowerFirst()/]";
 	}
 	/**{@inheritDoc}
 	 *
@@ -101,7 +101,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
-		return "input.conference";
+		return "input.[pec.model.ePackage.metamodelPrefix().toLowerFirst()/]";
 	}
 
 	/**{@inheritDoc}

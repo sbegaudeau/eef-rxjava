@@ -16,7 +16,7 @@
 [import naming /]
 [import typeUtils /]
 
-[template public canGenerateTest(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides canGenerateTest ? (peElement.isTableComposition())]true[/template]
+[template public canGenerateTest(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides canGenerateTest ? (peElement.isTableComposition() and pec.model<>peElement.model.eType)]true[/template]
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isTableComposition())]
 EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.eType.ePackage.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]();
@@ -25,17 +25,17 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 			throw new InputModelInvalidException([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], EcoreUtil.copy(site)));
+		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], EcoreUtil.copy([peElement.model.eType.name.toLowerFirst()/])));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		editTableCompositionFeature(wizardShell);
+		editTableComposition[peElement.name/]Feature(wizardShell);
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element
-		editTableCompositionFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
+		editTableComposition[peElement.name/]Feature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [comment overrides this template if additional methods are needed/]
@@ -44,11 +44,11 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editTableCompositionFeature(SWTBotShell wizardShell) {
+	protected void editTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
 		bot.button(UIConstants.ADD_BUTTON).click();
-		editTableCompositionForSiteFeature();
+		editTableCompositionFor[peElement.name/]Feature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
 [/template]
@@ -57,7 +57,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editTableCompositionFor[peElement.model.eType.name/]Feature() {
+	protected void editTableCompositionFor[peElement.name/]Feature() {
 		EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.eType.ePackage.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]();
 		SWTBotShell shellTable = bot.shell([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
 		bot.activateShell(shellTable);
@@ -76,10 +76,10 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editTableCompositionFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
+	protected void editTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.button(UIConstants.ADD_BUTTON).click();
-		editTableCompositionForSiteFeature();
+		editTableCompositionFor[peElement.name/]Feature();
 		selectNode.select();
 	}
 [/template]

@@ -26,7 +26,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isRadioEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editRadioFeature(wizardShell, [peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], enumValueFor[peElement.model.name.toUpperFirst()/]);
+		bot.editRadioFeature(wizardShell, [peElement.radioIndex()/], enumValueFor[peElement.model.name.toUpperFirst()/]);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isRadioEnum())]
@@ -36,7 +36,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isRadioEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyRadioFeature(propertiesView, enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyRadioFeature(propertiesView, [peElement.radioIndex()/], enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -47,3 +47,7 @@ CompoundCommand cc = new CompoundCommand();
 	then false
 	else peElement.representationName('Radio') and peElement.model.oclAsType(ecore::EAttribute).isEnum()
 	endif/]
+
+[query radioIndex(peElement : PropertiesEditionElement) : Integer = 
+	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
+			->select(representationName('Radio') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]

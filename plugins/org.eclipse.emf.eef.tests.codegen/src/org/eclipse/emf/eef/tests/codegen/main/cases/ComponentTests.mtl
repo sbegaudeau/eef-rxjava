@@ -64,16 +64,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 
 [comment overrides this template if additional methods are needed/]
 [template public additionalMethods()]
-	/**
-	 * Edit the table composition
-	 * @param wizardShell
-	 */
-	protected void editTableCompositionFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
-		SWTBot propertyBot = propertyView.bot();
-		propertyBot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
-		editTableCompositionForSiteFeature();
-		selectNode.select();
-	}
 [/template]
 
 [template public packagePropertySection(pec : PropertiesEditionComponent)]

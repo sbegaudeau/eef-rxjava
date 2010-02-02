@@ -16,7 +16,7 @@
 [import naming /]
 [import typeUtils /]
 
-[template public canGenerateTest(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides canGenerateTest ? (peElement.isAdvancedTableComposition())]true[/template]
+[template public canGenerateTest(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides canGenerateTest ? (peElement.isAdvancedTableComposition() and pec.model<>peElement.model.eType)]true[/template]
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isAdvancedTableComposition())]
 EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.eType.ePackage.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]();
@@ -25,24 +25,24 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 			throw new InputModelInvalidException([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], EcoreUtil.copy(site)));
+		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], EcoreUtil.copy([peElement.model.eType.name.toLowerFirst()/])));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		editAdvancedTableCompositionFeature(wizardShell);
+		editAdvancedTableComposition[peElement.name/]Feature(wizardShell);
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isAdvancedTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element
-		editAdvancedTableCompositionFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
+		editAdvancedTableComposition[peElement.name/]Feature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides additionnalMethodsForWidgets ? (peElement.isAdvancedTableComposition())]
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionFor[peElement.model.eType.name/]Feature() {
+	protected void editAdvancedTableCompositionFor[peElement.name/]Feature() {
 		EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.eType.ePackage.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]();
 		SWTBotShell shellTable = bot.shell([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
 		bot.activateShell(shellTable);
@@ -61,11 +61,11 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositionFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
 		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
-		editAdvancedTableCompositionForSiteFeature();
+		editAdvancedTableCompositionFor[peElement.name/]Feature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
 [/template]
@@ -76,10 +76,10 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositionFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
+	protected void editAdvancedTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
-		editAdvancedTableCompositionForSiteFeature();
+		editAdvancedTableCompositionFor[peElement.name/]Feature();
 		selectNode.select();
 	}
 [/template]
