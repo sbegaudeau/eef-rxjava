@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FlatReferencesTableSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
+ * $Id: SampleItemProvider.java,v 1.1 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -20,17 +20,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.Sample;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.eef.eefnr.FlatReferencesTableSample} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.eef.eefnr.Sample} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class FlatReferencesTableSampleItemProvider
+public class SampleItemProvider
 	extends AbstractSampleItemProvider
 	implements
 		IEditingDomainItemProvider,
@@ -44,7 +46,7 @@ public class FlatReferencesTableSampleItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FlatReferencesTableSampleItemProvider(AdapterFactory adapterFactory) {
+	public SampleItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,65 +61,65 @@ public class FlatReferencesTableSampleItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFlatreferencestableRequiredPropertyPropertyDescriptor(object);
-			addFlatreferencestableOptionalPropertyPropertyDescriptor(object);
+			addTextRequiredPropertyPropertyDescriptor(object);
+			addTextOptionalPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Flatreferencestable Required Property feature.
+	 * This adds a property descriptor for the Text Required Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFlatreferencestableRequiredPropertyPropertyDescriptor(Object object) {
+	protected void addTextRequiredPropertyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_FlatReferencesTableSample_flatreferencestableRequiredProperty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FlatReferencesTableSample_flatreferencestableRequiredProperty_feature", "_UI_FlatReferencesTableSample_type"),
-				 EefnrPackage.Literals.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_REQUIRED_PROPERTY,
+				 getString("_UI_Sample_textRequiredProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_textRequiredProperty_feature", "_UI_Sample_type"),
+				 EefnrPackage.Literals.SAMPLE__TEXT_REQUIRED_PROPERTY,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Flatreferencestable Optional Property feature.
+	 * This adds a property descriptor for the Text Optional Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFlatreferencestableOptionalPropertyPropertyDescriptor(Object object) {
+	protected void addTextOptionalPropertyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_FlatReferencesTableSample_flatreferencestableOptionalProperty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FlatReferencesTableSample_flatreferencestableOptionalProperty_feature", "_UI_FlatReferencesTableSample_type"),
-				 EefnrPackage.Literals.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY,
+				 getString("_UI_Sample_textOptionalProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sample_textOptionalProperty_feature", "_UI_Sample_type"),
+				 EefnrPackage.Literals.SAMPLE__TEXT_OPTIONAL_PROPERTY,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns FlatReferencesTableSample.gif.
+	 * This returns Sample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FlatReferencesTableSample"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Sample"));
 	}
 
 	/**
@@ -128,10 +130,10 @@ public class FlatReferencesTableSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FlatReferencesTableSample)object).getName();
+		String label = ((Sample)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_FlatReferencesTableSample_type") :
-			getString("_UI_FlatReferencesTableSample_type") + " " + label;
+			getString("_UI_Sample_type") :
+			getString("_UI_Sample_type") + " " + label;
 	}
 
 	/**
@@ -144,6 +146,13 @@ public class FlatReferencesTableSampleItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Sample.class)) {
+			case EefnrPackage.SAMPLE__TEXT_REQUIRED_PROPERTY:
+			case EefnrPackage.SAMPLE__TEXT_OPTIONAL_PROPERTY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

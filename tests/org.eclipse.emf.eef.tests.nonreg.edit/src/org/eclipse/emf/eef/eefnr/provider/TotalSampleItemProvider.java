@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TotalSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: TotalSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -540,10 +540,14 @@ public class TotalSampleItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
-			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
 		}
 		return childrenFeatures;
 	}
@@ -580,7 +584,7 @@ public class TotalSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TotalSample)object).getTextRequiredProperty();
+		String label = ((TotalSample)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TotalSample_type") :
 			getString("_UI_TotalSample_type") + " " + label;
@@ -612,10 +616,14 @@ public class TotalSampleItemProvider
 			case EefnrPackage.TOTAL_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY:
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
+			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
+			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY:
+			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
+			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY:
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY:
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY:
+			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY:
+			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -635,23 +643,43 @@ public class TotalSampleItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY,
-				 EefnrFactory.eINSTANCE.createTextSample()));
+				(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTotalSample()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY,
+				(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTotalSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTotalSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY,
 				 EefnrFactory.eINSTANCE.createTotalSample()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY,
-				 EefnrFactory.eINSTANCE.createTotalSample()));
+				 EefnrFactory.eINSTANCE.createSample()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY,
-				 EefnrFactory.eINSTANCE.createTotalSample()));
+				 EefnrFactory.eINSTANCE.createSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSample()));
 	}
 
 	/**
@@ -666,9 +694,14 @@ public class TotalSampleItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY ||
 			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY ||
-			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY;
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TOTAL_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY;
 
 		if (qualify) {
 			return getString

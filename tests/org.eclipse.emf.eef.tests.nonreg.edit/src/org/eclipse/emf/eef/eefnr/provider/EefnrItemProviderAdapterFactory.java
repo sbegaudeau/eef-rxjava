@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrItemProviderAdapterFactory.java,v 1.2 2010/02/02 09:29:53 nlepine Exp $
+ * $Id: EefnrItemProviderAdapterFactory.java,v 1.3 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -421,6 +421,29 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.Sample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SampleItemProvider sampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.Sample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSampleAdapter() {
+		if (sampleItemProvider == null) {
+			sampleItemProvider = new SampleItemProvider(this);
+		}
+
+		return sampleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -534,6 +557,7 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 		if (advancedEObjectFlatComboViewerSampleItemProvider != null) advancedEObjectFlatComboViewerSampleItemProvider.dispose();
 		if (advancedTableCompositionEditorSampleItemProvider != null) advancedTableCompositionEditorSampleItemProvider.dispose();
 		if (flatReferencesTableSampleItemProvider != null) flatReferencesTableSampleItemProvider.dispose();
+		if (sampleItemProvider != null) sampleItemProvider.dispose();
 	}
 
 }

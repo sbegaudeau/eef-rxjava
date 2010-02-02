@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesTableSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: ReferencesTableSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.eefnr.ReferencesTableSample} object.
@@ -127,7 +128,10 @@ public class ReferencesTableSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ReferencesTableSample_type");
+		String label = ((ReferencesTableSample)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ReferencesTableSample_type") :
+			getString("_UI_ReferencesTableSample_type") + " " + label;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RadioSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: RadioSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -131,8 +131,7 @@ public class RadioSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ENUM_SAMPLE labelValue = ((RadioSample)object).getRadioRequiredProperty();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((RadioSample)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_RadioSample_type") :
 			getString("_UI_RadioSample_type") + " " + label;

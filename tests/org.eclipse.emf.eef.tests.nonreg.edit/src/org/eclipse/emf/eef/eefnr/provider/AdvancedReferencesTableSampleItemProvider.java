@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AdvancedReferencesTableSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: AdvancedReferencesTableSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
 /**
@@ -127,7 +128,10 @@ public class AdvancedReferencesTableSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_AdvancedReferencesTableSample_type");
+		String label = ((AdvancedReferencesTableSample)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_AdvancedReferencesTableSample_type") :
+			getString("_UI_AdvancedReferencesTableSample_type") + " " + label;
 	}
 
 	/**

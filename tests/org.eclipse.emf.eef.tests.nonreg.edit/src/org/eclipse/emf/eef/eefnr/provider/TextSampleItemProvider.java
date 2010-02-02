@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TextSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: TextSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -130,7 +130,7 @@ public class TextSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TextSample)object).getTextRequiredProperty();
+		String label = ((TextSample)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TextSample_type") :
 			getString("_UI_TextSample_type") + " " + label;

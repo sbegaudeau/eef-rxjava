@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CheckboxSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: CheckboxSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -130,8 +130,10 @@ public class CheckboxSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		CheckboxSample checkboxSample = (CheckboxSample)object;
-		return getString("_UI_CheckboxSample_type") + " " + checkboxSample.isCheckboxRequiredProperty();
+		String label = ((CheckboxSample)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_CheckboxSample_type") :
+			getString("_UI_CheckboxSample_type") + " " + label;
 	}
 
 	/**

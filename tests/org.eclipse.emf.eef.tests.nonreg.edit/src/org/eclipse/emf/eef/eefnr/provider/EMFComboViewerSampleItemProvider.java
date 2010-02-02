@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EMFComboViewerSampleItemProvider.java,v 1.1 2010/02/01 13:03:45 nlepine Exp $
+ * $Id: EMFComboViewerSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -131,8 +131,7 @@ public class EMFComboViewerSampleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ENUM_SAMPLE labelValue = ((EMFComboViewerSample)object).getEmfcomboviewerRequiredProperty();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((EMFComboViewerSample)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_EMFComboViewerSample_type") :
 			getString("_UI_EMFComboViewerSample_type") + " " + label;
