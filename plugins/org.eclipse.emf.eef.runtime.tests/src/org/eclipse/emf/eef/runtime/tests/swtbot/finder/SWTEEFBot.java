@@ -251,15 +251,15 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * 
 	 * @param shell
 	 *            the shell of the edited wizard
-	 * @param feature
+	 * @param i
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
 	 */
-	public void editRadioFeature(SWTBotShell shell, String feature, Object newValue) {
+	public void editRadioFeature(SWTBotShell shell, int i, Object newValue) {
 		activateShell(shell);
 		sleep(500);
-		editRadio(feature, newValue);
+		editRadio(i, newValue);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
@@ -276,8 +276,8 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param feature
 	 * @param newValue
 	 */
-	public void editRadio(String feature, Object newValue) {
-		radio(newValue.toString()).click();
+	public void editRadio(int index, Object newValue) {
+		radio(newValue.toString(), index).click();
 	}
 
 	/**
@@ -389,9 +389,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyRadioFeature(SWTBotView propertyView, Object feature, SWTBotTreeItem selectNode) {
+	public void editPropertyRadioFeature(SWTBotView propertyView, int index, Object feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.radio(feature.toString()).click();
+		propertyBot.radio(feature.toString(), index).click();
 		selectNode.select();
 	}
 	
