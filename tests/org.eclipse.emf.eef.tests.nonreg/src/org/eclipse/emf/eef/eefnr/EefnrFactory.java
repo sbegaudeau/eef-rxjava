@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrFactory.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: EefnrFactory.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -150,6 +150,15 @@ public interface EefnrFactory extends EFactory {
 	 * @generated
 	 */
 	AdvancedTableCompositionEditorSample createAdvancedTableCompositionEditorSample();
+
+	/**
+	 * Returns a new object of class '<em>Flat References Table Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Flat References Table Sample</em>'.
+	 * @generated
+	 */
+	FlatReferencesTableSample createFlatReferencesTableSample();
 
 	/**
 	 * Returns the package supported by this factory.

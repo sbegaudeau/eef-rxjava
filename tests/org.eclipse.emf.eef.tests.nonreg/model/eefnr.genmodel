@@ -90,5 +90,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionOptionalProperty"/>
     </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//FlatReferencesTableSample">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableRequiredProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableOptionalProperty"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

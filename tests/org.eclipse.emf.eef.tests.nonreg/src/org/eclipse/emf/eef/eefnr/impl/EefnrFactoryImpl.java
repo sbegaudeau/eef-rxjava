@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrFactoryImpl.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: EefnrFactoryImpl.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -75,6 +75,7 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE: return createAdvancedReferencesTableSample();
 			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE: return createAdvancedEObjectFlatComboViewerSample();
 			case EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE: return createAdvancedTableCompositionEditorSample();
+			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE: return createFlatReferencesTableSample();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -248,6 +249,16 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 	public AdvancedTableCompositionEditorSample createAdvancedTableCompositionEditorSample() {
 		AdvancedTableCompositionEditorSampleImpl advancedTableCompositionEditorSample = new AdvancedTableCompositionEditorSampleImpl();
 		return advancedTableCompositionEditorSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FlatReferencesTableSample createFlatReferencesTableSample() {
+		FlatReferencesTableSampleImpl flatReferencesTableSample = new FlatReferencesTableSampleImpl();
+		return flatReferencesTableSample;
 	}
 
 	/**

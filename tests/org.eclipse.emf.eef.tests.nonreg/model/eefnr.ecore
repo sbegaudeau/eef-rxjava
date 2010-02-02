@@ -135,4 +135,10 @@
     <eLiterals name="literal2" value="1"/>
     <eLiterals name="literal3" value="2"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlatReferencesTableSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flatreferencestableRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flatreferencestableOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+  </eClassifiers>
 </ecore:EPackage>

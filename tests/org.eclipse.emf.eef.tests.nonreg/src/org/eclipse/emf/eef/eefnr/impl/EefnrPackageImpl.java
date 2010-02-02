@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackageImpl.java,v 1.1 2010/02/01 13:00:43 nlepine Exp $
+ * $Id: EefnrPackageImpl.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.RadioSample;
 import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
@@ -143,6 +144,13 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * @generated
 	 */
 	private EClass advancedTableCompositionEditorSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass flatReferencesTableSampleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -793,6 +801,33 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFlatReferencesTableSample() {
+		return flatReferencesTableSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFlatReferencesTableSample_FlatreferencestableRequiredProperty() {
+		return (EReference)flatReferencesTableSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFlatReferencesTableSample_FlatreferencestableOptionalProperty() {
+		return (EReference)flatReferencesTableSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -904,6 +939,10 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		createEReference(advancedTableCompositionEditorSampleEClass, ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
 		createEReference(advancedTableCompositionEditorSampleEClass, ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY);
 
+		flatReferencesTableSampleEClass = createEClass(FLAT_REFERENCES_TABLE_SAMPLE);
+		createEReference(flatReferencesTableSampleEClass, FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_REQUIRED_PROPERTY);
+		createEReference(flatReferencesTableSampleEClass, FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY);
+
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
 	}
@@ -949,6 +988,7 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		advancedReferencesTableSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		advancedEObjectFlatComboViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		advancedTableCompositionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		flatReferencesTableSampleEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1029,6 +1069,10 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEClass(advancedTableCompositionEditorSampleEClass, AdvancedTableCompositionEditorSample.class, "AdvancedTableCompositionEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), this.getTotalSample(), null, "advancedtablecompositionRequiredProperty", null, 1, -1, AdvancedTableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), this.getTotalSample(), null, "advancedtablecompositionOptionalProperty", null, 0, -1, AdvancedTableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(flatReferencesTableSampleEClass, FlatReferencesTableSample.class, "FlatReferencesTableSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), this.getTotalSample(), null, "flatreferencestableRequiredProperty", null, 1, -1, FlatReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), this.getTotalSample(), null, "flatreferencestableOptionalProperty", null, 0, -1, FlatReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackage.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: EefnrPackage.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -787,6 +787,43 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl <em>Flat References Table Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getFlatReferencesTableSample()
+	 * @generated
+	 */
+	int FLAT_REFERENCES_TABLE_SAMPLE = 15;
+
+	/**
+	 * The feature id for the '<em><b>Flatreferencestable Required Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Flatreferencestable Optional Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Flat References Table Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLAT_REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -794,7 +831,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 15;
+	int ENUM_SAMPLE = 16;
 
 
 	/**
@@ -1487,6 +1524,38 @@ public interface EefnrPackage extends EPackage {
 	EReference getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.FlatReferencesTableSample <em>Flat References Table Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Flat References Table Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.FlatReferencesTableSample
+	 * @generated
+	 */
+	EClass getFlatReferencesTableSample();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.FlatReferencesTableSample#getFlatreferencestableRequiredProperty <em>Flatreferencestable Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Flatreferencestable Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.FlatReferencesTableSample#getFlatreferencestableRequiredProperty()
+	 * @see #getFlatReferencesTableSample()
+	 * @generated
+	 */
+	EReference getFlatReferencesTableSample_FlatreferencestableRequiredProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.FlatReferencesTableSample#getFlatreferencestableOptionalProperty <em>Flatreferencestable Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Flatreferencestable Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.FlatReferencesTableSample#getFlatreferencestableOptionalProperty()
+	 * @see #getFlatReferencesTableSample()
+	 * @generated
+	 */
+	EReference getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2059,6 +2128,32 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY = eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl <em>Flat References Table Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getFlatReferencesTableSample()
+		 * @generated
+		 */
+		EClass FLAT_REFERENCES_TABLE_SAMPLE = eINSTANCE.getFlatReferencesTableSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Flatreferencestable Required Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_REQUIRED_PROPERTY = eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Flatreferencestable Optional Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY = eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

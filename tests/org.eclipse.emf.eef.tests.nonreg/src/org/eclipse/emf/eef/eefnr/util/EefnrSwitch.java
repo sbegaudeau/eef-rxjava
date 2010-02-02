@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.1 2010/02/01 13:00:45 nlepine Exp $
+ * $Id: EefnrSwitch.java,v 1.2 2010/02/02 09:29:38 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -187,6 +187,13 @@ public class EefnrSwitch<T> {
 				AdvancedTableCompositionEditorSample advancedTableCompositionEditorSample = (AdvancedTableCompositionEditorSample)theEObject;
 				T result = caseAdvancedTableCompositionEditorSample(advancedTableCompositionEditorSample);
 				if (result == null) result = caseAbstractSample(advancedTableCompositionEditorSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE: {
+				FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)theEObject;
+				T result = caseFlatReferencesTableSample(flatReferencesTableSample);
+				if (result == null) result = caseAbstractSample(flatReferencesTableSample);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -416,6 +423,21 @@ public class EefnrSwitch<T> {
 	 * @generated
 	 */
 	public T caseAdvancedTableCompositionEditorSample(AdvancedTableCompositionEditorSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Flat References Table Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Flat References Table Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFlatReferencesTableSample(FlatReferencesTableSample object) {
 		return null;
 	}
 
