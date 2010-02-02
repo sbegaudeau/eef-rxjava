@@ -160,6 +160,14 @@
                     type="org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample">
              </input>
          </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.FlatReferencesTableSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.FlatReferencesTableSample">
+             </input>
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

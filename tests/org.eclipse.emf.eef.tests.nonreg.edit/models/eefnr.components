@@ -191,6 +191,15 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedTableCompositionEditorSample"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_xkhXcA80Ed-d58aiOCdYlA" name="FlatReferenceTableSample" views="_kBt5wQ80Ed-d58aiOCdYlA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xkhXcQ80Ed-d58aiOCdYlA" name="flatreferencetableRequiredProperty" views="_kBt5ww80Ed-d58aiOCdYlA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//FlatReferencesTableSample/flatreferencestableRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xkhXcg80Ed-d58aiOCdYlA" name="flatreferencetableOptionalProperty" views="_kBt5xA80Ed-d58aiOCdYlA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//FlatReferencesTableSample/flatreferencestableOptionalProperty"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//FlatReferencesTableSample"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr"/>
   </eef-components:PropertiesEditionContext>
@@ -412,6 +421,17 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yNAwvEd-uP4lw9e0IMw" name="advancedtablecompositionOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_kBt5wQ80Ed-d58aiOCdYlA" name="FlatReferenceTableSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_kBt5wg80Ed-d58aiOCdYlA" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_kBt5ww80Ed-d58aiOCdYlA" name="flatreferencetableRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_kBt5xA80Ed-d58aiOCdYlA" name="flatreferencetableOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
           </elements>
         </elements>
       </views>

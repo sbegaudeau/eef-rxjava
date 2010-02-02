@@ -216,4 +216,15 @@ public class EefnrViewsRepository {
 
 	}
 
+	/**
+	 * FlatReferenceTableSample view descriptor
+	 */
+	public static class FlatReferenceTableSample {
+		public static String flatreferencetableRequiredProperty = "eefnr::FlatReferenceTableSample::flatreferencetableRequiredProperty";
+
+	public static String flatreferencetableOptionalProperty = "eefnr::FlatReferenceTableSample::flatreferencetableOptionalProperty";
+
+
+	}
+
 }

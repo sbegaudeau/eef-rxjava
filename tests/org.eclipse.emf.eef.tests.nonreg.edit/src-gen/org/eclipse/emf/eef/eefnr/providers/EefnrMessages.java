@@ -46,6 +46,8 @@ public class EefnrMessages extends NLS {
 
 	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String FlatReferenceTableSamplePropertiesEditionPart_PropertiesGroupLabel;
+
 	public static String Root_ReadOnly;
 
 	public static String Root_Part_Title;
@@ -101,6 +103,10 @@ public class EefnrMessages extends NLS {
 	public static String AdvancedTableCompositionEditorSample_ReadOnly;
 
 	public static String AdvancedTableCompositionEditorSample_Part_Title;
+
+	public static String FlatReferenceTableSample_ReadOnly;
+
+	public static String FlatReferenceTableSample_Part_Title;
 
 	public static String RootPropertiesEditionPart_SamplesLabel;
 
@@ -199,6 +205,10 @@ public class EefnrMessages extends NLS {
 	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel;
 
 	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel;
+
+	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableRequiredPropertyLabel;
+
+	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableOptionalPropertyLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 

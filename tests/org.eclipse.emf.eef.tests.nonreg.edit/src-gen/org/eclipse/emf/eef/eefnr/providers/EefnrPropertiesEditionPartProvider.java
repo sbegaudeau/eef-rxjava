@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.eefnr.parts.forms.AdvancedTableCompositionEditorSampl
 import org.eclipse.emf.eef.eefnr.parts.forms.CheckboxSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.EMFComboViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.EObjectFlatComboViewerSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.FlatReferenceTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.MultiValuedEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEditionPartForm;
@@ -31,6 +32,7 @@ import org.eclipse.emf.eef.eefnr.parts.impl.AdvancedTableCompositionEditorSample
 import org.eclipse.emf.eef.eefnr.parts.impl.CheckboxSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.EMFComboViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.EObjectFlatComboViewerSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.FlatReferenceTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.MultiValuedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.RadioSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.ReferencesTableSamplePropertiesEditionPartImpl;
@@ -146,6 +148,12 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 				return new AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl(component);
 			if (kind == EefnrViewsRepository.FORM_KIND)
 				return new AdvancedTableCompositionEditorSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.FlatReferenceTableSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new FlatReferenceTableSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new FlatReferenceTableSamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}
