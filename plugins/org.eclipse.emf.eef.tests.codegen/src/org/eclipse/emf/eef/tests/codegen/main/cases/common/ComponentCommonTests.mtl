@@ -74,19 +74,19 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 */
 	private Object enumValueFor[peElement.model.name.toUpperFirst()/];		
 	[/for]
-	[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and representationName('EObjectFlatComboViewer'))->asSet())]
+	[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and (representationName('EObjectFlatComboViewer')or representationName('AdvancedEObjectFlatComboViewer')))->asSet())]
 	/**
 	 * The reference value for the reference class [peElement.model.name.toLowerFirst()/]
 	 */
 	private Object referenceValueFor[peElement.model.name.toUpperFirst()/];
 	[/for]
-	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and representationName('EObjectFlatComboViewer')).model.eType->select(name<>pec.model.name).name->asSet())]
+	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and (representationName('EObjectFlatComboViewer')or representationName('AdvancedEObjectFlatComboViewer'))).model.eType->select(name<>pec.model.name).name->asSet())]
 	/**
 	 * The EClass of the reference to edit
 	 */
 	private EClass [name.toLowerFirst()/]MetaClass = [pec.model.ePackage.metamodelPackage()/].eINSTANCE.get[name/]();	
 	[/for]
-	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and representationName('EObjectFlatComboViewer'))->asSet()->notEmpty())]
+	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and (representationName('EObjectFlatComboViewer') or representationName('AdvancedEObjectFlatComboViewer')))->asSet()->notEmpty())]
 	/**
 	 * The eObjects list contained in EOFCV
 	 */
