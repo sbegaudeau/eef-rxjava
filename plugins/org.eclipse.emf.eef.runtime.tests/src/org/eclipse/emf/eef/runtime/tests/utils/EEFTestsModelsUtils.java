@@ -59,10 +59,10 @@ public class EEFTestsModelsUtils {
 	}
 
 	/**
-	 * Return the first EObject of the given type in the resource.
+	 * Return all the EObject of the given type in the resource.
 	 * @param resource the resource to process
 	 * @param eClass the type to search
-	 * @return the first founded EObject <code>null</code> otherwise.
+	 * @return the list of founded EObject <code>null</code> otherwise.
 	 */
 	public static List<EObject> getAllInstancesOf(Resource resource, EClass eClass) {
 		List<EObject> list = new ArrayList<EObject>();

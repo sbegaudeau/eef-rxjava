@@ -101,6 +101,18 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		return text;
 	}
 
+	/**
+	 * Get another reference value of the references list
+	 */
+	public Object changeReferenceValue(List<EObject> eObjectList, EObject value) {
+		for (EObject eobj : eObjectList) {
+			if (!eobj.equals(value)) {
+				return eobj;
+			}
+		}
+		return value;
+	}
+
 
 	/**
 	 * @param file
@@ -339,6 +351,30 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void editEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex, int tableIndex) {
+		activateShell(shell);
+		sleep(500);
+		editEObjectFlatComboViewer(buttonIndex, tableIndex);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+
+	public void editEObjectFlatComboViewer(int buttonIndex, int tableIndex) {
+		button("...", buttonIndex).click();
+		table().select(tableIndex);
+		button(UIConstants.OK_BUTTON).click();
+	}
 
 	/**
 	 * @param feature
@@ -376,6 +412,23 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, Object feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.comboBox().setSelection(feature.toString());
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void editPropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		editEObjectFlatComboViewer(buttonIndex, tableIndex);
+		sleep(1000);
 		selectNode.select();
 	}
 	
@@ -505,5 +558,4 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(500);
 		return node2;
 	}
-
 }
