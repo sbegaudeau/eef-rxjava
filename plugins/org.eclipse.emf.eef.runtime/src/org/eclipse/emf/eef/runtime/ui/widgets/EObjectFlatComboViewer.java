@@ -70,13 +70,11 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		bpFilters = new ArrayList<ViewerFilter>();
 		listeners = new ArrayList<ISelectionChangedListener>();
 
-		// ADD EXTENSION: CNO
 		editer.addSelectionListener(getSelectionAdapter(nullable));
 
 	}
 
 	/**
-	 * @author cnotot
 	 * @param nullable
 	 * @return
 	 */
