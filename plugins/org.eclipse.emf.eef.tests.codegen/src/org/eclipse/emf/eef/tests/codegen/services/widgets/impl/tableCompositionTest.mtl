@@ -47,7 +47,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	protected void editTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.button(UIConstants.ADD_BUTTON).click();
+		bot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFor[peElement.name/]Feature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -78,7 +78,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 */
 	protected void editTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.button(UIConstants.ADD_BUTTON).click();
+		propertyBot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFor[peElement.name/]Feature();
 		selectNode.select();
 	}
