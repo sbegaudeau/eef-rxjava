@@ -205,6 +205,28 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		}
 		return node2;
 	}
+	
+	/**
+	 * Select the given element in the given editor
+	 * 
+	 * @param editor
+	 *            the editor where the bot must process
+	 * @param element
+	 *            the element to select
+	 * @return the selected node
+	 */
+	public SWTBotTreeItem selectNode(SWTBotTree tree, EObject element) {
+		List<Object> expansionPath = getExpansionPath(element);
+		Iterator<Object> iterator = expansionPath.iterator();
+		Object next = null;
+		SWTBotTreeItem node2 = tree.getTreeItem(getInputModelURI());
+		while (iterator.hasNext()) {
+			node2.expand();
+			next = iterator.next();
+			node2 = selectSubNode(node2, next);
+		}
+		return node2;
+	}
 
 	/**
 	 * This method save the model and close the editor
@@ -376,7 +398,33 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		table().select(tableIndex);
 		button(UIConstants.OK_BUTTON).click();
 	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void editAdvancedEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex, Object value) {
+		activateShell(shell);
+		sleep(500);
+		editAdvancedEObjectFlatComboViewer(buttonIndex, value);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
 
+	public void editAdvancedEObjectFlatComboViewer(int buttonIndex, Object value) {
+		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_set_tooltip, buttonIndex).click();
+		cTabItem(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_all_resources_tab_title).activate();
+		cTabItem(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_all_resources_tab_title).setFocus();
+		selectNode(tree(), (EObject)value);
+		button(UIConstants.OK_BUTTON).click();
+	}
+	
 	/**
 	 * @param feature
 	 */
@@ -430,6 +478,22 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 //		SWTBot propertyBot = propertyView.bot();
 		editEObjectFlatComboViewer(buttonIndex, tableIndex);
 		sleep(1000);
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void editPropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		editAdvancedEObjectFlatComboViewer(buttonIndex, value);
 		selectNode.select();
 	}
 	
