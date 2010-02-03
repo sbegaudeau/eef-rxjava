@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -64,7 +65,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
 		editer = new Button(this, SWT.PUSH);
-		editer.setText("...");  //$NON-NLS-1$
+		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);  //$NON-NLS-1$
 
 		filters = new ArrayList<ViewerFilter>();
 		bpFilters = new ArrayList<ViewerFilter>();

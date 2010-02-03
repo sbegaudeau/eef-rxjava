@@ -28,6 +28,7 @@ public class EEFRuntimeUIMessages extends NLS {
 	public static String EMFModelViewerDialog_referenced_models_filter_title;
 	public static String EMFModelViewerDialog_single_element_title;
 	public static String EMFModelViewerDialog_type_column_title;
+	public static String EObjectFlatComboViewer_add_button;
 	public static String FlatReferencesTable_featureEditor_title;
 	public static String FlatReferencesTable_nothing_to_do;
 	public static String ModelChooserDialog_choose_model;
