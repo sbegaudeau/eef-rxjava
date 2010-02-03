@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.swtbot.utils.SWTBotUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -371,7 +372,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	}
 
 	public void editEObjectFlatComboViewer(int buttonIndex, int tableIndex) {
-		button("...", buttonIndex).click();
+		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
 		table().select(tableIndex);
 		button(UIConstants.OK_BUTTON).click();
 	}
