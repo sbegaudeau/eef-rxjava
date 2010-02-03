@@ -68,14 +68,30 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 * The type to edit
 	 */
 	private EObject [pec.model.name.toLowerFirst()/];
-	
 	[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EAttribute) and model.oclAsType(ecore::EAttribute).isEnum()))]
 	/**
 	 * The enum value for the enum class [peElement.model.name.toLowerFirst()/]
 	 */
 	private Object enumValueFor[peElement.model.name.toUpperFirst()/];		
 	[/for]
-	
+	[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and representationName('EObjectFlatComboViewer'))->asSet())]
+	/**
+	 * The reference value for the reference class [peElement.model.name.toLowerFirst()/]
+	 */
+	private Object referenceValueFor[peElement.model.name.toUpperFirst()/];
+	[/for]
+	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and representationName('EObjectFlatComboViewer')).model.eType->select(name<>pec.model.name).name->asSet())]
+	/**
+	 * The EClass of the reference to edit
+	 */
+	private EClass [name.toLowerFirst()/]MetaClass = [pec.model.ePackage.metamodelPackage()/].eINSTANCE.get[name/]();	
+	[/for]
+	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and representationName('EObjectFlatComboViewer'))->asSet()->notEmpty())]
+	/**
+	 * The eObjects list contained in EOFCV
+	 */
+	private List<EObject> allInstancesOf;
+	[/if]
 	/**
 	 * Updated value of the feature
 	 */
@@ -141,7 +157,6 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	protected void initializeExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject [pec.model.name.toLowerFirst()/] = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [pec.model.name.toLowerFirst()/]MetaClass);
 		if ([pec.model.name.toLowerFirst()/] == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
@@ -160,11 +175,10 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		[pec.model.name.toLowerFirst()/] = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if ([pec.model.name.toLowerFirst()/] == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
-		
+	
 		[if (peElement.model.oclAsType(ecore::EAttribute).isEnum())]
 		enumValueFor[peElement.model.name.toUpperFirst()/] = bot.changeEnumLiteralValue([peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/](), (([pec.model.name/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]().getLiteral());
-		[/if]
-				
+		[/if]		
 		// Create the expected model
 		initializeExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]();
 		
