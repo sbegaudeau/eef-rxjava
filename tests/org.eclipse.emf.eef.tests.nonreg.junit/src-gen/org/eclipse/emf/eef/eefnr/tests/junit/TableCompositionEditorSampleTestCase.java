@@ -20,10 +20,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
-import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
@@ -242,7 +242,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	protected void editTableCompositiontablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.button(UIConstants.ADD_BUTTON).click();
+		bot.button(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFortablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -263,7 +263,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	protected void editTableCompositiontablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.button(UIConstants.ADD_BUTTON).click();
+		bot.button(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFortablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}

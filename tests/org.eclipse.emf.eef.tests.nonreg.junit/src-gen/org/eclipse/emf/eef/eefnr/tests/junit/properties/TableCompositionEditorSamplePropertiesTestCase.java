@@ -20,10 +20,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
-import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -244,7 +244,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 */
 	protected void editTableCompositiontablecompositionRequiredPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.button(UIConstants.ADD_BUTTON).click();
+		propertyBot.button(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFortablecompositionRequiredPropertyFeature();
 		selectNode.select();
 	}
@@ -264,7 +264,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 */
 	protected void editTableCompositiontablecompositionOptionalPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.button(UIConstants.ADD_BUTTON).click();
+		propertyBot.button(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFortablecompositionOptionalPropertyFeature();
 		selectNode.select();
 	}

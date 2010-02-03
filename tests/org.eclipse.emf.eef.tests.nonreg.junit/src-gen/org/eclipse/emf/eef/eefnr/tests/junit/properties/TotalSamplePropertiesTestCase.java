@@ -65,17 +65,17 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForEmfcomboviewerOptionalProperty;		
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
+	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
 	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
+	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
 	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
 	 */
-	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
 	/**
 	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
 	 */
