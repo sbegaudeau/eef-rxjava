@@ -39,8 +39,6 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject textareaSample;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -103,7 +101,6 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTextareaSampleTextareaRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, textareaSampleMetaClass);
 		if (textareaSample == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
@@ -130,8 +127,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
 		if (textareaSample == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForTextareaSampleTextareaRequiredProperty();
 		
@@ -166,7 +162,6 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTextareaSampleTextareaOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, textareaSampleMetaClass);
 		if (textareaSample == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
@@ -193,8 +188,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
 		if (textareaSample == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForTextareaSampleTextareaOptionalProperty();
 		

@@ -44,8 +44,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	 * The type to edit
 	 */
 	private EObject advancedTableCompositionEditorSample;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -108,7 +106,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	protected void initializeExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
@@ -139,8 +136,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionRequiredProperty();
 		
@@ -175,7 +171,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	protected void initializeExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
@@ -206,8 +201,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionOptionalProperty();
 		

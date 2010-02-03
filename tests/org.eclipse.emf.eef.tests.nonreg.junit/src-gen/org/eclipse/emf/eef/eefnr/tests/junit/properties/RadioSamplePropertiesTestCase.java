@@ -39,7 +39,6 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject radioSample;
-	
 	/**
 	 * The enum value for the enum class radioRequiredProperty
 	 */
@@ -48,7 +47,6 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * The enum value for the enum class radioOptionalProperty
 	 */
 	private Object enumValueForRadioOptionalProperty;		
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -111,7 +109,6 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForRadioSampleRadioRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject radioSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, radioSampleMetaClass);
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
@@ -138,9 +135,8 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		radioSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), radioSampleMetaClass);
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
-		
+	
 		enumValueForRadioRequiredProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((RadioSample)radioSample).getRadioRequiredProperty().getLiteral());
-				
 		// Create the expected model
 		initializeExpectedModelForRadioSampleRadioRequiredProperty();
 		
@@ -175,7 +171,6 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForRadioSampleRadioOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject radioSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, radioSampleMetaClass);
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
@@ -202,9 +197,8 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		radioSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), radioSampleMetaClass);
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
-		
+	
 		enumValueForRadioOptionalProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((RadioSample)radioSample).getRadioOptionalProperty().getLiteral());
-				
 		// Create the expected model
 		initializeExpectedModelForRadioSampleRadioOptionalProperty();
 		

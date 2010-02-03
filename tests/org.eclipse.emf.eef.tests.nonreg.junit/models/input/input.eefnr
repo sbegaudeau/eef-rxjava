@@ -13,6 +13,6 @@
   <samples xsi:type="eefnr:AdvancedEObjectFlatComboViewerSample" advancedeobjectflatcomboviewerRequiredProperty="//@samples.13" advancedeobjectflatcomboviewerOptionalProperty="//@samples.13"/>
   <samples xsi:type="eefnr:AdvancedTableCompositionEditorSample"/>
   <samples xsi:type="eefnr:FlatReferencesTableSample" flatreferencestableRequiredProperty="//@samples.13" flatreferencestableOptionalProperty="//@samples.13"/>
-  <samples xsi:type="eefnr:TotalSample" textRequiredProperty="value1" textOptionalProperty="value1" textareaRequiredProperty="value1" textareaOptionalProperty="value1" eobjectflatcomboviewerRequiredProperty="//@samples.14" eobjectflatcomboviewerOptionalProperty="//@samples.14" referencestableRequiredProperty="//@samples.13" referencestableOptionalProperty="//@samples.13" advancedeobjectflatcomboviewerRequiredPropery="//@samples.14" advancedeobjectflatcomboviewerOptionalPropery="//@samples.14"/>
-  <samples xsi:type="eefnr:TotalSample"/>
+  <samples xsi:type="eefnr:TotalSample" name="total sample 1" textRequiredProperty="value1" textOptionalProperty="value1" textareaRequiredProperty="value1" textareaOptionalProperty="value1" eobjectflatcomboviewerRequiredProperty="//@samples.14" eobjectflatcomboviewerOptionalProperty="//@samples.14" referencestableRequiredProperty="//@samples.13" referencestableOptionalProperty="//@samples.13" advancedeobjectflatcomboviewerRequiredPropery="//@samples.14" advancedeobjectflatcomboviewerOptionalPropery="//@samples.14"/>
+  <samples xsi:type="eefnr:TotalSample" name="total sample 2"/>
 </eefnr:Root>

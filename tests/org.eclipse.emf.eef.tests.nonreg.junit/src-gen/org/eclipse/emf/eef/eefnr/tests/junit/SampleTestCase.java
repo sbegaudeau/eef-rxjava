@@ -39,8 +39,6 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject sample;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -103,7 +101,6 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForSampleTextRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
@@ -130,8 +127,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 		sample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForSampleTextRequiredProperty();
 		
@@ -166,7 +162,6 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForSampleTextOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
@@ -193,8 +188,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 		sample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForSampleTextOptionalProperty();
 		

@@ -41,8 +41,6 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject tableCompositionEditorSample;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -105,7 +103,6 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTableCompositionEditorSampleTablecompositionRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
@@ -136,8 +133,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForTableCompositionEditorSampleTablecompositionRequiredProperty();
 		
@@ -172,7 +168,6 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTableCompositionEditorSampleTablecompositionOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
@@ -203,8 +198,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForTableCompositionEditorSampleTablecompositionOptionalProperty();
 		

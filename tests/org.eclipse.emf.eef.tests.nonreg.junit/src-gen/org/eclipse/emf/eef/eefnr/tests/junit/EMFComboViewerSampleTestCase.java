@@ -40,7 +40,6 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject eMFComboViewerSample;
-	
 	/**
 	 * The enum value for the enum class emfcomboviewerRequiredProperty
 	 */
@@ -49,7 +48,6 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * The enum value for the enum class emfcomboviewerOptionalProperty
 	 */
 	private Object enumValueForEmfcomboviewerOptionalProperty;		
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -112,7 +110,6 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eMFComboViewerSampleMetaClass);
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
@@ -139,9 +136,8 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
-		
+	
 		enumValueForEmfcomboviewerRequiredProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((EMFComboViewerSample)eMFComboViewerSample).getEmfcomboviewerRequiredProperty().getLiteral());
-				
 		// Create the expected model
 		initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerRequiredProperty();
 		
@@ -176,7 +172,6 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eMFComboViewerSampleMetaClass);
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
@@ -203,9 +198,8 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
-		
+	
 		enumValueForEmfcomboviewerOptionalProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((EMFComboViewerSample)eMFComboViewerSample).getEmfcomboviewerOptionalProperty().getLiteral());
-				
 		// Create the expected model
 		initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerOptionalProperty();
 		

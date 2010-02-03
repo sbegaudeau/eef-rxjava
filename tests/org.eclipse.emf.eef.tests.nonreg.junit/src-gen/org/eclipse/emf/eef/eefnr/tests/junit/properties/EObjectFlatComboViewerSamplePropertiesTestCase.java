@@ -12,12 +12,13 @@ package org.eclipse.emf.eef.eefnr.tests.junit.properties;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
+import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
@@ -25,28 +26,36 @@ import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 /**
- * TestCase for EMFComboViewerSample
+ * TestCase for EObjectFlatComboViewerSample
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
+public class EObjectFlatComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 * The EClass of the type to edit
 	 */
-	private EClass eMFComboViewerSampleMetaClass = EefnrPackage.eINSTANCE.getEMFComboViewerSample();
+	private EClass eObjectFlatComboViewerSampleMetaClass = EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample();
 
 	/**
 	 * The type to edit
 	 */
-	private EObject eMFComboViewerSample;
+	private EObject eObjectFlatComboViewerSample;
 	/**
-	 * The enum value for the enum class emfcomboviewerRequiredProperty
+	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
 	 */
-	private Object enumValueForEmfcomboviewerRequiredProperty;		
+	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
 	/**
-	 * The enum value for the enum class emfcomboviewerOptionalProperty
+	 * The reference value for the reference class eobjectflatcomboviewerOptionalPropery
 	 */
-	private Object enumValueForEmfcomboviewerOptionalProperty;		
+	private Object referenceValueForEobjectflatcomboviewerOptionalPropery;
+	/**
+	 * The EClass of the reference to edit
+	 */
+	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
+	/**
+	 * The eObjects list contained in EOFCV
+	 */
+	private List<EObject> allInstancesOf;
 	/**
 	 * Updated value of the feature
 	 */
@@ -106,15 +115,17 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
-	protected void initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerRequiredProperty() throws InputModelInvalidException, IOException {
+	protected void initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerRequiredPropery() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		EObject eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eMFComboViewerSampleMetaClass);
-		if (eMFComboViewerSample == null)
-			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
+		EObject eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eObjectFlatComboViewerSampleMetaClass);
+		if (eObjectFlatComboViewerSample == null)
+			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
-		cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerRequiredProperty.toString()).getInstance()));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		referenceValueForEobjectflatcomboviewerRequiredPropery = bot.changeReferenceValue(allInstancesOf, ((EObjectFlatComboViewerSample)eObjectFlatComboViewerSample).getEobjectflatcomboviewerRequiredPropery());
+		cc.append(SetCommand.create(editingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery(), referenceValueForEobjectflatcomboviewerRequiredPropery));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -127,31 +138,30 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditEMFComboViewerSampleEmfcomboviewerRequiredProperty() throws Exception {
+	public void testEditEObjectFlatComboViewerSampleEobjectflatcomboviewerRequiredPropery() throws Exception {
 		
 		// Import the input model
 		initializeInputModel();
 		
-		eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
-		if (eMFComboViewerSample == null)
-			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
+		eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
+		if (eObjectFlatComboViewerSample == null)
+			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
 	
-		enumValueForEmfcomboviewerRequiredProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((EMFComboViewerSample)eMFComboViewerSample).getEmfcomboviewerRequiredProperty().getLiteral());
 		// Create the expected model
-		initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerRequiredProperty();
+		initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerRequiredPropery();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF properties view to edit the EMFComboViewerSample element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
+		// Open the EEF properties view to edit the EObjectFlatComboViewerSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
+			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
-		// Change value of the emfcomboviewerRequiredProperty feature of the EMFComboViewerSample element 
-		bot.editPropertyEMFComboViewerFeature(propertiesView, enumValueForEmfcomboviewerRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));	
+		// Change value of the eobjectflatcomboviewerRequiredPropery feature of the EObjectFlatComboViewerSample element 
+		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, 0, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredPropery), bot.selectNode(modelEditor, firstInstanceOf));	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -168,15 +178,17 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
-	protected void initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerOptionalProperty() throws InputModelInvalidException, IOException {
+	protected void initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerOptionalPropery() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		EObject eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eMFComboViewerSampleMetaClass);
-		if (eMFComboViewerSample == null)
-			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
+		EObject eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eObjectFlatComboViewerSampleMetaClass);
+		if (eObjectFlatComboViewerSample == null)
+			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
-		cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerOptionalProperty.toString()).getInstance()));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		referenceValueForEobjectflatcomboviewerOptionalPropery = bot.changeReferenceValue(allInstancesOf, ((EObjectFlatComboViewerSample)eObjectFlatComboViewerSample).getEobjectflatcomboviewerOptionalPropery());
+		cc.append(SetCommand.create(editingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(), referenceValueForEobjectflatcomboviewerOptionalPropery));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -189,31 +201,30 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditEMFComboViewerSampleEmfcomboviewerOptionalProperty() throws Exception {
+	public void testEditEObjectFlatComboViewerSampleEobjectflatcomboviewerOptionalPropery() throws Exception {
 		
 		// Import the input model
 		initializeInputModel();
 		
-		eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
-		if (eMFComboViewerSample == null)
-			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
+		eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
+		if (eObjectFlatComboViewerSample == null)
+			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
 	
-		enumValueForEmfcomboviewerOptionalProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((EMFComboViewerSample)eMFComboViewerSample).getEmfcomboviewerOptionalProperty().getLiteral());
 		// Create the expected model
-		initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerOptionalProperty();
+		initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerOptionalPropery();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF properties view to edit the EMFComboViewerSample element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
+		// Open the EEF properties view to edit the EObjectFlatComboViewerSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
+			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
-		// Change value of the emfcomboviewerOptionalProperty feature of the EMFComboViewerSample element 
-		bot.editPropertyEMFComboViewerFeature(propertiesView, enumValueForEmfcomboviewerOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));	
+		// Change value of the eobjectflatcomboviewerOptionalPropery feature of the EObjectFlatComboViewerSample element 
+		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, 1, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalPropery)+1, bot.selectNode(modelEditor, firstInstanceOf));	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -225,9 +236,9 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
 
 
 

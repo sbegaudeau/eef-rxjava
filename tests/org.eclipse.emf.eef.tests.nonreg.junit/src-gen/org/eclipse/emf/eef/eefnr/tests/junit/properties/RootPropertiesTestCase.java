@@ -44,8 +44,6 @@ public class RootPropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject root;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -108,7 +106,6 @@ public class RootPropertiesTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForRootSamples() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject root = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, rootMetaClass);
 		if (root == null)
 			throw new InputModelInvalidException(rootMetaClass.getName());
@@ -139,8 +136,7 @@ public class RootPropertiesTestCase extends SWTBotEEFTestCase {
 		root = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), rootMetaClass);
 		if (root == null)
 			throw new InputModelInvalidException(rootMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForRootSamples();
 		

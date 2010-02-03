@@ -39,8 +39,6 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject checkboxSample;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -103,7 +101,6 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForCheckboxSampleCheckboxRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject checkboxSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, checkboxSampleMetaClass);
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
@@ -131,8 +128,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		checkboxSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), checkboxSampleMetaClass);
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForCheckboxSampleCheckboxRequiredProperty();
 		
@@ -167,7 +163,6 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForCheckboxSampleCheckboxOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject checkboxSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, checkboxSampleMetaClass);
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
@@ -195,8 +190,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		checkboxSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), checkboxSampleMetaClass);
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForCheckboxSampleCheckboxOptionalProperty();
 		

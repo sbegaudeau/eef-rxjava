@@ -39,8 +39,6 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject textSample;
-	
-	
 	/**
 	 * Updated value of the feature
 	 */
@@ -103,7 +101,6 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTextSampleTextRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject textSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, textSampleMetaClass);
 		if (textSample == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
@@ -130,8 +127,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		textSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleMetaClass);
 		if (textSample == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForTextSampleTextRequiredProperty();
 		
@@ -166,7 +162,6 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTextSampleTextOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject textSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, textSampleMetaClass);
 		if (textSample == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
@@ -193,8 +188,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		textSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleMetaClass);
 		if (textSample == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
-		
-				
+	
 		// Create the expected model
 		initializeExpectedModelForTextSampleTextOptionalProperty();
 		
