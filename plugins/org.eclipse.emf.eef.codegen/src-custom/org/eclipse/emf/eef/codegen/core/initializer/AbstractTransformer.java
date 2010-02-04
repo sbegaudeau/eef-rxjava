@@ -84,4 +84,9 @@ public abstract class AbstractTransformer {
 		return null;
 	}
 
+	protected boolean isReferenceWithEOpposite(EStructuralFeature feature) {
+		return feature instanceof EReference && ((EReference)feature).getEOpposite() != null;
+	}
+
+
 }
