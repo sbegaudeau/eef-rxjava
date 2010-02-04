@@ -157,6 +157,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	protected ReferencesTable<? extends EObject> advancedtablecompositionWithSameTypeOptionalProperty;
 	protected List<ViewerFilter> advancedtablecompositionWithSameTypeOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedtablecompositionWithSameTypeOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Text name;
 
 
 
@@ -239,6 +240,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		createTablecompositionWithSameTypeOptionalPropertyTableComposition(widgetFactory, propertiesGroup);
 		createAdvancedtablecompositionWithSameTypeRequiredPropertyTableComposition(widgetFactory, propertiesGroup);
 		createAdvancedtablecompositionWithSameTypeOptionalPropertyTableComposition(widgetFactory, propertiesGroup);
+		createNameText(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
 	}
 
@@ -1697,6 +1699,57 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 		// End of user code
 
+	}
+
+	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.name, EefnrViewsRepository.FORM_KIND));
+		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+		name.setLayoutData(nameData);
+		name.addModifyListener(new ModifyListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+			 */
+			public void modifyText(ModifyEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
+			}
+
+		});
+		name.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+			}
+
+		});
+		name.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 */
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				}
+			}
+
+		});
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.name, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
 
@@ -3517,6 +3570,36 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getName()
+	 */
+	public String getName() {
+		return name.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setName(String newValue)
+	 */
+	public void setName(String newValue) {
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void setMessageForName(String msg, int msgLevel) {
+		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
+	}
+
+	public void unsetMessageForName() {
+		messageManager.removeMessage("Name_key", name);
+	}
 
 
 

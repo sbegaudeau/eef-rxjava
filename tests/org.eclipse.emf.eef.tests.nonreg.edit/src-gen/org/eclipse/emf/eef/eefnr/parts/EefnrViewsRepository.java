@@ -89,6 +89,8 @@ public class EefnrViewsRepository {
 
 	public static String advancedtablecompositionWithSameTypeOptionalProperty = "eefnr::TotalSample::advancedtablecompositionWithSameTypeOptionalProperty";
 
+	public static String name = "eefnr::TotalSample::name";
+
 
 	}
 

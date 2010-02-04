@@ -1205,6 +1205,22 @@ public interface TotalSamplePropertiesEditionPart {
 
 
 
+	/**
+	 * @return the name
+	 */
+	public String getName();
+
+	/**
+	 * Defines a new name
+	 * @param newValue the new name to set
+	 */
+	public void setName(String newValue);
+
+	public void setMessageForName(String msg, int msgLevel);
+
+	public void unsetMessageForName();
+
+
 
 
 

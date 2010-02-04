@@ -238,6 +238,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.updateAdvancedtablecompositionWithSameTypeOptionalProperty(totalSample);
 		}
+		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
 
 
 	}
@@ -359,6 +366,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.initTablecompositionWithSameTypeOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty());
 			basePart.initAdvancedtablecompositionWithSameTypeRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty());
 			basePart.initAdvancedtablecompositionWithSameTypeOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty());
+			if (totalSample.getName() != null)
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), totalSample.getName()));
+
 			// init filters
 
 
@@ -632,6 +642,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			// Start of user code for additional businessfilters for advancedtablecompositionWithSameTypeOptionalProperty
 			
 			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -639,6 +650,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 		setInitializing(false);
 	}
+
 
 
 
@@ -940,6 +952,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
 			}
+			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getAbstractSample_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 
 
 		}
@@ -997,6 +1010,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			totalSampleToUpdate.getTablecompositionOnSameTypeOptionalProperty().addAll(basePart.getTablecompositionWithSameTypeOptionalPropertyToAdd());
 			totalSampleToUpdate.getAdvancedtablecompositionOnSameTypeRequiredProperty().addAll(basePart.getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd());
 			totalSampleToUpdate.getAdvancedtablecompositionOnSametypeOptionalProperty().addAll(basePart.getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd());
+			totalSampleToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
+
 
 
 			return totalSampleToUpdate;
@@ -1251,6 +1266,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
 					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), event.getNewValue(), event.getNewIndex()));
 			}
+			if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
+				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getAbstractSample_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			}
 
 
 				if (!command.isEmpty() && !command.canExecute()) {
@@ -1335,6 +1353,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
 
 			} catch (IllegalArgumentException iae) {

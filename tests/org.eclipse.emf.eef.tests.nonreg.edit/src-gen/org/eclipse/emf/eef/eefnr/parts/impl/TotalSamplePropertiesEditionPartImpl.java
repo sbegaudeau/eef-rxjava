@@ -149,6 +149,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected ReferencesTable<? extends EObject> advancedtablecompositionWithSameTypeOptionalProperty;
 	protected List<ViewerFilter> advancedtablecompositionWithSameTypeOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedtablecompositionWithSameTypeOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Text name;
 
 
 
@@ -231,6 +232,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		createTablecompositionWithSameTypeOptionalPropertyAdvancedTableComposition(propertiesGroup);
 		createAdvancedtablecompositionWithSameTypeRequiredPropertyAdvancedTableComposition(propertiesGroup);
 		createAdvancedtablecompositionWithSameTypeOptionalPropertyAdvancedTableComposition(propertiesGroup);
+		createNameText(propertiesGroup);
 	}
 
 	protected void createTextRequiredPropertyText(Composite parent) {
@@ -1512,6 +1514,28 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 		// End of user code
 
+	}
+
+	protected void createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.name, EefnrViewsRepository.SWT_KIND));
+		name = new Text(parent, SWT.BORDER);
+		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+		name.setLayoutData(nameData);
+		name.addModifyListener(new ModifyListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+			 */
+			public void modifyText(ModifyEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
+			}
+			
+		});
+
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.name, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
 
@@ -3427,6 +3451,36 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	public void unsetMessageForAdvancedtablecompositionWithSameTypeOptionalProperty() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getName()
+	 */
+	public String getName() {
+		return name.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setName(String newValue)
+	 */
+	public void setName(String newValue) {
+		if (newValue != null) {
+			name.setText(newValue);
+		} else {
+			name.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void setMessageForName(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForName() {
 
 	}
 

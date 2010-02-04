@@ -172,6 +172,8 @@ public class EefnrMessages extends NLS {
 
 	public static String TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeOptionalPropertyLabel;
 
+	public static String TotalSamplePropertiesEditionPart_NameLabel;
+
 	public static String TextSamplePropertiesEditionPart_TextRequiredPropertyLabel;
 
 	public static String TextSamplePropertiesEditionPart_TextOptionalPropertyLabel;
