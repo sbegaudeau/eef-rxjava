@@ -17,37 +17,38 @@ import java.util.List;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
- * TestCase for EObjectFlatComboViewerSample
+ * TestCase for ReferencesTableSample
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
+public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 * The EClass of the type to edit
 	 */
-	private EClass eObjectFlatComboViewerSampleMetaClass = EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample();
+	private EClass referencesTableSampleMetaClass = EefnrPackage.eINSTANCE.getReferencesTableSample();
 
 	/**
 	 * The type to edit
 	 */
-	private EObject eObjectFlatComboViewerSample;
+	private EObject referencesTableSample;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerOptionalPropery
+	 * The reference value for the reference class referencestableOptionalProperty
 	 */
-	private Object referenceValueForEobjectflatcomboviewerOptionalPropery;
+	private Object referenceValueForReferencestableOptionalProperty;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
+	 * The reference value for the reference class referencestableRequiredProperty
 	 */
-	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
+	private Object referenceValueForReferencestableRequiredProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -115,17 +116,17 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
-	protected void initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerRequiredPropery() throws InputModelInvalidException, IOException {
+	protected void initializeExpectedModelForReferencesTableSampleReferencestableRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		EObject eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eObjectFlatComboViewerSampleMetaClass);
-		if (eObjectFlatComboViewerSample == null)
-			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
+		EObject referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, referencesTableSampleMetaClass);
+		if (referencesTableSample == null)
+			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
 		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		referenceValueForEobjectflatcomboviewerRequiredPropery = bot.changeReferenceValue(allInstancesOf, ((EObjectFlatComboViewerSample)eObjectFlatComboViewerSample).getEobjectflatcomboviewerRequiredPropery());
-		cc.append(SetCommand.create(editingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery(), referenceValueForEobjectflatcomboviewerRequiredPropery));
+		referenceValueForReferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((ReferencesTableSample)referencesTableSample).getReferencestableRequiredProperty());
+		cc.append(AddCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(), referenceValueForReferencestableRequiredProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -138,30 +139,30 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditEObjectFlatComboViewerSampleEobjectflatcomboviewerRequiredPropery() throws Exception {
+	public void testEditReferencesTableSampleReferencestableRequiredProperty() throws Exception {
 		
 		// Import the input model
 		initializeInputModel();
 		
-		eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
-		if (eObjectFlatComboViewerSample == null)
-			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
+		referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
+		if (referencesTableSample == null)
+			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 	
 		// Create the expected model
-		initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerRequiredPropery();
+		initializeExpectedModelForReferencesTableSampleReferencestableRequiredProperty();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF wizard (by double click) to edit the EObjectFlatComboViewerSample element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
+		// Open the EEF wizard (by double click) to edit the ReferencesTableSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
+			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf);
 		
-		// Change value of the eobjectflatcomboviewerRequiredPropery feature of the EObjectFlatComboViewerSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredPropery));	
+		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
+		bot.editReferencesTableFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForReferencestableRequiredProperty), EefnrMessages.PropertiesEditionPart_AddListViewerLabel);	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -178,17 +179,17 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
-	protected void initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerOptionalPropery() throws InputModelInvalidException, IOException {
+	protected void initializeExpectedModelForReferencesTableSampleReferencestableOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		EObject eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, eObjectFlatComboViewerSampleMetaClass);
-		if (eObjectFlatComboViewerSample == null)
-			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
+		EObject referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, referencesTableSampleMetaClass);
+		if (referencesTableSample == null)
+			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
 		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		referenceValueForEobjectflatcomboviewerOptionalPropery = bot.changeReferenceValue(allInstancesOf, ((EObjectFlatComboViewerSample)eObjectFlatComboViewerSample).getEobjectflatcomboviewerOptionalPropery());
-		cc.append(SetCommand.create(editingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(), referenceValueForEobjectflatcomboviewerOptionalPropery));
+		referenceValueForReferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((ReferencesTableSample)referencesTableSample).getReferencestableOptionalProperty());
+		cc.append(AddCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty(), referenceValueForReferencestableOptionalProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -201,30 +202,30 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditEObjectFlatComboViewerSampleEobjectflatcomboviewerOptionalPropery() throws Exception {
+	public void testEditReferencesTableSampleReferencestableOptionalProperty() throws Exception {
 		
 		// Import the input model
 		initializeInputModel();
 		
-		eObjectFlatComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
-		if (eObjectFlatComboViewerSample == null)
-			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
+		referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
+		if (referencesTableSample == null)
+			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 	
 		// Create the expected model
-		initializeExpectedModelForEObjectFlatComboViewerSampleEobjectflatcomboviewerOptionalPropery();
+		initializeExpectedModelForReferencesTableSampleReferencestableOptionalProperty();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF wizard (by double click) to edit the EObjectFlatComboViewerSample element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eObjectFlatComboViewerSampleMetaClass);
+		// Open the EEF wizard (by double click) to edit the ReferencesTableSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(eObjectFlatComboViewerSampleMetaClass.getName());
+			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf);
 		
-		// Change value of the eobjectflatcomboviewerOptionalPropery feature of the EObjectFlatComboViewerSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, 1, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalPropery)+1);	
+		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
+		bot.editReferencesTableFeature(wizardShell, 1, allInstancesOf.indexOf(referenceValueForReferencestableOptionalProperty)+1, EefnrMessages.PropertiesEditionPart_AddListViewerLabel);	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -236,9 +237,9 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (ReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (ReferencesTable - TotalSample) 
 
 
 

@@ -53,7 +53,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 	 */
 	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
 	/**
-	 * The eObjects list contained in EOFCV
+	 * The eObjects list contained in widgets
 	 */
 	private List<EObject> allInstancesOf;
 	/**

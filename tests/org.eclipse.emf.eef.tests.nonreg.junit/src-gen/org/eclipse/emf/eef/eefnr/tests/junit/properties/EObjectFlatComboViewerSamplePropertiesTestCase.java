@@ -41,19 +41,19 @@ public class EObjectFlatComboViewerSamplePropertiesTestCase extends SWTBotEEFTes
 	 */
 	private EObject eObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
-	 */
-	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
-	/**
 	 * The reference value for the reference class eobjectflatcomboviewerOptionalPropery
 	 */
 	private Object referenceValueForEobjectflatcomboviewerOptionalPropery;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
+	 */
+	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
 	/**
 	 * The EClass of the reference to edit
 	 */
 	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
 	/**
-	 * The eObjects list contained in EOFCV
+	 * The eObjects list contained in widgets
 	 */
 	private List<EObject> allInstancesOf;
 	/**
