@@ -451,7 +451,10 @@ Object
 [query public metamodelPrefix(ePackage : EPackage) : String =
 	if ePackage.nsURI= 'http://www.eclipse.org/emf/2002/Ecore'
 	then 'Ecore'
-	else ePackage.eInverse(genmodel::GenPackage)->first().prefix.toUpperFirst()
+	else if ePackage.nsURI = 'http://www.eclipse.org/emf/2003/XMLType'
+			then 'XMLType'
+			else ePackage.eInverse(genmodel::GenPackage)->first().prefix
+			endif
 	endif/]
 
 [template public metamodelPackage(ePackage : EPackage)]
