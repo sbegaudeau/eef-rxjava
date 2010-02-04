@@ -36,7 +36,7 @@
             providerClass="[editionContext.pecPolicyProviderQualifiedClass()/]">
       </PropertiesEditionPolicyProvider>
    </extension>
-[for (repository : ViewsRepository | editionContext.eAllContents(views::ViewsRepository))]
+[for (repository : ViewsRepository | views::ViewsRepository.allInstances())]
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider

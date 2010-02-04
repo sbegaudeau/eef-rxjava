@@ -431,11 +431,11 @@ Object
 [ePackage.associatedGenPackage().basePackage/].[ePackage.name/]
 [/template]
 
-[template public eefPackage(eClassifier : EClassifier, basePackage : EString)]
+[template public eefPackage(eClassifier : EClassifier, basePackage : String)]
 [basePackage/].[eClassifier.ePackage.name/]
 [/template]
 
-[template public eefPackage(ePackage : EPackage, basePackage : EString)]
+[template public eefPackage(ePackage : EPackage, basePackage : String)]
 [basePackage/].[ePackage.name/]
 [/template]
 
