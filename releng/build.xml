@@ -36,6 +36,7 @@
 				JAVA_HOME=${JAVA14_HOME}
 	-->
 
+	<property environment="env"/>
 	<!-- load properties and set timestamp for the build -->
 	<property file="build.properties" />
 	<tstamp>
@@ -62,6 +63,7 @@
 
 	<!-- invoke a new Eclipse process and launch the build from the common.releng folder -->
 	<target name="run" depends="init">
+		<echoproperties/>
 		<property name="relengCommonBuilderDir" value="${workspaceDir}/org.eclipse.dash.common.releng" />
 		<ant antfile="${relengCommonBuilderDir}/buildAll.xml" target="runEclipse" dir="${relengCommonBuilderDir}" />
 		<antcall target="cleanUp" inheritall="true" />
