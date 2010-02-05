@@ -469,6 +469,28 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removeAdvancedEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex) {
+		activateShell(shell);
+		sleep(500);
+		removeAdvancedEObjectFlatComboViewer(buttonIndex);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	public void removeAdvancedEObjectFlatComboViewer(int buttonIndex) {
+		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip, buttonIndex).click();
+	}
 
 	public void editAdvancedEObjectFlatComboViewer(int buttonIndex, Object value) {
 		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_set_tooltip, buttonIndex).click();
@@ -630,6 +652,22 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editPropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
 //		SWTBot propertyBot = propertyView.bot();
 		editAdvancedEObjectFlatComboViewer(buttonIndex, value);
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removePropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		removeAdvancedEObjectFlatComboViewer(buttonIndex);
 		selectNode.select();
 	}
 	
