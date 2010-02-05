@@ -32,6 +32,20 @@
 		// FIXME : define 'editPropertyFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
 
+[comment defines the command to apply in order to obtain the expected model /]
+[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'removeExpectedModel' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
+[comment defines the bot command to process to edit the expected feature /]
+[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'removeFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
+[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// FIXME : define 'removePropertyFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
@@ -45,3 +59,15 @@
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement)]
 		// FIXME : define 'editFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
+
+[template public removeFeature(f : EStructuralFeature, peElement : PropertiesEditionElement)]
+		// FIXME : define 'removeFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+[/template]
+
+[query public isEOFCVorReferencesTable(peElement : PropertiesEditionElement) : Boolean = 
+	peElement.representationName('EObjectFlatComboViewer')or peElement.representationName('AdvancedEObjectFlatComboViewer') 
+	or peElement.representationName('ReferencesTable') or peElement.representationName('AdvancedReferencesTable')/]
+
+[query public canRemove(peElement : PropertiesEditionElement) : Boolean = 
+	peElement.isEOFCVorReferencesTable() or
+	peElement.representationName('TableComposition')or peElement.representationName('AdvancedTableComposition')/]

@@ -44,12 +44,23 @@ CompoundCommand cc = new CompoundCommand();
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 [/template]
 
-[query isAEOFCVReference(peElement : PropertiesEditionElement) : Boolean = 
+[comment defines the command to apply in order to obtain the expected model /]
+[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[comment defines the bot command to process to edit the expected feature /]
+[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[query public isAEOFCVReference(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EReference))
 	then false
 	else peElement.representationName('AdvancedEObjectFlatComboViewer') and peElement.model.oclAsType(ecore::EReference).isReferenceSingle()
 	endif/]
 
-[query eAOFCVIndex(peElement : PropertiesEditionElement) : Integer = 
+[query public eAOFCVIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
 			->select(representationName('AdvancedEObjectFlatComboViewer') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]

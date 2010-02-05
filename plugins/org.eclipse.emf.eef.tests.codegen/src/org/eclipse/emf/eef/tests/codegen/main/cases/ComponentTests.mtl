@@ -35,11 +35,10 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 	
 [testCasePropertySection(peContext, pec)/]
 [for (peElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)) ? (pec.canGenerateTest(peElement) <> 'false')]
-[initializeExpectedModelPropertySection(pec, peElement)/]
-[commentTestPropertySection()/]
-[testEditPropertySection(pec, peElement)/]
-[editFeaturePropertySection(pec, peElement)/]
-[comparePropertySection(pec, peElement)/]
+[testAddPropertySection(pec, peElement)/]
+[if (peElement.canRemove())]
+[testRemovePropertySection(pec, peElement)/]
+[/if]
 [/for]
 [for (peElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)) ? (pec.canGenerateTest(peElement) <> 'false')]
 [additionnalMethodsForWidgets(pec, peElement)/]
@@ -51,6 +50,22 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 			[/file]
 		[/for]
 	[/for]
+[/template]
+
+[template public testAddPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[initializeExpectedModelPropertySection(pec, peElement)/]
+[commentTestPropertySection()/]
+[testEditPropertySection(pec, peElement)/]
+[editFeaturePropertySection(pec, peElement)/]
+[comparePropertySection(pec, peElement)/]
+[/template]
+
+[template public testRemovePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[initializeRemoveExpectedModelPropertySection(pec, peElement)/]
+[commentTestPropertySection()/]
+[testRemoveEditPropertySection(pec, peElement)/]
+[removeFeaturePropertySection(pec, peElement)/]
+[comparePropertySection(pec, peElement)/]	
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
@@ -79,4 +94,15 @@ package [pec.model.completePackage()/].tests.junit;
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf);
 		
 		[pec.editFeature(peElement)/]	
+[/template]
+
+[template public removeFeaturePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+		// Open the EEF wizard (by double click) to edit the [pec.model.name/] element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf);
+		
+		[pec.removeFeature(peElement)/]	
 [/template]

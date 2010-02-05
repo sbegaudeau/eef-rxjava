@@ -74,19 +74,19 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 */
 	private Object enumValueFor[peElement.model.name.toUpperFirst()/];		
 	[/for]
-	[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and (representationName('EObjectFlatComboViewer')or representationName('AdvancedEObjectFlatComboViewer') or representationName('ReferencesTable') or representationName('AdvancedReferencesTable')))->asSet())]
+	[for (peElement : PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : PropertiesEditionElement | pee.model.oclIsTypeOf(ecore::EReference) and pee.isEOFCVorReferencesTable())->asSet())]
 	/**
 	 * The reference value for the reference class [peElement.model.name.toLowerFirst()/]
 	 */
 	private Object referenceValueFor[peElement.model.name.toUpperFirst()/];
 	[/for]
-	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and (representationName('EObjectFlatComboViewer')or representationName('AdvancedEObjectFlatComboViewer') or representationName('ReferencesTable') or representationName('AdvancedReferencesTable'))).model.eType->select(name<>pec.model.name).name->asSet())]
+	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and isEOFCVorReferencesTable()).model.eType->select(name<>pec.model.name).name->asSet())]
 	/**
 	 * The EClass of the reference to edit
 	 */
 	private EClass [name.toLowerFirst()/]MetaClass = [pec.model.ePackage.metamodelPackage()/].eINSTANCE.get[name/]();	
 	[/for]
-	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and (representationName('EObjectFlatComboViewer') or representationName('AdvancedEObjectFlatComboViewer') or representationName('ReferencesTable') or representationName('AdvancedReferencesTable')))->asSet()->notEmpty())]
+	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and isEOFCVorReferencesTable())->asSet()->notEmpty())]
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -165,6 +165,24 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
 [/template]
+
+[template public initializeRemoveExpectedModelPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) ? (peElement.canRemove())]	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject [pec.model.name.toLowerFirst()/] = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [pec.model.name.toLowerFirst()/]MetaClass);
+		if ([pec.model.name.toLowerFirst()/] == null)
+			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
+		[pec.removeExpectedModel(peElement)/]
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+[/template]
 	
 [template public testEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]    
 	public void testEdit[pec.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws Exception {
@@ -181,6 +199,27 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		[/if]		
 		// Create the expected model
 		initializeExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+[/template]
+
+[template public testRemoveEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) ? (peElement.canRemove())]    
+	public void testRemove[pec.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		[pec.model.name.toLowerFirst()/] = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
+		if ([pec.model.name.toLowerFirst()/] == null)
+			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
+	
+		[if (peElement.model.oclAsType(ecore::EAttribute).isEnum())]
+		enumValueFor[peElement.model.name.toUpperFirst()/] = bot.changeEnumLiteralValue([peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/](), (([pec.model.name/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]().getLiteral());
+		[/if]		
+		// Create the expected model
+		initializeRemoveExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();

@@ -26,6 +26,14 @@ CompoundCommand cc = new CompoundCommand();
 		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], referenceValueFor[peElement.model.name.toUpperFirst()/]));
 [/template]
 
+[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isReferencesTableReference())]
+CompoundCommand cc = new CompoundCommand();
+		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+		cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
+[/template]
+
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
 		bot.editReferencesTableFeature(wizardShell, [peElement.referencesTableIndex()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/])[if (not peElement.model.required)]+1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel);
@@ -41,15 +49,30 @@ CompoundCommand cc = new CompoundCommand();
 		bot.editPropertyReferencesTableFeature(propertiesView, [peElement.referencesTableIndex()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/])[if (not peElement.model.required)]+1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
+[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isReferencesTableReference())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.removeReferencesTableFeature(wizardShell, [peElement.referencesTableIndex()/], allInstancesOf.indexOf(firstInstanceOf)[if (not peElement.model.required)]+1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
+[/template]
+
+[template public removeFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isReferencesTableReference())]
+// Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
+		bot.removeReferencesTable([peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
+[/template]
+
+[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isReferencesTableReference())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.removePropertyReferencesTableFeature(propertiesView, [peElement.referencesTableIndex()/], allInstancesOf.indexOf(firstInstanceOf)[if (not peElement.model.required)]+1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+[/template]
+
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 [/template]
 
-[query isReferencesTableReference(peElement : PropertiesEditionElement) : Boolean = 
+[query public isReferencesTableReference(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EReference))
 	then false
 	else peElement.representationName('ReferencesTable') and peElement.model.oclAsType(ecore::EReference).isReferenceMany()
 	endif/]
 
-[query referencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
+[query public referencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
 			->select(representationName('ReferencesTable') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]

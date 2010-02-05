@@ -84,7 +84,18 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	}
 [/template]
 
-[query isAdvancedTableComposition(peElement : PropertiesEditionElement) : Boolean = 
+[comment defines the command to apply in order to obtain the expected model /]
+[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[comment defines the bot command to process to edit the expected feature /]
+[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[query public isAdvancedTableComposition(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EReference))
 	then false
 	else (peElement.representationName('AdvancedTableComposition')) and (peElement.model.oclAsType(ecore::EReference).isContainmentMany() or peElement.model.oclAsType(ecore::EReference).isContainmentSingle())

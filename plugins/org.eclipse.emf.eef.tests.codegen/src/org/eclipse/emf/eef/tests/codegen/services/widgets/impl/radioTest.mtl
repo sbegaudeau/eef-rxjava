@@ -42,12 +42,23 @@ CompoundCommand cc = new CompoundCommand();
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 [/template]
 
-[query isRadioEnum(peElement : PropertiesEditionElement) : Boolean = 
+[comment defines the command to apply in order to obtain the expected model /]
+[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[comment defines the bot command to process to edit the expected feature /]
+[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[/template]
+
+[query public isRadioEnum(peElement : PropertiesEditionElement) : Boolean = 
 	if (not peElement.model.oclIsTypeOf(ecore::EAttribute))
 	then false
 	else peElement.representationName('Radio') and peElement.model.oclAsType(ecore::EAttribute).isEnum()
 	endif/]
 
-[query radioIndex(peElement : PropertiesEditionElement) : Integer = 
+[query public radioIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
 			->select(representationName('Radio') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
