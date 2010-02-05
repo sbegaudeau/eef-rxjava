@@ -505,6 +505,29 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	}
 	
 	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removeAdvancedReferencesTableFeature(SWTBotShell shell, int buttonIndex, Object value) {
+		activateShell(shell);
+		sleep(500);
+		removeAdvancedReferencesTable(buttonIndex, value);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	public void removeAdvancedReferencesTable(int buttonIndex, Object value) {
+		table(buttonIndex).select(0);
+		buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip, buttonIndex).click();
+	}
+	
+	/**
 	 * @param feature
 	 */
 	private void editCheckBox(String feature) {
@@ -623,6 +646,22 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editPropertyAdvancedReferencesTableFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
 //		SWTBot propertyBot = propertyView.bot();
 		editAdvancedReferencesTable(buttonIndex, value);
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removePropertyAdvancedReferencesTableFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		removeAdvancedReferencesTable(buttonIndex, value);
 		selectNode.select();
 	}
 	
