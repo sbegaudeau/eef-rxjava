@@ -438,6 +438,20 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		button(UIConstants.OK_BUTTON).click();
 	}
 	
+	public void removeReferencesTableFeature(SWTBotShell shell, int widgetIndex, int tableIndex,
+			String buttonLabel) {
+		activateShell(shell);
+		sleep(500);
+		removeReferencesTable(widgetIndex, tableIndex, buttonLabel);
+		sleep(1000);
+		closeShellWithFinishButton(shell);	
+	}
+	
+	public void removeReferencesTable(int widgetIndex, int tableIndex, String buttonLabel) {
+		table(widgetIndex).select(tableIndex);
+		button(buttonLabel, widgetIndex).click();
+	}
+	
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -559,6 +573,23 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editPropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, String buttonLabel, SWTBotTreeItem selectNode) {
 //		SWTBot propertyBot = propertyView.bot();
 		editReferencesTable(buttonIndex, tableIndex, buttonLabel);
+		sleep(1000);
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removePropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, String buttonLabel, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		removeReferencesTable(buttonIndex, tableIndex, buttonLabel);
 		sleep(1000);
 		selectNode.select();
 	}
