@@ -16,6 +16,12 @@
             providerClass="org.eclipse.emf.samples.conference.providers.ConferencePackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
 
    <!-- Tabbed properties views extension -->
    <extension
