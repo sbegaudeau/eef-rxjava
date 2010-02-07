@@ -83,10 +83,20 @@ public abstract class AbstractTransformer {
 		}
 		return null;
 	}
-
-	protected boolean isReferenceWithEOpposite(EStructuralFeature feature) {
-		return feature instanceof EReference && ((EReference)feature).getEOpposite() != null;
+	
+	protected boolean isUnmanagedReference(EStructuralFeature feature) {
+		return feature instanceof EReference 
+				&& ((EReference)feature).isContainment()
+				&& ((EReference)feature).getEType() instanceof EClass 
+				&& hasReferenceWithEOpposite(((EClass)((EReference)feature).getEType())); 
 	}
 
+	private boolean hasReferenceWithEOpposite(EClass eClass) {
+		for (EReference eRef : eClass.getEAllReferences()) {
+			if (eRef.getEOpposite() != null)
+				return true;
+		}
+		return false;
+	}
 
 }

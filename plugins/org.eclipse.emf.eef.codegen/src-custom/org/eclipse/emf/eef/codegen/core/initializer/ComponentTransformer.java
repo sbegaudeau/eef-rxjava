@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.components.ComponentsFactory;
@@ -71,7 +70,7 @@ public class ComponentTransformer extends AbstractTransformer {
 		}
 		for (EStructuralFeature feature : genClass.getEcoreClass().getEAllStructuralFeatures()) {
 			if (isSignificant(feature) && !feature.isDerived()
-					&& !inheritedMember(feature, genClass.getEcoreClass()) && !isReferenceWithEOpposite(feature)) {
+					&& !inheritedMember(feature, genClass.getEcoreClass()) && !isUnmanagedReference(feature)) {
 				PropertiesEditionElement structuralFeature2EditionElement = eStructuralFeature2EditionElement(
 						list, feature);
 				if (structuralFeature2EditionElement != null)

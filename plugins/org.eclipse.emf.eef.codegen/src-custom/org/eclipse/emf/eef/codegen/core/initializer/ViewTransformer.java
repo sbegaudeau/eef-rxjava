@@ -104,7 +104,7 @@ public class ViewTransformer extends AbstractTransformer {
 				container.setRepresentation(getWidget("Group"));
 				List<EStructuralFeature> features = groups.get(name);
 				for (EStructuralFeature structuralFeature : features) {
-					if (!structuralFeature.isDerived() && !isReferenceWithEOpposite(structuralFeature)) {
+					if (!structuralFeature.isDerived() && !isUnmanagedReference(structuralFeature)) {
 						ElementEditor editor = eStructuralFeature2ViewElement(structuralFeature);
 						container.getElements().add(editor);
 					}
