@@ -488,6 +488,46 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		closeShellWithFinishButton(shell);
 	}
 	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removeEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex) {
+		activateShell(shell);
+		sleep(500);
+		removeEObjectFlatComboViewer(buttonIndex);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	public void removeEObjectFlatComboViewer(int buttonIndex) {
+		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
+		table().select(0);
+		button(UIConstants.OK_BUTTON).click();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removePropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		removeEObjectFlatComboViewer(buttonIndex);
+		selectNode.select();
+	}
+
 	public void removeAdvancedEObjectFlatComboViewer(int buttonIndex) {
 		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip, buttonIndex).click();
 	}

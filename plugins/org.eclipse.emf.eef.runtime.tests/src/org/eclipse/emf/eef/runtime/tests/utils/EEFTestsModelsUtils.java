@@ -43,6 +43,21 @@ public class EEFTestsModelsUtils {
 		}
 		return null;
 	}
+	
+	/**
+	 * Return the first EObject of the given type in the resource.
+	 * @param resource the resource to process
+	 * @param eClass the type to search
+	 * @return the first founded EObject <code>null</code> otherwise.
+	 */
+	public static EObject getFirstInstanceOf(List list, EClass eClass) {
+		if (list != null && eClass != null) {
+			if (!list.isEmpty()) {
+				return (EObject)list.get(0);
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Return the first EObject of the given type in the resource.
