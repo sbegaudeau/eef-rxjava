@@ -29,8 +29,9 @@ CompoundCommand cc = new CompoundCommand();
 [template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isAdvancedReferencesTableReference())]
 CompoundCommand cc = new CompoundCommand();
 		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+		allInstancesOf = (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]();
+		EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
 		cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
 [/template]
 
@@ -51,7 +52,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removeAdvancedReferencesTableFeature(wizardShell, [peElement.advancedReferencesTableIndex()/], allInstancesOf.indexOf(firstInstanceOf)[if (not peElement.model.required)]+1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeAdvancedReferencesTableFeature(wizardShell, [peElement.advancedReferencesTableIndex()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
 [/template]
 
 [template public removeFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isAdvancedReferencesTableReference())]
@@ -61,7 +62,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, [peElement.advancedReferencesTableIndex()/], allInstancesOf.indexOf(firstInstanceOf)[if (not peElement.model.required)]+1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, [peElement.advancedReferencesTableIndex()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]

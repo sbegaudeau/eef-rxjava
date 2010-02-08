@@ -68,6 +68,10 @@
 	peElement.representationName('EObjectFlatComboViewer')or peElement.representationName('AdvancedEObjectFlatComboViewer') 
 	or peElement.representationName('ReferencesTable') or peElement.representationName('AdvancedReferencesTable')/]
 
+[query public canRemoveEOFCVorReferencesTable(peElement : PropertiesEditionElement) : Boolean = 
+	(peElement.representationName('EObjectFlatComboViewer') and not peElement.model.required)or peElement.representationName('AdvancedEObjectFlatComboViewer') 
+	or peElement.representationName('ReferencesTable') or peElement.representationName('AdvancedReferencesTable')/]
+
 [query public canRemove(peElement : PropertiesEditionElement) : Boolean = 
-	peElement.isEOFCVorReferencesTable() or
+	peElement.canRemoveEOFCVorReferencesTable() or
 	peElement.representationName('TableComposition')or peElement.representationName('AdvancedTableComposition')/]

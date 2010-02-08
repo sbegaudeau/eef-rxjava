@@ -45,14 +45,24 @@ CompoundCommand cc = new CompoundCommand();
 [/template]
 
 [comment defines the command to apply in order to obtain the expected model /]
-[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isEOFCVReference())]
+CompoundCommand cc = new CompoundCommand();
+		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], null));
 [/template]
 
 [comment defines the bot command to process to edit the expected feature /]
-[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isEOFCVReference())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.removeEObjectFlatComboViewerFeature(wizardShell, [peElement.eOFCVIndex()/]);
+
 [/template]
 
-[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
+[template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isEOFCVReference())]
+// Change value of the [peElement.name/] feature of the [pec.model.name/] element 
+		bot.removePropertyEObjectFlatComboViewerFeature(propertiesView, [peElement.eOFCVIndex()/], bot.selectNode(modelEditor, firstInstanceOf));
+
 [/template]
 
 [query public isEOFCVReference(peElement : PropertiesEditionElement) : Boolean = 

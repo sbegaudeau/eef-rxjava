@@ -90,7 +90,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	/**
 	 * The eObjects list contained in widgets
 	 */
-	private List<EObject> allInstancesOf;
+	private List allInstancesOf;
 	[/if]
 	/**
 	 * Updated value of the feature
