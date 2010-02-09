@@ -584,6 +584,52 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		closeShellWithFinishButton(shell);
 	}
 	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removeAdvancedTableCompositionFeature(SWTBotShell shell, int buttonIndex) {
+		activateShell(shell);
+		sleep(500);
+		removeAdvancedTableComposition(buttonIndex);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removeTableCompositionFeature(SWTBotShell shell, int buttonIndex, String buttonLabel) {
+		activateShell(shell);
+		sleep(500);
+		removeTableComposition(buttonIndex, buttonLabel);
+		sleep(1000);
+		closeShellWithFinishButton(shell);
+	}
+	
+	public void removeTableComposition(int buttonIndex, String buttonLabel) {
+		table(buttonIndex).select(0);
+		buttonWithTooltip(buttonLabel, buttonIndex).click();
+	}
+	
+	public void removeAdvancedTableComposition(int buttonIndex) {
+		table(buttonIndex).select(0);
+		buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip, buttonIndex).click();
+	}
+	
 	public void removeAdvancedReferencesTable(int buttonIndex, Object value) {
 		table(buttonIndex).select(0);
 		buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip, buttonIndex).click();
@@ -594,6 +640,17 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	private void editCheckBox(String feature) {
 		checkBox(feature).click();
+	}
+	
+	/**
+	 * @param feature
+	 */
+	public void editCheckBox(String feature, boolean value) {
+		if (value) {
+			checkBox(feature).select();
+		} else {
+			checkBox(feature).deselect();
+		}
 	}
 
 	/**
@@ -675,6 +732,23 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void removePropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, String buttonLabel, SWTBotTreeItem selectNode) {
 //		SWTBot propertyBot = propertyView.bot();
 		removeReferencesTable(buttonIndex, tableIndex, buttonLabel);
+		sleep(1000);
+		selectNode.select();
+	}
+	
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param feature
+	 *            the feature to edit
+	 * @param newValue
+	 *            the new value to set to the feature
+	 */
+	public void removePropertyTableCompositionFeature(SWTBotView propertyView, int buttonIndex, String buttonLabel, SWTBotTreeItem selectNode) {
+//		SWTBot propertyBot = propertyView.bot();
+		removeTableComposition(buttonIndex, buttonLabel);
 		sleep(1000);
 		selectNode.select();
 	}
