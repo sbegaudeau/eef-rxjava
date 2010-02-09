@@ -30,7 +30,6 @@ CompoundCommand cc = new CompoundCommand();
 CompoundCommand cc = new CompoundCommand();
 		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
 		allInstancesOf = (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]();
-		EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
 		cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
 [/template]
@@ -42,7 +41,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-		bot.editAdvancedReferencesTable([peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
+		bot.editAdvancedReferencesTable( [peElement.advancedReferencesTableIndex()/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isAdvancedReferencesTableReference())]

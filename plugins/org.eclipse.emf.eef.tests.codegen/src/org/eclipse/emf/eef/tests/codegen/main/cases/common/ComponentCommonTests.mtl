@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module ComponentCommonTests('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
+[module ComponentCommonTests('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import common /]
 [import naming /]
@@ -80,13 +80,13 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 */
 	private Object referenceValueFor[peElement.model.name.toUpperFirst()/];
 	[/for]
-	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and isEOFCVorReferencesTable()).model.eType->select(name<>pec.model.name).name->asSet())]
+	[for (name : String | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and canRemove()).model.eType->select(name<>pec.model.name).name->asSet())]
 	/**
 	 * The EClass of the reference to edit
 	 */
 	private EClass [name.toLowerFirst()/]MetaClass = [pec.model.ePackage.metamodelPackage()/].eINSTANCE.get[name/]();	
 	[/for]
-	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and isEOFCVorReferencesTable())->asSet()->notEmpty())]
+	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and canRemove())->asSet()->notEmpty())]
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -254,3 +254,6 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 * - delete the models
 	 */	
 [/template]
+
+[query public isAbstractType(peElement : PropertiesEditionElement) : Boolean = 
+	peElement.model.eType->select(oclIsTypeOf(ecore::EClass)).oclAsType(ecore::EClass).abstract/]
