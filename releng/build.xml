@@ -36,41 +36,53 @@
 				JAVA_HOME=${JAVA14_HOME}
 	-->
 
-	<property environment="env"/>
-	<!-- load properties and set timestamp for the build -->
-	<property file="build.properties" />
-	<tstamp>
-		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
-	</tstamp>
-
-	<!-- calculate workspaceDir as parent of this folder, the project's .releng folder (relengBuilderDir) -->
-	<property name="relengBuilderDir" value="${basedir}" />
-	<dirname file="${relengBuilderDir}" property="workspaceDir" />
-
-	<!-- 
-			can build in /tmp, eg., in /tmp/build, or in workspace, eg.,
-			${WORKSPACE}/build
-		-->
-	<property name="writableBuildRoot" value="/tmp/build" />
-
-	<!-- 
-			can be simple path, eg., 
-			${writableBuildRoot}/${buildType}${buildTimestamp} or longer, eg.,
-			${writableBuildRoot}/${topprojectName}/${projectName}/downloads/drops/${version}/${buildType}${buildTimestamp} or
-			${writableBuildRoot}/${topprojectName}/${projectName}/${subprojectName}/downloads/drops/${version}/${buildType}${buildTimestamp}
-		-->
-	<property name="buildDir" value="${writableBuildRoot}/${buildType}${buildTimestamp}" />
 
 	<!-- invoke a new Eclipse process and launch the build from the common.releng folder -->
 	<target name="run" depends="init">
-		<echoproperties/>
-		<property name="relengCommonBuilderDir" value="${workspaceDir}/org.eclipse.dash.common.releng" />
 		<ant antfile="${relengCommonBuilderDir}/buildAll.xml" target="runEclipse" dir="${relengCommonBuilderDir}" />
-		<antcall target="cleanUp" inheritall="true" />
+		<antcall target="cleanUp" />
 	</target>
 
 	<target name="init">
-		<delete dir="${writableBuildRoot}/" includes="${buildType}*/**" includeemptydirs="true" />
+		<!-- set properties from hudson parameters, usefull with ant build -->
+		<property name="version" value="${VERSION}" />
+		<property name="buildType" value="${BUILDTYPE}" />
+		<property name="projectid" value="${PROJECTID}" />
+
+		<!-- load properties and set timestamp for the build -->
+		<tstamp>
+			<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
+		</tstamp>
+		<property name="forceContextQualifier" value="v${buildTimestamp}" />
+		<property file="build.properties" />
+
+		<!-- calculate workspaceDir as parent of this folder, the project's .releng folder (relengBuilderDir) -->
+		<property name="relengBuilderDir" value="${basedir}" />
+		<dirname file="${relengBuilderDir}" property="workspaceDir" />
+
+		<!-- 
+				can build in /tmp, eg., in /tmp/build, or in workspace, eg.,
+				${WORKSPACE}/build
+			-->
+		<property name="writableBuildRoot" value="${WORKSPACE}/build" />
+
+		<!-- 
+				can be simple path, eg., 
+				${writableBuildRoot}/${buildType}${buildTimestamp} or longer, eg.,
+				${writableBuildRoot}/${topprojectName}/${projectName}/downloads/drops/${version}/${buildType}${buildTimestamp} or
+				${writableBuildRoot}/${topprojectName}/${projectName}/${subprojectName}/downloads/drops/${version}/${buildType}${buildTimestamp}
+			-->
+		<property name="buildDir" value="${writableBuildRoot}/${buildType}${buildTimestamp}" />
+		<property name="relengCommonBuilderDir" value="${workspaceDir}/org.eclipse.dash.common.releng" />
+
+		<!-- cleanup old builds,
+				 see http://wiki.eclipse.org/Common_Build_Infrastructure/Getting_Started/Build_In_Hudson/Ant_Script -->
+		<delete includeemptydirs="true" failonerror="false" defaultexcludes="no">
+			<fileset dir="${writableBuildRoot}/">
+				<include name="?20*/**" />
+			</fileset>
+		</delete>
+
 	</target>
 
 	<target name="cleanUp">
