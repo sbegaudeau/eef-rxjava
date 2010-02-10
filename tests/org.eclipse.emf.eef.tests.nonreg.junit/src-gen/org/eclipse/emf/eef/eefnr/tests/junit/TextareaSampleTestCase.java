@@ -93,6 +93,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -154,6 +155,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -215,9 +217,13 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
+
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
 
 
 
