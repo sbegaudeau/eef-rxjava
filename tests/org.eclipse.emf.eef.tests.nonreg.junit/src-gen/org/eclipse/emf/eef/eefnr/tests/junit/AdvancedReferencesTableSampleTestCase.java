@@ -189,7 +189,6 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		CompoundCommand cc = new CompoundCommand();
 		
 		allInstancesOf = ((AdvancedReferencesTableSample)advancedReferencesTableSample).getAdvancedreferencestableRequiredProperty();
-		EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
 		cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
@@ -316,7 +315,6 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		CompoundCommand cc = new CompoundCommand();
 		
 		allInstancesOf = ((AdvancedReferencesTableSample)advancedReferencesTableSample).getAdvancedreferencestableOptionalProperty();
-		EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
 		cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);

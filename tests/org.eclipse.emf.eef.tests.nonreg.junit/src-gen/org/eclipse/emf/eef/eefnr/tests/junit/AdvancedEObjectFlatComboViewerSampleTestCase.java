@@ -41,13 +41,13 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 */
 	private EObject advancedEObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
-	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredProperty
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -188,7 +188,6 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		
 		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), null));
-
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -224,8 +223,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 0);
-	
+		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 0);	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -315,7 +313,6 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		
 		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), null));
-
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -351,8 +348,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 1);
-	
+		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 1);	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
