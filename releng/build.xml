@@ -39,15 +39,33 @@
 
 	<!-- invoke a new Eclipse process and launch the build from the common.releng folder -->
 	<target name="run" depends="init">
+		<echoproperties />
 		<ant antfile="${relengCommonBuilderDir}/buildAll.xml" target="runEclipse" dir="${relengCommonBuilderDir}" />
 		<antcall target="cleanUp" />
 	</target>
 
 	<target name="init">
 		<!-- set properties from hudson parameters, usefull with ant build -->
-		<property name="version" value="${VERSION}" />
-		<property name="buildType" value="${BUILDTYPE}" />
-		<property name="projectid" value="${PROJECTID}" />
+		<condition property="WORKSPACE" value="/tmp">
+			<not>
+				<isset property="WORKSPACE" />
+			</not>
+		</condition>
+		<condition property="version" value="${VERSION}">
+			<isset property="VERSION" />
+		</condition>
+		<condition property="buildType" value="${BUILDTYPE}">
+			<isset property="BUILDTYPE" />
+		</condition>
+		<condition property="projectid" value="${PROJECTID}">
+			<isset property="PROJECTID" />
+		</condition>
+		<condition property="fetchTag" value="${FETCHTAG}">
+			<isset property="FETCHTAG" />
+		</condition>
+		<condition property="buildAlias" value="${BUILDALIAS}">
+			<isset property="BUILDALIAS" />
+		</condition>
 
 		<!-- load properties and set timestamp for the build -->
 		<tstamp>
@@ -77,8 +95,8 @@
 
 		<!-- cleanup old builds,
 				 see http://wiki.eclipse.org/Common_Build_Infrastructure/Getting_Started/Build_In_Hudson/Ant_Script -->
-		<delete includeemptydirs="true" failonerror="false" defaultexcludes="no">
-			<fileset dir="${writableBuildRoot}/">
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${writableBuildRoot}/" defaultexcludes="no">
 				<include name="?20*/**" />
 			</fileset>
 		</delete>
