@@ -54,7 +54,5 @@ CompoundCommand cc = new CompoundCommand();
 [/template]
 
 [query public isTextString(peElement : PropertiesEditionElement) : Boolean = 
-	if (not peElement.model.oclIsTypeOf(ecore::EAttribute))
-	then false
-	else (peElement.representationName('Text') or peElement.representationName('Textarea')) and peElement.model.oclAsType(ecore::EAttribute).isString()
-	endif/]
+	peElement <> null and peElement.model.oclIsTypeOf(ecore::EAttribute) 
+	/]

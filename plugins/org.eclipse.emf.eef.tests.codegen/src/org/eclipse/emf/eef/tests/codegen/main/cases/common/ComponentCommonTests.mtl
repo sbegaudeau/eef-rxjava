@@ -194,7 +194,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		if ([pec.model.name.toLowerFirst()/] == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 	
-		[if (peElement.model.oclAsType(ecore::EAttribute).isEnum())]
+		[if (peElement.model.oclIsTypeOf(ecore::EAttribute) and peElement.model.oclAsType(ecore::EAttribute).isEnum())]
 		enumValueFor[peElement.model.name.toUpperFirst()/] = bot.changeEnumLiteralValue([peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/](), (([pec.model.name/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]().getLiteral());
 		[/if]		
 		// Create the expected model
@@ -215,7 +215,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		if ([pec.model.name.toLowerFirst()/] == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 	
-		[if (peElement.model.oclAsType(ecore::EAttribute).isEnum())]
+		[if (peElement.model.oclIsTypeOf(ecore::EAttribute) and peElement.model.oclAsType(ecore::EAttribute).isEnum())]
 		enumValueFor[peElement.model.name.toUpperFirst()/] = bot.changeEnumLiteralValue([peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/](), (([pec.model.name/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]().getLiteral());
 		[/if]		
 		// Create the expected model
@@ -256,4 +256,10 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 [/template]
 
 [query public isAbstractType(peElement : PropertiesEditionElement) : Boolean = 
-	peElement.model.eType->select(oclIsTypeOf(ecore::EClass)).oclAsType(ecore::EClass).abstract/]
+	peElement.model.eType.oclAsType(ecore::EClass).abstract/]
+	
+[query public isCompositionType(peElement : PropertiesEditionElement) : Boolean = 
+	peElement.representationName('AdvancedTableComposition') or peElement.representationName('TableComposition')/]
+
+[comment][query public isCompositionType(peElement : PropertiesEditionElement) : Boolean = 
+	peElement.model->select(oclIsTypeOf(ecore::EReference)).oclAsType(ecore::EReference).isContainment()/][/comment]

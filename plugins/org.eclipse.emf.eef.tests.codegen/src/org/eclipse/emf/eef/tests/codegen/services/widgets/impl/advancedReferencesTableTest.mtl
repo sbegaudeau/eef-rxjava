@@ -41,7 +41,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-		bot.editAdvancedReferencesTable( [peElement.advancedReferencesTableIndex()/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
+		bot.editAdvancedReferencesTable([peElement.advancedReferencesTableIndex()/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isAdvancedReferencesTableReference())]
