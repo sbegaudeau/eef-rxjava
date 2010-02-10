@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EEF Runtime dedicated for tests
-Bundle-SymbolicName: org.eclipse.emf.eef.runtime.tests
+Bundle-SymbolicName: org.eclipse.emf.eef.runtime.tests;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: Eclipse.org
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -15,8 +15,12 @@ Require-Bundle: org.eclipse.swtbot.eclipse.finder;visibility:=reexport,
  org.eclipse.emf.eef.runtime,
  org.eclipse.emf.compare.match;visibility:=reexport,
  org.eclipse.emf.compare.diff,
- org.junit4
+ org.junit4,
+ org.eclipse.emf.ecore.editor
 Export-Package: org.eclipse.emf.eef.runtime.tests,
  org.eclipse.emf.eef.runtime.tests.exceptions,
  org.eclipse.emf.eef.runtime.tests.swtbot.finder,
+ org.eclipse.emf.eef.runtime.tests.swtbot.utils,
+ org.eclipse.emf.eef.runtime.tests.ui.editors,
+ org.eclipse.emf.eef.runtime.tests.ui.properties.section,
  org.eclipse.emf.eef.runtime.tests.utils
