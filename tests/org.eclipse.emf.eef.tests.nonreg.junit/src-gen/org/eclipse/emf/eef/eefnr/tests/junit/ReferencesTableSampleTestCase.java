@@ -112,6 +112,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -238,6 +239,8 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
+
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -364,9 +367,14 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (ReferencesTable - TotalSample) 
+
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (ReferencesTable - TotalSample) 
+
+
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (ReferencesTable - TotalSample) 
+
 
 
 
