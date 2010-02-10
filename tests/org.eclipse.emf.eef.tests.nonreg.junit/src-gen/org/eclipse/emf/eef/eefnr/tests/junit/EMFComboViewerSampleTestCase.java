@@ -102,6 +102,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -164,6 +165,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -226,9 +228,13 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
+
+
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
+
 
 
 
