@@ -109,7 +109,7 @@ public class PropertiesEditionWizard extends Wizard {
 				if (mainPage != null) {
 					mainPage.setMessage(null);
 					mainPage.setErrorMessage(message);
-					mainPage.setPageComplete(message == null);
+//					mainPage.setPageComplete(message == null);
 				}
 			}
 		};

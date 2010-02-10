@@ -133,7 +133,6 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		brFilters = new ArrayList<ViewerFilter>();
 		listeners = new ArrayList<ISelectionChangedListener>();
 
-		// ADD EXTENSION: CNO
 		editer.addSelectionListener(getSelectionAdapter());
 
 	}
