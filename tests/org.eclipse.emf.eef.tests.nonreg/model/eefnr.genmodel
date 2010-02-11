@@ -104,5 +104,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//Sample/textRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//Sample/textOptionalProperty"/>
     </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//TextSampleWithTwoTabs">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSampleWithTwoTabs/textRequiredPropertyInFirstTab"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSampleWithTwoTabs/textOptionalPropertyInFirstTab"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSampleWithTwoTabs/textRequiredPropertyInSecondTab"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSampleWithTwoTabs/textOptionalPropertyInSecondTab"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrFactory.java,v 1.3 2010/02/02 10:03:51 nlepine Exp $
+ * $Id: EefnrFactory.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -168,6 +168,15 @@ public interface EefnrFactory extends EFactory {
 	 * @generated
 	 */
 	Sample createSample();
+
+	/**
+	 * Returns a new object of class '<em>Text Sample With Two Tabs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Text Sample With Two Tabs</em>'.
+	 * @generated
+	 */
+	TextSampleWithTwoTabs createTextSampleWithTwoTabs();
 
 	/**
 	 * Returns the package supported by this factory.

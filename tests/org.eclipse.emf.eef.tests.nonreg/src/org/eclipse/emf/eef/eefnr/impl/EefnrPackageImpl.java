@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackageImpl.java,v 1.3 2010/02/02 10:03:50 nlepine Exp $
+ * $Id: EefnrPackageImpl.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.eefnr.Root;
 import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.TextSample;
+import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
 import org.eclipse.emf.eef.eefnr.TextareaSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 
@@ -159,6 +160,13 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * @generated
 	 */
 	private EClass sampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass textSampleWithTwoTabsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -908,6 +916,51 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTextSampleWithTwoTabs() {
+		return textSampleWithTwoTabsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab() {
+		return (EAttribute)textSampleWithTwoTabsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab() {
+		return (EAttribute)textSampleWithTwoTabsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab() {
+		return (EAttribute)textSampleWithTwoTabsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab() {
+		return (EAttribute)textSampleWithTwoTabsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -1032,6 +1085,12 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		createEAttribute(sampleEClass, SAMPLE__TEXT_REQUIRED_PROPERTY);
 		createEAttribute(sampleEClass, SAMPLE__TEXT_OPTIONAL_PROPERTY);
 
+		textSampleWithTwoTabsEClass = createEClass(TEXT_SAMPLE_WITH_TWO_TABS);
+		createEAttribute(textSampleWithTwoTabsEClass, TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_FIRST_TAB);
+		createEAttribute(textSampleWithTwoTabsEClass, TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_FIRST_TAB);
+		createEAttribute(textSampleWithTwoTabsEClass, TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_SECOND_TAB);
+		createEAttribute(textSampleWithTwoTabsEClass, TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_SECOND_TAB);
+
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
 	}
@@ -1079,6 +1138,7 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		advancedTableCompositionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		flatReferencesTableSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		sampleEClass.getESuperTypes().add(this.getAbstractSample());
+		textSampleWithTwoTabsEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1172,6 +1232,12 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSample_TextRequiredProperty(), ecorePackage.getEString(), "textRequiredProperty", null, 1, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSample_TextOptionalProperty(), ecorePackage.getEString(), "textOptionalProperty", null, 0, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(textSampleWithTwoTabsEClass, TextSampleWithTwoTabs.class, "TextSampleWithTwoTabs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab(), ecorePackage.getEString(), "textRequiredPropertyInFirstTab", null, 1, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab(), ecorePackage.getEString(), "textOptionalPropertyInFirstTab", null, 0, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab(), ecorePackage.getEString(), "textRequiredPropertyInSecondTab", null, 1, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab(), ecorePackage.getEString(), "textOptionalPropertyInSecondTab", null, 0, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

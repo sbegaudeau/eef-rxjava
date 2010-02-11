@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.3 2010/02/02 10:03:51 nlepine Exp $
+ * $Id: EefnrSwitch.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -201,6 +201,13 @@ public class EefnrSwitch<T> {
 				Sample sample = (Sample)theEObject;
 				T result = caseSample(sample);
 				if (result == null) result = caseAbstractSample(sample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.TEXT_SAMPLE_WITH_TWO_TABS: {
+				TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)theEObject;
+				T result = caseTextSampleWithTwoTabs(textSampleWithTwoTabs);
+				if (result == null) result = caseAbstractSample(textSampleWithTwoTabs);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -460,6 +467,21 @@ public class EefnrSwitch<T> {
 	 * @generated
 	 */
 	public T caseSample(Sample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Text Sample With Two Tabs</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Text Sample With Two Tabs</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTextSampleWithTwoTabs(TextSampleWithTwoTabs object) {
 		return null;
 	}
 

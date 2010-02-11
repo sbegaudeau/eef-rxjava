@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackage.java,v 1.3 2010/02/02 10:03:51 nlepine Exp $
+ * $Id: EefnrPackage.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -1041,6 +1041,70 @@ public interface EefnrPackage extends EPackage {
 	int SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.TextSampleWithTwoTabsImpl <em>Text Sample With Two Tabs</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.TextSampleWithTwoTabsImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getTextSampleWithTwoTabs()
+	 * @generated
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS = 17;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Required Property In First Tab</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_FIRST_TAB = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Text Optional Property In First Tab</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_FIRST_TAB = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Text Required Property In Second Tab</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_SECOND_TAB = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Text Optional Property In Second Tab</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_SECOND_TAB = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Text Sample With Two Tabs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE_WITH_TWO_TABS_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1048,7 +1112,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 17;
+	int ENUM_SAMPLE = 18;
 
 
 	/**
@@ -1860,6 +1924,60 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getSample_TextOptionalProperty();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs <em>Text Sample With Two Tabs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Text Sample With Two Tabs</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs
+	 * @generated
+	 */
+	EClass getTextSampleWithTwoTabs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextRequiredPropertyInFirstTab <em>Text Required Property In First Tab</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Required Property In First Tab</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextRequiredPropertyInFirstTab()
+	 * @see #getTextSampleWithTwoTabs()
+	 * @generated
+	 */
+	EAttribute getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextOptionalPropertyInFirstTab <em>Text Optional Property In First Tab</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Optional Property In First Tab</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextOptionalPropertyInFirstTab()
+	 * @see #getTextSampleWithTwoTabs()
+	 * @generated
+	 */
+	EAttribute getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextRequiredPropertyInSecondTab <em>Text Required Property In Second Tab</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Required Property In Second Tab</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextRequiredPropertyInSecondTab()
+	 * @see #getTextSampleWithTwoTabs()
+	 * @generated
+	 */
+	EAttribute getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextOptionalPropertyInSecondTab <em>Text Optional Property In Second Tab</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Optional Property In Second Tab</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs#getTextOptionalPropertyInSecondTab()
+	 * @see #getTextSampleWithTwoTabs()
+	 * @generated
+	 */
+	EAttribute getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2524,6 +2642,48 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SAMPLE__TEXT_OPTIONAL_PROPERTY = eINSTANCE.getSample_TextOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.TextSampleWithTwoTabsImpl <em>Text Sample With Two Tabs</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.TextSampleWithTwoTabsImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getTextSampleWithTwoTabs()
+		 * @generated
+		 */
+		EClass TEXT_SAMPLE_WITH_TWO_TABS = eINSTANCE.getTextSampleWithTwoTabs();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Required Property In First Tab</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_FIRST_TAB = eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Optional Property In First Tab</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_FIRST_TAB = eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Required Property In Second Tab</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_SECOND_TAB = eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Optional Property In Second Tab</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_SECOND_TAB = eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
