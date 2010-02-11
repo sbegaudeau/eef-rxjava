@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.tests.exceptions.WidgetInvalidException;
 import org.eclipse.emf.eef.runtime.tests.swtbot.utils.SWTBotUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
@@ -90,7 +91,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	/*****************************************************************************
 	 * * Bot operation * *
 	 *****************************************************************************/
-	
+
 	/**
 	 * Get another literal value of the enumeration
 	 */
@@ -114,7 +115,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		}
 		return value;
 	}
-	
+
 	/**
 	 * Get another reference value of the references list
 	 */
@@ -129,7 +130,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		}
 		return null;
 	}
-
 
 	/**
 	 * @param file
@@ -221,7 +221,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		}
 		return node2;
 	}
-	
+
 	/**
 	 * Select the given element in the given editor
 	 * 
@@ -278,7 +278,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -296,7 +296,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -314,7 +314,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * @param feature
 	 * @param newValue
@@ -322,7 +322,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editEMFComboViewer(String feature, Object newValue) {
 		comboBoxWithLabel(feature).setSelection(newValue.toString());
 	}
-	
+
 	/**
 	 * @param feature
 	 * @param newValue
@@ -390,7 +390,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -400,15 +400,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void editEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex, int tableIndex) {
+	public void editEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex, int tableIndex) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		editEObjectFlatComboViewer(buttonIndex, tableIndex);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -418,28 +419,39 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void editFlatReferencesTableFeature(SWTBotShell shell, int buttonIndex, int tableIndex) {
+	public void editFlatReferencesTableFeature(SWTBotShell shell, int buttonIndex, int tableIndex) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		editFlatReferencesTable(buttonIndex, tableIndex);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
-	public void editFlatReferencesTable(int buttonIndex, int tableIndex) {
+
+	public void editFlatReferencesTable(int buttonIndex, int tableIndex) throws WidgetInvalidException {
 		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
+		try {
 		table().select(tableIndex);
 		button(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")).click();
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 		button(UIConstants.OK_BUTTON).click();
 	}
 
-	public void editEObjectFlatComboViewer(int buttonIndex, int tableIndex) {
+	public void editEObjectFlatComboViewer(int buttonIndex, int tableIndex) throws WidgetInvalidException {
 		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
-		table().select(tableIndex);
+		try {
+			table().select(tableIndex);
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -449,35 +461,47 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void editReferencesTableFeature(SWTBotShell shell, int buttonIndex, int tableIndex, String buttonLabel) {
+	public void editReferencesTableFeature(SWTBotShell shell, int buttonIndex, int tableIndex,
+			String buttonLabel) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		editReferencesTable(buttonIndex, tableIndex, buttonLabel);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
-	public void editReferencesTable(int buttonIndex, int tableIndex, String buttonLabel) {
+
+	public void editReferencesTable(int buttonIndex, int tableIndex, String buttonLabel) throws WidgetInvalidException {
 		button(buttonLabel, buttonIndex).click();
+		try {
 		table().select(tableIndex);
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	public void removeReferencesTableFeature(SWTBotShell shell, int widgetIndex, int tableIndex,
-			String buttonLabel) {
+			String buttonLabel) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		removeReferencesTable(widgetIndex, tableIndex, buttonLabel);
 		sleep(1000);
-		closeShellWithFinishButton(shell);	
+		closeShellWithFinishButton(shell);
 	}
-	
-	public void removeReferencesTable(int widgetIndex, int tableIndex, String buttonLabel) {
-		table(widgetIndex).select(tableIndex);
-		button(buttonLabel, widgetIndex).click();
+
+	public void removeReferencesTable(int widgetIndex, int tableIndex, String buttonLabel) throws WidgetInvalidException {
+		try {
+			table(widgetIndex).select(tableIndex);
+			button(buttonLabel, widgetIndex).click();
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -495,7 +519,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -513,7 +537,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -523,26 +547,28 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removeFlatReferencesTableFeature(SWTBotShell shell, int buttonIndex) {
+	public void removeFlatReferencesTableFeature(SWTBotShell shell, int buttonIndex) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		removeFlatReferencesTable(buttonIndex);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-//	button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
-//	table().select(tableIndex);
-//	button(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")).click();
-//	button(UIConstants.OK_BUTTON).click();
 	
-	public void removeFlatReferencesTable(int buttonIndex) {
+	public void removeFlatReferencesTable(int buttonIndex) throws WidgetInvalidException {
 		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
+		try {
 		table(1).select(0);
 		button(EMFEditUIPlugin.INSTANCE.getString("_UI_Remove_label")).click();
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -552,21 +578,27 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removeEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex) {
+	public void removeEObjectFlatComboViewerFeature(SWTBotShell shell, int buttonIndex) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		removeEObjectFlatComboViewer(buttonIndex);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
-	public void removeEObjectFlatComboViewer(int buttonIndex) {
+
+	public void removeEObjectFlatComboViewer(int buttonIndex) throws WidgetInvalidException {
 		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button, buttonIndex).click();
+	try {
 		table().select(0);
+	} catch (Exception e) {
+		// empty table
+		throw new WidgetInvalidException();
+	}
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -576,13 +608,15 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removePropertyFlatReferencesTableFeature(SWTBotView propertyView, int buttonIndex, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void removePropertyFlatReferencesTableFeature(SWTBotView propertyView, int buttonIndex,
+			SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		removeEObjectFlatComboViewer(buttonIndex);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -592,25 +626,29 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removePropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void removePropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex,
+			SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		removeEObjectFlatComboViewer(buttonIndex);
 		selectNode.select();
 	}
 
 	public void removeAdvancedEObjectFlatComboViewer(int buttonIndex) {
-		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip, buttonIndex).click();
+		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip, buttonIndex)
+				.click();
 	}
 
 	public void editAdvancedEObjectFlatComboViewer(int buttonIndex, Object value) {
-		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_set_tooltip, buttonIndex).click();
+		buttonWithTooltip(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_set_tooltip, buttonIndex)
+				.click();
 		cTabItem(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_all_resources_tab_title).activate();
 		cTabItem(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_all_resources_tab_title).setFocus();
 		selectNode(tree(), (EObject)value);
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -628,9 +666,8 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
-	public void editMultiValuedEditorFeature(SWTBotShell shell,
-			String label, String value) {
+
+	public void editMultiValuedEditorFeature(SWTBotShell shell, String label, String value) {
 		activateShell(shell);
 		sleep(500);
 		editMultiValuedEditor(label, value);
@@ -646,7 +683,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		}
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	public void editMultiValuedEditor(String label, String value) {
 		button(label).click();
 		text().setText(value);
@@ -661,7 +698,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		selectNode(tree(), (EObject)value);
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
+	public void editAdvancedReferencesTable(int buttonIndex, List values) {
+		for (Object value : values) {
+			editAdvancedReferencesTable(buttonIndex, value);
+		}
+	}
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -671,15 +714,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removeAdvancedReferencesTableFeature(SWTBotShell shell, int buttonIndex, Object value) {
+	public void removeAdvancedReferencesTableFeature(SWTBotShell shell, int buttonIndex, Object value) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		removeAdvancedReferencesTable(buttonIndex, value);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -689,15 +733,17 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException
 	 */
-	public void removeAdvancedTableCompositionFeature(SWTBotShell shell, int buttonIndex) {
+	public void removeAdvancedTableCompositionFeature(SWTBotShell shell, int buttonIndex)
+			throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		removeAdvancedTableComposition(buttonIndex);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -707,37 +753,53 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removeTableCompositionFeature(SWTBotShell shell, int buttonIndex, String buttonLabel) {
+	public void removeTableCompositionFeature(SWTBotShell shell, int buttonIndex, String buttonLabel) throws WidgetInvalidException {
 		activateShell(shell);
 		sleep(500);
 		removeTableComposition(buttonIndex, buttonLabel);
 		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
-	
-	public void removeTableComposition(int buttonIndex, String buttonLabel) {
-		table(buttonIndex).select(0);
-		buttonWithTooltip(buttonLabel, buttonIndex).click();
+
+	public void removeTableComposition(int buttonIndex, String buttonLabel) throws WidgetInvalidException {
+		try {
+			table(buttonIndex).select(0);
+			buttonWithTooltip(buttonLabel, buttonIndex).click();
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 	}
-	
-	public void removeAdvancedTableComposition(int buttonIndex) {
+
+	public void removeAdvancedTableComposition(int buttonIndex) throws WidgetInvalidException {
+		try {
+			table(buttonIndex).select(0);
+			buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip, buttonIndex).click();
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
+	}
+
+	public void removeAdvancedReferencesTable(int buttonIndex, Object value) throws WidgetInvalidException {
+		try {
 		table(buttonIndex).select(0);
 		buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip, buttonIndex).click();
+		} catch (Exception e) {
+			// empty table
+			throw new WidgetInvalidException();
+		}
 	}
-	
-	public void removeAdvancedReferencesTable(int buttonIndex, Object value) {
-		table(buttonIndex).select(0);
-		buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_remove_tooltip, buttonIndex).click();
-	}
-	
+
 	/**
 	 * @param feature
 	 */
 	private void editCheckBox(String feature) {
 		checkBox(feature).click();
 	}
-	
+
 	/**
 	 * @param feature
 	 */
@@ -764,7 +826,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		propertyBot.checkBox(feature).click();
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -775,12 +837,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, Object feature, SWTBotTreeItem selectNode) {
+	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, Object feature,
+			SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.comboBox().setSelection(feature.toString());
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -790,14 +853,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void editPropertyFlatReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void editPropertyFlatReferencesTableFeature(SWTBotView propertyView, int buttonIndex,
+			int tableIndex, SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		editFlatReferencesTable(buttonIndex, tableIndex);
 		sleep(1000);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -807,14 +872,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void editPropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void editPropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex,
+			int tableIndex, SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		editEObjectFlatComboViewer(buttonIndex, tableIndex);
 		sleep(1000);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -824,14 +891,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void editPropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, String buttonLabel, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void editPropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex,
+			String buttonLabel, SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		editReferencesTable(buttonIndex, tableIndex, buttonLabel);
 		sleep(1000);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -841,14 +910,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removePropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex, int tableIndex, String buttonLabel, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void removePropertyReferencesTableFeature(SWTBotView propertyView, int buttonIndex,
+			int tableIndex, String buttonLabel, SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		removeReferencesTable(buttonIndex, tableIndex, buttonLabel);
 		sleep(1000);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -858,14 +929,16 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removePropertyTableCompositionFeature(SWTBotView propertyView, int buttonIndex, String buttonLabel, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void removePropertyTableCompositionFeature(SWTBotView propertyView, int buttonIndex,
+			String buttonLabel, SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		removeTableComposition(buttonIndex, buttonLabel);
 		sleep(1000);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -876,12 +949,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param newValue
 	 *            the new value to set to the feature
 	 */
-	public void editPropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void editPropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex,
+			Object value, SWTBotTreeItem selectNode) {
+		// SWTBot propertyBot = propertyView.bot();
 		editAdvancedEObjectFlatComboViewer(buttonIndex, value);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -892,12 +966,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param newValue
 	 *            the new value to set to the feature
 	 */
-	public void removePropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void removePropertyAdvancedEObjectFlatComboViewerFeature(SWTBotView propertyView, int buttonIndex,
+			SWTBotTreeItem selectNode) {
+		// SWTBot propertyBot = propertyView.bot();
 		removeAdvancedEObjectFlatComboViewer(buttonIndex);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -908,12 +983,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param newValue
 	 *            the new value to set to the feature
 	 */
-	public void editPropertyAdvancedReferencesTableFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void editPropertyAdvancedReferencesTableFeature(SWTBotView propertyView, int buttonIndex,
+			Object value, SWTBotTreeItem selectNode) {
+		// SWTBot propertyBot = propertyView.bot();
 		editAdvancedReferencesTable(buttonIndex, value);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -923,13 +999,15 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the feature to edit
 	 * @param newValue
 	 *            the new value to set to the feature
+	 * @throws WidgetInvalidException 
 	 */
-	public void removePropertyAdvancedReferencesTableFeature(SWTBotView propertyView, int buttonIndex, Object value, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void removePropertyAdvancedReferencesTableFeature(SWTBotView propertyView, int buttonIndex,
+			Object value, SWTBotTreeItem selectNode) throws WidgetInvalidException {
+		// SWTBot propertyBot = propertyView.bot();
 		removeAdvancedReferencesTable(buttonIndex, value);
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -940,12 +1018,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyRadioFeature(SWTBotView propertyView, int index, Object feature, SWTBotTreeItem selectNode) {
+	public void editPropertyRadioFeature(SWTBotView propertyView, int index, Object feature,
+			SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.radio(feature.toString(), index).click();
 		selectNode.select();
 	}
-	
+
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
@@ -956,12 +1035,13 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyMultiValuedEditorFeature(SWTBotView propertyView, String label, String value, SWTBotTreeItem selectNode) {
-//		SWTBot propertyBot = propertyView.bot();
+	public void editPropertyMultiValuedEditorFeature(SWTBotView propertyView, String label, String value,
+			SWTBotTreeItem selectNode) {
+		// SWTBot propertyBot = propertyView.bot();
 		editMultiValuedEditor(label, value);
 		selectNode.select();
 	}
-	
+
 	public void openPropertiesView() {
 		menu(UIConstants.WINDOW_MENU).menu(UIConstants.SHOW_VIEW_MENU).menu(UIConstants.OTHER_MENU).click();
 
@@ -975,14 +1055,15 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	}
 
 	public void openJavaPerspective() {
-		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU).click();
+		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU)
+				.click();
 		SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
 		activateShell(openPerspectiveShell);
 
 		table().select(UIConstants.JAVA_LABEL);
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	/**
 	 * This method close the welcome page if we use the workspace of test for the first time
 	 */
