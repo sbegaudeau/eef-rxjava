@@ -104,6 +104,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredPropertyData.horizontalSpan = 2;
 		textareaRequiredPropertyData.heightHint = 80;
+		textareaRequiredPropertyData.widthHint = 200;
 		textareaRequiredProperty.setLayoutData(textareaRequiredPropertyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
@@ -117,6 +118,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalPropertyData.horizontalSpan = 2;
 		textareaOptionalPropertyData.heightHint = 80;
+		textareaOptionalPropertyData.widthHint = 200;
 		textareaOptionalProperty.setLayoutData(textareaOptionalPropertyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RootItemProvider.java,v 1.3 2010/02/02 10:03:56 nlepine Exp $
+ * $Id: RootItemProvider.java,v 1.4 2010/02/11 17:25:41 nlepine Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -225,6 +225,11 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 EefnrFactory.eINSTANCE.createSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createTextSampleWithTwoTabs()));
 	}
 
 	/**

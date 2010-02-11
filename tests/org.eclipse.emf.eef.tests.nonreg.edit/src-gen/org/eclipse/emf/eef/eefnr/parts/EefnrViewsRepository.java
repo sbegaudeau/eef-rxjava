@@ -248,4 +248,26 @@ public class EefnrViewsRepository {
 
 	}
 
+	/**
+	 * TextSampleFirstTab view descriptor
+	 */
+	public static class TextSampleFirstTab {
+		public static String textRequiredPropertyInFirstTab = "eefnr::TextSampleFirstTab::textRequiredPropertyInFirstTab";
+
+	public static String textOptionalPropertyInFirstTab = "eefnr::TextSampleFirstTab::textOptionalPropertyInFirstTab";
+
+
+	}
+
+	/**
+	 * TextSampleSecondTab view descriptor
+	 */
+	public static class TextSampleSecondTab {
+		public static String textRequiredPropertyInSecondTab = "eefnr::TextSampleSecondTab::textRequiredPropertyInSecondTab";
+
+	public static String textOptionalPropertyInSecondTab = "eefnr::TextSampleSecondTab::textOptionalPropertyInSecondTab";
+
+
+	}
+
 }

@@ -50,6 +50,10 @@ public class EefnrMessages extends NLS {
 
 	public static String SamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String TextSampleFirstTabPropertiesEditionPart_PropertiesGroupLabel;
+
+	public static String TextSampleSecondTabPropertiesEditionPart_PropertiesGroupLabel;
+
 	public static String Root_ReadOnly;
 
 	public static String Root_Part_Title;
@@ -113,6 +117,14 @@ public class EefnrMessages extends NLS {
 	public static String Sample_ReadOnly;
 
 	public static String Sample_Part_Title;
+
+	public static String TextSampleFirstTab_ReadOnly;
+
+	public static String TextSampleFirstTab_Part_Title;
+
+	public static String TextSampleSecondTab_ReadOnly;
+
+	public static String TextSampleSecondTab_Part_Title;
 
 	public static String RootPropertiesEditionPart_SamplesLabel;
 
@@ -229,6 +241,14 @@ public class EefnrMessages extends NLS {
 	public static String SamplePropertiesEditionPart_TextRequiredPropertyLabel;
 
 	public static String SamplePropertiesEditionPart_TextOptionalPropertyLabel;
+
+	public static String TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel;
+
+	public static String TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel;
+
+	public static String TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel;
+
+	public static String TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel;
 
 	public static String PropertiesEditionPart_DocumentationLabel;
 

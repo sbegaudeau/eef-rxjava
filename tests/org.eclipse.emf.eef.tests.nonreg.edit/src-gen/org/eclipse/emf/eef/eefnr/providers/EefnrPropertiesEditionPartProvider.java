@@ -24,7 +24,9 @@ import org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEdit
 import org.eclipse.emf.eef.eefnr.parts.forms.RootPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.SamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionEditorSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.TextSampleFirstTabPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.TextSampleSecondTabPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextareaSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TotalSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.impl.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl;
@@ -40,7 +42,9 @@ import org.eclipse.emf.eef.eefnr.parts.impl.ReferencesTableSamplePropertiesEditi
 import org.eclipse.emf.eef.eefnr.parts.impl.RootPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.SamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TableCompositionEditorSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleFirstTabPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleSecondTabPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextareaSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TotalSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -162,6 +166,18 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 				return new SamplePropertiesEditionPartImpl(component);
 			if (kind == EefnrViewsRepository.FORM_KIND)
 				return new SamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.TextSampleFirstTab.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new TextSampleFirstTabPropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new TextSampleFirstTabPropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.TextSampleSecondTab.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new TextSampleSecondTabPropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new TextSampleSecondTabPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

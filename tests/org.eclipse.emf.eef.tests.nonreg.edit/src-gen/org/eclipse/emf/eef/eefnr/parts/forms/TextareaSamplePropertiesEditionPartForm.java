@@ -112,6 +112,7 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredPropertyData.horizontalSpan = 2;
 		textareaRequiredPropertyData.heightHint = 80;
+		textareaRequiredPropertyData.widthHint = 200;
 		textareaRequiredProperty.setLayoutData(textareaRequiredPropertyData);
 		textareaRequiredProperty.addFocusListener(new FocusAdapter() {
 
@@ -138,6 +139,7 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalPropertyData.horizontalSpan = 2;
 		textareaOptionalPropertyData.heightHint = 80;
+		textareaOptionalPropertyData.widthHint = 200;
 		textareaOptionalProperty.setLayoutData(textareaOptionalPropertyData);
 		textareaOptionalProperty.addFocusListener(new FocusAdapter() {
 

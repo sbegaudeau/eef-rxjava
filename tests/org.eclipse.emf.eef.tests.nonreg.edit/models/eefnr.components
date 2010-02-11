@@ -93,6 +93,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_y_t28w_gEd-fwJDNg0onkA" name="advancedtablecompositionWithSameTypeOptionalProperty" views="_mjF-Mw_gEd-fwJDNg0onkA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/advancedtablecompositionOnSametypeOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ni-uEBAFEd-ehv9sVb76fA" name="name" views="_rfj4YBAFEd-ehv9sVb76fA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LHQwvEd-uP4lw9e0IMw" name="TextSample" views="_Fx_LYAwvEd-uP4lw9e0IMw">
@@ -221,6 +224,21 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//Sample"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_H1m_MBcdEd-CRJkSd123Sw" name="TextSampleWithTwoTabs" views="_NremYBcdEd-CRJkSd123Sw _XKQN8BcdEd-CRJkSd123Sw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_H1m_MRcdEd-CRJkSd123Sw" name="textOptionalPropertyInFirstTab" views="_NremYxcdEd-CRJkSd123Sw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSampleWithTwoTabs/textOptionalPropertyInFirstTab"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_H1m_MhcdEd-CRJkSd123Sw" name="textRequiredPropertyInFirstTab" views="_NremYhcdEd-CRJkSd123Sw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSampleWithTwoTabs/textRequiredPropertyInFirstTab"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3VSyEBcdEd-CRJkSd123Sw" name="textOptionalPropertyInSecondTab" views="_XKQN8xcdEd-CRJkSd123Sw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSampleWithTwoTabs/textOptionalPropertyInSecondTab"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3VSyERcdEd-CRJkSd123Sw" documentation="" name="textRequiredPropertyInSecondTab" views="_XKQN8hcdEd-CRJkSd123Sw" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSampleWithTwoTabs/textRequiredPropertyInSecondTab"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSampleWithTwoTabs"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr"/>
   </eef-components:PropertiesEditionContext>
@@ -322,6 +340,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_mjF-Mw_gEd-fwJDNg0onkA" name="advancedtablecompositionWithSameTypeOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rfj4YBAFEd-ehv9sVb76fA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
@@ -475,6 +496,28 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_FSwl8w_gEd-fwJDNg0onkA" name="textOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_NremYBcdEd-CRJkSd123Sw" name="TextSampleFirstTab">
+        <elements xsi:type="eef-views:Container" xmi:id="_NremYRcdEd-CRJkSd123Sw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_NremYhcdEd-CRJkSd123Sw" name="textRequiredPropertyInFirstTab">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_NremYxcdEd-CRJkSd123Sw" name="textOptionalPropertyInFirstTab">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_XKQN8BcdEd-CRJkSd123Sw" name="TextSampleSecondTab">
+        <elements xsi:type="eef-views:Container" xmi:id="_XKQN8RcdEd-CRJkSd123Sw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_XKQN8hcdEd-CRJkSd123Sw" name="textRequiredPropertyInSecondTab">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_XKQN8xcdEd-CRJkSd123Sw" name="textOptionalPropertyInSecondTab">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

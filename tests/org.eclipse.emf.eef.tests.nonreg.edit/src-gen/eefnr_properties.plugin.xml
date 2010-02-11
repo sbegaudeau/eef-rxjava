@@ -16,6 +16,12 @@
             providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
 
    <!-- Tabbed properties views extension -->
    <extension
@@ -41,6 +47,18 @@
                label="Base"
                category="default"
                id="Base">
+         </propertyTab>
+         <propertyTab
+               label="TextSampleFirstTab"
+               category="extended"
+               id="TextSampleFirstTab"
+               afterTab="TextSampleFirstTab">
+         </propertyTab>
+         <propertyTab
+               label="TextSampleSecondTab"
+               category="extended"
+               id="TextSampleSecondTab"
+               afterTab="Base">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -174,6 +192,22 @@
                tab="Base">
              <input
                     type="org.eclipse.emf.eef.eefnr.Sample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
+               tab="TextSampleFirstTab">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
+               tab="TextSampleSecondTab">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
              </input>
          </propertySection>
       </propertySections>
