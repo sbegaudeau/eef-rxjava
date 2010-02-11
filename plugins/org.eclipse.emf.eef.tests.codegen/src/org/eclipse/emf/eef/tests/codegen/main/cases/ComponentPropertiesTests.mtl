@@ -95,7 +95,7 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
 		
 		[pec.editPropertyFeature(peElement)/]	
 [/template]
@@ -106,7 +106,7 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
 		
 		[pec.removePropertyFeature(peElement)/]	
 [/template]
