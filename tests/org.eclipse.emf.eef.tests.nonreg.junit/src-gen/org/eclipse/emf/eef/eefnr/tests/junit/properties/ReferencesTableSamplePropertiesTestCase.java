@@ -160,7 +160,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
 		bot.editPropertyReferencesTableFeature(propertiesView, 0, allInstancesOf.indexOf(referenceValueForReferencestableRequiredProperty), EefnrMessages.PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -223,7 +223,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
 		bot.removePropertyReferencesTableFeature(propertiesView, 0, allInstancesOf.indexOf(firstInstanceOf), EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -286,7 +286,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
 		bot.editPropertyReferencesTableFeature(propertiesView, 1, allInstancesOf.indexOf(referenceValueForReferencestableOptionalProperty)+1, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -349,7 +349,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
 		bot.removePropertyReferencesTableFeature(propertiesView, 1, allInstancesOf.indexOf(firstInstanceOf)+1, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	

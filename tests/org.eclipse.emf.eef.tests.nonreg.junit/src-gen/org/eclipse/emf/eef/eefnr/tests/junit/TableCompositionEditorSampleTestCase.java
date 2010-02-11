@@ -157,7 +157,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element 
 		editTableCompositiontablecompositionRequiredPropertyFeature(wizardShell);	
@@ -220,7 +220,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element 
 		bot.removeTableCompositionFeature(wizardShell, 0, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);	
@@ -285,7 +285,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element 
 		editTableCompositiontablecompositionOptionalPropertyFeature(wizardShell);	
@@ -348,7 +348,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element 
 		bot.removeTableCompositionFeature(wizardShell, 1, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);	

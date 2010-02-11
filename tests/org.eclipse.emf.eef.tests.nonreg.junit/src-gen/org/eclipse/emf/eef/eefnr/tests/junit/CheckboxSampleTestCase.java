@@ -140,7 +140,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the CheckboxSample element 
 		bot.editCheckboxFeature(wizardShell, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel);	
@@ -202,7 +202,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the CheckboxSample element 
 		bot.editCheckboxFeature(wizardShell, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel);	

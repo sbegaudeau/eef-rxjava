@@ -139,7 +139,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaRequiredProperty feature of the TextareaSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, UPDATED_VALUE);	
@@ -200,7 +200,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaOptionalProperty feature of the TextareaSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, UPDATED_VALUE);	

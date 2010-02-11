@@ -141,7 +141,7 @@ public class MultiValuedEditorSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, multiValuedEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, multiValuedEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorRequiredProperty feature of the MultiValuedEditorSample element 
 		bot.editMultiValuedEditorFeature(wizardShell, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, UPDATED_VALUE);	
@@ -203,7 +203,7 @@ public class MultiValuedEditorSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, multiValuedEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, multiValuedEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorOptionalProperty feature of the MultiValuedEditorSample element 
 		bot.editMultiValuedEditorFeature(wizardShell, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, UPDATED_VALUE);	

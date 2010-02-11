@@ -148,7 +148,7 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the radioRequiredProperty feature of the RadioSample element 
 		bot.editPropertyRadioFeature(propertiesView, 0, enumValueForRadioRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -210,7 +210,7 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the radioOptionalProperty feature of the RadioSample element 
 		bot.editPropertyRadioFeature(propertiesView, 1, enumValueForRadioOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));	

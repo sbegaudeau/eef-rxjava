@@ -158,7 +158,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
 		editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(wizardShell);	
@@ -221,7 +221,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
 		bot.removeAdvancedTableCompositionFeature(wizardShell, 0);	
@@ -286,7 +286,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
 		editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(wizardShell);	
@@ -349,7 +349,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
 		bot.removeAdvancedTableCompositionFeature(wizardShell, 1);	

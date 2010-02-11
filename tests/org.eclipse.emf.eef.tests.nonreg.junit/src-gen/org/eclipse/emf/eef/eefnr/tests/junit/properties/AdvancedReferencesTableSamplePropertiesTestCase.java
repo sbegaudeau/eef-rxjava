@@ -160,7 +160,7 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the AdvancedReferencesTableSample element 
 		bot.editPropertyAdvancedReferencesTableFeature(propertiesView, 0, referenceValueForAdvancedreferencestableRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -223,7 +223,7 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the AdvancedReferencesTableSample element 
 		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -286,7 +286,7 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the AdvancedReferencesTableSample element 
 		bot.editPropertyAdvancedReferencesTableFeature(propertiesView, 1, referenceValueForAdvancedreferencestableOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -349,7 +349,7 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the AdvancedReferencesTableSample element 
 		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 1, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	

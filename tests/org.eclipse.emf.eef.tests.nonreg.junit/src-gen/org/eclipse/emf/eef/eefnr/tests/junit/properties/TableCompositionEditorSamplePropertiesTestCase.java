@@ -160,7 +160,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element
 		editTableCompositiontablecompositionRequiredPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -223,7 +223,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element 
 		bot.removePropertyTableCompositionFeature(propertiesView, 0, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -288,7 +288,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element
 		editTableCompositiontablecompositionOptionalPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -351,7 +351,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element 
 		bot.removePropertyTableCompositionFeature(propertiesView, 1, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));	

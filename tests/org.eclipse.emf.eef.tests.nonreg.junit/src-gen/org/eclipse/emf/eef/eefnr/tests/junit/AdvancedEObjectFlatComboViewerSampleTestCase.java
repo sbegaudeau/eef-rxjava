@@ -41,13 +41,13 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 */
 	private EObject advancedEObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredProperty
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty;
-	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredProperty
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -158,7 +158,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
 		bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, 0, referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty);	
@@ -220,7 +220,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
 		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 0);	
@@ -283,7 +283,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
 		bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, 1, referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty);	
@@ -345,7 +345,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
 		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 1);	

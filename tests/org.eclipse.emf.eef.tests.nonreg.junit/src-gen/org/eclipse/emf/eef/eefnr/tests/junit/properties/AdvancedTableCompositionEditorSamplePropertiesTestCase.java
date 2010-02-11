@@ -161,7 +161,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element
 		editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -224,7 +224,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
 		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 0, firstInstanceOf, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -289,7 +289,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element
 		editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));	
@@ -352,7 +352,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
 		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 1, firstInstanceOf, bot.selectNode(modelEditor, firstInstanceOf));	

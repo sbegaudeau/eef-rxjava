@@ -139,7 +139,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textRequiredProperty feature of the TextSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel, UPDATED_VALUE);	
@@ -200,7 +200,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textOptionalProperty feature of the TextSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel, UPDATED_VALUE);	

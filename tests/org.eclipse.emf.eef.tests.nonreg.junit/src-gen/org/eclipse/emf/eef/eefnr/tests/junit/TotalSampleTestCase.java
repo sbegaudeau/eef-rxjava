@@ -65,37 +65,37 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForEmfcomboviewerOptionalProperty;		
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
 	 */
-	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
-	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
-	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
-	/**
-	 * The reference value for the reference class referencestableRequiredProperty
-	 */
-	private Object referenceValueForReferencestableRequiredProperty;
-	/**
-	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
-	 */
-	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
 	/**
 	 * The reference value for the reference class referencestableOptionalProperty
 	 */
 	private Object referenceValueForReferencestableOptionalProperty;
 	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
-	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
-	/**
 	 * The reference value for the reference class advancedreferencestableRequiredProperty
 	 */
 	private Object referenceValueForAdvancedreferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class referencestableRequiredProperty
+	 */
+	private Object referenceValueForReferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
+	 */
+	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
+	 */
+	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -204,7 +204,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textRequiredProperty feature of the TotalSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel, UPDATED_VALUE);	
@@ -265,7 +265,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textOptionalProperty feature of the TotalSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel, UPDATED_VALUE);	
@@ -327,7 +327,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the TotalSample element 
 		bot.editCheckboxFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel);	
@@ -389,7 +389,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the TotalSample element 
 		bot.editCheckboxFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel);	
@@ -450,7 +450,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaRequiredProperty feature of the TotalSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, UPDATED_VALUE);	
@@ -511,7 +511,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaOptionalProperty feature of the TotalSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, UPDATED_VALUE);	
@@ -573,7 +573,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioRequiredProperty feature of the TotalSample element 
 		bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel, enumValueForRadioRequiredProperty);	
@@ -635,7 +635,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioOptionalProperty feature of the TotalSample element 
 		bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel, enumValueForRadioOptionalProperty);	
@@ -698,7 +698,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerRequiredProperty feature of the TotalSample element 
 		bot.editEObjectFlatComboViewerFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredProperty));	
@@ -761,7 +761,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the TotalSample element 
 		bot.editEObjectFlatComboViewerFeature(wizardShell, 1, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalProperty)+1);	
@@ -823,7 +823,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the TotalSample element
 		bot.removeEObjectFlatComboViewerFeature(wizardShell, 1);
@@ -887,7 +887,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the TotalSample element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, 0, referenceValueForReferencestableRequiredProperty);	
@@ -950,7 +950,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the TotalSample element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
@@ -1013,7 +1013,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the TotalSample element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, 1, referenceValueForReferencestableOptionalProperty);	
@@ -1076,7 +1076,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the TotalSample element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, 1, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
@@ -1138,7 +1138,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerRequiredProperty feature of the TotalSample element 
 		bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, enumValueForEmfcomboviewerRequiredProperty);	
@@ -1200,7 +1200,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerOptionalProperty feature of the TotalSample element 
 		bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, enumValueForEmfcomboviewerOptionalProperty);	
@@ -1262,7 +1262,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorRequiredProperty feature of the TotalSample element 
 		bot.editMultiValuedEditorFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, UPDATED_VALUE);	
@@ -1324,7 +1324,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorOptionalProperty feature of the TotalSample element 
 		bot.editMultiValuedEditorFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, UPDATED_VALUE);	
@@ -1389,7 +1389,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TotalSample element 
 		editAdvancedTableCompositiontablecompositionRequiredPropertyFeature(wizardShell);	
@@ -1452,7 +1452,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TotalSample element 
 		bot.removeAdvancedTableCompositionFeature(wizardShell, 0);	
@@ -1517,7 +1517,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TotalSample element 
 		editAdvancedTableCompositiontablecompositionOptionalPropertyFeature(wizardShell);	
@@ -1580,7 +1580,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TotalSample element 
 		bot.removeAdvancedTableCompositionFeature(wizardShell, 1);	
@@ -1643,7 +1643,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the TotalSample element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, 2, referenceValueForAdvancedreferencestableRequiredProperty);	
@@ -1706,7 +1706,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the TotalSample element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, 2, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
@@ -1769,7 +1769,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the TotalSample element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, 3, referenceValueForAdvancedreferencestableOptionalProperty);	
@@ -1832,7 +1832,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the TotalSample element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, 3, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
@@ -1895,7 +1895,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredPropery feature of the TotalSample element 
 		bot.editEObjectFlatComboViewerFeature(wizardShell, 2, allInstancesOf.indexOf(referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery));	
@@ -1958,7 +1958,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the TotalSample element 
 		bot.editEObjectFlatComboViewerFeature(wizardShell, 3, allInstancesOf.indexOf(referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery)+1);	
@@ -2020,7 +2020,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the TotalSample element
 		bot.removeEObjectFlatComboViewerFeature(wizardShell, 3);
@@ -2086,7 +2086,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the TotalSample element 
 		editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(wizardShell);	
@@ -2149,7 +2149,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the TotalSample element 
 		bot.removeAdvancedTableCompositionFeature(wizardShell, 2);	
@@ -2214,7 +2214,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the TotalSample element 
 		editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(wizardShell);	
@@ -2277,7 +2277,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the TotalSample element 
 		bot.removeAdvancedTableCompositionFeature(wizardShell, 3);	
@@ -2338,7 +2338,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(totalSampleMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the name feature of the TotalSample element 
 		bot.editTextFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel, UPDATED_VALUE);	
@@ -2394,9 +2394,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2419,9 +2419,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2452,9 +2452,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2477,9 +2477,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
