@@ -63,6 +63,7 @@
                icon="icons/sample.gif"
                id="org.eclipse.emf.eef.runtime.tests.ui.actions.OpenWithEEFReflectiveEditor"
                label="EEF Reflective Editor"
+               menubarPath="eef/eefGroup"
                toolbarPath="eefGroup"
                tooltip="Open With EEF Reflective Editor">
          </action>
