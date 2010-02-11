@@ -52,6 +52,7 @@ import [viewRepository.qualifiedMessagesProvider()/];
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
+import org.eclipse.emf.eef.runtime.tests.exceptions.WidgetInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
@@ -256,7 +257,12 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 [/template]
 
 [query public isAbstractType(peElement : PropertiesEditionElement) : Boolean = 
-	peElement.model.eType.oclAsType(ecore::EClass).abstract/]
+	if (peElement.model.eType->select(oclIsKindOf(ecore::EClass))->notEmpty()) then
+		peElement.model.eType.oclAsType(ecore::EClass).abstract
+	else
+		false
+	endif/]
+	
 	
 [query public isCompositionType(peElement : PropertiesEditionElement) : Boolean = 
 	peElement.representationName('AdvancedTableComposition') or peElement.representationName('TableComposition')/]

@@ -44,7 +44,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) {
+	protected void editTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
 		bot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel).click();
@@ -57,11 +57,11 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editTableCompositionFor[peElement.name/]Feature() {
+	protected void editTableCompositionFor[peElement.name/]Feature() throws WidgetInvalidException {
 		EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.eType.ePackage.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]();
 		SWTBotShell shellTable = bot.shell([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
 		bot.activateShell(shellTable);
-		[peElement.model.eType.name/] [peElement.model.eType.name.toLowerFirst()/] = ([peElement.model.eType.name/]) EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+		[peElement.model.eType.name/] [peElement.model.eType.name.toLowerFirst()/] = ([peElement.model.eType.name/]) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [peElement.model.eType.name.toLowerFirst()/]MetaClass);
 		[for (f : ecore::EStructuralFeature | peElement.model.eType.eContents()->select(oclIsKindOf(ecore::EStructuralFeature)).oclAsType(ecore::EStructuralFeature)->select(feature : ecore::EStructuralFeature | not (feature.isContainmentSingle() or feature.isContainmentMany())))]
 		bot.sleep(500);
 		[editFeature(f, involvedPropertiesEditionElement(peElement, f))/]
@@ -76,7 +76,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) {
+	protected void editTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		SWTBot propertyBot = propertyView.bot();
 		propertyBot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel).click();
 		editTableCompositionFor[peElement.name/]Feature();
