@@ -185,6 +185,10 @@
 	and not (feature.oclAsType(ecore::EReference).containment)
 	and not (feature.many)/]
 
+[query public isContainment(feature : EStructuralFeature) : Boolean = 
+	feature.oclIsTypeOf(ecore::EReference)
+	and feature.oclAsType(ecore::EReference).containment/]
+
 [query public isContainmentMany(feature : EStructuralFeature) : Boolean = 
 	feature.oclIsTypeOf(ecore::EReference)
 	and feature.oclAsType(ecore::EReference).containment

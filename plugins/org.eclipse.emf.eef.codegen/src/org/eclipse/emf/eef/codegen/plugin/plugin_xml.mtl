@@ -86,11 +86,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
-[if (pec.involvedViews()->indexOf(view) = 1)]
-               tab="Base">
-[else]
                tab="[view.viewKey(pec).toASCII().substituteAll(' ', '_')/]">
-[/if]
              <input
                     type="[pec.model.qualifiedName(basePackage)/]">
              </input>
