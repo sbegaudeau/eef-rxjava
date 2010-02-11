@@ -41,13 +41,13 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private EObject eObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerOptionalPropery
-	 */
-	private Object referenceValueForEobjectflatcomboviewerOptionalPropery;
-	/**
 	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
 	 */
 	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerOptionalPropery
+	 */
+	private Object referenceValueForEobjectflatcomboviewerOptionalPropery;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -299,9 +299,9 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
+
+
 
 
 

@@ -218,9 +218,9 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
+
+
 
 
 

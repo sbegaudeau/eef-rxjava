@@ -360,9 +360,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
+
+
 
 
 

@@ -18,5 +18,5 @@
   <samples xsi:type="eefnr:TotalSample" name="total sample 1" textRequiredProperty="value1" textOptionalProperty="value1" textareaRequiredProperty="value1" textareaOptionalProperty="value1" eobjectflatcomboviewerRequiredProperty="//@samples.14" eobjectflatcomboviewerOptionalProperty="//@samples.14" referencestableRequiredProperty="//@samples.13" referencestableOptionalProperty="//@samples.13" advancedeobjectflatcomboviewerRequiredPropery="//@samples.14" advancedeobjectflatcomboviewerOptionalPropery="//@samples.14"/>
   <samples xsi:type="eefnr:TotalSample" name="total sample 2"/>
   <samples xsi:type="eefnr:Sample"/>
-  <samples xsi:type="eefnr:TextSampleWithTwoTabs"/>
+  <samples xsi:type="eefnr:TextSampleWithTwoTabs" textRequiredPropertyInFirstTab="" textOptionalPropertyInFirstTab="" textRequiredPropertyInSecondTab="" textOptionalPropertyInSecondTab=""/>
 </eefnr:Root>

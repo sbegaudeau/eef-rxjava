@@ -215,9 +215,9 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+
+
 
 
 

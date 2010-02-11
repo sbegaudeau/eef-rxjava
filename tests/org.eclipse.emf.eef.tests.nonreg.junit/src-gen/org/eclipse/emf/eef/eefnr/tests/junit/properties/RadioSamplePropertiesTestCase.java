@@ -225,9 +225,9 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Radio - ENUM_SAMPLE) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Radio - ENUM_SAMPLE) 
+
+
 
 
 

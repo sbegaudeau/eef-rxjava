@@ -68,37 +68,37 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForEmfcomboviewerOptionalProperty;		
 	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
 	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
-	/**
-	 * The reference value for the reference class referencestableOptionalProperty
-	 */
-	private Object referenceValueForReferencestableOptionalProperty;
-	/**
-	 * The reference value for the reference class advancedreferencestableRequiredProperty
-	 */
-	private Object referenceValueForAdvancedreferencestableRequiredProperty;
-	/**
-	 * The reference value for the reference class referencestableRequiredProperty
-	 */
-	private Object referenceValueForReferencestableRequiredProperty;
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
 	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
-	 */
-	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
-	/**
 	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
 	 */
 	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
+	 * The reference value for the reference class referencestableRequiredProperty
 	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
+	private Object referenceValueForReferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
+	/**
+	 * The reference value for the reference class advancedreferencestableRequiredProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
+	 */
+	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
+	/**
+	 * The reference value for the reference class referencestableOptionalProperty
+	 */
+	private Object referenceValueForReferencestableOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -2356,37 +2356,37 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * Edit the feature in the table composition
@@ -2397,9 +2397,9 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2421,9 +2421,9 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2436,13 +2436,13 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		editAdvancedTableCompositionFortablecompositionOptionalPropertyFeature();
 		selectNode.select();
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EObjectFlatComboViewer - TotalSample) 
+
+
+
+
 
 	/**
 	 * Edit the feature in the table composition
@@ -2453,9 +2453,9 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2477,9 +2477,9 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.sleep(500);
-				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@37ed25 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1b229b0 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2492,7 +2492,7 @@ public class TotalSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		selectNode.select();
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+
 
 
 

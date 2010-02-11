@@ -363,9 +363,9 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (FlatReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (FlatReferencesTable - TotalSample) 
+
+
 
 
 

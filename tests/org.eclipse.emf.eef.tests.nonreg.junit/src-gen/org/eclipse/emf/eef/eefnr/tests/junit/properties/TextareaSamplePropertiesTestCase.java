@@ -215,9 +215,9 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
+
 
 
 

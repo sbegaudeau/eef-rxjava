@@ -43,13 +43,13 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private EObject advancedReferencesTableSample;
 	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
-	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
-	/**
 	 * The reference value for the reference class advancedreferencestableRequiredProperty
 	 */
 	private Object referenceValueForAdvancedreferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -364,9 +364,9 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
+
+
 
 
 
