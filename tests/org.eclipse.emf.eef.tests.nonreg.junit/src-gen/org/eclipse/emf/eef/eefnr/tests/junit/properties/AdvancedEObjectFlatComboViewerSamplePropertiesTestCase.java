@@ -41,13 +41,13 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 	 */
 	private EObject advancedEObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
-	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredProperty
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -110,6 +110,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -188,7 +189,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		
 		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), null));
-
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -236,6 +236,8 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		deleteModels();
 	
 	}	
+
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -314,7 +316,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		
 		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), null));
-
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -362,9 +363,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
+
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
+
+
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
+
 
 
 

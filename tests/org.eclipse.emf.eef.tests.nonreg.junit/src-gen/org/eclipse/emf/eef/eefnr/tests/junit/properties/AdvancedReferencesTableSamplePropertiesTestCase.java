@@ -112,6 +112,7 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -189,7 +190,6 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		CompoundCommand cc = new CompoundCommand();
 		
 		allInstancesOf = ((AdvancedReferencesTableSample)advancedReferencesTableSample).getAdvancedreferencestableRequiredProperty();
-		EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
 		cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
@@ -239,6 +239,8 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		deleteModels();
 	
 	}	
+
+
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -316,7 +318,6 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		CompoundCommand cc = new CompoundCommand();
 		
 		allInstancesOf = ((AdvancedReferencesTableSample)advancedReferencesTableSample).getAdvancedreferencestableOptionalProperty();
-		EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
 		cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
@@ -366,9 +367,14 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		deleteModels();
 	
 	}	
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
+
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
+
+
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
+
 
 
 

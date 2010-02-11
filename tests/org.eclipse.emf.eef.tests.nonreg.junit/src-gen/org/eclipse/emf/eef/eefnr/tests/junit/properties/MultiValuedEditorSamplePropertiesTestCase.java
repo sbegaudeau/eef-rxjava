@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.eefnr.tests.junit.properties;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -25,20 +26,20 @@ import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 /**
- * TestCase for TextareaSample
+ * TestCase for MultiValuedEditorSample
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
+public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	
 	/**
 	 * The EClass of the type to edit
 	 */
-	private EClass textareaSampleMetaClass = EefnrPackage.eINSTANCE.getTextareaSample();
+	private EClass multiValuedEditorSampleMetaClass = EefnrPackage.eINSTANCE.getMultiValuedEditorSample();
 
 	/**
 	 * The type to edit
 	 */
-	private EObject textareaSample;
+	private EObject multiValuedEditorSample;
 	/**
 	 * Updated value of the feature
 	 */
@@ -99,15 +100,16 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
-	protected void initializeExpectedModelForTextareaSampleTextareaRequiredProperty() throws InputModelInvalidException, IOException {
+	protected void initializeExpectedModelForMultiValuedEditorSampleMultivaluededitorRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		EObject textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, textareaSampleMetaClass);
-		if (textareaSample == null)
-			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
+		EObject multiValuedEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, multiValuedEditorSampleMetaClass);
+		if (multiValuedEditorSample == null)
+			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
-		cc.append(SetCommand.create(editingDomain, textareaSample, EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty(), UPDATED_VALUE));
+		String[] strings = {UPDATED_VALUE};
+		cc.append(SetCommand.create(editingDomain, multiValuedEditorSample, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty(), Arrays.asList(strings)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -120,30 +122,30 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditTextareaSampleTextareaRequiredProperty() throws Exception {
+	public void testEditMultiValuedEditorSampleMultivaluededitorRequiredProperty() throws Exception {
 		
 		// Import the input model
 		initializeInputModel();
 		
-		textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
-		if (textareaSample == null)
-			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
+		multiValuedEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
+		if (multiValuedEditorSample == null)
+			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 	
 		// Create the expected model
-		initializeExpectedModelForTextareaSampleTextareaRequiredProperty();
+		initializeExpectedModelForMultiValuedEditorSampleMultivaluededitorRequiredProperty();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF properties view to edit the TextareaSample element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
+		// Open the EEF properties view to edit the MultiValuedEditorSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
+			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
-		// Change value of the textareaRequiredProperty feature of the TextareaSample element 
-		bot.editPropertyTextFeature(propertiesView, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
+		// Change value of the multivaluededitorRequiredProperty feature of the MultiValuedEditorSample element 
+		bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -162,15 +164,16 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
-	protected void initializeExpectedModelForTextareaSampleTextareaOptionalProperty() throws InputModelInvalidException, IOException {
+	protected void initializeExpectedModelForMultiValuedEditorSampleMultivaluededitorOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		EObject textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, textareaSampleMetaClass);
-		if (textareaSample == null)
-			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
+		EObject multiValuedEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, multiValuedEditorSampleMetaClass);
+		if (multiValuedEditorSample == null)
+			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 		
-		cc.append(SetCommand.create(editingDomain, textareaSample, EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty(), UPDATED_VALUE));
+		String[] strings = {UPDATED_VALUE};
+		cc.append(SetCommand.create(editingDomain, multiValuedEditorSample, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty(), Arrays.asList(strings)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -183,30 +186,30 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
 	 */	
-	public void testEditTextareaSampleTextareaOptionalProperty() throws Exception {
+	public void testEditMultiValuedEditorSampleMultivaluededitorOptionalProperty() throws Exception {
 		
 		// Import the input model
 		initializeInputModel();
 		
-		textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
-		if (textareaSample == null)
-			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
+		multiValuedEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
+		if (multiValuedEditorSample == null)
+			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 	
 		// Create the expected model
-		initializeExpectedModelForTextareaSampleTextareaOptionalProperty();
+		initializeExpectedModelForMultiValuedEditorSampleMultivaluededitorOptionalProperty();
 		
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
 		
-		// Open the EEF properties view to edit the TextareaSample element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
+		// Open the EEF properties view to edit the MultiValuedEditorSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
 		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
+			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
 		
-		// Change value of the textareaOptionalProperty feature of the TextareaSample element 
-		bot.editPropertyTextFeature(propertiesView, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
+		// Change value of the multivaluededitorOptionalProperty feature of the MultiValuedEditorSample element 
+		bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -220,11 +223,11 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	}	
 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
 
 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
 
 
 
