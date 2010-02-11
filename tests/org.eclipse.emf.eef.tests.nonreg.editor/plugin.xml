@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2010/02/01 13:06:37 nlepine Exp $
+ $Id: plugin.xml,v 1.2 2010/02/11 17:25:31 nlepine Exp $
 -->
 
 <plugin>
@@ -37,7 +37,7 @@
    </extension>
    
       <!-- Tabbed properties views extension -->
-   <extension
+    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
             contributorId="org.eclipse.emf.eef.eefnr.properties">
@@ -60,6 +60,18 @@
                label="Base"
                category="default"
                id="Base">
+         </propertyTab>
+         <propertyTab
+               label="TextSampleFirstTab"
+               category="extended"
+               id="TextSampleFirstTab"
+               afterTab="TextSampleFirstTab">
+         </propertyTab>
+         <propertyTab
+               label="TextSampleSecondTab"
+               category="extended"
+               id="TextSampleSecondTab"
+               afterTab="Base">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -179,8 +191,39 @@
                     type="org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample">
              </input>
          </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.FlatReferencesTableSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.FlatReferencesTableSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.Sample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.Sample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
+               tab="TextSampleFirstTab">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
+               tab="TextSampleSecondTab">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
+             </input>
+         </propertySection>
       </propertySections>
    </extension>
-   
 
 </plugin>
