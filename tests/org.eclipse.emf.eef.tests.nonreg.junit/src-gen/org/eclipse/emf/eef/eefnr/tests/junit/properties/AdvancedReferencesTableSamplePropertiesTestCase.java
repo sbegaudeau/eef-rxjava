@@ -112,7 +112,6 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
-
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -239,8 +238,6 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		deleteModels();
 	
 	}	
-
-
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -367,14 +364,9 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		deleteModels();
 	
 	}	
-
-
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
 
-
-
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedReferencesTable - TotalSample) 
-
 
 
 

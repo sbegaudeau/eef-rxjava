@@ -110,7 +110,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
-
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -236,8 +235,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		deleteModels();
 	
 	}	
-
-
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -363,14 +360,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		deleteModels();
 	
 	}	
-
-
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
 
-
-
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (AdvancedEObjectFlatComboViewer - TotalSample) 
-
 
 
 

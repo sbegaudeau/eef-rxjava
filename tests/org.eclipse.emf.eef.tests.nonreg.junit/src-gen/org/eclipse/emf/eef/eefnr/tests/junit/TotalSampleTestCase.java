@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.eefnr.tests.junit;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
@@ -26,8 +28,9 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
+import org.eclipse.emf.eef.runtime.tests.exceptions.WidgetInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
-import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
@@ -62,41 +65,45 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForEmfcomboviewerOptionalProperty;		
 	/**
-	 * The reference value for the reference class referencestableRequiredProperty
+	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
 	 */
-	private Object referenceValueForReferencestableRequiredProperty;
-	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
-	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
+	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
 	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
 	/**
-	 * The reference value for the reference class advancedreferencestableRequiredProperty
+	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
 	 */
-	private Object referenceValueForAdvancedreferencestableRequiredProperty;
+	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
 	/**
-	 * The reference value for the reference class referencestableOptionalProperty
+	 * The reference value for the reference class referencestableRequiredProperty
 	 */
-	private Object referenceValueForReferencestableOptionalProperty;
+	private Object referenceValueForReferencestableRequiredProperty;
 	/**
 	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
 	 */
 	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
+	 * The reference value for the reference class referencestableOptionalProperty
 	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
+	private Object referenceValueForReferencestableOptionalProperty;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
 	 */
-	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
+	/**
+	 * The reference value for the reference class advancedreferencestableRequiredProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableRequiredProperty;
+	/**
+	 * The EClass of the reference to edit
+	 */
+	private EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();	
 	/**
 	 * The eObjects list contained in widgets
 	 */
-	private List<EObject> allInstancesOf;
+	private List allInstancesOf;
 	/**
 	 * Updated value of the feature
 	 */
@@ -774,6 +781,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeRemoveExpectedModelForTotalSampleEobjectflatcomboviewerOptionalProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty(), null));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleEobjectflatcomboviewerOptionalProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleEobjectflatcomboviewerOptionalProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the TotalSample element
+		bot.removeEObjectFlatComboViewerFeature(wizardShell, 1);
+	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleReferencestableRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -837,6 +907,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeRemoveExpectedModelForTotalSampleReferencestableRequiredProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getReferencestableRequiredProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleReferencestableRequiredProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleReferencestableRequiredProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the referencestableRequiredProperty feature of the TotalSample element 
+		bot.removeAdvancedReferencesTableFeature(wizardShell, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleReferencestableOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -895,6 +1028,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelForTotalSampleReferencestableOptionalProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getReferencestableOptionalProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleReferencestableOptionalProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleReferencestableOptionalProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the referencestableOptionalProperty feature of the TotalSample element 
+		bot.removeAdvancedReferencesTableFeature(wizardShell, 1, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -1024,6 +1220,130 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeExpectedModelForTotalSampleMultivaluededitorRequiredProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		String[] strings = {UPDATED_VALUE};
+		cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty(), Arrays.asList(strings)));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTotalSampleMultivaluededitorRequiredProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForTotalSampleMultivaluededitorRequiredProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the multivaluededitorRequiredProperty feature of the TotalSample element 
+		bot.editMultiValuedEditorFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, UPDATED_VALUE);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForTotalSampleMultivaluededitorOptionalProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		String[] strings = {UPDATED_VALUE};
+		cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty(), Arrays.asList(strings)));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTotalSampleMultivaluededitorOptionalProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForTotalSampleMultivaluededitorOptionalProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the multivaluededitorOptionalProperty feature of the TotalSample element 
+		bot.editMultiValuedEditorFeature(wizardShell, EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, UPDATED_VALUE);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleTablecompositionRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -1084,6 +1404,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelForTotalSampleTablecompositionRequiredProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getTablecompositionRequiredProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleTablecompositionRequiredProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleTablecompositionRequiredProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the tablecompositionRequiredProperty feature of the TotalSample element 
+		bot.removeAdvancedTableCompositionFeature(wizardShell, 0);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -1154,6 +1537,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeRemoveExpectedModelForTotalSampleTablecompositionOptionalProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getTablecompositionOptionalProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleTablecompositionOptionalProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleTablecompositionOptionalProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the tablecompositionOptionalProperty feature of the TotalSample element 
+		bot.removeAdvancedTableCompositionFeature(wizardShell, 1);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleAdvancedreferencestableRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -1217,6 +1663,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeRemoveExpectedModelForTotalSampleAdvancedreferencestableRequiredProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getAdvancedreferencestableRequiredProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleAdvancedreferencestableRequiredProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleAdvancedreferencestableRequiredProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the advancedreferencestableRequiredProperty feature of the TotalSample element 
+		bot.removeAdvancedReferencesTableFeature(wizardShell, 2, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleAdvancedreferencestableOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -1275,6 +1784,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelForTotalSampleAdvancedreferencestableOptionalProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getAdvancedreferencestableOptionalProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleAdvancedreferencestableOptionalProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleAdvancedreferencestableOptionalProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the advancedreferencestableOptionalProperty feature of the TotalSample element 
+		bot.removeAdvancedReferencesTableFeature(wizardShell, 3, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -1406,6 +1978,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeRemoveExpectedModelForTotalSampleAdvancedeobjectflatcomboviewerOptionalPropery() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery(), null));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleAdvancedeobjectflatcomboviewerOptionalPropery() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleAdvancedeobjectflatcomboviewerOptionalPropery();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the TotalSample element
+		bot.removeEObjectFlatComboViewerFeature(wizardShell, 3);
+	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleAdvancedtablecompositionRequiredProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -1471,6 +2106,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 * @throws InputModelInvalidException error during expected model initialization
 	 * @throws IOException error during expected model serialization
 	 */
+	protected void initializeRemoveExpectedModelForTotalSampleAdvancedtablecompositionRequiredProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getAdvancedtablecompositionRequiredProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleAdvancedtablecompositionRequiredProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleAdvancedtablecompositionRequiredProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the advancedtablecompositionRequiredProperty feature of the TotalSample element 
+		bot.removeAdvancedTableCompositionFeature(wizardShell, 2);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
 	protected void initializeExpectedModelForTotalSampleAdvancedtablecompositionOptionalProperty() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
@@ -1531,6 +2229,69 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelForTotalSampleAdvancedtablecompositionOptionalProperty() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		
+		allInstancesOf = ((TotalSample)totalSample).getAdvancedtablecompositionOptionalProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTotalSampleAdvancedtablecompositionOptionalProperty() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		totalSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (totalSample == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTotalSampleAdvancedtablecompositionOptionalProperty();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the TotalSample element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf);
+		
+		// Change value of the advancedtablecompositionOptionalProperty feature of the TotalSample element 
+		bot.removeAdvancedTableCompositionFeature(wizardShell, 3);	
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -1620,45 +2381,57 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - ENUM_SAMPLE) 
 
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
+
+		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (MultiValuedEditor - EString) 
+
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionFortablecompositionRequiredPropertyFeature() {
+	protected void editAdvancedTableCompositionFortablecompositionRequiredPropertyFeature() throws WidgetInvalidException {
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
-		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositiontablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableCompositiontablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
 		editAdvancedTableCompositionFortablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionFortablecompositionOptionalPropertyFeature() {
+	protected void editAdvancedTableCompositionFortablecompositionOptionalPropertyFeature() throws WidgetInvalidException {
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
-		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositiontablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableCompositiontablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
 		editAdvancedTableCompositionFortablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -1673,42 +2446,50 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature() {
+	protected void editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature() throws WidgetInvalidException {
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
-		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
 		editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature() {
+	protected void editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature() throws WidgetInvalidException {
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
-		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		bot.sleep(500);
+				// FIXME : define 'editFeature' (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@408e80 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4ba6de (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.buttonWithTooltip(UIConstants.TABLE_COMPOSITION_ADD_A_NEW_ELEMENT_BUTTON).click();
+		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}

@@ -101,7 +101,6 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
-
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -164,8 +163,6 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-
-
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -228,14 +225,9 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}	
-
-
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Radio - ENUM_SAMPLE) 
 
-
-
 		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Radio - ENUM_SAMPLE) 
-
 
 
 

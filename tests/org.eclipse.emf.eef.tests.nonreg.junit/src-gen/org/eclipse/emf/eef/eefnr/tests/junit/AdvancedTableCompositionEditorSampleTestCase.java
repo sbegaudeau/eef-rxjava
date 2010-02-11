@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
+import org.eclipse.emf.eef.runtime.tests.exceptions.WidgetInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
@@ -366,7 +367,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature() {
+	protected void editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature() throws WidgetInvalidException {
 		EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
 		SWTBotShell shellTable = bot.shell(totalSampleMetaClass.getName());
 		bot.activateShell(shellTable);
@@ -441,7 +442,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
 		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
@@ -451,7 +452,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	/**
 	 * Edit the feature in the table composition
 	 */
-	protected void editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature() {
+	protected void editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature() throws WidgetInvalidException {
 		EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
 		SWTBotShell shellTable = bot.shell(totalSampleMetaClass.getName());
 		bot.activateShell(shellTable);
@@ -526,7 +527,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
-	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) {
+	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
 		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
