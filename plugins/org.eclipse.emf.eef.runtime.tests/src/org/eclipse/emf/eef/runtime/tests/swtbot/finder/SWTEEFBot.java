@@ -132,6 +132,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	}
 
 	/**
+	 * Must open the file with EEF Reflexive editor -> SWTBot pb with context menu
 	 * @param file
 	 *            the file to open
 	 * @return the editor editing the file
@@ -177,9 +178,11 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the element to edit
 	 * @return the shell of the opened wizard
 	 */
-	public SWTBotShell prepareBatchEditing(SWTBotEditor editor, EClass elementType, EObject element) {
+	public SWTBotShell prepareBatchEditing(SWTBotEditor editor, EClass elementType, EObject element, String tabName) {
 		SWTBotTreeItem node2 = selectNode(editor, element);
 		node2.doubleClick();
+		cTabItem(tabName).activate();
+		cTabItem(tabName).setFocus();
 		sleep(1000);
 		return shell(elementType.getName());
 	}
@@ -193,9 +196,10 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 *            the element to edit
 	 * @return the shell of the opened wizard
 	 */
-	public SWTBotView prepareLiveEditing(SWTBotEditor editor, EObject element) {
+	public SWTBotView prepareLiveEditing(SWTBotEditor editor, EObject element, String tabName) {
 		SWTBotTreeItem node2 = selectNode(editor, element);
 		node2.select();
+		SWTBotUtils.selectPropertyTabItem(tabName);
 		sleep(1000);
 		return viewByTitle(UIConstants.PROPERTIES_VIEW_NAME);
 	}
