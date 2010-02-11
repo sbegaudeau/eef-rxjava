@@ -45,6 +45,29 @@
          </propertySection>
       </propertySections>
    </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.eclipse.emf.eef.runtime.tests.actionSet"
+            label="Sample Action Set"
+            visible="true">
+         <menu
+               id="eef"
+               label="EEF">
+            <separator
+                  name="eefGroup">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.eef.runtime.tests.ui.actions.OpenWithEEFReflectiveEditor"
+               icon="icons/sample.gif"
+               id="org.eclipse.emf.eef.runtime.tests.ui.actions.OpenWithEEFReflectiveEditor"
+               label="EEF Reflective Editor"
+               toolbarPath="eefGroup"
+               tooltip="Open With EEF Reflective Editor">
+         </action>
+      </actionSet>
+   </extension>
 
 
 </plugin>
