@@ -33,6 +33,9 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 		editTableComposition[peElement.name/]Feature(wizardShell);
 [/template]
 
+[template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isTableComposition())]
+[/template]
+
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element
 		editTableComposition[peElement.name/]Feature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));

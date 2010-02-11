@@ -47,7 +47,6 @@
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
 
 [template public additionalMethodsPropertiesForTableComposition(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -57,7 +56,7 @@
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement)]
-		// FIXME : define 'editFeature' (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
+		// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case ([peElement.views->first().representation.name/] - [peElement.model.eType.name/]) 
 [/template]
 
 [template public removeFeature(f : EStructuralFeature, peElement : PropertiesEditionElement)]
