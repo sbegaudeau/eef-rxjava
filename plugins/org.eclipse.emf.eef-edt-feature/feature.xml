@@ -228,6 +228,9 @@ litigation.
    <includes
          id="org.eclipse.emf.eef.runtime"
          version="0.0.0"/>
+   <includes
+         id="org.eclipse.emf.eef.runtime.source"
+         version="0.0.0"/>
 
    <requires>
       <import feature="org.eclipse.emf.validation"/>
