@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tarot"
+    nsURI="http://www.eclipse.org/emf/samples/tarot/1.0.0" nsPrefix="tarot">
+  <eClassifiers xsi:type="ecore:EClass" name="Game">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="players" lowerBound="3"
+        upperBound="5" eType="#//Player" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
+        eType="#//ScoreEntry" containment="true" eOpposite="#//ScoreEntry/game"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Player">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Round" eSuperTypes="#//ScoreEntry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bid" lowerBound="1" eType="#//BID"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taker" lowerBound="1" eType="#//Player"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partner" eType="#//Player"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bonuses" upperBound="-1"
+        eType="#//Bonus" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extraPoints" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="score" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="won" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BID">
+    <eLiterals name="SMALL"/>
+    <eLiterals name="GUARD" value="1"/>
+    <eLiterals name="GUARD_WITHOUT" value="2"/>
+    <eLiterals name="GUARD_AGAINST" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bonus" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="side" lowerBound="1" eType="#//PLAYER_SIDE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Misere" eSuperTypes="#//ScoreEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarer" lowerBound="1"
+        eType="#//Player"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Handful" eSuperTypes="#//Bonus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" lowerBound="1" eType="#//HANDFUL_SIZE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HANDFUL_SIZE">
+    <eLiterals name="SINGLE"/>
+    <eLiterals name="DOUBLE" value="1"/>
+    <eLiterals name="TRIPLE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeastAtLast" eSuperTypes="#//Bonus"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="PLAYER_SIDE">
+    <eLiterals name="ATTACK"/>
+    <eLiterals name="DEFENSE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScoreEntry" abstract="true">
+    <eOperations name="score" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eParameters name="player" eType="#//Player"/>
+    </eOperations>
+    <eOperations name="cumulativeScore" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eParameters name="player" eType="#//Player"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="game" eType="#//Game" eOpposite="#//Game/entries">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This reference should have a lower bound to 1. This is a temporary workaround of a EEF limitation."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Slam" eSuperTypes="#//Bonus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="announced" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="achieved" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+</ecore:EPackage>
