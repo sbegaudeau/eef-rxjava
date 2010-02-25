@@ -9,9 +9,6 @@
    <feature url="features/org.eclipse.emf.eef.runtime_${org.eclipse.emf.eef.runtime.version}.jar" id="org.eclipse.emf.eef.runtime" version="${org.eclipse.emf.eef.runtime.version}">
       <category name="eef.features"/>
    </feature>
-   <feature url="features/org.eclipse.emf.eef.uml_${org.eclipse.emf.eef.uml.version}.jar" id="org.eclipse.emf.eef.uml" version="${org.eclipse.emf.eef.uml.version}">
-      <category name="eef.integration"/>
-   </feature>
    <category-def name="eef.features" label="EEF Features">
       <description>
          Contains all necessary features for EEF
