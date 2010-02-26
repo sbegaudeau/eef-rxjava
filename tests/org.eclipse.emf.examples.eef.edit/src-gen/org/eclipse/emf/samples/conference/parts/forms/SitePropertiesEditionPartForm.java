@@ -26,8 +26,6 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -113,46 +111,29 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
-		name.addModifyListener(new ModifyListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-			 */
-			public void modifyText(ModifyEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartForm.this, ConferenceViewsRepository.Site.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
-			}
-
-		});
 		name.addFocusListener(new FocusAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartForm.this, ConferenceViewsRepository.Site.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-
 		});
 		name.addKeyListener(new KeyAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartForm.this, ConferenceViewsRepository.Site.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.name, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
@@ -166,6 +147,7 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
+		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
 		documentation.addFocusListener(new FocusAdapter() {
 

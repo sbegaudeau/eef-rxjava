@@ -37,8 +37,10 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -126,20 +128,38 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		title_ = new Text(parent, SWT.BORDER);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);
-		title_.addModifyListener(new ModifyListener() {
+		title_.addFocusListener(new FocusAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
-			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 */
-			public void modifyText(ModifyEvent e) {
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, title_.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, title_.getText()));
 			}
-			
-		});
 
+		});
+		title_.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalkPropertiesEditionPartImpl.this, ConferenceViewsRepository.Talk.title_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, title_.getText()));
+				}
+			}
+
+		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -222,6 +242,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
+		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.documentation, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
