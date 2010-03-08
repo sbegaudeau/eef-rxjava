@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContext.java,v 1.5 2010/03/08 10:49:11 glefur Exp $
+ * $Id: GenEditionContext.java,v 1.6 2010/03/08 14:28:54 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGmfPropertiesViews <em>Gmf Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}</li>
  * </ul>
  * </p>
  *
@@ -224,32 +223,5 @@ public interface GenEditionContext extends EObject {
 	 * @generated
 	 */
 	void setGenerateJunitTestCases(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Use JMerge For User Code</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use JMerge For User Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use JMerge For User Code</em>' attribute.
-	 * @see #setUseJMergeForUserCode(boolean)
-	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_UseJMergeForUserCode()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isUseJMergeForUserCode();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use JMerge For User Code</em>' attribute.
-	 * @see #isUseJMergeForUserCode()
-	 * @generated
-	 */
-	void setUseJMergeForUserCode(boolean value);
 
 } // GenEditionContext

@@ -24,7 +24,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/descriptorsGenericPropertiesViews"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/gmfPropertiesViews"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/generateJunitTestCases"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/useJMergeForUserCode"/>
     </genClasses>
     <genClasses ecoreClass="EEFGen.ecore#//EEFGenModelReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EEFGen.ecore#//EEFGenModelReference/referencedContext"/>
@@ -37,6 +36,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//EEFGenModel/license"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EEFGen.ecore#//EEFGenModel/references"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//EEFGenModel/testsGenDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//EEFGenModel/useJMergeForUserCode"/>
     </genClasses>
     <genClasses ecoreClass="EEFGen.ecore#//GenViewsRepository">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EEFGen.ecore#//GenViewsRepository/viewsRepository"/>

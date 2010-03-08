@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModel.java,v 1.3 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: EEFGenModel.java,v 1.4 2010/03/08 14:28:54 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getLicense <em>License</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getReferences <em>References</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#getTestsGenDirectory <em>Tests Gen Directory</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}</li>
  * </ul>
  * </p>
  *
@@ -195,5 +196,32 @@ public interface EEFGenModel extends EObject {
 	 * @generated
 	 */
 	void setTestsGenDirectory(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Use JMerge For User Code</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Use JMerge For User Code</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Use JMerge For User Code</em>' attribute.
+	 * @see #setUseJMergeForUserCode(boolean)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getEEFGenModel_UseJMergeForUserCode()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isUseJMergeForUserCode();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.EEFGenModel#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Use JMerge For User Code</em>' attribute.
+	 * @see #isUseJMergeForUserCode()
+	 * @generated
+	 */
+	void setUseJMergeForUserCode(boolean value);
 
 } // EEFGenModel

@@ -21,9 +21,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vadagI8KEd6IfIxnkxy2-g" name="junitTestCases" views="_nMPb4I8KEd6IfIxnkxy2-g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/generateJunitTestCases"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_1LteICqfEd-a77a6ttkBdw" name="useJMergeForUserCode" views="_xJGkUSqfEd-a77a6ttkBdw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/useJMergeForUserCode"/>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tAYOqBxUEd6jvs_siNWNCw" name="EEFGenModelReference" views="_tAYOuxxUEd6jvs_siNWNCw">
@@ -44,6 +41,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2UMH4I8JEd6IfIxnkxy2-g" name="testsGenDirectory" views="_vrPd8I8JEd6IfIxnkxy2-g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//EEFGenModel/testsGenDirectory"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_gGKPoSq-Ed-lRuId4bg6Aw" name="useJMergeForUserCode" views="_xJGkUSqfEd-a77a6ttkBdw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//EEFGenModel/useJMergeForUserCode"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//EEFGenModel"/>
       </bindings>
@@ -87,9 +87,6 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOuBxUEd6jvs_siNWNCw" name="Descriptors contributorID">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_xJGkUSqfEd-a77a6ttkBdw" name="Use JMerge to manage user code">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_Q2Q3YBxWEd6jvs_siNWNCw" name="Activation">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
@@ -120,6 +117,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_vrPd8I8JEd6IfIxnkxy2-g" name="Tests generation directory">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_xJGkUSqfEd-a77a6ttkBdw" name="Use JMerge to manage user code">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_zmuloBxWEd6jvs_siNWNCw" name="Legal">

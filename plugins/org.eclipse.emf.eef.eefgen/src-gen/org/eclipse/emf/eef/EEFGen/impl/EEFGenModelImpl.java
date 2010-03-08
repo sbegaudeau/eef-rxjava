@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelImpl.java,v 1.3 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: EEFGenModelImpl.java,v 1.4 2010/03/08 14:28:54 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -50,6 +50,7 @@ import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getLicense <em>License</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getReferences <em>References</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#getTestsGenDirectory <em>Tests Gen Directory</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelImpl#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}</li>
  * </ul>
  * </p>
  *
@@ -165,6 +166,26 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 	 * @ordered
 	 */
 	protected String testsGenDirectory = TESTS_GEN_DIRECTORY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUseJMergeForUserCode() <em>Use JMerge For User Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseJMergeForUserCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_JMERGE_FOR_USER_CODE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isUseJMergeForUserCode() <em>Use JMerge For User Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseJMergeForUserCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useJMergeForUserCode = USE_JMERGE_FOR_USER_CODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -310,6 +331,27 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isUseJMergeForUserCode() {
+		return useJMergeForUserCode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseJMergeForUserCode(boolean newUseJMergeForUserCode) {
+		boolean oldUseJMergeForUserCode = useJMergeForUserCode;
+		useJMergeForUserCode = newUseJMergeForUserCode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFGenPackage.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE, oldUseJMergeForUserCode, useJMergeForUserCode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -362,6 +404,8 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 				return getReferences();
 			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
 				return getTestsGenDirectory();
+			case EEFGenPackage.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE:
+				return isUseJMergeForUserCode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -399,6 +443,9 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
 				setTestsGenDirectory((String)newValue);
 				return;
+			case EEFGenPackage.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE:
+				setUseJMergeForUserCode((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -432,6 +479,9 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
 				setTestsGenDirectory(TESTS_GEN_DIRECTORY_EDEFAULT);
 				return;
+			case EEFGenPackage.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE:
+				setUseJMergeForUserCode(USE_JMERGE_FOR_USER_CODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -458,6 +508,8 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 				return references != null && !references.isEmpty();
 			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
 				return TESTS_GEN_DIRECTORY_EDEFAULT == null ? testsGenDirectory != null : !TESTS_GEN_DIRECTORY_EDEFAULT.equals(testsGenDirectory);
+			case EEFGenPackage.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE:
+				return useJMergeForUserCode != USE_JMERGE_FOR_USER_CODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -480,6 +532,8 @@ public class EEFGenModelImpl extends EObjectImpl implements EEFGenModel {
 		result.append(license);
 		result.append(", testsGenDirectory: ");
 		result.append(testsGenDirectory);
+		result.append(", useJMergeForUserCode: ");
+		result.append(useJMergeForUserCode);
 		result.append(')');
 		return result.toString();
 	}
