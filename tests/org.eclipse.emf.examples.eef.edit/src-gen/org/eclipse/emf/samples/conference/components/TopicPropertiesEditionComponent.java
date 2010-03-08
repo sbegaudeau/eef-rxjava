@@ -50,25 +50,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class TopicPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private Topic topic;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected TopicPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public TopicPropertiesEditionComponent(EObject topic, String editing_mode) {
 		if (topic instanceof Topic) {
@@ -85,6 +91,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -93,6 +100,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -116,6 +124,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
@@ -143,6 +152,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -154,6 +164,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -164,6 +175,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (topic != null && BASE_PART.equals(key)) {
@@ -184,6 +196,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == ConferenceViewsRepository.Topic.class)
@@ -195,6 +208,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -233,6 +247,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -254,6 +269,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Topic) {
@@ -275,6 +291,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -312,6 +329,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == ConferenceViewsRepository.Topic.documentation;
@@ -321,6 +339,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -353,6 +372,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -369,11 +389,11 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -384,6 +404,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();
