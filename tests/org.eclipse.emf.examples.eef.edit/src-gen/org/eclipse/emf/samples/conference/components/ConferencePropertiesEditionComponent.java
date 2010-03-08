@@ -140,10 +140,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 
 			basePart.updateSites(conference);
 		}
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == ConferencePackage.eINSTANCE.getConference_Sites())) {
-
-			basePart.updateSitesTC(conference);
-		}
 
 
 	}
@@ -215,7 +211,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 				basePart.setPlace(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getPlace()));
 
 			basePart.initSites(conference, null, ConferencePackage.eINSTANCE.getConference_Sites());
-			basePart.initSitesTC(conference, null, ConferencePackage.eINSTANCE.getConference_Sites());
 			// init filters
 
 			basePart.addFilterToSites(new ViewerFilter() {
@@ -234,22 +229,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 			// Start of user code for additional businessfilters for sites
 			
 			// End of user code
-			basePart.addFilterToSitesTC(new ViewerFilter() {
-
-					/*
-					 * (non-Javadoc)
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
-
-				}
-
-			});
-			// Start of user code for additional businessfilters for sitesTC
-			
-			// End of user code
 		}
 		// init values for referenced views
 
@@ -257,7 +236,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 
 		setInitializing(false);
 	}
-
 
 
 
@@ -297,29 +275,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getSite(), moveElement.getElement(), moveElement.getIndex()));
 			}
-			List sitesToAddFromSitesTC = basePart.getSitesTCToAdd();
-			for (Iterator iter = sitesToAddFromSitesTC.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), iter.next()));
-			Map sitesToRefreshFromSitesTC = basePart.getSitesTCToEdit();
-			for (Iterator iter = sitesToRefreshFromSitesTC.keySet().iterator(); iter.hasNext();) {
-				
-				Site nextElement = (Site) iter.next();
-				Site sites = (Site) sitesToRefreshFromSitesTC.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, sites.eGet(feature)));
-					}
-				}
-				
-			}
-			List sitesToRemoveFromSitesTC = basePart.getSitesTCToRemove();
-			for (Iterator iter = sitesToRemoveFromSitesTC.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List sitesToMoveFromSitesTC = basePart.getSitesTCToMove();
-			for (Iterator iter = sitesToMoveFromSitesTC.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getSite(), moveElement.getElement(), moveElement.getIndex()));
-			}
 
 
 		}
@@ -340,7 +295,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 			conferenceToUpdate.setPlace((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getPlace()));
 
 			conferenceToUpdate.getSites().addAll(basePart.getSitesToAdd());
-			conferenceToUpdate.getSites().addAll(basePart.getSitesTCToAdd());
 
 
 			return conferenceToUpdate;
@@ -363,26 +317,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 				command.append(SetCommand.create(liveEditingDomain, conference, ConferencePackage.eINSTANCE.getConference_Place(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
 			if (ConferenceViewsRepository.Conference.sites == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					Site oldValue = (Site)event.getOldValue();
-					Site newValue = (Site)event.getNewValue();
-					
-					// TODO: Complete the conference update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
-						}
-					}
-					
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, conference, ConferencePackage.eINSTANCE.getSite(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (ConferenceViewsRepository.Conference.sitesTC == event.getAffectedEditor()) {
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					Site oldValue = (Site)event.getOldValue();
 					Site newValue = (Site)event.getNewValue();

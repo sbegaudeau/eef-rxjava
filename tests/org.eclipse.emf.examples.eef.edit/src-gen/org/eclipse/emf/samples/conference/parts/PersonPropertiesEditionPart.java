@@ -95,29 +95,6 @@ public interface PersonPropertiesEditionPart {
 
 
 	/**
-	 * @return the genderRadio
-	 */
-	public Object getGenderRadio();
-
-	/**
-	 * Init the genderRadio
-	 * @param eenum the enum to manage
-	 * @param current the current value
-	 */
-	public void initGenderRadio(EEnum eenum, Enumerator current);
-
-	/**
-	 * Defines a new genderRadio
-	 * @param newValue the new genderRadio to set
-	 */
-	public void setGenderRadio(Object newValue);
-
-
-
-
-
-
-	/**
 	 * @return the eclipseCommiter
 	 */
 	public Boolean getEclipseCommiter();

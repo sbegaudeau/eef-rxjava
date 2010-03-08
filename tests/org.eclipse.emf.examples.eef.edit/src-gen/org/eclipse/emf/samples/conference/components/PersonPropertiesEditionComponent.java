@@ -10,7 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.samples.conference.components;
 
-// Start of user code for imports
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -23,10 +24,10 @@ import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart;
 
-// End of user code
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * @generated
  */
 public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
@@ -117,5 +118,12 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 		if (key == ConferenceViewsRepository.Presence.class) {
 			super.initPart(key, kind, element, allResource);
 		}
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public void keep() {
+		Map<String, String> map = new HashMap<String, String>();
 	}
 }

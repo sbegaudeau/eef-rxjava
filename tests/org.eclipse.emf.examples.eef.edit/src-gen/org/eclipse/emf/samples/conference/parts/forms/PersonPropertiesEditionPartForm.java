@@ -24,8 +24,6 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
@@ -61,7 +59,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	protected Text lastname;
 	protected Text age;
 	protected EMFComboViewer gender;
-	protected RadioViewer genderRadioRadioViewer;
 	protected Button eclipseCommiter;
 	protected Button isRegistered;
 
@@ -124,7 +121,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		createLastnameText(widgetFactory, identityGroup);
 		createAgeText(widgetFactory, identityGroup);
 		createGenderEMFComboViewer(widgetFactory, identityGroup);
-		createGenderRadioRadioViewer(identityGroup);
 		identitySection.setClient(identityGroup);
 	}
 
@@ -251,14 +247,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.gender, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-	}
-
-	protected void createGenderRadioRadioViewer(Composite parent) {
-		genderRadioRadioViewer = new RadioViewer(parent, SWT.CHECK);
-		GridData genderRadioData = new GridData(GridData.FILL_HORIZONTAL);
-		genderRadioData.horizontalSpan = 2;
-		genderRadioRadioViewer.setLayoutData(genderRadioData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.genderRadio, ConferenceViewsRepository.FORM_KIND), null);
 	}
 
 	protected void createEclipseStatusGroup(FormToolkit widgetFactory, final Composite view) {
@@ -448,38 +436,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 */
 	public void setGender(Enumerator newValue) {
 		gender.modelUpdating(new StructuredSelection(newValue));
-	}
-
-
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getGenderRadio()
-	 */
-	public Object getGenderRadio() {
-		return genderRadioRadioViewer.getSelection();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#initGenderRadio(EEnum eenum, Enumerator current)
-	 */
-	public void initGenderRadio(EEnum eenum, Enumerator current) {
-		genderRadioRadioViewer.setInput(eenum.getELiterals());
-		genderRadioRadioViewer.setSelection(current);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setGenderRadio(Object newValue)
-	 */
-	public void setGenderRadio(Object newValue) {
-		genderRadioRadioViewer.setSelection(newValue);
 	}
 
 

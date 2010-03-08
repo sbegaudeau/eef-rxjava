@@ -28,8 +28,6 @@ public class ConferenceViewsRepository {
 
 	public static String sites = "conference::Conference::sites";
 
-	public static String sitesTC = "conference::Conference::sitesTC";
-
 
 	}
 
@@ -44,8 +42,6 @@ public class ConferenceViewsRepository {
 	public static String age = "conference::Person::age";
 
 	public static String gender = "conference::Person::gender";
-
-	public static String genderRadio = "conference::Person::genderRadio";
 
 
 		public static String eclipseCommiter = "conference::Person::eclipseCommiter";

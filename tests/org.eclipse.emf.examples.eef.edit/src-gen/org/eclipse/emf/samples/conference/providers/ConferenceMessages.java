@@ -60,8 +60,6 @@ public class ConferenceMessages extends NLS {
 
 	public static String ConferencePropertiesEditionPart_SitesLabel;
 
-	public static String ConferencePropertiesEditionPart_SitesTCLabel;
-
 	public static String PersonPropertiesEditionPart_FirstnameLabel;
 
 	public static String PersonPropertiesEditionPart_LastnameLabel;
@@ -69,8 +67,6 @@ public class ConferenceMessages extends NLS {
 	public static String PersonPropertiesEditionPart_AgeLabel;
 
 	public static String PersonPropertiesEditionPart_GenderLabel;
-
-	public static String PersonPropertiesEditionPart_GenderRadioLabel;
 
 	public static String PersonPropertiesEditionPart_EclipseCommiterLabel;
 
