@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackageImpl.java,v 1.4 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: EEFGenPackageImpl.java,v 1.5 2010/03/08 10:49:11 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -215,6 +215,15 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenEditionContext_UseJMergeForUserCode() {
+		return (EAttribute)genEditionContextEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEEFGenModelReference() {
 		return eefGenModelReferenceEClass;
 	}
@@ -408,6 +417,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS);
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS);
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES);
+		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE);
 
 		eefGenModelReferenceEClass = createEClass(EEF_GEN_MODEL_REFERENCE);
 		createEReference(eefGenModelReferenceEClass, EEF_GEN_MODEL_REFERENCE__REFERENCED_CONTEXT);
@@ -475,6 +485,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		initEAttribute(getGenEditionContext_DescriptorsGenericPropertiesViews(), ecorePackage.getEBoolean(), "descriptorsGenericPropertiesViews", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenEditionContext_GmfPropertiesViews(), ecorePackage.getEBoolean(), "gmfPropertiesViews", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenEditionContext_GenerateJunitTestCases(), ecorePackage.getEBoolean(), "generateJunitTestCases", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenEditionContext_UseJMergeForUserCode(), ecorePackage.getEBoolean(), "useJMergeForUserCode", "false", 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefGenModelReferenceEClass, EEFGenModelReference.class, "EEFGenModelReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEEFGenModelReference_ReferencedContext(), this.getEEFGenModel(), null, "referencedContext", null, 1, 1, EEFGenModelReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

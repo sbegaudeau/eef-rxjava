@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenAdapterFactory.java,v 1.5 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: EEFGenAdapterFactory.java,v 1.6 2010/03/08 10:49:11 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.util;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.EEFGen.*;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;

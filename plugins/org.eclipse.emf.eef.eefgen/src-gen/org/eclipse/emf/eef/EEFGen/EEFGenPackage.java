@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenPackage.java,v 1.4 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: EEFGenPackage.java,v 1.5 2010/03/08 10:49:11 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen;
 
@@ -141,13 +141,22 @@ public interface EEFGenPackage extends EPackage {
 	int GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES = 6;
 
 	/**
+	 * The feature id for the '<em><b>Use JMerge For User Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE = 7;
+
+	/**
 	 * The number of structural features of the '<em>Gen Edition Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 7;
+	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.
@@ -431,6 +440,17 @@ public interface EEFGenPackage extends EPackage {
 	EAttribute getGenEditionContext_GenerateJunitTestCases();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use JMerge For User Code</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#isUseJMergeForUserCode()
+	 * @see #getGenEditionContext()
+	 * @generated
+	 */
+	EAttribute getGenEditionContext_UseJMergeForUserCode();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference <em>Model Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -711,6 +731,14 @@ public interface EEFGenPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES = eINSTANCE.getGenEditionContext_GenerateJunitTestCases();
+
+		/**
+		 * The meta object literal for the '<em><b>Use JMerge For User Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE = eINSTANCE.getGenEditionContext_UseJMergeForUserCode();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.

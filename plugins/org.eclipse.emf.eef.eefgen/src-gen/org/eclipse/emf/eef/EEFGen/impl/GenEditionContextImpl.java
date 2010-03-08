@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextImpl.java,v 1.5 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: GenEditionContextImpl.java,v 1.6 2010/03/08 10:49:11 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -44,6 +44,7 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isGmfPropertiesViews <em>Gmf Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isUseJMergeForUserCode <em>Use JMerge For User Code</em>}</li>
  * </ul>
  * </p>
  *
@@ -159,6 +160,26 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * @ordered
 	 */
 	protected boolean generateJunitTestCases = GENERATE_JUNIT_TEST_CASES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUseJMergeForUserCode() <em>Use JMerge For User Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseJMergeForUserCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_JMERGE_FOR_USER_CODE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isUseJMergeForUserCode() <em>Use JMerge For User Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseJMergeForUserCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useJMergeForUserCode = USE_JMERGE_FOR_USER_CODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -368,6 +389,27 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isUseJMergeForUserCode() {
+		return useJMergeForUserCode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseJMergeForUserCode(boolean newUseJMergeForUserCode) {
+		boolean oldUseJMergeForUserCode = useJMergeForUserCode;
+		useJMergeForUserCode = newUseJMergeForUserCode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFGenPackage.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE, oldUseJMergeForUserCode, useJMergeForUserCode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -430,6 +472,8 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				return isGmfPropertiesViews();
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				return isGenerateJunitTestCases();
+			case EEFGenPackage.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE:
+				return isUseJMergeForUserCode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -462,6 +506,9 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				return;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				setGenerateJunitTestCases((Boolean)newValue);
+				return;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE:
+				setUseJMergeForUserCode((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -496,6 +543,9 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				setGenerateJunitTestCases(GENERATE_JUNIT_TEST_CASES_EDEFAULT);
 				return;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE:
+				setUseJMergeForUserCode(USE_JMERGE_FOR_USER_CODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -522,6 +572,8 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				return gmfPropertiesViews != GMF_PROPERTIES_VIEWS_EDEFAULT;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				return generateJunitTestCases != GENERATE_JUNIT_TEST_CASES_EDEFAULT;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE:
+				return useJMergeForUserCode != USE_JMERGE_FOR_USER_CODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -546,6 +598,8 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 		result.append(gmfPropertiesViews);
 		result.append(", generateJunitTestCases: ");
 		result.append(generateJunitTestCases);
+		result.append(", useJMergeForUserCode: ");
+		result.append(useJMergeForUserCode);
 		result.append(')');
 		return result.toString();
 	}
