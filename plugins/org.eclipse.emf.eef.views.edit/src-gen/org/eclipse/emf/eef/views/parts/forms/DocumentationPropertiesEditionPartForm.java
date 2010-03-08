@@ -110,6 +110,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
+		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
 		documentation.addFocusListener(new FocusAdapter() {
 

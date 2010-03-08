@@ -16,6 +16,12 @@
             providerClass="org.eclipse.emf.eef.views.providers.ViewsPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.views.providers.ViewsPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
 
    <!-- Tabbed properties views extension -->
    <extension
@@ -105,7 +111,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.views.section.DocumentedElement"
-               tab="Base">
+               tab="Documentation">
              <input
                     type="org.eclipse.emf.eef.views.DocumentedElement">
              </input>
