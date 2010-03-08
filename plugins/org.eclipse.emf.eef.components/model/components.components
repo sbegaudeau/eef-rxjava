@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-filters="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_PvwLIAc1Ed6AO86QFJ8SHA" documentation="Edition Context for components GenPackage">
-    <categories xmi:id="_PvwLIQc1Ed6AO86QFJ8SHA" name="common">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_ghKCwQsaEd6ejM-vAbbZMA" documentation="" name="DocumentedElement" views="_nvkKMAsaEd6ejM-vAbbZMA" explicit="false">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_1AiRAAsaEd6ejM-vAbbZMA" documentation="" name="documentation" views="_sMAgUAsaEd6ejM-vAbbZMA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//DocumentedElement/documentation"/>
-        </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//DocumentedElement"/>
-      </bindings>
-    </categories>
+    <categories xmi:id="_PvwLIQc1Ed6AO86QFJ8SHA" name="common"/>
     <categories xmi:id="_PvwLIgc1Ed6AO86QFJ8SHA" name="components">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PvwLIwc1Ed6AO86QFJ8SHA" name="PropertiesEditionContext" views="_PvwLSAc1Ed6AO86QFJ8SHA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PvwLJwc1Ed6AO86QFJ8SHA" name="model" views="_PvwLTQc1Ed6AO86QFJ8SHA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionContext/model"/>
         </properties>
-        <referencedBinding xmi:id="_79bxsAsaEd6ejM-vAbbZMA" binding="_ghKCwQsaEd6ejM-vAbbZMA"/>
+        <referencedBinding xmi:id="_79bxsAsaEd6ejM-vAbbZMA">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionContext"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PvwLKAc1Ed6AO86QFJ8SHA" name="PropertiesEditionComponent" views="_PvwLTgc1Ed6AO86QFJ8SHA">
@@ -33,7 +28,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PvwLNAc1Ed6AO86QFJ8SHA" name="explicit" views="_PvwLWwc1Ed6AO86QFJ8SHA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionComponent/explicit"/>
         </properties>
-        <referencedBinding xmi:id="_U_ASkQs4Ed6wm46noGZWcQ" binding="_ghKCwQsaEd6ejM-vAbbZMA"/>
+        <referencedBinding xmi:id="_U_ASkQs4Ed6wm46noGZWcQ">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionComponent"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PvwLNQc1Ed6AO86QFJ8SHA" name="PropertiesEditionElement" views="_PvwLXAc1Ed6AO86QFJ8SHA">
@@ -52,7 +49,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PvwLPAc1Ed6AO86QFJ8SHA" name="helpID" views="_PvwLZAc1Ed6AO86QFJ8SHA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//EEFElement/helpID"/>
         </properties>
-        <referencedBinding xmi:id="_K6xYEQs5Ed6iLoY6I8OZTA" binding="_ghKCwQsaEd6ejM-vAbbZMA"/>
+        <referencedBinding xmi:id="_K6xYEQs5Ed6iLoY6I8OZTA">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionElement"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PvwLPQc1Ed6AO86QFJ8SHA" name="PropertiesMultiEditionElement" views="_PvwLZQc1Ed6AO86QFJ8SHA">
@@ -68,7 +67,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PvwLRAc1Ed6AO86QFJ8SHA" name="helpID" views="_PvwLbQc1Ed6AO86QFJ8SHA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//EEFElement/helpID"/>
         </properties>
-        <referencedBinding xmi:id="_TswLEAs5Ed6iLoY6I8OZTA" binding="_ghKCwQsaEd6ejM-vAbbZMA"/>
+        <referencedBinding xmi:id="_TswLEAs5Ed6iLoY6I8OZTA">
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesMultiEditionElement"/>
       </bindings>
     </categories>
@@ -76,16 +77,7 @@
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_PvwLRQc1Ed6AO86QFJ8SHA" documentation="Views repository for components GenPackage" name="components">
     <RepositoryKind>SWT</RepositoryKind>
-    <categories xmi:id="_PvwLRgc1Ed6AO86QFJ8SHA" name="common">
-      <views xmi:id="_nvkKMAsaEd6ejM-vAbbZMA" name="Documentation">
-        <elements xsi:type="eef-views:Container" xmi:id="_prjVwAsaEd6ejM-vAbbZMA" name="Documentation">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sMAgUAsaEd6ejM-vAbbZMA" name="documentation">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
-          </elements>
-        </elements>
-      </views>
-    </categories>
+    <categories xmi:id="_PvwLRgc1Ed6AO86QFJ8SHA" name="common"/>
     <categories xmi:id="_PvwLRwc1Ed6AO86QFJ8SHA" name="components">
       <views xmi:id="_PvwLSAc1Ed6AO86QFJ8SHA" name="PropertiesEditionContext">
         <elements xsi:type="eef-views:Container" xmi:id="_PvwLSQc1Ed6AO86QFJ8SHA" name="Binding">

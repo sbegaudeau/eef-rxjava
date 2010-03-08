@@ -6,4 +6,7 @@
   <viewsRepositories basePackage="org.eclipse.emf.eef.components" swtViews="true" formViews="true">
     <viewsRepository href="components.components#_PvwLRQc1Ed6AO86QFJ8SHA"/>
   </viewsRepositories>
+  <references>
+    <referencedContext href="../../org.eclipse.emf.eef.eefgen/model/EEFGen.eefgen#/"/>
+  </references>
 </eef-gen:EEFGenModel>
