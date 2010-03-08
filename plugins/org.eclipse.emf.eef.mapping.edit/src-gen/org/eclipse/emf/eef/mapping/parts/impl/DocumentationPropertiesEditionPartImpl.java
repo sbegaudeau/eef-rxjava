@@ -103,6 +103,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
+		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.Documentation.documentation, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}

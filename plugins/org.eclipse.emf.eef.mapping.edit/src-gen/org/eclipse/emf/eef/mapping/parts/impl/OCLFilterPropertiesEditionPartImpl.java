@@ -110,6 +110,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		GridData oCLExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyData.horizontalSpan = 2;
 		oCLExpressionBodyData.heightHint = 80;
+		oCLExpressionBodyData.widthHint = 200;
 		oCLExpressionBody.setLayoutData(oCLExpressionBodyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}

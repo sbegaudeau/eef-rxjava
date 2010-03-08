@@ -110,6 +110,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		GridData javaExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyData.horizontalSpan = 2;
 		javaExpressionBodyData.heightHint = 80;
+		javaExpressionBodyData.widthHint = 200;
 		javaExpressionBody.setLayoutData(javaExpressionBodyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}

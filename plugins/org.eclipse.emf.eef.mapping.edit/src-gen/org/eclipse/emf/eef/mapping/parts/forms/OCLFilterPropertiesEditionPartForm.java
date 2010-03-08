@@ -117,6 +117,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		GridData oCLExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyData.horizontalSpan = 2;
 		oCLExpressionBodyData.heightHint = 80;
+		oCLExpressionBodyData.widthHint = 200;
 		oCLExpressionBody.setLayoutData(oCLExpressionBodyData);
 		oCLExpressionBody.addFocusListener(new FocusAdapter() {
 

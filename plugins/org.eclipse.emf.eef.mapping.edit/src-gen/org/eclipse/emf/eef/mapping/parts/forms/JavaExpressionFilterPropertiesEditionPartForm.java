@@ -117,6 +117,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		GridData javaExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyData.horizontalSpan = 2;
 		javaExpressionBodyData.heightHint = 80;
+		javaExpressionBodyData.widthHint = 200;
 		javaExpressionBody.setLayoutData(javaExpressionBodyData);
 		javaExpressionBody.addFocusListener(new FocusAdapter() {
 
