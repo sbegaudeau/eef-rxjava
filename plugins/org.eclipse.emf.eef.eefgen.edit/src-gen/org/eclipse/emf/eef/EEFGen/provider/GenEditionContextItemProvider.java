@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextItemProvider.java,v 1.5 2009/10/12 21:00:19 glefur Exp $
+ * $Id: GenEditionContextItemProvider.java,v 1.6 2010/03/08 10:49:16 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -74,6 +74,7 @@ public class GenEditionContextItemProvider
 			addDescriptorsGenericPropertiesViewsPropertyDescriptor(object);
 			addGmfPropertiesViewsPropertyDescriptor(object);
 			addGenerateJunitTestCasesPropertyDescriptor(object);
+			addUseJMergeForUserCodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -211,6 +212,28 @@ public class GenEditionContextItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Use JMerge For User Code feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseJMergeForUserCodePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenEditionContext_useJMergeForUserCode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GenEditionContext_useJMergeForUserCode_feature", "_UI_GenEditionContext_type"),
+				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns GenEditionContext.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -252,6 +275,7 @@ public class GenEditionContextItemProvider
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS:
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS:
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
+			case EEFGenPackage.GEN_EDITION_CONTEXT__USE_JMERGE_FOR_USER_CODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

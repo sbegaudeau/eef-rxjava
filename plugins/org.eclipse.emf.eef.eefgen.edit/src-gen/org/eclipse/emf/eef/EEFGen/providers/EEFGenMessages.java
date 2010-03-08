@@ -59,6 +59,8 @@ public class EEFGenMessages extends NLS {
 
 	public static String GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel;
 
+	public static String GenEditionContextPropertiesEditionPart_UseJMergeToManageUserCodeLabel;
+
 	public static String GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel;
 
 	public static String GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel;

@@ -32,6 +32,8 @@ public class EEFGenViewsRepository {
 
 	public static String descriptorsContributorID = "EEFGen::GenEditionContext::Descriptors contributorID";
 
+	public static String useJMergeToManageUserCode = "EEFGen::GenEditionContext::Use JMerge to manage user code";
+
 
 		public static String genericPropertiesViewsDescriptors = "EEFGen::GenEditionContext::Generic properties views descriptors";
 

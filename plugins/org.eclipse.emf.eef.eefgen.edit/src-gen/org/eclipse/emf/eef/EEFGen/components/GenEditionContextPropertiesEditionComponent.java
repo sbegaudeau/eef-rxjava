@@ -147,6 +147,9 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 		if (EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().equals(msg.getFeature()) && basePart != null)
 			basePart.setJUnitTestCases((Boolean)msg.getNewValue());
 
+		if (EEFGenPackage.eINSTANCE.getGenEditionContext_UseJMergeForUserCode().equals(msg.getFeature()) && basePart != null)
+			basePart.setUseJMergeToManageUserCode((Boolean)msg.getNewValue());
+
 
 
 	}
@@ -230,6 +233,8 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 			basePart.setPropertiesEditionContextButtonMode(ButtonsModeEnum.BROWSE);
 			basePart.setJUnitTestCases(genEditionContext.isGenerateJunitTestCases());
 
+			basePart.setUseJMergeToManageUserCode(genEditionContext.isUseJMergeForUserCode());
+
 			// init filters
 
 
@@ -251,6 +256,7 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 			
 			// End of user code
 
+
 		}
 		// init values for referenced views
 
@@ -258,6 +264,7 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 
 		setInitializing(false);
 	}
+
 
 
 
@@ -288,6 +295,8 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 			}
 			cc.append(SetCommand.create(editingDomain, genEditionContext, EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases(), basePart.getJUnitTestCases()));
 
+			cc.append(SetCommand.create(editingDomain, genEditionContext, EEFGenPackage.eINSTANCE.getGenEditionContext_UseJMergeForUserCode(), basePart.getUseJMergeToManageUserCode()));
+
 
 
 		}
@@ -315,6 +324,8 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 
 			genEditionContextToUpdate.setPropertiesEditionContext((PropertiesEditionContext)basePart.getPropertiesEditionContext());
 			genEditionContextToUpdate.setGenerateJunitTestCases(new Boolean(basePart.getJUnitTestCases()).booleanValue());
+
+			genEditionContextToUpdate.setUseJMergeForUserCode(new Boolean(basePart.getUseJMergeToManageUserCode()).booleanValue());
 
 
 
@@ -350,6 +361,9 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				command.append(SetCommand.create(liveEditingDomain, genEditionContext, EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditionContext(), event.getNewValue()));
 			if (EEFGenViewsRepository.GenEditionContext.jUnitTestCases == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, genEditionContext, EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases(), event.getNewValue()));
+
+			if (EEFGenViewsRepository.GenEditionContext.useJMergeToManageUserCode == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, genEditionContext, EEFGenPackage.eINSTANCE.getGenEditionContext_UseJMergeForUserCode(), event.getNewValue()));
 
 
 
@@ -420,6 +434,10 @@ public class GenEditionContextPropertiesEditionComponent extends StandardPropert
 				if (EEFGenViewsRepository.GenEditionContext.jUnitTestCases == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.GenEditionContext.useJMergeToManageUserCode == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_UseJMergeForUserCode().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_UseJMergeForUserCode().getEAttributeType(), newValue);
 				}
 
 			} catch (IllegalArgumentException iae) {

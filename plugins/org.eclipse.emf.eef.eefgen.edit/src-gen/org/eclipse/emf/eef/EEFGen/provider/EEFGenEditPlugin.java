@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenEditPlugin.java,v 1.5 2009/10/12 21:00:19 glefur Exp $
+ * $Id: EEFGenEditPlugin.java,v 1.6 2010/03/08 10:49:16 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -106,9 +106,6 @@ public final class EEFGenEditPlugin extends EMFPlugin {
 			// Remember the static instance.
 			//
 			plugin = this;
-			EValidator.Registry.INSTANCE.put(EEFGenPackage.eINSTANCE,
-					new EEFValidator());
-
 		}
 	}
 
