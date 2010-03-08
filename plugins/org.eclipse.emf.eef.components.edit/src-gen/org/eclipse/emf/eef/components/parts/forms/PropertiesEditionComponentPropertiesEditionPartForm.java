@@ -52,8 +52,6 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -153,46 +151,29 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
-		name.addModifyListener(new ModifyListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-			 */
-			public void modifyText(ModifyEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
-			}
-
-		});
 		name.addFocusListener(new FocusAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-
 		});
 		name.addKeyListener(new KeyAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
@@ -204,46 +185,29 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 		widgetFactory.paintBordersFor(parent);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
-		helpID.addModifyListener(new ModifyListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-			 */
-			public void modifyText(ModifyEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.helpID, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, helpID.getText()));
-			}
-
-		});
 		helpID.addFocusListener(new FocusAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 			}
-
 		});
 		helpID.addKeyListener(new KeyAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 				}
 			}
-
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}

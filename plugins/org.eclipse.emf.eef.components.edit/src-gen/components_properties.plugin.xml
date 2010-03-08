@@ -16,6 +16,12 @@
             providerClass="org.eclipse.emf.eef.components.providers.ComponentsPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.components.providers.ComponentsPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
 
    <!-- Tabbed properties views extension -->
    <extension
