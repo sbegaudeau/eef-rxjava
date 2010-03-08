@@ -19,8 +19,6 @@ import org.eclipse.osgi.util.NLS;
 public class ComponentsMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.eef.components.providers.componentsMessages"; //$NON-NLS-1$
 
-	public static String DocumentationPropertiesEditionPart_DocumentationGroupLabel;
-
 	public static String PropertiesEditionContextPropertiesEditionPart_BindingGroupLabel;
 
 	public static String PropertiesEditionComponentPropertiesEditionPart_PropertiesGroupLabel;
@@ -34,10 +32,6 @@ public class ComponentsMessages extends NLS {
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_PropertiesGroupLabel;
 
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_BindingGroupLabel;
-
-	public static String Documentation_ReadOnly;
-
-	public static String Documentation_Part_Title;
 
 	public static String PropertiesEditionContext_ReadOnly;
 
@@ -54,8 +48,6 @@ public class ComponentsMessages extends NLS {
 	public static String PropertiesMultiEditionElement_ReadOnly;
 
 	public static String PropertiesMultiEditionElement_Part_Title;
-
-	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 
 	public static String PropertiesEditionContextPropertiesEditionPart_ModelLabel;
 

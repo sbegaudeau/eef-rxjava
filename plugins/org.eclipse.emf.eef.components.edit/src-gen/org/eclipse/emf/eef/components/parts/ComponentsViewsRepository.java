@@ -22,15 +22,6 @@ public class ComponentsViewsRepository {
 
 
 	/**
-	 * Documentation view descriptor
-	 */
-	public static class Documentation {
-		public static String documentation = "components::Documentation::documentation";
-
-
-	}
-
-	/**
 	 * PropertiesEditionContext view descriptor
 	 */
 	public static class PropertiesEditionContext {

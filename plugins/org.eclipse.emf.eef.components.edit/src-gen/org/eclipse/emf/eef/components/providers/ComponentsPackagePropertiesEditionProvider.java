@@ -11,7 +11,6 @@
  */
 package org.eclipse.emf.eef.components.providers;
 
-import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
 
 /**
@@ -24,26 +23,10 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 	 */
 	public ComponentsPackagePropertiesEditionProvider() {
 		super();
-		append(createDocumentedElementPropertiesEditionProvider());
 		append(createPropertiesEditionContextPropertiesEditionProvider());
 		append(createPropertiesEditionComponentPropertiesEditionProvider());
 		append(createPropertiesEditionElementPropertiesEditionProvider());
 		append(createPropertiesMultiEditionElementPropertiesEditionProvider());
-	}
-
-	/**
-	 * This keeps track of the one PropertiesEditionProvider used for all
-	 * DocumentedElement instances.
-	 */
-	protected DocumentedElementPropertiesEditionProvider documentedElementPropertiesEditionProvider;
-
-	/**
-	 * This creates an PropertiesEditionProvider for a DocumentedElement
-	 */
-	public DocumentedElementPropertiesEditionProvider createDocumentedElementPropertiesEditionProvider() {
-		if (documentedElementPropertiesEditionProvider == null)
-			documentedElementPropertiesEditionProvider = new DocumentedElementPropertiesEditionProvider();
-		return documentedElementPropertiesEditionProvider;
 	}
 
 	/**

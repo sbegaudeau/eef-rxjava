@@ -20,8 +20,6 @@ import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionComponentPrope
 import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionContextPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.components.parts.impl.PropertiesMultiEditionElementPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -46,12 +44,6 @@ public class ComponentsPropertiesEditionPartProvider implements IPropertiesEditi
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
-		if (key == ComponentsViewsRepository.Documentation.class) {
-			if (kind == ComponentsViewsRepository.SWT_KIND)
-				return new DocumentationPropertiesEditionPartImpl(component);
-			if (kind == ComponentsViewsRepository.FORM_KIND)
-				return new DocumentationPropertiesEditionPartForm(component);
-		}
 		if (key == ComponentsViewsRepository.PropertiesEditionContext.class) {
 			if (kind == ComponentsViewsRepository.SWT_KIND)
 				return new PropertiesEditionContextPropertiesEditionPartImpl(component);

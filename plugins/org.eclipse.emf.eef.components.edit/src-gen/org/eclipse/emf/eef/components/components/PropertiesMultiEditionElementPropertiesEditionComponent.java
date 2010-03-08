@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
@@ -101,7 +102,7 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == ComponentsViewsRepository.Documentation.class) {
+		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		
 		}
