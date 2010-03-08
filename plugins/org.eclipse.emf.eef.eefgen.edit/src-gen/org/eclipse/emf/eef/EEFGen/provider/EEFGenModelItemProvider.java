@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelItemProvider.java,v 1.4 2009/10/12 21:00:19 glefur Exp $
+ * $Id: EEFGenModelItemProvider.java,v 1.5 2010/03/08 14:29:00 glefur Exp $
  */
 package org.eclipse.emf.eef.EEFGen.provider;
 
@@ -74,6 +74,7 @@ public class EEFGenModelItemProvider
 			addAuthorPropertyDescriptor(object);
 			addLicensePropertyDescriptor(object);
 			addTestsGenDirectoryPropertyDescriptor(object);
+			addUseJMergeForUserCodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -167,6 +168,28 @@ public class EEFGenModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Use JMerge For User Code feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseJMergeForUserCodePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EEFGenModel_useJMergeForUserCode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EEFGenModel_useJMergeForUserCode_feature", "_UI_EEFGenModel_type"),
+				 EEFGenPackage.Literals.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -239,6 +262,7 @@ public class EEFGenModelItemProvider
 			case EEFGenPackage.EEF_GEN_MODEL__AUTHOR:
 			case EEFGenPackage.EEF_GEN_MODEL__LICENSE:
 			case EEFGenPackage.EEF_GEN_MODEL__TESTS_GEN_DIRECTORY:
+			case EEFGenPackage.EEF_GEN_MODEL__USE_JMERGE_FOR_USER_CODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EEFGenPackage.EEF_GEN_MODEL__EDITION_CONTEXTS:

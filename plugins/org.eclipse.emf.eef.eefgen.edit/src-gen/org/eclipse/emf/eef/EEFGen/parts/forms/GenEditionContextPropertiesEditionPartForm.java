@@ -58,7 +58,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	protected EObjectFlatComboViewer propertiesEditionContext;
 	protected Text basePackage;
 	protected Text descriptorsContributorID;
-	protected Button useJMergeToManageUserCode;
 	protected Button genericPropertiesViewsDescriptors;
 	protected Button gMFSpecificPropertiesViews;
 	protected Button jUnitTestCases;
@@ -161,7 +160,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		parametersGroup.setLayout(parametersGroupLayout);
 		createBasePackageText(widgetFactory, parametersGroup);
 		createDescriptorsContributorIDText(widgetFactory, parametersGroup);
-		createUseJMergeToManageUserCodeCheckbox(widgetFactory, parametersGroup);
 		parametersSection.setClient(parametersGroup);
 	}
 
@@ -231,27 +229,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			}
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-	}
-
-	protected void createUseJMergeToManageUserCodeCheckbox(FormToolkit widgetFactory, Composite parent) {
-		useJMergeToManageUserCode = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_UseJMergeToManageUserCodeLabel, SWT.CHECK);
-		useJMergeToManageUserCode.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartForm.this, EEFGenViewsRepository.GenEditionContext.useJMergeToManageUserCode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(useJMergeToManageUserCode.getSelection())));
-			}
-
-		});
-		GridData useJMergeToManageUserCodeData = new GridData(GridData.FILL_HORIZONTAL);
-		useJMergeToManageUserCodeData.horizontalSpan = 2;
-		useJMergeToManageUserCode.setLayoutData(useJMergeToManageUserCodeData);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.useJMergeToManageUserCode, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
 	protected void createActivationGroup(FormToolkit widgetFactory, final Composite view) {
@@ -475,32 +452,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	public void unsetMessageForDescriptorsContributorID() {
 		messageManager.removeMessage("DescriptorsContributorID_key", descriptorsContributorID);
 	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getUseJMergeToManageUserCode()
-	 */
-	public Boolean getUseJMergeToManageUserCode() {
-		return Boolean.valueOf(useJMergeToManageUserCode.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setUseJMergeToManageUserCode(Boolean newValue)
-	 */
-	public void setUseJMergeToManageUserCode(Boolean newValue) {
-		if (newValue != null) {
-			useJMergeToManageUserCode.setSelection(newValue.booleanValue());
-		} else {
-			useJMergeToManageUserCode.setSelection(false);
-		}
-	}
-
-
-
-
 
 	/**
 	 * {@inheritDoc}

@@ -146,6 +146,9 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 				basePart.setTestsGenerationDirectory("");
 			}
 		}
+		if (EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().equals(msg.getFeature()) && basePart != null)
+			basePart.setUseJMergeToManageUserCode((Boolean)msg.getNewValue());
+
 
 
 	}
@@ -224,7 +227,10 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			if (eEFGenModel.getTestsGenDirectory() != null)
 				basePart.setTestsGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getTestsGenDirectory()));
 
+			basePart.setUseJMergeToManageUserCode(eEFGenModel.isUseJMergeForUserCode());
+
 			// init filters
+
 
 
 
@@ -236,6 +242,7 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 		setInitializing(false);
 	}
+
 
 
 
@@ -257,6 +264,8 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_Author(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getAuthor())));
 			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_License(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getLicense())));
 			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTestsGenerationDirectory())));
+			cc.append(SetCommand.create(editingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode(), basePart.getUseJMergeToManageUserCode()));
+
 
 
 		}
@@ -280,6 +289,8 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 			eEFGenModelToUpdate.setLicense((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getLicense()));
 			eEFGenModelToUpdate.setTestsGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTestsGenerationDirectory()));
+
+			eEFGenModelToUpdate.setUseJMergeForUserCode(new Boolean(basePart.getUseJMergeToManageUserCode()).booleanValue());
 
 
 
@@ -311,6 +322,9 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 			if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
+			if (EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, eEFGenModel, EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode(), event.getNewValue()));
+
 
 
 				if (!command.isEmpty() && !command.canExecute()) {
@@ -363,6 +377,10 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 				if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), newValue);
 				}
 
 			} catch (IllegalArgumentException iae) {

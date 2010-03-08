@@ -29,6 +29,7 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -43,6 +44,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	protected Text generationDirectory;
 	protected Text testsGenerationDirectory;
+	protected Button useJMergeToManageUserCode;
 	protected Text author;
 	protected Text license;
 
@@ -103,6 +105,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		parametersGroup.setLayout(parametersGroupLayout);
 		createGenerationDirectoryText(parametersGroup);
 		createTestsGenerationDirectoryText(parametersGroup);
+		createUseJMergeToManageUserCodeCheckbox(parametersGroup);
 	}
 
 	protected void createGenerationDirectoryText(Composite parent) {
@@ -183,6 +186,15 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	}
+
+	protected void createUseJMergeToManageUserCodeCheckbox(Composite parent) {
+		useJMergeToManageUserCode = new Button(parent, SWT.CHECK);
+		useJMergeToManageUserCode.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel);
+		GridData useJMergeToManageUserCodeData = new GridData(GridData.FILL_HORIZONTAL);
+		useJMergeToManageUserCodeData.horizontalSpan = 2;
+		useJMergeToManageUserCode.setLayoutData(useJMergeToManageUserCodeData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
 	protected void createLegalGroup(Composite parent) {
@@ -323,6 +335,36 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	public void unsetMessageForTestsGenerationDirectory() {
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getUseJMergeToManageUserCode()
+	 */
+	public Boolean getUseJMergeToManageUserCode() {
+		return Boolean.valueOf(useJMergeToManageUserCode.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setUseJMergeToManageUserCode(Boolean newValue)
+	 */
+	public void setUseJMergeToManageUserCode(Boolean newValue) {
+		if (newValue != null) {
+			useJMergeToManageUserCode.setSelection(newValue.booleanValue());
+		} else {
+			useJMergeToManageUserCode.setSelection(false);
+		}
+	}
+
+	public void setMessageForUseJMergeToManageUserCode(String msg, int msgLevel) {
+
+	}
+
+	public void unsetMessageForUseJMergeToManageUserCode() {
 
 	}
 

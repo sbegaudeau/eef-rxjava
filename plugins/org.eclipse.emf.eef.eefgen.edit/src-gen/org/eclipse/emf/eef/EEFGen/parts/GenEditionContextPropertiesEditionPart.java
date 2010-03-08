@@ -106,22 +106,6 @@ public interface GenEditionContextPropertiesEditionPart {
 
 
 	/**
-	 * @return the Use JMerge to manage user code
-	 */
-	public Boolean getUseJMergeToManageUserCode();
-
-	/**
-	 * Defines a new Use JMerge to manage user code
-	 * @param newValue the new Use JMerge to manage user code to set
-	 */
-	public void setUseJMergeToManageUserCode(Boolean newValue);
-
-
-
-
-
-
-	/**
 	 * @return the Generic properties views descriptors
 	 */
 	public Boolean getGenericPropertiesViewsDescriptors();

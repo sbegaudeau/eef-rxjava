@@ -53,7 +53,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	protected EObjectFlatComboViewer propertiesEditionContext;
 	protected Text basePackage;
 	protected Text descriptorsContributorID;
-	protected Button useJMergeToManageUserCode;
 	protected Button genericPropertiesViewsDescriptors;
 	protected Button gMFSpecificPropertiesViews;
 	protected Button jUnitTestCases;
@@ -149,7 +148,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		parametersGroup.setLayout(parametersGroupLayout);
 		createBasePackageText(parametersGroup);
 		createDescriptorsContributorIDText(parametersGroup);
-		createUseJMergeToManageUserCodeCheckbox(parametersGroup);
 	}
 
 	protected void createBasePackageText(Composite parent) {
@@ -230,15 +228,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-	}
-
-	protected void createUseJMergeToManageUserCodeCheckbox(Composite parent) {
-		useJMergeToManageUserCode = new Button(parent, SWT.CHECK);
-		useJMergeToManageUserCode.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_UseJMergeToManageUserCodeLabel);
-		GridData useJMergeToManageUserCodeData = new GridData(GridData.FILL_HORIZONTAL);
-		useJMergeToManageUserCodeData.horizontalSpan = 2;
-		useJMergeToManageUserCode.setLayoutData(useJMergeToManageUserCodeData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.useJMergeToManageUserCode, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
 	protected void createActivationGroup(Composite parent) {
@@ -427,36 +416,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	}
 
 	public void unsetMessageForDescriptorsContributorID() {
-
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getUseJMergeToManageUserCode()
-	 */
-	public Boolean getUseJMergeToManageUserCode() {
-		return Boolean.valueOf(useJMergeToManageUserCode.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setUseJMergeToManageUserCode(Boolean newValue)
-	 */
-	public void setUseJMergeToManageUserCode(Boolean newValue) {
-		if (newValue != null) {
-			useJMergeToManageUserCode.setSelection(newValue.booleanValue());
-		} else {
-			useJMergeToManageUserCode.setSelection(false);
-		}
-	}
-
-	public void setMessageForUseJMergeToManageUserCode(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForUseJMergeToManageUserCode() {
 
 	}
 
