@@ -55,6 +55,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TalkPropertiesEditionPart {
 
@@ -72,6 +73,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TalkPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -82,6 +84,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -99,6 +102,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -108,6 +112,9 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(ConferenceMessages.TalkPropertiesEditionPart_PropertiesGroupLabel);
@@ -127,6 +134,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createTitle_Text(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.FORM_KIND));
 		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -137,6 +145,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		title_.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -148,6 +157,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		title_.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -163,6 +173,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createTopicFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_TopicLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.topic, ConferenceViewsRepository.FORM_KIND));
@@ -186,6 +197,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.topic, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.type, ConferenceViewsRepository.FORM_KIND));
 		type = new EMFComboViewer(parent);
@@ -199,6 +211,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -211,6 +224,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createPresenterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_PresenterLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.presenter, ConferenceViewsRepository.FORM_KIND));
@@ -236,6 +250,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createCreatorFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_CreatorLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.creator, ConferenceViewsRepository.FORM_KIND));
@@ -259,6 +274,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.creator, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.documentation, ConferenceViewsRepository.FORM_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -276,6 +292,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
@@ -292,6 +309,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -303,6 +321,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getTitle_()
+	 * 
 	 */
 	public String getTitle_() {
 		return title_.getText();
@@ -312,6 +331,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setTitle_(String newValue)
+	 * 
 	 */
 	public void setTitle_(String newValue) {
 		if (newValue != null) {
@@ -333,6 +353,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getTopic()
+	 * 
 	 */
 	public EObject getTopic() {
 		if (topic.getSelection() instanceof StructuredSelection) {
@@ -359,6 +380,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setTopic(EObject newValue)
+	 * 
 	 */
 	public void setTopic(EObject newValue) {
 		if (newValue != null) {
@@ -381,6 +403,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#addFilterTopic(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTopic(ViewerFilter filter) {
 		topic.addFilter(filter);
@@ -390,6 +413,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#addBusinessFilterTopic(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTopic(ViewerFilter filter) {
 		topic.addBusinessRuleFilter(filter);
@@ -403,6 +427,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getType()
+	 * 
 	 */
 	public Enumerator getType() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) type.getSelection()).getFirstElement();
@@ -423,6 +448,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setType(Enumerator newValue)
+	 * 
 	 */
 	public void setType(Enumerator newValue) {
 		type.modelUpdating(new StructuredSelection(newValue));
@@ -436,6 +462,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getPresenter()
+	 * 
 	 */
 	public EObject getPresenter() {
 		if (presenter.getSelection() instanceof StructuredSelection) {
@@ -462,6 +489,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setPresenter(EObject newValue)
+	 * 
 	 */
 	public void setPresenter(EObject newValue) {
 		if (newValue != null) {
@@ -484,6 +512,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#addFilterPresenter(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToPresenter(ViewerFilter filter) {
 		presenter.addFilter(filter);
@@ -493,6 +522,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#addBusinessFilterPresenter(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToPresenter(ViewerFilter filter) {
 		presenter.addBusinessRuleFilter(filter);
@@ -506,6 +536,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getCreator()
+	 * 
 	 */
 	public EObject getCreator() {
 		if (creator.getSelection() instanceof StructuredSelection) {
@@ -532,6 +563,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setCreator(EObject newValue)
+	 * 
 	 */
 	public void setCreator(EObject newValue) {
 		if (newValue != null) {
@@ -554,6 +586,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#addFilterCreator(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToCreator(ViewerFilter filter) {
 		creator.addFilter(filter);
@@ -563,6 +596,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#addBusinessFilterCreator(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToCreator(ViewerFilter filter) {
 		creator.addBusinessRuleFilter(filter);
@@ -576,6 +610,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#getDocumentation()
+	 * 
 	 */
 	public String getDocumentation() {
 		return documentation.getText();
@@ -585,6 +620,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart#setDocumentation(String newValue)
+	 * 
 	 */
 	public void setDocumentation(String newValue) {
 		if (newValue != null) {
@@ -611,6 +647,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ConferenceMessages.Talk_Part_Title;

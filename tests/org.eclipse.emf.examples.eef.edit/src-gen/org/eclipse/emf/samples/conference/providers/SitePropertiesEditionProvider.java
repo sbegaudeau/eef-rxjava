@@ -19,6 +19,7 @@ import org.eclipse.emf.samples.conference.components.SitePropertiesEditionCompon
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class SitePropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -26,6 +27,7 @@ public class SitePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Site) && (ConferencePackage.eINSTANCE.getSite() == eObject.eClass());
@@ -35,6 +37,7 @@ public class SitePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (SitePropertiesEditionComponent.BASE_PART.equals(part));
@@ -45,6 +48,7 @@ public class SitePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Site) {
@@ -58,6 +62,7 @@ public class SitePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Site) {

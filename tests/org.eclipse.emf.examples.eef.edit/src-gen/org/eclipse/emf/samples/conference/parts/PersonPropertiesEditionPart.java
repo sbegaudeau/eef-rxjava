@@ -20,17 +20,20 @@ import org.eclipse.emf.ecore.EEnum;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public interface PersonPropertiesEditionPart {
 
 	/**
 	 * @return the firstname
+	 * 
 	 */
 	public String getFirstname();
 
 	/**
 	 * Defines a new firstname
 	 * @param newValue the new firstname to set
+	 * 
 	 */
 	public void setFirstname(String newValue);
 
@@ -41,12 +44,14 @@ public interface PersonPropertiesEditionPart {
 
 	/**
 	 * @return the lastname
+	 * 
 	 */
 	public String getLastname();
 
 	/**
 	 * Defines a new lastname
 	 * @param newValue the new lastname to set
+	 * 
 	 */
 	public void setLastname(String newValue);
 
@@ -57,12 +62,14 @@ public interface PersonPropertiesEditionPart {
 
 	/**
 	 * @return the age
+	 * 
 	 */
 	public String getAge();
 
 	/**
 	 * Defines a new age
 	 * @param newValue the new age to set
+	 * 
 	 */
 	public void setAge(String newValue);
 
@@ -73,6 +80,7 @@ public interface PersonPropertiesEditionPart {
 
 	/**
 	 * @return the gender
+	 * 
 	 */
 	public Enumerator getGender();
 
@@ -86,6 +94,7 @@ public interface PersonPropertiesEditionPart {
 	/**
 	 * Defines a new gender
 	 * @param newValue the new gender to set
+	 * 
 	 */
 	public void setGender(Enumerator newValue);
 
@@ -96,12 +105,14 @@ public interface PersonPropertiesEditionPart {
 
 	/**
 	 * @return the eclipseCommiter
+	 * 
 	 */
 	public Boolean getEclipseCommiter();
 
 	/**
 	 * Defines a new eclipseCommiter
 	 * @param newValue the new eclipseCommiter to set
+	 * 
 	 */
 	public void setEclipseCommiter(Boolean newValue);
 
@@ -112,12 +123,14 @@ public interface PersonPropertiesEditionPart {
 
 	/**
 	 * @return the isRegistered
+	 * 
 	 */
 	public Boolean getIsRegistered();
 
 	/**
 	 * Defines a new isRegistered
 	 * @param newValue the new isRegistered to set
+	 * 
 	 */
 	public void setIsRegistered(Boolean newValue);
 
@@ -134,6 +147,7 @@ public interface PersonPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

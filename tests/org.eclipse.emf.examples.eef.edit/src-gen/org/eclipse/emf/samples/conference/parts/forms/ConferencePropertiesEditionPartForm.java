@@ -55,6 +55,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class ConferencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ConferencePropertiesEditionPart {
 
@@ -71,6 +72,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public ConferencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -81,6 +83,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -98,6 +101,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -107,6 +111,9 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createLocalisationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section localisationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		localisationSection.setText(ConferenceMessages.ConferencePropertiesEditionPart_LocalisationGroupLabel);
@@ -122,6 +129,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		localisationSection.setClient(localisationGroup);
 	}
 
+	
 	protected void createPlaceText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.ConferencePropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference.place, ConferenceViewsRepository.FORM_KIND));
 		place = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -132,6 +140,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		place.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -143,6 +152,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		place.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -158,6 +168,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createSitesTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.sites = new ReferencesTable<Site>(ConferenceMessages.ConferencePropertiesEditionPart_SitesLabel, new ReferencesTableListener<Site>() {			
@@ -246,6 +257,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -257,6 +269,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getPlace()
+	 * 
 	 */
 	public String getPlace() {
 		return place.getText();
@@ -266,6 +279,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#setPlace(String newValue)
+	 * 
 	 */
 	public void setPlace(String newValue) {
 		if (newValue != null) {
@@ -287,6 +301,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getSitesToAdd()
+	 * 
 	 */
 	public List getSitesToAdd() {
 		return sitesEditUtil.getElementsToAdd();
@@ -296,6 +311,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getSitesToRemove()
+	 * 
 	 */
 	public List getSitesToRemove() {
 		return sitesEditUtil.getElementsToRemove();
@@ -305,6 +321,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getSitesToEdit()
+	 * 
 	 */
 	public Map getSitesToEdit() {
 		return sitesEditUtil.getElementsToRefresh();
@@ -314,6 +331,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getSitesToMove()
+	 * 
 	 */
 	public List getSitesToMove() {
 		return sitesEditUtil.getElementsToMove();
@@ -323,6 +341,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getSitesTable()
+	 * 
 	 */
 	public List getSitesTable() {
 		return sitesEditUtil.getVirtualList();
@@ -347,6 +366,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#updateSites(EObject newValue)
+	 * 
 	 */
 	public void updateSites(EObject newValue) {
 		if(sitesEditUtil != null){
@@ -359,6 +379,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#addFilterSites(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToSites(ViewerFilter filter) {
 		sitesFilters.add(filter);
@@ -368,6 +389,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#addBusinessFilterSites(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToSites(ViewerFilter filter) {
 		sitesBusinessFilters.add(filter);
@@ -377,6 +399,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#isContainedInSitesTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInSitesTable(EObject element) {
 		return sitesEditUtil.contains(element);
@@ -395,6 +418,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ConferenceMessages.Conference_Part_Title;

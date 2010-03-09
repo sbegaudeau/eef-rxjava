@@ -16,6 +16,7 @@ import org.eclipse.emf.samples.conference.ConferencePackage;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class ConferencePackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
@@ -23,6 +24,7 @@ public class ConferencePackagePropertiesEditionPolicyProvider extends StandardPr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return ConferencePackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || ConferencePackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());

@@ -37,6 +37,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SitePropertiesEditionPart {
 
@@ -50,6 +51,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public SitePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -60,6 +62,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -76,6 +79,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -87,6 +91,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(ConferenceMessages.SitePropertiesEditionPart_PropertiesGroupLabel);
@@ -100,6 +107,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createDocumentationTextarea(propertiesGroup);
 	}
 
+	
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, ConferenceMessages.SitePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Site.name, ConferenceViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -111,6 +119,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -126,6 +135,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -140,6 +150,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.name, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createDocumentationTextarea(Composite parent) {
 		Label documentationLabel = SWTUtils.createPartLabel(parent, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Site.documentation, ConferenceViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -160,6 +171,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -172,6 +184,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return name.getText();
@@ -181,6 +194,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -202,6 +216,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#getDocumentation()
+	 * 
 	 */
 	public String getDocumentation() {
 		return documentation.getText();
@@ -211,6 +226,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#setDocumentation(String newValue)
+	 * 
 	 */
 	public void setDocumentation(String newValue) {
 		if (newValue != null) {
@@ -239,6 +255,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ConferenceMessages.Site_Part_Title;

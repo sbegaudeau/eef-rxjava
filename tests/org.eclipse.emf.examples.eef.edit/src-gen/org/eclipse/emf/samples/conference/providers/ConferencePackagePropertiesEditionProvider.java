@@ -14,11 +14,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class ConferencePackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public ConferencePackagePropertiesEditionProvider() {
 		super();
@@ -32,11 +34,13 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Conference instances.
+	 * 
 	 */
 	protected ConferencePropertiesEditionProvider conferencePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Conference
+	 * 
 	 */
 	public ConferencePropertiesEditionProvider createConferencePropertiesEditionProvider() {
 		if (conferencePropertiesEditionProvider == null)
@@ -47,11 +51,13 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Person instances.
+	 * 
 	 */
 	protected PersonPropertiesEditionProvider personPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Person
+	 * 
 	 */
 	public PersonPropertiesEditionProvider createPersonPropertiesEditionProvider() {
 		if (personPropertiesEditionProvider == null)
@@ -62,11 +68,13 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Talk instances.
+	 * 
 	 */
 	protected TalkPropertiesEditionProvider talkPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Talk
+	 * 
 	 */
 	public TalkPropertiesEditionProvider createTalkPropertiesEditionProvider() {
 		if (talkPropertiesEditionProvider == null)
@@ -77,11 +85,13 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Topic instances.
+	 * 
 	 */
 	protected TopicPropertiesEditionProvider topicPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Topic
+	 * 
 	 */
 	public TopicPropertiesEditionProvider createTopicPropertiesEditionProvider() {
 		if (topicPropertiesEditionProvider == null)
@@ -92,11 +102,13 @@ public class ConferencePackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Site instances.
+	 * 
 	 */
 	protected SitePropertiesEditionProvider sitePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Site
+	 * 
 	 */
 	public SitePropertiesEditionProvider createSitePropertiesEditionProvider() {
 		if (sitePropertiesEditionProvider == null)

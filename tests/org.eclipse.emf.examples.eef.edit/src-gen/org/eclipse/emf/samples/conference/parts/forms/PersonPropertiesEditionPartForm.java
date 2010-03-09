@@ -52,6 +52,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PersonPropertiesEditionPart {
 
@@ -69,6 +70,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public PersonPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -79,6 +81,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -96,6 +99,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -107,6 +111,9 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createIdentityGroup(FormToolkit widgetFactory, final Composite view) {
 		Section identitySection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		identitySection.setText(ConferenceMessages.PersonPropertiesEditionPart_IdentityGroupLabel);
@@ -124,6 +131,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		identitySection.setClient(identityGroup);
 	}
 
+	
 	protected void createFirstnameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.firstname, ConferenceViewsRepository.FORM_KIND));
 		firstname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -134,6 +142,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		firstname.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -145,6 +154,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		firstname.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -158,6 +168,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.firstname, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createLastnameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.lastname, ConferenceViewsRepository.FORM_KIND));
 		lastname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -168,6 +179,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		lastname.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -179,6 +191,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		lastname.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -192,6 +205,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.lastname, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createAgeText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.age, ConferenceViewsRepository.FORM_KIND));
 		age = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -202,6 +216,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		age.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -213,6 +228,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		age.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -226,6 +242,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.age, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createGenderEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.gender, ConferenceViewsRepository.FORM_KIND));
 		gender = new EMFComboViewer(parent);
@@ -239,6 +256,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -249,6 +267,9 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.gender, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createEclipseStatusGroup(FormToolkit widgetFactory, final Composite view) {
 		Section eclipseStatusSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		eclipseStatusSection.setText(ConferenceMessages.PersonPropertiesEditionPart_EclipseStatusGroupLabel);
@@ -264,6 +285,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		eclipseStatusSection.setClient(eclipseStatusGroup);
 	}
 
+	
 	protected void createEclipseCommiterCheckbox(FormToolkit widgetFactory, Composite parent) {
 		eclipseCommiter = widgetFactory.createButton(parent, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel, SWT.CHECK);
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
@@ -272,6 +294,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -285,6 +308,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.eclipseCommiter, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createIsRegisteredCheckbox(FormToolkit widgetFactory, Composite parent) {
 		isRegistered = widgetFactory.createButton(parent, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel, SWT.CHECK);
 		isRegistered.addSelectionListener(new SelectionAdapter() {
@@ -293,6 +317,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -312,6 +337,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -323,6 +349,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getFirstname()
+	 * 
 	 */
 	public String getFirstname() {
 		return firstname.getText();
@@ -332,6 +359,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setFirstname(String newValue)
+	 * 
 	 */
 	public void setFirstname(String newValue) {
 		if (newValue != null) {
@@ -353,6 +381,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getLastname()
+	 * 
 	 */
 	public String getLastname() {
 		return lastname.getText();
@@ -362,6 +391,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setLastname(String newValue)
+	 * 
 	 */
 	public void setLastname(String newValue) {
 		if (newValue != null) {
@@ -383,6 +413,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getAge()
+	 * 
 	 */
 	public String getAge() {
 		return age.getText();
@@ -392,6 +423,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setAge(String newValue)
+	 * 
 	 */
 	public void setAge(String newValue) {
 		if (newValue != null) {
@@ -413,6 +445,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getGender()
+	 * 
 	 */
 	public Enumerator getGender() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) gender.getSelection()).getFirstElement();
@@ -433,6 +466,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setGender(Enumerator newValue)
+	 * 
 	 */
 	public void setGender(Enumerator newValue) {
 		gender.modelUpdating(new StructuredSelection(newValue));
@@ -446,6 +480,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getEclipseCommiter()
+	 * 
 	 */
 	public Boolean getEclipseCommiter() {
 		return Boolean.valueOf(eclipseCommiter.getSelection());
@@ -455,6 +490,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setEclipseCommiter(Boolean newValue)
+	 * 
 	 */
 	public void setEclipseCommiter(Boolean newValue) {
 		if (newValue != null) {
@@ -472,6 +508,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#getIsRegistered()
+	 * 
 	 */
 	public Boolean getIsRegistered() {
 		return Boolean.valueOf(isRegistered.getSelection());
@@ -481,6 +518,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart#setIsRegistered(Boolean newValue)
+	 * 
 	 */
 	public void setIsRegistered(Boolean newValue) {
 		if (newValue != null) {
@@ -503,6 +541,7 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ConferenceMessages.Person_Part_Title;

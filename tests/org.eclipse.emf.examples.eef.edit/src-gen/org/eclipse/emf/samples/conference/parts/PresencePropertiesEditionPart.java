@@ -23,22 +23,25 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public interface PresencePropertiesEditionPart {
 
 	/**
 	 * @return the assists to add
+	 * 
 	 */
 	public List getAssistsToAdd();
 
 	/**
 	 * @return the assists to remove
+	 * 
 	 */
 	public List getAssistsToRemove();
 
 	/**
 	 * @return the current assists table
-	 */
+	 * 
 	public List getAssistsTable();
 
 	/**
@@ -52,6 +55,7 @@ public interface PresencePropertiesEditionPart {
 	/**
 	 * Update the assists
 	 * @param newValue the assists to update
+	 * 
 	 */
 	public void updateAssists(EObject newValue);
 
@@ -61,6 +65,7 @@ public interface PresencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAssists(ViewerFilter filter);
 
@@ -70,11 +75,13 @@ public interface PresencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAssists(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the assists table
+	 * 
 	 */
 	public boolean isContainedInAssistsTable(EObject element);
 
@@ -91,6 +98,7 @@ public interface PresencePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

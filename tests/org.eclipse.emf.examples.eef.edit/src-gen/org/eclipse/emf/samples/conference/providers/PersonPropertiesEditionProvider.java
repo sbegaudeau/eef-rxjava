@@ -21,6 +21,7 @@ import org.eclipse.emf.samples.conference.components.PersonPropertiesEditionComp
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class PersonPropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -28,6 +29,7 @@ public class PersonPropertiesEditionProvider implements IPropertiesEditionProvid
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Person) && (ConferencePackage.eINSTANCE.getPerson() == eObject.eClass());
@@ -37,6 +39,7 @@ public class PersonPropertiesEditionProvider implements IPropertiesEditionProvid
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (PersonBasePropertiesEditionComponent.BASE_PART.equals(part) || PersonPresencePropertiesEditionComponent.PRESENCE_PART.equals(part));
@@ -47,6 +50,7 @@ public class PersonPropertiesEditionProvider implements IPropertiesEditionProvid
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Person) {
@@ -60,6 +64,7 @@ public class PersonPropertiesEditionProvider implements IPropertiesEditionProvid
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Person) {

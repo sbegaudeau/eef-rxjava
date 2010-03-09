@@ -24,17 +24,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public interface ConferencePropertiesEditionPart {
 
 	/**
 	 * @return the place
+	 * 
 	 */
 	public String getPlace();
 
 	/**
 	 * Defines a new place
 	 * @param newValue the new place to set
+	 * 
 	 */
 	public void setPlace(String newValue);
 
@@ -45,27 +48,31 @@ public interface ConferencePropertiesEditionPart {
 
 	/**
 	 * @return the sites to add
+	 * 
 	 */
 	public List getSitesToAdd();
 
 	/**
 	 * @return the sites to remove
+	 * 
 	 */
 	public List getSitesToRemove();
 
 	/**
 	 * @return the sites to move
+	 * 
 	 */
 	public List getSitesToMove();
 
 	/**
 	 * @return the sites to edit
+	 * 
 	 */
 	public Map getSitesToEdit();
 
 	/**
 	 * @return the current sites table
-	 */
+	 * 
 	public List getSitesTable();
 
 	/**
@@ -79,6 +86,7 @@ public interface ConferencePropertiesEditionPart {
 	/**
 	 * Update the sites
 	 * @param newValue the sites to update
+	 * 
 	 */
 	public void updateSites(EObject newValue);
 
@@ -88,6 +96,7 @@ public interface ConferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToSites(ViewerFilter filter);
 
@@ -97,11 +106,13 @@ public interface ConferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToSites(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the sites table
+	 * 
 	 */
 	public boolean isContainedInSitesTable(EObject element);
 
@@ -118,6 +129,7 @@ public interface ConferencePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

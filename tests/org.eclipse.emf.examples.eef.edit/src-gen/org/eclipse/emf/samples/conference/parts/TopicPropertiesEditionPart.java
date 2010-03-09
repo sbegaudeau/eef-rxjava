@@ -19,17 +19,20 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public interface TopicPropertiesEditionPart {
 
 	/**
 	 * @return the description
+	 * 
 	 */
 	public String getDescription();
 
 	/**
 	 * Defines a new description
 	 * @param newValue the new description to set
+	 * 
 	 */
 	public void setDescription(String newValue);
 
@@ -40,12 +43,14 @@ public interface TopicPropertiesEditionPart {
 
 	/**
 	 * @return the references
+	 * 
 	 */
 	public EList getReferences();
 
 	/**
 	 * Defines a new references
 	 * @param newValue the new references to set
+	 * 
 	 */
 	public void setReferences(EList newValue);
 
@@ -56,12 +61,14 @@ public interface TopicPropertiesEditionPart {
 
 	/**
 	 * @return the documentation
+	 * 
 	 */
 	public String getDocumentation();
 
 	/**
 	 * Defines a new documentation
 	 * @param newValue the new documentation to set
+	 * 
 	 */
 	public void setDocumentation(String newValue);
 
@@ -78,6 +85,7 @@ public interface TopicPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

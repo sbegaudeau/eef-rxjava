@@ -52,6 +52,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TopicPropertiesEditionPart {
 
@@ -68,6 +69,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TopicPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -78,6 +80,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -95,6 +98,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -104,6 +108,9 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(ConferenceMessages.TopicPropertiesEditionPart_PropertiesGroupLabel);
@@ -120,6 +127,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.description, ConferenceViewsRepository.FORM_KIND));
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -130,6 +138,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		description.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -141,6 +150,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		description.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -154,6 +164,9 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Topic.description, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createReferencesMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		references = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData referencesData = new GridData(GridData.FILL_HORIZONTAL);
@@ -168,6 +181,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EObject topic = PropertiesContextService.getInstance().lastElement();
@@ -185,6 +199,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		});
 	}
 
+	
 	protected void createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.documentation, ConferenceViewsRepository.FORM_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -202,6 +217,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
@@ -218,6 +234,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -229,6 +246,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart#getDescription()
+	 * 
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -238,6 +256,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart#setDescription(String newValue)
+	 * 
 	 */
 	public void setDescription(String newValue) {
 		if (newValue != null) {
@@ -259,6 +278,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart#getReferences()
+	 * 
 	 */
 	public EList getReferences() {
 		return referencesList;
@@ -268,6 +288,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart#setReferences(EList newValue)
+	 * 
 	 */
 	public void setReferences(EList newValue) {
 		referencesList = newValue;
@@ -286,6 +307,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart#getDocumentation()
+	 * 
 	 */
 	public String getDocumentation() {
 		return documentation.getText();
@@ -295,6 +317,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart#setDocumentation(String newValue)
+	 * 
 	 */
 	public void setDocumentation(String newValue) {
 		if (newValue != null) {
@@ -321,6 +344,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ConferenceMessages.Topic_Part_Title;

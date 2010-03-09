@@ -24,17 +24,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the title
+	 * 
 	 */
 	public String getTitle_();
 
 	/**
 	 * Defines a new title
 	 * @param newValue the new title to set
+	 * 
 	 */
 	public void setTitle_(String newValue);
 
@@ -45,6 +48,7 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the topic
+	 * 
 	 */
 	public EObject getTopic();
 
@@ -58,12 +62,14 @@ public interface TalkPropertiesEditionPart {
 	/**
 	 * Defines a new topic
 	 * @param newValue the new topic to set
+	 * 
 	 */
 	public void setTopic(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setTopicButtonMode(ButtonsModeEnum newValue);
 
@@ -73,6 +79,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTopic(ViewerFilter filter);
 
@@ -82,6 +89,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTopic(ViewerFilter filter);
 
@@ -92,6 +100,7 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the type
+	 * 
 	 */
 	public Enumerator getType();
 
@@ -105,6 +114,7 @@ public interface TalkPropertiesEditionPart {
 	/**
 	 * Defines a new type
 	 * @param newValue the new type to set
+	 * 
 	 */
 	public void setType(Enumerator newValue);
 
@@ -115,6 +125,7 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the presenter
+	 * 
 	 */
 	public EObject getPresenter();
 
@@ -128,12 +139,14 @@ public interface TalkPropertiesEditionPart {
 	/**
 	 * Defines a new presenter
 	 * @param newValue the new presenter to set
+	 * 
 	 */
 	public void setPresenter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setPresenterButtonMode(ButtonsModeEnum newValue);
 
@@ -143,6 +156,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToPresenter(ViewerFilter filter);
 
@@ -152,6 +166,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToPresenter(ViewerFilter filter);
 
@@ -162,6 +177,7 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the creator
+	 * 
 	 */
 	public EObject getCreator();
 
@@ -175,12 +191,14 @@ public interface TalkPropertiesEditionPart {
 	/**
 	 * Defines a new creator
 	 * @param newValue the new creator to set
+	 * 
 	 */
 	public void setCreator(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setCreatorButtonMode(ButtonsModeEnum newValue);
 
@@ -190,6 +208,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToCreator(ViewerFilter filter);
 
@@ -199,6 +218,7 @@ public interface TalkPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToCreator(ViewerFilter filter);
 
@@ -209,12 +229,14 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * @return the documentation
+	 * 
 	 */
 	public String getDocumentation();
 
 	/**
 	 * Defines a new documentation
 	 * @param newValue the new documentation to set
+	 * 
 	 */
 	public void setDocumentation(String newValue);
 
@@ -231,6 +253,7 @@ public interface TalkPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

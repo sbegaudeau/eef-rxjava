@@ -50,6 +50,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
@@ -65,6 +66,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public PresencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -75,6 +77,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -92,6 +95,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -101,6 +105,9 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createTalksGroup(FormToolkit widgetFactory, final Composite view) {
 		Section talksSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		talksSection.setText(ConferenceMessages.PresencePropertiesEditionPart_TalksGroupLabel);
@@ -115,6 +122,9 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		talksSection.setClient(talksGroup);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.assists = new ReferencesTable<Talk>(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
 			public void handleAdd() {
@@ -197,6 +207,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -208,6 +219,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getAssistsToAdd()
+	 * 
 	 */
 	public List getAssistsToAdd() {
 		return assistsEditUtil.getElementsToAdd();
@@ -217,6 +229,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getAssistsToRemove()
+	 * 
 	 */
 	public List getAssistsToRemove() {
 		return assistsEditUtil.getElementsToRemove();
@@ -226,6 +239,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getAssistsTable()
+	 * 
 	 */
 	public List getAssistsTable() {
 		return assistsEditUtil.getVirtualList();
@@ -251,6 +265,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#updateAssists(EObject newValue)
+	 * 
 	 */
 	public void updateAssists(EObject newValue) {
 		if(assistsEditUtil != null){
@@ -263,6 +278,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#addFilterAssists(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAssists(ViewerFilter filter) {
 		assistsFilters.add(filter);
@@ -272,6 +288,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#addBusinessFilterAssists(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAssists(ViewerFilter filter) {
 		assistsBusinessFilters.add(filter);
@@ -281,6 +298,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#isContainedInAssistsTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAssistsTable(EObject element) {
 		return assistsEditUtil.contains(element);
@@ -299,6 +317,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ConferenceMessages.Presence_Part_Title;

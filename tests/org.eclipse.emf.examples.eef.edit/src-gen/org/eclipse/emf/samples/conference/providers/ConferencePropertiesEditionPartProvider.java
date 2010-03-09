@@ -29,13 +29,14 @@ import org.eclipse.emf.samples.conference.parts.impl.TopicPropertiesEditionPartI
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- *
+ * 
  */
 public class ConferencePropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 * 
 	 */
 	public boolean provides(java.lang.Class key) {
 		return key == ConferenceViewsRepository.class;
@@ -45,6 +46,7 @@ public class ConferencePropertiesEditionPartProvider implements IPropertiesEditi
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
 		if (key == ConferenceViewsRepository.Conference.class) {

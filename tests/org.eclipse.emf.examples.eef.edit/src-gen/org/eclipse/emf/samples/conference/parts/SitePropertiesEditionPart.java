@@ -19,17 +19,20 @@ package org.eclipse.emf.samples.conference.parts;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * 
  */
 public interface SitePropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -40,12 +43,14 @@ public interface SitePropertiesEditionPart {
 
 	/**
 	 * @return the documentation
+	 * 
 	 */
 	public String getDocumentation();
 
 	/**
 	 * Defines a new documentation
 	 * @param newValue the new documentation to set
+	 * 
 	 */
 	public void setDocumentation(String newValue);
 
@@ -62,6 +67,7 @@ public interface SitePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 
