@@ -62,6 +62,9 @@ protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
+	/**
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 	protected void create[editor.name.toJavaClassifier()/]MultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		[editor.name.toJavaIdentifier()/] = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		[if (editor.readOnly)]
@@ -80,6 +83,7 @@ protected Text [editor.name.toJavaIdentifier()/];
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EObject [pec.model.name.toJavaIdentifier()/] = PropertiesContextService.getInstance().lastElement();

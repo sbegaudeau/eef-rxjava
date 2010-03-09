@@ -39,6 +39,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Combo')]
+	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected void create[editor.name.toJavaClassifier()/]EMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);

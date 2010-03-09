@@ -61,17 +61,20 @@ import [vr.vrQualifiedClass()/];
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
 [for (view : View | pec.views) ? (view.explicit)]
 	/**
 	 * The [view.viewKey(pec)/] part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private [view.pepInterface()/] [view.viewIdentifier(pec)/];
 
 	/**
 	 * The [pec.subPECClass(view)/] sub component
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [pec.subPECClass(view)/] [pec.subPECClass(view).toLowerFirst()/];
 
@@ -81,11 +84,13 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 		[if (view.isA1stLevelReferencedView(pec))]
 	/**
 	 * The [subPec.pecClass()/] sub component
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [subPec.pecClass()/] [subPec.pecClass().toLowerFirst()/];
 		[else]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
 		[/if]
@@ -94,8 +99,8 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param [pec.model.name.toJavaIdentifier()/]
-	 *            the EObject to edit
+	 * @param [pec.model.name.toJavaIdentifier()/] the EObject to edit
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [pec.pecClass()/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
 		super(editing_mode);
@@ -124,6 +129,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 [for (view : View | pec.views) ? (view.explicit)]
@@ -141,6 +147,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 [for (view : View | pec.views) ? (view.explicit)]
@@ -157,6 +164,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 [for (view : View | pec.views)]

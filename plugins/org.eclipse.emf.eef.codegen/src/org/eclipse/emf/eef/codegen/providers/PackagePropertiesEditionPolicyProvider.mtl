@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolic
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
@@ -34,6 +35,7 @@ public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean provides(EObject eObject) {
 		return [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.equals(eObject.eClass().getEPackage()) || [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());

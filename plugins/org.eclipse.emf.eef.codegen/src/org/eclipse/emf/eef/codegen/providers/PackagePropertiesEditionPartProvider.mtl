@@ -32,13 +32,14 @@ import [v.vrPackage()/].parts.impl.[view.pepClass()/];
 
 /**
  * [v.associatedGenModel().authorText().trim()/]
- *
+ * [v.associatedGenModel().generationMark()/]
  */
 public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 * [v.associatedGenModel().generationMark()/]
 	 */
 	public boolean provides(java.lang.Class key) {
 		return key == [v.vrClass()/].class;
@@ -48,6 +49,7 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * [v.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
 		[for (view : View | v.eAllContents(views::View)) ? (view.elements->size() > 0)]

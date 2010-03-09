@@ -27,6 +27,9 @@ import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'HorizontalBox')]
+	/**
+	 * [container.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 	protected void create[container.name.toJavaClassifier()/]HBox(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();

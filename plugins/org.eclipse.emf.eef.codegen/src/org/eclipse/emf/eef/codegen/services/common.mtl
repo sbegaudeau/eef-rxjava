@@ -221,6 +221,7 @@
 [comment ----- Model Navigation ---------/]
 [query public hasModelNavigation(pee : PropertiesEditionElement) : Boolean = 
 	not pee.navigation.oclIsUndefined()/]
+	
 
 [comment --------------- Common templates --------------- /]
 [template public ecorePackageSignature(e : EStructuralFeature)]
@@ -271,6 +272,18 @@ set[editor.model.ecorePackageSignature()/]()
 [else]
 /**
  * Generated with Acceleo
+ */
+[/if]
+[/template]
+
+[template public generationMark(eefGenModel : EEFGenModel) ]
+[if (eefGenModel.useJMergeForUserCode)]@generated[/if]
+[/template]
+
+[template public generationComment(eefGenModel : EEFGenModel) ]
+[if (eefGenModel.useJMergeForUserCode)]
+/**
+ * [eefGenModel.generationMark()/]
  */
 [/if]
 [/template]

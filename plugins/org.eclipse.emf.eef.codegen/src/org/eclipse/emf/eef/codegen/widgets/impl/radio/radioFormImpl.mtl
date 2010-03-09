@@ -34,6 +34,9 @@ protected RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Radio')]
+	/**
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 	protected void create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
 		[editor.name.toJavaIdentifier()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
 		[if (editor.readOnly)]

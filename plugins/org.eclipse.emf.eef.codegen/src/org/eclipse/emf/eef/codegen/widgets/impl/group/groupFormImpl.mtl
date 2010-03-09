@@ -23,6 +23,9 @@
 [/template]
 
 [template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Group')]
+	/**
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 	protected void create[editor.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite [editor.widgetContainer().trim()/]) {
 		Section [editor.name.toJavaIdentifier()/]Section = widgetFactory.createSection([editor.widgetContainer().trim()/], Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		[editor.name.toJavaIdentifier()/]Section.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);

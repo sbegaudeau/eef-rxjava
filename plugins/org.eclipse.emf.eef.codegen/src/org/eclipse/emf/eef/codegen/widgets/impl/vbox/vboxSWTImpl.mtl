@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox;
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'VerticalBox')]
+	[container.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected void create[container.name.toJavaClassifier()/]VBox(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();

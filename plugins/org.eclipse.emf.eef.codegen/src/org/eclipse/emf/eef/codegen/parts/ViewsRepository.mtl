@@ -26,6 +26,7 @@ package [viewRepository.partsPackage()/];
 
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
+ * [viewRepository.associatedGenModel().generationMark()/]
  */
 public class [viewRepository.vrClass()/] {
 
@@ -57,6 +58,7 @@ public class [viewRepository.vrClass()/] {
 
 	/**
 	 * [view.name/] view descriptor
+	 * [view.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	public static class [view.name.toJavaClassifier()/] {
 [if (view.oclIsTypeOf(views::CustomView))]
@@ -76,6 +78,7 @@ public class [viewRepository.vrClass()/] {
  /]
 [template public viewElementDescriptor(viewElement : ViewElement)]
 [if (viewElement.oclIsTypeOf(views::ElementEditor))]
+[viewElement.owningViewsRepository().associatedGenModel().generationComment()/]
 public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIdentifier()/] = "[viewElement.oclAsType(views::ElementEditor).qualifiedIdentifier/]";
 [elseif (viewElement.oclIsTypeOf(views::CustomElementEditor))]
 // [protected ('for '.concat(viewElement.name).concat(' ElementEditor key'))]

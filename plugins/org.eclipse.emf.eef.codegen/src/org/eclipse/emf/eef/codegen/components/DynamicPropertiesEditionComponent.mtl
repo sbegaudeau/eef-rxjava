@@ -49,6 +49,7 @@ import [subPec.subPECQualifiedClass(subView)/];
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionComponent {
 
@@ -58,17 +59,20 @@ public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionC
 
 	/**
 	 * The EObject to edit
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private [pec.model.name/] [pec.model.name.toJavaIdentifier()/];
 
 	/**
 	 * The [topLevelView.viewKey(pec)/] part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private [topLevelView.pepInterface()/] [topLevelView.viewIdentifier(pec)/];
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#partsList()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String['['/][']'/] partsList() {
 		return parts;
@@ -84,6 +88,7 @@ Implemented later ...
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
 
@@ -92,8 +97,8 @@ Implemented later ...
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param [pec.model.name.toJavaIdentifier()/]
-	 *            the EObject to edit
+	 * @param [pec.model.name.toJavaIdentifier()/] the EObject to edit
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [pec.subPECClass(topLevelView)/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
 		super(editing_mode);
@@ -119,6 +124,7 @@ Implemented later ...
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *  getPropertiesEditionPart(int, java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ([topLevelView.viewPartConstant(pec)/].equals(key) && [pec.model.name.toJavaIdentifier()/] == null) {
@@ -135,6 +141,7 @@ Implemented later ...
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#translatePart(java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public java.lang.Class translatePart(String key) {
 		if ([topLevelView.viewPartConstant(pec)/].equals(key))
@@ -146,6 +153,7 @@ Implemented later ...
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#mustBeComposed(java.lang.Class, int)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean mustBeComposed(java.lang.Class key, int kind) {
 		return [for (view : View | pec.dynamicViews(topLevelView)) separator (' || ')]key == [view.editorID()/].class[/for];
@@ -156,6 +164,7 @@ Implemented later ...
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent
 	 *  #initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == [topLevelView.editorID()/].class) {

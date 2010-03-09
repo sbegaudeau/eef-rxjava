@@ -52,24 +52,30 @@ import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
  * [peContext.associatedGenModel().authorText().trim()/]
  */
 public class [pec.propertySection(view)/] extends AbstractPropertySection implements IFilter {
-
+	
+	[peContext.associatedGenModel().generationComment()/]
 	private Composite parent;
+	
+	[peContext.associatedGenModel().generationComment()/]
 	private IPropertiesEditionComponent propertiesEditionComponent;
 
 	/**
 	 * The current selected object or the first object in the selection when
 	 * multiple objects are selected.
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected EObject eObject;
 
 	/**
 	 * The view manager
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private IPropertiesEditionPart editionPart = null;
 
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
@@ -79,6 +85,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#setInput(org.eclipse.ui.IWorkbenchPart,
 	 *      org.eclipse.jface.viewers.ISelection)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
@@ -125,6 +132,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#dispose()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void dispose() {
 		super.dispose();
@@ -139,6 +147,7 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean select(Object toTest) {
 		EObject eObjectToTest = resolveSemanticObject(toTest);

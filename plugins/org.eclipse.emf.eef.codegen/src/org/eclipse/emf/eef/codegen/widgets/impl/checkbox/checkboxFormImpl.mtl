@@ -28,6 +28,7 @@ protected Button [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Checkbox')]
+	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected void create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
 		[editor.name.toJavaIdentifier()/] = widgetFactory.createButton(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], SWT.CHECK);
 		[if (editor.readOnly)]
@@ -40,6 +41,7 @@ protected Button [editor.name.toJavaIdentifier()/];
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	[editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)

@@ -157,25 +157,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark().trim()/]
  */
 public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent {
 
+	[peContext.associatedGenModel().generationComment()/]
 	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
 
+	[peContext.associatedGenModel().generationComment()/]
 	private String['['/][']'/] parts = {[view.viewPartConstant(pec)/]};
 
 	/**
 	 * The EObject to edit
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private [pec.model.name/] [pec.model.name.toJavaIdentifier()/];
 
 	/**
 	 * The [view.viewKey(pec)/] part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [view.pepInterface()/] [view.viewIdentifier(pec)/];
 
 	/**
 	 * Default constructor
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [pec.subPECClass(view)/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
 		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
@@ -192,6 +198,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -200,6 +207,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * [peContext.associatedGenModel().generationMark()/]
 			 */
 			public void notifyChanged(final Notification msg) {
 				if ([view.viewIdentifier(pec)/] == null)
@@ -228,6 +236,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 
 	/**
 	 * Used to update the views
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
@@ -242,6 +251,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public java.lang.Class translatePart(String key) {
 		if ([view.viewPartConstant(pec)/].equals(key))
@@ -253,6 +263,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String['['/][']'/] partsList() {
 		return parts;
@@ -263,6 +274,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ([pec.model.name.toJavaIdentifier()/] != null && [view.viewPartConstant(pec)/].equals(key)) {
@@ -283,6 +295,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == [view.editorID()/].class)
@@ -294,6 +307,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -333,6 +347,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -359,6 +374,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof [pec.model.name/]) {
@@ -384,6 +400,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -422,6 +439,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean isRequired(String key, int kind) {
 		return [for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | f.model.required)) separator (' || ')]key == [pee.views->first().editorID()/][/for];
@@ -433,6 +451,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getHelpContent(String key, int kind) {
 		[for (pee : PropertiesEditionElement | pec.properties.oclAsType(components::PropertiesEditionElement)->select(f : components::PropertiesEditionElement | not f.helpText().oclIsUndefined() and not (f.helpText().trim() = 'null')))]
@@ -447,6 +466,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -481,6 +501,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -497,32 +518,11 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		return validate;
 	}
 
-[comment] Work on validation
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateRequiredFeatures()
-	 */
-	public Diagnostic validateRequiredFeatures() {
-		BasicDiagnostic result = new BasicDiagnostic(Diagnostic.OK, "EEF Validation", Status.OK,
-				"No problem detected", null);
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (editionElement.model.required)]
-		if ([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/] == null || [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/].equals("")) //$NON-NLS-1$
-			result.add(new BasicDiagnostic(Diagnostic.ERROR, "EEF Validation", Status.ERROR, 
-				NLS.bind([editionElement.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RequiredFeatureMessage, "[editionElement.views->first().name.toJavaIdentifier()/]"), null)); //$NON-NLS-1$ 
-[/for]
-[if (view.eAllContents(views::CustomElementEditor)->notEmpty())]
-		// [protected ('additional requirement checks')]
-		
-		// [/protected]
-
-[/if]
-		return result;
-	}[/comment]
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -533,6 +533,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTabText(String p_key) {
 		return [view.viewIdentifier(pec)/].getTitle();

@@ -23,6 +23,9 @@
 [/template]
 
 [template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Group')]
+	/**
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 	protected void create[editor.name.toJavaClassifier()/]Group(Composite parent) {
 		Group [editor.name.toJavaIdentifier()/]Group = new Group(parent, SWT.NONE);
 		[editor.name.toJavaIdentifier()/]Group.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);

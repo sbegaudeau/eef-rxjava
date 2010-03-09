@@ -30,11 +30,13 @@ import [component.model.completePackage()/].providers.[component.pecProviderClas
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [peContext.pecPackageProviderClass()/] extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider() {
 		super();
@@ -47,11 +49,13 @@ public class [peContext.pecPackageProviderClass()/] extends ComposedPropertiesEd
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * [component.model.name/] instances.
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [component.pecProviderClass()/] [component.pecProviderClass().toJavaIdentifier()/];
 
 	/**
 	 * This creates an PropertiesEditionProvider for a [component.model.name/]
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [component.pecProviderClass()/] create[component.pecProviderClass()/]() {
 		if ([component.pecProviderClass().toJavaIdentifier()/] == null)

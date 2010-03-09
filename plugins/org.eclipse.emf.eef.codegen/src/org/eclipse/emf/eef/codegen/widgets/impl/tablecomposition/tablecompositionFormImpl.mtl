@@ -60,6 +60,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'TableComposition')]
 	/**
 	 * @param container
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite container) {
 		Composite tableContainer = widgetFactory.createComposite(container, SWT.NONE);
@@ -97,6 +98,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			/**
 			 * {@inheritDoc}
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			@Override
 			public Object[ '[' /][ ']' /] getElements(Object object) {
@@ -144,6 +146,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 
 	/**
 	 * @param container
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]Panel(FormToolkit widgetFactory, Composite container) {
 		Composite [editor.name.toJavaIdentifier()/]Panel = widgetFactory.createComposite(container, SWT.NONE);
@@ -163,6 +166,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addTo[editor.name.toJavaClassifier()/]();
@@ -181,6 +185,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				removeFrom[editor.name.toJavaClassifier()/]();
@@ -200,6 +205,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				edit[editor.name.toJavaClassifier()/]();
@@ -210,7 +216,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
@@ -246,7 +252,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]() {
 		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
@@ -266,7 +272,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]() {
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
@@ -321,6 +327,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedTableComposition')]
 	/**
 	 * @param container
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
@@ -344,7 +351,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
@@ -356,7 +363,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
@@ -391,7 +398,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
@@ -404,7 +411,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]

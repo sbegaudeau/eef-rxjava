@@ -27,6 +27,7 @@
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Checkbox')]
+	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected void create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
 		[editor.name.toJavaIdentifier()/] = new Button(parent, SWT.CHECK);
 		[editor.name.toJavaIdentifier()/].setText([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);

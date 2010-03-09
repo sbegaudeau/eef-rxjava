@@ -61,6 +61,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'TableComposition')]
 	/**
 	 * @param container
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]TableComposition(Composite container) {
 		Composite tableContainer = new Composite(container, SWT.NONE);
@@ -141,6 +142,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 	/**
 	 * @param container
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]Panel(Composite container) {
 		Composite [editor.name.toJavaIdentifier()/]Panel = new Composite(container, SWT.NONE);
@@ -180,6 +182,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				removeFrom[editor.name.toJavaClassifier()/]();
@@ -200,6 +203,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				edit[editor.name.toJavaClassifier()/]();
@@ -210,7 +214,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 
@@ -247,7 +251,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]() {
 
@@ -267,7 +271,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]() {
 
@@ -323,6 +327,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedTableComposition')]
 	/**
 	 * @param container
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]AdvancedTableComposition(Composite parent) {
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
@@ -346,7 +351,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
@@ -358,7 +363,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 
@@ -394,7 +399,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 
@@ -408,7 +413,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	}
 
 	/**
-	 * 
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 

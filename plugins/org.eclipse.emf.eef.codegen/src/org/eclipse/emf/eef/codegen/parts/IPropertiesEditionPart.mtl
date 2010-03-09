@@ -39,6 +39,7 @@ import java.util.Map;
 
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
+ * [viewRepository.associatedGenModel().generationMark()/]
  */
 public interface [view.pepInterface()/] {
 
@@ -62,6 +63,7 @@ public interface [view.pepInterface()/] {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * [viewRepository.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle();
 
@@ -83,6 +85,7 @@ package [view.partsPackage()/];
 
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
+ * [viewRepository.associatedGenModel().generationMark()/]
  */
 public interface [view.pepInterface()/] {
 
@@ -90,6 +93,7 @@ public interface [view.pepInterface()/] {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * [viewRepository.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle();
 

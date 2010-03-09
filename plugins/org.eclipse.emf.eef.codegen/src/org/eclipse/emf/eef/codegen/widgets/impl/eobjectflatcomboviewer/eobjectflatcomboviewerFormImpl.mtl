@@ -44,6 +44,7 @@ protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
 	/**
 	 * @param [editor.widgetContainer().trim()/]
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));

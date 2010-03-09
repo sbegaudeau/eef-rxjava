@@ -90,49 +90,56 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public getterForSubViewSignatureDocumentation(view : View)]
 	/**
 	 * @return the [view.name/] SubView
+	 * [view.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterForReferencedViewSignatureDocumentation(view : View)]
 /**
 	 * @return the [view.name/] referenced view
+	 * [view.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return the [elementEditor.name/]
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterAddSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return the [elementEditor.name/] to add
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterRemoveSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return the [elementEditor.name/] to remove
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterMoveSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return the [elementEditor.name/] to move
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterEditSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return the [elementEditor.name/] to edit
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
 [template public getterTableListSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return the current [elementEditor.name/] table
-	 */
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 [/template]
 
 [comment ===== error message handling methods ======= /]
@@ -166,6 +173,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	/**
 	 * Defines a new [elementEditor.name/]
 	 * @param newValue the new [elementEditor.name/] to set
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -173,6 +181,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -180,6 +189,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	/**
 	 * Update the [elementEditor.name/]
 	 * @param newValue the [elementEditor.name/] to update
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -190,6 +200,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -204,6 +215,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -214,6 +226,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public isContainedInTableSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
 	 * @return true if the given element is contained inside the [elementEditor.name/] table
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -255,6 +268,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewCompletePackageGetter()/]
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -263,6 +277,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#get[view.name.toJavaClassifier()/]SubView()
+	 * [view.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -271,6 +286,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#get[view.name.toJavaClassifier()/]ReferencedView()
+	 * [view.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -279,6 +295,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToAdd()
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -287,6 +304,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToRemove()
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -295,6 +313,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToMove()
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -303,6 +322,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToEdit()
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -311,6 +331,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]Table()
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -370,6 +391,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#[elementEditor.viewCompletePackageSetter()/]
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -390,6 +412,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#update[elementEditor.viewPackageSignature()/](EObject newValue)
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -408,6 +431,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#addFilter[elementEditor.viewPackageSignature()/](ViewerFilter filter)
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -423,6 +447,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#addBusinessFilter[elementEditor.viewPackageSignature()/](ViewerFilter filter)
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
 
@@ -432,5 +457,6 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 * {@inheritDoc}
 	 * 
 	 * @see [fullInterfacePath/]#isContainedIn[elementEditor.viewPackageSignature()/]Table(EObject element)
+	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]

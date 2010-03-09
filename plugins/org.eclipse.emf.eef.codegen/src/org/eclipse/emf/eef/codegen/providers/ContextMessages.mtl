@@ -25,54 +25,76 @@ import org.eclipse.osgi.util.NLS;
 
 /**
  * [viewsRepository.associatedGenModel().authorText().trim()/]
+ * [viewsRepository.associatedGenModel().generationMark()/]
  */
 public class [viewsRepository.messagesProvider()/] extends NLS {
+	[viewsRepository.associatedGenModel().generationComment()/]
 	private static final String BUNDLE_NAME = "[viewsRepository.messagesProviderPackage()/].[viewsRepository.messagesProperties()/]"; //$NON-NLS-1$
 
 [for (group : ViewElement | viewsRepository.eAllContents(views::Container)) ? (group.representation.name = 'Group')]
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [group.groupKey(group.owningView())/];
 
 [/for]
 [for (view : View | viewsRepository.eAllContents(views::View))]
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [view.name.toJavaClassifier()/]_ReadOnly;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [view.name.toJavaClassifier()/]_Part_Title;
 
 [/for]
 [for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [editor.editorKey(editor.owningView())/];
 
 [/for]
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_DocumentationLabel;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_IntegerValueMessage;
-
+	
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_FloatValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_ShortValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_LongValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_ByteValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_BigIntegerValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_BigDecimalValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_DoubleValueMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_PropertiesGroupLabel;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_RequiredFeatureMessage;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_AddTableViewerLabel;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_EditTableViewerLabel;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_RemoveTableViewerLabel;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_AddListViewerLabel;
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
 
 	// [protected ('for additionnal NLS Constants')]
@@ -84,6 +106,7 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 		NLS.initializeMessages(BUNDLE_NAME, [viewsRepository.messagesProvider()/].class);
 	}
 
+	[viewsRepository.associatedGenModel().generationComment()/]
 	private [viewsRepository.messagesProvider()/]() {
 		//protect instanciation
 	}

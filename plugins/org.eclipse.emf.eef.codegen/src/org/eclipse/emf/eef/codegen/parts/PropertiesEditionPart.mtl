@@ -102,6 +102,7 @@ import [subView.owningViewsRepository().vrPackage()/].parts.[subView.pepInterfac
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [view.pepClass()/] extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
 
@@ -116,6 +117,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [view.pepClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -126,6 +128,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -142,6 +145,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(Composite view) { 
 [for (aView : ViewElement | view.elements)]
@@ -169,6 +173,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
@@ -208,6 +213,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
 		return [view.owningViewsRepository().messagesProvider()/].[view.name.toJavaClassifier()/]_Part_Title;
@@ -258,6 +264,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [view.pepClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -268,6 +275,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -283,6 +291,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 *  createControls(org.eclipse.swt.widgets.Composite)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(Composite p_view) { 
 		view = new Composite(p_view, SWT.NONE);
@@ -298,6 +307,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
@@ -309,6 +319,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
 		// [protected ('for title')]

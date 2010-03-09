@@ -44,6 +44,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
 	/**
 	 * @param [editor.widgetContainer().trim()/]
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));

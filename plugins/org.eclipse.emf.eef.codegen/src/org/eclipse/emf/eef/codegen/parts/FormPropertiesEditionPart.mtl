@@ -118,6 +118,7 @@ import [subView.owningViewsRepository().vrPackage()/].parts.[subView.pepInterfac
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [view.pepFormClass()/] extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, [view.pepInterface()/] {
 
@@ -132,6 +133,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [view.pepFormClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -142,6 +144,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -159,6 +162,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -184,6 +188,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
@@ -215,6 +220,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
 		return [view.owningViewsRepository().messagesProvider()/].[view.name.toJavaClassifier()/]_Part_Title;
@@ -256,6 +262,7 @@ import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
+ * [peContext.associatedGenModel().generationMark()/]
  */
 public class [view.pepFormClass()/] extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, [view.pepInterface()/] {
 
@@ -266,6 +273,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public [view.pepFormClass()/](IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -276,6 +284,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -293,6 +302,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite p_view, IMessageManager messageManager) {
 		this.messageManager = messageManager;
@@ -309,6 +319,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// [protected ('for tab synchronization')]
@@ -320,6 +331,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
 		// [protected ('for title')]
