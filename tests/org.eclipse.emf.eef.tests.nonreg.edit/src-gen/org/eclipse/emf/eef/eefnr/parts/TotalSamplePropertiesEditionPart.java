@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import java.util.List;
 import java.util.Map;
 
@@ -30,17 +29,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the textRequiredProperty
+	 * 
 	 */
 	public String getTextRequiredProperty();
 
 	/**
 	 * Defines a new textRequiredProperty
 	 * @param newValue the new textRequiredProperty to set
+	 * 
 	 */
 	public void setTextRequiredProperty(String newValue);
 
@@ -51,12 +53,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the textOptionalProperty
+	 * 
 	 */
 	public String getTextOptionalProperty();
 
 	/**
 	 * Defines a new textOptionalProperty
 	 * @param newValue the new textOptionalProperty to set
+	 * 
 	 */
 	public void setTextOptionalProperty(String newValue);
 
@@ -67,12 +71,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the checkboxRequiredProperty
+	 * 
 	 */
 	public Boolean getCheckboxRequiredProperty();
 
 	/**
 	 * Defines a new checkboxRequiredProperty
 	 * @param newValue the new checkboxRequiredProperty to set
+	 * 
 	 */
 	public void setCheckboxRequiredProperty(Boolean newValue);
 
@@ -83,12 +89,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the checkboxOptionalProperty
+	 * 
 	 */
 	public Boolean getCheckboxOptionalProperty();
 
 	/**
 	 * Defines a new checkboxOptionalProperty
 	 * @param newValue the new checkboxOptionalProperty to set
+	 * 
 	 */
 	public void setCheckboxOptionalProperty(Boolean newValue);
 
@@ -99,12 +107,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the textareaRequiredProperty
+	 * 
 	 */
 	public String getTextareaRequiredProperty();
 
 	/**
 	 * Defines a new textareaRequiredProperty
 	 * @param newValue the new textareaRequiredProperty to set
+	 * 
 	 */
 	public void setTextareaRequiredProperty(String newValue);
 
@@ -115,12 +125,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the textareaOptionalProperty
+	 * 
 	 */
 	public String getTextareaOptionalProperty();
 
 	/**
 	 * Defines a new textareaOptionalProperty
 	 * @param newValue the new textareaOptionalProperty to set
+	 * 
 	 */
 	public void setTextareaOptionalProperty(String newValue);
 
@@ -131,6 +143,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the radioRequiredProperty
+	 * 
 	 */
 	public Enumerator getRadioRequiredProperty();
 
@@ -144,6 +157,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new radioRequiredProperty
 	 * @param newValue the new radioRequiredProperty to set
+	 * 
 	 */
 	public void setRadioRequiredProperty(Enumerator newValue);
 
@@ -154,6 +168,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the radioOptionalProperty
+	 * 
 	 */
 	public Enumerator getRadioOptionalProperty();
 
@@ -167,6 +182,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new radioOptionalProperty
 	 * @param newValue the new radioOptionalProperty to set
+	 * 
 	 */
 	public void setRadioOptionalProperty(Enumerator newValue);
 
@@ -177,6 +193,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the eobjectflatcomboviewerRequiredProperty
+	 * 
 	 */
 	public EObject getEobjectflatcomboviewerRequiredProperty();
 
@@ -190,12 +207,14 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new eobjectflatcomboviewerRequiredProperty
 	 * @param newValue the new eobjectflatcomboviewerRequiredProperty to set
+	 * 
 	 */
 	public void setEobjectflatcomboviewerRequiredProperty(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setEobjectflatcomboviewerRequiredPropertyButtonMode(ButtonsModeEnum newValue);
 
@@ -205,6 +224,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter);
 
@@ -214,6 +234,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter);
 
@@ -224,6 +245,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the eobjectflatcomboviewerOptionalProperty
+	 * 
 	 */
 	public EObject getEobjectflatcomboviewerOptionalProperty();
 
@@ -237,12 +259,14 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new eobjectflatcomboviewerOptionalProperty
 	 * @param newValue the new eobjectflatcomboviewerOptionalProperty to set
+	 * 
 	 */
 	public void setEobjectflatcomboviewerOptionalProperty(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setEobjectflatcomboviewerOptionalPropertyButtonMode(ButtonsModeEnum newValue);
 
@@ -252,6 +276,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
 
@@ -261,6 +286,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
 
@@ -271,17 +297,19 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the referencestableRequiredProperty to add
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToAdd();
 
 	/**
 	 * @return the referencestableRequiredProperty to remove
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToRemove();
 
 	/**
 	 * @return the current referencestableRequiredProperty table
-	 */
+	 * 
 	public List getReferencestableRequiredPropertyTable();
 
 	/**
@@ -295,6 +323,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the referencestableRequiredProperty
 	 * @param newValue the referencestableRequiredProperty to update
+	 * 
 	 */
 	public void updateReferencestableRequiredProperty(EObject newValue);
 
@@ -304,6 +333,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToReferencestableRequiredProperty(ViewerFilter filter);
 
@@ -313,11 +343,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the referencestableRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element);
 
@@ -328,17 +360,19 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the referencestableOptionalProperty to add
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToAdd();
 
 	/**
 	 * @return the referencestableOptionalProperty to remove
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToRemove();
 
 	/**
 	 * @return the current referencestableOptionalProperty table
-	 */
+	 * 
 	public List getReferencestableOptionalPropertyTable();
 
 	/**
@@ -352,6 +386,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the referencestableOptionalProperty
 	 * @param newValue the referencestableOptionalProperty to update
+	 * 
 	 */
 	public void updateReferencestableOptionalProperty(EObject newValue);
 
@@ -361,6 +396,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToReferencestableOptionalProperty(ViewerFilter filter);
 
@@ -370,11 +406,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the referencestableOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element);
 
@@ -385,6 +423,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the emfcomboviewerRequiredProperty
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerRequiredProperty();
 
@@ -398,6 +437,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new emfcomboviewerRequiredProperty
 	 * @param newValue the new emfcomboviewerRequiredProperty to set
+	 * 
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue);
 
@@ -408,6 +448,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the emfcomboviewerOptionalProperty
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerOptionalProperty();
 
@@ -421,6 +462,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new emfcomboviewerOptionalProperty
 	 * @param newValue the new emfcomboviewerOptionalProperty to set
+	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue);
 
@@ -431,12 +473,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the multivaluededitorRequiredProperty
+	 * 
 	 */
 	public EList getMultivaluededitorRequiredProperty();
 
 	/**
 	 * Defines a new multivaluededitorRequiredProperty
 	 * @param newValue the new multivaluededitorRequiredProperty to set
+	 * 
 	 */
 	public void setMultivaluededitorRequiredProperty(EList newValue);
 
@@ -447,12 +491,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the multivaluededitorOptionalProperty
+	 * 
 	 */
 	public EList getMultivaluededitorOptionalProperty();
 
 	/**
 	 * Defines a new multivaluededitorOptionalProperty
 	 * @param newValue the new multivaluededitorOptionalProperty to set
+	 * 
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue);
 
@@ -463,27 +509,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the tablecompositionRequiredProperty to add
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToAdd();
 
 	/**
 	 * @return the tablecompositionRequiredProperty to remove
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToRemove();
 
 	/**
 	 * @return the tablecompositionRequiredProperty to move
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToMove();
 
 	/**
 	 * @return the tablecompositionRequiredProperty to edit
+	 * 
 	 */
 	public Map getTablecompositionRequiredPropertyToEdit();
 
 	/**
 	 * @return the current tablecompositionRequiredProperty table
-	 */
+	 * 
 	public List getTablecompositionRequiredPropertyTable();
 
 	/**
@@ -497,6 +547,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the tablecompositionRequiredProperty
 	 * @param newValue the tablecompositionRequiredProperty to update
+	 * 
 	 */
 	public void updateTablecompositionRequiredProperty(EObject newValue);
 
@@ -506,6 +557,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter);
 
@@ -515,11 +567,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the tablecompositionRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element);
 
@@ -530,27 +584,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the tablecompositionOptionalProperty to add
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToAdd();
 
 	/**
 	 * @return the tablecompositionOptionalProperty to remove
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToRemove();
 
 	/**
 	 * @return the tablecompositionOptionalProperty to move
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToMove();
 
 	/**
 	 * @return the tablecompositionOptionalProperty to edit
+	 * 
 	 */
 	public Map getTablecompositionOptionalPropertyToEdit();
 
 	/**
 	 * @return the current tablecompositionOptionalProperty table
-	 */
+	 * 
 	public List getTablecompositionOptionalPropertyTable();
 
 	/**
@@ -564,6 +622,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the tablecompositionOptionalProperty
 	 * @param newValue the tablecompositionOptionalProperty to update
+	 * 
 	 */
 	public void updateTablecompositionOptionalProperty(EObject newValue);
 
@@ -573,6 +632,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter);
 
@@ -582,11 +642,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the tablecompositionOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element);
 
@@ -597,17 +659,19 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedreferencestableRequiredProperty to add
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToAdd();
 
 	/**
 	 * @return the advancedreferencestableRequiredProperty to remove
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToRemove();
 
 	/**
 	 * @return the current advancedreferencestableRequiredProperty table
-	 */
+	 * 
 	public List getAdvancedreferencestableRequiredPropertyTable();
 
 	/**
@@ -621,6 +685,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedreferencestableRequiredProperty
 	 * @param newValue the advancedreferencestableRequiredProperty to update
+	 * 
 	 */
 	public void updateAdvancedreferencestableRequiredProperty(EObject newValue);
 
@@ -630,6 +695,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter);
 
@@ -639,11 +705,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedreferencestableRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element);
 
@@ -654,17 +722,19 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedreferencestableOptionalProperty to add
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToAdd();
 
 	/**
 	 * @return the advancedreferencestableOptionalProperty to remove
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToRemove();
 
 	/**
 	 * @return the current advancedreferencestableOptionalProperty table
-	 */
+	 * 
 	public List getAdvancedreferencestableOptionalPropertyTable();
 
 	/**
@@ -678,6 +748,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedreferencestableOptionalProperty
 	 * @param newValue the advancedreferencestableOptionalProperty to update
+	 * 
 	 */
 	public void updateAdvancedreferencestableOptionalProperty(EObject newValue);
 
@@ -687,6 +758,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter);
 
@@ -696,11 +768,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedreferencestableOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element);
 
@@ -711,6 +785,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedeobjectflatcomboviewerRequiredPropery
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerRequiredPropery();
 
@@ -724,12 +799,14 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new advancedeobjectflatcomboviewerRequiredPropery
 	 * @param newValue the new advancedeobjectflatcomboviewerRequiredPropery to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerRequiredPropery(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerRequiredProperyButtonMode(ButtonsModeEnum newValue);
 
@@ -739,6 +816,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter);
 
@@ -748,6 +826,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter);
 
@@ -758,6 +837,7 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedeobjectflatcomboviewerOptionalPropery
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerOptionalPropery();
 
@@ -771,12 +851,14 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Defines a new advancedeobjectflatcomboviewerOptionalPropery
 	 * @param newValue the new advancedeobjectflatcomboviewerOptionalPropery to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerOptionalPropery(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum newValue);
 
@@ -786,6 +868,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter);
 
@@ -795,6 +878,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter);
 
@@ -805,27 +889,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to add
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToAdd();
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to remove
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToRemove();
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to move
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToMove();
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to edit
+	 * 
 	 */
 	public Map getAdvancedtablecompositionRequiredPropertyToEdit();
 
 	/**
 	 * @return the current advancedtablecompositionRequiredProperty table
-	 */
+	 * 
 	public List getAdvancedtablecompositionRequiredPropertyTable();
 
 	/**
@@ -839,6 +927,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedtablecompositionRequiredProperty
 	 * @param newValue the advancedtablecompositionRequiredProperty to update
+	 * 
 	 */
 	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue);
 
@@ -848,6 +937,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter);
 
@@ -857,11 +947,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedtablecompositionRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element);
 
@@ -872,27 +964,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to add
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToAdd();
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to remove
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToRemove();
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to move
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToMove();
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to edit
+	 * 
 	 */
 	public Map getAdvancedtablecompositionOptionalPropertyToEdit();
 
 	/**
 	 * @return the current advancedtablecompositionOptionalProperty table
-	 */
+	 * 
 	public List getAdvancedtablecompositionOptionalPropertyTable();
 
 	/**
@@ -906,6 +1002,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedtablecompositionOptionalProperty
 	 * @param newValue the advancedtablecompositionOptionalProperty to update
+	 * 
 	 */
 	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue);
 
@@ -915,6 +1012,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter);
 
@@ -924,11 +1022,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedtablecompositionOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element);
 
@@ -939,27 +1039,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the tablecompositionWithSameTypeRequiredProperty to add
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyToAdd();
 
 	/**
 	 * @return the tablecompositionWithSameTypeRequiredProperty to remove
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyToRemove();
 
 	/**
 	 * @return the tablecompositionWithSameTypeRequiredProperty to move
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyToMove();
 
 	/**
 	 * @return the tablecompositionWithSameTypeRequiredProperty to edit
+	 * 
 	 */
 	public Map getTablecompositionWithSameTypeRequiredPropertyToEdit();
 
 	/**
 	 * @return the current tablecompositionWithSameTypeRequiredProperty table
-	 */
+	 * 
 	public List getTablecompositionWithSameTypeRequiredPropertyTable();
 
 	/**
@@ -973,6 +1077,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the tablecompositionWithSameTypeRequiredProperty
 	 * @param newValue the tablecompositionWithSameTypeRequiredProperty to update
+	 * 
 	 */
 	public void updateTablecompositionWithSameTypeRequiredProperty(EObject newValue);
 
@@ -982,6 +1087,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
 
@@ -991,11 +1097,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the tablecompositionWithSameTypeRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element);
 
@@ -1006,27 +1114,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the tablecompositionWithSameTypeOptionalProperty to add
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyToAdd();
 
 	/**
 	 * @return the tablecompositionWithSameTypeOptionalProperty to remove
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyToRemove();
 
 	/**
 	 * @return the tablecompositionWithSameTypeOptionalProperty to move
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyToMove();
 
 	/**
 	 * @return the tablecompositionWithSameTypeOptionalProperty to edit
+	 * 
 	 */
 	public Map getTablecompositionWithSameTypeOptionalPropertyToEdit();
 
 	/**
 	 * @return the current tablecompositionWithSameTypeOptionalProperty table
-	 */
+	 * 
 	public List getTablecompositionWithSameTypeOptionalPropertyTable();
 
 	/**
@@ -1040,6 +1152,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the tablecompositionWithSameTypeOptionalProperty
 	 * @param newValue the tablecompositionWithSameTypeOptionalProperty to update
+	 * 
 	 */
 	public void updateTablecompositionWithSameTypeOptionalProperty(EObject newValue);
 
@@ -1049,6 +1162,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
 
@@ -1058,11 +1172,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the tablecompositionWithSameTypeOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element);
 
@@ -1073,27 +1189,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to add
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd();
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to remove
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove();
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to move
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove();
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to edit
+	 * 
 	 */
 	public Map getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit();
 
 	/**
 	 * @return the current advancedtablecompositionWithSameTypeRequiredProperty table
-	 */
+	 * 
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyTable();
 
 	/**
@@ -1107,6 +1227,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedtablecompositionWithSameTypeRequiredProperty
 	 * @param newValue the advancedtablecompositionWithSameTypeRequiredProperty to update
+	 * 
 	 */
 	public void updateAdvancedtablecompositionWithSameTypeRequiredProperty(EObject newValue);
 
@@ -1116,6 +1237,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
 
@@ -1125,11 +1247,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedtablecompositionWithSameTypeRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element);
 
@@ -1140,27 +1264,31 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to add
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd();
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to remove
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove();
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to move
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove();
 
 	/**
 	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to edit
+	 * 
 	 */
 	public Map getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit();
 
 	/**
 	 * @return the current advancedtablecompositionWithSameTypeOptionalProperty table
-	 */
+	 * 
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyTable();
 
 	/**
@@ -1174,6 +1302,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedtablecompositionWithSameTypeOptionalProperty
 	 * @param newValue the advancedtablecompositionWithSameTypeOptionalProperty to update
+	 * 
 	 */
 	public void updateAdvancedtablecompositionWithSameTypeOptionalProperty(EObject newValue);
 
@@ -1183,6 +1312,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
 
@@ -1192,11 +1322,13 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedtablecompositionWithSameTypeOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element);
 
@@ -1207,12 +1339,14 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -1224,11 +1358,11 @@ public interface TotalSamplePropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

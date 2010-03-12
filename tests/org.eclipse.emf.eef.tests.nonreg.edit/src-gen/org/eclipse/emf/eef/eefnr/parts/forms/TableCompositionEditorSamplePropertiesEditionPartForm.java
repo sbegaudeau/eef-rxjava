@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -57,22 +55,20 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class TableCompositionEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TableCompositionEditorSamplePropertiesEditionPart {
 
 	protected EMFListEditUtil tablecompositionRequiredPropertyEditUtil;
-	protected TableViewer tablecompositionRequiredProperty;
-	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+		protected TableViewer tablecompositionRequiredProperty;
+		protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EMFListEditUtil tablecompositionOptionalPropertyEditUtil;
-	protected TableViewer tablecompositionOptionalProperty;
-	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-
+		protected TableViewer tablecompositionOptionalProperty;
+		protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -80,6 +76,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TableCompositionEditorSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -90,6 +87,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -107,6 +105,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -116,6 +115,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.TableCompositionEditorSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -133,6 +135,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createTablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite container) {
 		Composite tableContainer = widgetFactory.createComposite(container, SWT.NONE);
@@ -151,13 +154,12 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 		gdTablecompositionRequiredProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionRequiredProperty.setLayoutData(gdTablecompositionRequiredProperty);
 		tableTablecompositionRequiredProperty.setLinesVisible(true);
-
+		
 		// Start of user code for columns definition for TablecompositionRequiredProperty
-
-		TableColumn name = new TableColumn(tableTablecompositionRequiredProperty, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
-
+				TableColumn name = new TableColumn(tableTablecompositionRequiredProperty, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
+		
 		// End of user code
 
 		tablecompositionRequiredProperty = new TableViewer(tableTablecompositionRequiredProperty);
@@ -166,6 +168,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			/**
 			 * {@inheritDoc}
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 * 
 			 */
 			@Override
 			public Object[] getElements(Object object) {
@@ -177,22 +180,23 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			
 		});
 		tablecompositionRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
-
+		
 			//Start of user code for label provider definition for TablecompositionRequiredProperty
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
-
-			public Image getColumnImage(Object element, int columnIndex) {
-				return null;
-			}
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
+			
+						public Image getColumnImage(Object element, int columnIndex) {
+							return null;
+						}
+						
 			//End of user code
 
 		});
@@ -213,6 +217,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected Composite createTablecompositionRequiredPropertyPanel(FormToolkit widgetFactory, Composite container) {
 		Composite tablecompositionRequiredPropertyPanel = widgetFactory.createComposite(container, SWT.NONE);
@@ -228,6 +233,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addToTablecompositionRequiredProperty();
@@ -242,6 +248,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				removeFromTablecompositionRequiredProperty();
@@ -257,6 +264,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				editTablecompositionRequiredProperty();
@@ -271,20 +279,20 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void addToTablecompositionRequiredProperty() {
 		// Start of user code addToTablecompositionRequiredProperty() method body
-
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
-				tablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+						tablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+		
+				
 		// End of user code
-
 	}
 
 	/**
@@ -292,19 +300,19 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void removeFromTablecompositionRequiredProperty() {
 		// Start of user code for the removeFromTablecompositionRequiredProperty() method body
-		if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
-			EObject editedElement = null;
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(selectedElement);
-				tablecompositionRequiredPropertyEditUtil.removeElement(selectedElement);
-			}
-			tablecompositionRequiredProperty.refresh();
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-		}
+				if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
+					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
+					EObject editedElement = null;
+					if (selection.getFirstElement() instanceof EObject) {
+						EObject selectedElement = (EObject) selection.getFirstElement();
+						editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(selectedElement);
+						tablecompositionRequiredPropertyEditUtil.removeElement(selectedElement);
+					}
+					tablecompositionRequiredProperty.refresh();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				}
+		
 		// End of user code
-
 	}
 
 	/**
@@ -312,29 +320,30 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void editTablecompositionRequiredProperty() {
 		// Start of user code editTablecompositionRequiredProperty() method body
-		if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(selectedElement);
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(selectedElement);
-				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, selectedElement,resourceSet));
-					if (propertiesEditionObject != null) {
-						tablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-						tablecompositionRequiredProperty.refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+				if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
+					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
+					if (selection.getFirstElement() instanceof EObject) {
+						EObject selectedElement = (EObject) selection.getFirstElement();
+						EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(selectedElement);
+						IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(selectedElement);
+						IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+						if (editionPolicy != null) {
+							EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, selectedElement,resourceSet));
+							if (propertiesEditionObject != null) {
+								tablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+								tablecompositionRequiredProperty.refresh();
+								propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+							}
+						}
 					}
 				}
-			}
-		}
+		
 		// End of user code
-
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createTablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite container) {
 		Composite tableContainer = widgetFactory.createComposite(container, SWT.NONE);
@@ -353,13 +362,12 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 		gdTablecompositionOptionalProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionOptionalProperty.setLayoutData(gdTablecompositionOptionalProperty);
 		tableTablecompositionOptionalProperty.setLinesVisible(true);
-
+		
 		// Start of user code for columns definition for TablecompositionOptionalProperty
-
-		TableColumn name = new TableColumn(tableTablecompositionOptionalProperty, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
-
+				TableColumn name = new TableColumn(tableTablecompositionOptionalProperty, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
+		
 		// End of user code
 
 		tablecompositionOptionalProperty = new TableViewer(tableTablecompositionOptionalProperty);
@@ -368,6 +376,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			/**
 			 * {@inheritDoc}
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 * 
 			 */
 			@Override
 			public Object[] getElements(Object object) {
@@ -379,22 +388,23 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			
 		});
 		tablecompositionOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
-
+		
 			//Start of user code for label provider definition for TablecompositionOptionalProperty
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
-
-			public Image getColumnImage(Object element, int columnIndex) {
-				return null;
-			}
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
+			
+						public Image getColumnImage(Object element, int columnIndex) {
+							return null;
+						}
+						
 			//End of user code
 
 		});
@@ -415,6 +425,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected Composite createTablecompositionOptionalPropertyPanel(FormToolkit widgetFactory, Composite container) {
 		Composite tablecompositionOptionalPropertyPanel = widgetFactory.createComposite(container, SWT.NONE);
@@ -430,6 +441,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addToTablecompositionOptionalProperty();
@@ -444,6 +456,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				removeFromTablecompositionOptionalProperty();
@@ -459,6 +472,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				editTablecompositionOptionalProperty();
@@ -473,20 +487,20 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void addToTablecompositionOptionalProperty() {
 		// Start of user code addToTablecompositionOptionalProperty() method body
-
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
-				tablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+						tablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+		
+				
 		// End of user code
-
 	}
 
 	/**
@@ -494,19 +508,19 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void removeFromTablecompositionOptionalProperty() {
 		// Start of user code for the removeFromTablecompositionOptionalProperty() method body
-		if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
-			EObject editedElement = null;
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(selectedElement);
-				tablecompositionOptionalPropertyEditUtil.removeElement(selectedElement);
-			}
-			tablecompositionOptionalProperty.refresh();
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-		}
+				if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
+					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
+					EObject editedElement = null;
+					if (selection.getFirstElement() instanceof EObject) {
+						EObject selectedElement = (EObject) selection.getFirstElement();
+						editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(selectedElement);
+						tablecompositionOptionalPropertyEditUtil.removeElement(selectedElement);
+					}
+					tablecompositionOptionalProperty.refresh();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				}
+		
 		// End of user code
-
 	}
 
 	/**
@@ -514,25 +528,25 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void editTablecompositionOptionalProperty() {
 		// Start of user code editTablecompositionOptionalProperty() method body
-		if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(selectedElement);
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(selectedElement);
-				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, selectedElement,resourceSet));
-					if (propertiesEditionObject != null) {
-						tablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-						tablecompositionOptionalProperty.refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+				if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
+					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
+					if (selection.getFirstElement() instanceof EObject) {
+						EObject selectedElement = (EObject) selection.getFirstElement();
+						EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(selectedElement);
+						IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(selectedElement);
+						IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+						if (editionPolicy != null) {
+							EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, selectedElement,resourceSet));
+							if (propertiesEditionObject != null) {
+								tablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+								tablecompositionOptionalProperty.refresh();
+								propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+							}
+						}
 					}
 				}
-			}
-		}
+		
 		// End of user code
-
 	}
 
 
@@ -541,6 +555,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -552,6 +567,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToAdd() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToAdd();
@@ -561,6 +577,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToRemove() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToRemove();
@@ -570,6 +587,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToEdit()
+	 * 
 	 */
 	public Map getTablecompositionRequiredPropertyToEdit() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToRefresh();
@@ -579,6 +597,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToMove()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToMove() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToMove();
@@ -588,6 +607,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionRequiredPropertyTable()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyTable() {
 		return tablecompositionRequiredPropertyEditUtil.getVirtualList();
@@ -612,6 +632,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#updateTablecompositionRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateTablecompositionRequiredProperty(EObject newValue) {
 		if(tablecompositionRequiredPropertyEditUtil != null){
@@ -624,6 +645,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#addFilterTablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyFilters.add(filter);
@@ -633,6 +655,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#addBusinessFilterTablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyBusinessFilters.add(filter);
@@ -642,6 +665,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#isContainedInTablecompositionRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element) {
 		return tablecompositionRequiredPropertyEditUtil.contains(element);
@@ -655,6 +679,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToAdd() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToAdd();
@@ -664,6 +689,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToRemove() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToRemove();
@@ -673,6 +699,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToEdit()
+	 * 
 	 */
 	public Map getTablecompositionOptionalPropertyToEdit() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToRefresh();
@@ -682,6 +709,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToMove()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToMove() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToMove();
@@ -691,6 +719,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#getTablecompositionOptionalPropertyTable()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyTable() {
 		return tablecompositionOptionalPropertyEditUtil.getVirtualList();
@@ -715,6 +744,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#updateTablecompositionOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateTablecompositionOptionalProperty(EObject newValue) {
 		if(tablecompositionOptionalPropertyEditUtil != null){
@@ -727,6 +757,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#addFilterTablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyFilters.add(filter);
@@ -736,6 +767,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#addBusinessFilterTablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyBusinessFilters.add(filter);
@@ -745,6 +777,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#isContainedInTablecompositionOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return tablecompositionOptionalPropertyEditUtil.contains(element);
@@ -757,12 +790,11 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.TableCompositionEditorSample_Part_Title;
@@ -771,5 +803,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

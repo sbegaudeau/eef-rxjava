@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -36,10 +34,9 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TextSampleSecondTabPropertiesEditionPart {
 
@@ -49,10 +46,10 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TextSampleSecondTabPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -63,6 +60,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -80,6 +78,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -89,6 +88,9 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.TextSampleSecondTabPropertiesEditionPart_PropertiesGroupLabel);
@@ -104,6 +106,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createTextRequiredPropertyInSecondTabText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, EefnrViewsRepository.FORM_KIND));
 		textRequiredPropertyInSecondTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -114,6 +117,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		textRequiredPropertyInSecondTab.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -125,6 +129,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		textRequiredPropertyInSecondTab.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -138,6 +143,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTextOptionalPropertyInSecondTabText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab, EefnrViewsRepository.FORM_KIND));
 		textOptionalPropertyInSecondTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -148,6 +154,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		textOptionalPropertyInSecondTab.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -159,6 +166,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		textOptionalPropertyInSecondTab.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -178,6 +186,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -189,6 +198,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#getTextRequiredPropertyInSecondTab()
+	 * 
 	 */
 	public String getTextRequiredPropertyInSecondTab() {
 		return textRequiredPropertyInSecondTab.getText();
@@ -198,6 +208,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#setTextRequiredPropertyInSecondTab(String newValue)
+	 * 
 	 */
 	public void setTextRequiredPropertyInSecondTab(String newValue) {
 		if (newValue != null) {
@@ -219,6 +230,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#getTextOptionalPropertyInSecondTab()
+	 * 
 	 */
 	public String getTextOptionalPropertyInSecondTab() {
 		return textOptionalPropertyInSecondTab.getText();
@@ -228,6 +240,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#setTextOptionalPropertyInSecondTab(String newValue)
+	 * 
 	 */
 	public void setTextOptionalPropertyInSecondTab(String newValue) {
 		if (newValue != null) {
@@ -248,12 +261,11 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.TextSampleSecondTab_Part_Title;
@@ -262,5 +274,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

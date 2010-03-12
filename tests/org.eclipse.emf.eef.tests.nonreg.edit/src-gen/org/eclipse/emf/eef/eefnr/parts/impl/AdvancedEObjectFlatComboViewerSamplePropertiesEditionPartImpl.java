@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -43,10 +42,13 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+
+
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 
@@ -58,10 +60,10 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -72,13 +74,13 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -88,6 +90,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -96,9 +99,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EefnrMessages.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -200,18 +205,19 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#getAdvancedeobjectflatcomboviewerRequiredProperty()
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerRequiredProperty() {
 		return advancedeobjectflatcomboviewerRequiredProperty.getSelection();
@@ -234,6 +240,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#setAdvancedeobjectflatcomboviewerRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerRequiredProperty(EObject newValue) {
 		if (newValue != null) {
@@ -256,6 +263,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#addFilterAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerRequiredProperty.addFilter(filter);
@@ -265,6 +273,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#addBusinessFilterAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerRequiredProperty.addBusinessRuleFilter(filter);
@@ -282,6 +291,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#getAdvancedeobjectflatcomboviewerOptionalProperty()
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerOptionalProperty() {
 		return advancedeobjectflatcomboviewerOptionalProperty.getSelection();
@@ -304,6 +314,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#setAdvancedeobjectflatcomboviewerOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerOptionalProperty(EObject newValue) {
 		if (newValue != null) {
@@ -326,6 +337,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#addFilterAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalProperty.addFilter(filter);
@@ -335,6 +347,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#addBusinessFilterAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
@@ -354,11 +367,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.AdvancedEObjectFlatComboViewerSample_Part_Title;
@@ -367,5 +380,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

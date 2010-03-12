@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -47,22 +45,20 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, AdvancedReferencesTableSamplePropertiesEditionPart {
 
 	private EMFListEditUtil advancedreferencestableRequiredPropertyEditUtil;
-	protected ReferencesTable<? extends EObject> advancedreferencestableRequiredProperty;
-	protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+		protected ReferencesTable<? extends EObject> advancedreferencestableRequiredProperty;
+		protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
 	private EMFListEditUtil advancedreferencestableOptionalPropertyEditUtil;
-	protected ReferencesTable<? extends EObject> advancedreferencestableOptionalProperty;
-	protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-
+		protected ReferencesTable<? extends EObject> advancedreferencestableOptionalProperty;
+		protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -70,6 +66,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public AdvancedReferencesTableSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -80,6 +77,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -97,6 +95,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -106,6 +105,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.AdvancedReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -121,6 +123,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createAdvancedreferencestableRequiredPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.advancedreferencestableRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.AdvancedReferencesTableSamplePropertiesEditionPart_AdvancedreferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
@@ -168,35 +173,37 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 */
 	protected void removeFromAdvancedreferencestableRequiredProperty(TotalSample element) {
 		// Start of user code for the removeFromAdvancedreferencestableRequiredProperty() method body
-		EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedreferencestableRequiredPropertyEditUtil.removeElement(element);
-		advancedreferencestableRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedreferencestableRequiredPropertyEditUtil.removeElement(element);
+				advancedreferencestableRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		
 		// End of user code
-
 	}
 
 	/**
 	 * 
 	 */
 	protected void editAdvancedreferencestableRequiredProperty(TotalSample element) {
-		// Start of user code editAdvancedreferencestableRequiredProperty() method body
+		// Start of user code editAdvancedreferencestableRequiredProperty() method body		
+				EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedreferencestableRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedreferencestableRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
 		
-		EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedreferencestableRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedreferencestableRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createAdvancedreferencestableOptionalPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.advancedreferencestableOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.AdvancedReferencesTableSamplePropertiesEditionPart_AdvancedreferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
@@ -244,33 +251,32 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 */
 	protected void removeFromAdvancedreferencestableOptionalProperty(TotalSample element) {
 		// Start of user code for the removeFromAdvancedreferencestableOptionalProperty() method body
-		EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedreferencestableOptionalPropertyEditUtil.removeElement(element);
-		advancedreferencestableOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedreferencestableOptionalPropertyEditUtil.removeElement(element);
+				advancedreferencestableOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		
 		// End of user code
-
 	}
 
 	/**
 	 * 
 	 */
 	protected void editAdvancedreferencestableOptionalProperty(TotalSample element) {
-		// Start of user code editAdvancedreferencestableOptionalProperty() method body
+		// Start of user code editAdvancedreferencestableOptionalProperty() method body		
+				EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedreferencestableOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedreferencestableOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
 		
-		EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedreferencestableOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedreferencestableOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
 		// End of user code
-
 	}
 
 
@@ -279,6 +285,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -290,6 +297,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#getAdvancedreferencestableRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToAdd() {
 		return advancedreferencestableRequiredPropertyEditUtil.getElementsToAdd();
@@ -299,6 +307,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#getAdvancedreferencestableRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToRemove() {
 		return advancedreferencestableRequiredPropertyEditUtil.getElementsToRemove();
@@ -308,6 +317,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#getAdvancedreferencestableRequiredPropertyTable()
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyTable() {
 		return advancedreferencestableRequiredPropertyEditUtil.getVirtualList();
@@ -333,6 +343,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedreferencestableRequiredProperty(EObject newValue) {
 		if(advancedreferencestableRequiredPropertyEditUtil != null){
@@ -345,6 +356,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#addFilterAdvancedreferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter) {
 		advancedreferencestableRequiredPropertyFilters.add(filter);
@@ -354,6 +366,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#addBusinessFilterAdvancedreferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter) {
 		advancedreferencestableRequiredPropertyBusinessFilters.add(filter);
@@ -363,6 +376,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element) {
 		return advancedreferencestableRequiredPropertyEditUtil.contains(element);
@@ -376,6 +390,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#getAdvancedreferencestableOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToAdd() {
 		return advancedreferencestableOptionalPropertyEditUtil.getElementsToAdd();
@@ -385,6 +400,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#getAdvancedreferencestableOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToRemove() {
 		return advancedreferencestableOptionalPropertyEditUtil.getElementsToRemove();
@@ -394,6 +410,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#getAdvancedreferencestableOptionalPropertyTable()
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyTable() {
 		return advancedreferencestableOptionalPropertyEditUtil.getVirtualList();
@@ -419,6 +436,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedreferencestableOptionalProperty(EObject newValue) {
 		if(advancedreferencestableOptionalPropertyEditUtil != null){
@@ -431,6 +449,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#addFilterAdvancedreferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter) {
 		advancedreferencestableOptionalPropertyFilters.add(filter);
@@ -440,6 +459,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#addBusinessFilterAdvancedreferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter) {
 		advancedreferencestableOptionalPropertyBusinessFilters.add(filter);
@@ -449,6 +469,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return advancedreferencestableOptionalPropertyEditUtil.contains(element);
@@ -461,12 +482,11 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.AdvancedReferencesTableSample_Part_Title;
@@ -475,5 +495,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

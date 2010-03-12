@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 
@@ -21,11 +20,13 @@ import org.eclipse.emf.ecore.EEnum;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface EMFComboViewerSamplePropertiesEditionPart {
 
 	/**
 	 * @return the emfcomboviewerRequiredProperty
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerRequiredProperty();
 
@@ -39,6 +40,7 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 	/**
 	 * Defines a new emfcomboviewerRequiredProperty
 	 * @param newValue the new emfcomboviewerRequiredProperty to set
+	 * 
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue);
 
@@ -49,6 +51,7 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 
 	/**
 	 * @return the emfcomboviewerOptionalProperty
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerOptionalProperty();
 
@@ -62,9 +65,9 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 	/**
 	 * Defines a new emfcomboviewerOptionalProperty
 	 * @param newValue the new emfcomboviewerOptionalProperty to set
+	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue);
-
 
 
 
@@ -78,6 +81,7 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -15,22 +15,24 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 
 
-
 // End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface CheckboxSamplePropertiesEditionPart {
 
 	/**
 	 * @return the checkboxRequiredProperty
+	 * 
 	 */
 	public Boolean getCheckboxRequiredProperty();
 
 	/**
 	 * Defines a new checkboxRequiredProperty
 	 * @param newValue the new checkboxRequiredProperty to set
+	 * 
 	 */
 	public void setCheckboxRequiredProperty(Boolean newValue);
 
@@ -41,15 +43,16 @@ public interface CheckboxSamplePropertiesEditionPart {
 
 	/**
 	 * @return the checkboxOptionalProperty
+	 * 
 	 */
 	public Boolean getCheckboxOptionalProperty();
 
 	/**
 	 * Defines a new checkboxOptionalProperty
 	 * @param newValue the new checkboxOptionalProperty to set
+	 * 
 	 */
 	public void setCheckboxOptionalProperty(Boolean newValue);
-
 
 
 
@@ -63,6 +66,7 @@ public interface CheckboxSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

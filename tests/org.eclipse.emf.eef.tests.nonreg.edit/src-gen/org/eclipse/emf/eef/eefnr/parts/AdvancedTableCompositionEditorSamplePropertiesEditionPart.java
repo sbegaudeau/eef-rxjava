@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import java.util.List;
 import java.util.Map;
 
@@ -25,32 +24,37 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to add
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToAdd();
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to remove
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToRemove();
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to move
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToMove();
 
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to edit
+	 * 
 	 */
 	public Map getAdvancedtablecompositionRequiredPropertyToEdit();
 
 	/**
 	 * @return the current advancedtablecompositionRequiredProperty table
-	 */
+	 * 
 	public List getAdvancedtablecompositionRequiredPropertyTable();
 
 	/**
@@ -64,6 +68,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedtablecompositionRequiredProperty
 	 * @param newValue the advancedtablecompositionRequiredProperty to update
+	 * 
 	 */
 	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue);
 
@@ -73,6 +78,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter);
 
@@ -82,11 +88,13 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedtablecompositionRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element);
 
@@ -97,27 +105,31 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to add
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToAdd();
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to remove
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToRemove();
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to move
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToMove();
 
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to edit
+	 * 
 	 */
 	public Map getAdvancedtablecompositionOptionalPropertyToEdit();
 
 	/**
 	 * @return the current advancedtablecompositionOptionalProperty table
-	 */
+	 * 
 	public List getAdvancedtablecompositionOptionalPropertyTable();
 
 	/**
@@ -131,6 +143,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedtablecompositionOptionalProperty
 	 * @param newValue the advancedtablecompositionOptionalProperty to update
+	 * 
 	 */
 	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue);
 
@@ -140,6 +153,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter);
 
@@ -149,14 +163,15 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedtablecompositionOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element);
-
 
 
 
@@ -170,6 +185,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

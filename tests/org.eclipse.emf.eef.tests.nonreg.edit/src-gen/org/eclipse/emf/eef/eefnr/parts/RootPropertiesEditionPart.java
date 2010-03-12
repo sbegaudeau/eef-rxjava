@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import java.util.List;
 import java.util.Map;
 
@@ -25,32 +24,37 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface RootPropertiesEditionPart {
 
 	/**
 	 * @return the samples to add
+	 * 
 	 */
 	public List getSamplesToAdd();
 
 	/**
 	 * @return the samples to remove
+	 * 
 	 */
 	public List getSamplesToRemove();
 
 	/**
 	 * @return the samples to move
+	 * 
 	 */
 	public List getSamplesToMove();
 
 	/**
 	 * @return the samples to edit
+	 * 
 	 */
 	public Map getSamplesToEdit();
 
 	/**
 	 * @return the current samples table
-	 */
+	 * 
 	public List getSamplesTable();
 
 	/**
@@ -64,6 +68,7 @@ public interface RootPropertiesEditionPart {
 	/**
 	 * Update the samples
 	 * @param newValue the samples to update
+	 * 
 	 */
 	public void updateSamples(EObject newValue);
 
@@ -73,6 +78,7 @@ public interface RootPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToSamples(ViewerFilter filter);
 
@@ -82,14 +88,15 @@ public interface RootPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToSamples(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the samples table
+	 * 
 	 */
 	public boolean isContainedInSamplesTable(EObject element);
-
 
 
 
@@ -103,6 +110,7 @@ public interface RootPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

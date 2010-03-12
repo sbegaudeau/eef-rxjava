@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -36,10 +34,9 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TextSamplePropertiesEditionPart {
 
@@ -49,10 +46,10 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TextSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -63,6 +60,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -80,6 +78,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -89,6 +88,9 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.TextSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -104,6 +106,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createTextRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSample.textRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		textRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -114,6 +117,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		textRequiredProperty.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -125,6 +129,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		textRequiredProperty.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -138,6 +143,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTextOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSample.textOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		textOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -148,6 +154,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		textOptionalProperty.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -159,6 +166,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		textOptionalProperty.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -178,6 +186,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -189,6 +198,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#getTextRequiredProperty()
+	 * 
 	 */
 	public String getTextRequiredProperty() {
 		return textRequiredProperty.getText();
@@ -198,6 +208,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#setTextRequiredProperty(String newValue)
+	 * 
 	 */
 	public void setTextRequiredProperty(String newValue) {
 		if (newValue != null) {
@@ -219,6 +230,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#getTextOptionalProperty()
+	 * 
 	 */
 	public String getTextOptionalProperty() {
 		return textOptionalProperty.getText();
@@ -228,6 +240,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#setTextOptionalProperty(String newValue)
+	 * 
 	 */
 	public void setTextOptionalProperty(String newValue) {
 		if (newValue != null) {
@@ -248,12 +261,11 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.TextSample_Part_Title;
@@ -262,5 +274,6 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

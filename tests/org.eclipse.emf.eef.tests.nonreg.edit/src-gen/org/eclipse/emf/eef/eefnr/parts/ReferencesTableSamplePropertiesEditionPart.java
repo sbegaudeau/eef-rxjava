@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,22 +23,25 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface ReferencesTableSamplePropertiesEditionPart {
 
 	/**
 	 * @return the referencestableRequiredProperty to add
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToAdd();
 
 	/**
 	 * @return the referencestableRequiredProperty to remove
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToRemove();
 
 	/**
 	 * @return the current referencestableRequiredProperty table
-	 */
+	 * 
 	public List getReferencestableRequiredPropertyTable();
 
 	/**
@@ -53,6 +55,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * Update the referencestableRequiredProperty
 	 * @param newValue the referencestableRequiredProperty to update
+	 * 
 	 */
 	public void updateReferencestableRequiredProperty(EObject newValue);
 
@@ -62,6 +65,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToReferencestableRequiredProperty(ViewerFilter filter);
 
@@ -71,11 +75,13 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the referencestableRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element);
 
@@ -86,17 +92,19 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 
 	/**
 	 * @return the referencestableOptionalProperty to add
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToAdd();
 
 	/**
 	 * @return the referencestableOptionalProperty to remove
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToRemove();
 
 	/**
 	 * @return the current referencestableOptionalProperty table
-	 */
+	 * 
 	public List getReferencestableOptionalPropertyTable();
 
 	/**
@@ -110,6 +118,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * Update the referencestableOptionalProperty
 	 * @param newValue the referencestableOptionalProperty to update
+	 * 
 	 */
 	public void updateReferencestableOptionalProperty(EObject newValue);
 
@@ -119,6 +128,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToReferencestableOptionalProperty(ViewerFilter filter);
 
@@ -128,14 +138,15 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the referencestableOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element);
-
 
 
 
@@ -149,6 +160,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

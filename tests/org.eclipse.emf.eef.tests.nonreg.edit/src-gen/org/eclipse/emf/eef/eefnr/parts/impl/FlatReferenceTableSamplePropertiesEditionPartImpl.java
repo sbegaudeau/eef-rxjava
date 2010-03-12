@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -37,10 +36,13 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+
+
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class FlatReferenceTableSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, FlatReferenceTableSamplePropertiesEditionPart {
 
@@ -50,10 +52,10 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public FlatReferenceTableSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -64,13 +66,13 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -80,6 +82,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -88,9 +91,11 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -106,6 +111,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 
 	/**
 	 * @param parent
+	 * 
 	 */
 	protected void createFlatreferencetableRequiredPropertyFlatReferencesTable(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty, EefnrViewsRepository.SWT_KIND));
@@ -128,6 +134,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 
 	/**
 	 * @param parent
+	 * 
 	 */
 	protected void createFlatreferencetableOptionalPropertyFlatReferencesTable(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty, EefnrViewsRepository.SWT_KIND));
@@ -154,18 +161,19 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getFlatreferencetableRequiredPropertyToAdd() {
 		return flatreferencetableRequiredProperty.getElementsToAdd();
@@ -175,6 +183,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getFlatreferencetableRequiredPropertyToRemove() {
 		return flatreferencetableRequiredProperty.getElementsToRemove();
@@ -184,6 +193,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableRequiredPropertyTable()
+	 * 
 	 */
 	public List getFlatreferencetableRequiredPropertyTable() {
 		return flatreferencetableRequiredProperty.getVirtualList();
@@ -205,6 +215,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateFlatreferencetableRequiredProperty(EObject newValue) {
 		flatreferencetableRequiredProperty.updateComponent(newValue);
@@ -214,6 +225,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addFilterFlatreferencetableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToFlatreferencetableRequiredProperty(ViewerFilter filter) {
 		flatreferencetableRequiredProperty.addFilter(filter);
@@ -223,6 +235,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addBusinessFilterFlatreferencetableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToFlatreferencetableRequiredProperty(ViewerFilter filter) {
 		flatreferencetableRequiredProperty.addBusinessRuleFilter(filter);
@@ -232,6 +245,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#isContainedInFlatreferencetableRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInFlatreferencetableRequiredPropertyTable(EObject element) {
 		return flatreferencetableRequiredProperty.virtualListContains(element);
@@ -249,6 +263,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getFlatreferencetableOptionalPropertyToAdd() {
 		return flatreferencetableOptionalProperty.getElementsToAdd();
@@ -258,6 +273,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getFlatreferencetableOptionalPropertyToRemove() {
 		return flatreferencetableOptionalProperty.getElementsToRemove();
@@ -267,6 +283,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableOptionalPropertyTable()
+	 * 
 	 */
 	public List getFlatreferencetableOptionalPropertyTable() {
 		return flatreferencetableOptionalProperty.getVirtualList();
@@ -288,6 +305,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateFlatreferencetableOptionalProperty(EObject newValue) {
 		flatreferencetableOptionalProperty.updateComponent(newValue);
@@ -297,6 +315,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addFilterFlatreferencetableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToFlatreferencetableOptionalProperty(ViewerFilter filter) {
 		flatreferencetableOptionalProperty.addFilter(filter);
@@ -306,6 +325,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addBusinessFilterFlatreferencetableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToFlatreferencetableOptionalProperty(ViewerFilter filter) {
 		flatreferencetableOptionalProperty.addBusinessRuleFilter(filter);
@@ -315,6 +335,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#isContainedInFlatreferencetableOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
 		return flatreferencetableOptionalProperty.virtualListContains(element);
@@ -334,11 +355,11 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.FlatReferenceTableSample_Part_Title;
@@ -347,5 +368,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

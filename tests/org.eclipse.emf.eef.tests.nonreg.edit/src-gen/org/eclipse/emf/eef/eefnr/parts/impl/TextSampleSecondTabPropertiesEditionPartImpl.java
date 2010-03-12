@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -32,10 +31,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+
+
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TextSampleSecondTabPropertiesEditionPart {
 
@@ -45,10 +47,10 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TextSampleSecondTabPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -59,13 +61,13 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -75,6 +77,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -83,9 +86,11 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EefnrMessages.TextSampleSecondTabPropertiesEditionPart_PropertiesGroupLabel);
@@ -99,6 +104,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		createTextOptionalPropertyInSecondTabText(propertiesGroup);
 	}
 
+	
 	protected void createTextRequiredPropertyInSecondTabText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, EefnrViewsRepository.SWT_KIND));
 		textRequiredPropertyInSecondTab = new Text(parent, SWT.BORDER);
@@ -110,6 +116,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -125,6 +132,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -139,6 +147,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTextOptionalPropertyInSecondTabText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab, EefnrViewsRepository.SWT_KIND));
 		textOptionalPropertyInSecondTab = new Text(parent, SWT.BORDER);
@@ -150,6 +159,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -165,6 +175,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -185,18 +196,19 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#getTextRequiredPropertyInSecondTab()
+	 * 
 	 */
 	public String getTextRequiredPropertyInSecondTab() {
 		return textRequiredPropertyInSecondTab.getText();
@@ -206,6 +218,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#setTextRequiredPropertyInSecondTab(String newValue)
+	 * 
 	 */
 	public void setTextRequiredPropertyInSecondTab(String newValue) {
 		if (newValue != null) {
@@ -227,6 +240,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#getTextOptionalPropertyInSecondTab()
+	 * 
 	 */
 	public String getTextOptionalPropertyInSecondTab() {
 		return textOptionalPropertyInSecondTab.getText();
@@ -236,6 +250,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart#setTextOptionalPropertyInSecondTab(String newValue)
+	 * 
 	 */
 	public void setTextOptionalPropertyInSecondTab(String newValue) {
 		if (newValue != null) {
@@ -259,11 +274,11 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.TextSampleSecondTab_Part_Title;
@@ -272,5 +287,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

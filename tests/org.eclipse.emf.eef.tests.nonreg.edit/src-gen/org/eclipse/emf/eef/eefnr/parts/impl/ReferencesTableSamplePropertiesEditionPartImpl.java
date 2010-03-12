@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,10 +48,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TableColumn;
 
-// End of user code
+
+
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ReferencesTableSamplePropertiesEditionPart {
 
@@ -72,10 +74,10 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public ReferencesTableSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -86,13 +88,13 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -102,6 +104,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -110,9 +113,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EefnrMessages.ReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -128,6 +133,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * @param parent
+	 * 
 	 */
 	protected void createReferencestableRequiredPropertyReferencesTable(Composite parent) {
 		Label referencestableRequiredPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
@@ -143,6 +149,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		createReferencestableRequiredPropertyControlPanel(parent);
 	}
 
+	/**
+	 * 
+	 */
 	protected TableViewer createReferencestableRequiredPropertyViewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
@@ -153,11 +162,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		gd.verticalAlignment = GridData.FILL;
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
-		// Start of user code for table referencestableRequiredProperty s columns definition
+		// Start of user code for table referencestableRequiredProperty s columns definition		
+				TableColumn name = new TableColumn(table, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
 		
-		TableColumn name = new TableColumn(table, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
 		// End of user code
 		
 		TableViewer result = new TableViewer(table);
@@ -165,21 +174,21 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		result.setLabelProvider(new ITableLabelProvider() {
 	
 			// Start of user code for table referencestableRequiredProperty label provider
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
 			
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
-
-			public Image getColumnImage(Object element, int columnIndex) {
-				return null;
-			}
+						public Image getColumnImage(Object element, int columnIndex) {
+							return null;
+						}
+						
 			// End of user code
 
 			public void addListener(ILabelProviderListener listener) {
@@ -199,6 +208,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		return result;
 	}
 
+	/**
+	 * 
+	 */
 	protected void createReferencestableRequiredPropertyControlPanel(Composite container) {
 		Composite result = new Composite(container, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -214,6 +226,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addReferencestableRequiredProperty();
@@ -231,6 +244,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (referencestableRequiredProperty.getSelection() instanceof IStructuredSelection) {
@@ -245,7 +259,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 *
+	 * 
 	 */
 	protected void addReferencestableRequiredProperty() {
 		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, referencestableRequiredPropertyFilters, referencestableRequiredPropertyBusinessFilters, false, true) {
@@ -264,7 +278,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * @param selection the referencestableRequiredProperty to remove 
+	 * @param selection the referencestableRequiredProperty to remove
+	 * 
 	 */
 	protected void removeReferencestableRequiredProperty(IStructuredSelection selection) {
 		if (selection.getFirstElement() instanceof EObject) {
@@ -275,6 +290,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * @param parent
+	 * 
 	 */
 	protected void createReferencestableOptionalPropertyReferencesTable(Composite parent) {
 		Label referencestableOptionalPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
@@ -290,6 +306,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		createReferencestableOptionalPropertyControlPanel(parent);
 	}
 
+	/**
+	 * 
+	 */
 	protected TableViewer createReferencestableOptionalPropertyViewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
@@ -300,11 +319,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		gd.verticalAlignment = GridData.FILL;
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
-		// Start of user code for table referencestableOptionalProperty s columns definition
+		// Start of user code for table referencestableOptionalProperty s columns definition		
+				TableColumn name = new TableColumn(table, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
 		
-		TableColumn name = new TableColumn(table, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
 		// End of user code
 		
 		TableViewer result = new TableViewer(table);
@@ -312,21 +331,21 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		result.setLabelProvider(new ITableLabelProvider() {
 	
 			// Start of user code for table referencestableOptionalProperty label provider
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
 			
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
-
-			public Image getColumnImage(Object element, int columnIndex) {
-				return null;
-			}
+						public Image getColumnImage(Object element, int columnIndex) {
+							return null;
+						}
+						
 			// End of user code
 
 			public void addListener(ILabelProviderListener listener) {
@@ -346,6 +365,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		return result;
 	}
 
+	/**
+	 * 
+	 */
 	protected void createReferencestableOptionalPropertyControlPanel(Composite container) {
 		Composite result = new Composite(container, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -361,6 +383,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addReferencestableOptionalProperty();
@@ -378,6 +401,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (referencestableOptionalProperty.getSelection() instanceof IStructuredSelection) {
@@ -392,7 +416,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 *
+	 * 
 	 */
 	protected void addReferencestableOptionalProperty() {
 		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, referencestableOptionalPropertyFilters, referencestableOptionalPropertyBusinessFilters, false, true) {
@@ -411,7 +435,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * @param selection the referencestableOptionalProperty to remove 
+	 * @param selection the referencestableOptionalProperty to remove
+	 * 
 	 */
 	protected void removeReferencestableOptionalProperty(IStructuredSelection selection) {
 		if (selection.getFirstElement() instanceof EObject) {
@@ -426,18 +451,19 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#getReferencestableRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToAdd() {
 		return referencestableRequiredPropertyEditUtil.getElementsToAdd();
@@ -447,6 +473,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#getReferencestableRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToRemove() {
 		return referencestableRequiredPropertyEditUtil.getElementsToRemove();
@@ -456,6 +483,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#getReferencestableRequiredPropertyTable()
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyTable() {
 		return referencestableRequiredPropertyEditUtil.getVirtualList();
@@ -481,6 +509,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateReferencestableRequiredProperty(EObject newValue) {
 		if(referencestableRequiredPropertyEditUtil != null){
@@ -493,6 +522,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addFilterReferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToReferencestableRequiredProperty(ViewerFilter filter) {
 		referencestableRequiredPropertyFilters.add(filter);
@@ -502,6 +532,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addBusinessFilterReferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableRequiredProperty(ViewerFilter filter) {
 		referencestableRequiredPropertyBusinessFilters.add(filter);
@@ -511,6 +542,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#isContainedInReferencestableRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element) {
 		return referencestableRequiredPropertyEditUtil.contains(element);
@@ -528,6 +560,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#getReferencestableOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToAdd() {
 		return referencestableOptionalPropertyEditUtil.getElementsToAdd();
@@ -537,6 +570,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#getReferencestableOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToRemove() {
 		return referencestableOptionalPropertyEditUtil.getElementsToRemove();
@@ -546,6 +580,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#getReferencestableOptionalPropertyTable()
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyTable() {
 		return referencestableOptionalPropertyEditUtil.getVirtualList();
@@ -571,6 +606,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateReferencestableOptionalProperty(EObject newValue) {
 		if(referencestableOptionalPropertyEditUtil != null){
@@ -583,6 +619,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addFilterReferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToReferencestableOptionalProperty(ViewerFilter filter) {
 		referencestableOptionalPropertyFilters.add(filter);
@@ -592,6 +629,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addBusinessFilterReferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableOptionalProperty(ViewerFilter filter) {
 		referencestableOptionalPropertyBusinessFilters.add(filter);
@@ -601,6 +639,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#isContainedInReferencestableOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return referencestableOptionalPropertyEditUtil.contains(element);
@@ -620,11 +659,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.ReferencesTableSample_Part_Title;
@@ -633,5 +672,6 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

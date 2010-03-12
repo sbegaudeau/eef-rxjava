@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 
@@ -21,11 +20,13 @@ import org.eclipse.emf.ecore.EEnum;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface RadioSamplePropertiesEditionPart {
 
 	/**
 	 * @return the radioRequiredProperty
+	 * 
 	 */
 	public Object getRadioRequiredProperty();
 
@@ -39,6 +40,7 @@ public interface RadioSamplePropertiesEditionPart {
 	/**
 	 * Defines a new radioRequiredProperty
 	 * @param newValue the new radioRequiredProperty to set
+	 * 
 	 */
 	public void setRadioRequiredProperty(Object newValue);
 
@@ -49,6 +51,7 @@ public interface RadioSamplePropertiesEditionPart {
 
 	/**
 	 * @return the radioOptionalProperty
+	 * 
 	 */
 	public Object getRadioOptionalProperty();
 
@@ -62,9 +65,9 @@ public interface RadioSamplePropertiesEditionPart {
 	/**
 	 * Defines a new radioOptionalProperty
 	 * @param newValue the new radioOptionalProperty to set
+	 * 
 	 */
 	public void setRadioOptionalProperty(Object newValue);
-
 
 
 
@@ -78,6 +81,7 @@ public interface RadioSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -34,10 +33,13 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+
+
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EMFComboViewerSamplePropertiesEditionPart {
 
@@ -47,10 +49,10 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public EMFComboViewerSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -61,13 +63,13 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -77,6 +79,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -85,9 +88,11 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -101,6 +106,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		createEmfcomboviewerOptionalPropertyEMFComboViewer(propertiesGroup);
 	}
 
+	
 	protected void createEmfcomboviewerRequiredPropertyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
@@ -111,6 +117,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createEmfcomboviewerOptionalPropertyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
@@ -127,18 +134,19 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#getEmfcomboviewerRequiredProperty()
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerRequiredProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) emfcomboviewerRequiredProperty.getSelection()).getFirstElement();
@@ -159,6 +167,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#setEmfcomboviewerRequiredProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
@@ -176,6 +185,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#getEmfcomboviewerOptionalProperty()
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerOptionalProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) emfcomboviewerOptionalProperty.getSelection()).getFirstElement();
@@ -196,6 +206,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#setEmfcomboviewerOptionalProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
@@ -215,11 +226,11 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.EMFComboViewerSample_Part_Title;
@@ -228,5 +239,6 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

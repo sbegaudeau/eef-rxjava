@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
@@ -45,31 +44,37 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
+	
 
 // End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private EObjectFlatComboViewerSample eObjectFlatComboViewerSample;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected EObjectFlatComboViewerSamplePropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public EObjectFlatComboViewerSamplePropertiesEditionComponent(EObject eObjectFlatComboViewerSample, String editing_mode) {
 		if (eObjectFlatComboViewerSample instanceof EObjectFlatComboViewerSample) {
@@ -86,6 +91,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -94,6 +100,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -117,6 +124,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
@@ -124,13 +132,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 		if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
 			basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -142,6 +150,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -152,6 +161,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (eObjectFlatComboViewerSample != null && BASE_PART.equals(key)) {
@@ -172,6 +182,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == EefnrViewsRepository.EObjectFlatComboViewerSample.class)
@@ -183,6 +194,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -211,9 +223,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 				}
 
 			});
-			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
-			
-			// End of user code
+
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 
 				/*
@@ -226,9 +236,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 				}
 
 			});
-			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
-			
-			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -247,6 +255,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -257,7 +266,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 			if (eObjectFlatComboViewerSample.eGet(EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery()) == null || !eObjectFlatComboViewerSample.eGet(EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery()).equals(basePart.getEobjectflatcomboviewerOptionalPropery())) {
 				cc.append(SetCommand.create(editingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(), basePart.getEobjectflatcomboviewerOptionalPropery()));
 			}
-
 
 		}
 		if (!cc.isEmpty())
@@ -270,13 +278,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof EObjectFlatComboViewerSample) {
 			EObjectFlatComboViewerSample eObjectFlatComboViewerSampleToUpdate = (EObjectFlatComboViewerSample)source;
 			eObjectFlatComboViewerSampleToUpdate.setEobjectflatcomboviewerRequiredPropery((TotalSample)basePart.getEobjectflatcomboviewerRequiredPropery());
 			eObjectFlatComboViewerSampleToUpdate.setEobjectflatcomboviewerOptionalPropery((TotalSample)basePart.getEobjectflatcomboviewerOptionalPropery());
-
 
 			return eObjectFlatComboViewerSampleToUpdate;
 		}
@@ -288,6 +296,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -298,7 +307,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 				command.append(SetCommand.create(liveEditingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery(), event.getNewValue()));
 			if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(), event.getNewValue()));
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -320,6 +328,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery;
@@ -329,13 +338,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -349,6 +358,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -365,11 +375,11 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -380,6 +390,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

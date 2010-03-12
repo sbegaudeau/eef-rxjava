@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,22 +23,25 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedreferencestableRequiredProperty to add
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToAdd();
 
 	/**
 	 * @return the advancedreferencestableRequiredProperty to remove
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToRemove();
 
 	/**
 	 * @return the current advancedreferencestableRequiredProperty table
-	 */
+	 * 
 	public List getAdvancedreferencestableRequiredPropertyTable();
 
 	/**
@@ -53,6 +55,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedreferencestableRequiredProperty
 	 * @param newValue the advancedreferencestableRequiredProperty to update
+	 * 
 	 */
 	public void updateAdvancedreferencestableRequiredProperty(EObject newValue);
 
@@ -62,6 +65,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter);
 
@@ -71,11 +75,13 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedreferencestableRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element);
 
@@ -86,17 +92,19 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedreferencestableOptionalProperty to add
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToAdd();
 
 	/**
 	 * @return the advancedreferencestableOptionalProperty to remove
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToRemove();
 
 	/**
 	 * @return the current advancedreferencestableOptionalProperty table
-	 */
+	 * 
 	public List getAdvancedreferencestableOptionalPropertyTable();
 
 	/**
@@ -110,6 +118,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * Update the advancedreferencestableOptionalProperty
 	 * @param newValue the advancedreferencestableOptionalProperty to update
+	 * 
 	 */
 	public void updateAdvancedreferencestableOptionalProperty(EObject newValue);
 
@@ -119,6 +128,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter);
 
@@ -128,14 +138,15 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the advancedreferencestableOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element);
-
 
 
 
@@ -149,6 +160,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

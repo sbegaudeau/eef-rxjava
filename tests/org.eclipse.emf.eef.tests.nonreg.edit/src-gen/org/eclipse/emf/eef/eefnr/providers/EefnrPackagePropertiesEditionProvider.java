@@ -14,11 +14,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public EefnrPackagePropertiesEditionProvider() {
 		super();
@@ -44,11 +46,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Root instances.
+	 * 
 	 */
 	protected RootPropertiesEditionProvider rootPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Root
+	 * 
 	 */
 	public RootPropertiesEditionProvider createRootPropertiesEditionProvider() {
 		if (rootPropertiesEditionProvider == null)
@@ -59,11 +63,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * TotalSample instances.
+	 * 
 	 */
 	protected TotalSamplePropertiesEditionProvider totalSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a TotalSample
+	 * 
 	 */
 	public TotalSamplePropertiesEditionProvider createTotalSamplePropertiesEditionProvider() {
 		if (totalSamplePropertiesEditionProvider == null)
@@ -74,11 +80,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * TextSample instances.
+	 * 
 	 */
 	protected TextSamplePropertiesEditionProvider textSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a TextSample
+	 * 
 	 */
 	public TextSamplePropertiesEditionProvider createTextSamplePropertiesEditionProvider() {
 		if (textSamplePropertiesEditionProvider == null)
@@ -89,11 +97,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * CheckboxSample instances.
+	 * 
 	 */
 	protected CheckboxSamplePropertiesEditionProvider checkboxSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a CheckboxSample
+	 * 
 	 */
 	public CheckboxSamplePropertiesEditionProvider createCheckboxSamplePropertiesEditionProvider() {
 		if (checkboxSamplePropertiesEditionProvider == null)
@@ -104,11 +114,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * TextareaSample instances.
+	 * 
 	 */
 	protected TextareaSamplePropertiesEditionProvider textareaSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a TextareaSample
+	 * 
 	 */
 	public TextareaSamplePropertiesEditionProvider createTextareaSamplePropertiesEditionProvider() {
 		if (textareaSamplePropertiesEditionProvider == null)
@@ -119,11 +131,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * RadioSample instances.
+	 * 
 	 */
 	protected RadioSamplePropertiesEditionProvider radioSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a RadioSample
+	 * 
 	 */
 	public RadioSamplePropertiesEditionProvider createRadioSamplePropertiesEditionProvider() {
 		if (radioSamplePropertiesEditionProvider == null)
@@ -134,11 +148,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EObjectFlatComboViewerSample instances.
+	 * 
 	 */
 	protected EObjectFlatComboViewerSamplePropertiesEditionProvider eObjectFlatComboViewerSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EObjectFlatComboViewerSample
+	 * 
 	 */
 	public EObjectFlatComboViewerSamplePropertiesEditionProvider createEObjectFlatComboViewerSamplePropertiesEditionProvider() {
 		if (eObjectFlatComboViewerSamplePropertiesEditionProvider == null)
@@ -149,11 +165,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ReferencesTableSample instances.
+	 * 
 	 */
 	protected ReferencesTableSamplePropertiesEditionProvider referencesTableSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a ReferencesTableSample
+	 * 
 	 */
 	public ReferencesTableSamplePropertiesEditionProvider createReferencesTableSamplePropertiesEditionProvider() {
 		if (referencesTableSamplePropertiesEditionProvider == null)
@@ -164,11 +182,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFComboViewerSample instances.
+	 * 
 	 */
 	protected EMFComboViewerSamplePropertiesEditionProvider eMFComboViewerSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EMFComboViewerSample
+	 * 
 	 */
 	public EMFComboViewerSamplePropertiesEditionProvider createEMFComboViewerSamplePropertiesEditionProvider() {
 		if (eMFComboViewerSamplePropertiesEditionProvider == null)
@@ -179,11 +199,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * MultiValuedEditorSample instances.
+	 * 
 	 */
 	protected MultiValuedEditorSamplePropertiesEditionProvider multiValuedEditorSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a MultiValuedEditorSample
+	 * 
 	 */
 	public MultiValuedEditorSamplePropertiesEditionProvider createMultiValuedEditorSamplePropertiesEditionProvider() {
 		if (multiValuedEditorSamplePropertiesEditionProvider == null)
@@ -194,11 +216,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * TableCompositionEditorSample instances.
+	 * 
 	 */
 	protected TableCompositionEditorSamplePropertiesEditionProvider tableCompositionEditorSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a TableCompositionEditorSample
+	 * 
 	 */
 	public TableCompositionEditorSamplePropertiesEditionProvider createTableCompositionEditorSamplePropertiesEditionProvider() {
 		if (tableCompositionEditorSamplePropertiesEditionProvider == null)
@@ -209,11 +233,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * AdvancedReferencesTableSample instances.
+	 * 
 	 */
 	protected AdvancedReferencesTableSamplePropertiesEditionProvider advancedReferencesTableSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a AdvancedReferencesTableSample
+	 * 
 	 */
 	public AdvancedReferencesTableSamplePropertiesEditionProvider createAdvancedReferencesTableSamplePropertiesEditionProvider() {
 		if (advancedReferencesTableSamplePropertiesEditionProvider == null)
@@ -224,11 +250,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * AdvancedEObjectFlatComboViewerSample instances.
+	 * 
 	 */
 	protected AdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider advancedEObjectFlatComboViewerSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a AdvancedEObjectFlatComboViewerSample
+	 * 
 	 */
 	public AdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider createAdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider() {
 		if (advancedEObjectFlatComboViewerSamplePropertiesEditionProvider == null)
@@ -239,11 +267,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * AdvancedTableCompositionEditorSample instances.
+	 * 
 	 */
 	protected AdvancedTableCompositionEditorSamplePropertiesEditionProvider advancedTableCompositionEditorSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a AdvancedTableCompositionEditorSample
+	 * 
 	 */
 	public AdvancedTableCompositionEditorSamplePropertiesEditionProvider createAdvancedTableCompositionEditorSamplePropertiesEditionProvider() {
 		if (advancedTableCompositionEditorSamplePropertiesEditionProvider == null)
@@ -254,11 +284,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * FlatReferencesTableSample instances.
+	 * 
 	 */
 	protected FlatReferenceTableSamplePropertiesEditionProvider flatReferenceTableSamplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a FlatReferencesTableSample
+	 * 
 	 */
 	public FlatReferenceTableSamplePropertiesEditionProvider createFlatReferenceTableSamplePropertiesEditionProvider() {
 		if (flatReferenceTableSamplePropertiesEditionProvider == null)
@@ -269,11 +301,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Sample instances.
+	 * 
 	 */
 	protected SamplePropertiesEditionProvider samplePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Sample
+	 * 
 	 */
 	public SamplePropertiesEditionProvider createSamplePropertiesEditionProvider() {
 		if (samplePropertiesEditionProvider == null)
@@ -284,11 +318,13 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * TextSampleWithTwoTabs instances.
+	 * 
 	 */
 	protected TextSampleWithTwoTabsPropertiesEditionProvider textSampleWithTwoTabsPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a TextSampleWithTwoTabs
+	 * 
 	 */
 	public TextSampleWithTwoTabsPropertiesEditionProvider createTextSampleWithTwoTabsPropertiesEditionProvider() {
 		if (textSampleWithTwoTabsPropertiesEditionProvider == null)

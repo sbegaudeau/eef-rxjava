@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -41,20 +39,18 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, MultiValuedEditorSamplePropertiesEditionPart {
 
 	protected Text multivaluededitorRequiredProperty;
-	protected Button editMultivaluededitorRequiredProperty;
-	private EList multivaluededitorRequiredPropertyList;
+		protected Button editMultivaluededitorRequiredProperty;
+		private EList multivaluededitorRequiredPropertyList;
 	protected Text multivaluededitorOptionalProperty;
-	protected Button editMultivaluededitorOptionalProperty;
-	private EList multivaluededitorOptionalPropertyList;
-
+		protected Button editMultivaluededitorOptionalProperty;
+		private EList multivaluededitorOptionalPropertyList;
 
 
 
@@ -62,6 +58,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public MultiValuedEditorSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -72,6 +69,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -89,6 +87,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -98,6 +97,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -113,6 +115,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createMultivaluededitorRequiredPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorRequiredProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -127,6 +132,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EObject multiValuedEditorSample = PropertiesContextService.getInstance().lastElement();
@@ -144,6 +150,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 		});
 	}
 
+	/**
+	 * 
+	 */
 	protected void createMultivaluededitorOptionalPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorOptionalProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -158,6 +167,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EObject multiValuedEditorSample = PropertiesContextService.getInstance().lastElement();
@@ -181,6 +191,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -192,6 +203,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#getMultivaluededitorRequiredProperty()
+	 * 
 	 */
 	public EList getMultivaluededitorRequiredProperty() {
 		return multivaluededitorRequiredPropertyList;
@@ -201,6 +213,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#setMultivaluededitorRequiredProperty(EList newValue)
+	 * 
 	 */
 	public void setMultivaluededitorRequiredProperty(EList newValue) {
 		multivaluededitorRequiredPropertyList = newValue;
@@ -219,6 +232,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#getMultivaluededitorOptionalProperty()
+	 * 
 	 */
 	public EList getMultivaluededitorOptionalProperty() {
 		return multivaluededitorOptionalPropertyList;
@@ -228,6 +242,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#setMultivaluededitorOptionalProperty(EList newValue)
+	 * 
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue) {
 		multivaluededitorOptionalPropertyList = newValue;
@@ -245,12 +260,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.MultiValuedEditorSample_Part_Title;
@@ -259,5 +273,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

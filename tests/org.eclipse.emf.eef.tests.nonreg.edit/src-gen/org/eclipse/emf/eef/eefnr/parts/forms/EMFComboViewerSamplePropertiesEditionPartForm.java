@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -40,10 +38,9 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EMFComboViewerSamplePropertiesEditionPart {
 
@@ -53,10 +50,10 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public EMFComboViewerSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -67,6 +64,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -84,6 +82,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -93,6 +92,9 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -108,6 +110,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createEmfcomboviewerRequiredPropertyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
@@ -121,6 +124,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -131,6 +135,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createEmfcomboviewerOptionalPropertyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
@@ -144,6 +149,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -160,6 +166,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -171,6 +178,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#getEmfcomboviewerRequiredProperty()
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerRequiredProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) emfcomboviewerRequiredProperty.getSelection()).getFirstElement();
@@ -191,6 +199,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#setEmfcomboviewerRequiredProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
@@ -204,6 +213,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#getEmfcomboviewerOptionalProperty()
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerOptionalProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) emfcomboviewerOptionalProperty.getSelection()).getFirstElement();
@@ -224,6 +234,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#setEmfcomboviewerOptionalProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
@@ -236,12 +247,11 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.EMFComboViewerSample_Part_Title;
@@ -250,5 +260,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

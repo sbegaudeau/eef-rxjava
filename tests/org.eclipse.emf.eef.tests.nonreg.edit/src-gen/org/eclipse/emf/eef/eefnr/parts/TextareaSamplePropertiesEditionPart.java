@@ -15,22 +15,24 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 
 
-
 // End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface TextareaSamplePropertiesEditionPart {
 
 	/**
 	 * @return the textareaRequiredProperty
+	 * 
 	 */
 	public String getTextareaRequiredProperty();
 
 	/**
 	 * Defines a new textareaRequiredProperty
 	 * @param newValue the new textareaRequiredProperty to set
+	 * 
 	 */
 	public void setTextareaRequiredProperty(String newValue);
 
@@ -41,12 +43,14 @@ public interface TextareaSamplePropertiesEditionPart {
 
 	/**
 	 * @return the textareaOptionalProperty
+	 * 
 	 */
 	public String getTextareaOptionalProperty();
 
 	/**
 	 * Defines a new textareaOptionalProperty
 	 * @param newValue the new textareaOptionalProperty to set
+	 * 
 	 */
 	public void setTextareaOptionalProperty(String newValue);
 
@@ -58,11 +62,11 @@ public interface TextareaSamplePropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

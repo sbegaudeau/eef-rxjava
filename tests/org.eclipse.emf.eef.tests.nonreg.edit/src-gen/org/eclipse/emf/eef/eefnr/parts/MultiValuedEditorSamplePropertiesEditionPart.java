@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.util.EList;
 
 
@@ -20,17 +19,20 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface MultiValuedEditorSamplePropertiesEditionPart {
 
 	/**
 	 * @return the multivaluededitorRequiredProperty
+	 * 
 	 */
 	public EList getMultivaluededitorRequiredProperty();
 
 	/**
 	 * Defines a new multivaluededitorRequiredProperty
 	 * @param newValue the new multivaluededitorRequiredProperty to set
+	 * 
 	 */
 	public void setMultivaluededitorRequiredProperty(EList newValue);
 
@@ -41,15 +43,16 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 
 	/**
 	 * @return the multivaluededitorOptionalProperty
+	 * 
 	 */
 	public EList getMultivaluededitorOptionalProperty();
 
 	/**
 	 * Defines a new multivaluededitorOptionalProperty
 	 * @param newValue the new multivaluededitorOptionalProperty to set
+	 * 
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue);
-
 
 
 
@@ -63,6 +66,7 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
@@ -28,34 +27,39 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentServi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The TextSampleFirstTab part
+	 * 
 	 */
 	private TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart;
 
 	/**
 	 * The TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent;
 
 	/**
 	 * The TextSampleSecondTab part
+	 * 
 	 */
 	private TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart;
 
 	/**
 	 * The TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent;
 
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param textSampleWithTwoTabs
-	 *            the EObject to edit
+	 * @param textSampleWithTwoTabs the EObject to edit
+	 * 
 	 */
 	public TextSampleWithTwoTabsPropertiesEditionComponent(EObject textSampleWithTwoTabs, String editing_mode) {
 		super(editing_mode);
@@ -73,6 +77,7 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(key)) {
@@ -92,6 +97,7 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (EefnrViewsRepository.TextSampleFirstTab.class == key) {
@@ -110,6 +116,7 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == EefnrViewsRepository.TextSampleFirstTab.class) {

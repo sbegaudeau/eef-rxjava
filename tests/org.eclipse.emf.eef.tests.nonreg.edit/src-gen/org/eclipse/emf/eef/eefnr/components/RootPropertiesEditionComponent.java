@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -53,31 +52,37 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
+	
 
 // End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class RootPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private Root root;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected RootPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public RootPropertiesEditionComponent(EObject root, String editing_mode) {
 		if (root instanceof Root) {
@@ -94,6 +99,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -102,6 +108,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -125,6 +132,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getRoot_Samples())) {
@@ -132,13 +140,13 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 			basePart.updateSamples(root);
 		}
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -150,6 +158,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -160,6 +169,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (root != null && BASE_PART.equals(key)) {
@@ -180,6 +190,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == EefnrViewsRepository.Root.class)
@@ -191,6 +202,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -213,9 +225,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 				}
 
 			});
-			// Start of user code for additional businessfilters for samples
-			
-			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -233,6 +243,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -242,7 +253,6 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 				cc.append(AddCommand.create(editingDomain, root, EefnrPackage.eINSTANCE.getRoot_Samples(), iter.next()));
 			Map samplesToRefreshFromSamples = basePart.getSamplesToEdit();
 			for (Iterator iter = samplesToRefreshFromSamples.keySet().iterator(); iter.hasNext();) {
-				
 				AbstractSample nextElement = (AbstractSample) iter.next();
 				AbstractSample samples = (AbstractSample) samplesToRefreshFromSamples.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
@@ -250,7 +260,6 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, samples.eGet(feature)));
 					}
 				}
-				
 			}
 			List samplesToRemoveFromSamples = basePart.getSamplesToRemove();
 			for (Iterator iter = samplesToRemoveFromSamples.iterator(); iter.hasNext();)
@@ -260,7 +269,6 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, root, EefnrPackage.eINSTANCE.getAbstractSample(), moveElement.getElement(), moveElement.getIndex()));
 			}
-
 
 		}
 		if (!cc.isEmpty())
@@ -273,12 +281,12 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Root) {
 			Root rootToUpdate = (Root)source;
 			rootToUpdate.getSamples().addAll(basePart.getSamplesToAdd());
-
 
 			return rootToUpdate;
 		}
@@ -290,6 +298,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -300,14 +309,12 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					AbstractSample oldValue = (AbstractSample)event.getOldValue();
 					AbstractSample newValue = (AbstractSample)event.getNewValue();
-					
 					// TODO: Complete the root update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, root, EefnrPackage.eINSTANCE.getRoot_Samples(), event.getNewValue()));
@@ -316,7 +323,6 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
 					command.append(MoveCommand.create(liveEditingDomain, root, EefnrPackage.eINSTANCE.getAbstractSample(), event.getNewValue(), event.getNewIndex()));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -338,13 +344,13 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -358,6 +364,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -374,11 +381,11 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -389,6 +396,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

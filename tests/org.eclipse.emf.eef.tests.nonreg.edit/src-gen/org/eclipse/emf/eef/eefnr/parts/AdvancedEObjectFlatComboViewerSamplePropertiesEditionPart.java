@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -23,11 +22,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedeobjectflatcomboviewerRequiredProperty
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerRequiredProperty();
 
@@ -41,12 +42,14 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	/**
 	 * Defines a new advancedeobjectflatcomboviewerRequiredProperty
 	 * @param newValue the new advancedeobjectflatcomboviewerRequiredProperty to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerRequiredProperty(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerRequiredPropertyButtonMode(ButtonsModeEnum newValue);
 
@@ -56,6 +59,7 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter);
 
@@ -65,6 +69,7 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter);
 
@@ -75,6 +80,7 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 
 	/**
 	 * @return the advancedeobjectflatcomboviewerOptionalProperty
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerOptionalProperty();
 
@@ -88,12 +94,14 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	/**
 	 * Defines a new advancedeobjectflatcomboviewerOptionalProperty
 	 * @param newValue the new advancedeobjectflatcomboviewerOptionalProperty to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerOptionalProperty(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerOptionalPropertyButtonMode(ButtonsModeEnum newValue);
 
@@ -103,6 +111,7 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
 
@@ -112,9 +121,9 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
-
 
 
 
@@ -128,6 +137,7 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

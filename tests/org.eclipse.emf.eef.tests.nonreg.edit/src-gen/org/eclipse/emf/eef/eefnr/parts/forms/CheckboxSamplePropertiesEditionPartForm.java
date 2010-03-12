@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -34,10 +32,9 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class CheckboxSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, CheckboxSamplePropertiesEditionPart {
 
@@ -47,10 +44,10 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public CheckboxSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -61,6 +58,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -78,6 +76,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -87,6 +86,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.CheckboxSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -102,6 +104,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createCheckboxRequiredPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxRequiredProperty = widgetFactory.createButton(parent, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel, SWT.CHECK);
 		checkboxRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -110,6 +113,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -123,6 +127,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createCheckboxOptionalPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxOptionalProperty = widgetFactory.createButton(parent, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel, SWT.CHECK);
 		checkboxOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -131,6 +136,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -150,6 +156,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -161,6 +168,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart#getCheckboxRequiredProperty()
+	 * 
 	 */
 	public Boolean getCheckboxRequiredProperty() {
 		return Boolean.valueOf(checkboxRequiredProperty.getSelection());
@@ -170,6 +178,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart#setCheckboxRequiredProperty(Boolean newValue)
+	 * 
 	 */
 	public void setCheckboxRequiredProperty(Boolean newValue) {
 		if (newValue != null) {
@@ -187,6 +196,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart#getCheckboxOptionalProperty()
+	 * 
 	 */
 	public Boolean getCheckboxOptionalProperty() {
 		return Boolean.valueOf(checkboxOptionalProperty.getSelection());
@@ -196,6 +206,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart#setCheckboxOptionalProperty(Boolean newValue)
+	 * 
 	 */
 	public void setCheckboxOptionalProperty(Boolean newValue) {
 		if (newValue != null) {
@@ -212,12 +223,11 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.CheckboxSample_Part_Title;
@@ -226,5 +236,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

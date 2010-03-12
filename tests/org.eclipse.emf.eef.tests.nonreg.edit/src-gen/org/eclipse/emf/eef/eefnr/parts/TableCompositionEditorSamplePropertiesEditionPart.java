@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-
 import java.util.List;
 import java.util.Map;
 
@@ -25,32 +24,37 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface TableCompositionEditorSamplePropertiesEditionPart {
 
 	/**
 	 * @return the tablecompositionRequiredProperty to add
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToAdd();
 
 	/**
 	 * @return the tablecompositionRequiredProperty to remove
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToRemove();
 
 	/**
 	 * @return the tablecompositionRequiredProperty to move
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToMove();
 
 	/**
 	 * @return the tablecompositionRequiredProperty to edit
+	 * 
 	 */
 	public Map getTablecompositionRequiredPropertyToEdit();
 
 	/**
 	 * @return the current tablecompositionRequiredProperty table
-	 */
+	 * 
 	public List getTablecompositionRequiredPropertyTable();
 
 	/**
@@ -64,6 +68,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * Update the tablecompositionRequiredProperty
 	 * @param newValue the tablecompositionRequiredProperty to update
+	 * 
 	 */
 	public void updateTablecompositionRequiredProperty(EObject newValue);
 
@@ -73,6 +78,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter);
 
@@ -82,11 +88,13 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionRequiredProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the tablecompositionRequiredProperty table
+	 * 
 	 */
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element);
 
@@ -97,27 +105,31 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 
 	/**
 	 * @return the tablecompositionOptionalProperty to add
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToAdd();
 
 	/**
 	 * @return the tablecompositionOptionalProperty to remove
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToRemove();
 
 	/**
 	 * @return the tablecompositionOptionalProperty to move
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToMove();
 
 	/**
 	 * @return the tablecompositionOptionalProperty to edit
+	 * 
 	 */
 	public Map getTablecompositionOptionalPropertyToEdit();
 
 	/**
 	 * @return the current tablecompositionOptionalProperty table
-	 */
+	 * 
 	public List getTablecompositionOptionalPropertyTable();
 
 	/**
@@ -131,6 +143,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * Update the tablecompositionOptionalProperty
 	 * @param newValue the tablecompositionOptionalProperty to update
+	 * 
 	 */
 	public void updateTablecompositionOptionalProperty(EObject newValue);
 
@@ -140,6 +153,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter);
 
@@ -149,14 +163,15 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionOptionalProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the tablecompositionOptionalProperty table
+	 * 
 	 */
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element);
-
 
 
 
@@ -170,6 +185,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

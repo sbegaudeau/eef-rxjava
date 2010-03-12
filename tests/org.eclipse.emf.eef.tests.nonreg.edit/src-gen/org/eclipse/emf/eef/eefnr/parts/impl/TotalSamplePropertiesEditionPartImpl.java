@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,7 +30,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
-import org.eclipse.emf.eef.eefnr.TextSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
@@ -76,10 +74,13 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+
+
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TotalSamplePropertiesEditionPart {
 
@@ -156,10 +157,10 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public TotalSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -170,13 +171,13 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -186,6 +187,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -194,9 +196,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(EefnrMessages.TotalSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -237,6 +241,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		createNameText(propertiesGroup);
 	}
 
+	
 	protected void createTextRequiredPropertyText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.textRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		textRequiredProperty = new Text(parent, SWT.BORDER);
@@ -248,6 +253,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -263,6 +269,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -277,6 +284,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTextOptionalPropertyText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.textOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		textOptionalProperty = new Text(parent, SWT.BORDER);
@@ -288,6 +296,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -303,6 +312,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -317,6 +327,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createCheckboxRequiredPropertyCheckbox(Composite parent) {
 		checkboxRequiredProperty = new Button(parent, SWT.CHECK);
 		checkboxRequiredProperty.setText(EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel);
@@ -326,6 +337,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.checkboxRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createCheckboxOptionalPropertyCheckbox(Composite parent) {
 		checkboxOptionalProperty = new Button(parent, SWT.CHECK);
 		checkboxOptionalProperty.setText(EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel);
@@ -335,6 +347,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.checkboxOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTextareaRequiredPropertyText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		textareaRequiredProperty = new Text(parent, SWT.BORDER);
@@ -346,6 +359,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -361,6 +375,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -375,6 +390,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTextareaOptionalPropertyText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		textareaOptionalProperty = new Text(parent, SWT.BORDER);
@@ -386,6 +402,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -401,6 +418,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -415,6 +433,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createRadioRequiredPropertyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.radioRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		radioRequiredProperty = new EMFComboViewer(parent);
@@ -425,6 +444,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createRadioOptionalPropertyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.radioOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		radioOptionalProperty = new EMFComboViewer(parent);
@@ -437,6 +457,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createEobjectflatcomboviewerRequiredPropertyFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
@@ -457,6 +478,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createEobjectflatcomboviewerOptionalPropertyFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
@@ -475,6 +497,9 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createReferencestableRequiredPropertyAdvancedReferencesTable(Composite parent) {
 		this.referencestableRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
@@ -524,10 +549,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void removeFromReferencestableRequiredProperty(TotalSample element) {
 
 		// Start of user code removeFromReferencestableRequiredProperty() method body
-		EObject editedElement = referencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		referencestableRequiredPropertyEditUtil.removeElement(element);
-		referencestableRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = referencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				referencestableRequiredPropertyEditUtil.removeElement(element);
+				referencestableRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				
 		// End of user code
 
 	}
@@ -538,21 +564,25 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void editReferencestableRequiredProperty(TotalSample element) {
 
 		// Start of user code editReferencestableRequiredProperty() method body
-		EObject editedElement = referencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				referencestableRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				referencestableRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = referencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						referencestableRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						referencestableRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
+	/**
+	 * 
+	 */
 	protected void createReferencestableOptionalPropertyAdvancedReferencesTable(Composite parent) {
 		this.referencestableOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
@@ -602,10 +632,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void removeFromReferencestableOptionalProperty(TotalSample element) {
 
 		// Start of user code removeFromReferencestableOptionalProperty() method body
-		EObject editedElement = referencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		referencestableOptionalPropertyEditUtil.removeElement(element);
-		referencestableOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = referencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				referencestableOptionalPropertyEditUtil.removeElement(element);
+				referencestableOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				
 		// End of user code
 
 	}
@@ -616,21 +647,23 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void editReferencestableOptionalProperty(TotalSample element) {
 
 		// Start of user code editReferencestableOptionalProperty() method body
-		EObject editedElement = referencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				referencestableOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				referencestableOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = referencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						referencestableOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						referencestableOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
+	
 	protected void createEmfcomboviewerRequiredPropertyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
@@ -641,6 +674,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createEmfcomboviewerOptionalPropertyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
@@ -719,6 +753,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createTablecompositionRequiredPropertyAdvancedTableComposition(Composite parent) {
 		this.tablecompositionRequiredProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
@@ -738,7 +773,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveTablecompositionRequiredProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
@@ -748,63 +783,62 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToTablecompositionRequiredProperty() {
-
 		// Start of user code addToTablecompositionRequiredProperty() method body
-		TextSample eObject = EefnrFactory.eINSTANCE.createTextSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
-				tablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+						tablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromTablecompositionRequiredProperty(Sample element) {
-
 		// Start of user code removeFromTablecompositionRequiredProperty() method body
-		EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		tablecompositionRequiredPropertyEditUtil.removeElement(element);
-		tablecompositionRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				tablecompositionRequiredPropertyEditUtil.removeElement(element);
+				tablecompositionRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editTablecompositionRequiredProperty(Sample element) {
-
 		// Start of user code editTablecompositionRequiredProperty() method body
-		EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				tablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						tablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createTablecompositionOptionalPropertyAdvancedTableComposition(Composite parent) {
 		this.tablecompositionOptionalProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
@@ -824,7 +858,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveTablecompositionOptionalProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
@@ -834,36 +868,55 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToTablecompositionOptionalProperty() {
-
 		// Start of user code addToTablecompositionOptionalProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
-				tablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+						tablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromTablecompositionOptionalProperty(Sample element) {
-
 		// Start of user code removeFromTablecompositionOptionalProperty() method body
-		EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		tablecompositionOptionalPropertyEditUtil.removeElement(element);
-		tablecompositionOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				tablecompositionOptionalPropertyEditUtil.removeElement(element);
+				tablecompositionOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
+		// End of user code
+
+	}
+
+	/**
+	 *  
+	 */
+	protected void editTablecompositionOptionalProperty(Sample element) {
+		// Start of user code editTablecompositionOptionalProperty() method body
+				EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						tablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
@@ -871,24 +924,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editTablecompositionOptionalProperty(Sample element) {
-
-		// Start of user code editTablecompositionOptionalProperty() method body
-		EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				tablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
-		// End of user code
-
-	}
-
 	protected void createAdvancedreferencestableRequiredPropertyAdvancedReferencesTable(Composite parent) {
 		this.advancedreferencestableRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
@@ -938,10 +973,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void removeFromAdvancedreferencestableRequiredProperty(TotalSample element) {
 
 		// Start of user code removeFromAdvancedreferencestableRequiredProperty() method body
-		EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedreferencestableRequiredPropertyEditUtil.removeElement(element);
-		advancedreferencestableRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedreferencestableRequiredPropertyEditUtil.removeElement(element);
+				advancedreferencestableRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				
 		// End of user code
 
 	}
@@ -952,21 +988,25 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void editAdvancedreferencestableRequiredProperty(TotalSample element) {
 
 		// Start of user code editAdvancedreferencestableRequiredProperty() method body
-		EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedreferencestableRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedreferencestableRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedreferencestableRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedreferencestableRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedreferencestableRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
+	/**
+	 * 
+	 */
 	protected void createAdvancedreferencestableOptionalPropertyAdvancedReferencesTable(Composite parent) {
 		this.advancedreferencestableOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
@@ -1016,10 +1056,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void removeFromAdvancedreferencestableOptionalProperty(TotalSample element) {
 
 		// Start of user code removeFromAdvancedreferencestableOptionalProperty() method body
-		EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedreferencestableOptionalPropertyEditUtil.removeElement(element);
-		advancedreferencestableOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedreferencestableOptionalPropertyEditUtil.removeElement(element);
+				advancedreferencestableOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				
 		// End of user code
 
 	}
@@ -1030,23 +1071,25 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected void editAdvancedreferencestableOptionalProperty(TotalSample element) {
 
 		// Start of user code editAdvancedreferencestableOptionalProperty() method body
-		EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedreferencestableOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedreferencestableOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedreferencestableOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedreferencestableOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedreferencestableOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createAdvancedeobjectflatcomboviewerRequiredProperyFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerRequiredProperyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
@@ -1067,6 +1110,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createAdvancedeobjectflatcomboviewerOptionalProperyFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerOptionalProperyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
@@ -1087,6 +1131,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createAdvancedtablecompositionRequiredPropertyAdvancedTableComposition(Composite parent) {
 		this.advancedtablecompositionRequiredProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
@@ -1106,7 +1151,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveAdvancedtablecompositionRequiredProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
@@ -1116,63 +1161,62 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToAdvancedtablecompositionRequiredProperty() {
-
 		// Start of user code addToAdvancedtablecompositionRequiredProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
-				advancedtablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+						advancedtablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromAdvancedtablecompositionRequiredProperty(Sample element) {
-
 		// Start of user code removeFromAdvancedtablecompositionRequiredProperty() method body
-		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
-		advancedtablecompositionRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
+				advancedtablecompositionRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editAdvancedtablecompositionRequiredProperty(Sample element) {
-
 		// Start of user code editAdvancedtablecompositionRequiredProperty() method body
-		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedtablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedtablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(Composite parent) {
 		this.advancedtablecompositionOptionalProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
@@ -1192,7 +1236,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveAdvancedtablecompositionOptionalProperty(Sample element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
@@ -1202,63 +1246,62 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToAdvancedtablecompositionOptionalProperty() {
-
 		// Start of user code addToAdvancedtablecompositionOptionalProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
-				advancedtablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+						advancedtablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromAdvancedtablecompositionOptionalProperty(Sample element) {
-
 		// Start of user code removeFromAdvancedtablecompositionOptionalProperty() method body
-		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
-		advancedtablecompositionOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
+				advancedtablecompositionOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editAdvancedtablecompositionOptionalProperty(Sample element) {
-
 		// Start of user code editAdvancedtablecompositionOptionalProperty() method body
-		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedtablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedtablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createTablecompositionWithSameTypeRequiredPropertyAdvancedTableComposition(Composite parent) {
 		this.tablecompositionWithSameTypeRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionWithSameTypeRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {			
@@ -1278,7 +1321,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveTablecompositionWithSameTypeRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
 		EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
@@ -1288,63 +1331,62 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToTablecompositionWithSameTypeRequiredProperty() {
-
 		// Start of user code addToTablecompositionWithSameTypeRequiredProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionWithSameTypeRequiredPropertyEditUtil.addElement(propertiesEditionObject);
-				tablecompositionWithSameTypeRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionWithSameTypeRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+						tablecompositionWithSameTypeRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromTablecompositionWithSameTypeRequiredProperty(TotalSample element) {
-
 		// Start of user code removeFromTablecompositionWithSameTypeRequiredProperty() method body
-		EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		tablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
-		tablecompositionWithSameTypeRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				tablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
+				tablecompositionWithSameTypeRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editTablecompositionWithSameTypeRequiredProperty(TotalSample element) {
-
 		// Start of user code editTablecompositionWithSameTypeRequiredProperty() method body
-		EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionWithSameTypeRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				tablecompositionWithSameTypeRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = tablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionWithSameTypeRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						tablecompositionWithSameTypeRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createTablecompositionWithSameTypeOptionalPropertyAdvancedTableComposition(Composite parent) {
 		this.tablecompositionWithSameTypeOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_TablecompositionWithSameTypeOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
@@ -1364,7 +1406,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveTablecompositionWithSameTypeOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
 		EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
@@ -1374,63 +1416,62 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToTablecompositionWithSameTypeOptionalProperty() {
-
 		// Start of user code addToTablecompositionWithSameTypeOptionalProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionWithSameTypeOptionalPropertyEditUtil.addElement(propertiesEditionObject);
-				tablecompositionWithSameTypeOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionWithSameTypeOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+						tablecompositionWithSameTypeOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromTablecompositionWithSameTypeOptionalProperty(TotalSample element) {
-
 		// Start of user code removeFromTablecompositionWithSameTypeOptionalProperty() method body
-		EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		tablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
-		tablecompositionWithSameTypeOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				tablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
+				tablecompositionWithSameTypeOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editTablecompositionWithSameTypeOptionalProperty(TotalSample element) {
-
 		// Start of user code editTablecompositionWithSameTypeOptionalProperty() method body
-		EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				tablecompositionWithSameTypeOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				tablecompositionWithSameTypeOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = tablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						tablecompositionWithSameTypeOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						tablecompositionWithSameTypeOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createAdvancedtablecompositionWithSameTypeRequiredPropertyAdvancedTableComposition(Composite parent) {
 		this.advancedtablecompositionWithSameTypeRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {			
@@ -1450,7 +1491,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveAdvancedtablecompositionWithSameTypeRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
@@ -1460,63 +1501,62 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToAdvancedtablecompositionWithSameTypeRequiredProperty() {
-
 		// Start of user code addToAdvancedtablecompositionWithSameTypeRequiredProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.addElement(propertiesEditionObject);
-				advancedtablecompositionWithSameTypeRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+						advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromAdvancedtablecompositionWithSameTypeRequiredProperty(TotalSample element) {
-
 		// Start of user code removeFromAdvancedtablecompositionWithSameTypeRequiredProperty() method body
-		EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
-		advancedtablecompositionWithSameTypeRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
+				advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editAdvancedtablecompositionWithSameTypeRequiredProperty(TotalSample element) {
-
 		// Start of user code editAdvancedtablecompositionWithSameTypeRequiredProperty() method body
-		EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedtablecompositionWithSameTypeRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedtablecompositionWithSameTypeRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createAdvancedtablecompositionWithSameTypeOptionalPropertyAdvancedTableComposition(Composite parent) {
 		this.advancedtablecompositionWithSameTypeOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionWithSameTypeOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
@@ -1536,7 +1576,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void moveAdvancedtablecompositionWithSameTypeOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
 		EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
@@ -1546,50 +1586,60 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToAdvancedtablecompositionWithSameTypeOptionalProperty() {
-
 		// Start of user code addToAdvancedtablecompositionWithSameTypeOptionalProperty() method body
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+						advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromAdvancedtablecompositionWithSameTypeOptionalProperty(TotalSample element) {
-
 		// Start of user code removeFromAdvancedtablecompositionWithSameTypeOptionalProperty() method body
-		EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
-		advancedtablecompositionWithSameTypeOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
+				advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
 		// End of user code
 
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editAdvancedtablecompositionWithSameTypeOptionalProperty(TotalSample element) {
-
 		// Start of user code editAdvancedtablecompositionWithSameTypeOptionalProperty() method body
-		EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedtablecompositionWithSameTypeOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedtablecompositionWithSameTypeOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}		
 		// End of user code
 
 	}
 
+	
 	protected void createNameText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.name, EefnrViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
@@ -1601,6 +1651,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -1616,6 +1667,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -1636,18 +1688,19 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTextRequiredProperty()
+	 * 
 	 */
 	public String getTextRequiredProperty() {
 		return textRequiredProperty.getText();
@@ -1657,6 +1710,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setTextRequiredProperty(String newValue)
+	 * 
 	 */
 	public void setTextRequiredProperty(String newValue) {
 		if (newValue != null) {
@@ -1678,6 +1732,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTextOptionalProperty()
+	 * 
 	 */
 	public String getTextOptionalProperty() {
 		return textOptionalProperty.getText();
@@ -1687,6 +1742,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setTextOptionalProperty(String newValue)
+	 * 
 	 */
 	public void setTextOptionalProperty(String newValue) {
 		if (newValue != null) {
@@ -1708,6 +1764,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getCheckboxRequiredProperty()
+	 * 
 	 */
 	public Boolean getCheckboxRequiredProperty() {
 		return Boolean.valueOf(checkboxRequiredProperty.getSelection());
@@ -1717,6 +1774,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setCheckboxRequiredProperty(Boolean newValue)
+	 * 
 	 */
 	public void setCheckboxRequiredProperty(Boolean newValue) {
 		if (newValue != null) {
@@ -1738,6 +1796,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getCheckboxOptionalProperty()
+	 * 
 	 */
 	public Boolean getCheckboxOptionalProperty() {
 		return Boolean.valueOf(checkboxOptionalProperty.getSelection());
@@ -1747,6 +1806,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setCheckboxOptionalProperty(Boolean newValue)
+	 * 
 	 */
 	public void setCheckboxOptionalProperty(Boolean newValue) {
 		if (newValue != null) {
@@ -1768,6 +1828,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTextareaRequiredProperty()
+	 * 
 	 */
 	public String getTextareaRequiredProperty() {
 		return textareaRequiredProperty.getText();
@@ -1777,6 +1838,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setTextareaRequiredProperty(String newValue)
+	 * 
 	 */
 	public void setTextareaRequiredProperty(String newValue) {
 		if (newValue != null) {
@@ -1798,6 +1860,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTextareaOptionalProperty()
+	 * 
 	 */
 	public String getTextareaOptionalProperty() {
 		return textareaOptionalProperty.getText();
@@ -1807,6 +1870,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setTextareaOptionalProperty(String newValue)
+	 * 
 	 */
 	public void setTextareaOptionalProperty(String newValue) {
 		if (newValue != null) {
@@ -1828,6 +1892,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getRadioRequiredProperty()
+	 * 
 	 */
 	public Enumerator getRadioRequiredProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) radioRequiredProperty.getSelection()).getFirstElement();
@@ -1848,6 +1913,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setRadioRequiredProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setRadioRequiredProperty(Enumerator newValue) {
 		radioRequiredProperty.modelUpdating(new StructuredSelection(newValue));
@@ -1865,6 +1931,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getRadioOptionalProperty()
+	 * 
 	 */
 	public Enumerator getRadioOptionalProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) radioOptionalProperty.getSelection()).getFirstElement();
@@ -1885,6 +1952,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setRadioOptionalProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setRadioOptionalProperty(Enumerator newValue) {
 		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
@@ -1902,6 +1970,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getEobjectflatcomboviewerRequiredProperty()
+	 * 
 	 */
 	public EObject getEobjectflatcomboviewerRequiredProperty() {
 		if (eobjectflatcomboviewerRequiredProperty.getSelection() instanceof StructuredSelection) {
@@ -1928,6 +1997,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setEobjectflatcomboviewerRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void setEobjectflatcomboviewerRequiredProperty(EObject newValue) {
 		if (newValue != null) {
@@ -1950,6 +2020,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterEobjectflatcomboviewerRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerRequiredProperty.addFilter(filter);
@@ -1959,6 +2030,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterEobjectflatcomboviewerRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerRequiredProperty.addBusinessRuleFilter(filter);
@@ -1976,6 +2048,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getEobjectflatcomboviewerOptionalProperty()
+	 * 
 	 */
 	public EObject getEobjectflatcomboviewerOptionalProperty() {
 		if (eobjectflatcomboviewerOptionalProperty.getSelection() instanceof StructuredSelection) {
@@ -2002,6 +2075,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setEobjectflatcomboviewerOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void setEobjectflatcomboviewerOptionalProperty(EObject newValue) {
 		if (newValue != null) {
@@ -2024,6 +2098,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterEobjectflatcomboviewerOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerOptionalProperty.addFilter(filter);
@@ -2033,6 +2108,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterEobjectflatcomboviewerOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
@@ -2050,6 +2126,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getReferencestableRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToAdd() {
 		return referencestableRequiredPropertyEditUtil.getElementsToAdd();
@@ -2059,6 +2136,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getReferencestableRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyToRemove() {
 		return referencestableRequiredPropertyEditUtil.getElementsToRemove();
@@ -2068,6 +2146,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getReferencestableRequiredPropertyTable()
+	 * 
 	 */
 	public List getReferencestableRequiredPropertyTable() {
 		return referencestableRequiredPropertyEditUtil.getVirtualList();
@@ -2093,6 +2172,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateReferencestableRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateReferencestableRequiredProperty(EObject newValue) {
 		if(referencestableRequiredPropertyEditUtil != null){
@@ -2105,6 +2185,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterReferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToReferencestableRequiredProperty(ViewerFilter filter) {
 		referencestableRequiredPropertyFilters.add(filter);
@@ -2114,6 +2195,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterReferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableRequiredProperty(ViewerFilter filter) {
 		referencestableRequiredPropertyBusinessFilters.add(filter);
@@ -2123,6 +2205,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInReferencestableRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element) {
 		return referencestableRequiredPropertyEditUtil.contains(element);
@@ -2140,6 +2223,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getReferencestableOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToAdd() {
 		return referencestableOptionalPropertyEditUtil.getElementsToAdd();
@@ -2149,6 +2233,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getReferencestableOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyToRemove() {
 		return referencestableOptionalPropertyEditUtil.getElementsToRemove();
@@ -2158,6 +2243,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getReferencestableOptionalPropertyTable()
+	 * 
 	 */
 	public List getReferencestableOptionalPropertyTable() {
 		return referencestableOptionalPropertyEditUtil.getVirtualList();
@@ -2183,6 +2269,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateReferencestableOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateReferencestableOptionalProperty(EObject newValue) {
 		if(referencestableOptionalPropertyEditUtil != null){
@@ -2195,6 +2282,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterReferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToReferencestableOptionalProperty(ViewerFilter filter) {
 		referencestableOptionalPropertyFilters.add(filter);
@@ -2204,6 +2292,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterReferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencestableOptionalProperty(ViewerFilter filter) {
 		referencestableOptionalPropertyBusinessFilters.add(filter);
@@ -2213,6 +2302,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInReferencestableOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return referencestableOptionalPropertyEditUtil.contains(element);
@@ -2230,6 +2320,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getEmfcomboviewerRequiredProperty()
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerRequiredProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) emfcomboviewerRequiredProperty.getSelection()).getFirstElement();
@@ -2250,6 +2341,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setEmfcomboviewerRequiredProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
@@ -2267,6 +2359,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getEmfcomboviewerOptionalProperty()
+	 * 
 	 */
 	public Enumerator getEmfcomboviewerOptionalProperty() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) emfcomboviewerOptionalProperty.getSelection()).getFirstElement();
@@ -2287,6 +2380,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setEmfcomboviewerOptionalProperty(Enumerator newValue)
+	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
@@ -2304,6 +2398,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getMultivaluededitorRequiredProperty()
+	 * 
 	 */
 	public EList getMultivaluededitorRequiredProperty() {
 		return multivaluededitorRequiredPropertyList;
@@ -2313,6 +2408,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setMultivaluededitorRequiredProperty(EList newValue)
+	 * 
 	 */
 	public void setMultivaluededitorRequiredProperty(EList newValue) {
 		multivaluededitorRequiredPropertyList = newValue;
@@ -2335,6 +2431,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getMultivaluededitorOptionalProperty()
+	 * 
 	 */
 	public EList getMultivaluededitorOptionalProperty() {
 		return multivaluededitorOptionalPropertyList;
@@ -2344,6 +2441,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setMultivaluededitorOptionalProperty(EList newValue)
+	 * 
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue) {
 		multivaluededitorOptionalPropertyList = newValue;
@@ -2366,6 +2464,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToAdd() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToAdd();
@@ -2375,6 +2474,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToRemove() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToRemove();
@@ -2384,6 +2484,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToEdit()
+	 * 
 	 */
 	public Map getTablecompositionRequiredPropertyToEdit() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToRefresh();
@@ -2393,6 +2494,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionRequiredPropertyToMove()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyToMove() {
 		return tablecompositionRequiredPropertyEditUtil.getElementsToMove();
@@ -2402,6 +2504,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionRequiredPropertyTable()
+	 * 
 	 */
 	public List getTablecompositionRequiredPropertyTable() {
 		return tablecompositionRequiredPropertyEditUtil.getVirtualList();
@@ -2426,6 +2529,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateTablecompositionRequiredProperty(EObject newValue) {
 		if(tablecompositionRequiredPropertyEditUtil != null){
@@ -2438,6 +2542,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterTablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyFilters.add(filter);
@@ -2447,6 +2552,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterTablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyBusinessFilters.add(filter);
@@ -2456,6 +2562,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInTablecompositionRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element) {
 		return tablecompositionRequiredPropertyEditUtil.contains(element);
@@ -2473,6 +2580,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToAdd() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToAdd();
@@ -2482,6 +2590,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToRemove() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToRemove();
@@ -2491,6 +2600,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToEdit()
+	 * 
 	 */
 	public Map getTablecompositionOptionalPropertyToEdit() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToRefresh();
@@ -2500,6 +2610,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionOptionalPropertyToMove()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyToMove() {
 		return tablecompositionOptionalPropertyEditUtil.getElementsToMove();
@@ -2509,6 +2620,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionOptionalPropertyTable()
+	 * 
 	 */
 	public List getTablecompositionOptionalPropertyTable() {
 		return tablecompositionOptionalPropertyEditUtil.getVirtualList();
@@ -2533,6 +2645,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateTablecompositionOptionalProperty(EObject newValue) {
 		if(tablecompositionOptionalPropertyEditUtil != null){
@@ -2545,6 +2658,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterTablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyFilters.add(filter);
@@ -2554,6 +2668,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterTablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyBusinessFilters.add(filter);
@@ -2563,6 +2678,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInTablecompositionOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return tablecompositionOptionalPropertyEditUtil.contains(element);
@@ -2580,6 +2696,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedreferencestableRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToAdd() {
 		return advancedreferencestableRequiredPropertyEditUtil.getElementsToAdd();
@@ -2589,6 +2706,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedreferencestableRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyToRemove() {
 		return advancedreferencestableRequiredPropertyEditUtil.getElementsToRemove();
@@ -2598,6 +2716,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedreferencestableRequiredPropertyTable()
+	 * 
 	 */
 	public List getAdvancedreferencestableRequiredPropertyTable() {
 		return advancedreferencestableRequiredPropertyEditUtil.getVirtualList();
@@ -2623,6 +2742,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedreferencestableRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedreferencestableRequiredProperty(EObject newValue) {
 		if(advancedreferencestableRequiredPropertyEditUtil != null){
@@ -2635,6 +2755,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedreferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter) {
 		advancedreferencestableRequiredPropertyFilters.add(filter);
@@ -2644,6 +2765,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedreferencestableRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableRequiredProperty(ViewerFilter filter) {
 		advancedreferencestableRequiredPropertyBusinessFilters.add(filter);
@@ -2653,6 +2775,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element) {
 		return advancedreferencestableRequiredPropertyEditUtil.contains(element);
@@ -2670,6 +2793,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedreferencestableOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToAdd() {
 		return advancedreferencestableOptionalPropertyEditUtil.getElementsToAdd();
@@ -2679,6 +2803,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedreferencestableOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyToRemove() {
 		return advancedreferencestableOptionalPropertyEditUtil.getElementsToRemove();
@@ -2688,6 +2813,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedreferencestableOptionalPropertyTable()
+	 * 
 	 */
 	public List getAdvancedreferencestableOptionalPropertyTable() {
 		return advancedreferencestableOptionalPropertyEditUtil.getVirtualList();
@@ -2713,6 +2839,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedreferencestableOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedreferencestableOptionalProperty(EObject newValue) {
 		if(advancedreferencestableOptionalPropertyEditUtil != null){
@@ -2725,6 +2852,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedreferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter) {
 		advancedreferencestableOptionalPropertyFilters.add(filter);
@@ -2734,6 +2862,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedreferencestableOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedreferencestableOptionalProperty(ViewerFilter filter) {
 		advancedreferencestableOptionalPropertyBusinessFilters.add(filter);
@@ -2743,6 +2872,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return advancedreferencestableOptionalPropertyEditUtil.contains(element);
@@ -2760,6 +2890,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedeobjectflatcomboviewerRequiredPropery()
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerRequiredPropery() {
 		if (advancedeobjectflatcomboviewerRequiredPropery.getSelection() instanceof StructuredSelection) {
@@ -2786,6 +2917,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setAdvancedeobjectflatcomboviewerRequiredPropery(EObject newValue)
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerRequiredPropery(EObject newValue) {
 		if (newValue != null) {
@@ -2808,6 +2940,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerRequiredPropery.addFilter(filter);
@@ -2817,6 +2950,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
@@ -2834,6 +2968,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedeobjectflatcomboviewerOptionalPropery()
+	 * 
 	 */
 	public EObject getAdvancedeobjectflatcomboviewerOptionalPropery() {
 		if (advancedeobjectflatcomboviewerOptionalPropery.getSelection() instanceof StructuredSelection) {
@@ -2860,6 +2995,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setAdvancedeobjectflatcomboviewerOptionalPropery(EObject newValue)
+	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerOptionalPropery(EObject newValue) {
 		if (newValue != null) {
@@ -2882,6 +3018,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalPropery.addFilter(filter);
@@ -2891,6 +3028,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
@@ -2908,6 +3046,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToAdd() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToAdd();
@@ -2917,6 +3056,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToRemove() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToRemove();
@@ -2926,6 +3066,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToEdit()
+	 * 
 	 */
 	public Map getAdvancedtablecompositionRequiredPropertyToEdit() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToRefresh();
@@ -2935,6 +3076,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToMove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToMove() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToMove();
@@ -2944,6 +3086,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyTable()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyTable() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getVirtualList();
@@ -2968,6 +3111,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue) {
 		if(advancedtablecompositionRequiredPropertyEditUtil != null){
@@ -2980,6 +3124,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedtablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionRequiredPropertyFilters.add(filter);
@@ -2989,6 +3134,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionRequiredPropertyBusinessFilters.add(filter);
@@ -2998,6 +3144,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element) {
 		return advancedtablecompositionRequiredPropertyEditUtil.contains(element);
@@ -3015,6 +3162,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToAdd() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToAdd();
@@ -3024,6 +3172,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToRemove() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToRemove();
@@ -3033,6 +3182,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToEdit()
+	 * 
 	 */
 	public Map getAdvancedtablecompositionOptionalPropertyToEdit() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToRefresh();
@@ -3042,6 +3192,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToMove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToMove() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToMove();
@@ -3051,6 +3202,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyTable()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyTable() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getVirtualList();
@@ -3075,6 +3227,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue) {
 		if(advancedtablecompositionOptionalPropertyEditUtil != null){
@@ -3087,6 +3240,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedtablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionOptionalPropertyFilters.add(filter);
@@ -3096,6 +3250,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionOptionalPropertyBusinessFilters.add(filter);
@@ -3105,6 +3260,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
@@ -3122,6 +3278,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyToAdd() {
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToAdd();
@@ -3131,6 +3288,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyToRemove() {
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRemove();
@@ -3140,6 +3298,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToEdit()
+	 * 
 	 */
 	public Map getTablecompositionWithSameTypeRequiredPropertyToEdit() {
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRefresh();
@@ -3149,6 +3308,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyToMove()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyToMove() {
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToMove();
@@ -3158,6 +3318,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeRequiredPropertyTable()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyTable() {
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.getVirtualList();
@@ -3182,6 +3343,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionWithSameTypeRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateTablecompositionWithSameTypeRequiredProperty(EObject newValue) {
 		if(tablecompositionWithSameTypeRequiredPropertyEditUtil != null){
@@ -3194,6 +3356,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
 		tablecompositionWithSameTypeRequiredPropertyFilters.add(filter);
@@ -3203,6 +3366,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
 		tablecompositionWithSameTypeRequiredPropertyBusinessFilters.add(filter);
@@ -3212,6 +3376,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element) {
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.contains(element);
@@ -3229,6 +3394,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyToAdd() {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToAdd();
@@ -3238,6 +3404,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyToRemove() {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRemove();
@@ -3247,6 +3414,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToEdit()
+	 * 
 	 */
 	public Map getTablecompositionWithSameTypeOptionalPropertyToEdit() {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRefresh();
@@ -3256,6 +3424,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyToMove()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyToMove() {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToMove();
@@ -3265,6 +3434,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getTablecompositionWithSameTypeOptionalPropertyTable()
+	 * 
 	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyTable() {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.getVirtualList();
@@ -3289,6 +3459,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionWithSameTypeOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateTablecompositionWithSameTypeOptionalProperty(EObject newValue) {
 		if(tablecompositionWithSameTypeOptionalPropertyEditUtil != null){
@@ -3301,6 +3472,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
 		tablecompositionWithSameTypeOptionalPropertyFilters.add(filter);
@@ -3310,6 +3482,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
 		tablecompositionWithSameTypeOptionalPropertyBusinessFilters.add(filter);
@@ -3319,6 +3492,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element) {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
@@ -3336,6 +3510,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToAdd() {
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToAdd();
@@ -3345,6 +3520,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToRemove() {
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRemove();
@@ -3354,6 +3530,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit()
+	 * 
 	 */
 	public Map getAdvancedtablecompositionWithSameTypeRequiredPropertyToEdit() {
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToRefresh();
@@ -3363,6 +3540,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyToMove() {
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getElementsToMove();
@@ -3372,6 +3550,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeRequiredPropertyTable()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyTable() {
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.getVirtualList();
@@ -3396,6 +3575,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionWithSameTypeRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedtablecompositionWithSameTypeRequiredProperty(EObject newValue) {
 		if(advancedtablecompositionWithSameTypeRequiredPropertyEditUtil != null){
@@ -3408,6 +3588,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionWithSameTypeRequiredPropertyFilters.add(filter);
@@ -3417,6 +3598,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionWithSameTypeRequiredPropertyBusinessFilters.add(filter);
@@ -3426,6 +3608,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element) {
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.contains(element);
@@ -3443,6 +3626,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToAdd() {
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToAdd();
@@ -3452,6 +3636,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToRemove() {
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRemove();
@@ -3461,6 +3646,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit()
+	 * 
 	 */
 	public Map getAdvancedtablecompositionWithSameTypeOptionalPropertyToEdit() {
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToRefresh();
@@ -3470,6 +3656,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyToMove() {
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getElementsToMove();
@@ -3479,6 +3666,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getAdvancedtablecompositionWithSameTypeOptionalPropertyTable()
+	 * 
 	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyTable() {
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.getVirtualList();
@@ -3503,6 +3691,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionWithSameTypeOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedtablecompositionWithSameTypeOptionalProperty(EObject newValue) {
 		if(advancedtablecompositionWithSameTypeOptionalPropertyEditUtil != null){
@@ -3515,6 +3704,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addFilterAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionWithSameTypeOptionalPropertyFilters.add(filter);
@@ -3524,6 +3714,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionWithSameTypeOptionalPropertyBusinessFilters.add(filter);
@@ -3533,6 +3724,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element) {
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
@@ -3550,6 +3742,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return name.getText();
@@ -3559,6 +3752,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -3582,11 +3776,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.TotalSample_Part_Title;
@@ -3595,5 +3789,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

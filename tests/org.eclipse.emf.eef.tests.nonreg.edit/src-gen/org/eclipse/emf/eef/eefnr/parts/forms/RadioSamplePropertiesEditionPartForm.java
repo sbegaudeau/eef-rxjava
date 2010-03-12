@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -33,10 +31,9 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, RadioSamplePropertiesEditionPart {
 
@@ -46,10 +43,10 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public RadioSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -60,6 +57,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -77,6 +75,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -86,6 +85,9 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.RadioSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -101,6 +103,9 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createRadioRequiredPropertyRadioViewer(Composite parent) {
 		radioRequiredPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -109,6 +114,9 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createRadioOptionalPropertyRadioViewer(Composite parent) {
 		radioOptionalPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -123,6 +131,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -134,6 +143,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#getRadioRequiredProperty()
+	 * 
 	 */
 	public Object getRadioRequiredProperty() {
 		return radioRequiredPropertyRadioViewer.getSelection();
@@ -153,6 +163,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#setRadioRequiredProperty(Object newValue)
+	 * 
 	 */
 	public void setRadioRequiredProperty(Object newValue) {
 		radioRequiredPropertyRadioViewer.setSelection(newValue);
@@ -166,6 +177,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#getRadioOptionalProperty()
+	 * 
 	 */
 	public Object getRadioOptionalProperty() {
 		return radioOptionalPropertyRadioViewer.getSelection();
@@ -185,6 +197,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#setRadioOptionalProperty(Object newValue)
+	 * 
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(newValue);
@@ -197,12 +210,11 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.RadioSample_Part_Title;
@@ -211,5 +223,6 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

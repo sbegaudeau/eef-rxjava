@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,31 +46,37 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
+	
 
 // End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class FlatReferenceTableSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private FlatReferencesTableSample flatReferencesTableSample;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected FlatReferenceTableSamplePropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public FlatReferenceTableSamplePropertiesEditionComponent(EObject flatReferencesTableSample, String editing_mode) {
 		if (flatReferencesTableSample instanceof FlatReferencesTableSample) {
@@ -88,6 +93,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -96,6 +102,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -119,6 +126,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
@@ -126,13 +134,13 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
 			basePart.updateFlatreferencetableOptionalProperty(flatReferencesTableSample);
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -144,6 +152,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -154,6 +163,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (flatReferencesTableSample != null && BASE_PART.equals(key)) {
@@ -174,6 +184,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == EefnrViewsRepository.FlatReferenceTableSample.class)
@@ -185,6 +196,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -196,13 +208,9 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			basePart.initFlatreferencetableOptionalProperty(flatReferencesTableSample, null, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
 			// init filters
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
-			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-			
-			// End of user code
+
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
-			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
-			
-			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -221,6 +229,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -238,7 +247,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			for (Iterator iter = flatreferencestableOptionalPropertyToRemoveFromFlatreferencetableOptionalProperty.iterator(); iter.hasNext();)
 				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), iter.next()));
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -250,13 +258,13 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof FlatReferencesTableSample) {
 			FlatReferencesTableSample flatReferencesTableSampleToUpdate = (FlatReferencesTableSample)source;
 			flatReferencesTableSampleToUpdate.getFlatreferencestableRequiredProperty().addAll(basePart.getFlatreferencetableRequiredPropertyToAdd());
 			flatReferencesTableSampleToUpdate.getFlatreferencestableOptionalProperty().addAll(basePart.getFlatreferencetableOptionalPropertyToAdd());
-
 
 			return flatReferencesTableSampleToUpdate;
 		}
@@ -268,6 +276,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -289,7 +298,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 					command.append(RemoveCommand.create(liveEditingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), elements.getElementsToRemove()));
 			}
 
-
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
 				} else {
@@ -310,6 +318,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty;
@@ -319,13 +328,13 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -339,6 +348,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -355,11 +365,11 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -370,6 +380,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

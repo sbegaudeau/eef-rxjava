@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
-// Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -45,22 +43,20 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 
 	protected EMFListEditUtil advancedtablecompositionRequiredPropertyEditUtil;
-	protected ReferencesTable<? extends EObject> advancedtablecompositionRequiredProperty;
-	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+		protected ReferencesTable<? extends EObject> advancedtablecompositionRequiredProperty;
+		protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EMFListEditUtil advancedtablecompositionOptionalPropertyEditUtil;
-	protected ReferencesTable<? extends EObject> advancedtablecompositionOptionalProperty;
-	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-
+		protected ReferencesTable<? extends EObject> advancedtablecompositionOptionalProperty;
+		protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -68,6 +64,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public AdvancedTableCompositionEditorSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -78,6 +75,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -95,6 +93,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -104,6 +103,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_PropertiesGroupLabel);
@@ -121,6 +123,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createAdvancedtablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.advancedtablecompositionRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {			
@@ -154,17 +157,19 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	protected void addToAdvancedtablecompositionRequiredProperty() {
 		// Start of user code addToAdvancedtablecompositionRequiredProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
-				advancedtablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionRequiredPropertyEditUtil.addElement(propertiesEditionObject);
+						advancedtablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+		
+		
 		// End of user code
 
 	}
@@ -174,10 +179,11 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	protected void removeFromAdvancedtablecompositionRequiredProperty(TotalSample element) {
 		// Start of user code for the removeFromAdvancedtablecompositionRequiredProperty() method body
-		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
-		advancedtablecompositionRequiredProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
+				advancedtablecompositionRequiredProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				
 		// End of user code
 
 	}
@@ -187,23 +193,25 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	protected void editAdvancedtablecompositionRequiredProperty(TotalSample element) {
 		// Start of user code editAdvancedtablecompositionRequiredProperty() method body
-		EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedtablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionRequiredPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedtablecompositionRequiredProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createAdvancedtablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.advancedtablecompositionOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {			
@@ -237,17 +245,19 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	protected void addToAdvancedtablecompositionOptionalProperty() {
 		// Start of user code addToAdvancedtablecompositionOptionalProperty() method body
-		TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
-				advancedtablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
+				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionOptionalPropertyEditUtil.addElement(propertiesEditionObject);
+						advancedtablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+					}
+				}
+		
+		
 		// End of user code
 
 	}
@@ -257,10 +267,11 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	protected void removeFromAdvancedtablecompositionOptionalProperty(TotalSample element) {
 		// Start of user code for the removeFromAdvancedtablecompositionOptionalProperty() method body
-		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
-		advancedtablecompositionOptionalProperty.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
+				advancedtablecompositionOptionalProperty.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+				
 		// End of user code
 
 	}
@@ -270,17 +281,18 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	protected void editAdvancedtablecompositionOptionalProperty(TotalSample element) {
 		// Start of user code editAdvancedtablecompositionOptionalProperty() method body
-		EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				advancedtablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				advancedtablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+				EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
+				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
+				if (editionPolicy != null) {
+					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+					if (propertiesEditionObject != null) {
+						advancedtablecompositionOptionalPropertyEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+						advancedtablecompositionOptionalProperty.refresh();
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+					}
+				}
+				
 		// End of user code
 
 	}
@@ -291,6 +303,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -302,6 +315,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToAdd() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToAdd();
@@ -311,6 +325,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToRemove() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToRemove();
@@ -320,6 +335,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToEdit()
+	 * 
 	 */
 	public Map getAdvancedtablecompositionRequiredPropertyToEdit() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToRefresh();
@@ -329,6 +345,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyToMove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyToMove() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getElementsToMove();
@@ -338,6 +355,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionRequiredPropertyTable()
+	 * 
 	 */
 	public List getAdvancedtablecompositionRequiredPropertyTable() {
 		return advancedtablecompositionRequiredPropertyEditUtil.getVirtualList();
@@ -362,6 +380,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#updateAdvancedtablecompositionRequiredProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue) {
 		if(advancedtablecompositionRequiredPropertyEditUtil != null){
@@ -374,6 +393,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#addFilterAdvancedtablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionRequiredPropertyFilters.add(filter);
@@ -383,6 +403,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionRequiredProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionRequiredPropertyBusinessFilters.add(filter);
@@ -392,6 +413,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element) {
 		return advancedtablecompositionRequiredPropertyEditUtil.contains(element);
@@ -405,6 +427,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToAdd()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToAdd() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToAdd();
@@ -414,6 +437,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToRemove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToRemove() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToRemove();
@@ -423,6 +447,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToEdit()
+	 * 
 	 */
 	public Map getAdvancedtablecompositionOptionalPropertyToEdit() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToRefresh();
@@ -432,6 +457,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyToMove()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyToMove() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getElementsToMove();
@@ -441,6 +467,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#getAdvancedtablecompositionOptionalPropertyTable()
+	 * 
 	 */
 	public List getAdvancedtablecompositionOptionalPropertyTable() {
 		return advancedtablecompositionOptionalPropertyEditUtil.getVirtualList();
@@ -465,6 +492,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#updateAdvancedtablecompositionOptionalProperty(EObject newValue)
+	 * 
 	 */
 	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue) {
 		if(advancedtablecompositionOptionalPropertyEditUtil != null){
@@ -477,6 +505,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#addFilterAdvancedtablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionOptionalPropertyFilters.add(filter);
@@ -486,6 +515,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#addBusinessFilterAdvancedtablecompositionOptionalProperty(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionOptionalPropertyBusinessFilters.add(filter);
@@ -495,6 +525,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
@@ -507,12 +538,11 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EefnrMessages.AdvancedTableCompositionEditorSample_Part_Title;
@@ -521,5 +551,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }
