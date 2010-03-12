@@ -206,10 +206,10 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	private void initializeEditingDomain(IWorkbenchPart part) {
 		if (part instanceof ITabbedPropertySheetPageContributor) {
 			ITabbedPropertySheetPageContributor editor = (ITabbedPropertySheetPageContributor)part;
+			if (editor instanceof IEditingDomainProvider)
+				editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
 			if (editor instanceof IEditorPart) {
-				if (editor instanceof IEditingDomainProvider)
-					editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
-				else if ((((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)) != null)
+				if ((((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)) != null)
 					editingDomain = ((IEditingDomainProvider)((IEditorPart)editor)
 							.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
 				else if ((((IEditorPart)editor).getAdapter(EditingDomain.class)) != null)
