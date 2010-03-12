@@ -18,20 +18,12 @@
 [import widgetGettersSetters /]
 [import widgetFormImpl /]
 
-[template public FormPropertiesEdionPart(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
-[for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
-[for (view : View | inputPEC.involvedViews()) ? (view.oclIsTypeOf(views::View))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
-	then inputPEC
-	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(components::PropertiesEditionComponent)
-	endif]
-[if (view.mustBeGenerated(inputPEC))]
-	[file (fullFilePath(view), false)]
-[peContext.associatedGenModel().licenceText().trim()/]
-package [view.partsFormPackage()/];
-
-// [protected ('for imports')]
-
+[comment Defines the default imports for a Form Part.
+	@param pec the PropertiesEditionComponent associated to the view
+	@param view the View generating the Form
+	@param basePackage the generation package prefix 
+	/]
+[template private defaultImports(pec : PropertiesEditionComponent, view : View, basePackage : String)]
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -113,8 +105,52 @@ import [subView.owningViewsRepository().vrPackage()/].parts.[subView.pepInterfac
 [/for]
 [/if]
 [view.additionalImports()/]
+[/template]
+
+[comment Defines the default imports for a custom Form Part.
+	@param pec the PropertiesEditionComponent associated to the view
+	@param view the View generating the Form
+	@param basePackage the generation package prefix 
+	/]
+[template private defaultMinimalImports(pec : PropertiesEditionComponent, view : View, basePackage : String)]
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+
+import [pec.model.qualifiedName(basePackage)/];
+import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
+[/template]
+
+[template public FormPropertiesEdionPart(peContext : PropertiesEditionContext, basePackage : String)]
+[comment @main /]
+[for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
+[for (view : View | inputPEC.involvedViews()) ? (view.oclIsTypeOf(views::View))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
+	then inputPEC
+	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(components::PropertiesEditionComponent)
+	endif]
+[if (view.mustBeGenerated(inputPEC))]
+	[file (fullFilePath(view), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [view.partsFormPackage()/];
+
+[if (not peContext.associatedGenModel().useJMergeForUserCode)]
+[pec.defaultImports(view, basePackage)/]
+[else]
+// [protected ('for imports')]
+[pec.defaultImports(view, basePackage)/]
 
 // [/protected]
+[/if]
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
@@ -170,9 +206,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [aView.implementation()/]
 
 [/for]
+[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for additional ui definition')]
 		
 		// [/protected]
+[/if]
 	}
 [for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 [aView.additionalImplementation(pec, inputPEC)/]
@@ -191,9 +229,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
+[/if]
 	}
 [for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 
@@ -210,12 +250,13 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [comment managing subView/]
 [view.elementEditorGetterSettersForSubViews(pec, basePackage)/]
 
+[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 [for (viewElement : ViewElement | view.eAllContents(views::CustomElementEditor).oclAsType(views::CustomElementEditor)->select(owningView() = view))]
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters implementation'))]
 	
 	// [/protected]
 [/for]
-
+[/if]
 	/**
 	 * {@inheritDoc}
 	 *
@@ -240,36 +281,25 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [peContext.associatedGenModel().licenceText().trim()/]
 package [view.partsFormPackage()/]
 
+[if (peContext.associatedGenModel().useJMergeForUserCode)]	
+[pec.defaultMinimalImports(view, basePackage)/]
+[else]
 // [protected ('for imports')]
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.forms.widgets.FormToolkit;
-
-import [pec.model.qualifiedName(basePackage)/];
-import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
+[pec.defaultMinimalImports(view, basePackage)/]
 
 // [/protected]
-
+[/if]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
 public class [view.pepFormClass()/] extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, [view.pepInterface()/] {
 
+	[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
 	// [protected ('widgets declaration')]
 	
 	// [/protected]
-
+	[/if]
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -310,9 +340,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		view.setLayout(layout);
+		[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
 		// [protected ('view visual definition')]
 		
 		// [/protected]
+		[/if]
 	}
 
 	/**
@@ -322,9 +354,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+		[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
+		[/if]
 	}
 
 	/**
@@ -334,9 +368,13 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
+		[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
 		// [protected ('for title')]
 		return "CustomTitle";
 		// [/protected]
+		[else]
+		return "CustomTitle";
+		[/if]			
 	}
 
 [view.additionalMethods()/]
@@ -348,9 +386,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [/template]
 
 [template public additionalMethods(view : View)]
+	[if (not view.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]	
 	// [protected ('additional methods')]
 	
 	// [/protected]
+	[/if]			
 [/template]
 
 [template public fullFilePath(view : View)]

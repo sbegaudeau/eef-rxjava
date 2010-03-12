@@ -61,7 +61,7 @@ public class [viewRepository.vrClass()/] {
 	 * [view.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	public static class [view.name.toJavaClassifier()/] {
-[if (view.oclIsTypeOf(views::CustomView))]
+[if (view.oclIsTypeOf(views::CustomView) and not view.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for '.concat(view.name).concat(' keys'))]
 		
 		// [/protected]
@@ -80,7 +80,7 @@ public class [viewRepository.vrClass()/] {
 [if (viewElement.oclIsTypeOf(views::ElementEditor))]
 [viewElement.owningViewsRepository().associatedGenModel().generationComment()/]
 public static String [viewElement.oclAsType(views::ElementEditor).name.toJavaIdentifier()/] = "[viewElement.oclAsType(views::ElementEditor).qualifiedIdentifier/]";
-[elseif (viewElement.oclIsTypeOf(views::CustomElementEditor))]
+[elseif (viewElement.oclIsTypeOf(views::CustomElementEditor) and not viewElement.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 // [protected ('for '.concat(viewElement.name).concat(' ElementEditor key'))]
 
 // [/protected]

@@ -61,9 +61,11 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedEObjectFlatComboViewer'))]
@@ -137,9 +139,11 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and editionElement.representationName('AdvancedEObjectFlatComboViewer'))]

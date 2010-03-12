@@ -19,14 +19,18 @@
 [import widgetSWTImpl /]
 
 [template public widgetDeclaration(editor : CustomElementEditor) overrides widgetDeclaration]
+	[if (not editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 	// [protected (' for '.concat(editor.name).concat(' widgets declarations'))]
 	
 	// [/protected]
+	[/if]
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.oclIsTypeOf(views::CustomElementEditor))]
+	[if (not editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for '.concat(editor.name).concat(' implementation'))]
 		
 		// [/protected]
+	[/if]
 [/template]
 

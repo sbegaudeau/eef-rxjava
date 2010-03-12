@@ -10,22 +10,14 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module IPropertiesEditionPart('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/views/toolkits/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
+[module IPropertiesEditionPart('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/views/toolkits/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import common /]
 [import naming /]
 [import viewCommon /]
 [import widgetGettersSetters /]
 
-[template public IPropertiesEditionPart(viewRepository : ViewsRepository)]
-[comment @main /]
-[for (view : View | viewRepository.eAllContents(views::View).oclAsType(views::View))]
-[file (fullFilePath(view), false)]
-[viewRepository.associatedGenModel().licenceText().trim()/]
-package [view.partsPackage()/];
-
-// [protected ('for imports')]
-
+[template private defaultImports (view : View) ]
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +26,23 @@ import java.util.Map;
 [viewReference.view.genImports()/]
 [/for]
 [view.additionalImports()/]
+[/template]
+
+[template public IPropertiesEditionPart(viewRepository : ViewsRepository)]
+[comment @main /]
+[for (view : View | viewRepository.eAllContents(views::View).oclAsType(views::View))]
+[file (fullFilePath(view), false)]
+[viewRepository.associatedGenModel().licenceText().trim()/]
+package [view.partsPackage()/];
+
+[if (viewRepository.associatedGenModel().useJMergeForUserCode)]
+[view.defaultImports()/]
+[else]
+// [protected ('for imports')]
+[view.defaultImports()/]
 
 // [/protected]
+[/if]
 
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
@@ -53,11 +60,13 @@ public interface [view.pepInterface()/] {
 [comment viewReference Support/]
 [view.genDeclarationForViewReference()/]
 
+[if (not viewRepository.associatedGenModel().useJMergeForUserCode)]
 [for (viewElement : ViewElement | view.eAllContents(views::ElementEditor)->select(oclIsTypeOf(views::CustomElementEditor)))]
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters declaration'))]
 	
 	// [/protected]
 [/for]
+[/if]
 
 	/**
 	 * Returns the internationalized title text.
@@ -67,9 +76,11 @@ public interface [view.pepInterface()/] {
 	 */
 	public String getTitle();
 
+	[if (not viewRepository.associatedGenModel().useJMergeForUserCode)]
 	// [protected ('for additional methods')]
 	
 	// [/protected]
+	[/if]
 
 }
 [/file]
@@ -79,9 +90,11 @@ public interface [view.pepInterface()/] {
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [view.partsPackage()/];
 
+[if (not viewRepository.associatedGenModel().useJMergeForUserCode)]
 // [protected ('for imports')]
 
 // [/protected]
+[/if]
 
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
@@ -97,10 +110,12 @@ public interface [view.pepInterface()/] {
 	 */
 	public String getTitle();
 
+	[if (not viewRepository.associatedGenModel().useJMergeForUserCode)]
 	// [protected (' for getters and setters declaration')]
 	
 	// [/protected]
-
+	[/if]
+	
 }
 [/file]
 [/for]

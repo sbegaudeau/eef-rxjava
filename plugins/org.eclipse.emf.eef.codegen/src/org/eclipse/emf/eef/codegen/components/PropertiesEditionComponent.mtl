@@ -15,16 +15,7 @@
 [import naming /]
 [import common /]
 
-[template public PropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
-[for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
-[if (pec.needComposedEditionComponent())]
-[file (pec.fullFilePath(), false)]
-[peContext.associatedGenModel().licenceText().trim()/]
-package [pec.componentsPackage()/];
-
-// [protected ('for imports')]
-
+[template private defaultImports(pec : PropertiesEditionComponent, basePackage : String)]
 import org.eclipse.emf.ecore.EObject;
 import [pec.model.qualifiedName(basePackage)/];
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
@@ -56,8 +47,24 @@ import [subPec.subPECQualifiedClass(view)/];
 import [vr.vrQualifiedClass()/];
 [/for]
 [additionalImports()/]
+[/template]
+
+[template public PropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
+[comment @main /]
+[for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
+[if (pec.needComposedEditionComponent())]
+[file (pec.fullFilePath(), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [pec.componentsPackage()/];
+
+[if (peContext.associatedGenModel().useJMergeForUserCode)]
+[pec.defaultImports(basePackage)/]
+[else]
+// [protected ('for imports')]
+[pec.defaultImports(basePackage)/]
 
 // [/protected]
+[/if]
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]

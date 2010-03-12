@@ -79,10 +79,43 @@
 	 * [bindingFilter.documentation/]
 	 */
 	private boolean [bindingFilter.methodName/](Viewer viewer, Object parentElement, Object element){
+		[if (pee.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		return true;
+		[else]			
 		// [protected ('for user filter '.concat(bindingFilter.methodName))]
 		return true;
 		// [/protected]
+		[/if]
 
 	}
 [/for]
 [/template]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

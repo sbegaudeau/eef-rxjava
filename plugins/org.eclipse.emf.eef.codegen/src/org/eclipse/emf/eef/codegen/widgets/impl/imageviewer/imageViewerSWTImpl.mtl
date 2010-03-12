@@ -43,11 +43,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData();
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
-		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.horizontalAlignment = SWT.CENTER;
-		[editor.name.toJavaIdentifier()/]Data.verticalAlignment = SWT.CENTER;
- 		// [/protected]
+		[defaultLayoutData()/] 		
+		// [/protected]
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
 			
@@ -57,4 +54,12 @@ import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 	}
+[/template]
+
+[template private defaultLayoutData (editor : ElementEditor) ]
+		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
+		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
+		[editor.name.toJavaIdentifier()/]Data.horizontalAlignment = SWT.CENTER;
+		[editor.name.toJavaIdentifier()/]Data.verticalAlignment = SWT.CENTER;
+
 [/template]

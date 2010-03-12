@@ -18,6 +18,13 @@
 [comment I don't see a better way to get specific swt services for the moment /]
 [import widgetSWTImpl /]
 
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Text')]
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
+[/template]
+
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('Text'))]
 	protected Text [editor.name.toJavaIdentifier()/];
 [/template]

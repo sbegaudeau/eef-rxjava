@@ -91,29 +91,26 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		gd.verticalAlignment = GridData.FILL;
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
+		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
+		[editor.defaultColumnInitialisation()/]
+		[else]			
 		// [protected ('for table '.concat(editor.name).concat(' s columns definition'))]
-		TableColumn name = new TableColumn(table, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
+		[editor.defaultColumnInitialisation()/]
 		// [/protected]
+		[/if]
 		
 		TableViewer result = new TableViewer(table);
 		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
 	
+		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
+			[editor.defaultLabelProviderInitialisaion()/]			
+		[else]			
 			// [protected ('for table '.concat(editor.name).concat(' label provider'))]
+			[editor.defaultLabelProviderInitialisaion()/]			
 			
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
 			// [/protected]
+		[/if]
 
 			public Image getColumnImage(Object element, int columnIndex) {
 				return null;
@@ -224,6 +221,27 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	}
 [/template]
 
+[template private defaultLabelProviderInitialisaion (editor : ElementEditor) ]
+			public String getColumnText(Object object, int columnIndex) {
+				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+				if (object instanceof EObject) {
+					switch (columnIndex) {
+					case 0:
+						return labelProvider.getText(object);
+					}
+				}
+				return ""; //$NON-NLS-1$
+			}
+
+[/template]
+
+[template private defaultColumnInitialisation (editor : ElementEditor) ]
+		TableColumn name = new TableColumn(table, SWT.NONE);
+		name.setWidth(80);
+		name.setText("Label"); //$NON-NLS-1$
+
+[/template]
+
 [comment ===== Case Widget = AdvancedReferencesTable ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'AdvancedReferencesTable')]
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
@@ -323,21 +341,30 @@ private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
+		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
+		[editor.defaultRemoveOperation()/]
+		[else]
 		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
-		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+		[editor.defaultRemoveOperation()/]
 		// [/protected]
-
+		[/if]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
-		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		
+		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
+		[editor.defaultEditOperation()/]
+		[else]
+		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]		
+		[editor.defaultEditOperation()/]
+		// [/protected]
+		[/if]
+	}
+[/template]
+
+[template public defaultEditOperation (editor : ElementEditor) ]
 		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
@@ -349,8 +376,14 @@ private EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 			}
 		}
-		// [/protected]
 
-	}
+[/template]
+
+[template private defaultRemoveOperation (editor : ElementEditor) ]
+		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
+		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
+
 [/template]
 

@@ -19,14 +19,18 @@
 [import widgetFormImpl /]
 
 [template public widgetDeclaration(editor : CustomElementEditor) overrides widgetDeclaration]
+	[if (not editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 	// [protected (' for '.concat(editor.name).concat(' widgets declarations'))]
 	
 	// [/protected]
+	[/if]
 [/template]
 
 [template public implementation(editor : CustomElementEditor) overrides  implementation]
-// [protected ('for '.concat(editor.name).concat(' widgets implementation'))]
+[if (not editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
+		// [protected ('for '.concat(editor.name).concat(' widgets implementation'))]
 		
 		// [/protected]
+[/if]
 [/template]
 

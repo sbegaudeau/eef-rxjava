@@ -12,40 +12,54 @@
  /]
 [module customControl('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0') extends widgetControl/]
 
+[import common /]
+
 [comment ===== Case : model = any - view = CustomElementEditor ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for '.concat(editionElement.name).concat(' live update'))]
 		
 		// [/protected]
+		[/if]
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for '.concat(editionElement.name).concat(' live command update'))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for '.concat(editionElement.name).concat(' update command'))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for '.concat(editionElement.name).concat(' part update'))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected (' for '.concat(editionElement.name).concat(' command update'))]
 		
 		// [/protected]
+		[/if]
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected (' for '.concat(editionElement.name).concat(' filter update'))]
 		
 		// [/protected]
+		[/if]
 [/template]
 

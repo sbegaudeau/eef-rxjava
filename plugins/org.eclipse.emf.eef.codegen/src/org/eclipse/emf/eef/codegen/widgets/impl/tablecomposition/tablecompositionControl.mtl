@@ -30,14 +30,12 @@
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
-					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					// TODO: Complete the [modelName/] update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					[comment]// [/protected][/comment]
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
@@ -54,7 +52,6 @@
 				cc.append(AddCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], iter.next()));
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
-				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
@@ -62,7 +59,6 @@
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
 					}
 				}
-				[comment]// [/protected][/comment]
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
@@ -99,9 +95,11 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [comment ===== Case : model = Containment(*) in Simple Navigation - view = TableComposition or AdvancedTableComposition===== /]
@@ -118,14 +116,12 @@
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
-					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
 					// TODO: Complete the [modelName/] update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					[comment]// [/protected][/comment]
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, [modelName/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], event.getNewValue()));
@@ -145,7 +141,6 @@
 			}
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
-				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
@@ -153,7 +148,6 @@
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
 					}
 				}
-				[comment]// [/protected][/comment]
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
@@ -199,9 +193,11 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+		[/if]
 [/template]
 
 [comment ===== Case : model = Containment(1) - view = TableComposition or AdvancedTableComposition===== /]
@@ -218,14 +214,11 @@
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					[editionElement.model.eType.name/] oldValue = ([editionElement.model.eType.name/])event.getOldValue();
 					[editionElement.model.eType.name/] newValue = ([editionElement.model.eType.name/])event.getNewValue();
-					[comment]// [protected (' for '.concat(editionElement.name).concat(' live update command'))][/comment]
-					[comment]// TODO: Complete the [modelName/] update command[/comment]
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					[comment]// [/protected][/comment]
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
@@ -246,7 +239,6 @@
 			}
 			Map [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToEdit();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].keySet().iterator(); iter.hasNext();) {
-				[comment]// [protected ('for '.concat(editionElement.model.name).concat(' reference refreshment from ').concat(editionElement.views->first().name))][/comment]
 				[editionElement.model.eType.name/] nextElement = ([editionElement.model.eType.name/]) iter.next();
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/]) [editionElement.model.name.toJavaIdentifier()/]ToRefreshFrom[editionElement.views->first().viewPackageSignature()/].get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
@@ -254,7 +246,6 @@
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, [editionElement.model.name.toJavaIdentifier()/].eGet(feature)));
 					}
 				}
-				[comment]// [/protected][/comment]
 			}
 			List [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/] = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]ToRemove();
 			for (Iterator iter = [editionElement.model.name.toJavaIdentifier()/]ToRemoveFrom[editionElement.views->first().viewPackageSignature()/].iterator(); iter.hasNext();)
@@ -292,7 +283,9 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+		[/if]
 [/template]

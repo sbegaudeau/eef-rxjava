@@ -58,8 +58,10 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
+		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
+		[/if]
 [/template]
 

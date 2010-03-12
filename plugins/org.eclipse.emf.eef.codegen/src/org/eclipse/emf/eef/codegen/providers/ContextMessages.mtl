@@ -96,10 +96,12 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
-
+	
+	[if (not viewsRepository.associatedGenModel().useJMergeForUserCode)]
 	// [protected ('for additionnal NLS Constants')]
 	
-	// [/protected]
+	// [/protected]		
+	[/if]
 
 	static {
 		// initialize resource bundle

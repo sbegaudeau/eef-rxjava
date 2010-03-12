@@ -19,17 +19,7 @@
 [import typeUtils /]
 [import filters /]
 
-[template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
-[for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
-[if (pec.mustBeGenerated())]
-	[for (view : View | pec.views) ? (not view.isDynamicView())]
-[file (pec.fullFilePath(view, basePackage), false)]
-[peContext.associatedGenModel().licenceText().trim()/]
-package [pec.componentsPackage()/];
-
-// [protected ('for imports')]
-
+[template private defaultImports(pec : PropertiesEditionComponent, view : View, basePackage : String)]
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -151,9 +141,26 @@ import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).refer
 [/for]
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-[additionalImports()/]
+[view.additionalImports()/]	
+[/template]
+
+[template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
+[comment @main /]
+[for (pec : PropertiesEditionComponent | peContext.eAllContents(components::PropertiesEditionComponent))]
+[if (pec.mustBeGenerated())]
+	[for (view : View | pec.views) ? (not view.isDynamicView())]
+[file (pec.fullFilePath(view, basePackage), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [pec.componentsPackage()/];
+
+[if (peContext.associatedGenModel().useJMergeForUserCode)]
+[pec.defaultImports(view, basePackage)/]		
+[else]
+// [protected ('for imports')]
+[pec.defaultImports(view, basePackage)/]
 
 // [/protected]
+[/if]
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
@@ -213,7 +220,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 				if ([view.viewIdentifier(pec)/] == null)
 					[pec.subPECClass(view)/].this.dispose();
 				else {
-[if (view.oclIsTypeOf(views::CustomView))]
+[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 					// [protected ('for notifyChanged body')]
 					
 					// [/protected]
@@ -315,7 +322,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			((IPropertiesEditionPart)[view.viewIdentifier(pec)/]).setContext(elt, allResource);
 			final [pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])elt;
 			// init values
-			[if (view.oclIsKindOf(views::CustomView))]
+			[if (view.oclIsKindOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for'.concat(view.name).concat(' custom view initialization'))]
 			
 			// [/protected]
@@ -352,7 +359,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if (([pec.model.name.toJavaIdentifier()/] != null) && ([view.viewIdentifier(pec)/] != null)) { 
-[if (view.oclIsTypeOf(views::CustomView))]
+[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for getPropertiesEditionCommand body')]
 			
 			// [/protected]
@@ -379,7 +386,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof [pec.model.name/]) {
 			[pec.model.name/] [pec.model.name.toJavaIdentifier()/]ToUpdate = ([pec.model.name/])source;
-[if (view.oclIsTypeOf(views::CustomView))]
+[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for getPropertiesEditionObject body')]
 			
 			// [/protected]
@@ -407,7 +414,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
 				CompoundCommand command = new CompoundCommand();
-[if (view.oclIsTypeOf(views::CustomView))]
+[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for firePropertiesChanged body')]
 			
 			// [/protected]
@@ -512,9 +519,11 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			validate = EEFRuntimePlugin.getEEFValidator().validate([pec.model.name.toJavaIdentifier()/]);
+	[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
 		// [protected ('for custom validation check')]
 		
 		// [/protected]
+	[/if]
 		return validate;
 	}
 

@@ -41,15 +41,6 @@
 	else element.container.owningViewString()
 	endif/]
 
-[comment query public topLevelView(element : ViewElement) : View = 
-	if (element.oclIsKindOf(View))
-	then if (not element.container.oclIsKindOf(View))
-		 then element.oclAsType(View)
-		 else element.container.owningView()
-		 endif
-	else element.container.owningView()
-	endif/]
-	
 [query public hasOwningViewsRepository(view : View) : Boolean = view.ancestors()->select(oclIsTypeOf(views::ViewsRepository))->notEmpty()/]
 
 [query public owningViewsRepository(view : View) : ViewsRepository = 
@@ -339,9 +330,7 @@ Object
 [/if]
 [/template]
 
-[template public toPath(s : String)]
-[s.substituteAll('.', '/')/]
-[/template]
+[template public toPath(s : String)][s.substituteAll('.', '/')/][/template]
 
 [comment][esc/][if (esc = 'class' or esc = 'package' or esc = 'default' or esc = 'case' or esc = 'if' or esc = 'else' or esc = 'while' or esc = 'for' or esc = 'do' or esc = 'until' or esc = 'transient' or esc = 'interface')]_[/if][/let][/comment]
 [template public toASCII(s : String)]

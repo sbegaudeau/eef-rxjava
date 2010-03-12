@@ -42,12 +42,13 @@ protected EEFImageViewer [editor.name.toJavaIdentifier()/];
 		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData();
+		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
+		[editor.defaultLayoutData()/] 		
+		[else]
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
-		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.horizontalAlignment = SWT.CENTER;
-		[editor.name.toJavaIdentifier()/]Data.verticalAlignment = SWT.CENTER;
- 		// [/protected]
+		[editor.defaultLayoutData()/] 		
+		// [/protected]
+ 		[/if]
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
 			
@@ -57,5 +58,13 @@ protected EEFImageViewer [editor.name.toJavaIdentifier()/];
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
+[/template]
+
+[template private defaultLayoutData (editor : ElementEditor) ]
+		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
+		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
+		[editor.name.toJavaIdentifier()/]Data.horizontalAlignment = SWT.CENTER;
+		[editor.name.toJavaIdentifier()/]Data.verticalAlignment = SWT.CENTER;
+
 [/template]
 
