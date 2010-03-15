@@ -195,13 +195,6 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -227,13 +220,6 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 		}
 	}
 
-	public void setMessageForMandatory(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForMandatory() {
-
-	}
 
 
 

@@ -224,13 +224,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		referencedFeature.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForReferencedFeature(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferencedFeature() {
-
-	}
 
 /**
 	 * {@inheritDoc}
@@ -261,13 +254,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -287,9 +273,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

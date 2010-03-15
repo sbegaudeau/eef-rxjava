@@ -332,13 +332,6 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -410,13 +403,6 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		model.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForModel(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForModel() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -507,13 +493,6 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		return viewsEditUtil.contains(element);
 	}
 
-	public void setMessageForViews(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForViews() {
-
-	}
 
 
 

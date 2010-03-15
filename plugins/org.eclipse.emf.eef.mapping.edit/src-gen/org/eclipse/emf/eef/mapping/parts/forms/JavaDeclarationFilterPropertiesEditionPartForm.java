@@ -91,7 +91,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createFilterExpressionGroup(widgetFactory, view);
 
 		createFilterProperties(widgetFactory, view);
@@ -199,13 +198,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		}
 	}
 
-	public void setMessageForMethodName(String msg, int msgLevel) {
-		messageManager.addMessage("MethodName_key", msg, null, msgLevel, methodName);
-	}
-
-	public void unsetMessageForMethodName() {
-		messageManager.removeMessage("MethodName_key", methodName);
-	}
 /**
 	 * {@inheritDoc}
 	 * 
@@ -235,13 +227,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -261,9 +246,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

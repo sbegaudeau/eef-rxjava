@@ -164,13 +164,6 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		}
 	}
 
-	public void setMessageForOCLExpressionBody(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForOCLExpressionBody() {
-
-	}
 
 /**
 	 * {@inheritDoc}
@@ -201,13 +194,6 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -227,9 +213,6 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

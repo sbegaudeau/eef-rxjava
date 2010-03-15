@@ -97,7 +97,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -250,13 +249,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		}
 	}
 
-	public void setMessageForIndex(String msg, int msgLevel) {
-		messageManager.addMessage("Index_key", msg, null, msgLevel, index);
-	}
-
-	public void unsetMessageForIndex() {
-		messageManager.removeMessage("Index_key", index);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -329,9 +321,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -401,9 +390,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	public void addBusinessFilterToDiscriminatorType(ViewerFilter filter) {
 		discriminatorType.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 

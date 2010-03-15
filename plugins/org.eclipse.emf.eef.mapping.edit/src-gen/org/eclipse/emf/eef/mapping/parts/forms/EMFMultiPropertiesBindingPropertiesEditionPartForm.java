@@ -111,7 +111,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		createBindingGroup(widgetFactory, view);
@@ -381,13 +380,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -479,9 +471,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -570,9 +559,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	public boolean isContainedInViewsTable(EObject element) {
 		return viewsEditUtil.contains(element);
 	}
-
-
-
 
 
 

@@ -164,13 +164,6 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		}
 	}
 
-	public void setMessageForJavaExpressionBody(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForJavaExpressionBody() {
-
-	}
 
 /**
 	 * {@inheritDoc}
@@ -201,13 +194,6 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -227,9 +213,6 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

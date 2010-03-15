@@ -43,10 +43,6 @@ public interface EMFElementBindingPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 	/**
 	 * @return the model
@@ -94,10 +90,6 @@ public interface EMFElementBindingPropertiesEditionPart {
 	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
-
-
-
-
 
 
 	/**
@@ -157,10 +149,6 @@ public interface EMFElementBindingPropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element);
-
-
-
-
 
 
 

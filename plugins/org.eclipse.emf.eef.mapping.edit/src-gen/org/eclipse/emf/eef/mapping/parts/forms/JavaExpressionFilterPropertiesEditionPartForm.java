@@ -90,7 +90,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createFilterExpressionGroup(widgetFactory, view);
 
 		createFilterProperties(widgetFactory, view);
@@ -190,13 +189,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		}
 	}
 
-	public void setMessageForJavaExpressionBody(String msg, int msgLevel) {
-		messageManager.addMessage("JavaExpressionBody_key", msg, null, msgLevel, javaExpressionBody);
-	}
-
-	public void unsetMessageForJavaExpressionBody() {
-		messageManager.removeMessage("JavaExpressionBody_key", javaExpressionBody);
-	}
 /**
 	 * {@inheritDoc}
 	 * 
@@ -226,13 +218,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -252,9 +237,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

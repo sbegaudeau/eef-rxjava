@@ -37,10 +37,6 @@ public interface FilterPropertiesPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 	/**
 	 * @return the Mandatory
@@ -54,10 +50,6 @@ public interface FilterPropertiesPropertiesEditionPart {
 	 * 
 	 */
 	public void setMandatory(Boolean newValue);
-
-
-
-
 
 
 

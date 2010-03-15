@@ -196,13 +196,6 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		}
 	}
 
-	public void setMessageForMethodName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForMethodName() {
-
-	}
 
 /**
 	 * {@inheritDoc}
@@ -233,13 +226,6 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -259,9 +245,6 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

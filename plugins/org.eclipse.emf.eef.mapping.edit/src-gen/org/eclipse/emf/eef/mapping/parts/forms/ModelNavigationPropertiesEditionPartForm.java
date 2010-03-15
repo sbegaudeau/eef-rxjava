@@ -74,7 +74,6 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition

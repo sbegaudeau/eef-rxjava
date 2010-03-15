@@ -38,10 +38,6 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 	 */
 	public void setJavaExpressionBody(String newValue);
 
-	public void setMessageForJavaExpressionBody(String msg, int msgLevel);
-
-	public void unsetMessageForJavaExpressionBody();
-
 
 	/**
 		 * @return the Filter properties referenced view
@@ -61,10 +57,6 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 	/**
 	 * @return the Mandatory
 	 * 
@@ -77,10 +69,6 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 	 * 
 	 */
 	public void setMandatory(Boolean newValue);
-
-
-
-
 
 
 

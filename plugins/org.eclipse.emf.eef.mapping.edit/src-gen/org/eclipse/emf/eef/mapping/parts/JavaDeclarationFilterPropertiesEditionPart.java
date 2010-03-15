@@ -38,10 +38,6 @@ public interface JavaDeclarationFilterPropertiesEditionPart {
 	 */
 	public void setMethodName(String newValue);
 
-	public void setMessageForMethodName(String msg, int msgLevel);
-
-	public void unsetMessageForMethodName();
-
 
 	/**
 		 * @return the Filter properties referenced view
@@ -61,10 +57,6 @@ public interface JavaDeclarationFilterPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 	/**
 	 * @return the Mandatory
 	 * 
@@ -77,10 +69,6 @@ public interface JavaDeclarationFilterPropertiesEditionPart {
 	 * 
 	 */
 	public void setMandatory(Boolean newValue);
-
-
-
-
 
 
 

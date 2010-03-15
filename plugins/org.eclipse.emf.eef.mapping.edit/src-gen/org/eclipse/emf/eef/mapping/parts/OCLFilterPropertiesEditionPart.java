@@ -38,10 +38,6 @@ public interface OCLFilterPropertiesEditionPart {
 	 */
 	public void setOCLExpressionBody(String newValue);
 
-	public void setMessageForOCLExpressionBody(String msg, int msgLevel);
-
-	public void unsetMessageForOCLExpressionBody();
-
 
 	/**
 		 * @return the Filter properties referenced view
@@ -61,10 +57,6 @@ public interface OCLFilterPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 	/**
 	 * @return the Mandatory
 	 * 
@@ -77,10 +69,6 @@ public interface OCLFilterPropertiesEditionPart {
 	 * 
 	 */
 	public void setMandatory(Boolean newValue);
-
-
-
-
 
 
 

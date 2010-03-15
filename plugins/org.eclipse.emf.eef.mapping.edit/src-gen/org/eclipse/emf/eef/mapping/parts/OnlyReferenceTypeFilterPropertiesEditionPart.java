@@ -76,10 +76,6 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	public void addBusinessFilterToReferencedFeature(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 		 * @return the Filter properties referenced view
 		 * 
@@ -98,10 +94,6 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 	/**
 	 * @return the Mandatory
 	 * 
@@ -114,10 +106,6 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	 * 
 	 */
 	public void setMandatory(Boolean newValue);
-
-
-
-
 
 
 

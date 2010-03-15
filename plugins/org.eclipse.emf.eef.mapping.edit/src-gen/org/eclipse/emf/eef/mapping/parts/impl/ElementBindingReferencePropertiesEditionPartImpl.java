@@ -210,13 +210,6 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		binding.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForBinding(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForBinding() {
-
-	}
 
 
 

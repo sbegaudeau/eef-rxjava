@@ -37,10 +37,6 @@ public interface DocumentationPropertiesEditionPart {
 	 */
 	public void setDocumentation(String newValue);
 
-	public void setMessageForDocumentation(String msg, int msgLevel);
-
-	public void unsetMessageForDocumentation();
-
 
 
 

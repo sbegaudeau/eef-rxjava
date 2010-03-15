@@ -87,7 +87,6 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -221,9 +220,6 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	public void addBusinessFilterToBinding(ViewerFilter filter) {
 		binding.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 

@@ -40,10 +40,6 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 */
 	public void setIndex(String newValue);
 
-	public void setMessageForIndex(String msg, int msgLevel);
-
-	public void unsetMessageForIndex();
-
 
 	/**
 	 * @return the feature
@@ -93,10 +89,6 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	public void addBusinessFilterToFeature(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the discriminatorType
 	 * 
@@ -143,10 +135,6 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * 
 	 */
 	public void addBusinessFilterToDiscriminatorType(ViewerFilter filter);
-
-
-
-
 
 
 

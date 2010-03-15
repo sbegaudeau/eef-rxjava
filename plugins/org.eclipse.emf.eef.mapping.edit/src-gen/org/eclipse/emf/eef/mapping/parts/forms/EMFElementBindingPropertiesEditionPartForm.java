@@ -113,7 +113,6 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		createBindingGroup(widgetFactory, view);
@@ -336,13 +335,6 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -413,9 +405,6 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 	public void addBusinessFilterToModel(ViewerFilter filter) {
 		model.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 	/**
@@ -506,9 +495,6 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 	public boolean isContainedInViewsTable(EObject element) {
 		return viewsEditUtil.contains(element);
 	}
-
-
-
 
 
 

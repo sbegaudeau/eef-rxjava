@@ -94,7 +94,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createReferencedFeatureGroup(widgetFactory, view);
 
 		createFilterProperties(widgetFactory, view);
@@ -237,9 +236,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		referencedFeature.addBusinessRuleFilter(filter);
 	}
 
-
-
-
 /**
 	 * {@inheritDoc}
 	 * 
@@ -269,13 +265,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -295,9 +284,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

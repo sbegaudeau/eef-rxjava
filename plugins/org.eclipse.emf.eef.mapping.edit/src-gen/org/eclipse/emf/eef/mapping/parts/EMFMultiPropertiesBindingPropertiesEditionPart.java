@@ -41,10 +41,6 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 	/**
 	 * @return the model to add
@@ -105,10 +101,6 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	public boolean isContainedInModelTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the views to add
 	 * 
@@ -166,10 +158,6 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element);
-
-
-
-
 
 
 

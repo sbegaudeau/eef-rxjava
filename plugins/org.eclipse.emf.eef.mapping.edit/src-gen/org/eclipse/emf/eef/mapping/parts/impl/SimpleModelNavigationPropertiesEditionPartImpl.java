@@ -240,13 +240,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		}
 	}
 
-	public void setMessageForIndex(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForIndex() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -318,13 +311,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		feature.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForFeature(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForFeature() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -396,13 +382,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		discriminatorType.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForDiscriminatorType(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDiscriminatorType() {
-
-	}
 
 
 

@@ -83,7 +83,6 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createDocumentationGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -175,13 +174,6 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-		messageManager.addMessage("Documentation_key", msg, null, msgLevel, documentation);
-	}
-
-	public void unsetMessageForDocumentation() {
-		messageManager.removeMessage("Documentation_key", documentation);
-	}
 
 
 

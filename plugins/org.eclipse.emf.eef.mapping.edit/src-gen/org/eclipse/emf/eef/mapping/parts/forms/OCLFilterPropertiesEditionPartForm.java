@@ -90,7 +90,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createFilterExpressionGroup(widgetFactory, view);
 
 		createFilterProperties(widgetFactory, view);
@@ -190,13 +189,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		}
 	}
 
-	public void setMessageForOCLExpressionBody(String msg, int msgLevel) {
-		messageManager.addMessage("OCLExpressionBody_key", msg, null, msgLevel, oCLExpressionBody);
-	}
-
-	public void unsetMessageForOCLExpressionBody() {
-		messageManager.removeMessage("OCLExpressionBody_key", oCLExpressionBody);
-	}
 /**
 	 * {@inheritDoc}
 	 * 
@@ -226,13 +218,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		filterPropertiesPropertiesEditionPart.setName(newValue);
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		filterPropertiesPropertiesEditionPart.setMessageForName(msg, msgLevel);
-	}
-
-	public void unsetMessageForName() {
-		filterPropertiesPropertiesEditionPart.unsetMessageForName();
-	}
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -252,9 +237,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
-
-
 
 
 

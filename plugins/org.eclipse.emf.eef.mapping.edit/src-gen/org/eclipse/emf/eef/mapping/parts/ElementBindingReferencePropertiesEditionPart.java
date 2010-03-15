@@ -78,10 +78,6 @@ public interface ElementBindingReferencePropertiesEditionPart {
 
 
 
-
-
-
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

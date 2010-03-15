@@ -386,13 +386,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -483,13 +476,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		return modelEditUtil.contains(element);
 	}
 
-	public void setMessageForModel(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForModel() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -580,13 +566,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		return viewsEditUtil.contains(element);
 	}
 
-	public void setMessageForViews(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForViews() {
-
-	}
 
 
 
