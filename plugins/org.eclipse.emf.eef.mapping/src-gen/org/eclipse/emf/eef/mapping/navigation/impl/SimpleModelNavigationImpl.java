@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationImpl.java,v 1.4 2010/03/15 10:22:29 sbouchet Exp $
+ * $Id: SimpleModelNavigationImpl.java,v 1.5 2010/03/15 16:20:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -306,7 +306,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl imp
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.mapping.impl.ModelNavigationImpl#evaluate(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.mapping.navigation.impl.StructuredModelNavigationImpl#evaluate()
 	 * @generated NOT
 	 */
 	public EClass evaluate() {
@@ -325,7 +325,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl imp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.SimpleModelNavigation#owningEClass()
+	 * @see org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation#owningEClass()
 	 * @generated NOT
 	 */
 	public EClass owningEClass() {
@@ -349,7 +349,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl imp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.SimpleModelNavigation#targetEClass()
+	 * @see org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation#targetEClass()
 	 * @generated NOT
 	 */
 	public EClass targetEClass() {

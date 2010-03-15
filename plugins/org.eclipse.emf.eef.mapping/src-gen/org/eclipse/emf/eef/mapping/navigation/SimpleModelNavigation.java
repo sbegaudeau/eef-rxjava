@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigation.java,v 1.1 2009/04/30 17:13:53 glefur Exp $
+ * $Id: SimpleModelNavigation.java,v 1.2 2010/03/15 16:20:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation;
 
@@ -115,13 +115,13 @@ public interface SimpleModelNavigation extends StructuredModelNavigation {
 	void setDiscriminatorType(EClassifier value);
 
 	/**
-	 * @return
+	 * @return the owning EClass
 	 * @generated NOT
 	 */
 	EClass owningEClass();
 
 	/**
-	 * @return
+	 * @return the current EClass
 	 * @generated NOT
 	 */
 	EClass targetEClass();

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ChainedModelNavigationImpl.java,v 1.4 2010/03/15 10:22:29 sbouchet Exp $
+ * $Id: ChainedModelNavigationImpl.java,v 1.5 2010/03/15 16:20:05 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
@@ -265,8 +265,8 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.mapping.impl.ModelNavigationImpl#evaluate()
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.navigation.impl.StructuredModelNavigationImpl#evaluate()
 	 * @generated NOT
 	 */
 	@Override
@@ -278,8 +278,8 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.mapping.ChainedModelNavigation#owningEClass()
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation#owningEClass()
 	 * @generated NOT
 	 */
 	public EClass owningEClass() {
@@ -302,8 +302,8 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.mapping.ChainedModelNavigation#currentEClass()
+	 * 
+	 * @see org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation#currentEClass()
 	 * @generated NOT
 	 */
 	public EClass currentEClass() {
