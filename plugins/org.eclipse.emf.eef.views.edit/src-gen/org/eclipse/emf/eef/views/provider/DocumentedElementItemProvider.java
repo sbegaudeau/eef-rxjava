@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DocumentedElementItemProvider.java,v 1.6 2010/03/15 10:57:58 glefur Exp $
+ * $Id: DocumentedElementItemProvider.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,9 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -31,7 +29,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
@@ -41,9 +38,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DocumentedElementItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DocumentedElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -77,15 +72,13 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter
 	 * @generated
 	 */
 	protected void addDocumentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
 				getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true,
-				true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-				null));
+				ViewsPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -96,8 +89,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/DocumentedElement")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DocumentedElement")); //$NON-NLS-1$
 	}
 
 	/**
@@ -108,7 +100,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((DocumentedElement) object).getDocumentation());
+		String label = crop(((DocumentedElement)object).getDocumentation());
 		return label == null || label.length() == 0 ? getString("_UI_DocumentedElement_type") : //$NON-NLS-1$
 				getString("_UI_DocumentedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -125,10 +117,10 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DocumentedElement.class)) {
-		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -141,8 +133,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

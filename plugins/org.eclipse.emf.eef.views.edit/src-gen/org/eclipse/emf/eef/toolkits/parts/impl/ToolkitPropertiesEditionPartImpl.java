@@ -182,13 +182,6 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 
 

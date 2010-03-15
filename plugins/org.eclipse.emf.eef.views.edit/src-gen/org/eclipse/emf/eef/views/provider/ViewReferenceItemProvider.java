@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewReferenceItemProvider.java,v 1.6 2010/03/15 10:57:59 glefur Exp $
+ * $Id: ViewReferenceItemProvider.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,7 +25,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
@@ -36,9 +34,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewReferenceItemProvider extends ViewElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ViewReferenceItemProvider extends ViewElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -72,14 +68,10 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider
 	 * @generated
 	 */
 	protected void addViewPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ViewReference_view_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewReference_view_feature"), //$NON-NLS-1$
 				getString("_UI_ViewReference_view_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW_REFERENCE__VIEW, true, false, true,
-				null, null, null));
+				ViewsPackage.Literals.VIEW_REFERENCE__VIEW, true, false, true, null, null, null));
 	}
 
 	/**
@@ -90,8 +82,7 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/ViewReference")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewReference")); //$NON-NLS-1$
 	}
 
 	/**
@@ -102,7 +93,7 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewReference) object).getName();
+		String label = ((ViewReference)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewReference_type") : //$NON-NLS-1$
 				getString("_UI_ViewReference_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -128,8 +119,7 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -150,13 +150,6 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDocumentation() {
-
-	}
 
 
 

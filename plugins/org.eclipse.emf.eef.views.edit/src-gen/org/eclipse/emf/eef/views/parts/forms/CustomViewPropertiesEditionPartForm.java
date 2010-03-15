@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.views.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -35,6 +34,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 
 // End of user code
 
@@ -83,7 +83,6 @@ public class CustomViewPropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -183,13 +182,6 @@ public class CustomViewPropertiesEditionPartForm extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 
 

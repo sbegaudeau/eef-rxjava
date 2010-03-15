@@ -182,13 +182,6 @@ public class WidgetPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 
 

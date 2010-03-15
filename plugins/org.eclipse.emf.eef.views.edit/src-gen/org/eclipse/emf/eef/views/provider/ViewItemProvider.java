@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewItemProvider.java,v 1.7 2010/03/15 10:58:00 glefur Exp $
+ * $Id: ViewItemProvider.java,v 1.8 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,7 +27,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
@@ -38,9 +36,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewItemProvider extends ContainerItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ViewItemProvider extends ContainerItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,10 +70,8 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	 * @generated
 	 */
 	protected void addExplicitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_View_explicit_feature"), //$NON-NLS-1$
 				getString("_UI_View_explicit_description"), //$NON-NLS-1$
 				ViewsPackage.Literals.VIEW__EXPLICIT, true, false, false,
@@ -92,8 +86,7 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/View")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/View")); //$NON-NLS-1$
 	}
 
 	/**
@@ -104,7 +97,7 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((View) object).getName();
+		String label = ((View)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_View_type") : //$NON-NLS-1$
 				getString("_UI_View_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -121,11 +114,11 @@ public class ViewItemProvider extends ContainerItemProvider implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(View.class)) {
-		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-		case ViewsPackage.VIEW__EXPLICIT:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
+			case ViewsPackage.VIEW__EXPLICIT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -138,8 +131,7 @@ public class ViewItemProvider extends ContainerItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -182,13 +182,6 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 
 

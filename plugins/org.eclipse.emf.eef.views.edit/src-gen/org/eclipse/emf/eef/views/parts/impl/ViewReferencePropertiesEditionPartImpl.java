@@ -214,13 +214,6 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -292,13 +285,6 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		referencedView.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForReferencedView(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferencedView() {
-
-	}
 
 
 

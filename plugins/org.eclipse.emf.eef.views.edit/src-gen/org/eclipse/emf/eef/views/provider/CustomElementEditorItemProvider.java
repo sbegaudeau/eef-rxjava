@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomElementEditorItemProvider.java,v 1.6 2010/03/15 10:57:59 glefur Exp $
+ * $Id: CustomElementEditorItemProvider.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,14 +18,12 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.views.CustomElementEditor;
 
 /**
@@ -34,9 +32,7 @@ import org.eclipse.emf.eef.views.CustomElementEditor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CustomElementEditorItemProvider extends ElementEditorItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class CustomElementEditorItemProvider extends ElementEditorItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -70,8 +66,7 @@ public class CustomElementEditorItemProvider extends ElementEditorItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/CustomElementEditor")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomElementEditor")); //$NON-NLS-1$
 	}
 
 	/**
@@ -82,7 +77,7 @@ public class CustomElementEditorItemProvider extends ElementEditorItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CustomElementEditor) object).getName();
+		String label = ((CustomElementEditor)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_CustomElementEditor_type") : //$NON-NLS-1$
 				getString("_UI_CustomElementEditor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -108,8 +103,7 @@ public class CustomElementEditorItemProvider extends ElementEditorItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

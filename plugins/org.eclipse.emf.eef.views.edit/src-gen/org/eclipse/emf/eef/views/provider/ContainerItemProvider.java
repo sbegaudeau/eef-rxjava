@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ContainerItemProvider.java,v 1.7 2010/03/15 10:57:58 glefur Exp $
+ * $Id: ContainerItemProvider.java,v 1.8 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,9 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -28,7 +26,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.ViewsFactory;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -39,9 +36,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ContainerItemProvider extends ViewElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ContainerItemProvider extends ViewElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -76,8 +71,7 @@ public class ContainerItemProvider extends ViewElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ViewsPackage.Literals.CONTAINER__ELEMENTS);
@@ -106,8 +100,7 @@ public class ContainerItemProvider extends ViewElementItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/Container")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Container")); //$NON-NLS-1$
 	}
 
 	/**
@@ -118,7 +111,7 @@ public class ContainerItemProvider extends ViewElementItemProvider implements
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Container) object).getName();
+		String label = ((Container)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Container_type") : //$NON-NLS-1$
 				getString("_UI_Container_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -135,10 +128,10 @@ public class ContainerItemProvider extends ViewElementItemProvider implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Container.class)) {
-		case ViewsPackage.CONTAINER__ELEMENTS:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), true, false));
-			return;
+			case ViewsPackage.CONTAINER__ELEMENTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -151,32 +144,25 @@ public class ContainerItemProvider extends ViewElementItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ViewsPackage.Literals.CONTAINER__ELEMENTS,
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
 				ViewsFactory.eINSTANCE.createContainer()));
 
-		newChildDescriptors.add(createChildParameter(
-				ViewsPackage.Literals.CONTAINER__ELEMENTS,
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
 				ViewsFactory.eINSTANCE.createView()));
 
-		newChildDescriptors.add(createChildParameter(
-				ViewsPackage.Literals.CONTAINER__ELEMENTS,
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
 				ViewsFactory.eINSTANCE.createElementEditor()));
 
-		newChildDescriptors.add(createChildParameter(
-				ViewsPackage.Literals.CONTAINER__ELEMENTS,
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
 				ViewsFactory.eINSTANCE.createCustomElementEditor()));
 
-		newChildDescriptors.add(createChildParameter(
-				ViewsPackage.Literals.CONTAINER__ELEMENTS,
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
 				ViewsFactory.eINSTANCE.createCustomView()));
 
-		newChildDescriptors.add(createChildParameter(
-				ViewsPackage.Literals.CONTAINER__ELEMENTS,
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
 				ViewsFactory.eINSTANCE.createViewReference()));
 	}
 

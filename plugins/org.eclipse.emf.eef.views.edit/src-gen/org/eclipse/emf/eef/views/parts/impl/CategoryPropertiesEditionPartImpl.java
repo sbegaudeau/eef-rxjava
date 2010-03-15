@@ -182,13 +182,6 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsItemProviderAdapterFactory.java,v 1.6 2010/03/15 10:58:01 glefur Exp $
+ * $Id: ToolkitsItemProviderAdapterFactory.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.provider;
 
@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -31,7 +30,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory;
 
 /**
@@ -43,8 +41,7 @@ import org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolkitsItemProviderAdapterFactory extends ToolkitsAdapterFactory
-		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class ToolkitsItemProviderAdapterFactory extends ToolkitsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -136,8 +133,7 @@ public class ToolkitsItemProviderAdapterFactory extends ToolkitsAdapterFactory
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -146,8 +142,7 @@ public class ToolkitsItemProviderAdapterFactory extends ToolkitsAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -181,8 +176,7 @@ public class ToolkitsItemProviderAdapterFactory extends ToolkitsAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

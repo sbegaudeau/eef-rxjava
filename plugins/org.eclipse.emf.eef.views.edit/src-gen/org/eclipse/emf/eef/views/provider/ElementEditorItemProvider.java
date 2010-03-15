@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorItemProvider.java,v 1.7 2010/03/15 10:58:01 glefur Exp $
+ * $Id: ElementEditorItemProvider.java,v 1.8 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,7 +27,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
@@ -38,9 +36,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ElementEditorItemProvider extends ViewElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ElementEditorItemProvider extends ViewElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,14 +70,13 @@ public class ElementEditorItemProvider extends ViewElementItemProvider
 	 * @generated
 	 */
 	protected void addReadOnlyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ElementEditor_readOnly_feature"), //$NON-NLS-1$
 				getString("_UI_ElementEditor_readOnly_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.ELEMENT_EDITOR__READ_ONLY, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.ELEMENT_EDITOR__READ_ONLY, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -92,8 +87,7 @@ public class ElementEditorItemProvider extends ViewElementItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/ElementEditor")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementEditor")); //$NON-NLS-1$
 	}
 
 	/**
@@ -104,7 +98,7 @@ public class ElementEditorItemProvider extends ViewElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ElementEditor) object).getName();
+		String label = ((ElementEditor)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ElementEditor_type") : //$NON-NLS-1$
 				getString("_UI_ElementEditor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -121,11 +115,11 @@ public class ElementEditorItemProvider extends ViewElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ElementEditor.class)) {
-		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -138,8 +132,7 @@ public class ElementEditorItemProvider extends ViewElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

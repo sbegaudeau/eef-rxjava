@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitItemProvider.java,v 1.6 2010/03/15 10:58:02 glefur Exp $
+ * $Id: ToolkitItemProvider.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.provider;
 
@@ -18,11 +18,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,11 +30,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
-
 import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;
 
 /**
@@ -46,9 +41,7 @@ import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolkitItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ToolkitItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,10 +75,8 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_Toolkit_name_feature"), //$NON-NLS-1$
 				getString("_UI_Toolkit_name_description"), //$NON-NLS-1$
 				ToolkitsPackage.Literals.TOOLKIT__NAME, true, false, false,
@@ -101,8 +92,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ToolkitsPackage.Literals.TOOLKIT__WIDGETS);
@@ -131,8 +121,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/Toolkit")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Toolkit")); //$NON-NLS-1$
 	}
 
 	/**
@@ -143,7 +132,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Toolkit) object).getName();
+		String label = ((Toolkit)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Toolkit_type") : //$NON-NLS-1$
 				getString("_UI_Toolkit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -160,14 +149,14 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Toolkit.class)) {
-		case ToolkitsPackage.TOOLKIT__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), true, false));
-			return;
+			case ToolkitsPackage.TOOLKIT__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -180,12 +169,10 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ToolkitsPackage.Literals.TOOLKIT__WIDGETS,
+		newChildDescriptors.add(createChildParameter(ToolkitsPackage.Literals.TOOLKIT__WIDGETS,
 				ToolkitsFactory.eINSTANCE.createWidget()));
 	}
 

@@ -227,13 +227,6 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -259,13 +252,6 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		}
 	}
 
-	public void setMessageForRepositoryKind(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRepositoryKind() {
-
-	}
 
 
 

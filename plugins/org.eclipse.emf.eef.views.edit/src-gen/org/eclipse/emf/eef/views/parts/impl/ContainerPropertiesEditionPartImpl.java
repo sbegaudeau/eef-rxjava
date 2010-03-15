@@ -214,13 +214,6 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -292,13 +285,6 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 		representation.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForRepresentation(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRepresentation() {
-
-	}
 
 
 

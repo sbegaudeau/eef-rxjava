@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsItemProviderAdapterFactory.java,v 1.7 2010/03/15 10:58:00 glefur Exp $
+ * $Id: ViewsItemProviderAdapterFactory.java,v 1.8 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -31,7 +30,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
 
 /**
@@ -43,8 +41,7 @@ import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
-		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -215,8 +212,7 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 	@Override
 	public Adapter createCustomElementEditorAdapter() {
 		if (customElementEditorItemProvider == null) {
-			customElementEditorItemProvider = new CustomElementEditorItemProvider(
-					this);
+			customElementEditorItemProvider = new CustomElementEditorItemProvider(this);
 		}
 
 		return customElementEditorItemProvider;
@@ -275,8 +271,7 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -285,8 +280,7 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -320,8 +314,7 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.views.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -47,6 +46,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 
 // End of user code
 
@@ -97,7 +97,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -247,13 +246,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -326,9 +318,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -352,9 +341,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 			readOnly.setSelection(false);
 		}
 	}
-
-
-
 
 
 

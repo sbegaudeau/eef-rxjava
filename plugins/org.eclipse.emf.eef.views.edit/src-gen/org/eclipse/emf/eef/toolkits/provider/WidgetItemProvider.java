@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: WidgetItemProvider.java,v 1.6 2010/03/15 10:58:02 glefur Exp $
+ * $Id: WidgetItemProvider.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.provider;
 
@@ -18,9 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -31,10 +29,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
-
 import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;
 
 /**
@@ -43,9 +39,7 @@ import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WidgetItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class WidgetItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -81,10 +75,8 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_Widget_name_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_name_description"), //$NON-NLS-1$
 				ToolkitsPackage.Literals.WIDGET__NAME, true, false, false,
@@ -98,10 +90,8 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addIconPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_Widget_icon_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_icon_description"), //$NON-NLS-1$
 				ToolkitsPackage.Literals.WIDGET__ICON, true, false, false,
@@ -115,14 +105,13 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Widget_implementation_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_implementation_description"), //$NON-NLS-1$
-				ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -133,8 +122,7 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/Widget")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Widget")); //$NON-NLS-1$
 	}
 
 	/**
@@ -145,7 +133,7 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Widget) object).getName();
+		String label = ((Widget)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Widget_type") : //$NON-NLS-1$
 				getString("_UI_Widget_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -162,12 +150,12 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Widget.class)) {
-		case ToolkitsPackage.WIDGET__NAME:
-		case ToolkitsPackage.WIDGET__ICON:
-		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case ToolkitsPackage.WIDGET__NAME:
+			case ToolkitsPackage.WIDGET__ICON:
+			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -180,8 +168,7 @@ public class WidgetItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

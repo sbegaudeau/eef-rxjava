@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.views.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -34,6 +33,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 
 // End of user code
 
@@ -82,7 +82,6 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createDocumentationGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -174,13 +173,6 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-		messageManager.addMessage("Documentation_key", msg, null, msgLevel, documentation);
-	}
-
-	public void unsetMessageForDocumentation() {
-		messageManager.removeMessage("Documentation_key", documentation);
-	}
 
 
 

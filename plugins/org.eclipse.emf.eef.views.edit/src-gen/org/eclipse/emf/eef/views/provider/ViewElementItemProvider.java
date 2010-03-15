@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewElementItemProvider.java,v 1.6 2010/03/15 10:57:59 glefur Exp $
+ * $Id: ViewElementItemProvider.java,v 1.7 2010/03/15 16:57:27 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.provider;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,7 +27,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
@@ -38,9 +36,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewElementItemProvider extends DocumentedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ViewElementItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -75,14 +71,11 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	protected void addRepresentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ViewElement_representation_feature"), //$NON-NLS-1$
 				getString("_UI_ViewElement_representation_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW_ELEMENT__REPRESENTATION, true,
-				false, true, null, null, null));
+				ViewsPackage.Literals.VIEW_ELEMENT__REPRESENTATION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -92,10 +85,8 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ViewElement_name_feature"), //$NON-NLS-1$
 				getString("_UI_ViewElement_name_description"), //$NON-NLS-1$
 				ViewsPackage.Literals.VIEW_ELEMENT__NAME, true, false, false,
@@ -110,7 +101,7 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewElement) object).getName();
+		String label = ((ViewElement)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewElement_type") : //$NON-NLS-1$
 				getString("_UI_ViewElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -127,10 +118,10 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ViewElement.class)) {
-		case ViewsPackage.VIEW_ELEMENT__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case ViewsPackage.VIEW_ELEMENT__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -143,8 +134,7 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -227,13 +227,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -305,13 +298,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		representation.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForRepresentation(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRepresentation() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -337,13 +323,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForReadOnly(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReadOnly() {
-
-	}
 
 
 
