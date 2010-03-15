@@ -24,17 +24,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface PropertiesMultiEditionElementPropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -45,12 +48,14 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 
 	/**
 	 * @return the helpID
+	 * 
 	 */
 	public String getHelpID();
 
 	/**
 	 * Defines a new helpID
 	 * @param newValue the new helpID to set
+	 * 
 	 */
 	public void setHelpID(String newValue);
 
@@ -61,17 +66,19 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 
 	/**
 	 * @return the model to add
+	 * 
 	 */
 	public List getModelToAdd();
 
 	/**
 	 * @return the model to remove
+	 * 
 	 */
 	public List getModelToRemove();
 
 	/**
 	 * @return the current model table
-	 */
+	 * 
 	public List getModelTable();
 
 	/**
@@ -85,6 +92,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	/**
 	 * Update the model
 	 * @param newValue the model to update
+	 * 
 	 */
 	public void updateModel(EObject newValue);
 
@@ -94,6 +102,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToModel(ViewerFilter filter);
 
@@ -103,11 +112,13 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the model table
+	 * 
 	 */
 	public boolean isContainedInModelTable(EObject element);
 
@@ -118,17 +129,19 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 
 	/**
 	 * @return the views to add
+	 * 
 	 */
 	public List getViewsToAdd();
 
 	/**
 	 * @return the views to remove
+	 * 
 	 */
 	public List getViewsToRemove();
 
 	/**
 	 * @return the current views table
-	 */
+	 * 
 	public List getViewsTable();
 
 	/**
@@ -142,6 +155,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	/**
 	 * Update the views
 	 * @param newValue the views to update
+	 * 
 	 */
 	public void updateViews(EObject newValue);
 
@@ -151,6 +165,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToViews(ViewerFilter filter);
 
@@ -160,14 +175,15 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToViews(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the views table
+	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element);
-
 
 
 
@@ -181,6 +197,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class PropertiesMultiEditionElementPropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -29,6 +30,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof PropertiesMultiEditionElement) && (ComponentsPackage.eINSTANCE.getPropertiesMultiEditionElement() == eObject.eClass());
@@ -38,6 +40,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
@@ -48,6 +51,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof PropertiesMultiEditionElement) {
@@ -61,6 +65,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof PropertiesMultiEditionElement) {

@@ -73,29 +73,29 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class PropertiesMultiEditionElementPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PropertiesMultiEditionElementPropertiesEditionPart {
 
 	protected Text name;
 	protected Text helpID;
 	protected EMFListEditUtil modelEditUtil;
-	protected TableViewer model;
-	protected Button addModel;
-	protected Button removeModel;
-	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
+		protected TableViewer model;
+		protected Button addModel;
+		protected Button removeModel;
+		protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
 	private EMFListEditUtil viewsEditUtil;
-	protected ReferencesTable<? extends EObject> views;
-	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
-
-
+		protected ReferencesTable<? extends EObject> views;
+		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public PropertiesMultiEditionElementPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -106,6 +106,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -123,6 +124,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -134,6 +136,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_PropertiesGroupLabel);
@@ -149,6 +154,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.name, ComponentsViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -159,6 +165,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -170,6 +177,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -183,6 +191,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createHelpIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, ComponentsViewsRepository.FORM_KIND));
 		helpID = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -193,6 +202,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		helpID.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -204,6 +214,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		helpID.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -217,6 +228,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bindingSection.setText(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_BindingGroupLabel);
@@ -232,6 +246,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		bindingSection.setClient(bindingGroup);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createModelReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		Label modelLabel = FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.model, ComponentsViewsRepository.FORM_KIND));
 		GridData modelLabelData = new GridData();
@@ -246,6 +263,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		createModelControlPanel(parent, widgetFactory);
 	}
 
+	/**
+	 * 
+	 */
 	protected TableViewer createModelViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
@@ -301,6 +321,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		return result;
 	}
 
+	/**
+	 * 
+	 */
 	protected void createModelControlPanel(Composite container, FormToolkit widgetFactory) {
 		Composite result = widgetFactory.createComposite(container, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -315,6 +338,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addModel();
@@ -331,6 +355,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (model.getSelection() instanceof IStructuredSelection) {
@@ -344,7 +369,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	}
 	
 	/**
-	 *
+	 * 
 	 */
 	protected void addModel() {
 
@@ -365,6 +390,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	
 	/**
 	 * @param selection the model to remove
+	 * 
 	 */
 	protected void removeModel(IStructuredSelection selection) {
 		if (selection.getFirstElement() instanceof EObject) {
@@ -374,6 +400,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
@@ -426,7 +455,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -447,7 +475,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -456,6 +483,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -468,6 +496,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return name.getText();
@@ -477,6 +506,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -498,6 +528,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getHelpID()
+	 * 
 	 */
 	public String getHelpID() {
 		return helpID.getText();
@@ -507,6 +538,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#setHelpID(String newValue)
+	 * 
 	 */
 	public void setHelpID(String newValue) {
 		if (newValue != null) {
@@ -528,6 +560,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getModelToAdd()
+	 * 
 	 */
 	public List getModelToAdd() {
 		return modelEditUtil.getElementsToAdd();
@@ -537,6 +570,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getModelToRemove()
+	 * 
 	 */
 	public List getModelToRemove() {
 		return modelEditUtil.getElementsToRemove();
@@ -546,6 +580,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getModelTable()
+	 * 
 	 */
 	public List getModelTable() {
 		return modelEditUtil.getVirtualList();
@@ -571,6 +606,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#updateModel(EObject newValue)
+	 * 
 	 */
 	public void updateModel(EObject newValue) {
 		if(modelEditUtil != null){
@@ -583,6 +619,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToModel(ViewerFilter filter) {
 		modelFilters.add(filter);
@@ -592,6 +629,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter) {
 		modelBusinessFilters.add(filter);
@@ -601,6 +639,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#isContainedInModelTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInModelTable(EObject element) {
 		return modelEditUtil.contains(element);
@@ -614,6 +653,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getViewsToAdd()
+	 * 
 	 */
 	public List getViewsToAdd() {
 		return viewsEditUtil.getElementsToAdd();
@@ -623,6 +663,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getViewsToRemove()
+	 * 
 	 */
 	public List getViewsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
@@ -632,6 +673,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#getViewsTable()
+	 * 
 	 */
 	public List getViewsTable() {
 		return viewsEditUtil.getVirtualList();
@@ -657,6 +699,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#updateViews(EObject newValue)
+	 * 
 	 */
 	public void updateViews(EObject newValue) {
 		if(viewsEditUtil != null){
@@ -669,6 +712,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addFilterViews(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToViews(ViewerFilter filter) {
 		viewsFilters.add(filter);
@@ -678,6 +722,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#addBusinessFilterViews(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToViews(ViewerFilter filter) {
 		viewsBusinessFilters.add(filter);
@@ -687,6 +732,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#isContainedInViewsTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element) {
 		return viewsEditUtil.contains(element);
@@ -698,13 +744,11 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ComponentsMessages.PropertiesMultiEditionElement_Part_Title;
@@ -713,5 +757,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

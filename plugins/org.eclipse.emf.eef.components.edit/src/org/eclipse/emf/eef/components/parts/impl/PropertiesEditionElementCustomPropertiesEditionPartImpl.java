@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.util.EEFUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.StructuredSelection;
 
 /**
@@ -38,7 +38,7 @@ public class PropertiesEditionElementCustomPropertiesEditionPartImpl extends Pro
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
-		model.setInput(EEFUtil.choiceOfValues(this.current, MappingPackage.eINSTANCE
+		model.setInput(EEFUtils.choiceOfValues(this.current, MappingPackage.eINSTANCE
 				.getEMFPropertyBinding_Model()));
 		if (current != null) {
 			model.setSelection(new StructuredSelection(current));

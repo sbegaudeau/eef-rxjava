@@ -29,28 +29,32 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentServi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class PropertiesMultiEditionElementPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	private PropertiesMultiEditionElementPropertiesEditionPart basePart;
 
 	/**
 	 * The PropertiesMultiEditionElementBasePropertiesEditionComponent sub component
+	 * 
 	 */
 	protected PropertiesMultiEditionElementBasePropertiesEditionComponent propertiesMultiEditionElementBasePropertiesEditionComponent;
 
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param propertiesMultiEditionElement
-	 *            the EObject to edit
+	 * @param propertiesMultiEditionElement the EObject to edit
+	 * 
 	 */
 	public PropertiesMultiEditionElementPropertiesEditionComponent(EObject propertiesMultiEditionElement, String editing_mode) {
 		super(editing_mode);
@@ -68,6 +72,7 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(key)) {
@@ -83,6 +88,7 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.class == key) {
@@ -97,6 +103,7 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.class) {
@@ -104,7 +111,6 @@ public class PropertiesMultiEditionElementPropertiesEditionComponent extends Com
 		}
 		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
-		
 		}
 	}
 }

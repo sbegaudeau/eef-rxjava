@@ -23,11 +23,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface PropertiesEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the model
+	 * 
 	 */
 	public EObject getModel();
 
@@ -41,12 +43,14 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 	/**
 	 * Defines a new model
 	 * @param newValue the new model to set
+	 * 
 	 */
 	public void setModel(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setModelButtonMode(ButtonsModeEnum newValue);
 
@@ -56,6 +60,7 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToModel(ViewerFilter filter);
 
@@ -65,9 +70,9 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
-
 
 
 
@@ -81,6 +86,7 @@ public interface PropertiesEditionContextPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

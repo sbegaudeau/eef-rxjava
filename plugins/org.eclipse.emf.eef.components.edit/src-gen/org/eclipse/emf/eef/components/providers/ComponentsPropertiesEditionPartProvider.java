@@ -26,13 +26,14 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
+ * 
  */
 public class ComponentsPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 * 
 	 */
 	public boolean provides(java.lang.Class key) {
 		return key == ComponentsViewsRepository.class;
@@ -42,6 +43,7 @@ public class ComponentsPropertiesEditionPartProvider implements IPropertiesEditi
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
 		if (key == ComponentsViewsRepository.PropertiesEditionContext.class) {

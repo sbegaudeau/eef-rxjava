@@ -40,10 +40,11 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class PropertiesEditionContextPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, PropertiesEditionContextPropertiesEditionPart {
 
@@ -51,11 +52,10 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public PropertiesEditionContextPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -66,13 +66,13 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -82,6 +82,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createBindingGroup(view);
@@ -90,9 +91,11 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_BindingGroupLabel);
@@ -107,6 +110,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 	/**
 	 * @param bindingGroup
+	 * 
 	 */
 	protected void createModelFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.SWT_KIND));
@@ -131,18 +135,19 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#getModel()
+	 * 
 	 */
 	public EObject getModel() {
 		if (model.getSelection() instanceof StructuredSelection) {
@@ -169,6 +174,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#setModel(EObject newValue)
+	 * 
 	 */
 	public void setModel(EObject newValue) {
 		if (newValue != null) {
@@ -191,6 +197,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToModel(ViewerFilter filter) {
 		model.addFilter(filter);
@@ -200,6 +207,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter) {
 		model.addBusinessRuleFilter(filter);
@@ -218,12 +226,11 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ComponentsMessages.PropertiesEditionContext_Part_Title;
@@ -232,5 +239,6 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

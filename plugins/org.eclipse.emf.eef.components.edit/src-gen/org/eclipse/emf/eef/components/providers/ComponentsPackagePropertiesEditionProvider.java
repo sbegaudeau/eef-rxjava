@@ -15,11 +15,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ComponentsPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public ComponentsPackagePropertiesEditionProvider() {
 		super();
@@ -32,11 +34,13 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesEditionContext instances.
+	 * 
 	 */
 	protected PropertiesEditionContextPropertiesEditionProvider propertiesEditionContextPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a PropertiesEditionContext
+	 * 
 	 */
 	public PropertiesEditionContextPropertiesEditionProvider createPropertiesEditionContextPropertiesEditionProvider() {
 		if (propertiesEditionContextPropertiesEditionProvider == null)
@@ -47,11 +51,13 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesEditionComponent instances.
+	 * 
 	 */
 	protected PropertiesEditionComponentPropertiesEditionProvider propertiesEditionComponentPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a PropertiesEditionComponent
+	 * 
 	 */
 	public PropertiesEditionComponentPropertiesEditionProvider createPropertiesEditionComponentPropertiesEditionProvider() {
 		if (propertiesEditionComponentPropertiesEditionProvider == null)
@@ -62,11 +68,13 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesEditionElement instances.
+	 * 
 	 */
 	protected PropertiesEditionElementPropertiesEditionProvider propertiesEditionElementPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a PropertiesEditionElement
+	 * 
 	 */
 	public PropertiesEditionElementPropertiesEditionProvider createPropertiesEditionElementPropertiesEditionProvider() {
 		if (propertiesEditionElementPropertiesEditionProvider == null)
@@ -77,11 +85,13 @@ public class ComponentsPackagePropertiesEditionProvider extends ComposedProperti
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * PropertiesMultiEditionElement instances.
+	 * 
 	 */
 	protected PropertiesMultiEditionElementPropertiesEditionProvider propertiesMultiEditionElementPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a PropertiesMultiEditionElement
+	 * 
 	 */
 	public PropertiesMultiEditionElementPropertiesEditionProvider createPropertiesMultiEditionElementPropertiesEditionProvider() {
 		if (propertiesMultiEditionElementPropertiesEditionProvider == null)
