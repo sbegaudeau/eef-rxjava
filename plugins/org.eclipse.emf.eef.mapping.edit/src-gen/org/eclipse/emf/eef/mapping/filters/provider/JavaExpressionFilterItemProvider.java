@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilterItemProvider.java,v 1.5 2009/12/04 16:04:43 sbouchet Exp $
+ * $Id: JavaExpressionFilterItemProvider.java,v 1.6 2010/03/15 10:22:19 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.provider;
 
@@ -36,9 +36,7 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -60,28 +58,25 @@ public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBodyPropertyDescriptor(object);
+			addJavaBodyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Body feature.
+	 * This adds a property descriptor for the Java Body feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBodyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_JavaExpressionFilter_body_feature"), getString(
-						"_UI_PropertyDescriptor_description",
-						"_UI_JavaExpressionFilter_body_feature",
+	protected void addJavaBodyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_JavaExpressionFilter_javaBody_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_JavaExpressionFilter_javaBody_feature",
 						"_UI_JavaExpressionFilter_type"),
-				FiltersPackage.Literals.JAVA_EXPRESSION_FILTER__BODY, true,
-				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-				null));
+				FiltersPackage.Literals.JAVA_EXPRESSION_FILTER__JAVA_BODY, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -92,8 +87,7 @@ public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/JavaExpressionFilter"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/JavaExpressionFilter"));
 	}
 
 	/**
@@ -104,7 +98,7 @@ public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((JavaExpressionFilter) object).getName();
+		String label = ((JavaExpressionFilter)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_JavaExpressionFilter_type")
 				: getString("_UI_JavaExpressionFilter_type") + " " + label;
 	}
@@ -121,10 +115,10 @@ public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(JavaExpressionFilter.class)) {
-		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
-			return;
+			case FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -137,8 +131,7 @@ public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationItemProviderAdapterFactory.java,v 1.6 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: NavigationItemProviderAdapterFactory.java,v 1.7 2010/03/15 10:22:19 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.provider;
 
@@ -41,9 +41,7 @@ import org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NavigationItemProviderAdapterFactory extends
-		NavigationAdapterFactory implements ComposeableAdapterFactory,
-		IChangeNotifier, IDisposable {
+public class NavigationItemProviderAdapterFactory extends NavigationAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -99,8 +97,7 @@ public class NavigationItemProviderAdapterFactory extends
 	@Override
 	public Adapter createSimpleModelNavigationAdapter() {
 		if (simpleModelNavigationItemProvider == null) {
-			simpleModelNavigationItemProvider = new SimpleModelNavigationItemProvider(
-					this);
+			simpleModelNavigationItemProvider = new SimpleModelNavigationItemProvider(this);
 		}
 
 		return simpleModelNavigationItemProvider;
@@ -123,8 +120,7 @@ public class NavigationItemProviderAdapterFactory extends
 	@Override
 	public Adapter createChainedModelNavigationAdapter() {
 		if (chainedModelNavigationItemProvider == null) {
-			chainedModelNavigationItemProvider = new ChainedModelNavigationItemProvider(
-					this);
+			chainedModelNavigationItemProvider = new ChainedModelNavigationItemProvider(this);
 		}
 
 		return chainedModelNavigationItemProvider;
@@ -147,8 +143,7 @@ public class NavigationItemProviderAdapterFactory extends
 	@Override
 	public Adapter createCustomModelNavigationAdapter() {
 		if (customModelNavigationItemProvider == null) {
-			customModelNavigationItemProvider = new CustomModelNavigationItemProvider(
-					this);
+			customModelNavigationItemProvider = new CustomModelNavigationItemProvider(this);
 		}
 
 		return customModelNavigationItemProvider;
@@ -161,8 +156,7 @@ public class NavigationItemProviderAdapterFactory extends
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -171,8 +165,7 @@ public class NavigationItemProviderAdapterFactory extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -206,8 +199,7 @@ public class NavigationItemProviderAdapterFactory extends
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

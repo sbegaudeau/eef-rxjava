@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -117,7 +117,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 	 * Used to update the views
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (FiltersPackage.eINSTANCE.getOCLFilter_Body().equals(msg.getFeature()) && basePart != null){
+		if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 			} else {
@@ -192,8 +192,8 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final OCLFilter oCLFilter = (OCLFilter)elt;
 			// init values
-			if (oCLFilter.getBody() != null)
-				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), oCLFilter.getBody()));
+			if (oCLFilter.getOCLBody() != null)
+				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), oCLFilter.getOCLBody()));
 			// init filters
 
 		}
@@ -224,7 +224,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((oCLFilter != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, oCLFilter, FiltersPackage.eINSTANCE.getOCLFilter_Body(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getOCLExpressionBody())));
+			cc.append(SetCommand.create(editingDomain, oCLFilter, FiltersPackage.eINSTANCE.getOCLFilter_OCLBody(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getOCLExpressionBody())));
 
 
 
@@ -243,7 +243,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof OCLFilter) {
 			OCLFilter oCLFilterToUpdate = (OCLFilter)source;
-			oCLFilterToUpdate.setBody((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getOCLExpressionBody()));
+			oCLFilterToUpdate.setOCLBody((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getOCLExpressionBody()));
 
 
 
@@ -264,7 +264,7 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
 				CompoundCommand command = new CompoundCommand();
 			if (MappingViewsRepository.OCLFilter.oCLExpressionBody == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, oCLFilter, FiltersPackage.eINSTANCE.getOCLFilter_Body(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+				command.append(SetCommand.create(liveEditingDomain, oCLFilter, FiltersPackage.eINSTANCE.getOCLFilter_OCLBody(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
 
 
@@ -296,8 +296,8 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.OCLFilter.oCLExpressionBody == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getOCLFilter_Body().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getOCLFilter_Body().getEAttributeType(), newValue);
+					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), newValue);
 				}
 
 				if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {

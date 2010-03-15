@@ -16,12 +16,6 @@
             providerClass="org.eclipse.emf.eef.mapping.providers.MappingPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
    </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.mapping.providers.MappingPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
 
    <!-- Tabbed properties views extension -->
    <extension
@@ -59,12 +53,6 @@
                category="extended"
                id="Filter_properties"
                afterTab="Filter_properties">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Documentation">
          </propertyTab>
          <propertyTab
                label="Documentation"
@@ -165,17 +153,9 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.BindingFilter"
-               tab="Filter_properties">
+               tab="Base">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.BindingFilter">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.mapping.section.Databinding"
-               tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.mapping.Databinding">
              </input>
          </propertySection>
          <propertySection

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelElementItemProvider.java,v 1.6 2009/12/04 16:04:43 sbouchet Exp $
+ * $Id: ModelElementItemProvider.java,v 1.7 2010/03/15 10:22:19 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -36,9 +36,7 @@ import org.eclipse.emf.eef.mapping.ModelElement;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelElementItemProvider extends DocumentedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ModelElementItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -72,13 +70,11 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ModelElement_binding_feature"),
 				getString("_UI_ModelElement_binding_description"),
-				MappingPackage.Literals.MODEL_ELEMENT__BINDING, true, false,
-				true, null, null, null));
+				MappingPackage.Literals.MODEL_ELEMENT__BINDING, true, false, true, null, null, null));
 	}
 
 	/**
@@ -90,14 +86,11 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(MappingPackage.Literals.MODEL_ELEMENT__PROPERTIES);
-			childrenFeatures
-					.add(MappingPackage.Literals.MODEL_ELEMENT__SUB_ELEMENTS);
+			childrenFeatures.add(MappingPackage.Literals.MODEL_ELEMENT__PROPERTIES);
+			childrenFeatures.add(MappingPackage.Literals.MODEL_ELEMENT__SUB_ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -123,7 +116,7 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelElement) object).getDocumentation();
+		String label = ((ModelElement)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ModelElement_type")
 				: getString("_UI_ModelElement_type") + " " + label;
 	}
@@ -140,11 +133,11 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ModelElement.class)) {
-		case MappingPackage.MODEL_ELEMENT__PROPERTIES:
-		case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), true, false));
-			return;
+			case MappingPackage.MODEL_ELEMENT__PROPERTIES:
+			case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -157,8 +150,7 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

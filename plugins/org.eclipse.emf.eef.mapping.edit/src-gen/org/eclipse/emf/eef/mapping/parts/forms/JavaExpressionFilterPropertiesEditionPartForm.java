@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -117,7 +117,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		GridData javaExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyData.horizontalSpan = 2;
 		javaExpressionBodyData.heightHint = 80;
-		javaExpressionBodyData.widthHint = 200;
 		javaExpressionBody.setLayoutData(javaExpressionBodyData);
 		javaExpressionBody.addFocusListener(new FocusAdapter() {
 

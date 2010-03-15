@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		super();
 		append(createDocumentedElementPropertiesEditionProvider());
 		append(createFilterPropertiesPropertiesEditionProvider());
-		append(createDatabindingPropertiesEditionProvider());
 		append(createEMFElementBindingPropertiesEditionProvider());
 		append(createEMFPropertyBindingPropertiesEditionProvider());
 		append(createStandardElementBindingPropertiesEditionProvider());
@@ -68,21 +67,6 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 		if (filterPropertiesPropertiesEditionProvider == null)
 			filterPropertiesPropertiesEditionProvider = new FilterPropertiesPropertiesEditionProvider();
 		return filterPropertiesPropertiesEditionProvider;
-	}
-
-	/**
-	 * This keeps track of the one PropertiesEditionProvider used for all
-	 * Databinding instances.
-	 */
-	protected DatabindingPropertiesEditionProvider databindingPropertiesEditionProvider;
-
-	/**
-	 * This creates an PropertiesEditionProvider for a Databinding
-	 */
-	public DatabindingPropertiesEditionProvider createDatabindingPropertiesEditionProvider() {
-		if (databindingPropertiesEditionProvider == null)
-			databindingPropertiesEditionProvider = new DatabindingPropertiesEditionProvider();
-		return databindingPropertiesEditionProvider;
 	}
 
 	/**

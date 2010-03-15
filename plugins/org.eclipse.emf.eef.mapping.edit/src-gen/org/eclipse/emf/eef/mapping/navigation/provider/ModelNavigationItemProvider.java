@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ModelNavigationItemProvider.java,v 1.6 2009/12/04 16:04:44 sbouchet Exp $
+ * $Id: ModelNavigationItemProvider.java,v 1.7 2010/03/15 10:22:19 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.provider;
 
@@ -34,9 +34,7 @@ import org.eclipse.emf.eef.mapping.provider.MappingEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelNavigationItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ModelNavigationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -94,8 +92,7 @@ public class ModelNavigationItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

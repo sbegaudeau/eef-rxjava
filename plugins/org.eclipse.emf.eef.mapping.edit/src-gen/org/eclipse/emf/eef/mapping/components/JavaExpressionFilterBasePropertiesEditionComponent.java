@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -117,7 +117,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * Used to update the views
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (FiltersPackage.eINSTANCE.getJavaExpressionFilter_Body().equals(msg.getFeature()) && basePart != null){
+		if (FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 			} else {
@@ -192,8 +192,8 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final JavaExpressionFilter javaExpressionFilter = (JavaExpressionFilter)elt;
 			// init values
-			if (javaExpressionFilter.getBody() != null)
-				basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), javaExpressionFilter.getBody()));
+			if (javaExpressionFilter.getJavaBody() != null)
+				basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), javaExpressionFilter.getJavaBody()));
 			// init filters
 
 		}
@@ -224,7 +224,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((javaExpressionFilter != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, javaExpressionFilter, FiltersPackage.eINSTANCE.getJavaExpressionFilter_Body(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getJavaExpressionBody())));
+			cc.append(SetCommand.create(editingDomain, javaExpressionFilter, FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getJavaExpressionBody())));
 
 
 
@@ -243,7 +243,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof JavaExpressionFilter) {
 			JavaExpressionFilter javaExpressionFilterToUpdate = (JavaExpressionFilter)source;
-			javaExpressionFilterToUpdate.setBody((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getJavaExpressionBody()));
+			javaExpressionFilterToUpdate.setJavaBody((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getJavaExpressionBody()));
 
 
 
@@ -264,7 +264,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
 				CompoundCommand command = new CompoundCommand();
 			if (MappingViewsRepository.JavaExpressionFilter.javaExpressionBody == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, javaExpressionFilter, FiltersPackage.eINSTANCE.getJavaExpressionFilter_Body(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+				command.append(SetCommand.create(liveEditingDomain, javaExpressionFilter, FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
 
 
@@ -296,8 +296,8 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.JavaExpressionFilter.javaExpressionBody == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getJavaExpressionFilter_Body().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getJavaExpressionFilter_Body().getEAttributeType(), newValue);
+					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().getEAttributeType(), newValue);
 				}
 
 				if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {

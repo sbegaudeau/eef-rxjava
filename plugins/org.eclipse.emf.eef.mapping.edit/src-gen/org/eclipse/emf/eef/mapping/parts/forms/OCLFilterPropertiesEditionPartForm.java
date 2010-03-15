@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -117,7 +117,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		GridData oCLExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyData.horizontalSpan = 2;
 		oCLExpressionBodyData.heightHint = 80;
-		oCLExpressionBodyData.widthHint = 200;
 		oCLExpressionBody.setLayoutData(oCLExpressionBodyData);
 		oCLExpressionBody.addFocusListener(new FocusAdapter() {
 

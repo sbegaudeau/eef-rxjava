@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: BusinessFilterItemProvider.java,v 1.5 2009/12/04 16:04:43 sbouchet Exp $
+ * $Id: BusinessFilterItemProvider.java,v 1.6 2010/03/15 10:22:19 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.provider;
 
@@ -32,9 +32,7 @@ import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BusinessFilterItemProvider extends BindingFilterItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class BusinessFilterItemProvider extends BindingFilterItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -68,7 +66,7 @@ public class BusinessFilterItemProvider extends BindingFilterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BusinessFilter) object).getName();
+		String label = ((BusinessFilter)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_BusinessFilter_type")
 				: getString("_UI_BusinessFilter_type") + " " + label;
 	}
@@ -94,8 +92,7 @@ public class BusinessFilterItemProvider extends BindingFilterItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
