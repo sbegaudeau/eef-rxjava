@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ComponentsEditor.java,v 1.7 2009/12/11 11:05:49 sbouchet Exp $
+ * $Id: ComponentsEditor.java,v 1.8 2010/03/15 16:18:52 sbouchet Exp $
  */
 package org.eclipse.emf.eef.components.presentation;
 
@@ -1479,7 +1479,7 @@ public class ComponentsEditor extends MultiPageEditorPart implements IEditingDom
 		return false;
 	}
 		
-	/** (non-Javadoc)
+	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
 	 * @generated NOT
 	 */
