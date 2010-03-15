@@ -16,11 +16,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * 
+ * 
  */
 public interface MiserePropertiesEditionPart {
 
 	/**
 	 * @return the declarer
+	 * 
 	 */
 	public EObject getDeclarer();
 
@@ -34,12 +36,14 @@ public interface MiserePropertiesEditionPart {
 	/**
 	 * Defines a new declarer
 	 * @param newValue the new declarer to set
+	 * 
 	 */
 	public void setDeclarer(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setDeclarerButtonMode(ButtonsModeEnum newValue);
 
@@ -49,6 +53,7 @@ public interface MiserePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToDeclarer(ViewerFilter filter);
 
@@ -58,9 +63,9 @@ public interface MiserePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToDeclarer(ViewerFilter filter);
-
 
 
 
@@ -74,6 +79,7 @@ public interface MiserePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

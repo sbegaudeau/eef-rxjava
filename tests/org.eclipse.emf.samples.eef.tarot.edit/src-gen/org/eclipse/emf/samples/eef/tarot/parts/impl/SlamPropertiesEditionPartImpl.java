@@ -28,9 +28,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+// End of user code	
 
 /**
+ * 
  * 
  */
 public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SlamPropertiesEditionPart {
@@ -41,11 +42,10 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public SlamPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -56,13 +56,13 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -72,6 +72,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -80,9 +81,11 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(TarotMessages.SlamPropertiesEditionPart_PropertiesGroupLabel);
@@ -97,6 +100,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createAchievedCheckbox(propertiesGroup);
 	}
 
+	
 	protected void createSideEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, TarotMessages.SlamPropertiesEditionPart_SideLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Slam.side, TarotViewsRepository.SWT_KIND));
 		side = new EMFComboViewer(parent);
@@ -107,6 +111,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.Slam.side, TarotViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createAnnouncedCheckbox(Composite parent) {
 		announced = new Button(parent, SWT.CHECK);
 		announced.setText(TarotMessages.SlamPropertiesEditionPart_AnnouncedLabel);
@@ -116,6 +121,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.Slam.announced, TarotViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createAchievedCheckbox(Composite parent) {
 		achieved = new Button(parent, SWT.CHECK);
 		achieved.setText(TarotMessages.SlamPropertiesEditionPart_AchievedLabel);
@@ -131,18 +137,19 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.SlamPropertiesEditionPart#getSide()
+	 * 
 	 */
 	public Enumerator getSide() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) side.getSelection()).getFirstElement();
@@ -163,6 +170,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.SlamPropertiesEditionPart#setSide(Enumerator newValue)
+	 * 
 	 */
 	public void setSide(Enumerator newValue) {
 		side.modelUpdating(new StructuredSelection(newValue));
@@ -180,6 +188,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.SlamPropertiesEditionPart#getAnnounced()
+	 * 
 	 */
 	public Boolean getAnnounced() {
 		return Boolean.valueOf(announced.getSelection());
@@ -189,6 +198,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.SlamPropertiesEditionPart#setAnnounced(Boolean newValue)
+	 * 
 	 */
 	public void setAnnounced(Boolean newValue) {
 		if (newValue != null) {
@@ -210,6 +220,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.SlamPropertiesEditionPart#getAchieved()
+	 * 
 	 */
 	public Boolean getAchieved() {
 		return Boolean.valueOf(achieved.getSelection());
@@ -219,6 +230,7 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.SlamPropertiesEditionPart#setAchieved(Boolean newValue)
+	 * 
 	 */
 	public void setAchieved(Boolean newValue) {
 		if (newValue != null) {
@@ -241,12 +253,11 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.Slam_Part_Title;
@@ -255,5 +266,6 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

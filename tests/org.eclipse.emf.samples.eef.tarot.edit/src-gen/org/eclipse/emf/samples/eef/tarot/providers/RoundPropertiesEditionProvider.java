@@ -15,6 +15,7 @@ import org.eclipse.emf.samples.eef.tarot.components.RoundRoundSettingsProperties
 
 /**
  * 
+ * 
  */
 public class RoundPropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -22,6 +23,7 @@ public class RoundPropertiesEditionProvider implements IPropertiesEditionProvide
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Round) && (TarotPackage.eINSTANCE.getRound() == eObject.eClass());
@@ -31,6 +33,7 @@ public class RoundPropertiesEditionProvider implements IPropertiesEditionProvide
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (RoundRoundSettingsPropertiesEditionComponent.ROUNDSETTINGS_PART.equals(part) || RoundRoundBonusesPropertiesEditionComponent.ROUNDBONUSES_PART.equals(part) || RoundRoundScorePropertiesEditionComponent.ROUNDSCORE_PART.equals(part));
@@ -41,6 +44,7 @@ public class RoundPropertiesEditionProvider implements IPropertiesEditionProvide
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Round) {
@@ -54,6 +58,7 @@ public class RoundPropertiesEditionProvider implements IPropertiesEditionProvide
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Round) {

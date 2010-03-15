@@ -41,21 +41,21 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * 
+ * 
  */
 public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, GamePlayersPropertiesEditionPart {
 
 	protected EMFListEditUtil playersEditUtil;
-	protected ReferencesTable<? extends EObject> players;
-	protected List<ViewerFilter> playersBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> playersFilters = new ArrayList<ViewerFilter>();
-
-
+		protected ReferencesTable<? extends EObject> players;
+		protected List<ViewerFilter> playersBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> playersFilters = new ArrayList<ViewerFilter>();
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public GamePlayersPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -66,6 +66,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -83,6 +84,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -94,6 +96,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createPlayersTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.players = new ReferencesTable<Player>(TarotMessages.GamePlayersPropertiesEditionPart_PlayersLabel, new ReferencesTableListener<Player>() {			
@@ -181,6 +184,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -192,6 +196,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToAdd()
+	 * 
 	 */
 	public List getPlayersToAdd() {
 		return playersEditUtil.getElementsToAdd();
@@ -201,6 +206,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToRemove()
+	 * 
 	 */
 	public List getPlayersToRemove() {
 		return playersEditUtil.getElementsToRemove();
@@ -210,6 +216,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToEdit()
+	 * 
 	 */
 	public Map getPlayersToEdit() {
 		return playersEditUtil.getElementsToRefresh();
@@ -219,6 +226,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToMove()
+	 * 
 	 */
 	public List getPlayersToMove() {
 		return playersEditUtil.getElementsToMove();
@@ -228,6 +236,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersTable()
+	 * 
 	 */
 	public List getPlayersTable() {
 		return playersEditUtil.getVirtualList();
@@ -252,6 +261,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#updatePlayers(EObject newValue)
+	 * 
 	 */
 	public void updatePlayers(EObject newValue) {
 		if(playersEditUtil != null){
@@ -264,6 +274,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#addFilterPlayers(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToPlayers(ViewerFilter filter) {
 		playersFilters.add(filter);
@@ -273,6 +284,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#addBusinessFilterPlayers(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToPlayers(ViewerFilter filter) {
 		playersBusinessFilters.add(filter);
@@ -282,6 +294,7 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#isContainedInPlayersTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInPlayersTable(EObject element) {
 		return playersEditUtil.contains(element);
@@ -293,13 +306,11 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.GamePlayers_Part_Title;
@@ -308,5 +319,6 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

@@ -52,25 +52,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * 
+ * 
  */
 public class GameGamePlayersPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String GAMEPLAYERS_PART = "GamePlayers"; //$NON-NLS-1$
 
+	
 	private String[] parts = {GAMEPLAYERS_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private Game game;
 
 	/**
 	 * The GamePlayers part
+	 * 
 	 */
 	protected GamePlayersPropertiesEditionPart gamePlayersPart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public GameGamePlayersPropertiesEditionComponent(EObject game, String editing_mode) {
 		if (game instanceof Game) {
@@ -87,6 +93,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -95,6 +102,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (gamePlayersPart == null)
@@ -118,13 +126,12 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == TarotPackage.eINSTANCE.getGame_Players())) {
-
 			gamePlayersPart.updatePlayers(game);
 		}
-
 
 	}
 
@@ -132,6 +139,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (GAMEPLAYERS_PART.equals(key))
@@ -143,6 +151,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -153,6 +162,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (game != null && GAMEPLAYERS_PART.equals(key)) {
@@ -173,6 +183,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == TarotViewsRepository.GamePlayers.class)
@@ -184,6 +195,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -209,6 +221,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 			// Start of user code for additional businessfilters for players
 			
 			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -226,6 +239,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -235,7 +249,6 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 				cc.append(AddCommand.create(editingDomain, game, TarotPackage.eINSTANCE.getGame_Players(), iter.next()));
 			Map playersToRefreshFromPlayers = gamePlayersPart.getPlayersToEdit();
 			for (Iterator iter = playersToRefreshFromPlayers.keySet().iterator(); iter.hasNext();) {
-				
 				Player nextElement = (Player) iter.next();
 				Player players = (Player) playersToRefreshFromPlayers.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
@@ -243,7 +256,6 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, players.eGet(feature)));
 					}
 				}
-				
 			}
 			List playersToRemoveFromPlayers = gamePlayersPart.getPlayersToRemove();
 			for (Iterator iter = playersToRemoveFromPlayers.iterator(); iter.hasNext();)
@@ -253,7 +265,6 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, game, TarotPackage.eINSTANCE.getPlayer(), moveElement.getElement(), moveElement.getIndex()));
 			}
-
 
 		}
 		if (!cc.isEmpty())
@@ -266,12 +277,12 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Game) {
 			Game gameToUpdate = (Game)source;
 			gameToUpdate.getPlayers().addAll(gamePlayersPart.getPlayersToAdd());
-
 
 			return gameToUpdate;
 		}
@@ -283,6 +294,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -293,14 +305,12 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					Player oldValue = (Player)event.getOldValue();
 					Player newValue = (Player)event.getNewValue();
-					
 					// TODO: Complete the game update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, game, TarotPackage.eINSTANCE.getGame_Players(), event.getNewValue()));
@@ -309,7 +319,6 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
 					command.append(MoveCommand.create(liveEditingDomain, game, TarotPackage.eINSTANCE.getPlayer(), event.getNewValue(), event.getNewIndex()));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -331,6 +340,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == TarotViewsRepository.GamePlayers.players;
@@ -340,13 +350,13 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -360,6 +370,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -376,11 +387,11 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -391,6 +402,7 @@ public class GameGamePlayersPropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return gamePlayersPart.getTitle();

@@ -7,11 +7,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * 
+ * 
  */
 public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public TarotPackagePropertiesEditionProvider() {
 		super();
@@ -27,11 +29,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Game instances.
+	 * 
 	 */
 	protected GamePropertiesEditionProvider gamePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Game
+	 * 
 	 */
 	public GamePropertiesEditionProvider createGamePropertiesEditionProvider() {
 		if (gamePropertiesEditionProvider == null)
@@ -42,11 +46,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Player instances.
+	 * 
 	 */
 	protected PlayerPropertiesEditionProvider playerPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Player
+	 * 
 	 */
 	public PlayerPropertiesEditionProvider createPlayerPropertiesEditionProvider() {
 		if (playerPropertiesEditionProvider == null)
@@ -57,11 +63,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Round instances.
+	 * 
 	 */
 	protected RoundPropertiesEditionProvider roundPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Round
+	 * 
 	 */
 	public RoundPropertiesEditionProvider createRoundPropertiesEditionProvider() {
 		if (roundPropertiesEditionProvider == null)
@@ -72,11 +80,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Misere instances.
+	 * 
 	 */
 	protected MiserePropertiesEditionProvider miserePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Misere
+	 * 
 	 */
 	public MiserePropertiesEditionProvider createMiserePropertiesEditionProvider() {
 		if (miserePropertiesEditionProvider == null)
@@ -87,11 +97,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Handful instances.
+	 * 
 	 */
 	protected HandfulPropertiesEditionProvider handfulPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Handful
+	 * 
 	 */
 	public HandfulPropertiesEditionProvider createHandfulPropertiesEditionProvider() {
 		if (handfulPropertiesEditionProvider == null)
@@ -102,11 +114,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * LeastAtLast instances.
+	 * 
 	 */
 	protected LeastAtLastPropertiesEditionProvider leastAtLastPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a LeastAtLast
+	 * 
 	 */
 	public LeastAtLastPropertiesEditionProvider createLeastAtLastPropertiesEditionProvider() {
 		if (leastAtLastPropertiesEditionProvider == null)
@@ -117,11 +131,13 @@ public class TarotPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Slam instances.
+	 * 
 	 */
 	protected SlamPropertiesEditionProvider slamPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Slam
+	 * 
 	 */
 	public SlamPropertiesEditionProvider createSlamPropertiesEditionProvider() {
 		if (slamPropertiesEditionProvider == null)

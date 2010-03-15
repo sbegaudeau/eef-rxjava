@@ -52,25 +52,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * 
+ * 
  */
 public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String ROUNDBONUSES_PART = "Round bonuses"; //$NON-NLS-1$
 
+	
 	private String[] parts = {ROUNDBONUSES_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private Round round;
 
 	/**
 	 * The Round bonuses part
+	 * 
 	 */
 	protected RoundBonusesPropertiesEditionPart roundBonusesPart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public RoundRoundBonusesPropertiesEditionComponent(EObject round, String editing_mode) {
 		if (round instanceof Round) {
@@ -87,6 +93,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -95,6 +102,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (roundBonusesPart == null)
@@ -118,13 +126,12 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == TarotPackage.eINSTANCE.getRound_Bonuses())) {
-
 			roundBonusesPart.updateBonuses(round);
 		}
-
 
 	}
 
@@ -132,6 +139,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (ROUNDBONUSES_PART.equals(key))
@@ -143,6 +151,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -153,6 +162,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (round != null && ROUNDBONUSES_PART.equals(key)) {
@@ -173,6 +183,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == TarotViewsRepository.RoundBonuses.class)
@@ -184,6 +195,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -209,6 +221,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 			// Start of user code for additional businessfilters for bonuses
 			
 			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -226,6 +239,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -235,7 +249,6 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 				cc.append(AddCommand.create(editingDomain, round, TarotPackage.eINSTANCE.getRound_Bonuses(), iter.next()));
 			Map bonusesToRefreshFromBonuses = roundBonusesPart.getBonusesToEdit();
 			for (Iterator iter = bonusesToRefreshFromBonuses.keySet().iterator(); iter.hasNext();) {
-				
 				Bonus nextElement = (Bonus) iter.next();
 				Bonus bonuses = (Bonus) bonusesToRefreshFromBonuses.get(nextElement);
 				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
@@ -243,7 +256,6 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 						cc.append(SetCommand.create(editingDomain, nextElement, feature, bonuses.eGet(feature)));
 					}
 				}
-				
 			}
 			List bonusesToRemoveFromBonuses = roundBonusesPart.getBonusesToRemove();
 			for (Iterator iter = bonusesToRemoveFromBonuses.iterator(); iter.hasNext();)
@@ -253,7 +265,6 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
 				cc.append(MoveCommand.create(editingDomain, round, TarotPackage.eINSTANCE.getBonus(), moveElement.getElement(), moveElement.getIndex()));
 			}
-
 
 		}
 		if (!cc.isEmpty())
@@ -266,12 +277,12 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Round) {
 			Round roundToUpdate = (Round)source;
 			roundToUpdate.getBonuses().addAll(roundBonusesPart.getBonusesToAdd());
-
 
 			return roundToUpdate;
 		}
@@ -283,6 +294,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -293,14 +305,12 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 				if (PropertiesEditionEvent.SET == event.getKind()) {
 					Bonus oldValue = (Bonus)event.getOldValue();
 					Bonus newValue = (Bonus)event.getNewValue();
-					
 					// TODO: Complete the round update command
 					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
 						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
 							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
 						}
 					}
-					
 				}
 				else if (PropertiesEditionEvent.ADD == event.getKind())
 					command.append(AddCommand.create(liveEditingDomain, round, TarotPackage.eINSTANCE.getRound_Bonuses(), event.getNewValue()));
@@ -309,7 +319,6 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 				else if (PropertiesEditionEvent.MOVE == event.getKind())
 					command.append(MoveCommand.create(liveEditingDomain, round, TarotPackage.eINSTANCE.getBonus(), event.getNewValue(), event.getNewIndex()));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -331,6 +340,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == TarotViewsRepository.RoundSettings.bid || key == TarotViewsRepository.RoundSettings.taker || key == TarotViewsRepository.RoundSettings.won || key == TarotViewsRepository.RoundSettings.extraPoints || key == TarotViewsRepository.RoundScore.score;
@@ -340,13 +350,13 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -360,6 +370,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -376,11 +387,11 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -391,6 +402,7 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return roundBonusesPart.getTitle();

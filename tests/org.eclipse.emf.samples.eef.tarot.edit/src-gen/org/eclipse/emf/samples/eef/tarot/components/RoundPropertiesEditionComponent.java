@@ -22,44 +22,51 @@ import org.eclipse.emf.samples.eef.tarot.parts.TarotViewsRepository;
 
 /**
  * 
+ * 
  */
 public class RoundPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Round settings part
+	 * 
 	 */
 	private RoundSettingsPropertiesEditionPart roundSettingsPart;
 
 	/**
 	 * The RoundRoundSettingsPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected RoundRoundSettingsPropertiesEditionComponent roundRoundSettingsPropertiesEditionComponent;
 
 	/**
 	 * The Round bonuses part
+	 * 
 	 */
 	private RoundBonusesPropertiesEditionPart roundBonusesPart;
 
 	/**
 	 * The RoundRoundBonusesPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected RoundRoundBonusesPropertiesEditionComponent roundRoundBonusesPropertiesEditionComponent;
 
 	/**
 	 * The Round score part
+	 * 
 	 */
 	private RoundScorePropertiesEditionPart roundScorePart;
 
 	/**
 	 * The RoundRoundScorePropertiesEditionComponent sub component
+	 * 
 	 */
 	protected RoundRoundScorePropertiesEditionComponent roundRoundScorePropertiesEditionComponent;
 
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param round
-	 *            the EObject to edit
+	 * @param round the EObject to edit
+	 * 
 	 */
 	public RoundPropertiesEditionComponent(EObject round, String editing_mode) {
 		super(editing_mode);
@@ -79,6 +86,7 @@ public class RoundPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (RoundRoundSettingsPropertiesEditionComponent.ROUNDSETTINGS_PART.equals(key)) {
@@ -102,6 +110,7 @@ public class RoundPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (TarotViewsRepository.RoundSettings.class == key) {
@@ -124,6 +133,7 @@ public class RoundPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == TarotViewsRepository.RoundSettings.class) {

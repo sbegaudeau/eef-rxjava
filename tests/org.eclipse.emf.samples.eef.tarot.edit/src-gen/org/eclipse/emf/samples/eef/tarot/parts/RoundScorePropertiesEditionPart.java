@@ -13,17 +13,20 @@ package org.eclipse.emf.samples.eef.tarot.parts;
 
 /**
  * 
+ * 
  */
 public interface RoundScorePropertiesEditionPart {
 
 	/**
 	 * @return the score
+	 * 
 	 */
 	public String getScore();
 
 	/**
 	 * Defines a new score
 	 * @param newValue the new score to set
+	 * 
 	 */
 	public void setScore(String newValue);
 
@@ -35,11 +38,11 @@ public interface RoundScorePropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

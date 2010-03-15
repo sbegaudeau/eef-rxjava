@@ -27,9 +27,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+// End of user code	
 
 /**
+ * 
  * 
  */
 public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, HandfulPropertiesEditionPart {
@@ -39,11 +40,10 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public HandfulPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -54,13 +54,13 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -70,6 +70,7 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -78,9 +79,11 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(TarotMessages.HandfulPropertiesEditionPart_PropertiesGroupLabel);
@@ -94,6 +97,7 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 		createSizeEMFComboViewer(propertiesGroup);
 	}
 
+	
 	protected void createSideEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, TarotMessages.HandfulPropertiesEditionPart_SideLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Handful.side, TarotViewsRepository.SWT_KIND));
 		side = new EMFComboViewer(parent);
@@ -104,6 +108,7 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.Handful.side, TarotViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createSizeEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, TarotMessages.HandfulPropertiesEditionPart_SizeLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Handful.size, TarotViewsRepository.SWT_KIND));
 		size = new EMFComboViewer(parent);
@@ -120,18 +125,19 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#getSide()
+	 * 
 	 */
 	public Enumerator getSide() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) side.getSelection()).getFirstElement();
@@ -152,6 +158,7 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#setSide(Enumerator newValue)
+	 * 
 	 */
 	public void setSide(Enumerator newValue) {
 		side.modelUpdating(new StructuredSelection(newValue));
@@ -169,6 +176,7 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#getSize()
+	 * 
 	 */
 	public Enumerator getSize() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) size.getSelection()).getFirstElement();
@@ -189,6 +197,7 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#setSize(Enumerator newValue)
+	 * 
 	 */
 	public void setSize(Enumerator newValue) {
 		size.modelUpdating(new StructuredSelection(newValue));
@@ -207,12 +216,11 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.Handful_Part_Title;
@@ -221,5 +229,6 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

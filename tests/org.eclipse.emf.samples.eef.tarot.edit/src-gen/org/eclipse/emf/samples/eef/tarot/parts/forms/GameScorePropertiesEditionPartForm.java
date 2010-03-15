@@ -61,21 +61,21 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * 
+ * 
  */
 public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, GameScorePropertiesEditionPart {
 
 	protected EMFListEditUtil entriesEditUtil;
-	protected TableViewer entries;
-	protected List<ViewerFilter> entriesBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> entriesFilters = new ArrayList<ViewerFilter>();
-
-
+		protected TableViewer entries;
+		protected List<ViewerFilter> entriesBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> entriesFilters = new ArrayList<ViewerFilter>();
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public GameScorePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -86,6 +86,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -103,6 +104,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -114,6 +116,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	}
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createEntriesTableComposition(FormToolkit widgetFactory, Composite container) {
 		Composite tableContainer = widgetFactory.createComposite(container, SWT.NONE);
@@ -132,7 +135,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 		gdEntries.verticalAlignment = GridData.FILL;
 		tableEntries.setLayoutData(gdEntries);
 		tableEntries.setLinesVisible(true);
-
+		
 		// Start of user code for columns definition for Entries
 
 		TableColumn name = new TableColumn(tableEntries, SWT.NONE);
@@ -147,6 +150,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			/**
 			 * {@inheritDoc}
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
+			 * 
 			 */
 			@Override
 			public Object[] getElements(Object object) {
@@ -158,7 +162,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			
 		});
 		entries.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()) {
-
+		
 			//Start of user code for label provider definition for Entries
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -199,6 +203,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected Composite createEntriesPanel(FormToolkit widgetFactory, Composite container) {
 		Composite entriesPanel = widgetFactory.createComposite(container, SWT.NONE);
@@ -214,6 +219,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addToEntries();
@@ -228,6 +234,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				removeFromEntries();
@@ -243,6 +250,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				editEntries();
@@ -269,7 +277,6 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			}
 		}
 		// End of user code
-
 	}
 
 	/**
@@ -289,7 +296,6 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GameScorePropertiesEditionPartForm.this, TarotViewsRepository.GameScore.entries, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		}
 		// End of user code
-
 	}
 
 	/**
@@ -315,7 +321,6 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -324,6 +329,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -335,6 +341,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToAdd()
+	 * 
 	 */
 	public List getEntriesToAdd() {
 		return entriesEditUtil.getElementsToAdd();
@@ -344,6 +351,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToRemove()
+	 * 
 	 */
 	public List getEntriesToRemove() {
 		return entriesEditUtil.getElementsToRemove();
@@ -353,6 +361,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToEdit()
+	 * 
 	 */
 	public Map getEntriesToEdit() {
 		return entriesEditUtil.getElementsToRefresh();
@@ -362,6 +371,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToMove()
+	 * 
 	 */
 	public List getEntriesToMove() {
 		return entriesEditUtil.getElementsToMove();
@@ -371,6 +381,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesTable()
+	 * 
 	 */
 	public List getEntriesTable() {
 		return entriesEditUtil.getVirtualList();
@@ -395,6 +406,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#updateEntries(EObject newValue)
+	 * 
 	 */
 	public void updateEntries(EObject newValue) {
 		if(entriesEditUtil != null){
@@ -407,6 +419,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#addFilterEntries(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToEntries(ViewerFilter filter) {
 		entriesFilters.add(filter);
@@ -416,6 +429,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#addBusinessFilterEntries(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToEntries(ViewerFilter filter) {
 		entriesBusinessFilters.add(filter);
@@ -425,6 +439,7 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#isContainedInEntriesTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInEntriesTable(EObject element) {
 		return entriesEditUtil.contains(element);
@@ -436,13 +451,11 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.GameScore_Part_Title;
@@ -569,5 +582,6 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	}
 	
 	// End of user code
+
 
 }

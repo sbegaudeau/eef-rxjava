@@ -51,6 +51,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * 
+ * 
  */
 public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, RoundSettingsPropertiesEditionPart {
 
@@ -62,11 +63,10 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public RoundSettingsPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -77,6 +77,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -94,6 +95,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -105,6 +107,9 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPlayersGroup(FormToolkit widgetFactory, final Composite view) {
 		Section playersSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		playersSection.setText(TarotMessages.RoundSettingsPropertiesEditionPart_PlayersGroupLabel);
@@ -122,6 +127,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 
 	/**
 	 * @param playersGroup
+	 * 
 	 */
 	protected void createTakerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.RoundSettingsPropertiesEditionPart_TakerLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.RoundSettings.taker, TarotViewsRepository.FORM_KIND));
@@ -147,6 +153,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 
 	/**
 	 * @param playersGroup
+	 * 
 	 */
 	protected void createPartnerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.RoundSettingsPropertiesEditionPart_PartnerLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.RoundSettings.partner, TarotViewsRepository.FORM_KIND));
@@ -170,6 +177,9 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.RoundSettings.partner, TarotViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createBaseScoreGroup(FormToolkit widgetFactory, final Composite view) {
 		Section baseScoreSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		baseScoreSection.setText(TarotMessages.RoundSettingsPropertiesEditionPart_BaseScoreGroupLabel);
@@ -186,6 +196,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		baseScoreSection.setClient(baseScoreGroup);
 	}
 
+	
 	protected void createBidEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.RoundSettingsPropertiesEditionPart_BidLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.RoundSettings.bid, TarotViewsRepository.FORM_KIND));
 		bid = new EMFComboViewer(parent);
@@ -199,6 +210,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -209,6 +221,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.RoundSettings.bid, TarotViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createExtraPointsText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.RoundSettingsPropertiesEditionPart_ExtraPointsLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.RoundSettings.extraPoints, TarotViewsRepository.FORM_KIND));
 		extraPoints = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -219,6 +232,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		extraPoints.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -230,6 +244,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		extraPoints.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -243,6 +258,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.RoundSettings.extraPoints, TarotViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createWonCheckbox(FormToolkit widgetFactory, Composite parent) {
 		won = widgetFactory.createButton(parent, TarotMessages.RoundSettingsPropertiesEditionPart_WonLabel, SWT.CHECK);
 		won.addSelectionListener(new SelectionAdapter() {
@@ -251,6 +267,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -270,6 +287,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -281,6 +299,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#getTaker()
+	 * 
 	 */
 	public EObject getTaker() {
 		if (taker.getSelection() instanceof StructuredSelection) {
@@ -307,6 +326,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#setTaker(EObject newValue)
+	 * 
 	 */
 	public void setTaker(EObject newValue) {
 		if (newValue != null) {
@@ -329,6 +349,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#addFilterTaker(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToTaker(ViewerFilter filter) {
 		taker.addFilter(filter);
@@ -338,6 +359,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#addBusinessFilterTaker(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToTaker(ViewerFilter filter) {
 		taker.addBusinessRuleFilter(filter);
@@ -351,6 +373,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#getPartner()
+	 * 
 	 */
 	public EObject getPartner() {
 		if (partner.getSelection() instanceof StructuredSelection) {
@@ -377,6 +400,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#setPartner(EObject newValue)
+	 * 
 	 */
 	public void setPartner(EObject newValue) {
 		if (newValue != null) {
@@ -399,6 +423,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#addFilterPartner(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToPartner(ViewerFilter filter) {
 		partner.addFilter(filter);
@@ -408,6 +433,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#addBusinessFilterPartner(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToPartner(ViewerFilter filter) {
 		partner.addBusinessRuleFilter(filter);
@@ -421,6 +447,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#getBid()
+	 * 
 	 */
 	public Enumerator getBid() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) bid.getSelection()).getFirstElement();
@@ -441,6 +468,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#setBid(Enumerator newValue)
+	 * 
 	 */
 	public void setBid(Enumerator newValue) {
 		bid.modelUpdating(new StructuredSelection(newValue));
@@ -454,6 +482,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#getExtraPoints()
+	 * 
 	 */
 	public String getExtraPoints() {
 		return extraPoints.getText();
@@ -463,6 +492,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#setExtraPoints(String newValue)
+	 * 
 	 */
 	public void setExtraPoints(String newValue) {
 		if (newValue != null) {
@@ -484,6 +514,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#getWon()
+	 * 
 	 */
 	public Boolean getWon() {
 		return Boolean.valueOf(won.getSelection());
@@ -493,6 +524,7 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundSettingsPropertiesEditionPart#setWon(Boolean newValue)
+	 * 
 	 */
 	public void setWon(Boolean newValue) {
 		if (newValue != null) {
@@ -508,13 +540,11 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.RoundSettings_Part_Title;
@@ -523,5 +553,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

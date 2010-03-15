@@ -43,21 +43,21 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * 
+ * 
  */
 public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, RoundBonusesPropertiesEditionPart {
 
 	protected EMFListEditUtil bonusesEditUtil;
-	protected ReferencesTable<? extends EObject> bonuses;
-	protected List<ViewerFilter> bonusesBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> bonusesFilters = new ArrayList<ViewerFilter>();
-
-
+		protected ReferencesTable<? extends EObject> bonuses;
+		protected List<ViewerFilter> bonusesBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> bonusesFilters = new ArrayList<ViewerFilter>();
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public RoundBonusesPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -68,6 +68,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -85,6 +86,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -94,6 +96,9 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createBonusesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bonusesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bonusesSection.setText(TarotMessages.RoundBonusesPropertiesEditionPart_BonusesGroupLabel);
@@ -110,6 +115,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createBonusesTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.bonuses = new ReferencesTable<Bonus>(TarotMessages.RoundBonusesPropertiesEditionPart_BonusesLabel, new ReferencesTableListener<Bonus>() {			
@@ -192,6 +198,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -203,6 +210,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#getBonusesToAdd()
+	 * 
 	 */
 	public List getBonusesToAdd() {
 		return bonusesEditUtil.getElementsToAdd();
@@ -212,6 +220,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#getBonusesToRemove()
+	 * 
 	 */
 	public List getBonusesToRemove() {
 		return bonusesEditUtil.getElementsToRemove();
@@ -221,6 +230,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#getBonusesToEdit()
+	 * 
 	 */
 	public Map getBonusesToEdit() {
 		return bonusesEditUtil.getElementsToRefresh();
@@ -230,6 +240,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#getBonusesToMove()
+	 * 
 	 */
 	public List getBonusesToMove() {
 		return bonusesEditUtil.getElementsToMove();
@@ -239,6 +250,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#getBonusesTable()
+	 * 
 	 */
 	public List getBonusesTable() {
 		return bonusesEditUtil.getVirtualList();
@@ -263,6 +275,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#updateBonuses(EObject newValue)
+	 * 
 	 */
 	public void updateBonuses(EObject newValue) {
 		if(bonusesEditUtil != null){
@@ -275,6 +288,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#addFilterBonuses(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToBonuses(ViewerFilter filter) {
 		bonusesFilters.add(filter);
@@ -284,6 +298,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#addBusinessFilterBonuses(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToBonuses(ViewerFilter filter) {
 		bonusesBusinessFilters.add(filter);
@@ -293,6 +308,7 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundBonusesPropertiesEditionPart#isContainedInBonusesTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInBonusesTable(EObject element) {
 		return bonusesEditUtil.contains(element);
@@ -304,13 +320,11 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.RoundBonuses_Part_Title;
@@ -319,5 +333,6 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

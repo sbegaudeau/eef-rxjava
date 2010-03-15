@@ -19,32 +19,37 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * 
+ * 
  */
 public interface GameScorePropertiesEditionPart {
 
 	/**
 	 * @return the entries to add
+	 * 
 	 */
 	public List getEntriesToAdd();
 
 	/**
 	 * @return the entries to remove
+	 * 
 	 */
 	public List getEntriesToRemove();
 
 	/**
 	 * @return the entries to move
+	 * 
 	 */
 	public List getEntriesToMove();
 
 	/**
 	 * @return the entries to edit
+	 * 
 	 */
 	public Map getEntriesToEdit();
 
 	/**
 	 * @return the current entries table
-	 */
+	 * 
 	public List getEntriesTable();
 
 	/**
@@ -58,6 +63,7 @@ public interface GameScorePropertiesEditionPart {
 	/**
 	 * Update the entries
 	 * @param newValue the entries to update
+	 * 
 	 */
 	public void updateEntries(EObject newValue);
 
@@ -67,6 +73,7 @@ public interface GameScorePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToEntries(ViewerFilter filter);
 
@@ -76,14 +83,15 @@ public interface GameScorePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToEntries(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the entries table
+	 * 
 	 */
 	public boolean isContainedInEntriesTable(EObject element);
-
 
 
 
@@ -97,6 +105,7 @@ public interface GameScorePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

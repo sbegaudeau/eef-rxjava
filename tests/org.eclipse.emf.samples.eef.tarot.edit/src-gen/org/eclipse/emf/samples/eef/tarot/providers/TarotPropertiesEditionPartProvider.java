@@ -30,13 +30,14 @@ import org.eclipse.emf.samples.eef.tarot.parts.impl.SlamPropertiesEditionPartImp
 
 /**
  * 
- *
+ * 
  */
 public class TarotPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 * 
 	 */
 	public boolean provides(java.lang.Class key) {
 		return key == TarotViewsRepository.class;
@@ -46,6 +47,7 @@ public class TarotPropertiesEditionPartProvider implements IPropertiesEditionPar
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
 		if (key == TarotViewsRepository.GamePlayers.class) {

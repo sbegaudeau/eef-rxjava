@@ -13,17 +13,20 @@ package org.eclipse.emf.samples.eef.tarot.parts;
 
 /**
  * 
+ * 
  */
 public interface PlayerPropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -34,6 +37,7 @@ public interface PlayerPropertiesEditionPart {
 
 	/**
 	 * @return the pics
+	 * 
 	 */
 	public String getPics();
 
@@ -47,9 +51,9 @@ public interface PlayerPropertiesEditionPart {
 	/**
 	 * Defines a new pics
 	 * @param newValue the new pics to set
+	 * 
 	 */
 	public void setPics(String newValue);
-
 
 
 
@@ -63,6 +67,7 @@ public interface PlayerPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

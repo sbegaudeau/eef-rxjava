@@ -14,11 +14,13 @@ import org.eclipse.emf.ecore.EEnum;
 
 /**
  * 
+ * 
  */
 public interface LeastAtLastPropertiesEditionPart {
 
 	/**
 	 * @return the side
+	 * 
 	 */
 	public Enumerator getSide();
 
@@ -32,9 +34,9 @@ public interface LeastAtLastPropertiesEditionPart {
 	/**
 	 * Defines a new side
 	 * @param newValue the new side to set
+	 * 
 	 */
 	public void setSide(Enumerator newValue);
-
 
 
 
@@ -48,6 +50,7 @@ public interface LeastAtLastPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

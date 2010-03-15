@@ -14,11 +14,13 @@ import org.eclipse.emf.ecore.EEnum;
 
 /**
  * 
+ * 
  */
 public interface SlamPropertiesEditionPart {
 
 	/**
 	 * @return the side
+	 * 
 	 */
 	public Enumerator getSide();
 
@@ -32,6 +34,7 @@ public interface SlamPropertiesEditionPart {
 	/**
 	 * Defines a new side
 	 * @param newValue the new side to set
+	 * 
 	 */
 	public void setSide(Enumerator newValue);
 
@@ -42,12 +45,14 @@ public interface SlamPropertiesEditionPart {
 
 	/**
 	 * @return the announced
+	 * 
 	 */
 	public Boolean getAnnounced();
 
 	/**
 	 * Defines a new announced
 	 * @param newValue the new announced to set
+	 * 
 	 */
 	public void setAnnounced(Boolean newValue);
 
@@ -58,15 +63,16 @@ public interface SlamPropertiesEditionPart {
 
 	/**
 	 * @return the achieved
+	 * 
 	 */
 	public Boolean getAchieved();
 
 	/**
 	 * Defines a new achieved
 	 * @param newValue the new achieved to set
+	 * 
 	 */
 	public void setAchieved(Boolean newValue);
-
 
 
 
@@ -80,6 +86,7 @@ public interface SlamPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

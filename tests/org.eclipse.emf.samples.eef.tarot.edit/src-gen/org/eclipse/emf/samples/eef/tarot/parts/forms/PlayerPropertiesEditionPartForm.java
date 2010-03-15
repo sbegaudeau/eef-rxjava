@@ -38,6 +38,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * 
+ * 
  */
 public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PlayerPropertiesEditionPart {
 
@@ -46,11 +47,10 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public PlayerPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -61,6 +61,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -78,6 +79,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -87,6 +89,9 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createIdentityGroup(FormToolkit widgetFactory, final Composite view) {
 		Section identitySection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		identitySection.setText(TarotMessages.PlayerPropertiesEditionPart_IdentityGroupLabel);
@@ -102,6 +107,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 		identitySection.setClient(identityGroup);
 	}
 
+	
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.PlayerPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Player.name, TarotViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -112,6 +118,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -123,6 +130,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -136,6 +144,9 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.Player.name, TarotViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPicsImageViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.PlayerPropertiesEditionPart_PicsLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Player.pics, TarotViewsRepository.FORM_KIND));
 		pics = new EEFImageViewer(parent, SWT.BORDER);
@@ -162,6 +173,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -173,6 +185,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.PlayerPropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return name.getText();
@@ -182,6 +195,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.PlayerPropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -203,6 +217,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.PlayerPropertiesEditionPart#getPics()
+	 * 
 	 */
 	public String getPics() {
 		ISelection selection = pics.getSelection();
@@ -229,6 +244,7 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.PlayerPropertiesEditionPart#setPics(String newValue)
+	 * 
 	 */
 	public void setPics(String newValue) {
 		if (newValue != null) {
@@ -244,13 +260,11 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.Player_Part_Title;
@@ -259,5 +273,6 @@ public class PlayerPropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

@@ -34,9 +34,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-// End of user code
+// End of user code	
 
 /**
+ * 
  * 
  */
 public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GamePlayersPropertiesEditionPart {
@@ -48,11 +49,10 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public GamePlayersPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -63,13 +63,13 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -79,6 +79,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPlayersAdvancedTableComposition(view);
@@ -87,11 +88,11 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createPlayersAdvancedTableComposition(Composite parent) {
 		this.players = new ReferencesTable<Player>(TarotMessages.GamePlayersPropertiesEditionPart_PlayersLabel, new ReferencesTableListener<Player>() {			
@@ -111,7 +112,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void movePlayers(Player element, int oldIndex, int newIndex) {
 		EObject editedElement = playersEditUtil.foundCorrespondingEObject(element);
@@ -121,10 +122,9 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToPlayers() {
-
 		// Start of user code addToPlayers() method body
 		Player eObject = TarotFactory.eINSTANCE.createPlayer();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
@@ -142,10 +142,9 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromPlayers(Player element) {
-
 		// Start of user code removeFromPlayers() method body
 		EObject editedElement = playersEditUtil.foundCorrespondingEObject(element);
 		playersEditUtil.removeElement(element);
@@ -156,10 +155,9 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editPlayers(Player element) {
-
 		// Start of user code editPlayers() method body
 		EObject editedElement = playersEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
@@ -182,18 +180,19 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToAdd()
+	 * 
 	 */
 	public List getPlayersToAdd() {
 		return playersEditUtil.getElementsToAdd();
@@ -203,6 +202,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToRemove()
+	 * 
 	 */
 	public List getPlayersToRemove() {
 		return playersEditUtil.getElementsToRemove();
@@ -212,6 +212,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToEdit()
+	 * 
 	 */
 	public Map getPlayersToEdit() {
 		return playersEditUtil.getElementsToRefresh();
@@ -221,6 +222,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersToMove()
+	 * 
 	 */
 	public List getPlayersToMove() {
 		return playersEditUtil.getElementsToMove();
@@ -230,6 +232,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#getPlayersTable()
+	 * 
 	 */
 	public List getPlayersTable() {
 		return playersEditUtil.getVirtualList();
@@ -254,6 +257,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#updatePlayers(EObject newValue)
+	 * 
 	 */
 	public void updatePlayers(EObject newValue) {
 		if(playersEditUtil != null){
@@ -266,6 +270,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#addFilterPlayers(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToPlayers(ViewerFilter filter) {
 		playersFilters.add(filter);
@@ -275,6 +280,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#addBusinessFilterPlayers(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToPlayers(ViewerFilter filter) {
 		playersBusinessFilters.add(filter);
@@ -284,6 +290,7 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GamePlayersPropertiesEditionPart#isContainedInPlayersTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInPlayersTable(EObject element) {
 		return playersEditUtil.contains(element);
@@ -302,12 +309,11 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.GamePlayers_Part_Title;
@@ -316,5 +322,6 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

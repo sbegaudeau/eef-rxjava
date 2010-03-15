@@ -33,6 +33,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * 
+ * 
  */
 public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, RoundScorePropertiesEditionPart {
 
@@ -40,11 +41,10 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public RoundScorePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -55,6 +55,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -72,6 +73,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -81,6 +83,9 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createTotalGroup(FormToolkit widgetFactory, final Composite view) {
 		Section totalSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		totalSection.setText(TarotMessages.RoundScorePropertiesEditionPart_TotalGroupLabel);
@@ -95,6 +100,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 		totalSection.setClient(totalGroup);
 	}
 
+	
 	protected void createScoreText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.RoundScorePropertiesEditionPart_ScoreLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.RoundScore.score, TarotViewsRepository.FORM_KIND));
 		score = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -107,6 +113,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 		score.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -118,6 +125,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 		score.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -137,6 +145,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -148,6 +157,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundScorePropertiesEditionPart#getScore()
+	 * 
 	 */
 	public String getScore() {
 		return score.getText();
@@ -157,6 +167,7 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundScorePropertiesEditionPart#setScore(String newValue)
+	 * 
 	 */
 	public void setScore(String newValue) {
 		if (newValue != null) {
@@ -176,13 +187,11 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.RoundScore_Part_Title;
@@ -191,5 +200,6 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

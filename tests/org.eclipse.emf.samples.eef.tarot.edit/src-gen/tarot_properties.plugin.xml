@@ -87,7 +87,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.samples.eef.tarot.section.Game"
-               tab="Base">
+               tab="GamePlayers">
              <input
                     type="org.eclipse.emf.samples.eef.tarot.Game">
              </input>
@@ -111,7 +111,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.samples.eef.tarot.section.Round"
-               tab="Base">
+               tab="Round_settings">
              <input
                     type="org.eclipse.emf.samples.eef.tarot.Round">
              </input>

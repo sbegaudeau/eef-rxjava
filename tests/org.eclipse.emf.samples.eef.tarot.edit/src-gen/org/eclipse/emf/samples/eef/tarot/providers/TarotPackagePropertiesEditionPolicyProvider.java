@@ -9,6 +9,7 @@ import org.eclipse.emf.samples.eef.tarot.TarotPackage;
 
 /**
  * 
+ * 
  */
 public class TarotPackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
@@ -16,6 +17,7 @@ public class TarotPackagePropertiesEditionPolicyProvider extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return TarotPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || TarotPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());

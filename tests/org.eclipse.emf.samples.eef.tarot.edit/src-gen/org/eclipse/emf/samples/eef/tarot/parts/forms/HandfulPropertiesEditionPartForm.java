@@ -37,6 +37,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * 
+ * 
  */
 public class HandfulPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, HandfulPropertiesEditionPart {
 
@@ -45,11 +46,10 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public HandfulPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -60,6 +60,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -77,6 +78,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -86,6 +88,9 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(TarotMessages.HandfulPropertiesEditionPart_PropertiesGroupLabel);
@@ -101,6 +106,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createSideEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.HandfulPropertiesEditionPart_SideLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Handful.side, TarotViewsRepository.FORM_KIND));
 		side = new EMFComboViewer(parent);
@@ -114,6 +120,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -124,6 +131,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(TarotViewsRepository.Handful.side, TarotViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createSizeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.HandfulPropertiesEditionPart_SizeLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Handful.size, TarotViewsRepository.FORM_KIND));
 		size = new EMFComboViewer(parent);
@@ -137,6 +145,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -153,6 +162,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -164,6 +174,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#getSide()
+	 * 
 	 */
 	public Enumerator getSide() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) side.getSelection()).getFirstElement();
@@ -184,6 +195,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#setSide(Enumerator newValue)
+	 * 
 	 */
 	public void setSide(Enumerator newValue) {
 		side.modelUpdating(new StructuredSelection(newValue));
@@ -197,6 +209,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#getSize()
+	 * 
 	 */
 	public Enumerator getSize() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) size.getSelection()).getFirstElement();
@@ -217,6 +230,7 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.HandfulPropertiesEditionPart#setSize(Enumerator newValue)
+	 * 
 	 */
 	public void setSize(Enumerator newValue) {
 		size.modelUpdating(new StructuredSelection(newValue));
@@ -228,13 +242,11 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.Handful_Part_Title;
@@ -243,5 +255,6 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

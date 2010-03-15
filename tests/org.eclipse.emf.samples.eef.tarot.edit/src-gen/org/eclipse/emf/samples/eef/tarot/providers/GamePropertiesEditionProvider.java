@@ -14,6 +14,7 @@ import org.eclipse.emf.samples.eef.tarot.components.GamePropertiesEditionCompone
 
 /**
  * 
+ * 
  */
 public class GamePropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -21,6 +22,7 @@ public class GamePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Game) && (TarotPackage.eINSTANCE.getGame() == eObject.eClass());
@@ -30,6 +32,7 @@ public class GamePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (GameGamePlayersPropertiesEditionComponent.GAMEPLAYERS_PART.equals(part) || GameGameScorePropertiesEditionComponent.GAMESCORE_PART.equals(part));
@@ -40,6 +43,7 @@ public class GamePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Game) {
@@ -53,6 +57,7 @@ public class GamePropertiesEditionProvider implements IPropertiesEditionProvider
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Game) {

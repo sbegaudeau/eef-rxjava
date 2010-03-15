@@ -14,11 +14,13 @@ import org.eclipse.emf.ecore.EEnum;
 
 /**
  * 
+ * 
  */
 public interface HandfulPropertiesEditionPart {
 
 	/**
 	 * @return the side
+	 * 
 	 */
 	public Enumerator getSide();
 
@@ -32,6 +34,7 @@ public interface HandfulPropertiesEditionPart {
 	/**
 	 * Defines a new side
 	 * @param newValue the new side to set
+	 * 
 	 */
 	public void setSide(Enumerator newValue);
 
@@ -42,6 +45,7 @@ public interface HandfulPropertiesEditionPart {
 
 	/**
 	 * @return the size
+	 * 
 	 */
 	public Enumerator getSize();
 
@@ -55,9 +59,9 @@ public interface HandfulPropertiesEditionPart {
 	/**
 	 * Defines a new size
 	 * @param newValue the new size to set
+	 * 
 	 */
 	public void setSize(Enumerator newValue);
-
 
 
 
@@ -71,6 +75,7 @@ public interface HandfulPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

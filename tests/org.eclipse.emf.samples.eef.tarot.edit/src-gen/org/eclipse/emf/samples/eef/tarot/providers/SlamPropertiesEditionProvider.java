@@ -12,6 +12,7 @@ import org.eclipse.emf.samples.eef.tarot.components.SlamPropertiesEditionCompone
 
 /**
  * 
+ * 
  */
 public class SlamPropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -19,6 +20,7 @@ public class SlamPropertiesEditionProvider implements IPropertiesEditionProvider
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Slam) && (TarotPackage.eINSTANCE.getSlam() == eObject.eClass());
@@ -28,6 +30,7 @@ public class SlamPropertiesEditionProvider implements IPropertiesEditionProvider
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (SlamPropertiesEditionComponent.BASE_PART.equals(part));
@@ -38,6 +41,7 @@ public class SlamPropertiesEditionProvider implements IPropertiesEditionProvider
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Slam) {
@@ -51,6 +55,7 @@ public class SlamPropertiesEditionProvider implements IPropertiesEditionProvider
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Slam) {

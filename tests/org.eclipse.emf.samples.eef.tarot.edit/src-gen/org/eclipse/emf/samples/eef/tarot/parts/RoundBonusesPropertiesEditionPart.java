@@ -18,32 +18,37 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * 
+ * 
  */
 public interface RoundBonusesPropertiesEditionPart {
 
 	/**
 	 * @return the bonuses to add
+	 * 
 	 */
 	public List getBonusesToAdd();
 
 	/**
 	 * @return the bonuses to remove
+	 * 
 	 */
 	public List getBonusesToRemove();
 
 	/**
 	 * @return the bonuses to move
+	 * 
 	 */
 	public List getBonusesToMove();
 
 	/**
 	 * @return the bonuses to edit
+	 * 
 	 */
 	public Map getBonusesToEdit();
 
 	/**
 	 * @return the current bonuses table
-	 */
+	 * 
 	public List getBonusesTable();
 
 	/**
@@ -57,6 +62,7 @@ public interface RoundBonusesPropertiesEditionPart {
 	/**
 	 * Update the bonuses
 	 * @param newValue the bonuses to update
+	 * 
 	 */
 	public void updateBonuses(EObject newValue);
 
@@ -66,6 +72,7 @@ public interface RoundBonusesPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToBonuses(ViewerFilter filter);
 
@@ -75,14 +82,15 @@ public interface RoundBonusesPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToBonuses(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the bonuses table
+	 * 
 	 */
 	public boolean isContainedInBonusesTable(EObject element);
-
 
 
 
@@ -96,6 +104,7 @@ public interface RoundBonusesPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -21,34 +21,39 @@ import org.eclipse.emf.samples.eef.tarot.parts.TarotViewsRepository;
 
 /**
  * 
+ * 
  */
 public class GamePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The GamePlayers part
+	 * 
 	 */
 	private GamePlayersPropertiesEditionPart gamePlayersPart;
 
 	/**
 	 * The GameGamePlayersPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected GameGamePlayersPropertiesEditionComponent gameGamePlayersPropertiesEditionComponent;
 
 	/**
 	 * The GameScore part
+	 * 
 	 */
 	private GameScorePropertiesEditionPart gameScorePart;
 
 	/**
 	 * The GameGameScorePropertiesEditionComponent sub component
+	 * 
 	 */
 	protected GameGameScorePropertiesEditionComponent gameGameScorePropertiesEditionComponent;
 
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param game
-	 *            the EObject to edit
+	 * @param game the EObject to edit
+	 * 
 	 */
 	public GamePropertiesEditionComponent(EObject game, String editing_mode) {
 		super(editing_mode);
@@ -66,6 +71,7 @@ public class GamePropertiesEditionComponent extends ComposedPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (GameGamePlayersPropertiesEditionComponent.GAMEPLAYERS_PART.equals(key)) {
@@ -85,6 +91,7 @@ public class GamePropertiesEditionComponent extends ComposedPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (TarotViewsRepository.GamePlayers.class == key) {
@@ -103,6 +110,7 @@ public class GamePropertiesEditionComponent extends ComposedPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == TarotViewsRepository.GamePlayers.class) {

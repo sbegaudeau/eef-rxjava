@@ -29,9 +29,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+// End of user code	
 
 /**
+ * 
  * 
  */
 public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, MiserePropertiesEditionPart {
@@ -40,11 +41,10 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public MiserePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -55,13 +55,13 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -71,6 +71,7 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createPropertiesGroup(view);
@@ -79,9 +80,11 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(TarotMessages.MiserePropertiesEditionPart_PropertiesGroupLabel);
@@ -96,6 +99,7 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createDeclarerFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, TarotMessages.MiserePropertiesEditionPart_DeclarerLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Misere.declarer, TarotViewsRepository.SWT_KIND));
@@ -120,18 +124,19 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#getDeclarer()
+	 * 
 	 */
 	public EObject getDeclarer() {
 		if (declarer.getSelection() instanceof StructuredSelection) {
@@ -158,6 +163,7 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#setDeclarer(EObject newValue)
+	 * 
 	 */
 	public void setDeclarer(EObject newValue) {
 		if (newValue != null) {
@@ -180,6 +186,7 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#addFilterDeclarer(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToDeclarer(ViewerFilter filter) {
 		declarer.addFilter(filter);
@@ -189,6 +196,7 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#addBusinessFilterDeclarer(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToDeclarer(ViewerFilter filter) {
 		declarer.addBusinessRuleFilter(filter);
@@ -207,12 +215,11 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.Misere_Part_Title;
@@ -221,5 +228,6 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

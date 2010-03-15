@@ -29,7 +29,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.samples.eef.tarot.Round;
 import org.eclipse.emf.samples.eef.tarot.TarotPackage;
 import org.eclipse.emf.samples.eef.tarot.parts.RoundScorePropertiesEditionPart;
@@ -42,25 +42,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * 
+ * 
  */
 public class RoundRoundScorePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String ROUNDSCORE_PART = "Round score"; //$NON-NLS-1$
 
+	
 	private String[] parts = {ROUNDSCORE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private Round round;
 
 	/**
 	 * The Round score part
+	 * 
 	 */
 	protected RoundScorePropertiesEditionPart roundScorePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public RoundRoundScorePropertiesEditionComponent(EObject round, String editing_mode) {
 		if (round instanceof Round) {
@@ -77,6 +83,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -85,6 +92,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (roundScorePart == null)
@@ -108,6 +116,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (TarotPackage.eINSTANCE.getRound_Score().equals(msg.getFeature()) && roundScorePart != null){
@@ -118,13 +127,13 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 			}
 		}
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (ROUNDSCORE_PART.equals(key))
@@ -136,6 +145,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -146,6 +156,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (round != null && ROUNDSCORE_PART.equals(key)) {
@@ -166,6 +177,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == TarotViewsRepository.RoundScore.class)
@@ -177,6 +189,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -205,12 +218,12 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((round != null) && (roundScorePart != null)) { 
 			// do not generates command for derived attribute score
-
 
 		}
 		if (!cc.isEmpty())
@@ -223,12 +236,12 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Round) {
 			Round roundToUpdate = (Round)source;
 			// do not update derived attribute score
-
 
 			return roundToUpdate;
 		}
@@ -240,6 +253,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -247,7 +261,6 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
 				CompoundCommand command = new CompoundCommand();
 			// do not generates command for derived attribute score
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -269,6 +282,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == TarotViewsRepository.RoundSettings.bid || key == TarotViewsRepository.RoundSettings.taker || key == TarotViewsRepository.RoundSettings.won || key == TarotViewsRepository.RoundSettings.extraPoints || key == TarotViewsRepository.RoundScore.score;
@@ -278,6 +292,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -288,7 +303,6 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 					Object newValue = EcoreUtil.createFromString(TarotPackage.eINSTANCE.getRound_Score().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(TarotPackage.eINSTANCE.getRound_Score().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -302,6 +316,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -318,11 +333,11 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -333,6 +348,7 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return roundScorePart.getTitle();

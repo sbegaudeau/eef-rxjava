@@ -44,25 +44,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * 
+ * 
  */
 public class SlamPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private Slam slam;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected SlamPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public SlamPropertiesEditionComponent(EObject slam, String editing_mode) {
 		if (slam instanceof Slam) {
@@ -79,6 +85,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -87,6 +94,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -110,6 +118,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (TarotPackage.eINSTANCE.getBonus_Side().equals(msg.getFeature()) && basePart != null)
@@ -122,13 +131,13 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 			basePart.setAchieved((Boolean)msg.getNewValue());
 
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -140,6 +149,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -150,6 +160,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (slam != null && BASE_PART.equals(key)) {
@@ -170,6 +181,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == TarotViewsRepository.Slam.class)
@@ -181,6 +193,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -216,6 +229,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -225,7 +239,6 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 			cc.append(SetCommand.create(editingDomain, slam, TarotPackage.eINSTANCE.getSlam_Announced(), basePart.getAnnounced()));
 
 			cc.append(SetCommand.create(editingDomain, slam, TarotPackage.eINSTANCE.getSlam_Achieved(), basePart.getAchieved()));
-
 
 
 		}
@@ -239,6 +252,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Slam) {
@@ -248,7 +262,6 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 			slamToUpdate.setAnnounced(new Boolean(basePart.getAnnounced()).booleanValue());
 
 			slamToUpdate.setAchieved(new Boolean(basePart.getAchieved()).booleanValue());
-
 
 
 			return slamToUpdate;
@@ -261,6 +274,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -275,7 +289,6 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 			if (TarotViewsRepository.Slam.achieved == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, slam, TarotPackage.eINSTANCE.getSlam_Achieved(), event.getNewValue()));
-
 
 
 				if (!command.isEmpty() && !command.canExecute()) {
@@ -298,6 +311,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == TarotViewsRepository.Slam.side || key == TarotViewsRepository.Slam.announced || key == TarotViewsRepository.Slam.achieved;
@@ -307,6 +321,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -325,7 +340,6 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 					Object newValue = EcoreUtil.createFromString(TarotPackage.eINSTANCE.getSlam_Achieved().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(TarotPackage.eINSTANCE.getSlam_Achieved().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -339,6 +353,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -355,11 +370,11 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -370,6 +385,7 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

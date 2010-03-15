@@ -18,11 +18,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * 
+ * 
  */
 public interface RoundSettingsPropertiesEditionPart {
 
 	/**
 	 * @return the taker
+	 * 
 	 */
 	public EObject getTaker();
 
@@ -36,12 +38,14 @@ public interface RoundSettingsPropertiesEditionPart {
 	/**
 	 * Defines a new taker
 	 * @param newValue the new taker to set
+	 * 
 	 */
 	public void setTaker(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setTakerButtonMode(ButtonsModeEnum newValue);
 
@@ -51,6 +55,7 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToTaker(ViewerFilter filter);
 
@@ -60,6 +65,7 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToTaker(ViewerFilter filter);
 
@@ -70,6 +76,7 @@ public interface RoundSettingsPropertiesEditionPart {
 
 	/**
 	 * @return the partner
+	 * 
 	 */
 	public EObject getPartner();
 
@@ -83,12 +90,14 @@ public interface RoundSettingsPropertiesEditionPart {
 	/**
 	 * Defines a new partner
 	 * @param newValue the new partner to set
+	 * 
 	 */
 	public void setPartner(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setPartnerButtonMode(ButtonsModeEnum newValue);
 
@@ -98,6 +107,7 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToPartner(ViewerFilter filter);
 
@@ -107,6 +117,7 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToPartner(ViewerFilter filter);
 
@@ -117,6 +128,7 @@ public interface RoundSettingsPropertiesEditionPart {
 
 	/**
 	 * @return the bid
+	 * 
 	 */
 	public Enumerator getBid();
 
@@ -130,6 +142,7 @@ public interface RoundSettingsPropertiesEditionPart {
 	/**
 	 * Defines a new bid
 	 * @param newValue the new bid to set
+	 * 
 	 */
 	public void setBid(Enumerator newValue);
 
@@ -140,12 +153,14 @@ public interface RoundSettingsPropertiesEditionPart {
 
 	/**
 	 * @return the extraPoints
+	 * 
 	 */
 	public String getExtraPoints();
 
 	/**
 	 * Defines a new extraPoints
 	 * @param newValue the new extraPoints to set
+	 * 
 	 */
 	public void setExtraPoints(String newValue);
 
@@ -156,15 +171,16 @@ public interface RoundSettingsPropertiesEditionPart {
 
 	/**
 	 * @return the won
+	 * 
 	 */
 	public Boolean getWon();
 
 	/**
 	 * Defines a new won
 	 * @param newValue the new won to set
+	 * 
 	 */
 	public void setWon(Boolean newValue);
-
 
 
 
@@ -178,6 +194,7 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

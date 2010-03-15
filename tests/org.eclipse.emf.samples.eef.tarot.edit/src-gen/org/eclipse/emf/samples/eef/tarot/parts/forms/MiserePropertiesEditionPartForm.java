@@ -36,6 +36,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * 
+ * 
  */
 public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, MiserePropertiesEditionPart {
 
@@ -43,11 +44,10 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public MiserePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -58,6 +58,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -75,6 +76,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -84,6 +86,9 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(TarotMessages.MiserePropertiesEditionPart_PropertiesGroupLabel);
@@ -100,6 +105,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createDeclarerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, TarotMessages.MiserePropertiesEditionPart_DeclarerLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.Misere.declarer, TarotViewsRepository.FORM_KIND));
@@ -129,6 +135,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -140,6 +147,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#getDeclarer()
+	 * 
 	 */
 	public EObject getDeclarer() {
 		if (declarer.getSelection() instanceof StructuredSelection) {
@@ -166,6 +174,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#setDeclarer(EObject newValue)
+	 * 
 	 */
 	public void setDeclarer(EObject newValue) {
 		if (newValue != null) {
@@ -188,6 +197,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#addFilterDeclarer(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToDeclarer(ViewerFilter filter) {
 		declarer.addFilter(filter);
@@ -197,6 +207,7 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.MiserePropertiesEditionPart#addBusinessFilterDeclarer(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToDeclarer(ViewerFilter filter) {
 		declarer.addBusinessRuleFilter(filter);
@@ -208,13 +219,11 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.Misere_Part_Title;
@@ -223,5 +232,6 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

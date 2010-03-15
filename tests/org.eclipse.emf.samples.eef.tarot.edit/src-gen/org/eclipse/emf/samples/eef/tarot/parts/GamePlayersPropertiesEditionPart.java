@@ -18,32 +18,37 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * 
+ * 
  */
 public interface GamePlayersPropertiesEditionPart {
 
 	/**
 	 * @return the players to add
+	 * 
 	 */
 	public List getPlayersToAdd();
 
 	/**
 	 * @return the players to remove
+	 * 
 	 */
 	public List getPlayersToRemove();
 
 	/**
 	 * @return the players to move
+	 * 
 	 */
 	public List getPlayersToMove();
 
 	/**
 	 * @return the players to edit
+	 * 
 	 */
 	public Map getPlayersToEdit();
 
 	/**
 	 * @return the current players table
-	 */
+	 * 
 	public List getPlayersTable();
 
 	/**
@@ -57,6 +62,7 @@ public interface GamePlayersPropertiesEditionPart {
 	/**
 	 * Update the players
 	 * @param newValue the players to update
+	 * 
 	 */
 	public void updatePlayers(EObject newValue);
 
@@ -66,6 +72,7 @@ public interface GamePlayersPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToPlayers(ViewerFilter filter);
 
@@ -75,14 +82,15 @@ public interface GamePlayersPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToPlayers(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the players table
+	 * 
 	 */
 	public boolean isContainedInPlayersTable(EObject element);
-
 
 
 
@@ -96,6 +104,7 @@ public interface GamePlayersPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

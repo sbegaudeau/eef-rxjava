@@ -25,9 +25,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+// End of user code	
 
 /**
+ * 
  * 
  */
 public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RoundScorePropertiesEditionPart {
@@ -36,11 +37,10 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public RoundScorePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -51,13 +51,13 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -67,6 +67,7 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createTotalGroup(view);
@@ -75,9 +76,11 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createTotalGroup(Composite parent) {
 		Group totalGroup = new Group(parent, SWT.NONE);
 		totalGroup.setText(TarotMessages.RoundScorePropertiesEditionPart_TotalGroupLabel);
@@ -90,6 +93,7 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 		createScoreText(totalGroup);
 	}
 
+	
 	protected void createScoreText(Composite parent) {
 		SWTUtils.createPartLabel(parent, TarotMessages.RoundScorePropertiesEditionPart_ScoreLabel, propertiesEditionComponent.isRequired(TarotViewsRepository.RoundScore.score, TarotViewsRepository.SWT_KIND));
 		score = new Text(parent, SWT.BORDER);
@@ -103,6 +107,7 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -118,6 +123,7 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -138,18 +144,19 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundScorePropertiesEditionPart#getScore()
+	 * 
 	 */
 	public String getScore() {
 		return score.getText();
@@ -159,6 +166,7 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.RoundScorePropertiesEditionPart#setScore(String newValue)
+	 * 
 	 */
 	public void setScore(String newValue) {
 		if (newValue != null) {
@@ -181,12 +189,11 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.RoundScore_Part_Title;
@@ -195,5 +202,6 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

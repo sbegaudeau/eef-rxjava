@@ -46,9 +46,10 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TableColumn;
 
-// End of user code
+// End of user code	
 
 /**
+ * 
  * 
  */
 public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GameScorePropertiesEditionPart {
@@ -60,11 +61,10 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public GameScorePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -75,13 +75,13 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -91,6 +91,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createEntriesTableComposition(view);
@@ -99,11 +100,11 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected void createEntriesTableComposition(Composite container) {
 		Composite tableContainer = new Composite(container, SWT.NONE);
@@ -132,7 +133,6 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 		entries = new TableViewer(tableEntries);
 		entries.setContentProvider(new ArrayContentProvider());
 		entries.setLabelProvider(new ITableLabelProvider() {
-
 			//Start of user code for label provider definition for Entries
 			public String getColumnText(Object object, int columnIndex) {
 				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -180,6 +180,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 
 	/**
 	 * @param container
+	 * 
 	 */
 	protected Composite createEntriesPanel(Composite container) {
 		Composite entriesPanel = new Composite(container, SWT.NONE);
@@ -211,6 +212,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				removeFromEntries();
@@ -227,6 +229,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 			 * (non-Javadoc)
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				editEntries();
@@ -237,10 +240,9 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void addToEntries() {
-
 		// Start of user code addToEntries() method body
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
@@ -258,10 +260,9 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void removeFromEntries() {
-
 		// Start of user code removeFromEntries() method body
 		if (entries.getSelection() instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) entries.getSelection();
@@ -278,10 +279,9 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	protected void editEntries() {
-
 		// Start of user code editEntries() method body
 		if (entries.getSelection() instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) entries.getSelection();
@@ -310,18 +310,19 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToAdd()
+	 * 
 	 */
 	public List getEntriesToAdd() {
 		return entriesEditUtil.getElementsToAdd();
@@ -331,6 +332,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToRemove()
+	 * 
 	 */
 	public List getEntriesToRemove() {
 		return entriesEditUtil.getElementsToRemove();
@@ -340,6 +342,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToEdit()
+	 * 
 	 */
 	public Map getEntriesToEdit() {
 		return entriesEditUtil.getElementsToRefresh();
@@ -349,6 +352,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesToMove()
+	 * 
 	 */
 	public List getEntriesToMove() {
 		return entriesEditUtil.getElementsToMove();
@@ -358,6 +362,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#getEntriesTable()
+	 * 
 	 */
 	public List getEntriesTable() {
 		return entriesEditUtil.getVirtualList();
@@ -382,6 +387,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#updateEntries(EObject newValue)
+	 * 
 	 */
 	public void updateEntries(EObject newValue) {
 		if(entriesEditUtil != null){
@@ -394,6 +400,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#addFilterEntries(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToEntries(ViewerFilter filter) {
 		entriesFilters.add(filter);
@@ -403,6 +410,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#addBusinessFilterEntries(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToEntries(ViewerFilter filter) {
 		entriesBusinessFilters.add(filter);
@@ -412,6 +420,7 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.samples.eef.tarot.parts.GameScorePropertiesEditionPart#isContainedInEntriesTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInEntriesTable(EObject element) {
 		return entriesEditUtil.contains(element);
@@ -430,12 +439,11 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return TarotMessages.GameScore_Part_Title;
@@ -452,5 +460,6 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 	}	
 	
 	// End of user code
+
 
 }
