@@ -34,9 +34,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.tests.swtbot.finder.SWTEEFBot;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
-import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.junit.Before;
@@ -210,7 +210,7 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	public void assertExpectedModelReached(Resource expectedModel) {
 		try {
 			DiffModel compareToActiveModel = compareToActiveModel(expectedModel);
-			List<EObject> diffList = EEFUtil.asEObjectList(compareToActiveModel.eAllContents());
+			List<EObject> diffList = EEFUtils.asEObjectList(compareToActiveModel.eAllContents());
 			List<EObject> result = filterAbnormalDiffElement(diffList);
 			assertEquals("The active model isn't the same that the expected model", result.size(), 0);
 		} catch (Exception e) {
