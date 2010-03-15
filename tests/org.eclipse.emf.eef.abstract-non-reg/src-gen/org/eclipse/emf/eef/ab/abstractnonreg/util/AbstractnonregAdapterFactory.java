@@ -2,18 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AbstractnonregAdapterFactory.java,v 1.1 2009/05/05 10:14:50 sbouchet Exp $
+ * $Id: AbstractnonregAdapterFactory.java,v 1.2 2010/03/15 13:56:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.ab.abstractnonreg.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.ab.abstractnonreg.*;
+import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
+import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
 
 /**
  * <!-- begin-user-doc -->

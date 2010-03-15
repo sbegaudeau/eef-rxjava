@@ -2,16 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AbstractnonregPackageImpl.java,v 1.1 2009/05/05 10:14:50 sbouchet Exp $
+ * $Id: AbstractnonregPackageImpl.java,v 1.2 2010/03/15 13:56:25 sbouchet Exp $
  */
 package org.eclipse.emf.eef.ab.abstractnonreg.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregFactory;
 import org.eclipse.emf.eef.ab.abstractnonreg.AbstractnonregPackage;
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
