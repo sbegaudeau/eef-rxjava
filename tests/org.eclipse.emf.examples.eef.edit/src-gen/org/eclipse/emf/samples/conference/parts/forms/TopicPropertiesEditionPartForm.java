@@ -58,11 +58,9 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 
 	protected Text description;
 	protected Text references;
-	protected Button editReferences;
-	private EList referencesList;
+		protected Button editReferences;
+		private EList referencesList;
 	protected Text documentation;
-
-
 
 
 
@@ -337,9 +335,6 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -353,5 +348,6 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	// Start of user code additional methods
 
 	// End of user code
+
 
 }

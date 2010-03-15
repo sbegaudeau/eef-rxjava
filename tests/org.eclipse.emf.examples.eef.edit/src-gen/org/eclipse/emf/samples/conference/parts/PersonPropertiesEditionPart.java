@@ -142,7 +142,6 @@ public interface PersonPropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+// End of user code	
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -43,8 +43,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	protected Text name;
 	protected Text documentation;
-
-
 
 
 
@@ -69,7 +67,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -88,7 +85,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	/**
@@ -177,7 +173,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -249,8 +244,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -264,5 +257,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

@@ -68,8 +68,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -640,9 +638,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -656,5 +651,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

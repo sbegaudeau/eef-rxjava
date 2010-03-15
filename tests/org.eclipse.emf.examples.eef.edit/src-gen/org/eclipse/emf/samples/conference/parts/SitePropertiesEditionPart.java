@@ -62,7 +62,6 @@ public interface SitePropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

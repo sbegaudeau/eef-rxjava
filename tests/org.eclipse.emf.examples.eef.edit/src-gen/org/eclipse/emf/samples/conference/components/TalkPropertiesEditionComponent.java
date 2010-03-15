@@ -39,8 +39,8 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
 import org.eclipse.emf.samples.conference.TALK_TYPE;
@@ -158,7 +158,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			}
 		}
 
-
 	}
 
 	/**
@@ -265,6 +264,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			
 			// End of user code
 
+
 			basePart.addFilterToPresenter(new ViewerFilter() {
 
 				/*
@@ -280,6 +280,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			// Start of user code for additional businessfilters for presenter
 			
 			// End of user code
+
 			basePart.addFilterToCreator(new ViewerFilter() {
 
 				/*
@@ -295,6 +296,7 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			// Start of user code for additional businessfilters for creator
 			
 			// End of user code
+
 
 		}
 		// init values for referenced views
@@ -337,7 +339,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			}
 			cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation())));
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -362,7 +363,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			talkToUpdate.setPresenter((Person)basePart.getPresenter());
 			talkToUpdate.setCreator((Person)basePart.getCreator());
 			talkToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation()));
-
 
 			return talkToUpdate;
 		}
@@ -396,7 +396,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 			if (ConferenceViewsRepository.Talk.documentation == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -447,7 +446,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Documentation().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTalk_Documentation().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

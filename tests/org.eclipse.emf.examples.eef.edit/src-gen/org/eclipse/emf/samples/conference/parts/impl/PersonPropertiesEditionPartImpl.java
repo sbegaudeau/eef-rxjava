@@ -41,7 +41,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+// End of user code	
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -55,8 +55,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected EMFComboViewer gender;
 	protected Button eclipseCommiter;
 	protected Button isRegistered;
-
-
 
 
 
@@ -81,7 +79,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -102,7 +99,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	/**
@@ -311,7 +307,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -518,8 +513,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -533,5 +526,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

@@ -61,11 +61,9 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 	protected Text place;
 	protected EMFListEditUtil sitesEditUtil;
-	protected ReferencesTable<? extends EObject> sites;
-	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
-
-
+		protected ReferencesTable<? extends EObject> sites;
+		protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -411,9 +409,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -427,5 +422,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

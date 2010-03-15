@@ -248,7 +248,6 @@ public interface TalkPropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

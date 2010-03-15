@@ -39,7 +39,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.GENDER;
 import org.eclipse.emf.samples.conference.Person;
@@ -158,7 +158,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 		if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null)
 			basePart.setIsRegistered((Boolean)msg.getNewValue());
-
 
 
 	}
@@ -288,7 +287,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), basePart.getIsRegistered()));
 
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -316,7 +314,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 			personToUpdate.setGender((GENDER)basePart.getGender());
 
 			personToUpdate.setIsRegistered(new Boolean(basePart.getIsRegistered()).booleanValue());
-
 
 
 			return personToUpdate;
@@ -353,7 +350,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 			if (ConferenceViewsRepository.Person.isRegistered == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), event.getNewValue()));
-
 
 
 				if (!command.isEmpty() && !command.canExecute()) {
@@ -417,7 +413,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

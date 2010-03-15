@@ -65,8 +65,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -534,9 +532,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -550,5 +545,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

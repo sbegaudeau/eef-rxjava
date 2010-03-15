@@ -48,7 +48,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+// End of user code	
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -61,8 +61,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected ReferencesTable<? extends EObject> sites;
 	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
-
-
 
 
 
@@ -87,7 +85,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -106,7 +103,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	/**
@@ -203,7 +199,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 *  
 	 */
 	protected void addToSites() {
-
 		// Start of user code addToSites() method body
 		Site eObject = ConferenceFactory.eINSTANCE.createSite();
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
@@ -224,7 +219,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 *  
 	 */
 	protected void removeFromSites(Site element) {
-
 		// Start of user code removeFromSites() method body
 		EObject editedElement = sitesEditUtil.foundCorrespondingEObject(element);
 		sitesEditUtil.removeElement(element);
@@ -238,7 +232,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	 *  
 	 */
 	protected void editSites(Site element) {
-
 		// Start of user code editSites() method body
 		EObject editedElement = sitesEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
@@ -267,7 +260,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -423,8 +415,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -438,5 +428,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

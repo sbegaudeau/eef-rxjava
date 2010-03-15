@@ -37,7 +37,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Site;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
@@ -140,7 +140,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 				basePart.setDocumentation("");
 			}
 		}
-
 
 	}
 
@@ -246,7 +245,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 			cc.append(SetCommand.create(editingDomain, site, ConferencePackage.eINSTANCE.getSite_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
 			cc.append(SetCommand.create(editingDomain, site, ConferencePackage.eINSTANCE.getSite_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation())));
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -266,7 +264,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 			siteToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
 
 			siteToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation()));
-
 
 			return siteToUpdate;
 		}
@@ -291,7 +288,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 			if (ConferenceViewsRepository.Site.documentation == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, site, ConferencePackage.eINSTANCE.getSite_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -338,7 +334,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

@@ -80,7 +80,6 @@ public interface TopicPropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

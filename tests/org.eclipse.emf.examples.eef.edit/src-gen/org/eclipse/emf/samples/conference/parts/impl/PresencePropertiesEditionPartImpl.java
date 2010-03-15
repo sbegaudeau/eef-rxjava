@@ -44,7 +44,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code
+// End of user code	
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -56,8 +56,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	protected ReferencesTable<? extends EObject> assists;
 	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
-
-
 
 
 
@@ -82,7 +80,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -101,7 +98,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
 	/**
@@ -212,7 +208,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
@@ -317,8 +312,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -332,5 +325,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

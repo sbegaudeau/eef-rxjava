@@ -55,11 +55,9 @@ import org.eclipse.ui.forms.widgets.Section;
 public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
 	private EMFListEditUtil assistsEditUtil;
-	protected ReferencesTable<? extends EObject> assists;
-	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
-
-
+		protected ReferencesTable<? extends EObject> assists;
+		protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
+		protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -177,7 +175,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		assists.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -198,7 +195,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -310,9 +306,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -326,5 +319,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

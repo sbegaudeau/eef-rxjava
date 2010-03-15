@@ -49,8 +49,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -257,9 +255,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -273,5 +268,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

@@ -124,7 +124,6 @@ public interface ConferencePropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

@@ -135,7 +135,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
 			presencePart.updateAssists(person);
 
-
 	}
 
 	/**
@@ -226,6 +225,7 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			// Start of user code for additional businessfilters for assists
 			
 			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -260,7 +260,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 			//	cc.append(MoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getTalk(), moveElement.getElement(), moveElement.getIndex()));
 			//}
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -278,7 +277,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		if (source instanceof Person) {
 			Person personToUpdate = (Person)source;
 			personToUpdate.getAssists().addAll(presencePart.getAssistsToAdd());
-
 
 			return personToUpdate;
 		}
@@ -305,7 +303,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 				if (PropertiesEditionEvent.MOVE == event.getKind())
 					command.append(MoveCommand.create(liveEditingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), event.getNewValue(), event.getNewIndex()));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -344,7 +341,6 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

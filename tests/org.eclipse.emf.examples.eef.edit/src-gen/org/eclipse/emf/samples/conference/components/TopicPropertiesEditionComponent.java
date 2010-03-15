@@ -38,7 +38,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Topic;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
@@ -144,7 +144,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 				basePart.setDocumentation("");
 			}
 		}
-
 
 	}
 
@@ -257,7 +256,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 
 			cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation())));
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -279,7 +277,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			topicToUpdate.getReferences().addAll(basePart.getReferences());
 
 			topicToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getDocumentation()));
-
 
 			return topicToUpdate;
 		}
@@ -307,7 +304,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 			if (ConferenceViewsRepository.Topic.documentation == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -358,7 +354,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
