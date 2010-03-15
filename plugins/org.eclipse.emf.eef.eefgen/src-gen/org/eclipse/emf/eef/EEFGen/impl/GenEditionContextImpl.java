@@ -9,25 +9,20 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: GenEditionContextImpl.java,v 1.7 2010/03/08 14:28:54 glefur Exp $
+ * $Id: GenEditionContextImpl.java,v 1.8 2010/03/15 10:06:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
-
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 
 /**

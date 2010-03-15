@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenFactoryImpl.java,v 1.6 2010/03/08 10:49:11 glefur Exp $
+ * $Id: EEFGenFactoryImpl.java,v 1.7 2010/03/15 10:06:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.EEFGen.*;
 import org.eclipse.emf.eef.EEFGen.EEFGenFactory;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;

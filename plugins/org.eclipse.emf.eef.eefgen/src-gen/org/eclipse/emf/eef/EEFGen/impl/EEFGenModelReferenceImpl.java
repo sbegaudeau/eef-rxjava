@@ -9,18 +9,15 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EEFGenModelReferenceImpl.java,v 1.2 2009/09/10 10:10:41 sbouchet Exp $
+ * $Id: EEFGenModelReferenceImpl.java,v 1.3 2010/03/15 10:06:03 sbouchet Exp $
  */
 package org.eclipse.emf.eef.EEFGen.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
