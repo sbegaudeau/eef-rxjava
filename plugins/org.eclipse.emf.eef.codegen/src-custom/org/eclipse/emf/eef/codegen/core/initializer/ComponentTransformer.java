@@ -122,5 +122,5 @@ public class ComponentTransformer extends AbstractTransformer {
 				return false;
 		}
 	}
-	
+
 }

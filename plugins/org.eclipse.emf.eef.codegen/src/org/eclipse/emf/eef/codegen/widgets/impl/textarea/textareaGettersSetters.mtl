@@ -31,38 +31,3 @@
 		}
 	}
 [/template]
-
-[template public setMessageDeclaration(elementEditor : ElementEditor) overrides setMessageDeclaration ? (elementEditor.representationName('Textarea'))]
-[elementEditor.setMessageSignature()/];
-[/template]
-
-[template public unsetMessageDeclaration(elementEditor : ElementEditor) overrides unsetMessageDeclaration ? (elementEditor.representationName('Textarea'))]
-[elementEditor.unsetMessageSignature()/];
-[/template]
-
-[template public setMessageImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setMessageImplementation ? (elementEditor.representationName('Textarea'))]
-[elementEditor.setMessageSignature()/] {
-		messageManager.addMessage("[elementEditor.name.toJavaClassifier()/]_key", msg, null, msgLevel, [elementEditor.name.toJavaIdentifier()/]);
-	}
-[/template]
-
-[comment delegate implementation for ViewReference/]
-[template public setMessageImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setMessageImplementationDelegate ? (elementEditor.representationName('Textarea'))]
-[elementEditor.setMessageSignature()/] {
-		[referencedView.name.toJavaClassifier().toLowerFirst()/]PropertiesEditionPart.setMessageFor[elementEditor.name.toJavaClassifier()/](msg, msgLevel);
-	}
-[/template]
-
-[template public unsetMessageImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides unsetMessageImplementation ? (elementEditor.representationName('Textarea'))]
-[elementEditor.unsetMessageSignature()/] {
-		messageManager.removeMessage("[elementEditor.name.toJavaClassifier()/]_key", [elementEditor.name.toJavaIdentifier()/]);
-	}
-[/template]
-
-[comment delegate implementation for ViewReference/]
-[template public unsetMessageImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides unsetMessageImplementationDelegate ? (elementEditor.representationName('Textarea'))]
-[elementEditor.unsetMessageSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.unsetMessageFor[elementEditor.name.toJavaClassifier()/]();
-	}
-[/template]
-

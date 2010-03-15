@@ -38,6 +38,7 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 
 	/**
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#inutEEFGenModel()
 	 */
 	protected List<EEFGenModel> initEEFGenModel() throws IOException {
@@ -52,9 +53,11 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 				final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
 				final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
 				if (resourceFactory != null) {
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, resourceFactory);
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
+							resourceFactory);
 				} else {
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, new XMIResourceFactoryImpl());
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
+							new XMIResourceFactoryImpl());
 				}
 				Resource res = resourceSet.createResource(modelURI);
 				res.load(Collections.EMPTY_MAP);
@@ -69,5 +72,5 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 		}
 		return eefGenModels;
 	}
-	
+
 }

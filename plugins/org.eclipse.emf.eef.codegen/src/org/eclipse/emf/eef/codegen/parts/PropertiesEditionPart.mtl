@@ -224,13 +224,6 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 
 [elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
 
-[elementEditor.setMessageSignature()/] {
-
-	}
-
-[elementEditor.unsetMessageSignature()/] {
-
-	}
 [/for]
 
 [comment managing viewReference/]

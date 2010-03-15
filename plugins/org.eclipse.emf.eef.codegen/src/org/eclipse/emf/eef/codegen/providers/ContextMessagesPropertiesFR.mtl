@@ -18,9 +18,7 @@
 [template public ContextMessagesPropertiesFR(viewsRepository : ViewsRepository)]
 [comment @main /]
 	[file (viewsRepository.fullFilePath(), false)]
-#
-# Generated with Acceleo
-#
+[viewsRepository.associatedGenModel().propertiesLicenceText().trim()/]
 
 # [protected ('for titles customization')]
 
@@ -36,7 +34,6 @@
 [/for]
 [for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
 [editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if (editor.representation.name <> 'Checkbox' and editor.representation.name <> 'MultiValuedEditor')] : [/if]
-
 [/for]
 PropertiesEditionPart_PropertiesGroupLabel=Propri\u00E9t\u00E9s
 PropertiesEditionPart_EditTableViewerLabel=Editer

@@ -43,7 +43,7 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					[filter.body/]
+					[filter.javaBody/]
 				}
 
 			});
@@ -81,7 +81,7 @@
 	private boolean [bindingFilter.methodName/](Viewer viewer, Object parentElement, Object element){
 		[if (pee.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		return true;
-		[else]			
+		[else]
 		// [protected ('for user filter '.concat(bindingFilter.methodName))]
 		return true;
 		// [/protected]
@@ -90,32 +90,3 @@
 	}
 [/for]
 [/template]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

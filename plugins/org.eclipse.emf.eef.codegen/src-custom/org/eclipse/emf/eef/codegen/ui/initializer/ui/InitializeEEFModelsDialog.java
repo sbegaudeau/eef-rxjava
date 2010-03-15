@@ -38,9 +38,11 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 public class InitializeEEFModelsDialog extends ContainerSelectionDialog {
 
 	private ComboViewer strategies;
+
 	private Label description;
-	private AbstractPropertiesInitializer selectedStrategy; 
-	
+
+	private AbstractPropertiesInitializer selectedStrategy;
+
 	public InitializeEEFModelsDialog(Shell parentShell, IContainer initialRoot,
 			boolean allowNewContainerName, String message) {
 		super(parentShell, initialRoot, allowNewContainerName, message);
@@ -48,6 +50,7 @@ public class InitializeEEFModelsDialog extends ContainerSelectionDialog {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
 	 */
 	protected Control createDialogArea(Composite parent) {
@@ -69,6 +72,7 @@ public class InitializeEEFModelsDialog extends ContainerSelectionDialog {
 
 			/**
 			 * {@inheritDoc}
+			 * 
 			 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
 			 */
 			public String getText(Object element) {
@@ -82,15 +86,17 @@ public class InitializeEEFModelsDialog extends ContainerSelectionDialog {
 
 			/**
 			 * {@inheritDoc}
+			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (event.getSelection() instanceof StructuredSelection
 						&& ((StructuredSelection)event.getSelection()).getFirstElement() instanceof AbstractPropertiesInitializer) {
-					newStrategySelected((AbstractPropertiesInitializer)((StructuredSelection)event.getSelection()).getFirstElement());
+					newStrategySelected((AbstractPropertiesInitializer)((StructuredSelection)event
+							.getSelection()).getFirstElement());
 				}
 			}
-			
+
 		});
 		description = new Label(strategyGroup, SWT.NONE);
 		description.setText("No description entered ...");
@@ -111,19 +117,20 @@ public class InitializeEEFModelsDialog extends ContainerSelectionDialog {
 	public AbstractPropertiesInitializer getInitializer() {
 		return selectedStrategy;
 	}
-	
+
 	protected void newStrategySelected(AbstractPropertiesInitializer firstElement) {
 		description.setText(firstElement.getDescription());
 		selectedStrategy = firstElement;
 	}
 
 	private void initStrategies() {
-		List<AbstractPropertiesInitializer> strategies2 = PropertiesInitializerStrategyServices.getInstance().getStrategies();
+		List<AbstractPropertiesInitializer> strategies2 = PropertiesInitializerStrategyServices.getInstance()
+				.getStrategies();
 		strategies.setInput(strategies2);
 		if (strategies2.size() > 0) {
 			strategies.setSelection(new StructuredSelection(strategies2.get(0)));
 			description.setText(strategies2.get(0).getDescription());
 		}
 	}
-	
+
 }

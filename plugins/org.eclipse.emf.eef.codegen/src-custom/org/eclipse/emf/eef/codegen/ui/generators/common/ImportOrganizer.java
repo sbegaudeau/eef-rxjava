@@ -30,7 +30,7 @@ import org.eclipse.ui.IWorkbenchSite;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class ImportOrganizer {
-	
+
 	public static void organizeImports(IWorkbenchSite site, Set<IContainer> folders) {
 		List<ICompilationUnit> units = new ArrayList<ICompilationUnit>();
 		for (IContainer container : folders) {

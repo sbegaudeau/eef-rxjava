@@ -31,30 +31,30 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 	[viewsRepository.associatedGenModel().generationComment()/]
 	private static final String BUNDLE_NAME = "[viewsRepository.messagesProviderPackage()/].[viewsRepository.messagesProperties()/]"; //$NON-NLS-1$
 
-[for (group : ViewElement | viewsRepository.eAllContents(views::Container)) ? (group.representation.name = 'Group')]
+[for (group : ViewElement | viewsRepository.eAllContents(views::Container)) separator ('\n') ? (group.representation.name = 'Group')]
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [group.groupKey(group.owningView())/];
-
 [/for]
-[for (view : View | viewsRepository.eAllContents(views::View))]
+
+[for (view : View | viewsRepository.eAllContents(views::View)) separator ('\n') ]
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [view.name.toJavaClassifier()/]_ReadOnly;
 
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [view.name.toJavaClassifier()/]_Part_Title;
-
 [/for]
-[for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
+
+[for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor)) separator ('\n') ]
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [editor.editorKey(editor.owningView())/];
-
 [/for]
+
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_DocumentationLabel;
 
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_IntegerValueMessage;
-	
+
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String PropertiesEditionPart_FloatValueMessage;
 
@@ -100,9 +100,9 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 	[if (not viewsRepository.associatedGenModel().useJMergeForUserCode)]
 	// [protected ('for additionnal NLS Constants')]
 	
-	// [/protected]		
-	[/if]
+	// [/protected]
 
+	[/if]
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, [viewsRepository.messagesProvider()/].class);

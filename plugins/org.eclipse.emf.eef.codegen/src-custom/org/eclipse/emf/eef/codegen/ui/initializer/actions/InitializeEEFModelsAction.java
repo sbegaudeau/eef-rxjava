@@ -37,7 +37,9 @@ import org.eclipse.ui.IWorkbenchPart;
 public class InitializeEEFModelsAction implements IObjectActionDelegate {
 
 	private Shell shell;
+
 	private URI modelURI;
+
 	private IFile selectedFile = null;
 
 	/**
@@ -59,14 +61,16 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		if (selectedFile != null) {
-			InitializeEEFModelsDialog dialog = new InitializeEEFModelsDialog(shell, selectedFile.getParent(), false, "Select a destination container for models :");
+			InitializeEEFModelsDialog dialog = new InitializeEEFModelsDialog(shell, selectedFile.getParent(),
+					false, "Select a destination container for models :");
 			dialog.setTitle("Container Selection");
 			dialog.open();
 			Object[] result = dialog.getResult();
 			if (result.length >= 1) {
 				try {
-					IContainer container = (IContainer) ResourcesPlugin.getWorkspace().getRoot().getFolder((IPath) result[0]);
-					modelURI = URI.createURI("file:" + selectedFile.getLocationURI().getPath());					
+					IContainer container = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder(
+							(IPath)result[0]);
+					modelURI = URI.createURI("file:" + selectedFile.getLocationURI().getPath());
 					AbstractPropertiesInitializer initializer = dialog.getInitializer();
 					initializer.initialize(modelURI, container);
 					container.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -84,9 +88,9 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
-			StructuredSelection sSelection = (StructuredSelection) selection;
+			StructuredSelection sSelection = (StructuredSelection)selection;
 			if (sSelection.getFirstElement() instanceof IFile) {
-				this.selectedFile = (IFile) sSelection.getFirstElement();
+				this.selectedFile = (IFile)sSelection.getFirstElement();
 			}
 
 		}

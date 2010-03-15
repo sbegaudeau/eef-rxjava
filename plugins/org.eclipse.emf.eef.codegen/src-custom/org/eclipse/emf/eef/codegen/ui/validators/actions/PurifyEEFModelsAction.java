@@ -51,7 +51,9 @@ import org.eclipse.ui.IWorkbenchPart;
 public class PurifyEEFModelsAction implements IObjectActionDelegate {
 
 	private URI modelURI;
+
 	private IFile selectedFile;
+
 	private EEFGenModel eefGenModel;
 
 	/**
@@ -100,18 +102,29 @@ public class PurifyEEFModelsAction implements IObjectActionDelegate {
 							}
 						};
 						for (GenViewsRepository genViewsRepository : eefGenModel.getViewsRepositories()) {
-							TreeIterator<EObject> allContents = genViewsRepository.getViewsRepository().eAllContents();
+							TreeIterator<EObject> allContents = genViewsRepository.getViewsRepository()
+									.eAllContents();
 							while (allContents.hasNext()) {
 								EObject next = allContents.next();
 								if (next instanceof ElementEditor) {
 									ElementEditor elementEditor = (ElementEditor)next;
 									Collection<Setting> references = referencer.get(next);
 									if (references == null || references.size() == 0) {
-										if (elementEditor.eContainer().eGet(elementEditor.eContainingFeature()) instanceof EList) {
+										if (elementEditor.eContainer().eGet(
+												elementEditor.eContainingFeature()) instanceof EList) {
 											processCount++;
-											EEFCodegenPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, EEFCodegenPlugin.PLUGIN_ID, elementEditor.getName() + " (" + ((XMIResourceImpl)elementEditor.eResource()).getID(elementEditor) + ") will be removed"));
+											EEFCodegenPlugin.getDefault().getLog().log(
+													new Status(IStatus.WARNING, EEFCodegenPlugin.PLUGIN_ID,
+															elementEditor.getName()
+																	+ " ("
+																	+ ((XMIResourceImpl)elementEditor
+																			.eResource())
+																			.getID(elementEditor)
+																	+ ") will be removed"));
 											resourcesToSave.add(elementEditor.eContainer().eResource());
-											((EList)elementEditor.eContainer().eGet(elementEditor.eContainingFeature())).remove(elementEditor);
+											((EList)elementEditor.eContainer().eGet(
+													elementEditor.eContainingFeature()))
+													.remove(elementEditor);
 										}
 									}
 								}
@@ -122,7 +135,9 @@ public class PurifyEEFModelsAction implements IObjectActionDelegate {
 						for (Resource resource : resourcesToSave) {
 							resource.save(Collections.EMPTY_MAP);
 						}
-						EEFCodegenPlugin.getDefault().getLog().log(new Status(IStatus.OK, EEFCodegenPlugin.PLUGIN_ID, "Purification done. " + processCount + " element removed."));
+						EEFCodegenPlugin.getDefault().getLog().log(
+								new Status(IStatus.OK, EEFCodegenPlugin.PLUGIN_ID, "Purification done. "
+										+ processCount + " element removed."));
 					}
 				}
 			} catch (IOException e) {
@@ -136,9 +151,9 @@ public class PurifyEEFModelsAction implements IObjectActionDelegate {
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
-			StructuredSelection sSelection = (StructuredSelection) selection;
+			StructuredSelection sSelection = (StructuredSelection)selection;
 			if (sSelection.getFirstElement() instanceof IFile) {
-				this.selectedFile = (IFile) sSelection.getFirstElement();
+				this.selectedFile = (IFile)sSelection.getFirstElement();
 			}
 
 		}
@@ -156,9 +171,11 @@ public class PurifyEEFModelsAction implements IObjectActionDelegate {
 			final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
 			final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
 			if (resourceFactory != null) {
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, resourceFactory);
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
+						resourceFactory);
 			} else {
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension, new XMIResourceFactoryImpl());
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
+						new XMIResourceFactoryImpl());
 			}
 			Resource res = resourceSet.createResource(modelURI);
 			res.load(Collections.EMPTY_MAP);
@@ -176,12 +193,12 @@ public class PurifyEEFModelsAction implements IObjectActionDelegate {
 		}
 	}
 
-
 	public IContainer getGenContainer() throws IOException {
 		eefGenModel = getEEFGenModel();
 		if (eefGenModel != null) {
 			if (eefGenModel.getGenDirectory() != null) {
-				final IContainer target = (IContainer) ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(eefGenModel.getGenDirectory()));
+				final IContainer target = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder(
+						new Path(eefGenModel.getGenDirectory()));
 				return target;
 			}
 		}
@@ -197,7 +214,8 @@ public class PurifyEEFModelsAction implements IObjectActionDelegate {
 		}
 
 		public String getErrorMsg() {
-			return "ElementEditor '" + element.getName() + "' (" + ((XMIResourceImpl)element.eResource()).getID(element) + ") seems to not be referenced";
+			return "ElementEditor '" + element.getName() + "' ("
+					+ ((XMIResourceImpl)element.eResource()).getID(element) + ") seems to not be referenced";
 		}
 	}
 

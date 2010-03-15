@@ -83,12 +83,11 @@ public abstract class AbstractTransformer {
 		}
 		return null;
 	}
-	
+
 	protected boolean isUnmanagedReference(EStructuralFeature feature) {
-		return feature instanceof EReference 
-				&& ((EReference)feature).isContainment()
-				&& ((EReference)feature).getEType() instanceof EClass 
-				&& hasReferenceWithEOpposite(((EClass)((EReference)feature).getEType())); 
+		return feature instanceof EReference && ((EReference)feature).isContainment()
+				&& ((EReference)feature).getEType() instanceof EClass
+				&& hasReferenceWithEOpposite(((EClass)((EReference)feature).getEType()));
 	}
 
 	private boolean hasReferenceWithEOpposite(EClass eClass) {

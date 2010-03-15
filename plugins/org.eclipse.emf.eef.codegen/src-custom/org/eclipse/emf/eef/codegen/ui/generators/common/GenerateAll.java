@@ -63,7 +63,7 @@ public class GenerateAll {
 	 * The Generation PSM
 	 */
 	private EEFGenModel eefGenModel;
-	
+
 	/**
 	 * A set containing the target folder for generation
 	 */
@@ -92,7 +92,7 @@ public class GenerateAll {
 	public Set<IContainer> getGenerationTargets() {
 		return generationTargets;
 	}
-	
+
 	/**
 	 * Launches the generation.
 	 * 

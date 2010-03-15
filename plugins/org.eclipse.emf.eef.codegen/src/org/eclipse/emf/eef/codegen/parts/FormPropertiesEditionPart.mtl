@@ -53,7 +53,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.events.IExpansionListener;
 import org.eclipse.ui.forms.widgets.Form;
@@ -80,7 +79,6 @@ import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 [/if]
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.api.parts.EEFMessageManager;
 import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 [for (widget : Widget | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet()) ]
 [widget.manageImports(pec, view, basePackage)/]
@@ -201,7 +199,6 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 [for (aView : ViewElement | view.elements)]
 [aView.implementation()/]
 
@@ -241,9 +238,6 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 
 [elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
 
-[elementEditor.setMessageImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
-
-[elementEditor.unsetMessageImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
 [/for]
 [comment managing viewReference/]
 [view.elementEditorGetterSettersForViewReference(pec, basePackage)/]
@@ -323,7 +317,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		createControls(widgetFactory, view, new EEFMessageManager(scrolledForm, widgetFactory));
+		createControls(widgetFactory, view);
 		return scrolledForm;
 	}
 
@@ -331,11 +325,10 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
-	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.IMessageManager)
+	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public void createControls(final FormToolkit widgetFactory, Composite p_view, IMessageManager messageManager) {
-		this.messageManager = messageManager;
+	public void createControls(final FormToolkit widgetFactory, Composite p_view) {
 		view = widgetFactory.createComposite(p_view, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;

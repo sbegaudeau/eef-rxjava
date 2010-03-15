@@ -28,10 +28,6 @@ TODO: externalise model/controler reference after Unedic non-reg
 
 [elementEditor.setterDeclaration()/]
 
-[elementEditor.setMessageDeclaration()/]
-
-[elementEditor.unsetMessageDeclaration()/]
-
 [/template]
 
 [template public genDeclarationForSubView(view : View)]
@@ -233,9 +229,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 
 [elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),viewRef.view.oclAsType(views::View))/]
 
-[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),viewRef.view.oclAsType(views::View))/]
-
-[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), viewRef.view.oclAsType(views::View))/]
 [/for]
 [viewRef.view.oclAsType(views::View).elementEditorGetterSettersForSubViewReference(pec, basePackage, viewRef)/]
 [/for]
@@ -248,9 +241,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 
 [elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initViewRef.view.oclAsType(views::View))/]
 
-[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initViewRef.view.oclAsType(views::View))/]
-
-[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), initViewRef.view.oclAsType(views::View))/]
 [/for]
 [viewRef.view.oclAsType(views::View).elementEditorGetterSettersForSubViewReference(pec, basePackage, initViewRef)/]
 [/for]
@@ -264,9 +254,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 
 [elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),subView)/]
 
-[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),subView)/]
-
-[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), subView)/]
 [/for]
 [subView.elementEditorGetterSettersForSubViewsDelegate(pec, basePackage, subView)/]
 [/for]
@@ -279,9 +266,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 
 [elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
 
-[elementEditor.setMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
-
-[elementEditor.unsetMessageImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()), initView)/]
 [/for]
 [view.elementEditorGetterSettersForSubViewsDelegate(pec, basePackage, initView)/]
 [/for]

@@ -207,12 +207,11 @@
 
 [comment ----- Editor ID queries ---------/]
 [query public editorIDSequence(editorElement : ElementEditor) : Sequence(T) = 
-	editorElement.qualifiedIdentifier.tokenize('::')->asSequence()/]
+	editorElement.qualifiedIdentifier.tokenize('::')/]
 
 [comment ----- Model Navigation ---------/]
 [query public hasModelNavigation(pee : PropertiesEditionElement) : Boolean = 
 	not pee.navigation.oclIsUndefined()/]
-	
 
 [comment --------------- Common templates --------------- /]
 [template public ecorePackageSignature(e : EStructuralFeature)]
@@ -264,6 +263,16 @@ set[editor.model.ecorePackageSignature()/]()
 /**
  * Generated with Acceleo
  */
+[/if]
+[/template]
+
+[template public propertiesLicenceText(eefGenModel : EEFGenModel)]
+[if (not eefGenModel.license.oclIsUndefined())]
+[eefGenModel.license.replaceAll(' \\*', '#').replaceAll('/\\*', '#').replaceAll(' #/', '#')/]
+[else]
+#
+# Generated with Acceleo
+#
 [/if]
 [/template]
 
