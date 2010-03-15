@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -122,7 +122,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		createBindingGroup(widgetFactory, view);
@@ -470,13 +469,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -502,13 +494,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		}
 	}
 
-	public void setMessageForHelpID(String msg, int msgLevel) {
-		messageManager.addMessage("HelpID_key", msg, null, msgLevel, helpID);
-	}
-
-	public void unsetMessageForHelpID() {
-		messageManager.removeMessage("HelpID_key", helpID);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -579,9 +564,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	public void addBusinessFilterToModel(ViewerFilter filter) {
 		model.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 	/**
@@ -672,9 +654,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	public boolean isContainedInViewsTable(EObject element) {
 		return viewsEditUtil.contains(element);
 	}
-
-
-
 
 
 

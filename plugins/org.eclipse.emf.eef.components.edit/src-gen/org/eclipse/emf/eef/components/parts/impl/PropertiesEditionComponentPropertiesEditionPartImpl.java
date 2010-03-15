@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -392,13 +392,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -424,13 +417,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
-	public void setMessageForHelpID(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForHelpID() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -456,13 +442,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
-	public void setMessageForExplicit(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForExplicit() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -534,13 +513,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		model.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForModel(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForModel() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -631,13 +603,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		return viewsEditUtil.contains(element);
 	}
 
-	public void setMessageForViews(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForViews() {
-
-	}
 
 
 
