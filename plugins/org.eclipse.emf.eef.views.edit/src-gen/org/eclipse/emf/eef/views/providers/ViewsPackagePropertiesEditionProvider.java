@@ -15,11 +15,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public ViewsPackagePropertiesEditionProvider() {
 		super();
@@ -37,11 +39,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * DocumentedElement instances.
+	 * 
 	 */
 	protected DocumentedElementPropertiesEditionProvider documentedElementPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a DocumentedElement
+	 * 
 	 */
 	public DocumentedElementPropertiesEditionProvider createDocumentedElementPropertiesEditionProvider() {
 		if (documentedElementPropertiesEditionProvider == null)
@@ -52,11 +56,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ViewsRepository instances.
+	 * 
 	 */
 	protected ViewsRepositoryPropertiesEditionProvider viewsRepositoryPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a ViewsRepository
+	 * 
 	 */
 	public ViewsRepositoryPropertiesEditionProvider createViewsRepositoryPropertiesEditionProvider() {
 		if (viewsRepositoryPropertiesEditionProvider == null)
@@ -67,11 +73,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * View instances.
+	 * 
 	 */
 	protected ViewPropertiesEditionProvider viewPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a View
+	 * 
 	 */
 	public ViewPropertiesEditionProvider createViewPropertiesEditionProvider() {
 		if (viewPropertiesEditionProvider == null)
@@ -82,11 +90,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ElementEditor instances.
+	 * 
 	 */
 	protected ElementEditorPropertiesEditionProvider elementEditorPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a ElementEditor
+	 * 
 	 */
 	public ElementEditorPropertiesEditionProvider createElementEditorPropertiesEditionProvider() {
 		if (elementEditorPropertiesEditionProvider == null)
@@ -97,11 +107,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Category instances.
+	 * 
 	 */
 	protected CategoryPropertiesEditionProvider categoryPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Category
+	 * 
 	 */
 	public CategoryPropertiesEditionProvider createCategoryPropertiesEditionProvider() {
 		if (categoryPropertiesEditionProvider == null)
@@ -112,11 +124,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Container instances.
+	 * 
 	 */
 	protected ContainerPropertiesEditionProvider containerPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Container
+	 * 
 	 */
 	public ContainerPropertiesEditionProvider createContainerPropertiesEditionProvider() {
 		if (containerPropertiesEditionProvider == null)
@@ -127,11 +141,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * CustomElementEditor instances.
+	 * 
 	 */
 	protected CustomElementEditorPropertiesEditionProvider customElementEditorPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a CustomElementEditor
+	 * 
 	 */
 	public CustomElementEditorPropertiesEditionProvider createCustomElementEditorPropertiesEditionProvider() {
 		if (customElementEditorPropertiesEditionProvider == null)
@@ -142,11 +158,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * CustomView instances.
+	 * 
 	 */
 	protected CustomViewPropertiesEditionProvider customViewPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a CustomView
+	 * 
 	 */
 	public CustomViewPropertiesEditionProvider createCustomViewPropertiesEditionProvider() {
 		if (customViewPropertiesEditionProvider == null)
@@ -157,11 +175,13 @@ public class ViewsPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ViewReference instances.
+	 * 
 	 */
 	protected ViewReferencePropertiesEditionProvider viewReferencePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a ViewReference
+	 * 
 	 */
 	public ViewReferencePropertiesEditionProvider createViewReferencePropertiesEditionProvider() {
 		if (viewReferencePropertiesEditionProvider == null)

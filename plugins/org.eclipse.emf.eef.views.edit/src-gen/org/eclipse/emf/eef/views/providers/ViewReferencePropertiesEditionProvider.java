@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.views.components.ViewReferencePropertiesEditionCompon
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ViewReferencePropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -29,6 +30,7 @@ public class ViewReferencePropertiesEditionProvider implements IPropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ViewReference) && (ViewsPackage.eINSTANCE.getViewReference() == eObject.eClass());
@@ -38,6 +40,7 @@ public class ViewReferencePropertiesEditionProvider implements IPropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (ViewReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
@@ -48,6 +51,7 @@ public class ViewReferencePropertiesEditionProvider implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof ViewReference) {
@@ -61,6 +65,7 @@ public class ViewReferencePropertiesEditionProvider implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof ViewReference) {

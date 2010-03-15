@@ -22,13 +22,14 @@ import org.eclipse.emf.eef.toolkits.parts.impl.WidgetPropertiesEditionPartImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
+ * 
  */
 public class ToolkitsPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 * 
 	 */
 	public boolean provides(java.lang.Class key) {
 		return key == ToolkitsViewsRepository.class;
@@ -38,6 +39,7 @@ public class ToolkitsPropertiesEditionPartProvider implements IPropertiesEdition
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
 		if (key == ToolkitsViewsRepository.Toolkit.class) {

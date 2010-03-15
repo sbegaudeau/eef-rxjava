@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ViewsPackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
@@ -24,6 +25,7 @@ public class ViewsPackagePropertiesEditionPolicyProvider extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return ViewsPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || ViewsPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());

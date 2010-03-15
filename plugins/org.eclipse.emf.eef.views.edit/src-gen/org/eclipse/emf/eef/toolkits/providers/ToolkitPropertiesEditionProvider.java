@@ -20,6 +20,7 @@ import org.eclipse.emf.eef.toolkits.components.ToolkitPropertiesEditionComponent
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -27,6 +28,7 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Toolkit) && (ToolkitsPackage.eINSTANCE.getToolkit() == eObject.eClass());
@@ -36,6 +38,7 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (ToolkitPropertiesEditionComponent.BASE_PART.equals(part));
@@ -46,6 +49,7 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof Toolkit) {
@@ -59,6 +63,7 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof Toolkit) {

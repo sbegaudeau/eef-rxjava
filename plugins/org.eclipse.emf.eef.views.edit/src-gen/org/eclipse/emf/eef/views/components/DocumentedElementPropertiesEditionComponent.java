@@ -49,25 +49,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class DocumentedElementPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String DOCUMENTATION_PART = "Documentation"; //$NON-NLS-1$
 
+	
 	private String[] parts = {DOCUMENTATION_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private DocumentedElement documentedElement;
 
 	/**
 	 * The Documentation part
+	 * 
 	 */
 	protected DocumentationPropertiesEditionPart documentationPart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public DocumentedElementPropertiesEditionComponent(EObject documentedElement, String editing_mode) {
 		if (documentedElement instanceof DocumentedElement) {
@@ -84,6 +90,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -92,6 +99,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (documentationPart == null)
@@ -115,6 +123,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null){
@@ -125,13 +134,13 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			}
 		}
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (DOCUMENTATION_PART.equals(key))
@@ -143,6 +152,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -153,6 +163,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (documentedElement != null && DOCUMENTATION_PART.equals(key)) {
@@ -173,6 +184,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == ViewsViewsRepository.Documentation.class)
@@ -184,6 +196,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -212,12 +225,12 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((documentedElement != null) && (documentationPart != null)) { 
 			cc.append(SetCommand.create(editingDomain, documentedElement, ViewsPackage.eINSTANCE.getDocumentedElement_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), documentationPart.getDocumentation())));
-
 
 		}
 		if (!cc.isEmpty())
@@ -230,12 +243,12 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof DocumentedElement) {
 			DocumentedElement documentedElementToUpdate = (DocumentedElement)source;
 			documentedElementToUpdate.setDocumentation((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), documentationPart.getDocumentation()));
-
 
 			return documentedElementToUpdate;
 		}
@@ -247,6 +260,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -256,7 +270,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 			if (ViewsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, documentedElement, ViewsPackage.eINSTANCE.getDocumentedElement_Documentation(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -278,6 +291,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == ViewsViewsRepository.Documentation.documentation)
@@ -289,6 +303,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -299,7 +314,6 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -313,6 +327,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -329,11 +344,11 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -344,6 +359,7 @@ public class DocumentedElementPropertiesEditionComponent extends StandardPropert
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return documentationPart.getTitle();

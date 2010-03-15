@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ToolkitsPackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
@@ -24,6 +25,7 @@ public class ToolkitsPackagePropertiesEditionPolicyProvider extends StandardProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return ToolkitsPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || ToolkitsPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());

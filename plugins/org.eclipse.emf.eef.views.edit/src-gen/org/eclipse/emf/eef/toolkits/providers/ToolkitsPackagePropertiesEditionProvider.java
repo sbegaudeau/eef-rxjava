@@ -15,11 +15,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ToolkitsPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public ToolkitsPackagePropertiesEditionProvider() {
 		super();
@@ -30,11 +32,13 @@ public class ToolkitsPackagePropertiesEditionProvider extends ComposedProperties
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Toolkit instances.
+	 * 
 	 */
 	protected ToolkitPropertiesEditionProvider toolkitPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Toolkit
+	 * 
 	 */
 	public ToolkitPropertiesEditionProvider createToolkitPropertiesEditionProvider() {
 		if (toolkitPropertiesEditionProvider == null)
@@ -45,11 +49,13 @@ public class ToolkitsPackagePropertiesEditionProvider extends ComposedProperties
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Widget instances.
+	 * 
 	 */
 	protected WidgetPropertiesEditionProvider widgetPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Widget
+	 * 
 	 */
 	public WidgetPropertiesEditionProvider createWidgetPropertiesEditionProvider() {
 		if (widgetPropertiesEditionProvider == null)

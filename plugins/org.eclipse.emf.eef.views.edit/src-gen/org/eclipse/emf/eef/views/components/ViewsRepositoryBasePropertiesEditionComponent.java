@@ -38,7 +38,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.emf.eef.views.parts.ViewsRepositoryPropertiesEditionPart;
@@ -50,25 +50,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private ViewsRepository viewsRepository;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected ViewsRepositoryPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public ViewsRepositoryBasePropertiesEditionComponent(EObject viewsRepository, String editing_mode) {
 		if (viewsRepository instanceof ViewsRepository) {
@@ -85,6 +91,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -93,6 +100,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -116,6 +124,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 // FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
@@ -127,13 +136,13 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			}
 		}
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -145,6 +154,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -155,6 +165,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (viewsRepository != null && BASE_PART.equals(key)) {
@@ -175,6 +186,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == ViewsViewsRepository.ViewsRepository.class)
@@ -186,6 +198,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -218,13 +231,13 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((viewsRepository != null) && (basePart != null)) { 
 // FIXME INVALID CASE INTO template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
 			cc.append(SetCommand.create(editingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
-
 
 		}
 		if (!cc.isEmpty())
@@ -237,13 +250,13 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof ViewsRepository) {
 			ViewsRepository viewsRepositoryToUpdate = (ViewsRepository)source;
 // FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository, viewsRepository.
 			viewsRepositoryToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
-
 
 
 			return viewsRepositoryToUpdate;
@@ -256,6 +269,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -266,7 +280,6 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 			if (ViewsViewsRepository.ViewsRepository.name == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, viewsRepository, ViewsPackage.eINSTANCE.getViewsRepository_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -288,6 +301,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == ViewsViewsRepository.ViewsRepository.repositoryKind || key == ViewsViewsRepository.ViewsRepository.name;
@@ -297,6 +311,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
 		if (key == ViewsViewsRepository.ViewsRepository.repositoryKind)
@@ -310,6 +325,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -324,7 +340,6 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewsRepository_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewsRepository_Name().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -338,6 +353,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -354,11 +370,11 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -369,6 +385,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();
