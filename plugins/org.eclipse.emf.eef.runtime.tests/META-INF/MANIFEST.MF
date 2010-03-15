@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: EEF Runtime dedicated for tests
+Bundle-Name: EEF Runtime dedicated for tests (Incubation)
 Bundle-SymbolicName: org.eclipse.emf.eef.runtime.tests;singleton:=true
 Bundle-Version: 0.8.0.qualifier
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.swtbot.eclipse.finder;visibility:=reexport,
  org.eclipse.swtbot.swt.finder;visibility:=reexport,
