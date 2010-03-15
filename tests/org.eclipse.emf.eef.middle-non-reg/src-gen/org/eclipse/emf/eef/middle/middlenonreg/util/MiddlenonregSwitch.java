@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MiddlenonregSwitch.java,v 1.1 2009/05/05 10:26:31 sbouchet Exp $
+ * $Id: MiddlenonregSwitch.java,v 1.2 2010/03/15 13:59:55 sbouchet Exp $
  */
 package org.eclipse.emf.eef.middle.middlenonreg.util;
 
@@ -10,10 +10,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.ab.abstractnonreg.DocumentedElement;
-
-import org.eclipse.emf.eef.middle.middlenonreg.*;
+import org.eclipse.emf.eef.middle.middlenonreg.MiddlenonregPackage;
+import org.eclipse.emf.eef.middle.middlenonreg.NamedElement;
 
 /**
  * <!-- begin-user-doc -->
