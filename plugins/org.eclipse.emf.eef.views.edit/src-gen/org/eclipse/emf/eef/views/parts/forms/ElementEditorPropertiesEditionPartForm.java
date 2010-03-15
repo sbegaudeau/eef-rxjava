@@ -52,6 +52,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ElementEditorPropertiesEditionPart {
 
@@ -61,11 +62,10 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public ElementEditorPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -76,6 +76,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -93,6 +94,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -102,6 +104,9 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(ViewsMessages.ElementEditorPropertiesEditionPart_PropertiesGroupLabel);
@@ -118,6 +123,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ElementEditor.name, ViewsViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -128,6 +134,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -139,6 +146,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -154,6 +162,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 
 	/**
 	 * @param propertiesGroup
+	 * 
 	 */
 	protected void createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ElementEditor.representation, ViewsViewsRepository.FORM_KIND));
@@ -177,6 +186,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		readOnly = widgetFactory.createButton(parent, ViewsMessages.ElementEditorPropertiesEditionPart_ReadOnlyLabel, SWT.CHECK);
 		readOnly.addSelectionListener(new SelectionAdapter() {
@@ -185,6 +195,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -204,6 +215,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -216,6 +228,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return name.getText();
@@ -225,6 +238,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -246,6 +260,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#getRepresentation()
+	 * 
 	 */
 	public EObject getRepresentation() {
 		if (representation.getSelection() instanceof StructuredSelection) {
@@ -272,6 +287,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#setRepresentation(EObject newValue)
+	 * 
 	 */
 	public void setRepresentation(EObject newValue) {
 		if (newValue != null) {
@@ -294,6 +310,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#addFilterRepresentation(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToRepresentation(ViewerFilter filter) {
 		representation.addFilter(filter);
@@ -303,6 +320,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#addBusinessFilterRepresentation(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
 		representation.addBusinessRuleFilter(filter);
@@ -316,6 +334,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#getReadOnly()
+	 * 
 	 */
 	public Boolean getReadOnly() {
 		return Boolean.valueOf(readOnly.getSelection());
@@ -325,6 +344,7 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#setReadOnly(Boolean newValue)
+	 * 
 	 */
 	public void setReadOnly(Boolean newValue) {
 		if (newValue != null) {
@@ -340,13 +360,11 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return ViewsMessages.ElementEditor_Part_Title;
@@ -355,5 +373,6 @@ public class ElementEditorPropertiesEditionPartForm extends CompositePropertiesE
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

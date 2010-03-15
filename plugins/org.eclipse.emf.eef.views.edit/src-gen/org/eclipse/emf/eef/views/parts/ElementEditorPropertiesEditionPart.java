@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2009 Obeo.
+ *  Copyright (c) 2008-2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,9 +7,7 @@
  *  
  *  Contributors:
  *      Obeo - initial API and implementation
- * 
  *
- * $Id: SpecificElementEditorPropertiesEditionPart.java,v 1.6 2009/05/20 15:52:01 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.parts;
 
@@ -17,23 +15,28 @@ package org.eclipse.emf.eef.views.parts;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
 // End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
-public interface SpecificElementEditorPropertiesEditionPart {
+public interface ElementEditorPropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -41,8 +44,10 @@ public interface SpecificElementEditorPropertiesEditionPart {
 
 	public void unsetMessageForName();
 
+
 	/**
 	 * @return the representation
+	 * 
 	 */
 	public EObject getRepresentation();
 
@@ -56,8 +61,16 @@ public interface SpecificElementEditorPropertiesEditionPart {
 	/**
 	 * Defines a new representation
 	 * @param newValue the new representation to set
+	 * 
 	 */
 	public void setRepresentation(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * 
+	 */
+	public void setRepresentationButtonMode(ButtonsModeEnum newValue);
 
 	/**
 	 * Adds the given filter to the representation edition editor.
@@ -65,6 +78,7 @@ public interface SpecificElementEditorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToRepresentation(ViewerFilter filter);
 
@@ -74,6 +88,7 @@ public interface SpecificElementEditorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter);
 
@@ -81,14 +96,17 @@ public interface SpecificElementEditorPropertiesEditionPart {
 
 
 
+
 	/**
 	 * @return the readOnly
+	 * 
 	 */
 	public Boolean getReadOnly();
 
 	/**
 	 * Defines a new readOnly
 	 * @param newValue the new readOnly to set
+	 * 
 	 */
 	public void setReadOnly(Boolean newValue);
 
@@ -100,9 +118,16 @@ public interface SpecificElementEditorPropertiesEditionPart {
 
 
 
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * 
+	 */
+	public String getTitle();
 
 	// Start of user code for additional methods
  	
 	// End of user code
-}
 
+}
