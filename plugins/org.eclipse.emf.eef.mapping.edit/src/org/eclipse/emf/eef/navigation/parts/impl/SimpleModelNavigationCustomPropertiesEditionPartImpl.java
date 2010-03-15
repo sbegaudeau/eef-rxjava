@@ -9,11 +9,9 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationCustomPropertiesEditionPartImpl.java,v 1.2 2009/05/05 12:07:32 sbouchet Exp $
+ * $Id: SimpleModelNavigationCustomPropertiesEditionPartImpl.java,v 1.3 2010/03/15 13:58:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.navigation.parts.impl;
-
-// Start of user code for imports
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -32,10 +30,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
-
-
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -44,39 +38,44 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 	public SimpleModelNavigationCustomPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
-	
+
 	/**
 	 * @param propertiesGroup
 	 */
 	protected void createFeatureFlatComboViewer(Composite parent) {
-	
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);		
+
+		SWTUtils.createPartLabel(parent,
+				MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		feature.addFilter(new ViewerFilter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+			 *      java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EReference);			
+				return (element instanceof EReference);
 			}
 
 		});
 		feature.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationCustomPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.feature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFeature()));
-				//TODO : firePropertyChanged has to call setFeature !
-//				if (event.getSelection() instanceof StructuredSelection) {
-//					Object selection = ((StructuredSelection)event.getSelection()).getFirstElement();
-//					if (selection instanceof EReference) {
-//						current.setFeature((EReference) selection);
-						setDiscriminatorInput((SimpleModelNavigation) current, resourceSet);
-//					}
-//				}
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+						SimpleModelNavigationCustomPropertiesEditionPartImpl.this,
+						MappingViewsRepository.SimpleModelNavigation.feature, PropertiesEditionEvent.COMMIT,
+						PropertiesEditionEvent.SET, null, getFeature()));
+				// TODO : firePropertyChanged has to call setFeature !
+				// if (event.getSelection() instanceof StructuredSelection) {
+				// Object selection = ((StructuredSelection)event.getSelection()).getFirstElement();
+				// if (selection instanceof EReference) {
+				// current.setFeature((EReference) selection);
+				setDiscriminatorInput((SimpleModelNavigation)current, resourceSet);
+				// }
+				// }
 			}
 
 		});
@@ -84,5 +83,5 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 		feature.setLayoutData(featureData);
 		SWTUtils.createHelpButton(parent, null, null); //$NON-NLS-1$
 	}
-	
-}	
+
+}

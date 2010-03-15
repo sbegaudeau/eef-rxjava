@@ -9,11 +9,9 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: SimpleModelNavigationCustomPropertiesEditionPartForm.java,v 1.1 2009/04/30 17:48:59 nlepine Exp $
+ * $Id: SimpleModelNavigationCustomPropertiesEditionPartForm.java,v 1.2 2010/03/15 13:58:10 sbouchet Exp $
  */
 package org.eclipse.emf.eef.navigation.parts.forms;
-
-// Start of user code for imports
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -33,17 +31,11 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
-
-
-
-// End of user code
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class SimpleModelNavigationCustomPropertiesEditionPartForm extends SimpleModelNavigationPropertiesEditionPartForm {
 
-		
 	public SimpleModelNavigationCustomPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
@@ -52,19 +44,21 @@ public class SimpleModelNavigationCustomPropertiesEditionPartForm extends Simple
 	 * @param propertiesGroup
 	 */
 	protected void createFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-	
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
+
+		FormUtils.createPartLabel(widgetFactory, parent,
+				MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		feature.addFilter(new ViewerFilter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+			 *      java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EReference); 				
+				return (element instanceof EReference);
 			}
 
 		});
@@ -80,11 +74,14 @@ public class SimpleModelNavigationCustomPropertiesEditionPartForm extends Simple
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationCustomPropertiesEditionPartForm.this, MappingViewsRepository.SimpleModelNavigation.feature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFeature()));
-				setDiscriminatorInput( (SimpleModelNavigation) current, resourceSet);
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							SimpleModelNavigationCustomPropertiesEditionPartForm.this,
+							MappingViewsRepository.SimpleModelNavigation.feature,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFeature()));
+				setDiscriminatorInput((SimpleModelNavigation)current, resourceSet);
 			}
-			
+
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, null, null); //$NON-NLS-1$
 	}
-}	
+}
