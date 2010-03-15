@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.IWrapperItemProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
-import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -84,7 +84,7 @@ public class ModelChooserDialog extends Dialog {
 		label.setText(EEFRuntimeUIMessages.ModelChooserDialog_choose_model);
 		workspaceViewer = new TreeViewer(container);
 		workspaceViewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
-		if (EEFUtil.isBundleLoaded("org.eclipse.ui.ide"))  //$NON-NLS-1$
+		if (EEFUtils.isBundleLoaded("org.eclipse.ui.ide"))  //$NON-NLS-1$
 			workspaceViewer.setContentProvider(new WorkbenchContentProvider());
 		else
 			workspaceViewer.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));

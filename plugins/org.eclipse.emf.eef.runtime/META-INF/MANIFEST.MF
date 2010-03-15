@@ -54,6 +54,5 @@ Export-Package: org.eclipse.emf.eef.runtime,
  org.eclipse.emf.eef.runtime.ui.widgets.masterdetails,
  org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.eefviewer,
  org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.tree,
- org.eclipse.emf.eef.runtime.ui.wizards,
- org.eclipse.emf.eef.runtime.util
+ org.eclipse.emf.eef.runtime.ui.wizards
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

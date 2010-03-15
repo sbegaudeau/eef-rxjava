@@ -27,11 +27,11 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
-import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -248,7 +248,7 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayoutData(gd);
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
-			List<EClass> instanciableTypesInHierarchy = EEFUtil.instanciableTypesInHierarchy(eReference
+			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference
 					.getEType());
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);

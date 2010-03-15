@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
-import org.eclipse.emf.eef.runtime.util.EEFUtil;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -187,9 +187,9 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		if (input instanceof List)
 			result = new ArrayList((List)input);
 		else if (input instanceof ResourceSet)
-			result = new ArrayList(EEFUtil.asList(EcoreUtil.getAllContents((ResourceSet)input, true)));
+			result = new ArrayList(EEFUtils.asList(EcoreUtil.getAllContents((ResourceSet)input, true)));
 		else if (input instanceof Resource)
-			result = new ArrayList(EEFUtil.asList(EcoreUtil.getAllContents((Resource)input, true)));
+			result = new ArrayList(EEFUtils.asList(EcoreUtil.getAllContents((Resource)input, true)));
 		else
 			result = new ArrayList();
 		return result;
