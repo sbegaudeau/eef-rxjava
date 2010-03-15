@@ -156,7 +156,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -3769,7 +3768,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	public void unsetMessageForName() {
 
 	}
-
 
 
 

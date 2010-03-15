@@ -48,7 +48,6 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -219,7 +218,6 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	public void unsetMessageForEmfcomboviewerOptionalProperty() {
 
 	}
-
 
 
 

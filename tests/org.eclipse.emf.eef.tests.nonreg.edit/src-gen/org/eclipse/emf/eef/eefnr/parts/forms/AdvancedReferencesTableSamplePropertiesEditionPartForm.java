@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,6 +46,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -59,7 +62,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 		protected ReferencesTable<? extends EObject> advancedreferencestableOptionalProperty;
 		protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-
 
 
 
@@ -474,7 +476,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return advancedreferencestableOptionalPropertyEditUtil.contains(element);
 	}
-
 
 
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -39,6 +40,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -51,7 +54,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	protected Text multivaluededitorOptionalProperty;
 		protected Button editMultivaluededitorOptionalProperty;
 		private EList multivaluededitorOptionalPropertyList;
-
 
 
 
@@ -252,7 +254,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

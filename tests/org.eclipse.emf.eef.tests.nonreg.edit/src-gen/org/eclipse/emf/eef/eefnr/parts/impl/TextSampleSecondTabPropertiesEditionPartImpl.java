@@ -46,7 +46,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -267,7 +266,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	public void unsetMessageForTextOptionalPropertyInSecondTab() {
 
 	}
-
 
 
 

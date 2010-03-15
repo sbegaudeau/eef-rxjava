@@ -223,6 +223,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 				}
 
 			});
+			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
+			
+			// End of user code
 
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 
@@ -236,6 +239,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 				}
 
 			});
+			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
+			
+			// End of user code
 
 		}
 		// init values for referenced views

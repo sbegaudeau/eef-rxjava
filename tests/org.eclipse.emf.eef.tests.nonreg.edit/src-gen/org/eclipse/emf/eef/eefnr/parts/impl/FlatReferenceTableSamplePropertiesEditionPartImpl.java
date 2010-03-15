@@ -51,7 +51,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -348,7 +347,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	public void unsetMessageForFlatreferencetableOptionalProperty() {
 
 	}
-
 
 
 

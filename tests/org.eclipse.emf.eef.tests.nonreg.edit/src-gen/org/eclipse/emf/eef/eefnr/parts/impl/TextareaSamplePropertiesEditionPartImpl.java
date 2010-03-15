@@ -42,7 +42,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -207,7 +206,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 	public void unsetMessageForTextareaOptionalProperty() {
 
 	}
-
 
 
 

@@ -64,7 +64,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -495,7 +494,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	public void unsetMessageForAdvancedreferencestableOptionalProperty() {
 
 	}
-
 
 
 

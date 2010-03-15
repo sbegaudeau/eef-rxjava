@@ -136,11 +136,9 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty())) {
-
 			basePart.updateTablecompositionRequiredProperty(tableCompositionEditorSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty())) {
-
 			basePart.updateTablecompositionOptionalProperty(tableCompositionEditorSample);
 		}
 
@@ -230,6 +228,9 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 				}
 
 			});
+			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 
@@ -244,6 +245,9 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 				}
 
 			});
+			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
+			
+			// End of user code
 
 		}
 		// init values for referenced views

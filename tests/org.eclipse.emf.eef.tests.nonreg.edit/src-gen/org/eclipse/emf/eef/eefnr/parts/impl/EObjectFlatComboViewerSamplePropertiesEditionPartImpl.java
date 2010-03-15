@@ -50,7 +50,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -319,7 +318,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 	public void unsetMessageForEobjectflatcomboviewerOptionalPropery() {
 
 	}
-
 
 
 

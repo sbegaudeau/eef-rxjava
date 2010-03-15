@@ -46,7 +46,6 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -267,7 +266,6 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	public void unsetMessageForTextOptionalProperty() {
 
 	}
-
 
 
 

@@ -136,7 +136,6 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getRoot_Samples())) {
-
 			basePart.updateSamples(root);
 		}
 
@@ -225,6 +224,9 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 				}
 
 			});
+			// Start of user code for additional businessfilters for samples
+			
+			// End of user code
 
 		}
 		// init values for referenced views

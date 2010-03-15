@@ -225,6 +225,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 
@@ -241,6 +244,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
+			
+			// End of user code
 
 		}
 		// init values for referenced views

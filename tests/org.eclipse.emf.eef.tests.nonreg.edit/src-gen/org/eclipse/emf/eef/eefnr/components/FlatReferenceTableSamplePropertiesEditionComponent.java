@@ -208,8 +208,14 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			basePart.initFlatreferencetableOptionalProperty(flatReferencesTableSample, null, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
 			// init filters
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
+			
+			// End of user code
 
 		}
 		// init values for referenced views

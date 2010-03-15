@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -34,6 +35,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -42,7 +45,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 
 	protected Text textRequiredPropertyInSecondTab;
 	protected Text textOptionalPropertyInSecondTab;
-
 
 
 
@@ -257,7 +259,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	public void unsetMessageForTextOptionalPropertyInSecondTab() {
 		messageManager.removeMessage("TextOptionalPropertyInSecondTab_key", textOptionalPropertyInSecondTab);
 	}
-
 
 
 

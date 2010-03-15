@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -33,6 +34,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -41,7 +44,6 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 
 	protected Text textareaRequiredProperty;
 	protected Text textareaOptionalProperty;
-
 
 
 
@@ -240,7 +242,6 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 	public void unsetMessageForTextareaOptionalProperty() {
 		messageManager.removeMessage("TextareaOptionalProperty_key", textareaOptionalProperty);
 	}
-
 
 
 

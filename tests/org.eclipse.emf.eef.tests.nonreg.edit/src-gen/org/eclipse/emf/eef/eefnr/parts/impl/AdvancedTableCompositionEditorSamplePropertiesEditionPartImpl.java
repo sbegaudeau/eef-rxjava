@@ -62,7 +62,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -535,7 +534,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 	public void unsetMessageForAdvancedtablecompositionOptionalProperty() {
 
 	}
-
 
 
 

@@ -59,7 +59,6 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -325,7 +324,6 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	public void unsetMessageForSamples() {
 
 	}
-
 
 
 

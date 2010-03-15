@@ -59,7 +59,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -360,7 +359,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	public void unsetMessageForAdvancedeobjectflatcomboviewerOptionalProperty() {
 
 	}
-
 
 
 

@@ -136,11 +136,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty())) {
-
 			basePart.updateAdvancedtablecompositionRequiredProperty(advancedTableCompositionEditorSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty())) {
-
 			basePart.updateAdvancedtablecompositionOptionalProperty(advancedTableCompositionEditorSample);
 		}
 
@@ -230,6 +228,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedtablecompositionRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedtablecompositionOptionalProperty(new ViewerFilter() {
 
@@ -244,6 +245,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
+			
+			// End of user code
 
 		}
 		// init values for referenced views

@@ -57,8 +57,8 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -207,11 +207,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.setMultivaluededitorOptionalProperty((EList)msg.getNewValue());
 
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty())) {
-
 			basePart.updateTablecompositionRequiredProperty(totalSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty())) {
-
 			basePart.updateTablecompositionOptionalProperty(totalSample);
 		}
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
@@ -223,27 +221,21 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
 			basePart.setAdvancedeobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty())) {
-
 			basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty())) {
-
 			basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeRequiredProperty())) {
-
 			basePart.updateTablecompositionWithSameTypeRequiredProperty(totalSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOnSameTypeOptionalProperty())) {
-
 			basePart.updateTablecompositionWithSameTypeOptionalProperty(totalSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty())) {
-
 			basePart.updateAdvancedtablecompositionWithSameTypeRequiredProperty(totalSample);
 		}
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOnSametypeOptionalProperty())) {
-
 			basePart.updateAdvancedtablecompositionWithSameTypeOptionalProperty(totalSample);
 		}
 		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
@@ -402,6 +394,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToEobjectflatcomboviewerOptionalProperty(new ViewerFilter() {
 
@@ -415,6 +410,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalProperty
+			
+			// End of user code
 
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
 
@@ -431,6 +429,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for referencestableRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 
@@ -447,6 +448,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for referencestableOptionalProperty
+			
+			// End of user code
 
 
 
@@ -465,6 +469,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 
@@ -479,6 +486,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
 
@@ -495,6 +505,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 
@@ -511,6 +524,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedeobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
 
@@ -524,6 +540,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedeobjectflatcomboviewerRequiredPropery
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedeobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 
@@ -537,6 +556,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedeobjectflatcomboviewerOptionalPropery
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedtablecompositionRequiredProperty(new ViewerFilter() {
 
@@ -551,6 +573,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedtablecompositionRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedtablecompositionOptionalProperty(new ViewerFilter() {
 
@@ -565,6 +590,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
+			
+			// End of user code
 
 			basePart.addFilterToTablecompositionWithSameTypeRequiredProperty(new ViewerFilter() {
 
@@ -579,6 +607,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for tablecompositionWithSameTypeRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToTablecompositionWithSameTypeOptionalProperty(new ViewerFilter() {
 
@@ -593,6 +624,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for tablecompositionWithSameTypeOptionalProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(new ViewerFilter() {
 
@@ -607,6 +641,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedtablecompositionWithSameTypeRequiredProperty
+			
+			// End of user code
 
 			basePart.addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(new ViewerFilter() {
 
@@ -621,6 +658,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 
 			});
+			// Start of user code for additional businessfilters for advancedtablecompositionWithSameTypeOptionalProperty
+			
+			// End of user code
 
 
 		}

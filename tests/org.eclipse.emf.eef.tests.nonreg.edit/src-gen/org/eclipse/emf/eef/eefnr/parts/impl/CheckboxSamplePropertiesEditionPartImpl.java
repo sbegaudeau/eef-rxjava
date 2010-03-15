@@ -41,7 +41,6 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -196,7 +195,6 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 	public void unsetMessageForCheckboxOptionalProperty() {
 
 	}
-
 
 
 

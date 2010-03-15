@@ -73,7 +73,6 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -652,7 +651,6 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	public void unsetMessageForReferencestableOptionalProperty() {
 
 	}
-
 
 
 

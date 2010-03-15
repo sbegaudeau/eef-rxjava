@@ -73,7 +73,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -790,7 +789,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	public void unsetMessageForTablecompositionOptionalProperty() {
 
 	}
-
 
 
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -44,6 +45,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -54,7 +57,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 		protected ViewerFilter advancedeobjectflatcomboviewerRequiredPropertyFilter;
 	protected AdvancedEObjectFlatComboViewer<TotalSample> advancedeobjectflatcomboviewerOptionalProperty;
 		protected ViewerFilter advancedeobjectflatcomboviewerOptionalPropertyFilter;
-
 
 
 
@@ -353,7 +355,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
 	}
-
 
 
 

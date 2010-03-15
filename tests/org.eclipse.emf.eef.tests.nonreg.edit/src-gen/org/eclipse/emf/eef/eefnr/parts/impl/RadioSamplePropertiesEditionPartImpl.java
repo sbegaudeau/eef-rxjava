@@ -43,7 +43,6 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -212,7 +211,6 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	public void unsetMessageForRadioOptionalProperty() {
 
 	}
-
 
 
 

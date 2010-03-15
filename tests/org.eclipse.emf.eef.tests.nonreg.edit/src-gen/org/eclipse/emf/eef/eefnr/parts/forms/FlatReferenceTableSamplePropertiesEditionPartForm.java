@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -38,6 +39,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -46,7 +49,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 
 		protected FlatReferencesTable flatreferencetableRequiredProperty;
 		protected FlatReferencesTable flatreferencetableOptionalProperty;
-
 
 
 
@@ -337,7 +339,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
 		return flatreferencetableOptionalProperty.virtualListContains(element);
 	}
-
 
 
 

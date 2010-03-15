@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,6 +52,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -69,7 +72,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		protected Button removeReferencestableOptionalProperty;
 		protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-
 
 
 
@@ -640,7 +642,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return referencestableOptionalPropertyEditUtil.contains(element);
 	}
-
 
 
 

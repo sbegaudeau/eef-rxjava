@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -31,6 +32,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -39,7 +42,6 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 
 	protected RadioViewer radioRequiredPropertyRadioViewer;
 	protected RadioViewer radioOptionalPropertyRadioViewer;
-
 
 
 
@@ -202,7 +204,6 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(newValue);
 	}
-
 
 
 

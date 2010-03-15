@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.parts.forms;
 
+// Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -32,6 +33,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 
+// End of user code
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -40,7 +43,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 
 	protected Button checkboxRequiredProperty;
 	protected Button checkboxOptionalProperty;
-
 
 
 
@@ -215,7 +217,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 			checkboxOptionalProperty.setSelection(false);
 		}
 	}
-
 
 
 
