@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersPackageImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: FiltersPackageImpl.java,v 1.6 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
@@ -17,11 +17,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
-
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersFactory;
@@ -31,13 +28,9 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
 import org.eclipse.emf.eef.mapping.filters.JavaFilter;
 import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
-
 import org.eclipse.emf.eef.mapping.impl.MappingPackageImpl;
-
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
-
 import org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl;
-
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
@@ -136,12 +129,10 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 */
 	public static FiltersPackage init() {
 		if (isInited)
-			return (FiltersPackage) EPackage.Registry.INSTANCE
-					.getEPackage(FiltersPackage.eNS_URI);
+			return (FiltersPackage)EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI);
 
 		// Obtain or create and register package
-		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
 				.get(eNS_URI)
 				: new FiltersPackageImpl());
 
@@ -151,11 +142,11 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		ViewsPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		MappingPackageImpl theMappingPackage = (MappingPackageImpl) (EPackage.Registry.INSTANCE
+		MappingPackageImpl theMappingPackage = (MappingPackageImpl)(EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI) instanceof MappingPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI)
 				: MappingPackage.eINSTANCE);
-		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl) (EPackage.Registry.INSTANCE
+		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE
 				.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(NavigationPackage.eNS_URI)
 				: NavigationPackage.eINSTANCE);
@@ -174,8 +165,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		theFiltersPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(FiltersPackage.eNS_URI,
-				theFiltersPackage);
+		EPackage.Registry.INSTANCE.put(FiltersPackage.eNS_URI, theFiltersPackage);
 		return theFiltersPackage;
 	}
 
@@ -194,7 +184,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * @generated
 	 */
 	public EAttribute getBindingFilter_Name() {
-		return (EAttribute) bindingFilterEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)bindingFilterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -203,7 +193,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * @generated
 	 */
 	public EAttribute getBindingFilter_Mandatory() {
-		return (EAttribute) bindingFilterEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)bindingFilterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -220,8 +210,8 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOCLFilter_Body() {
-		return (EAttribute) oclFilterEClass.getEStructuralFeatures().get(0);
+	public EAttribute getOCLFilter_OCLBody() {
+		return (EAttribute)oclFilterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -248,8 +238,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * @generated
 	 */
 	public EAttribute getJavaDeclarationFilter_MethodName() {
-		return (EAttribute) javaDeclarationFilterEClass
-				.getEStructuralFeatures().get(0);
+		return (EAttribute)javaDeclarationFilterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -266,9 +255,8 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getJavaExpressionFilter_Body() {
-		return (EAttribute) javaExpressionFilterEClass.getEStructuralFeatures()
-				.get(0);
+	public EAttribute getJavaExpressionFilter_JavaBody() {
+		return (EAttribute)javaExpressionFilterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -295,8 +283,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * @generated
 	 */
 	public EReference getOnlyReferenceTypeFilter_Reference() {
-		return (EReference) onlyReferenceTypeFilterEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference)onlyReferenceTypeFilterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -305,7 +292,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * @generated
 	 */
 	public FiltersFactory getFiltersFactory() {
-		return (FiltersFactory) getEFactoryInstance();
+		return (FiltersFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -333,23 +320,20 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		createEAttribute(bindingFilterEClass, BINDING_FILTER__MANDATORY);
 
 		oclFilterEClass = createEClass(OCL_FILTER);
-		createEAttribute(oclFilterEClass, OCL_FILTER__BODY);
+		createEAttribute(oclFilterEClass, OCL_FILTER__OCL_BODY);
 
 		javaFilterEClass = createEClass(JAVA_FILTER);
 
 		javaDeclarationFilterEClass = createEClass(JAVA_DECLARATION_FILTER);
-		createEAttribute(javaDeclarationFilterEClass,
-				JAVA_DECLARATION_FILTER__METHOD_NAME);
+		createEAttribute(javaDeclarationFilterEClass, JAVA_DECLARATION_FILTER__METHOD_NAME);
 
 		javaExpressionFilterEClass = createEClass(JAVA_EXPRESSION_FILTER);
-		createEAttribute(javaExpressionFilterEClass,
-				JAVA_EXPRESSION_FILTER__BODY);
+		createEAttribute(javaExpressionFilterEClass, JAVA_EXPRESSION_FILTER__JAVA_BODY);
 
 		businessFilterEClass = createEClass(BUSINESS_FILTER);
 
 		onlyReferenceTypeFilterEClass = createEClass(ONLY_REFERENCE_TYPE_FILTER);
-		createEReference(onlyReferenceTypeFilterEClass,
-				ONLY_REFERENCE_TYPE_FILTER__REFERENCE);
+		createEReference(onlyReferenceTypeFilterEClass, ONLY_REFERENCE_TYPE_FILTER__REFERENCE);
 	}
 
 	/**
@@ -377,7 +361,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		MappingPackage theMappingPackage = (MappingPackage) EPackage.Registry.INSTANCE
+		MappingPackage theMappingPackage = (MappingPackage)EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI);
 
 		// Create type parameters
@@ -385,68 +369,54 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		bindingFilterEClass.getESuperTypes().add(
-				theMappingPackage.getDocumentedElement());
+		bindingFilterEClass.getESuperTypes().add(theMappingPackage.getDocumentedElement());
 		oclFilterEClass.getESuperTypes().add(this.getBindingFilter());
 		javaFilterEClass.getESuperTypes().add(this.getBindingFilter());
 		javaDeclarationFilterEClass.getESuperTypes().add(this.getJavaFilter());
 		javaExpressionFilterEClass.getESuperTypes().add(this.getJavaFilter());
 		businessFilterEClass.getESuperTypes().add(this.getBindingFilter());
-		onlyReferenceTypeFilterEClass.getESuperTypes().add(
-				this.getBusinessFilter());
+		onlyReferenceTypeFilterEClass.getESuperTypes().add(this.getBusinessFilter());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(bindingFilterEClass, BindingFilter.class, "BindingFilter",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBindingFilter_Name(), ecorePackage.getEString(),
-				"name", null, 0, 1, BindingFilter.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBindingFilter_Mandatory(),
-				ecorePackage.getEBoolean(), "mandatory", "true", 0, 1,
-				BindingFilter.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-
-		initEClass(oclFilterEClass, OCLFilter.class, "OCLFilter", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOCLFilter_Body(), ecorePackage.getEString(), "body",
-				null, 0, 1, OCLFilter.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-
-		initEClass(javaFilterEClass, JavaFilter.class, "JavaFilter",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(javaDeclarationFilterEClass, JavaDeclarationFilter.class,
-				"JavaDeclarationFilter", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(bindingFilterEClass, BindingFilter.class, "BindingFilter", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJavaDeclarationFilter_MethodName(), ecorePackage
-				.getEString(), "methodName", null, 0, 1,
-				JavaDeclarationFilter.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getBindingFilter_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				BindingFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBindingFilter_Mandatory(), ecorePackage.getEBoolean(), "mandatory", "true", 0, 1,
+				BindingFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(javaExpressionFilterEClass, JavaExpressionFilter.class,
-				"JavaExpressionFilter", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(oclFilterEClass, OCLFilter.class, "OCLFilter", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJavaExpressionFilter_Body(), ecorePackage
-				.getEString(), "body", null, 0, 1, JavaExpressionFilter.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+		initEAttribute(getOCLFilter_OCLBody(), ecorePackage.getEString(), "OCLBody", null, 0, 1,
+				OCLFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(javaFilterEClass, JavaFilter.class, "JavaFilter", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaDeclarationFilterEClass, JavaDeclarationFilter.class, "JavaDeclarationFilter",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJavaDeclarationFilter_MethodName(), ecorePackage.getEString(), "methodName", null,
+				0, 1, JavaDeclarationFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(javaExpressionFilterEClass, JavaExpressionFilter.class, "JavaExpressionFilter",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJavaExpressionFilter_JavaBody(), ecorePackage.getEString(), "javaBody", null, 0, 1,
+				JavaExpressionFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(businessFilterEClass, BusinessFilter.class,
-				"BusinessFilter", IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(businessFilterEClass, BusinessFilter.class, "BusinessFilter", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(onlyReferenceTypeFilterEClass,
-				OnlyReferenceTypeFilter.class, "OnlyReferenceTypeFilter",
+		initEClass(onlyReferenceTypeFilterEClass, OnlyReferenceTypeFilter.class, "OnlyReferenceTypeFilter",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOnlyReferenceTypeFilter_Reference(), ecorePackage
-				.getEReference(), null, "reference", null, 0, 1,
-				OnlyReferenceTypeFilter.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOnlyReferenceTypeFilter_Reference(), ecorePackage.getEReference(), null,
+				"reference", null, 0, 1, OnlyReferenceTypeFilter.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 	}
 
 } //FiltersPackageImpl

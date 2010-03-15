@@ -9,17 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementBindingReferenceImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: ElementBindingReferenceImpl.java,v 1.6 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
@@ -37,8 +34,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public class ElementBindingReferenceImpl extends DocumentedElementImpl
-		implements ElementBindingReference {
+public class ElementBindingReferenceImpl extends DocumentedElementImpl implements ElementBindingReference {
 	/**
 	 * The cached value of the '{@link #getBinding() <em>Binding</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -75,13 +71,12 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl
 	 */
 	public AbstractElementBinding getBinding() {
 		if (binding != null && binding.eIsProxy()) {
-			InternalEObject oldBinding = (InternalEObject) binding;
-			binding = (AbstractElementBinding) eResolveProxy(oldBinding);
+			InternalEObject oldBinding = (InternalEObject)binding;
+			binding = (AbstractElementBinding)eResolveProxy(oldBinding);
 			if (binding != oldBinding) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING,
-							oldBinding, binding));
+							MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING, oldBinding, binding));
 			}
 		}
 		return binding;
@@ -106,8 +101,7 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl
 		binding = newBinding;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING,
-					oldBinding, binding));
+					MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING, oldBinding, binding));
 	}
 
 	/**
@@ -118,10 +112,10 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
-			if (resolve)
-				return getBinding();
-			return basicGetBinding();
+			case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
+				if (resolve)
+					return getBinding();
+				return basicGetBinding();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -134,9 +128,9 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
-			setBinding((AbstractElementBinding) newValue);
-			return;
+			case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
+				setBinding((AbstractElementBinding)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -149,9 +143,9 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
-			setBinding((AbstractElementBinding) null);
-			return;
+			case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
+				setBinding((AbstractElementBinding)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -164,8 +158,8 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
-			return binding != null;
+			case MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING:
+				return binding != null;
 		}
 		return super.eIsSet(featureID);
 	}

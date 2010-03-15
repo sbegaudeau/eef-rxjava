@@ -9,18 +9,15 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: StandardElementBindingImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: StandardElementBindingImpl.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ModelElement;
 import org.eclipse.emf.eef.mapping.StandardElementBinding;
@@ -38,8 +35,7 @@ import org.eclipse.emf.eef.mapping.StandardElementBinding;
  *
  * @generated
  */
-public class StandardElementBindingImpl extends AbstractElementBindingImpl
-		implements StandardElementBinding {
+public class StandardElementBindingImpl extends AbstractElementBindingImpl implements StandardElementBinding {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -76,13 +72,12 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	 */
 	public ModelElement getModel() {
 		if (model != null && model.eIsProxy()) {
-			InternalEObject oldModel = (InternalEObject) model;
-			model = (ModelElement) eResolveProxy(oldModel);
+			InternalEObject oldModel = (InternalEObject)model;
+			model = (ModelElement)eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							MappingPackage.STANDARD_ELEMENT_BINDING__MODEL,
-							oldModel, model));
+							MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, oldModel, model));
 			}
 		}
 		return model;
@@ -102,15 +97,12 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetModel(ModelElement newModel,
-			NotificationChain msgs) {
+	public NotificationChain basicSetModel(ModelElement newModel, NotificationChain msgs) {
 		ModelElement oldModel = model;
 		model = newModel;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, oldModel,
-					newModel);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, oldModel, newModel);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -128,20 +120,17 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 		if (newModel != model) {
 			NotificationChain msgs = null;
 			if (model != null)
-				msgs = ((InternalEObject) model).eInverseRemove(this,
-						MappingPackage.MODEL_ELEMENT__BINDING,
+				msgs = ((InternalEObject)model).eInverseRemove(this, MappingPackage.MODEL_ELEMENT__BINDING,
 						ModelElement.class, msgs);
 			if (newModel != null)
-				msgs = ((InternalEObject) newModel).eInverseAdd(this,
-						MappingPackage.MODEL_ELEMENT__BINDING,
+				msgs = ((InternalEObject)newModel).eInverseAdd(this, MappingPackage.MODEL_ELEMENT__BINDING,
 						ModelElement.class, msgs);
 			msgs = basicSetModel(newModel, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, newModel,
-					newModel));
+					MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, newModel, newModel));
 	}
 
 	/**
@@ -150,15 +139,13 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
-			if (model != null)
-				msgs = ((InternalEObject) model).eInverseRemove(this,
-						MappingPackage.MODEL_ELEMENT__BINDING,
-						ModelElement.class, msgs);
-			return basicSetModel((ModelElement) otherEnd, msgs);
+			case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
+				if (model != null)
+					msgs = ((InternalEObject)model).eInverseRemove(this,
+							MappingPackage.MODEL_ELEMENT__BINDING, ModelElement.class, msgs);
+				return basicSetModel((ModelElement)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -169,11 +156,10 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
-			return basicSetModel(null, msgs);
+			case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
+				return basicSetModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -186,10 +172,10 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
-			if (resolve)
-				return getModel();
-			return basicGetModel();
+			case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
+				if (resolve)
+					return getModel();
+				return basicGetModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,9 +188,9 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
-			setModel((ModelElement) newValue);
-			return;
+			case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
+				setModel((ModelElement)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -217,9 +203,9 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
-			setModel((ModelElement) null);
-			return;
+			case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
+				setModel((ModelElement)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,8 +218,8 @@ public class StandardElementBindingImpl extends AbstractElementBindingImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
-			return model != null;
+			case MappingPackage.STANDARD_ELEMENT_BINDING__MODEL:
+				return model != null;
 		}
 		return super.eIsSet(featureID);
 	}

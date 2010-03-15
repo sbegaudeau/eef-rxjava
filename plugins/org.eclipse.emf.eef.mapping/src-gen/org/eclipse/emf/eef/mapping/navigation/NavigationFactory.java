@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationFactory.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: NavigationFactory.java,v 1.3 2010/03/15 10:22:30 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation;
 
@@ -30,8 +30,7 @@ public interface NavigationFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	NavigationFactory eINSTANCE = org.eclipse.emf.eef.mapping.navigation.impl.NavigationFactoryImpl
-			.init();
+	NavigationFactory eINSTANCE = org.eclipse.emf.eef.mapping.navigation.impl.NavigationFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Simple Model Navigation</em>'.

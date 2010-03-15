@@ -9,12 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaFilterImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: JavaFilterImpl.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.JavaFilter;
 
@@ -27,8 +26,7 @@ import org.eclipse.emf.eef.mapping.filters.JavaFilter;
  *
  * @generated
  */
-public abstract class JavaFilterImpl extends BindingFilterImpl implements
-		JavaFilter {
+public abstract class JavaFilterImpl extends BindingFilterImpl implements JavaFilter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

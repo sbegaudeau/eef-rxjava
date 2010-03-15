@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilter.java,v 1.1 2009/05/19 16:58:32 sbouchet Exp $
+ * $Id: JavaExpressionFilter.java,v 1.2 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters;
 
@@ -21,7 +21,7 @@ package org.eclipse.emf.eef.mapping.filters;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getBody <em>Body</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getJavaBody <em>Java Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,29 +31,29 @@ package org.eclipse.emf.eef.mapping.filters;
  */
 public interface JavaExpressionFilter extends JavaFilter {
 	/**
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
+	 * Returns the value of the '<em><b>Java Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Body</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Java Body</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Body</em>' attribute.
-	 * @see #setBody(String)
-	 * @see org.eclipse.emf.eef.mapping.filters.FiltersPackage#getJavaExpressionFilter_Body()
+	 * @return the value of the '<em>Java Body</em>' attribute.
+	 * @see #setJavaBody(String)
+	 * @see org.eclipse.emf.eef.mapping.filters.FiltersPackage#getJavaExpressionFilter_JavaBody()
 	 * @model
 	 * @generated
 	 */
-	String getBody();
+	String getJavaBody();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getBody <em>Body</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getJavaBody <em>Java Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Body</em>' attribute.
-	 * @see #getBody()
+	 * @param value the new value of the '<em>Java Body</em>' attribute.
+	 * @see #getJavaBody()
 	 * @generated
 	 */
-	void setBody(String value);
+	void setJavaBody(String value);
 
 } // JavaExpressionFilter

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationSwitch.java,v 1.5 2009/09/10 10:27:17 sbouchet Exp $
+ * $Id: NavigationSwitch.java,v 1.6 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.util;
 
@@ -81,8 +81,7 @@ public class NavigationSwitch<T> {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
-					eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -95,55 +94,55 @@ public class NavigationSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case NavigationPackage.MODEL_NAVIGATION: {
-			ModelNavigation modelNavigation = (ModelNavigation) theEObject;
-			T result = caseModelNavigation(modelNavigation);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION: {
-			SimpleModelNavigation simpleModelNavigation = (SimpleModelNavigation) theEObject;
-			T result = caseSimpleModelNavigation(simpleModelNavigation);
-			if (result == null)
-				result = caseStructuredModelNavigation(simpleModelNavigation);
-			if (result == null)
-				result = caseModelNavigation(simpleModelNavigation);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case NavigationPackage.CHAINED_MODEL_NAVIGATION: {
-			ChainedModelNavigation chainedModelNavigation = (ChainedModelNavigation) theEObject;
-			T result = caseChainedModelNavigation(chainedModelNavigation);
-			if (result == null)
-				result = caseStructuredModelNavigation(chainedModelNavigation);
-			if (result == null)
-				result = caseModelNavigation(chainedModelNavigation);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case NavigationPackage.STRUCTURED_MODEL_NAVIGATION: {
-			StructuredModelNavigation structuredModelNavigation = (StructuredModelNavigation) theEObject;
-			T result = caseStructuredModelNavigation(structuredModelNavigation);
-			if (result == null)
-				result = caseModelNavigation(structuredModelNavigation);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case NavigationPackage.CUSTOM_MODEL_NAVIGATION: {
-			CustomModelNavigation customModelNavigation = (CustomModelNavigation) theEObject;
-			T result = caseCustomModelNavigation(customModelNavigation);
-			if (result == null)
-				result = caseModelNavigation(customModelNavigation);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case NavigationPackage.MODEL_NAVIGATION: {
+				ModelNavigation modelNavigation = (ModelNavigation)theEObject;
+				T result = caseModelNavigation(modelNavigation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION: {
+				SimpleModelNavigation simpleModelNavigation = (SimpleModelNavigation)theEObject;
+				T result = caseSimpleModelNavigation(simpleModelNavigation);
+				if (result == null)
+					result = caseStructuredModelNavigation(simpleModelNavigation);
+				if (result == null)
+					result = caseModelNavigation(simpleModelNavigation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.CHAINED_MODEL_NAVIGATION: {
+				ChainedModelNavigation chainedModelNavigation = (ChainedModelNavigation)theEObject;
+				T result = caseChainedModelNavigation(chainedModelNavigation);
+				if (result == null)
+					result = caseStructuredModelNavigation(chainedModelNavigation);
+				if (result == null)
+					result = caseModelNavigation(chainedModelNavigation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.STRUCTURED_MODEL_NAVIGATION: {
+				StructuredModelNavigation structuredModelNavigation = (StructuredModelNavigation)theEObject;
+				T result = caseStructuredModelNavigation(structuredModelNavigation);
+				if (result == null)
+					result = caseModelNavigation(structuredModelNavigation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.CUSTOM_MODEL_NAVIGATION: {
+				CustomModelNavigation customModelNavigation = (CustomModelNavigation)theEObject;
+				T result = caseCustomModelNavigation(customModelNavigation);
+				if (result == null)
+					result = caseModelNavigation(customModelNavigation);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			default:
+				return defaultCase(theEObject);
 		}
 	}
 

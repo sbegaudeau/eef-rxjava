@@ -9,12 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: BusinessFilterImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: BusinessFilterImpl.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 
@@ -27,8 +26,7 @@ import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
  *
  * @generated
  */
-public abstract class BusinessFilterImpl extends BindingFilterImpl implements
-		BusinessFilter {
+public abstract class BusinessFilterImpl extends BindingFilterImpl implements BusinessFilter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingPackage.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: MappingPackage.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
@@ -64,8 +64,7 @@ public interface MappingPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MappingPackage eINSTANCE = org.eclipse.emf.eef.mapping.impl.MappingPackageImpl
-			.init();
+	MappingPackage eINSTANCE = org.eclipse.emf.eef.mapping.impl.MappingPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
@@ -1510,8 +1509,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATABINDING__CATEGORIES = eINSTANCE
-				.getDatabinding_Categories();
+		EReference DATABINDING__CATEGORIES = eINSTANCE.getDatabinding_Categories();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.ModelElementImpl <em>Model Element</em>}' class.
@@ -1529,8 +1527,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_ELEMENT__PROPERTIES = eINSTANCE
-				.getModelElement_Properties();
+		EReference MODEL_ELEMENT__PROPERTIES = eINSTANCE.getModelElement_Properties();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Elements</b></em>' containment reference list feature.
@@ -1538,8 +1535,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_ELEMENT__SUB_ELEMENTS = eINSTANCE
-				.getModelElement_SubElements();
+		EReference MODEL_ELEMENT__SUB_ELEMENTS = eINSTANCE.getModelElement_SubElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Binding</b></em>' reference feature.
@@ -1555,8 +1551,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_ELEMENT__SUPER_ELEMENT = eINSTANCE
-				.getModelElement_SuperElement();
+		EReference MODEL_ELEMENT__SUPER_ELEMENT = eINSTANCE.getModelElement_SuperElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl <em>Abstract Element Binding</em>}' class.
@@ -1574,8 +1569,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS = eINSTANCE
-				.getAbstractElementBinding_SubElements();
+		EReference ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS = eINSTANCE.getAbstractElementBinding_SubElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
@@ -1583,8 +1577,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__PROPERTIES = eINSTANCE
-				.getAbstractElementBinding_Properties();
+		EReference ABSTRACT_ELEMENT_BINDING__PROPERTIES = eINSTANCE.getAbstractElementBinding_Properties();
 
 		/**
 		 * The meta object literal for the '<em><b>Databinding</b></em>' container reference feature.
@@ -1592,8 +1585,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__DATABINDING = eINSTANCE
-				.getAbstractElementBinding_Databinding();
+		EReference ABSTRACT_ELEMENT_BINDING__DATABINDING = eINSTANCE.getAbstractElementBinding_Databinding();
 
 		/**
 		 * The meta object literal for the '<em><b>Super Element</b></em>' container reference feature.
@@ -1610,8 +1602,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_ELEMENT_BINDING__NAME = eINSTANCE
-				.getAbstractElementBinding_Name();
+		EAttribute ABSTRACT_ELEMENT_BINDING__NAME = eINSTANCE.getAbstractElementBinding_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Referenced Binding</b></em>' containment reference list feature.
@@ -1628,8 +1619,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__VIEWS = eINSTANCE
-				.getAbstractElementBinding_Views();
+		EReference ABSTRACT_ELEMENT_BINDING__VIEWS = eINSTANCE.getAbstractElementBinding_Views();
 
 		/**
 		 * The meta object literal for the '<em><b>Category</b></em>' container reference feature.
@@ -1637,8 +1627,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__CATEGORY = eINSTANCE
-				.getAbstractElementBinding_Category();
+		EReference ABSTRACT_ELEMENT_BINDING__CATEGORY = eINSTANCE.getAbstractElementBinding_Category();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl <em>Model Property</em>}' class.
@@ -1656,8 +1645,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_PROPERTY__BINDING = eINSTANCE
-				.getModelProperty_Binding();
+		EReference MODEL_PROPERTY__BINDING = eINSTANCE.getModelProperty_Binding();
 
 		/**
 		 * The meta object literal for the '<em><b>Model Element</b></em>' container reference feature.
@@ -1665,8 +1653,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_PROPERTY__MODEL_ELEMENT = eINSTANCE
-				.getModelProperty_ModelElement();
+		EReference MODEL_PROPERTY__MODEL_ELEMENT = eINSTANCE.getModelProperty_ModelElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl <em>Abstract Property Binding</em>}' class.
@@ -1676,8 +1663,7 @@ public interface MappingPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getAbstractPropertyBinding()
 		 * @generated
 		 */
-		EClass ABSTRACT_PROPERTY_BINDING = eINSTANCE
-				.getAbstractPropertyBinding();
+		EClass ABSTRACT_PROPERTY_BINDING = eINSTANCE.getAbstractPropertyBinding();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1685,8 +1671,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_PROPERTY_BINDING__NAME = eINSTANCE
-				.getAbstractPropertyBinding_Name();
+		EAttribute ABSTRACT_PROPERTY_BINDING__NAME = eINSTANCE.getAbstractPropertyBinding_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Views</b></em>' reference list feature.
@@ -1694,8 +1679,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_PROPERTY_BINDING__VIEWS = eINSTANCE
-				.getAbstractPropertyBinding_Views();
+		EReference ABSTRACT_PROPERTY_BINDING__VIEWS = eINSTANCE.getAbstractPropertyBinding_Views();
 
 		/**
 		 * The meta object literal for the '<em><b>Element</b></em>' container reference feature.
@@ -1703,8 +1687,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_PROPERTY_BINDING__ELEMENT = eINSTANCE
-				.getAbstractPropertyBinding_Element();
+		EReference ABSTRACT_PROPERTY_BINDING__ELEMENT = eINSTANCE.getAbstractPropertyBinding_Element();
 
 		/**
 		 * The meta object literal for the '<em><b>Binding Filters</b></em>' containment reference list feature.
@@ -1731,8 +1714,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EMF_ELEMENT_BINDING__MODEL = eINSTANCE
-				.getEMFElementBinding_Model();
+		EReference EMF_ELEMENT_BINDING__MODEL = eINSTANCE.getEMFElementBinding_Model();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl <em>EMF Property Binding</em>}' class.
@@ -1750,8 +1732,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EMF_PROPERTY_BINDING__MODEL = eINSTANCE
-				.getEMFPropertyBinding_Model();
+		EReference EMF_PROPERTY_BINDING__MODEL = eINSTANCE.getEMFPropertyBinding_Model();
 
 		/**
 		 * The meta object literal for the '<em><b>Navigation</b></em>' containment reference feature.
@@ -1759,8 +1740,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EMF_PROPERTY_BINDING__NAVIGATION = eINSTANCE
-				.getEMFPropertyBinding_Navigation();
+		EReference EMF_PROPERTY_BINDING__NAVIGATION = eINSTANCE.getEMFPropertyBinding_Navigation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl <em>Standard Element Binding</em>}' class.
@@ -1778,8 +1758,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STANDARD_ELEMENT_BINDING__MODEL = eINSTANCE
-				.getStandardElementBinding_Model();
+		EReference STANDARD_ELEMENT_BINDING__MODEL = eINSTANCE.getStandardElementBinding_Model();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.StandardPropertyBindingImpl <em>Standard Property Binding</em>}' class.
@@ -1789,8 +1768,7 @@ public interface MappingPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getStandardPropertyBinding()
 		 * @generated
 		 */
-		EClass STANDARD_PROPERTY_BINDING = eINSTANCE
-				.getStandardPropertyBinding();
+		EClass STANDARD_PROPERTY_BINDING = eINSTANCE.getStandardPropertyBinding();
 
 		/**
 		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
@@ -1798,8 +1776,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STANDARD_PROPERTY_BINDING__MODEL = eINSTANCE
-				.getStandardPropertyBinding_Model();
+		EReference STANDARD_PROPERTY_BINDING__MODEL = eINSTANCE.getStandardPropertyBinding_Model();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.CategoryImpl <em>Category</em>}' class.
@@ -1851,8 +1828,7 @@ public interface MappingPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getElementBindingReference()
 		 * @generated
 		 */
-		EClass ELEMENT_BINDING_REFERENCE = eINSTANCE
-				.getElementBindingReference();
+		EClass ELEMENT_BINDING_REFERENCE = eINSTANCE.getElementBindingReference();
 
 		/**
 		 * The meta object literal for the '<em><b>Binding</b></em>' reference feature.
@@ -1860,8 +1836,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ELEMENT_BINDING_REFERENCE__BINDING = eINSTANCE
-				.getElementBindingReference_Binding();
+		EReference ELEMENT_BINDING_REFERENCE__BINDING = eINSTANCE.getElementBindingReference_Binding();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
@@ -1879,8 +1854,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE
-				.getDocumentedElement_Documentation();
+		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE.getDocumentedElement_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.EMFMultiPropertiesBindingImpl <em>EMF Multi Properties Binding</em>}' class.
@@ -1890,8 +1864,7 @@ public interface MappingPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getEMFMultiPropertiesBinding()
 		 * @generated
 		 */
-		EClass EMF_MULTI_PROPERTIES_BINDING = eINSTANCE
-				.getEMFMultiPropertiesBinding();
+		EClass EMF_MULTI_PROPERTIES_BINDING = eINSTANCE.getEMFMultiPropertiesBinding();
 
 		/**
 		 * The meta object literal for the '<em><b>Model</b></em>' reference list feature.
@@ -1899,8 +1872,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EMF_MULTI_PROPERTIES_BINDING__MODEL = eINSTANCE
-				.getEMFMultiPropertiesBinding_Model();
+		EReference EMF_MULTI_PROPERTIES_BINDING__MODEL = eINSTANCE.getEMFMultiPropertiesBinding_Model();
 
 		/**
 		 * The meta object literal for the '<em><b>Navigation</b></em>' containment reference feature.

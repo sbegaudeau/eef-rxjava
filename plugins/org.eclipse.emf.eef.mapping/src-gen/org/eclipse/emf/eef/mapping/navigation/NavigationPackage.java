@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: NavigationPackage.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: NavigationPackage.java,v 1.3 2010/03/15 10:22:30 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation;
 
@@ -64,8 +64,7 @@ public interface NavigationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	NavigationPackage eINSTANCE = org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl
-			.init();
+	NavigationPackage eINSTANCE = org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.navigation.impl.ModelNavigationImpl <em>Model Navigation</em>}' class.
@@ -360,8 +359,7 @@ public interface NavigationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SIMPLE_MODEL_NAVIGATION__FEATURE = eINSTANCE
-				.getSimpleModelNavigation_Feature();
+		EReference SIMPLE_MODEL_NAVIGATION__FEATURE = eINSTANCE.getSimpleModelNavigation_Feature();
 
 		/**
 		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
@@ -369,8 +367,7 @@ public interface NavigationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SIMPLE_MODEL_NAVIGATION__INDEX = eINSTANCE
-				.getSimpleModelNavigation_Index();
+		EAttribute SIMPLE_MODEL_NAVIGATION__INDEX = eINSTANCE.getSimpleModelNavigation_Index();
 
 		/**
 		 * The meta object literal for the '<em><b>Discriminator Type</b></em>' reference feature.
@@ -397,8 +394,7 @@ public interface NavigationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHAINED_MODEL_NAVIGATION__CURRENT = eINSTANCE
-				.getChainedModelNavigation_Current();
+		EReference CHAINED_MODEL_NAVIGATION__CURRENT = eINSTANCE.getChainedModelNavigation_Current();
 
 		/**
 		 * The meta object literal for the '<em><b>Next</b></em>' containment reference feature.
@@ -406,8 +402,7 @@ public interface NavigationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHAINED_MODEL_NAVIGATION__NEXT = eINSTANCE
-				.getChainedModelNavigation_Next();
+		EReference CHAINED_MODEL_NAVIGATION__NEXT = eINSTANCE.getChainedModelNavigation_Next();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.navigation.impl.StructuredModelNavigationImpl <em>Structured Model Navigation</em>}' class.
@@ -417,8 +412,7 @@ public interface NavigationPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl#getStructuredModelNavigation()
 		 * @generated
 		 */
-		EClass STRUCTURED_MODEL_NAVIGATION = eINSTANCE
-				.getStructuredModelNavigation();
+		EClass STRUCTURED_MODEL_NAVIGATION = eINSTANCE.getStructuredModelNavigation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.navigation.impl.CustomModelNavigationImpl <em>Custom Model Navigation</em>}' class.

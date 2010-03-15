@@ -9,16 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: JavaExpressionFilterImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: JavaExpressionFilterImpl.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
 
@@ -29,33 +26,32 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.mapping.filters.impl.JavaExpressionFilterImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.filters.impl.JavaExpressionFilterImpl#getJavaBody <em>Java Body</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JavaExpressionFilterImpl extends JavaFilterImpl implements
-		JavaExpressionFilter {
+public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpressionFilter {
 	/**
-	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * The default value of the '{@link #getJavaBody() <em>Java Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBody()
+	 * @see #getJavaBody()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BODY_EDEFAULT = null;
+	protected static final String JAVA_BODY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * The cached value of the '{@link #getJavaBody() <em>Java Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBody()
+	 * @see #getJavaBody()
 	 * @generated
 	 * @ordered
 	 */
-	protected String body = BODY_EDEFAULT;
+	protected String javaBody = JAVA_BODY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,8 +77,8 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getBody() {
-		return body;
+	public String getJavaBody() {
+		return javaBody;
 	}
 
 	/**
@@ -90,12 +86,12 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBody(String newBody) {
-		String oldBody = body;
-		body = newBody;
+	public void setJavaBody(String newJavaBody) {
+		String oldJavaBody = javaBody;
+		javaBody = newJavaBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					FiltersPackage.JAVA_EXPRESSION_FILTER__BODY, oldBody, body));
+					FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY, oldJavaBody, javaBody));
 	}
 
 	/**
@@ -106,8 +102,8 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-			return getBody();
+			case FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY:
+				return getJavaBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +116,9 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-			setBody((String) newValue);
-			return;
+			case FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY:
+				setJavaBody((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -135,9 +131,9 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-			setBody(BODY_EDEFAULT);
-			return;
+			case FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY:
+				setJavaBody(JAVA_BODY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -150,9 +146,8 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case FiltersPackage.JAVA_EXPRESSION_FILTER__BODY:
-			return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT
-					.equals(body);
+			case FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY:
+				return JAVA_BODY_EDEFAULT == null ? javaBody != null : !JAVA_BODY_EDEFAULT.equals(javaBody);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -168,8 +163,8 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (body: ");
-		result.append(body);
+		result.append(" (javaBody: ");
+		result.append(javaBody);
 		result.append(')');
 		return result.toString();
 	}

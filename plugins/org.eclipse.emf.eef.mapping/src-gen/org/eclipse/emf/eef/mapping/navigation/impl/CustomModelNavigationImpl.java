@@ -9,12 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: CustomModelNavigationImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: CustomModelNavigationImpl.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.navigation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.eef.mapping.navigation.CustomModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 
@@ -27,8 +26,7 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
  *
  * @generated
  */
-public class CustomModelNavigationImpl extends ModelNavigationImpl implements
-		CustomModelNavigation {
+public class CustomModelNavigationImpl extends ModelNavigationImpl implements CustomModelNavigation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

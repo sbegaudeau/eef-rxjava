@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersPackage.java,v 1.4 2009/09/10 10:27:15 sbouchet Exp $
+ * $Id: FiltersPackage.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters;
 
@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.eef.mapping.MappingPackage;
 
 /**
@@ -66,8 +65,7 @@ public interface FiltersPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FiltersPackage eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl
-			.init();
+	FiltersPackage eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.filters.impl.BindingFilterImpl <em>Binding Filter</em>}' class.
@@ -153,13 +151,13 @@ public interface FiltersPackage extends EPackage {
 	int OCL_FILTER__MANDATORY = BINDING_FILTER__MANDATORY;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * The feature id for the '<em><b>OCL Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OCL_FILTER__BODY = BINDING_FILTER_FEATURE_COUNT + 0;
+	int OCL_FILTER__OCL_BODY = BINDING_FILTER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>OCL Filter</em>' class.
@@ -309,13 +307,13 @@ public interface FiltersPackage extends EPackage {
 	int JAVA_EXPRESSION_FILTER__MANDATORY = JAVA_FILTER__MANDATORY;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * The feature id for the '<em><b>Java Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_EXPRESSION_FILTER__BODY = JAVA_FILTER_FEATURE_COUNT + 0;
+	int JAVA_EXPRESSION_FILTER__JAVA_BODY = JAVA_FILTER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Java Expression Filter</em>' class.
@@ -470,15 +468,15 @@ public interface FiltersPackage extends EPackage {
 	EClass getOCLFilter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.filters.OCLFilter#getBody <em>Body</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.filters.OCLFilter#getOCLBody <em>OCL Body</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Body</em>'.
-	 * @see org.eclipse.emf.eef.mapping.filters.OCLFilter#getBody()
+	 * @return the meta object for the attribute '<em>OCL Body</em>'.
+	 * @see org.eclipse.emf.eef.mapping.filters.OCLFilter#getOCLBody()
 	 * @see #getOCLFilter()
 	 * @generated
 	 */
-	EAttribute getOCLFilter_Body();
+	EAttribute getOCLFilter_OCLBody();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.filters.JavaFilter <em>Java Filter</em>}'.
@@ -522,15 +520,15 @@ public interface FiltersPackage extends EPackage {
 	EClass getJavaExpressionFilter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getBody <em>Body</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getJavaBody <em>Java Body</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Body</em>'.
-	 * @see org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getBody()
+	 * @return the meta object for the attribute '<em>Java Body</em>'.
+	 * @see org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter#getJavaBody()
 	 * @see #getJavaExpressionFilter()
 	 * @generated
 	 */
-	EAttribute getJavaExpressionFilter_Body();
+	EAttribute getJavaExpressionFilter_JavaBody();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.filters.BusinessFilter <em>Business Filter</em>}'.
@@ -609,8 +607,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BINDING_FILTER__MANDATORY = eINSTANCE
-				.getBindingFilter_Mandatory();
+		EAttribute BINDING_FILTER__MANDATORY = eINSTANCE.getBindingFilter_Mandatory();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl <em>OCL Filter</em>}' class.
@@ -623,12 +620,12 @@ public interface FiltersPackage extends EPackage {
 		EClass OCL_FILTER = eINSTANCE.getOCLFilter();
 
 		/**
-		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>OCL Body</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OCL_FILTER__BODY = eINSTANCE.getOCLFilter_Body();
+		EAttribute OCL_FILTER__OCL_BODY = eINSTANCE.getOCLFilter_OCLBody();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.JavaFilterImpl <em>Java Filter</em>}' class.
@@ -656,8 +653,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_DECLARATION_FILTER__METHOD_NAME = eINSTANCE
-				.getJavaDeclarationFilter_MethodName();
+		EAttribute JAVA_DECLARATION_FILTER__METHOD_NAME = eINSTANCE.getJavaDeclarationFilter_MethodName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.JavaExpressionFilterImpl <em>Java Expression Filter</em>}' class.
@@ -670,13 +666,12 @@ public interface FiltersPackage extends EPackage {
 		EClass JAVA_EXPRESSION_FILTER = eINSTANCE.getJavaExpressionFilter();
 
 		/**
-		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Java Body</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_EXPRESSION_FILTER__BODY = eINSTANCE
-				.getJavaExpressionFilter_Body();
+		EAttribute JAVA_EXPRESSION_FILTER__JAVA_BODY = eINSTANCE.getJavaExpressionFilter_JavaBody();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.BusinessFilterImpl <em>Business Filter</em>}' class.
@@ -696,8 +691,7 @@ public interface FiltersPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl#getOnlyReferenceTypeFilter()
 		 * @generated
 		 */
-		EClass ONLY_REFERENCE_TYPE_FILTER = eINSTANCE
-				.getOnlyReferenceTypeFilter();
+		EClass ONLY_REFERENCE_TYPE_FILTER = eINSTANCE.getOnlyReferenceTypeFilter();
 
 		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -705,8 +699,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ONLY_REFERENCE_TYPE_FILTER__REFERENCE = eINSTANCE
-				.getOnlyReferenceTypeFilter_Reference();
+		EReference ONLY_REFERENCE_TYPE_FILTER__REFERENCE = eINSTANCE.getOnlyReferenceTypeFilter_Reference();
 
 	}
 

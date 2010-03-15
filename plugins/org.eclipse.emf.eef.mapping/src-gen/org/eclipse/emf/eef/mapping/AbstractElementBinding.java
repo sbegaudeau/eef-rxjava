@@ -9,12 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: AbstractElementBinding.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: AbstractElementBinding.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.eef.views.View;
 
 /**

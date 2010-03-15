@@ -9,16 +9,13 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: OCLFilterImpl.java,v 1.4 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: OCLFilterImpl.java,v 1.5 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 
@@ -29,7 +26,7 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl#getOCLBody <em>OCL Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,24 +34,24 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
  */
 public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	/**
-	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * The default value of the '{@link #getOCLBody() <em>OCL Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBody()
+	 * @see #getOCLBody()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BODY_EDEFAULT = null;
+	protected static final String OCL_BODY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * The cached value of the '{@link #getOCLBody() <em>OCL Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBody()
+	 * @see #getOCLBody()
 	 * @generated
 	 * @ordered
 	 */
-	protected String body = BODY_EDEFAULT;
+	protected String oclBody = OCL_BODY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,8 +77,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getBody() {
-		return body;
+	public String getOCLBody() {
+		return oclBody;
 	}
 
 	/**
@@ -89,12 +86,12 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBody(String newBody) {
-		String oldBody = body;
-		body = newBody;
+	public void setOCLBody(String newOCLBody) {
+		String oldOCLBody = oclBody;
+		oclBody = newOCLBody;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					FiltersPackage.OCL_FILTER__BODY, oldBody, body));
+			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.OCL_FILTER__OCL_BODY,
+					oldOCLBody, oclBody));
 	}
 
 	/**
@@ -105,8 +102,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case FiltersPackage.OCL_FILTER__BODY:
-			return getBody();
+			case FiltersPackage.OCL_FILTER__OCL_BODY:
+				return getOCLBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,9 +116,9 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case FiltersPackage.OCL_FILTER__BODY:
-			setBody((String) newValue);
-			return;
+			case FiltersPackage.OCL_FILTER__OCL_BODY:
+				setOCLBody((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -134,9 +131,9 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case FiltersPackage.OCL_FILTER__BODY:
-			setBody(BODY_EDEFAULT);
-			return;
+			case FiltersPackage.OCL_FILTER__OCL_BODY:
+				setOCLBody(OCL_BODY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,9 +146,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case FiltersPackage.OCL_FILTER__BODY:
-			return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT
-					.equals(body);
+			case FiltersPackage.OCL_FILTER__OCL_BODY:
+				return OCL_BODY_EDEFAULT == null ? oclBody != null : !OCL_BODY_EDEFAULT.equals(oclBody);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -167,8 +163,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (body: ");
-		result.append(body);
+		result.append(" (OCLBody: ");
+		result.append(oclBody);
 		result.append(')');
 		return result.toString();
 	}

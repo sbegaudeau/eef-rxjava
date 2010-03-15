@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: MappingFactory.java,v 1.2 2009/05/26 08:20:05 glefur Exp $
+ * $Id: MappingFactory.java,v 1.3 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
@@ -30,8 +30,7 @@ public interface MappingFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MappingFactory eINSTANCE = org.eclipse.emf.eef.mapping.impl.MappingFactoryImpl
-			.init();
+	MappingFactory eINSTANCE = org.eclipse.emf.eef.mapping.impl.MappingFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Databinding</em>'.

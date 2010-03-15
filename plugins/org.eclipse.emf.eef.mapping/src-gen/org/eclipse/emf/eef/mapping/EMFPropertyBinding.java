@@ -9,12 +9,11 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: EMFPropertyBinding.java,v 1.2 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: EMFPropertyBinding.java,v 1.3 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
 
 /**

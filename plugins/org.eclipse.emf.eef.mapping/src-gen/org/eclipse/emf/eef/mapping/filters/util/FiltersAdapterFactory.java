@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersAdapterFactory.java,v 1.5 2009/09/10 10:27:15 sbouchet Exp $
+ * $Id: FiltersAdapterFactory.java,v 1.6 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters.util;
 
@@ -70,7 +70,7 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -113,8 +113,7 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseOnlyReferenceTypeFilter(
-				OnlyReferenceTypeFilter object) {
+		public Adapter caseOnlyReferenceTypeFilter(OnlyReferenceTypeFilter object) {
 			return createOnlyReferenceTypeFilterAdapter();
 		}
 
@@ -139,7 +138,7 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

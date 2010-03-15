@@ -9,22 +9,18 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: DatabindingImpl.java,v 1.5 2009/09/10 10:27:16 sbouchet Exp $
+ * $Id: DatabindingImpl.java,v 1.6 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
@@ -44,8 +40,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public class DatabindingImpl extends DocumentedElementImpl implements
-		Databinding {
+public class DatabindingImpl extends DocumentedElementImpl implements Databinding {
 	/**
 	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -93,8 +88,7 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	public EList<AbstractElementBinding> getBindings() {
 		if (bindings == null) {
 			bindings = new EObjectContainmentWithInverseEList<AbstractElementBinding>(
-					AbstractElementBinding.class, this,
-					MappingPackage.DATABINDING__BINDINGS,
+					AbstractElementBinding.class, this, MappingPackage.DATABINDING__BINDINGS,
 					MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING);
 		}
 		return bindings;
@@ -107,10 +101,8 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	 */
 	public EList<Category> getCategories() {
 		if (categories == null) {
-			categories = new EObjectContainmentWithInverseEList<Category>(
-					Category.class, this,
-					MappingPackage.DATABINDING__CATEGORIES,
-					MappingPackage.CATEGORY__DATABINDING);
+			categories = new EObjectContainmentWithInverseEList<Category>(Category.class, this,
+					MappingPackage.DATABINDING__CATEGORIES, MappingPackage.CATEGORY__DATABINDING);
 		}
 		return categories;
 	}
@@ -122,15 +114,14 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MappingPackage.DATABINDING__BINDINGS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getBindings())
-					.basicAdd(otherEnd, msgs);
-		case MappingPackage.DATABINDING__CATEGORIES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getCategories())
-					.basicAdd(otherEnd, msgs);
+			case MappingPackage.DATABINDING__BINDINGS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd,
+						msgs);
+			case MappingPackage.DATABINDING__CATEGORIES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd,
+						msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -141,15 +132,12 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MappingPackage.DATABINDING__BINDINGS:
-			return ((InternalEList<?>) getBindings()).basicRemove(otherEnd,
-					msgs);
-		case MappingPackage.DATABINDING__CATEGORIES:
-			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd,
-					msgs);
+			case MappingPackage.DATABINDING__BINDINGS:
+				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
+			case MappingPackage.DATABINDING__CATEGORIES:
+				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -162,10 +150,10 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MappingPackage.DATABINDING__BINDINGS:
-			return getBindings();
-		case MappingPackage.DATABINDING__CATEGORIES:
-			return getCategories();
+			case MappingPackage.DATABINDING__BINDINGS:
+				return getBindings();
+			case MappingPackage.DATABINDING__CATEGORIES:
+				return getCategories();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -179,15 +167,14 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MappingPackage.DATABINDING__BINDINGS:
-			getBindings().clear();
-			getBindings().addAll(
-					(Collection<? extends AbstractElementBinding>) newValue);
-			return;
-		case MappingPackage.DATABINDING__CATEGORIES:
-			getCategories().clear();
-			getCategories().addAll((Collection<? extends Category>) newValue);
-			return;
+			case MappingPackage.DATABINDING__BINDINGS:
+				getBindings().clear();
+				getBindings().addAll((Collection<? extends AbstractElementBinding>)newValue);
+				return;
+			case MappingPackage.DATABINDING__CATEGORIES:
+				getCategories().clear();
+				getCategories().addAll((Collection<? extends Category>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -200,12 +187,12 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MappingPackage.DATABINDING__BINDINGS:
-			getBindings().clear();
-			return;
-		case MappingPackage.DATABINDING__CATEGORIES:
-			getCategories().clear();
-			return;
+			case MappingPackage.DATABINDING__BINDINGS:
+				getBindings().clear();
+				return;
+			case MappingPackage.DATABINDING__CATEGORIES:
+				getCategories().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -218,10 +205,10 @@ public class DatabindingImpl extends DocumentedElementImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MappingPackage.DATABINDING__BINDINGS:
-			return bindings != null && !bindings.isEmpty();
-		case MappingPackage.DATABINDING__CATEGORIES:
-			return categories != null && !categories.isEmpty();
+			case MappingPackage.DATABINDING__BINDINGS:
+				return bindings != null && !bindings.isEmpty();
+			case MappingPackage.DATABINDING__CATEGORIES:
+				return categories != null && !categories.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

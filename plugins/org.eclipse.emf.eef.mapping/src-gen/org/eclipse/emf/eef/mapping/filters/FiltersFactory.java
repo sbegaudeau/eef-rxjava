@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: FiltersFactory.java,v 1.2 2009/05/26 08:20:04 glefur Exp $
+ * $Id: FiltersFactory.java,v 1.3 2010/03/15 10:22:29 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.filters;
 
@@ -30,8 +30,7 @@ public interface FiltersFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FiltersFactory eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersFactoryImpl
-			.init();
+	FiltersFactory eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>OCL Filter</em>'.
