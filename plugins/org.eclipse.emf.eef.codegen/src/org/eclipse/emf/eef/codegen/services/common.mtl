@@ -78,7 +78,7 @@
 @param EStructuralFeature : the feature of the composition 
 [/comment]
 [query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =
-	 peElement.element.category.databinding.categories.bindings->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : components::PropertiesEditionElement | pee.model=f)->first()/]
+	 peElement.element.category.eContainer(components::PropertiesEditionContext).categories.bindings->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : components::PropertiesEditionElement | pee.model=f)->first()/]
 
 [query public relatedComponent(view : View, pec : PropertiesEditionComponent) : PropertiesEditionComponent =
 	if (pec.views->includes(view))

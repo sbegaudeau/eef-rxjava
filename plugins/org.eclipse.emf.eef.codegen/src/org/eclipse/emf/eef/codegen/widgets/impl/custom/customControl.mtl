@@ -16,7 +16,7 @@
 
 [comment ===== Case : model = any - view = CustomElementEditor ===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for '.concat(editionElement.name).concat(' live update'))]
 		
 		// [/protected]
@@ -24,7 +24,7 @@
 [/template]
 
 [template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for '.concat(editionElement.name).concat(' live command update'))]
 			
 			// [/protected]
@@ -32,7 +32,7 @@
 [/template]
 
 [template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for '.concat(editionElement.name).concat(' update command'))]
 			
 			// [/protected]
@@ -40,7 +40,7 @@
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for '.concat(editionElement.name).concat(' part update'))]
 			
 			// [/protected]
@@ -48,7 +48,7 @@
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected (' for '.concat(editionElement.name).concat(' command update'))]
 		
 		// [/protected]
@@ -56,7 +56,7 @@
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-		[if (not editionElement.element.databinding.oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected (' for '.concat(editionElement.name).concat(' filter update'))]
 		
 		// [/protected]

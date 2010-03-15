@@ -133,8 +133,8 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [for (element : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (element.bindingFilters->notEmpty())]
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
-import org.eclipse.emf.eef.runtime.util.EEFUtil;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 [for (bindingFilter : BindingFilter | element.bindingFilters) ? (bindingFilter.oclIsTypeOf(mapping::filters::OnlyReferenceTypeFilter))]
 import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).reference.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
 [/for]
