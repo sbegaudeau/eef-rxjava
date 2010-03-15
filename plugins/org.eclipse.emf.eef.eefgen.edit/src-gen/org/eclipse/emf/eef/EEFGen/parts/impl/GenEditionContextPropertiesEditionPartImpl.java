@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -374,13 +374,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		propertiesEditionContext.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForPropertiesEditionContext(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForPropertiesEditionContext() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -406,13 +399,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-	public void setMessageForBasePackage(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForBasePackage() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -438,13 +424,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-	public void setMessageForDescriptorsContributorID(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDescriptorsContributorID() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -470,13 +449,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-	public void setMessageForGenericPropertiesViewsDescriptors(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForGenericPropertiesViewsDescriptors() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -502,13 +474,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-	public void setMessageForGMFSpecificPropertiesViews(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForGMFSpecificPropertiesViews() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -534,13 +499,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-	public void setMessageForJUnitTestCases(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForJUnitTestCases() {
-
-	}
 
 
 

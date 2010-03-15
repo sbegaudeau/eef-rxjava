@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -91,7 +91,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createParametersGroup(widgetFactory, view);
 
 		createLegalGroup(widgetFactory, view);
@@ -338,13 +337,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForGenerationDirectory(String msg, int msgLevel) {
-		messageManager.addMessage("GenerationDirectory_key", msg, null, msgLevel, generationDirectory);
-	}
-
-	public void unsetMessageForGenerationDirectory() {
-		messageManager.removeMessage("GenerationDirectory_key", generationDirectory);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -370,13 +362,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTestsGenerationDirectory(String msg, int msgLevel) {
-		messageManager.addMessage("TestsGenerationDirectory_key", msg, null, msgLevel, testsGenerationDirectory);
-	}
-
-	public void unsetMessageForTestsGenerationDirectory() {
-		messageManager.removeMessage("TestsGenerationDirectory_key", testsGenerationDirectory);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -403,9 +388,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -430,13 +412,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForAuthor(String msg, int msgLevel) {
-		messageManager.addMessage("Author_key", msg, null, msgLevel, author);
-	}
-
-	public void unsetMessageForAuthor() {
-		messageManager.removeMessage("Author_key", author);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -462,13 +437,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForLicense(String msg, int msgLevel) {
-		messageManager.addMessage("License_key", msg, null, msgLevel, license);
-	}
-
-	public void unsetMessageForLicense() {
-		messageManager.removeMessage("License_key", license);
-	}
 
 
 

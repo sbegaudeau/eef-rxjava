@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -105,7 +105,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
 
 		createParametersGroup(widgetFactory, view);
@@ -388,9 +387,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -415,13 +411,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		}
 	}
 
-	public void setMessageForBasePackage(String msg, int msgLevel) {
-		messageManager.addMessage("BasePackage_key", msg, null, msgLevel, basePackage);
-	}
-
-	public void unsetMessageForBasePackage() {
-		messageManager.removeMessage("BasePackage_key", basePackage);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -455,9 +444,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -483,9 +469,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -509,9 +492,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 			formsViews.setSelection(false);
 		}
 	}
-
-
-
 
 
 

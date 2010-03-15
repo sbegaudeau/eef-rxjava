@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -75,10 +75,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void addBusinessFilterToPropertiesEditionContext(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the Base package
 	 * 
@@ -91,10 +87,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * 
 	 */
 	public void setBasePackage(String newValue);
-
-	public void setMessageForBasePackage(String msg, int msgLevel);
-
-	public void unsetMessageForBasePackage();
 
 
 	/**
@@ -109,10 +101,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * 
 	 */
 	public void setDescriptorsContributorID(String newValue);
-
-	public void setMessageForDescriptorsContributorID(String msg, int msgLevel);
-
-	public void unsetMessageForDescriptorsContributorID();
 
 
 	/**
@@ -129,10 +117,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void setGenericPropertiesViewsDescriptors(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the GMF specific properties views
 	 * 
@@ -147,10 +131,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void setGMFSpecificPropertiesViews(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the JUnit test cases
 	 * 
@@ -163,10 +143,6 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * 
 	 */
 	public void setJUnitTestCases(Boolean newValue);
-
-
-
-
 
 
 

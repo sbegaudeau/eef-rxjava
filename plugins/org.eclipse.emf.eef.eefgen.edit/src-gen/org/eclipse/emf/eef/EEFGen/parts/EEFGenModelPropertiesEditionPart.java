@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -37,10 +37,6 @@ public interface EEFGenModelPropertiesEditionPart {
 	 */
 	public void setGenerationDirectory(String newValue);
 
-	public void setMessageForGenerationDirectory(String msg, int msgLevel);
-
-	public void unsetMessageForGenerationDirectory();
-
 
 	/**
 	 * @return the Tests generation directory
@@ -54,10 +50,6 @@ public interface EEFGenModelPropertiesEditionPart {
 	 * 
 	 */
 	public void setTestsGenerationDirectory(String newValue);
-
-	public void setMessageForTestsGenerationDirectory(String msg, int msgLevel);
-
-	public void unsetMessageForTestsGenerationDirectory();
 
 
 	/**
@@ -74,10 +66,6 @@ public interface EEFGenModelPropertiesEditionPart {
 	public void setUseJMergeToManageUserCode(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the author
 	 * 
@@ -90,10 +78,6 @@ public interface EEFGenModelPropertiesEditionPart {
 	 * 
 	 */
 	public void setAuthor(String newValue);
-
-	public void setMessageForAuthor(String msg, int msgLevel);
-
-	public void unsetMessageForAuthor();
 
 
 	/**
@@ -108,10 +92,6 @@ public interface EEFGenModelPropertiesEditionPart {
 	 * 
 	 */
 	public void setLicense(String newValue);
-
-	public void setMessageForLicense(String msg, int msgLevel);
-
-	public void unsetMessageForLicense();
 
 
 

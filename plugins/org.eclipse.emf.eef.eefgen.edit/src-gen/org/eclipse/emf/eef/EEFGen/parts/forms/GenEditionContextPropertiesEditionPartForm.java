@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -100,7 +100,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createReferenceGroup(widgetFactory, view);
 
 		createParametersGroup(widgetFactory, view);
@@ -419,9 +418,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -446,13 +442,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		}
 	}
 
-	public void setMessageForBasePackage(String msg, int msgLevel) {
-		messageManager.addMessage("BasePackage_key", msg, null, msgLevel, basePackage);
-	}
-
-	public void unsetMessageForBasePackage() {
-		messageManager.removeMessage("BasePackage_key", basePackage);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -478,13 +467,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		}
 	}
 
-	public void setMessageForDescriptorsContributorID(String msg, int msgLevel) {
-		messageManager.addMessage("DescriptorsContributorID_key", msg, null, msgLevel, descriptorsContributorID);
-	}
-
-	public void unsetMessageForDescriptorsContributorID() {
-		messageManager.removeMessage("DescriptorsContributorID_key", descriptorsContributorID);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -509,9 +491,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			genericPropertiesViewsDescriptors.setSelection(false);
 		}
 	}
-
-
-
 
 
 	/**
@@ -539,9 +518,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -565,9 +541,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			jUnitTestCases.setSelection(false);
 		}
 	}
-
-
-
 
 
 

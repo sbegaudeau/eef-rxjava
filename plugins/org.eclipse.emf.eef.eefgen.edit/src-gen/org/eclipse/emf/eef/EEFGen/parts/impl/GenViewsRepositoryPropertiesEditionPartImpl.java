@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -336,13 +336,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		viewsRepository.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForViewsRepository(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForViewsRepository() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -368,13 +361,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		}
 	}
 
-	public void setMessageForBasePackage(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForBasePackage() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -407,13 +393,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		helpStrategy.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForHelpStrategy(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForHelpStrategy() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -439,13 +418,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		}
 	}
 
-	public void setMessageForSWTViews(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSWTViews() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -471,13 +443,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		}
 	}
 
-	public void setMessageForFormsViews(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForFormsViews() {
-
-	}
 
 
 

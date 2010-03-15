@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008-2010 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -76,10 +76,6 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	public void addBusinessFilterToViewsRepository(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the Base package
 	 * 
@@ -92,10 +88,6 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * 
 	 */
 	public void setBasePackage(String newValue);
-
-	public void setMessageForBasePackage(String msg, int msgLevel);
-
-	public void unsetMessageForBasePackage();
 
 
 	/**
@@ -119,10 +111,6 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	public void setHelpStrategy(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the SWT views
 	 * 
@@ -137,10 +125,6 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	public void setSWTViews(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the Forms views
 	 * 
@@ -153,10 +137,6 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * 
 	 */
 	public void setFormsViews(Boolean newValue);
-
-
-
-
 
 
 
