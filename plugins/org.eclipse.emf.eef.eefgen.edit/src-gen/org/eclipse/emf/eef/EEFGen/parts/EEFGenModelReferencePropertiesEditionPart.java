@@ -23,11 +23,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface EEFGenModelReferencePropertiesEditionPart {
 
 	/**
 	 * @return the Referenced EEFGenModel
+	 * 
 	 */
 	public EObject getReferencedEEFGenModel();
 
@@ -41,12 +43,14 @@ public interface EEFGenModelReferencePropertiesEditionPart {
 	/**
 	 * Defines a new Referenced EEFGenModel
 	 * @param newValue the new Referenced EEFGenModel to set
+	 * 
 	 */
 	public void setReferencedEEFGenModel(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setReferencedEEFGenModelButtonMode(ButtonsModeEnum newValue);
 
@@ -56,6 +60,7 @@ public interface EEFGenModelReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToReferencedEEFGenModel(ViewerFilter filter);
 
@@ -65,9 +70,9 @@ public interface EEFGenModelReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencedEEFGenModel(ViewerFilter filter);
-
 
 
 
@@ -81,6 +86,7 @@ public interface EEFGenModelReferencePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

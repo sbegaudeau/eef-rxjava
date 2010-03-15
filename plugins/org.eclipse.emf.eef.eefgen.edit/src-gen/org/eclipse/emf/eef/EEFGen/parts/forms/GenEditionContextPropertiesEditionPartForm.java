@@ -52,6 +52,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class GenEditionContextPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, GenEditionContextPropertiesEditionPart {
 
@@ -64,11 +65,10 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public GenEditionContextPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -79,6 +79,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -96,6 +97,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -109,6 +111,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
 		Section referenceSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referenceSection.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ReferenceGroupLabel);
@@ -125,6 +130,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 
 	/**
 	 * @param referenceGroup
+	 * 
 	 */
 	protected void createPropertiesEditionContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND));
@@ -148,6 +154,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createParametersGroup(FormToolkit widgetFactory, final Composite view) {
 		Section parametersSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		parametersSection.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ParametersGroupLabel);
@@ -163,6 +172,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		parametersSection.setClient(parametersGroup);
 	}
 
+	
 	protected void createBasePackageText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.FORM_KIND));
 		basePackage = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -173,6 +183,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		basePackage.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -184,6 +195,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		basePackage.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -197,6 +209,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createDescriptorsContributorIDText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND));
 		descriptorsContributorID = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -207,6 +220,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		descriptorsContributorID.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -218,6 +232,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		descriptorsContributorID.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -231,6 +246,9 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createActivationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section activationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		activationSection.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ActivationGroupLabel);
@@ -247,6 +265,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		activationSection.setClient(activationGroup);
 	}
 
+	
 	protected void createGenericPropertiesViewsDescriptorsCheckbox(FormToolkit widgetFactory, Composite parent) {
 		genericPropertiesViewsDescriptors = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel, SWT.CHECK);
 		genericPropertiesViewsDescriptors.addSelectionListener(new SelectionAdapter() {
@@ -255,6 +274,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -268,6 +288,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createGMFSpecificPropertiesViewsCheckbox(FormToolkit widgetFactory, Composite parent) {
 		gMFSpecificPropertiesViews = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel, SWT.CHECK);
 		gMFSpecificPropertiesViews.addSelectionListener(new SelectionAdapter() {
@@ -276,6 +297,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -289,6 +311,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createJUnitTestCasesCheckbox(FormToolkit widgetFactory, Composite parent) {
 		jUnitTestCases = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel, SWT.CHECK);
 		jUnitTestCases.addSelectionListener(new SelectionAdapter() {
@@ -297,6 +320,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -316,6 +340,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -327,6 +352,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getPropertiesEditionContext()
+	 * 
 	 */
 	public EObject getPropertiesEditionContext() {
 		if (propertiesEditionContext.getSelection() instanceof StructuredSelection) {
@@ -353,6 +379,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setPropertiesEditionContext(EObject newValue)
+	 * 
 	 */
 	public void setPropertiesEditionContext(EObject newValue) {
 		if (newValue != null) {
@@ -375,6 +402,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#addFilterPropertiesEditionContext(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToPropertiesEditionContext(ViewerFilter filter) {
 		propertiesEditionContext.addFilter(filter);
@@ -384,6 +412,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#addBusinessFilterPropertiesEditionContext(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToPropertiesEditionContext(ViewerFilter filter) {
 		propertiesEditionContext.addBusinessRuleFilter(filter);
@@ -397,6 +426,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getBasePackage()
+	 * 
 	 */
 	public String getBasePackage() {
 		return basePackage.getText();
@@ -406,6 +436,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setBasePackage(String newValue)
+	 * 
 	 */
 	public void setBasePackage(String newValue) {
 		if (newValue != null) {
@@ -427,6 +458,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getDescriptorsContributorID()
+	 * 
 	 */
 	public String getDescriptorsContributorID() {
 		return descriptorsContributorID.getText();
@@ -436,6 +468,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setDescriptorsContributorID(String newValue)
+	 * 
 	 */
 	public void setDescriptorsContributorID(String newValue) {
 		if (newValue != null) {
@@ -457,6 +490,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getGenericPropertiesViewsDescriptors()
+	 * 
 	 */
 	public Boolean getGenericPropertiesViewsDescriptors() {
 		return Boolean.valueOf(genericPropertiesViewsDescriptors.getSelection());
@@ -466,6 +500,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setGenericPropertiesViewsDescriptors(Boolean newValue)
+	 * 
 	 */
 	public void setGenericPropertiesViewsDescriptors(Boolean newValue) {
 		if (newValue != null) {
@@ -483,6 +518,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getGMFSpecificPropertiesViews()
+	 * 
 	 */
 	public Boolean getGMFSpecificPropertiesViews() {
 		return Boolean.valueOf(gMFSpecificPropertiesViews.getSelection());
@@ -492,6 +528,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setGMFSpecificPropertiesViews(Boolean newValue)
+	 * 
 	 */
 	public void setGMFSpecificPropertiesViews(Boolean newValue) {
 		if (newValue != null) {
@@ -509,6 +546,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#getJUnitTestCases()
+	 * 
 	 */
 	public Boolean getJUnitTestCases() {
 		return Boolean.valueOf(jUnitTestCases.getSelection());
@@ -518,6 +556,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#setJUnitTestCases(Boolean newValue)
+	 * 
 	 */
 	public void setJUnitTestCases(Boolean newValue) {
 		if (newValue != null) {
@@ -533,13 +572,11 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EEFGenMessages.GenEditionContext_Part_Title;
@@ -548,5 +585,6 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

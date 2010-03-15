@@ -44,6 +44,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EEFGenModelPropertiesEditionPart {
 
@@ -55,11 +56,10 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public EEFGenModelPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -70,6 +70,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -87,6 +88,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -98,6 +100,9 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createParametersGroup(FormToolkit widgetFactory, final Composite view) {
 		Section parametersSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		parametersSection.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_ParametersGroupLabel);
@@ -114,6 +119,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		parametersSection.setClient(parametersGroup);
 	}
 
+	
 	protected void createGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND));
 		generationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -124,6 +130,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		generationDirectory.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -135,6 +142,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		generationDirectory.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -148,6 +156,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createTestsGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND));
 		testsGenerationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -158,6 +167,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		testsGenerationDirectory.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -169,6 +179,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		testsGenerationDirectory.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -182,6 +193,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createUseJMergeToManageUserCodeCheckbox(FormToolkit widgetFactory, Composite parent) {
 		useJMergeToManageUserCode = widgetFactory.createButton(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel, SWT.CHECK);
 		useJMergeToManageUserCode.addSelectionListener(new SelectionAdapter() {
@@ -190,6 +202,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -203,6 +216,9 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createLegalGroup(FormToolkit widgetFactory, final Composite view) {
 		Section legalSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		legalSection.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_LegalGroupLabel);
@@ -218,6 +234,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		legalSection.setClient(legalGroup);
 	}
 
+	
 	protected void createAuthorText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND));
 		author = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -228,6 +245,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		author.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -239,6 +257,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		author.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -252,6 +271,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createLicenseTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label licenseLabel = FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND));
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -269,6 +289,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
@@ -285,6 +306,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -296,6 +318,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getGenerationDirectory()
+	 * 
 	 */
 	public String getGenerationDirectory() {
 		return generationDirectory.getText();
@@ -305,6 +328,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setGenerationDirectory(String newValue)
+	 * 
 	 */
 	public void setGenerationDirectory(String newValue) {
 		if (newValue != null) {
@@ -326,6 +350,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getTestsGenerationDirectory()
+	 * 
 	 */
 	public String getTestsGenerationDirectory() {
 		return testsGenerationDirectory.getText();
@@ -335,6 +360,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setTestsGenerationDirectory(String newValue)
+	 * 
 	 */
 	public void setTestsGenerationDirectory(String newValue) {
 		if (newValue != null) {
@@ -356,6 +382,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getUseJMergeToManageUserCode()
+	 * 
 	 */
 	public Boolean getUseJMergeToManageUserCode() {
 		return Boolean.valueOf(useJMergeToManageUserCode.getSelection());
@@ -365,6 +392,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setUseJMergeToManageUserCode(Boolean newValue)
+	 * 
 	 */
 	public void setUseJMergeToManageUserCode(Boolean newValue) {
 		if (newValue != null) {
@@ -382,6 +410,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getAuthor()
+	 * 
 	 */
 	public String getAuthor() {
 		return author.getText();
@@ -391,6 +420,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setAuthor(String newValue)
+	 * 
 	 */
 	public void setAuthor(String newValue) {
 		if (newValue != null) {
@@ -412,6 +442,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#getLicense()
+	 * 
 	 */
 	public String getLicense() {
 		return license.getText();
@@ -421,6 +452,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart#setLicense(String newValue)
+	 * 
 	 */
 	public void setLicense(String newValue) {
 		if (newValue != null) {
@@ -440,13 +472,11 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EEFGenMessages.EEFGenModel_Part_Title;
@@ -455,5 +485,6 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

@@ -49,10 +49,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code
+// End of user code	
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GenViewsRepositoryPropertiesEditionPart {
 
@@ -64,11 +65,10 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public GenViewsRepositoryPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -79,13 +79,13 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
-		
 		createControls(view);
 		return view;
 	}
@@ -95,6 +95,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(Composite view) { 
 		createReferenceGroup(view);
@@ -107,9 +108,11 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		// Start of user code for additional ui definition
 		
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createReferenceGroup(Composite parent) {
 		Group referenceGroup = new Group(parent, SWT.NONE);
 		referenceGroup.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ReferenceGroupLabel);
@@ -124,6 +127,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 	/**
 	 * @param referenceGroup
+	 * 
 	 */
 	protected void createViewsRepositoryFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ViewsRepositoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.viewsRepository, EEFGenViewsRepository.SWT_KIND));
@@ -142,6 +146,9 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.viewsRepository, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createParametersGroup(Composite parent) {
 		Group parametersGroup = new Group(parent, SWT.NONE);
 		parametersGroup.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ParametersGroupLabel);
@@ -155,6 +162,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		createHelpStrategyEMFComboViewer(parametersGroup);
 	}
 
+	
 	protected void createBasePackageText(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.SWT_KIND));
 		basePackage = new Text(parent, SWT.BORDER);
@@ -166,6 +174,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -181,6 +190,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -195,6 +205,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createHelpStrategyEMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.SWT_KIND));
 		helpStrategy = new EMFComboViewer(parent);
@@ -205,6 +216,9 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createActivationGroup(Composite parent) {
 		Group activationGroup = new Group(parent, SWT.NONE);
 		activationGroup.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ActivationGroupLabel);
@@ -218,6 +232,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		createFormsViewsCheckbox(activationGroup);
 	}
 
+	
 	protected void createSWTViewsCheckbox(Composite parent) {
 		sWTViews = new Button(parent, SWT.CHECK);
 		sWTViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_SWTViewsLabel);
@@ -227,6 +242,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.sWTViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
+	
 	protected void createFormsViewsCheckbox(Composite parent) {
 		formsViews = new Button(parent, SWT.CHECK);
 		formsViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel);
@@ -242,18 +258,19 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 		
 		// End of user code
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getViewsRepository()
+	 * 
 	 */
 	public EObject getViewsRepository() {
 		if (viewsRepository.getSelection() instanceof StructuredSelection) {
@@ -280,6 +297,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setViewsRepository(EObject newValue)
+	 * 
 	 */
 	public void setViewsRepository(EObject newValue) {
 		if (newValue != null) {
@@ -302,6 +320,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#addFilterViewsRepository(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToViewsRepository(ViewerFilter filter) {
 		viewsRepository.addFilter(filter);
@@ -311,6 +330,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#addBusinessFilterViewsRepository(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToViewsRepository(ViewerFilter filter) {
 		viewsRepository.addBusinessRuleFilter(filter);
@@ -328,6 +348,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getBasePackage()
+	 * 
 	 */
 	public String getBasePackage() {
 		return basePackage.getText();
@@ -337,6 +358,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setBasePackage(String newValue)
+	 * 
 	 */
 	public void setBasePackage(String newValue) {
 		if (newValue != null) {
@@ -358,6 +380,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getHelpStrategy()
+	 * 
 	 */
 	public Enumerator getHelpStrategy() {
 		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) helpStrategy.getSelection()).getFirstElement();
@@ -378,6 +401,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setHelpStrategy(Enumerator newValue)
+	 * 
 	 */
 	public void setHelpStrategy(Enumerator newValue) {
 		helpStrategy.modelUpdating(new StructuredSelection(newValue));
@@ -395,6 +419,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getSWTViews()
+	 * 
 	 */
 	public Boolean getSWTViews() {
 		return Boolean.valueOf(sWTViews.getSelection());
@@ -404,6 +429,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setSWTViews(Boolean newValue)
+	 * 
 	 */
 	public void setSWTViews(Boolean newValue) {
 		if (newValue != null) {
@@ -425,6 +451,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getFormsViews()
+	 * 
 	 */
 	public Boolean getFormsViews() {
 		return Boolean.valueOf(formsViews.getSelection());
@@ -434,6 +461,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setFormsViews(Boolean newValue)
+	 * 
 	 */
 	public void setFormsViews(Boolean newValue) {
 		if (newValue != null) {
@@ -456,12 +484,11 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EEFGenMessages.GenViewsRepository_Part_Title;
@@ -470,5 +497,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

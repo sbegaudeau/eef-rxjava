@@ -43,6 +43,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EEFGenModelReferencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EEFGenModelReferencePropertiesEditionPart {
 
@@ -50,11 +51,10 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public EEFGenModelReferencePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -65,6 +65,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -82,6 +83,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -91,6 +93,9 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
 		Section referenceSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referenceSection.setText(EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferenceGroupLabel);
@@ -107,6 +112,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 
 	/**
 	 * @param referenceGroup
+	 * 
 	 */
 	protected void createReferencedEEFGenModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND));
@@ -136,6 +142,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -147,6 +154,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#getReferencedEEFGenModel()
+	 * 
 	 */
 	public EObject getReferencedEEFGenModel() {
 		if (referencedEEFGenModel.getSelection() instanceof StructuredSelection) {
@@ -173,6 +181,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#setReferencedEEFGenModel(EObject newValue)
+	 * 
 	 */
 	public void setReferencedEEFGenModel(EObject newValue) {
 		if (newValue != null) {
@@ -195,6 +204,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#addFilterReferencedEEFGenModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToReferencedEEFGenModel(ViewerFilter filter) {
 		referencedEEFGenModel.addFilter(filter);
@@ -204,6 +214,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#addBusinessFilterReferencedEEFGenModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencedEEFGenModel(ViewerFilter filter) {
 		referencedEEFGenModel.addBusinessRuleFilter(filter);
@@ -215,13 +226,11 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return EEFGenMessages.EEFGenModelReference_Part_Title;
@@ -230,5 +239,6 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

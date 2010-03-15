@@ -20,17 +20,20 @@ package org.eclipse.emf.eef.EEFGen.parts;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface EEFGenModelPropertiesEditionPart {
 
 	/**
 	 * @return the Generation directory
+	 * 
 	 */
 	public String getGenerationDirectory();
 
 	/**
 	 * Defines a new Generation directory
 	 * @param newValue the new Generation directory to set
+	 * 
 	 */
 	public void setGenerationDirectory(String newValue);
 
@@ -41,12 +44,14 @@ public interface EEFGenModelPropertiesEditionPart {
 
 	/**
 	 * @return the Tests generation directory
+	 * 
 	 */
 	public String getTestsGenerationDirectory();
 
 	/**
 	 * Defines a new Tests generation directory
 	 * @param newValue the new Tests generation directory to set
+	 * 
 	 */
 	public void setTestsGenerationDirectory(String newValue);
 
@@ -57,12 +62,14 @@ public interface EEFGenModelPropertiesEditionPart {
 
 	/**
 	 * @return the Use JMerge to manage user code
+	 * 
 	 */
 	public Boolean getUseJMergeToManageUserCode();
 
 	/**
 	 * Defines a new Use JMerge to manage user code
 	 * @param newValue the new Use JMerge to manage user code to set
+	 * 
 	 */
 	public void setUseJMergeToManageUserCode(Boolean newValue);
 
@@ -73,12 +80,14 @@ public interface EEFGenModelPropertiesEditionPart {
 
 	/**
 	 * @return the author
+	 * 
 	 */
 	public String getAuthor();
 
 	/**
 	 * Defines a new author
 	 * @param newValue the new author to set
+	 * 
 	 */
 	public void setAuthor(String newValue);
 
@@ -89,12 +98,14 @@ public interface EEFGenModelPropertiesEditionPart {
 
 	/**
 	 * @return the license
+	 * 
 	 */
 	public String getLicense();
 
 	/**
 	 * Defines a new license
 	 * @param newValue the new license to set
+	 * 
 	 */
 	public void setLicense(String newValue);
 
@@ -106,11 +117,11 @@ public interface EEFGenModelPropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

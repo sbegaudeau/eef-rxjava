@@ -15,11 +15,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public EEFGenPackagePropertiesEditionProvider() {
 		super();
@@ -32,11 +34,13 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * GenEditionContext instances.
+	 * 
 	 */
 	protected GenEditionContextPropertiesEditionProvider genEditionContextPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a GenEditionContext
+	 * 
 	 */
 	public GenEditionContextPropertiesEditionProvider createGenEditionContextPropertiesEditionProvider() {
 		if (genEditionContextPropertiesEditionProvider == null)
@@ -47,11 +51,13 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EEFGenModelReference instances.
+	 * 
 	 */
 	protected EEFGenModelReferencePropertiesEditionProvider eEFGenModelReferencePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EEFGenModelReference
+	 * 
 	 */
 	public EEFGenModelReferencePropertiesEditionProvider createEEFGenModelReferencePropertiesEditionProvider() {
 		if (eEFGenModelReferencePropertiesEditionProvider == null)
@@ -62,11 +68,13 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EEFGenModel instances.
+	 * 
 	 */
 	protected EEFGenModelPropertiesEditionProvider eEFGenModelPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EEFGenModel
+	 * 
 	 */
 	public EEFGenModelPropertiesEditionProvider createEEFGenModelPropertiesEditionProvider() {
 		if (eEFGenModelPropertiesEditionProvider == null)
@@ -77,11 +85,13 @@ public class EEFGenPackagePropertiesEditionProvider extends ComposedPropertiesEd
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * GenViewsRepository instances.
+	 * 
 	 */
 	protected GenViewsRepositoryPropertiesEditionProvider genViewsRepositoryPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a GenViewsRepository
+	 * 
 	 */
 	public GenViewsRepositoryPropertiesEditionProvider createGenViewsRepositoryPropertiesEditionProvider() {
 		if (genViewsRepositoryPropertiesEditionProvider == null)

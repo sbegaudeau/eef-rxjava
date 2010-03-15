@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolic
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EEFGenPackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
 
@@ -24,6 +25,7 @@ public class EEFGenPackagePropertiesEditionPolicyProvider extends StandardProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return EEFGenPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || EEFGenPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());

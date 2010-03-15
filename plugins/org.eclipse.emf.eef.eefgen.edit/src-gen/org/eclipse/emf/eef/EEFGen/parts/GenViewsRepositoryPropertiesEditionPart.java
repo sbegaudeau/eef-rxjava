@@ -24,11 +24,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface GenViewsRepositoryPropertiesEditionPart {
 
 	/**
 	 * @return the Views repository
+	 * 
 	 */
 	public EObject getViewsRepository();
 
@@ -42,12 +44,14 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	/**
 	 * Defines a new Views repository
 	 * @param newValue the new Views repository to set
+	 * 
 	 */
 	public void setViewsRepository(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setViewsRepositoryButtonMode(ButtonsModeEnum newValue);
 
@@ -57,6 +61,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToViewsRepository(ViewerFilter filter);
 
@@ -66,6 +71,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToViewsRepository(ViewerFilter filter);
 
@@ -76,12 +82,14 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 	/**
 	 * @return the Base package
+	 * 
 	 */
 	public String getBasePackage();
 
 	/**
 	 * Defines a new Base package
 	 * @param newValue the new Base package to set
+	 * 
 	 */
 	public void setBasePackage(String newValue);
 
@@ -92,6 +100,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 	/**
 	 * @return the Help strategy
+	 * 
 	 */
 	public Enumerator getHelpStrategy();
 
@@ -105,6 +114,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	/**
 	 * Defines a new Help strategy
 	 * @param newValue the new Help strategy to set
+	 * 
 	 */
 	public void setHelpStrategy(Enumerator newValue);
 
@@ -115,12 +125,14 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 	/**
 	 * @return the SWT views
+	 * 
 	 */
 	public Boolean getSWTViews();
 
 	/**
 	 * Defines a new SWT views
 	 * @param newValue the new SWT views to set
+	 * 
 	 */
 	public void setSWTViews(Boolean newValue);
 
@@ -131,15 +143,16 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 	/**
 	 * @return the Forms views
+	 * 
 	 */
 	public Boolean getFormsViews();
 
 	/**
 	 * Defines a new Forms views
 	 * @param newValue the new Forms views to set
+	 * 
 	 */
 	public void setFormsViews(Boolean newValue);
-
 
 
 
@@ -153,6 +166,7 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -23,11 +23,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface GenEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the properties Edition Context
+	 * 
 	 */
 	public EObject getPropertiesEditionContext();
 
@@ -41,12 +43,14 @@ public interface GenEditionContextPropertiesEditionPart {
 	/**
 	 * Defines a new properties Edition Context
 	 * @param newValue the new properties Edition Context to set
+	 * 
 	 */
 	public void setPropertiesEditionContext(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setPropertiesEditionContextButtonMode(ButtonsModeEnum newValue);
 
@@ -56,6 +60,7 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToPropertiesEditionContext(ViewerFilter filter);
 
@@ -65,6 +70,7 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToPropertiesEditionContext(ViewerFilter filter);
 
@@ -75,12 +81,14 @@ public interface GenEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the Base package
+	 * 
 	 */
 	public String getBasePackage();
 
 	/**
 	 * Defines a new Base package
 	 * @param newValue the new Base package to set
+	 * 
 	 */
 	public void setBasePackage(String newValue);
 
@@ -91,12 +99,14 @@ public interface GenEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the Descriptors contributorID
+	 * 
 	 */
 	public String getDescriptorsContributorID();
 
 	/**
 	 * Defines a new Descriptors contributorID
 	 * @param newValue the new Descriptors contributorID to set
+	 * 
 	 */
 	public void setDescriptorsContributorID(String newValue);
 
@@ -107,12 +117,14 @@ public interface GenEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the Generic properties views descriptors
+	 * 
 	 */
 	public Boolean getGenericPropertiesViewsDescriptors();
 
 	/**
 	 * Defines a new Generic properties views descriptors
 	 * @param newValue the new Generic properties views descriptors to set
+	 * 
 	 */
 	public void setGenericPropertiesViewsDescriptors(Boolean newValue);
 
@@ -123,12 +135,14 @@ public interface GenEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the GMF specific properties views
+	 * 
 	 */
 	public Boolean getGMFSpecificPropertiesViews();
 
 	/**
 	 * Defines a new GMF specific properties views
 	 * @param newValue the new GMF specific properties views to set
+	 * 
 	 */
 	public void setGMFSpecificPropertiesViews(Boolean newValue);
 
@@ -139,15 +153,16 @@ public interface GenEditionContextPropertiesEditionPart {
 
 	/**
 	 * @return the JUnit test cases
+	 * 
 	 */
 	public Boolean getJUnitTestCases();
 
 	/**
 	 * Defines a new JUnit test cases
 	 * @param newValue the new JUnit test cases to set
+	 * 
 	 */
 	public void setJUnitTestCases(Boolean newValue);
-
 
 
 
@@ -161,6 +176,7 @@ public interface GenEditionContextPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 
