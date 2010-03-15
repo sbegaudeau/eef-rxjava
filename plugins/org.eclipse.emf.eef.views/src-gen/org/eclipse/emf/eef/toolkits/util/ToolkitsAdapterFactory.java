@@ -9,18 +9,17 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsAdapterFactory.java,v 1.11 2010/03/15 11:08:11 glefur Exp $
+ * $Id: ToolkitsAdapterFactory.java,v 1.12 2010/03/15 16:56:52 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.eef.toolkits.*;
+import org.eclipse.emf.eef.toolkits.Toolkit;
+import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+import org.eclipse.emf.eef.toolkits.Widget;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,7 +64,7 @@ public class ToolkitsAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -103,7 +102,7 @@ public class ToolkitsAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

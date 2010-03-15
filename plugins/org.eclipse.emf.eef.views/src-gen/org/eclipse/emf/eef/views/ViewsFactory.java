@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsFactory.java,v 1.7 2010/03/15 11:08:11 glefur Exp $
+ * $Id: ViewsFactory.java,v 1.8 2010/03/15 16:56:52 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -30,8 +30,7 @@ public interface ViewsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ViewsFactory eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsFactoryImpl
-			.init();
+	ViewsFactory eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Repository</em>'.

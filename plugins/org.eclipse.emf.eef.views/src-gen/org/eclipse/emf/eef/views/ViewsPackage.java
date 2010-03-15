@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsPackage.java,v 1.8 2010/03/15 11:08:12 glefur Exp $
+ * $Id: ViewsPackage.java,v 1.9 2010/03/15 16:56:52 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views;
 
@@ -64,8 +64,7 @@ public interface ViewsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ViewsPackage eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsPackageImpl
-			.init();
+	ViewsPackage eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
@@ -1146,8 +1145,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE
-				.getViewsRepository_Views();
+		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE.getViewsRepository_Views();
 
 		/**
 		 * The meta object literal for the '<em><b>Repository Kind</b></em>' attribute list feature.
@@ -1155,8 +1153,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VIEWS_REPOSITORY__REPOSITORY_KIND = eINSTANCE
-				.getViewsRepository_RepositoryKind();
+		EAttribute VIEWS_REPOSITORY__REPOSITORY_KIND = eINSTANCE.getViewsRepository_RepositoryKind();
 
 		/**
 		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
@@ -1164,8 +1161,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEWS_REPOSITORY__CATEGORIES = eINSTANCE
-				.getViewsRepository_Categories();
+		EReference VIEWS_REPOSITORY__CATEGORIES = eINSTANCE.getViewsRepository_Categories();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1225,8 +1221,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE
-				.getElementEditor_ReadOnly();
+		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE.getElementEditor_ReadOnly();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.CategoryImpl <em>Category</em>}' class.
@@ -1304,8 +1299,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEW_ELEMENT__REPRESENTATION = eINSTANCE
-				.getViewElement_Representation();
+		EReference VIEW_ELEMENT__REPRESENTATION = eINSTANCE.getViewElement_Representation();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
@@ -1313,8 +1307,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEW_ELEMENT__CONTAINER = eINSTANCE
-				.getViewElement_Container();
+		EReference VIEW_ELEMENT__CONTAINER = eINSTANCE.getViewElement_Container();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1360,8 +1353,7 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE
-				.getDocumentedElement_Documentation();
+		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE.getDocumentedElement_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.ViewReferenceImpl <em>View Reference</em>}' class.
