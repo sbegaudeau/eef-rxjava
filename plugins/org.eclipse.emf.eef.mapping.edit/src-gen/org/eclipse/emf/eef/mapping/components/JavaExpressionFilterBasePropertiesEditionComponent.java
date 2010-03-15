@@ -49,25 +49,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class JavaExpressionFilterBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private JavaExpressionFilter javaExpressionFilter;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected JavaExpressionFilterPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public JavaExpressionFilterBasePropertiesEditionComponent(EObject javaExpressionFilter, String editing_mode) {
 		if (javaExpressionFilter instanceof JavaExpressionFilter) {
@@ -84,6 +90,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -92,6 +99,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -115,6 +123,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().equals(msg.getFeature()) && basePart != null){
@@ -125,14 +134,13 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 			}
 		}
 
-
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -144,6 +152,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -154,6 +163,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (javaExpressionFilter != null && BASE_PART.equals(key)) {
@@ -174,6 +184,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == MappingViewsRepository.JavaExpressionFilter.class)
@@ -185,6 +196,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -199,9 +211,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 		}
 		// init values for referenced views
 
-
 		// init filters for referenced views
-
 
 
 
@@ -214,19 +224,17 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((javaExpressionFilter != null) && (basePart != null)) { 
 			cc.append(SetCommand.create(editingDomain, javaExpressionFilter, FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getJavaExpressionBody())));
-
-
 
 		}
 		if (!cc.isEmpty())
@@ -239,13 +247,12 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof JavaExpressionFilter) {
 			JavaExpressionFilter javaExpressionFilterToUpdate = (JavaExpressionFilter)source;
 			javaExpressionFilterToUpdate.setJavaBody((java.lang.String)EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getJavaExpressionBody()));
-
-
 
 			return javaExpressionFilterToUpdate;
 		}
@@ -257,6 +264,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -266,8 +274,6 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 			if (MappingViewsRepository.JavaExpressionFilter.javaExpressionBody == event.getAffectedEditor()) {
 				command.append(SetCommand.create(liveEditingDomain, javaExpressionFilter, FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody(), EcoreUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
-
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -289,6 +295,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -299,7 +306,6 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().getEAttributeType(), newValue);
 				}
-
 				if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
@@ -321,6 +327,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -337,11 +344,11 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -352,6 +359,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

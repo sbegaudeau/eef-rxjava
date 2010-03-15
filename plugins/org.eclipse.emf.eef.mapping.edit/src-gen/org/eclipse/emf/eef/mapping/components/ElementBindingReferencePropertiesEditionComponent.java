@@ -27,28 +27,32 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentServi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ElementBindingReferencePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	private ElementBindingReferencePropertiesEditionPart basePart;
 
 	/**
 	 * The ElementBindingReferenceBasePropertiesEditionComponent sub component
+	 * 
 	 */
 	protected ElementBindingReferenceBasePropertiesEditionComponent elementBindingReferenceBasePropertiesEditionComponent;
 
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param elementBindingReference
-	 *            the EObject to edit
+	 * @param elementBindingReference the EObject to edit
+	 * 
 	 */
 	public ElementBindingReferencePropertiesEditionComponent(EObject elementBindingReference, String editing_mode) {
 		super(editing_mode);
@@ -66,6 +70,7 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(key)) {
@@ -81,6 +86,7 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (MappingViewsRepository.ElementBindingReference.class == key) {
@@ -95,6 +101,7 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == MappingViewsRepository.ElementBindingReference.class) {
@@ -102,7 +109,6 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 		}
 		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
-		
 		}
 	}
 }

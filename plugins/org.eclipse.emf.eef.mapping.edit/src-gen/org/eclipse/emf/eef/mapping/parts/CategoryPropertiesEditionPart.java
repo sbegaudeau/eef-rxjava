@@ -20,17 +20,20 @@ package org.eclipse.emf.eef.mapping.parts;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface CategoryPropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -42,11 +45,11 @@ public interface CategoryPropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

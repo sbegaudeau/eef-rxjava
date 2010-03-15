@@ -15,11 +15,13 @@ import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesEditionProvider {
 
 	/**
 	 * Default Constructor
+	 * 
 	 */
 	public MappingPackagePropertiesEditionProvider() {
 		super();
@@ -42,11 +44,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * DocumentedElement instances.
+	 * 
 	 */
 	protected DocumentedElementPropertiesEditionProvider documentedElementPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a DocumentedElement
+	 * 
 	 */
 	public DocumentedElementPropertiesEditionProvider createDocumentedElementPropertiesEditionProvider() {
 		if (documentedElementPropertiesEditionProvider == null)
@@ -57,11 +61,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * BindingFilter instances.
+	 * 
 	 */
 	protected FilterPropertiesPropertiesEditionProvider filterPropertiesPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a BindingFilter
+	 * 
 	 */
 	public FilterPropertiesPropertiesEditionProvider createFilterPropertiesPropertiesEditionProvider() {
 		if (filterPropertiesPropertiesEditionProvider == null)
@@ -72,11 +78,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFElementBinding instances.
+	 * 
 	 */
 	protected EMFElementBindingPropertiesEditionProvider eMFElementBindingPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EMFElementBinding
+	 * 
 	 */
 	public EMFElementBindingPropertiesEditionProvider createEMFElementBindingPropertiesEditionProvider() {
 		if (eMFElementBindingPropertiesEditionProvider == null)
@@ -87,11 +95,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFPropertyBinding instances.
+	 * 
 	 */
 	protected EMFPropertyBindingPropertiesEditionProvider eMFPropertyBindingPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EMFPropertyBinding
+	 * 
 	 */
 	public EMFPropertyBindingPropertiesEditionProvider createEMFPropertyBindingPropertiesEditionProvider() {
 		if (eMFPropertyBindingPropertiesEditionProvider == null)
@@ -102,11 +112,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * StandardElementBinding instances.
+	 * 
 	 */
 	protected StandardElementBindingPropertiesEditionProvider standardElementBindingPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a StandardElementBinding
+	 * 
 	 */
 	public StandardElementBindingPropertiesEditionProvider createStandardElementBindingPropertiesEditionProvider() {
 		if (standardElementBindingPropertiesEditionProvider == null)
@@ -117,11 +129,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * StandardPropertyBinding instances.
+	 * 
 	 */
 	protected StandardPropertyBindingPropertiesEditionProvider standardPropertyBindingPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a StandardPropertyBinding
+	 * 
 	 */
 	public StandardPropertyBindingPropertiesEditionProvider createStandardPropertyBindingPropertiesEditionProvider() {
 		if (standardPropertyBindingPropertiesEditionProvider == null)
@@ -132,11 +146,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * Category instances.
+	 * 
 	 */
 	protected CategoryPropertiesEditionProvider categoryPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a Category
+	 * 
 	 */
 	public CategoryPropertiesEditionProvider createCategoryPropertiesEditionProvider() {
 		if (categoryPropertiesEditionProvider == null)
@@ -147,11 +163,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * ElementBindingReference instances.
+	 * 
 	 */
 	protected ElementBindingReferencePropertiesEditionProvider elementBindingReferencePropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a ElementBindingReference
+	 * 
 	 */
 	public ElementBindingReferencePropertiesEditionProvider createElementBindingReferencePropertiesEditionProvider() {
 		if (elementBindingReferencePropertiesEditionProvider == null)
@@ -162,11 +180,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * EMFMultiPropertiesBinding instances.
+	 * 
 	 */
 	protected EMFMultiPropertiesBindingPropertiesEditionProvider eMFMultiPropertiesBindingPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a EMFMultiPropertiesBinding
+	 * 
 	 */
 	public EMFMultiPropertiesBindingPropertiesEditionProvider createEMFMultiPropertiesBindingPropertiesEditionProvider() {
 		if (eMFMultiPropertiesBindingPropertiesEditionProvider == null)
@@ -177,11 +197,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * SimpleModelNavigation instances.
+	 * 
 	 */
 	protected SimpleModelNavigationPropertiesEditionProvider simpleModelNavigationPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a SimpleModelNavigation
+	 * 
 	 */
 	public SimpleModelNavigationPropertiesEditionProvider createSimpleModelNavigationPropertiesEditionProvider() {
 		if (simpleModelNavigationPropertiesEditionProvider == null)
@@ -192,11 +214,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * OnlyReferenceTypeFilter instances.
+	 * 
 	 */
 	protected OnlyReferenceTypeFilterPropertiesEditionProvider onlyReferenceTypeFilterPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a OnlyReferenceTypeFilter
+	 * 
 	 */
 	public OnlyReferenceTypeFilterPropertiesEditionProvider createOnlyReferenceTypeFilterPropertiesEditionProvider() {
 		if (onlyReferenceTypeFilterPropertiesEditionProvider == null)
@@ -207,11 +231,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * OCLFilter instances.
+	 * 
 	 */
 	protected OCLFilterPropertiesEditionProvider oCLFilterPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a OCLFilter
+	 * 
 	 */
 	public OCLFilterPropertiesEditionProvider createOCLFilterPropertiesEditionProvider() {
 		if (oCLFilterPropertiesEditionProvider == null)
@@ -222,11 +248,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * JavaExpressionFilter instances.
+	 * 
 	 */
 	protected JavaExpressionFilterPropertiesEditionProvider javaExpressionFilterPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a JavaExpressionFilter
+	 * 
 	 */
 	public JavaExpressionFilterPropertiesEditionProvider createJavaExpressionFilterPropertiesEditionProvider() {
 		if (javaExpressionFilterPropertiesEditionProvider == null)
@@ -237,11 +265,13 @@ public class MappingPackagePropertiesEditionProvider extends ComposedPropertiesE
 	/**
 	 * This keeps track of the one PropertiesEditionProvider used for all
 	 * JavaDeclarationFilter instances.
+	 * 
 	 */
 	protected JavaDeclarationFilterPropertiesEditionProvider javaDeclarationFilterPropertiesEditionProvider;
 
 	/**
 	 * This creates an PropertiesEditionProvider for a JavaDeclarationFilter
+	 * 
 	 */
 	public JavaDeclarationFilterPropertiesEditionProvider createJavaDeclarationFilterPropertiesEditionProvider() {
 		if (javaDeclarationFilterPropertiesEditionProvider == null)

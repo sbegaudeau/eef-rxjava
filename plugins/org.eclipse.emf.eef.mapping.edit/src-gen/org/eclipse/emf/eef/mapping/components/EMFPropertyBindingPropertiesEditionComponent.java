@@ -27,28 +27,32 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentServi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EMFPropertyBindingPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	private EMFPropertyBindingPropertiesEditionPart basePart;
 
 	/**
 	 * The EMFPropertyBindingBasePropertiesEditionComponent sub component
+	 * 
 	 */
 	protected EMFPropertyBindingBasePropertiesEditionComponent eMFPropertyBindingBasePropertiesEditionComponent;
 
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param eMFPropertyBinding
-	 *            the EObject to edit
+	 * @param eMFPropertyBinding the EObject to edit
+	 * 
 	 */
 	public EMFPropertyBindingPropertiesEditionComponent(EObject eMFPropertyBinding, String editing_mode) {
 		super(editing_mode);
@@ -66,6 +70,7 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(key)) {
@@ -81,6 +86,7 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (MappingViewsRepository.EMFPropertyBinding.class == key) {
@@ -95,6 +101,7 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == MappingViewsRepository.EMFPropertyBinding.class) {
@@ -102,7 +109,6 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 		}
 		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
-		
 		}
 	}
 }

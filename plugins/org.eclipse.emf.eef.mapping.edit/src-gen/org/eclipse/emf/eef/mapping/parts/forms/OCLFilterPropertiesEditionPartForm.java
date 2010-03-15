@@ -43,19 +43,19 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, OCLFilterPropertiesEditionPart {
 
 	protected Text oCLExpressionBody;
-
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
-
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public OCLFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -66,6 +66,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -83,6 +84,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -94,6 +96,9 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
 		Section filterExpressionSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		filterExpressionSection.setText(MappingMessages.OCLFilterPropertiesEditionPart_FilterExpressionGroupLabel);
@@ -108,6 +113,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		filterExpressionSection.setClient(filterExpressionGroup);
 	}
 
+	
 	protected void createOCLExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label oCLExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.FORM_KIND));
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -117,6 +123,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		GridData oCLExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyData.horizontalSpan = 2;
 		oCLExpressionBodyData.heightHint = 80;
+		oCLExpressionBodyData.widthHint = 200;
 		oCLExpressionBody.setLayoutData(oCLExpressionBodyData);
 		oCLExpressionBody.addFocusListener(new FocusAdapter() {
 
@@ -124,6 +131,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
@@ -147,6 +155,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -158,6 +167,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#getOCLExpressionBody()
+	 * 
 	 */
 	public String getOCLExpressionBody() {
 		return oCLExpressionBody.getText();
@@ -167,6 +177,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#setOCLExpressionBody(String newValue)
+	 * 
 	 */
 	public void setOCLExpressionBody(String newValue) {
 		if (newValue != null) {
@@ -183,11 +194,11 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	public void unsetMessageForOCLExpressionBody() {
 		messageManager.removeMessage("OCLExpressionBody_key", oCLExpressionBody);
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#getFilterPropertiesReferencedView()
+	 * 
 	 */
 		public IPropertiesEditionPart getFilterPropertiesReferencedView() {
 			return (IPropertiesEditionPart) filterPropertiesPropertiesEditionPart;
@@ -196,6 +207,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return filterPropertiesPropertiesEditionPart.getName();
@@ -205,6 +217,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		filterPropertiesPropertiesEditionPart.setName(newValue);
@@ -221,6 +234,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#getMandatory()
+	 * 
 	 */
 	public Boolean getMandatory() {
 		return filterPropertiesPropertiesEditionPart.getMandatory();
@@ -230,6 +244,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.OCLFilterPropertiesEditionPart#setMandatory(Boolean newValue)
+	 * 
 	 */
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
@@ -242,12 +257,11 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return MappingMessages.OCLFilter_Part_Title;
@@ -256,5 +270,6 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

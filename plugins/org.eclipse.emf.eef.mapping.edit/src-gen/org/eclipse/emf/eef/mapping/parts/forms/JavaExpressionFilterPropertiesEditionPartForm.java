@@ -43,19 +43,19 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class JavaExpressionFilterPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, JavaExpressionFilterPropertiesEditionPart {
 
 	protected Text javaExpressionBody;
-
 	private FilterPropertiesPropertiesEditionPart filterPropertiesPropertiesEditionPart;
-
 
 
 
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public JavaExpressionFilterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -66,6 +66,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -83,6 +84,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -94,6 +96,9 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
 		Section filterExpressionSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		filterExpressionSection.setText(MappingMessages.JavaExpressionFilterPropertiesEditionPart_FilterExpressionGroupLabel);
@@ -108,6 +113,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		filterExpressionSection.setClient(filterExpressionGroup);
 	}
 
+	
 	protected void createJavaExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label javaExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.FORM_KIND));
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -117,6 +123,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		GridData javaExpressionBodyData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyData.horizontalSpan = 2;
 		javaExpressionBodyData.heightHint = 80;
+		javaExpressionBodyData.widthHint = 200;
 		javaExpressionBody.setLayoutData(javaExpressionBodyData);
 		javaExpressionBody.addFocusListener(new FocusAdapter() {
 
@@ -124,6 +131,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
@@ -147,6 +155,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -158,6 +167,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#getJavaExpressionBody()
+	 * 
 	 */
 	public String getJavaExpressionBody() {
 		return javaExpressionBody.getText();
@@ -167,6 +177,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#setJavaExpressionBody(String newValue)
+	 * 
 	 */
 	public void setJavaExpressionBody(String newValue) {
 		if (newValue != null) {
@@ -183,11 +194,11 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	public void unsetMessageForJavaExpressionBody() {
 		messageManager.removeMessage("JavaExpressionBody_key", javaExpressionBody);
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#getFilterPropertiesReferencedView()
+	 * 
 	 */
 		public IPropertiesEditionPart getFilterPropertiesReferencedView() {
 			return (IPropertiesEditionPart) filterPropertiesPropertiesEditionPart;
@@ -196,6 +207,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return filterPropertiesPropertiesEditionPart.getName();
@@ -205,6 +217,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		filterPropertiesPropertiesEditionPart.setName(newValue);
@@ -221,6 +234,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#getMandatory()
+	 * 
 	 */
 	public Boolean getMandatory() {
 		return filterPropertiesPropertiesEditionPart.getMandatory();
@@ -230,6 +244,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.filters.parts.JavaExpressionFilterPropertiesEditionPart#setMandatory(Boolean newValue)
+	 * 
 	 */
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
@@ -242,12 +257,11 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return MappingMessages.JavaExpressionFilter_Part_Title;
@@ -256,5 +270,6 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	// Start of user code additional methods
 	
 	// End of user code
+
 
 }

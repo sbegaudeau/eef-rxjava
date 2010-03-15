@@ -31,10 +31,9 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class ModelNavigationPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ModelNavigationPropertiesEditionPart {
-
-
 
 
 
@@ -42,6 +41,7 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public ModelNavigationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -52,6 +52,7 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -69,6 +70,7 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -78,6 +80,9 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(MappingMessages.ModelNavigationPropertiesEditionPart_PropertiesGroupLabel);
@@ -97,6 +102,7 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -106,13 +112,11 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return MappingMessages.ModelNavigation_Part_Title;
@@ -121,5 +125,6 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

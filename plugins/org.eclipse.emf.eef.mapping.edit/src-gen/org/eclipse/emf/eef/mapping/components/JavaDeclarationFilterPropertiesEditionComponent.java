@@ -27,32 +27,37 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentServi
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	private JavaDeclarationFilterPropertiesEditionPart basePart;
 
 	/**
 	 * The JavaDeclarationFilterBasePropertiesEditionComponent sub component
+	 * 
 	 */
 	protected JavaDeclarationFilterBasePropertiesEditionComponent javaDeclarationFilterBasePropertiesEditionComponent;
 
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
 	/**
 	 * The FilterPropertiesPropertiesEditionComponent sub component
+	 * 
 	 */
 	protected FilterPropertiesPropertiesEditionComponent filterPropertiesPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param javaDeclarationFilter
-	 *            the EObject to edit
+	 * @param javaDeclarationFilter the EObject to edit
+	 * 
 	 */
 	public JavaDeclarationFilterPropertiesEditionComponent(EObject javaDeclarationFilter, String editing_mode) {
 		super(editing_mode);
@@ -72,6 +77,7 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(key)) {
@@ -87,6 +93,7 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (MappingViewsRepository.JavaDeclarationFilter.class == key) {
@@ -101,6 +108,7 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == MappingViewsRepository.JavaDeclarationFilter.class) {
@@ -110,11 +118,9 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 		}
 		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
-		
 		}
 		if (key == MappingViewsRepository.FilterProperties.class) {
 			super.initPart(key, kind, element, allResource);
-		
 		}
 	}
 }

@@ -39,6 +39,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class DocumentationPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, DocumentationPropertiesEditionPart {
 
@@ -46,11 +47,10 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public DocumentationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -61,6 +61,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -78,6 +79,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -87,6 +89,9 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createDocumentationGroup(FormToolkit widgetFactory, final Composite view) {
 		Section documentationSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		documentationSection.setText(MappingMessages.DocumentationPropertiesEditionPart_DocumentationGroupLabel);
@@ -101,6 +106,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		documentationSection.setClient(documentationGroup);
 	}
 
+	
 	protected void createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Documentation.documentation, MappingViewsRepository.FORM_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -110,6 +116,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
+		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
 		documentation.addFocusListener(new FocusAdapter() {
 
@@ -117,6 +124,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
@@ -133,6 +141,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -145,6 +154,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart#getDocumentation()
+	 * 
 	 */
 	public String getDocumentation() {
 		return documentation.getText();
@@ -154,6 +164,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart#setDocumentation(String newValue)
+	 * 
 	 */
 	public void setDocumentation(String newValue) {
 		if (newValue != null) {
@@ -173,13 +184,11 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return MappingMessages.Documentation_Part_Title;
@@ -188,5 +197,6 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

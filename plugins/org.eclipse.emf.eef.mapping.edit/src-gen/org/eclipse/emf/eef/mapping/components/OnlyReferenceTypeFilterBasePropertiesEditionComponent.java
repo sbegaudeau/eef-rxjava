@@ -52,25 +52,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private OnlyReferenceTypeFilter onlyReferenceTypeFilter;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected OnlyReferenceTypeFilterPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public OnlyReferenceTypeFilterBasePropertiesEditionComponent(EObject onlyReferenceTypeFilter, String editing_mode) {
 		if (onlyReferenceTypeFilter instanceof OnlyReferenceTypeFilter) {
@@ -87,6 +93,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -95,6 +102,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -118,12 +126,11 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference().equals(msg.getFeature()) && basePart != null)
 			basePart.setReferencedFeature((EObject)msg.getNewValue());
-
-
 
 	}
 
@@ -131,6 +138,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -142,6 +150,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -152,6 +161,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (onlyReferenceTypeFilter != null && BASE_PART.equals(key)) {
@@ -172,6 +182,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == MappingViewsRepository.OnlyReferenceTypeFilter.class)
@@ -183,6 +194,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -210,12 +222,11 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 			// Start of user code for additional businessfilters for referencedFeature
 			
 			// End of user code
+
 		}
 		// init values for referenced views
 
-
 		// init filters for referenced views
-
 
 
 
@@ -228,12 +239,12 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -241,8 +252,6 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 			if (onlyReferenceTypeFilter.eGet(FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference()) == null || !onlyReferenceTypeFilter.eGet(FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference()).equals(basePart.getReferencedFeature())) {
 				cc.append(SetCommand.create(editingDomain, onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference(), basePart.getReferencedFeature()));
 			}
-
-
 
 		}
 		if (!cc.isEmpty())
@@ -255,13 +264,12 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof OnlyReferenceTypeFilter) {
 			OnlyReferenceTypeFilter onlyReferenceTypeFilterToUpdate = (OnlyReferenceTypeFilter)source;
 			onlyReferenceTypeFilterToUpdate.setReference((EReference)basePart.getReferencedFeature());
-
-
 
 			return onlyReferenceTypeFilterToUpdate;
 		}
@@ -273,6 +281,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -281,8 +290,6 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 				CompoundCommand command = new CompoundCommand();
 			if (MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference(), event.getNewValue()));
-
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -304,13 +311,13 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-
 				if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
@@ -332,6 +339,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -348,11 +356,11 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -363,6 +371,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

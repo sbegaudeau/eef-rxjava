@@ -44,8 +44,8 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -55,25 +55,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class SimpleModelNavigationPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private SimpleModelNavigation simpleModelNavigation;
 
 	/**
 	 * The Base part
+	 * 
 	 */
 	protected SimpleModelNavigationPropertiesEditionPart basePart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public SimpleModelNavigationPropertiesEditionComponent(EObject simpleModelNavigation, String editing_mode) {
 		if (simpleModelNavigation instanceof SimpleModelNavigation) {
@@ -90,6 +96,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -98,6 +105,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (basePart == null)
@@ -121,6 +129,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null){
@@ -135,13 +144,13 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 		if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType().equals(msg.getFeature()) && basePart != null)
 			basePart.setDiscriminatorType((EObject)msg.getNewValue());
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (BASE_PART.equals(key))
@@ -153,6 +162,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -163,6 +173,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (simpleModelNavigation != null && BASE_PART.equals(key)) {
@@ -183,6 +194,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == MappingViewsRepository.SimpleModelNavigation.class)
@@ -194,6 +206,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -228,6 +241,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			// Start of user code for additional businessfilters for feature
 			
 			// End of user code
+
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 
 				/*
@@ -243,6 +257,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 			// Start of user code for additional businessfilters for discriminatorType
 			
 			// End of user code
+
 		}
 		// init values for referenced views
 
@@ -262,6 +277,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
@@ -274,7 +290,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				cc.append(SetCommand.create(editingDomain, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), basePart.getDiscriminatorType()));
 			}
 
-
 		}
 		if (!cc.isEmpty())
 			return cc;
@@ -286,6 +301,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof SimpleModelNavigation) {
@@ -294,7 +310,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 
 			simpleModelNavigationToUpdate.setFeature((EReference)basePart.getFeature());
 			simpleModelNavigationToUpdate.setDiscriminatorType((EClassifier)basePart.getDiscriminatorType());
-
 
 			return simpleModelNavigationToUpdate;
 		}
@@ -306,6 +321,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -319,7 +335,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 				command.append(SetCommand.create(liveEditingDomain, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature(), event.getNewValue()));
 			if (MappingViewsRepository.SimpleModelNavigation.discriminatorType == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), event.getNewValue()));
-
 
 				if (!command.isEmpty() && !command.canExecute()) {
 					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
@@ -341,6 +356,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
 		return key == MappingViewsRepository.SimpleModelNavigation.feature;
@@ -350,6 +366,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -360,7 +377,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 					Object newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -374,6 +390,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -390,11 +407,11 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -405,6 +422,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return basePart.getTitle();

@@ -20,9 +20,9 @@ package org.eclipse.emf.eef.mapping.parts;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface ModelNavigationPropertiesEditionPart {
-
 
 
 
@@ -31,6 +31,7 @@ public interface ModelNavigationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

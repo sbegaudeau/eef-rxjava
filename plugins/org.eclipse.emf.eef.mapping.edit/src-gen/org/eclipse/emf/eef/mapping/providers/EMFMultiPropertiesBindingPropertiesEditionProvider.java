@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EMFMultiPropertiesBindingPropertiesEditionProvider implements IPropertiesEditionProvider {
 
@@ -29,6 +30,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider implements IProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * 
 	 */
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof EMFMultiPropertiesBinding) && (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding() == eObject.eClass());
@@ -38,6 +40,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider implements IProp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
 		return provides(eObject)&& (EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
@@ -48,6 +51,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider implements IProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
 		if (eObject instanceof EMFMultiPropertiesBinding) {
@@ -61,6 +65,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider implements IProp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
 	 *  java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof EMFMultiPropertiesBinding) {

@@ -20,17 +20,20 @@ package org.eclipse.emf.eef.mapping.parts;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface FilterPropertiesPropertiesEditionPart {
 
 	/**
 	 * @return the Name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new Name
 	 * @param newValue the new Name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -41,15 +44,16 @@ public interface FilterPropertiesPropertiesEditionPart {
 
 	/**
 	 * @return the Mandatory
+	 * 
 	 */
 	public Boolean getMandatory();
 
 	/**
 	 * Defines a new Mandatory
 	 * @param newValue the new Mandatory to set
+	 * 
 	 */
 	public void setMandatory(Boolean newValue);
-
 
 
 
@@ -63,6 +67,7 @@ public interface FilterPropertiesPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

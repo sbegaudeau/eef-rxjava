@@ -24,11 +24,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 
 	/**
 	 * @return the referencedFeature
+	 * 
 	 */
 	public EObject getReferencedFeature();
 
@@ -42,12 +44,14 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	/**
 	 * Defines a new referencedFeature
 	 * @param newValue the new referencedFeature to set
+	 * 
 	 */
 	public void setReferencedFeature(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setReferencedFeatureButtonMode(ButtonsModeEnum newValue);
 
@@ -57,6 +61,7 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToReferencedFeature(ViewerFilter filter);
 
@@ -66,6 +71,7 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToReferencedFeature(ViewerFilter filter);
 
@@ -74,19 +80,21 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 
 
 
-
 	/**
 		 * @return the Filter properties referenced view
+		 * 
 		 */
 		public IPropertiesEditionPart getFilterPropertiesReferencedView();
 	/**
 	 * @return the Name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new Name
 	 * @param newValue the new Name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -96,12 +104,14 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 
 	/**
 	 * @return the Mandatory
+	 * 
 	 */
 	public Boolean getMandatory();
 
 	/**
 	 * Defines a new Mandatory
 	 * @param newValue the new Mandatory to set
+	 * 
 	 */
 	public void setMandatory(Boolean newValue);
 
@@ -117,6 +127,7 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

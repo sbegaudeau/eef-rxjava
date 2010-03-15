@@ -42,7 +42,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
@@ -50,25 +50,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class FilterPropertiesPropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
+	
 	public static String FILTERPROPERTIES_PART = "Filter properties"; //$NON-NLS-1$
 
+	
 	private String[] parts = {FILTERPROPERTIES_PART};
 
 	/**
 	 * The EObject to edit
+	 * 
 	 */
 	private BindingFilter bindingFilter;
 
 	/**
 	 * The Filter properties part
+	 * 
 	 */
 	protected FilterPropertiesPropertiesEditionPart filterPropertiesPart;
 
 	/**
 	 * Default constructor
+	 * 
 	 */
 	public FilterPropertiesPropertiesEditionComponent(EObject bindingFilter, String editing_mode) {
 		if (bindingFilter instanceof BindingFilter) {
@@ -85,6 +91,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * Initialize the semantic model listener for live editing mode
 	 * 
 	 * @return the semantic model listener
+	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
 		return new EContentAdapter() {
@@ -93,6 +100,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
+			 * 
 			 */
 			public void notifyChanged(final Notification msg) {
 				if (filterPropertiesPart == null)
@@ -116,6 +124,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 
 	/**
 	 * Used to update the views
+	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
 		if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null){
@@ -129,13 +138,13 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 			filterPropertiesPart.setMandatory((Boolean)msg.getNewValue());
 
 
-
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
 	 */
 	public java.lang.Class translatePart(String key) {
 		if (FILTERPROPERTIES_PART.equals(key))
@@ -147,6 +156,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -157,6 +167,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
 	 *  (java.lang.String, java.lang.String)
+	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (bindingFilter != null && FILTERPROPERTIES_PART.equals(key)) {
@@ -177,6 +188,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
 	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == MappingViewsRepository.FilterProperties.class)
@@ -188,6 +200,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
@@ -221,13 +234,13 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
 	 *     (org.eclipse.emf.edit.domain.EditingDomain)
+	 * 
 	 */
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((bindingFilter != null) && (filterPropertiesPart != null)) { 
 			cc.append(SetCommand.create(editingDomain, bindingFilter, FiltersPackage.eINSTANCE.getBindingFilter_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), filterPropertiesPart.getName())));
 			cc.append(SetCommand.create(editingDomain, bindingFilter, FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(), filterPropertiesPart.getMandatory()));
-
 
 
 		}
@@ -241,6 +254,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
+	 * 
 	 */
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof BindingFilter) {
@@ -248,7 +262,6 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 			bindingFilterToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), filterPropertiesPart.getName()));
 
 			bindingFilterToUpdate.setMandatory(new Boolean(filterPropertiesPart.getMandatory()).booleanValue());
-
 
 
 			return bindingFilterToUpdate;
@@ -261,6 +274,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -272,7 +286,6 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 			}
 			if (MappingViewsRepository.FilterProperties.mandatory == event.getAffectedEditor())
 				command.append(SetCommand.create(liveEditingDomain, bindingFilter, FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(), event.getNewValue()));
-
 
 
 				if (!command.isEmpty() && !command.canExecute()) {
@@ -295,6 +308,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -309,7 +323,6 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}
-
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -323,6 +336,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -339,11 +353,11 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 		return validate;
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
 	 */
 	public void dispose() {
 		if (semanticAdapter != null)
@@ -354,6 +368,7 @@ public class FilterPropertiesPropertiesEditionComponent extends StandardProperti
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
 	 */
 	public String getTabText(String p_key) {
 		return filterPropertiesPart.getTitle();

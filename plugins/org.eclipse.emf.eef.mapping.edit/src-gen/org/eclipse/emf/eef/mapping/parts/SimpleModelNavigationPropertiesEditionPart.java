@@ -23,17 +23,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface SimpleModelNavigationPropertiesEditionPart {
 
 	/**
 	 * @return the index
+	 * 
 	 */
 	public String getIndex();
 
 	/**
 	 * Defines a new index
 	 * @param newValue the new index to set
+	 * 
 	 */
 	public void setIndex(String newValue);
 
@@ -44,6 +47,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 
 	/**
 	 * @return the feature
+	 * 
 	 */
 	public EObject getFeature();
 
@@ -57,12 +61,14 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	/**
 	 * Defines a new feature
 	 * @param newValue the new feature to set
+	 * 
 	 */
 	public void setFeature(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setFeatureButtonMode(ButtonsModeEnum newValue);
 
@@ -72,6 +78,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToFeature(ViewerFilter filter);
 
@@ -81,6 +88,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToFeature(ViewerFilter filter);
 
@@ -91,6 +99,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 
 	/**
 	 * @return the discriminatorType
+	 * 
 	 */
 	public EObject getDiscriminatorType();
 
@@ -104,12 +113,14 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	/**
 	 * Defines a new discriminatorType
 	 * @param newValue the new discriminatorType to set
+	 * 
 	 */
 	public void setDiscriminatorType(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setDiscriminatorTypeButtonMode(ButtonsModeEnum newValue);
 
@@ -119,6 +130,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToDiscriminatorType(ViewerFilter filter);
 
@@ -128,9 +140,9 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToDiscriminatorType(ViewerFilter filter);
-
 
 
 
@@ -144,6 +156,7 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

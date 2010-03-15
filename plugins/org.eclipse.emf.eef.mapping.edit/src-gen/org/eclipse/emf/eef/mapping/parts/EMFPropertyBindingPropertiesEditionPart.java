@@ -26,17 +26,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface EMFPropertyBindingPropertiesEditionPart {
 
 	/**
 	 * @return the name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -47,6 +50,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 
 	/**
 	 * @return the model
+	 * 
 	 */
 	public EObject getModel();
 
@@ -60,12 +64,14 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	/**
 	 * Defines a new model
 	 * @param newValue the new model to set
+	 * 
 	 */
 	public void setModel(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setModelButtonMode(ButtonsModeEnum newValue);
 
@@ -75,6 +81,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToModel(ViewerFilter filter);
 
@@ -84,6 +91,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter);
 
@@ -94,17 +102,19 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 
 	/**
 	 * @return the views to add
+	 * 
 	 */
 	public List getViewsToAdd();
 
 	/**
 	 * @return the views to remove
+	 * 
 	 */
 	public List getViewsToRemove();
 
 	/**
 	 * @return the current views table
-	 */
+	 * 
 	public List getViewsTable();
 
 	/**
@@ -118,6 +128,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	/**
 	 * Update the views
 	 * @param newValue the views to update
+	 * 
 	 */
 	public void updateViews(EObject newValue);
 
@@ -127,6 +138,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToViews(ViewerFilter filter);
 
@@ -136,14 +148,15 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToViews(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the views table
+	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element);
-
 
 
 
@@ -157,6 +170,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

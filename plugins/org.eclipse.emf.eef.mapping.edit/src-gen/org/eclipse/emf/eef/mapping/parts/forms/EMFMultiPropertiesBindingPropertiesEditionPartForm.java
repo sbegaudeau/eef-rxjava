@@ -47,8 +47,6 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -62,6 +60,7 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, EMFMultiPropertiesBindingPropertiesEditionPart {
 
@@ -77,11 +76,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 
 
 
-
-
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * 
 	 */
 	public EMFMultiPropertiesBindingPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -92,6 +90,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -109,6 +108,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
+	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		this.messageManager = messageManager;
@@ -120,6 +120,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		
 		// End of user code
 	}
+	/**
+	 * 
+	 */
 	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
 		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_PropertiesGroupLabel);
@@ -134,6 +137,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		propertiesSection.setClient(propertiesGroup);
 	}
 
+	
 	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFMultiPropertiesBinding.name, MappingViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -141,50 +145,38 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
-		name.addModifyListener(new ModifyListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-			 */
-			public void modifyText(ModifyEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.name, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, name.getText()));
-			}
-
-		});
 		name.addFocusListener(new FocusAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
-
 		});
 		name.addKeyListener(new KeyAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
-
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
+	/**
+	 * 
+	 */
 	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
 		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bindingSection.setText(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_BindingGroupLabel);
@@ -200,6 +192,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		bindingSection.setClient(bindingGroup);
 	}
 
+	/**
+	 * 
+	 */
 	protected void createModelReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.model = new ReferencesTable<EStructuralFeature>(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener<EStructuralFeature>() {
 			public void handleAdd() {
@@ -248,7 +243,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		model.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -269,9 +263,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 			}
 		}
 		// End of user code
-
 	}
 
+	/**
+	 * 
+	 */
 	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
@@ -324,7 +320,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		views.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -345,7 +340,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -354,6 +348,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
@@ -366,6 +361,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getName()
+	 * 
 	 */
 	public String getName() {
 		return name.getText();
@@ -375,6 +371,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#setName(String newValue)
+	 * 
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -396,6 +393,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getModelToAdd()
+	 * 
 	 */
 	public List getModelToAdd() {
 		return modelEditUtil.getElementsToAdd();
@@ -405,6 +403,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getModelToRemove()
+	 * 
 	 */
 	public List getModelToRemove() {
 		return modelEditUtil.getElementsToRemove();
@@ -414,6 +413,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getModelTable()
+	 * 
 	 */
 	public List getModelTable() {
 		return modelEditUtil.getVirtualList();
@@ -439,6 +439,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#updateModel(EObject newValue)
+	 * 
 	 */
 	public void updateModel(EObject newValue) {
 		if(modelEditUtil != null){
@@ -451,6 +452,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addFilterModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToModel(ViewerFilter filter) {
 		modelFilters.add(filter);
@@ -460,6 +462,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addBusinessFilterModel(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToModel(ViewerFilter filter) {
 		modelBusinessFilters.add(filter);
@@ -469,6 +472,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#isContainedInModelTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInModelTable(EObject element) {
 		return modelEditUtil.contains(element);
@@ -482,6 +486,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getViewsToAdd()
+	 * 
 	 */
 	public List getViewsToAdd() {
 		return viewsEditUtil.getElementsToAdd();
@@ -491,6 +496,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getViewsToRemove()
+	 * 
 	 */
 	public List getViewsToRemove() {
 		return viewsEditUtil.getElementsToRemove();
@@ -500,6 +506,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#getViewsTable()
+	 * 
 	 */
 	public List getViewsTable() {
 		return viewsEditUtil.getVirtualList();
@@ -525,6 +532,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#updateViews(EObject newValue)
+	 * 
 	 */
 	public void updateViews(EObject newValue) {
 		if(viewsEditUtil != null){
@@ -537,6 +545,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addFilterViews(ViewerFilter filter)
+	 * 
 	 */
 	public void addFilterToViews(ViewerFilter filter) {
 		viewsFilters.add(filter);
@@ -546,6 +555,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#addBusinessFilterViews(ViewerFilter filter)
+	 * 
 	 */
 	public void addBusinessFilterToViews(ViewerFilter filter) {
 		viewsBusinessFilters.add(filter);
@@ -555,6 +565,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#isContainedInViewsTable(EObject element)
+	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element) {
 		return viewsEditUtil.contains(element);
@@ -566,13 +577,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
 	 */
 	public String getTitle() {
 		return MappingMessages.EMFMultiPropertiesBinding_Part_Title;
@@ -581,5 +590,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	// Start of user code additional methods
  	
 	// End of user code
+
 
 }

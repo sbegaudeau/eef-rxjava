@@ -20,17 +20,20 @@ package org.eclipse.emf.eef.mapping.parts;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface DocumentationPropertiesEditionPart {
 
 	/**
 	 * @return the documentation
+	 * 
 	 */
 	public String getDocumentation();
 
 	/**
 	 * Defines a new documentation
 	 * @param newValue the new documentation to set
+	 * 
 	 */
 	public void setDocumentation(String newValue);
 
@@ -42,11 +45,11 @@ public interface DocumentationPropertiesEditionPart {
 
 
 
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

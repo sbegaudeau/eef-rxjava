@@ -23,11 +23,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface ElementBindingReferencePropertiesEditionPart {
 
 	/**
 	 * @return the binding
+	 * 
 	 */
 	public EObject getBinding();
 
@@ -41,12 +43,14 @@ public interface ElementBindingReferencePropertiesEditionPart {
 	/**
 	 * Defines a new binding
 	 * @param newValue the new binding to set
+	 * 
 	 */
 	public void setBinding(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
+	 * 
 	 */
 	public void setBindingButtonMode(ButtonsModeEnum newValue);
 
@@ -56,6 +60,7 @@ public interface ElementBindingReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addFilterToBinding(ViewerFilter filter);
 
@@ -65,9 +70,9 @@ public interface ElementBindingReferencePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
 	 */
 	public void addBusinessFilterToBinding(ViewerFilter filter);
-
 
 
 
@@ -81,6 +86,7 @@ public interface ElementBindingReferencePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -21,17 +21,20 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface OCLFilterPropertiesEditionPart {
 
 	/**
 	 * @return the OCLExpressionBody
+	 * 
 	 */
 	public String getOCLExpressionBody();
 
 	/**
 	 * Defines a new OCLExpressionBody
 	 * @param newValue the new OCLExpressionBody to set
+	 * 
 	 */
 	public void setOCLExpressionBody(String newValue);
 
@@ -40,19 +43,21 @@ public interface OCLFilterPropertiesEditionPart {
 	public void unsetMessageForOCLExpressionBody();
 
 
-
 	/**
 		 * @return the Filter properties referenced view
+		 * 
 		 */
 		public IPropertiesEditionPart getFilterPropertiesReferencedView();
 	/**
 	 * @return the Name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new Name
 	 * @param newValue the new Name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -62,12 +67,14 @@ public interface OCLFilterPropertiesEditionPart {
 
 	/**
 	 * @return the Mandatory
+	 * 
 	 */
 	public Boolean getMandatory();
 
 	/**
 	 * Defines a new Mandatory
 	 * @param newValue the new Mandatory to set
+	 * 
 	 */
 	public void setMandatory(Boolean newValue);
 
@@ -83,6 +90,7 @@ public interface OCLFilterPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 

@@ -21,17 +21,20 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * 
  */
 public interface JavaExpressionFilterPropertiesEditionPart {
 
 	/**
 	 * @return the javaExpressionBody
+	 * 
 	 */
 	public String getJavaExpressionBody();
 
 	/**
 	 * Defines a new javaExpressionBody
 	 * @param newValue the new javaExpressionBody to set
+	 * 
 	 */
 	public void setJavaExpressionBody(String newValue);
 
@@ -40,19 +43,21 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 	public void unsetMessageForJavaExpressionBody();
 
 
-
 	/**
 		 * @return the Filter properties referenced view
+		 * 
 		 */
 		public IPropertiesEditionPart getFilterPropertiesReferencedView();
 	/**
 	 * @return the Name
+	 * 
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new Name
 	 * @param newValue the new Name to set
+	 * 
 	 */
 	public void setName(String newValue);
 
@@ -62,12 +67,14 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 
 	/**
 	 * @return the Mandatory
+	 * 
 	 */
 	public Boolean getMandatory();
 
 	/**
 	 * Defines a new Mandatory
 	 * @param newValue the new Mandatory to set
+	 * 
 	 */
 	public void setMandatory(Boolean newValue);
 
@@ -83,6 +90,7 @@ public interface JavaExpressionFilterPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
+	 * 
 	 */
 	public String getTitle();
 
