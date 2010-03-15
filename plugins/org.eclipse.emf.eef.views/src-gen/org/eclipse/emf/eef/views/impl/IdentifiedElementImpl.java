@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: IdentifiedElementImpl.java,v 1.8 2010/03/15 11:08:11 glefur Exp $
+ * $Id: IdentifiedElementImpl.java,v 1.9 2010/03/15 16:21:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -67,24 +67,16 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public String getQualifiedIdentifier() {
-		// TODO: implement this method to return the 'Qualified Identifier' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	public abstract String getQualifiedIdentifier();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
-		// TODO: implement this method to set the 'Qualified Identifier' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	public abstract void setQualifiedIdentifier(String newQualifiedIdentifier);
 
 	/**
 	 * <!-- begin-user-doc -->

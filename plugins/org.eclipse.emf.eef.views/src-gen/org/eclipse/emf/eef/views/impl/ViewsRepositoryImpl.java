@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ViewsRepositoryImpl.java,v 1.9 2010/03/15 11:08:11 glefur Exp $
+ * $Id: ViewsRepositoryImpl.java,v 1.10 2010/03/15 16:21:07 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -136,23 +136,19 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getQualifiedIdentifier() {
-		// TODO: implement this method to return the 'Qualified Identifier' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
-		// TODO: implement this method to set the 'Qualified Identifier' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		// Nothing to do
 	}
 
 	/**
