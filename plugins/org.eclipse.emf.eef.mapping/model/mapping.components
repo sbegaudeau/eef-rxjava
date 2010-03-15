@@ -19,10 +19,6 @@
       </bindings>
     </categories>
     <categories xmi:id="_btT4wgd2Ed6c_JoEf-t5JA" name="mapping">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT4wwd2Ed6c_JoEf-t5JA" name="Databinding">
-        <referencedBinding xmi:id="_lJN_8AtPEd6GjLeaWWGqlg" documentation="" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
-        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//Databinding"/>
-      </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_btT4xwd2Ed6c_JoEf-t5JA" name="EMFElementBinding" views="_btT5AQd2Ed6c_JoEf-t5JA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_btT4zQd2Ed6c_JoEf-t5JA" name="name" views="_btT5CAd2Ed6c_JoEf-t5JA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding/name"/>
@@ -131,7 +127,7 @@
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_hfHNUEVFEd6OEZjV-T3j6Q" name="OCLFilter" views="_v-Lw4EVDEd6OEZjV-T3j6Q">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xVR0wEVFEd6OEZjV-T3j6Q" name="OCLExpressionBody" views="_1HhpQEVDEd6OEZjV-T3j6Q">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OCLFilter/body"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/OCLFilter/OCLBody"/>
         </properties>
         <referencedBinding xmi:id="_7kW34EVFEd6OEZjV-T3j6Q" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
         <referencedBinding xmi:id="_ZsSnUEnREd60zu6mQdwT9g" binding="_NsYfwEnREd60zu6mQdwT9g"/>
@@ -139,7 +135,7 @@
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_8ydCsEVFEd6OEZjV-T3j6Q" name="JavaExpressionFilter" views="_5nfNcEVDEd6OEZjV-T3j6Q">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8ydCsUVFEd6OEZjV-T3j6Q" name="JavaExpressionBody" views="_W2clgEVFEd6OEZjV-T3j6Q">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaExpressionFilter/body"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaExpressionFilter/javaBody"/>
         </properties>
         <referencedBinding xmi:id="_8ydCskVFEd6OEZjV-T3j6Q" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
         <referencedBinding xmi:id="_Z1j4EEnREd60zu6mQdwT9g" binding="_NsYfwEnREd60zu6mQdwT9g"/>
