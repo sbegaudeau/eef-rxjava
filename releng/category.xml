@@ -9,12 +9,12 @@
    <feature url="features/org.eclipse.emf.eef.runtime_${org.eclipse.emf.eef.runtime.version}.jar" id="org.eclipse.emf.eef.runtime" version="${org.eclipse.emf.eef.runtime.version}">
       <category name="eef.features"/>
    </feature>
-   <category-def name="eef.features" label="EEF Features">
+   <category-def name="eef.features" label="EEF Features (Incubation)">
       <description>
          Contains all necessary features for EEF
       </description>
    </category-def>
-   <category-def name="eef.integration" label="EEF Integration">
+   <category-def name="eef.integration" label="EEF Integration (Incubation)">
       <description>
          EEF integration for specific cases :
          - UML2
