@@ -14,7 +14,7 @@ package org.eclipse.emf.eef.views.parts;
 // Start of user code for imports
 
 
- 
+
 
 // End of user code
 
@@ -37,10 +37,6 @@ public interface CategoryPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 
 
@@ -54,7 +50,7 @@ public interface CategoryPropertiesEditionPart {
 	public String getTitle();
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 
 }

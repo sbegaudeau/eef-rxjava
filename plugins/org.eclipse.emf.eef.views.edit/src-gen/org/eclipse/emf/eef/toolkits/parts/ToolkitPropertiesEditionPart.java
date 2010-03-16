@@ -14,7 +14,7 @@ package org.eclipse.emf.eef.toolkits.parts;
 // Start of user code for imports
 
 
- 
+
 
 // End of user code
 
@@ -37,10 +37,6 @@ public interface ToolkitPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 
 
@@ -54,7 +50,7 @@ public interface ToolkitPropertiesEditionPart {
 	public String getTitle();
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 
 }

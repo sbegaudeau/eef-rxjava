@@ -12,12 +12,12 @@
 package org.eclipse.emf.eef.views.parts;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.jface.viewers.ViewerFilter;
- 
+
+
 
 // End of user code
 
@@ -39,10 +39,6 @@ public interface ElementEditorPropertiesEditionPart {
 	 * 
 	 */
 	public void setName(String newValue);
-
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
 
 
 	/**
@@ -93,10 +89,6 @@ public interface ElementEditorPropertiesEditionPart {
 	public void addBusinessFilterToRepresentation(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the readOnly
 	 * 
@@ -114,10 +106,6 @@ public interface ElementEditorPropertiesEditionPart {
 
 
 
-
-
-
-
 	/**
 	 * Returns the internationalized title text.
 	 * 
@@ -127,7 +115,7 @@ public interface ElementEditorPropertiesEditionPart {
 	public String getTitle();
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 
 }

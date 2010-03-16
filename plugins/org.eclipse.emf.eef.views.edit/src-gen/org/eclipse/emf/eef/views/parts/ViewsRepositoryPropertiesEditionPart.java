@@ -14,7 +14,7 @@ package org.eclipse.emf.eef.views.parts;
 // Start of user code for imports
 
 
- 
+
 
 // End of user code
 
@@ -37,10 +37,6 @@ public interface ViewsRepositoryPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 	/**
 	 * @return the RepositoryKind
@@ -55,10 +51,6 @@ public interface ViewsRepositoryPropertiesEditionPart {
 	 */
 	public void setRepositoryKind(String newValue);
 
-	public void setMessageForRepositoryKind(String msg, int msgLevel);
-
-	public void unsetMessageForRepositoryKind();
-
 
 
 
@@ -72,7 +64,7 @@ public interface ViewsRepositoryPropertiesEditionPart {
 	public String getTitle();
 
 	// Start of user code for additional methods
- 	
+	
 	// End of user code
 
 }
