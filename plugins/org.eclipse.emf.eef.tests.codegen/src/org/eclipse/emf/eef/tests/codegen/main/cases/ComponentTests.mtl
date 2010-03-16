@@ -69,7 +69,7 @@ public class [pec.testCase()/] extends SWTBotEEFTestCase {
 [commentTestPropertySection()/]
 [testRemoveEditPropertySection(pec, peElement)/]
 [removeFeaturePropertySection(pec, peElement)/]
-[comparePropertySection(pec, peElement)/]	
+[comparePropertySection(pec, peElement)/]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
@@ -97,7 +97,7 @@ package [pec.model.completePackage()/].tests.junit;
 		
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
 		
-		[pec.editFeature(peElement)/]	
+		[pec.editFeature(peElement)/]
 [/template]
 
 [template public removeFeaturePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -108,5 +108,5 @@ package [pec.model.completePackage()/].tests.junit;
 		
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
 		
-		[pec.removeFeature(peElement)/]	
+		[pec.removeFeature(peElement)/]
 [/template]

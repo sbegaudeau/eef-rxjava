@@ -97,7 +97,7 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
 		
-		[pec.editPropertyFeature(peElement)/]	
+		[pec.editPropertyFeature(peElement)/]
 [/template]
 
 [template public removeFeaturePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -108,5 +108,5 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
 		
-		[pec.removePropertyFeature(peElement)/]	
+		[pec.removePropertyFeature(peElement)/]
 [/template]
