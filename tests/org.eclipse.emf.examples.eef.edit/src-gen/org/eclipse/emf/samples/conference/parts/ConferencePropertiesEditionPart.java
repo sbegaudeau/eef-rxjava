@@ -41,10 +41,6 @@ public interface ConferencePropertiesEditionPart {
 	 */
 	public void setPlace(String newValue);
 
-	public void setMessageForPlace(String msg, int msgLevel);
-
-	public void unsetMessageForPlace();
-
 
 	/**
 	 * @return the sites to add
@@ -115,10 +111,6 @@ public interface ConferencePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInSitesTable(EObject element);
-
-
-
-
 
 
 

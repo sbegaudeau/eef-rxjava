@@ -102,7 +102,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createLocalisationGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -287,13 +286,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForPlace(String msg, int msgLevel) {
-		messageManager.addMessage("Place_key", msg, null, msgLevel, place);
-	}
-
-	public void unsetMessageForPlace() {
-		messageManager.removeMessage("Place_key", place);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -402,9 +394,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	public boolean isContainedInSitesTable(EObject element) {
 		return sitesEditUtil.contains(element);
 	}
-
-
-
 
 
 

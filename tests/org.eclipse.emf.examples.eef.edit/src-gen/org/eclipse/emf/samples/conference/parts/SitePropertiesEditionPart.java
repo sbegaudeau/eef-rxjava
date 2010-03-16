@@ -36,10 +36,6 @@ public interface SitePropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 	/**
 	 * @return the documentation
@@ -53,10 +49,6 @@ public interface SitePropertiesEditionPart {
 	 * 
 	 */
 	public void setDocumentation(String newValue);
-
-	public void setMessageForDocumentation(String msg, int msgLevel);
-
-	public void unsetMessageForDocumentation();
 
 
 

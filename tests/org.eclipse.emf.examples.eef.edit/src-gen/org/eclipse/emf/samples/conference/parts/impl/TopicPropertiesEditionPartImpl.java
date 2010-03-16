@@ -248,13 +248,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		}
 	}
 
-	public void setMessageForDescription(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDescription() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -281,13 +274,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		}
 	}
 
-	public void setMessageForReferences(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferences() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -313,13 +299,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDocumentation() {
-
-	}
 
 
 

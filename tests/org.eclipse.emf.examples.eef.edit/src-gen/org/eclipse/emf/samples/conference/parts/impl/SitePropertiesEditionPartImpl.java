@@ -199,13 +199,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -231,13 +224,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDocumentation() {
-
-	}
 
 
 

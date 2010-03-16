@@ -89,10 +89,6 @@ public interface PresencePropertiesEditionPart {
 
 
 
-
-
-
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

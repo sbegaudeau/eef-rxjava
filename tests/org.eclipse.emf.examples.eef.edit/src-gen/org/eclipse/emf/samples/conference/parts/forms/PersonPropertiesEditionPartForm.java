@@ -100,7 +100,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createIdentityGroup(widgetFactory, view);
 
 		createEclipseStatusGroup(widgetFactory, view);
@@ -367,13 +366,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForFirstname(String msg, int msgLevel) {
-		messageManager.addMessage("Firstname_key", msg, null, msgLevel, firstname);
-	}
-
-	public void unsetMessageForFirstname() {
-		messageManager.removeMessage("Firstname_key", firstname);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -399,13 +391,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForLastname(String msg, int msgLevel) {
-		messageManager.addMessage("Lastname_key", msg, null, msgLevel, lastname);
-	}
-
-	public void unsetMessageForLastname() {
-		messageManager.removeMessage("Lastname_key", lastname);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -431,13 +416,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForAge(String msg, int msgLevel) {
-		messageManager.addMessage("Age_key", msg, null, msgLevel, age);
-	}
-
-	public void unsetMessageForAge() {
-		messageManager.removeMessage("Age_key", age);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -471,9 +449,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -499,9 +474,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -525,9 +497,6 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 			isRegistered.setSelection(false);
 		}
 	}
-
-
-
 
 
 

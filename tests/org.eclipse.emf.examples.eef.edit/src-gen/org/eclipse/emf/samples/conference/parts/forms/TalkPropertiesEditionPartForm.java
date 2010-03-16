@@ -103,7 +103,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -339,13 +338,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForTitle_(String msg, int msgLevel) {
-		messageManager.addMessage("Title__key", msg, null, msgLevel, title_);
-	}
-
-	public void unsetMessageForTitle_() {
-		messageManager.removeMessage("Title__key", title_);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -418,9 +410,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -451,9 +440,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	public void setType(Enumerator newValue) {
 		type.modelUpdating(new StructuredSelection(newValue));
 	}
-
-
-
 
 
 	/**
@@ -527,9 +513,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -601,9 +584,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -628,13 +608,6 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-		messageManager.addMessage("Documentation_key", msg, null, msgLevel, documentation);
-	}
-
-	public void unsetMessageForDocumentation() {
-		messageManager.removeMessage("Documentation_key", documentation);
-	}
 
 
 

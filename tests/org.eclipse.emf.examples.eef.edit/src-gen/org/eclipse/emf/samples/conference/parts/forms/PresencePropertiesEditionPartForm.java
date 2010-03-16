@@ -96,7 +96,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createTalksGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -299,9 +298,6 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	public boolean isContainedInAssistsTable(EObject element) {
 		return assistsEditUtil.contains(element);
 	}
-
-
-
 
 
 

@@ -296,13 +296,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForTitle_(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTitle_() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -374,13 +367,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		topic.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForTopic(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTopic() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -413,13 +399,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		type.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForType(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForType() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -491,13 +470,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		presenter.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForPresenter(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForPresenter() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -569,13 +541,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		creator.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForCreator(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForCreator() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -601,13 +566,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDocumentation() {
-
-	}
 
 
 

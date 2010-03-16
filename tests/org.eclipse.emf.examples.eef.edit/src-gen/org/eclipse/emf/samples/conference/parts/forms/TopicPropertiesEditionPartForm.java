@@ -99,7 +99,6 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -264,13 +263,6 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		}
 	}
 
-	public void setMessageForDescription(String msg, int msgLevel) {
-		messageManager.addMessage("Description_key", msg, null, msgLevel, description);
-	}
-
-	public void unsetMessageForDescription() {
-		messageManager.removeMessage("Description_key", description);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -298,9 +290,6 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -325,13 +314,6 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-		messageManager.addMessage("Documentation_key", msg, null, msgLevel, documentation);
-	}
-
-	public void unsetMessageForDocumentation() {
-		messageManager.removeMessage("Documentation_key", documentation);
-	}
 
 
 

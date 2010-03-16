@@ -41,10 +41,6 @@ public interface TalkPropertiesEditionPart {
 	 */
 	public void setTitle_(String newValue);
 
-	public void setMessageForTitle_(String msg, int msgLevel);
-
-	public void unsetMessageForTitle_();
-
 
 	/**
 	 * @return the topic
@@ -94,10 +90,6 @@ public interface TalkPropertiesEditionPart {
 	public void addBusinessFilterToTopic(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the type
 	 * 
@@ -117,10 +109,6 @@ public interface TalkPropertiesEditionPart {
 	 * 
 	 */
 	public void setType(Enumerator newValue);
-
-
-
-
 
 
 	/**
@@ -171,10 +159,6 @@ public interface TalkPropertiesEditionPart {
 	public void addBusinessFilterToPresenter(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the creator
 	 * 
@@ -223,10 +207,6 @@ public interface TalkPropertiesEditionPart {
 	public void addBusinessFilterToCreator(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the documentation
 	 * 
@@ -239,10 +219,6 @@ public interface TalkPropertiesEditionPart {
 	 * 
 	 */
 	public void setDocumentation(String newValue);
-
-	public void setMessageForDocumentation(String msg, int msgLevel);
-
-	public void unsetMessageForDocumentation();
 
 
 

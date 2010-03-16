@@ -84,7 +84,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -213,13 +212,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -245,13 +237,6 @@ public class SitePropertiesEditionPartForm extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForDocumentation(String msg, int msgLevel) {
-		messageManager.addMessage("Documentation_key", msg, null, msgLevel, documentation);
-	}
-
-	public void unsetMessageForDocumentation() {
-		messageManager.removeMessage("Documentation_key", documentation);
-	}
 
 
 

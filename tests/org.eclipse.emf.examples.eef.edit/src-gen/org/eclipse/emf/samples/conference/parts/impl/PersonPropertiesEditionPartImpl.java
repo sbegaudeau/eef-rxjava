@@ -333,13 +333,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForFirstname(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForFirstname() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -365,13 +358,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForLastname(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForLastname() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -397,13 +383,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForAge(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAge() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -436,13 +415,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		gender.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForGender(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForGender() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -468,13 +440,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForEclipseCommiter(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEclipseCommiter() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -500,13 +465,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForIsRegistered(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForIsRegistered() {
-
-	}
 
 
 

@@ -37,10 +37,6 @@ public interface PersonPropertiesEditionPart {
 	 */
 	public void setFirstname(String newValue);
 
-	public void setMessageForFirstname(String msg, int msgLevel);
-
-	public void unsetMessageForFirstname();
-
 
 	/**
 	 * @return the lastname
@@ -55,10 +51,6 @@ public interface PersonPropertiesEditionPart {
 	 */
 	public void setLastname(String newValue);
 
-	public void setMessageForLastname(String msg, int msgLevel);
-
-	public void unsetMessageForLastname();
-
 
 	/**
 	 * @return the age
@@ -72,10 +64,6 @@ public interface PersonPropertiesEditionPart {
 	 * 
 	 */
 	public void setAge(String newValue);
-
-	public void setMessageForAge(String msg, int msgLevel);
-
-	public void unsetMessageForAge();
 
 
 	/**
@@ -99,10 +87,6 @@ public interface PersonPropertiesEditionPart {
 	public void setGender(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the eclipseCommiter
 	 * 
@@ -117,10 +101,6 @@ public interface PersonPropertiesEditionPart {
 	public void setEclipseCommiter(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the isRegistered
 	 * 
@@ -133,10 +113,6 @@ public interface PersonPropertiesEditionPart {
 	 * 
 	 */
 	public void setIsRegistered(Boolean newValue);
-
-
-
-
 
 
 

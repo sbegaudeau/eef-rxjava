@@ -286,13 +286,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForPlace(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForPlace() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -402,13 +395,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		return sitesEditUtil.contains(element);
 	}
 
-	public void setMessageForSites(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSites() {
-
-	}
 
 
 

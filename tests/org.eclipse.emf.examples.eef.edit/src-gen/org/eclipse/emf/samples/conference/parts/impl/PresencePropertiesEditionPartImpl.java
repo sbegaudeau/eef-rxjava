@@ -299,13 +299,6 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return assistsEditUtil.contains(element);
 	}
 
-	public void setMessageForAssists(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAssists() {
-
-	}
 
 
 

@@ -36,10 +36,6 @@ public interface TopicPropertiesEditionPart {
 	 */
 	public void setDescription(String newValue);
 
-	public void setMessageForDescription(String msg, int msgLevel);
-
-	public void unsetMessageForDescription();
-
 
 	/**
 	 * @return the references
@@ -55,10 +51,6 @@ public interface TopicPropertiesEditionPart {
 	public void setReferences(EList newValue);
 
 
-
-
-
-
 	/**
 	 * @return the documentation
 	 * 
@@ -71,10 +63,6 @@ public interface TopicPropertiesEditionPart {
 	 * 
 	 */
 	public void setDocumentation(String newValue);
-
-	public void setMessageForDocumentation(String msg, int msgLevel);
-
-	public void unsetMessageForDocumentation();
 
 
 
