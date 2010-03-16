@@ -36,6 +36,10 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	private EClass siteMetaClass = ConferencePackage.eINSTANCE.getSite();
 
 	/**
+	 * The type to edit
+	 */
+	private EObject site;
+	/**
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
@@ -97,13 +101,11 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForSiteName() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject site = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, siteMetaClass);
 		if (site == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, site, ConferencePackage.eINSTANCE.getSite_Name(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, site, ConferencePackage.eINSTANCE.getSite_Name(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -121,6 +123,10 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		site = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
+		if (site == null)
+			throw new InputModelInvalidException(siteMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForSiteName();
 		
@@ -132,10 +138,10 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the name feature of the Site element 
-		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.SitePropertiesEditionPart_NameLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
+				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.SitePropertiesEditionPart_NameLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -146,7 +152,7 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}
+	}	
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -155,13 +161,11 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForSiteDocumentation() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject site = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, siteMetaClass);
 		if (site == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, site, ConferencePackage.eINSTANCE.getSite_Documentation(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, site, ConferencePackage.eINSTANCE.getSite_Documentation(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -179,6 +183,10 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		site = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
+		if (site == null)
+			throw new InputModelInvalidException(siteMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForSiteDocumentation();
 		
@@ -190,10 +198,10 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
 		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf);
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the documentation feature of the Site element 
-		bot.editPropertyTextFeature(propertiesView, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));	
+				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -204,10 +212,10 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
+	}	
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
+
 
 
 

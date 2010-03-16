@@ -12,6 +12,7 @@ package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
@@ -21,6 +22,7 @@ import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.Talk;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -35,6 +37,38 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 	 */
 	private EClass talkMetaClass = ConferencePackage.eINSTANCE.getTalk();
 
+	/**
+	 * The type to edit
+	 */
+	private EObject talk;
+	/**
+	 * The enum value for the enum class type
+	 */
+	private Object enumValueForType;
+	/**
+	 * The reference value for the reference class presenter
+	 */
+	private Object referenceValueForPresenter;
+	/**
+	 * The reference value for the reference class topic
+	 */
+	private Object referenceValueForTopic;
+	/**
+	 * The reference value for the reference class creator
+	 */
+	private Object referenceValueForCreator;
+	/**
+	 * The EClass of the reference to edit
+	 */
+	private EClass topicMetaClass = ConferencePackage.eINSTANCE.getTopic();	
+	/**
+	 * The EClass of the reference to edit
+	 */
+	private EClass personMetaClass = ConferencePackage.eINSTANCE.getPerson();	
+	/**
+	 * The eObjects list contained in widgets
+	 */
+	private List allInstancesOf;
 	/**
 	 * Updated value of the feature
 	 */
@@ -97,13 +131,11 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTalkTitle() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Title(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Title(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -121,6 +153,10 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForTalkTitle();
 		
@@ -132,10 +168,72 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the title feature of the Talk element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, UPDATED_VALUE);	
+				bot.editTextFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, UPDATED_VALUE);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForTalkTopic() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, topicMetaClass);
+				referenceValueForTopic = bot.changeReferenceValue(allInstancesOf, ((Talk)talk).getTopic());
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Topic(), referenceValueForTopic));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTalkTopic() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForTalkTopic();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Talk element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
+		
+		// Change value of the topic feature of the Talk element 
+				bot.editEObjectFlatComboViewerFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForTopic));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -155,13 +253,11 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTalkType() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Type(), ConferencePackage.eINSTANCE.getTALK_TYPE().getEEnumLiteral(1).getInstance()));
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Type(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -179,6 +275,11 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
+		enumValueForType = bot.changeEnumLiteralValue(ConferencePackage.eINSTANCE.getTALK_TYPE(), ((Talk)talk).getType().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForTalkType();
 		
@@ -190,10 +291,196 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the type feature of the Talk element 
-		bot.editEMFComboViewerFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel, ConferencePackage.eINSTANCE.getTALK_TYPE().getEEnumLiteral(1));	
+				bot.editTextFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel, UPDATED_VALUE);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForTalkPresenter() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, personMetaClass);
+				referenceValueForPresenter = bot.changeReferenceValue(allInstancesOf, ((Talk)talk).getPresenter());
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Presenter(), referenceValueForPresenter));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTalkPresenter() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForTalkPresenter();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Talk element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
+		
+		// Change value of the presenter feature of the Talk element 
+				bot.editEObjectFlatComboViewerFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForPresenter));
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForTalkCreator() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, personMetaClass);
+				referenceValueForCreator = bot.changeReferenceValue(allInstancesOf, ((Talk)talk).getCreator());
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Creator(), referenceValueForCreator));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTalkCreator() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForTalkCreator();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Talk element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
+		
+		// Change value of the creator feature of the Talk element 
+				bot.editEObjectFlatComboViewerFeature(wizardShell, 1, allInstancesOf.indexOf(referenceValueForCreator)+1);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelForTalkCreator() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, personMetaClass);
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Creator(), null));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemoveTalkCreator() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForTalkCreator();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Talk element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
+		
+		// Change value of the creator feature of the Talk element
+				bot.removeEObjectFlatComboViewerFeature(wizardShell, 1);
+		
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -213,13 +500,11 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTalkDocumentation() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject talk = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Documentation(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -237,6 +522,10 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
+		if (talk == null)
+			throw new InputModelInvalidException(talkMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForTalkDocumentation();
 		
@@ -248,10 +537,10 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, talkMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the documentation feature of the Talk element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel, UPDATED_VALUE);	
+				bot.editTextFeature(wizardShell, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -263,11 +552,17 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - TALK_TYPE) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
+
+
+
+
+
+
+
+
 
 
 

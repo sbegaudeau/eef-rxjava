@@ -12,15 +12,19 @@ package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.Person;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -35,6 +39,26 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 */
 	private EClass personMetaClass = ConferencePackage.eINSTANCE.getPerson();
 
+	/**
+	 * The type to edit
+	 */
+	private EObject person;
+	/**
+	 * The enum value for the enum class gender
+	 */
+	private Object enumValueForGender;
+	/**
+	 * The reference value for the reference class assists
+	 */
+	private Object referenceValueForAssists;
+	/**
+	 * The EClass of the reference to edit
+	 */
+	private EClass talkMetaClass = ConferencePackage.eINSTANCE.getTalk();	
+	/**
+	 * The eObjects list contained in widgets
+	 */
+	private List allInstancesOf;
 	/**
 	 * Updated value of the feature
 	 */
@@ -97,13 +121,11 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForPersonFirstname() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Firstname(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Firstname(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -121,6 +143,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForPersonFirstname();
 		
@@ -132,10 +158,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the firstname feature of the Person element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, UPDATED_VALUE);	
+				bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -155,13 +181,11 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForPersonLastname() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Lastname(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Lastname(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -179,6 +203,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForPersonLastname();
 		
@@ -190,10 +218,70 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the lastname feature of the Person element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, UPDATED_VALUE);	
+				bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, UPDATED_VALUE);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForPersonAge() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Age(), UPDATED_VALUE));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditPersonAge() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForPersonAge();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Person element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
+		
+		// Change value of the age feature of the Person element 
+				bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -213,14 +301,12 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForPersonEclipseCommiter() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter());
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), !oldValue));
+				Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter());
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), !oldValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -238,6 +324,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForPersonEclipseCommiter();
 		
@@ -249,10 +339,134 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eclipseCommiter feature of the Person element 
-		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);	
+				bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForPersonAssists() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, talkMetaClass);
+				referenceValueForAssists = bot.changeReferenceValue(allInstancesOf, ((Person)person).getAssists());
+				cc.append(AddCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), referenceValueForAssists));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditPersonAssists() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForPersonAssists();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Person element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Presence");
+		
+		// Change value of the assists feature of the Person element 
+				bot.editAdvancedReferencesTableFeature(wizardShell, 0, referenceValueForAssists);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeRemoveExpectedModelForPersonAssists() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				allInstancesOf = ((Person)person).getAssists();
+				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, talkMetaClass);
+				cc.append(RemoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), firstInstanceOf));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testRemovePersonAssists() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
+		// Create the expected model
+		initializeRemoveExpectedModelForPersonAssists();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Person element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Presence");
+		
+		// Change value of the assists feature of the Person element 
+				bot.removeAdvancedReferencesTableFeature(wizardShell, 0, ConferenceMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -272,13 +486,11 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForPersonGender() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getInstance()));
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -296,6 +508,11 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
+		enumValueForGender = bot.changeEnumLiteralValue(ConferencePackage.eINSTANCE.getGENDER(), ((Person)person).getGender().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForPersonGender();
 		
@@ -307,10 +524,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the gender feature of the Person element 
-		bot.editEMFComboViewerFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1));	
+				bot.editTextFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -330,14 +547,12 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForPersonIsRegistered() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_IsRegistered());
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), !oldValue));
+				Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_IsRegistered());
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), !oldValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -355,6 +570,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
+		if (person == null)
+			throw new InputModelInvalidException(personMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForPersonIsRegistered();
 		
@@ -366,10 +585,10 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the isRegistered feature of the Person element 
-		bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);	
+				bot.editCheckboxFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -381,75 +600,19 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-	/**
-	 * Create the expected model from the input model
-	 * @throws InputModelInvalidException error during expected model initialization
-	 * @throws IOException error during expected model serialization
-	 */
-	protected void initializeExpectedModelForPersonGenderRadio() throws InputModelInvalidException, IOException {
-		// Create the expected model content by applying the attempted command on a copy of the input model content
-		createExpectedModel();
-		
-		EObject person = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, personMetaClass);
-		if (person == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1).getInstance()));
-		editingDomain.getCommandStack().execute(cc);
-		expectedModel.save(Collections.EMPTY_MAP);
-	}
-	/**
-	 * Test the editor properties :
-	 * - init the input model
-	 * - calculate the expected model
-	 * - initialize the model editor
-	 * - change the properties in the editor properties
-	 * - compare the expected and the real model : if they are equals the test pass
-	 * - delete the models
-	 */	
-	public void testEditPersonGenderRadio() throws Exception {
-		
-		// Import the input model
-		initializeInputModel();
-		
-		// Create the expected model
-		initializeExpectedModelForPersonGenderRadio();
-		
-		// Open the input model with the treeview editor
-		SWTBotEditor modelEditor = bot.openActiveModel();
-		
-		// Open the EEF wizard (by double click) to edit the Person element
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
-		if (firstInstanceOf == null)
-			throw new InputModelInvalidException(personMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf);
-		
-		// Change value of the genderRadio feature of the Person element 
-		bot.editRadioFeature(wizardShell, ConferenceMessages.PersonPropertiesEditionPart_GenderRadioLabel, ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteral(1));	
-		
-		// Save the changement
-		bot.finalizeEdition(modelEditor);
-		
-		// Compare real model with expected model
-		assertExpectedModelReached(expectedModel);
-		
-		// Delete the input model
-		deleteModels();
-	
-	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (EMFComboViewer - GENDER) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Checkbox - EBoolean) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Radio - GENDER) 
+
+
+
+
+
+
+
+
 
 
 

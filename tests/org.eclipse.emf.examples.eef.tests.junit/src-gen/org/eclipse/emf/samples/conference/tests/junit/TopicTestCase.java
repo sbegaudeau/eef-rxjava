@@ -11,6 +11,7 @@
 package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -35,6 +36,10 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 */
 	private EClass topicMetaClass = ConferencePackage.eINSTANCE.getTopic();
 
+	/**
+	 * The type to edit
+	 */
+	private EObject topic;
 	/**
 	 * Updated value of the feature
 	 */
@@ -97,13 +102,11 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTopicDescription() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject topic = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Description(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -121,6 +124,10 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
+		if (topic == null)
+			throw new InputModelInvalidException(topicMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForTopicDescription();
 		
@@ -132,10 +139,71 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the description feature of the Topic element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, UPDATED_VALUE);	
+				bot.editTextFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, UPDATED_VALUE);
+		
+		// Save the changement
+		bot.finalizeEdition(modelEditor);
+		
+		// Compare real model with expected model
+		assertExpectedModelReached(expectedModel);
+		
+		// Delete the input model
+		deleteModels();
+	
+	}
+	/**
+	 * Create the expected model from the input model
+	 * @throws InputModelInvalidException error during expected model initialization
+	 * @throws IOException error during expected model serialization
+	 */
+	protected void initializeExpectedModelForTopicReferences() throws InputModelInvalidException, IOException {
+		// Create the expected model content by applying the attempted command on a copy of the input model content
+		createExpectedModel();
+		EObject topic = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, topicMetaClass);
+		if (topic == null)
+			throw new InputModelInvalidException(topicMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+				String[] strings = {UPDATED_VALUE};
+				cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), Arrays.asList(strings)));
+		editingDomain.getCommandStack().execute(cc);
+		expectedModel.save(Collections.EMPTY_MAP);
+	}
+	/**
+	 * Test the editor properties :
+	 * - init the input model
+	 * - calculate the expected model
+	 * - initialize the model editor
+	 * - change the properties in the editor properties
+	 * - compare the expected and the real model : if they are equals the test pass
+	 * - delete the models
+	 */	
+	public void testEditTopicReferences() throws Exception {
+		
+		// Import the input model
+		initializeInputModel();
+		
+		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
+		if (topic == null)
+			throw new InputModelInvalidException(topicMetaClass.getName());
+	
+		// Create the expected model
+		initializeExpectedModelForTopicReferences();
+		
+		// Open the input model with the treeview editor
+		SWTBotEditor modelEditor = bot.openActiveModel();
+		
+		// Open the EEF wizard (by double click) to edit the Topic element
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
+		if (firstInstanceOf == null)
+			throw new InputModelInvalidException(topicMetaClass.getName());
+		
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
+		
+		// Change value of the references feature of the Topic element 
+				bot.editMultiValuedEditorFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -155,13 +223,11 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	protected void initializeExpectedModelForTopicDocumentation() throws InputModelInvalidException, IOException {
 		// Create the expected model content by applying the attempted command on a copy of the input model content
 		createExpectedModel();
-		
 		EObject topic = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_Documentation(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -179,6 +245,10 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		// Import the input model
 		initializeInputModel();
 		
+		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
+		if (topic == null)
+			throw new InputModelInvalidException(topicMetaClass.getName());
+	
 		// Create the expected model
 		initializeExpectedModelForTopicDocumentation();
 		
@@ -190,10 +260,10 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
 		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf);
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the documentation feature of the Topic element 
-		bot.editTextFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, UPDATED_VALUE);	
+				bot.editTextFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -205,9 +275,11 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		deleteModels();
 	
 	}
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Text - EString) 
 
-		// FIXME : define 'additionnalMethodsForWidgets' (from widgetTest.mtl) for case (Textarea - EString) 
+
+
+
+
 
 
 
