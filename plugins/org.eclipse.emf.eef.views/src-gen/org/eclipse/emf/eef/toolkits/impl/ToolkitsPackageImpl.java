@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ToolkitsPackageImpl.java,v 1.10 2010/03/15 11:08:12 glefur Exp $
+ * $Id: ToolkitsPackageImpl.java,v 1.11 2010/03/16 07:57:00 sbouchet Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -17,16 +17,12 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
-
 import org.eclipse.emf.eef.views.ViewsPackage;
-
 import org.eclipse.emf.eef.views.impl.ViewsPackageImpl;
 
 /**

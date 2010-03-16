@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -8,8 +8,6 @@
  *  Contributors:
  *      Obeo - initial API and implementation
  * 
- *
- * $Id: ToolkitsFactoryImpl.java,v 1.10 2010/03/15 10:57:35 glefur Exp $
  */
 package org.eclipse.emf.eef.toolkits.impl;
 
@@ -18,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.toolkits.*;
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
@@ -30,8 +27,7 @@ import org.eclipse.emf.eef.toolkits.Widget;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolkitsFactoryImpl extends EFactoryImpl implements
-		ToolkitsFactory {
+public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -40,7 +36,7 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements
 	 */
 	public static ToolkitsFactory init() {
 		try {
-			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory) EPackage.Registry.INSTANCE
+			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory)EPackage.Registry.INSTANCE
 					.getEFactory("http://www.eclipse.org/emf/eef/views/toolkits/1.0.0"); //$NON-NLS-1$ 
 			if (theToolkitsFactory != null) {
 				return theToolkitsFactory;
@@ -69,13 +65,13 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case ToolkitsPackage.TOOLKIT:
-			return createToolkit();
-		case ToolkitsPackage.WIDGET:
-			return createWidget();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			case ToolkitsPackage.TOOLKIT:
+				return createToolkit();
+			case ToolkitsPackage.WIDGET:
+				return createWidget();
+			default:
+				throw new IllegalArgumentException(
+						"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -105,7 +101,7 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	public ToolkitsPackage getToolkitsPackage() {
-		return (ToolkitsPackage) getEPackage();
+		return (ToolkitsPackage)getEPackage();
 	}
 
 	/**

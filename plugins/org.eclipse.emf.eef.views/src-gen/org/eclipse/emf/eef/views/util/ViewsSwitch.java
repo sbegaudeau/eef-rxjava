@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -8,8 +8,6 @@
  *  Contributors:
  *      Obeo - initial API and implementation
  * 
- *
- * $Id: ViewsSwitch.java,v 1.11 2010/03/15 10:57:36 glefur Exp $
  */
 package org.eclipse.emf.eef.views.util;
 
@@ -17,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.views.*;
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.CustomElementEditor;
@@ -88,8 +85,7 @@ public class ViewsSwitch<T> {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
-					eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -102,133 +98,133 @@ public class ViewsSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case ViewsPackage.VIEWS_REPOSITORY: {
-			ViewsRepository viewsRepository = (ViewsRepository) theEObject;
-			T result = caseViewsRepository(viewsRepository);
-			if (result == null)
-				result = caseDocumentedElement(viewsRepository);
-			if (result == null)
-				result = caseIdentifiedElement(viewsRepository);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.VIEW: {
-			View view = (View) theEObject;
-			T result = caseView(view);
-			if (result == null)
-				result = caseContainer(view);
-			if (result == null)
-				result = caseIdentifiedElement(view);
-			if (result == null)
-				result = caseViewElement(view);
-			if (result == null)
-				result = caseDocumentedElement(view);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.ELEMENT_EDITOR: {
-			ElementEditor elementEditor = (ElementEditor) theEObject;
-			T result = caseElementEditor(elementEditor);
-			if (result == null)
-				result = caseViewElement(elementEditor);
-			if (result == null)
-				result = caseIdentifiedElement(elementEditor);
-			if (result == null)
-				result = caseDocumentedElement(elementEditor);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.CATEGORY: {
-			Category category = (Category) theEObject;
-			T result = caseCategory(category);
-			if (result == null)
-				result = caseDocumentedElement(category);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.CONTAINER: {
-			Container container = (Container) theEObject;
-			T result = caseContainer(container);
-			if (result == null)
-				result = caseViewElement(container);
-			if (result == null)
-				result = caseDocumentedElement(container);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.VIEW_ELEMENT: {
-			ViewElement viewElement = (ViewElement) theEObject;
-			T result = caseViewElement(viewElement);
-			if (result == null)
-				result = caseDocumentedElement(viewElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.CUSTOM_ELEMENT_EDITOR: {
-			CustomElementEditor customElementEditor = (CustomElementEditor) theEObject;
-			T result = caseCustomElementEditor(customElementEditor);
-			if (result == null)
-				result = caseElementEditor(customElementEditor);
-			if (result == null)
-				result = caseViewElement(customElementEditor);
-			if (result == null)
-				result = caseIdentifiedElement(customElementEditor);
-			if (result == null)
-				result = caseDocumentedElement(customElementEditor);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.CUSTOM_VIEW: {
-			CustomView customView = (CustomView) theEObject;
-			T result = caseCustomView(customView);
-			if (result == null)
-				result = caseView(customView);
-			if (result == null)
-				result = caseContainer(customView);
-			if (result == null)
-				result = caseIdentifiedElement(customView);
-			if (result == null)
-				result = caseViewElement(customView);
-			if (result == null)
-				result = caseDocumentedElement(customView);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.DOCUMENTED_ELEMENT: {
-			DocumentedElement documentedElement = (DocumentedElement) theEObject;
-			T result = caseDocumentedElement(documentedElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.VIEW_REFERENCE: {
-			ViewReference viewReference = (ViewReference) theEObject;
-			T result = caseViewReference(viewReference);
-			if (result == null)
-				result = caseViewElement(viewReference);
-			if (result == null)
-				result = caseDocumentedElement(viewReference);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ViewsPackage.IDENTIFIED_ELEMENT: {
-			IdentifiedElement identifiedElement = (IdentifiedElement) theEObject;
-			T result = caseIdentifiedElement(identifiedElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case ViewsPackage.VIEWS_REPOSITORY: {
+				ViewsRepository viewsRepository = (ViewsRepository)theEObject;
+				T result = caseViewsRepository(viewsRepository);
+				if (result == null)
+					result = caseDocumentedElement(viewsRepository);
+				if (result == null)
+					result = caseIdentifiedElement(viewsRepository);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.VIEW: {
+				View view = (View)theEObject;
+				T result = caseView(view);
+				if (result == null)
+					result = caseContainer(view);
+				if (result == null)
+					result = caseIdentifiedElement(view);
+				if (result == null)
+					result = caseViewElement(view);
+				if (result == null)
+					result = caseDocumentedElement(view);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.ELEMENT_EDITOR: {
+				ElementEditor elementEditor = (ElementEditor)theEObject;
+				T result = caseElementEditor(elementEditor);
+				if (result == null)
+					result = caseViewElement(elementEditor);
+				if (result == null)
+					result = caseIdentifiedElement(elementEditor);
+				if (result == null)
+					result = caseDocumentedElement(elementEditor);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.CATEGORY: {
+				Category category = (Category)theEObject;
+				T result = caseCategory(category);
+				if (result == null)
+					result = caseDocumentedElement(category);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.CONTAINER: {
+				Container container = (Container)theEObject;
+				T result = caseContainer(container);
+				if (result == null)
+					result = caseViewElement(container);
+				if (result == null)
+					result = caseDocumentedElement(container);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.VIEW_ELEMENT: {
+				ViewElement viewElement = (ViewElement)theEObject;
+				T result = caseViewElement(viewElement);
+				if (result == null)
+					result = caseDocumentedElement(viewElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.CUSTOM_ELEMENT_EDITOR: {
+				CustomElementEditor customElementEditor = (CustomElementEditor)theEObject;
+				T result = caseCustomElementEditor(customElementEditor);
+				if (result == null)
+					result = caseElementEditor(customElementEditor);
+				if (result == null)
+					result = caseViewElement(customElementEditor);
+				if (result == null)
+					result = caseIdentifiedElement(customElementEditor);
+				if (result == null)
+					result = caseDocumentedElement(customElementEditor);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.CUSTOM_VIEW: {
+				CustomView customView = (CustomView)theEObject;
+				T result = caseCustomView(customView);
+				if (result == null)
+					result = caseView(customView);
+				if (result == null)
+					result = caseContainer(customView);
+				if (result == null)
+					result = caseIdentifiedElement(customView);
+				if (result == null)
+					result = caseViewElement(customView);
+				if (result == null)
+					result = caseDocumentedElement(customView);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.DOCUMENTED_ELEMENT: {
+				DocumentedElement documentedElement = (DocumentedElement)theEObject;
+				T result = caseDocumentedElement(documentedElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.VIEW_REFERENCE: {
+				ViewReference viewReference = (ViewReference)theEObject;
+				T result = caseViewReference(viewReference);
+				if (result == null)
+					result = caseViewElement(viewReference);
+				if (result == null)
+					result = caseDocumentedElement(viewReference);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ViewsPackage.IDENTIFIED_ELEMENT: {
+				IdentifiedElement identifiedElement = (IdentifiedElement)theEObject;
+				T result = caseIdentifiedElement(identifiedElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			default:
+				return defaultCase(theEObject);
 		}
 	}
 

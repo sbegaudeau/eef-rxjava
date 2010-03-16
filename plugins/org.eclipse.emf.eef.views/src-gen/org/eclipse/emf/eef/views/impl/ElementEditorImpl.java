@@ -9,17 +9,14 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorImpl.java,v 1.10 2010/03/15 16:21:07 sbouchet Exp $
+ * $Id: ElementEditorImpl.java,v 1.11 2010/03/16 07:57:00 sbouchet Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;

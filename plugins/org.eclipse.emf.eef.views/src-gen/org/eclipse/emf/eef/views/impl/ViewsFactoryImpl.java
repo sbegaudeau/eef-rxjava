@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2008 Obeo.
+ *  Copyright (c) 2008 - 2010 Obeo.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -8,8 +8,6 @@
  *  Contributors:
  *      Obeo - initial API and implementation
  * 
- *
- * $Id: ViewsFactoryImpl.java,v 1.12 2010/03/15 10:57:34 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -18,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.views.*;
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.CustomView;
@@ -44,7 +41,7 @@ public class ViewsFactoryImpl extends EFactoryImpl implements ViewsFactory {
 	 */
 	public static ViewsFactory init() {
 		try {
-			ViewsFactory theViewsFactory = (ViewsFactory) EPackage.Registry.INSTANCE
+			ViewsFactory theViewsFactory = (ViewsFactory)EPackage.Registry.INSTANCE
 					.getEFactory("http://www.eclipse.org/emf/eef/views/1.0.0"); //$NON-NLS-1$ 
 			if (theViewsFactory != null) {
 				return theViewsFactory;
@@ -73,25 +70,25 @@ public class ViewsFactoryImpl extends EFactoryImpl implements ViewsFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case ViewsPackage.VIEWS_REPOSITORY:
-			return createViewsRepository();
-		case ViewsPackage.VIEW:
-			return createView();
-		case ViewsPackage.ELEMENT_EDITOR:
-			return createElementEditor();
-		case ViewsPackage.CATEGORY:
-			return createCategory();
-		case ViewsPackage.CONTAINER:
-			return createContainer();
-		case ViewsPackage.CUSTOM_ELEMENT_EDITOR:
-			return createCustomElementEditor();
-		case ViewsPackage.CUSTOM_VIEW:
-			return createCustomView();
-		case ViewsPackage.VIEW_REFERENCE:
-			return createViewReference();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			case ViewsPackage.VIEWS_REPOSITORY:
+				return createViewsRepository();
+			case ViewsPackage.VIEW:
+				return createView();
+			case ViewsPackage.ELEMENT_EDITOR:
+				return createElementEditor();
+			case ViewsPackage.CATEGORY:
+				return createCategory();
+			case ViewsPackage.CONTAINER:
+				return createContainer();
+			case ViewsPackage.CUSTOM_ELEMENT_EDITOR:
+				return createCustomElementEditor();
+			case ViewsPackage.CUSTOM_VIEW:
+				return createCustomView();
+			case ViewsPackage.VIEW_REFERENCE:
+				return createViewReference();
+			default:
+				throw new IllegalArgumentException(
+						"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -181,7 +178,7 @@ public class ViewsFactoryImpl extends EFactoryImpl implements ViewsFactory {
 	 * @generated
 	 */
 	public ViewsPackage getViewsPackage() {
-		return (ViewsPackage) getEPackage();
+		return (ViewsPackage)getEPackage();
 	}
 
 	/**
