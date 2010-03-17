@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.1 2009/09/04 09:07:40 glefur Exp $
+ * $Id: PersonImpl.java,v 1.2 2010/03/17 13:47:31 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
@@ -344,15 +344,15 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case ConferencePackage.PERSON__LASTNAME:
 				return getLastname();
 			case ConferencePackage.PERSON__AGE:
-				return new Integer(getAge());
+				return getAge();
 			case ConferencePackage.PERSON__ECLIPSE_COMMITER:
-				return isEclipseCommiter() ? Boolean.TRUE : Boolean.FALSE;
+				return isEclipseCommiter();
 			case ConferencePackage.PERSON__ASSISTS:
 				return getAssists();
 			case ConferencePackage.PERSON__GENDER:
 				return getGender();
 			case ConferencePackage.PERSON__IS_REGISTERED:
-				return isIsRegistered() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsRegistered();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -373,10 +373,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 				setLastname((String)newValue);
 				return;
 			case ConferencePackage.PERSON__AGE:
-				setAge(((Integer)newValue).intValue());
+				setAge((Integer)newValue);
 				return;
 			case ConferencePackage.PERSON__ECLIPSE_COMMITER:
-				setEclipseCommiter(((Boolean)newValue).booleanValue());
+				setEclipseCommiter((Boolean)newValue);
 				return;
 			case ConferencePackage.PERSON__ASSISTS:
 				getAssists().clear();
@@ -386,7 +386,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 				setGender((GENDER)newValue);
 				return;
 			case ConferencePackage.PERSON__IS_REGISTERED:
-				setIsRegistered(((Boolean)newValue).booleanValue());
+				setIsRegistered((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
