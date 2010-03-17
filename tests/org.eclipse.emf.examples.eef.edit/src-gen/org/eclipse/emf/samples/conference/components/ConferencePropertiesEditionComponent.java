@@ -376,6 +376,20 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == ConferenceViewsRepository.Conference.place)
+			return "The conference's place"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Conference.sites)
+			return "Where the conference take place"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */

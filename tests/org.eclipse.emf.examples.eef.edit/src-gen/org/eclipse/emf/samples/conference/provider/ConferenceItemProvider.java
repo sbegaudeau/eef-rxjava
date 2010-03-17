@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceItemProvider.java,v 1.2 2009/10/25 18:44:31 glefur Exp $
+ * $Id: ConferenceItemProvider.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -80,7 +80,7 @@ public class ConferenceItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Conference_place_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Conference_place_feature", "_UI_Conference_type"),
+				 getString("_UI_Conference_place_description"),
 				 ConferencePackage.Literals.CONFERENCE__PLACE,
 				 true,
 				 false,

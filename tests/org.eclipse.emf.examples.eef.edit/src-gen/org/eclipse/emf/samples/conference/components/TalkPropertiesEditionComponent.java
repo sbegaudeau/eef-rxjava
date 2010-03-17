@@ -426,6 +426,28 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == ConferenceViewsRepository.Talk.title_)
+			return "The title of the talk"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Talk.topic)
+			return "Topics discussed during the talk"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Talk.type)
+			return "Type of the talk"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Talk.presenter)
+			return "Person presenting the talk"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Talk.creator)
+			return "Person who created the talk"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Talk.documentation)
+			return "Description of the talk"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SiteItemProvider.java,v 1.2 2009/10/25 18:44:31 glefur Exp $
+ * $Id: SiteItemProvider.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -79,7 +79,7 @@ public class SiteItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Site_documentation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Site_documentation_feature", "_UI_Site_type"),
+				 getString("_UI_Site_documentation_description"),
 				 ConferencePackage.Literals.SITE__DOCUMENTATION,
 				 true,
 				 false,
@@ -101,7 +101,7 @@ public class SiteItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Site_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Site_name_feature", "_UI_Site_type"),
+				 getString("_UI_Site_name_description"),
 				 ConferencePackage.Literals.SITE__NAME,
 				 true,
 				 false,

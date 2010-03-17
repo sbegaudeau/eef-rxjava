@@ -333,6 +333,30 @@ public class PersonPresencePropertiesEditionComponent extends StandardProperties
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == ConferenceViewsRepository.Person.firstname)
+			return "Firstname of the person"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Person.lastname)
+			return "Last name of the person"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Person.age)
+			return "age of the person"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Person.eclipseCommiter)
+			return "Does the person commit on Eclipse"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Presence.assists)
+			return "Talks which the person attends"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Person.gender)
+			return "Gender of the person"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Person.isRegistered)
+			return "Does the person is registered for the conference"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */

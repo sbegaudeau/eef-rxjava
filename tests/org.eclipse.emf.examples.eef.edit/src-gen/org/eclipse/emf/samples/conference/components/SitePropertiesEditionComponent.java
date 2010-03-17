@@ -318,6 +318,20 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * 
+	 */
+	public String getHelpContent(String key, int kind) {
+		if (key == ConferenceViewsRepository.Site.name)
+			return "Name of the place"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Site.documentation)
+			return "Information about this site"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */

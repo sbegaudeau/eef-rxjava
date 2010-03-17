@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TopicItemProvider.java,v 1.2 2009/10/25 18:44:31 glefur Exp $
+ * $Id: TopicItemProvider.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -80,7 +80,7 @@ public class TopicItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Topic_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Topic_description_feature", "_UI_Topic_type"),
+				 getString("_UI_Topic_description_description"),
 				 ConferencePackage.Literals.TOPIC__DESCRIPTION,
 				 true,
 				 false,
@@ -102,7 +102,7 @@ public class TopicItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Topic_references_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Topic_references_feature", "_UI_Topic_type"),
+				 getString("_UI_Topic_references_description"),
 				 ConferencePackage.Literals.TOPIC__REFERENCES,
 				 true,
 				 false,
@@ -124,7 +124,7 @@ public class TopicItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Topic_documentation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Topic_documentation_feature", "_UI_Topic_type"),
+				 getString("_UI_Topic_documentation_description"),
 				 ConferencePackage.Literals.TOPIC__DOCUMENTATION,
 				 true,
 				 false,

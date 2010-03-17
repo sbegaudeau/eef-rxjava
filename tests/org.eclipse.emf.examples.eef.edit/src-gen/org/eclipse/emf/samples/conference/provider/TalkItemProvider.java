@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TalkItemProvider.java,v 1.2 2009/10/25 18:44:31 glefur Exp $
+ * $Id: TalkItemProvider.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -83,7 +83,7 @@ public class TalkItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Talk_title_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Talk_title_feature", "_UI_Talk_type"),
+				 getString("_UI_Talk_title_description"),
 				 ConferencePackage.Literals.TALK__TITLE,
 				 true,
 				 false,
@@ -105,7 +105,7 @@ public class TalkItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Talk_topic_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Talk_topic_feature", "_UI_Talk_type"),
+				 getString("_UI_Talk_topic_description"),
 				 ConferencePackage.Literals.TALK__TOPIC,
 				 true,
 				 false,
@@ -127,7 +127,7 @@ public class TalkItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Talk_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Talk_type_feature", "_UI_Talk_type"),
+				 getString("_UI_Talk_type_description"),
 				 ConferencePackage.Literals.TALK__TYPE,
 				 true,
 				 false,
@@ -149,7 +149,7 @@ public class TalkItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Talk_presenter_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Talk_presenter_feature", "_UI_Talk_type"),
+				 getString("_UI_Talk_presenter_description"),
 				 ConferencePackage.Literals.TALK__PRESENTER,
 				 true,
 				 false,
@@ -171,7 +171,7 @@ public class TalkItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Talk_creator_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Talk_creator_feature", "_UI_Talk_type"),
+				 getString("_UI_Talk_creator_description"),
 				 ConferencePackage.Literals.TALK__CREATOR,
 				 true,
 				 false,
@@ -193,7 +193,7 @@ public class TalkItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Talk_documentation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Talk_documentation_feature", "_UI_Talk_type"),
+				 getString("_UI_Talk_documentation_description"),
 				 ConferencePackage.Literals.TALK__DOCUMENTATION,
 				 true,
 				 false,

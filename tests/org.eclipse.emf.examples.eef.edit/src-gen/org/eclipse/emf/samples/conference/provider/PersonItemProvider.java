@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonItemProvider.java,v 1.2 2009/10/25 18:44:31 glefur Exp $
+ * $Id: PersonItemProvider.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -84,7 +84,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_firstname_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_firstname_feature", "_UI_Person_type"),
+				 getString("_UI_Person_firstname_description"),
 				 ConferencePackage.Literals.PERSON__FIRSTNAME,
 				 true,
 				 false,
@@ -106,7 +106,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_lastname_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_lastname_feature", "_UI_Person_type"),
+				 getString("_UI_Person_lastname_description"),
 				 ConferencePackage.Literals.PERSON__LASTNAME,
 				 true,
 				 false,
@@ -128,7 +128,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_age_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_age_feature", "_UI_Person_type"),
+				 getString("_UI_Person_age_description"),
 				 ConferencePackage.Literals.PERSON__AGE,
 				 true,
 				 false,
@@ -150,7 +150,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_eclipseCommiter_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_eclipseCommiter_feature", "_UI_Person_type"),
+				 getString("_UI_Person_eclipseCommiter_description"),
 				 ConferencePackage.Literals.PERSON__ECLIPSE_COMMITER,
 				 true,
 				 false,
@@ -172,7 +172,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_assists_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_assists_feature", "_UI_Person_type"),
+				 getString("_UI_Person_assists_description"),
 				 ConferencePackage.Literals.PERSON__ASSISTS,
 				 true,
 				 false,
@@ -194,7 +194,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_gender_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_gender_feature", "_UI_Person_type"),
+				 getString("_UI_Person_gender_description"),
 				 ConferencePackage.Literals.PERSON__GENDER,
 				 true,
 				 false,
@@ -216,7 +216,7 @@ public class PersonItemProvider
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Person_isRegistered_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_isRegistered_feature", "_UI_Person_type"),
+				 getString("_UI_Person_isRegistered_description"),
 				 ConferencePackage.Literals.PERSON__IS_REGISTERED,
 				 true,
 				 false,

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceItemProviderAdapterFactory.java,v 1.2 2009/10/25 18:44:31 glefur Exp $
+ * $Id: ConferenceItemProviderAdapterFactory.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -238,7 +238,7 @@ public class ConferenceItemProviderAdapterFactory extends ConferenceAdapterFacto
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
