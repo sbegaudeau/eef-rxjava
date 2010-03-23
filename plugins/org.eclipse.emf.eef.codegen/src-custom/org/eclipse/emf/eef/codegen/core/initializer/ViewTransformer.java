@@ -106,7 +106,8 @@ public class ViewTransformer extends AbstractTransformer {
 				for (EStructuralFeature structuralFeature : features) {
 					if (!structuralFeature.isDerived() && !isUnmanagedReference(structuralFeature)) {
 						ElementEditor editor = eStructuralFeature2ViewElement(structuralFeature);
-						container.getElements().add(editor);
+						if (editor != null)
+							container.getElements().add(editor);
 					}
 				}
 				view.getElements().add(container);
@@ -117,7 +118,8 @@ public class ViewTransformer extends AbstractTransformer {
 			for (EStructuralFeature structuralFeature : features) {
 				if (!structuralFeature.isDerived()) {
 					ElementEditor editor = eStructuralFeature2ViewElement(structuralFeature);
-					view.getElements().add(editor);
+					if (editor != null)
+						view.getElements().add(editor);
 				}
 			}
 		}
@@ -171,7 +173,7 @@ public class ViewTransformer extends AbstractTransformer {
 				if (reference.isMany())
 					result.setRepresentation(getWidget("AdvancedTableComposition"));
 				else {
-					// I don't now what is it for the moment !
+					return null;
 				}
 			} else {
 				if (reference.isMany())
