@@ -127,6 +127,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	/**
 	 * @return the current [elementEditor.name/] table
 	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 [/template]
 
 [comment ====== Widgets View setters for declaration ====== /]
