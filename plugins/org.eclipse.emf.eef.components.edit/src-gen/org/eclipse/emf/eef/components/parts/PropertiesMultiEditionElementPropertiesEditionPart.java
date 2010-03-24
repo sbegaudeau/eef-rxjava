@@ -71,6 +71,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	/**
 	 * @return the current model table
 	 * 
+	 */
 	public List getModelTable();
 
 	/**
@@ -130,6 +131,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	/**
 	 * @return the current views table
 	 * 
+	 */
 	public List getViewsTable();
 
 	/**

@@ -240,8 +240,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 
 			basePart.addFilterToViews(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -259,8 +259,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 
 			basePart.addFilterToModel(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -284,7 +284,6 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 
 		setInitializing(false);
 	}
-
 
 
 

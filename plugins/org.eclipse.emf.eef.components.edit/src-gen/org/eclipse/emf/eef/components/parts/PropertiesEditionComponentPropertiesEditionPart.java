@@ -135,6 +135,7 @@ public interface PropertiesEditionComponentPropertiesEditionPart {
 	/**
 	 * @return the current views table
 	 * 
+	 */
 	public List getViewsTable();
 
 	/**

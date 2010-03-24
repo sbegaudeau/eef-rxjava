@@ -36,9 +36,9 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProvider
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -340,8 +340,8 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		addModel.setLayoutData(addData);
 		addModel.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -358,8 +358,8 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		removeModel.setLayoutData(removeData);
 		removeModel.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 

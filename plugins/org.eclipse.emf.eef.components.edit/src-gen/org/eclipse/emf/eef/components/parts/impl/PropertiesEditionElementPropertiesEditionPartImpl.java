@@ -368,8 +368,8 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		addViews.setLayoutData(addData);
 		addViews.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -386,8 +386,8 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		removeViews.setLayoutData(removeData);
 		removeViews.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 

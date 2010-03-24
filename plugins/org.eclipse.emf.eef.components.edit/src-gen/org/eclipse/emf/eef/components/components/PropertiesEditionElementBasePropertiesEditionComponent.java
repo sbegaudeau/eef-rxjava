@@ -247,8 +247,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Stan
 
 			basePart.addFilterToViews(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -262,8 +262,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Stan
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			basePart.addFilterToViews(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -283,8 +283,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Stan
 
 			basePart.addFilterToModel(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -305,7 +305,6 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Stan
 
 		setInitializing(false);
 	}
-
 
 
 

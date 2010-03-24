@@ -44,12 +44,12 @@ public class PropertiesEditionContextPropertiesEditionComponent extends Composed
 	 * 
 	 */
 	protected PropertiesEditionContextBasePropertiesEditionComponent propertiesEditionContextBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
