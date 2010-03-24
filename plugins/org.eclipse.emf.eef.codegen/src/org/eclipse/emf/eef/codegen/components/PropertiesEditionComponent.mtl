@@ -72,7 +72,7 @@ package [pec.componentsPackage()/];
  */
 public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
-[for (view : View | pec.views) ? (view.explicit)]
+[for (view : View | pec.views) separator ('\n') ? (view.explicit)]
 	/**
 	 * The [view.viewKey(pec)/] part
 	 * [peContext.associatedGenModel().generationMark()/]
@@ -84,24 +84,25 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [pec.subPECClass(view)/] [pec.subPECClass(view).toLowerFirst()/];
-
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
 		[if (view.isA1stLevelReferencedView(pec))]
 	/**
 	 * The [subPec.pecClass()/] sub component
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [subPec.pecClass()/] [subPec.pecClass().toLowerFirst()/];
+
 		[else]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
+
 		[/if]
-	[/for]
+[/for]
 [/for]
 	/**
 	 * Parameterized constructor
