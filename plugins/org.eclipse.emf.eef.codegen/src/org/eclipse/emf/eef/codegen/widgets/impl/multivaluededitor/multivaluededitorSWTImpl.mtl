@@ -77,8 +77,8 @@ import org.eclipse.swt.widgets.Text;
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
 		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
