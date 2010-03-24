@@ -32,7 +32,6 @@
 //FIXME INVALID CASE INTO template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent) in viewUtils.mtl module
 [/template]
 
-
 [comment ===== ViewReference support ===== /]
 [template public widgetDeclaration(reference : ViewReference)]
 private [reference.view.oclAsType(views::View).pepInterface()/] [reference.view.oclAsType(views::View).pepInterface().toLowerFirst()/];
