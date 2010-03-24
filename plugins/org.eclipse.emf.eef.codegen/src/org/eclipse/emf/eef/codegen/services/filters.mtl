@@ -22,8 +22,8 @@
 [template public filterBody(filter : JavaDeclarationFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -37,13 +37,13 @@
 [template public filterBody(filter : JavaExpressionFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					[filter.javaBody/]
+					[if (filter.javaBody->size()> 0)][filter.javaBody/][else]return false;[/if]
 				}
 
 			});
@@ -52,8 +52,8 @@
 [template public filterBody(filter : OnlyReferenceTypeFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -74,7 +74,7 @@
 [/template]
 
 [template public javaDeclarationFilter(pee : PropertiesEditionElement)]
-[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->select(oclIsTypeOf(mapping::filters::JavaDeclarationFilter)))]
+[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->select(oclIsTypeOf(mapping::filters::JavaDeclarationFilter))) separator ('\n')]
 	/**
 	 * [bindingFilter.documentation/]
 	 */
@@ -86,7 +86,6 @@
 		return true;
 		// [/protected]
 		[/if]
-
 	}
 [/for]
 [/template]
