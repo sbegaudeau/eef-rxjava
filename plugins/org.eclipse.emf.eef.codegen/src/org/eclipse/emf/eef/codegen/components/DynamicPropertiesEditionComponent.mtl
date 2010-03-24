@@ -71,6 +71,7 @@ public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionC
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#partsList()
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
