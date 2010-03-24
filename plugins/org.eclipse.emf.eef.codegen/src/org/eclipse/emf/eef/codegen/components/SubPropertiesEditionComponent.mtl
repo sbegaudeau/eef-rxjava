@@ -154,7 +154,7 @@ import org.eclipse.ui.PlatformUI;
 package [pec.componentsPackage()/];
 
 [if (peContext.associatedGenModel().useJMergeForUserCode)]
-[pec.defaultImports(view, basePackage)/]		
+[pec.defaultImports(view, basePackage)/]
 [else]
 // [protected ('for imports')]
 [pec.defaultImports(view, basePackage)/]
@@ -346,7 +346,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 [pee.javaDeclarationFilter()/]
 [/for]
-
 [view.javaDeclarationFilterForReferencedViews(pec)/]
 
 	/**
