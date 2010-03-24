@@ -147,8 +147,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		add[editor.name.toJavaClassifier()/].setLayoutData(addData);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
@@ -169,8 +169,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		remove[editor.name.toJavaClassifier()/].setLayoutData(removeData);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]

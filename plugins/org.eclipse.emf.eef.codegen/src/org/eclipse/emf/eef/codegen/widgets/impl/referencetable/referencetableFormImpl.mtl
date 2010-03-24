@@ -150,8 +150,8 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		add[editor.name.toJavaClassifier()/].setLayoutData(addData);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
@@ -171,8 +171,8 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		remove[editor.name.toJavaClassifier()/].setLayoutData(removeData);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
