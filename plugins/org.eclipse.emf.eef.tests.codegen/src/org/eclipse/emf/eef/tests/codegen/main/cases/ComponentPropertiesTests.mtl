@@ -61,7 +61,7 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 [commentTestPropertySection()/]
 [testEditPropertySection(pec, peElement)/]
 [editFeaturePropertySection(pec, peElement)/]
-[comparePropertySection(pec, peElement)/]	
+[comparePropertySection(pec, peElement)/]
 [/template]
 
 [template public testRemovePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -69,7 +69,7 @@ public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
 [commentTestPropertySection()/]
 [testRemoveEditPropertySection(pec, peElement)/]
 [removeFeaturePropertySection(pec, peElement)/]
-[comparePropertySection(pec, peElement)/]	
+[comparePropertySection(pec, peElement)/]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
