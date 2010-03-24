@@ -268,7 +268,7 @@ set[editor.model.ecorePackageSignature()/]()
 
 [template public propertiesLicenceText(eefGenModel : EEFGenModel)]
 [if (not eefGenModel.license.oclIsUndefined())]
-[eefGenModel.license.replaceAll(' \\*', '#').replaceAll('/\\*', '#').replaceAll(' #/', '#')/]
+[eefGenModel.license.replaceAll('/\\*\\*', '#').replaceAll(' \\*/', '#').replaceAll(' \\*', '#')/]
 [else]
 #
 # Generated with Acceleo
@@ -384,7 +384,7 @@ Object
 	.substituteAll('œ', '\\u0153').substituteAll('Œ', '\\u0152')
 	.substituteAll('«', '\\u00AB').substituteAll('»', '\\u00BB')
 	.substituteAll('$', '\\u0024').substituteAll('€', '\\u20AC')
-	.substituteAll('''', '\\u0027')/]
+	.substituteAll('\'', '\\u0027')/]
 [/template]
 
 [comment Sequence{1..s.size()}->
@@ -396,6 +396,7 @@ Object
    ) /]
    
 [comment TODO: try to define this in a better 'Acceleo' way (s.first(1).isAlphanum() not working/]
+[comment][query public startsWithADigit(s : String) : Boolean = s.first(1).isAlphanum()/][/comment]
 [query public startsWithADigit(s : String) : Boolean =
 	s.firstChar() = '0' 
 	or s.firstChar() = '1' 
@@ -458,7 +459,7 @@ Object
 [eClassifier.completePackage()/].[eClassifier.name/]
 [/template]
 
-[comment]@deprecated[/comment]
+[comment @deprecated/]
 [template public qualifiedName(eClassifier : EClassifier, basePackage : String)]
 [eClassifier.completePackage()/].[eClassifier.name/]
 [/template]
