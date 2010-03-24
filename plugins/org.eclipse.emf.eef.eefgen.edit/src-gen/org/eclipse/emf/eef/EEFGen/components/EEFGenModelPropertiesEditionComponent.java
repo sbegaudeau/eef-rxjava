@@ -263,7 +263,6 @@ public class EEFGenModelPropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

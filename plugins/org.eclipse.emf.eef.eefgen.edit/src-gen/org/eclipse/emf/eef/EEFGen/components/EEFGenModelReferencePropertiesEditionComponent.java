@@ -208,8 +208,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 			// init filters
 			basePart.addFilterToReferencedEEFGenModel(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -229,7 +229,6 @@ public class EEFGenModelReferencePropertiesEditionComponent extends StandardProp
 
 		setInitializing(false);
 	}
-
 
 
 
