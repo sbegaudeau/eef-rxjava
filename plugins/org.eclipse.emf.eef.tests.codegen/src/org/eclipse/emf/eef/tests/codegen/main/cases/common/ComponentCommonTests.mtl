@@ -97,58 +97,63 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.[pec.model.ePackage.metamodelPrefix().toLowerFirst()/]";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.[pec.model.ePackage.metamodelPrefix().toLowerFirst()/]";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "[peContext.associatedGenModel().testsGenDirectory.tokenize('/')->at(1)/]";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
 		return  "models";
 	}
 	[/template]
-	
+
 [template public initializeExpectedModelPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]	
 	/**
 	 * Create the expected model from the input model
@@ -184,7 +189,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
 [/template]
-	
+
 [template public testEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]    
 	public void testEdit[pec.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws Exception {
 		
@@ -197,7 +202,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	
 		[if (peElement.model.oclIsTypeOf(ecore::EAttribute) and peElement.model.oclAsType(ecore::EAttribute).isEnum())]
 		enumValueFor[peElement.model.name.toUpperFirst()/] = bot.changeEnumLiteralValue([peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/](), (([pec.model.name/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]().getLiteral());
-		[/if]		
+		[/if]
 		// Create the expected model
 		initializeExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]();
 		
@@ -218,7 +223,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	
 		[if (peElement.model.oclIsTypeOf(ecore::EAttribute) and peElement.model.oclAsType(ecore::EAttribute).isEnum())]
 		enumValueFor[peElement.model.name.toUpperFirst()/] = bot.changeEnumLiteralValue([peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/](), (([pec.model.name/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]().getLiteral());
-		[/if]		
+		[/if]
 		// Create the expected model
 		initializeRemoveExpectedModelFor[pec.model.name.toUpperFirst()/][peElement.name.toUpperFirst()/]();
 		
@@ -253,7 +258,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 [/template]
 
 [query public isAbstractType(peElement : PropertiesEditionElement) : Boolean = 
@@ -262,7 +267,6 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	else
 		false
 	endif/]
-	
 	
 [query public isCompositionType(peElement : PropertiesEditionElement) : Boolean = 
 	peElement.representationName('AdvancedTableComposition') or peElement.representationName('TableComposition')/]
