@@ -37,7 +37,7 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#inutEEFGenModel()
 	 */
