@@ -42,12 +42,12 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 	 * 
 	 */
 	protected CategoryBasePropertiesEditionComponent categoryBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 

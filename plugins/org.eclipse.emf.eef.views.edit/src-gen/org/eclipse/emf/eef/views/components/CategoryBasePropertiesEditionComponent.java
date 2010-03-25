@@ -221,7 +221,6 @@ public class CategoryBasePropertiesEditionComponent extends StandardPropertiesEd
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

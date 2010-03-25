@@ -42,12 +42,12 @@ public class ContainerPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * 
 	 */
 	protected ContainerBasePropertiesEditionComponent containerBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 

@@ -226,8 +226,8 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			// init filters
 			basePart.addFilterToRepresentation(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -249,7 +249,6 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 
 		setInitializing(false);
 	}
-
 
 
 

@@ -225,7 +225,6 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends StandardPrope
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

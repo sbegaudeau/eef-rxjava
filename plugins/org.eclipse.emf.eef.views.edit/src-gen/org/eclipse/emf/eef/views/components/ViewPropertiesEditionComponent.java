@@ -42,12 +42,12 @@ public class ViewPropertiesEditionComponent extends ComposedPropertiesEditionCom
 	 * 
 	 */
 	protected ViewBasePropertiesEditionComponent viewBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 

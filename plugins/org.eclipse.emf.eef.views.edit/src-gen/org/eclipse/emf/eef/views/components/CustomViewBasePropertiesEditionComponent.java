@@ -221,7 +221,6 @@ public class CustomViewBasePropertiesEditionComponent extends StandardProperties
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
