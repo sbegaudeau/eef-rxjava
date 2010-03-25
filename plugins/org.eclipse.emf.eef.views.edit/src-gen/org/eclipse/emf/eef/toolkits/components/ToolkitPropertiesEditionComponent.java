@@ -221,7 +221,6 @@ public class ToolkitPropertiesEditionComponent extends StandardPropertiesEdition
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

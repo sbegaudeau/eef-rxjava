@@ -221,7 +221,6 @@ public class WidgetPropertiesEditionComponent extends StandardPropertiesEditionC
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
