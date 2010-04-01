@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -104,7 +105,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 */
 	private RegistryPropertiesEditionProvider provider;
 	
-	private IPropertiesEditionComponent propertiesEditionComponent;
+	protected IPropertiesEditionComponent propertiesEditionComponent;
 
 	/**
 	 * @return the Global ProviderEditionProvider
@@ -175,7 +176,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	}
 
 	private void refreshComponent(String descriptor) {
-		propertiesEditionComponent = getProvider().getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE, descriptor);
+		propertiesEditionComponent = getProvider().getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);
 		if (propertiesEditionComponent != null) {
 			PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
@@ -190,10 +191,17 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 				if (editComposite != null) {
 					editComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 					container.layout();
-					propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(descriptor), 1, eObject);
+					initSemanticContents(descriptor);
 				}
 			}
 		}
+	}
+
+	/**
+	 * @param descriptor
+	 */
+	protected void initSemanticContents(String descriptor) {
+		propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(descriptor), 1, eObject);
 	}
 
 	private void disposeComponent() {
@@ -204,18 +212,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	}
 
 	private void initializeEditingDomain(IWorkbenchPart part) {
-		if (part instanceof ITabbedPropertySheetPageContributor) {
-			ITabbedPropertySheetPageContributor editor = (ITabbedPropertySheetPageContributor)part;
-			if (editor instanceof IEditingDomainProvider)
-				editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
-			if (editor instanceof IEditorPart) {
-				if ((((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)) != null)
-					editingDomain = ((IEditingDomainProvider)((IEditorPart)editor)
-							.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
-				else if ((((IEditorPart)editor).getAdapter(EditingDomain.class)) != null)
-					editingDomain = (EditingDomain)((IEditorPart)editor).getAdapter(EditingDomain.class);
-			}
-		}
+		editingDomain = EditingUtils.getResourceSetFromEditor(part);
 	}
 
 	/**

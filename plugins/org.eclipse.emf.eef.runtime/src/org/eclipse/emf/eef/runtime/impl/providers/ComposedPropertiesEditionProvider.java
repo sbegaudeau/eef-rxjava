@@ -105,7 +105,7 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part) {
 		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
-			if (editPropertiesProvider.provides(eObject))
+			if (editPropertiesProvider.provides(eObject, part))
 				return editPropertiesProvider.getPropertiesEditionComponent(eObject, mode, part);
 		}
 		return null;
@@ -123,4 +123,30 @@ public class ComposedPropertiesEditionProvider implements IPropertiesEditionProv
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 */
+	public boolean provides(EObject eObject, String part, Class refinement) {
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
+			if (editPropertiesProvider.provides(eObject, part, refinement))
+				return true;
+		}
+		return false;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *      java.lang.String, java.lang.String, java.lang.Class)
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part, Class refinement) {
+		for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
+			if (editPropertiesProvider.provides(eObject, part, refinement))
+				return editPropertiesProvider.getPropertiesEditionComponent(eObject, mode, part, refinement);
+		}
+		return null;
+	}
+	
 }

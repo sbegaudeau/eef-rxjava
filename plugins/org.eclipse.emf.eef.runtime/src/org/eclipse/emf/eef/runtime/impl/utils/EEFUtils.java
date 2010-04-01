@@ -36,7 +36,7 @@ import org.osgi.framework.Bundle;
 public class EEFUtils {
 
 	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core"; //$NON-NLS-1$
-	
+
 	/**
 	 * @deprecated
 	 */
@@ -51,11 +51,11 @@ public class EEFUtils {
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature, ResourceSet allResources) {
 		return choiceOfValues(eObject, feature);
 	}
-	
+
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature){
 		Object choiceOfValues = null;
 		IItemPropertySource ps = (IItemPropertySource)EEFRuntimePlugin.getDefault().getAdapterFactory()
-				.adapt(eObject, IItemPropertySource.class);
+		.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)
@@ -65,21 +65,36 @@ public class EEFUtils {
 			choiceOfValues = eObject.eResource().getResourceSet();
 		return choiceOfValues;
 	}
-	
+
+
+	/**
+	 * @param eClassifier
+	 * @return
+	 * @deprecated
+	 */
 	public static List<EClass> instanciableTypesInHierarchy(EClassifier eClassifier) {
+		return instanciableTypesInHierarchy(eClassifier, null);
+	}	
+
+	/**
+	 * @param eClassifier
+	 * @param resourceSet
+	 * @return all the concret types of a given classifier.
+	 */
+	public static List<EClass> instanciableTypesInHierarchy(EClassifier eClassifier, ResourceSet resourceSet) {
 		List<EClass> result = new ArrayList<EClass>();
 		if (eClassifier instanceof EClass) {
 			EClass eClass = (EClass) eClassifier;
 			if (!eClass.isAbstract())
 				result.add(eClass);
-			result.addAll(instanciableSubTypes(eClass));
+			result.addAll(instanciableSubTypes(eClass, resourceSet));
 		}
 		return result;
 	}
-	
-	private static List<EClass> instanciableSubTypes(EClass eClass) {
+
+	private static List<EClass> instanciableSubTypes(EClass eClass, ResourceSet resourceSet) {
 		List<EClass> result = new ArrayList<EClass>();
-		for (EPackage ePackage : allPackages(eClass)) {
+		for (EPackage ePackage : allPackages(eClass, resourceSet)) {
 			for (EClassifier eClassifier : ePackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
 					EClass eClass2 = (EClass) eClassifier;
@@ -88,11 +103,11 @@ public class EEFUtils {
 				}
 			}
 		}
-		
+
 		return result;
 	}
-	
-	private static List<EPackage> allPackages(EClass eClass) {
+
+	private static List<EPackage> allPackages(EClass eClass, ResourceSet resourceSet) {
 		List<EPackage> result = new ArrayList<EPackage>();
 		if (eClass.eResource() != null) {
 			EcoreUtil.resolveAll(eClass);
@@ -112,9 +127,45 @@ public class EEFUtils {
 				rootPackage = rootPackage.getESuperPackage();
 			result.addAll(allSubPackages(rootPackage));
 		}
+
+		if (resourceSet != null) {
+			for (EPackage ePackage : getAllEPackagesFromResourceSet(resourceSet)) {
+				if (!result.contains(ePackage))
+					result.add(ePackage);
+			}
+		}
 		return result;
 	}
-	
+
+	/**
+	 * Retrieves all the EPackages used by the ResourceSet
+	 */
+	private static List<EPackage> getAllEPackagesFromResourceSet(ResourceSet resourceSet_p) {
+		List<EPackage> result = new ArrayList<EPackage>();
+		for (Resource resource : resourceSet_p.getResources()) {
+			for (EPackage pkg : allPackageOfResource(resource)) {
+				result.add(getStaticPackage(pkg));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Get the equivalent package from the Global EPackage registry.
+	 */
+	private static EPackage getStaticPackage(EPackage ePackage_p) {
+		Object staticPackage = EPackage.Registry.INSTANCE.get(ePackage_p.getNsURI());
+		if (null != staticPackage) {
+			if (staticPackage instanceof EPackage) {
+				return (EPackage) staticPackage;
+			} else if (staticPackage instanceof EPackage.Descriptor) {
+				return ((EPackage.Descriptor) staticPackage).getEPackage();
+			}
+		}
+		return null;
+	}
+
+
 	private static List<EPackage> allSubPackages(EPackage ePackage) {
 		List<EPackage> result = new ArrayList<EPackage>();
 		for (EPackage subPackage : ePackage.getESubpackages()) 
@@ -131,7 +182,7 @@ public class EEFUtils {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * Convert a treeIterator in Object list
 	 * @param iter the iterator
@@ -143,7 +194,7 @@ public class EEFUtils {
 			result.add(iter.next());
 		return result;
 	}
-	
+
 	/**
 	 * Convert a treeIterator in EObject list
 	 * @param iter the iterator
@@ -155,7 +206,7 @@ public class EEFUtils {
 			result.add(iter.next());
 		return result;
 	}
-	
+
 	/**
 	 * method defining if a bundle is loaded or not
 	 * @param name the searched bundle
@@ -165,5 +216,5 @@ public class EEFUtils {
 		Bundle bundle = Platform.getBundle(name);
 		return bundle != null && bundle.getState() == Bundle.ACTIVE;
 	}
-	
+
 }

@@ -77,7 +77,7 @@ public class PropertiesEditionComponentService implements IPropertiesEditionProv
 	public IPropertiesEditionProvider getProvider(EObject eObject) {
 		return editPropertiesProviderFactory.getProvider(eObject);
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#provides(org.eclipse.emf.ecore.EObject)

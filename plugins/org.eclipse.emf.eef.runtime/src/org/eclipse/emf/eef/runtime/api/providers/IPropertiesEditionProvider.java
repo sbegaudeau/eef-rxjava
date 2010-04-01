@@ -41,6 +41,19 @@ public interface IPropertiesEditionProvider {
 	public abstract boolean provides(EObject eObject, String mode);
 
 	/**
+	 * Indicates whether this provider provides the specified {@link EObject}.
+	 * 
+	 * @param eObject
+	 *            the {@link EObject} to provide
+	 * @param part
+	 *            the editing mode
+	 * @param refinement
+	 * 			  the expected type
+	 * @return <code>true</code> if this provider provides the eObject; <code>false</code> otherwise.
+	 */
+	public abstract boolean provides(EObject eObject, String part, Class refinement);
+
+	/**
 	 * Returns a stateful {@link IPropertiesEditionComponent} able to edit the specified eObject.
 	 * 
 	 * @param eObject
@@ -65,5 +78,22 @@ public interface IPropertiesEditionProvider {
 	 */
 	public abstract IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode,
 			String part);
+
+
+	/**
+	 * Returns a stateful {@link IPropertiesEditionComponent} able to edit the specified eObject for a
+	 * specific part.
+	 * 
+	 * @param eObject
+	 *            the {@link EObject} to edit
+	 * @param mode
+	 *            the editing mode
+	 * @param param
+	 *            the given part
+	 * @param refinement
+	 * 			  the expected type
+	 * @return the edition component
+	 */
+	public abstract IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part, Class refinement);
 
 }
