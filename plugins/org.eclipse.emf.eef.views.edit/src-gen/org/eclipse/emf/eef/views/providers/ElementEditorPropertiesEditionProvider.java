@@ -35,7 +35,7 @@ public class ElementEditorPropertiesEditionProvider implements IPropertiesEditio
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ElementEditor) && (ViewsPackage.eINSTANCE.getElementEditor() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -49,10 +49,20 @@ public class ElementEditorPropertiesEditionProvider implements IPropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof ElementEditor) && (refinement == ElementEditorBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof ElementEditor) && ((ElementEditorBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ElementEditorBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
@@ -94,7 +104,7 @@ public class ElementEditorPropertiesEditionProvider implements IPropertiesEditio
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof ElementEditor) {
 			if (ElementEditorBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == ElementEditorBasePropertiesEditionComponent.class)

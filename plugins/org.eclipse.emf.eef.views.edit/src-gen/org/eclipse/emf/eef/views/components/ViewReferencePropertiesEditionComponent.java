@@ -57,9 +57,11 @@ public class ViewReferencePropertiesEditionComponent extends ComposedPropertiesE
 	public ViewReferencePropertiesEditionComponent(EObject viewReference, String editing_mode) {
 		super(editing_mode);
 		if (viewReference instanceof ViewReference) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(viewReference);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(viewReference, ViewReferenceBasePropertiesEditionComponent.class);
 			viewReferenceBasePropertiesEditionComponent = (ViewReferenceBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(viewReference, editing_mode, ViewReferenceBasePropertiesEditionComponent.BASE_PART, ViewReferenceBasePropertiesEditionComponent.class);
 			addSubComponent(viewReferenceBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(viewReference, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(viewReference, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

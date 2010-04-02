@@ -33,7 +33,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof DocumentedElement) && (ViewsPackage.eINSTANCE.getDocumentedElement() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -47,10 +47,20 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof DocumentedElement) && (refinement == DocumentedElementPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof DocumentedElement) && ((DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
@@ -90,7 +100,7 @@ public class DocumentedElementPropertiesEditionProvider implements IPropertiesEd
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof DocumentedElement) {
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
 				&& refinement == DocumentedElementPropertiesEditionComponent.class)

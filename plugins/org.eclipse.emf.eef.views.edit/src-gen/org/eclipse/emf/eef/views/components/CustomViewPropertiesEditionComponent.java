@@ -57,9 +57,11 @@ public class CustomViewPropertiesEditionComponent extends ComposedPropertiesEdit
 	public CustomViewPropertiesEditionComponent(EObject customView, String editing_mode) {
 		super(editing_mode);
 		if (customView instanceof CustomView) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(customView);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(customView, CustomViewBasePropertiesEditionComponent.class);
 			customViewBasePropertiesEditionComponent = (CustomViewBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(customView, editing_mode, CustomViewBasePropertiesEditionComponent.BASE_PART, CustomViewBasePropertiesEditionComponent.class);
 			addSubComponent(customViewBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(customView, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(customView, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

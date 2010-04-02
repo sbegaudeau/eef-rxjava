@@ -33,7 +33,7 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof Toolkit) && (ToolkitsPackage.eINSTANCE.getToolkit() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -47,10 +47,20 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof Toolkit) && (refinement == ToolkitPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof Toolkit) && ((ToolkitPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ToolkitPropertiesEditionComponent.class));
 	}
 
@@ -90,7 +100,7 @@ public class ToolkitPropertiesEditionProvider implements IPropertiesEditionProvi
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof Toolkit) {
 			if (ToolkitPropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == ToolkitPropertiesEditionComponent.class)

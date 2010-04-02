@@ -57,9 +57,11 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 	public CustomElementEditorPropertiesEditionComponent(EObject customElementEditor, String editing_mode) {
 		super(editing_mode);
 		if (customElementEditor instanceof CustomElementEditor) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(customElementEditor);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(customElementEditor, CustomElementEditorBasePropertiesEditionComponent.class);
 			customElementEditorBasePropertiesEditionComponent = (CustomElementEditorBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(customElementEditor, editing_mode, CustomElementEditorBasePropertiesEditionComponent.BASE_PART, CustomElementEditorBasePropertiesEditionComponent.class);
 			addSubComponent(customElementEditorBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(customElementEditor, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(customElementEditor, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

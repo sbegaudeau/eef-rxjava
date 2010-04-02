@@ -57,9 +57,11 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 	public CategoryPropertiesEditionComponent(EObject category, String editing_mode) {
 		super(editing_mode);
 		if (category instanceof Category) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(category);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(category, CategoryBasePropertiesEditionComponent.class);
 			categoryBasePropertiesEditionComponent = (CategoryBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, CategoryBasePropertiesEditionComponent.BASE_PART, CategoryBasePropertiesEditionComponent.class);
 			addSubComponent(categoryBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(category, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

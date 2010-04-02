@@ -57,9 +57,11 @@ public class ViewsRepositoryPropertiesEditionComponent extends ComposedPropertie
 	public ViewsRepositoryPropertiesEditionComponent(EObject viewsRepository, String editing_mode) {
 		super(editing_mode);
 		if (viewsRepository instanceof ViewsRepository) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(viewsRepository);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(viewsRepository, ViewsRepositoryBasePropertiesEditionComponent.class);
 			viewsRepositoryBasePropertiesEditionComponent = (ViewsRepositoryBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(viewsRepository, editing_mode, ViewsRepositoryBasePropertiesEditionComponent.BASE_PART, ViewsRepositoryBasePropertiesEditionComponent.class);
 			addSubComponent(viewsRepositoryBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(viewsRepository, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(viewsRepository, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
