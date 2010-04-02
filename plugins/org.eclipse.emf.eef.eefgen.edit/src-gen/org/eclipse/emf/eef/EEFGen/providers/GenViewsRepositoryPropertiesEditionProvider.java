@@ -33,7 +33,7 @@ public class GenViewsRepositoryPropertiesEditionProvider implements IPropertiesE
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof GenViewsRepository) && (EEFGenPackage.eINSTANCE.getGenViewsRepository() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -47,10 +47,20 @@ public class GenViewsRepositoryPropertiesEditionProvider implements IPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof GenViewsRepository) && (refinement == GenViewsRepositoryPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof GenViewsRepository) && ((GenViewsRepositoryPropertiesEditionComponent.BASE_PART.equals(part) && refinement == GenViewsRepositoryPropertiesEditionComponent.class));
 	}
 
@@ -90,7 +100,7 @@ public class GenViewsRepositoryPropertiesEditionProvider implements IPropertiesE
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof GenViewsRepository) {
 			if (GenViewsRepositoryPropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == GenViewsRepositoryPropertiesEditionComponent.class)
