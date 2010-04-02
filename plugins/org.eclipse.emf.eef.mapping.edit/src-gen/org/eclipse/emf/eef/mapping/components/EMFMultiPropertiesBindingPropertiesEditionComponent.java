@@ -57,9 +57,11 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 	public EMFMultiPropertiesBindingPropertiesEditionComponent(EObject eMFMultiPropertiesBinding, String editing_mode) {
 		super(editing_mode);
 		if (eMFMultiPropertiesBinding instanceof EMFMultiPropertiesBinding) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eMFMultiPropertiesBinding);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(eMFMultiPropertiesBinding, EMFMultiPropertiesBindingBasePropertiesEditionComponent.class);
 			eMFMultiPropertiesBindingBasePropertiesEditionComponent = (EMFMultiPropertiesBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode, EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART, EMFMultiPropertiesBindingBasePropertiesEditionComponent.class);
 			addSubComponent(eMFMultiPropertiesBindingBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(eMFMultiPropertiesBinding, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

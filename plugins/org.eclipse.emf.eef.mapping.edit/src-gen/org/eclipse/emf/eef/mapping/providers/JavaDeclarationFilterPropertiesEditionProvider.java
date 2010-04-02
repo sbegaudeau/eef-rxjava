@@ -36,7 +36,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider implements IProperti
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof JavaDeclarationFilter) && (FiltersPackage.eINSTANCE.getJavaDeclarationFilter() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -50,10 +50,20 @@ public class JavaDeclarationFilterPropertiesEditionProvider implements IProperti
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof JavaDeclarationFilter) && (refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof JavaDeclarationFilter) && ((JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
 
@@ -97,7 +107,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider implements IProperti
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof JavaDeclarationFilter) {
 			if (JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class)

@@ -63,11 +63,14 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	public JavaDeclarationFilterPropertiesEditionComponent(EObject javaDeclarationFilter, String editing_mode) {
 		super(editing_mode);
 		if (javaDeclarationFilter instanceof JavaDeclarationFilter) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter, JavaDeclarationFilterBasePropertiesEditionComponent.class);
 			javaDeclarationFilterBasePropertiesEditionComponent = (JavaDeclarationFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART, JavaDeclarationFilterBasePropertiesEditionComponent.class);
 			addSubComponent(javaDeclarationFilterBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter, FilterPropertiesPropertiesEditionComponent.class);
 			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}

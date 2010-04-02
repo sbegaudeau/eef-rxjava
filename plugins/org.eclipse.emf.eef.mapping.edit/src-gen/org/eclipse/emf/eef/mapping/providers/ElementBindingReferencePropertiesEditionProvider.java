@@ -35,7 +35,7 @@ public class ElementBindingReferencePropertiesEditionProvider implements IProper
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof ElementBindingReference) && (MappingPackage.eINSTANCE.getElementBindingReference() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -49,10 +49,20 @@ public class ElementBindingReferencePropertiesEditionProvider implements IProper
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof ElementBindingReference) && (refinement == ElementBindingReferenceBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof ElementBindingReference) && ((ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ElementBindingReferenceBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
@@ -94,7 +104,7 @@ public class ElementBindingReferencePropertiesEditionProvider implements IProper
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof ElementBindingReference) {
 			if (ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == ElementBindingReferenceBasePropertiesEditionComponent.class)

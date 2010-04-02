@@ -63,11 +63,14 @@ public class JavaExpressionFilterPropertiesEditionComponent extends ComposedProp
 	public JavaExpressionFilterPropertiesEditionComponent(EObject javaExpressionFilter, String editing_mode) {
 		super(editing_mode);
 		if (javaExpressionFilter instanceof JavaExpressionFilter) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(javaExpressionFilter);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(javaExpressionFilter, JavaExpressionFilterBasePropertiesEditionComponent.class);
 			javaExpressionFilterBasePropertiesEditionComponent = (JavaExpressionFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(javaExpressionFilter, editing_mode, JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART, JavaExpressionFilterBasePropertiesEditionComponent.class);
 			addSubComponent(javaExpressionFilterBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(javaExpressionFilter, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaExpressionFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(javaExpressionFilter, FilterPropertiesPropertiesEditionComponent.class);
 			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaExpressionFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}

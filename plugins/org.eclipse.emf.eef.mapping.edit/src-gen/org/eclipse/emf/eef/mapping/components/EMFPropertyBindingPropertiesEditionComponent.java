@@ -57,9 +57,11 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	public EMFPropertyBindingPropertiesEditionComponent(EObject eMFPropertyBinding, String editing_mode) {
 		super(editing_mode);
 		if (eMFPropertyBinding instanceof EMFPropertyBinding) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eMFPropertyBinding);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(eMFPropertyBinding, EMFPropertyBindingBasePropertiesEditionComponent.class);
 			eMFPropertyBindingBasePropertiesEditionComponent = (EMFPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART, EMFPropertyBindingBasePropertiesEditionComponent.class);
 			addSubComponent(eMFPropertyBindingBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(eMFPropertyBinding, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

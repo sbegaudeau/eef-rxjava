@@ -57,9 +57,11 @@ public class EMFElementBindingPropertiesEditionComponent extends ComposedPropert
 	public EMFElementBindingPropertiesEditionComponent(EObject eMFElementBinding, String editing_mode) {
 		super(editing_mode);
 		if (eMFElementBinding instanceof EMFElementBinding) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eMFElementBinding);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(eMFElementBinding, EMFElementBindingBasePropertiesEditionComponent.class);
 			eMFElementBindingBasePropertiesEditionComponent = (EMFElementBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFElementBinding, editing_mode, EMFElementBindingBasePropertiesEditionComponent.BASE_PART, EMFElementBindingBasePropertiesEditionComponent.class);
 			addSubComponent(eMFElementBindingBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(eMFElementBinding, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFElementBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

@@ -57,9 +57,11 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	public ElementBindingReferencePropertiesEditionComponent(EObject elementBindingReference, String editing_mode) {
 		super(editing_mode);
 		if (elementBindingReference instanceof ElementBindingReference) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(elementBindingReference);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(elementBindingReference, ElementBindingReferenceBasePropertiesEditionComponent.class);
 			elementBindingReferenceBasePropertiesEditionComponent = (ElementBindingReferenceBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(elementBindingReference, editing_mode, ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART, ElementBindingReferenceBasePropertiesEditionComponent.class);
 			addSubComponent(elementBindingReferenceBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(elementBindingReference, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(elementBindingReference, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

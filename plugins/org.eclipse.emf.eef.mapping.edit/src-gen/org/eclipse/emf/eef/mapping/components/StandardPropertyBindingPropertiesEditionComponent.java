@@ -57,9 +57,11 @@ public class StandardPropertyBindingPropertiesEditionComponent extends ComposedP
 	public StandardPropertyBindingPropertiesEditionComponent(EObject standardPropertyBinding, String editing_mode) {
 		super(editing_mode);
 		if (standardPropertyBinding instanceof StandardPropertyBinding) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(standardPropertyBinding);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(standardPropertyBinding, StandardPropertyBindingBasePropertiesEditionComponent.class);
 			standardPropertyBindingBasePropertiesEditionComponent = (StandardPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(standardPropertyBinding, editing_mode, StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART, StandardPropertyBindingBasePropertiesEditionComponent.class);
 			addSubComponent(standardPropertyBindingBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(standardPropertyBinding, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(standardPropertyBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}

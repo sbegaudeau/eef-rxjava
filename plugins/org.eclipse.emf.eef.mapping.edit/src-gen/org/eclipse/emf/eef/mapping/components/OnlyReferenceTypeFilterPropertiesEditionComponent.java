@@ -63,11 +63,14 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 	public OnlyReferenceTypeFilterPropertiesEditionComponent(EObject onlyReferenceTypeFilter, String editing_mode) {
 		super(editing_mode);
 		if (onlyReferenceTypeFilter instanceof OnlyReferenceTypeFilter) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter, OnlyReferenceTypeFilterBasePropertiesEditionComponent.class);
 			onlyReferenceTypeFilterBasePropertiesEditionComponent = (OnlyReferenceTypeFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART, OnlyReferenceTypeFilterBasePropertiesEditionComponent.class);
 			addSubComponent(onlyReferenceTypeFilterBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter, FilterPropertiesPropertiesEditionComponent.class);
 			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
