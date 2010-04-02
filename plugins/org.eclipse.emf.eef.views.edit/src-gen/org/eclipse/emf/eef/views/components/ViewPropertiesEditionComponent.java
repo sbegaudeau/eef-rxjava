@@ -58,9 +58,9 @@ public class ViewPropertiesEditionComponent extends ComposedPropertiesEditionCom
 		super(editing_mode);
 		if (view instanceof View) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(view);
-			viewBasePropertiesEditionComponent = (ViewBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(view, editing_mode, ViewBasePropertiesEditionComponent.BASE_PART);
+			viewBasePropertiesEditionComponent = (ViewBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(view, editing_mode, ViewBasePropertiesEditionComponent.BASE_PART, ViewBasePropertiesEditionComponent.class);
 			addSubComponent(viewBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(view, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(view, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

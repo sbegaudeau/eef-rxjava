@@ -269,7 +269,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 
