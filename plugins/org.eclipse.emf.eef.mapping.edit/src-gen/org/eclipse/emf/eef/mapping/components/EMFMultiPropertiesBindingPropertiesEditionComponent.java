@@ -42,12 +42,12 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 	 * 
 	 */
 	protected EMFMultiPropertiesBindingBasePropertiesEditionComponent eMFMultiPropertiesBindingBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -58,9 +58,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 		super(editing_mode);
 		if (eMFMultiPropertiesBinding instanceof EMFMultiPropertiesBinding) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eMFMultiPropertiesBinding);
-			eMFMultiPropertiesBindingBasePropertiesEditionComponent = (EMFMultiPropertiesBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode, EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART);
+			eMFMultiPropertiesBindingBasePropertiesEditionComponent = (EMFMultiPropertiesBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode, EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART, EMFMultiPropertiesBindingBasePropertiesEditionComponent.class);
 			addSubComponent(eMFMultiPropertiesBindingBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFMultiPropertiesBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

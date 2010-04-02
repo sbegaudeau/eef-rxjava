@@ -57,6 +57,7 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	/**
 	 * @return the current model table
 	 * 
+	 */
 	public List getModelTable();
 
 	/**
@@ -116,6 +117,7 @@ public interface EMFMultiPropertiesBindingPropertiesEditionPart {
 	/**
 	 * @return the current views table
 	 * 
+	 */
 	public List getViewsTable();
 
 	/**

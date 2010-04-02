@@ -228,8 +228,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 
 			basePart.addFilterToFeature(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -244,8 +244,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -265,7 +265,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends StandardPro
 
 		setInitializing(false);
 	}
-
 
 
 

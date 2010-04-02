@@ -42,12 +42,12 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 	 * 
 	 */
 	protected CategoryBasePropertiesEditionComponent categoryBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -58,9 +58,9 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 		super(editing_mode);
 		if (category instanceof Category) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(category);
-			categoryBasePropertiesEditionComponent = (CategoryBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, CategoryBasePropertiesEditionComponent.BASE_PART);
+			categoryBasePropertiesEditionComponent = (CategoryBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, CategoryBasePropertiesEditionComponent.BASE_PART, CategoryBasePropertiesEditionComponent.class);
 			addSubComponent(categoryBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

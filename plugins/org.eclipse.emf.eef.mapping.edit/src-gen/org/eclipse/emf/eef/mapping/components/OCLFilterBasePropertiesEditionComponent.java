@@ -223,7 +223,6 @@ public class OCLFilterBasePropertiesEditionComponent extends StandardPropertiesE
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

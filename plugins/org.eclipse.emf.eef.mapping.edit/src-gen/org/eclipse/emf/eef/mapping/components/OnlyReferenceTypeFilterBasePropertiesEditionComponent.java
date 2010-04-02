@@ -209,8 +209,8 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 			// init filters
 			basePart.addFilterToReferencedFeature(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -232,7 +232,6 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Stand
 
 		setInitializing(false);
 	}
-
 
 
 

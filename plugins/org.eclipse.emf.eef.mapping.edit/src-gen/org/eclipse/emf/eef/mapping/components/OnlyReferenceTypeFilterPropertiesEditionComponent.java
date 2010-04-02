@@ -42,17 +42,18 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 	 * 
 	 */
 	protected OnlyReferenceTypeFilterBasePropertiesEditionComponent onlyReferenceTypeFilterBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * The FilterPropertiesPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected FilterPropertiesPropertiesEditionComponent filterPropertiesPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -63,11 +64,11 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 		super(editing_mode);
 		if (onlyReferenceTypeFilter instanceof OnlyReferenceTypeFilter) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter);
-			onlyReferenceTypeFilterBasePropertiesEditionComponent = (OnlyReferenceTypeFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART);
+			onlyReferenceTypeFilterBasePropertiesEditionComponent = (OnlyReferenceTypeFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART, OnlyReferenceTypeFilterBasePropertiesEditionComponent.class);
 			addSubComponent(onlyReferenceTypeFilterBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}

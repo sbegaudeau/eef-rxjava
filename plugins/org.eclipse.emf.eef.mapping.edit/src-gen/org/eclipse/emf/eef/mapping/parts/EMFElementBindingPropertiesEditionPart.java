@@ -107,6 +107,7 @@ public interface EMFElementBindingPropertiesEditionPart {
 	/**
 	 * @return the current views table
 	 * 
+	 */
 	public List getViewsTable();
 
 	/**

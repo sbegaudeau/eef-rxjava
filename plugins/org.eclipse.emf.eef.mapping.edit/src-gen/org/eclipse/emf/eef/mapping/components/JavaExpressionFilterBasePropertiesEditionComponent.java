@@ -223,7 +223,6 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends Standard
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

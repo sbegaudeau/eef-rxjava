@@ -107,6 +107,7 @@ public interface EMFPropertyBindingPropertiesEditionPart {
 	/**
 	 * @return the current views table
 	 * 
+	 */
 	public List getViewsTable();
 
 	/**

@@ -42,12 +42,12 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	 * 
 	 */
 	protected ElementBindingReferenceBasePropertiesEditionComponent elementBindingReferenceBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -58,9 +58,9 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 		super(editing_mode);
 		if (elementBindingReference instanceof ElementBindingReference) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(elementBindingReference);
-			elementBindingReferenceBasePropertiesEditionComponent = (ElementBindingReferenceBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(elementBindingReference, editing_mode, ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART);
+			elementBindingReferenceBasePropertiesEditionComponent = (ElementBindingReferenceBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(elementBindingReference, editing_mode, ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART, ElementBindingReferenceBasePropertiesEditionComponent.class);
 			addSubComponent(elementBindingReferenceBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(elementBindingReference, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(elementBindingReference, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

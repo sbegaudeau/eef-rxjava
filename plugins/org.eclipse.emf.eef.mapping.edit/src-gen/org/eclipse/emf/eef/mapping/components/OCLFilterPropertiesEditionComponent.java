@@ -42,17 +42,18 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * 
 	 */
 	protected OCLFilterBasePropertiesEditionComponent oCLFilterBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * The FilterPropertiesPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected FilterPropertiesPropertiesEditionComponent filterPropertiesPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -63,11 +64,11 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 		super(editing_mode);
 		if (oCLFilter instanceof OCLFilter) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(oCLFilter);
-			oCLFilterBasePropertiesEditionComponent = (OCLFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, OCLFilterBasePropertiesEditionComponent.BASE_PART);
+			oCLFilterBasePropertiesEditionComponent = (OCLFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, OCLFilterBasePropertiesEditionComponent.BASE_PART, OCLFilterBasePropertiesEditionComponent.class);
 			addSubComponent(oCLFilterBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}

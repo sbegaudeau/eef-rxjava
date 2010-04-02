@@ -44,7 +44,17 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider implements IProper
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+		return (eObject instanceof OnlyReferenceTypeFilter) && (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, Class refinement) {
+		return (eObject instanceof OnlyReferenceTypeFilter) && ((OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -75,6 +85,28 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider implements IProper
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part))
+				return new FilterPropertiesPropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+		if (eObject instanceof OnlyReferenceTypeFilter) {
+			if (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class)
+				return new OnlyReferenceTypeFilterBasePropertiesEditionComponent(eObject, editing_mode);
+			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == DocumentedElementPropertiesEditionComponent.class)
+				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
+			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part)
+				&& refinement == FilterPropertiesPropertiesEditionComponent.class)
 				return new FilterPropertiesPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

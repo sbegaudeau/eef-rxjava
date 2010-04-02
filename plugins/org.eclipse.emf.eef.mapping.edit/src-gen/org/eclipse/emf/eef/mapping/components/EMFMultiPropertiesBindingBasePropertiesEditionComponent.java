@@ -229,8 +229,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 			basePart.addFilterToViews(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -248,8 +248,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 			basePart.addFilterToModel(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -272,7 +272,6 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sta
 
 		setInitializing(false);
 	}
-
 
 
 

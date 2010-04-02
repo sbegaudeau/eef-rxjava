@@ -42,12 +42,12 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 	 * 
 	 */
 	protected EMFPropertyBindingBasePropertiesEditionComponent eMFPropertyBindingBasePropertiesEditionComponent;
-
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
 	 */
 	protected DocumentedElementPropertiesEditionComponent documentedElementPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 
@@ -58,9 +58,9 @@ public class EMFPropertyBindingPropertiesEditionComponent extends ComposedProper
 		super(editing_mode);
 		if (eMFPropertyBinding instanceof EMFPropertyBinding) {
 			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(eMFPropertyBinding);
-			eMFPropertyBindingBasePropertiesEditionComponent = (EMFPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART);
+			eMFPropertyBindingBasePropertiesEditionComponent = (EMFPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, EMFPropertyBindingBasePropertiesEditionComponent.BASE_PART, EMFPropertyBindingBasePropertiesEditionComponent.class);
 			addSubComponent(eMFPropertyBindingBasePropertiesEditionComponent);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(eMFPropertyBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

@@ -43,7 +43,17 @@ public class CategoryPropertiesEditionProvider implements IPropertiesEditionProv
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (CategoryBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (eObject instanceof Category) && (CategoryBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, Class refinement) {
+		return (eObject instanceof Category) && ((CategoryBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == CategoryBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -72,6 +82,25 @@ public class CategoryPropertiesEditionProvider implements IPropertiesEditionProv
 			if (CategoryBasePropertiesEditionComponent.BASE_PART.equals(part))
 				return new CategoryBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+		if (eObject instanceof Category) {
+			if (CategoryBasePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == CategoryBasePropertiesEditionComponent.class)
+				return new CategoryBasePropertiesEditionComponent(eObject, editing_mode);
+			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == DocumentedElementPropertiesEditionComponent.class)
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

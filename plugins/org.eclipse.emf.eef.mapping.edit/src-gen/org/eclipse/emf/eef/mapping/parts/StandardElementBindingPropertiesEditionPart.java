@@ -107,6 +107,7 @@ public interface StandardElementBindingPropertiesEditionPart {
 	/**
 	 * @return the current views table
 	 * 
+	 */
 	public List getViewsTable();
 
 	/**

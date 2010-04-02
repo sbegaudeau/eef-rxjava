@@ -208,8 +208,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 			// init filters
 			basePart.addFilterToBinding(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -229,7 +229,6 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Stand
 
 		setInitializing(false);
 	}
-
 
 
 

@@ -225,7 +225,6 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends Standar
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
