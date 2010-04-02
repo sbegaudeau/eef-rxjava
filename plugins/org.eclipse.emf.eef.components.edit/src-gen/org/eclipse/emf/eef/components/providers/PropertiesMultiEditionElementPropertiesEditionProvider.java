@@ -43,7 +43,17 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (eObject instanceof PropertiesMultiEditionElement) && (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, Class refinement) {
+		return (eObject instanceof PropertiesMultiEditionElement) && ((PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == PropertiesMultiEditionElementBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -72,6 +82,25 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider implements I
 			if (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part))
 				return new PropertiesMultiEditionElementBasePropertiesEditionComponent(eObject, editing_mode);
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+		if (eObject instanceof PropertiesMultiEditionElement) {
+			if (PropertiesMultiEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == PropertiesMultiEditionElementBasePropertiesEditionComponent.class)
+				return new PropertiesMultiEditionElementBasePropertiesEditionComponent(eObject, editing_mode);
+			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == DocumentedElementPropertiesEditionComponent.class)
 				return new DocumentedElementPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
