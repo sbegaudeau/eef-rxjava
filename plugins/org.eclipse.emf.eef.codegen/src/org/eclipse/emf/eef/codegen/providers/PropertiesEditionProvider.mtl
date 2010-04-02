@@ -58,7 +58,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof [pec.model.name/]) && ([pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -72,10 +72,20 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * [peContext.associatedGenModel().generationMark()/]
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof [pec.model.name/]) [pec.provideForClass().trim()/];
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public boolean provides(EObject eObject, String part, Class refinement) {
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
 		return (eObject instanceof [pec.model.name/]) [pec.provideForPartAndClass().trim()/];
 	}
 
@@ -123,7 +133,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 	 *  java.lang.String, java.lang.String, java.lang.Class)
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
 		if (eObject instanceof [pec.model.name/]) {
 [for (view : View | pec.views) ? (view.explicit)]
 			if ([pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part)
@@ -150,7 +160,7 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [template public provideForPart(pec : PropertiesEditionComponent)]
 [if (pec.providePart().size() > 0)]
 && ([pec.providePart().replaceAll('\n', '').replaceAll('\n\r','')/])
-[/if]	
+[/if]
 [/template]
 
 [template public providePart(pec : PropertiesEditionComponent)]
@@ -165,20 +175,43 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 [subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part)[/for][/for]
 [/if][/let][/if]
 [/let]
-[/if]	
+[/if]
 [/let]
 [/template]
+
+[template public provideForClass(pec : PropertiesEditionComponent)]
+[if (pec.provideClass().size() > 0)]
+&& ([pec.provideClass().replaceAll('\n', '').replaceAll('\n\r','')/])
+[/if]
+[/template]
+
+[template public provideClass(pec : PropertiesEditionComponent)]
+[let view : View = pec.views->select(v:views::View | v.explicit)->first()]
+[if (not view.oclIsUndefined())][for (v : View | pec.views) separator (' || ') ?  (v.explicit)]
+refinement == [pec.subPECClass(v)/].class[/for][/if]
+[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent)]
+[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:views::View | v.explicit and v.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))->first()]	
+[if (not view2.oclIsUndefined())][if (not view.oclIsUndefined())] || [/if]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent)))  separator (' || ')]
+[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+refinement == [subPec.pecClass()/].class[/for][/for]
+[/if][/let][/if]
+[/let]
+[/if]
+[/let]
+[/template]
+
 
 [template public provideForPartAndClass(pec : PropertiesEditionComponent)]
 [if (pec.providePartAndClass().size() > 0)]
 && ([pec.providePartAndClass().replaceAll('\n', '').replaceAll('\n\r','')/])
-[/if]	
+[/if]
 [/template]
 
 [template public providePartAndClass(pec : PropertiesEditionComponent)]
 [let view : View = pec.views->select(v:views::View | v.explicit)->first()]
 [if (not view.oclIsUndefined())][for (v : View | pec.views) separator (' || ') ?  (v.explicit)]
-([pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part) && refinement == [pec.subPECClass(view)/].class)[/for][/if]
+([pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part) && refinement == [pec.subPECClass(v)/].class)[/for][/if]
 [if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent)]
 [if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:views::View | v.explicit and v.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))->first()]	
 [if (not view2.oclIsUndefined())][if (not view.oclIsUndefined())] || [/if]
@@ -187,10 +220,9 @@ public class [pec.pecProviderClass()/] implements IPropertiesEditionProvider {
 ([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part) && refinement == [subPec.pecClass()/].class)[/for][/for]
 [/if][/let][/if]
 [/let]
-[/if]	
+[/if]
 [/let]
 [/template]
-
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
 [pec.pecProviderQualifiedClass().toPath()/].java
