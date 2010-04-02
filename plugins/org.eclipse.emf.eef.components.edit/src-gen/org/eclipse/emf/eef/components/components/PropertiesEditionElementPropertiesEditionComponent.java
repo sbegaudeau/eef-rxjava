@@ -59,9 +59,11 @@ public class PropertiesEditionElementPropertiesEditionComponent extends Composed
 	public PropertiesEditionElementPropertiesEditionComponent(EObject propertiesEditionElement, String editing_mode) {
 		super(editing_mode);
 		if (propertiesEditionElement instanceof PropertiesEditionElement) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(propertiesEditionElement);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(propertiesEditionElement, PropertiesEditionElementBasePropertiesEditionComponent.class);
 			propertiesEditionElementBasePropertiesEditionComponent = (PropertiesEditionElementBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(propertiesEditionElement, editing_mode, PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART, PropertiesEditionElementBasePropertiesEditionComponent.class);
 			addSubComponent(propertiesEditionElementBasePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(propertiesEditionElement, DocumentedElementPropertiesEditionComponent.class);
 			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(propertiesEditionElement, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
