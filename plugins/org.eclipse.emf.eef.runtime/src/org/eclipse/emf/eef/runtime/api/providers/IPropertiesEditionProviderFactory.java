@@ -28,6 +28,8 @@ public interface IPropertiesEditionProviderFactory {
 	 */
 	public abstract boolean provides(EObject eObject);
 
+	public abstract boolean provides(EObject eObject, Class refinement);
+	
 	/**
 	 * Register a new {@link IPropertiesEditionProvider} in the factory.
 	 * 
@@ -43,5 +45,7 @@ public interface IPropertiesEditionProviderFactory {
 	 * @return the {@link IPropertiesEditionProvider} for the specified eObject.
 	 */
 	public abstract IPropertiesEditionProvider getProvider(EObject eObject);
+
+  public abstract IPropertiesEditionProvider getProvider(EObject eObject, Class refinement);
 
 }

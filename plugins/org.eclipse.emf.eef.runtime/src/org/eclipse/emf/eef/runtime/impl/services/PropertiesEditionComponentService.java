@@ -78,13 +78,21 @@ public class PropertiesEditionComponentService implements IPropertiesEditionProv
 		return editPropertiesProviderFactory.getProvider(eObject);
 	}
 	
+  public IPropertiesEditionProvider getProvider(EObject eObject, java.lang.Class refinement) {
+    return editPropertiesProviderFactory.getProvider(eObject, refinement);
+  }
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#provides(org.eclipse.emf.ecore.EObject)
 	 */
-	public boolean provides(EObject eObject) {
-		return editPropertiesProviderFactory.provides(eObject);
-	}
+  public boolean provides(EObject eObject) {
+    return editPropertiesProviderFactory.provides(eObject);
+  }
+
+  public boolean provides(EObject eObject, java.lang.Class refinement) {
+    return editPropertiesProviderFactory.provides(eObject, refinement);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -120,5 +128,4 @@ public class PropertiesEditionComponentService implements IPropertiesEditionProv
 		}
 
 	}
-
 }

@@ -96,4 +96,6 @@ public interface IPropertiesEditionProvider {
 	 */
 	public abstract IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String mode, String part, Class refinement);
 
+  public abstract boolean provides(EObject eObject, Class refinement);
+
 }

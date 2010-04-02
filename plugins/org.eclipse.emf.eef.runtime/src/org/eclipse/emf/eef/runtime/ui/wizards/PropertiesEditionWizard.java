@@ -248,7 +248,7 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayoutData(gd);
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
-			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType());
+			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(), allResources);
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
 				button.setText(eClass.getName());

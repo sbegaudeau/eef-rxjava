@@ -124,10 +124,12 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		this.setLayout(layout);
 		selection = new Text(this, SWT.BORDER);
 		GridData selectionData = new GridData(GridData.FILL_HORIZONTAL);
+		selectionData.widthHint = 400;
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
+
 		editer = new Button(this, SWT.PUSH);
-		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);  //$NON-NLS-1$
+		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);
 
 		filters = new ArrayList<ViewerFilter>();
 		brFilters = new ArrayList<ViewerFilter>();

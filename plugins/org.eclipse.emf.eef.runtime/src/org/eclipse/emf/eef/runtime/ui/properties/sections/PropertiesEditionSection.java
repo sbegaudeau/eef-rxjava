@@ -287,7 +287,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * @param object
 	 * @return
 	 */
-	private EObject resolveSemanticObject(Object object) {
+	protected EObject resolveSemanticObject(Object object) {
 		if (object instanceof EObject) {
 			return (EObject)object;
 		} else if (object instanceof IAdaptable) {

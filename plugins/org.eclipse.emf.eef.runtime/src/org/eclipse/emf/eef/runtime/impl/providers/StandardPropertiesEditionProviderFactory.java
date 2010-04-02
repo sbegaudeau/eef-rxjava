@@ -50,6 +50,17 @@ public class StandardPropertiesEditionProviderFactory implements IPropertiesEdit
 	}
 
 	/**
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#getProvider(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 */
+	public IPropertiesEditionProvider getProvider(EObject eObject, java.lang.Class refinement) {
+    for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
+      if (editPropertiesProvider.provides(eObject, refinement))
+        return editPropertiesProvider;
+    }
+    return null;
+	}
+	
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#provides(org.eclipse.emf.ecore.EObject)
@@ -63,6 +74,17 @@ public class StandardPropertiesEditionProviderFactory implements IPropertiesEdit
 	}
 
 	/**
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+    for (IPropertiesEditionProvider editPropertiesProvider : editPropertiesProviders) {
+      if (editPropertiesProvider.provides(eObject, refinement))
+        return true;
+    }
+    return false;
+	}
+	
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#register(org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider)
@@ -71,4 +93,5 @@ public class StandardPropertiesEditionProviderFactory implements IPropertiesEdit
 		editPropertiesProviders.add(editPropertiesProvider);
 	}
 
+	
 }
