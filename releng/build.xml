@@ -39,8 +39,7 @@
 
 	<!-- invoke a new Eclipse process and launch the build from the common.releng folder -->
 	<target name="run" depends="init">
-		<ant antfile="${relengCommonBuilderDir}/buildAll.xml" target="runEclipse" dir="${relengCommonBuilderDir}" />
-		<antcall target="cleanUp" />
+		<ant antfile="${relengCommonBuilderDir}/build.xml" />
 	</target>
 
 	<target name="init">
@@ -65,6 +64,25 @@
 		<condition property="buildAlias" value="${BUILDALIAS}">
 			<isset property="BUILDALIAS" />
 		</condition>
+		<!-- 0. Set a valid path to JAVA_HOME, if Eclipse's ${java.home}/../bin/javac cannot be found
+		-->
+		<property name="JAVA_HOME" value="${java.home}/.." />
+		<!-- 1. Import these projects using File > Import > Team Project Set > ./psfs/athena.psf.
+			 2. Close the org.eclipse.releng.basebuilder project - it does not need to compile to be of use.
+			 3. You can also define absolute paths for these directories, if relative paths do not work.
+		-->
+		<condition property="relengCommonBuilderDir"
+		           value="${basedir}/../../../org.eclipse.dash.common.releng"
+		           else="${basedir}/../org.eclipse.dash.common.releng"
+		>
+			<available file="${basedir}/../../../org.eclipse.dash.common.releng" type="dir" />
+		</condition>
+		<condition property="relengBaseBuilderDir"
+		           value="${basedir}/../../../org.eclipse.releng.basebuilder"
+		           else="${basedir}/../org.eclipse.releng.basebuilder"
+		>
+			<available file="${basedir}/../../../org.eclipse.releng.basebuilder" type="dir" />
+		</condition>
 
 		<!-- load properties and set timestamp for the build -->
 		<tstamp>
@@ -72,33 +90,6 @@
 		</tstamp>
 		<property name="forceContextQualifier" value="v${buildTimestamp}" />
 		<property file="build.properties" />
-
-		<!-- calculate workspaceDir as parent of this folder, the project's .releng folder (relengBuilderDir) -->
-		<property name="relengBuilderDir" value="${basedir}" />
-		<dirname file="${relengBuilderDir}" property="workspaceDir" />
-
-		<!-- 
-				can build in /tmp, eg., in /tmp/build, or in workspace, eg.,
-				${WORKSPACE}/build
-			-->
-		<property name="writableBuildRoot" value="${WORKSPACE}/build" />
-
-		<!-- 
-				can be simple path, eg., 
-				${writableBuildRoot}/${buildType}${buildTimestamp} or longer, eg.,
-				${writableBuildRoot}/${topprojectName}/${projectName}/downloads/drops/${version}/${buildType}${buildTimestamp} or
-				${writableBuildRoot}/${topprojectName}/${projectName}/${subprojectName}/downloads/drops/${version}/${buildType}${buildTimestamp}
-			-->
-		<property name="buildDir" value="${writableBuildRoot}/${buildType}${buildTimestamp}" />
-		<property name="relengCommonBuilderDir" value="${workspaceDir}/org.eclipse.dash.common.releng" />
-
-		<!-- cleanup old builds,
-				 see http://wiki.eclipse.org/Common_Build_Infrastructure/Getting_Started/Build_In_Hudson/Ant_Script -->
-		<delete includeemptydirs="true" failonerror="false">
-			<fileset dir="${writableBuildRoot}/" defaultexcludes="no">
-				<include name="?20*/**" />
-			</fileset>
-		</delete>
 
 	</target>
 
