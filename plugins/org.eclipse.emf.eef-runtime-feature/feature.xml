@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.eef.runtime"
-      label="Extended Editing Framework (Incubation)"
+      label="%name"
       version="0.8.0.qualifier"
-      provider-name="Eclipse.org">
+      provider-name="%ProviderName">
 
    <description>
       Extended Editing Framework - Runtime
