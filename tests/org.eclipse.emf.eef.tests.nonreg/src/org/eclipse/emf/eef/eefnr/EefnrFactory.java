@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrFactory.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
+ * $Id: EefnrFactory.java,v 1.5 2010/04/15 12:48:57 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -177,6 +177,15 @@ public interface EefnrFactory extends EFactory {
 	 * @generated
 	 */
 	TextSampleWithTwoTabs createTextSampleWithTwoTabs();
+
+	/**
+	 * Returns a new object of class '<em>Table Composition Extension Editor Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Table Composition Extension Editor Sample</em>'.
+	 * @generated
+	 */
+	TableCompositionExtensionEditorSample createTableCompositionExtensionEditorSample();
 
 	/**
 	 * Returns the package supported by this factory.

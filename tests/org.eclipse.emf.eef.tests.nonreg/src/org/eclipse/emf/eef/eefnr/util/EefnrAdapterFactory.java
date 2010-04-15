@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrAdapterFactory.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
+ * $Id: EefnrAdapterFactory.java,v 1.5 2010/04/15 12:48:58 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -142,6 +142,14 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTextSampleWithTwoTabs(TextSampleWithTwoTabs object) {
 				return createTextSampleWithTwoTabsAdapter();
+			}
+			@Override
+			public Adapter caseTableCompositionExtensionEditorSample(TableCompositionExtensionEditorSample object) {
+				return createTableCompositionExtensionEditorSampleAdapter();
+			}
+			@Override
+			public Adapter caseAbstractTableCompositionTargetExtensionEditorSample(AbstractTableCompositionTargetExtensionEditorSample object) {
+				return createAbstractTableCompositionTargetExtensionEditorSampleAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -412,6 +420,34 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTextSampleWithTwoTabsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample <em>Table Composition Extension Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample
+	 * @generated
+	 */
+	public Adapter createTableCompositionExtensionEditorSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample <em>Abstract Table Composition Target Extension Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample
+	 * @generated
+	 */
+	public Adapter createAbstractTableCompositionTargetExtensionEditorSampleAdapter() {
 		return null;
 	}
 

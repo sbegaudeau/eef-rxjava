@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
+ * $Id: EefnrSwitch.java,v 1.5 2010/04/15 12:48:58 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -208,6 +208,20 @@ public class EefnrSwitch<T> {
 				TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)theEObject;
 				T result = caseTextSampleWithTwoTabs(textSampleWithTwoTabs);
 				if (result == null) result = caseAbstractSample(textSampleWithTwoTabs);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE: {
+				TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)theEObject;
+				T result = caseTableCompositionExtensionEditorSample(tableCompositionExtensionEditorSample);
+				if (result == null) result = caseAbstractSample(tableCompositionExtensionEditorSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE: {
+				AbstractTableCompositionTargetExtensionEditorSample abstractTableCompositionTargetExtensionEditorSample = (AbstractTableCompositionTargetExtensionEditorSample)theEObject;
+				T result = caseAbstractTableCompositionTargetExtensionEditorSample(abstractTableCompositionTargetExtensionEditorSample);
+				if (result == null) result = caseAbstractSample(abstractTableCompositionTargetExtensionEditorSample);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -482,6 +496,36 @@ public class EefnrSwitch<T> {
 	 * @generated
 	 */
 	public T caseTextSampleWithTwoTabs(TextSampleWithTwoTabs object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Table Composition Extension Editor Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Table Composition Extension Editor Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTableCompositionExtensionEditorSample(TableCompositionExtensionEditorSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Table Composition Target Extension Editor Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Table Composition Target Extension Editor Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractTableCompositionTargetExtensionEditorSample(AbstractTableCompositionTargetExtensionEditorSample object) {
 		return null;
 	}
 

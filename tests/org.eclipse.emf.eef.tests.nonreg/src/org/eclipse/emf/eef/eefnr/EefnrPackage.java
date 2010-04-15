@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackage.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
+ * $Id: EefnrPackage.java,v 1.5 2010/04/15 12:48:57 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -1105,6 +1105,80 @@ public interface EefnrPackage extends EPackage {
 	int TEXT_SAMPLE_WITH_TWO_TABS_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionExtensionEditorSampleImpl <em>Table Composition Extension Editor Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.TableCompositionExtensionEditorSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getTableCompositionExtensionEditorSample()
+	 * @generated
+	 */
+	int TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tablecomposition Required Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Tablecomposition Optional Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Table Composition Extension Editor Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.AbstractTableCompositionTargetExtensionEditorSampleImpl <em>Abstract Table Composition Target Extension Editor Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.AbstractTableCompositionTargetExtensionEditorSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getAbstractTableCompositionTargetExtensionEditorSample()
+	 * @generated
+	 */
+	int ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Table Composition Target Extension Editor Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1112,7 +1186,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 18;
+	int ENUM_SAMPLE = 20;
 
 
 	/**
@@ -1978,6 +2052,48 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample <em>Table Composition Extension Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Table Composition Extension Editor Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample
+	 * @generated
+	 */
+	EClass getTableCompositionExtensionEditorSample();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample#getTablecompositionRequiredProperty <em>Tablecomposition Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tablecomposition Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample#getTablecompositionRequiredProperty()
+	 * @see #getTableCompositionExtensionEditorSample()
+	 * @generated
+	 */
+	EReference getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample#getTablecompositionOptionalProperty <em>Tablecomposition Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tablecomposition Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample#getTablecompositionOptionalProperty()
+	 * @see #getTableCompositionExtensionEditorSample()
+	 * @generated
+	 */
+	EReference getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample <em>Abstract Table Composition Target Extension Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Table Composition Target Extension Editor Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample
+	 * @generated
+	 */
+	EClass getAbstractTableCompositionTargetExtensionEditorSample();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2684,6 +2800,42 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_SECOND_TAB = eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionExtensionEditorSampleImpl <em>Table Composition Extension Editor Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.TableCompositionExtensionEditorSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getTableCompositionExtensionEditorSample()
+		 * @generated
+		 */
+		EClass TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE = eINSTANCE.getTableCompositionExtensionEditorSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Tablecomposition Required Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY = eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Tablecomposition Optional Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY = eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.AbstractTableCompositionTargetExtensionEditorSampleImpl <em>Abstract Table Composition Target Extension Editor Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.AbstractTableCompositionTargetExtensionEditorSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getAbstractTableCompositionTargetExtensionEditorSample()
+		 * @generated
+		 */
+		EClass ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE = eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

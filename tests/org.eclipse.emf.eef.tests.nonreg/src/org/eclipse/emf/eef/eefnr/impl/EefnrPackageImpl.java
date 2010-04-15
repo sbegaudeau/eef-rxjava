@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackageImpl.java,v 1.4 2010/02/11 17:25:45 nlepine Exp $
+ * $Id: EefnrPackageImpl.java,v 1.5 2010/04/15 12:48:57 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.eef.eefnr.AbstractSample;
+import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample;
@@ -30,10 +31,15 @@ import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.Root;
 import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
+import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.TextSample;
 import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
 import org.eclipse.emf.eef.eefnr.TextareaSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
+import org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl;
+import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
+import org.eclipse.emf.eef.eefnrext.impl.EefnrextPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -173,6 +179,20 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass tableCompositionExtensionEditorSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractTableCompositionTargetExtensionEditorSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum enuM_SAMPLEEEnum = null;
 
 	/**
@@ -221,11 +241,19 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) : ReferencesPackage.eINSTANCE);
+		EefnrextPackageImpl theEefnrextPackage = (EefnrextPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) instanceof EefnrextPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) : EefnrextPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theEefnrPackage.createPackageContents();
+		theReferencesPackage.createPackageContents();
+		theEefnrextPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEefnrPackage.initializePackageContents();
+		theReferencesPackage.initializePackageContents();
+		theEefnrextPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theEefnrPackage.freeze();
@@ -961,6 +989,42 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTableCompositionExtensionEditorSample() {
+		return tableCompositionExtensionEditorSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty() {
+		return (EReference)tableCompositionExtensionEditorSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty() {
+		return (EReference)tableCompositionExtensionEditorSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAbstractTableCompositionTargetExtensionEditorSample() {
+		return abstractTableCompositionTargetExtensionEditorSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -1091,6 +1155,12 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		createEAttribute(textSampleWithTwoTabsEClass, TEXT_SAMPLE_WITH_TWO_TABS__TEXT_REQUIRED_PROPERTY_IN_SECOND_TAB);
 		createEAttribute(textSampleWithTwoTabsEClass, TEXT_SAMPLE_WITH_TWO_TABS__TEXT_OPTIONAL_PROPERTY_IN_SECOND_TAB);
 
+		tableCompositionExtensionEditorSampleEClass = createEClass(TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE);
+		createEReference(tableCompositionExtensionEditorSampleEClass, TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
+		createEReference(tableCompositionExtensionEditorSampleEClass, TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
+
+		abstractTableCompositionTargetExtensionEditorSampleEClass = createEClass(ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE);
+
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
 	}
@@ -1118,6 +1188,12 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		ReferencesPackage theReferencesPackage = (ReferencesPackage)EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theReferencesPackage);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -1139,6 +1215,8 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		flatReferencesTableSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		sampleEClass.getESuperTypes().add(this.getAbstractSample());
 		textSampleWithTwoTabsEClass.getESuperTypes().add(this.getAbstractSample());
+		tableCompositionExtensionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		abstractTableCompositionTargetExtensionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1238,6 +1316,12 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEAttribute(getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab(), ecorePackage.getEString(), "textOptionalPropertyInFirstTab", null, 0, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab(), ecorePackage.getEString(), "textRequiredPropertyInSecondTab", null, 1, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab(), ecorePackage.getEString(), "textOptionalPropertyInSecondTab", null, 0, 1, TextSampleWithTwoTabs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tableCompositionExtensionEditorSampleEClass, TableCompositionExtensionEditorSample.class, "TableCompositionExtensionEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), this.getAbstractTableCompositionTargetExtensionEditorSample(), null, "tablecompositionRequiredProperty", null, 1, -1, TableCompositionExtensionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty(), this.getAbstractTableCompositionTargetExtensionEditorSample(), null, "tablecompositionOptionalProperty", null, 0, -1, TableCompositionExtensionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(abstractTableCompositionTargetExtensionEditorSampleEClass, AbstractTableCompositionTargetExtensionEditorSample.class, "AbstractTableCompositionTargetExtensionEditorSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");
