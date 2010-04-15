@@ -221,7 +221,6 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

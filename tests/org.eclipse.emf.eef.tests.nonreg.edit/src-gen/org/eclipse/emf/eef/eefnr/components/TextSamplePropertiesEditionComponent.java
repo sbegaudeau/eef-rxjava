@@ -232,7 +232,6 @@ public class TextSamplePropertiesEditionComponent extends StandardPropertiesEdit
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

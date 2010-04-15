@@ -74,10 +74,6 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredProperty(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the advancedeobjectflatcomboviewerOptionalProperty
 	 * 
@@ -124,10 +120,6 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
-
-
-
-
 
 
 

@@ -36,10 +36,6 @@ public interface TextSampleFirstTabPropertiesEditionPart {
 	 */
 	public void setTextRequiredPropertyInFirstTab(String newValue);
 
-	public void setMessageForTextRequiredPropertyInFirstTab(String msg, int msgLevel);
-
-	public void unsetMessageForTextRequiredPropertyInFirstTab();
-
 
 	/**
 	 * @return the textOptionalPropertyInFirstTab
@@ -53,10 +49,6 @@ public interface TextSampleFirstTabPropertiesEditionPart {
 	 * 
 	 */
 	public void setTextOptionalPropertyInFirstTab(String newValue);
-
-	public void setMessageForTextOptionalPropertyInFirstTab(String msg, int msgLevel);
-
-	public void unsetMessageForTextOptionalPropertyInFirstTab();
 
 
 

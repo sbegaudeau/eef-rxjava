@@ -227,13 +227,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		}
 	}
 
-	public void setMessageForTextRequiredPropertyInSecondTab(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextRequiredPropertyInSecondTab() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -259,13 +252,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		}
 	}
 
-	public void setMessageForTextOptionalPropertyInSecondTab(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextOptionalPropertyInSecondTab() {
-
-	}
 
 
 

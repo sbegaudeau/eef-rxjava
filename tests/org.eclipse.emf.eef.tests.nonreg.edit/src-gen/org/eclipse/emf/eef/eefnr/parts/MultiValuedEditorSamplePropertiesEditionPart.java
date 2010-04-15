@@ -37,10 +37,6 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	public void setMultivaluededitorRequiredProperty(EList newValue);
 
 
-
-
-
-
 	/**
 	 * @return the multivaluededitorOptionalProperty
 	 * 
@@ -53,10 +49,6 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue);
-
-
-
-
 
 
 

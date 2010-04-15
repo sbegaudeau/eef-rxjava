@@ -217,14 +217,13 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 			// init filters
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof TotalSample);
-
 				}
 
 			});
@@ -234,14 +233,13 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -256,7 +254,6 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 
 		setInitializing(false);
 	}
-
 
 
 

@@ -43,6 +43,7 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	/**
 	 * @return the current flatreferencetableRequiredProperty table
 	 * 
+	 */
 	public List getFlatreferencetableRequiredPropertyTable();
 
 	/**
@@ -87,10 +88,6 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	public boolean isContainedInFlatreferencetableRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the flatreferencetableOptionalProperty to add
 	 * 
@@ -106,6 +103,7 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	/**
 	 * @return the current flatreferencetableOptionalProperty table
 	 * 
+	 */
 	public List getFlatreferencetableOptionalPropertyTable();
 
 	/**
@@ -148,10 +146,6 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element);
-
-
-
-
 
 
 

@@ -83,7 +83,6 @@ public class SamplePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -220,13 +219,6 @@ public class SamplePropertiesEditionPartForm extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForTextRequiredProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextRequiredProperty_key", msg, null, msgLevel, textRequiredProperty);
-	}
-
-	public void unsetMessageForTextRequiredProperty() {
-		messageManager.removeMessage("TextRequiredProperty_key", textRequiredProperty);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -252,13 +244,6 @@ public class SamplePropertiesEditionPartForm extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForTextOptionalProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextOptionalProperty_key", msg, null, msgLevel, textOptionalProperty);
-	}
-
-	public void unsetMessageForTextOptionalProperty() {
-		messageManager.removeMessage("TextOptionalProperty_key", textOptionalProperty);
-	}
 
 
 

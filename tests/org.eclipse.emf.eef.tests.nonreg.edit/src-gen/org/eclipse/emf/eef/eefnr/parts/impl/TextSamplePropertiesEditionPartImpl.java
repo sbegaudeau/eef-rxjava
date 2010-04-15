@@ -227,13 +227,6 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForTextRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -259,13 +252,6 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForTextOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextOptionalProperty() {
-
-	}
 
 
 

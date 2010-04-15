@@ -222,8 +222,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		addTablecompositionRequiredProperty.setLayoutData(addTablecompositionRequiredPropertyData);
 		addTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -237,8 +237,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		removeTablecompositionRequiredProperty.setLayoutData(removeTablecompositionRequiredPropertyData);
 		removeTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -254,8 +254,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		editTablecompositionRequiredProperty.setLayoutData(editTablecompositionRequiredPropertyData);
 		editTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -429,8 +429,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		addTablecompositionOptionalProperty.setLayoutData(addTablecompositionOptionalPropertyData);
 		addTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -444,8 +444,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		removeTablecompositionOptionalProperty.setLayoutData(removeTablecompositionOptionalPropertyData);
 		removeTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -461,8 +461,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		editTablecompositionOptionalProperty.setLayoutData(editTablecompositionOptionalPropertyData);
 		editTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -666,13 +666,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		return tablecompositionRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForTablecompositionRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTablecompositionRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -782,13 +775,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		return tablecompositionOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForTablecompositionOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTablecompositionOptionalProperty() {
-
-	}
 
 
 

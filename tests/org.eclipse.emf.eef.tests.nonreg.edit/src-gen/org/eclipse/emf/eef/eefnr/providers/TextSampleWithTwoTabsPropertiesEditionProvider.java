@@ -42,7 +42,27 @@ public class TextSampleWithTwoTabsPropertiesEditionProvider implements IProperti
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part) || TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART.equals(part));
+		return (eObject instanceof TextSampleWithTwoTabs) && (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part) || TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof TextSampleWithTwoTabs) && (refinement == TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class || refinement == TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
+		return (eObject instanceof TextSampleWithTwoTabs) && ((TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part) && refinement == TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class) || (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART.equals(part) && refinement == TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -71,6 +91,25 @@ public class TextSampleWithTwoTabsPropertiesEditionProvider implements IProperti
 			if (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part))
 				return new TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent(eObject, editing_mode);
 			if (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART.equals(part))
+				return new TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
+		if (eObject instanceof TextSampleWithTwoTabs) {
+			if (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part)
+				&& refinement == TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class)
+				return new TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent(eObject, editing_mode);
+			if (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART.equals(part)
+				&& refinement == TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class)
 				return new TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

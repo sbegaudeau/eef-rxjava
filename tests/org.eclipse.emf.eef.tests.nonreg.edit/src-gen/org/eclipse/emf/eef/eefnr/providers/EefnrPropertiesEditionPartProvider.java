@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEdit
 import org.eclipse.emf.eef.eefnr.parts.forms.RootPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.SamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionEditorSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionExtensionEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSampleFirstTabPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSampleSecondTabPropertiesEditionPartForm;
@@ -42,6 +43,7 @@ import org.eclipse.emf.eef.eefnr.parts.impl.ReferencesTableSamplePropertiesEditi
 import org.eclipse.emf.eef.eefnr.parts.impl.RootPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.SamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TableCompositionEditorSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.TableCompositionExtensionEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleFirstTabPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleSecondTabPropertiesEditionPartImpl;
@@ -180,6 +182,12 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 				return new TextSampleSecondTabPropertiesEditionPartImpl(component);
 			if (kind == EefnrViewsRepository.FORM_KIND)
 				return new TextSampleSecondTabPropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.TableCompositionExtensionEditorSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new TableCompositionExtensionEditorSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new TableCompositionExtensionEditorSamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

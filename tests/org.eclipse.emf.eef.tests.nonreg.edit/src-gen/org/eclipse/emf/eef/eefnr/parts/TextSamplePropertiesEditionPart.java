@@ -36,10 +36,6 @@ public interface TextSamplePropertiesEditionPart {
 	 */
 	public void setTextRequiredProperty(String newValue);
 
-	public void setMessageForTextRequiredProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextRequiredProperty();
-
 
 	/**
 	 * @return the textOptionalProperty
@@ -53,10 +49,6 @@ public interface TextSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setTextOptionalProperty(String newValue);
-
-	public void setMessageForTextOptionalProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextOptionalProperty();
 
 
 

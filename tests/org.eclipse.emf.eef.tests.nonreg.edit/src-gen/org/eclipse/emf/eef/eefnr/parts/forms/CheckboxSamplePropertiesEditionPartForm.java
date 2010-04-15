@@ -81,7 +81,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -191,9 +190,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -217,9 +213,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 			checkboxOptionalProperty.setSelection(false);
 		}
 	}
-
-
-
 
 
 

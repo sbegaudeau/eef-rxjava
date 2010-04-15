@@ -37,10 +37,6 @@ public interface CheckboxSamplePropertiesEditionPart {
 	public void setCheckboxRequiredProperty(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the checkboxOptionalProperty
 	 * 
@@ -53,10 +49,6 @@ public interface CheckboxSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setCheckboxOptionalProperty(Boolean newValue);
-
-
-
-
 
 
 

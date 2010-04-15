@@ -55,6 +55,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * @return the current tablecompositionRequiredProperty table
 	 * 
+	 */
 	public List getTablecompositionRequiredPropertyTable();
 
 	/**
@@ -99,10 +100,6 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the tablecompositionOptionalProperty to add
 	 * 
@@ -130,6 +127,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * @return the current tablecompositionOptionalProperty table
 	 * 
+	 */
 	public List getTablecompositionOptionalPropertyTable();
 
 	/**
@@ -172,10 +170,6 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element);
-
-
-
-
 
 
 

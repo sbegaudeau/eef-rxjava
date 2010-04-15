@@ -42,6 +42,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedreferencestableRequiredProperty table
 	 * 
+	 */
 	public List getAdvancedreferencestableRequiredPropertyTable();
 
 	/**
@@ -86,10 +87,6 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedreferencestableOptionalProperty to add
 	 * 
@@ -105,6 +102,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedreferencestableOptionalProperty table
 	 * 
+	 */
 	public List getAdvancedreferencestableOptionalPropertyTable();
 
 	/**
@@ -147,10 +145,6 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element);
-
-
-
-
 
 
 

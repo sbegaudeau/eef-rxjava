@@ -411,13 +411,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		return advancedtablecompositionRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedtablecompositionRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedtablecompositionRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -527,13 +520,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedtablecompositionOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedtablecompositionOptionalProperty() {
-
-	}
 
 
 

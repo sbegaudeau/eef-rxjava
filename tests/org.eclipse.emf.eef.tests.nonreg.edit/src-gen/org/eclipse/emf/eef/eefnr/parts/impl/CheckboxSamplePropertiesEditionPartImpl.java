@@ -156,13 +156,6 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-	public void setMessageForCheckboxRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForCheckboxRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -188,13 +181,6 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-	public void setMessageForCheckboxOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForCheckboxOptionalProperty() {
-
-	}
 
 
 

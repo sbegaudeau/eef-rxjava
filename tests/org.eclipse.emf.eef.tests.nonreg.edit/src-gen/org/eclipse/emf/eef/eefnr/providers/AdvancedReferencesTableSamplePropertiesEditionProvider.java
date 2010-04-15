@@ -40,7 +40,27 @@ public class AdvancedReferencesTableSamplePropertiesEditionProvider implements I
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (AdvancedReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part));
+		return (eObject instanceof AdvancedReferencesTableSample) && (AdvancedReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof AdvancedReferencesTableSample) && (refinement == AdvancedReferencesTableSamplePropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
+		return (eObject instanceof AdvancedReferencesTableSample) && ((AdvancedReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AdvancedReferencesTableSamplePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -67,6 +87,22 @@ public class AdvancedReferencesTableSamplePropertiesEditionProvider implements I
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof AdvancedReferencesTableSample) {
 			if (AdvancedReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part))
+				return new AdvancedReferencesTableSamplePropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
+		if (eObject instanceof AdvancedReferencesTableSample) {
+			if (AdvancedReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == AdvancedReferencesTableSamplePropertiesEditionComponent.class)
 				return new AdvancedReferencesTableSamplePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

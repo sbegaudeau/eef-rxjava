@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrItemProviderAdapterFactory.java,v 1.4 2010/02/11 17:25:41 nlepine Exp $
+ * $Id: EefnrItemProviderAdapterFactory.java,v 1.5 2010/04/15 12:48:48 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -467,6 +467,29 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TableCompositionExtensionEditorSampleItemProvider tableCompositionExtensionEditorSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTableCompositionExtensionEditorSampleAdapter() {
+		if (tableCompositionExtensionEditorSampleItemProvider == null) {
+			tableCompositionExtensionEditorSampleItemProvider = new TableCompositionExtensionEditorSampleItemProvider(this);
+		}
+
+		return tableCompositionExtensionEditorSampleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -582,6 +605,7 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 		if (flatReferencesTableSampleItemProvider != null) flatReferencesTableSampleItemProvider.dispose();
 		if (sampleItemProvider != null) sampleItemProvider.dispose();
 		if (textSampleWithTwoTabsItemProvider != null) textSampleWithTwoTabsItemProvider.dispose();
+		if (tableCompositionExtensionEditorSampleItemProvider != null) tableCompositionExtensionEditorSampleItemProvider.dispose();
 	}
 
 }

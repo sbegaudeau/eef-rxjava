@@ -36,10 +36,6 @@ public interface TextareaSamplePropertiesEditionPart {
 	 */
 	public void setTextareaRequiredProperty(String newValue);
 
-	public void setMessageForTextareaRequiredProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextareaRequiredProperty();
-
 
 	/**
 	 * @return the textareaOptionalProperty
@@ -53,10 +49,6 @@ public interface TextareaSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setTextareaOptionalProperty(String newValue);
-
-	public void setMessageForTextareaOptionalProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextareaOptionalProperty();
 
 
 

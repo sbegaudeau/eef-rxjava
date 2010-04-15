@@ -45,10 +45,6 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the emfcomboviewerOptionalProperty
 	 * 
@@ -68,10 +64,6 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue);
-
-
-
-
 
 
 

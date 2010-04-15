@@ -19,6 +19,18 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
@@ -208,6 +220,14 @@
                tab="TextSampleSecondTab">
              <input
                     type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.TableCompositionExtensionEditorSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample">
              </input>
          </propertySection>
       </propertySections>

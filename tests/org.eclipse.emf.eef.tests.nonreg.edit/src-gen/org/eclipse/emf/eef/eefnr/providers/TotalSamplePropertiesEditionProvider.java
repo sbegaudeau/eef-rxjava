@@ -40,7 +40,27 @@ public class TotalSamplePropertiesEditionProvider implements IPropertiesEditionP
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (TotalSamplePropertiesEditionComponent.BASE_PART.equals(part));
+		return (eObject instanceof TotalSample) && (TotalSamplePropertiesEditionComponent.BASE_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof TotalSample) && (refinement == TotalSamplePropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
+		return (eObject instanceof TotalSample) && ((TotalSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == TotalSamplePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -67,6 +87,22 @@ public class TotalSamplePropertiesEditionProvider implements IPropertiesEditionP
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof TotalSample) {
 			if (TotalSamplePropertiesEditionComponent.BASE_PART.equals(part))
+				return new TotalSamplePropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
+		if (eObject instanceof TotalSample) {
+			if (TotalSamplePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == TotalSamplePropertiesEditionComponent.class)
 				return new TotalSamplePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2010/02/01 13:03:44 nlepine Exp $
+ $Id: plugin.xml,v 1.2 2010/04/15 12:48:47 glefur Exp $
 -->
 
 <plugin>
@@ -14,6 +14,24 @@
       <factory
             uri="http://www.eclipse.org/emf/eef/nonreg/1.0.0"
             class="org.eclipse.emf.eef.eefnr.provider.EefnrItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
+            class="org.eclipse.emf.eef.eefnr.references.provider.ReferencesItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            class="org.eclipse.emf.eef.eefnrext.provider.EefnrextItemProviderAdapterFactory"
+            uri="http://www.eclipse.org/emf/eef/nonreg/extension/1.0.0"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -39,6 +57,43 @@
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+  <!-- EEF extensions -->
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 

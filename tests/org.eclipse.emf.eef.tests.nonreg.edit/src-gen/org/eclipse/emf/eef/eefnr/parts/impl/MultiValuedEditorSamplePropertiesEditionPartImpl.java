@@ -123,8 +123,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		editMultivaluededitorRequiredProperty.setLayoutData(editMultivaluededitorRequiredPropertyData);
 		editMultivaluededitorRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -156,8 +156,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		editMultivaluededitorOptionalProperty.setLayoutData(editMultivaluededitorOptionalPropertyData);
 		editMultivaluededitorOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -217,13 +217,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 
-	public void setMessageForMultivaluededitorRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForMultivaluededitorRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -250,13 +243,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 
-	public void setMessageForMultivaluededitorOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForMultivaluededitorOptionalProperty() {
-
-	}
 
 
 

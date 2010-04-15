@@ -212,8 +212,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 			// init filters
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -231,8 +231,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -255,7 +255,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 
 		setInitializing(false);
 	}
-
 
 
 

@@ -250,13 +250,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		return flatreferencetableRequiredProperty.virtualListContains(element);
 	}
 
-	public void setMessageForFlatreferencetableRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForFlatreferencetableRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -340,13 +333,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		return flatreferencetableOptionalProperty.virtualListContains(element);
 	}
 
-	public void setMessageForFlatreferencetableOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForFlatreferencetableOptionalProperty() {
-
-	}
 
 
 

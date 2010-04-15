@@ -45,10 +45,6 @@ public interface RadioSamplePropertiesEditionPart {
 	public void setRadioRequiredProperty(Object newValue);
 
 
-
-
-
-
 	/**
 	 * @return the radioOptionalProperty
 	 * 
@@ -68,10 +64,6 @@ public interface RadioSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setRadioOptionalProperty(Object newValue);
-
-
-
-
 
 
 

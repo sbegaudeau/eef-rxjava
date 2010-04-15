@@ -42,6 +42,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * @return the current referencestableRequiredProperty table
 	 * 
+	 */
 	public List getReferencestableRequiredPropertyTable();
 
 	/**
@@ -86,10 +87,6 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the referencestableOptionalProperty to add
 	 * 
@@ -105,6 +102,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	/**
 	 * @return the current referencestableOptionalProperty table
 	 * 
+	 */
 	public List getReferencestableOptionalPropertyTable();
 
 	/**
@@ -147,10 +145,6 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element);
-
-
-
-
 
 
 

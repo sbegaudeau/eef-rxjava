@@ -224,7 +224,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -232,7 +232,6 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

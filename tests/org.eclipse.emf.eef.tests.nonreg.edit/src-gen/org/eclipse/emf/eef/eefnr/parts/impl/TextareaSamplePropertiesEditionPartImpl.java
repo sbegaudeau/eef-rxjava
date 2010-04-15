@@ -167,13 +167,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-	public void setMessageForTextareaRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextareaRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -199,13 +192,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-	public void setMessageForTextareaOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextareaOptionalProperty() {
-
-	}
 
 
 

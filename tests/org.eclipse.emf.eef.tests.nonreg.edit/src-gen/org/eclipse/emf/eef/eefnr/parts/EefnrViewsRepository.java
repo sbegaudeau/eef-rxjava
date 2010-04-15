@@ -351,4 +351,21 @@ public class EefnrViewsRepository {
 	
 	}
 
+	/**
+	 * TableCompositionExtensionEditorSample view descriptor
+	 * 
+	 */
+	public static class TableCompositionExtensionEditorSample {
+		
+		public static String name = "eefnr::TableCompositionExtensionEditorSample::name";
+		
+		
+		public static String tablecompositionRequiredProperty = "eefnr::TableCompositionExtensionEditorSample::tablecompositionRequiredProperty";
+		
+		
+		public static String tablecompositionOptionalProperty = "eefnr::TableCompositionExtensionEditorSample::tablecompositionOptionalProperty";
+		
+	
+	}
+
 }

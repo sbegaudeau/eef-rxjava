@@ -110,7 +110,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -225,8 +224,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		addReferencestableRequiredProperty.setLayoutData(addData);
 		addReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -242,8 +241,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		removeReferencestableRequiredProperty.setLayoutData(removeData);
 		removeReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -381,8 +380,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		addReferencestableOptionalProperty.setLayoutData(addData);
 		addReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -398,8 +397,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		removeReferencestableOptionalProperty.setLayoutData(removeData);
 		removeReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -551,9 +550,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -642,9 +638,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return referencestableOptionalPropertyEditUtil.contains(element);
 	}
-
-
-
 
 
 

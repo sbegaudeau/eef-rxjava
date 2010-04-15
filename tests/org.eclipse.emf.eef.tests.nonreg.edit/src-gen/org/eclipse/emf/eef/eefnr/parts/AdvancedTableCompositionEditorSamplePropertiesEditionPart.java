@@ -55,6 +55,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedtablecompositionRequiredProperty table
 	 * 
+	 */
 	public List getAdvancedtablecompositionRequiredPropertyTable();
 
 	/**
@@ -99,10 +100,6 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to add
 	 * 
@@ -130,6 +127,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedtablecompositionOptionalProperty table
 	 * 
+	 */
 	public List getAdvancedtablecompositionOptionalPropertyTable();
 
 	/**
@@ -172,10 +170,6 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element);
-
-
-
-
 
 
 

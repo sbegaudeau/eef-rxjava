@@ -221,8 +221,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		addReferencestableRequiredProperty.setLayoutData(addData);
 		addReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -239,8 +239,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		removeReferencestableRequiredProperty.setLayoutData(removeData);
 		removeReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -378,8 +378,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		addReferencestableOptionalProperty.setLayoutData(addData);
 		addReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -396,8 +396,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		removeReferencestableOptionalProperty.setLayoutData(removeData);
 		removeReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -547,13 +547,6 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		return referencestableRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForReferencestableRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferencestableRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -644,13 +637,6 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		return referencestableOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForReferencestableOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferencestableOptionalProperty() {
-
-	}
 
 
 

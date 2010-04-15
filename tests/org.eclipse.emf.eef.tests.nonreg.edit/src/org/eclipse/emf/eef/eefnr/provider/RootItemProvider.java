@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RootItemProvider.java,v 1.4 2010/02/11 17:25:41 nlepine Exp $
+ * $Id: RootItemProvider.java,v 1.5 2010/04/15 12:48:48 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -29,6 +29,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Root;
+import org.eclipse.emf.eef.eefnr.references.ReferencesFactory;
+import org.eclipse.emf.eef.eefnrext.EefnrextFactory;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.eefnr.Root} object.
@@ -230,6 +232,31 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 EefnrFactory.eINSTANCE.createTextSampleWithTwoTabs()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createTableCompositionExtensionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 ReferencesFactory.eINSTANCE.createReferenceEnabledSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrextFactory.eINSTANCE.createTableCompositionTargetExtensionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrextFactory.eINSTANCE.createCheckBoxExtendedEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrextFactory.eINSTANCE.createFlatReferenceExtendedEditorSample()));
 	}
 
 	/**

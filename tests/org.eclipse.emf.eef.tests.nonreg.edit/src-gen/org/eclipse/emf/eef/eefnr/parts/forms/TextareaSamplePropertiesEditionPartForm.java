@@ -82,7 +82,6 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -203,13 +202,6 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 		}
 	}
 
-	public void setMessageForTextareaRequiredProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextareaRequiredProperty_key", msg, null, msgLevel, textareaRequiredProperty);
-	}
-
-	public void unsetMessageForTextareaRequiredProperty() {
-		messageManager.removeMessage("TextareaRequiredProperty_key", textareaRequiredProperty);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -235,13 +227,6 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 		}
 	}
 
-	public void setMessageForTextareaOptionalProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextareaOptionalProperty_key", msg, null, msgLevel, textareaOptionalProperty);
-	}
-
-	public void unsetMessageForTextareaOptionalProperty() {
-		messageManager.removeMessage("TextareaOptionalProperty_key", textareaOptionalProperty);
-	}
 
 
 

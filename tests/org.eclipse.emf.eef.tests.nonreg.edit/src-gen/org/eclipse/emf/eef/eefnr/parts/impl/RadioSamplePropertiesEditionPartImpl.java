@@ -166,13 +166,6 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioRequiredPropertyRadioViewer.setSelection(newValue);
 	}
 
-	public void setMessageForRadioRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRadioRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -204,13 +197,6 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioOptionalPropertyRadioViewer.setSelection(newValue);
 	}
 
-	public void setMessageForRadioOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRadioOptionalProperty() {
-
-	}
 
 
 

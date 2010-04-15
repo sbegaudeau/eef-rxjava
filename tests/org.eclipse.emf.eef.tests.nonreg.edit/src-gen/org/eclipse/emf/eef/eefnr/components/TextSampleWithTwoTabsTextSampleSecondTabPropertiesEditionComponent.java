@@ -232,7 +232,6 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

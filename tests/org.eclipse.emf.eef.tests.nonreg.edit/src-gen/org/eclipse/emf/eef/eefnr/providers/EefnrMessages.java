@@ -75,6 +75,9 @@ public class EefnrMessages extends NLS {
 	public static String TextSampleSecondTabPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String TableCompositionExtensionEditorSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String Root_ReadOnly;
 
 	
@@ -181,6 +184,12 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String TextSampleSecondTab_Part_Title;
+
+	
+	public static String TableCompositionExtensionEditorSample_ReadOnly;
+
+	
+	public static String TableCompositionExtensionEditorSample_Part_Title;
 
 	
 	public static String RootPropertiesEditionPart_SamplesLabel;
@@ -369,11 +378,20 @@ public class EefnrMessages extends NLS {
 	public static String TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel;
 
 	
+	public static String TableCompositionExtensionEditorSamplePropertiesEditionPart_NameLabel;
+
+	
+	public static String TableCompositionExtensionEditorSamplePropertiesEditionPart_TablecompositionRequiredPropertyLabel;
+
+	
+	public static String TableCompositionExtensionEditorSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel;
+
+	
 	public static String PropertiesEditionPart_DocumentationLabel;
 
 	
 	public static String PropertiesEditionPart_IntegerValueMessage;
-	
+
 	
 	public static String PropertiesEditionPart_FloatValueMessage;
 
@@ -418,7 +436,7 @@ public class EefnrMessages extends NLS {
 	
 	// Start of user code for additionnal NLS Constants
 	
-	// End of user code		
+	// End of user code
 
 	static {
 		// initialize resource bundle

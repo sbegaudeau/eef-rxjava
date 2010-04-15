@@ -41,6 +41,7 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 		append(createFlatReferenceTableSamplePropertiesEditionProvider());
 		append(createSamplePropertiesEditionProvider());
 		append(createTextSampleWithTwoTabsPropertiesEditionProvider());
+		append(createTableCompositionExtensionEditorSamplePropertiesEditionProvider());
 	}
 
 	/**
@@ -330,6 +331,23 @@ public class EefnrPackagePropertiesEditionProvider extends ComposedPropertiesEdi
 		if (textSampleWithTwoTabsPropertiesEditionProvider == null)
 			textSampleWithTwoTabsPropertiesEditionProvider = new TextSampleWithTwoTabsPropertiesEditionProvider();
 		return textSampleWithTwoTabsPropertiesEditionProvider;
+	}
+
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * TableCompositionExtensionEditorSample instances.
+	 * 
+	 */
+	protected TableCompositionExtensionEditorSamplePropertiesEditionProvider tableCompositionExtensionEditorSamplePropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a TableCompositionExtensionEditorSample
+	 * 
+	 */
+	public TableCompositionExtensionEditorSamplePropertiesEditionProvider createTableCompositionExtensionEditorSamplePropertiesEditionProvider() {
+		if (tableCompositionExtensionEditorSamplePropertiesEditionProvider == null)
+			tableCompositionExtensionEditorSamplePropertiesEditionProvider = new TableCompositionExtensionEditorSamplePropertiesEditionProvider();
+		return tableCompositionExtensionEditorSamplePropertiesEditionProvider;
 	}
 
 }

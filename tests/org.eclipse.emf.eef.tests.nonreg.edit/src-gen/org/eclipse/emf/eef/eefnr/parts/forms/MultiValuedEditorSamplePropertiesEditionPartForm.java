@@ -92,7 +92,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -130,8 +129,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 		editMultivaluededitorRequiredProperty.setLayoutData(editMultivaluededitorRequiredPropertyData);
 		editMultivaluededitorRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -165,8 +164,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 		editMultivaluededitorOptionalProperty.setLayoutData(editMultivaluededitorOptionalPropertyData);
 		editMultivaluededitorOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -227,9 +226,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -254,9 +250,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
-
-
 
 
 

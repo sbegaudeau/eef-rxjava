@@ -317,13 +317,6 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return samplesEditUtil.contains(element);
 	}
 
-	public void setMessageForSamples(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSamples() {
-
-	}
 
 
 

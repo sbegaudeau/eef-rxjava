@@ -55,6 +55,7 @@ public interface RootPropertiesEditionPart {
 	/**
 	 * @return the current samples table
 	 * 
+	 */
 	public List getSamplesTable();
 
 	/**
@@ -97,10 +98,6 @@ public interface RootPropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInSamplesTable(EObject element);
-
-
-
-
 
 
 

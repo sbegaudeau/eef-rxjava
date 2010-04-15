@@ -384,8 +384,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToEobjectflatcomboviewerRequiredProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -400,8 +400,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToEobjectflatcomboviewerOptionalProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -416,8 +416,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -435,8 +435,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -458,14 +458,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof Sample);
-
 				}
 
 			});
@@ -475,14 +474,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -492,8 +490,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -511,8 +509,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -530,8 +528,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedeobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -546,8 +544,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedeobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -562,14 +560,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedtablecompositionRequiredProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof Sample);
-
 				}
 
 			});
@@ -579,14 +576,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedtablecompositionOptionalProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -596,14 +592,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToTablecompositionWithSameTypeRequiredProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof TotalSample);
-
 				}
 
 			});
@@ -613,14 +608,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToTablecompositionWithSameTypeOptionalProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -630,14 +624,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedtablecompositionWithSameTypeRequiredProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof TotalSample);
-
 				}
 
 			});
@@ -647,14 +640,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 			basePart.addFilterToAdvancedtablecompositionWithSameTypeOptionalProperty(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -670,7 +662,6 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 		setInitializing(false);
 	}
-
 
 
 

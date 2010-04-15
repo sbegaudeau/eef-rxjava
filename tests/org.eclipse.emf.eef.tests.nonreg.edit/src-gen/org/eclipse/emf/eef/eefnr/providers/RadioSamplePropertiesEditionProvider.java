@@ -40,7 +40,27 @@ public class RadioSamplePropertiesEditionProvider implements IPropertiesEditionP
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (RadioSamplePropertiesEditionComponent.BASE_PART.equals(part));
+		return (eObject instanceof RadioSample) && (RadioSamplePropertiesEditionComponent.BASE_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof RadioSample) && (refinement == RadioSamplePropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
+		return (eObject instanceof RadioSample) && ((RadioSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == RadioSamplePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -67,6 +87,22 @@ public class RadioSamplePropertiesEditionProvider implements IPropertiesEditionP
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof RadioSample) {
 			if (RadioSamplePropertiesEditionComponent.BASE_PART.equals(part))
+				return new RadioSamplePropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
+		if (eObject instanceof RadioSample) {
+			if (RadioSamplePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == RadioSamplePropertiesEditionComponent.class)
 				return new RadioSamplePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

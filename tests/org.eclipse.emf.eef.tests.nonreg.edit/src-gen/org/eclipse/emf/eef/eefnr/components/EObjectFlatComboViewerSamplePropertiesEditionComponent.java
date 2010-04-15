@@ -213,8 +213,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 			// init filters
 			basePart.addFilterToEobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -229,8 +229,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -250,7 +250,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 
 		setInitializing(false);
 	}
-
 
 
 

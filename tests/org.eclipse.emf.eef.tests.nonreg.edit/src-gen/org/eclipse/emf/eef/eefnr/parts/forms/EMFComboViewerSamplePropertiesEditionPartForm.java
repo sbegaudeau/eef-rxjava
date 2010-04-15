@@ -87,7 +87,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -208,9 +207,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -241,9 +237,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
-
-
 
 
 

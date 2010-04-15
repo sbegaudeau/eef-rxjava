@@ -695,8 +695,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		editMultivaluededitorRequiredProperty.setLayoutData(editMultivaluededitorRequiredPropertyData);
 		editMultivaluededitorRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -728,8 +728,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		editMultivaluededitorOptionalProperty.setLayoutData(editMultivaluededitorOptionalPropertyData);
 		editMultivaluededitorOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -1719,13 +1719,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1751,13 +1744,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1783,13 +1769,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForCheckboxRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForCheckboxRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1815,13 +1794,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForCheckboxOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForCheckboxOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1847,13 +1819,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextareaRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextareaRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1879,13 +1844,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextareaOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextareaOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1918,13 +1876,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForRadioRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRadioRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1957,13 +1908,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForRadioOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForRadioOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2035,13 +1979,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		eobjectflatcomboviewerRequiredProperty.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForEobjectflatcomboviewerRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEobjectflatcomboviewerRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2113,13 +2050,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		eobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForEobjectflatcomboviewerOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEobjectflatcomboviewerOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2210,13 +2140,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return referencestableRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForReferencestableRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferencestableRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2307,13 +2230,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return referencestableOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForReferencestableOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForReferencestableOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2346,13 +2262,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForEmfcomboviewerRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEmfcomboviewerRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2385,13 +2294,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForEmfcomboviewerOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEmfcomboviewerOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2418,13 +2320,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForMultivaluededitorRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForMultivaluededitorRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2451,13 +2346,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForMultivaluededitorOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForMultivaluededitorOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2567,13 +2455,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return tablecompositionRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForTablecompositionRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTablecompositionRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2683,13 +2564,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return tablecompositionOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForTablecompositionOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTablecompositionOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2780,13 +2654,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return advancedreferencestableRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedreferencestableRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedreferencestableRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2877,13 +2744,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return advancedreferencestableOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedreferencestableOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedreferencestableOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -2955,13 +2815,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		advancedeobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForAdvancedeobjectflatcomboviewerRequiredPropery(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedeobjectflatcomboviewerRequiredPropery() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3033,13 +2886,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		advancedeobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForAdvancedeobjectflatcomboviewerOptionalPropery(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedeobjectflatcomboviewerOptionalPropery() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3149,13 +2995,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return advancedtablecompositionRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedtablecompositionRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedtablecompositionRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3265,13 +3104,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedtablecompositionOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedtablecompositionOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3381,13 +3213,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return tablecompositionWithSameTypeRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForTablecompositionWithSameTypeRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTablecompositionWithSameTypeRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3497,13 +3322,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForTablecompositionWithSameTypeOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTablecompositionWithSameTypeOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3613,13 +3431,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedtablecompositionWithSameTypeRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedtablecompositionWithSameTypeRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3729,13 +3540,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedtablecompositionWithSameTypeOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedtablecompositionWithSameTypeOptionalProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -3761,13 +3565,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 
 

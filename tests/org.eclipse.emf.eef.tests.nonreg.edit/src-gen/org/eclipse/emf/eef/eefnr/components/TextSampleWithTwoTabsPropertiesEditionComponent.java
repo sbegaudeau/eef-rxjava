@@ -54,7 +54,6 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	 * 
 	 */
 	protected TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent;
-
 	/**
 	 * Parameterized constructor
 	 * 
@@ -64,10 +63,12 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	public TextSampleWithTwoTabsPropertiesEditionComponent(EObject textSampleWithTwoTabs, String editing_mode) {
 		super(editing_mode);
 		if (textSampleWithTwoTabs instanceof TextSampleWithTwoTabs) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(textSampleWithTwoTabs);
-			textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent)provider.getPropertiesEditionComponent(textSampleWithTwoTabs, editing_mode, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(textSampleWithTwoTabs, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class);
+			textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent)provider.getPropertiesEditionComponent(textSampleWithTwoTabs, editing_mode, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class);
 			addSubComponent(textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent);
-			textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent)provider.getPropertiesEditionComponent(textSampleWithTwoTabs, editing_mode, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(textSampleWithTwoTabs, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class);
+			textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent)provider.getPropertiesEditionComponent(textSampleWithTwoTabs, editing_mode, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class);
 			addSubComponent(textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent);
 		}
 	}

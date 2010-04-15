@@ -193,7 +193,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -760,8 +759,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		editMultivaluededitorRequiredProperty.setLayoutData(editMultivaluededitorRequiredPropertyData);
 		editMultivaluededitorRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -795,8 +794,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		editMultivaluededitorOptionalProperty.setLayoutData(editMultivaluededitorOptionalPropertyData);
 		editMultivaluededitorOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -1804,13 +1803,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextRequiredProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextRequiredProperty_key", msg, null, msgLevel, textRequiredProperty);
-	}
-
-	public void unsetMessageForTextRequiredProperty() {
-		messageManager.removeMessage("TextRequiredProperty_key", textRequiredProperty);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1836,13 +1828,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextOptionalProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextOptionalProperty_key", msg, null, msgLevel, textOptionalProperty);
-	}
-
-	public void unsetMessageForTextOptionalProperty() {
-		messageManager.removeMessage("TextOptionalProperty_key", textOptionalProperty);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1867,9 +1852,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 			checkboxRequiredProperty.setSelection(false);
 		}
 	}
-
-
-
 
 
 	/**
@@ -1897,9 +1879,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1924,13 +1903,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextareaRequiredProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextareaRequiredProperty_key", msg, null, msgLevel, textareaRequiredProperty);
-	}
-
-	public void unsetMessageForTextareaRequiredProperty() {
-		messageManager.removeMessage("TextareaRequiredProperty_key", textareaRequiredProperty);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1956,13 +1928,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForTextareaOptionalProperty(String msg, int msgLevel) {
-		messageManager.addMessage("TextareaOptionalProperty_key", msg, null, msgLevel, textareaOptionalProperty);
-	}
-
-	public void unsetMessageForTextareaOptionalProperty() {
-		messageManager.removeMessage("TextareaOptionalProperty_key", textareaOptionalProperty);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -1996,9 +1961,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2029,9 +1991,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public void setRadioOptionalProperty(Enumerator newValue) {
 		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
-
-
 
 
 	/**
@@ -2105,9 +2064,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2177,9 +2133,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 	/**
@@ -2272,9 +2225,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2365,9 +2315,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2398,9 +2345,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
-
-
 
 
 	/**
@@ -2435,9 +2379,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2464,9 +2405,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2491,9 +2429,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
-
-
 
 
 	/**
@@ -2605,9 +2540,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2717,9 +2649,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2808,9 +2737,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element) {
 		return advancedreferencestableRequiredPropertyEditUtil.contains(element);
 	}
-
-
-
 
 
 	/**
@@ -2903,9 +2829,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2977,9 +2900,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -3049,9 +2969,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 	/**
@@ -3163,9 +3080,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -3273,9 +3187,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
 	}
-
-
-
 
 
 	/**
@@ -3387,9 +3298,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -3497,9 +3405,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public boolean isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element) {
 		return tablecompositionWithSameTypeOptionalPropertyEditUtil.contains(element);
 	}
-
-
-
 
 
 	/**
@@ -3611,9 +3516,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -3723,9 +3625,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -3750,13 +3649,6 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-		messageManager.addMessage("Name_key", msg, null, msgLevel, name);
-	}
-
-	public void unsetMessageForName() {
-		messageManager.removeMessage("Name_key", name);
-	}
 
 
 

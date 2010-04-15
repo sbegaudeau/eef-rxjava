@@ -213,14 +213,13 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 			// init filters
 			basePart.addFilterToSamples(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof AbstractSample); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -235,7 +234,6 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 		setInitializing(false);
 	}
-
 
 
 

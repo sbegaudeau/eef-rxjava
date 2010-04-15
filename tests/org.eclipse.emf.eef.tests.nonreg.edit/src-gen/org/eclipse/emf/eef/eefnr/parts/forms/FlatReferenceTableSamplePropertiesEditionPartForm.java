@@ -87,7 +87,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -255,9 +254,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -339,9 +335,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
 		return flatreferencetableOptionalProperty.virtualListContains(element);
 	}
-
-
-
 
 
 

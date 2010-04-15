@@ -233,13 +233,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForEobjectflatcomboviewerRequiredPropery(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEobjectflatcomboviewerRequiredPropery() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -311,13 +304,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForEobjectflatcomboviewerOptionalPropery(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEobjectflatcomboviewerOptionalPropery() {
-
-	}
 
 
 

@@ -40,7 +40,27 @@ public class FlatReferenceTableSamplePropertiesEditionProvider implements IPrope
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return provides(eObject)&& (FlatReferenceTableSamplePropertiesEditionComponent.BASE_PART.equals(part));
+		return (eObject instanceof FlatReferencesTableSample) && (FlatReferenceTableSamplePropertiesEditionComponent.BASE_PART.equals(part));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, java.lang.Class refinement) {
+		return (eObject instanceof FlatReferencesTableSample) && (refinement == FlatReferenceTableSamplePropertiesEditionComponent.class);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
+		return (eObject instanceof FlatReferencesTableSample) && ((FlatReferenceTableSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == FlatReferenceTableSamplePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -67,6 +87,22 @@ public class FlatReferenceTableSamplePropertiesEditionProvider implements IPrope
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
 		if (eObject instanceof FlatReferencesTableSample) {
 			if (FlatReferenceTableSamplePropertiesEditionComponent.BASE_PART.equals(part))
+				return new FlatReferenceTableSamplePropertiesEditionComponent(eObject, editing_mode);
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
+	 *  java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 */
+	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
+		if (eObject instanceof FlatReferencesTableSample) {
+			if (FlatReferenceTableSamplePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == FlatReferenceTableSamplePropertiesEditionComponent.class)
 				return new FlatReferenceTableSamplePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;

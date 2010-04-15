@@ -83,7 +83,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -220,13 +219,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		}
 	}
 
-	public void setMessageForTextRequiredPropertyInSecondTab(String msg, int msgLevel) {
-		messageManager.addMessage("TextRequiredPropertyInSecondTab_key", msg, null, msgLevel, textRequiredPropertyInSecondTab);
-	}
-
-	public void unsetMessageForTextRequiredPropertyInSecondTab() {
-		messageManager.removeMessage("TextRequiredPropertyInSecondTab_key", textRequiredPropertyInSecondTab);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -252,13 +244,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		}
 	}
 
-	public void setMessageForTextOptionalPropertyInSecondTab(String msg, int msgLevel) {
-		messageManager.addMessage("TextOptionalPropertyInSecondTab_key", msg, null, msgLevel, textOptionalPropertyInSecondTab);
-	}
-
-	public void unsetMessageForTextOptionalPropertyInSecondTab() {
-		messageManager.removeMessage("TextOptionalPropertyInSecondTab_key", textOptionalPropertyInSecondTab);
-	}
 
 
 

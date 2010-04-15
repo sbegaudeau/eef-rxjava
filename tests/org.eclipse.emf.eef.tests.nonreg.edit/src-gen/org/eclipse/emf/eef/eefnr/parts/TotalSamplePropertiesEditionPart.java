@@ -46,10 +46,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 */
 	public void setTextRequiredProperty(String newValue);
 
-	public void setMessageForTextRequiredProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextRequiredProperty();
-
 
 	/**
 	 * @return the textOptionalProperty
@@ -63,10 +59,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setTextOptionalProperty(String newValue);
-
-	public void setMessageForTextOptionalProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextOptionalProperty();
 
 
 	/**
@@ -83,10 +75,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void setCheckboxRequiredProperty(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the checkboxOptionalProperty
 	 * 
@@ -99,10 +87,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setCheckboxOptionalProperty(Boolean newValue);
-
-
-
-
 
 
 	/**
@@ -118,10 +102,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 */
 	public void setTextareaRequiredProperty(String newValue);
 
-	public void setMessageForTextareaRequiredProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextareaRequiredProperty();
-
 
 	/**
 	 * @return the textareaOptionalProperty
@@ -135,10 +115,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setTextareaOptionalProperty(String newValue);
-
-	public void setMessageForTextareaOptionalProperty(String msg, int msgLevel);
-
-	public void unsetMessageForTextareaOptionalProperty();
 
 
 	/**
@@ -162,10 +138,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void setRadioRequiredProperty(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the radioOptionalProperty
 	 * 
@@ -185,10 +157,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setRadioOptionalProperty(Enumerator newValue);
-
-
-
-
 
 
 	/**
@@ -239,10 +207,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void addBusinessFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the eobjectflatcomboviewerOptionalProperty
 	 * 
@@ -291,10 +255,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the referencestableRequiredProperty to add
 	 * 
@@ -310,6 +270,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current referencestableRequiredProperty table
 	 * 
+	 */
 	public List getReferencestableRequiredPropertyTable();
 
 	/**
@@ -354,10 +315,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the referencestableOptionalProperty to add
 	 * 
@@ -373,6 +330,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current referencestableOptionalProperty table
 	 * 
+	 */
 	public List getReferencestableOptionalPropertyTable();
 
 	/**
@@ -417,10 +375,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the emfcomboviewerRequiredProperty
 	 * 
@@ -440,10 +394,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue);
-
-
-
-
 
 
 	/**
@@ -467,10 +417,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the multivaluededitorRequiredProperty
 	 * 
@@ -485,10 +431,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void setMultivaluededitorRequiredProperty(EList newValue);
 
 
-
-
-
-
 	/**
 	 * @return the multivaluededitorOptionalProperty
 	 * 
@@ -501,10 +443,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue);
-
-
-
-
 
 
 	/**
@@ -534,6 +472,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current tablecompositionRequiredProperty table
 	 * 
+	 */
 	public List getTablecompositionRequiredPropertyTable();
 
 	/**
@@ -578,10 +517,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the tablecompositionOptionalProperty to add
 	 * 
@@ -609,6 +544,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current tablecompositionOptionalProperty table
 	 * 
+	 */
 	public List getTablecompositionOptionalPropertyTable();
 
 	/**
@@ -653,10 +589,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedreferencestableRequiredProperty to add
 	 * 
@@ -672,6 +604,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedreferencestableRequiredProperty table
 	 * 
+	 */
 	public List getAdvancedreferencestableRequiredPropertyTable();
 
 	/**
@@ -716,10 +649,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedreferencestableOptionalProperty to add
 	 * 
@@ -735,6 +664,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedreferencestableOptionalProperty table
 	 * 
+	 */
 	public List getAdvancedreferencestableOptionalPropertyTable();
 
 	/**
@@ -777,10 +707,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element);
-
-
-
-
 
 
 	/**
@@ -831,10 +757,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the advancedeobjectflatcomboviewerOptionalPropery
 	 * 
@@ -883,10 +805,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the advancedtablecompositionRequiredProperty to add
 	 * 
@@ -914,6 +832,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedtablecompositionRequiredProperty table
 	 * 
+	 */
 	public List getAdvancedtablecompositionRequiredPropertyTable();
 
 	/**
@@ -958,10 +877,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedtablecompositionOptionalProperty to add
 	 * 
@@ -989,6 +904,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedtablecompositionOptionalProperty table
 	 * 
+	 */
 	public List getAdvancedtablecompositionOptionalPropertyTable();
 
 	/**
@@ -1033,10 +949,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the tablecompositionWithSameTypeRequiredProperty to add
 	 * 
@@ -1064,6 +976,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current tablecompositionWithSameTypeRequiredProperty table
 	 * 
+	 */
 	public List getTablecompositionWithSameTypeRequiredPropertyTable();
 
 	/**
@@ -1108,10 +1021,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionWithSameTypeRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the tablecompositionWithSameTypeOptionalProperty to add
 	 * 
@@ -1139,6 +1048,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current tablecompositionWithSameTypeOptionalProperty table
 	 * 
+	 */
 	public List getTablecompositionWithSameTypeOptionalPropertyTable();
 
 	/**
@@ -1183,10 +1093,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionWithSameTypeOptionalPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedtablecompositionWithSameTypeRequiredProperty to add
 	 * 
@@ -1214,6 +1120,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedtablecompositionWithSameTypeRequiredProperty table
 	 * 
+	 */
 	public List getAdvancedtablecompositionWithSameTypeRequiredPropertyTable();
 
 	/**
@@ -1258,10 +1165,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedtablecompositionWithSameTypeRequiredPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the advancedtablecompositionWithSameTypeOptionalProperty to add
 	 * 
@@ -1289,6 +1192,7 @@ public interface TotalSamplePropertiesEditionPart {
 	/**
 	 * @return the current advancedtablecompositionWithSameTypeOptionalProperty table
 	 * 
+	 */
 	public List getAdvancedtablecompositionWithSameTypeOptionalPropertyTable();
 
 	/**
@@ -1333,10 +1237,6 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedtablecompositionWithSameTypeOptionalPropertyTable(EObject element);
 
 
-
-
-
-
 	/**
 	 * @return the name
 	 * 
@@ -1349,10 +1249,6 @@ public interface TotalSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setName(String newValue);
-
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
 
 
 

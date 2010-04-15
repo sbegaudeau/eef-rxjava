@@ -229,7 +229,6 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

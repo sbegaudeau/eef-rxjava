@@ -212,8 +212,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 			// init filters
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -231,8 +231,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -255,7 +255,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 
 		setInitializing(false);
 	}
-
 
 
 

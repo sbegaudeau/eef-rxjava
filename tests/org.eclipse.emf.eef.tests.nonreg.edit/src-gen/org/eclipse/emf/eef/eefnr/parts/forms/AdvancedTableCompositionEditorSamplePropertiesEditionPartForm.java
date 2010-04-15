@@ -98,7 +98,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -422,9 +421,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -532,9 +528,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return advancedtablecompositionOptionalPropertyEditUtil.contains(element);
 	}
-
-
-
 
 
 

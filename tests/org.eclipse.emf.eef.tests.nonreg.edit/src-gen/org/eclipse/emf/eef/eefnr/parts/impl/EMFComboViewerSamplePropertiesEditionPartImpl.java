@@ -172,13 +172,6 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForEmfcomboviewerRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEmfcomboviewerRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -211,13 +204,6 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForEmfcomboviewerOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEmfcomboviewerOptionalProperty() {
-
-	}
 
 
 

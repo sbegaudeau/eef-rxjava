@@ -229,7 +229,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

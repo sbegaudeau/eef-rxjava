@@ -221,7 +221,6 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

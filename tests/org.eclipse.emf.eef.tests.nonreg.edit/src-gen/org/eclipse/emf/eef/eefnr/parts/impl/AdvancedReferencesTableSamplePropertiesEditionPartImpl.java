@@ -390,13 +390,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		return advancedreferencestableRequiredPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedreferencestableRequiredProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedreferencestableRequiredProperty() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -487,13 +480,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		return advancedreferencestableOptionalPropertyEditUtil.contains(element);
 	}
 
-	public void setMessageForAdvancedreferencestableOptionalProperty(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAdvancedreferencestableOptionalProperty() {
-
-	}
 
 
 

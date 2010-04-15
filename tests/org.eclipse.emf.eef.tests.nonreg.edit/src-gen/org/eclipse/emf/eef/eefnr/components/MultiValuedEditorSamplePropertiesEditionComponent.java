@@ -223,7 +223,6 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

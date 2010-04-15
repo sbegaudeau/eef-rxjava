@@ -80,7 +80,6 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -172,9 +171,6 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -204,9 +200,6 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(newValue);
 	}
-
-
-
 
 
 

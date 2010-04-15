@@ -227,13 +227,6 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		}
 	}
 
-	public void setMessageForTextRequiredPropertyInFirstTab(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextRequiredPropertyInFirstTab() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -259,13 +252,6 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		}
 	}
 
-	public void setMessageForTextOptionalPropertyInFirstTab(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTextOptionalPropertyInFirstTab() {
-
-	}
 
 
 
