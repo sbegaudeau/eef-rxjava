@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.3 2010/04/15 12:48:51 glefur Exp $
+ $Id: plugin.xml,v 1.4 2010/04/16 15:50:59 sbouchet Exp $
 -->
 
 <plugin>
@@ -319,5 +319,121 @@
          </propertySection>
       </propertySections>
    </extension>
+   <!-- Tabbed properties views extension -->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>
+         <propertyTab
+               label="AbstractSample"
+               category="extended"
+               id="AbstractSample"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="AbstractSample"
+               category="extended"
+               id="AbstractSample"
+               afterTab="Base">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
+               tab="AbstractSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.AbstractSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.AbstractSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.references.section.AbstractEnabledSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.references.section.AbstractEnabledSample"
+               tab="AbstractSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample">
+             </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>
+         <propertyTab
+               label="DeferedFlatReferencesTableSample"
+               category="extended"
+               id="DeferedFlatReferencesTableSample"
+               afterTab="DeferedFlatReferencesTableSample">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.DeferedFlatReferenceTableEditorSample"
+               tab="DeferedFlatReferencesTableSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample">
+             </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+ </plugin>
 
-</plugin>

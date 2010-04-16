@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrEditor.java,v 1.1 2010/02/01 13:06:37 nlepine Exp $
+ * $Id: EefnrEditor.java,v 1.2 2010/04/16 15:50:59 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.presentation;
 
@@ -1086,7 +1086,7 @@ public class EefnrEditor
 	 * This accesses a cached version of the property sheet.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
