@@ -48,7 +48,7 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.ecore.EStructuralFeature;
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
 import [pee.model.eType.qualifiedName(basePackage)/];
-[if (not pee.navigation.oclIsUndefined() and pee.navigation.oclIsKindOf(mapping::navigation::SimpleModelNavigation))]
+[if (not pee.navigation.oclIsUndefined() and pee.navigation.oclIsKindOf(mapping::navigation::SimpleModelNavigation) and not pee.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).discriminatorType.oclIsUndefined())]
 import [pee.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).discriminatorType.qualifiedName(basePackage)/];
 [/if]
 [/for]
