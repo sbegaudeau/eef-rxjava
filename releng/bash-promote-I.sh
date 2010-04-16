@@ -1,8 +1,8 @@
 #!/bin/bash
-PROMO_LOGS_DIR="/home/data/users/sbouchet/promo_logs"
+PROMO_LOGS_DIR=$HOME/promo_logs
 RELENG_DIR="/opt/users/hudsonbuild/.hudson/jobs/cbi-emf-eef-0.7-integration/workspace/org.eclipse.emf/org.eclipse.emf.eef/releng"
 ANT="/opt/public/common/apache-ant-1.7.1/bin/ant"
-logFile="/home/data/users/sbouchet/cronLog.txt"
+logFile=$HOME/cronLog.txt
 
 rm -f $logFile
 touch $logFile
