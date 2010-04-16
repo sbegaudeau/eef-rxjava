@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,14 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.eefnr.references.providers;
+package org.eclipse.emf.eef.references.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.eefnr.AbstractSample;
-import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.references.components.AbstractSamplePropertiesEditionComponent;
+import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
+import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
+import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
+import org.eclipse.emf.eef.references.components.ReferenceEnabledSampleBasePropertiesEditionComponent;
+import org.eclipse.emf.eef.references.components.ReferenceEnabledSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
@@ -21,7 +23,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditionProvider {
+public class ReferenceEnabledSamplePropertiesEditionProvider implements IPropertiesEditionProvider {
 
 	/**
 	 * {@inheritDoc}
@@ -30,9 +32,9 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public boolean provides(EObject eObject) {
-		return (eObject instanceof AbstractSample) && (EefnrPackage.eINSTANCE.getAbstractSample() == eObject.eClass());
+		return (eObject instanceof ReferenceEnabledSample) && (ReferencesPackage.eINSTANCE.getReferenceEnabledSample() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -40,7 +42,7 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part) {
-		return (eObject instanceof AbstractSample) && (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part));
+		return (eObject instanceof ReferenceEnabledSample) && (ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) || AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
@@ -50,7 +52,7 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public boolean provides(EObject eObject, java.lang.Class refinement) {
-		return (eObject instanceof AbstractSample) && (refinement == AbstractSamplePropertiesEditionComponent.class);
+		return (eObject instanceof ReferenceEnabledSample) && (refinement == ReferenceEnabledSampleBasePropertiesEditionComponent.class || refinement == AbstractSamplePropertiesEditionComponent.class);
 	}
 
 	/**
@@ -60,7 +62,7 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
-		return (eObject instanceof AbstractSample) && ((AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractSamplePropertiesEditionComponent.class));
+		return (eObject instanceof ReferenceEnabledSample) && ((ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReferenceEnabledSampleBasePropertiesEditionComponent.class) || (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractSamplePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -71,8 +73,8 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof AbstractSample) {
-			return new AbstractSamplePropertiesEditionComponent(eObject, editing_mode);
+		if (eObject instanceof ReferenceEnabledSample) {
+			return new ReferenceEnabledSamplePropertiesEditionComponent(eObject, editing_mode);
 		}
 		return null;
 	}
@@ -85,7 +87,9 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof AbstractSample) {
+		if (eObject instanceof ReferenceEnabledSample) {
+			if (ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part))
+				return new ReferenceEnabledSampleBasePropertiesEditionComponent(eObject, editing_mode);
 			if (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new AbstractSamplePropertiesEditionComponent(eObject, editing_mode);
 		}
@@ -100,7 +104,10 @@ public class AbstractSamplePropertiesEditionProvider implements IPropertiesEditi
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
-		if (eObject instanceof AbstractSample) {
+		if (eObject instanceof ReferenceEnabledSample) {
+			if (ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == ReferenceEnabledSampleBasePropertiesEditionComponent.class)
+				return new ReferenceEnabledSampleBasePropertiesEditionComponent(eObject, editing_mode);
 			if (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == AbstractSamplePropertiesEditionComponent.class)
 				return new AbstractSamplePropertiesEditionComponent(eObject, editing_mode);

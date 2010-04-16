@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -175,9 +175,8 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 				samplesEditUtil.removeElement(element);
 				samples.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -196,9 +195,8 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 

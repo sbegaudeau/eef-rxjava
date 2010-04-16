@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -166,9 +166,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -179,9 +178,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 				EObject editedElement = advancedtablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 				advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
 				advancedtablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -199,9 +197,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 						advancedtablecompositionRequiredProperty.refresh();
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
-				}		
+				}
 		// End of user code
-
 	}
 
 	/**
@@ -251,9 +248,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -264,9 +260,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 				EObject editedElement = advancedtablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 				advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
 				advancedtablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -284,9 +279,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 						advancedtablecompositionOptionalProperty.refresh();
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
-				}		
+				}
 		// End of user code
-
 	}
 
 

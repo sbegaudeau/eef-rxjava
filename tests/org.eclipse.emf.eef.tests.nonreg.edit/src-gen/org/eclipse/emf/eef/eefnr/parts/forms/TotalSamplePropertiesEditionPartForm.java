@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,8 +50,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -878,9 +878,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				tablecompositionRequiredPropertyEditUtil.removeElement(element);
 				tablecompositionRequiredProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -899,9 +898,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -966,9 +964,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				tablecompositionOptionalPropertyEditUtil.removeElement(element);
 				tablecompositionOptionalProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -987,9 +984,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1262,9 +1258,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedtablecompositionRequiredPropertyEditUtil.removeElement(element);
 				advancedtablecompositionRequiredProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1283,9 +1278,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1350,9 +1344,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedtablecompositionOptionalPropertyEditUtil.removeElement(element);
 				advancedtablecompositionOptionalProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1371,9 +1364,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1438,9 +1430,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				tablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
 				tablecompositionWithSameTypeRequiredProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1459,9 +1450,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1526,9 +1516,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				tablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
 				tablecompositionWithSameTypeOptionalProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1547,9 +1536,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.tablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1614,9 +1602,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedtablecompositionWithSameTypeRequiredPropertyEditUtil.removeElement(element);
 				advancedtablecompositionWithSameTypeRequiredProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1635,9 +1622,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1702,9 +1688,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedtablecompositionWithSameTypeOptionalPropertyEditUtil.removeElement(element);
 				advancedtablecompositionWithSameTypeOptionalProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -1723,9 +1708,8 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.advancedtablecompositionWithSameTypeOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ import org.eclipse.emf.eef.runtime.impl.policies.EReferencePropertiesEditionCont
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -213,9 +213,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -226,9 +225,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 				EObject editedElement = tablecompositionRequiredPropertyEditUtil.foundCorrespondingEObject(element);
 				tablecompositionRequiredPropertyEditUtil.removeElement(element);
 				tablecompositionRequiredProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -246,9 +244,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 						tablecompositionRequiredProperty.refresh();
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
-				}		
+				}
 		// End of user code
-
 	}
 
 	/**
@@ -293,9 +290,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -306,9 +302,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 				EObject editedElement = tablecompositionOptionalPropertyEditUtil.foundCorrespondingEObject(element);
 				tablecompositionOptionalPropertyEditUtil.removeElement(element);
 				tablecompositionOptionalProperty.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));		
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -326,9 +321,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 						tablecompositionOptionalProperty.refresh();
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
-				}		
+				}
 		// End of user code
-
 	}
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,8 +37,8 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -231,7 +231,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceToAdd()
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceToAdd()
 	 * 
 	 */
 	public List getReferenceToAdd() {
@@ -241,7 +241,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceToRemove()
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceToRemove()
 	 * 
 	 */
 	public List getReferenceToRemove() {
@@ -251,7 +251,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceTable()
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceTable()
 	 * 
 	 */
 	public List getReferenceTable() {
@@ -262,7 +262,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#initReference(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#initReference(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initReference(EObject current, EReference containingFeature, EReference feature) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -277,7 +277,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#updateReference(EObject newValue)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#updateReference(EObject newValue)
 	 * 
 	 */
 	public void updateReference(EObject newValue) {
@@ -290,7 +290,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#addFilterReference(ViewerFilter filter)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#addFilterReference(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToReference(ViewerFilter filter) {
@@ -300,7 +300,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#addBusinessFilterReference(ViewerFilter filter)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#addBusinessFilterReference(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToReference(ViewerFilter filter) {
@@ -310,7 +310,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#isContainedInReferenceTable(EObject element)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#isContainedInReferenceTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInReferenceTable(EObject element) {
@@ -321,7 +321,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 /**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getAbstractEnabledSampleReferencedView()
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getAbstractEnabledSampleReferencedView()
 	 * 
 	 */
 		public IPropertiesEditionPart getAbstractEnabledSampleReferencedView() {
@@ -330,7 +330,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getEnabled()
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getEnabled()
 	 * 
 	 */
 	public Boolean getEnabled() {
@@ -340,7 +340,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart#setEnabled(Boolean newValue)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#setEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setEnabled(Boolean newValue) {
@@ -350,7 +350,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#getName()
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -360,7 +360,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#setName(String newValue)
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {

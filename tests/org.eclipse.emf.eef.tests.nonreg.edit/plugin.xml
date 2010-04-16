@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.2 2010/04/15 12:48:47 glefur Exp $
+ $Id: plugin.xml,v 1.3 2010/04/16 15:51:28 sbouchet Exp $
 -->
 
 <plugin>
@@ -78,17 +78,72 @@
             providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
+  <!-- EEF extensions -->
   <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
       <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPackagePropertiesEditionProvider">
+            providerClass="org.eclipse.emf.eef.navigation.providers.NavigationPackagePropertiesEditionProvider">
       </PropertiesEditionComponentProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
       <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPackagePropertiesEditionPolicyProvider">
+            providerClass="org.eclipse.emf.eef.navigation.providers.NavigationPackagePropertiesEditionPolicyProvider">
       </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="org.eclipse.emf.eef.references.providers.ReferencesPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="org.eclipse.emf.eef.references.providers.ReferencesPackagePropertiesEditionPolicyProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
@@ -97,6 +152,6 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   
+ 
 
 </plugin>

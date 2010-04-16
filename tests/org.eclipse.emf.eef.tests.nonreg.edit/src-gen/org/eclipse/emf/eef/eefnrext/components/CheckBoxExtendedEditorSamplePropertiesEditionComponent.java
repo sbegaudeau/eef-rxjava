@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,11 @@ package org.eclipse.emf.eef.eefnrext.components;
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.eefnr.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
+import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;

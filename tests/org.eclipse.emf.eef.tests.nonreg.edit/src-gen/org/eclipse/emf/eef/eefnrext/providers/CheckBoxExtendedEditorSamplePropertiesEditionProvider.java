@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,11 +11,11 @@
 package org.eclipse.emf.eef.eefnrext.providers;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.eefnr.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSamplePropertiesEditionComponent;
+import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 
@@ -34,7 +34,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionProvider implements IP
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof CheckBoxExtendedEditorSample) && (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 

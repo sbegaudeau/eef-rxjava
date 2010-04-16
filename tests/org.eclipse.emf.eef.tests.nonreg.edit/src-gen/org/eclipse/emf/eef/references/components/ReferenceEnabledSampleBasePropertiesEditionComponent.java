@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.eefnr.references.components;
+package org.eclipse.emf.eef.references.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -233,10 +232,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 
 		// init filters for referenced views
 
-
 		setInitializing(false);
 	}
-
 
 
 
@@ -334,10 +331,6 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), newValue);
-				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

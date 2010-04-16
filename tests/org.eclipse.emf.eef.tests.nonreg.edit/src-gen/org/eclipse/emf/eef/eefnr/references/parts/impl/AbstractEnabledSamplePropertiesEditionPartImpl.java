@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -137,7 +137,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#getEnabled()
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#getEnabled()
 	 * 
 	 */
 	public Boolean getEnabled() {
@@ -147,7 +147,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#setEnabled(Boolean newValue)
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#setEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setEnabled(Boolean newValue) {
@@ -162,7 +162,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 /**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#getAbstractSampleReferencedView()
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#getAbstractSampleReferencedView()
 	 * 
 	 */
 		public IPropertiesEditionPart getAbstractSampleReferencedView() {
@@ -171,7 +171,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#getName()
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -181,7 +181,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart#setName(String newValue)
+	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {

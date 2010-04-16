@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -226,9 +226,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 				tablecompositionRequiredPropertyEditUtil.removeElement(element);
 				tablecompositionRequiredProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -247,9 +246,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -309,9 +307,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 				tablecompositionOptionalPropertyEditUtil.removeElement(element);
 				tablecompositionOptionalProperty.refresh();
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
+		
 		// End of user code
-
 	}
 
 	/**
@@ -330,9 +327,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
 					}
 				}
-				
+		
 		// End of user code
-
 	}
 
 

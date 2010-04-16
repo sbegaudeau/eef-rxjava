@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.eefnr.references.components;
+package org.eclipse.emf.eef.references.components;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
@@ -42,10 +42,10 @@ public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPr
 	 */
 	protected ReferenceEnabledSampleBasePropertiesEditionComponent referenceEnabledSampleBasePropertiesEditionComponent;
 	/**
-	 * The AbstractEnabledSamplePropertiesEditionComponent sub component
+	 * The AbstractSamplePropertiesEditionComponent sub component
 	 * 
 	 */
-	protected AbstractEnabledSamplePropertiesEditionComponent abstractEnabledSamplePropertiesEditionComponent;
+	protected AbstractSamplePropertiesEditionComponent abstractSamplePropertiesEditionComponent;
 
 	/**
 	 * Parameterized constructor
@@ -60,9 +60,9 @@ public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPr
 			provider = PropertiesEditionComponentService.getInstance().getProvider(referenceEnabledSample, ReferenceEnabledSampleBasePropertiesEditionComponent.class);
 			referenceEnabledSampleBasePropertiesEditionComponent = (ReferenceEnabledSampleBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(referenceEnabledSample, editing_mode, ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART, ReferenceEnabledSampleBasePropertiesEditionComponent.class);
 			addSubComponent(referenceEnabledSampleBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(referenceEnabledSample, AbstractEnabledSamplePropertiesEditionComponent.class);
-			abstractEnabledSamplePropertiesEditionComponent = (AbstractEnabledSamplePropertiesEditionComponent)provider.getPropertiesEditionComponent(referenceEnabledSample, editing_mode, AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART, AbstractEnabledSamplePropertiesEditionComponent.class);
-			addSubComponent(abstractEnabledSamplePropertiesEditionComponent);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(referenceEnabledSample, AbstractSamplePropertiesEditionComponent.class);
+			abstractSamplePropertiesEditionComponent = (AbstractSamplePropertiesEditionComponent)provider.getPropertiesEditionComponent(referenceEnabledSample, editing_mode, AbstractSamplePropertiesEditionComponent.BASE_PART, AbstractSamplePropertiesEditionComponent.class);
+			addSubComponent(abstractSamplePropertiesEditionComponent);
 		}
 	}
 
@@ -107,10 +107,8 @@ public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPr
 	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
 		if (key == ReferencesViewsRepository.ReferenceEnabledSample.class) {
 			super.initPart(key, kind, element, allResource);
-			abstractEnabledSamplePropertiesEditionComponent.setPropertiesEditionPart(ReferencesViewsRepository.AbstractEnabledSample.class, kind, basePart.getAbstractEnabledSampleReferencedView());
-			abstractEnabledSamplePropertiesEditionComponent.initPart(ReferencesViewsRepository.AbstractEnabledSample.class, kind, element, allResource);
 		}
-		if (key == ReferencesViewsRepository.AbstractEnabledSample.class) {
+		if (key == ReferencesViewsRepository.AbstractSample.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

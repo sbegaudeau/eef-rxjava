@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionProvider impl
 	public boolean provides(EObject eObject) {
 		return (eObject instanceof TableCompositionExtensionEditorSample) && (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample() == eObject.eClass());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
