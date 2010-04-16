@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_Fx_LAAwvEd-uP4lw9e0IMw" documentation="Edition Context for eefnr GenPackage">
     <categories xmi:id="_Fx_LAQwvEd-uP4lw9e0IMw" name="eefnr">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LAgwvEd-uP4lw9e0IMw" name="Root" views="_Fx_LQwwvEd-uP4lw9e0IMw">
@@ -253,21 +253,21 @@
   </eef-components:PropertiesEditionContext>
   <eef-components:PropertiesEditionContext xmi:id="_IPrf8j1-Ed-LLuOHydFNYw" documentation="Edition Context for references GenPackage">
     <categories xmi:id="_IPrf8z1-Ed-LLuOHydFNYw" name="references">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_IPrf9D1-Ed-LLuOHydFNYw" name="ReferenceEnabledSample" views="_IPsHDT1-Ed-LLuOHydFNYw">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IPrf9z1-Ed-LLuOHydFNYw" name="reference" views="_IPsHET1-Ed-LLuOHydFNYw">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_IPrf9D1-Ed-LLuOHydFNYw" name="ReferenceEnabledSample">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IPrf9z1-Ed-LLuOHydFNYw" name="reference">
           <model xsi:type="ecore:EReference" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//references/ReferenceEnabledSample/reference"/>
         </properties>
-        <referencedBinding xmi:id="_KdiW4D2BEd-LLuOHydFNYw" binding="_5rpHAD2AEd-LLuOHydFNYw"/>
+        <referencedBinding xmi:id="_KdiW4D2BEd-LLuOHydFNYw"/>
         <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//references/ReferenceEnabledSample"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_x31zgD2AEd-LLuOHydFNYw" name="AbstractSample" views="_lZD-oD2AEd-LLuOHydFNYw">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3NSOMD2AEd-LLuOHydFNYw" name="name" views="_IPsHDz1-Ed-LLuOHydFNYw">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_x31zgD2AEd-LLuOHydFNYw" name="AbstractSample">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3NSOMD2AEd-LLuOHydFNYw" name="name">
           <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
         </properties>
         <model xsi:type="ecore:EClass" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_5rpHAD2AEd-LLuOHydFNYw" name="AbstractEnabledSample" views="_f3RKAD2AEd-LLuOHydFNYw">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_BAZHAD2BEd-LLuOHydFNYw" name="enabled" views="_IPsHED1-Ed-LLuOHydFNYw">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_5rpHAD2AEd-LLuOHydFNYw" name="AbstractEnabledSample">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_BAZHAD2BEd-LLuOHydFNYw" name="enabled">
           <model xsi:type="ecore:EAttribute" href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//references/AbstractEnabledSample/enabled"/>
         </properties>
         <referencedBinding xmi:id="_EX2LAD2BEd-LLuOHydFNYw" binding="_x31zgD2AEd-LLuOHydFNYw"/>
@@ -275,6 +275,23 @@
       </bindings>
     </categories>
     <model href="file:/home/glefur/Pro/workspaces/EEF/workspace-eef-tests/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr/references"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-components:PropertiesEditionContext xmi:id="_IPrf8j1-Ed-LLuOHydFNYw" documentation="Edition Context for navigation GenPackage">
+    <categories xmi:id="_IPrf8z1-Ed-LLuOHydFNYw" name="navigation">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_iz0Y8EksEd-eu-IdSn5J6Q" name="DeferedFlatReferencesTableSampleEditor" views="_TWhkgUksEd-eu-IdSn5J6Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xUHZoEksEd-eu-IdSn5J6Q" name="name" views="_Y_-gUEksEd-eu-IdSn5J6Q">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_zeIaIEksEd-eu-IdSn5J6Q" name="flatReferencesTableSampleEditor" views="_eW2eYEksEd-eu-IdSn5J6Q">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedReference/flatreferenceEditor"/>
+          <navigation xsi:type="eef-mapping-navigation:SimpleModelNavigation" xmi:id="_2zJOIEksEd-eu-IdSn5J6Q">
+            <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedFlatReferenceTableEditorSample/references"/>
+          </navigation>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedFlatReferenceTableEditorSample"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr/navigation"/>
   </eef-components:PropertiesEditionContext>
   <eef-components:PropertiesEditionContext xmi:id="_0Hu75z1nEd-LLuOHydFNYw" documentation="Edition Context for eefnrext GenPackage">
     <categories xmi:id="_0Hu76D1nEd-LLuOHydFNYw" name="eefnrext">
@@ -288,7 +305,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_J-ipgD5MEd-N3eCRqn3mIQ" name="checkboxEditorSample" views="_0S1yET5LEd-N3eCRqn3mIQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnrext.ecore#//CheckBoxExtendedEditorSample/checkboxEditorSample"/>
         </properties>
-        <referencedBinding xmi:id="_NfYTAD5MEd-N3eCRqn3mIQ" binding="_x31zgD2AEd-LLuOHydFNYw"/>
+        <referencedBinding xmi:id="_NfYTAD5MEd-N3eCRqn3mIQ"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnrext.ecore#//CheckBoxExtendedEditorSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_DkFHgD5MEd-N3eCRqn3mIQ" name="FlatReferenceExtendedEditorSample" views="_fIAzED5LEd-N3eCRqn3mIQ _e-CI8D5REd-N3eCRqn3mIQ">
@@ -614,7 +631,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:ViewReference" xmi:id="_tZfY4D2AEd-LLuOHydFNYw" name="abstractEnabledSampleReference" view="_f3RKAD2AEd-LLuOHydFNYw"/>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_tZfY4D2AEd-LLuOHydFNYw" name="abstractEnabledSampleReference"/>
       </views>
       <views xmi:id="_f3RKAD2AEd-LLuOHydFNYw" name="AbstractEnabledSample">
         <elements xsi:type="eef-views:Container" xmi:id="_iRABgD2AEd-LLuOHydFNYw" name="enabled properties">
@@ -623,13 +640,30 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:ViewReference" xmi:id="_p8QdAD2AEd-LLuOHydFNYw" name="abstractReference" view="_lZD-oD2AEd-LLuOHydFNYw"/>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_p8QdAD2AEd-LLuOHydFNYw" name="abstractReference"/>
       </views>
       <views xmi:id="_lZD-oD2AEd-LLuOHydFNYw" name="AbstractSample">
         <elements xsi:type="eef-views:Container" xmi:id="_noZkAD2AEd-LLuOHydFNYw" name="name properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_IPsHDz1-Ed-LLuOHydFNYw" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+  <eef-views:ViewsRepository xmi:id="_IPsHCz1-Ed-LLuOHydFNYw" documentation="Views repository for navigation GenPackage" name="navigation">
+    <RepositoryKind>SWT</RepositoryKind>
+    <RepositoryKind>Form</RepositoryKind>
+    <categories xmi:id="_IPsHDD1-Ed-LLuOHydFNYw" name="navigation">
+      <views xmi:id="_TWhkgUksEd-eu-IdSn5J6Q" name="DeferedFlatReferencesTableSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_WeT00EksEd-eu-IdSn5J6Q" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Y_-gUEksEd-eu-IdSn5J6Q" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_eW2eYEksEd-eu-IdSn5J6Q" name="flatReferencesTableSampleEditor">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
           </elements>
         </elements>
       </views>
@@ -674,7 +708,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:ViewReference" xmi:id="_QytsAD5MEd-N3eCRqn3mIQ" name="abstractSampleReference" view="_lZD-oD2AEd-LLuOHydFNYw"/>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_QytsAD5MEd-N3eCRqn3mIQ" name="abstractSampleReference"/>
       </views>
     </categories>
   </eef-views:ViewsRepository>

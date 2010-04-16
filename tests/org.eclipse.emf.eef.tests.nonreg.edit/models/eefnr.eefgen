@@ -6,6 +6,9 @@
   <editionContexts basePackage="org.eclipse.emf.eef" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
     <PropertiesEditionContext href="eefnr.components#_0Hu75z1nEd-LLuOHydFNYw"/>
   </editionContexts>
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
+    <PropertiesEditionContext href="eefnr.components#_IPrf8j1-Ed-LLuOHydFNYw"/>
+  </editionContexts>
   <editionContexts basePackage="org.eclipse.emf.eef.eefnr" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
     <PropertiesEditionContext href="eefnr.components#_IPrf8j1-Ed-LLuOHydFNYw"/>
   </editionContexts>
@@ -14,6 +17,9 @@
   </viewsRepositories>
   <viewsRepositories basePackage="org.eclipse.emf.eef.eefnrext" swtViews="true" formViews="true">
     <viewsRepository href="eefnr.components#_0HxYKz1nEd-LLuOHydFNYw"/>
+  </viewsRepositories>
+  <viewsRepositories basePackage="org.eclipse.emf.eef.eefnr.navigation" swtViews="true" formViews="true">
+    <viewsRepository href="eefnr.components#_IPsHCz1-Ed-LLuOHydFNYw"/>
   </viewsRepositories>
   <viewsRepositories basePackage="org.eclipse.emf.eef.eefnr.references" swtViews="true" formViews="true">
     <viewsRepository href="eefnr.components#_IPsHCz1-Ed-LLuOHydFNYw"/>
