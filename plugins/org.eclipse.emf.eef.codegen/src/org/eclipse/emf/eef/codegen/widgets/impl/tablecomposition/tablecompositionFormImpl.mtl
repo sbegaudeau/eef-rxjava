@@ -115,7 +115,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			[editor.defaultLabelProviderInitialisation()/]
 		[else]
 			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
-			[editor.defaultLabelProviderInitialisation()/]			
+			[editor.defaultLabelProviderInitialisation()/]
 			//[/protected]
 		[/if]
 
@@ -214,7 +214,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 		[editor.defaultAddToOperationForTableComposition()/]
 		[else]		
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultAddToOperationForTableComposition()/]		
+		[editor.defaultAddToOperationForTableComposition()/]
 		// [/protected]
 		[/if]
 	}
@@ -420,13 +420,12 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-		[editor.defaultRemoveOperationForAdvancedTableComposition()/]		
+		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
 		[else]
 		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultRemoveOperationForAdvancedTableComposition()/]		
+		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
 		// [/protected]
 		[/if]
-
 	}
 
 	/**
@@ -434,13 +433,12 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-		[editor.defaultEditOperationForAdvancedTableComposition()/]		
-		[else]			
+		[editor.defaultEditOperationForAdvancedTableComposition()/]
+		[else]
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultEditOperationForAdvancedTableComposition()/]		
+		[editor.defaultEditOperationForAdvancedTableComposition()/]
 		// [/protected]
 		[/if]
-
 	}
 [/template]
 

@@ -86,10 +86,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		table[editor.name.toJavaClassifier()/].setLinesVisible(true);
 		
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-		[editor.defaultColumnInitialisation()/]		
-		[else]			
+		[editor.defaultColumnInitialisation()/]
+		[else]
 		// [protected ('for columns definition for '.concat(editor.name.toJavaClassifier()))]
-		[editor.defaultColumnInitialisation()/]		
+		[editor.defaultColumnInitialisation()/]
 		// [/protected]
 		[/if]
 
@@ -97,10 +97,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new ITableLabelProvider() {
 			[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-			[editor.defaultLabelProviderInitialisation()/]			
-			[else]				
+			[editor.defaultLabelProviderInitialisation()/]
+			[else]
 			//[protected ('for label provider definition for '.concat(editor.name.toJavaClassifier()))]
-			[editor.defaultLabelProviderInitialisation()/]			
+			[editor.defaultLabelProviderInitialisation()/]
 			//[/protected]
 			[/if]
 
@@ -211,9 +211,9 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultAddToOperationForTableComposition()/]
-		[else]		
+		[else]
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultAddToOperationForTableComposition()/]		
+		[editor.defaultAddToOperationForTableComposition()/]
 		// [/protected]
 		[/if]
 
@@ -227,7 +227,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[editor.defaultRemoveOperationForTableComposition()/]
 		[else]
 		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultRemoveOperationForTableComposition()/]		
+		[editor.defaultRemoveOperationForTableComposition()/]
 		// [/protected]
 		[/if]
 
@@ -238,10 +238,10 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]() {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-		[editor.defaultEditOperationForTableComposition()/]		
+		[editor.defaultEditOperationForTableComposition()/]
 		[else]
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultEditOperationForTableComposition()/]		
+		[editor.defaultEditOperationForTableComposition()/]
 		// [/protected]
 		[/if]
 
@@ -408,12 +408,11 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void addTo[editor.name.toJavaClassifier()/]() {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultAddToOperationForAdvancedTableComposition()/]
-		[else]		
+		[else]
 		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultAddToOperationForAdvancedTableComposition()/]		
+		[editor.defaultAddToOperationForAdvancedTableComposition()/]
 		// [/protected]
 		[/if]
-
 	}
 
 	/**
@@ -422,12 +421,11 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
-		[else]		
+		[else]
 		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultRemoveOperationForAdvancedTableComposition()/]		
+		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
 		// [/protected]
 		[/if]
-
 	}
 
 	/**
@@ -436,12 +434,11 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultEditOperationForAdvancedTableComposition()/]
-		[else]		
+		[else]
 		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultEditOperationForAdvancedTableComposition()/]		
+		[editor.defaultEditOperationForAdvancedTableComposition()/]
 		// [/protected]
 		[/if]
-
 	}
 [/template]
 
