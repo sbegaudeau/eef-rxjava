@@ -9,6 +9,9 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.eef.eefnr,
  org.eclipse.emf.eef.eefnr.impl,
+ org.eclipse.emf.eef.eefnr.navigation,
+ org.eclipse.emf.eef.eefnr.navigation.impl,
+ org.eclipse.emf.eef.eefnr.navigation.util,
  org.eclipse.emf.eef.eefnr.references,
  org.eclipse.emf.eef.eefnr.references.impl,
  org.eclipse.emf.eef.eefnr.references.util,

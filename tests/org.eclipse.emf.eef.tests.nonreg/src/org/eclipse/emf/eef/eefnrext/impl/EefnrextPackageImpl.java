@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrextPackageImpl.java,v 1.1 2010/04/15 12:48:57 glefur Exp $
+ * $Id: EefnrextPackageImpl.java,v 1.2 2010/04/16 08:00:57 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnrext.impl;
 
@@ -17,6 +17,8 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
 import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
 
+import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+import org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl;
 import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
@@ -101,16 +103,19 @@ public class EefnrextPackageImpl extends EPackageImpl implements EefnrextPackage
 		// Obtain or create and register interdependencies
 		EefnrPackageImpl theEefnrPackage = (EefnrPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) instanceof EefnrPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) : EefnrPackage.eINSTANCE);
 		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) : ReferencesPackage.eINSTANCE);
+		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) : NavigationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEefnrextPackage.createPackageContents();
 		theEefnrPackage.createPackageContents();
 		theReferencesPackage.createPackageContents();
+		theNavigationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEefnrextPackage.initializePackageContents();
 		theEefnrPackage.initializePackageContents();
 		theReferencesPackage.initializePackageContents();
+		theNavigationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theEefnrextPackage.freeze();

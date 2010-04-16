@@ -188,4 +188,16 @@
           eType="#//TotalSample"/>
     </eClassifiers>
   </eSubpackages>
+  <eSubpackages name="navigation" nsURI="http://www.eclipse.org/emf/eef/nonreg/navigation/1.0.0"
+      nsPrefix="eefnr-nav">
+    <eClassifiers xsi:type="ecore:EClass" name="DeferedFlatReferenceTableEditorSample"
+        eSuperTypes="#//AbstractSample">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
+          eType="#//navigation/DeferedReference" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeferedReference">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="flatreferenceEditor"
+          lowerBound="1" eType="#//TotalSample"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

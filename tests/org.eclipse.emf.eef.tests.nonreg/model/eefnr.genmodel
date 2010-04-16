@@ -126,6 +126,16 @@
             ecoreFeature="ecore:EReference eefnr.ecore#//references/ReferenceEnabledSample/reference"/>
       </genClasses>
     </nestedGenPackages>
+    <nestedGenPackages prefix="Navigation" basePackage="org.eclipse.emf.eef.eefnr"
+        disposableProviderFactory="true" ecorePackage="eefnr.ecore#//navigation">
+      <genClasses ecoreClass="eefnr.ecore#//navigation/DeferedFlatReferenceTableEditorSample">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/DeferedFlatReferenceTableEditorSample/references"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/DeferedReference">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference eefnr.ecore#//navigation/DeferedReference/flatreferenceEditor"/>
+      </genClasses>
+    </nestedGenPackages>
   </genPackages>
   <genPackages prefix="Eefnrext" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       ecorePackage="eefnrext.ecore#/">
