@@ -94,11 +94,11 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
-		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
-		[/if]
+[/if]
 [/template]
 
 [comment ===== Case : model = Containment(*) in Simple Navigation - view = TableComposition or AdvancedTableComposition===== /]
@@ -159,7 +159,7 @@
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.hasModelNavigation() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) and not editionElement.model.derived)]
-			for (Iterator iter = [modelName/]ToUpdate.get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toMany().toUpperFirst()/]().iterator(); iter.hasNext();) {
+			for (Iterator iter = [view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageGetter()/]Table().iterator(); iter.hasNext();) {
 				[editionElement.model.eType.name/] [editionElement.model.name.toJavaIdentifier()/] = ([editionElement.model.eType.name/])iter.next();
 				[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/] [editionElement.model.eContainingClass.name.toJavaIdentifier()/] = [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
 				[editionElement.model.eContainingClass.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/]([editionElement.model.name.toJavaIdentifier()/]);
@@ -192,11 +192,11 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
-		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
-		[/if]
+[/if]
 [/template]
 
 [comment ===== Case : model = Containment(1) - view = TableComposition or AdvancedTableComposition===== /]
@@ -282,9 +282,9 @@
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
-		[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
 			
 			// [/protected]
-		[/if]
+[/if]
 [/template]
