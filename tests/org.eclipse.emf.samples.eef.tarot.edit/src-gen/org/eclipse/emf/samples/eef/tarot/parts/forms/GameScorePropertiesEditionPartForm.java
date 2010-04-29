@@ -107,7 +107,6 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createEntriesTableComposition(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -215,8 +214,8 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 		addEntries.setLayoutData(addEntriesData);
 		addEntries.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -230,8 +229,8 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 		removeEntries.setLayoutData(removeEntriesData);
 		removeEntries.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -246,8 +245,8 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 		editEntries.setLayoutData(editEntriesData);
 		editEntries.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -444,9 +443,6 @@ public class GameScorePropertiesEditionPartForm extends CompositePropertiesEditi
 	public boolean isContainedInEntriesTable(EObject element) {
 		return entriesEditUtil.contains(element);
 	}
-
-
-
 
 
 

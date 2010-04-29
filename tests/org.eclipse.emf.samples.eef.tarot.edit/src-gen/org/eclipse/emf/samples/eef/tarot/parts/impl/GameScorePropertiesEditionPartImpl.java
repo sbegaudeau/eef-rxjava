@@ -193,8 +193,8 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 		addEntries.setLayoutData(addEntriesData);
 		addEntries.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
@@ -208,8 +208,8 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 		removeEntries.setLayoutData(removeEntriesData);
 		removeEntries.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -225,8 +225,8 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 		editEntries.setLayoutData(editEntriesData);
 		editEntries.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 
@@ -426,13 +426,6 @@ public class GameScorePropertiesEditionPartImpl extends CompositePropertiesEditi
 		return entriesEditUtil.contains(element);
 	}
 
-	public void setMessageForEntries(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForEntries() {
-
-	}
 
 
 

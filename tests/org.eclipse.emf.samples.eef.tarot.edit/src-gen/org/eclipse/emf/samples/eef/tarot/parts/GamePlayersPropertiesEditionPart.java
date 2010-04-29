@@ -49,6 +49,7 @@ public interface GamePlayersPropertiesEditionPart {
 	/**
 	 * @return the current players table
 	 * 
+	 */
 	public List getPlayersTable();
 
 	/**
@@ -91,10 +92,6 @@ public interface GamePlayersPropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInPlayersTable(EObject element);
-
-
-
-
 
 
 

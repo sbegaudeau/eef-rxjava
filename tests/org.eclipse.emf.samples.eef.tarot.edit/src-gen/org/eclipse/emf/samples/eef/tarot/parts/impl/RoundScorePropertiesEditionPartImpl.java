@@ -176,13 +176,6 @@ public class RoundScorePropertiesEditionPartImpl extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForScore(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForScore() {
-
-	}
 
 
 

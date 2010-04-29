@@ -232,8 +232,8 @@ public class RoundRoundSettingsPropertiesEditionComponent extends StandardProper
 
 			roundSettingsPart.addFilterToTaker(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -248,8 +248,8 @@ public class RoundRoundSettingsPropertiesEditionComponent extends StandardProper
 
 			roundSettingsPart.addFilterToPartner(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -271,7 +271,6 @@ public class RoundRoundSettingsPropertiesEditionComponent extends StandardProper
 
 		setInitializing(false);
 	}
-
 
 
 

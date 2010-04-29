@@ -70,10 +70,6 @@ public interface RoundSettingsPropertiesEditionPart {
 	public void addBusinessFilterToTaker(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the partner
 	 * 
@@ -122,10 +118,6 @@ public interface RoundSettingsPropertiesEditionPart {
 	public void addBusinessFilterToPartner(ViewerFilter filter);
 
 
-
-
-
-
 	/**
 	 * @return the bid
 	 * 
@@ -147,10 +139,6 @@ public interface RoundSettingsPropertiesEditionPart {
 	public void setBid(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the extraPoints
 	 * 
@@ -163,10 +151,6 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * 
 	 */
 	public void setExtraPoints(String newValue);
-
-	public void setMessageForExtraPoints(String msg, int msgLevel);
-
-	public void unsetMessageForExtraPoints();
 
 
 	/**
@@ -181,10 +165,6 @@ public interface RoundSettingsPropertiesEditionPart {
 	 * 
 	 */
 	public void setWon(Boolean newValue);
-
-
-
-
 
 
 

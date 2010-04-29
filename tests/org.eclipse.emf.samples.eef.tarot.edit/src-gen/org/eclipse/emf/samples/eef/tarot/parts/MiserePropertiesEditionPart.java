@@ -71,10 +71,6 @@ public interface MiserePropertiesEditionPart {
 
 
 
-
-
-
-
 	/**
 	 * Returns the internationalized title text.
 	 * 

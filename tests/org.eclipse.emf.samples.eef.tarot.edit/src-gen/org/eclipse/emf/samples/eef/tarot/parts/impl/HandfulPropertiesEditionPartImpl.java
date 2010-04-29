@@ -164,13 +164,6 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 		side.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForSide(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSide() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -203,13 +196,6 @@ public class HandfulPropertiesEditionPartImpl extends CompositePropertiesEdition
 		size.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForSize(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSize() {
-
-	}
 
 
 

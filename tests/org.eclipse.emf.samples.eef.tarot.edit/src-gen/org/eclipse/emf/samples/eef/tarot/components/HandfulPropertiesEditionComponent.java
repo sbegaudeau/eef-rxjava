@@ -216,7 +216,6 @@ public class HandfulPropertiesEditionComponent extends StandardPropertiesEdition
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

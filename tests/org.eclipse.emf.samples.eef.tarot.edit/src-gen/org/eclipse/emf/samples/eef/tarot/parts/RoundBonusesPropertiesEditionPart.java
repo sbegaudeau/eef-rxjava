@@ -49,6 +49,7 @@ public interface RoundBonusesPropertiesEditionPart {
 	/**
 	 * @return the current bonuses table
 	 * 
+	 */
 	public List getBonusesTable();
 
 	/**
@@ -91,10 +92,6 @@ public interface RoundBonusesPropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInBonusesTable(EObject element);
-
-
-
-
 
 
 

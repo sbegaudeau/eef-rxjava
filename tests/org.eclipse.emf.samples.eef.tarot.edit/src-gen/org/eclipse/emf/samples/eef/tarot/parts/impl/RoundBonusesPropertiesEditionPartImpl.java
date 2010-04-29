@@ -150,7 +150,6 @@ public class RoundBonusesPropertiesEditionPartImpl extends CompositePropertiesEd
 			}
 		}
 		// End of user code
-
 	}
 
 	/**
@@ -163,7 +162,6 @@ public class RoundBonusesPropertiesEditionPartImpl extends CompositePropertiesEd
 		bonuses.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RoundBonusesPropertiesEditionPartImpl.this, TarotViewsRepository.RoundBonuses.bonuses, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -183,7 +181,6 @@ public class RoundBonusesPropertiesEditionPartImpl extends CompositePropertiesEd
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -308,13 +305,6 @@ public class RoundBonusesPropertiesEditionPartImpl extends CompositePropertiesEd
 		return bonusesEditUtil.contains(element);
 	}
 
-	public void setMessageForBonuses(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForBonuses() {
-
-	}
 
 
 

@@ -207,14 +207,13 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 			// init filters
 			roundBonusesPart.addFilterToBonuses(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Bonus); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -229,7 +228,6 @@ public class RoundRoundBonusesPropertiesEditionComponent extends StandardPropert
 
 		setInitializing(false);
 	}
-
 
 
 

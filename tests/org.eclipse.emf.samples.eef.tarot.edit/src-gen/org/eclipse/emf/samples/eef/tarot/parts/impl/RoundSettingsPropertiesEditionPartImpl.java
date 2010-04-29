@@ -323,13 +323,6 @@ public class RoundSettingsPropertiesEditionPartImpl extends CompositePropertiesE
 		taker.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForTaker(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForTaker() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -401,13 +394,6 @@ public class RoundSettingsPropertiesEditionPartImpl extends CompositePropertiesE
 		partner.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForPartner(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForPartner() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -440,13 +426,6 @@ public class RoundSettingsPropertiesEditionPartImpl extends CompositePropertiesE
 		bid.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForBid(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForBid() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -472,13 +451,6 @@ public class RoundSettingsPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForExtraPoints(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForExtraPoints() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -504,13 +476,6 @@ public class RoundSettingsPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForWon(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForWon() {
-
-	}
 
 
 

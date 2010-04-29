@@ -212,7 +212,6 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -223,7 +222,6 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((round != null) && (roundScorePart != null)) { 
-			// do not generates command for derived attribute score
 
 		}
 		if (!cc.isEmpty())
@@ -241,7 +239,6 @@ public class RoundRoundScorePropertiesEditionComponent extends StandardPropertie
 	public EObject getPropertiesEditionObject(EObject source) {
 		if (source instanceof Round) {
 			Round roundToUpdate = (Round)source;
-			// do not update derived attribute score
 
 			return roundToUpdate;
 		}

@@ -138,7 +138,6 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 		}
 		// End of user code
-
 	}
 
 	/**
@@ -151,7 +150,6 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 		players.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GamePlayersPropertiesEditionPartImpl.this, TarotViewsRepository.GamePlayers.players, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -171,7 +169,6 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -296,13 +293,6 @@ public class GamePlayersPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return playersEditUtil.contains(element);
 	}
 
-	public void setMessageForPlayers(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForPlayers() {
-
-	}
 
 
 

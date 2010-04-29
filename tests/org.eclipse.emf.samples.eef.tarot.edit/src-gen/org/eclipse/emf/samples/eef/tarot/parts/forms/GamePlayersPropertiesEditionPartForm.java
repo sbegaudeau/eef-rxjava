@@ -87,7 +87,6 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPlayersTableComposition(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -155,7 +154,6 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 		players.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GamePlayersPropertiesEditionPartForm.this, TarotViewsRepository.GamePlayers.players, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -175,7 +173,6 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -299,9 +296,6 @@ public class GamePlayersPropertiesEditionPartForm extends CompositePropertiesEdi
 	public boolean isContainedInPlayersTable(EObject element) {
 		return playersEditUtil.contains(element);
 	}
-
-
-
 
 
 

@@ -89,7 +89,6 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createBonusesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -169,7 +168,6 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 		bonuses.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RoundBonusesPropertiesEditionPartForm.this, TarotViewsRepository.RoundBonuses.bonuses, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -189,7 +187,6 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 			}
 		}
 		// End of user code
-
 	}
 
 
@@ -313,9 +310,6 @@ public class RoundBonusesPropertiesEditionPartForm extends CompositePropertiesEd
 	public boolean isContainedInBonusesTable(EObject element) {
 		return bonusesEditUtil.contains(element);
 	}
-
-
-
 
 
 

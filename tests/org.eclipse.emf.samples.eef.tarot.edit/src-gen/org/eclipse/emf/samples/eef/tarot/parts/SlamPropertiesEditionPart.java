@@ -39,10 +39,6 @@ public interface SlamPropertiesEditionPart {
 	public void setSide(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the announced
 	 * 
@@ -57,10 +53,6 @@ public interface SlamPropertiesEditionPart {
 	public void setAnnounced(Boolean newValue);
 
 
-
-
-
-
 	/**
 	 * @return the achieved
 	 * 
@@ -73,10 +65,6 @@ public interface SlamPropertiesEditionPart {
 	 * 
 	 */
 	public void setAchieved(Boolean newValue);
-
-
-
-
 
 
 

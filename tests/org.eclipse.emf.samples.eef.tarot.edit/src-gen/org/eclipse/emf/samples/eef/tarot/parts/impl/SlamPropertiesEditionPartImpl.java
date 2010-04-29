@@ -176,13 +176,6 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		side.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForSide(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSide() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -208,13 +201,6 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForAnnounced(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAnnounced() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -240,13 +226,6 @@ public class SlamPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-	public void setMessageForAchieved(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForAchieved() {
-
-	}
 
 
 

@@ -30,10 +30,6 @@ public interface RoundScorePropertiesEditionPart {
 	 */
 	public void setScore(String newValue);
 
-	public void setMessageForScore(String msg, int msgLevel);
-
-	public void unsetMessageForScore();
-
 
 
 

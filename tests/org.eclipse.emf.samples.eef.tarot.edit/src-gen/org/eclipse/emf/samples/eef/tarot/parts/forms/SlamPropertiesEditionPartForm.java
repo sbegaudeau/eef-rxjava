@@ -86,7 +86,6 @@ public class SlamPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -229,9 +228,6 @@ public class SlamPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -257,9 +253,6 @@ public class SlamPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -283,9 +276,6 @@ public class SlamPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			achieved.setSelection(false);
 		}
 	}
-
-
-
 
 
 

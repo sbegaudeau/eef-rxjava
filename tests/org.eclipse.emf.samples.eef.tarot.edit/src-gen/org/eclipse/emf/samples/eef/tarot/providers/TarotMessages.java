@@ -159,7 +159,7 @@ public class TarotMessages extends NLS {
 
 	
 	public static String PropertiesEditionPart_IntegerValueMessage;
-	
+
 	
 	public static String PropertiesEditionPart_FloatValueMessage;
 
@@ -204,7 +204,7 @@ public class TarotMessages extends NLS {
 	
 	// Start of user code for additionnal NLS Constants
 	
-	// End of user code		
+	// End of user code
 
 	static {
 		// initialize resource bundle

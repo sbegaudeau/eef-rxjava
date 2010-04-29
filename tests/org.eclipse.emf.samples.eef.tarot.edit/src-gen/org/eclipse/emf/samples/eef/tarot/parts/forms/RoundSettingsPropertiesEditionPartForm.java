@@ -98,7 +98,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPlayersGroup(widgetFactory, view);
 
 		createBaseScoreGroup(widgetFactory, view);
@@ -366,9 +365,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -440,9 +436,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -475,9 +468,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -502,13 +492,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 		}
 	}
 
-	public void setMessageForExtraPoints(String msg, int msgLevel) {
-		messageManager.addMessage("ExtraPoints_key", msg, null, msgLevel, extraPoints);
-	}
-
-	public void unsetMessageForExtraPoints() {
-		messageManager.removeMessage("ExtraPoints_key", extraPoints);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -533,9 +516,6 @@ public class RoundSettingsPropertiesEditionPartForm extends CompositePropertiesE
 			won.setSelection(false);
 		}
 	}
-
-
-
 
 
 

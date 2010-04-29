@@ -151,13 +151,6 @@ public class LeastAtLastPropertiesEditionPartImpl extends CompositePropertiesEdi
 		side.modelUpdating(new StructuredSelection(newValue));
 	}
 
-	public void setMessageForSide(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForSide() {
-
-	}
 
 
 

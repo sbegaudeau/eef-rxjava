@@ -223,7 +223,6 @@ public class SlamPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -201,8 +201,8 @@ public class MiserePropertiesEditionComponent extends StandardPropertiesEditionC
 			// init filters
 			basePart.addFilterToDeclarer(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -222,7 +222,6 @@ public class MiserePropertiesEditionComponent extends StandardPropertiesEditionC
 
 		setInitializing(false);
 	}
-
 
 
 

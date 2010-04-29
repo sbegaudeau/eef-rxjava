@@ -225,7 +225,6 @@ public class PlayerPropertiesEditionComponent extends StandardPropertiesEditionC
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

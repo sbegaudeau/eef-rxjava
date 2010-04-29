@@ -202,13 +202,6 @@ public class MiserePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		declarer.addBusinessRuleFilter(filter);
 	}
 
-	public void setMessageForDeclarer(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForDeclarer() {
-
-	}
 
 
 

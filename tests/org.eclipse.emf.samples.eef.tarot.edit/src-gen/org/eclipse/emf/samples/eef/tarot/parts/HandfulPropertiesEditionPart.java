@@ -39,10 +39,6 @@ public interface HandfulPropertiesEditionPart {
 	public void setSide(Enumerator newValue);
 
 
-
-
-
-
 	/**
 	 * @return the size
 	 * 
@@ -62,10 +58,6 @@ public interface HandfulPropertiesEditionPart {
 	 * 
 	 */
 	public void setSize(Enumerator newValue);
-
-
-
-
 
 
 

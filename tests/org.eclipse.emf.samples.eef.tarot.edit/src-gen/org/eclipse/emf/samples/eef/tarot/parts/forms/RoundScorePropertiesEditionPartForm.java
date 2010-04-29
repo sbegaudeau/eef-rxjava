@@ -76,7 +76,6 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createTotalGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -177,13 +176,6 @@ public class RoundScorePropertiesEditionPartForm extends CompositePropertiesEdit
 		}
 	}
 
-	public void setMessageForScore(String msg, int msgLevel) {
-		messageManager.addMessage("Score_key", msg, null, msgLevel, score);
-	}
-
-	public void unsetMessageForScore() {
-		messageManager.removeMessage("Score_key", score);
-	}
 
 
 

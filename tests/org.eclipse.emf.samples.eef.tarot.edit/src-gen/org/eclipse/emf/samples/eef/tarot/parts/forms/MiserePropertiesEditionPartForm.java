@@ -79,7 +79,6 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -212,9 +211,6 @@ public class MiserePropertiesEditionPartForm extends CompositePropertiesEditionP
 	public void addBusinessFilterToDeclarer(ViewerFilter filter) {
 		declarer.addBusinessRuleFilter(filter);
 	}
-
-
-
 
 
 

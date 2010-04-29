@@ -50,6 +50,7 @@ public interface GameScorePropertiesEditionPart {
 	/**
 	 * @return the current entries table
 	 * 
+	 */
 	public List getEntriesTable();
 
 	/**
@@ -92,10 +93,6 @@ public interface GameScorePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInEntriesTable(EObject element);
-
-
-
-
 
 
 

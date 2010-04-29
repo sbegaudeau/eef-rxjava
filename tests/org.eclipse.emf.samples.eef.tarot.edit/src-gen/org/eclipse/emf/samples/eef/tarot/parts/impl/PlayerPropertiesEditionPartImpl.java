@@ -204,13 +204,6 @@ public class PlayerPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForName(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForName() {
-
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -253,13 +246,6 @@ public class PlayerPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-	public void setMessageForPics(String msg, int msgLevel) {
-
-	}
-
-	public void unsetMessageForPics() {
-
-	}
 
 
 

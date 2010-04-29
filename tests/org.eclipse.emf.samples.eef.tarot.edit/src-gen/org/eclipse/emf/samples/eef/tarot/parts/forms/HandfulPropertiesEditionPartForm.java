@@ -81,7 +81,6 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -202,9 +201,6 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	}
 
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -235,9 +231,6 @@ public class HandfulPropertiesEditionPartForm extends CompositePropertiesEdition
 	public void setSize(Enumerator newValue) {
 		size.modelUpdating(new StructuredSelection(newValue));
 	}
-
-
-
 
 
 

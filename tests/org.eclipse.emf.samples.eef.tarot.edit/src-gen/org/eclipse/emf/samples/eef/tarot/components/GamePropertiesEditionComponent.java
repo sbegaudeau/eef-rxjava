@@ -48,7 +48,6 @@ public class GamePropertiesEditionComponent extends ComposedPropertiesEditionCom
 	 * 
 	 */
 	protected GameGameScorePropertiesEditionComponent gameGameScorePropertiesEditionComponent;
-
 	/**
 	 * Parameterized constructor
 	 * 
@@ -58,10 +57,12 @@ public class GamePropertiesEditionComponent extends ComposedPropertiesEditionCom
 	public GamePropertiesEditionComponent(EObject game, String editing_mode) {
 		super(editing_mode);
 		if (game instanceof Game) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(game);
-			gameGamePlayersPropertiesEditionComponent = (GameGamePlayersPropertiesEditionComponent)provider.getPropertiesEditionComponent(game, editing_mode, GameGamePlayersPropertiesEditionComponent.GAMEPLAYERS_PART);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(game, GameGamePlayersPropertiesEditionComponent.class);
+			gameGamePlayersPropertiesEditionComponent = (GameGamePlayersPropertiesEditionComponent)provider.getPropertiesEditionComponent(game, editing_mode, GameGamePlayersPropertiesEditionComponent.GAMEPLAYERS_PART, GameGamePlayersPropertiesEditionComponent.class);
 			addSubComponent(gameGamePlayersPropertiesEditionComponent);
-			gameGameScorePropertiesEditionComponent = (GameGameScorePropertiesEditionComponent)provider.getPropertiesEditionComponent(game, editing_mode, GameGameScorePropertiesEditionComponent.GAMESCORE_PART);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(game, GameGameScorePropertiesEditionComponent.class);
+			gameGameScorePropertiesEditionComponent = (GameGameScorePropertiesEditionComponent)provider.getPropertiesEditionComponent(game, editing_mode, GameGameScorePropertiesEditionComponent.GAMESCORE_PART, GameGameScorePropertiesEditionComponent.class);
 			addSubComponent(gameGameScorePropertiesEditionComponent);
 		}
 	}

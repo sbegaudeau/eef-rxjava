@@ -30,10 +30,6 @@ public interface PlayerPropertiesEditionPart {
 	 */
 	public void setName(String newValue);
 
-	public void setMessageForName(String msg, int msgLevel);
-
-	public void unsetMessageForName();
-
 
 	/**
 	 * @return the pics
@@ -54,10 +50,6 @@ public interface PlayerPropertiesEditionPart {
 	 * 
 	 */
 	public void setPics(String newValue);
-
-
-
-
 
 
 

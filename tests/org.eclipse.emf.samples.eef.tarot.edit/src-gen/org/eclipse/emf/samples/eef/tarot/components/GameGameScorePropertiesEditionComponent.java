@@ -207,14 +207,13 @@ public class GameGameScorePropertiesEditionComponent extends StandardPropertiesE
 			// init filters
 			gameScorePart.addFilterToEntries(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof ScoreEntry); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -229,7 +228,6 @@ public class GameGameScorePropertiesEditionComponent extends StandardPropertiesE
 
 		setInitializing(false);
 	}
-
 
 
 

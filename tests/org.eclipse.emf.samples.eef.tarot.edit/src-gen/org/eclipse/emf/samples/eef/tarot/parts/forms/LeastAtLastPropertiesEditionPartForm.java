@@ -80,7 +80,6 @@ public class LeastAtLastPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		this.messageManager = messageManager;
 		createPropertiesGroup(widgetFactory, view);
 
 		// Start of user code for additional ui definition
@@ -173,9 +172,6 @@ public class LeastAtLastPropertiesEditionPartForm extends CompositePropertiesEdi
 	public void setSide(Enumerator newValue) {
 		side.modelUpdating(new StructuredSelection(newValue));
 	}
-
-
-
 
 
 

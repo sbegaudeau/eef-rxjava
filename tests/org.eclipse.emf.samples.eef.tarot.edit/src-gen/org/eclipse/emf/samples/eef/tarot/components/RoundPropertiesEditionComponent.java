@@ -61,7 +61,6 @@ public class RoundPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	 * 
 	 */
 	protected RoundRoundScorePropertiesEditionComponent roundRoundScorePropertiesEditionComponent;
-
 	/**
 	 * Parameterized constructor
 	 * 
@@ -71,12 +70,15 @@ public class RoundPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	public RoundPropertiesEditionComponent(EObject round, String editing_mode) {
 		super(editing_mode);
 		if (round instanceof Round) {
-			IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(round);
-			roundRoundSettingsPropertiesEditionComponent = (RoundRoundSettingsPropertiesEditionComponent)provider.getPropertiesEditionComponent(round, editing_mode, RoundRoundSettingsPropertiesEditionComponent.ROUNDSETTINGS_PART);
+			IPropertiesEditionProvider provider = null;
+			provider = PropertiesEditionComponentService.getInstance().getProvider(round, RoundRoundSettingsPropertiesEditionComponent.class);
+			roundRoundSettingsPropertiesEditionComponent = (RoundRoundSettingsPropertiesEditionComponent)provider.getPropertiesEditionComponent(round, editing_mode, RoundRoundSettingsPropertiesEditionComponent.ROUNDSETTINGS_PART, RoundRoundSettingsPropertiesEditionComponent.class);
 			addSubComponent(roundRoundSettingsPropertiesEditionComponent);
-			roundRoundBonusesPropertiesEditionComponent = (RoundRoundBonusesPropertiesEditionComponent)provider.getPropertiesEditionComponent(round, editing_mode, RoundRoundBonusesPropertiesEditionComponent.ROUNDBONUSES_PART);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(round, RoundRoundBonusesPropertiesEditionComponent.class);
+			roundRoundBonusesPropertiesEditionComponent = (RoundRoundBonusesPropertiesEditionComponent)provider.getPropertiesEditionComponent(round, editing_mode, RoundRoundBonusesPropertiesEditionComponent.ROUNDBONUSES_PART, RoundRoundBonusesPropertiesEditionComponent.class);
 			addSubComponent(roundRoundBonusesPropertiesEditionComponent);
-			roundRoundScorePropertiesEditionComponent = (RoundRoundScorePropertiesEditionComponent)provider.getPropertiesEditionComponent(round, editing_mode, RoundRoundScorePropertiesEditionComponent.ROUNDSCORE_PART);
+			provider = PropertiesEditionComponentService.getInstance().getProvider(round, RoundRoundScorePropertiesEditionComponent.class);
+			roundRoundScorePropertiesEditionComponent = (RoundRoundScorePropertiesEditionComponent)provider.getPropertiesEditionComponent(round, editing_mode, RoundRoundScorePropertiesEditionComponent.ROUNDSCORE_PART, RoundRoundScorePropertiesEditionComponent.class);
 			addSubComponent(roundRoundScorePropertiesEditionComponent);
 		}
 	}
