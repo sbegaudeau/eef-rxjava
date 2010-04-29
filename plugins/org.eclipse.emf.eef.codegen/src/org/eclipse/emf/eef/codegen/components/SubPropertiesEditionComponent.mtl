@@ -468,6 +468,62 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	}
 [/if]
 
+[pec.validateValue(peContext, view)/]
+[pec.validate(peContext, view)/]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * [peContext.associatedGenModel().generationMark()/]
+	 */
+	public void dispose() {
+		if (semanticAdapter != null)
+			[pec.model.name.toJavaIdentifier()/].eAdapters().remove(semanticAdapter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * [peContext.associatedGenModel().generationMark()/]
+	 */
+	public String getTabText(String p_key) {
+		return [view.viewIdentifier(pec)/].getTitle();
+	}
+}
+[/file]
+	[/for]
+[/if]
+[/for]
+[/template]
+
+[template public validate (pec : PropertiesEditionComponent, peContext : PropertiesEditionContext, view : View) ]
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * [peContext.associatedGenModel().generationMark()/]
+	 */
+	public Diagnostic validate() {
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
+		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
+			EObject copy = EcoreUtil.copy([pec.model.name.toJavaIdentifier()/]);
+			copy = getPropertiesEditionObject(copy);
+			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
+		}
+		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+			validate = EEFRuntimePlugin.getEEFValidator().validate([pec.model.name.toJavaIdentifier()/]);
+	[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
+		// [protected ('for custom validation check')]
+		
+		// [/protected]
+	[/if]
+		return validate;
+	}
+
+[/template]
+
+[template public validateValue (pec : PropertiesEditionComponent, peContext : PropertiesEditionContext, view : View) ]
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -503,54 +559,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy([pec.model.name.toJavaIdentifier()/]);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate([pec.model.name.toJavaIdentifier()/]);
-	[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
-		// [protected ('for custom validation check')]
-		
-		// [/protected]
-	[/if]
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			[pec.model.name.toJavaIdentifier()/].eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	public String getTabText(String p_key) {
-		return [view.viewIdentifier(pec)/].getTitle();
-	}
-}
-[/file]
-	[/for]
-[/if]
-[/for]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, view : View, basePackage : String)]
