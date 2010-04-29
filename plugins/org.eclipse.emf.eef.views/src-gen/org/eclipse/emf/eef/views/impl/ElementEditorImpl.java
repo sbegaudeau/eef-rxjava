@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  * 
  *
- * $Id: ElementEditorImpl.java,v 1.11 2010/03/16 07:57:00 sbouchet Exp $
+ * $Id: ElementEditorImpl.java,v 1.12 2010/04/29 12:49:45 glefur Exp $
  */
 package org.eclipse.emf.eef.views.impl;
 
@@ -91,6 +91,8 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	 * @generated NOT
 	 */
 	public String getQualifiedIdentifier() {
+		if (name == null)
+			setName("");
 		StringBuilder result = new StringBuilder(name);
 		EObject container = this.eContainer();
 		while (container != null) {
