@@ -42,6 +42,7 @@ public interface PresencePropertiesEditionPart {
 	/**
 	 * @return the current assists table
 	 * 
+	 */
 	public List getAssistsTable();
 
 	/**

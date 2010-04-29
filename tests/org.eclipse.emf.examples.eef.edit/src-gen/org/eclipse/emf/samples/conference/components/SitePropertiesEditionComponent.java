@@ -231,7 +231,6 @@ public class SitePropertiesEditionComponent extends StandardPropertiesEditionCom
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

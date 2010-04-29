@@ -212,7 +212,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 			}
 		}
 		// End of user code
-
 	}
 
 	/**
@@ -225,7 +224,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		sites.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartImpl.this, ConferenceViewsRepository.Conference.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -245,7 +243,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 			}
 		}
 		// End of user code
-
 	}
 
 

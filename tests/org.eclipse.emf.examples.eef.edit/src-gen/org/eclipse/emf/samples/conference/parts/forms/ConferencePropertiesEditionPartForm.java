@@ -224,7 +224,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		sites.refresh();
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		// End of user code
-
 	}
 
 	/**
@@ -245,7 +244,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 			}
 		}
 		// End of user code
-
 	}
 
 

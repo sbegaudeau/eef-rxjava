@@ -240,7 +240,6 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

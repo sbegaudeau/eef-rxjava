@@ -266,7 +266,6 @@ public class PersonBasePropertiesEditionComponent extends StandardPropertiesEdit
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 

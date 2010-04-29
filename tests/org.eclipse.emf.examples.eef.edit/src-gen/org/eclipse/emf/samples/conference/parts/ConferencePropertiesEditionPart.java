@@ -69,6 +69,7 @@ public interface ConferencePropertiesEditionPart {
 	/**
 	 * @return the current sites table
 	 * 
+	 */
 	public List getSitesTable();
 
 	/**

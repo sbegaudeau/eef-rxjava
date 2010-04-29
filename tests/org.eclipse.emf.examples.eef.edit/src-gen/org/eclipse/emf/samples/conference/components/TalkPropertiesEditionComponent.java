@@ -250,8 +250,8 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 			basePart.addFilterToTopic(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -267,8 +267,8 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 			basePart.addFilterToPresenter(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -283,8 +283,8 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 			basePart.addFilterToCreator(new ViewerFilter() {
 
-				/*
-				 * (non-Javadoc)
+				/**
+				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
@@ -305,7 +305,6 @@ public class TalkPropertiesEditionComponent extends StandardPropertiesEditionCom
 
 		setInitializing(false);
 	}
-
 
 
 

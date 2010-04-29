@@ -174,8 +174,8 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		editReferences.setLayoutData(editReferencesData);
 		editReferences.addSelectionListener(new SelectionAdapter() {
 
-			/*
-			 * (non-Javadoc)
+			/**
+			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 * 

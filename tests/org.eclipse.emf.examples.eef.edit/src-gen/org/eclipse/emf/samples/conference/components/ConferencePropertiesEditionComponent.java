@@ -227,14 +227,13 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 
 			basePart.addFilterToSites(new ViewerFilter() {
 
-					/*
-					 * (non-Javadoc)
+					/**
+					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Site); //$NON-NLS-1$ 
-
 				}
 
 			});
@@ -249,7 +248,6 @@ public class ConferencePropertiesEditionComponent extends StandardPropertiesEdit
 
 		setInitializing(false);
 	}
-
 
 
 
