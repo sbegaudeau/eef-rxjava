@@ -394,9 +394,9 @@ Object
     else result.concat(s.substring(i,i))
    endif
    ) /]
-   
-[comment TODO: try to define this in a better 'Acceleo' way (s.first(1).isAlphanum() not working/]
-[comment][query public startsWithADigit(s : String) : Boolean = s.first(1).isAlphanum()/][/comment]
+
+[comment TODO: fixed in Acceleo 3.0.0M7/]
+[comment][query public startsWithADigit(s : String) : Boolean = not s.first(1).isAlpha()/][/comment]
 [query public startsWithADigit(s : String) : Boolean =
 	s.firstChar() = '0' 
 	or s.firstChar() = '1' 
