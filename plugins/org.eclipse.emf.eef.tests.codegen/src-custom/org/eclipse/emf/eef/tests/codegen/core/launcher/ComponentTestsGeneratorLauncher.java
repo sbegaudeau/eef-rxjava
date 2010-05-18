@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2009 Obeo.
+ * Copyright (c) 2008-2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.BasicMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
@@ -33,7 +32,6 @@ import org.eclipse.emf.eef.tests.codegen.main.cases.ComponentTests;
  * Extension for generating PropertiesSection set up for GMF1 modelers
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGeneratorLauncher {
 
@@ -51,8 +49,6 @@ public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGenerator
 					PropertiesEditionContext propertiesEditionContext = genEditionContext
 							.getPropertiesEditionContext();
 					monitor.subTask("Generating JUnits TestCases");
-					final URI template = getTemplateURI("org.eclipse.emf.eef.tests.codegen", new Path(
-							"/org/eclipse/emf/eef/tests/codegen/main/cases/ComponentTests.emtl"));
 					IContainer testGenContainer = getTestGenContainer(eefGenModel);
 					if (testGenContainer != null && !testGenContainer.exists()) {
 						EEFCodegenPlugin.getDefault().logWarning(
@@ -61,11 +57,7 @@ public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGenerator
 						return;
 					}
 					ComponentTests gen = new ComponentTests(propertiesEditionContext, testGenContainer
-							.getLocation().toFile(), arguments) {
-						protected URI createTemplateURI(String entry) {
-							return template;
-						}
-					};
+							.getLocation().toFile(), arguments);
 					gen.doGenerate(BasicMonitor.toMonitor(monitor));
 					targetContainer.add(testGenContainer);
 					monitor.worked(1);
@@ -88,8 +80,8 @@ public class ComponentTestsGeneratorLauncher extends AbstractPropertiesGenerator
 	public IContainer getTestGenContainer(EEFGenModel eefGenModel) throws IOException {
 		if (eefGenModel != null) {
 			if (eefGenModel.getGenDirectory() != null) {
-				final IContainer target = ResourcesPlugin.getWorkspace().getRoot().getFolder(
-						new Path(eefGenModel.getTestsGenDirectory()));
+				final IContainer target = ResourcesPlugin.getWorkspace().getRoot()
+						.getFolder(new Path(eefGenModel.getTestsGenDirectory()));
 				return target;
 			}
 		}
