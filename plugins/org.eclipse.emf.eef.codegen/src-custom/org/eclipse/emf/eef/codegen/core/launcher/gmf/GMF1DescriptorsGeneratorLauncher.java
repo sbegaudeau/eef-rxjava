@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2009 Obeo.
+ * Copyright (c) 2008-2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.BasicMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
@@ -47,26 +45,14 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 					PropertiesEditionContext propertiesEditionContext = genEditionContext
 							.getPropertiesEditionContext();
 					monitor.subTask("Generating Properties Section");
-					final URI template7 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
-							"/org/eclipse/emf/eef/codegen/properties/PropertySection.emtl"));
 					org.eclipse.emf.eef.codegen.properties.PropertySection gen7 = new org.eclipse.emf.eef.codegen.properties.PropertySection(
-							propertiesEditionContext, targetFolder, arguments) {
-						protected URI createTemplateURI(String entry) {
-							return template7;
-						}
-					};
+							propertiesEditionContext, targetFolder, arguments);
 					gen7.doGenerate(BasicMonitor.toMonitor(monitor));
 					monitor.worked(1);
 
 					monitor.subTask("Generating plugin.xml for GMF configuration");
-					final URI template5 = getTemplateURI("org.eclipse.emf.eef.codegen", new Path(
-							"/org/eclipse/emf/eef/codegen/plugin/GMF_Plugin_xml.emtl"));
 					org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml gen5 = new org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml(
-							propertiesEditionContext, targetFolder, arguments) {
-						protected URI createTemplateURI(String entry) {
-							return template5;
-						}
-					};
+							propertiesEditionContext, targetFolder, arguments);
 					gen5.doGenerate(BasicMonitor.toMonitor(monitor));
 					monitor.worked(1);
 				}
