@@ -32,7 +32,7 @@
  * [peContext.associatedGenModel().authorText().trim()/]
  */
 public class [pec.propertyTestCase()/] extends SWTBotEEFTestCase {
-	
+
 [testCasePropertySection(peContext, pec)/]
 [for (peElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)) ? (pec.canGenerateTest(peElement) <> 'false')]
 [if (not peElement.isAbstractType())]
