@@ -513,7 +513,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		}
 		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
 			validate = EEFRuntimePlugin.getEEFValidator().validate([pec.model.name.toJavaIdentifier()/]);
-	[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
+	[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for custom validation check')]
 		
 		// [/protected]
