@@ -3,10 +3,10 @@
       id="org.eclipse.emf.eef.runtime"
       label="%featureName"
       version="0.8.0.qualifier"
-      provider-name="%ProviderName">
+      provider-name="%providerName">
 
    <description>
-      Extended Editing Framework - Runtime
+      %description
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
@@ -17,8 +17,9 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
-   <license url="%licenseURL">%license</license>
-   
+   <license url="%licenseURL">
+      %license
+   </license>
 
    <requires>
       <import plugin="org.eclipse.ui"/>
