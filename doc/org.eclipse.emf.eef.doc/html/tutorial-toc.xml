@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<toc label="Extended Edition Framework Guide">
+<toc label="Extended Editing Framework Guide">
 	<topic label="Tutorials">
 		<topic href="html/tutorial.html" label="First generation">
 			<topic href="html/tutorial.html#Environment" label="Environment"></topic>
