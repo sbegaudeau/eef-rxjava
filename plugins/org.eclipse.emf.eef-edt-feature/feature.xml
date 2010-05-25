@@ -3,15 +3,10 @@
       id="org.eclipse.emf.eef.edt"
       label="%featureName"
       version="0.8.0.qualifier"
-      provider-name="%ProviderName">
+      provider-name="%providerName">
 
    <description>
-      Extended Editing Framework - Developpement Tools.
-This includes :
-- EEF metamodels
-- EEF editors
-- EEF Models initializer
-- EEF Acceleo generators
+      %description
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
@@ -22,19 +17,9 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
-   <license url="%licenseURL">%license</license>
-   
-
-   <url>
-      <update label="%updateSiteName" url="http://download.eclipse.org/modeling/emft/eef/updates/releases"/>
-   </url>
-
-   <includes
-         id="org.eclipse.emf.eef.runtime"
-         version="0.0.0"/>
-   <includes
-         id="org.eclipse.emf.eef.runtime.source"
-         version="0.0.0"/>
+   <license url="%licenseURL">
+      %license
+   </license>
 
    <requires>
       <import feature="org.eclipse.emf.validation"/>
