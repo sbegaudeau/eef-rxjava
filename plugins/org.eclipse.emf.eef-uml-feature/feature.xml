@@ -3,7 +3,7 @@
       id="org.eclipse.emf.eef.uml"
       label="%featureName"
       version="0.8.0.qualifier"
-      provider-name="Eclipse.org">
+      provider-name="%providerName">
 
    <description>
       Extended Editing Framework - UML specific code generators
