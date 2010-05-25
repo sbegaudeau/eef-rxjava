@@ -3,7 +3,7 @@
       id="org.eclipse.emf.eef.tests"
       label="%featureName"
       version="0.8.0.qualifier"
-      provider-name="%ProviderName">
+      provider-name="%providerName">
 
    <description>
       Extended Editing Framework - Tests
