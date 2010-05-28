@@ -1,3 +1,13 @@
+#*******************************************************************************
+# Copyright (c) 2008, 2010 Obeo.
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License v1.0
+# which accompanies this distribution, and is available at
+# http://www.eclipse.org/legal/epl-v10.html
+#
+# Contributors:
+#     Obeo - initial API and implementation
+#*******************************************************************************
 #!/bin/bash
 PROMO_LOGS_DIR=$HOME/promo_logs
 RELENG_DIR="/opt/users/hudsonbuild/.hudson/jobs/cbi-emf-eef-0.7-integration/workspace/org.eclipse.emf/org.eclipse.emf.eef/releng"
