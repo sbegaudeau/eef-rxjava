@@ -125,9 +125,12 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setMultivaluededitorRequiredProperty((EList)msg.getNewValue());
-
+		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) { 
+			if (msg.getEventType() == Notification.ADD) 
+				basePart.addToMultivaluededitorRequiredProperty((String) msg.getNewValue());
+			else if (msg.getEventType() == Notification.REMOVE) 
+				basePart.removeToMultivaluededitorRequiredProperty((String) msg.getNewValue());
+		}
 		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null)
 			basePart.setMultivaluededitorOptionalProperty((EList)msg.getNewValue());
 

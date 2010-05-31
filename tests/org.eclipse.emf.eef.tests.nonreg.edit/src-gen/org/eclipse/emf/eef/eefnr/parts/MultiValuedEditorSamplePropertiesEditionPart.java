@@ -62,8 +62,21 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	 */
 	public String getTitle();
 
+
 	// Start of user code for additional methods
 	
+	/**
+	 * Add a value to the multiValuededitorRequiredProperty multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToMultivaluededitorRequiredProperty(String newValue);
+	
+	/**
+	 * Remove a value to the multiValuededitorRequiredProperty multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToMultivaluededitorRequiredProperty(String newValue);
 	// End of user code
+
 
 }
