@@ -2306,7 +2306,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 	
 	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue) {
-		multivaluededitorRequiredPropertyList.add(newValue);		
+		multivaluededitorRequiredPropertyList.remove(newValue);		
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
@@ -2350,7 +2350,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 	
 	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue) {
-		multivaluededitorOptionalPropertyList.add(newValue);		
+		multivaluededitorOptionalPropertyList.remove(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {
