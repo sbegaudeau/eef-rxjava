@@ -16,6 +16,7 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
@@ -210,10 +211,10 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 			final MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)elt;
 			// init values
 			if (multiValuedEditorSample.getMultivaluededitorRequiredProperty() != null)
-				basePart.setMultivaluededitorRequiredProperty(multiValuedEditorSample.getMultivaluededitorRequiredProperty());
+				basePart.setMultivaluededitorRequiredProperty(new BasicEList(multiValuedEditorSample.getMultivaluededitorRequiredProperty()));
 
 			if (multiValuedEditorSample.getMultivaluededitorOptionalProperty() != null)
-				basePart.setMultivaluededitorOptionalProperty(multiValuedEditorSample.getMultivaluededitorOptionalProperty());
+				basePart.setMultivaluededitorOptionalProperty(new BasicEList(multiValuedEditorSample.getMultivaluededitorOptionalProperty()));
 
 			// init filters
 

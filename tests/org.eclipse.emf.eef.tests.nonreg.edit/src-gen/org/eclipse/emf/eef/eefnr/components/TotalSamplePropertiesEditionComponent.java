@@ -20,6 +20,7 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
@@ -354,10 +355,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().getEType(), totalSample.getEmfcomboviewerRequiredProperty());
 			basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty().getEType(), totalSample.getEmfcomboviewerOptionalProperty());
 			if (totalSample.getMultivaluededitorRequiredProperty() != null)
-				basePart.setMultivaluededitorRequiredProperty(totalSample.getMultivaluededitorRequiredProperty());
+				basePart.setMultivaluededitorRequiredProperty(new BasicEList(totalSample.getMultivaluededitorRequiredProperty()));
 
 			if (totalSample.getMultivaluededitorOptionalProperty() != null)
-				basePart.setMultivaluededitorOptionalProperty(totalSample.getMultivaluededitorOptionalProperty());
+				basePart.setMultivaluededitorOptionalProperty(new BasicEList(totalSample.getMultivaluededitorOptionalProperty()));
 
 			basePart.initTablecompositionRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty());
 			basePart.initTablecompositionOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty());
