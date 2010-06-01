@@ -17,7 +17,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -125,14 +124,19 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) { 
+		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
 			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToMultivaluededitorRequiredProperty((String) msg.getNewValue());
+				basePart.addToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
 			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToMultivaluededitorRequiredProperty((String) msg.getNewValue());
+				basePart.removeToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
 		}
-		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setMultivaluededitorOptionalProperty((EList)msg.getNewValue());
+
+		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null) {
+			if (msg.getEventType() == Notification.ADD) 
+				basePart.addToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
+			else if (msg.getEventType() == Notification.REMOVE) 
+				basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
+		}
 
 
 	}

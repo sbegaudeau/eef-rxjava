@@ -21,7 +21,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
@@ -200,11 +199,19 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
 			basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
 
-		if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setMultivaluededitorRequiredProperty((EList)msg.getNewValue());
+		if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
+			if (msg.getEventType() == Notification.ADD) 
+				basePart.addToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
+			else if (msg.getEventType() == Notification.REMOVE) 
+				basePart.removeToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
+		}
 
-		if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setMultivaluededitorOptionalProperty((EList)msg.getNewValue());
+		if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null) {
+			if (msg.getEventType() == Notification.ADD) 
+				basePart.addToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
+			else if (msg.getEventType() == Notification.REMOVE) 
+				basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
+		}
 
 		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty())) {
 			basePart.updateTablecompositionRequiredProperty(totalSample);

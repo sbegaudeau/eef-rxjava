@@ -37,16 +37,17 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	public void setMultivaluededitorRequiredProperty(EList newValue);
 
 	/**
-	 * Add a value to the multiValuededitorRequiredProperty multivalued attribute.
+	 * Add a value to the multivaluededitorRequiredProperty multivalued attribute.
 	 * @param newValue the value to add
 	 */
-	public void addToMultivaluededitorRequiredProperty(String newValue);
-	
+	public void addToMultivaluededitorRequiredProperty(java.lang.String newValue);
+
 	/**
-	 * Remove a value to the multiValuededitorRequiredProperty multivalued attribute.
+	 * Remove a value to the multivaluededitorRequiredProperty multivalued attribute.
 	 * @param newValue the value to remove
 	 */
-	public void removeToMultivaluededitorRequiredProperty(String newValue);
+	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue);
+
 
 	/**
 	 * @return the multivaluededitorOptionalProperty
@@ -62,6 +63,22 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	public void setMultivaluededitorOptionalProperty(EList newValue);
 
 	/**
+	 * Add a value to the multivaluededitorOptionalProperty multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToMultivaluededitorOptionalProperty(java.lang.String newValue);
+
+	/**
+	 * Remove a value to the multivaluededitorOptionalProperty multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue);
+
+
+
+
+
+	/**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
@@ -69,10 +86,8 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	 */
 	public String getTitle();
 
-
 	// Start of user code for additional methods
 	
 	// End of user code
-
 
 }

@@ -216,12 +216,17 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#addToMultivaluededitorRequiredProperty(java.lang.Object)
-	 */
-	public void addToMultivaluededitorRequiredProperty(String newValue) {
+	
+	public void addToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+		multivaluededitorRequiredPropertyList.add(newValue);		
+		if (newValue != null) {
+			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
+		} else {
+			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue) {
 		multivaluededitorRequiredPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
@@ -230,18 +235,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#removeToMultivaluededitorRequiredProperty(java.lang.Object)
-	 */
-	public void removeToMultivaluededitorRequiredProperty(String newValue) {
-		multivaluededitorRequiredPropertyList.remove(newValue);		
-		if (newValue != null) {
-			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
-		} else {
-			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
-		}		
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -261,6 +254,24 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue) {
 		multivaluededitorOptionalPropertyList = newValue;
+		if (newValue != null) {
+			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
+		} else {
+			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void addToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+		multivaluededitorOptionalPropertyList.add(newValue);		
+		if (newValue != null) {
+			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
+		} else {
+			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+		multivaluededitorOptionalPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {

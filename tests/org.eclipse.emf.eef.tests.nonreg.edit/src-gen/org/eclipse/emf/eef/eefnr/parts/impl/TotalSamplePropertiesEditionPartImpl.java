@@ -2295,6 +2295,24 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
+	
+	public void addToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+		multivaluededitorRequiredPropertyList.add(newValue);		
+		if (newValue != null) {
+			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
+		} else {
+			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+		multivaluededitorRequiredPropertyList.add(newValue);		
+		if (newValue != null) {
+			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
+		} else {
+			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
+		}
+	}
 
 
 	/**
@@ -2315,6 +2333,24 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void setMultivaluededitorOptionalProperty(EList newValue) {
 		multivaluededitorOptionalPropertyList = newValue;
+		if (newValue != null) {
+			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
+		} else {
+			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void addToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+		multivaluededitorOptionalPropertyList.add(newValue);		
+		if (newValue != null) {
+			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
+		} else {
+			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+		multivaluededitorOptionalPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {
