@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -60,51 +60,56 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.eefnr";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.eefnr";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.eef.tests.nonreg.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -122,10 +127,9 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (advancedEObjectFlatComboViewerSample == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((AdvancedEObjectFlatComboViewerSample)advancedEObjectFlatComboViewerSample).getAdvancedeobjectflatcomboviewerRequiredProperty());
-		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((AdvancedEObjectFlatComboViewerSample)advancedEObjectFlatComboViewerSample).getAdvancedeobjectflatcomboviewerRequiredProperty());
+				cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -137,7 +141,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditAdvancedEObjectFlatComboViewerSampleAdvancedeobjectflatcomboviewerRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -161,7 +165,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-		bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, 0, referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty);	
+				bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, 0, referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -185,9 +189,8 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (advancedEObjectFlatComboViewerSample == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), null));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), null));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -199,7 +202,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testRemoveAdvancedEObjectFlatComboViewerSampleAdvancedeobjectflatcomboviewerRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -223,7 +226,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 0);	
+				bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -234,7 +237,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -247,10 +250,9 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (advancedEObjectFlatComboViewerSample == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((AdvancedEObjectFlatComboViewerSample)advancedEObjectFlatComboViewerSample).getAdvancedeobjectflatcomboviewerOptionalProperty());
-		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((AdvancedEObjectFlatComboViewerSample)advancedEObjectFlatComboViewerSample).getAdvancedeobjectflatcomboviewerOptionalProperty());
+				cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -262,7 +264,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditAdvancedEObjectFlatComboViewerSampleAdvancedeobjectflatcomboviewerOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -286,7 +288,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-		bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, 1, referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty);	
+				bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, 1, referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -310,9 +312,8 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		if (advancedEObjectFlatComboViewerSample == null)
 			throw new InputModelInvalidException(advancedEObjectFlatComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), null));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				cc.append(SetCommand.create(editingDomain, advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), null));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -324,7 +325,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testRemoveAdvancedEObjectFlatComboViewerSampleAdvancedeobjectflatcomboviewerOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -348,7 +349,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedEObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 1);	
+				bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, 1);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -359,7 +360,7 @@ public class AdvancedEObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestC
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 
 
 

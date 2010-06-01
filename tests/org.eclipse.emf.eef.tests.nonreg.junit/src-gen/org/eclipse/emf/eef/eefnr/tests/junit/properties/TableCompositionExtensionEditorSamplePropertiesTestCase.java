@@ -17,24 +17,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 /**
- * TestCase for Root
+ * TestCase for TableCompositionExtensionEditorSample
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class RootPropertiesTestCase extends SWTBotEEFTestCase {
+public class TableCompositionExtensionEditorSamplePropertiesTestCase extends SWTBotEEFTestCase {
 
 	/**
 	 * The EClass of the type to edit
 	 */
-	private EClass rootMetaClass = EefnrPackage.eINSTANCE.getRoot();
+	private EClass tableCompositionExtensionEditorSampleMetaClass = EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample();
 
 	/**
 	 * The type to edit
 	 */
-	private EObject root;
+	private EObject tableCompositionExtensionEditorSample;
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass abstractSampleMetaClass = EefnrPackage.eINSTANCE.getAbstractSample();	
+	private EClass abstractTableCompositionTargetExtensionEditorSampleMetaClass = EefnrPackage.eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample();	
 	/**
 	 * The eObjects list contained in widgets
 	 */

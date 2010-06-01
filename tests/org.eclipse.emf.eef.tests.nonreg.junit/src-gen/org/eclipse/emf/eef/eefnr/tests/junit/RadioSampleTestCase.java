@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class RadioSampleTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -42,60 +42,65 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The enum value for the enum class radioRequiredProperty
 	 */
-	private Object enumValueForRadioRequiredProperty;		
+	private Object enumValueForRadioRequiredProperty;
 	/**
 	 * The enum value for the enum class radioOptionalProperty
 	 */
-	private Object enumValueForRadioOptionalProperty;		
+	private Object enumValueForRadioOptionalProperty;
 	/**
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.eefnr";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.eefnr";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.eef.tests.nonreg.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -113,8 +118,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForRadioRequiredProperty.toString()).getInstance()));
+				cc.append(SetCommand.create(editingDomain, radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForRadioRequiredProperty.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -126,7 +130,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditRadioSampleRadioRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -151,7 +155,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, radioSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioRequiredProperty feature of the RadioSample element 
-		bot.editRadioFeature(wizardShell, 0, enumValueForRadioRequiredProperty);	
+				bot.editRadioFeature(wizardShell, 0, enumValueForRadioRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -175,8 +179,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForRadioOptionalProperty.toString()).getInstance()));
+				cc.append(SetCommand.create(editingDomain, radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForRadioOptionalProperty.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -188,7 +191,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditRadioSampleRadioOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -213,7 +216,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, radioSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioOptionalProperty feature of the RadioSample element 
-		bot.editRadioFeature(wizardShell, 1, enumValueForRadioOptionalProperty);	
+				bot.editRadioFeature(wizardShell, 1, enumValueForRadioOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

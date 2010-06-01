@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -61,51 +61,56 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.eefnr";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.eefnr";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.eef.tests.nonreg.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -123,10 +128,9 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		referenceValueForFlatreferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableRequiredProperty());
-		cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), referenceValueForFlatreferencestableRequiredProperty));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				referenceValueForFlatreferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableRequiredProperty());
+				cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), referenceValueForFlatreferencestableRequiredProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -138,7 +142,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditFlatReferenceTableSampleFlatreferencetableRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -162,7 +166,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element 
-		bot.editFlatReferencesTableFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForFlatreferencestableRequiredProperty));	
+				bot.editFlatReferencesTableFeature(wizardShell, 0, allInstancesOf.indexOf(referenceValueForFlatreferencestableRequiredProperty));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -186,10 +190,9 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
-		cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), firstInstanceOf));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -201,7 +204,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testRemoveFlatReferenceTableSampleFlatreferencetableRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -225,7 +228,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element
-		bot.removeFlatReferencesTableFeature(wizardShell, 0);	
+				bot.removeFlatReferencesTableFeature(wizardShell, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -236,7 +239,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -249,10 +252,9 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		referenceValueForFlatreferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableOptionalProperty());
-		cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), referenceValueForFlatreferencestableOptionalProperty));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				referenceValueForFlatreferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableOptionalProperty());
+				cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), referenceValueForFlatreferencestableOptionalProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -264,7 +266,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditFlatReferenceTableSampleFlatreferencetableOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -288,7 +290,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element 
-		bot.editFlatReferencesTableFeature(wizardShell, 1, allInstancesOf.indexOf(referenceValueForFlatreferencestableOptionalProperty));	
+				bot.editFlatReferencesTableFeature(wizardShell, 1, allInstancesOf.indexOf(referenceValueForFlatreferencestableOptionalProperty));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -312,10 +314,9 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
-		cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), firstInstanceOf));
+				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -327,7 +328,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testRemoveFlatReferenceTableSampleFlatreferencetableOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -351,7 +352,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element
-		bot.removeFlatReferencesTableFeature(wizardShell, 1);	
+				bot.removeFlatReferencesTableFeature(wizardShell, 1);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -362,7 +363,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 
 
 

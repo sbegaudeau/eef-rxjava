@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -43,60 +43,65 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The enum value for the enum class emfcomboviewerRequiredProperty
 	 */
-	private Object enumValueForEmfcomboviewerRequiredProperty;		
+	private Object enumValueForEmfcomboviewerRequiredProperty;
 	/**
 	 * The enum value for the enum class emfcomboviewerOptionalProperty
 	 */
-	private Object enumValueForEmfcomboviewerOptionalProperty;		
+	private Object enumValueForEmfcomboviewerOptionalProperty;
 	/**
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.eefnr";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.eefnr";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.eef.tests.nonreg.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -114,8 +119,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerRequiredProperty.toString()).getInstance()));
+				cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerRequiredProperty.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -127,7 +131,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditEMFComboViewerSampleEmfcomboviewerRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -152,7 +156,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerRequiredProperty feature of the EMFComboViewerSample element 
-		bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, enumValueForEmfcomboviewerRequiredProperty);	
+				bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, enumValueForEmfcomboviewerRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -176,8 +180,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerOptionalProperty.toString()).getInstance()));
+				cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerOptionalProperty.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -189,7 +192,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditEMFComboViewerSampleEmfcomboviewerOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -214,7 +217,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerOptionalProperty feature of the EMFComboViewerSample element 
-		bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, enumValueForEmfcomboviewerOptionalProperty);	
+				bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, enumValueForEmfcomboviewerOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

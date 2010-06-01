@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Obeo.
+ * Copyright (c) 2009 - 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -43,51 +43,56 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.eefnr";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.eefnr";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.eef.tests.nonreg.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -105,9 +110,8 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		Boolean oldValue = (Boolean)checkboxSample.eGet(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty());
-		cc.append(SetCommand.create(editingDomain, checkboxSample, EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty(), !oldValue));
+				Boolean oldValue = (Boolean)checkboxSample.eGet(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty());
+				cc.append(SetCommand.create(editingDomain, checkboxSample, EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty(), !oldValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -119,7 +123,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditCheckboxSampleCheckboxRequiredProperty() throws Exception {
 		
 		// Import the input model
@@ -143,7 +147,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the CheckboxSample element 
-		bot.editPropertyCheckboxFeature(propertiesView, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel, bot.selectNode(modelEditor, firstInstanceOf));	
+				bot.editPropertyCheckboxFeature(propertiesView, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -154,7 +158,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -167,9 +171,8 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-		
-		Boolean oldValue = (Boolean)checkboxSample.eGet(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty());
-		cc.append(SetCommand.create(editingDomain, checkboxSample, EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty(), !oldValue));
+				Boolean oldValue = (Boolean)checkboxSample.eGet(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty());
+				cc.append(SetCommand.create(editingDomain, checkboxSample, EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty(), !oldValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -181,7 +184,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditCheckboxSampleCheckboxOptionalProperty() throws Exception {
 		
 		// Import the input model
@@ -205,7 +208,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the CheckboxSample element 
-		bot.editPropertyCheckboxFeature(propertiesView, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel, bot.selectNode(modelEditor, firstInstanceOf));	
+				bot.editPropertyCheckboxFeature(propertiesView, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -216,7 +219,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 
 
 
