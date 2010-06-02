@@ -691,7 +691,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void editMultiValuedEditor(String label, String value) {
 		button(label).click();
 		text().setText(value);
-		button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button).click();
+		button(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")).click();
 		button(UIConstants.OK_BUTTON).click();
 	}
 

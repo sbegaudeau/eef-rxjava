@@ -50,5 +50,6 @@ public class UIConstants {
 	 *****************************************************************************/
 	public static final String OK_BUTTON = "OK";
 	public static final String FINISH_BUTTON = "Finish";
+	public static final String ADD_BUTTON = "Add";
 
 }
