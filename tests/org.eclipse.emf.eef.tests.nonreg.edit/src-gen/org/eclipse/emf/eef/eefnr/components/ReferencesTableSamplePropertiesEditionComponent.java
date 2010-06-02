@@ -41,7 +41,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
@@ -220,11 +220,11 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
 						return (!basePart.isContainedInReferencestableRequiredPropertyTable((EObject)element));
-					return element instanceof Resource;
+					return false;
 				}
 
 			});
-			basePart.addFilterToReferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
 			
 			// End of user code
@@ -239,11 +239,11 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
 						return (!basePart.isContainedInReferencestableOptionalPropertyTable((EObject)element));
-					return element instanceof Resource;
+					return element instanceof String && element.equals("");
 				}
 
 			});
-			basePart.addFilterToReferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
 			
 			// End of user code

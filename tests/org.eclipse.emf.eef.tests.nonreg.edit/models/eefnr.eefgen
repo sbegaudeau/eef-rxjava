@@ -3,13 +3,13 @@
   <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
     <PropertiesEditionContext href="eefnr.components#_Fx_LAAwvEd-uP4lw9e0IMw"/>
   </editionContexts>
-  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsGenericPropertiesViews="true">
     <PropertiesEditionContext href="eefnr.components#_0Hu75z1nEd-LLuOHydFNYw"/>
   </editionContexts>
-  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true">
     <PropertiesEditionContext href="eefnr.components#_IPrf8j1-Ed-LLuOHydFNYw"/>
   </editionContexts>
-  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true" generateJunitTestCases="true">
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true">
     <PropertiesEditionContext href="eefnr.components#_IPrf8j1-Ed-LLuOHydFNYe"/>
   </editionContexts>
   <viewsRepositories basePackage="org.eclipse.emf.eef.eefnr" swtViews="true" formViews="true">

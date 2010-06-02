@@ -126,14 +126,14 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+		if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 			} else {
 				basePart.setTextRequiredProperty("");
 			}
 		}
-		if (EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+		if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 			} else {
@@ -242,8 +242,8 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
 		CompoundCommand cc = new CompoundCommand();
 		if ((sample != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextRequiredProperty())));
-			cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextOptionalProperty())));
+			cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getSample_TextRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextRequiredProperty())));
+			cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getSample_TextOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextOptionalProperty())));
 
 		}
 		if (!cc.isEmpty())
@@ -284,10 +284,10 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
 				CompoundCommand command = new CompoundCommand();
 			if (EefnrViewsRepository.Sample.textRequiredProperty == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, sample, EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+				command.append(SetCommand.create(liveEditingDomain, sample, EefnrPackage.eINSTANCE.getSample_TextRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
 			if (EefnrViewsRepository.Sample.textOptionalProperty == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, sample, EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+				command.append(SetCommand.create(liveEditingDomain, sample, EefnrPackage.eINSTANCE.getSample_TextOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
 			}
 
 				if (!command.isEmpty() && !command.canExecute()) {
@@ -328,12 +328,12 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.Sample.textRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().getEAttributeType(), newValue);
+					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.Sample.textOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().getEAttributeType(), newValue);
+					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

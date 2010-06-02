@@ -217,10 +217,10 @@
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CDVckA_gEd-fwJDNg0onkA" name="Sample" views="_FSwl8A_gEd-fwJDNg0onkA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CDVckQ_gEd-fwJDNg0onkA" name="textRequiredProperty" views="_FSwl8g_gEd-fwJDNg0onkA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/textRequiredProperty"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//Sample/textRequiredProperty"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CDVckg_gEd-fwJDNg0onkA" name="textOptionalProperty" views="_FSwl8w_gEd-fwJDNg0onkA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/textOptionalProperty"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//Sample/textOptionalProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//Sample"/>
       </bindings>
