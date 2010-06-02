@@ -65,25 +65,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForEmfcomboviewerOptionalProperty;
 	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
 	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
-	/**
-	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
-	 */
-	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
-	/**
-	 * The reference value for the reference class referencestableRequiredProperty
-	 */
-	private Object referenceValueForReferencestableRequiredProperty;
-	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
-	/**
-	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
-	 */
-	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
+	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
 	/**
 	 * The reference value for the reference class advancedreferencestableRequiredProperty
 	 */
@@ -93,9 +77,25 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object referenceValueForReferencestableOptionalProperty;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredPropery
+	 * The reference value for the reference class eobjectflatcomboviewerOptionalProperty
 	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery;
+	private Object referenceValueForEobjectflatcomboviewerOptionalProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalPropery
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery;
+	/**
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
+	/**
+	 * The reference value for the reference class referencestableRequiredProperty
+	 */
+	private Object referenceValueForReferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerRequiredProperty
+	 */
+	private Object referenceValueForEobjectflatcomboviewerRequiredProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -2366,9 +2366,11 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2391,9 +2393,11 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2424,9 +2428,11 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2449,9 +2455,11 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
 		bot.sleep(500);
-				// FIXME : define 'editFeature' for structural feature (from widgetTest.mtl) for case (org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false)) - org.eclipse.emf.ecore.impl.DynamicEObjectImpl@6e79cf (eClass: org.eclipse.emf.ecore.impl.EClassImpl@ff2b36 (name: Invalid_Class) (instanceClassName: null) (abstract: false, interface: false))) 
+		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**

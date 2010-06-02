@@ -41,13 +41,13 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private EObject eObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
-	 */
-	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
-	/**
 	 * The reference value for the reference class eobjectflatcomboviewerOptionalPropery
 	 */
 	private Object referenceValueForEobjectflatcomboviewerOptionalPropery;
+	/**
+	 * The reference value for the reference class eobjectflatcomboviewerRequiredPropery
+	 */
+	private Object referenceValueForEobjectflatcomboviewerRequiredPropery;
 	/**
 	 * The EClass of the reference to edit
 	 */

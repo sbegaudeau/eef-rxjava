@@ -110,7 +110,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getSample_TextRequiredProperty(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -170,7 +170,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty(), UPDATED_VALUE));
+				cc.append(SetCommand.create(editingDomain, sample, EefnrPackage.eINSTANCE.getSample_TextOptionalProperty(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}

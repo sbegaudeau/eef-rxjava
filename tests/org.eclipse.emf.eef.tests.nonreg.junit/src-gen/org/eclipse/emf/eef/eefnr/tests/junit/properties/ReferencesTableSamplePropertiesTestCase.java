@@ -129,9 +129,9 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				referenceValueForReferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((ReferencesTableSample)referencesTableSample).getReferencestableRequiredProperty());
-				cc.append(AddCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(), referenceValueForReferencestableRequiredProperty));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		referenceValueForReferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((ReferencesTableSample)referencesTableSample).getReferencestableRequiredProperty());
+		cc.append(AddCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(), referenceValueForReferencestableRequiredProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -191,9 +191,13 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)referencesTableSample.eGet(EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -229,7 +233,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.removePropertyReferencesTableFeature(propertiesView, 0, allInstancesOf.indexOf(firstInstanceOf), EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.removePropertyReferencesTableFeature(propertiesView, 0, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -253,9 +257,9 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				referenceValueForReferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((ReferencesTableSample)referencesTableSample).getReferencestableOptionalProperty());
-				cc.append(AddCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty(), referenceValueForReferencestableOptionalProperty));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		referenceValueForReferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((ReferencesTableSample)referencesTableSample).getReferencestableOptionalProperty());
+		cc.append(AddCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty(), referenceValueForReferencestableOptionalProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -315,9 +319,13 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)referencesTableSample.eGet(EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -353,7 +361,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.removePropertyReferencesTableFeature(propertiesView, 1, allInstancesOf.indexOf(firstInstanceOf)+1, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.removePropertyReferencesTableFeature(propertiesView, 1, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

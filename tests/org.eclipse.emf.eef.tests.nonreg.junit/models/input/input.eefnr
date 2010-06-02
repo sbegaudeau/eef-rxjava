@@ -8,7 +8,7 @@
   <samples xsi:type="eefnr:ReferencesTableSample" referencestableRequiredProperty="//@samples.13" referencestableOptionalProperty="//@samples.13"/>
   <samples xsi:type="eefnr:EMFComboViewerSample"/>
   <samples xsi:type="eefnr:MultiValuedEditorSample">
-    <multivaluededitorRequiredProperty>jkl</multivaluededitorRequiredProperty>
+    <multivaluededitorRequiredProperty>value1</multivaluededitorRequiredProperty>
   </samples>
   <samples xsi:type="eefnr:TableCompositionEditorSample"/>
   <samples xsi:type="eefnr:AdvancedReferencesTableSample" advancedreferencestableRequiredProperty="//@samples.13" advancedreferencestableOptionalProperty="//@samples.13"/>
@@ -17,6 +17,6 @@
   <samples xsi:type="eefnr:FlatReferencesTableSample" flatreferencestableRequiredProperty="//@samples.13" flatreferencestableOptionalProperty="//@samples.13"/>
   <samples xsi:type="eefnr:TotalSample" name="total sample 1" textRequiredProperty="value1" textOptionalProperty="value1" textareaRequiredProperty="value1" textareaOptionalProperty="value1" eobjectflatcomboviewerRequiredProperty="//@samples.14" eobjectflatcomboviewerOptionalProperty="//@samples.14" referencestableRequiredProperty="//@samples.13" referencestableOptionalProperty="//@samples.13" advancedeobjectflatcomboviewerRequiredPropery="//@samples.14" advancedeobjectflatcomboviewerOptionalPropery="//@samples.14"/>
   <samples xsi:type="eefnr:TotalSample" name="total sample 2"/>
-  <samples xsi:type="eefnr:Sample"/>
   <samples xsi:type="eefnr:TextSampleWithTwoTabs" textRequiredPropertyInFirstTab="" textOptionalPropertyInFirstTab="" textRequiredPropertyInSecondTab="" textOptionalPropertyInSecondTab=""/>
+  <samples xsi:type="eefnr:Sample" textRequiredProperty="value1" textOptionalProperty=""/>
 </eefnr:Root>
