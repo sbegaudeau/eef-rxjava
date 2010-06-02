@@ -17,6 +17,7 @@
 [import testsNaming /]
 [import widgetTest /]
 
+
 [template public PropertySection(peContext : PropertiesEditionContext)]
 [comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (pec.mustBeGenerated() and pec.testMustBeGenerated())]

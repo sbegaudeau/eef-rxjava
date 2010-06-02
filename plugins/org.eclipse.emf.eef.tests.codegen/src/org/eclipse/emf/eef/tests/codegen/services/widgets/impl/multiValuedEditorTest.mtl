@@ -20,9 +20,10 @@
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isMultiValuedEditorString())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		String[ '[' /][ ']' /] strings = {UPDATED_VALUE};
-		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], Arrays.asList(strings)));
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+List expectedValue = new ArrayList((List)[pec.model.name.toLowerFirst()/].eGet([peElement.metamodelGetter()/]));
+expectedValue.add(UPDATED_VALUE);
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], expectedValue));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isMultiValuedEditorString())]
