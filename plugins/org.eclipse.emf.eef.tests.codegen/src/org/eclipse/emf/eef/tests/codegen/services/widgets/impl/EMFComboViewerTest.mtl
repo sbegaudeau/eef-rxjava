@@ -20,8 +20,8 @@
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isEMFComboViewerEnum())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], [peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]().getEEnumLiteralByLiteral(enumValueFor[peElement.model.name.toUpperFirst()/].toString()).getInstance()));
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], [peElement.model.eContainingClass.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]().getEEnumLiteralByLiteral(enumValueFor[peElement.model.name.toUpperFirst()/].toString()).getInstance()));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isEMFComboViewerEnum())]
@@ -36,7 +36,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isEMFComboViewerEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyEMFComboViewerFeature(propertiesView, enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyEMFComboViewerFeature(propertiesView, [peElement.emfComboViewerIndex()/], enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -58,3 +58,7 @@ CompoundCommand cc = new CompoundCommand();
 	then false
 	else peElement.representationName('EMFComboViewer') and peElement.model.oclAsType(ecore::EAttribute).isEnum()
 	endif/]
+
+[query public emfComboViewerIndex(peElement : PropertiesEditionElement) : Integer = 
+	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
+			->select(representationName('EMFComboViewer') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]

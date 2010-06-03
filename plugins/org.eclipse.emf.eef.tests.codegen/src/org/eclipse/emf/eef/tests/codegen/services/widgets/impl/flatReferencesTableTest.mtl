@@ -20,26 +20,25 @@
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isFlatReferencesTableReference())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		referenceValueFor[peElement.model.name.toUpperFirst()/] = bot.changeReferenceValue(allInstancesOf, (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]());
-		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], referenceValueFor[peElement.model.name.toUpperFirst()/]));
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+referenceValueFor[peElement.model.name.toUpperFirst()/] = bot.changeReferenceValue(allInstancesOf, (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]());
+cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], referenceValueFor[peElement.model.name.toUpperFirst()/]));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editFlatReferencesTableFeature(wizardShell, [peElement.flatReferencesTableIndex()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/]));
+bot.editFlatReferencesTableFeature(wizardShell, [peElement.flatReferencesTableIndex()/], 0);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		bot.editFlatReferencesTable([peElement.flatReferencesTableIndex()/], allInstancesOf.indexOf([peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]()));
+bot.editFlatReferencesTable([peElement.flatReferencesTableIndex()/], 0);
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyFlatReferencesTableFeature(propertiesView, [peElement.flatReferencesTableIndex()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/]), bot.selectNode(modelEditor, firstInstanceOf));
+bot.editPropertyFlatReferencesTableFeature(propertiesView, [peElement.flatReferencesTableIndex()/], 0, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]

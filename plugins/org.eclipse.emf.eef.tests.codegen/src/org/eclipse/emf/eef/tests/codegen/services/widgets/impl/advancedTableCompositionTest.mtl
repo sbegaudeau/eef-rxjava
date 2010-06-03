@@ -67,7 +67,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	protected void editAdvancedTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
+		bot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip, [peElement.advancedTableCompositionIndex()/]).click();
 		editAdvancedTableCompositionFor[peElement.name/]Feature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -81,7 +81,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 */
 	protected void editAdvancedTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
+		propertyBot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip, [peElement.advancedTableCompositionIndex()/]).click();
 		editAdvancedTableCompositionFor[peElement.name/]Feature();
 		selectNode.select();
 	}

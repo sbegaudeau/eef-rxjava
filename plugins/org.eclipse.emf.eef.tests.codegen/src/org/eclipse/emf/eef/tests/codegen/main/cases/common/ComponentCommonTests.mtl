@@ -247,7 +247,10 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 [/template]
 
 [query public testMustBeGenerated(pec : PropertiesEditionComponent) : Boolean = 
-	pec.properties->select(pee : mapping::AbstractPropertyBinding | pee.oclIsKindOf(components::PropertiesEditionElement) and pec.canGenerateTest(pee.oclAsType(components::PropertiesEditionElement)) <> 'false')->notEmpty()/]
+	not pec.model.oclAsType(EClass).abstract 
+		and pec.properties->select(pee : mapping::AbstractPropertyBinding | 
+											pee.oclIsKindOf(components::PropertiesEditionElement) 
+											and pec.canGenerateTest(pee.oclAsType(components::PropertiesEditionElement)) <> 'false')->notEmpty()/]
 
 [template public commentTestPropertySection()]
 	/**

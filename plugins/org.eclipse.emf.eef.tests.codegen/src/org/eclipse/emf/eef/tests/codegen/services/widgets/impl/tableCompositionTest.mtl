@@ -50,7 +50,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	protected void editTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel).click();
+		bot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel, [peElement.tableCompositionIndex()/]).click();
 		editTableCompositionFor[peElement.name/]Feature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
