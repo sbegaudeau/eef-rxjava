@@ -415,7 +415,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 */
 	protected void editTableCompositiontablecompositionOptionalPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.button(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel).click();
+		propertyBot.button(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel, 1).click();
 		editTableCompositionFortablecompositionOptionalPropertyFeature();
 		selectNode.select();
 	}
