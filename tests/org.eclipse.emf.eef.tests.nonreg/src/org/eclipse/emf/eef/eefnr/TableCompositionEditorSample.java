@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableCompositionEditorSample.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: TableCompositionEditorSample.java,v 1.2 2010/06/03 13:49:36 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
 public interface TableCompositionEditorSample extends AbstractSample {
 	/**
 	 * Returns the value of the '<em><b>Tablecomposition Required Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.Sample}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tablecomposition Required Property</em>' containment reference list isn't clear,
@@ -40,11 +40,11 @@ public interface TableCompositionEditorSample extends AbstractSample {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<TotalSample> getTablecompositionRequiredProperty();
+	EList<Sample> getTablecompositionRequiredProperty();
 
 	/**
 	 * Returns the value of the '<em><b>Tablecomposition Optional Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.Sample}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tablecomposition Optional Property</em>' containment reference list isn't clear,
@@ -56,6 +56,6 @@ public interface TableCompositionEditorSample extends AbstractSample {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<TotalSample> getTablecompositionOptionalProperty();
+	EList<Sample> getTablecompositionOptionalProperty();
 
 } // TableCompositionEditorSample

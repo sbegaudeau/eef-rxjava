@@ -42,8 +42,6 @@
         lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="multivaluededitorOptionalProperty"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionOnSameTypeRequiredProperty"
-        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionOnSameTypeOptionalProperty"
         upperBound="-1" eType="#//TotalSample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedreferencestableRequiredProperty"
@@ -54,8 +52,6 @@
         lowerBound="1" eType="#//TotalSample"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerOptionalPropery"
         eType="#//TotalSample"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionOnSameTypeRequiredProperty"
-        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionOnSametypeOptionalProperty"
         upperBound="-1" eType="#//TotalSample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionRequiredProperty"
@@ -116,9 +112,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableCompositionEditorSample" eSuperTypes="#//AbstractSample">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionRequiredProperty"
-        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
+        lowerBound="1" upperBound="-1" eType="#//Sample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tablecompositionOptionalProperty"
-        upperBound="-1" eType="#//TotalSample" containment="true"/>
+        upperBound="-1" eType="#//Sample" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdvancedReferencesTableSample" eSuperTypes="#//AbstractSample">
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedreferencestableRequiredProperty"
@@ -136,9 +132,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="AdvancedTableCompositionEditorSample"
       eSuperTypes="#//AbstractSample">
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionRequiredProperty"
-        lowerBound="1" upperBound="-1" eType="#//TotalSample" containment="true"/>
+        lowerBound="1" upperBound="-1" eType="#//Sample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedtablecompositionOptionalProperty"
-        upperBound="-1" eType="#//TotalSample" containment="true"/>
+        upperBound="-1" eType="#//Sample" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ENUM_SAMPLE">
     <eLiterals name="literal1"/>

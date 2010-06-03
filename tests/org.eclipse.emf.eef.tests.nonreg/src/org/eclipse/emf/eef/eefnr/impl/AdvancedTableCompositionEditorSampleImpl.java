@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AdvancedTableCompositionEditorSampleImpl.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: AdvancedTableCompositionEditorSampleImpl.java,v 1.2 2010/06/03 13:49:36 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 
 /**
@@ -45,7 +46,7 @@ public class AdvancedTableCompositionEditorSampleImpl extends AbstractSampleImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TotalSample> advancedtablecompositionRequiredProperty;
+	protected EList<Sample> advancedtablecompositionRequiredProperty;
 
 	/**
 	 * The cached value of the '{@link #getAdvancedtablecompositionOptionalProperty() <em>Advancedtablecomposition Optional Property</em>}' containment reference list.
@@ -55,7 +56,7 @@ public class AdvancedTableCompositionEditorSampleImpl extends AbstractSampleImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TotalSample> advancedtablecompositionOptionalProperty;
+	protected EList<Sample> advancedtablecompositionOptionalProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,9 +82,9 @@ public class AdvancedTableCompositionEditorSampleImpl extends AbstractSampleImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TotalSample> getAdvancedtablecompositionRequiredProperty() {
+	public EList<Sample> getAdvancedtablecompositionRequiredProperty() {
 		if (advancedtablecompositionRequiredProperty == null) {
-			advancedtablecompositionRequiredProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
+			advancedtablecompositionRequiredProperty = new EObjectContainmentEList<Sample>(Sample.class, this, EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
 		}
 		return advancedtablecompositionRequiredProperty;
 	}
@@ -93,9 +94,9 @@ public class AdvancedTableCompositionEditorSampleImpl extends AbstractSampleImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TotalSample> getAdvancedtablecompositionOptionalProperty() {
+	public EList<Sample> getAdvancedtablecompositionOptionalProperty() {
 		if (advancedtablecompositionOptionalProperty == null) {
-			advancedtablecompositionOptionalProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY);
+			advancedtablecompositionOptionalProperty = new EObjectContainmentEList<Sample>(Sample.class, this, EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY);
 		}
 		return advancedtablecompositionOptionalProperty;
 	}
@@ -143,11 +144,11 @@ public class AdvancedTableCompositionEditorSampleImpl extends AbstractSampleImpl
 		switch (featureID) {
 			case EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY:
 				getAdvancedtablecompositionRequiredProperty().clear();
-				getAdvancedtablecompositionRequiredProperty().addAll((Collection<? extends TotalSample>)newValue);
+				getAdvancedtablecompositionRequiredProperty().addAll((Collection<? extends Sample>)newValue);
 				return;
 			case EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY:
 				getAdvancedtablecompositionOptionalProperty().clear();
-				getAdvancedtablecompositionOptionalProperty().addAll((Collection<? extends TotalSample>)newValue);
+				getAdvancedtablecompositionOptionalProperty().addAll((Collection<? extends Sample>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

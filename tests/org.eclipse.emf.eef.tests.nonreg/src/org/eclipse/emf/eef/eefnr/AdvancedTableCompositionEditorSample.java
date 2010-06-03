@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AdvancedTableCompositionEditorSample.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: AdvancedTableCompositionEditorSample.java,v 1.2 2010/06/03 13:49:36 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
 public interface AdvancedTableCompositionEditorSample extends AbstractSample {
 	/**
 	 * Returns the value of the '<em><b>Advancedtablecomposition Required Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.Sample}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Advancedtablecomposition Required Property</em>' containment reference list isn't clear,
@@ -40,11 +40,11 @@ public interface AdvancedTableCompositionEditorSample extends AbstractSample {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<TotalSample> getAdvancedtablecompositionRequiredProperty();
+	EList<Sample> getAdvancedtablecompositionRequiredProperty();
 
 	/**
 	 * Returns the value of the '<em><b>Advancedtablecomposition Optional Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.Sample}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Advancedtablecomposition Optional Property</em>' containment reference list isn't clear,
@@ -56,6 +56,6 @@ public interface AdvancedTableCompositionEditorSample extends AbstractSample {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<TotalSample> getAdvancedtablecompositionOptionalProperty();
+	EList<Sample> getAdvancedtablecompositionOptionalProperty();
 
 } // AdvancedTableCompositionEditorSample

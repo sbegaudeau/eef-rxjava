@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableCompositionEditorSampleImpl.java,v 1.1 2010/02/01 13:00:44 nlepine Exp $
+ * $Id: TableCompositionEditorSampleImpl.java,v 1.2 2010/06/03 13:49:36 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 
@@ -45,7 +46,7 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TotalSample> tablecompositionRequiredProperty;
+	protected EList<Sample> tablecompositionRequiredProperty;
 
 	/**
 	 * The cached value of the '{@link #getTablecompositionOptionalProperty() <em>Tablecomposition Optional Property</em>}' containment reference list.
@@ -55,7 +56,7 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TotalSample> tablecompositionOptionalProperty;
+	protected EList<Sample> tablecompositionOptionalProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,9 +82,9 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TotalSample> getTablecompositionRequiredProperty() {
+	public EList<Sample> getTablecompositionRequiredProperty() {
 		if (tablecompositionRequiredProperty == null) {
-			tablecompositionRequiredProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
+			tablecompositionRequiredProperty = new EObjectContainmentEList<Sample>(Sample.class, this, EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
 		}
 		return tablecompositionRequiredProperty;
 	}
@@ -93,9 +94,9 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TotalSample> getTablecompositionOptionalProperty() {
+	public EList<Sample> getTablecompositionOptionalProperty() {
 		if (tablecompositionOptionalProperty == null) {
-			tablecompositionOptionalProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
+			tablecompositionOptionalProperty = new EObjectContainmentEList<Sample>(Sample.class, this, EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
 		}
 		return tablecompositionOptionalProperty;
 	}
@@ -143,11 +144,11 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 		switch (featureID) {
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY:
 				getTablecompositionRequiredProperty().clear();
-				getTablecompositionRequiredProperty().addAll((Collection<? extends TotalSample>)newValue);
+				getTablecompositionRequiredProperty().addAll((Collection<? extends Sample>)newValue);
 				return;
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
 				getTablecompositionOptionalProperty().clear();
-				getTablecompositionOptionalProperty().addAll((Collection<? extends TotalSample>)newValue);
+				getTablecompositionOptionalProperty().addAll((Collection<? extends Sample>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

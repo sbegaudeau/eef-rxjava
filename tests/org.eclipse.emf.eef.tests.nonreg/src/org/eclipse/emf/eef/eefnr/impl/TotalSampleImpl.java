@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TotalSampleImpl.java,v 1.2 2010/02/02 10:03:50 nlepine Exp $
+ * $Id: TotalSampleImpl.java,v 1.3 2010/06/03 13:49:36 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -52,13 +52,11 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getEmfcomboviewerOptionalProperty <em>Emfcomboviewer Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getMultivaluededitorRequiredProperty <em>Multivaluededitor Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getMultivaluededitorOptionalProperty <em>Multivaluededitor Optional Property</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getTablecompositionOnSameTypeRequiredProperty <em>Tablecomposition On Same Type Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getTablecompositionOnSameTypeOptionalProperty <em>Tablecomposition On Same Type Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedreferencestableRequiredProperty <em>Advancedreferencestable Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedreferencestableOptionalProperty <em>Advancedreferencestable Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedeobjectflatcomboviewerRequiredPropery <em>Advancedeobjectflatcomboviewer Required Propery</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedeobjectflatcomboviewerOptionalPropery <em>Advancedeobjectflatcomboviewer Optional Propery</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedtablecompositionOnSameTypeRequiredProperty <em>Advancedtablecomposition On Same Type Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedtablecompositionOnSametypeOptionalProperty <em>Advancedtablecomposition On Sametype Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedtablecompositionRequiredProperty <em>Advancedtablecomposition Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TotalSampleImpl#getAdvancedtablecompositionOptionalProperty <em>Advancedtablecomposition Optional Property</em>}</li>
@@ -331,16 +329,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 	protected EList<String> multivaluededitorOptionalProperty;
 
 	/**
-	 * The cached value of the '{@link #getTablecompositionOnSameTypeRequiredProperty() <em>Tablecomposition On Same Type Required Property</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTablecompositionOnSameTypeRequiredProperty()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TotalSample> tablecompositionOnSameTypeRequiredProperty;
-
-	/**
 	 * The cached value of the '{@link #getTablecompositionOnSameTypeOptionalProperty() <em>Tablecomposition On Same Type Optional Property</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -389,16 +377,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 	 * @ordered
 	 */
 	protected TotalSample advancedeobjectflatcomboviewerOptionalPropery;
-
-	/**
-	 * The cached value of the '{@link #getAdvancedtablecompositionOnSameTypeRequiredProperty() <em>Advancedtablecomposition On Same Type Required Property</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAdvancedtablecompositionOnSameTypeRequiredProperty()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TotalSample> advancedtablecompositionOnSameTypeRequiredProperty;
 
 	/**
 	 * The cached value of the '{@link #getAdvancedtablecompositionOnSametypeOptionalProperty() <em>Advancedtablecomposition On Sametype Optional Property</em>}' containment reference list.
@@ -808,18 +786,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TotalSample> getTablecompositionOnSameTypeRequiredProperty() {
-		if (tablecompositionOnSameTypeRequiredProperty == null) {
-			tablecompositionOnSameTypeRequiredProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY);
-		}
-		return tablecompositionOnSameTypeRequiredProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<TotalSample> getTablecompositionOnSameTypeOptionalProperty() {
 		if (tablecompositionOnSameTypeOptionalProperty == null) {
 			tablecompositionOnSameTypeOptionalProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY);
@@ -956,18 +922,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TotalSample> getAdvancedtablecompositionOnSameTypeRequiredProperty() {
-		if (advancedtablecompositionOnSameTypeRequiredProperty == null) {
-			advancedtablecompositionOnSameTypeRequiredProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY);
-		}
-		return advancedtablecompositionOnSameTypeRequiredProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<TotalSample> getAdvancedtablecompositionOnSametypeOptionalProperty() {
 		if (advancedtablecompositionOnSametypeOptionalProperty == null) {
 			advancedtablecompositionOnSametypeOptionalProperty = new EObjectContainmentEList<TotalSample>(TotalSample.class, this, EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY);
@@ -1007,12 +961,8 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				return ((InternalEList<?>)getTablecompositionOnSameTypeRequiredProperty()).basicRemove(otherEnd, msgs);
 			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY:
 				return ((InternalEList<?>)getTablecompositionOnSameTypeOptionalProperty()).basicRemove(otherEnd, msgs);
-			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				return ((InternalEList<?>)getAdvancedtablecompositionOnSameTypeRequiredProperty()).basicRemove(otherEnd, msgs);
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY:
 				return ((InternalEList<?>)getAdvancedtablecompositionOnSametypeOptionalProperty()).basicRemove(otherEnd, msgs);
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY:
@@ -1069,8 +1019,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 				return getMultivaluededitorRequiredProperty();
 			case EefnrPackage.TOTAL_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				return getMultivaluededitorOptionalProperty();
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				return getTablecompositionOnSameTypeRequiredProperty();
 			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY:
 				return getTablecompositionOnSameTypeOptionalProperty();
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDREFERENCESTABLE_REQUIRED_PROPERTY:
@@ -1083,8 +1031,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY:
 				if (resolve) return getAdvancedeobjectflatcomboviewerOptionalPropery();
 				return basicGetAdvancedeobjectflatcomboviewerOptionalPropery();
-			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				return getAdvancedtablecompositionOnSameTypeRequiredProperty();
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY:
 				return getAdvancedtablecompositionOnSametypeOptionalProperty();
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY:
@@ -1160,10 +1106,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 				getMultivaluededitorOptionalProperty().clear();
 				getMultivaluededitorOptionalProperty().addAll((Collection<? extends String>)newValue);
 				return;
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				getTablecompositionOnSameTypeRequiredProperty().clear();
-				getTablecompositionOnSameTypeRequiredProperty().addAll((Collection<? extends TotalSample>)newValue);
-				return;
 			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY:
 				getTablecompositionOnSameTypeOptionalProperty().clear();
 				getTablecompositionOnSameTypeOptionalProperty().addAll((Collection<? extends TotalSample>)newValue);
@@ -1181,10 +1123,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 				return;
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY:
 				setAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)newValue);
-				return;
-			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				getAdvancedtablecompositionOnSameTypeRequiredProperty().clear();
-				getAdvancedtablecompositionOnSameTypeRequiredProperty().addAll((Collection<? extends TotalSample>)newValue);
 				return;
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY:
 				getAdvancedtablecompositionOnSametypeOptionalProperty().clear();
@@ -1266,9 +1204,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 			case EefnrPackage.TOTAL_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				getMultivaluededitorOptionalProperty().clear();
 				return;
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				getTablecompositionOnSameTypeRequiredProperty().clear();
-				return;
 			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY:
 				getTablecompositionOnSameTypeOptionalProperty().clear();
 				return;
@@ -1283,9 +1218,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 				return;
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY:
 				setAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)null);
-				return;
-			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				getAdvancedtablecompositionOnSameTypeRequiredProperty().clear();
 				return;
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY:
 				getAdvancedtablecompositionOnSametypeOptionalProperty().clear();
@@ -1346,8 +1278,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 				return multivaluededitorRequiredProperty != null && !multivaluededitorRequiredProperty.isEmpty();
 			case EefnrPackage.TOTAL_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				return multivaluededitorOptionalProperty != null && !multivaluededitorOptionalProperty.isEmpty();
-			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				return tablecompositionOnSameTypeRequiredProperty != null && !tablecompositionOnSameTypeRequiredProperty.isEmpty();
 			case EefnrPackage.TOTAL_SAMPLE__TABLECOMPOSITION_ON_SAME_TYPE_OPTIONAL_PROPERTY:
 				return tablecompositionOnSameTypeOptionalProperty != null && !tablecompositionOnSameTypeOptionalProperty.isEmpty();
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDREFERENCESTABLE_REQUIRED_PROPERTY:
@@ -1358,8 +1288,6 @@ public class TotalSampleImpl extends AbstractSampleImpl implements TotalSample {
 				return advancedeobjectflatcomboviewerRequiredPropery != null;
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY:
 				return advancedeobjectflatcomboviewerOptionalPropery != null;
-			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAME_TYPE_REQUIRED_PROPERTY:
-				return advancedtablecompositionOnSameTypeRequiredProperty != null && !advancedtablecompositionOnSameTypeRequiredProperty.isEmpty();
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_ON_SAMETYPE_OPTIONAL_PROPERTY:
 				return advancedtablecompositionOnSametypeOptionalProperty != null && !advancedtablecompositionOnSametypeOptionalProperty.isEmpty();
 			case EefnrPackage.TOTAL_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY:

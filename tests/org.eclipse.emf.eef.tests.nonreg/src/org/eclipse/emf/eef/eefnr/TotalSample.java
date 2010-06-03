@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TotalSample.java,v 1.2 2010/02/02 10:03:51 nlepine Exp $
+ * $Id: TotalSample.java,v 1.3 2010/06/03 13:49:36 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -32,13 +32,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getEmfcomboviewerOptionalProperty <em>Emfcomboviewer Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getMultivaluededitorRequiredProperty <em>Multivaluededitor Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getMultivaluededitorOptionalProperty <em>Multivaluededitor Optional Property</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionOnSameTypeRequiredProperty <em>Tablecomposition On Same Type Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getTablecompositionOnSameTypeOptionalProperty <em>Tablecomposition On Same Type Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedreferencestableRequiredProperty <em>Advancedreferencestable Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedreferencestableOptionalProperty <em>Advancedreferencestable Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedeobjectflatcomboviewerRequiredPropery <em>Advancedeobjectflatcomboviewer Required Propery</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedeobjectflatcomboviewerOptionalPropery <em>Advancedeobjectflatcomboviewer Optional Propery</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOnSameTypeRequiredProperty <em>Advancedtablecomposition On Same Type Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOnSametypeOptionalProperty <em>Advancedtablecomposition On Sametype Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionRequiredProperty <em>Advancedtablecomposition Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TotalSample#getAdvancedtablecompositionOptionalProperty <em>Advancedtablecomposition Optional Property</em>}</li>
@@ -441,22 +439,6 @@ public interface TotalSample extends AbstractSample {
 	EList<String> getMultivaluededitorOptionalProperty();
 
 	/**
-	 * Returns the value of the '<em><b>Tablecomposition On Same Type Required Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tablecomposition On Same Type Required Property</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tablecomposition On Same Type Required Property</em>' containment reference list.
-	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getTotalSample_TablecompositionOnSameTypeRequiredProperty()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<TotalSample> getTablecompositionOnSameTypeRequiredProperty();
-
-	/**
 	 * Returns the value of the '<em><b>Tablecomposition On Same Type Optional Property</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
 	 * <!-- begin-user-doc -->
@@ -587,22 +569,6 @@ public interface TotalSample extends AbstractSample {
 	 * @generated
 	 */
 	void setAdvancedeobjectflatcomboviewerOptionalPropery(TotalSample value);
-
-	/**
-	 * Returns the value of the '<em><b>Advancedtablecomposition On Same Type Required Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Advancedtablecomposition On Same Type Required Property</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Advancedtablecomposition On Same Type Required Property</em>' containment reference list.
-	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getTotalSample_AdvancedtablecompositionOnSameTypeRequiredProperty()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<TotalSample> getAdvancedtablecompositionOnSameTypeRequiredProperty();
 
 	/**
 	 * Returns the value of the '<em><b>Advancedtablecomposition On Sametype Optional Property</b></em>' containment reference list.
