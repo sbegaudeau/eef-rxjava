@@ -128,9 +128,9 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				referenceValueForFlatreferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableRequiredProperty());
-				cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), referenceValueForFlatreferencestableRequiredProperty));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		referenceValueForFlatreferencestableRequiredProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableRequiredProperty());
+		cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), referenceValueForFlatreferencestableRequiredProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -166,7 +166,7 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element 
-				bot.editPropertyFlatReferencesTableFeature(propertiesView, 0, allInstancesOf.indexOf(referenceValueForFlatreferencestableRequiredProperty), bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyFlatReferencesTableFeature(propertiesView, 0, 0, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -252,9 +252,9 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				referenceValueForFlatreferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableOptionalProperty());
-				cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), referenceValueForFlatreferencestableOptionalProperty));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
+		referenceValueForFlatreferencestableOptionalProperty = bot.changeReferenceValue(allInstancesOf, ((FlatReferencesTableSample)flatReferencesTableSample).getFlatreferencestableOptionalProperty());
+		cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), referenceValueForFlatreferencestableOptionalProperty));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -290,7 +290,7 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element 
-				bot.editPropertyFlatReferencesTableFeature(propertiesView, 1, allInstancesOf.indexOf(referenceValueForFlatreferencestableOptionalProperty), bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyFlatReferencesTableFeature(propertiesView, 1, 0, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

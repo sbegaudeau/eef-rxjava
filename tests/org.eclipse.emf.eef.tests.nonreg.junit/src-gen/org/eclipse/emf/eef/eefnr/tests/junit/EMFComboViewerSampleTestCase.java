@@ -119,7 +119,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerRequiredProperty.toString()).getInstance()));
+		cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerRequiredProperty.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -180,7 +180,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerOptionalProperty.toString()).getInstance()));
+		cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), EefnrPackage.eINSTANCE.getENUM_SAMPLE().getEEnumLiteralByLiteral(enumValueForEmfcomboviewerOptionalProperty.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}

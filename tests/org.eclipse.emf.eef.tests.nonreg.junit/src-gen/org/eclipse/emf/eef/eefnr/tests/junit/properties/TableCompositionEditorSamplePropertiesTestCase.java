@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
-import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
@@ -51,7 +51,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
+	private EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();	
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -126,12 +126,12 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		EObject tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
-				EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
-				if (totalSample == null)
-					throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
+				EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+				if (sample == null)
+					throw new InputModelInvalidException(sampleMetaClass.getName());
 				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), EcoreUtil.copy(totalSample)));
+				cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), EcoreUtil.copy(sample)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -192,7 +192,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 				allInstancesOf = ((TableCompositionEditorSample)tableCompositionEditorSample).getTablecompositionRequiredProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
 				cc.append(RemoveCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
@@ -252,12 +252,12 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		EObject tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
-				EObject totalSample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, totalSampleMetaClass);
-				if (totalSample == null)
-					throw new InputModelInvalidException(totalSampleMetaClass.getName());
+		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
+				EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+				if (sample == null)
+					throw new InputModelInvalidException(sampleMetaClass.getName());
 				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), EcoreUtil.copy(totalSample)));
+				cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), EcoreUtil.copy(sample)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -318,7 +318,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
 				allInstancesOf = ((TableCompositionEditorSample)tableCompositionEditorSample).getTablecompositionOptionalProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
+				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
 				cc.append(RemoveCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
@@ -371,74 +371,16 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * Edit the feature in the table composition
 	 */
 	protected void editTableCompositionFortablecompositionRequiredPropertyFeature() throws WidgetInvalidException {
-		EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
-		SWTBotShell shellTable = bot.shell(totalSampleMetaClass.getName());
+		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
+		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
-		TotalSample totalSample = (TotalSample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel, totalSample.getTextRequiredProperty());
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
 		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel, totalSample.getTextOptionalProperty());
-		bot.sleep(500);
-		// Change value of the checkboxRequiredProperty feature of the checkboxRequiredProperty element 
-				bot.editCheckBox(EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel, totalSample.isCheckboxRequiredProperty());
-		bot.sleep(500);
-		// Change value of the checkboxOptionalProperty feature of the checkboxOptionalProperty element 
-				bot.editCheckBox(EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel, totalSample.isCheckboxOptionalProperty());
-		bot.sleep(500);
-		// Change value of the textareaRequiredProperty feature of the textareaRequiredProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, totalSample.getTextareaRequiredProperty());
-		bot.sleep(500);
-		// Change value of the textareaOptionalProperty feature of the textareaOptionalProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, totalSample.getTextareaOptionalProperty());
-		bot.sleep(500);
-		// Change value of the radioRequiredProperty feature of the radioRequiredProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel, totalSample.getRadioRequiredProperty());
-		bot.sleep(500);
-		// Change value of the radioOptionalProperty feature of the radioOptionalProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel, totalSample.getRadioOptionalProperty());
-		bot.sleep(500);
-		// Change value of the eobjectflatcomboviewerRequiredProperty feature of the eobjectflatcomboviewerRequiredProperty element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(0, allInstancesOf.indexOf(totalSample.getEobjectflatcomboviewerRequiredProperty()));
-		bot.sleep(500);
-		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the eobjectflatcomboviewerOptionalProperty element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(1, allInstancesOf.indexOf(totalSample.getEobjectflatcomboviewerOptionalProperty()));
-		bot.sleep(500);
-		// Change value of the referencestableRequiredProperty feature of the referencestableRequiredProperty element 
-				bot.editAdvancedReferencesTable(0, totalSample.getReferencestableRequiredProperty());
-		bot.sleep(500);
-		// Change value of the referencestableOptionalProperty feature of the referencestableOptionalProperty element 
-				bot.editAdvancedReferencesTable(1, totalSample.getReferencestableOptionalProperty());
-		bot.sleep(500);
-		// Change value of the emfcomboviewerRequiredProperty feature of the emfcomboviewerRequiredProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, totalSample.getEmfcomboviewerRequiredProperty());
-		bot.sleep(500);
-		// Change value of the emfcomboviewerOptionalProperty feature of the emfcomboviewerOptionalProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, totalSample.getEmfcomboviewerOptionalProperty());
-		bot.sleep(500);
-		// Change value of the multivaluededitorRequiredProperty feature of the multivaluededitorRequiredProperty element 
-				bot.editMultiValuedEditor(EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, totalSample.getMultivaluededitorRequiredProperty());
-		bot.sleep(500);
-		// Change value of the multivaluededitorOptionalProperty feature of the multivaluededitorOptionalProperty element 
-				bot.editMultiValuedEditor(EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, totalSample.getMultivaluededitorOptionalProperty());
-		bot.sleep(500);
-		// Change value of the advancedreferencestableRequiredProperty feature of the advancedreferencestableRequiredProperty element 
-				bot.editAdvancedReferencesTable(2, totalSample.getAdvancedreferencestableRequiredProperty());
-		bot.sleep(500);
-		// Change value of the advancedreferencestableOptionalProperty feature of the advancedreferencestableOptionalProperty element 
-				bot.editAdvancedReferencesTable(3, totalSample.getAdvancedreferencestableOptionalProperty());
-		bot.sleep(500);
-		// Change value of the advancedeobjectflatcomboviewerRequiredPropery feature of the advancedeobjectflatcomboviewerRequiredPropery element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(2, allInstancesOf.indexOf(totalSample.getAdvancedeobjectflatcomboviewerRequiredPropery()));
-		bot.sleep(500);
-		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the advancedeobjectflatcomboviewerOptionalPropery element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(3, allInstancesOf.indexOf(totalSample.getAdvancedeobjectflatcomboviewerOptionalPropery()));
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -455,74 +397,16 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * Edit the feature in the table composition
 	 */
 	protected void editTableCompositionFortablecompositionOptionalPropertyFeature() throws WidgetInvalidException {
-		EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
-		SWTBotShell shellTable = bot.shell(totalSampleMetaClass.getName());
+		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
+		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
-		TotalSample totalSample = (TotalSample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), totalSampleMetaClass);
+		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel, totalSample.getTextRequiredProperty());
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
 		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel, totalSample.getTextOptionalProperty());
-		bot.sleep(500);
-		// Change value of the checkboxRequiredProperty feature of the checkboxRequiredProperty element 
-				bot.editCheckBox(EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel, totalSample.isCheckboxRequiredProperty());
-		bot.sleep(500);
-		// Change value of the checkboxOptionalProperty feature of the checkboxOptionalProperty element 
-				bot.editCheckBox(EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel, totalSample.isCheckboxOptionalProperty());
-		bot.sleep(500);
-		// Change value of the textareaRequiredProperty feature of the textareaRequiredProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, totalSample.getTextareaRequiredProperty());
-		bot.sleep(500);
-		// Change value of the textareaOptionalProperty feature of the textareaOptionalProperty element 
-				bot.editTextWithLabel(EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, totalSample.getTextareaOptionalProperty());
-		bot.sleep(500);
-		// Change value of the radioRequiredProperty feature of the radioRequiredProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel, totalSample.getRadioRequiredProperty());
-		bot.sleep(500);
-		// Change value of the radioOptionalProperty feature of the radioOptionalProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel, totalSample.getRadioOptionalProperty());
-		bot.sleep(500);
-		// Change value of the eobjectflatcomboviewerRequiredProperty feature of the eobjectflatcomboviewerRequiredProperty element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(0, allInstancesOf.indexOf(totalSample.getEobjectflatcomboviewerRequiredProperty()));
-		bot.sleep(500);
-		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the eobjectflatcomboviewerOptionalProperty element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(1, allInstancesOf.indexOf(totalSample.getEobjectflatcomboviewerOptionalProperty()));
-		bot.sleep(500);
-		// Change value of the referencestableRequiredProperty feature of the referencestableRequiredProperty element 
-				bot.editAdvancedReferencesTable(0, totalSample.getReferencestableRequiredProperty());
-		bot.sleep(500);
-		// Change value of the referencestableOptionalProperty feature of the referencestableOptionalProperty element 
-				bot.editAdvancedReferencesTable(1, totalSample.getReferencestableOptionalProperty());
-		bot.sleep(500);
-		// Change value of the emfcomboviewerRequiredProperty feature of the emfcomboviewerRequiredProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, totalSample.getEmfcomboviewerRequiredProperty());
-		bot.sleep(500);
-		// Change value of the emfcomboviewerOptionalProperty feature of the emfcomboviewerOptionalProperty element 
-				bot.editEMFComboViewer(EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, totalSample.getEmfcomboviewerOptionalProperty());
-		bot.sleep(500);
-		// Change value of the multivaluededitorRequiredProperty feature of the multivaluededitorRequiredProperty element 
-				bot.editMultiValuedEditor(EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, totalSample.getMultivaluededitorRequiredProperty());
-		bot.sleep(500);
-		// Change value of the multivaluededitorOptionalProperty feature of the multivaluededitorOptionalProperty element 
-				bot.editMultiValuedEditor(EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, totalSample.getMultivaluededitorOptionalProperty());
-		bot.sleep(500);
-		// Change value of the advancedreferencestableRequiredProperty feature of the advancedreferencestableRequiredProperty element 
-				bot.editAdvancedReferencesTable(2, totalSample.getAdvancedreferencestableRequiredProperty());
-		bot.sleep(500);
-		// Change value of the advancedreferencestableOptionalProperty feature of the advancedreferencestableOptionalProperty element 
-				bot.editAdvancedReferencesTable(3, totalSample.getAdvancedreferencestableOptionalProperty());
-		bot.sleep(500);
-		// Change value of the advancedeobjectflatcomboviewerRequiredPropery feature of the advancedeobjectflatcomboviewerRequiredPropery element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(2, allInstancesOf.indexOf(totalSample.getAdvancedeobjectflatcomboviewerRequiredPropery()));
-		bot.sleep(500);
-		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the advancedeobjectflatcomboviewerOptionalPropery element 
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				bot.editEObjectFlatComboViewer(3, allInstancesOf.indexOf(totalSample.getAdvancedeobjectflatcomboviewerOptionalPropery()));
+				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
