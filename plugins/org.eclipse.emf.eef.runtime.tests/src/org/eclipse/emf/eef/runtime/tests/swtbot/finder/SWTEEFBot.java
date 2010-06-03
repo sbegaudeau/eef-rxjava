@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.tests.swtbot.finder;
 
+import static org.eclipse.swtbot.eclipse.finder.waits.Conditions.waitForEditor;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -139,7 +141,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public SWTBotEditor openFile(IFile file) {
 		SWTBotTree wizardTree = viewByTitle(UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
-		sleep(500);
+//		sleep(500);
 		List<IResource> expansionPath = getExpansionPath(file);
 		Iterator<IResource> iter = expansionPath.iterator();
 		if (iter.hasNext()) {
@@ -152,7 +154,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			}
 			treeItem.select();
 			menu(UIConstants.NAVIGATE_MENU).menu(UIConstants.OPEN_MENU).click();
-			sleep(500);
+//			sleep(500);
 			SWTBotEditor editor = editorByTitle(activeResource.getURI().lastSegment());
 			return editor;
 		}
@@ -183,7 +185,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		node2.doubleClick();
 		cTabItem(tabName).activate();
 		cTabItem(tabName).setFocus();
-		sleep(1000);
+//		sleep(1000);
 		return shell(elementType.getName());
 	}
 
@@ -200,7 +202,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		SWTBotTreeItem node2 = selectNode(editor, element);
 		node2.select();
 		SWTBotUtils.selectPropertyTabItem(tabName);
-		sleep(1000);
+//		sleep(1000);
 		return viewByTitle(UIConstants.PROPERTIES_VIEW_NAME);
 	}
 
@@ -257,6 +259,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void finalizeEdition(SWTBotEditor editor) {
 		activateEclipseShell();
 		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
+		// TODO : waitUntilKivabien ?
 		sleep(3000);
 		editor.close();
 	}
@@ -617,7 +620,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void removePropertyFlatReferencesTableFeature(SWTBotView propertyView, int buttonIndex,
 			SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		// SWTBot propertyBot = propertyView.bot();
-		removeEObjectFlatComboViewer(buttonIndex);
+		removeFlatReferencesTable(buttonIndex);
 		selectNode.select();
 	}
 
@@ -770,7 +773,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void removeTableComposition(int buttonIndex, String buttonLabel) throws WidgetInvalidException {
 		try {
 			table(buttonIndex).select(0);
-			buttonWithTooltip(buttonLabel, buttonIndex).click();
+			button(buttonLabel, buttonIndex).click();
 		} catch (Exception e) {
 			// empty table
 			throw new WidgetInvalidException();
@@ -841,10 +844,9 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param selectNode
 	 *            the SWTBotTreeItem in the treeview model
 	 */
-	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, Object feature,
-			SWTBotTreeItem selectNode) {
+	public void editPropertyEMFComboViewerFeature(SWTBotView propertyView, int comboIndex, Object feature, SWTBotTreeItem selectNode) {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.comboBox().setSelection(feature.toString());
+		propertyBot.comboBox(comboIndex).setSelection(feature.toString());
 		selectNode.select();
 	}
 
