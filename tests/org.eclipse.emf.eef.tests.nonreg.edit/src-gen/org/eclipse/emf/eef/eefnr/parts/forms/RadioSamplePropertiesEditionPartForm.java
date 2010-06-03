@@ -114,16 +114,17 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	protected void createRadioRequiredPropertyRadioViewer(Composite parent) {
 		radioRequiredPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
-		radioRequiredPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
-			}
-		});
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredPropertyData.horizontalSpan = 2;
 		radioRequiredPropertyRadioViewer.setLayoutData(radioRequiredPropertyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null);
+		radioRequiredPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
+			}
+		});
 	}
 
 	/**
@@ -131,16 +132,17 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	protected void createRadioOptionalPropertyRadioViewer(Composite parent) {
 		radioOptionalPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
-		radioOptionalPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
-			}
-		});
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalPropertyData.horizontalSpan = 2;
 		radioOptionalPropertyRadioViewer.setLayoutData(radioOptionalPropertyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.radioOptionalProperty, EefnrViewsRepository.FORM_KIND), null);
+		radioOptionalPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
+			}
+		});
 	}
 
 
