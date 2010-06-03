@@ -44,6 +44,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 	
@@ -207,11 +209,39 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			basePart.initFlatreferencetableRequiredProperty(flatReferencesTableSample, null, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
 			basePart.initFlatreferencetableOptionalProperty(flatReferencesTableSample, null, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
 			// init filters
+			basePart.addFilterToFlatreferencetableRequiredProperty(new ViewerFilter() {
+
+				/**
+				 * {@inheritDoc}
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!basePart.isContainedInFlatreferencetableRequiredPropertyTable((EObject)element));
+					return false;
+				}
+
+			});
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
 			
 			// End of user code
 
+			basePart.addFilterToFlatreferencetableOptionalProperty(new ViewerFilter() {
+
+				/**
+				 * {@inheritDoc}
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!basePart.isContainedInFlatreferencetableOptionalPropertyTable((EObject)element));
+					return element instanceof String && element.equals("");
+				}
+
+			});
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
 			

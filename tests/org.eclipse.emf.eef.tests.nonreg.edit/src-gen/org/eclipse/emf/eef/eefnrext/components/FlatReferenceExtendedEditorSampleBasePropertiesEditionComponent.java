@@ -46,6 +46,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 	
@@ -206,6 +208,20 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			// init values
 			basePart.initFlatReferenceEditorSample(flatReferenceExtendedEditorSample, null, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample());
 			// init filters
+			basePart.addFilterToFlatReferenceEditorSample(new ViewerFilter() {
+
+				/**
+				 * {@inheritDoc}
+				 * 
+				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+				 */
+				public boolean select(Viewer viewer, Object parentElement, Object element) {
+					if (element instanceof EObject)
+						return (!basePart.isContainedInFlatReferenceEditorSampleTable((EObject)element));
+					return element instanceof String && element.equals("");
+				}
+
+			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
 			

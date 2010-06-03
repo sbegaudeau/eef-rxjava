@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
-import org.eclipse.emf.eef.eefnr.TotalSample;
+import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -280,7 +280,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void addToTablecompositionRequiredProperty() {
 		// Start of user code addToTablecompositionRequiredProperty() method body
-				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {
@@ -488,7 +488,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void addToTablecompositionOptionalProperty() {
 		// Start of user code addToTablecompositionOptionalProperty() method body
-				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
 				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
 				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 				if (editionPolicy != null) {

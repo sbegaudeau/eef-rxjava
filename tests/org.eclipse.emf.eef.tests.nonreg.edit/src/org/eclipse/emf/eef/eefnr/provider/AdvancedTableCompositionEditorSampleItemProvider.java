@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AdvancedTableCompositionEditorSampleItemProvider.java,v 1.2 2010/02/02 10:03:56 nlepine Exp $
+ * $Id: AdvancedTableCompositionEditorSampleItemProvider.java,v 1.3 2010/06/03 13:49:29 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -156,12 +156,12 @@ public class AdvancedTableCompositionEditorSampleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY,
-				 EefnrFactory.eINSTANCE.createTotalSample()));
+				 EefnrFactory.eINSTANCE.createSample()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY,
-				 EefnrFactory.eINSTANCE.createTotalSample()));
+				 EefnrFactory.eINSTANCE.createSample()));
 	}
 
 	/**
