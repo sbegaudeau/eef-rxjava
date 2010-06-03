@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -143,7 +144,11 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 */
 	public Object getRadioRequiredProperty() {
-		return radioRequiredPropertyRadioViewer.getSelection();
+		if (radioRequiredPropertyRadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) radioRequiredPropertyRadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
 	}
 
 	/**
@@ -153,7 +158,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void initRadioRequiredProperty(EEnum eenum, Enumerator current) {
 		radioRequiredPropertyRadioViewer.setInput(eenum.getELiterals());
-		radioRequiredPropertyRadioViewer.setSelection(current);
+		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(current));
 	}
 
 	/**
@@ -163,7 +168,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 */
 	public void setRadioRequiredProperty(Object newValue) {
-		radioRequiredPropertyRadioViewer.setSelection(newValue);
+		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 	}
 
 
@@ -174,7 +179,11 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 */
 	public Object getRadioOptionalProperty() {
-		return radioOptionalPropertyRadioViewer.getSelection();
+		if (radioOptionalPropertyRadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) radioOptionalPropertyRadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
 	}
 
 	/**
@@ -184,7 +193,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void initRadioOptionalProperty(EEnum eenum, Enumerator current) {
 		radioOptionalPropertyRadioViewer.setInput(eenum.getELiterals());
-		radioOptionalPropertyRadioViewer.setSelection(current);
+		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(current));
 	}
 
 	/**
@@ -194,7 +203,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * 
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
-		radioOptionalPropertyRadioViewer.setSelection(newValue);
+		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 	}
 
 
