@@ -233,6 +233,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 				| SWT.RESIZE, patternFilter);
 		// use of EMF facilities
 		final TreeViewer treeViewer = filteredTree.getViewer();
+		treeViewer.setFilters(new ViewerFilter[0]);
 		treeViewer.setUseHashlookup(true);
 		treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
 			@Override
@@ -251,6 +252,14 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 				}
 				return super.getElements(inputElement);
 			}
+
+			@Override
+			public Object[] getChildren(Object object) {
+				// TODO Auto-generated method stub
+				Object[] children = super.getChildren(object);
+				return children;
+			}
+			
 		});
 
 		ArrayList<ViewerFilter> filters = new ArrayList<ViewerFilter>();
