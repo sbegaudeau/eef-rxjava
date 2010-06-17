@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -125,11 +124,11 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
-				EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
-				if (sample == null)
-					throw new InputModelInvalidException(sampleMetaClass.getName());
-				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), EcoreUtil.copy(sample)));
+		EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		if (sample == null)
+			throw new InputModelInvalidException(sampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		cc.append(AddCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), EcoreUtil.copy(sample)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -165,7 +164,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
-				editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(wizardShell);
+		editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(wizardShell);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -189,9 +188,11 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((AdvancedTableCompositionEditorSample)advancedTableCompositionEditorSample).getAdvancedtablecompositionRequiredProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), firstInstanceOf));
+		List eGet = (List)advancedTableCompositionEditorSample.eGet(EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty());
+		if (eGet.size() == 0)
+			throw new InputModelInvalidException("Model is invalid");					
+		EObject firstInstanceOf = (EObject) eGet.get(0);
+		cc.append(RemoveCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -251,11 +252,11 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
-				EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
-				if (sample == null)
-					throw new InputModelInvalidException(sampleMetaClass.getName());
-				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), EcoreUtil.copy(sample)));
+		EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		if (sample == null)
+			throw new InputModelInvalidException(sampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		cc.append(AddCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), EcoreUtil.copy(sample)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -291,7 +292,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
-				editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(wizardShell);
+		editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(wizardShell);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -315,9 +316,11 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((AdvancedTableCompositionEditorSample)advancedTableCompositionEditorSample).getAdvancedtablecompositionOptionalProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), firstInstanceOf));
+		List eGet = (List)advancedTableCompositionEditorSample.eGet(EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty());
+		if (eGet.size() == 0)
+			throw new InputModelInvalidException("Model is invalid");					
+		EObject firstInstanceOf = (EObject) eGet.get(0);
+		cc.append(RemoveCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}

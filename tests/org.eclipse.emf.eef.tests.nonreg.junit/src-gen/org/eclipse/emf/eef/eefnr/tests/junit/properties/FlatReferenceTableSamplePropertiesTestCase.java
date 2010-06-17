@@ -190,9 +190,13 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)flatReferencesTableSample.eGet(EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -314,9 +318,13 @@ public class FlatReferenceTableSamplePropertiesTestCase extends SWTBotEEFTestCas
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, totalSampleMetaClass);
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)flatReferencesTableSample.eGet(EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}

@@ -191,9 +191,13 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		if (advancedReferencesTableSample == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((AdvancedReferencesTableSample)advancedReferencesTableSample).getAdvancedreferencestableRequiredProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)advancedReferencesTableSample.eGet(EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -315,9 +319,13 @@ public class AdvancedReferencesTableSamplePropertiesTestCase extends SWTBotEEFTe
 		if (advancedReferencesTableSample == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((AdvancedReferencesTableSample)advancedReferencesTableSample).getAdvancedreferencestableOptionalProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, totalSampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)advancedReferencesTableSample.eGet(EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}

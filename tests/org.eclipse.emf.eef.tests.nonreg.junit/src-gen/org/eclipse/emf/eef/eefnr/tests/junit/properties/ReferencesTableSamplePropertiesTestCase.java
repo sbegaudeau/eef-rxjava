@@ -295,7 +295,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.editPropertyReferencesTableFeature(propertiesView, 1, 1, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyReferencesTableFeature(propertiesView, 1, 0, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
