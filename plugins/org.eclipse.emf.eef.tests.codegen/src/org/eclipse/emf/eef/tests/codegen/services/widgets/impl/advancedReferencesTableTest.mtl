@@ -28,10 +28,13 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isAdvancedReferencesTableReference())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]();
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
+List<EObject> allReferencedInstances = (List<EObject>)[pec.model.name.toLowerFirst()/].eGet([peElement.metamodelGetter()/]);
+if (allReferencedInstances.size() > 0) {
+	cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], allReferencedInstances.get(0)));
+}
+else {
+	throw new InputModelInvalidException();
+}
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedReferencesTableReference())]
@@ -86,4 +89,4 @@ CompoundCommand cc = new CompoundCommand();
 
 [query public advancedReferencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('AdvancedReferencesTable') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('AdvancedReferencesTable') or representationName('AdvancedTableComposition'))->indexOf(peElement)-1 /]

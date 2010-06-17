@@ -61,4 +61,4 @@ cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [pe
 
 [query public emfComboViewerIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('EMFComboViewer') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('EMFComboViewer'))->indexOf(peElement)-1 /]

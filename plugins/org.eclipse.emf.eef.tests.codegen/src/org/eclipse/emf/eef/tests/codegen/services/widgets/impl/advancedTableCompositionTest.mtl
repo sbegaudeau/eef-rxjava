@@ -20,17 +20,17 @@
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isAdvancedTableComposition())]
 EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.eType.ePackage.metamodelPackage()/].eINSTANCE.get[peElement.model.eType.name/]();
-		EObject [peElement.model.eType.name.toLowerFirst()/] = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		if ([peElement.model.eType.name.toLowerFirst()/] == null)
-			throw new InputModelInvalidException([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
-		CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], EcoreUtil.copy([peElement.model.eType.name.toLowerFirst()/])));
+EObject [peElement.model.eType.name.toLowerFirst()/] = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+if ([peElement.model.eType.name.toLowerFirst()/] == null)
+	throw new InputModelInvalidException([peElement.model.eType.name.toLowerFirst()/]MetaClass.getName());
+CompoundCommand cc = new CompoundCommand();
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], EcoreUtil.copy([peElement.model.eType.name.toLowerFirst()/])));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		editAdvancedTableComposition[peElement.name/]Feature(wizardShell);
+editAdvancedTableComposition[peElement.name/]Feature(wizardShell);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedTableComposition())]
@@ -90,10 +90,12 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 [comment defines the command to apply in order to obtain the expected model /]
 [template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isAdvancedTableComposition())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]();
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+List eGet = (List)[pec.model.name.toLowerFirst()/].eGet([peElement.metamodelGetter()/]);
+if (eGet.size() == 0)
+	throw new InputModelInvalidException("Model is invalid");					
+EObject firstInstanceOf = (EObject) eGet.get(0);
+cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
 [/template]
 
 [comment defines the bot command to process to edit the expected feature /]
@@ -115,4 +117,4 @@ CompoundCommand cc = new CompoundCommand();
 
 [query public advancedTableCompositionIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('AdvancedTableComposition') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('AdvancedTableComposition') or representationName('AdvancedReferencesTable'))->indexOf(peElement)-1 /]

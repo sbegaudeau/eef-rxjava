@@ -74,4 +74,4 @@ CompoundCommand cc = new CompoundCommand();
 
 [query public eOFCVIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('EObjectFlatComboViewer') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('EObjectFlatComboViewer'))->indexOf(peElement)-1 /]

@@ -39,7 +39,7 @@ else {
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editReferencesTableFeature(wizardShell, [peElement.referencesTableIndex()/], [if (peElement.model.required)]0[else]1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel);
+		bot.editReferencesTableFeature(wizardShell, [peElement.referencesTableIndex()/], 0, [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isReferencesTableReference())]
@@ -49,7 +49,7 @@ else {
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyReferencesTableFeature(propertiesView, [peElement.referencesTableIndex()/], [if (peElement.model.required)]0[else]1[/if], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyReferencesTableFeature(propertiesView, [peElement.referencesTableIndex()/], 0, [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isReferencesTableReference())]
@@ -78,4 +78,4 @@ else {
 
 [query public referencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('ReferencesTable') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('ReferencesTable'))->indexOf(peElement)-1 /]

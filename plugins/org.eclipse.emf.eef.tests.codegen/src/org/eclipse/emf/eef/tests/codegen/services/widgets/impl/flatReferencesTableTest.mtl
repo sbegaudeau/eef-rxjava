@@ -47,10 +47,13 @@ bot.editPropertyFlatReferencesTableFeature(propertiesView, [peElement.flatRefere
 [comment defines the command to apply in order to obtain the expected model /]
 [template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isFlatReferencesTableReference())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
+List<EObject> allReferencedInstances = (List<EObject>)[pec.model.name.toLowerFirst()/].eGet([peElement.metamodelGetter()/]);
+if (allReferencedInstances.size() > 0) {
+	cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], allReferencedInstances.get(0)));
+}
+else {
+	throw new InputModelInvalidException();
+}
 [/template]
 
 [comment defines the bot command to process to edit the expected feature /]
@@ -72,4 +75,4 @@ CompoundCommand cc = new CompoundCommand();
 
 [query public flatReferencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('FlatReferencesTable') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('FlatReferencesTable'))->indexOf(peElement)-1 /]

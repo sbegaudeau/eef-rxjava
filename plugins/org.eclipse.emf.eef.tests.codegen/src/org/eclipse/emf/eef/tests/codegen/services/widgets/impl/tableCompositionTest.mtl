@@ -81,7 +81,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 */
 	protected void editTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		SWTBot propertyBot = propertyView.bot();
-		propertyBot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel).click();
+		propertyBot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel, [peElement.tableCompositionIndex()/]).click();
 		editTableCompositionFor[peElement.name/]Feature();
 		selectNode.select();
 	}
@@ -115,4 +115,4 @@ CompoundCommand cc = new CompoundCommand();
 
 [query public tableCompositionIndex(peElement : PropertiesEditionElement) : Integer = 
 	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('TableComposition') and model.eType = peElement.model.eType)->indexOf(peElement)-1 /]
+			->select(representationName('TableComposition'))->indexOf(peElement)-1 /]
