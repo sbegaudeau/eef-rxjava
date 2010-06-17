@@ -16,10 +16,13 @@
 [import naming/]
 [import widgetGettersSetters /]
 
-
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.getterSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]RadioViewer.getSelection();
+		if ([elementEditor.name.toJavaIdentifier()/]RadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) [elementEditor.name.toJavaIdentifier()/]RadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
 	}
 [/template]
 
@@ -46,7 +49,7 @@
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.setterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(newValue);
+		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(new StructuredSelection(newValue));
 	}
 [/template]
 
@@ -66,7 +69,7 @@
 
 [setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.setterSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](newValue);
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageSetter()/](new StructuredSelection(newValue));
 	}
 [/template]
 
@@ -81,7 +84,7 @@
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.initSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setInput(eenum.getELiterals());
-		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(current);
+		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(new StructuredSelection(current));
 	}
 [/template]
 

@@ -16,7 +16,7 @@
 [import naming/]
 [import widgetGettersSetters /]
 
-[template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('EMFComboViewer'))]
 [elementEditor.initSignatureDocumentation()/]
 [elementEditor.initSignature()/];
 
@@ -24,11 +24,11 @@
 [elementEditor.setterSignature()/];
 [/template]
 
-[template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('EMFComboViewer'))]
 	public void init[elementEditor.viewPackageSignature()/](EEnum eenum, Enumerator current)
 [/template]
 
-[template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('EMFComboViewer'))]
 	/**
 	 * Init the [elementEditor.name/]
 	 * @param eenum the enum to manage
@@ -43,7 +43,7 @@
 	}
 [/template]
 
-[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setterImplementation ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setterImplementation ? (elementEditor.representationName('EMFComboViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignatureImplementation()/]
 
@@ -51,7 +51,7 @@
 [elementEditor.setterSignatureImplementation()/]
 [/template]
 
-[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('EMFComboViewer') or elementEditor.representationName('Radio'))]
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('EMFComboViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](eenum, current);	

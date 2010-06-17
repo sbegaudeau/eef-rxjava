@@ -95,6 +95,7 @@ protected Text [editor.name.toJavaIdentifier()/];
 						[editor.name.toJavaIdentifier()/]List = new BasicEList();
 					}
 					[editor.name.toJavaIdentifier()/].setText([editor.name.toJavaIdentifier()/]List.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/]List));
 					setHasChanged(true);
 				}
 			}
