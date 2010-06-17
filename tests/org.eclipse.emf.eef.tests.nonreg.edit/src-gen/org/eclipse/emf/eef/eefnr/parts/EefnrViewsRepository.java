@@ -110,12 +110,6 @@ public class EefnrViewsRepository {
 		public static String advancedtablecompositionOptionalProperty = "eefnr::TotalSample::advancedtablecompositionOptionalProperty";
 		
 		
-		public static String tablecompositionWithSameTypeOptionalProperty = "eefnr::TotalSample::tablecompositionWithSameTypeOptionalProperty";
-		
-		
-		public static String advancedtablecompositionWithSameTypeOptionalProperty = "eefnr::TotalSample::advancedtablecompositionWithSameTypeOptionalProperty";
-		
-		
 		public static String name = "eefnr::TotalSample::name";
 		
 	

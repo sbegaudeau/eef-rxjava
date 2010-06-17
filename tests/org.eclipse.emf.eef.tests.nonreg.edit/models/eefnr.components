@@ -81,12 +81,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LHAwvEd-uP4lw9e0IMw" name="advancedtablecompositionOptionalProperty" views="_Fx_LXwwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/advancedtablecompositionOptionalProperty"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_y_t28Q_gEd-fwJDNg0onkA" name="tablecompositionWithSameTypeOptionalProperty" views="_mjF-MQ_gEd-fwJDNg0onkA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/tablecompositionOnSameTypeOptionalProperty"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_y_t28w_gEd-fwJDNg0onkA" name="advancedtablecompositionWithSameTypeOptionalProperty" views="_mjF-Mw_gEd-fwJDNg0onkA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/advancedtablecompositionOnSametypeOptionalProperty"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ni-uEBAFEd-ehv9sVb76fA" name="name" views="_rfj4YBAFEd-ehv9sVb76fA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
         </properties>
@@ -403,12 +397,6 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LXwwvEd-uP4lw9e0IMw" name="advancedtablecompositionOptionalProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_mjF-MQ_gEd-fwJDNg0onkA" name="tablecompositionWithSameTypeOptionalProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_mjF-Mw_gEd-fwJDNg0onkA" name="advancedtablecompositionWithSameTypeOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_rfj4YBAFEd-ehv9sVb76fA" name="name">
