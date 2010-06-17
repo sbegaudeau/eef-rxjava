@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.impl.filters;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -34,7 +35,10 @@ public class EObjectStrictFilter extends ViewerFilter {
 
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		return eClassToFilter.isInstance(element);
+		if (element instanceof EObject)
+			return eClassToFilter.isInstance(element);
+		else
+			return true;
 	}
 
 }
