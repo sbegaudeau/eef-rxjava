@@ -95,6 +95,7 @@ public abstract class AbstractEEFMDFormPage extends FormPage {
 	protected void createFormContent(IManagedForm managedForm) {
 		super.createFormContent(managedForm);
 		block = createMasterDetailsBlock();
+		block.setEditingDomain(editingDomain);
 		this.managedForm = managedForm;
 		form = managedForm.getForm();
 		managedForm.getToolkit().decorateFormHeading(form.getForm());

@@ -12,6 +12,7 @@ package org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.eefviewer;
 
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock;
 import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterPart;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -30,9 +31,10 @@ public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 	/**
 	 * @param toolkit the toolkit to use to create part widgets
 	 * @param container the composite where to create the part
+	 * @param block the AbstractEEFMasterDetailsBlock which will contain this part
 	 */
-	public PropertiesViewerMasterPart(FormToolkit toolkit, Composite container) {
-		super(toolkit, container);
+	public PropertiesViewerMasterPart(FormToolkit toolkit, Composite container, AbstractEEFMasterDetailsBlock block) {
+		super(toolkit, container, block);
 	}
 
 	/**

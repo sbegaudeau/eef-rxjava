@@ -29,6 +29,8 @@ public class EEFTreeMDFormPage extends AbstractEEFMDFormPage {
 	 */
 	public static final String PAGE_ID = "EEF-md-form-page";  //$NON-NLS-1$
 	
+	private boolean initialMasterPartToolBarVisibility = true;
+	
 	/**
 	 * @param editor the form editor in which this page will be included
 	 */
@@ -44,7 +46,7 @@ public class EEFTreeMDFormPage extends AbstractEEFMDFormPage {
 	 */
 	@Override
 	protected AbstractEEFMasterDetailsBlock createMasterDetailsBlock() {
-		return new EEFTreeMasterDetailsBlock() {
+		EEFTreeMasterDetailsBlock block = new EEFTreeMasterDetailsBlock() {
 
 			/**
 			 * {@inheritDoc}
@@ -55,6 +57,23 @@ public class EEFTreeMDFormPage extends AbstractEEFMDFormPage {
 			}
 			
 		};
+		block.setInitialMasterPartToolBarVisibility(initialMasterPartToolBarVisibility);
+		return block;
+	}
+	
+	/**
+	 * set the initial master part tool bar visibility
+	 * @param value
+	 */
+	public void setInitialMasterPartToolBarVisibility(boolean value) {
+		initialMasterPartToolBarVisibility = value;
+	}
+	
+	/**
+	 * @return value
+	 */
+	public boolean isInitialMasterPartToolBarVisibility() {
+		return initialMasterPartToolBarVisibility;
 	}
 
 }

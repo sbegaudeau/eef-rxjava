@@ -19,6 +19,8 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class EEFTreeMasterDetailsBlock extends AbstractEEFMasterDetailsBlock {
 
+	private boolean initialMasterPartToolBarVisibility = true;
+	
 	/**
 	 * Default constructor. 
 	 * The block is orientable.
@@ -43,7 +45,25 @@ public class EEFTreeMasterDetailsBlock extends AbstractEEFMasterDetailsBlock {
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock#createEEFMasterPart(org.eclipse.swt.widgets.Composite)
 	 */
 	protected AbstractEEFMasterPart createEEFMasterPart(Composite masterContainer) {
-		return new EEFTreeMasterPart(toolkit, masterContainer);
+		EEFTreeMasterPart masterPart = new EEFTreeMasterPart(toolkit, masterContainer, this);
+		masterPart.showToolBar(initialMasterPartToolBarVisibility);
+		return masterPart;
+	}
+	
+	/**
+	 * set the tool bar visibility
+	 * @param value
+	 */
+	public void setInitialMasterPartToolBarVisibility(boolean value) {
+		initialMasterPartToolBarVisibility = value;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isInitialMasterPartToolBarVisibility() {
+		return initialMasterPartToolBarVisibility;
 	}
 
 }

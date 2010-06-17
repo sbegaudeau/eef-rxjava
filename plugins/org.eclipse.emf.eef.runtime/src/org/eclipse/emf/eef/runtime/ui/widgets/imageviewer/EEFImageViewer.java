@@ -22,7 +22,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
@@ -90,7 +92,21 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 	private void updateImage(String imagePath) {
 		this.imagePath = imagePath;
 		EEFRuntimePlugin.getDefault().registerImage(key, imagePath);
-		viewerCanvas.setBackgroundImage(EEFRuntimePlugin.getDefault().getRegisteredImage(key));
+		Image image = EEFRuntimePlugin.getDefault().getRegisteredImage(key);
+		
+		if(image != null) {
+			Image newImage = null;
+			if(this.getLayoutData() instanceof GridData) {
+				GridData gridData = (GridData) this.getLayoutData();
+				newImage = new Image(image.getDevice(), image.getImageData().scaledTo(gridData.widthHint, gridData.heightHint));
+			}
+			if(newImage == null) {
+				viewerCanvas.setBackgroundImage(image);
+			}
+			else {
+				viewerCanvas.setBackgroundImage(newImage);
+			}
+		}
 		viewerCanvas.redraw();
 	}
 	

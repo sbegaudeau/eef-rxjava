@@ -43,7 +43,7 @@ public class PropertiesViewerMasterDetailsBlock extends
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock#createEEFMasterPart(org.eclipse.swt.widgets.Composite)
 	 */
 	protected AbstractEEFMasterPart createEEFMasterPart(Composite masterContainer) {
-		return new PropertiesViewerMasterPart(toolkit, masterContainer);
+		return new PropertiesViewerMasterPart(toolkit, masterContainer, this);
 	}
 
 }

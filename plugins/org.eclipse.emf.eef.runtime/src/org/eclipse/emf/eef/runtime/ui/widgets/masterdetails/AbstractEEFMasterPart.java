@@ -28,19 +28,23 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  */
 public abstract class AbstractEEFMasterPart extends SectionPart {
 
-	private StructuredViewer modelViewer;
+	protected StructuredViewer modelViewer;
 	private AdapterFactory adapterFactory;
+	private AbstractEEFMasterDetailsBlock block;
 	
 	/**
 	 * @param toolkit the toolkit to use to create part widgets
 	 * @param container the composite where to create the part
+	 * @param block the AbstractEEFMasterDetailsBlock
 	 */
-	public AbstractEEFMasterPart(FormToolkit toolkit, Composite container) {
+	public AbstractEEFMasterPart(FormToolkit toolkit, Composite container, AbstractEEFMasterDetailsBlock block) {
 		super(container, toolkit, ExpandableComposite.TITLE_BAR);
+		this.block = block;
 		Composite sectionContainer = toolkit.createComposite(getSection());
 		createSectionClient(sectionContainer, toolkit);
 		getSection().setText(EEFRuntimeUIMessages.AbstractEEFMasterPart_part_title);
 		getSection().setClient(sectionContainer);
+		
 		
 	}
 	
@@ -49,7 +53,7 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	 * @param sectionContainer the parent
 	 * @param toolkit the toolkit to use
 	 */
-	private void createSectionClient(Composite sectionContainer, FormToolkit toolkit) {
+	protected void createSectionClient(Composite sectionContainer, FormToolkit toolkit) {
 		sectionContainer.setLayout(new GridLayout());
 		modelViewer = null;
 		modelViewer = createSectionClientContents(sectionContainer, toolkit);
@@ -124,6 +128,20 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	public void addFilter(ViewerFilter filter) {
 		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_filter_adding;
 		modelViewer.addFilter(filter);
+	}
+	
+	/**
+	 * @return the AbstractEEFMasterDetailsBlock
+	 */
+	public AbstractEEFMasterDetailsBlock getBlock() {
+		return block;
+	}
+	
+	/**
+	 * @param block the AbstractEEFMasterDetailsBlock
+	 */
+	public void setBlock(AbstractEEFMasterDetailsBlock block) {
+		this.block = block;
 	}
 		
 }

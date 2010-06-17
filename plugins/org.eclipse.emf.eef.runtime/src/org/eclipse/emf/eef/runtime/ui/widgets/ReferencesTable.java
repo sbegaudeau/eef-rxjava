@@ -372,7 +372,7 @@ public class ReferencesTable<T extends EObject> implements
 				tableListener = new EditItemListener());
 		// createTable
 		tableViewer = new TableViewer(table);
-
+		
 		// The filters.
 
 		data = new FormData();

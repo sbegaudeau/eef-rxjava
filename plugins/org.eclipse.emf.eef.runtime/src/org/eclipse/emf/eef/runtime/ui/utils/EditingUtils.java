@@ -27,18 +27,15 @@ public class EditingUtils {
 	 */
 	public static EditingDomain getResourceSetFromEditor(IWorkbenchPart part) {
 		EditingDomain editingDomain = null;
-		if (part instanceof ITabbedPropertySheetPageContributor) {
-			ITabbedPropertySheetPageContributor editor = (ITabbedPropertySheetPageContributor)part;
-			if (editor instanceof IEditingDomainProvider)
-				editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
-			if (editor instanceof IEditorPart) {
-				if ((((IEditorPart)editor).getAdapter(IEditingDomainProvider.class)) != null)
-					editingDomain = ((IEditingDomainProvider)((IEditorPart)editor)
+			if (part instanceof IEditingDomainProvider)
+				editingDomain = ((IEditingDomainProvider)part).getEditingDomain();
+			if (part instanceof IEditorPart) {
+				if ((((IEditorPart)part).getAdapter(IEditingDomainProvider.class)) != null)
+					editingDomain = ((IEditingDomainProvider)((IEditorPart)part)
 							.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
-				else if ((((IEditorPart)editor).getAdapter(EditingDomain.class)) != null)
-					editingDomain = (EditingDomain)((IEditorPart)editor).getAdapter(EditingDomain.class);
+				else if ((((IEditorPart)part).getAdapter(EditingDomain.class)) != null)
+					editingDomain = (EditingDomain)((IEditorPart)part).getAdapter(EditingDomain.class);
 			}
-		}
 		return editingDomain; 
 	}
 
