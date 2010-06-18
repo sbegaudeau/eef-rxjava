@@ -190,6 +190,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 						referencesList = new BasicEList();
 					}
 					references.setText(referencesList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TopicPropertiesEditionPartForm.this, ConferenceViewsRepository.Topic.references, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, referencesList));
 					setHasChanged(true);
 				}
 			}
@@ -282,6 +283,24 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 */
 	public void setReferences(EList newValue) {
 		referencesList = newValue;
+		if (newValue != null) {
+			references.setText(referencesList.toString());
+		} else {
+			references.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void addToReferences(java.lang.String newValue) {
+		referencesList.add(newValue);		
+		if (newValue != null) {
+			references.setText(referencesList.toString());
+		} else {
+			references.setText(""); //$NON-NLS-1$
+		}
+	}
+	
+	public void removeToReferences(java.lang.String newValue) {
+		referencesList.remove(newValue);		
 		if (newValue != null) {
 			references.setText(referencesList.toString());
 		} else {

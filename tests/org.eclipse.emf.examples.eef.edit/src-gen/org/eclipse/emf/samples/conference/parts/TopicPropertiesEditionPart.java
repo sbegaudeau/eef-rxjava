@@ -50,6 +50,18 @@ public interface TopicPropertiesEditionPart {
 	 */
 	public void setReferences(EList newValue);
 
+	/**
+	 * Add a value to the references multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToReferences(java.lang.String newValue);
+
+	/**
+	 * Remove a value to the references multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToReferences(java.lang.String newValue);
+
 
 	/**
 	 * @return the documentation

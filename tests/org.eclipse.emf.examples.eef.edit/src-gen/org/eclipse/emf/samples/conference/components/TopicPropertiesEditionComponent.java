@@ -17,8 +17,8 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -134,8 +134,12 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 				basePart.setDescription("");
 			}
 		}
-		if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null)
-			basePart.setReferences((EList)msg.getNewValue());
+		if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null) {
+			if (msg.getEventType() == Notification.ADD) 
+				basePart.addToReferences((java.lang.String) msg.getNewValue());
+			else if (msg.getEventType() == Notification.REMOVE) 
+				basePart.removeToReferences((java.lang.String) msg.getNewValue());
+		}
 
 		if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
@@ -219,7 +223,7 @@ public class TopicPropertiesEditionComponent extends StandardPropertiesEditionCo
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDescription()));
 
 			if (topic.getReferences() != null)
-				basePart.setReferences(topic.getReferences());
+				basePart.setReferences(new BasicEList(topic.getReferences()));
 
 			if (topic.getDocumentation() != null)
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDocumentation()));
