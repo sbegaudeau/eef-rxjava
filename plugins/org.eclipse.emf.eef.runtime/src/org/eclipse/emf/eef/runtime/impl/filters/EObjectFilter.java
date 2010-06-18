@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.eef.runtime.ui.utils.EcoreTool;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -43,13 +43,13 @@ public class EObjectFilter extends ViewerFilter {
 		if (element instanceof Resource) {
 			TreeIterator<EObject> iter = (((Resource)element)).getAllContents();
 			while (iter.hasNext()) {
-				if (EcoreTool.containsInstanceOfEClass(iter.next(), eClassToFilter))
+				if (EEFUtils.containsInstanceOfEClass(iter.next(), eClassToFilter))
 					return true;
 			}
 		}
 		if (element instanceof EObject) {
 			EObject eObject = (EObject)element;
-			return EcoreTool.containsInstanceOfEClass(eObject, eClassToFilter);
+			return EEFUtils.containsInstanceOfEClass(eObject, eClassToFilter);
 		}
 		return false;
 	}

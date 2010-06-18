@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.runtime.impl.utils;
+package org.eclipse.emf.eef.runtime.ui.notify;
 
 
 import org.eclipse.swt.SWT;

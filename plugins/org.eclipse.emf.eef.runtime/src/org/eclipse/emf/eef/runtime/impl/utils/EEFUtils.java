@@ -216,5 +216,45 @@ public class EEFUtils {
 		Bundle bundle = Platform.getBundle(name);
 		return bundle != null && bundle.getState() == Bundle.ACTIVE;
 	}
+	
+	/**
+	 * @param eObject
+	 *            the element to check
+	 * @return true if the given element match or contains a matching element
+	 */
+	public static boolean containsInstanceOfEClass(EObject element, EClass eClassToCheck) {
+		// Check type and super type matching
+		if (isInstanceOfEClass(element, eClassToCheck)) {
+			return true;
+		}
+		// Check containment
+		for (EObject container : element.eContents()) {
+			if (containsInstanceOfEClass(container, eClassToCheck)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @param eObject
+	 *            the element to check
+	 * @return true if the given element match or contains a matching element
+	 */
+	public static boolean isInstanceOfEClass(EObject element, EClass eClassToCheck) {
+		// Check type and super type matching
+		EClass eClass = element.eClass();
+		if (eClass.equals(eClassToCheck)) {
+			return true;
+		} else {
+			for (EClass eSuperClass : eClass.getEAllSuperTypes()) {
+				if (eSuperClass.equals(eClassToCheck)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 
 }
