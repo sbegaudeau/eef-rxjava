@@ -35,6 +35,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ControlListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -71,6 +76,10 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	protected ResourceSet allResources;
 
+	private ItemListener listener;
+
+	private ScrolledComposite scroll;
+
 	/**
 	 * Create an Viewer for EEF properties editing in the given parent composite.
 	 * 
@@ -85,10 +94,27 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		control = new Composite(container, SWT.NONE);
 		control.setLayout(new FillLayout());
 		control.setLayoutData(new GridData(GridData.FILL_BOTH));
-		folder = new CTabFolder(control, style);
+		scroll = new ScrolledComposite(control, SWT.V_SCROLL | SWT.H_SCROLL);
+		folder = new CTabFolder(scroll, style);
 	    folder.setSimple(false);
 		this.allResources = allResources;
 		this.kind = kind;
+		scroll.setContent(folder);
+		scroll.setExpandHorizontal(true);
+		scroll.setExpandVertical(true);
+		listener = new ItemListener();
+		folder.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				listener.updateControlListener();
+			}
+			
+		});
+		control.addControlListener(listener);
 	}
 
 	/**
@@ -524,5 +550,56 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/* ================================= Scroll management ================================= */
+	/**
+	 * update the scroll composite size
+	 */
+	private void updateScrollSize() {
+		if (folder.getSelection() != null && folder.getSelection().getControl() != null) {
+			scroll.setMinSize(folder.getSelection().getControl().computeSize(SWT.DEFAULT, SWT.DEFAULT));
+		}
+	}
+	
+	
+	private class ItemListener implements ControlListener{
+
+		Control listenedControl = null;
+		
+		/**
+		 * {@inheritDoc}
+		 * @see org.eclipse.swt.events.ControlListener#controlMoved(org.eclipse.swt.events.ControlEvent)
+		 */
+		public void controlMoved(ControlEvent e) {
+			// Nothing to do
+			
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see org.eclipse.swt.events.ControlListener#controlResized(org.eclipse.swt.events.ControlEvent)
+		 */
+		public void controlResized(ControlEvent e) {
+			updateScrollSize();
+		}
+		
+		/**
+		 * update listeners managing scroll composite size
+		 */
+		public void updateControlListener() {
+			if (listener.listenedControl != null) {
+				listener.listenedControl.removeControlListener(listener);
+			}
+			Control control2 = folder.getSelection().getControl();		
+			if (control2 != null) {
+				listener.listenedControl = control2;
+				control2.addControlListener(listener);
+			}		
+			
+		}
+
+		
+	}
+
 
 }

@@ -16,9 +16,11 @@ import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.ui.UIConstants;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -42,7 +44,18 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 		if (provider != null) {
 			PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext.getEditingDomain(),
 					eObject, editionContext.getEditingDomain().getResourceSet());
-			WizardDialog wDialog = new WizardDialog(getShell(), wizard);
+			WizardDialog wDialog = new WizardDialog(getShell(), wizard) {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
+				 */
+				@Override
+				protected Point getInitialSize() {
+					return UIConstants.INITIAL_WIZARD_SIZE;
+				}
+				
+			};
 			if (wDialog.open() == Window.OK)
 				return wizard.getCommand();
 		}
