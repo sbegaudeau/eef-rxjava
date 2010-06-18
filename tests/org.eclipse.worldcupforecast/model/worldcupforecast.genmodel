@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;      Obeo - initial API and implementation"
+    modelDirectory="/org.eclipse.worldcupforecast/src-gen" editDirectory="/org.eclipse.worldcupforecast.edit/src-gen"
+    editorDirectory="/org.eclipse.worldcupforecast.editor/src-gen" modelPluginID="org.eclipse.worldcupforecast"
+    modelName="Worldcupforecast" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
+    complianceLevel="6.0" editorPluginID="org.eclipse.worldcupforecast.editor">
+  <foreignModel>worldcupforecast.ecore</foreignModel>
+  <genPackages prefix="Worldcupforecast" basePackage="org.eclipse" disposableProviderFactory="true"
+      multipleEditorPages="false" ecorePackage="worldcupforecast.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="worldcupforecast.ecore#//MatchType">
+      <genEnumLiterals ecoreEnumLiteral="worldcupforecast.ecore#//MatchType/quarterFinal"/>
+      <genEnumLiterals ecoreEnumLiteral="worldcupforecast.ecore#//MatchType/semiFinal"/>
+      <genEnumLiterals ecoreEnumLiteral="worldcupforecast.ecore#//MatchType/final"/>
+    </genEnums>
+    <genClasses ecoreClass="worldcupforecast.ecore#//WorldCupForecast">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//WorldCupForecast/groups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//WorldCupForecast/players"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//WorldCupForecast/matchDays"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//WorldCupForecast/validatePlayers"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//Forecast">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//Forecast/match"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//Forecast/winner"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Forecast/score"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="worldcupforecast.ecore#//Match">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Match/hours"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Match/minutes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Match/coefficient"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//Match/score"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Match/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//Match/team1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//Match/team2"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="worldcupforecast.ecore#//Score">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Score/scoreTeam1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Score/scoreTeam2"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//Team">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/pics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/points"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/goalsFor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/goalsAgainst"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/goalDifference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Team/played"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//WorldCupGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//WorldCupGroup/teams"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//WorldCupGroup/name"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//Player">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//Player/forecastDays"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Player/score"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Player/name"/>
+      <genOperations ecoreOperation="worldcupforecast.ecore#//Player/goodForecastNumber"/>
+      <genOperations ecoreOperation="worldcupforecast.ecore#//Player/perfectForecastsNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//ValidatePlayer">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//ValidatePlayer/player"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//ValidatePlayer/forecastDays"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//FinalScore">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//FinalScore/penaltyScoreTeam1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//FinalScore/penaltyScoreTeam2"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference worldcupforecast.ecore#//FinalScore/winner"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//MatchDay">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//MatchDay/matches"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//ForecastDay">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//ForecastDay/forecasts"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="worldcupforecast.ecore#//Day">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//Day/date"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//GroupStageMatch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//GroupStageMatch/manualTeam1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//GroupStageMatch/manualTeam2"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//OtherKnockoutStageMatch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//OtherKnockoutStageMatch/team1WinnerOfMatch"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//OtherKnockoutStageMatch/team2WinnerOfMatch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute worldcupforecast.ecore#//OtherKnockoutStageMatch/type"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//ThirdPlaceMatch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//ThirdPlaceMatch/team1LooserOfMatch"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//ThirdPlaceMatch/team2LooserOfMatch"/>
+    </genClasses>
+    <genClasses ecoreClass="worldcupforecast.ecore#//RoundOfSixteenMatch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//RoundOfSixteenMatch/team1WinnerOfGroup"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//RoundOfSixteenMatch/team2RunnerUpOfGroup"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="worldcupforecast.ecore#//KnockoutStageMatch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//KnockoutStageMatch/calculatedTeam1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference worldcupforecast.ecore#//KnockoutStageMatch/calculatedTeam2"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
