@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/fr.obeo.dsl.worldcupforecast.edit/src-gen">
+  <editionContexts basePackage="fr.obeo.dsl" descriptorsGenericPropertiesViews="true">
+    <PropertiesEditionContext href="worldcupforecast.components#_cnphAEfAEd-tFfX7rU4KvA"/>
+  </editionContexts>
+  <viewsRepositories basePackage="fr.obeo.dsl.worldcupforecast" swtViews="true" formViews="true">
+    <viewsRepository href="worldcupforecast.components#_cnphJUfAEd-tFfX7rU4KvA"/>
+  </viewsRepositories>
+</eef-gen:EEFGenModel>
