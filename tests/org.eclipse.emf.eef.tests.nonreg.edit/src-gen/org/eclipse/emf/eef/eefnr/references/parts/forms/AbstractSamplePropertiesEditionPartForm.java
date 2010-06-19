@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -139,6 +140,8 @@ public class AbstractSamplePropertiesEditionPartForm extends CompositeProperties
 				}
 			}
 		});
+		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.name, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

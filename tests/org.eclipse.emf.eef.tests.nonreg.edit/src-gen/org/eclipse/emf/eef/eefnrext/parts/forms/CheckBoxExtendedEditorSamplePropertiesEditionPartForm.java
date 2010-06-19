@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -132,6 +133,8 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 		GridData checkboxEditorSampleData = new GridData(GridData.FILL_HORIZONTAL);
 		checkboxEditorSampleData.horizontalSpan = 2;
 		checkboxEditorSample.setLayoutData(checkboxEditorSampleData);
+		EditingUtils.setID(checkboxEditorSample, EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample);
+		EditingUtils.setEEFtype(checkboxEditorSample, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

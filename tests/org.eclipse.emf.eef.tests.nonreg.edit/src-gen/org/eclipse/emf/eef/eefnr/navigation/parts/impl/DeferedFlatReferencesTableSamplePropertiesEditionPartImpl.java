@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -153,6 +154,8 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 			}
 
 		});
+		EditingUtils.setID(name, NavigationViewsRepository.DeferedFlatReferencesTableSample.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedFlatReferencesTableSample.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -175,6 +178,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 		});
 		GridData flatReferencesTableSampleEditorData = new GridData(GridData.FILL_HORIZONTAL);
 		flatReferencesTableSampleEditor.setLayoutData(flatReferencesTableSampleEditorData);
+		flatReferencesTableSampleEditor.setID(NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

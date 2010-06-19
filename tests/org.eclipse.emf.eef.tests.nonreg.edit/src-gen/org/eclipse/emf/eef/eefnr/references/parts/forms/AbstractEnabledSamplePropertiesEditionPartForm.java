@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -131,6 +132,8 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 		GridData enabledData = new GridData(GridData.FILL_HORIZONTAL);
 		enabledData.horizontalSpan = 2;
 		enabled.setLayoutData(enabledData);
+		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.enabled);
+		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.enabled, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

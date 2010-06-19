@@ -141,6 +141,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		this.advancedtablecompositionRequiredProperty.setLayoutData(advancedtablecompositionRequiredPropertyData);
 		this.advancedtablecompositionRequiredProperty.setLowerBound(1);
 		this.advancedtablecompositionRequiredProperty.setUpperBound(-1);
+		advancedtablecompositionRequiredProperty.setID(EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty);
+		advancedtablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
@@ -227,6 +229,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		this.advancedtablecompositionOptionalProperty.setLayoutData(advancedtablecompositionOptionalPropertyData);
 		this.advancedtablecompositionOptionalProperty.setLowerBound(0);
 		this.advancedtablecompositionOptionalProperty.setUpperBound(-1);
+		advancedtablecompositionOptionalProperty.setID(EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty);
+		advancedtablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**

@@ -133,6 +133,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 			}
 
 		});
+		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -158,6 +159,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 			}
 
 		});
+		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

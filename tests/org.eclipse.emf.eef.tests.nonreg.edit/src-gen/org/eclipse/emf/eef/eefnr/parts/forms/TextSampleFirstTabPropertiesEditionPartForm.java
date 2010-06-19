@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -141,6 +142,8 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 				}
 			}
 		});
+		EditingUtils.setID(textRequiredPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab);
+		EditingUtils.setEEFtype(textRequiredPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -178,6 +181,8 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 				}
 			}
 		});
+		EditingUtils.setID(textOptionalPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab);
+		EditingUtils.setEEFtype(textOptionalPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

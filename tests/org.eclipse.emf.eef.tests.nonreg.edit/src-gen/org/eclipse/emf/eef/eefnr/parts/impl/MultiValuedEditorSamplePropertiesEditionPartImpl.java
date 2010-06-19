@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -119,6 +120,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
+		EditingUtils.setID(multivaluededitorRequiredProperty, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty);
+		EditingUtils.setEEFtype(multivaluededitorRequiredProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editMultivaluededitorRequiredProperty = new Button(parent, SWT.NONE);
 		editMultivaluededitorRequiredProperty.setText(EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel);
 		GridData editMultivaluededitorRequiredPropertyData = new GridData();
@@ -146,6 +149,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 				}
 			}
 		});
+		EditingUtils.setID(editMultivaluededitorRequiredProperty, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty);
+		EditingUtils.setEEFtype(editMultivaluededitorRequiredProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 	}
 
 	protected void createMultivaluededitorOptionalPropertyMultiValuedEditor(Composite parent) {
@@ -153,6 +158,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
+		EditingUtils.setID(multivaluededitorOptionalProperty, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty);
+		EditingUtils.setEEFtype(multivaluededitorOptionalProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editMultivaluededitorOptionalProperty = new Button(parent, SWT.NONE);
 		editMultivaluededitorOptionalProperty.setText(EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel);
 		GridData editMultivaluededitorOptionalPropertyData = new GridData();
@@ -180,6 +187,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 				}
 			}
 		});
+		EditingUtils.setID(editMultivaluededitorOptionalProperty, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty);
+		EditingUtils.setEEFtype(editMultivaluededitorOptionalProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 	}
 
 

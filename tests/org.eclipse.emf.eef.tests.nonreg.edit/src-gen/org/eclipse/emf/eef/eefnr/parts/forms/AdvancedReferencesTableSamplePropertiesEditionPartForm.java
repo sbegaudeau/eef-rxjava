@@ -157,6 +157,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 		advancedreferencestableRequiredPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableRequiredProperty.setLayoutData(advancedreferencestableRequiredPropertyData);
 		this.advancedreferencestableRequiredProperty.disableMove();
+		advancedreferencestableRequiredProperty.setID(EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty);
+		advancedreferencestableRequiredProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**
@@ -235,6 +237,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 		advancedreferencestableOptionalPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableOptionalProperty.setLayoutData(advancedreferencestableOptionalPropertyData);
 		this.advancedreferencestableOptionalProperty.disableMove();
+		advancedreferencestableOptionalProperty.setID(EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty);
+		advancedreferencestableOptionalProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**

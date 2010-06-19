@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -111,6 +112,8 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		textareaRequiredPropertyData.heightHint = 80;
 		textareaRequiredPropertyData.widthHint = 200;
 		textareaRequiredProperty.setLayoutData(textareaRequiredPropertyData);
+		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TextareaSample.textareaRequiredProperty);
+		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -126,6 +129,8 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		textareaOptionalPropertyData.heightHint = 80;
 		textareaOptionalPropertyData.widthHint = 200;
 		textareaOptionalProperty.setLayoutData(textareaOptionalPropertyData);
+		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TextareaSample.textareaOptionalProperty);
+		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

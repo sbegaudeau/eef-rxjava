@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -125,6 +126,8 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 		GridData checkboxRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		checkboxRequiredPropertyData.horizontalSpan = 2;
 		checkboxRequiredProperty.setLayoutData(checkboxRequiredPropertyData);
+		EditingUtils.setID(checkboxRequiredProperty, EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty);
+		EditingUtils.setEEFtype(checkboxRequiredProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -148,6 +151,8 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 		GridData checkboxOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		checkboxOptionalPropertyData.horizontalSpan = 2;
 		checkboxOptionalProperty.setLayoutData(checkboxOptionalPropertyData);
+		EditingUtils.setID(checkboxOptionalProperty, EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty);
+		EditingUtils.setEEFtype(checkboxOptionalProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

@@ -45,6 +45,7 @@ import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -60,15 +61,12 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ControlEvent;
-import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -161,7 +159,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
-		view.setData("id", "toto");
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
@@ -190,27 +187,6 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	protected void createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.addControlListener(new ControlListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * @see org.eclipse.swt.events.ControlListener#controlMoved(org.eclipse.swt.events.ControlEvent)
-			 */
-			public void controlMoved(ControlEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			/**
-			 * {@inheritDoc}
-			 * @see org.eclipse.swt.events.ControlListener#controlResized(org.eclipse.swt.events.ControlEvent)
-			 */
-			public void controlResized(ControlEvent e) {
-				Point size = view.getSize();
-				System.out.println("Appelé depuis la part, size : " + size.x + "/" + size.y);
-			}
-			
-		});
 		propertiesGroup.setText(EefnrMessages.TotalSamplePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
@@ -285,6 +261,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 
 		});
+		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.TotalSample.textRequiredProperty);
+		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -328,6 +306,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 
 		});
+		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.TotalSample.textOptionalProperty);
+		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -338,6 +318,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData checkboxRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		checkboxRequiredPropertyData.horizontalSpan = 2;
 		checkboxRequiredProperty.setLayoutData(checkboxRequiredPropertyData);
+		EditingUtils.setID(checkboxRequiredProperty, EefnrViewsRepository.TotalSample.checkboxRequiredProperty);
+		EditingUtils.setEEFtype(checkboxRequiredProperty, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.checkboxRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -348,6 +330,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData checkboxOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		checkboxOptionalPropertyData.horizontalSpan = 2;
 		checkboxOptionalProperty.setLayoutData(checkboxOptionalPropertyData);
+		EditingUtils.setID(checkboxOptionalProperty, EefnrViewsRepository.TotalSample.checkboxOptionalProperty);
+		EditingUtils.setEEFtype(checkboxOptionalProperty, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.checkboxOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -391,6 +375,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 
 		});
+		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TotalSample.textareaRequiredProperty);
+		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -434,6 +420,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 
 		});
+		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TotalSample.textareaOptionalProperty);
+		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -445,6 +433,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredProperty.getCombo().setLayoutData(radioRequiredPropertyData);
+		radioRequiredProperty.setID(EefnrViewsRepository.TotalSample.radioRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -456,6 +445,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalProperty.getCombo().setLayoutData(radioOptionalPropertyData);
+		radioOptionalProperty.setID(EefnrViewsRepository.TotalSample.radioOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -477,6 +467,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		GridData eobjectflatcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		eobjectflatcomboviewerRequiredProperty.setLayoutData(eobjectflatcomboviewerRequiredPropertyData);
+		eobjectflatcomboviewerRequiredProperty.setID(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -498,6 +489,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		GridData eobjectflatcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		eobjectflatcomboviewerOptionalProperty.setLayoutData(eobjectflatcomboviewerOptionalPropertyData);
+		eobjectflatcomboviewerOptionalProperty.setID(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -535,6 +527,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		referencestableRequiredPropertyData.horizontalSpan = 3;
 		this.referencestableRequiredProperty.setLayoutData(referencestableRequiredPropertyData);
 		this.referencestableRequiredProperty.disableMove();
+		referencestableRequiredProperty.setID(EefnrViewsRepository.TotalSample.referencestableRequiredProperty);
+		referencestableRequiredProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**
@@ -618,6 +612,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		referencestableOptionalPropertyData.horizontalSpan = 3;
 		this.referencestableOptionalProperty.setLayoutData(referencestableOptionalPropertyData);
 		this.referencestableOptionalProperty.disableMove();
+		referencestableOptionalProperty.setID(EefnrViewsRepository.TotalSample.referencestableOptionalProperty);
+		referencestableOptionalProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**
@@ -675,6 +671,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		emfcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
 		GridData emfcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerRequiredProperty.getCombo().setLayoutData(emfcomboviewerRequiredPropertyData);
+		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -686,6 +683,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		emfcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
 		GridData emfcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerOptionalProperty.getCombo().setLayoutData(emfcomboviewerOptionalPropertyData);
+		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -694,6 +692,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
+		EditingUtils.setID(multivaluededitorRequiredProperty, EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty);
+		EditingUtils.setEEFtype(multivaluededitorRequiredProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editMultivaluededitorRequiredProperty = new Button(parent, SWT.NONE);
 		editMultivaluededitorRequiredProperty.setText(EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel);
 		GridData editMultivaluededitorRequiredPropertyData = new GridData();
@@ -721,6 +721,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 			}
 		});
+		EditingUtils.setID(editMultivaluededitorRequiredProperty, EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty);
+		EditingUtils.setEEFtype(editMultivaluededitorRequiredProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 	}
 
 	protected void createMultivaluededitorOptionalPropertyMultiValuedEditor(Composite parent) {
@@ -728,6 +730,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
+		EditingUtils.setID(multivaluededitorOptionalProperty, EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty);
+		EditingUtils.setEEFtype(multivaluededitorOptionalProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editMultivaluededitorOptionalProperty = new Button(parent, SWT.NONE);
 		editMultivaluededitorOptionalProperty.setText(EefnrMessages.TotalSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel);
 		GridData editMultivaluededitorOptionalPropertyData = new GridData();
@@ -755,6 +759,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 			}
 		});
+		EditingUtils.setID(editMultivaluededitorOptionalProperty, EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty);
+		EditingUtils.setEEFtype(editMultivaluededitorOptionalProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 	}
 
 	/**
@@ -776,6 +782,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		this.tablecompositionRequiredProperty.setLayoutData(tablecompositionRequiredPropertyData);
 		this.tablecompositionRequiredProperty.setLowerBound(1);
 		this.tablecompositionRequiredProperty.setUpperBound(-1);
+		tablecompositionRequiredProperty.setID(EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty);
+		tablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
@@ -858,6 +866,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		this.tablecompositionOptionalProperty.setLayoutData(tablecompositionOptionalPropertyData);
 		this.tablecompositionOptionalProperty.setLowerBound(0);
 		this.tablecompositionOptionalProperty.setUpperBound(-1);
+		tablecompositionOptionalProperty.setID(EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty);
+		tablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
@@ -955,6 +965,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		advancedreferencestableRequiredPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableRequiredProperty.setLayoutData(advancedreferencestableRequiredPropertyData);
 		this.advancedreferencestableRequiredProperty.disableMove();
+		advancedreferencestableRequiredProperty.setID(EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty);
+		advancedreferencestableRequiredProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**
@@ -1038,6 +1050,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		advancedreferencestableOptionalPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableOptionalProperty.setLayoutData(advancedreferencestableOptionalPropertyData);
 		this.advancedreferencestableOptionalProperty.disableMove();
+		advancedreferencestableOptionalProperty.setID(EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty);
+		advancedreferencestableOptionalProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**
@@ -1105,6 +1119,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		GridData advancedeobjectflatcomboviewerRequiredProperyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerRequiredPropery.setLayoutData(advancedeobjectflatcomboviewerRequiredProperyData);
+		advancedeobjectflatcomboviewerRequiredPropery.setID(EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -1126,6 +1141,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		GridData advancedeobjectflatcomboviewerOptionalProperyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerOptionalPropery.setLayoutData(advancedeobjectflatcomboviewerOptionalProperyData);
+		advancedeobjectflatcomboviewerOptionalPropery.setID(EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -1148,6 +1164,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		this.advancedtablecompositionRequiredProperty.setLayoutData(advancedtablecompositionRequiredPropertyData);
 		this.advancedtablecompositionRequiredProperty.setLowerBound(1);
 		this.advancedtablecompositionRequiredProperty.setUpperBound(-1);
+		advancedtablecompositionRequiredProperty.setID(EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty);
+		advancedtablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
@@ -1230,6 +1248,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		this.advancedtablecompositionOptionalProperty.setLayoutData(advancedtablecompositionOptionalPropertyData);
 		this.advancedtablecompositionOptionalProperty.setLowerBound(0);
 		this.advancedtablecompositionOptionalProperty.setUpperBound(-1);
+		advancedtablecompositionOptionalProperty.setID(EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty);
+		advancedtablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
@@ -1333,6 +1353,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 
 		});
+		EditingUtils.setID(name, EefnrViewsRepository.TotalSample.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.name, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -141,6 +142,8 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImp
 			}
 
 		});
+		EditingUtils.setID(name, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

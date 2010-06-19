@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -141,6 +142,8 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 				}
 			}
 		});
+		EditingUtils.setID(demo, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo);
+		EditingUtils.setEEFtype(demo, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -178,6 +181,8 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 				}
 			}
 		});
+		EditingUtils.setID(size, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size);
+		EditingUtils.setEEFtype(size, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

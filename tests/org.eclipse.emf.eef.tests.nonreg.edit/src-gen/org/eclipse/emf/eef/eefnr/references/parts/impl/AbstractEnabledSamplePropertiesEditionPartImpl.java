@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -110,6 +111,8 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		GridData enabledData = new GridData(GridData.FILL_HORIZONTAL);
 		enabledData.horizontalSpan = 2;
 		enabled.setLayoutData(enabledData);
+		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.enabled);
+		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.enabled, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -148,6 +149,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		referencestableRequiredPropertyData.minimumHeight = 120;
 		referencestableRequiredPropertyData.heightHint = 120;
 		referencestableRequiredProperty.getTable().setLayoutData(referencestableRequiredPropertyData);
+		EditingUtils.setID(referencestableRequiredProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty);
+		EditingUtils.setEEFtype(referencestableRequiredProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
 		createReferencestableRequiredPropertyControlPanel(parent, widgetFactory);
 	}
 
@@ -236,6 +239,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 			}
 
 		});
+		EditingUtils.setID(addReferencestableRequiredProperty, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty);
+		EditingUtils.setEEFtype(addReferencestableRequiredProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencestableRequiredProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableRequiredProperty.setLayoutData(removeData);
@@ -256,6 +261,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 			}
 
 		});
+		EditingUtils.setID(removeReferencestableRequiredProperty, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty);
+		EditingUtils.setEEFtype(removeReferencestableRequiredProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
 	
 	/**
@@ -304,6 +311,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		referencestableOptionalPropertyData.minimumHeight = 120;
 		referencestableOptionalPropertyData.heightHint = 120;
 		referencestableOptionalProperty.getTable().setLayoutData(referencestableOptionalPropertyData);
+		EditingUtils.setID(referencestableOptionalProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty);
+		EditingUtils.setEEFtype(referencestableOptionalProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
 		createReferencestableOptionalPropertyControlPanel(parent, widgetFactory);
 	}
 
@@ -392,6 +401,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 			}
 
 		});
+		EditingUtils.setID(addReferencestableOptionalProperty, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty);
+		EditingUtils.setEEFtype(addReferencestableOptionalProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencestableOptionalProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableOptionalProperty.setLayoutData(removeData);
@@ -412,6 +423,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 			}
 
 		});
+		EditingUtils.setID(removeReferencestableOptionalProperty, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty);
+		EditingUtils.setEEFtype(removeReferencestableOptionalProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
 	
 	/**

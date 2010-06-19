@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext
 import org.eclipse.emf.eef.runtime.impl.policies.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -168,6 +169,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 			}
 
 		});
+		EditingUtils.setID(name, EefnrViewsRepository.TableCompositionExtensionEditorSample.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.name, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -190,6 +193,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 		this.tablecompositionRequiredProperty.setLayoutData(tablecompositionRequiredPropertyData);
 		this.tablecompositionRequiredProperty.setLowerBound(1);
 		this.tablecompositionRequiredProperty.setUpperBound(-1);
+		tablecompositionRequiredProperty.setID(EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty);
+		tablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
@@ -267,6 +272,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 		this.tablecompositionOptionalProperty.setLayoutData(tablecompositionOptionalPropertyData);
 		this.tablecompositionOptionalProperty.setLowerBound(1);
 		this.tablecompositionOptionalProperty.setUpperBound(-1);
+		tablecompositionOptionalProperty.setID(EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty);
+		tablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**

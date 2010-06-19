@@ -127,6 +127,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		});
 		GridData flatreferencetableRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		flatreferencetableRequiredProperty.setLayoutData(flatreferencetableRequiredPropertyData);
+		flatreferencetableRequiredProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -150,6 +151,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		});
 		GridData flatreferencetableOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		flatreferencetableOptionalProperty.setLayoutData(flatreferencetableOptionalPropertyData);
+		flatreferencetableOptionalProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

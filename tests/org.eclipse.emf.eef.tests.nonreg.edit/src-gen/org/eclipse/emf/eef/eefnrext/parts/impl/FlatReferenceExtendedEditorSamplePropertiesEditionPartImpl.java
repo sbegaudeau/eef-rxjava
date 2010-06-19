@@ -133,6 +133,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		});
 		GridData flatReferenceEditorSampleData = new GridData(GridData.FILL_HORIZONTAL);
 		flatReferenceEditorSample.setLayoutData(flatReferenceEditorSampleData);
+		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

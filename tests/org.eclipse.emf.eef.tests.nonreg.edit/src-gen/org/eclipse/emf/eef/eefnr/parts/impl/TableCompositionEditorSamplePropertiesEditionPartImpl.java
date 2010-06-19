@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -204,6 +205,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		tablecompositionRequiredPropertyData.minimumHeight = 120;
 		tablecompositionRequiredPropertyData.heightHint = 120;
 		tablecompositionRequiredProperty.getTable().setLayoutData(tablecompositionRequiredPropertyData);
+		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty);
+		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
 		createTablecompositionRequiredPropertyPanel(tableContainer);
 	}
 
@@ -231,6 +234,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 				addToTablecompositionRequiredProperty();
 			}
 		});
+		EditingUtils.setID(addTablecompositionRequiredProperty, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty);
+		EditingUtils.setEEFtype(addTablecompositionRequiredProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
 		Button removeTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		removeTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
 		GridData removeTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -248,6 +253,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			}
 
 		});
+		EditingUtils.setID(removeTablecompositionRequiredProperty, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty);
+		EditingUtils.setEEFtype(removeTablecompositionRequiredProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
 		Button editTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		editTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
 		GridData editTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -265,6 +272,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			}
 
 		});
+		EditingUtils.setID(editTablecompositionRequiredProperty, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty);
+		EditingUtils.setEEFtype(editTablecompositionRequiredProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
 		return tablecompositionRequiredPropertyPanel;
 	}
 
@@ -411,6 +420,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		tablecompositionOptionalPropertyData.minimumHeight = 120;
 		tablecompositionOptionalPropertyData.heightHint = 120;
 		tablecompositionOptionalProperty.getTable().setLayoutData(tablecompositionOptionalPropertyData);
+		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty);
+		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
 		createTablecompositionOptionalPropertyPanel(tableContainer);
 	}
 
@@ -438,6 +449,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 				addToTablecompositionOptionalProperty();
 			}
 		});
+		EditingUtils.setID(addTablecompositionOptionalProperty, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty);
+		EditingUtils.setEEFtype(addTablecompositionOptionalProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
 		Button removeTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		removeTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
 		GridData removeTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -455,6 +468,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			}
 
 		});
+		EditingUtils.setID(removeTablecompositionOptionalProperty, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty);
+		EditingUtils.setEEFtype(removeTablecompositionOptionalProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
 		Button editTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		editTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
 		GridData editTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -472,6 +487,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			}
 
 		});
+		EditingUtils.setID(editTablecompositionOptionalProperty, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty);
+		EditingUtils.setEEFtype(editTablecompositionOptionalProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
 		return tablecompositionOptionalPropertyPanel;
 	}
 

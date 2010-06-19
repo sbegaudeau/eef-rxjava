@@ -125,6 +125,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
+		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.radioRequiredProperty);
 	}
 
 	/**
@@ -143,6 +144,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
+		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.radioOptionalProperty);
 	}
 
 

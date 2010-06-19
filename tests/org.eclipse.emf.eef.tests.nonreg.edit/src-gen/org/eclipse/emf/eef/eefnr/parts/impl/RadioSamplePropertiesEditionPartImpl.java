@@ -109,6 +109,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredPropertyData.horizontalSpan = 2;
 		radioRequiredPropertyRadioViewer.setLayoutData(radioRequiredPropertyData);
+		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.radioRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null);
 	}
 
@@ -120,6 +121,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalPropertyData.horizontalSpan = 2;
 		radioOptionalPropertyRadioViewer.setLayoutData(radioOptionalPropertyData);
+		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.radioOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null);
 	}
 

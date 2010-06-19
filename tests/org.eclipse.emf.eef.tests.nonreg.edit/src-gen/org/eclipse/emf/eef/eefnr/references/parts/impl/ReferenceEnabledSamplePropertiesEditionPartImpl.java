@@ -158,6 +158,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		referenceData.horizontalSpan = 3;
 		this.reference.setLayoutData(referenceData);
 		this.reference.disableMove();
+		reference.setID(ReferencesViewsRepository.ReferenceEnabledSample.reference);
+		reference.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**

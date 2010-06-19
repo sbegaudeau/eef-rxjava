@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -143,6 +144,8 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 			}
 
 		});
+		EditingUtils.setID(textRequiredPropertyInSecondTab, EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab);
+		EditingUtils.setEEFtype(textRequiredPropertyInSecondTab, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -186,6 +189,8 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 			}
 
 		});
+		EditingUtils.setID(textOptionalPropertyInSecondTab, EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab);
+		EditingUtils.setEEFtype(textOptionalPropertyInSecondTab, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

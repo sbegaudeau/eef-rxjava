@@ -134,6 +134,8 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		this.samples.setLayoutData(samplesData);
 		this.samples.setLowerBound(0);
 		this.samples.setUpperBound(-1);
+		samples.setID(EefnrViewsRepository.Root.samples);
+		samples.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**
