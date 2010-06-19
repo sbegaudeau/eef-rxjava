@@ -63,6 +63,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 		});
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 	}
 

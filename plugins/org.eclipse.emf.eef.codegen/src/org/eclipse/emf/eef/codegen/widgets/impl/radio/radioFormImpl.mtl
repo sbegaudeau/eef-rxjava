@@ -54,6 +54,7 @@ protected RadioViewer [editor.name.toJavaIdentifier()/]RadioViewer;
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
+		[editor.name.toJavaIdentifier()/]RadioViewer.setID([editor.editorID()/]);
 	}
 [/template]
 

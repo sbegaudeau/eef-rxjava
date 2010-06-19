@@ -69,6 +69,7 @@ protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 			}
 
 		});
+		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]
@@ -164,6 +165,7 @@ protected AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElemen
 		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 

@@ -129,6 +129,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[editor.name.toJavaIdentifier()/]Data.minimumHeight = 120;
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
 		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		EditingUtils.setID([editor.name.toJavaIdentifier()/].getTable(), [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$		
 		create[editor.name.toJavaClassifier()/]Panel(tableContainer);
 	}
 
@@ -160,6 +162,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 				addTo[editor.name.toJavaClassifier()/]();
 			}
 		});
+		EditingUtils.setID(add[editor.name.toJavaClassifier()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype(add[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::addbutton"); //$NON-NLS-1$
 		Button remove[editor.name.toJavaClassifier()/] = new Button([editor.name.toJavaIdentifier()/]Panel, SWT.NONE);
 		remove[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveTableViewerLabel);
 		[if (editor.readOnly)]
@@ -181,6 +185,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			}
 
 		});
+		EditingUtils.setID(remove[editor.name.toJavaClassifier()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype(remove[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::removebutton"); //$NON-NLS-1$
 		Button edit[editor.name.toJavaClassifier()/] = new Button([editor.name.toJavaIdentifier()/]Panel, SWT.NONE);
 		edit[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_EditTableViewerLabel);
 		[if (editor.readOnly)]
@@ -202,6 +208,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			}
 
 		});
+		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::editbutton"); //$NON-NLS-1$
 		return [editor.name.toJavaIdentifier()/]Panel;
 	}
 
@@ -388,6 +396,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		this.[editor.name.toJavaIdentifier()/].setLowerBound([editor.involvedPropertiesEditionElement(pec).model.lowerBound/]);
 		this.[editor.name.toJavaIdentifier()/].setUpperBound([editor.involvedPropertiesEditionElement(pec).model.upperBound/]);
+		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
+		[editor.name.toJavaIdentifier()/].setEEFType("eef::[editor.representation.name/]"); //$NON-NLS-1$
 	}
 
 	/**

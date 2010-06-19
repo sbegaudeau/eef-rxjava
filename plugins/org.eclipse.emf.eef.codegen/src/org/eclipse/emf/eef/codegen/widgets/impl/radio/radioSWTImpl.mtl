@@ -46,6 +46,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/]RadioViewer.setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[editor.name.toJavaIdentifier()/]RadioViewer.setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null);
 	}
 [/template]

@@ -78,6 +78,8 @@ import org.eclipse.swt.events.KeyEvent;
 			}
 
 		});
+		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 	}
 [/template]
