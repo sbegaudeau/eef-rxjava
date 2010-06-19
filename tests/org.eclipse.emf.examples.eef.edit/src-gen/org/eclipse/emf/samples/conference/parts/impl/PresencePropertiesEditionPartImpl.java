@@ -149,6 +149,8 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		assistsData.horizontalSpan = 3;
 		this.assists.setLayoutData(assistsData);
 		this.assists.disableMove();
+		assists.setID(ConferenceViewsRepository.Presence.assists);
+		assists.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 	}
 
 	/**

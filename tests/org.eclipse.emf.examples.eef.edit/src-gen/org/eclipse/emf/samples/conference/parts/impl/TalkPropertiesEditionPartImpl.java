@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -166,6 +167,8 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			}
 
 		});
+		EditingUtils.setID(title_, ConferenceViewsRepository.Talk.title_);
+		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -187,6 +190,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		});
 		GridData topicData = new GridData(GridData.FILL_HORIZONTAL);
 		topic.setLayoutData(topicData);
+		topic.setID(ConferenceViewsRepository.Talk.topic);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.topic, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -198,6 +202,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		type.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		type.getCombo().setLayoutData(typeData);
+		type.setID(ConferenceViewsRepository.Talk.type);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.type, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -219,6 +224,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		});
 		GridData presenterData = new GridData(GridData.FILL_HORIZONTAL);
 		presenter.setLayoutData(presenterData);
+		presenter.setID(ConferenceViewsRepository.Talk.presenter);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.presenter, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -240,6 +246,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		});
 		GridData creatorData = new GridData(GridData.FILL_HORIZONTAL);
 		creator.setLayoutData(creatorData);
+		creator.setID(ConferenceViewsRepository.Talk.creator);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.creator, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -255,6 +262,8 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		documentationData.heightHint = 80;
 		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
+		EditingUtils.setID(documentation, ConferenceViewsRepository.Talk.documentation);
+		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.documentation, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

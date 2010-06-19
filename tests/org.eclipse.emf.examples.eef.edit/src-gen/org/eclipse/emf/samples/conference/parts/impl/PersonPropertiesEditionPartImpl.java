@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
@@ -159,6 +160,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			}
 
 		});
+		EditingUtils.setID(firstname, ConferenceViewsRepository.Person.firstname);
+		EditingUtils.setEEFtype(firstname, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.firstname, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -202,6 +205,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			}
 
 		});
+		EditingUtils.setID(lastname, ConferenceViewsRepository.Person.lastname);
+		EditingUtils.setEEFtype(lastname, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.lastname, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -245,6 +250,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			}
 
 		});
+		EditingUtils.setID(age, ConferenceViewsRepository.Person.age);
+		EditingUtils.setEEFtype(age, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.age, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -256,6 +263,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		gender.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
 		GridData genderData = new GridData(GridData.FILL_HORIZONTAL);
 		gender.getCombo().setLayoutData(genderData);
+		gender.setID(ConferenceViewsRepository.Person.gender);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.gender, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -282,6 +290,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		GridData eclipseCommiterData = new GridData(GridData.FILL_HORIZONTAL);
 		eclipseCommiterData.horizontalSpan = 2;
 		eclipseCommiter.setLayoutData(eclipseCommiterData);
+		EditingUtils.setID(eclipseCommiter, ConferenceViewsRepository.Person.eclipseCommiter);
+		EditingUtils.setEEFtype(eclipseCommiter, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.eclipseCommiter, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -292,6 +302,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		GridData isRegisteredData = new GridData(GridData.FILL_HORIZONTAL);
 		isRegisteredData.horizontalSpan = 2;
 		isRegistered.setLayoutData(isRegisteredData);
+		EditingUtils.setID(isRegistered, ConferenceViewsRepository.Person.isRegistered);
+		EditingUtils.setEEFtype(isRegistered, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.isRegistered, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
@@ -159,6 +160,8 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			}
 
 		});
+		EditingUtils.setID(description, ConferenceViewsRepository.Topic.description);
+		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Topic.description, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -167,6 +170,8 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		GridData referencesData = new GridData(GridData.FILL_HORIZONTAL);
 		referencesData.horizontalSpan = 2;
 		references.setLayoutData(referencesData);
+		EditingUtils.setID(references, ConferenceViewsRepository.Topic.references);
+		EditingUtils.setEEFtype(references, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editReferences = new Button(parent, SWT.NONE);
 		editReferences.setText(ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel);
 		GridData editReferencesData = new GridData();
@@ -194,6 +199,8 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 				}
 			}
 		});
+		EditingUtils.setID(editReferences, ConferenceViewsRepository.Topic.references);
+		EditingUtils.setEEFtype(editReferences, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 	}
 
 	
@@ -208,6 +215,8 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		documentationData.heightHint = 80;
 		documentationData.widthHint = 200;
 		documentation.setLayoutData(documentationData);
+		EditingUtils.setID(documentation, ConferenceViewsRepository.Topic.documentation);
+		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Topic.documentation, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

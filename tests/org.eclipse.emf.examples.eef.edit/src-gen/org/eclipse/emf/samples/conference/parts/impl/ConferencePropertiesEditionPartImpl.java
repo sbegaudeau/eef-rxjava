@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -161,6 +162,8 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 			}
 
 		});
+		EditingUtils.setID(place, ConferenceViewsRepository.Conference.place);
+		EditingUtils.setEEFtype(place, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference.place, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -183,6 +186,8 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		this.sites.setLayoutData(sitesData);
 		this.sites.setLowerBound(0);
 		this.sites.setUpperBound(-1);
+		sites.setID(ConferenceViewsRepository.Conference.sites);
+		sites.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 	}
 
 	/**

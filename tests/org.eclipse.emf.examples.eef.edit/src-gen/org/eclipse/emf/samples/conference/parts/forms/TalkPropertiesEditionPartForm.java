@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -165,6 +166,8 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 				}
 			}
 		});
+		EditingUtils.setID(title_, ConferenceViewsRepository.Talk.title_);
+		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.title_, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -191,6 +194,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 
 		});
+		topic.setID(ConferenceViewsRepository.Talk.topic);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.topic, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -216,6 +220,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 
 		});
+		type.setID(ConferenceViewsRepository.Talk.type);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.type, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -242,6 +247,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 
 		});
+		presenter.setID(ConferenceViewsRepository.Talk.presenter);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.presenter, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -268,6 +274,7 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 
 		});
+		creator.setID(ConferenceViewsRepository.Talk.creator);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.creator, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -297,6 +304,8 @@ public class TalkPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 
 		});
+		EditingUtils.setID(documentation, ConferenceViewsRepository.Talk.documentation);
+		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
