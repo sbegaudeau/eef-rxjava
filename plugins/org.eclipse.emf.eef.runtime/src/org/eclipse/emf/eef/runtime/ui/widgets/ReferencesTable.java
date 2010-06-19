@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -436,6 +437,38 @@ public class ReferencesTable<T extends EObject> implements
 		return this.lowerBound;
 	}
 
+	/**
+	 * Sets the given ID to the EMFComboViewer
+	 * @param id the ID to give
+	 */
+	public void setID(Object id) {
+		EditingUtils.setID(table, id);
+		EditingUtils.setID(addButton, id);
+		EditingUtils.setID(removeButton, id);
+		EditingUtils.setID(upButton, id);
+		EditingUtils.setID(downButton, id);
+	}
+
+	/**
+	 * Defines the type of reference table
+	 * @param id the type to give
+	 */
+	public void setEEFType(String type) {
+		EditingUtils.setEEFtype(table, type + "::field");
+		EditingUtils.setEEFtype(addButton, type + "::addbutton");
+		EditingUtils.setEEFtype(removeButton, type + "::removebutton");
+		EditingUtils.setEEFtype(upButton, type + "::upbutton");
+		EditingUtils.setEEFtype(downButton, type + "::downbutton");
+	}
+
+	/**
+	 * @return the ID of the EObjectFlatComboViewer
+	 */
+	public Object getID() {
+		return EditingUtils.getID(table);
+	}
+
+	
 	public void refresh() {
 		tableViewer.refresh();
 		computeAddButtonStatus();

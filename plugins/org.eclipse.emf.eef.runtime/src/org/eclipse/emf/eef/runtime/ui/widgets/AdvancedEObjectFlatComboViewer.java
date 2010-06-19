@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -102,6 +103,10 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 
 	private Resource mainResource;
 
+	private Button removeButton;
+
+	private Text field;
+
 	/**
 	 * the constructor of this display
 	 * 
@@ -149,14 +154,15 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	}
 
 	private void createButtons(Composite parent) {
-		Button removeButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
+		removeButton = createButton(parent, "", SWT.PUSH);
 		removeButton.setImage(deleteImage);
 		FormData data = new FormData();
 		data.right = new FormAttachment(100, -5);
 		data.top = new FormAttachment(0, -2);
 		removeButton.setLayoutData(data);
 		removeButton.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
-
+		EditingUtils.setEEFtype(removeButton, "eef::AdvancedEObjectFlatComboViewer::removebutton");
+		
 		this.browseButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		browseButton.setImage(addImage);
 		data = new FormData();
@@ -164,6 +170,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		data.top = new FormAttachment(0, -2);
 		browseButton.setLayoutData(data);
 		browseButton.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_set_tooltip);
+		EditingUtils.setEEFtype(browseButton, "eef::AdvancedEObjectFlatComboViewer::browsebutton");
 
 		// listeners setting
 		removeButton.addMouseListener(new MouseAdapter() {
@@ -185,6 +192,23 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		this.input = input;
 	}
 
+	/**
+	 * Sets the given ID to the EObjectFlatComboViewer
+	 * @param id the id of the widget
+	 */
+	public void setID(Object id) {
+		EditingUtils.setID(field, id);
+		EditingUtils.setID(removeButton, id);
+		EditingUtils.setID(browseButton, id);
+	}
+
+	/**
+	 * @return the ID of the EObjectFlatComboViewer
+	 */
+	public Object getID() {
+		return EditingUtils.getID(field);
+	}
+	
 	private void createLabels(Composite parent) {
 		// Display label
 		// final Label displayLabel = createLabel(parent, dialogTitle, SWT.NONE);
@@ -250,14 +274,14 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	// }
 
 	private Text createText(Composite parent, String value, int style) {
-		Text text;
 		if (widgetFactory == null) {
-			text = new Text(parent, SWT.PUSH);
-			text.setText(value);
+			field = new Text(parent, SWT.PUSH);
+			field.setText(value);
 		} else {
-			text = widgetFactory.createText(parent, value, style);
+			field = widgetFactory.createText(parent, value, style);
 		}
-		return text;
+		EditingUtils.setEEFtype(field, "eef::AdvancedEObjectFlatComboViewer::field");
+		return field;
 	}
 
 	@SuppressWarnings("unchecked")

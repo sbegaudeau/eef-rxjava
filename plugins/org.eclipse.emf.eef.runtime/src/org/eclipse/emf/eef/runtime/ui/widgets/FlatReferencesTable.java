@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -127,7 +128,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		selectionData.widthHint = 400;
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
-
+		EditingUtils.setEEFtype(selection, "eef::FlatReferencesTable::field");
+		
 		editer = new Button(this, SWT.PUSH);
 		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);
 
@@ -136,6 +138,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		listeners = new ArrayList<ISelectionChangedListener>();
 
 		editer.addSelectionListener(getSelectionAdapter());
+		EditingUtils.setEEFtype(selection, "eef::FlatReferencesTable::browsebutton");
 
 	}
 
@@ -298,6 +301,22 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		if (this.input != input) {
 			this.input = input;
 		}
+	}
+	
+	/**
+	 * Sets the given ID to the EMFComboViewer
+	 * @param id the ID to give
+	 */
+	public void setID(Object id) {
+		EditingUtils.setID(selection, id);
+		EditingUtils.setID(editer, id);
+	}
+
+	/**
+	 * @return the ID of the EObjectFlatComboViewer
+	 */
+	public Object getID() {
+		return EditingUtils.getID(selection);
 	}
 
 	/**

@@ -12,9 +12,10 @@ package org.eclipse.emf.eef.runtime.ui.utils;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.eef.runtime.ui.UIConstants;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -38,5 +39,49 @@ public class EditingUtils {
 			}
 		return editingDomain; 
 	}
+	
+	/**
+	 * Set an id to a given widget.
+	 * @param widget the widget where put the ID
+	 * @param value the ID to put
+	 */
+	public static void setID(Control widget, Object value) {
+		if (widget != null)
+			widget.setData(UIConstants.EEF_WIDGET_ID_KEY, value);
+	}
 
+	/**
+	 * Return the ID of a widget?
+	 * @param widget the widget to inspect
+	 * @return the ID of the widget
+	 */
+	public static Object getID(Control widget) {
+		if (widget != null)
+			return widget.getData(UIConstants.EEF_WIDGET_ID_KEY);
+		return null;
+	}
+
+	/**
+	 * Set the EEF type of widget.
+	 * @param widget the widget where put the ID
+	 * @param value the type of the widget
+	 */
+	public static void setEEFtype(Control widget, String value) {
+		if (widget != null)
+			widget.setData(UIConstants.EEF_WIDGET_TYPE_KEY, value);
+	}
+
+	/**
+	 * Return the ID of a widget?
+	 * @param widget the widget to inspect
+	 * @return the ID of the widget
+	 */
+	public static String getEEFType(Control widget) {
+		if (widget != null) {
+			Object data = widget.getData(UIConstants.EEF_WIDGET_ID_KEY);
+			if (data instanceof String)
+				return (String)data;
+		}
+		return UIConstants.UNKNOW_EEF_TYPE;
+	}
 }

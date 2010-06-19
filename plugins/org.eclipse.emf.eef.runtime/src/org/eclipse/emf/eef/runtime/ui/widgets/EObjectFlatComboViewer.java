@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -64,6 +65,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		GridData selectionData = new GridData(GridData.FILL_HORIZONTAL);
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
+		EditingUtils.setEEFtype(selection, "eef::EObjectFlatComboViewer::field");
 		editer = new Button(this, SWT.PUSH);
 		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);  //$NON-NLS-1$
 
@@ -72,6 +74,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		listeners = new ArrayList<ISelectionChangedListener>();
 
 		editer.addSelectionListener(getSelectionAdapter(nullable));
+		EditingUtils.setEEFtype(editer, "eef::EObjectFlatComboViewer::editbutton");
 
 	}
 
@@ -145,6 +148,22 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			this.selectedElement = null;
 			this.selection.setText("");  //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * Sets the given ID to the EObjectFlatComboViewer
+	 * @param id the id of the widget
+	 */
+	public void setID(Object id) {
+		EditingUtils.setID(selection, id);
+		EditingUtils.setID(editer, id);
+	}
+
+	/**
+	 * @return the ID of the EObjectFlatComboViewer
+	 */
+	public Object getID() {
+		return EditingUtils.getID(selection);
 	}
 
 	public void setSelection(ISelection selection) {

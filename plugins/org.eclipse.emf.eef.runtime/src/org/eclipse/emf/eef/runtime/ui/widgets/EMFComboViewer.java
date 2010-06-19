@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.runtime.ui.widgets;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.viewers.AbstractListViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -69,6 +70,7 @@ public class EMFComboViewer extends AbstractListViewer {
 	public EMFComboViewer(Combo list) {
 		this.combo = list;
 		hookControl(list);
+		EditingUtils.setEEFtype(combo, "eef::EMFComboViewer");
 	}
 
 	protected void listAdd(String string, int index) {
@@ -123,6 +125,21 @@ public class EMFComboViewer extends AbstractListViewer {
 	 */
 	public void reveal(Object element) {
 		return;
+	}
+	
+	/**
+	 * Sets the given ID to the EMFComboViewer
+	 * @param id the ID to give
+	 */
+	public void setID(Object id) {
+		EditingUtils.setID(combo, id);
+	}
+
+	/**
+	 * @return the ID of the EObjectFlatComboViewer
+	 */
+	public Object getID() {
+		return EditingUtils.getID(combo);
 	}
 
 	/**
