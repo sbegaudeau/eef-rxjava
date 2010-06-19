@@ -52,6 +52,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.viewCompletePackageGetter()/]));
 			}
 		});
+		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 	}
 [/template]

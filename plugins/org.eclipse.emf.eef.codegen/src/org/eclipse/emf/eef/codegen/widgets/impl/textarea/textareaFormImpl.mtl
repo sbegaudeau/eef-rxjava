@@ -57,6 +57,8 @@ protected Text [editor.name.toJavaIdentifier()/];
 			}
 
 		});
+		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]

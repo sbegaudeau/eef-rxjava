@@ -64,6 +64,8 @@ import org.eclipse.jface.viewers.ViewerFilter;
 			
 		});
 		[editor.name.toJavaIdentifier()/].setContentProvider(new EMFListContentProvider());
+		EditingUtils.setID([editor.name.toJavaIdentifier()/].getCombo(), [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getCombo(), "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 	}
 [/template]

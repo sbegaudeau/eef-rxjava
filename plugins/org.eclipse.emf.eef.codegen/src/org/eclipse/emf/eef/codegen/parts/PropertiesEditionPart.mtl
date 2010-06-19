@@ -64,6 +64,7 @@ import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 [/if]
 
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 [for (widget : Widget | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet()) ? (not widget.oclIsUndefined())]

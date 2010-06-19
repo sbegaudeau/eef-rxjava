@@ -66,6 +66,8 @@ protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 
 		});
 		[editor.name.toJavaIdentifier()/].setContentProvider(new EMFListContentProvider());
+		EditingUtils.setID([editor.name.toJavaIdentifier()/].getCombo(), [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getCombo(), "eef::[editor.representation.name/]");
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 	}
 [/template]
