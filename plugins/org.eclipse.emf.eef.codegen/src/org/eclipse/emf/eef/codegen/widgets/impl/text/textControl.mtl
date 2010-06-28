@@ -17,6 +17,18 @@
 [import typeUtils /]
 
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+private void update[editionElement.name.toJavaClassifier()/]([editionElement.model.eType.instanceClassName/] newValue) {
+	[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](newValue);	
+}
+[/template]
+
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
+[if (editionElement.model.isPrimitiveType())]
+update[editionElement.name.toJavaClassifier()/]((EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
+update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[/template]
+
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
 		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
 			if (msg.getNewValue() != null) {
@@ -25,24 +37,6 @@
 				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
 			}
 		}
-[/template]
-
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
-			}
-[/template]
-
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and editionElement.model.derived)]
-			// do not generates command for derived attribute [editionElement.model.name/]
-[/template]
-
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
-[/template]
-
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and editionElement.model.derived)]
-			// do not generates command for derived attribute [editionElement.model.name/]
 [/template]
 
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text') and not editionElement.model.derived)]

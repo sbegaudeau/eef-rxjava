@@ -17,29 +17,22 @@
 [import typeUtils /]
 
 [comment ===== Case : model = Attribute(1) - view = EMFComboViewer ===== /]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
+private void update[editionElement.name.toJavaClassifier()/]([editionElement.model.eType.name/] newValue) {
+	[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](newValue);	
+}
+[/template]
+
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
+update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.name/])event.getNewValue());
+[/template]
+
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
 		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
-[/if]
-[/template]
-
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
-[else]
-//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
-[/if]
-[/template]
-
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
-[else]
-//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if]
 [/template]
 

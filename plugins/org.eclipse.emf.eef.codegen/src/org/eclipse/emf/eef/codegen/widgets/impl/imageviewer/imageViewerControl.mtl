@@ -31,25 +31,6 @@
 		}
 [/template]
 
-[comment @Override widgetControl.liveCommandUpdater /]
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
-[else]
-				//FIXME invalid case in liveCommandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
-[/if]
-[/template]
-
-[comment @Override widgetControl.commandUpdater /]
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
-[else]
-			//FIXME invalid case in commandUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
-[/if]
-[/template]
-
 [comment @Override widgetControl.partUpdater /]
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]

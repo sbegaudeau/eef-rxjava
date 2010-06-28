@@ -27,16 +27,6 @@
 		}
 [/template]
 
-[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));
-			}
-[/template]
-
-[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/])));
-[/template]
-
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
 			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
 [/template]
