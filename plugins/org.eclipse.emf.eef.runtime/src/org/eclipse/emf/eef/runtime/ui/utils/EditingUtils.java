@@ -14,8 +14,10 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.eef.runtime.ui.UIConstants;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -83,5 +85,17 @@ public class EditingUtils {
 				return (String)data;
 		}
 		return UIConstants.UNKNOW_EEF_TYPE;
+	}
+	
+	/**
+	 * @return platform shell
+	 */
+	public static Shell getShell() {
+		Shell theShell = null;
+		if (PlatformUI.getWorkbench() != null
+				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
+			theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+		theShell = new Shell();
+		return theShell;
 	}
 }

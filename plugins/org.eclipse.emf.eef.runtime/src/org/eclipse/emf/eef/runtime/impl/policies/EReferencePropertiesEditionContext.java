@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.impl.policies;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
@@ -36,6 +37,8 @@ public class EReferencePropertiesEditionContext implements
 	 */
 	protected ResourceSet resourceSet;
 
+	private ChangeRecorder changeRecorder;
+
 	/**
 	 * @param propertiesEditionComponent
 	 * @param eReference
@@ -45,7 +48,18 @@ public class EReferencePropertiesEditionContext implements
 		this.propertiesEditionComponent = propertiesEditionComponent;
 		this.eReference = eReference;
 		this.resourceSet = resourceSet;
+		this.changeRecorder = new ChangeRecorder(resourceSet);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext#getChangeRecorder()
+	 */
+	public ChangeRecorder getChangeRecorder() {
+		return changeRecorder;
+	}
+
+
 
 	/**
 	 * @return the propertiesEditionComponent

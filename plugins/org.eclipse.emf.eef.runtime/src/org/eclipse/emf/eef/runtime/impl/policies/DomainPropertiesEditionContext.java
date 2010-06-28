@@ -24,7 +24,7 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 	 * The domain where edit the EObject
 	 */
 	protected EditingDomain editingDomain;
-
+	
 	/**
 	 * @param editComponent
 	 * @param eObject

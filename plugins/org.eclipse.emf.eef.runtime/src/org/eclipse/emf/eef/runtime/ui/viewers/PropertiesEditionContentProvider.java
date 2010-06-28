@@ -101,32 +101,6 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	}
 
 	/**
-	 * Compute the edition command to perform to update the model
-	 * 
-	 * @param editingDomain
-	 *            the editingDomain where the command have to be performed
-	 * @return the command to perform
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		if (propertiesEditionComponent != null)
-			return propertiesEditionComponent.getPropertiesEditionCommand(editingDomain);
-		return null;
-	}
-
-	/**
-	 * Update and return the given EObject
-	 * 
-	 * @param eObject
-	 *            the EObject to update
-	 * @return the updated EObject
-	 */
-	public EObject getPropertiesEditionObject(EObject eObject) {
-		if (propertiesEditionComponent != null)
-			return propertiesEditionComponent.getPropertiesEditionObject(eObject);
-		return null;
-	}
-
-	/**
 	 * Validate the model and return the resulting Diagnostic
 	 * 
 	 * @param event

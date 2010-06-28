@@ -314,12 +314,12 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 *            the editingDomain where the command have to be performed
 	 * @return the command to perform
 	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		if (getContentProvider() != null)
-			return ((PropertiesEditionContentProvider)getContentProvider())
-					.getPropertiesEditionCommand(editingDomain);
-		return null;
-	}
+//	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
+//		if (getContentProvider() != null)
+//			return ((PropertiesEditionContentProvider)getContentProvider())
+//					.getPropertiesEditionCommand(editingDomain);
+//		return null;
+//	}
 
 	/**
 	 * Update and return the given EObject
@@ -328,12 +328,12 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 *            the EObject to update
 	 * @return the updated EObject
 	 */
-	public EObject getPropertiesEditionObject(EObject eObject) {
-		if (getContentProvider() != null)
-			return ((PropertiesEditionContentProvider)getContentProvider())
-					.getPropertiesEditionObject(eObject);
-		return null;
-	}
+//	public EObject getPropertiesEditionObject(EObject eObject) {
+//		if (getContentProvider() != null)
+//			return ((PropertiesEditionContentProvider)getContentProvider())
+//					.getPropertiesEditionObject(eObject);
+//		return null;
+//	}
 
 	/**
 	 * Validate the model and return the resulting Diagnostic

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,18 +8,32 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.runtime.api.policies;
+package org.eclipse.emf.eef.runtime.impl.command;
 
-import org.eclipse.emf.ecore.change.util.ChangeRecorder;
+import org.eclipse.emf.common.command.AbstractCommand;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public interface IPropertiesEditionContext {
-	
+public abstract class StandardEditingCommand extends AbstractCommand {
+
 	/**
-	 * @return the changeRecorder of the editing session
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.common.command.AbstractCommand#prepare()
 	 */
-	public ChangeRecorder getChangeRecorder();
+	@Override
+	protected boolean prepare() {
+		return true;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.common.command.Command#redo()
+	 */
+	public void redo() {
+		execute();
+	}
+	
+	
 
 }

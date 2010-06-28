@@ -165,42 +165,42 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performFinish() {
-		try {
-			if (editingDomain != null) {
-				CompoundCommand finishCommand = new CompoundCommand();
-				for (int i = 0; i < getPages().length; i++) {
-					if (getPages()[i] instanceof EditPropertyWizardPage) {
-						finishCommand.append(((EditPropertyWizardPage)getPages()[i]).viewer
-								.getPropertiesEditionCommand(editingDomain));
-					}
-				}
-				if (finishCommand.canExecute()) {
-					this.command = finishCommand;
-					PropertiesContextService.getInstance().pop();
-					return true;
-				}
-				return false;
-			}
-			for (int i = 0; i < getPages().length; i++) {
-				if (getPages()[i] instanceof EditPropertyWizardPage) {
-					// FIXME: Warning, architecture must be redefined to do
-					// an iterative eobject build
-					// Finally ... it could work ...
-					eObject = ((EditPropertyWizardPage)getPages()[i]).viewer
-							.getPropertiesEditionObject(eObject);
-				}
-			}
-			PropertiesContextService.getInstance().pop();
+//		try {
+//			if (editingDomain != null) {
+//				CompoundCommand finishCommand = new CompoundCommand();
+//				for (int i = 0; i < getPages().length; i++) {
+//					if (getPages()[i] instanceof EditPropertyWizardPage) {
+//						finishCommand.append(((EditPropertyWizardPage)getPages()[i]).viewer
+//								.getPropertiesEditionCommand(editingDomain));
+//					}
+//				}
+//				if (finishCommand.canExecute()) {
+//					this.command = finishCommand;
+//					PropertiesContextService.getInstance().pop();
+//					return true;
+//				}
+//				return false;
+//			}
+//			for (int i = 0; i < getPages().length; i++) {
+//				if (getPages()[i] instanceof EditPropertyWizardPage) {
+//					// FIXME: Warning, architecture must be redefined to do
+//					// an iterative eobject build
+//					// Finally ... it could work ...
+//					eObject = ((EditPropertyWizardPage)getPages()[i]).viewer
+//							.getPropertiesEditionObject(eObject);
+//				}
+//			}
+//			PropertiesContextService.getInstance().pop();
 			return true;
-		} finally {
-			for (int i = 0; i < getPages().length; i++) {
-				if (getPages()[i] instanceof EditPropertyWizardPage) {
-					PropertiesEditionViewer viewer = ((EditPropertyWizardPage)getPages()[i]).viewer;
-					if (viewer != null)
-						viewer.getContentProvider().dispose();
-				}
-			}
-		}
+//		} finally {
+//			for (int i = 0; i < getPages().length; i++) {
+//				if (getPages()[i] instanceof EditPropertyWizardPage) {
+//					PropertiesEditionViewer viewer = ((EditPropertyWizardPage)getPages()[i]).viewer;
+//					if (viewer != null)
+//						viewer.getContentProvider().dispose();
+//				}
+//			}
+//		}
 	}
 
 	/**

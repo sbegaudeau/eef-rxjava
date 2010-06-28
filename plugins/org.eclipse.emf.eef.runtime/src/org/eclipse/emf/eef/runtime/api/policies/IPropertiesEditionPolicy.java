@@ -36,6 +36,6 @@ public interface IPropertiesEditionPolicy {
 	 *            the edition context.
 	 * @return the updated {@link EObject}.
 	 */
-	public abstract EObject getPropertiesEditionObject(IPropertiesEditionContext propertiesEditionContext);
+	public abstract void getPropertiesEditionObject(IPropertiesEditionContext propertiesEditionContext);
 
 }

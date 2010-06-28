@@ -1,5 +1,4 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +9,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.api.component;
 
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -44,19 +42,9 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the kind of the expected Part
 	 * @param key
 	 *            the Part key
-	 * @return the Part created in the parent
+-	 * @return the Part created in the parent
 	 */
 	public abstract IPropertiesEditionPart getPropertiesEditionPart(int kind, String key);
-
-	/**
-	 * Return the command to update the EObject.
-	 * 
-	 * @param editingDomain
-	 *            the editingDomain where the command will be applied
-	 * @return a command to update the edited EObject with the values defined in the different parts OR null
-	 *         if nothing to do
-	 */
-	public abstract CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain);
 
 	/**
 	 * @param key
@@ -79,16 +67,6 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the element which initialize the part
 	 */
 	public abstract void initPart(Class key, int kind, EObject element);
-
-	/**
-	 * Return a copy of the EObject updated.
-	 * 
-	 * @param source
-	 *            the eobject to edit
-	 * @return a copy of the edited EObject with features updated with the values defined in the sub-component
-	 *         parts
-	 */
-	public abstract EObject getPropertiesEditionObject(EObject source);
 
 	/**
 	 * Return the diagnostic object linked to the current state validation.

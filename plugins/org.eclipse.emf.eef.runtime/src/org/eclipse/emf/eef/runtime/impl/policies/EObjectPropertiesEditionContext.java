@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.impl.policies;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
@@ -36,6 +37,19 @@ public class EObjectPropertiesEditionContext implements IPropertiesEditionContex
 	protected ResourceSet resourceSet;
 
 	/**
+	 * TODO
+	 */
+	protected ChangeRecorder changeRecorder;
+
+
+	/**
+	 * @return the changeRecorder
+	 */
+	public ChangeRecorder getChangeRecorder() {
+		return changeRecorder;
+	}
+
+	/**
 	 * @param eObject
 	 * @param resourceSet
 	 */
@@ -44,6 +58,7 @@ public class EObjectPropertiesEditionContext implements IPropertiesEditionContex
 		this.propertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.resourceSet = resourceSet;
+		this.changeRecorder = new ChangeRecorder(resourceSet);
 	}
 
 	/**

@@ -14,14 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -138,38 +135,6 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 				return propertiesEditionPart;
 		}
 		return new NullCompositePropertiesEditionPart(this);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand(org.eclipse.emf.edit.domain.EditingDomain)
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		for (IPropertiesEditionComponent component : subComponents) {
-			CompoundCommand command = component.getPropertiesEditionCommand(editingDomain);
-			if (command != null && command.canExecute()) {
-				cc.append(command);
-			} else {
-				EEFRuntimePlugin.getDefault().logError(EEFRuntimeMessages.ComposedPropertiesEditionComponent_cmd_not_performed, null);
-			}
-		}
-		if (cc.isEmpty())
-			cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		for (IPropertiesEditionComponent component : subComponents) {
-			source = component.getPropertiesEditionObject(source);
-		}
-		return source;
 	}
 
 	/**
