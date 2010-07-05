@@ -180,7 +180,13 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 		bot.openPropertiesView();
 		initWorkspaceForTests();
 	}
-
+	
+	@Override
+	protected void tearDown() throws Exception {
+		bot.closeAllShells();
+		super.tearDown();
+	}
+	
 	/*****************************************************************************
 	 * * Utils methods * *
 	 *****************************************************************************/
