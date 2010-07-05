@@ -155,7 +155,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		if (input instanceof Collection) {
 			elements.setContentProvider(new ArrayContentProvider());
 		} else {
-			elements.setContentProvider(new EMFListContentProvider());
+			elements.setContentProvider(new EMFListContentProvider(nullable));
 		}
 		if (labelProvider == null) {
 			this.labelProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(

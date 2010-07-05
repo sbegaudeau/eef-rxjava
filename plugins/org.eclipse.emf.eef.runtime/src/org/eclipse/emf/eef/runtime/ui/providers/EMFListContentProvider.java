@@ -26,6 +26,16 @@ import org.eclipse.jface.viewers.Viewer;
  */
 public class EMFListContentProvider implements IStructuredContentProvider {
 
+	private boolean nullable;
+
+	/**
+	 * @param nullable define if there is a null value or not
+	 */
+	public EMFListContentProvider(boolean nullable) {
+		super();
+		this.nullable = nullable;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
@@ -64,7 +74,8 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 
 	private List asList(TreeIterator iter) {
 		List result = new ArrayList();
-		result.add("");  //$NON-NLS-1$
+		if (nullable)
+			result.add("");  //$NON-NLS-1$
 		while (iter.hasNext())
 			result.add(iter.next());
 		return result;
