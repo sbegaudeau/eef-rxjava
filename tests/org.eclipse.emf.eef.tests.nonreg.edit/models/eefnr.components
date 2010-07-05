@@ -375,11 +375,11 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LVwwvEd-uP4lw9e0IMw" name="multivaluededitorOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LWAwvEd-uP4lw9e0IMw" name="tablecompositionRequiredProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LWAwvEd-uP4lw9e0IMw" documentation="" name="tablecompositionRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.4"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LWQwvEd-uP4lw9e0IMw" name="tablecompositionOptionalProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LWQwvEd-uP4lw9e0IMw" documentation="" name="tablecompositionOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.4"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LWgwvEd-uP4lw9e0IMw" name="advancedreferencestableRequiredProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
