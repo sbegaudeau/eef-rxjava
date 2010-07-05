@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -156,7 +156,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerRequiredProperty feature of the EMFComboViewerSample element 
-				bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, enumValueForEmfcomboviewerRequiredProperty);
+				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, enumValueForEmfcomboviewerRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -217,7 +217,7 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerOptionalProperty feature of the EMFComboViewerSample element 
-				bot.editEMFComboViewerFeature(wizardShell, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, enumValueForEmfcomboviewerOptionalProperty);
+				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty, enumValueForEmfcomboviewerOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

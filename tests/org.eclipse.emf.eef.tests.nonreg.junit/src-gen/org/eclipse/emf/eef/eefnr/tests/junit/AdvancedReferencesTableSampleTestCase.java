@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
@@ -43,13 +44,13 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private EObject advancedReferencesTableSample;
 	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
-	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
-	/**
 	 * The reference value for the reference class advancedreferencestableRequiredProperty
 	 */
 	private Object referenceValueForAdvancedreferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -167,7 +168,7 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the AdvancedReferencesTableSample element 
-				bot.editAdvancedReferencesTableFeature(wizardShell, 0, referenceValueForAdvancedreferencestableRequiredProperty);
+				bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, referenceValueForAdvancedreferencestableRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -233,7 +234,7 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the AdvancedReferencesTableSample element 
-				bot.removeAdvancedReferencesTableFeature(wizardShell, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+				bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -295,7 +296,7 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the AdvancedReferencesTableSample element 
-				bot.editAdvancedReferencesTableFeature(wizardShell, 1, referenceValueForAdvancedreferencestableOptionalProperty);
+				bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, referenceValueForAdvancedreferencestableOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -361,7 +362,7 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the AdvancedReferencesTableSample element 
-				bot.removeAdvancedReferencesTableFeature(wizardShell, 1, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+				bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

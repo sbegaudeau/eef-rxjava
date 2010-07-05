@@ -26,9 +26,10 @@
   <samples xsi:type="eefnr:TotalSample" name="accord" textRequiredProperty="value1" textOptionalProperty="" textareaRequiredProperty="value2" textareaOptionalProperty="" eobjectflatcomboviewerRequiredProperty="//@samples.14" referencestableRequiredProperty="//@samples.14 //@samples.15" referencestableOptionalProperty="//@samples.14" advancedreferencestableRequiredProperty="//@samples.14 //@samples.15" advancedreferencestableOptionalProperty="//@samples.14" advancedeobjectflatcomboviewerRequiredPropery="//@samples.14">
     <multivaluededitorRequiredProperty>value1</multivaluededitorRequiredProperty>
     <advancedtablecompositionRequiredProperty textRequiredProperty="value1" textOptionalProperty=""/>
+    <advancedtablecompositionRequiredProperty textRequiredProperty="value2" textOptionalProperty=""/>
     <advancedtablecompositionOptionalProperty textRequiredProperty="toto" textOptionalProperty="toto"/>
     <tablecompositionRequiredProperty textRequiredProperty="value1" textOptionalProperty=""/>
-    <tablecompositionRequiredProperty textRequiredProperty="value1" textOptionalProperty=""/>
+    <tablecompositionRequiredProperty textRequiredProperty="value2" textOptionalProperty=""/>
     <tablecompositionOptionalProperty textRequiredProperty="value1" textOptionalProperty=""/>
   </samples>
   <samples xsi:type="eefnr:TotalSample" name="total sample 1" textRequiredProperty="value1" textOptionalProperty="value1" textareaRequiredProperty="value1" textareaOptionalProperty="value1" eobjectflatcomboviewerRequiredProperty="//@samples.15" eobjectflatcomboviewerOptionalProperty="//@samples.15" referencestableRequiredProperty="//@samples.14 //@samples.15" referencestableOptionalProperty="//@samples.14" advancedreferencestableRequiredProperty="//@samples.14 //@samples.15" advancedreferencestableOptionalProperty="//@samples.14" advancedeobjectflatcomboviewerRequiredPropery="//@samples.15" advancedeobjectflatcomboviewerOptionalPropery="//@samples.15">

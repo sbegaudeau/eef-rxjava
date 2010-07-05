@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
-import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -43,13 +43,13 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	private EObject referencesTableSample;
 	/**
-	 * The reference value for the reference class referencestableOptionalProperty
-	 */
-	private Object referenceValueForReferencestableOptionalProperty;
-	/**
 	 * The reference value for the reference class referencestableRequiredProperty
 	 */
 	private Object referenceValueForReferencestableRequiredProperty;
+	/**
+	 * The reference value for the reference class referencestableOptionalProperty
+	 */
+	private Object referenceValueForReferencestableOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -167,7 +167,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.editReferencesTableFeature(wizardShell, 0, 0, EefnrMessages.PropertiesEditionPart_AddListViewerLabel);
+				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -233,7 +233,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.removeReferencesTableFeature(wizardShell, 0, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -295,7 +295,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.editReferencesTableFeature(wizardShell, 1, 0, EefnrMessages.PropertiesEditionPart_AddListViewerLabel);
+				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -361,7 +361,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.removeReferencesTableFeature(wizardShell, 1, 0, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

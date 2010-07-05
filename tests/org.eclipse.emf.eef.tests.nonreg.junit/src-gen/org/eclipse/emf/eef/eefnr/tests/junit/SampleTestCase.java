@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -146,7 +146,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, sampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textRequiredProperty feature of the Sample element 
-				bot.editTextFeature(wizardShell, EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.Sample.textRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, sampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textOptionalProperty feature of the Sample element 
-				bot.editTextFeature(wizardShell, EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.Sample.textOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -147,7 +147,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the CheckboxSample element 
-				bot.editCheckboxFeature(wizardShell, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel);
+				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -208,7 +208,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the CheckboxSample element 
-				bot.editCheckboxFeature(wizardShell, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel);
+				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

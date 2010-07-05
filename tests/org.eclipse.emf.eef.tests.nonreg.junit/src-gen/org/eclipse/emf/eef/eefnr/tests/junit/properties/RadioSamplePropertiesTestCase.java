@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.RadioSample;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -155,7 +156,7 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the radioRequiredProperty feature of the RadioSample element 
-				bot.editPropertyRadioFeature(propertiesView, 0, enumValueForRadioRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyRadioFeature(propertiesView, EefnrViewsRepository.RadioSample.radioRequiredProperty, enumValueForRadioRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -216,7 +217,7 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the radioOptionalProperty feature of the RadioSample element 
-				bot.editPropertyRadioFeature(propertiesView, 1, enumValueForRadioOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyRadioFeature(propertiesView, EefnrViewsRepository.RadioSample.radioOptionalProperty, enumValueForRadioOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

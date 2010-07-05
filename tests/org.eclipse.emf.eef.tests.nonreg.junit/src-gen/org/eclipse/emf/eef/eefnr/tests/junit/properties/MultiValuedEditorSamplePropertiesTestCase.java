@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -150,7 +150,7 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorRequiredProperty feature of the MultiValuedEditorSample element 
-				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -212,7 +212,7 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorOptionalProperty feature of the MultiValuedEditorSample element 
-				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

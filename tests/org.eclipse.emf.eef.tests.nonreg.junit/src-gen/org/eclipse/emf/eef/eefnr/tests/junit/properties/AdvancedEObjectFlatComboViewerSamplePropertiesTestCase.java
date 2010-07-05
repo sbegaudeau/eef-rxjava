@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -41,13 +42,13 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 	 */
 	private EObject advancedEObjectFlatComboViewerSample;
 	/**
-	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
-	 */
-	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
-	/**
 	 * The reference value for the reference class advancedeobjectflatcomboviewerRequiredProperty
 	 */
 	private Object referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty;
+	/**
+	 * The reference value for the reference class advancedeobjectflatcomboviewerOptionalProperty
+	 */
+	private Object referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -165,7 +166,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-				bot.editPropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, 0, referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerRequiredProperty, referenceValueForAdvancedeobjectflatcomboviewerRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -226,7 +227,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-				bot.removePropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, 0, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.removePropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -288,7 +289,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-				bot.editPropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, 1, referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerOptionalProperty, referenceValueForAdvancedeobjectflatcomboviewerOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -349,7 +350,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalProperty feature of the AdvancedEObjectFlatComboViewerSample element 
-				bot.removePropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, 1, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.removePropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

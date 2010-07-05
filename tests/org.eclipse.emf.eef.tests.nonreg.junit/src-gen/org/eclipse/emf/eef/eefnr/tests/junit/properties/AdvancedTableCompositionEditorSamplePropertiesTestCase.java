@@ -22,15 +22,15 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.exceptions.WidgetInvalidException;
+import org.eclipse.emf.eef.runtime.tests.swtbot.finder.SWTEEFBotHelper;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
-import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 /**
@@ -231,7 +231,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
-				bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 0, firstInstanceOf, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -359,7 +359,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
-				bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 1, firstInstanceOf, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -381,10 +381,10 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
 		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -392,8 +392,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	 * @param wizardShell
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
-		SWTBot propertyBot = propertyView.bot();
-		propertyBot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip, 0).click();
+		SWTEEFBotHelper helper = new SWTEEFBotHelper(propertyView.bot());
+		helper.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature();
 		selectNode.select();
 	}
@@ -407,10 +407,10 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
 		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editTextWithLabel(EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -418,8 +418,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	 * @param wizardShell
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
-		SWTBot propertyBot = propertyView.bot();
-		propertyBot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip, 1).click();
+		SWTEEFBotHelper helper = new SWTEEFBotHelper(propertyView.bot());
+		helper.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		selectNode.select();
 	}

@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
@@ -146,7 +146,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaRequiredProperty feature of the TextareaSample element 
-				bot.editTextFeature(wizardShell, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextareaSample.textareaRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaOptionalProperty feature of the TextareaSample element 
-				bot.editTextFeature(wizardShell, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextareaSample.textareaOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
