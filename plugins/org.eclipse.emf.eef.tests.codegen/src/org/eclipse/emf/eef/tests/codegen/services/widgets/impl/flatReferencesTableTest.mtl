@@ -28,17 +28,17 @@ cc.append(AddCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [pe
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-bot.editFlatReferencesTableFeature(wizardShell, [peElement.flatReferencesTableIndex()/], 0);
+bot.editFlatReferencesTableFeature(wizardShell, [peElement.views->first().editorID()/], 0);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-bot.editFlatReferencesTable([peElement.flatReferencesTableIndex()/], 0);
+bot.editFlatReferencesTable([peElement.views->first().editorID()/], 0);
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-bot.editPropertyFlatReferencesTableFeature(propertiesView, [peElement.flatReferencesTableIndex()/], 0, bot.selectNode(modelEditor, firstInstanceOf));
+bot.editPropertyFlatReferencesTableFeature(propertiesView, [peElement.views->first().editorID()/], 0, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -59,12 +59,12 @@ else {
 [comment defines the bot command to process to edit the expected feature /]
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element
-		bot.removeFlatReferencesTableFeature(wizardShell, [peElement.flatReferencesTableIndex()/]);
+		bot.removeFlatReferencesTableFeature(wizardShell, [peElement.views->first().editorID()/]);
 [/template]
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isFlatReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyFlatReferencesTableFeature(propertiesView, [peElement.flatReferencesTableIndex()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyFlatReferencesTableFeature(propertiesView, [peElement.views->first().editorID()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [query public isFlatReferencesTableReference(peElement : PropertiesEditionElement) : Boolean = 
@@ -72,7 +72,3 @@ else {
 	then false
 	else peElement.representationName('FlatReferencesTable') and peElement.model.oclAsType(ecore::EReference).isReferenceMany()
 	endif/]
-
-[query public flatReferencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
-	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('FlatReferencesTable'))->indexOf(peElement)-1 /]

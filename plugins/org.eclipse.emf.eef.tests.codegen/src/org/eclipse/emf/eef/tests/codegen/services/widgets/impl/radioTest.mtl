@@ -26,7 +26,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isRadioEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editRadioFeature(wizardShell, [peElement.radioIndex()/], enumValueFor[peElement.model.name.toUpperFirst()/]);
+		bot.editRadioFeature(wizardShell, [peElement.views->first().editorID()/], enumValueFor[peElement.model.name.toUpperFirst()/]);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isRadioEnum())]
@@ -36,7 +36,7 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isRadioEnum())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyRadioFeature(propertiesView, [peElement.radioIndex()/], enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyRadioFeature(propertiesView, [peElement.views->first().editorID()/], enumValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -58,7 +58,3 @@ CompoundCommand cc = new CompoundCommand();
 	then false
 	else peElement.representationName('Radio') and peElement.model.oclAsType(ecore::EAttribute).isEnum()
 	endif/]
-
-[query public radioIndex(peElement : PropertiesEditionElement) : Integer = 
-	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('Radio'))->indexOf(peElement)-1 /]

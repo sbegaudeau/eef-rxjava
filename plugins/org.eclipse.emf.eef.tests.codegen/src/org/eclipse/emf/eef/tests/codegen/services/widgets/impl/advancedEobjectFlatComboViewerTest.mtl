@@ -28,17 +28,17 @@ CompoundCommand cc = new CompoundCommand();
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, [peElement.eAOFCVIndex()/], referenceValueFor[peElement.model.name.toUpperFirst()/]);
+		bot.editAdvancedEObjectFlatComboViewerFeature(wizardShell, [peElement.views->first().editorID()/], referenceValueFor[peElement.model.name.toUpperFirst()/]);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-		bot.editAdvancedEObjectFlatComboViewer([peElement.views->first().owningViewsRepository().messagesProvider()/].[peElement.views->first().editorKey(peElement.views->first().owningView())/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
+		bot.editAdvancedEObjectFlatComboViewer([peElement.views->first().editorID()/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isAEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, [peElement.eAOFCVIndex()/], referenceValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, [peElement.views->first().editorID()/], referenceValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -55,12 +55,12 @@ CompoundCommand cc = new CompoundCommand();
 [comment defines the bot command to process to edit the expected feature /]
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isAEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, [peElement.eAOFCVIndex()/]);
+		bot.removeAdvancedEObjectFlatComboViewerFeature(wizardShell, [peElement.views->first().editorID()/]);
 [/template]
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isAEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, [peElement.eAOFCVIndex()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedEObjectFlatComboViewerFeature(propertiesView, [peElement.views->first().editorID()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [query public isAEOFCVReference(peElement : PropertiesEditionElement) : Boolean = 
@@ -68,7 +68,3 @@ CompoundCommand cc = new CompoundCommand();
 	then false
 	else peElement.representationName('AdvancedEObjectFlatComboViewer') and peElement.model.oclAsType(ecore::EReference).isReferenceSingle()
 	endif/]
-
-[query public eAOFCVIndex(peElement : PropertiesEditionElement) : Integer = 
-	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('AdvancedEObjectFlatComboViewer'))->indexOf(peElement)-1 /]

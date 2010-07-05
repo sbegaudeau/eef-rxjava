@@ -50,7 +50,7 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	protected void editTableComposition[peElement.name/]Feature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
 		bot.sleep(500);
-		bot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel, [peElement.tableCompositionIndex()/]).click();
+		bot.addButtonTableComposition([peElement.views->first().editorID()/]).click();
 		editTableCompositionFor[peElement.name/]Feature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -80,8 +80,8 @@ EClass [peElement.model.eType.name.toLowerFirst()/]MetaClass = [peElement.model.
 	 * @param wizardShell
 	 */
 	protected void editTableComposition[peElement.name/]Feature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
-		SWTBot propertyBot = propertyView.bot();
-		propertyBot.button([peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel, [peElement.tableCompositionIndex()/]).click();
+		SWTEEFBotHelper helper = new SWTEEFBotHelper(propertyView.bot());
+		helper.addButtonTableComposition([peElement.views->first().editorID()/]).click();
 		editTableCompositionFor[peElement.name/]Feature();
 		selectNode.select();
 	}
@@ -99,12 +99,12 @@ CompoundCommand cc = new CompoundCommand();
 [comment defines the bot command to process to edit the expected feature /]
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removeTableCompositionFeature(wizardShell, [peElement.tableCompositionIndex()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveTableViewerLabel);
+		bot.removeTableCompositionFeature(wizardShell, [peElement.views->first().editorID()/]);
 [/template]
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyTableCompositionFeature(propertiesView, [peElement.tableCompositionIndex()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveTableViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyTableCompositionFeature(propertiesView, [peElement.views->first().editorID()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [query public isTableComposition(peElement : PropertiesEditionElement) : Boolean = 
@@ -112,7 +112,3 @@ CompoundCommand cc = new CompoundCommand();
 	then false
 	else (peElement.representationName('TableComposition')) and (peElement.model.oclAsType(ecore::EReference).isContainmentMany() or peElement.model.oclAsType(ecore::EReference).isContainmentSingle())
 	endif/]
-
-[query public tableCompositionIndex(peElement : PropertiesEditionElement) : Integer = 
-	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('TableComposition'))->indexOf(peElement)-1 /]

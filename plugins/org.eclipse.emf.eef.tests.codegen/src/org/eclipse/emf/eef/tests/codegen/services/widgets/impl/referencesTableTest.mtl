@@ -39,7 +39,7 @@ else {
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editReferencesTableFeature(wizardShell, [peElement.referencesTableIndex()/], 0, [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel);
+		bot.editReferencesTableFeature(wizardShell, [peElement.views->first().editorID()/], 0);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isReferencesTableReference())]
@@ -49,12 +49,12 @@ else {
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyReferencesTableFeature(propertiesView, [peElement.referencesTableIndex()/], 0, [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyReferencesTableFeature(propertiesView, [peElement.views->first().editorID()/], 0, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removeReferencesTableFeature(wizardShell, [peElement.referencesTableIndex()/], 0, [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeReferencesTableFeature(wizardShell, [peElement.views->first().editorID()/], 0);
 [/template]
 
 [template public removeFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isReferencesTableReference())]
@@ -64,7 +64,7 @@ else {
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyReferencesTableFeature(propertiesView, [peElement.referencesTableIndex()/], 0, [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyReferencesTableFeature(propertiesView, [peElement.views->first().editorID()/], 0, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -75,7 +75,3 @@ else {
 	then false
 	else peElement.representationName('ReferencesTable') and peElement.model.oclAsType(ecore::EReference).isReferenceMany()
 	endif/]
-
-[query public referencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
-	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('ReferencesTable'))->indexOf(peElement)-1 /]

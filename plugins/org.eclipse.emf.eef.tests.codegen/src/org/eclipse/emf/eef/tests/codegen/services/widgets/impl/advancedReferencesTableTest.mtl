@@ -39,22 +39,22 @@ else {
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editAdvancedReferencesTableFeature(wizardShell, [peElement.advancedReferencesTableIndex()/], referenceValueFor[peElement.model.name.toUpperFirst()/]);
+		bot.editAdvancedReferencesTableFeature(wizardShell, [peElement.views->first().editorID()/], referenceValueFor[peElement.model.name.toUpperFirst()/]);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-		bot.editAdvancedReferencesTable([peElement.advancedReferencesTableIndex()/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
+		bot.editAdvancedReferencesTable([peElement.views->first().editorID()/], [peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]());
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyAdvancedReferencesTableFeature(propertiesView, [peElement.advancedReferencesTableIndex()/], referenceValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyAdvancedReferencesTableFeature(propertiesView, [peElement.views->first().editorID()/], referenceValueFor[peElement.model.name.toUpperFirst()/], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removeAdvancedReferencesTableFeature(wizardShell, [peElement.advancedReferencesTableIndex()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeAdvancedReferencesTableFeature(wizardShell, [peElement.views->first().editorID()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
 [/template]
 
 [template public removeFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isAdvancedReferencesTableReference())]
@@ -64,7 +64,7 @@ else {
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isAdvancedReferencesTableReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, [peElement.advancedReferencesTableIndex()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, [peElement.views->first().editorID()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -86,7 +86,3 @@ else {
 	then false
 	else peElement.representationName('AdvancedReferencesTable') and peElement.model.oclAsType(ecore::EReference).isReferenceMany()
 	endif/]
-
-[query public advancedReferencesTableIndex(peElement : PropertiesEditionElement) : Integer = 
-	peElement.element.oclAsType(components::PropertiesEditionComponent).involvedEditionElements()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)
-			->select(representationName('AdvancedReferencesTable') or representationName('AdvancedTableComposition'))->indexOf(peElement)-1 /]
