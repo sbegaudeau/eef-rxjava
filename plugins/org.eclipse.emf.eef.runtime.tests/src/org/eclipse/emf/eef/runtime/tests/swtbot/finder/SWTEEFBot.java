@@ -362,7 +362,8 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param newValue the new value to set
 	 */
 	public void editEEFText(String viewId, Object newValue) {
-		textWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewId).setText(newValue.toString());
+		if (newValue != null)
+			textWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewId).setText(newValue.toString());
 	}
 
 	/**
@@ -705,11 +706,19 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		closeShellWithFinishButton(shell);
 	}
 
-	public void editMultiValuedEditor(String label, List<String> values) {
-		button(label).click();
+	/**
+	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
+	 * 
+	 * @param shell
+	 *            the shell of the edited wizard
+	 * @param viewID the ID of the ElementEditor to edit
+	 * @param newValue the value to add to the feature
+	 */
+	public void editMultiValuedEditor(String viewID, List<String> values) {
+		buttonWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID).click();
 		for (String string : values) {
 			text().setText(string);
-			button(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button).click();
+			button(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")).click();
 		}
 		button(UIConstants.OK_BUTTON).click();
 	}
@@ -759,7 +768,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param viewID the ID of the ElementEditor to edit
 	 * @param value the values to add
 	 */
-	public void editAdvancedReferencesTable(String viewID, List values) {
+	public void editAdvancedReferencesTableValues(String viewID, List values) {
 		for (Object value : values) {
 			editAdvancedReferencesTable(viewID, value);
 		}
