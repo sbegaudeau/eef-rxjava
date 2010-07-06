@@ -20,26 +20,28 @@
 
 [template public updateExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides updateExpectedModel ? (peElement.isEOFCVReference())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		referenceValueFor[peElement.model.name.toUpperFirst()/] = bot.changeReferenceValue(allInstancesOf, (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]());
-		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], referenceValueFor[peElement.model.name.toUpperFirst()/]));
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+referenceValueFor[peElement.model.name.toUpperFirst()/] = bot.changeReferenceValue(allInstancesOf, (([pec.model.name.toUpperFirst()/])[pec.model.name.toLowerFirst()/]).get[peElement.model.name.toUpperFirst()/]());
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], referenceValueFor[peElement.model.name.toUpperFirst()/]));
 [/template]
 
 [template public editFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, [peElement.views->first().editorID()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/])[if (not peElement.model.required)]+1[/if]);
+bot.editEObjectFlatComboViewerFeature(wizardShell, [peElement.views->first().editorID()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/])[if (not peElement.model.required)]+1[/if]);
 [/template]
 
 [template public editFeature(f : EStructuralFeature, peElement : PropertiesEditionElement) overrides editFeature ? (peElement.isEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [peElement.model.name/] element 
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		bot.editEObjectFlatComboViewer([peElement.views->first().editorID()/], allInstancesOf.indexOf([peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]()));
+if ([peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]() != null) {
+	allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+	bot.editEObjectFlatComboViewer([peElement.views->first().editorID()/], allInstancesOf.indexOf([peElement.element->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).model.name.toLowerFirst()/].get[peElement.model.name.toUpperFirst()/]()));
+}
 [/template]
 
 [template public editPropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides editPropertyFeature ? (peElement.isEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, [peElement.views->first().editorID()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/])[if (not peElement.model.required)]+1[/if], bot.selectNode(modelEditor, firstInstanceOf));
+bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, [peElement.views->first().editorID()/], allInstancesOf.indexOf(referenceValueFor[peElement.model.name.toUpperFirst()/])[if (not peElement.model.required)]+1[/if], bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [template public additionnalMethodsForWidgets(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
@@ -48,21 +50,21 @@ CompoundCommand cc = new CompoundCommand();
 [comment defines the command to apply in order to obtain the expected model /]
 [template public removeExpectedModel(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeExpectedModel ? (peElement.isEOFCVReference())]
 CompoundCommand cc = new CompoundCommand();
-		[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
-		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
-		cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], null));
+[comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
+allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, [peElement.model.eType.name.toLowerFirst()/]MetaClass);
+cc.append(SetCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], null));
 [/template]
 
 [comment defines the bot command to process to edit the expected feature /]
 [template public removeFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removeFeature ? (peElement.isEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element
-		bot.removeEObjectFlatComboViewerFeature(wizardShell, [peElement.views->first().editorID()/]);
+bot.removeEObjectFlatComboViewerFeature(wizardShell, [peElement.views->first().editorID()/]);
 
 [/template]
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isEOFCVReference())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-		bot.removePropertyEObjectFlatComboViewerFeature(propertiesView, [peElement.views->first().editorID()/], bot.selectNode(modelEditor, firstInstanceOf));
+bot.removePropertyEObjectFlatComboViewerFeature(propertiesView, [peElement.views->first().editorID()/], bot.selectNode(modelEditor, firstInstanceOf));
 
 [/template]
 
