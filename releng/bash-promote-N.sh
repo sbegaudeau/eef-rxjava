@@ -10,7 +10,7 @@
 #*******************************************************************************
 #!/bin/bash
 PROMO_LOGS_DIR=$HOME/promo_logs
-RELENG_DIR="/opt/users/hudsonbuild/.hudson/jobs/cbi-emf-eef-0.7-nightly/workspace/org.eclipse.emf/org.eclipse.emf.eef/releng"
+RELENG_DIR="/opt/users/hudsonbuild/.hudson/jobs/emf-eef-nightly/workspace/org.eclipse.emf/org.eclipse.emf.eef/releng"
 ANT="/opt/public/common/apache-ant-1.7.1/bin/ant"
 logFile=$HOME/cronLog.txt
 
