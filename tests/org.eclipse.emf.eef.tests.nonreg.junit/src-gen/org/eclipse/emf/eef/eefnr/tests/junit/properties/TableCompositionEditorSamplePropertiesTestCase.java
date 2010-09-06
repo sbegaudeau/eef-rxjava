@@ -127,11 +127,11 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
-				EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
-				if (sample == null)
-					throw new InputModelInvalidException(sampleMetaClass.getName());
-				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), EcoreUtil.copy(sample)));
+		EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		if (sample == null)
+			throw new InputModelInvalidException(sampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), EcoreUtil.copy(sample)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -167,7 +167,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element
-				editTableCompositiontablecompositionRequiredPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
+		editTableCompositiontablecompositionRequiredPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -191,9 +191,9 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((TableCompositionEditorSample)tableCompositionEditorSample).getTablecompositionRequiredProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), firstInstanceOf));
+		allInstancesOf = ((TableCompositionEditorSample)tableCompositionEditorSample).getTablecompositionRequiredProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -229,7 +229,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element 
-				bot.removePropertyTableCompositionFeature(propertiesView, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyTableCompositionFeature(propertiesView, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -253,11 +253,11 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
-				EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
-				if (sample == null)
-					throw new InputModelInvalidException(sampleMetaClass.getName());
-				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), EcoreUtil.copy(sample)));
+		EObject sample = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, sampleMetaClass);
+		if (sample == null)
+			throw new InputModelInvalidException(sampleMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		cc.append(AddCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), EcoreUtil.copy(sample)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -293,7 +293,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element
-				editTableCompositiontablecompositionOptionalPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
+		editTableCompositiontablecompositionOptionalPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -317,9 +317,9 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((TableCompositionEditorSample)tableCompositionEditorSample).getTablecompositionOptionalProperty();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), firstInstanceOf));
+		allInstancesOf = ((TableCompositionEditorSample)tableCompositionEditorSample).getTablecompositionOptionalProperty();
+		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, sampleMetaClass);
+		cc.append(RemoveCommand.create(editingDomain, tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -355,7 +355,7 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element 
-				bot.removePropertyTableCompositionFeature(propertiesView, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyTableCompositionFeature(propertiesView, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
