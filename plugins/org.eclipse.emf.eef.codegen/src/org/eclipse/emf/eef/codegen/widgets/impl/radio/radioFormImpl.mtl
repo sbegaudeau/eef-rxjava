@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module radioFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetFormImpl/]
+[module radioFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetFormImpl/]
 
 [import common /]
 [import naming /]
