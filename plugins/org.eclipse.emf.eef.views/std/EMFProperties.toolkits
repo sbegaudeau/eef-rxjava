@@ -12,4 +12,6 @@
   <widgets name="AdvancedEObjectFlatComboViewer"/>
   <widgets name="FlatReferencesTable"/>
   <widgets name="ImageViewer"/>
+  <widgets name="SingleCompositionViewer"/>
+  <widgets name="SelectionDialog"/>
 </eef-views:Toolkit>
