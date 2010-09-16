@@ -60,8 +60,7 @@ public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 					IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
 					if (editionPolicy != null) {
 						Command propertiesEditionCommand = editionPolicy
-								.getPropertiesEditionCommand(new DomainPropertiesEditionContext(null,
-										editingDomain, eObject));
+								.getPropertiesEditionCommand(new DomainPropertiesEditionContext(null, editingDomain, eObject));
 						editingDomain.getCommandStack().execute(propertiesEditionCommand);
 					}
 				}

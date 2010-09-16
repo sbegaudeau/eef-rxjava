@@ -11,15 +11,19 @@
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -248,7 +252,15 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayoutData(gd);
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
-			List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(), allResources);
+			List<EClass> instanciableTypesInHierarchy;
+			if(editingDomain != null) {
+				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference, editingDomain, allResources);
+				//TODO Florian : cheat code to avoid perform finish guard.
+				editingDomain = null;
+			}
+			else {
+				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(), allResources);
+			}
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
 				button.setText(eClass.getName());

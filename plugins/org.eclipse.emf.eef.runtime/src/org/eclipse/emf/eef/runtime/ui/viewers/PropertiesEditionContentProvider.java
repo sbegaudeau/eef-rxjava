@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.viewers;
 
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -82,8 +81,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 			PropertiesContextService.getInstance().pop();
 			propertiesEditionComponent.dispose();
 		}
-		this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditionComponent(
-				(EObject)newInput, mode);
+		this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditionComponent((EObject)newInput, mode);
 		if (propertiesEditionComponent != null && mode == IPropertiesEditionComponent.LIVE_MODE)
 			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 
