@@ -123,10 +123,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableRequiredProperty(referencesTableSample);
-		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableOptionalProperty(referencesTableSample);
+
+
 
 	}
 
@@ -262,10 +260,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-					updateReferencesTableRequiredProperty(event);
+					updateReferencestableRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-					updateReferencesTableOptionalProperty(event);
+					updateReferencestableOptionalProperty(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -273,10 +271,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 					
 					public void execute() {
 						if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-							updateReferencesTableRequiredProperty(event);
+							updateReferencestableRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-							updateReferencesTableOptionalProperty(event);
+							updateReferencestableOptionalProperty(event);
 						}
 					}
 				});			
@@ -291,39 +289,33 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 		}
 	}
 
-	private void updateReferencesTableOptionalProperty(
-			final IPropertiesEditionEvent event) {
+	private void updateReferencestableRequiredProperty(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample ts = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableOptionalProperty().add(ts);
+				TotalSample elem = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableRequiredProperty().add(elem);
 			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample ts = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableOptionalProperty().remove(ts);
+				TotalSample elem = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableRequiredProperty().remove(elem);
 			}
 		}
 	}
 
-	private void updateReferencesTableRequiredProperty(
-			final IPropertiesEditionEvent event) {
+	private void updateReferencestableOptionalProperty(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample ts = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableRequiredProperty().add(ts);
+				TotalSample elem = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableOptionalProperty().add(elem);
 			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample ts = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableRequiredProperty().remove(ts);
+				TotalSample elem = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableOptionalProperty().remove(elem);
 			}
 		}
 	}
-
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : referencestableRequiredProperty, ReferencesTableSample, ReferencesTableSample.
-
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : referencestableOptionalProperty, ReferencesTableSample, ReferencesTableSample.
 
 
 
