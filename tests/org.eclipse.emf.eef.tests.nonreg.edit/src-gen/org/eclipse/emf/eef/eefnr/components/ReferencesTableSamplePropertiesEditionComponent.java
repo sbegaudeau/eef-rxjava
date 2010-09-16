@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -32,6 +33,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.viewers.Viewer;
@@ -260,10 +262,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableRequiredProperty, ReferencesTableSample, ReferencesTableSample.
+					updateReferencesTableRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableOptionalProperty, ReferencesTableSample, ReferencesTableSample.
+					updateReferencesTableOptionalProperty(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -271,10 +273,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 					
 					public void execute() {
 						if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableRequiredProperty, ReferencesTableSample, ReferencesTableSample.
+							updateReferencesTableRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableOptionalProperty, ReferencesTableSample, ReferencesTableSample.
+							updateReferencesTableOptionalProperty(event);
 						}
 					}
 				});			
@@ -286,6 +288,36 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
 			}
 			super.firePropertiesChanged(event);
+		}
+	}
+
+	private void updateReferencesTableOptionalProperty(
+			final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				TotalSample ts = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableOptionalProperty().add(ts);
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+			if (event.getNewValue() instanceof TotalSample) {
+				TotalSample ts = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableOptionalProperty().remove(ts);
+			}
+		}
+	}
+
+	private void updateReferencesTableRequiredProperty(
+			final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				TotalSample ts = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableRequiredProperty().add(ts);
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+			if (event.getNewValue() instanceof TotalSample) {
+				TotalSample ts = (TotalSample) event.getNewValue();
+				referencesTableSample.getReferencestableRequiredProperty().remove(ts);
+			}
 		}
 	}
 
