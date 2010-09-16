@@ -11,12 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -26,7 +20,6 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,12 +27,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
@@ -52,9 +39,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -621,404 +608,170 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((totalSample != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextRequiredProperty())));
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextOptionalProperty())));
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_CheckboxRequiredProperty(), basePart.getCheckboxRequiredProperty()));
-
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_CheckboxOptionalProperty(), basePart.getCheckboxOptionalProperty()));
-
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextareaRequiredProperty())));
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextareaOptionalProperty())));
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty(), basePart.getRadioRequiredProperty()));
-
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty(), basePart.getRadioOptionalProperty()));
-
-			if (totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty()) == null || !totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty()).equals(basePart.getEobjectflatcomboviewerRequiredProperty())) {
-				cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty(), basePart.getEobjectflatcomboviewerRequiredProperty()));
-			}
-			if (totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty()) == null || !totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty()).equals(basePart.getEobjectflatcomboviewerOptionalProperty())) {
-				cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty(), basePart.getEobjectflatcomboviewerOptionalProperty()));
-			}
-			List referencestableRequiredPropertyToAddFromReferencestableRequiredProperty = basePart.getReferencestableRequiredPropertyToAdd();
-			for (Iterator iter = referencestableRequiredPropertyToAddFromReferencestableRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(), iter.next()));
-			List referencestableRequiredPropertyToRemoveFromReferencestableRequiredProperty = basePart.getReferencestableRequiredPropertyToRemove();
-			for (Iterator iter = referencestableRequiredPropertyToRemoveFromReferencestableRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(), iter.next()));
-			//List referencestableRequiredPropertyToMoveFromReferencestableRequiredProperty = basePart.getReferencestableRequiredPropertyToMove();
-			//for (Iterator iter = referencestableRequiredPropertyToMoveFromReferencestableRequiredProperty.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
-			//}
-			List referencestableOptionalPropertyToAddFromReferencestableOptionalProperty = basePart.getReferencestableOptionalPropertyToAdd();
-			for (Iterator iter = referencestableOptionalPropertyToAddFromReferencestableOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(), iter.next()));
-			List referencestableOptionalPropertyToRemoveFromReferencestableOptionalProperty = basePart.getReferencestableOptionalPropertyToRemove();
-			for (Iterator iter = referencestableOptionalPropertyToRemoveFromReferencestableOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(), iter.next()));
-			//List referencestableOptionalPropertyToMoveFromReferencestableOptionalProperty = basePart.getReferencestableOptionalPropertyToMove();
-			//for (Iterator iter = referencestableOptionalPropertyToMoveFromReferencestableOptionalProperty.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
-			//}
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty(), basePart.getEmfcomboviewerRequiredProperty()));
-
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty(), basePart.getEmfcomboviewerOptionalProperty()));
-
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty(), basePart.getMultivaluededitorRequiredProperty()));
-
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty(), basePart.getMultivaluededitorOptionalProperty()));
-
-			List tablecompositionRequiredPropertyToAddFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToAdd();
-			for (Iterator iter = tablecompositionRequiredPropertyToAddFromTablecompositionRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty(), iter.next()));
-			Map tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToEdit();
-			for (Iterator iter = tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.keySet().iterator(); iter.hasNext();) {
-				Sample nextElement = (Sample) iter.next();
-				Sample tablecompositionRequiredProperty = (Sample) tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionRequiredProperty.eGet(feature)));
-					}
-				}
-			}
-			List tablecompositionRequiredPropertyToRemoveFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToRemove();
-			for (Iterator iter = tablecompositionRequiredPropertyToRemoveFromTablecompositionRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List tablecompositionRequiredPropertyToMoveFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToMove();
-			for (Iterator iter = tablecompositionRequiredPropertyToMoveFromTablecompositionRequiredProperty.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
-			}
-			List tablecompositionOptionalPropertyToAddFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToAdd();
-			for (Iterator iter = tablecompositionOptionalPropertyToAddFromTablecompositionOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty(), iter.next()));
-			Map tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToEdit();
-			for (Iterator iter = tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty.keySet().iterator(); iter.hasNext();) {
-				Sample nextElement = (Sample) iter.next();
-				Sample tablecompositionOptionalProperty = (Sample) tablecompositionOptionalPropertyToRefreshFromTablecompositionOptionalProperty.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionOptionalProperty.eGet(feature)));
-					}
-				}
-			}
-			List tablecompositionOptionalPropertyToRemoveFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToRemove();
-			for (Iterator iter = tablecompositionOptionalPropertyToRemoveFromTablecompositionOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List tablecompositionOptionalPropertyToMoveFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToMove();
-			for (Iterator iter = tablecompositionOptionalPropertyToMoveFromTablecompositionOptionalProperty.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
-			}
-			List advancedreferencestableRequiredPropertyToAddFromAdvancedreferencestableRequiredProperty = basePart.getAdvancedreferencestableRequiredPropertyToAdd();
-			for (Iterator iter = advancedreferencestableRequiredPropertyToAddFromAdvancedreferencestableRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(), iter.next()));
-			List advancedreferencestableRequiredPropertyToRemoveFromAdvancedreferencestableRequiredProperty = basePart.getAdvancedreferencestableRequiredPropertyToRemove();
-			for (Iterator iter = advancedreferencestableRequiredPropertyToRemoveFromAdvancedreferencestableRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(), iter.next()));
-			//List advancedreferencestableRequiredPropertyToMoveFromAdvancedreferencestableRequiredProperty = basePart.getAdvancedreferencestableRequiredPropertyToMove();
-			//for (Iterator iter = advancedreferencestableRequiredPropertyToMoveFromAdvancedreferencestableRequiredProperty.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
-			//}
-			List advancedreferencestableOptionalPropertyToAddFromAdvancedreferencestableOptionalProperty = basePart.getAdvancedreferencestableOptionalPropertyToAdd();
-			for (Iterator iter = advancedreferencestableOptionalPropertyToAddFromAdvancedreferencestableOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(), iter.next()));
-			List advancedreferencestableOptionalPropertyToRemoveFromAdvancedreferencestableOptionalProperty = basePart.getAdvancedreferencestableOptionalPropertyToRemove();
-			for (Iterator iter = advancedreferencestableOptionalPropertyToRemoveFromAdvancedreferencestableOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(), iter.next()));
-			//List advancedreferencestableOptionalPropertyToMoveFromAdvancedreferencestableOptionalProperty = basePart.getAdvancedreferencestableOptionalPropertyToMove();
-			//for (Iterator iter = advancedreferencestableOptionalPropertyToMoveFromAdvancedreferencestableOptionalProperty.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
-			//}
-			if (totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery()) == null || !totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery()).equals(basePart.getAdvancedeobjectflatcomboviewerRequiredPropery())) {
-				cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery(), basePart.getAdvancedeobjectflatcomboviewerRequiredPropery()));
-			}
-			if (totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery()) == null || !totalSample.eGet(EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery()).equals(basePart.getAdvancedeobjectflatcomboviewerOptionalPropery())) {
-				cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery(), basePart.getAdvancedeobjectflatcomboviewerOptionalPropery()));
-			}
-			List advancedtablecompositionRequiredPropertyToAddFromAdvancedtablecompositionRequiredProperty = basePart.getAdvancedtablecompositionRequiredPropertyToAdd();
-			for (Iterator iter = advancedtablecompositionRequiredPropertyToAddFromAdvancedtablecompositionRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty(), iter.next()));
-			Map advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty = basePart.getAdvancedtablecompositionRequiredPropertyToEdit();
-			for (Iterator iter = advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty.keySet().iterator(); iter.hasNext();) {
-				Sample nextElement = (Sample) iter.next();
-				Sample advancedtablecompositionRequiredProperty = (Sample) advancedtablecompositionRequiredPropertyToRefreshFromAdvancedtablecompositionRequiredProperty.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, advancedtablecompositionRequiredProperty.eGet(feature)));
-					}
-				}
-			}
-			List advancedtablecompositionRequiredPropertyToRemoveFromAdvancedtablecompositionRequiredProperty = basePart.getAdvancedtablecompositionRequiredPropertyToRemove();
-			for (Iterator iter = advancedtablecompositionRequiredPropertyToRemoveFromAdvancedtablecompositionRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List advancedtablecompositionRequiredPropertyToMoveFromAdvancedtablecompositionRequiredProperty = basePart.getAdvancedtablecompositionRequiredPropertyToMove();
-			for (Iterator iter = advancedtablecompositionRequiredPropertyToMoveFromAdvancedtablecompositionRequiredProperty.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
-			}
-			List advancedtablecompositionOptionalPropertyToAddFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToAdd();
-			for (Iterator iter = advancedtablecompositionOptionalPropertyToAddFromAdvancedtablecompositionOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(), iter.next()));
-			Map advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToEdit();
-			for (Iterator iter = advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty.keySet().iterator(); iter.hasNext();) {
-				Sample nextElement = (Sample) iter.next();
-				Sample advancedtablecompositionOptionalProperty = (Sample) advancedtablecompositionOptionalPropertyToRefreshFromAdvancedtablecompositionOptionalProperty.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, advancedtablecompositionOptionalProperty.eGet(feature)));
-					}
-				}
-			}
-			List advancedtablecompositionOptionalPropertyToRemoveFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToRemove();
-			for (Iterator iter = advancedtablecompositionOptionalPropertyToRemoveFromAdvancedtablecompositionOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List advancedtablecompositionOptionalPropertyToMoveFromAdvancedtablecompositionOptionalProperty = basePart.getAdvancedtablecompositionOptionalPropertyToMove();
-			for (Iterator iter = advancedtablecompositionOptionalPropertyToMoveFromAdvancedtablecompositionOptionalProperty.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), moveElement.getElement(), moveElement.getIndex()));
-			}
-			cc.append(SetCommand.create(editingDomain, totalSample, EefnrPackage.eINSTANCE.getAbstractSample_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof TotalSample) {
-			TotalSample totalSampleToUpdate = (TotalSample)source;
-			totalSampleToUpdate.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextRequiredProperty()));
-
-			totalSampleToUpdate.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextOptionalProperty()));
-
-			totalSampleToUpdate.setCheckboxRequiredProperty(new Boolean(basePart.getCheckboxRequiredProperty()).booleanValue());
-
-			totalSampleToUpdate.setCheckboxOptionalProperty(new Boolean(basePart.getCheckboxOptionalProperty()).booleanValue());
-
-			totalSampleToUpdate.setTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextareaRequiredProperty()));
-
-			totalSampleToUpdate.setTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getTextareaOptionalProperty()));
-
-			totalSampleToUpdate.setRadioRequiredProperty((ENUM_SAMPLE)basePart.getRadioRequiredProperty());
-
-			totalSampleToUpdate.setRadioOptionalProperty((ENUM_SAMPLE)basePart.getRadioOptionalProperty());
-
-			totalSampleToUpdate.setEobjectflatcomboviewerRequiredProperty((TotalSample)basePart.getEobjectflatcomboviewerRequiredProperty());
-			totalSampleToUpdate.setEobjectflatcomboviewerOptionalProperty((TotalSample)basePart.getEobjectflatcomboviewerOptionalProperty());
-			totalSampleToUpdate.getReferencestableRequiredProperty().addAll(basePart.getReferencestableRequiredPropertyToAdd());
-			totalSampleToUpdate.getReferencestableOptionalProperty().addAll(basePart.getReferencestableOptionalPropertyToAdd());
-			totalSampleToUpdate.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)basePart.getEmfcomboviewerRequiredProperty());
-
-			totalSampleToUpdate.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)basePart.getEmfcomboviewerOptionalProperty());
-
-			totalSampleToUpdate.getMultivaluededitorRequiredProperty().addAll(basePart.getMultivaluededitorRequiredProperty());
-
-			totalSampleToUpdate.getMultivaluededitorOptionalProperty().addAll(basePart.getMultivaluededitorOptionalProperty());
-
-			totalSampleToUpdate.getTablecompositionRequiredProperty().addAll(basePart.getTablecompositionRequiredPropertyToAdd());
-			totalSampleToUpdate.getTablecompositionOptionalProperty().addAll(basePart.getTablecompositionOptionalPropertyToAdd());
-			totalSampleToUpdate.getAdvancedreferencestableRequiredProperty().addAll(basePart.getAdvancedreferencestableRequiredPropertyToAdd());
-			totalSampleToUpdate.getAdvancedreferencestableOptionalProperty().addAll(basePart.getAdvancedreferencestableOptionalPropertyToAdd());
-			totalSampleToUpdate.setAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)basePart.getAdvancedeobjectflatcomboviewerRequiredPropery());
-			totalSampleToUpdate.setAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)basePart.getAdvancedeobjectflatcomboviewerOptionalPropery());
-			totalSampleToUpdate.getAdvancedtablecompositionRequiredProperty().addAll(basePart.getAdvancedtablecompositionRequiredPropertyToAdd());
-			totalSampleToUpdate.getAdvancedtablecompositionOptionalProperty().addAll(basePart.getAdvancedtablecompositionOptionalPropertyToAdd());
-			totalSampleToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
-
-
-			return totalSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
+					updateTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
+				if (EefnrViewsRepository.TotalSample.textOptionalProperty == event.getAffectedEditor()) {
+					updateTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
+				if (EefnrViewsRepository.TotalSample.checkboxRequiredProperty == event.getAffectedEditor()) {
+					updateCheckboxRequiredProperty((Boolean)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.checkboxOptionalProperty == event.getAffectedEditor()) {
+					updateCheckboxOptionalProperty((Boolean)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.textareaRequiredProperty == event.getAffectedEditor()) {
+					updateTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
+				if (EefnrViewsRepository.TotalSample.textareaOptionalProperty == event.getAffectedEditor()) {
+					updateTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
+				if (EefnrViewsRepository.TotalSample.radioRequiredProperty == event.getAffectedEditor()) {
+					updateRadioRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.radioOptionalProperty == event.getAffectedEditor()) {
+					updateRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
+					updateEobjectflatcomboviewerRequiredProperty((TotalSample)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
+					updateEobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableRequiredProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableOptionalProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+					updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+					updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableRequiredProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableOptionalProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
+					updateAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
+					updateAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)event.getNewValue());
+				}
+				if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionRequiredProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionOptionalProperty, TotalSample, TotalSample.
+				}
+				if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
+					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
 			}
-			if (EefnrViewsRepository.TotalSample.textOptionalProperty == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (EefnrViewsRepository.TotalSample.checkboxRequiredProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_CheckboxRequiredProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.TotalSample.checkboxOptionalProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_CheckboxOptionalProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.TotalSample.textareaRequiredProperty == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (EefnrViewsRepository.TotalSample.textareaOptionalProperty == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (EefnrViewsRepository.TotalSample.radioRequiredProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.TotalSample.radioOptionalProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty(), event.getNewValue()));
-			if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty(), event.getNewValue()));
-			if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(RemoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(RemoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty(), event.getNewValue()));
-
-					if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor())
-						command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty(), event.getNewValue()));
-
-					if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor())
-						command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					Sample oldValue = (Sample)event.getOldValue();
-					Sample newValue = (Sample)event.getNewValue();
-					// TODO: Complete the totalSample update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
+							updateTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (EefnrViewsRepository.TotalSample.textOptionalProperty == event.getAffectedEditor()) {
+							updateTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (EefnrViewsRepository.TotalSample.checkboxRequiredProperty == event.getAffectedEditor()) {
+							updateCheckboxRequiredProperty((Boolean)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.checkboxOptionalProperty == event.getAffectedEditor()) {
+							updateCheckboxOptionalProperty((Boolean)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.textareaRequiredProperty == event.getAffectedEditor()) {
+							updateTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (EefnrViewsRepository.TotalSample.textareaOptionalProperty == event.getAffectedEditor()) {
+							updateTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (EefnrViewsRepository.TotalSample.radioRequiredProperty == event.getAffectedEditor()) {
+							updateRadioRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.radioOptionalProperty == event.getAffectedEditor()) {
+							updateRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
+							updateEobjectflatcomboviewerRequiredProperty((TotalSample)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
+							updateEobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableRequiredProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableOptionalProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+							updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+							updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableRequiredProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableOptionalProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
+							updateAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
+							updateAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)event.getNewValue());
+						}
+						if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionRequiredProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionOptionalProperty, TotalSample, TotalSample.
+						}
+						if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
+							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 						}
 					}
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					Sample oldValue = (Sample)event.getOldValue();
-					Sample newValue = (Sample)event.getNewValue();
-					// TODO: Complete the totalSample update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
-						}
-					}
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(RemoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(RemoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(), event.getNewValue()));
-				if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery(), event.getNewValue()));
-			if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery(), event.getNewValue()));
-			if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					Sample oldValue = (Sample)event.getOldValue();
-					Sample newValue = (Sample)event.getNewValue();
-					// TODO: Complete the totalSample update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
-						}
-					}
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					Sample oldValue = (Sample)event.getOldValue();
-					Sample newValue = (Sample)event.getNewValue();
-					// TODO: Complete the totalSample update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
-						}
-					}
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getSample(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, totalSample, EefnrPackage.eINSTANCE.getAbstractSample_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
-				}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -1029,6 +782,88 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateTextRequiredProperty(java.lang.String newValue) {
+		totalSample.setTextRequiredProperty(newValue);	
+	}
+
+	private void updateTextOptionalProperty(java.lang.String newValue) {
+		totalSample.setTextOptionalProperty(newValue);	
+	}
+
+	private void updateCheckboxRequiredProperty(Boolean newValue) {
+		totalSample.setCheckboxRequiredProperty(newValue);	
+	}
+
+	private void updateCheckboxOptionalProperty(Boolean newValue) {
+		totalSample.setCheckboxOptionalProperty(newValue);	
+	}
+
+	private void updateTextareaRequiredProperty(java.lang.String newValue) {
+		totalSample.setTextareaRequiredProperty(newValue);	
+	}
+
+	private void updateTextareaOptionalProperty(java.lang.String newValue) {
+		totalSample.setTextareaOptionalProperty(newValue);	
+	}
+
+	private void updateRadioRequiredProperty(ENUM_SAMPLE newValue) {
+		totalSample.setRadioRequiredProperty(newValue);	
+	}
+
+	private void updateRadioOptionalProperty(ENUM_SAMPLE newValue) {
+		totalSample.setRadioOptionalProperty(newValue);	
+	}
+
+	private void updateEobjectflatcomboviewerRequiredProperty(TotalSample newValue) {
+		totalSample.setEobjectflatcomboviewerRequiredProperty(newValue);	
+	}
+
+	private void updateEobjectflatcomboviewerOptionalProperty(TotalSample newValue) {
+		totalSample.setEobjectflatcomboviewerOptionalProperty(newValue);	
+	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : referencestableRequiredProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : referencestableOptionalProperty, TotalSample, TotalSample.
+
+	private void updateEmfcomboviewerRequiredProperty(ENUM_SAMPLE newValue) {
+		totalSample.setEmfcomboviewerRequiredProperty(newValue);	
+	}
+
+	private void updateEmfcomboviewerOptionalProperty(ENUM_SAMPLE newValue) {
+		totalSample.setEmfcomboviewerOptionalProperty(newValue);	
+	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorRequiredProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionRequiredProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionOptionalProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedreferencestableRequiredProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedreferencestableOptionalProperty, TotalSample, TotalSample.
+
+	private void updateAdvancedeobjectflatcomboviewerRequiredPropery(TotalSample newValue) {
+		totalSample.setAdvancedeobjectflatcomboviewerRequiredPropery(newValue);	
+	}
+
+	private void updateAdvancedeobjectflatcomboviewerOptionalPropery(TotalSample newValue) {
+		totalSample.setAdvancedeobjectflatcomboviewerOptionalPropery(newValue);	
+	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedtablecompositionRequiredProperty, TotalSample, TotalSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedtablecompositionOptionalProperty, TotalSample, TotalSample.
+
+	private void updateName(java.lang.String newValue) {
+		totalSample.setName(newValue);	
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -1120,13 +955,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(totalSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(totalSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(totalSample);
 		// Start of user code for custom validation check
 		
 		// End of user code

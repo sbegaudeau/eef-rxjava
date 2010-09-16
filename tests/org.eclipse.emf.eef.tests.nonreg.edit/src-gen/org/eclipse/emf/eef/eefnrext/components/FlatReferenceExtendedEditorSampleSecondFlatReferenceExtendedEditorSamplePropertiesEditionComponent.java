@@ -11,8 +11,6 @@
 package org.eclipse.emf.eef.eefnrext.components;
 
 // Start of user code for imports
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -24,8 +22,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
@@ -36,8 +32,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -234,66 +230,32 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((flatReferenceExtendedEditorSample != null) && (secondFlatReferenceExtendedEditorSamplePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), secondFlatReferenceExtendedEditorSamplePart.getDemo())));
-			cc.append(SetCommand.create(editingDomain, flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEInt(), secondFlatReferenceExtendedEditorSamplePart.getSize())));
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof FlatReferenceExtendedEditorSample) {
-			FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSampleToUpdate = (FlatReferenceExtendedEditorSample)source;
-			flatReferenceExtendedEditorSampleToUpdate.setDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), secondFlatReferenceExtendedEditorSamplePart.getDemo()));
-
-			flatReferenceExtendedEditorSampleToUpdate.setSize(EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), secondFlatReferenceExtendedEditorSamplePart.getSize()));
-
-
-			return flatReferenceExtendedEditorSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
-			}
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
+					updateDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 				}
+				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
+					updateSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
+							updateDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
+							updateSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -304,6 +266,16 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateDemo(java.lang.String newValue) {
+		flatReferenceExtendedEditorSample.setDemo(newValue);	
+	}
+
+	private void updateSize(int newValue) {
+		flatReferenceExtendedEditorSample.setSize(newValue);	
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -351,13 +323,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(flatReferenceExtendedEditorSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(flatReferenceExtendedEditorSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(flatReferenceExtendedEditorSample);
 		// Start of user code for custom validation check
 		
 		// End of user code

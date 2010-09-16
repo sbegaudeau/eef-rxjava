@@ -11,28 +11,15 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
@@ -44,8 +31,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.jface.viewers.Viewer;
@@ -262,134 +249,32 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((tableCompositionExtensionEditorSample != null) && (basePart != null)) { 
-			List tablecompositionRequiredPropertyToAddFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToAdd();
-			for (Iterator iter = tablecompositionRequiredPropertyToAddFromTablecompositionRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), iter.next()));
-			Map tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToEdit();
-			for (Iterator iter = tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.keySet().iterator(); iter.hasNext();) {
-				AbstractTableCompositionTargetExtensionEditorSample nextElement = (AbstractTableCompositionTargetExtensionEditorSample) iter.next();
-				AbstractTableCompositionTargetExtensionEditorSample tablecompositionRequiredProperty = (AbstractTableCompositionTargetExtensionEditorSample) tablecompositionRequiredPropertyToRefreshFromTablecompositionRequiredProperty.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionRequiredProperty.eGet(feature)));
-					}
-				}
-			}
-			List tablecompositionRequiredPropertyToRemoveFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToRemove();
-			for (Iterator iter = tablecompositionRequiredPropertyToRemoveFromTablecompositionRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List tablecompositionRequiredPropertyToMoveFromTablecompositionRequiredProperty = basePart.getTablecompositionRequiredPropertyToMove();
-			for (Iterator iter = tablecompositionRequiredPropertyToMoveFromTablecompositionRequiredProperty.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample(), moveElement.getElement(), moveElement.getIndex()));
-			}
-			List tablecompositionRequiredPropertyToAddFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToAdd();
-			for (Iterator iter = tablecompositionRequiredPropertyToAddFromTablecompositionOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), iter.next()));
-			Map tablecompositionRequiredPropertyToRefreshFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToEdit();
-			for (Iterator iter = tablecompositionRequiredPropertyToRefreshFromTablecompositionOptionalProperty.keySet().iterator(); iter.hasNext();) {
-				AbstractTableCompositionTargetExtensionEditorSample nextElement = (AbstractTableCompositionTargetExtensionEditorSample) iter.next();
-				AbstractTableCompositionTargetExtensionEditorSample tablecompositionRequiredProperty = (AbstractTableCompositionTargetExtensionEditorSample) tablecompositionRequiredPropertyToRefreshFromTablecompositionOptionalProperty.get(nextElement);
-				for (EStructuralFeature feature : nextElement.eClass().getEAllStructuralFeatures()) {
-					if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-						cc.append(SetCommand.create(editingDomain, nextElement, feature, tablecompositionRequiredProperty.eGet(feature)));
-					}
-				}
-			}
-			List tablecompositionRequiredPropertyToRemoveFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToRemove();
-			for (Iterator iter = tablecompositionRequiredPropertyToRemoveFromTablecompositionOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(DeleteCommand.create(editingDomain, iter.next()));
-			List tablecompositionRequiredPropertyToMoveFromTablecompositionOptionalProperty = basePart.getTablecompositionOptionalPropertyToMove();
-			for (Iterator iter = tablecompositionRequiredPropertyToMoveFromTablecompositionOptionalProperty.iterator(); iter.hasNext();){
-				org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-				cc.append(MoveCommand.create(editingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample(), moveElement.getElement(), moveElement.getIndex()));
-			}
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof TableCompositionExtensionEditorSample) {
-			TableCompositionExtensionEditorSample tableCompositionExtensionEditorSampleToUpdate = (TableCompositionExtensionEditorSample)source;
-			tableCompositionExtensionEditorSampleToUpdate.getTablecompositionRequiredProperty().addAll(basePart.getTablecompositionRequiredPropertyToAdd());
-			tableCompositionExtensionEditorSampleToUpdate.getTablecompositionRequiredProperty().addAll(basePart.getTablecompositionOptionalPropertyToAdd());
-
-			return tableCompositionExtensionEditorSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					AbstractTableCompositionTargetExtensionEditorSample oldValue = (AbstractTableCompositionTargetExtensionEditorSample)event.getOldValue();
-					AbstractTableCompositionTargetExtensionEditorSample newValue = (AbstractTableCompositionTargetExtensionEditorSample)event.getNewValue();
-					// TODO: Complete the tableCompositionExtensionEditorSample update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+				}
+				if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+						}
+						if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
 						}
 					}
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.SET == event.getKind()) {
-					AbstractTableCompositionTargetExtensionEditorSample oldValue = (AbstractTableCompositionTargetExtensionEditorSample)event.getOldValue();
-					AbstractTableCompositionTargetExtensionEditorSample newValue = (AbstractTableCompositionTargetExtensionEditorSample)event.getNewValue();
-					// TODO: Complete the tableCompositionExtensionEditorSample update command
-					for (EStructuralFeature feature : newValue.eClass().getEAllStructuralFeatures()) {
-						if (feature.isChangeable() && !(feature instanceof EReference && ((EReference) feature).isContainer())) {
-							command.append(SetCommand.create(liveEditingDomain, oldValue, feature, newValue.eGet(feature)));
-						}
-					}
-				}
-				else if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), event.getNewValue()));
-				else if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(DeleteCommand.create(liveEditingDomain, event.getNewValue()));
-				else if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample(), event.getNewValue(), event.getNewIndex()));
-			}
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
-				}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -400,6 +285,12 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionRequiredProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionOptionalProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -439,13 +330,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(tableCompositionExtensionEditorSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(tableCompositionExtensionEditorSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(tableCompositionExtensionEditorSample);
 		// Start of user code for custom validation check
 		
 		// End of user code

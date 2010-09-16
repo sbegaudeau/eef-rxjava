@@ -11,8 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -24,8 +22,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -36,8 +32,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.swt.widgets.Display;
@@ -234,68 +230,32 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((multiValuedEditorSample != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, multiValuedEditorSample, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty(), basePart.getMultivaluededitorRequiredProperty()));
-
-			cc.append(SetCommand.create(editingDomain, multiValuedEditorSample, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty(), basePart.getMultivaluededitorOptionalProperty()));
-
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof MultiValuedEditorSample) {
-			MultiValuedEditorSample multiValuedEditorSampleToUpdate = (MultiValuedEditorSample)source;
-			multiValuedEditorSampleToUpdate.getMultivaluededitorRequiredProperty().addAll(basePart.getMultivaluededitorRequiredProperty());
-
-			multiValuedEditorSampleToUpdate.getMultivaluededitorOptionalProperty().addAll(basePart.getMultivaluededitorOptionalProperty());
-
-
-			return multiValuedEditorSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-					if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor())
-						command.append(SetCommand.create(liveEditingDomain, multiValuedEditorSample, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty(), event.getNewValue()));
-
-					if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor())
-						command.append(SetCommand.create(liveEditingDomain, multiValuedEditorSample, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty(), event.getNewValue()));
-
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, MultiValuedEditorSample, MultiValuedEditorSample.
 				}
+				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+						}
+						if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -306,6 +266,12 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorRequiredProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorOptionalProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -353,13 +319,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(multiValuedEditorSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(multiValuedEditorSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(multiValuedEditorSample);
 		// Start of user code for custom validation check
 		
 		// End of user code

@@ -11,8 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -25,8 +23,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
@@ -38,8 +34,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.swt.widgets.Display;
@@ -224,68 +220,32 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((eMFComboViewerSample != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), basePart.getEmfcomboviewerRequiredProperty()));
-
-			cc.append(SetCommand.create(editingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), basePart.getEmfcomboviewerOptionalProperty()));
-
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof EMFComboViewerSample) {
-			EMFComboViewerSample eMFComboViewerSampleToUpdate = (EMFComboViewerSample)source;
-			eMFComboViewerSampleToUpdate.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)basePart.getEmfcomboviewerRequiredProperty());
-
-			eMFComboViewerSampleToUpdate.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)basePart.getEmfcomboviewerOptionalProperty());
-
-
-			return eMFComboViewerSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), event.getNewValue()));
-
-			if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), event.getNewValue()));
-
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+					updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
 				}
+				if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+					updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+							updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+						}
+						if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+							updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -296,6 +256,16 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateEmfcomboviewerRequiredProperty(ENUM_SAMPLE newValue) {
+		eMFComboViewerSample.setEmfcomboviewerRequiredProperty(newValue);	
+	}
+
+	private void updateEmfcomboviewerOptionalProperty(ENUM_SAMPLE newValue) {
+		eMFComboViewerSample.setEmfcomboviewerOptionalProperty(newValue);	
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -343,13 +313,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(eMFComboViewerSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(eMFComboViewerSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(eMFComboViewerSample);
 		// Start of user code for custom validation check
 		
 		// End of user code

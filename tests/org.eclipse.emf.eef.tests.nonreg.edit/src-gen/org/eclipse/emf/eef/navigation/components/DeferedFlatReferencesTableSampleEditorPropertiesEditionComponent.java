@@ -11,11 +11,6 @@
 package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
-import java.util.Iterator;
-import java.util.List;
-
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -28,15 +23,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
-import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
-import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
@@ -46,13 +34,12 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -261,92 +248,32 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((deferedFlatReferenceTableEditorSample != null) && (deferedFlatReferencesTableSamplePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, deferedFlatReferenceTableEditorSample, EefnrPackage.eINSTANCE.getAbstractSample_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferencesTableSamplePart.getName())));
-			List flatreferenceEditorToAddFromFlatReferencesTableSampleEditor = deferedFlatReferencesTableSamplePart.getFlatReferencesTableSampleEditorToAdd();
-			for (Iterator iter = flatreferenceEditorToAddFromFlatReferencesTableSampleEditor.iterator(); iter.hasNext();) {
-				DeferedReference deferedReference = NavigationFactory.eINSTANCE.createDeferedReference();
-				cc.append(SetCommand.create(editingDomain, deferedReference, NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor(), iter.next()));
-				cc.append(AddCommand.create(editingDomain, deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), deferedReference));
-			}
-			List deferedReferenceToRemoveFromFlatReferencesTableSampleEditor = deferedFlatReferencesTableSamplePart.getFlatReferencesTableSampleEditorToRemove();
-			for (Iterator iter = deferedReferenceToRemoveFromFlatReferencesTableSampleEditor.iterator(); iter.hasNext();) {
-				cc.append(RemoveCommand.create(editingDomain, iter.next()));
-			}
-			//List flatreferenceEditorToMoveFromFlatReferencesTableSampleEditor = deferedFlatReferencesTableSamplePart.getFlatReferencesTableSampleEditorToMove();
-			//for (Iterator iter = flatreferenceEditorToMoveFromFlatReferencesTableSampleEditor.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getTotalSample(), moveElement.getElement(), moveElement.getIndex()));
-			//}
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof DeferedFlatReferenceTableEditorSample) {
-			DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSampleToUpdate = (DeferedFlatReferenceTableEditorSample)source;
-			deferedFlatReferenceTableEditorSampleToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferencesTableSamplePart.getName()));
-
-			for (Iterator iter = deferedFlatReferencesTableSamplePart.getFlatReferencesTableSampleEditorTable().iterator(); iter.hasNext();) {
-				TotalSample flatreferenceEditor = (TotalSample)iter.next();
-				DeferedReference deferedReference = NavigationFactory.eINSTANCE.createDeferedReference();
-				deferedReference.setFlatreferenceEditor(flatreferenceEditor);
-				deferedFlatReferenceTableEditorSampleToUpdate.getReferences().add(deferedReference);
-			}
-
-			return deferedFlatReferenceTableEditorSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, deferedFlatReferenceTableEditorSample, EefnrPackage.eINSTANCE.getAbstractSample_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
+					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
 				if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
-					EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
-					for (EObject flatreferenceEditorToAdd : elements.getElementsToAdd()) {
-						DeferedReference deferedReference = NavigationFactory.eINSTANCE.createDeferedReference();
-						command.append(SetCommand.create(liveEditingDomain, deferedReference, NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor(), flatreferenceEditorToAdd));
-						command.append(AddCommand.create(liveEditingDomain, deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), deferedReference));
-					}
-					for (EObject flatreferenceEditorToRemove : elements.getElementsToRemove()) {
-						command.append(RemoveCommand.create(liveEditingDomain, flatreferenceEditorToRemove));
-					}
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatReferencesTableSampleEditor, DeferedFlatReferencesTableSample, DeferedFlatReferencesTableSampleEditor.
 				}
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
-				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
+							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatReferencesTableSampleEditor, DeferedFlatReferencesTableSample, DeferedFlatReferencesTableSampleEditor.
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -357,6 +284,14 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateName(java.lang.String newValue) {
+		deferedFlatReferenceTableEditorSample.setName(newValue);	
+	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatReferencesTableSampleEditor, DeferedFlatReferencesTableSample, DeferedFlatReferencesTableSampleEditor.
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -400,13 +335,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(deferedFlatReferenceTableEditorSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(deferedFlatReferenceTableEditorSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(deferedFlatReferenceTableEditorSample);
 		// Start of user code for custom validation check
 		
 		// End of user code

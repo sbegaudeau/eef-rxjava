@@ -11,11 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-import java.util.Iterator;
-import java.util.List;
-
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -24,10 +19,6 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -38,12 +29,11 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -262,82 +252,32 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((flatReferencesTableSample != null) && (basePart != null)) { 
-			List flatreferencestableRequiredPropertyToAddFromFlatreferencetableRequiredProperty = basePart.getFlatreferencetableRequiredPropertyToAdd();
-			for (Iterator iter = flatreferencestableRequiredPropertyToAddFromFlatreferencetableRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), iter.next()));
-			List flatreferencestableRequiredPropertyToRemoveFromFlatreferencetableRequiredProperty = basePart.getFlatreferencetableRequiredPropertyToRemove();
-			for (Iterator iter = flatreferencestableRequiredPropertyToRemoveFromFlatreferencetableRequiredProperty.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), iter.next()));
-			List flatreferencestableOptionalPropertyToAddFromFlatreferencetableOptionalProperty = basePart.getFlatreferencetableOptionalPropertyToAdd();
-			for (Iterator iter = flatreferencestableOptionalPropertyToAddFromFlatreferencetableOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), iter.next()));
-			List flatreferencestableOptionalPropertyToRemoveFromFlatreferencetableOptionalProperty = basePart.getFlatreferencetableOptionalPropertyToRemove();
-			for (Iterator iter = flatreferencestableOptionalPropertyToRemoveFromFlatreferencetableOptionalProperty.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), iter.next()));
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof FlatReferencesTableSample) {
-			FlatReferencesTableSample flatReferencesTableSampleToUpdate = (FlatReferencesTableSample)source;
-			flatReferencesTableSampleToUpdate.getFlatreferencestableRequiredProperty().addAll(basePart.getFlatreferencetableRequiredPropertyToAdd());
-			flatReferencesTableSampleToUpdate.getFlatreferencestableOptionalProperty().addAll(basePart.getFlatreferencetableOptionalPropertyToAdd());
-
-			return flatReferencesTableSampleToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-				EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
-				if (!elements.getElementsToAdd().isEmpty()) 
-					command.append(AddCommand.create(liveEditingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), elements.getElementsToAdd()));
-				if (!elements.getElementsToRemove().isEmpty()) 
-					command.append(RemoveCommand.create(liveEditingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), elements.getElementsToRemove()));
-			}
-			if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-				EMFListEditUtil elements = (EMFListEditUtil) event.getNewValue();
-				if (!elements.getElementsToAdd().isEmpty()) 
-					command.append(AddCommand.create(liveEditingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), elements.getElementsToAdd()));
-				if (!elements.getElementsToRemove().isEmpty()) 
-					command.append(RemoveCommand.create(liveEditingDomain, flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), elements.getElementsToRemove()));
-			}
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableRequiredProperty, FlatReferenceTableSample, FlatReferenceTableSample.
 				}
+				if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
+					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableOptionalProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableRequiredProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+						}
+						if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
+							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableOptionalProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -348,6 +288,12 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatreferencetableRequiredProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+
+	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatreferencetableOptionalProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -387,13 +333,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(flatReferencesTableSample);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(flatReferencesTableSample);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(flatReferencesTableSample);
 		// Start of user code for custom validation check
 		
 		// End of user code
