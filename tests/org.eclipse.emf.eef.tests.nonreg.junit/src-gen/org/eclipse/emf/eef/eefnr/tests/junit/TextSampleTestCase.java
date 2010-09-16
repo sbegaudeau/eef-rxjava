@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.eefnr.tests.junit;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Collections;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -23,6 +24,8 @@ import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.swt.finder.keyboard.KeyboardStrategy;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences.KeyboardLayoutDetector;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
  * TestCase for TextSample
@@ -144,7 +147,6 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
 		
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
-		
 		// Change value of the textRequiredProperty feature of the TextSample element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.textRequiredProperty, UPDATED_VALUE);
 		
