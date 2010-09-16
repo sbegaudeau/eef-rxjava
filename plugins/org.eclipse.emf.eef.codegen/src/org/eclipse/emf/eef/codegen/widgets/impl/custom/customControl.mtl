@@ -35,14 +35,6 @@
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-			// [protected ('for '.concat(editionElement.name).concat(' part update'))]
-			
-			// [/protected]
-[/if]
-[/template]
-
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected (' for '.concat(editionElement.name).concat(' command update'))]

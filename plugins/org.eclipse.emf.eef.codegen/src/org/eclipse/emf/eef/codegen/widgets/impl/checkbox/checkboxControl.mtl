@@ -36,14 +36,6 @@ update[editionElement.name.toJavaClassifier()/]((Boolean)event.getNewValue());
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](new Boolean([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).booleanValue());
-[else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
-[/if]
-[/template]
-
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
 [if (editionElement.model.oclAsType("EAttribute").eType.instanceClassName = 'boolean')]
 [if (editionElement.model.many)]

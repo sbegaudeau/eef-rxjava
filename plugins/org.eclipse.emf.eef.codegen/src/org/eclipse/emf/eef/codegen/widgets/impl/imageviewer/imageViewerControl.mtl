@@ -31,15 +31,6 @@
 		}
 [/template]
 
-[comment @Override widgetControl.partUpdater /]
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/]([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-[else]
-			//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
-[/if]
-[/template]
-
 [comment @Override widgetControl.updater /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]

@@ -36,13 +36,6 @@ update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.nam
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-[else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
-[/if][/template]
-
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('EMFComboViewer'))]
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/template]

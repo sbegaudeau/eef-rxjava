@@ -46,6 +46,14 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/]RadioViewer.setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null);
+		[editor.name.toJavaIdentifier()/]RadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+			}
+		});
 		[editor.name.toJavaIdentifier()/]RadioViewer.setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null);
 	}

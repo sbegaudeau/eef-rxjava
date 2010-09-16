@@ -30,18 +30,6 @@
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-	[if (editionElement.model.many)]
-			[modelName/]ToUpdate.get[editionElement.model.name.toMany().toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-	[else]
-			[modelName/]ToUpdate.get[editionElement.model.name.toUpperFirst()/]().addAll([view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-	[/if]
-[else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
-[/if]
-[/template]
-
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.many)]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null)

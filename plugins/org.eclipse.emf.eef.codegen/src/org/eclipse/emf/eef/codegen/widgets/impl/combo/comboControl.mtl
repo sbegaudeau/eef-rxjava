@@ -33,10 +33,6 @@ update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.nam
 			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo') and not editionElement.model.derived)]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-[/template]
-
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('Combo'))]
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/template]

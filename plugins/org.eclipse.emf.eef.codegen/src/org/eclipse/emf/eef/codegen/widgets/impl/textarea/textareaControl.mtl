@@ -17,6 +17,18 @@
 [import typeUtils /]
 
 [comment ===== Case : model = Attribute(1) - view = Textarea ===== /]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+private void update[editionElement.name.toJavaClassifier()/]([editionElement.model.eType.instanceClassName/] newValue) {
+	[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](newValue);	
+}
+[/template]
+
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
+[if (editionElement.model.isPrimitiveType())]
+update[editionElement.name.toJavaClassifier()/]((EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
+update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[/template]
+
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
 		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null){
 			if (msg.getNewValue() != null) {
@@ -27,9 +39,6 @@
 		}
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.model.derived)]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EcoreUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
-[/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)

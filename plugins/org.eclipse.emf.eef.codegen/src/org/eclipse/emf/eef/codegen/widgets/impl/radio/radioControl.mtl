@@ -26,14 +26,6 @@
 [/if]
 [/template]
 
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio') and not editionElement.model.derived)]
-[if (editionElement.model.oclAsType(ecore::EAttribute).isEnum())]
-			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
-[else]
-//FIXME invalid case in partUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Radio
-[/if]
-[/template]
-
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('Radio'))]
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/template]
@@ -42,3 +34,13 @@
 [comment not filters for radio /]
 [/template]
 
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+private void update[editionElement.name.toJavaClassifier()/]([editionElement.model.eType.name/] newValue) {
+	[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](newValue);
+}
+[/template]
+
+[comment invokeEObjectUpdate : templates that override this one must define the invokation of the method declareEObjectUpdater /]
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ?  (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
+update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.name/])((EEnumLiteral)[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).getInstance());
+[/template]

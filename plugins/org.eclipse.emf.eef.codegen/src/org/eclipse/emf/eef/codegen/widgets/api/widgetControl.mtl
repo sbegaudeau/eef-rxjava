@@ -40,10 +40,11 @@
 
 [comment partUpdater : templates that override this one must define the setter to apply to set the value of the widget to
 		 the associated feature /]
+[comment]
 [template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
 // FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
 [/template]
-
+[/comment]
 [comment partUpdater : templates that override this one must define the operation to execute at the initialization of the 
 		 component for the given widget /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
@@ -57,14 +58,18 @@
 [/template]
 
 [comment ========== ReferencedViews support ========== /]
+[comment]
 [template public partUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent, modelName : String)]
 [for (v : View | view.referencedViews())]
 [for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 [editionElement.partUpdater(v, pec, modelName)/]
 [/for]
+[/comment]
 [comment][if (v.referencedViews()->notEmpty())][v.partUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(components::PropertiesEditionComponent))->first().oclAsType(components::PropertiesEditionComponent), modelName)/][/if][/comment]
+[comment]
 [/for]
 [/template]
+[/comment]
 
 [template public liveUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
