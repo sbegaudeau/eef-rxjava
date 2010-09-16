@@ -18,22 +18,15 @@
 
 
 [template public getterDeclaration(elementEditor : ElementEditor) overrides getterDeclaration ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
-[elementEditor.getterAddSignatureDocumentation()/]
-[elementEditor.getterAddSignature()/];
-
-[elementEditor.getterRemoveSignatureDocumentation()/]
-[elementEditor.getterRemoveSignature()/];
-
-[elementEditor.getterTableListSignatureDocumentation()/]
-[elementEditor.getterTableListSignature()/];
 [/template]
+
+[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+[/template]
+
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 [elementEditor.initSignatureDocumentation()/]
 [elementEditor.initSignature()/];
-
-[elementEditor.updateSignatureDocumentation()/]
-[elementEditor.updateSignature()/];
 
 [elementEditor.addFilterSignatureDocumentation()/]
 [elementEditor.addFilterSignature()/];
@@ -58,41 +51,10 @@
 	 */
 [/template]
 
-[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
-[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterAddSignatureImplementation()/]
-
-[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterRemoveSignatureImplementation()/]
-
-[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterTableListSignatureImplementation()/]
-
-[/template]
-
-[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides getterImplementationDelegate ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
-[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterAddSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToAdd();
-	}
-
-[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterRemoveSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToRemove();
-	}
-
-[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterTableListSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]Table();
-	}
-[/template]
 
 [template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setterImplementation ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignatureImplementation()/]
-
-[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.updateSignatureImplementation()/]
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.addFilterSignatureImplementation()/]
@@ -108,11 +70,6 @@
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
-	}
-
-[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.updateSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
 	}
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -144,10 +101,10 @@
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		if (containingFeature != null)
-			[elementEditor.name.toJavaIdentifier()/]EditUtil = new EMFListEditUtil(current, containingFeature, feature);
+			[elementEditor.name.toJavaIdentifier()/]EditUtil = (EList<EObject>)((EObject)current.eGet(containingFeature)).eGet(feature);
 		else
-			[elementEditor.name.toJavaIdentifier()/]EditUtil = new EMFListEditUtil(current, feature);
-		this.[elementEditor.name.toJavaIdentifier()/].setInput([elementEditor.name.toJavaIdentifier()/]EditUtil.getVirtualList());
+			[elementEditor.name.toJavaIdentifier()/]EditUtil = (EList<EObject>)current.eGet(feature);
+		[elementEditor.name.toJavaIdentifier()/].setInput([elementEditor.name.toJavaIdentifier()/]EditUtil);
 	}
 [/template]
 

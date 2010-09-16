@@ -20,7 +20,6 @@
 
 [comment ===== Case Widget = ReferencesTable ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'ReferencesTable')]
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -44,7 +43,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'ReferencesTable')]
-protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
+	protected EList<EObject> [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
 	protected Button add[editor.name.toJavaClassifier()/];
 	protected Button remove[editor.name.toJavaClassifier()/];
@@ -160,7 +159,6 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				add[editor.name.toJavaClassifier()/]();
-				[editor.name.toJavaIdentifier()/].refresh();
 			}
 
 		});
@@ -183,9 +181,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
-					remove[editor.name.toJavaClassifier()/](selection);
-					[editor.name.toJavaIdentifier()/].refresh();
+					remove[editor.name.toJavaClassifier()/]((IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection());
 				}
 			}
 
@@ -203,10 +199,7 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					if (![editor.name.toJavaIdentifier()/]EditUtil.getVirtualList().contains(elem)) {
-						[editor.name.toJavaIdentifier()/]EditUtil.addElement(elem);
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(elem)));
-					}
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 			}
 
@@ -219,10 +212,9 @@ protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void remove[editor.name.toJavaClassifier()/](IStructuredSelection selection) {
-		if (selection.getFirstElement() instanceof EObject) {
-			EObject selectedElement = (EObject) selection.getFirstElement();
-			[editor.name.toJavaIdentifier()/]EditUtil.removeElement(selectedElement);
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement)));
+		for (Iterator iter = selection.iterator(); iter.hasNext();) {
+			EObject elem = (EObject) iter.next();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
 	}
 [/template]
