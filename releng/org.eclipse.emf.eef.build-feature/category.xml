@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2008, 2010 Obeo.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        Obeo - initial API and implementation
+ -->
+<site>
+   <description>
+      To install these features, point Eclipse at this site.
+   </description>
+   <feature id="org.eclipse.emf.eef.edt" version="0.0.0">
+      <category name="eef.features"/>
+   </feature>
+   <feature id="org.eclipse.emf.eef.runtime" version="0.0.0">
+      <category name="eef.features"/>
+   </feature>
+   <category-def name="eef.features" label="EEF Features (Incubation)">
+      <description>
+         Contains all necessary features for EEF
+      </description>
+   </category-def>
+   <category-def name="eef.integration" label="EEF Integration (Incubation)">
+      <description>
+         EEF integration for specific cases :
+         - UML2
+      </description>
+   </category-def>
+</site>
