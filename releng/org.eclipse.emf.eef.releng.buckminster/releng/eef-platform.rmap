@@ -3,6 +3,7 @@
   <rm:property key="checkout.location" value="${workspace.root}/"/>
   <rm:property key="eclipse.download" value="http://download.eclipse.org"/>
   <rm:locator pattern="^org\.eclipse\.emf\.eef\.releng\.buckminster$" searchPathRef="local.releng"/>
+  <rm:locator pattern="^org\.eclipse\.acceleo(?:\..+)?$" searchPathRef="acceleo"/>
   <rm:locator pattern="^org\.eclipse\.emf\.validation(?:\..+)?$" searchPathRef="emf.validation"/>
   <rm:locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf"/>
   <rm:locator searchPathRef="platform"/>
@@ -24,6 +25,13 @@
   <rm:searchPath name="emf.validation">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false" resolutionFilter="">
       <rm:uri format="{0}/modeling/emf/updates/releases/">
+        <bc:propertyRef key="eclipse.download"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+  <rm:searchPath name="acceleo">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false" resolutionFilter="">
+      <rm:uri format="{0}/modeling/m2t/updates/releases/">
         <bc:propertyRef key="eclipse.download"/>
       </rm:uri>
     </rm:provider>
