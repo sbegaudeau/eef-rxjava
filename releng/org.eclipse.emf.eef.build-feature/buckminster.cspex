@@ -34,7 +34,7 @@
 				<cs:property key="targets" value="package.ius" />
 			</cs:actorProperties>
 			<cs:properties>
-				<cs:property key="content.ius" value="org.eclipse.emf.eef.eef-edt-feature.feature.group" />
+				<cs:property key="content.ius" value="org.eclipse.emf.eef.sdk.feature.group" />
 				<cs:property key="package.name" value="emf-eef-SDK" />
 			</cs:properties>
 			<cs:prerequisites>
@@ -50,7 +50,7 @@
 				<cs:property key="targets" value="package.ius" />
 			</cs:actorProperties>
 			<cs:properties>
-				<cs:property key="content.ius" value="org.eclipse.emf.eef.runtime.feature.group" />
+				<cs:property key="content.ius" value="org.eclipse.emf.eef.feature.group" />
 				<cs:property key="package.name" value="emf-eef-runtime" />
 			</cs:properties>
 			<cs:prerequisites>
