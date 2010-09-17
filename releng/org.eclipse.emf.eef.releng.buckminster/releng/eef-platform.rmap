@@ -3,8 +3,9 @@
   <rm:property key="checkout.location" value="${workspace.root}/"/>
   <rm:property key="eclipse.download" value="http://download.eclipse.org"/>
   <rm:locator pattern="^org\.eclipse\.emf\.eef\.releng\.buckminster$" searchPathRef="local.releng"/>
-  <rm:locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf"/>
   <rm:locator searchPathRef="platform"/>
+  <rm:locator pattern="^org\.eclipse\.emf\.validation(?:\..+)?$" searchPathRef="emf.validation"/>
+  <rm:locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf"/>
   <rm:searchPath name="local.releng">
     <rm:provider componentTypes="buckminster" readerType="local" mutable="false">
       <rm:uri format="{0}{1}">
