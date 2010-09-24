@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.impl.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,10 +22,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -67,6 +72,48 @@ public class EEFUtils {
 	}
 
 
+	/**
+	 * Return all the instanciable types for a given reference.
+	 * @param eReference the reference to process.
+	 * @param editingDomain the editing domain "where we live !"
+	 * @param allResources the resourceset where to search
+	 * @return a list of {@link EClass} containing all the instanciable type for the give reference.
+	 */
+	public static List<EClass> allTypeFor(EReference eReference, EditingDomain editingDomain, ResourceSet allResources) {
+		Collection<?> list = editingDomain.getNewChildDescriptors(EEFUtils.searchInstanceOf(allResources, eReference.getEContainingClass()), null);
+		ArrayList<EClass> instanciableTypesInHierarchy = new ArrayList<EClass>();
+		for(Object object : list) {
+			if(object instanceof CommandParameter) {
+				if(((CommandParameter) object).getFeature() instanceof EReference) {
+					if((((CommandParameter) object).getFeature()).equals(eReference)) {
+						instanciableTypesInHierarchy.add(((CommandParameter) object).getEValue().eClass());
+					}
+				}
+			}
+		}
+		return instanciableTypesInHierarchy;
+	}
+	
+	/**
+	 * Search an instance of a given Class.
+	 * @param allResources the ResourceSet where to search
+	 * @param eClass the searched type
+	 * @return the first instance of the given type.
+	 */
+	public static EObject searchInstanceOf(ResourceSet allResources, EClass eClass) {
+		for(Resource resource : allResources.getResources()) {
+			TreeIterator<EObject> iterator = resource.getAllContents();
+			while(iterator.hasNext()) {
+				Object objectTemp = iterator.next();
+				if(objectTemp instanceof EObject) {
+					if (eClass.isInstance(objectTemp))
+						return (EObject) objectTemp;
+				}
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * @param eClassifier
 	 * @return
