@@ -5,7 +5,6 @@
         <cs:dependency name="org.eclipse.emf.codegen.ecore.ui" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.emf.validation" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.jdt.junit4.runtime" componentType="osgi.bundle"/>
-        <cs:dependency name="org.eclipse.ocl" componentType="eclipse.feature"/>
         <cs:dependency name="org.eclipse.pde.core" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.platform" componentType="eclipse.feature"/>
         <cs:dependency name="org.junit4" componentType="osgi.bundle"/>
