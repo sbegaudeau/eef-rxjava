@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,9 +28,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
-import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
-import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
@@ -48,6 +45,7 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -79,6 +77,12 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	 * 
 	 */
 	protected DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart;
+
+
+	/**
+	 * The Settings for the XXX ReferencesTable
+	 */
+	private ReferencesTableSettings referencesTableSettings;
 
 	/**
 	 * Default constructor
@@ -217,7 +221,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			if (deferedReferenceTableEditorSample.getName() != null)
 				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
 
-			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			referencesTableSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(referencesTableSettings);
 			// init filters
 
 			deferedReferencesTableSamplePart.addFilterToReferencesTableSampleEditor(new ViewerFilter() {
@@ -294,15 +299,11 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 
 	private void updateFlatReferencesTableSampleEditor(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			List<EReference> references = new ArrayList<EReference>(2);
-			references.add(NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References());
-			references.add(NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-			EEFUtils.addToReference(deferedReferenceTableEditorSample, references, (EObject) event.getNewValue());
+			if (event.getNewValue() instanceof TotalSample) {
+				referencesTableSettings.addToReference((EObject) event.getNewValue());
+			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-			List<EReference> references = new ArrayList<EReference>(2);
-			references.add(NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References());
-			references.add(NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-			EEFUtils.removeFromReference(deferedReferenceTableEditorSample, references, (EObject) event.getNewValue());
+			referencesTableSettings.removeFromReference((EObject) event.getNewValue());
 		}
 	}
 
