@@ -16,7 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
@@ -67,7 +66,6 @@ import org.eclipse.ui.forms.widgets.Section;
 public class DeferedReferencesTableSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, DeferedReferencesTableSamplePropertiesEditionPart {
 
 	protected Text name;
-		protected EList<EObject> referencesTableSampleEditorEditUtil;
 		protected TableViewer referencesTableSampleEditor;
 		protected Button addReferencesTableSampleEditor;
 		protected Button removeReferencesTableSampleEditor;
@@ -411,7 +409,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 */
 	public boolean isContainedInReferencesTableSampleEditorTable(EObject element) {
-		return referencesTableSampleEditorEditUtil.contains(element);
+		return ((ReferencesTableSettings)referencesTableSampleEditor.getInput()).contains(element);
 	}
 
 

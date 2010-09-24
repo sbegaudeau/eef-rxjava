@@ -11,10 +11,8 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -27,38 +25,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface ReferencesTableSamplePropertiesEditionPart {
 
-	/**
-	 * @return the referencestableRequiredProperty to add
-	 * 
-	 */
-	public List getReferencestableRequiredPropertyToAdd();
 
-	/**
-	 * @return the referencestableRequiredProperty to remove
-	 * 
-	 */
-	public List getReferencestableRequiredPropertyToRemove();
-
-	/**
-	 * @return the current referencestableRequiredProperty table
-	 * 
-	 */
-	public List getReferencestableRequiredPropertyTable();
 
 	/**
 	 * Init the referencestableRequiredProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the referencestableRequiredProperty ReferencesTable 
 	 */
-	public void initReferencestableRequiredProperty(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the referencestableRequiredProperty
-	 * @param newValue the referencestableRequiredProperty to update
-	 * 
-	 */
-	public void updateReferencestableRequiredProperty(EObject newValue);
+	public void initReferencestableRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the referencestableRequiredProperty edition editor.
@@ -87,38 +60,13 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the referencestableOptionalProperty to add
-	 * 
-	 */
-	public List getReferencestableOptionalPropertyToAdd();
 
-	/**
-	 * @return the referencestableOptionalProperty to remove
-	 * 
-	 */
-	public List getReferencestableOptionalPropertyToRemove();
-
-	/**
-	 * @return the current referencestableOptionalProperty table
-	 * 
-	 */
-	public List getReferencestableOptionalPropertyTable();
 
 	/**
 	 * Init the referencestableOptionalProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the referencestableOptionalProperty ReferencesTable 
 	 */
-	public void initReferencestableOptionalProperty(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the referencestableOptionalProperty
-	 * @param newValue the referencestableOptionalProperty to update
-	 * 
-	 */
-	public void updateReferencestableOptionalProperty(EObject newValue);
+	public void initReferencestableOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the referencestableOptionalProperty edition editor.

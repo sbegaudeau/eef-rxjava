@@ -36,6 +36,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -67,7 +68,17 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 * 
 	 */
 	protected ReferencesTableSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for referencestableRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings referencestableRequiredPropertySettings;
+	
+	/**
+	 * Settings for referencestableOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings referencestableOptionalPropertySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -196,8 +207,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final ReferencesTableSample referencesTableSample = (ReferencesTableSample)elt;
 			// init values
-			basePart.initReferencestableRequiredProperty(referencesTableSample, null, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
-			basePart.initReferencestableOptionalProperty(referencesTableSample, null, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
+			referencestableRequiredPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
+			basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
+			referencestableOptionalPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
+			basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
 
@@ -292,28 +305,20 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	private void updateReferencestableRequiredProperty(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample elem = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableRequiredProperty().add(elem);
+				referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample elem = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableRequiredProperty().remove(elem);
-			}
+				referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 		}
 	}
 
 	private void updateReferencestableOptionalProperty(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample elem = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableOptionalProperty().add(elem);
+				referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-			if (event.getNewValue() instanceof TotalSample) {
-				TotalSample elem = (TotalSample) event.getNewValue();
-				referencesTableSample.getReferencestableOptionalProperty().remove(elem);
-			}
+				referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 		}
 	}
 
