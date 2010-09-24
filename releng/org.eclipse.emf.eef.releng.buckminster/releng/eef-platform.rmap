@@ -6,6 +6,7 @@
   <rm:locator pattern="^org\.eclipse\.acceleo(?:\..+)?$" searchPathRef="acceleo"/>
   <rm:locator pattern="^org\.eclipse\.emf\.validation(?:\..+)?$" searchPathRef="emf.validation"/>
   <rm:locator pattern="^org\.eclipse\.emf(?:\..+)?$" searchPathRef="emf"/>
+  <rm:locator pattern="^org\.eclipse\.ocl(?:\..+)?$" searchPathRef="ocl"/>
   <rm:locator searchPathRef="platform"/>
   <rm:searchPath name="local.releng">
     <rm:provider componentTypes="buckminster" readerType="local" mutable="false">
@@ -39,6 +40,13 @@
   <rm:searchPath name="platform">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:uri format="{0}/eclipse/updates/3.6milestones">
+        <bc:propertyRef key="eclipse.download"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+  <rm:searchPath name="ocl">
+    <rm:provider componentTypes="osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="">
+      <rm:uri format="{0}/modeling/mdt/ocl/3_0/updates/releases/">
         <bc:propertyRef key="eclipse.download"/>
       </rm:uri>
     </rm:provider>
