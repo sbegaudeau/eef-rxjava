@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
@@ -28,10 +27,11 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.ModelNavigationContentProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -377,19 +377,14 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart#initReferencesTableSampleEditor(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.eef.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart#initReferencesTableSampleEditor(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
-	public void initReferencesTableSampleEditor(EObject current, EReference containingFeature, EReference feature) {
+	public void initReferencesTableSampleEditor(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		ModelNavigationContentProvider contentProvider;
-		if (containingFeature != null) {
-			contentProvider = new ModelNavigationContentProvider(containingFeature, feature);
-		} else {
-			contentProvider = new ModelNavigationContentProvider(feature);
-		}
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencesTableSampleEditor.setContentProvider(contentProvider);
-		referencesTableSampleEditor.setInput(current);
+		referencesTableSampleEditor.setInput(settings);
 	}
 
 	/**

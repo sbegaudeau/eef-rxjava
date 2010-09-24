@@ -11,16 +11,12 @@
 package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -44,7 +40,6 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -77,13 +72,12 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	 * 
 	 */
 	protected DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart;
-
-
+	
 	/**
-	 * The Settings for the XXX ReferencesTable
+	 * Settings for flatReferencesTableSampleEditor ReferencesTable
 	 */
-	private ReferencesTableSettings referencesTableSettings;
-
+	private	ReferencesTableSettings flatreferenceEditorSettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -221,8 +215,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			if (deferedReferenceTableEditorSample.getName() != null)
 				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
 
-			referencesTableSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(referencesTableSettings);
+			flatreferenceEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatreferenceEditorSettings);
 			// init filters
 
 			deferedReferencesTableSamplePart.addFilterToReferencesTableSampleEditor(new ViewerFilter() {
@@ -300,10 +294,10 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	private void updateFlatReferencesTableSampleEditor(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			if (event.getNewValue() instanceof TotalSample) {
-				referencesTableSettings.addToReference((EObject) event.getNewValue());
+				flatreferenceEditorSettings.addToReference((EObject) event.getNewValue());
 			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-			referencesTableSettings.removeFromReference((EObject) event.getNewValue());
+				flatreferenceEditorSettings.removeFromReference((EObject) event.getNewValue());
 		}
 	}
 

@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.navigation.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -44,9 +43,9 @@ public interface DeferedReferencesTableSamplePropertiesEditionPart {
 
 	/**
 	 * Init the referencesTableSampleEditor
-	 * @param settings for the XXX ReferenceTable
+	 * @param settings settings for the referencesTableSampleEditor ReferencesTable 
 	 */
-	public void initReferencesTableSampleEditor(ReferencesTableSettings current);
+	public void initReferencesTableSampleEditor(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the referencesTableSampleEditor edition editor.
