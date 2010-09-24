@@ -39,15 +39,13 @@
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
-	public void init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+	public void init[elementEditor.viewPackageSignature()/](ReferencesTableSettings settings)
 [/template]
 
 [template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 	/**
 	 * Init the [elementEditor.name/]
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the [elementEditor.name/] ReferencesTable 
 	 */
 [/template]
 
@@ -92,7 +90,7 @@
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 [/template]
 
@@ -100,11 +98,9 @@
 [elementEditor.initSignature()/] {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			[elementEditor.name.toJavaIdentifier()/]EditUtil = (EList<EObject>)((EObject)current.eGet(containingFeature)).eGet(feature);
-		else
-			[elementEditor.name.toJavaIdentifier()/]EditUtil = (EList<EObject>)current.eGet(feature);
-		[elementEditor.name.toJavaIdentifier()/].setInput([elementEditor.name.toJavaIdentifier()/]EditUtil);
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		[elementEditor.name.toJavaIdentifier()/].setContentProvider(contentProvider);
+		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
 	}
 [/template]
 
@@ -122,6 +118,6 @@
 
 [template public isContainedInTableSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 [elementEditor.isContainedInTableSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.contains(element);
+		return ((ReferencesTableSettings)[elementEditor.name.toJavaIdentifier()/].getInput()).contains(element);
 	}
 [/template]

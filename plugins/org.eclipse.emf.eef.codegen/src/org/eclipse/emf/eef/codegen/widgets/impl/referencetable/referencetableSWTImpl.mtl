@@ -43,7 +43,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'ReferencesTable')]
-	protected EList<EObject> [editor.name.toJavaIdentifier()/]EditUtil;
 	protected TableViewer [editor.name.toJavaIdentifier()/];
 	protected Button add[editor.name.toJavaClassifier()/];
 	protected Button remove[editor.name.toJavaClassifier()/];
@@ -102,7 +101,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[/if]
 		
 		TableViewer result = new TableViewer(table);
-		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
 	
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
@@ -202,6 +200,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 		};
 		dialog.open();
+		[editor.name.toJavaIdentifier()/].refresh();
 	}
 
 	/**
@@ -213,6 +212,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			EObject elem = (EObject) iter.next();
 			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
+		[editor.name.toJavaIdentifier()/].refresh();
 	}
 [/template]
 
