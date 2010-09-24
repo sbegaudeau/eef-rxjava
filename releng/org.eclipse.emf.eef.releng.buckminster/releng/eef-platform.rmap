@@ -26,14 +26,14 @@
   </rm:searchPath>
   <rm:searchPath name="emf.validation">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false" resolutionFilter="">
-      <rm:uri format="{0}/modeling/emf/updates/releases/">
+      <rm:uri format="{0}/modeling/emf/updates/releases">
         <bc:propertyRef key="eclipse.download"/>
       </rm:uri>
     </rm:provider>
   </rm:searchPath>
   <rm:searchPath name="acceleo">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false" resolutionFilter="">
-      <rm:uri format="{0}/modeling/m2t/updates/releases/">
+      <rm:uri format="{0}/modeling/m2t/updates/releases">
         <bc:propertyRef key="eclipse.download"/>
       </rm:uri>
     </rm:provider>
@@ -47,7 +47,7 @@
   </rm:searchPath>
   <rm:searchPath name="ocl">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false" resolutionFilter="">
-      <rm:uri format="{0}/modeling/mdt/ocl/3_0/updates/releases/">
+      <rm:uri format="{0}/modeling/mdt/ocl/3_0/updates/releases">
         <bc:propertyRef key="eclipse.download"/>
       </rm:uri>
     </rm:provider>
