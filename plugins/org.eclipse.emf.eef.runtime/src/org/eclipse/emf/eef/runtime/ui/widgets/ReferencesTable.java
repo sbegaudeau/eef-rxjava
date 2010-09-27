@@ -21,10 +21,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
@@ -86,7 +84,7 @@ public class ReferencesTable<T extends EObject> implements
 			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowDown_16x16.gif"); //$NON-NLS-1$
 
 	/** list of element that we want to display * */
-	private List<T> listElement;
+	private Object input;
 
 	/**
 	 * Label above the table.
@@ -181,9 +179,10 @@ public class ReferencesTable<T extends EObject> implements
 	/** The filters. */
 	protected List<ViewerFilter> filters;
 
-	public void setHelpText(String helpText) {
-		this.helpText = helpText;
-	}
+	/**
+	 * ContentProvider of the table 
+	 */
+	private IStructuredContentProvider contentProvider;
 
 	/**
 	 * the constructor
@@ -414,6 +413,13 @@ public class ReferencesTable<T extends EObject> implements
 	public void setLayoutData(Object layoutData) {
 		composite.setLayoutData(layoutData);
 	}
+	
+	/**
+	 * @param contentProvider contentProvider to use in the Table
+	 */
+	public void setContentProvider(IStructuredContentProvider contentProvider) {
+		this.contentProvider = contentProvider;
+	}
 
 	public void setUpperBound(int value) {
 		if (value < 0)
@@ -435,6 +441,21 @@ public class ReferencesTable<T extends EObject> implements
 
 	public int getLowerBound() {
 		return this.lowerBound;
+	}
+	
+	private int getSize() {
+		return contentProvider.getElements(input).length;
+	}
+	
+	private int indexOf(Object elem) {
+		Object[] elements = contentProvider.getElements(input);
+		for (int i = 0; i < elements.length; i++) {
+			Object next = elements[i];
+			if (next.equals(elem)) 
+				return i;
+			
+		}
+		return -1;
 	}
 
 	/**
@@ -467,8 +488,14 @@ public class ReferencesTable<T extends EObject> implements
 	public Object getID() {
 		return EditingUtils.getID(table);
 	}
-
 	
+	/**
+	 * @param helpText
+	 */
+	public void setHelpText(String helpText) {
+		this.helpText = helpText;
+	}
+
 	public void refresh() {
 		tableViewer.refresh();
 		computeAddButtonStatus();
@@ -476,7 +503,7 @@ public class ReferencesTable<T extends EObject> implements
 	}
 
 	private void computeRemoveButtonStatus() {
-		if (listElement.size() > this.lowerBound)
+		if (getSize() > this.lowerBound)
 			removeButton.setEnabled(true);
 		else
 			removeButton.setEnabled(false);
@@ -484,7 +511,7 @@ public class ReferencesTable<T extends EObject> implements
 	}
 
 	private void computeAddButtonStatus() {
-		if (this.upperBound < 0 || listElement.size() < this.upperBound)
+		if (this.upperBound < 0 || getSize() < this.upperBound)
 			addButton.setEnabled(true);
 		else
 			addButton.setEnabled(false);
@@ -501,31 +528,12 @@ public class ReferencesTable<T extends EObject> implements
 	}
 
 	/**
-	 * Sets the layout data to the main composite of this complex element.
-	 * 
-	 * @param data
-	 *            the new LayoutData
-	 */
-	// public void setLayoutData(Object data) {
-	// composite.setLayoutData(data);
-	// }
-	/**
 	 * Returns the label provider for the composite
 	 * 
 	 * @return the label provider or <code>null</code>
 	 */
 	public AdapterFactoryLabelProvider getLabelProvider() {
 		return new AdapterFactoryLabelProvider(adapterFactory);
-	}
-
-	/**
-	 * Returns the label provider for the composite
-	 * 
-	 * @return the label provider or <code>null</code>
-	 */
-	public IContentProvider getContentProvider() {
-		return new TableContentProvider();
-
 	}
 
 	/**
@@ -638,8 +646,8 @@ public class ReferencesTable<T extends EObject> implements
 			for (int i = (tableItems.length - 1); i >= 0; i--) {
 				// Get use case
 
-				int newIndex = listElement.indexOf(tableItems[i].getData()) - 1;
-				if (newIndex >= 0 && newIndex < listElement.size()) {
+				int newIndex = indexOf(tableItems[i].getData()) - 1;
+				if (newIndex >= 0 && newIndex < getSize()) {
 					// Move
 					referencesTableListener.handleMove((T) tableItems[i]
 							.getData(), newIndex + 1, newIndex);
@@ -679,8 +687,8 @@ public class ReferencesTable<T extends EObject> implements
 			TableItem[] tableItems = table.getSelection();
 			for (int i = (tableItems.length - 1); i >= 0; i--) {
 				// Get use case
-				int newIndex = listElement.indexOf(tableItems[i].getData()) + 1;
-				if (newIndex >= 0 && newIndex < listElement.size()) {
+				int newIndex = indexOf(tableItems[i].getData()) + 1;
+				if (newIndex >= 0 && newIndex < getSize()) {
 					// Move
 					referencesTableListener.handleMove((T) tableItems[i]
 							.getData(), newIndex - 1, newIndex);
@@ -730,24 +738,15 @@ public class ReferencesTable<T extends EObject> implements
 	}
 
 	/**
-	 * get the list of element to display
+	 * input of viewer
 	 * 
-	 * @return the list of element
+	 * @param input
 	 */
-	public List<T> getListElement() {
-		return listElement;
-	}
-
-	/**
-	 * set list of element to display
-	 * 
-	 * @param listElement
-	 */
-	public void setInput(List<T> listElement) {
-		this.listElement = listElement;
+	public void setInput(Object input) {
+		this.input = input;
 		initLabelProvider();
-		tableViewer.setContentProvider(getContentProvider());
-		tableViewer.setInput(listElement);
+		tableViewer.setContentProvider(contentProvider);
+		tableViewer.setInput(input);
 		for (ViewerFilter filter : filters) {
 			this.tableViewer.addFilter(filter);
 		}
@@ -757,23 +756,12 @@ public class ReferencesTable<T extends EObject> implements
 		computeAddButtonStatus();
 		computeRemoveButtonStatus();
 	}
-
+	
 	/**
-	 * this is the content provider to display the list of element
-	 * 
-	 * @author Patrick Tessier
+	 * @return the input of the viewer
 	 */
-	class TableContentProvider implements IStructuredContentProvider {
-
-		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
-		}
-
-		public void dispose() {
-		}
-
-		public Object[] getElements(Object inputElement) {
-			return listElement.toArray();
-		}
+	public Object getInput() {
+		return input;
 	}
 
 	public interface ReferencesTableListener<T extends EObject> {
