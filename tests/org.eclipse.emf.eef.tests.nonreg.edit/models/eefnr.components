@@ -278,6 +278,18 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedFlatReferenceTableEditorSample"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_iOYIcMTREd-2vZSz9yMYrA" name="DeferedReferencesTableSampleEditor" views="_bISPgcTREd-2vZSz9yMYrA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_iOYIccTREd-2vZSz9yMYrA" name="name" views="_bISPg8TREd-2vZSz9yMYrA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_iOYIcsTREd-2vZSz9yMYrA" name="flatReferencesTableSampleEditor" views="_bISPhMTREd-2vZSz9yMYrA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedReference/flatreferenceEditor"/>
+          <navigation xsi:type="eef-mapping-navigation:SimpleModelNavigation" xmi:id="_iOYIc8TREd-2vZSz9yMYrA">
+            <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedReferenceTableEditorSample/references"/>
+          </navigation>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/DeferedReferenceTableEditorSample"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr/navigation"/>
   </eef-components:PropertiesEditionContext>
@@ -640,6 +652,17 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_eW2eYEksEd-eu-IdSn5J6Q" name="flatReferencesTableSampleEditor">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_bISPgcTREd-2vZSz9yMYrA" name="DeferedReferencesTableSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_bISPgsTREd-2vZSz9yMYrA" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bISPg8TREd-2vZSz9yMYrA" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bISPhMTREd-2vZSz9yMYrA" name="referencesTableSampleEditor">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

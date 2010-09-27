@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RootItemProvider.java,v 1.6 2010/04/16 08:00:54 glefur Exp $
+ * $Id: RootItemProvider.java,v 1.7 2010/09/27 10:02:41 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -248,6 +248,11 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 NavigationFactory.eINSTANCE.createDeferedFlatReferenceTableEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createDeferedReferenceTableEditorSample()));
 
 		newChildDescriptors.add
 			(createChildParameter

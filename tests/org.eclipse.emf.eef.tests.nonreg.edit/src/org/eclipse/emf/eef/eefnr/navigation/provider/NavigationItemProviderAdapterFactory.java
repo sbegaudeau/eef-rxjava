@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationItemProviderAdapterFactory.java,v 1.1 2010/04/16 08:00:54 glefur Exp $
+ * $Id: NavigationItemProviderAdapterFactory.java,v 1.2 2010/09/27 10:02:41 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.provider;
 
@@ -122,6 +122,29 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeferedReferenceTableEditorSampleItemProvider deferedReferenceTableEditorSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
+		if (deferedReferenceTableEditorSampleItemProvider == null) {
+			deferedReferenceTableEditorSampleItemProvider = new DeferedReferenceTableEditorSampleItemProvider(this);
+		}
+
+		return deferedReferenceTableEditorSampleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +245,7 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	public void dispose() {
 		if (deferedFlatReferenceTableEditorSampleItemProvider != null) deferedFlatReferenceTableEditorSampleItemProvider.dispose();
 		if (deferedReferenceItemProvider != null) deferedReferenceItemProvider.dispose();
+		if (deferedReferenceTableEditorSampleItemProvider != null) deferedReferenceTableEditorSampleItemProvider.dispose();
 	}
 
 }
