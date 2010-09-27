@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.4 2010/04/16 15:50:59 sbouchet Exp $
+ $Id: plugin.xml,v 1.5 2010/09/27 10:02:39 glefur Exp $
 -->
 
 <plugin>
@@ -356,6 +356,18 @@
                id="AbstractSample"
                afterTab="Base">
          </propertyTab>
+         <propertyTab
+               label="DeferedFlatReferencesTableSample"
+               category="extended"
+               id="DeferedFlatReferencesTableSample"
+               afterTab="DeferedFlatReferencesTableSample">
+         </propertyTab>
+         <propertyTab
+               label="DeferedReferencesTableSample"
+               category="extended"
+               id="DeferedReferencesTableSample"
+               afterTab="DeferedReferencesTableSample">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -402,35 +414,20 @@
                     type="org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample">
              </input>
          </propertySection>
-      </propertySections>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
-      <propertyTabs
-            contributorId="org.eclipse.emf.eef.eefnr.properties">
-         <propertyTab
-               label="Base"
-               category="default"
-               id="Base">
-         </propertyTab>
-         <propertyTab
-               label="DeferedFlatReferencesTableSample"
-               category="extended"
-               id="DeferedFlatReferencesTableSample"
-               afterTab="DeferedFlatReferencesTableSample">
-         </propertyTab>
-      </propertyTabs>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertySections">
-      <propertySections
-            contributorId="org.eclipse.emf.eef.eefnr.properties">
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.navigation.section.DeferedFlatReferenceTableEditorSample"
                tab="DeferedFlatReferencesTableSample">
              <input
                     type="org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.DeferedReferenceTableEditorSample"
+               tab="DeferedReferencesTableSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample">
              </input>
          </propertySection>
       </propertySections>
