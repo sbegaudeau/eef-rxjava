@@ -133,6 +133,9 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference eefnr.ecore#//navigation/DeferedReference/flatreferenceEditor"/>
       </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/DeferedReferenceTableEditorSample">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/DeferedReferenceTableEditorSample/references"/>
+      </genClasses>
     </nestedGenPackages>
   </genPackages>
   <genPackages prefix="Eefnrext" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"

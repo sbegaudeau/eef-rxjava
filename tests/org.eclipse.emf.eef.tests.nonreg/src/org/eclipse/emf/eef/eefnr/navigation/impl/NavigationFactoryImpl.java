@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationFactoryImpl.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: NavigationFactoryImpl.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
@@ -62,6 +62,7 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 		switch (eClass.getClassifierID()) {
 			case NavigationPackage.DEFERED_FLAT_REFERENCE_TABLE_EDITOR_SAMPLE: return createDeferedFlatReferenceTableEditorSample();
 			case NavigationPackage.DEFERED_REFERENCE: return createDeferedReference();
+			case NavigationPackage.DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE: return createDeferedReferenceTableEditorSample();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -85,6 +86,16 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	public DeferedReference createDeferedReference() {
 		DeferedReferenceImpl deferedReference = new DeferedReferenceImpl();
 		return deferedReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeferedReferenceTableEditorSample createDeferedReferenceTableEditorSample() {
+		DeferedReferenceTableEditorSampleImpl deferedReferenceTableEditorSample = new DeferedReferenceTableEditorSampleImpl();
+		return deferedReferenceTableEditorSample;
 	}
 
 	/**

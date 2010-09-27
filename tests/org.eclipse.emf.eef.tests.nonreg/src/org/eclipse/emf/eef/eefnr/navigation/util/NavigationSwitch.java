@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationSwitch.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: NavigationSwitch.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.util;
 
@@ -102,6 +102,13 @@ public class NavigationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case NavigationPackage.DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE: {
+				DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)theEObject;
+				T result = caseDeferedReferenceTableEditorSample(deferedReferenceTableEditorSample);
+				if (result == null) result = caseAbstractSample(deferedReferenceTableEditorSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -133,6 +140,21 @@ public class NavigationSwitch<T> {
 	 * @generated
 	 */
 	public T caseDeferedReference(DeferedReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Defered Reference Table Editor Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Defered Reference Table Editor Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeferedReferenceTableEditorSample(DeferedReferenceTableEditorSample object) {
 		return null;
 	}
 

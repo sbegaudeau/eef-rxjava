@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationAdapterFactory.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: NavigationAdapterFactory.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.util;
 
@@ -82,6 +82,10 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 				return createDeferedReferenceAdapter();
 			}
 			@Override
+			public Adapter caseDeferedReferenceTableEditorSample(DeferedReferenceTableEditorSample object) {
+				return createDeferedReferenceTableEditorSampleAdapter();
+			}
+			@Override
 			public Adapter caseAbstractSample(AbstractSample object) {
 				return createAbstractSampleAdapter();
 			}
@@ -130,6 +134,20 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDeferedReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample <em>Defered Reference Table Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample
+	 * @generated
+	 */
+	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
 		return null;
 	}
 

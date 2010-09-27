@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackageImpl.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
 
 import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
+import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 
@@ -49,6 +50,13 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	private EClass deferedReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deferedReferenceTableEditorSampleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -163,6 +171,24 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDeferedReferenceTableEditorSample() {
+		return deferedReferenceTableEditorSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDeferedReferenceTableEditorSample_References() {
+		return (EReference)deferedReferenceTableEditorSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NavigationFactory getNavigationFactory() {
 		return (NavigationFactory)getEFactoryInstance();
 	}
@@ -191,6 +217,9 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 
 		deferedReferenceEClass = createEClass(DEFERED_REFERENCE);
 		createEReference(deferedReferenceEClass, DEFERED_REFERENCE__FLATREFERENCE_EDITOR);
+
+		deferedReferenceTableEditorSampleEClass = createEClass(DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE);
+		createEReference(deferedReferenceTableEditorSampleEClass, DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE__REFERENCES);
 	}
 
 	/**
@@ -225,6 +254,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 
 		// Add supertypes to classes
 		deferedFlatReferenceTableEditorSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
+		deferedReferenceTableEditorSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(deferedFlatReferenceTableEditorSampleEClass, DeferedFlatReferenceTableEditorSample.class, "DeferedFlatReferenceTableEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -232,6 +262,9 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 
 		initEClass(deferedReferenceEClass, DeferedReference.class, "DeferedReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDeferedReference_FlatreferenceEditor(), theEefnrPackage.getTotalSample(), null, "flatreferenceEditor", null, 1, 1, DeferedReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(deferedReferenceTableEditorSampleEClass, DeferedReferenceTableEditorSample.class, "DeferedReferenceTableEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDeferedReferenceTableEditorSample_References(), this.getDeferedReference(), null, "references", null, 0, -1, DeferedReferenceTableEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //NavigationPackageImpl

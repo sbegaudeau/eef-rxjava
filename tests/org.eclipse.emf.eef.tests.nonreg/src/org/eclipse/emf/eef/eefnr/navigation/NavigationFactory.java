@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationFactory.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: NavigationFactory.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation;
 
@@ -42,6 +42,15 @@ public interface NavigationFactory extends EFactory {
 	 * @generated
 	 */
 	DeferedReference createDeferedReference();
+
+	/**
+	 * Returns a new object of class '<em>Defered Reference Table Editor Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Defered Reference Table Editor Sample</em>'.
+	 * @generated
+	 */
+	DeferedReferenceTableEditorSample createDeferedReferenceTableEditorSample();
 
 	/**
 	 * Returns the package supported by this factory.

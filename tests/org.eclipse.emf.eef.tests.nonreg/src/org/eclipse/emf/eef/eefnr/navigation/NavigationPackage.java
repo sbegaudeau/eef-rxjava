@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackage.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: NavigationPackage.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation;
 
@@ -127,6 +127,44 @@ public interface NavigationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.DeferedReferenceTableEditorSampleImpl <em>Defered Reference Table Editor Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.DeferedReferenceTableEditorSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getDeferedReferenceTableEditorSample()
+	 * @generated
+	 */
+	int DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE__NAME = EefnrPackage.ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE__REFERENCES = EefnrPackage.ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Defered Reference Table Editor Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE_FEATURE_COUNT = EefnrPackage.ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample <em>Defered Flat Reference Table Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +205,27 @@ public interface NavigationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDeferedReference_FlatreferenceEditor();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample <em>Defered Reference Table Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Defered Reference Table Editor Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample
+	 * @generated
+	 */
+	EClass getDeferedReferenceTableEditorSample();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample#getReferences <em>References</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>References</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample#getReferences()
+	 * @see #getDeferedReferenceTableEditorSample()
+	 * @generated
+	 */
+	EReference getDeferedReferenceTableEditorSample_References();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -225,6 +284,24 @@ public interface NavigationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DEFERED_REFERENCE__FLATREFERENCE_EDITOR = eINSTANCE.getDeferedReference_FlatreferenceEditor();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.DeferedReferenceTableEditorSampleImpl <em>Defered Reference Table Editor Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.DeferedReferenceTableEditorSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getDeferedReferenceTableEditorSample()
+		 * @generated
+		 */
+		EClass DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE = eINSTANCE.getDeferedReferenceTableEditorSample();
+
+		/**
+		 * The meta object literal for the '<em><b>References</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE__REFERENCES = eINSTANCE.getDeferedReferenceTableEditorSample_References();
 
 	}
 

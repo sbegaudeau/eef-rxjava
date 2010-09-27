@@ -195,5 +195,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="flatreferenceEditor"
           lowerBound="1" eType="#//TotalSample"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeferedReferenceTableEditorSample"
+        eSuperTypes="#//AbstractSample">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
+          eType="#//navigation/DeferedReference" containment="true"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
