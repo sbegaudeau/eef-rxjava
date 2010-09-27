@@ -11,10 +11,8 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -27,38 +25,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 
-	/**
-	 * @return the advancedreferencestableRequiredProperty to add
-	 * 
-	 */
-	public List getAdvancedreferencestableRequiredPropertyToAdd();
 
-	/**
-	 * @return the advancedreferencestableRequiredProperty to remove
-	 * 
-	 */
-	public List getAdvancedreferencestableRequiredPropertyToRemove();
-
-	/**
-	 * @return the current advancedreferencestableRequiredProperty table
-	 * 
-	 */
-	public List getAdvancedreferencestableRequiredPropertyTable();
 
 	/**
 	 * Init the advancedreferencestableRequiredProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the advancedreferencestableRequiredProperty ReferencesTable 
 	 */
-	public void initAdvancedreferencestableRequiredProperty(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the advancedreferencestableRequiredProperty
-	 * @param newValue the advancedreferencestableRequiredProperty to update
-	 * 
-	 */
-	public void updateAdvancedreferencestableRequiredProperty(EObject newValue);
+	public void initAdvancedreferencestableRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the advancedreferencestableRequiredProperty edition editor.
@@ -87,38 +60,13 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the advancedreferencestableOptionalProperty to add
-	 * 
-	 */
-	public List getAdvancedreferencestableOptionalPropertyToAdd();
 
-	/**
-	 * @return the advancedreferencestableOptionalProperty to remove
-	 * 
-	 */
-	public List getAdvancedreferencestableOptionalPropertyToRemove();
-
-	/**
-	 * @return the current advancedreferencestableOptionalProperty table
-	 * 
-	 */
-	public List getAdvancedreferencestableOptionalPropertyTable();
 
 	/**
 	 * Init the advancedreferencestableOptionalProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the advancedreferencestableOptionalProperty ReferencesTable 
 	 */
-	public void initAdvancedreferencestableOptionalProperty(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the advancedreferencestableOptionalProperty
-	 * @param newValue the advancedreferencestableOptionalProperty to update
-	 * 
-	 */
-	public void updateAdvancedreferencestableOptionalProperty(EObject newValue);
+	public void initAdvancedreferencestableOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the advancedreferencestableOptionalProperty edition editor.

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -33,8 +34,10 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -66,7 +69,17 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 	 * 
 	 */
 	protected AdvancedReferencesTableSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for advancedreferencestableRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings advancedreferencestableRequiredPropertySettings;
+	
+	/**
+	 * Settings for advancedreferencestableOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings advancedreferencestableOptionalPropertySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -122,10 +135,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableRequiredProperty(advancedReferencesTableSample);
-		if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableOptionalProperty(advancedReferencesTableSample);
+
+
 
 	}
 
@@ -197,8 +208,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final AdvancedReferencesTableSample advancedReferencesTableSample = (AdvancedReferencesTableSample)elt;
 			// init values
-			basePart.initAdvancedreferencestableRequiredProperty(advancedReferencesTableSample, null, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty());
-			basePart.initAdvancedreferencestableOptionalProperty(advancedReferencesTableSample, null, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty());
+			advancedreferencestableRequiredPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty());
+			basePart.initAdvancedreferencestableRequiredProperty(advancedreferencestableRequiredPropertySettings);
+			advancedreferencestableOptionalPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty());
+			basePart.initAdvancedreferencestableOptionalProperty(advancedreferencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
 
@@ -261,10 +274,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableRequiredProperty, AdvancedReferencesTableSample, AdvancedReferencesTableSample.
+					updateAdvancedreferencestableRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableOptionalProperty, AdvancedReferencesTableSample, AdvancedReferencesTableSample.
+					updateAdvancedreferencestableOptionalProperty(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -272,10 +285,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 					
 					public void execute() {
 						if (EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableRequiredProperty, AdvancedReferencesTableSample, AdvancedReferencesTableSample.
+							updateAdvancedreferencestableRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableOptionalProperty, AdvancedReferencesTableSample, AdvancedReferencesTableSample.
+							updateAdvancedreferencestableOptionalProperty(event);
 						}
 					}
 				});			
@@ -290,9 +303,25 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedreferencestableRequiredProperty, AdvancedReferencesTableSample, AdvancedReferencesTableSample.
+	private void updateAdvancedreferencestableRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedreferencestableOptionalProperty, AdvancedReferencesTableSample, AdvancedReferencesTableSample.
+	private void updateAdvancedreferencestableOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 
 
