@@ -273,7 +273,6 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedReferencesTable')]
-	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
 	protected ReferencesTable<? extends EObject[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
@@ -296,8 +295,6 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							if (![editor.name.toJavaIdentifier()/]EditUtil.getVirtualList().contains(elem))
-								[editor.name.toJavaIdentifier()/]EditUtil.addElement(elem);
 							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/],
 								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
@@ -331,10 +328,8 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 	 */
 	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier()/]EditUtil.moveElement(element, oldIndex, newIndex);
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
 		[/if]
 	}
 
@@ -370,25 +365,16 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [/template]
 
 [template public defaultEditOperation (editor : ElementEditor) ]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
-
+IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
+IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(element);
+if (editionPolicy != null) {
+	editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+	[editor.name.toJavaIdentifier()/].refresh();
+}
 [/template]
 
 [template private defaultRemoveOperation(editor : ElementEditor) ]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
-		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-
+propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+[editor.name.toJavaIdentifier()/].refresh();
 [/template]
 

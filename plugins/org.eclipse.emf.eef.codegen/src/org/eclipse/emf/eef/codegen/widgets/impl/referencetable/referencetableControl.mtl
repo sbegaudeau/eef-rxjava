@@ -44,10 +44,10 @@ private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEd
 update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable')))]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('ReferencesTable'))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable'))]
 			[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
 [/template]
