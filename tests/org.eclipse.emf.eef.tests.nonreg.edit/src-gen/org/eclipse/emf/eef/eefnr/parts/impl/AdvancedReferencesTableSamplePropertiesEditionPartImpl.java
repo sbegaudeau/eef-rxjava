@@ -131,7 +131,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
 						advancedreferencestableRequiredProperty.refresh();
 					}
@@ -169,7 +170,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 
 		// Start of user code removeFromAdvancedreferencestableRequiredProperty() method body
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		advancedreferencestableRequiredProperty.refresh();
+		advancedreferencestableRequiredProperty.refresh();		
 		// End of user code
 
 	}
@@ -185,8 +186,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		if (editionPolicy != null) {
 			editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			advancedreferencestableRequiredProperty.refresh();
-		}
-				
+		}		
 		// End of user code
 
 	}
@@ -203,7 +203,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty,
+								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
 						advancedreferencestableOptionalProperty.refresh();
 					}
@@ -241,7 +242,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 
 		// Start of user code removeFromAdvancedreferencestableOptionalProperty() method body
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		advancedreferencestableOptionalProperty.refresh();
+		advancedreferencestableOptionalProperty.refresh();		
 		// End of user code
 
 	}
@@ -257,8 +258,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		if (editionPolicy != null) {
 			editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
 			advancedreferencestableOptionalProperty.refresh();
-		}
-				
+		}		
 		// End of user code
 
 	}
