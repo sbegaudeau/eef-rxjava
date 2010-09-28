@@ -10,10 +10,11 @@
         Obeo - initial API and implementation
  -->
 <feature
-      id="org.eclipse.emf.eef"
+      id="org.eclipse.emf.eef.runtime"
       label="%featureName"
       version="0.9.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.eef.runtime">
 
    <description>
       %description
