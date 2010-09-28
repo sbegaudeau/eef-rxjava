@@ -285,12 +285,13 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
 		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				viewsEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				views.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFElementBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
+// FIXME : temporary disabled
+//			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+//			if (propertiesEditionObject != null) {
+//				viewsEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+//				views.refresh();
+//				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFElementBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+//			}
 		}
 		// End of user code
 	}

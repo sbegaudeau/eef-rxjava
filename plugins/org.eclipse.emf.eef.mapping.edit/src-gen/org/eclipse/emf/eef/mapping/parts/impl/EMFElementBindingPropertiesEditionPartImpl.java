@@ -281,13 +281,13 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 		EObject editedElement = viewsEditUtil.foundCorrespondingEObject(element);
 		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
 		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				viewsEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				views.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFElementBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
+		if (editionPolicy != null) {// FIXME : temporary disabled
+			//EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+//			if (propertiesEditionObject != null) {
+//				viewsEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+//				views.refresh();
+//				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFElementBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFElementBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+//			}
 		}
 		// End of user code
 
