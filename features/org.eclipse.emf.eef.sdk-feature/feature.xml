@@ -13,7 +13,8 @@
       id="org.eclipse.emf.eef.sdk"
       label="%featureName"
       version="0.9.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.eef.runtime">
 
    <description>
       %description
