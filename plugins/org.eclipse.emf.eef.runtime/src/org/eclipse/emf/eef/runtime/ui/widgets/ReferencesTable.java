@@ -444,7 +444,9 @@ public class ReferencesTable<T extends EObject> implements
 	}
 	
 	private int getSize() {
-		return contentProvider.getElements(input).length;
+		if (contentProvider != null && input != null)
+			return contentProvider.getElements(input).length;
+		return -1;
 	}
 	
 	private int indexOf(Object elem) {

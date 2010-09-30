@@ -22,8 +22,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ItemProvider;
@@ -81,15 +79,12 @@ public class EEFFeatureEditorDialog extends Dialog {
 	 */
 	private List<ViewerFilter> brFilters;
 
-	public EEFFeatureEditorDialog(Shell parent, ILabelProvider labelProvider,
-			Object object, EClassifier eClassifier, List<?> currentValues,
-			String displayName, List<?> choiceOfValues, boolean multiLine,
+	public EEFFeatureEditorDialog(Shell parent, String displayName,  ILabelProvider labelProvider,  List<?> currentValues,
+			List<?> choiceOfValues, boolean multiLine,
 			boolean sortChoices, List<ViewerFilter> filters, List<ViewerFilter> brFilters) {
 		super(parent);
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MAX);
 		this.labelProvider = labelProvider;
-		this.object = object;
-		this.eClassifier = eClassifier;
 		this.displayName = displayName;
 		this.choiceOfValues = choiceOfValues;
 		this.multiLine = multiLine;
@@ -105,21 +100,6 @@ public class EEFFeatureEditorDialog extends Dialog {
 			ExtendedComboBoxCellEditor.createItems(this.choiceOfValues,
 					labelProvider, true);
 		}
-	}
-
-	public EEFFeatureEditorDialog(Shell parent, ILabelProvider labelProvider,
-			Object object, EClassifier eClassifier, List<?> currentValues,
-			String displayName, List<?> choiceOfValues, List<ViewerFilter> filters, List<ViewerFilter> brFilters) {
-		this(parent, labelProvider, object, eClassifier, currentValues,
-				displayName, choiceOfValues, false, false, filters, brFilters);
-	}
-
-	public EEFFeatureEditorDialog(Shell parent, ILabelProvider labelProvider,
-			EObject eObject, EStructuralFeature eStructuralFeature,
-			String displayName, List<?> choiceOfValues, List<ViewerFilter> filters, List<ViewerFilter> brFilters) {
-		this(parent, labelProvider, eObject, eStructuralFeature.getEType(),
-				(List<?>) eObject.eGet(eStructuralFeature), displayName,
-				choiceOfValues, filters, brFilters);
 	}
 
 	@Override

@@ -13,9 +13,9 @@ package org.eclipse.emf.eef.runtime.impl.providers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -25,24 +25,23 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 	/**
 	 * List of managed providers.
 	 */
-	private List<IPropertiesEditionPolicyProvider> editPropertiesPolicyProviders;
+	private List<PropertiesEditingPolicyProvider> editPropertiesPolicyProviders;
 
 	/**
 	 * Default constructor.
 	 */
 	public StandardPropertiesEditionPolicyProviderFactory() {
 		super();
-		editPropertiesPolicyProviders = new ArrayList<IPropertiesEditionPolicyProvider>();
+		editPropertiesPolicyProviders = new ArrayList<PropertiesEditingPolicyProvider>();
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#getProvider(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#getProvider(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
 	 */
-	public IPropertiesEditionPolicyProvider getProvider(EObject eObject) {
-		for (IPropertiesEditionPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
-			if (editPropertiesPolicyProvider.provides(eObject))
+	public PropertiesEditingPolicyProvider getProvider(IPropertiesEditionContext context) {
+		for (PropertiesEditingPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
+			if (editPropertiesPolicyProvider.provides(context))
 				return editPropertiesPolicyProvider;
 		}
 		return null;
@@ -50,12 +49,11 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
 	 */
-	public boolean provides(EObject eObject) {
-		for (IPropertiesEditionPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
-			if (editPropertiesPolicyProvider.provides(eObject))
+	public boolean provides(IPropertiesEditionContext context) {
+		for (PropertiesEditingPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
+			if (editPropertiesPolicyProvider.provides(context))
 				return true;
 		}
 		return false;
@@ -63,10 +61,9 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#register(org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#register(org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider)
 	 */
-	public void register(IPropertiesEditionPolicyProvider editPropertiesPolicyProvider) {
+	public void register(PropertiesEditingPolicyProvider editPropertiesPolicyProvider) {
 		editPropertiesPolicyProviders.add(editPropertiesPolicyProvider);
 	}
 

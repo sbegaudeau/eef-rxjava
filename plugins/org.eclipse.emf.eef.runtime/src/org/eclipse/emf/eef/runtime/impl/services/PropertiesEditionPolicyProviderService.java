@@ -15,11 +15,11 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory;
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProviderFactory;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 
 /**
  * Service that manage all the registered {@link IPropertiesEditionPolicyProvider}.
@@ -75,7 +75,7 @@ public class PropertiesEditionPolicyProviderService implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#getProvider(org.eclipse.emf.ecore.EObject)
 	 */
-	public IPropertiesEditionPolicyProvider getProvider(EObject eObject) {
+	public PropertiesEditingPolicyProvider getProvider(IPropertiesEditionContext eObject) {
 		return editPropertiesProviderFactory.getProvider(eObject);
 	}
 
@@ -84,7 +84,7 @@ public class PropertiesEditionPolicyProviderService implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.ecore.EObject)
 	 */
-	public boolean provides(EObject eObject) {
+	public boolean provides(IPropertiesEditionContext eObject) {
 		return editPropertiesProviderFactory.provides(eObject);
 	}
 
@@ -93,7 +93,7 @@ public class PropertiesEditionPolicyProviderService implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#register(org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider)
 	 */
-	public void register(IPropertiesEditionPolicyProvider editPropertiesProvider) {
+	public void register(PropertiesEditingPolicyProvider editPropertiesProvider) {
 		editPropertiesProviderFactory.register(editPropertiesProvider);
 	}
 
@@ -113,7 +113,7 @@ public class PropertiesEditionPolicyProviderService implements IPropertiesEditio
 
 				if (EXTENSION_ELEMENT_NAME.equals(cfg.getName())) {
 					try {
-						register((IPropertiesEditionPolicyProvider)cfg
+						register((PropertiesEditingPolicyProvider)cfg
 								.createExecutableExtension(EXTENSION_ATTRIBUTE_NAME));
 					} catch (CoreException e) {
 						e.printStackTrace();

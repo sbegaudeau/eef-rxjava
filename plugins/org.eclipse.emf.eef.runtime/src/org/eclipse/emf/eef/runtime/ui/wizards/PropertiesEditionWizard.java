@@ -11,19 +11,14 @@
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -169,42 +164,7 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performFinish() {
-//		try {
-//			if (editingDomain != null) {
-//				CompoundCommand finishCommand = new CompoundCommand();
-//				for (int i = 0; i < getPages().length; i++) {
-//					if (getPages()[i] instanceof EditPropertyWizardPage) {
-//						finishCommand.append(((EditPropertyWizardPage)getPages()[i]).viewer
-//								.getPropertiesEditionCommand(editingDomain));
-//					}
-//				}
-//				if (finishCommand.canExecute()) {
-//					this.command = finishCommand;
-//					PropertiesContextService.getInstance().pop();
-//					return true;
-//				}
-//				return false;
-//			}
-//			for (int i = 0; i < getPages().length; i++) {
-//				if (getPages()[i] instanceof EditPropertyWizardPage) {
-//					// FIXME: Warning, architecture must be redefined to do
-//					// an iterative eobject build
-//					// Finally ... it could work ...
-//					eObject = ((EditPropertyWizardPage)getPages()[i]).viewer
-//							.getPropertiesEditionObject(eObject);
-//				}
-//			}
-//			PropertiesContextService.getInstance().pop();
-			return true;
-//		} finally {
-//			for (int i = 0; i < getPages().length; i++) {
-//				if (getPages()[i] instanceof EditPropertyWizardPage) {
-//					PropertiesEditionViewer viewer = ((EditPropertyWizardPage)getPages()[i]).viewer;
-//					if (viewer != null)
-//						viewer.getContentProvider().dispose();
-//				}
-//			}
-//		}
+		return true;
 	}
 
 	/**
