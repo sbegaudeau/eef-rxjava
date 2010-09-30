@@ -187,33 +187,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 	}
 [/template]
 
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'EMFComboViewer')]
-[editor.partSetterSignature()/] {
-		[editor.views->first().name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(newValue));
-	}
-[/template]
-
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'ReferencesTable' or editor.views->first().representation.name = 'AdvancedReferencesTable')]
-[editor.partSetterUpdateSignature()/] {
-		[editor.views->first().name.toJavaIdentifier()/]EditUtil.reinit(value);
-		[editor.views->first().name.toJavaIdentifier()/].refresh();
-	}
-[/template]
-
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'TableComposition')]
-[editor.partSetterUpdateSignature()/] {
-		[editor.views->first().name.toJavaIdentifier()/]EditUtil.reinit(value);
-		[editor.views->first().name.toJavaIdentifier()/].refresh();
-	}
-[/template]
-
-[template public partSetter(editor : PropertiesEditionElement) ? (editor.views->first().representation.name = 'Combo')]
-[editor.partSetterUpdateSignature()/] {
-		[editor.views->first().name.toJavaIdentifier()/]EditUtil.reinit(value);
-		[editor.views->first().name.toJavaIdentifier()/].refresh();
-	}
-[/template]
-
 [comment === ViewReference managing ===/]
 [template public updaterForViewReference(view : View)]
 [for (viewRef : ViewReference | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference)) ]
