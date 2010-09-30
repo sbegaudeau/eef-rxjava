@@ -11,20 +11,17 @@
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -57,11 +54,6 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * Button to edit the feature
 	 */
 	protected Button editer;
-
-	/**
-	 * Virtual list for widget
-	 */
-	protected EMFListEditUtil viewsEditUtil;
 
 	/**
 	 * The static filters
@@ -154,25 +146,27 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			public void widgetSelected(SelectionEvent e) {
 				switch (button_mode) {
 					case BROWSE:
-						List currentValues = new ArrayList();
-						for (Iterator iterator = viewsEditUtil.getVirtualList().iterator(); iterator
-								.hasNext();) {
-							EObject object = (EObject)iterator.next();
-							if (containingFeature == null)
-								currentValues.add(viewsEditUtil.foundCorrespondingEObject(object));
-							else
-								currentValues.add(viewsEditUtil.foundCorrespondingEObject(object).eGet(
-										feature));
+						if (input instanceof ReferencesTableSettings) {
+							List currentValues = Arrays.asList(((ReferencesTableSettings) input).getElements());
+							Object choiceOfValues2 = ((ReferencesTableSettings) input).choiceOfValues(null);
+							List cloneOfValues = new ArrayList();
+							if (choiceOfValues2 instanceof List) {
+								cloneOfValues.addAll((List)choiceOfValues2);
+							}
+							else {
+								cloneOfValues.add(choiceOfValues2);
+							}
+							EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+									getParent().getShell(), EEFRuntimeUIMessages.FlatReferencesTable_featureEditor_title, delegatedLabelProvider,   
+									currentValues, cloneOfValues,
+									false, true, 
+									filters, brFilters);
+							int open = dialog.open();
+							if (open == Dialog.OK) {
+								selectionChanged(new StructuredSelection(dialog.getResult()));
+								refresh();
+							}
 						}
-						EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(getParent().getShell(),
-								delegatedLabelProvider, editedElement, feature.getEType(), currentValues,
-								EEFRuntimeUIMessages.FlatReferencesTable_featureEditor_title, getChoiceOfValues(), false, true, filters, brFilters);
-						dialog.open();
-						EList<?> newValues = dialog.getResult();
-						if (newValues != null)
-							applyDiff(viewsEditUtil, newValues);
-						selectionChanged(new StructuredSelection(viewsEditUtil));
-						refresh();
 						break;
 
 					default:
@@ -181,46 +175,6 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 			}
 		};
 
-	}
-
-	/**
-	 * @return
-	 */
-	private List<?> getChoiceOfValues() {
-		List result;
-		// Initializing result with the input
-		if (input instanceof List)
-			result = new ArrayList((List)input);
-		else if (input instanceof ResourceSet)
-			result = new ArrayList(EEFUtils.asList(EcoreUtil.getAllContents((ResourceSet)input, true)));
-		else if (input instanceof Resource)
-			result = new ArrayList(EEFUtils.asList(EcoreUtil.getAllContents((Resource)input, true)));
-		else
-			result = new ArrayList();
-		return result;
-	}
-
-	/**
-	 * @param list
-	 * @param newValues
-	 */
-	protected void applyDiff(EMFListEditUtil list, List newValues) {
-		List virtualList = new ArrayList(list.getVirtualList());
-		if (newValues != null) {
-			for (Object element : virtualList) {
-				if (element instanceof EObject) {
-					if (!newValues.contains(element)) {
-						list.removeElement((EObject)element);
-					}
-				}
-			}
-			for (Object element : newValues) {
-				if (element instanceof EObject) {
-					if (!virtualList.contains(element))
-						list.addElement((EObject)element);
-				}
-			}
-		}
 	}
 
 	/****************************************************************************************************************************************
@@ -292,6 +246,13 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	}
 
 	/**
+	 * @return the input
+	 */
+	public Object getInput() {
+		return input;
+	}
+
+	/**
 	 * Defines the input for the choice of values
 	 * 
 	 * @param input
@@ -301,6 +262,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		if (this.input != input) {
 			this.input = input;
 		}
+		refresh();
 	}
 	
 	/**
@@ -317,39 +279,6 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 */
 	public Object getID() {
 		return EditingUtils.getID(selection);
-	}
-
-	/**
-	 * Initialize the widget
-	 * 
-	 * @param current
-	 *            the editedElement
-	 * @param editedFeature
-	 *            the feature to edit
-	 * @param containingFeature
-	 *            the containing feature in "rebound" case
-	 */
-	public void initComponent(EObject current, EReference containingFeature, EReference editedFeature) {
-		this.containingFeature = containingFeature;
-		this.feature = editedFeature;
-		if (containingFeature != null)
-			viewsEditUtil = new EMFListEditUtil(current, containingFeature, editedFeature);
-		else
-			viewsEditUtil = new EMFListEditUtil(current, editedFeature);
-		refresh();
-	}
-
-	/**
-	 * Update this component with new values
-	 * 
-	 * @param newValue
-	 *            the new values
-	 */
-	public void updateComponent(EObject newValue) {
-		if (viewsEditUtil != null) {
-			viewsEditUtil.reinit(newValue);
-			refresh();
-		}
 	}
 
 	/****************************************************************************************************************************************
@@ -381,11 +310,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
 	 */
 	public ISelection getSelection() {
-		// TODO: what this method is supposed to do ???
 		throw new UnsupportedOperationException(EEFRuntimeUIMessages.FlatReferencesTable_nothing_to_do);
-		// / if (editedElement != null)
-		// return new StructuredSelection(editedElement);
-		// return new StructuredSelection(Collections.EMPTY_LIST);
 	}
 
 	/*
@@ -393,45 +318,22 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#setSelection(org.eclipse.jface.viewers.ISelection)
 	 */
 	public void setSelection(ISelection pSelection) {
-		// TODO: what this method is supposed to do ???
 		throw new UnsupportedOperationException(EEFRuntimeUIMessages.FlatReferencesTable_nothing_to_do);
-		// if (pSelection instanceof StructuredSelection &&
-		// ((StructuredSelection)pSelection).getFirstElement() instanceof EObject) {
-		// this.editedElement = (EObject) ((StructuredSelection)pSelection).getFirstElement();
-		// selectedElements = (List)editedElement.eGet(feature);
-		// if (listLabelProvider != null)
-		// selection.setText(listLabelProvider.getText(selectedElements));
-		// else {
-		// StringBuilder result = new StringBuilder("");
-		// final List collec = (List)selectedElements;
-		// if (collec.size() > 0) {
-		// result.append(collec.get(0).toString());
-		// if (collec.size() > 1) {
-		// for (int i = 1; i < collec.size(); i++) {
-		// result.append(", ");
-		// result.append(collec.get(i).toString());
-		// }
-		// }
-		// }
-		// selection.setText(result.toString());
-		// }
-		// } else
-		//			selection.setText(""); 
 	}
 
 	public void refresh() {
-		if (viewsEditUtil != null) {
-			if (listLabelProvider != null)
-				selection.setText(listLabelProvider.getText(viewsEditUtil.getVirtualList()));
-			else {
+		if (input instanceof ReferencesTableSettings) {
+			List<Object> values = Arrays.asList(((ReferencesTableSettings)input).getElements());
+			if (listLabelProvider != null) {
+				selection.setText(listLabelProvider.getText(values));
+			} else {
 				StringBuilder result = new StringBuilder(""); //$NON-NLS-1$
-				final List collec = viewsEditUtil.getVirtualList();
-				if (collec.size() > 0) {
-					result.append(collec.get(0).toString());
-					if (collec.size() > 1) {
-						for (int i = 1; i < collec.size(); i++) {
+				if (values.size() > 0) {
+					result.append(values.get(0).toString());
+					if (values.size() > 1) {
+						for (int i = 1; i < values.size(); i++) {
 							result.append(", "); //$NON-NLS-1$
-							result.append(collec.get(i).toString());
+							result.append(values.get(i).toString());
 						}
 					}
 				}
@@ -504,22 +406,6 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	 */
 	public void resetFilters() {
 		filters.clear();
-	}
-
-	public List getElementsToAdd() {
-		return viewsEditUtil.getElementsToAdd();
-	}
-
-	public List getElementsToRemove() {
-		return viewsEditUtil.getElementsToRemove();
-	}
-
-	public List getVirtualList() {
-		return viewsEditUtil.getVirtualList();
-	}
-
-	public boolean virtualListContains(EObject element) {
-		return viewsEditUtil.contains(element);
 	}
 
 }
