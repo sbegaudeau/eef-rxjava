@@ -476,6 +476,16 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableRequiredProperty(EObject newValue)
+	 * 
+	 */
+	public void updateReferencestableRequiredProperty(EObject newValue) {
+	referencestableRequiredProperty.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addFilterReferencestableRequiredProperty(ViewerFilter filter)
 	 * 
 	 */
@@ -518,6 +528,16 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableOptionalProperty(EObject newValue)
+	 * 
+	 */
+	public void updateReferencestableOptionalProperty(EObject newValue) {
+	referencestableOptionalProperty.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
