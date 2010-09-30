@@ -105,7 +105,12 @@ update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [comment ===== Case : model = Reference(*) in Simple Navigation - view = ReferencesTable or AdvancedReferencesTable===== /]
-[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[query public validCaseForMultipleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
+	editionElement.hasModelNavigation() 
+	and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceMany() 
+	and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable'))/]
+
+[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForMultipleModelReference())]
 
 /**
  * Settings for [editionElement.name/] ReferencesTable
@@ -114,7 +119,7 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 
 [/template]
 
-[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForMultipleModelReference())]
 private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
@@ -126,19 +131,19 @@ private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEd
 }
 [/template]
 
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.validCaseForMultipleModelReference())]
 update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForMultipleModelReference())]
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForMultipleModelReference())]
 			[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForMultipleModelReference())]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 				/**
@@ -165,7 +170,13 @@ update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [comment ===== Case : model = Reference(1) - view = ReferencesTable or AdvancedReferencesTable===== /]
-[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[query public validCaseForSingleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
+	editionElement.hasModelNavigation() 
+	and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isContainmentMany() and editionElement.model.isReferenceSingle() 
+	and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable'))/]
+
+
+[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSingleModelReference())]
 
 /**
  * Settings for [editionElement.name/] ReferencesTable
@@ -174,7 +185,7 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 
 [/template]
 
-[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForSingleModelReference())]
 private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
@@ -186,19 +197,19 @@ private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEd
 }
 [/template]
 
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.validCaseForSingleModelReference())]
 update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
-[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForSingleModelReference())]
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForSingleModelReference())]
 			[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForSingleModelReference())]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 					/**
