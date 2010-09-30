@@ -11,10 +11,8 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -28,38 +26,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface FlatReferenceTableSamplePropertiesEditionPart {
 
-	/**
-	 * @return the flatreferencetableRequiredProperty to add
-	 * 
-	 */
-	public List getFlatreferencetableRequiredPropertyToAdd();
 
-	/**
-	 * @return the flatreferencetableRequiredProperty to remove
-	 * 
-	 */
-	public List getFlatreferencetableRequiredPropertyToRemove();
-
-	/**
-	 * @return the current flatreferencetableRequiredProperty table
-	 * 
-	 */
-	public List getFlatreferencetableRequiredPropertyTable();
 
 	/**
 	 * Init the flatreferencetableRequiredProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the flatreferencetableRequiredProperty ReferencesTable 
 	 */
-	public void initFlatreferencetableRequiredProperty(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the flatreferencetableRequiredProperty
-	 * @param newValue the flatreferencetableRequiredProperty to update
-	 * 
-	 */
-	public void updateFlatreferencetableRequiredProperty(EObject newValue);
+	public void initFlatreferencetableRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the flatreferencetableRequiredProperty edition editor.
@@ -88,38 +61,13 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	public boolean isContainedInFlatreferencetableRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the flatreferencetableOptionalProperty to add
-	 * 
-	 */
-	public List getFlatreferencetableOptionalPropertyToAdd();
 
-	/**
-	 * @return the flatreferencetableOptionalProperty to remove
-	 * 
-	 */
-	public List getFlatreferencetableOptionalPropertyToRemove();
-
-	/**
-	 * @return the current flatreferencetableOptionalProperty table
-	 * 
-	 */
-	public List getFlatreferencetableOptionalPropertyTable();
 
 	/**
 	 * Init the flatreferencetableOptionalProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the flatreferencetableOptionalProperty ReferencesTable 
 	 */
-	public void initFlatreferencetableOptionalProperty(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the flatreferencetableOptionalProperty
-	 * @param newValue the flatreferencetableOptionalProperty to update
-	 * 
-	 */
-	public void updateFlatreferencetableOptionalProperty(EObject newValue);
+	public void initFlatreferencetableOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the flatreferencetableOptionalProperty edition editor.

@@ -11,6 +11,8 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -32,8 +35,10 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -65,7 +70,17 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 */
 	protected FlatReferenceTableSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for flatreferencetableRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings flatreferencestableRequiredPropertySettings;
+	
+	/**
+	 * Settings for flatreferencetableOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings flatreferencestableOptionalPropertySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -121,10 +136,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateFlatreferencetableRequiredProperty(flatReferencesTableSample);
-		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateFlatreferencetableOptionalProperty(flatReferencesTableSample);
+
+
 
 	}
 
@@ -196,8 +209,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)elt;
 			// init values
-			basePart.initFlatreferencetableRequiredProperty(flatReferencesTableSample, null, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
-			basePart.initFlatreferencetableOptionalProperty(flatReferencesTableSample, null, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+			flatreferencestableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
+			basePart.initFlatreferencetableRequiredProperty(flatreferencestableRequiredPropertySettings);
+			flatreferencestableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+			basePart.initFlatreferencetableOptionalProperty(flatreferencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToFlatreferencetableRequiredProperty(new ViewerFilter() {
 
@@ -260,10 +275,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableRequiredProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+					updateFlatreferencetableRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableOptionalProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+					updateFlatreferencetableOptionalProperty(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -271,10 +286,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 					
 					public void execute() {
 						if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableRequiredProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+							updateFlatreferencetableRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatreferencetableOptionalProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+							updateFlatreferencetableOptionalProperty(event);
 						}
 					}
 				});			
@@ -289,9 +304,15 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatreferencetableRequiredProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+	private void updateFlatreferencetableRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET)  
+			flatreferencestableRequiredPropertySettings.setToReference((List<EObject>)event.getNewValue());
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatreferencetableOptionalProperty, FlatReferenceTableSample, FlatReferenceTableSample.
+	private void updateFlatreferencetableOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET) 
+			flatreferencestableOptionalPropertySettings.setToReference((List<EObject>)event.getNewValue());
+	}
 
 
 

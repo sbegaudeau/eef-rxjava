@@ -11,8 +11,6 @@
 package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -26,6 +24,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -170,35 +170,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		// End of user code
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableRequiredPropertyToAdd()
-	 * 
-	 */
-	public List getFlatreferencetableRequiredPropertyToAdd() {
-		return flatreferencetableRequiredProperty.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableRequiredPropertyToRemove()
-	 * 
-	 */
-	public List getFlatreferencetableRequiredPropertyToRemove() {
-		return flatreferencetableRequiredProperty.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableRequiredPropertyTable()
-	 * 
-	 */
-	public List getFlatreferencetableRequiredPropertyTable() {
-		return flatreferencetableRequiredProperty.getVirtualList();
-	}
 
 
 	/**
@@ -206,20 +177,10 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#initFlatreferencetableRequiredProperty(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initFlatreferencetableRequiredProperty(EObject current, EReference containingFeature, EReference feature) {
-		flatreferencetableRequiredProperty.initComponent(current, containingFeature, feature);
+	public void initFlatreferencetableRequiredProperty(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			flatreferencetableRequiredProperty.setInput(current.eResource().getResourceSet());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableRequiredProperty(EObject newValue)
-	 * 
-	 */
-	public void updateFlatreferencetableRequiredProperty(EObject newValue) {
-		flatreferencetableRequiredProperty.updateComponent(newValue);
+			this.resourceSet = current.eResource().getResourceSet();
+		flatreferencetableRequiredProperty.setInput(settings);
 	}
 
 	/**
@@ -249,39 +210,10 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * 
 	 */
 	public boolean isContainedInFlatreferencetableRequiredPropertyTable(EObject element) {
-		return flatreferencetableRequiredProperty.virtualListContains(element);
+		return ((ReferencesTableSettings)flatreferencetableRequiredProperty.getInput()).contains(element);
 	}
 
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableOptionalPropertyToAdd()
-	 * 
-	 */
-	public List getFlatreferencetableOptionalPropertyToAdd() {
-		return flatreferencetableOptionalProperty.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableOptionalPropertyToRemove()
-	 * 
-	 */
-	public List getFlatreferencetableOptionalPropertyToRemove() {
-		return flatreferencetableOptionalProperty.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#getFlatreferencetableOptionalPropertyTable()
-	 * 
-	 */
-	public List getFlatreferencetableOptionalPropertyTable() {
-		return flatreferencetableOptionalProperty.getVirtualList();
-	}
 
 
 	/**
@@ -289,20 +221,10 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#initFlatreferencetableOptionalProperty(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initFlatreferencetableOptionalProperty(EObject current, EReference containingFeature, EReference feature) {
-		flatreferencetableOptionalProperty.initComponent(current, containingFeature, feature);
+	public void initFlatreferencetableOptionalProperty(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			flatreferencetableOptionalProperty.setInput(current.eResource().getResourceSet());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableOptionalProperty(EObject newValue)
-	 * 
-	 */
-	public void updateFlatreferencetableOptionalProperty(EObject newValue) {
-		flatreferencetableOptionalProperty.updateComponent(newValue);
+			this.resourceSet = current.eResource().getResourceSet();
+		flatreferencetableOptionalProperty.setInput(settings);
 	}
 
 	/**
@@ -332,7 +254,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 * 
 	 */
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
-		return flatreferencetableOptionalProperty.virtualListContains(element);
+		return ((ReferencesTableSettings)flatreferencetableOptionalProperty.getInput()).contains(element);
 	}
 
 
