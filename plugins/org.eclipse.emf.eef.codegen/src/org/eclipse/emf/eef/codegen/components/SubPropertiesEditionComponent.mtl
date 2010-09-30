@@ -185,7 +185,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [view.pepInterface()/] [view.viewIdentifier(pec)/];
-
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))][editionElement.additionalComponentField(view, pec)/][/for]
 	/**
 	 * Default constructor
 	 * [peContext.associatedGenModel().generationMark()/]
@@ -368,8 +368,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 					[editionElement.invokeEObjectUpdater(view, pec)/]
 				}
 			[/for]
-				[comment add ViewReference support/]
-[comment]				[view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/][/comment]
 		[/if]
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -381,8 +379,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 							[editionElement.invokeEObjectUpdater(view, pec)/]
 						}
 					[/for]
-				[comment add ViewReference support/]
-[comment]				[view.liveCommandUpdaterForReferencedViews(pec, pec.model.name.toJavaIdentifier())/][/comment]
 					}
 				});			
 			}
@@ -400,8 +396,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	[editionElement.declareEObjectUpdater(view, pec)/]
 
 [/for]
-[comment add ViewReference support/]
-[comment][view.liveUpdaterForReferencedViews(pec)/][/comment]
 
 [if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]
 
@@ -507,7 +501,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
 				}
 [/for]
-[/for]
+[/for] 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

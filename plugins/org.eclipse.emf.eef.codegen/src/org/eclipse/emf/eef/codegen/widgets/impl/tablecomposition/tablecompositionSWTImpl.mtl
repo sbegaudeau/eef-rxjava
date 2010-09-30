@@ -23,7 +23,6 @@
 import java.util.Map;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -48,14 +47,13 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'TableComposition')]
-	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	protected TableViewer [editor.name.toJavaIdentifier()/];
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
+protected TableViewer [editor.name.toJavaIdentifier()/];
+protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'TableComposition')]
-		create[editor.name.toJavaClassifier()/]TableComposition([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]TableComposition([editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'TableComposition')]
@@ -157,6 +155,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addTo[editor.name.toJavaClassifier()/]();
@@ -217,109 +216,77 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultAddToOperationForTableComposition()/]
-		[else]
-		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultAddToOperationForTableComposition()/]
-		// [/protected]
-		[/if]
-
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]() {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultRemoveOperationForTableComposition()/]
-		[else]
-		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultRemoveOperationForTableComposition()/]
-		// [/protected]
-		[/if]
-
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]() {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultEditOperationForTableComposition()/]
-		[else]
-		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultEditOperationForTableComposition()/]
-		// [/protected]
-		[/if]
-
 	}
 [/template]
 
 [template private defaultEditOperationForTableComposition (editor : ElementEditor) ]
-		if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement);
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(editedElement);
-				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, selectedElement,resourceSet));
-					if (propertiesEditionObject != null) {
-						[editor.name.toJavaIdentifier()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-						[editor.name.toJavaIdentifier()/].refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-					}
-				}
-			}
+if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
+	IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
+	if (selection.getFirstElement() instanceof EObject) {
+		EObject selectedElement = (EObject) selection.getFirstElement();
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, selectedElement,resourceSet);
+		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
+		if (editionPolicy != null) {
+			editionPolicy.execute();
+			[editor.name.toJavaIdentifier()/].refresh();
 		}
-
+	}
+}
 [/template]
 
 [template private defaultRemoveOperationForTableComposition (editor : ElementEditor) ]
-		if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
-			IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
-			if (selection.getFirstElement() instanceof EObject) {
-				EObject selectedElement = (EObject) selection.getFirstElement();
-				EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(selectedElement);
-				[editor.name.toJavaIdentifier()/]EditUtil.removeElement(selectedElement);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
-			}
-		}
-
+if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelection) {
+	IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
+	if (selection.getFirstElement() instanceof EObject) {
+		EObject selectedElement = (EObject) selection.getFirstElement();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
+		[editor.name.toJavaIdentifier()/].refresh();
+	}
+}
 [/template]
 
 [template private defaultAddToOperationForTableComposition (editor : ElementEditor) ]
-		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
-			[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
-			[else]
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
-			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
-			[/if]
+	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
+		[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
+[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
+PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
+if (policy != null) {
+	policy.execute();
+}
+propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
+[editor.name.toJavaIdentifier()/].refresh();
+		[else]
+[comment TODOOOOOOOOOOOOOOOOO !/]
+IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
+IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
+if (editionPolicy != null) {
+	EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
+	if (propertiesEditionObject != null) {
+		[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+	}
+}
 		[/if]
-
-
+	[/if]
 [/template]
 
 [template private defaultLabelProviderInitialisation(editor : ElementEditor) ]
@@ -349,7 +316,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [comment ===== Case Widget = AdvancedTableComposition ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'AdvancedTableComposition')]
 import java.util.Map;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -362,14 +328,13 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedTableComposition')]
-	protected EMFListEditUtil [editor.name.toJavaIdentifier()/]EditUtil;
-	protected ReferencesTable<? extends EObject[comment editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
+protected ReferencesTable<? extends EObject> [editor.name.toJavaIdentifier()/];
+protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'AdvancedTableComposition')]
-		create[editor.name.toJavaClassifier()/]AdvancedTableComposition([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]AdvancedTableComposition([editor.widgetContainer().trim()/]);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedTableComposition')]
@@ -405,10 +370,8 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 */
 	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier()/]EditUtil.moveElement(element, oldIndex, newIndex);
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));	
 		[/if]
 	}
 
@@ -416,89 +379,64 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void addTo[editor.name.toJavaClassifier()/]() {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultAddToOperationForAdvancedTableComposition()/]
-		[else]
-		// [protected('addTo'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultAddToOperationForAdvancedTableComposition()/]
-		// [/protected]
-		[/if]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
-		[else]
-		// [protected('removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
-		// [/protected]
-		[/if]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultEditOperationForAdvancedTableComposition()/]
-		[else]
-		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultEditOperationForAdvancedTableComposition()/]
-		// [/protected]
-		[/if]
 	}
 [/template]
 
 [template private defaultEditOperationForAdvancedTableComposition (editor : ElementEditor) ]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier()/]EditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-			}
-		}
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
+if (editionPolicy != null) {
+	editionPolicy.execute();
+	[editor.name.toJavaIdentifier()/].refresh();
+}
 [/template]
 
-[template private defaultRemoveOperationForAdvancedTableComposition (editor : ElementEditor) ]
-		EObject editedElement = [editor.name.toJavaIdentifier()/]EditUtil.foundCorrespondingEObject(element);
-		[editor.name.toJavaIdentifier()/]EditUtil.removeElement(element);
+[template private defaultRemoveOperationForAdvancedTableComposition(editor : ElementEditor) ]
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, editedElement));
+
 [/template]
 
 [template private defaultAddToOperationForAdvancedTableComposition (editor : ElementEditor) ]
-		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
-			[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-		[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
-			[else]
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
-		IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
-			if (propertiesEditionObject != null) {
-				[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
-				[editor.name.toJavaIdentifier()/].refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-			}
-		}
-			[/if]
+	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
+		[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
+[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
+PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
+if (policy != null) {
+	policy.execute();
+}
+propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
+[editor.name.toJavaIdentifier()/].refresh();
+		[else]
+[comment TODOOOOOOOOOOOOOOOOO !/]
+IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
+IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
+if (editionPolicy != null) {
+	EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
+	if (propertiesEditionObject != null) {
+		[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+		[editor.name.toJavaIdentifier()/].refresh();
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
+	}
+}
 		[/if]
+	[/if]
 [/template]
-

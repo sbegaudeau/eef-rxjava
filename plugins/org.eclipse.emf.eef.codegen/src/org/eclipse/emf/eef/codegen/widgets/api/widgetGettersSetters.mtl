@@ -269,81 +269,6 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	 */
 [/template]
 
-[template public getterAddSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToAdd()
-	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
-	 */
-[/template]
-
-[template public getterRemoveSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToRemove()
-	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
-	 */
-[/template]
-
-[template public getterMoveSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToMove()
-	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
-	 */
-[/template]
-
-[template public getterEditSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]ToEdit()
-	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
-	 */
-[/template]
-
-[template public getterTableListSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String)]
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see [fullInterfacePath/]#[elementEditor.viewPackageGetter()/]Table()
-	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
-	 */
-[/template]
-
-[template public getterAddSignatureImplementation(elementEditor : ElementEditor)]
-[elementEditor.getterAddSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToAdd();
-	}
-[/template]
-
-[template public getterRemoveSignatureImplementation(elementEditor : ElementEditor)]
-[elementEditor.getterRemoveSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToRemove();
-	}
-[/template]
-
-[template public getterMoveSignatureImplementation(elementEditor : ElementEditor)]
-[elementEditor.getterMoveSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToMove();
-	}
-[/template]
-
-[template public getterEditSignatureImplementation(elementEditor : ElementEditor)]
-[elementEditor.getterEditSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getElementsToRefresh();
-	}
-[/template]
-
-[template public getterTableListSignatureImplementation(elementEditor : ElementEditor)]
-[elementEditor.getterTableListSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.getVirtualList();
-	}
-[/template]
-
 [template public getterSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.getterSignature()/] {
 		//FIXME ERROR NO VALID CASE INTO template public getterSignatureImplementation(elementEditor : ElementEditor) in viewgetterSetters.mtl module
@@ -397,11 +322,8 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public updateSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.updateSignature()/] {
-		if([elementEditor.name.toJavaIdentifier()/]EditUtil != null){
-			[elementEditor.name.toJavaIdentifier()/]EditUtil.reinit(newValue);
-			[elementEditor.name.toJavaIdentifier()/].refresh();
-		}
-	}
+	[elementEditor.name.toJavaIdentifier()/].refresh();
+}
 [/template]
 
 [comment ======== AddFilter signature implementation ======/]

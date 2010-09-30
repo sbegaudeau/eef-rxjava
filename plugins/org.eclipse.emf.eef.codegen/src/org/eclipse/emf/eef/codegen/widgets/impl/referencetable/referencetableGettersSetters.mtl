@@ -28,6 +28,9 @@
 [elementEditor.initSignatureDocumentation()/]
 [elementEditor.initSignature()/];
 
+[elementEditor.updateSignatureDocumentation()/]
+[elementEditor.updateSignature()/];
+
 [elementEditor.addFilterSignatureDocumentation()/]
 [elementEditor.addFilterSignature()/];
 
@@ -54,6 +57,9 @@
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignatureImplementation()/]
 
+[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.updateSignatureImplementation()/]
+
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.addFilterSignatureImplementation()/]
 
@@ -68,6 +74,11 @@
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
+	}
+
+[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.updateSignature()/] {
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
 	}
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]

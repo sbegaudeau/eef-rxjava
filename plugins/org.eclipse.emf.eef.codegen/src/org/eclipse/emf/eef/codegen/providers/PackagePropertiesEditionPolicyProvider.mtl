@@ -23,22 +23,25 @@ package [peContext.providersPackage()/];
 
 import org.eclipse.emf.ecore.EObject;
 import [peContext.model.ecorePackage.qualifiedMetamodelPackage(basePackage)/];
-import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.policies.impl.StandardPropertiesEditingPolicyProvider;
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider extends StandardPropertiesEditionPolicyProvider {
+public class [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider extends StandardPropertiesEditingPolicyProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider#provides(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public boolean provides(EObject eObject) {
-		return [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.equals(eObject.eClass().getEPackage()) || [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage());
+	public boolean provides(IPropertiesEditionContext context) {
+		if (context instanceof EObjectPropertiesEditionContext) {
+			EObject eObject = ((EObjectPropertiesEditionContext) context).getEObject();
+			return eObject != null && ([peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.equals(eObject.eClass().getEPackage()) || [peContext.model.ecorePackage.metamodelPackage()/].eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage()));
+		}
+		return false;
 	}
 
 }

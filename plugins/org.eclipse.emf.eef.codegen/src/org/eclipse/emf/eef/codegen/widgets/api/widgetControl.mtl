@@ -38,14 +38,7 @@
 // FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
-[comment partUpdater : templates that override this one must define the setter to apply to set the value of the widget to
-		 the associated feature /]
-[comment]
-[template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String)]
-// FIXME INVALID CASE INTO template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/], [modelName/].
-[/template]
-[/comment]
-[comment partUpdater : templates that override this one must define the operation to execute at the initialization of the 
+[comment updater : templates that override this one must define the operation to execute at the initialization of the 
 		 component for the given widget /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
@@ -56,6 +49,10 @@
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
+
+[comment additionalComponentField : templates that override this one must definethe additional fields to generate in the component 
+		 manage the given element /]
+[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)/]
 
 [comment ========== ReferencedViews support ========== /]
 [comment]

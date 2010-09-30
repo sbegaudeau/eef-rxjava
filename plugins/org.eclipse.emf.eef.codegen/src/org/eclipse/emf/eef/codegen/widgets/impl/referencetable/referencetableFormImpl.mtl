@@ -242,7 +242,6 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 
 [comment ===== Case Widget = AdvancedReferencesTable ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'AdvancedReferencesTable')]
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -336,34 +335,23 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultRemoveOperation()/]
-		[else]
-		// [protected(' for the removeFrom'.concat(editor.name.toJavaClassifier()).concat('() method body'))]
-		[editor.defaultRemoveOperation()/]
-		// [/protected]
-		[/if]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
-		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultEditOperation()/]
-		[else]
-		// [protected('edit'.concat(editor.name.toJavaClassifier()).concat('() method body'))]		
-		[editor.defaultEditOperation()/]
-		// [/protected]
-		[/if]
 	}
 [/template]
 
 [template public defaultEditOperation (editor : ElementEditor) ]
-IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(element);
-if (editionPolicy != null) {
-	editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
+if (policy != null) {
+	policy.execute();
 	[editor.name.toJavaIdentifier()/].refresh();
 }
 [/template]

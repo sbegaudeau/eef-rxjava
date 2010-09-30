@@ -19,20 +19,9 @@
 
 [comment ====== Widgets View getters for declaration ====== /]
 [template public getterDeclaration(elementEditor : ElementEditor) overrides getterDeclaration ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
-[elementEditor.getterAddSignatureDocumentation()/]
-[elementEditor.getterAddSignature()/];
+[/template]
 
-[elementEditor.getterRemoveSignatureDocumentation()/]
-[elementEditor.getterRemoveSignature()/];
-
-[elementEditor.getterMoveSignatureDocumentation()/]
-[elementEditor.getterMoveSignature()/];
-
-[elementEditor.getterEditSignatureDocumentation()/]
-[elementEditor.getterEditSignature()/];
-
-[elementEditor.getterTableListSignatureDocumentation()/]
-[elementEditor.getterTableListSignature()/];
+[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [/template]
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
@@ -52,47 +41,11 @@
 [elementEditor.isContainedInTableSignature()/];
 [/template]
 
-[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
-[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterAddSignatureImplementation()/]
-
-[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterRemoveSignatureImplementation()/]
-
-[getterEditSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterEditSignatureImplementation()/]
-
-[getterMoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterMoveSignatureImplementation()/]
-
-[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterTableListSignatureImplementation()/]
-[/template]
-
 [template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides getterImplementationDelegate ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
-[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterAddSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToAdd();
-	}
-
-[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterRemoveSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToRemove();
-	}
-
-[getterEditSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterEditSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToEdit();
-	}
-
-[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterTableListSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]Table();
-	}
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
-	public void init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+	public void init[elementEditor.viewPackageSignature()/](ReferencesTableSettings settings)
 [/template]
 
 
@@ -161,11 +114,9 @@
 [elementEditor.initSignature()/] {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			[elementEditor.name.toJavaIdentifier()/]EditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			[elementEditor.name.toJavaIdentifier()/]EditUtil = new EMFListEditUtil(current, feature);
-		this.[elementEditor.name.toJavaIdentifier()/].setInput([elementEditor.name.toJavaIdentifier()/]EditUtil.getVirtualList());
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		[elementEditor.name.toJavaIdentifier()/].setContentProvider(contentProvider);
+		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
 	}
 [/template]
 
@@ -183,7 +134,7 @@
 
 [template public isContainedInTableSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.isContainedInTableSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/]EditUtil.contains(element);
+		return ((ReferencesTableSettings)[elementEditor.name.toJavaIdentifier()/].getInput()).contains(element);
 	}
 [/template]
 
