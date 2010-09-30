@@ -18,22 +18,15 @@
 
 
 [template public getterDeclaration(elementEditor : ElementEditor) overrides getterDeclaration ? (elementEditor.representationName('FlatReferencesTable'))]
-[elementEditor.getterAddSignatureDocumentation()/]
-[elementEditor.getterAddSignature()/];
-
-[elementEditor.getterRemoveSignatureDocumentation()/]
-[elementEditor.getterRemoveSignature()/];
-
-[elementEditor.getterTableListSignatureDocumentation()/]
-[elementEditor.getterTableListSignature()/];
 [/template]
+
+[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
+[/template]
+
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.initSignatureDocumentation()/]
 [elementEditor.initSignature()/];
-
-[elementEditor.updateSignatureDocumentation()/]
-[elementEditor.updateSignature()/];
 
 [elementEditor.addFilterSignatureDocumentation()/]
 [elementEditor.addFilterSignature()/];
@@ -46,53 +39,19 @@
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('FlatReferencesTable'))]
-	public void init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+	public void init[elementEditor.viewPackageSignature()/](ReferencesTableSettings settings)
 [/template]
 
 [template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('FlatReferencesTable'))]
 	/**
 	 * Init the [elementEditor.name/]
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the [elementEditor.name/] ReferencesTable 
 	 */
-[/template]
-
-[template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
-[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterAddSignatureImplementation()/]
-
-[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterRemoveSignatureImplementation()/]
-
-[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterTableListSignatureImplementation()/]
-
-[/template]
-
-[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides getterImplementationDelegate ? (elementEditor.representationName('FlatReferencesTable'))]
-[getterAddSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterAddSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToAdd();
-	}
-
-[getterRemoveSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterRemoveSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]ToRemove();
-	}
-
-[getterTableListSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.getterTableListSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.[elementEditor.viewPackageGetter()/]Table();
-	}
 [/template]
 
 [template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setterImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignatureImplementation()/]
-
-[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.updateSignatureImplementation()/]
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.addFilterSignatureImplementation()/]
@@ -108,11 +67,6 @@
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
-	}
-
-[updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.updateSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
 	}
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -131,24 +85,6 @@
 	}
 [/template]
 
-[template public getterAddSignatureImplementation(elementEditor : ElementEditor) overrides getterAddSignatureImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
-[elementEditor.getterAddSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].getElementsToAdd();
-	}
-[/template]
-
-[template public getterRemoveSignatureImplementation(elementEditor : ElementEditor) overrides getterRemoveSignatureImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
-[elementEditor.getterRemoveSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].getElementsToRemove();
-	}
-[/template]
-
-[template public getterTableListSignatureImplementation(elementEditor : ElementEditor) overrides getterTableListSignatureImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
-[elementEditor.getterTableListSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].getVirtualList();
-	}
-[/template]
-
 [template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides initSignatureDocumentationImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
 	/**
 	 * {@inheritDoc}
@@ -159,15 +95,9 @@
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].initComponent(current, containingFeature, feature);
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			[elementEditor.name.toJavaIdentifier()/].setInput(current.eResource().getResourceSet());
-	}
-[/template]
-
-[template public updateSignatureImplementation(elementEditor : ElementEditor) overrides updateSignatureImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
-[elementEditor.updateSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].updateComponent(newValue);
+			this.resourceSet = current.eResource().getResourceSet();
+		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
 	}
 [/template]
 
@@ -185,6 +115,6 @@
 
 [template public isContainedInTableSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.isContainedInTableSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].virtualListContains(element);
+		return ((ReferencesTableSettings)[elementEditor.name.toJavaIdentifier()/].getInput()).contains(element);
 	}
 [/template]
