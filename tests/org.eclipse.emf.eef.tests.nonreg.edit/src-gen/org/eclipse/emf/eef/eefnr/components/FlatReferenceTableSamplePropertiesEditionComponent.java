@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
-import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -305,13 +304,13 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	}
 
 	private void updateFlatreferencetableRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET)  
-			flatreferencestableRequiredPropertySettings.setToReference((List<EObject>)event.getNewValue());
+		if (event.getKind() == PropertiesEditionEvent.SET)
+			flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
 	}
 
 	private void updateFlatreferencetableOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET) 
-			flatreferencestableOptionalPropertySettings.setToReference((List<EObject>)event.getNewValue());
+		if (event.getKind() == PropertiesEditionEvent.SET)
+			flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
 	}
 
 
