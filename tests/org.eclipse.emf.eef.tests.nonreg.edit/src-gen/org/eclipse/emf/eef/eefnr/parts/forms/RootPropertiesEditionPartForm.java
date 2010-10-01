@@ -13,7 +13,6 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -25,16 +24,18 @@ import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.policies.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -53,10 +54,9 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, RootPropertiesEditionPart {
 
-	protected EMFListEditUtil samplesEditUtil;
-		protected ReferencesTable<? extends EObject> samples;
-		protected List<ViewerFilter> samplesBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable<? extends EObject> samples;
+	protected List<ViewerFilter> samplesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -151,54 +151,40 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	protected void addToSamples() {
-		// Start of user code addToSamples() method body
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
-				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, EefnrPackage.eINSTANCE.getRoot_Samples(), resourceSet));
-					if (propertiesEditionObject != null) {
-						samplesEditUtil.addElement(propertiesEditionObject);
-						samples.refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
-					}
-				}
+		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getRoot_Samples(), resourceSet);
+		PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+		PropertiesEditingPolicy policy = provider.getPolicy(context);
+		if (policy instanceof CreateEditingPolicy) {
+			policy.execute();
+			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+			if (resultEObject != null) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
+				samples.refresh();
+			}
+		}
 		
-		
-		// End of user code
-
 	}
 
 	/**
 	 * 
 	 */
 	protected void removeFromSamples(AbstractSample element) {
-		// Start of user code for the removeFromSamples() method body
-				EObject editedElement = samplesEditUtil.foundCorrespondingEObject(element);
-				samplesEditUtil.removeElement(element);
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				samples.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
 		
-		// End of user code
 	}
 
 	/**
 	 * 
 	 */
 	protected void editSamples(AbstractSample element) {
-		// Start of user code editSamples() method body
-				EObject editedElement = samplesEditUtil.foundCorrespondingEObject(element);
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-				IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-					if (propertiesEditionObject != null) {
-						samplesEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-						samples.refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-					}
-				}
-		
-		// End of user code
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
+		if (editionPolicy != null) {
+			editionPolicy.execute();
+			samples.refresh();
+		}
 	}
 
 
@@ -215,69 +201,19 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		// End of user code
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#getSamplesToAdd()
-	 * 
-	 */
-	public List getSamplesToAdd() {
-		return samplesEditUtil.getElementsToAdd();
-	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#getSamplesToRemove()
-	 * 
-	 */
-	public List getSamplesToRemove() {
-		return samplesEditUtil.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#getSamplesToEdit()
-	 * 
-	 */
-	public Map getSamplesToEdit() {
-		return samplesEditUtil.getElementsToRefresh();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#getSamplesToMove()
-	 * 
-	 */
-	public List getSamplesToMove() {
-		return samplesEditUtil.getElementsToMove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#getSamplesTable()
-	 * 
-	 */
-	public List getSamplesTable() {
-		return samplesEditUtil.getVirtualList();
-	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#initSamples(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initSamples(EObject current, EReference containingFeature, EReference feature) {
+	public void initSamples(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			samplesEditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			samplesEditUtil = new EMFListEditUtil(current, feature);
-		this.samples.setInput(samplesEditUtil.getVirtualList());
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		samples.setContentProvider(contentProvider);
+		samples.setInput(settings);
 	}
 
 	/**
@@ -287,11 +223,8 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void updateSamples(EObject newValue) {
-		if(samplesEditUtil != null){
-			samplesEditUtil.reinit(newValue);
-			samples.refresh();
-		}
-	}
+	samples.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
@@ -320,7 +253,7 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public boolean isContainedInSamplesTable(EObject element) {
-		return samplesEditUtil.contains(element);
+		return ((ReferencesTableSettings)samples.getInput()).contains(element);
 	}
 
 

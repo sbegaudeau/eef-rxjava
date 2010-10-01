@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.AbstractSample;
@@ -33,8 +32,10 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -66,7 +67,12 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 */
 	protected RootPropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for samples ReferencesTable
+	 */
+	private	ReferencesTableSettings samplesSettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -122,9 +128,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getRoot_Samples())) {
-			basePart.updateSamples(root);
-		}
+
 
 	}
 
@@ -196,7 +200,8 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final Root root = (Root)elt;
 			// init values
-			basePart.initSamples(root, null, EefnrPackage.eINSTANCE.getRoot_Samples());
+			samplesSettings = new ReferencesTableSettings(root, EefnrPackage.eINSTANCE.getRoot_Samples());
+			basePart.initSamples(samplesSettings);
 			// init filters
 			basePart.addFilterToSamples(new ViewerFilter() {
 
@@ -236,7 +241,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.Root.samples == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : samples, Root, Root.
+					updateSamples(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -244,7 +249,7 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 					
 					public void execute() {
 						if (EefnrViewsRepository.Root.samples == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : samples, Root, Root.
+							updateSamples(event);
 						}
 					}
 				});			
@@ -259,7 +264,15 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : samples, Root, Root.
+	private void updateSamples(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof AbstractSample) {
+				samplesSettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				samplesSettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 
 
