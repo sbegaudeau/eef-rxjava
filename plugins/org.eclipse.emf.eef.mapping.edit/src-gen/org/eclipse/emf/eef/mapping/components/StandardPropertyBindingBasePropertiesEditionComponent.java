@@ -1,22 +1,18 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 
-import java.util.Iterator;
-import java.util.List;
-
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -29,11 +25,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.MoveCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ModelProperty;
 import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
@@ -45,6 +36,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -52,6 +44,8 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -83,7 +77,12 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	 * 
 	 */
 	protected StandardPropertyBindingPropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for views ReferencesTable
+	 */
+	private	ReferencesTableSettings viewsSettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -146,8 +145,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 				basePart.setName("");
 			}
 		}
-		if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
-			basePart.updateViews(standardPropertyBinding);
+
 		if (MappingPackage.eINSTANCE.getStandardPropertyBinding_Model().equals(msg.getFeature()) && basePart != null)
 			basePart.setModel((EObject)msg.getNewValue());
 
@@ -224,7 +222,8 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 			if (standardPropertyBinding.getName() != null)
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), standardPropertyBinding.getName()));
 
-			basePart.initViews(standardPropertyBinding, null, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
+			viewsSettings = new ReferencesTableSettings(standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
+			basePart.initViews(viewsSettings);
 			// init part
 			basePart.initModel(allResource, standardPropertyBinding.getModel());
 			// set the button mode
@@ -282,86 +281,38 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((standardPropertyBinding != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
-			List viewsToAddFromViews = basePart.getViewsToAdd();
-			for (Iterator iter = viewsToAddFromViews.iterator(); iter.hasNext();)
-				cc.append(AddCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
-			List viewsToRemoveFromViews = basePart.getViewsToRemove();
-			for (Iterator iter = viewsToRemoveFromViews.iterator(); iter.hasNext();)
-				cc.append(RemoveCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), iter.next()));
-			//List viewsToMoveFromViews = basePart.getViewsToMove();
-			//for (Iterator iter = viewsToMoveFromViews.iterator(); iter.hasNext();){
-			//	org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement moveElement = (org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil.MoveElement)iter.next();
-			//	cc.append(MoveCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getElementEditor(), moveElement.getElement(), moveElement.getIndex()));
-			//}
-			if (standardPropertyBinding.eGet(MappingPackage.eINSTANCE.getStandardPropertyBinding_Model()) == null || !standardPropertyBinding.eGet(MappingPackage.eINSTANCE.getStandardPropertyBinding_Model()).equals(basePart.getModel())) {
-				cc.append(SetCommand.create(editingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getStandardPropertyBinding_Model(), basePart.getModel()));
-			}
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof StandardPropertyBinding) {
-			StandardPropertyBinding standardPropertyBindingToUpdate = (StandardPropertyBinding)source;
-			standardPropertyBindingToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
-
-			standardPropertyBindingToUpdate.getViews().addAll(basePart.getViewsToAdd());
-			standardPropertyBindingToUpdate.setModel((ModelProperty)basePart.getModel());
-
-			return standardPropertyBindingToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (MappingViewsRepository.StandardPropertyBinding.name == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (MappingViewsRepository.StandardPropertyBinding.views == event.getAffectedEditor()) {
-				if (PropertiesEditionEvent.ADD == event.getKind())
-					command.append(AddCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), event.getNewValue()));
-				if (PropertiesEditionEvent.REMOVE == event.getKind())
-					command.append(RemoveCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), event.getNewValue()));
-				if (PropertiesEditionEvent.MOVE == event.getKind())
-					command.append(MoveCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(), event.getNewValue(), event.getNewIndex()));
-			}
-			if (MappingViewsRepository.StandardPropertyBinding.model == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, standardPropertyBinding, MappingPackage.eINSTANCE.getStandardPropertyBinding_Model(), event.getNewValue()));
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (MappingViewsRepository.StandardPropertyBinding.name == event.getAffectedEditor()) {
+					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 				}
+				if (MappingViewsRepository.StandardPropertyBinding.views == event.getAffectedEditor()) {
+					updateViews(event);
+				}
+				if (MappingViewsRepository.StandardPropertyBinding.model == event.getAffectedEditor()) {
+					updateModel((ModelProperty)event.getNewValue());
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (MappingViewsRepository.StandardPropertyBinding.name == event.getAffectedEditor()) {
+							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (MappingViewsRepository.StandardPropertyBinding.views == event.getAffectedEditor()) {
+							updateViews(event);
+						}
+						if (MappingViewsRepository.StandardPropertyBinding.model == event.getAffectedEditor()) {
+							updateModel((ModelProperty)event.getNewValue());
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -372,6 +323,26 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateName(java.lang.String newValue) {
+		standardPropertyBinding.setName(newValue);	
+	}
+
+	private void updateViews(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof ElementEditor) {
+				viewsSettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				viewsSettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
+
+	private void updateModel(ModelProperty newValue) {
+		standardPropertyBinding.setModel(newValue);	
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -431,13 +402,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Stand
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(standardPropertyBinding);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(standardPropertyBinding);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(standardPropertyBinding);
 		// Start of user code for custom validation check
 		
 		// End of user code
