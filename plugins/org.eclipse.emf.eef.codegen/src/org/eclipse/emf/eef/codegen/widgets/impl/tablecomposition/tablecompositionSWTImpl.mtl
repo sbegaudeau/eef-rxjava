@@ -274,15 +274,15 @@ if (policy != null) {
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
 [editor.name.toJavaIdentifier()/].refresh();
 		[else]
-[comment TODOOOOOOOOOOOOOOOOO !/]
-IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
-IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
-if (editionPolicy != null) {
-	EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
-	if (propertiesEditionObject != null) {
-		[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet);
+PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+PropertiesEditingPolicy policy = provider.getPolicy(context);
+if (policy instanceof CreateEditingPolicy) {
+	policy.execute();
+	EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+	if (resultEObject != null) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
 		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 	}
 }
 		[/if]
@@ -426,15 +426,15 @@ if (policy != null) {
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
 [editor.name.toJavaIdentifier()/].refresh();
 		[else]
-[comment TODOOOOOOOOOOOOOOOOO !/]
-IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(current);
-IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(current);
-if (editionPolicy != null) {
-	EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EReferencePropertiesEditionContext(propertiesEditionComponent, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet));
-	if (propertiesEditionObject != null) {
-		[editor.name.toJavaIdentifier()/]EditUtil.addElement(propertiesEditionObject);
+EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet);
+PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+PropertiesEditingPolicy policy = provider.getPolicy(context);
+if (policy instanceof CreateEditingPolicy) {
+	policy.execute();
+	EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+	if (resultEObject != null) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
 		[editor.name.toJavaIdentifier()/].refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, propertiesEditionObject));
 	}
 }
 		[/if]
