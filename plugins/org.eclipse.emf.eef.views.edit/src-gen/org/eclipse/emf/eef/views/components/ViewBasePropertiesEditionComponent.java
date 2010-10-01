@@ -1,18 +1,17 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -24,16 +23,14 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -74,7 +71,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 	 * 
 	 */
 	protected ViewPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 
@@ -257,73 +254,38 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((view != null) && (basePart != null)) { 
-			if (view.eGet(ViewsPackage.eINSTANCE.getViewElement_Representation()) == null || !view.eGet(ViewsPackage.eINSTANCE.getViewElement_Representation()).equals(basePart.getRepresentation())) {
-				cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Representation(), basePart.getRepresentation()));
-			}
-			cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName())));
-			cc.append(SetCommand.create(editingDomain, view, ViewsPackage.eINSTANCE.getView_Explicit(), basePart.getExplicit()));
-
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof View) {
-			View viewToUpdate = (View)source;
-			viewToUpdate.setRepresentation((Widget)basePart.getRepresentation());
-			viewToUpdate.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getName()));
-
-			viewToUpdate.setExplicit(new Boolean(basePart.getExplicit()).booleanValue());
-
-
-			return viewToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (ViewsViewsRepository.View.representation == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Representation(), event.getNewValue()));
-			if (ViewsViewsRepository.View.name == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getViewElement_Name(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (ViewsViewsRepository.View.explicit == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, view, ViewsPackage.eINSTANCE.getView_Explicit(), event.getNewValue()));
-
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (ViewsViewsRepository.View.representation == event.getAffectedEditor()) {
+					updateRepresentation((Widget)event.getNewValue());
 				}
+				if (ViewsViewsRepository.View.name == event.getAffectedEditor()) {
+					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+				}
+				if (ViewsViewsRepository.View.explicit == event.getAffectedEditor()) {
+					updateExplicit((Boolean)event.getNewValue());
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (ViewsViewsRepository.View.representation == event.getAffectedEditor()) {
+							updateRepresentation((Widget)event.getNewValue());
+						}
+						if (ViewsViewsRepository.View.name == event.getAffectedEditor()) {
+							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (ViewsViewsRepository.View.explicit == event.getAffectedEditor()) {
+							updateExplicit((Boolean)event.getNewValue());
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -334,6 +296,20 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateRepresentation(Widget newValue) {
+		view.setRepresentation(newValue);	
+	}
+
+	private void updateName(java.lang.String newValue) {
+		view.setName(newValue);	
+	}
+
+	private void updateExplicit(Boolean newValue) {
+		view.setExplicit(newValue);	
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -397,13 +373,7 @@ public class ViewBasePropertiesEditionComponent extends StandardPropertiesEditio
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(view);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(view);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(view);
 		// Start of user code for custom validation check
 		
 		// End of user code

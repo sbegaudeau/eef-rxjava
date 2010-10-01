@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.views.parts.impl;
 
 // Start of user code for imports
@@ -20,6 +21,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -35,6 +37,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -154,6 +158,8 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 			}
 
 		});
+		EditingUtils.setID(name, ViewsViewsRepository.ElementEditor.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -175,6 +181,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		});
 		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
 		representation.setLayoutData(representationData);
+		representation.setID(ViewsViewsRepository.ElementEditor.representation);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.representation, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -182,9 +189,25 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 	protected void createReadOnlyCheckbox(Composite parent) {
 		readOnly = new Button(parent, SWT.CHECK);
 		readOnly.setText(ViewsMessages.ElementEditorPropertiesEditionPart_ReadOnlyLabel);
+		readOnly.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementEditorPropertiesEditionPartImpl.this, ViewsViewsRepository.ElementEditor.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
+			}
+
+		});
 		GridData readOnlyData = new GridData(GridData.FILL_HORIZONTAL);
 		readOnlyData.horizontalSpan = 2;
 		readOnly.setLayoutData(readOnlyData);
+		EditingUtils.setID(readOnly, ViewsViewsRepository.ElementEditor.readOnly);
+		EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.readOnly, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.views.parts.impl;
 
 // Start of user code for imports
@@ -17,6 +18,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.views.parts.ViewsRepositoryPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -142,6 +144,8 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 			}
 
 		});
+		EditingUtils.setID(name, ViewsViewsRepository.ViewsRepository.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -185,6 +189,8 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 			}
 
 		});
+		EditingUtils.setID(repositoryKind, ViewsViewsRepository.ViewsRepository.repositoryKind);
+		EditingUtils.setEEFtype(repositoryKind, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.repositoryKind, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
