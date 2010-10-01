@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
@@ -27,6 +28,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -154,6 +156,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 			}
 
 		});
+		viewsRepository.setID(EEFGenViewsRepository.GenViewsRepository.viewsRepository);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.viewsRepository, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -209,6 +212,8 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 				}
 			}
 		});
+		EditingUtils.setID(basePackage, EEFGenViewsRepository.GenViewsRepository.basePackage);
+		EditingUtils.setEEFtype(basePackage, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -234,6 +239,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 			}
 
 		});
+		helpStrategy.setID(EEFGenViewsRepository.GenViewsRepository.helpStrategy);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.helpStrategy, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -275,6 +281,8 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		GridData sWTViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		sWTViewsData.horizontalSpan = 2;
 		sWTViews.setLayoutData(sWTViewsData);
+		EditingUtils.setID(sWTViews, EEFGenViewsRepository.GenViewsRepository.sWTViews);
+		EditingUtils.setEEFtype(sWTViews, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.sWTViews, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -298,6 +306,8 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		GridData formsViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		formsViewsData.horizontalSpan = 2;
 		formsViews.setLayoutData(formsViewsData);
+		EditingUtils.setID(formsViews, EEFGenViewsRepository.GenViewsRepository.formsViews);
+		EditingUtils.setEEFtype(formsViews, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.formsViews, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

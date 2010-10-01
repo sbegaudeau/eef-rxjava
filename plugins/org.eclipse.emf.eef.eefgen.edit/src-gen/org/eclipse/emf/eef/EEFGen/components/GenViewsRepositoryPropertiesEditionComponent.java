@@ -1,19 +1,18 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
 
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -27,8 +26,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
@@ -40,8 +37,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -77,7 +74,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	 * 
 	 */
 	protected GenViewsRepositoryPropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 
@@ -273,87 +270,50 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionCommand
-	 *     (org.eclipse.emf.edit.domain.EditingDomain)
-	 * 
-	 */
-	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-		CompoundCommand cc = new CompoundCommand();
-		if ((genViewsRepository != null) && (basePart != null)) { 
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getBasePackage())));
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), basePart.getSWTViews()));
-
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(), basePart.getFormsViews()));
-
-			cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy(), basePart.getHelpStrategy()));
-
-			if (genViewsRepository.eGet(EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository()) == null || !genViewsRepository.eGet(EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository()).equals(basePart.getViewsRepository())) {
-				cc.append(SetCommand.create(editingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository(), basePart.getViewsRepository()));
-			}
-
-		}
-		if (!cc.isEmpty())
-			return cc;
-		cc.append(IdentityCommand.INSTANCE);
-		return cc;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionObject()
-	 * 
-	 */
-	public EObject getPropertiesEditionObject(EObject source) {
-		if (source instanceof GenViewsRepository) {
-			GenViewsRepository genViewsRepositoryToUpdate = (GenViewsRepository)source;
-			genViewsRepositoryToUpdate.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), basePart.getBasePackage()));
-
-			genViewsRepositoryToUpdate.setSwtViews(new Boolean(basePart.getSWTViews()).booleanValue());
-
-			genViewsRepositoryToUpdate.setFormViews(new Boolean(basePart.getFormsViews()).booleanValue());
-
-			genViewsRepositoryToUpdate.setHelpStrategy((HELP_STRATEGY)basePart.getHelpStrategy());
-
-			genViewsRepositoryToUpdate.setViewsRepository((ViewsRepository)basePart.getViewsRepository());
-
-			return genViewsRepositoryToUpdate;
-		}
-		else
-			return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (PropertiesEditionEvent.COMMIT == event.getState() && IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode) && valueDiagnostic.getSeverity() == Diagnostic.OK) {
-				CompoundCommand command = new CompoundCommand();
-			if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor()) {
-				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(), EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue())));
-			}
-			if (EEFGenViewsRepository.GenViewsRepository.sWTViews == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(), event.getNewValue()));
-
-			if (EEFGenViewsRepository.GenViewsRepository.formsViews == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(), event.getNewValue()));
-
-			if (EEFGenViewsRepository.GenViewsRepository.helpStrategy == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy(), event.getNewValue()));
-
-			if (EEFGenViewsRepository.GenViewsRepository.viewsRepository == event.getAffectedEditor())
-				command.append(SetCommand.create(liveEditingDomain, genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository(), event.getNewValue()));
-
-				if (!command.isEmpty() && !command.canExecute()) {
-					EEFRuntimePlugin.getDefault().logError("Cannot perform model change command.", null);
-				} else {
-					liveEditingDomain.getCommandStack().execute(command);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor()) {
+					updateBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 				}
+				if (EEFGenViewsRepository.GenViewsRepository.sWTViews == event.getAffectedEditor()) {
+					updateSwtViews((Boolean)event.getNewValue());
+				}
+				if (EEFGenViewsRepository.GenViewsRepository.formsViews == event.getAffectedEditor()) {
+					updateFormViews((Boolean)event.getNewValue());
+				}
+				if (EEFGenViewsRepository.GenViewsRepository.helpStrategy == event.getAffectedEditor()) {
+					updateHelpStrategy((HELP_STRATEGY)event.getNewValue());
+				}
+				if (EEFGenViewsRepository.GenViewsRepository.viewsRepository == event.getAffectedEditor()) {
+					updateViewsRepository((ViewsRepository)event.getNewValue());
+				}
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						if (EEFGenViewsRepository.GenViewsRepository.basePackage == event.getAffectedEditor()) {
+							updateBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+						}
+						if (EEFGenViewsRepository.GenViewsRepository.sWTViews == event.getAffectedEditor()) {
+							updateSwtViews((Boolean)event.getNewValue());
+						}
+						if (EEFGenViewsRepository.GenViewsRepository.formsViews == event.getAffectedEditor()) {
+							updateFormViews((Boolean)event.getNewValue());
+						}
+						if (EEFGenViewsRepository.GenViewsRepository.helpStrategy == event.getAffectedEditor()) {
+							updateHelpStrategy((HELP_STRATEGY)event.getNewValue());
+						}
+						if (EEFGenViewsRepository.GenViewsRepository.viewsRepository == event.getAffectedEditor()) {
+							updateViewsRepository((ViewsRepository)event.getNewValue());
+						}
+					}
+				});			
 			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
@@ -364,6 +324,28 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 			super.firePropertiesChanged(event);
 		}
 	}
+
+	private void updateBasePackage(java.lang.String newValue) {
+		genViewsRepository.setBasePackage(newValue);	
+	}
+
+	private void updateSwtViews(Boolean newValue) {
+		genViewsRepository.setSwtViews(newValue);	
+	}
+
+	private void updateFormViews(Boolean newValue) {
+		genViewsRepository.setFormViews(newValue);	
+	}
+
+	private void updateHelpStrategy(HELP_STRATEGY newValue) {
+		genViewsRepository.setHelpStrategy(newValue);	
+	}
+
+	private void updateViewsRepository(ViewsRepository newValue) {
+		genViewsRepository.setViewsRepository(newValue);	
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -419,13 +401,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends StandardProper
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
-			EObject copy = EcoreUtil.copy(genViewsRepository);
-			copy = getPropertiesEditionObject(copy);
-			validate =  EEFRuntimePlugin.getEEFValidator().validate(copy);
-		}
-		else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
-			validate = EEFRuntimePlugin.getEEFValidator().validate(genViewsRepository);
+		validate = EEFRuntimePlugin.getEEFValidator().validate(genViewsRepository);
 		// Start of user code for custom validation check
 		
 		// End of user code

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
 // Start of user code for imports
@@ -23,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -35,6 +37,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -137,6 +141,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		});
 		GridData propertiesEditionContextData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesEditionContext.setLayoutData(propertiesEditionContextData);
+		propertiesEditionContext.setID(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -196,6 +201,8 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			}
 
 		});
+		EditingUtils.setID(basePackage, EEFGenViewsRepository.GenEditionContext.basePackage);
+		EditingUtils.setEEFtype(basePackage, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -239,6 +246,8 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			}
 
 		});
+		EditingUtils.setID(descriptorsContributorID, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID);
+		EditingUtils.setEEFtype(descriptorsContributorID, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -263,9 +272,25 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	protected void createGenericPropertiesViewsDescriptorsCheckbox(Composite parent) {
 		genericPropertiesViewsDescriptors = new Button(parent, SWT.CHECK);
 		genericPropertiesViewsDescriptors.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel);
+		genericPropertiesViewsDescriptors.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(genericPropertiesViewsDescriptors.getSelection())));
+			}
+
+		});
 		GridData genericPropertiesViewsDescriptorsData = new GridData(GridData.FILL_HORIZONTAL);
 		genericPropertiesViewsDescriptorsData.horizontalSpan = 2;
 		genericPropertiesViewsDescriptors.setLayoutData(genericPropertiesViewsDescriptorsData);
+		EditingUtils.setID(genericPropertiesViewsDescriptors, EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors);
+		EditingUtils.setEEFtype(genericPropertiesViewsDescriptors, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -273,9 +298,25 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	protected void createGMFSpecificPropertiesViewsCheckbox(Composite parent) {
 		gMFSpecificPropertiesViews = new Button(parent, SWT.CHECK);
 		gMFSpecificPropertiesViews.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel);
+		gMFSpecificPropertiesViews.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(gMFSpecificPropertiesViews.getSelection())));
+			}
+
+		});
 		GridData gMFSpecificPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		gMFSpecificPropertiesViewsData.horizontalSpan = 2;
 		gMFSpecificPropertiesViews.setLayoutData(gMFSpecificPropertiesViewsData);
+		EditingUtils.setID(gMFSpecificPropertiesViews, EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews);
+		EditingUtils.setEEFtype(gMFSpecificPropertiesViews, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 
@@ -283,9 +324,25 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	protected void createJUnitTestCasesCheckbox(Composite parent) {
 		jUnitTestCases = new Button(parent, SWT.CHECK);
 		jUnitTestCases.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel);
+		jUnitTestCases.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.jUnitTestCases, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(jUnitTestCases.getSelection())));
+			}
+
+		});
 		GridData jUnitTestCasesData = new GridData(GridData.FILL_HORIZONTAL);
 		jUnitTestCasesData.horizontalSpan = 2;
 		jUnitTestCases.setLayoutData(jUnitTestCasesData);
+		EditingUtils.setID(jUnitTestCases, EEFGenViewsRepository.GenEditionContext.jUnitTestCases);
+		EditingUtils.setEEFtype(jUnitTestCases, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.jUnitTestCases, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 	}
 

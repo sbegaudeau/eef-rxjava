@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
@@ -23,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -149,6 +151,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 			}
 
 		});
+		propertiesEditionContext.setID(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -204,6 +207,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				}
 			}
 		});
+		EditingUtils.setID(basePackage, EEFGenViewsRepository.GenEditionContext.basePackage);
+		EditingUtils.setEEFtype(basePackage, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -241,6 +246,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 				}
 			}
 		});
+		EditingUtils.setID(descriptorsContributorID, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID);
+		EditingUtils.setEEFtype(descriptorsContributorID, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -283,6 +290,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		GridData genericPropertiesViewsDescriptorsData = new GridData(GridData.FILL_HORIZONTAL);
 		genericPropertiesViewsDescriptorsData.horizontalSpan = 2;
 		genericPropertiesViewsDescriptors.setLayoutData(genericPropertiesViewsDescriptorsData);
+		EditingUtils.setID(genericPropertiesViewsDescriptors, EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors);
+		EditingUtils.setEEFtype(genericPropertiesViewsDescriptors, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -306,6 +315,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		GridData gMFSpecificPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		gMFSpecificPropertiesViewsData.horizontalSpan = 2;
 		gMFSpecificPropertiesViews.setLayoutData(gMFSpecificPropertiesViewsData);
+		EditingUtils.setID(gMFSpecificPropertiesViews, EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews);
+		EditingUtils.setEEFtype(gMFSpecificPropertiesViews, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -329,6 +340,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		GridData jUnitTestCasesData = new GridData(GridData.FILL_HORIZONTAL);
 		jUnitTestCasesData.horizontalSpan = 2;
 		jUnitTestCases.setLayoutData(jUnitTestCasesData);
+		EditingUtils.setID(jUnitTestCases, EEFGenViewsRepository.GenEditionContext.jUnitTestCases);
+		EditingUtils.setEEFtype(jUnitTestCases, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.jUnitTestCases, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 

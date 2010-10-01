@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
@@ -20,6 +21,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -151,6 +153,8 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				}
 			}
 		});
+		EditingUtils.setID(generationDirectory, EEFGenViewsRepository.EEFGenModel.generationDirectory);
+		EditingUtils.setEEFtype(generationDirectory, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -188,6 +192,8 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				}
 			}
 		});
+		EditingUtils.setID(testsGenerationDirectory, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory);
+		EditingUtils.setEEFtype(testsGenerationDirectory, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -211,6 +217,8 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		GridData useJMergeToManageUserCodeData = new GridData(GridData.FILL_HORIZONTAL);
 		useJMergeToManageUserCodeData.horizontalSpan = 2;
 		useJMergeToManageUserCode.setLayoutData(useJMergeToManageUserCodeData);
+		EditingUtils.setID(useJMergeToManageUserCode, EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode);
+		EditingUtils.setEEFtype(useJMergeToManageUserCode, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -266,6 +274,8 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 				}
 			}
 		});
+		EditingUtils.setID(author, EEFGenViewsRepository.EEFGenModel.author);
+		EditingUtils.setEEFtype(author, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -295,6 +305,8 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			}
 
 		});
+		EditingUtils.setID(license, EEFGenViewsRepository.EEFGenModel.license);
+		EditingUtils.setEEFtype(license, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
