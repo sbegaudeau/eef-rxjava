@@ -10,22 +10,15 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.policies;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EReferencePropertiesEditionContext implements
-		IPropertiesEditionContext {
-
-	/**
-	 * the source EditionComponent
-	 */
-	protected IPropertiesEditionComponent propertiesEditionComponent;
+public class EReferencePropertiesEditionContext extends EObjectPropertiesEditionContext {
 
 	/**
 	 * the EReference to edit
@@ -33,39 +26,13 @@ public class EReferencePropertiesEditionContext implements
 	protected EReference eReference;
 
 	/**
-	 * The ResourceSet where the EObjects are located
-	 */
-	protected ResourceSet resourceSet;
-
-	private ChangeRecorder changeRecorder;
-
-	/**
 	 * @param propertiesEditionComponent
 	 * @param eReference
 	 * @param resourceSet
 	 */
-	public EReferencePropertiesEditionContext(IPropertiesEditionComponent propertiesEditionComponent, EReference eReference, ResourceSet resourceSet) {
-		this.propertiesEditionComponent = propertiesEditionComponent;
+	public EReferencePropertiesEditionContext(IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference, ResourceSet resourceSet) {
+		super(propertiesEditionComponent, eObject, resourceSet);
 		this.eReference = eReference;
-		this.resourceSet = resourceSet;
-		this.changeRecorder = new ChangeRecorder(resourceSet);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext#getChangeRecorder()
-	 */
-	public ChangeRecorder getChangeRecorder() {
-		return changeRecorder;
-	}
-
-
-
-	/**
-	 * @return the propertiesEditionComponent
-	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent() {
-		return propertiesEditionComponent;
 	}
 
 	/**
@@ -74,12 +41,4 @@ public class EReferencePropertiesEditionContext implements
 	public EReference getEReference() {
 		return eReference;
 	}
-
-	/**
-	 * @return the resourceSet
-	 */
-	public ResourceSet getResourceSet() {
-		return resourceSet;
-	}
-
 }

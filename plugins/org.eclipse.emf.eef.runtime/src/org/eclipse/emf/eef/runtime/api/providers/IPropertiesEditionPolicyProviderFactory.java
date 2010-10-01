@@ -11,6 +11,8 @@
 package org.eclipse.emf.eef.runtime.api.providers;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 
 /**
  * Defines the {@link IEditPropertiesProvider} factories interface.
@@ -22,26 +24,26 @@ public interface IPropertiesEditionPolicyProviderFactory {
 	/**
 	 * Indicates whether this provider provides the specified {@link EObject}.
 	 * 
-	 * @param eObject
-	 *            the {@link EObject} to provide
-	 * @return <code>true</code> if this provider provides the eObject; <code>false</code> otherwise.
+	 * @param context
+	 *            the {@link IPropertiesEditionContext} to provide
+	 * @return <code>true</code> if this provider provides the given context; <code>false</code> otherwise.
 	 */
-	public abstract boolean provides(EObject eObject);
+	public abstract boolean provides(IPropertiesEditionContext context);
 
 	/**
-	 * Register a new {@link IPropertiesEditionPolicyProvider} in the factory.
+	 * Register a new {@link PropertiesEditingPolicyProvider} in the factory.
 	 * 
-	 * @param editPropertiesPolicyProvider
+	 * @param provider
 	 */
-	public abstract void register(IPropertiesEditionPolicyProvider editPropertiesPolicyProvider);
+	public abstract void register(PropertiesEditingPolicyProvider provider);
 
 	/**
-	 * Provides a {@link IPropertiesEditionPolicyProvider} for the specified eObject.
+	 * Provides a {@link PropertiesEditingPolicyProvider} for the specified context.
 	 * 
-	 * @param eObject
-	 *            the eObject to edit
-	 * @return the {@link IPropertiesEditionPolicyProvider} for the specified eObject.
+	 * @param context
+	 *            the context to process
+	 * @return the {@link PropertiesEditingPolicyProvider} for the specified context.
 	 */
-	public abstract IPropertiesEditionPolicyProvider getProvider(EObject eObject);
+	public abstract PropertiesEditingPolicyProvider getProvider(IPropertiesEditionContext context);
 
 }

@@ -21,11 +21,11 @@ public abstract class StandardPropertiesEditingPolicyProvider implements Propert
 	 */
 	@Override
 	public PropertiesEditingPolicy getPolicy(IPropertiesEditionContext context) {
-		if (context instanceof EObjectPropertiesEditionContext) {
-			return new StandardEditingPolicy((EObjectPropertiesEditionContext) context);
-		}
 		if (context instanceof EReferencePropertiesEditionContext) {
 			return new CreateEditingPolicy((EReferencePropertiesEditionContext) context);
+		}
+		if (context instanceof EObjectPropertiesEditionContext) {
+			return new StandardEditingPolicy((EObjectPropertiesEditionContext) context);
 		}
 		return null;
 	}

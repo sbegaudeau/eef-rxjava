@@ -37,7 +37,7 @@ public class EObjectPropertiesEditionContext implements IPropertiesEditionContex
 	protected ResourceSet resourceSet;
 
 	/**
-	 * TODO
+	 * 
 	 */
 	protected ChangeRecorder changeRecorder;
 
@@ -53,8 +53,7 @@ public class EObjectPropertiesEditionContext implements IPropertiesEditionContex
 	 * @param eObject
 	 * @param resourceSet
 	 */
-	public EObjectPropertiesEditionContext(IPropertiesEditionComponent propertiesEditionComponent,
-			EObject eObject, ResourceSet resourceSet) {
+	public EObjectPropertiesEditionContext(IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, ResourceSet resourceSet) {
 		this.propertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.resourceSet = resourceSet;
