@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.components.parts.forms;
 
 // Start of user code for imports
@@ -18,7 +19,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -30,12 +30,13 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -77,7 +78,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	protected Text name;
 	protected Text helpID;
 	protected EObjectFlatComboViewer model;
-	protected EMFListEditUtil viewsEditUtil;
 		protected TableViewer views;
 		protected Button addViews;
 		protected Button removeViews;
@@ -191,6 +191,8 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 				}
 			}
 		});
+		EditingUtils.setID(name, ComponentsViewsRepository.PropertiesEditionElement.name);
+		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -228,6 +230,8 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 				}
 			}
 		});
+		EditingUtils.setID(helpID, ComponentsViewsRepository.PropertiesEditionElement.helpID);
+		EditingUtils.setEEFtype(helpID, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -272,6 +276,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 			}
 
 		});
+		model.setID(ComponentsViewsRepository.PropertiesEditionElement.model);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionElement.model, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 	}
 
@@ -289,6 +294,8 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		viewsData.minimumHeight = 120;
 		viewsData.heightHint = 120;
 		views.getTable().setLayoutData(viewsData);
+		EditingUtils.setID(views.getTable(), ComponentsViewsRepository.PropertiesEditionElement.views);
+		EditingUtils.setEEFtype(views.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
 		createViewsControlPanel(parent, widgetFactory);
 	}
 
@@ -312,7 +319,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		// End of user code
 		
 		TableViewer result = new TableViewer(table);
-		result.setContentProvider(new ArrayContentProvider());
 		result.setLabelProvider(new ITableLabelProvider() {
 	
 			// Start of user code for table views label provider
@@ -371,10 +377,11 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				addViews();
-				views.refresh();
 			}
 
 		});
+		EditingUtils.setID(addViews, ComponentsViewsRepository.PropertiesEditionElement.views);
+		EditingUtils.setEEFtype(addViews, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeViews = widgetFactory.createButton(result, ComponentsMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeViews.setLayoutData(removeData);
@@ -388,13 +395,13 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (views.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) views.getSelection();
-					removeViews(selection);
-					views.refresh();
+					removeViews((IStructuredSelection) views.getSelection());
 				}
 			}
 
 		});
+		EditingUtils.setID(removeViews, ComponentsViewsRepository.PropertiesEditionElement.views);
+		EditingUtils.setEEFtype(removeViews, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
 	
 	/**
@@ -406,15 +413,13 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					if (!viewsEditUtil.getVirtualList().contains(elem)) {
-						viewsEditUtil.addElement(elem);
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, viewsEditUtil.foundCorrespondingEObject(elem)));
-					}
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 			}
 
 		};
 		dialog.open();
+		views.refresh();
 	}
 	
 	/**
@@ -422,11 +427,11 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	 * 
 	 */
 	protected void removeViews(IStructuredSelection selection) {
-		if (selection.getFirstElement() instanceof EObject) {
-			EObject selectedElement = (EObject) selection.getFirstElement();
-			viewsEditUtil.removeElement(selectedElement);
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, viewsEditUtil.foundCorrespondingEObject(selectedElement)));
+		for (Iterator iter = selection.iterator(); iter.hasNext();) {
+			EObject elem = (EObject) iter.next();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionElement.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
+		views.refresh();
 	}
 
 
@@ -565,50 +570,19 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	}
 
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#getViewsToAdd()
-	 * 
-	 */
-	public List getViewsToAdd() {
-		return viewsEditUtil.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#getViewsToRemove()
-	 * 
-	 */
-	public List getViewsToRemove() {
-		return viewsEditUtil.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#getViewsTable()
-	 * 
-	 */
-	public List getViewsTable() {
-		return viewsEditUtil.getVirtualList();
-	}
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#initViews(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart#initViews(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
-	public void initViews(EObject current, EReference containingFeature, EReference feature) {
+	public void initViews(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			viewsEditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			viewsEditUtil = new EMFListEditUtil(current, feature);
-		this.views.setInput(viewsEditUtil.getVirtualList());
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		views.setContentProvider(contentProvider);
+		views.setInput(settings);
 	}
 
 	/**
@@ -618,11 +592,8 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	 * 
 	 */
 	public void updateViews(EObject newValue) {
-		if(viewsEditUtil != null){
-			viewsEditUtil.reinit(newValue);
-			views.refresh();
-		}
-	}
+	views.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
@@ -651,7 +622,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	 * 
 	 */
 	public boolean isContainedInViewsTable(EObject element) {
-		return viewsEditUtil.contains(element);
+		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
 
 

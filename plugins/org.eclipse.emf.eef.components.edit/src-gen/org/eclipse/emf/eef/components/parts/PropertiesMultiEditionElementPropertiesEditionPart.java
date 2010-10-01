@@ -1,21 +1,20 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.components.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
@@ -55,31 +54,13 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	public void setHelpID(String newValue);
 
 
-	/**
-	 * @return the model to add
-	 * 
-	 */
-	public List getModelToAdd();
 
-	/**
-	 * @return the model to remove
-	 * 
-	 */
-	public List getModelToRemove();
-
-	/**
-	 * @return the current model table
-	 * 
-	 */
-	public List getModelTable();
 
 	/**
 	 * Init the model
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the model ReferencesTable 
 	 */
-	public void initModel(EObject current, EReference containingFeature, EReference feature);
+	public void initModel(ReferencesTableSettings settings);
 
 	/**
 	 * Update the model
@@ -115,31 +96,13 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	public boolean isContainedInModelTable(EObject element);
 
 
-	/**
-	 * @return the views to add
-	 * 
-	 */
-	public List getViewsToAdd();
 
-	/**
-	 * @return the views to remove
-	 * 
-	 */
-	public List getViewsToRemove();
-
-	/**
-	 * @return the current views table
-	 * 
-	 */
-	public List getViewsTable();
 
 	/**
 	 * Init the views
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the views ReferencesTable 
 	 */
-	public void initViews(EObject current, EReference containingFeature, EReference feature);
+	public void initViews(ReferencesTableSettings settings);
 
 	/**
 	 * Update the views
