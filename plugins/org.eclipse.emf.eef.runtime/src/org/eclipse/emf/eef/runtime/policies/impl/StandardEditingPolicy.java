@@ -33,7 +33,6 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
-	@Override
 	public void execute() {
 		EObjectPropertiesEditionContext editionContext = (EObjectPropertiesEditionContext)context;
 		EObject eObject = editionContext.getEObject();

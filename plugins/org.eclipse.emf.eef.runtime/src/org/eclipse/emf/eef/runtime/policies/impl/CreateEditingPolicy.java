@@ -32,7 +32,6 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
-	@Override
 	public void execute() {
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getEReference(), editionContext.getResourceSet());
 		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
@@ -47,7 +46,6 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult#getResult()
 	 */
-	@Override
 	public Object getResult() {
 		return result;
 	}

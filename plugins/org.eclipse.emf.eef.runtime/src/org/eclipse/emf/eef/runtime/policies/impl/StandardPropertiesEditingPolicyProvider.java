@@ -19,7 +19,6 @@ public abstract class StandardPropertiesEditingPolicyProvider implements Propert
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider#getPolicy(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
 	 */
-	@Override
 	public PropertiesEditingPolicy getPolicy(IPropertiesEditionContext context) {
 		if (context instanceof EReferencePropertiesEditionContext) {
 			return new CreateEditingPolicy((EReferencePropertiesEditionContext) context);
