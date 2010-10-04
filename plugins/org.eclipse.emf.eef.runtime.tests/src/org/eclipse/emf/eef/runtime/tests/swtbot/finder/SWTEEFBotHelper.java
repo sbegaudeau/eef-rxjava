@@ -19,8 +19,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.hamcrest.Matcher;
 
 /**
- * @author glefur
- *
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class SWTEEFBotHelper {
 	

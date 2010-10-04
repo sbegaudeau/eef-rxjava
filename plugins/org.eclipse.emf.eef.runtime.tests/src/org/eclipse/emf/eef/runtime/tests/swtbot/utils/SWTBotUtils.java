@@ -14,7 +14,10 @@ package org.eclipse.emf.eef.runtime.tests.swtbot.utils;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory;
@@ -47,11 +50,37 @@ public class SWTBotUtils {
 	public static void pressEnterKey(final Widget widget) {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				widget.notifyListeners(SWT.Traverse, keyEvent(SWT.NONE, SWT.CR,
+				widget.notifyListeners(SWT.KeyDown, keyEvent(SWT.NONE, SWT.CR,
 						SWT.Selection, widget));
 			}
 		});
 	}
+
+	/**
+	 * Press the enter key
+	 * 
+	 * @param widget
+	 * @throws Exception
+	 */
+	public static void pressEnterKeyInTabContainer(final Widget widget) {
+		UIThreadRunnable.asyncExec(new VoidResult() {
+			public void run() {
+				searchTabContainer(widget).notifyListeners(SWT.Traverse, keyEvent(SWT.NONE, SWT.CR,
+						SWT.Selection, widget));
+			}
+		});
+	}
+
+	private static Composite searchTabContainer(final Widget wid) {
+		Composite parent = ((Text)wid).getParent();
+		while (parent != null) {
+			if (parent instanceof Composite) 
+				return parent;
+			parent = parent.getParent();
+		}
+		return null;
+	}
+
 
 	/**
 	 * @param c

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.tests.swtbot.finder;
 
+import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,12 +41,14 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -362,10 +366,30 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param newValue the new value to set
 	 */
 	public void editEEFText(String viewId, Object newValue) {
-		if (newValue != null)
-			textWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewId).setText(newValue.toString());
+		if (newValue != null) {
+			SWTBotText textWithId = textWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewId);
+			textWithId.setText(newValue.toString());
+			/* our listener wait a focus lost to launch the command */
+//			button(UIConstants.FINISH_BUTTON).setFocus();
+			SWTBotUtils.pressEnterKey(textWithId.widget);
+			syncExec(new VoidResult() {
+				
+				@Override
+				public void run() {
+					synchronizationWithUIThread();
+				}
+			});
+		}
 	}
-
+	
+	 /**
+     * Wait the end of the asynchronous calls waiting in UI thread.
+     */
+    public void synchronizationWithUIThread() {
+        while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
+            // Do nothing, just wait
+        }
+    }
 	/**
 	 * Edit the value of the EEF Wizard to give the <i>feature</i> the value <i>newValue</i>
 	 * 
