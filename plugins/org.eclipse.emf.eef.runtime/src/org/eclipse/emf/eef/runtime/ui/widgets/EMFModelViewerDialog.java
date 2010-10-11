@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,10 +22,10 @@ import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.impl.utils.PatternTool;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 import org.eclipse.emf.eef.runtime.ui.comparator.EMFModelViewerComparator;
-import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorContentProvider;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -100,8 +99,10 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	 * @param isMulti
 	 *            if the selection can be unique or not
 	 */
-	public EMFModelViewerDialog(ILabelProvider labelProvider, Object input, List<ViewerFilter> filters,
-			List<ViewerFilter> bpFilters, boolean nullable, boolean isMulti) {
+	public EMFModelViewerDialog(
+			ILabelProvider labelProvider, Object input, 
+			List<ViewerFilter> filters, List<ViewerFilter> bpFilters, 
+			boolean nullable, boolean isMulti) {
 		super(Display.getDefault().getActiveShell());
 		this.labelProviderElement = labelProvider;
 		this.filters = filters;
@@ -152,14 +153,13 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		// ADD EXTENSION: CNO
 		final Table table = buildTable();
 
-		if (input instanceof Collection) {
-			elements.setContentProvider(new ArrayContentProvider());
-		} else {
-			elements.setContentProvider(new EMFListContentProvider(nullable));
+		if (input instanceof EObjectFlatComboSettings) {
+			EEFEditorContentProvider provider = new EEFEditorContentProvider();
+			provider.kind = EEFEditorContentProvider.MATCHING_VALUES_KIND;
+			elements.setContentProvider(provider);
 		}
 		if (labelProvider == null) {
-			this.labelProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(
-					ComposedAdapterFactory.Descriptor.Registry.INSTANCE)) {
+			this.labelProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE)) {
 
 				public String getColumnText(Object object, int columnIndex) {
 					if (object instanceof EObject) {
@@ -418,17 +418,5 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		if (result == null)
 			return StringTools.EMPTY_STRING;
 		return result;
-		// StringBuffer buf = new StringBuffer();
-		//		int bracket = result.indexOf("("); 
-		// if (bracket != -1) {
-		// buf.append(result.substring(bracket, result.length()));
-		// result = result.substring(0, bracket);
-		// }
-		//		int space = result.lastIndexOf(" "); 
-		// if (space != -1)
-		// buf.insert(0, result.substring(space + 1));
-		// if (space == -1 && bracket == -1)
-		// return result;
-		// return buf.toString();
 	}
 }

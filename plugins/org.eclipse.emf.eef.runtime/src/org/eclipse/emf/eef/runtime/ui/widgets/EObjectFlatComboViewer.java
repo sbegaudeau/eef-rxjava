@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -94,26 +95,28 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			public void widgetSelected(SelectionEvent e) {
 				switch (button_mode) {
 					case BROWSE:
-						EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input, filters
-								.isEmpty() ? null : filters, bpFilters.isEmpty() ? null : bpFilters,
-								nullable, false) {
+						if (input instanceof EObjectFlatComboSettings) {
+							EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input, 
+										filters.isEmpty() ? null : filters, bpFilters.isEmpty() ? null : bpFilters,
+										nullable, false) {
 
-							public void process(IStructuredSelection selection) {
-								if (selection == null) {
-									selectedElement = null;
-									initComponent();
-									selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
-								} else {
-									selectedElement = selection.getFirstElement();
-									initComponent();
-									if (selectedElement != null)
-										selectionChanged(new StructuredSelection(selectedElement));
-									else
+								public void process(IStructuredSelection selection) {
+									if (selection == null) {
+										selectedElement = null;
+										initComponent();
 										selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
+									} else {
+										selectedElement = selection.getFirstElement();
+										initComponent();
+										if (selectedElement != null)
+											selectionChanged(new StructuredSelection(selectedElement));
+										else
+											selectionChanged(new StructuredSelection(Collections.EMPTY_LIST));
+									}
 								}
-							}
-						};
-						dialog.open();
+							};
+							dialog.open();
+						}
 						break;
 
 					default:
@@ -170,7 +173,6 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		if (selection instanceof StructuredSelection) {
 			this.selectedElement = ((StructuredSelection)selection).getFirstElement();
 			initComponent();
-			// selectionChanged(selection);
 		}
 	}
 

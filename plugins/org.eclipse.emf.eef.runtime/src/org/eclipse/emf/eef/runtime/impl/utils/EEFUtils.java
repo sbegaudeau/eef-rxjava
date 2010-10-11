@@ -57,10 +57,9 @@ public class EEFUtils {
 		return choiceOfValues(eObject, feature);
 	}
 
-	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature){
+	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature) {
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)EEFRuntimePlugin.getDefault().getAdapterFactory()
-		.adapt(eObject, IItemPropertySource.class);
+		IItemPropertySource ps = (IItemPropertySource)EEFRuntimePlugin.getDefault().getAdapterFactory().adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)
@@ -68,6 +67,16 @@ public class EEFUtils {
 		}
 		if (choiceOfValues == null && eObject.eResource() != null && eObject.eResource().getResourceSet() != null)
 			choiceOfValues = eObject.eResource().getResourceSet();
+		if (choiceOfValues == null)
+			choiceOfValues = "";
+		else if (choiceOfValues instanceof List) {
+			List list = (List)choiceOfValues;
+			for (int i = 0; i < list.size(); i++) {
+				Object next = list.get(i);
+				if (next == null)
+					list.set(i, "");
+			}
+		}
 		return choiceOfValues;
 	}
 

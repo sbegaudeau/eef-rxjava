@@ -340,25 +340,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 				break;
 		}
 	}
-
-	// protected void browseButtonPressed() {
-	// TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input, filters,
-	// brFilters, dialogTitle, restrictToEClass) {
-	// @SuppressWarnings("unchecked")
-	// @Override
-	// public void process(IStructuredSelection selection) {
-	// if (selection != null && !selection.isEmpty()) {
-	// handleSelection((T)selection.getFirstElement());
-	// }
-	// }
-	// };
-	// // Select the actual element in dialog
-	// if (selection != null) {
-	// dialog.setSelection(new StructuredSelection(selection));
-	// }
-	// dialog.open();
-	// }
-
+	
 	public void handleSelection(T selectedElement) {
 		setSelection(selectedElement);
 		callback.handleSet(selectedElement);

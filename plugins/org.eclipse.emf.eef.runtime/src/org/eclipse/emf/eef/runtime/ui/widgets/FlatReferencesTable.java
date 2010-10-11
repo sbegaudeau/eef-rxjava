@@ -147,7 +147,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 				switch (button_mode) {
 					case BROWSE:
 						if (input instanceof ReferencesTableSettings) {
-							List currentValues = Arrays.asList(((ReferencesTableSettings) input).getElements());
+							List currentValues = Arrays.asList(((ReferencesTableSettings) input).getValue());
 							Object choiceOfValues2 = ((ReferencesTableSettings) input).choiceOfValues(null);
 							List cloneOfValues = new ArrayList();
 							if (choiceOfValues2 instanceof List) {
@@ -323,7 +323,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	public void refresh() {
 		if (input instanceof ReferencesTableSettings) {
-			List<Object> values = Arrays.asList(((ReferencesTableSettings)input).getElements());
+			List<Object> values = Arrays.asList(((ReferencesTableSettings)input).getValue());
 			if (listLabelProvider != null) {
 				selection.setText(listLabelProvider.getText(values));
 			} else {

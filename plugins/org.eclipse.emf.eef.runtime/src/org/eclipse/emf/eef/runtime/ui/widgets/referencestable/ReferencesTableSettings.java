@@ -13,11 +13,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class ReferencesTableSettings {
+public class ReferencesTableSettings implements EEFEditorSettings {
 
 	private EObject source;
 	private EReference[] features;
@@ -60,9 +61,10 @@ public class ReferencesTableSettings {
 	 ************************************************************************************************/
 
 	/**
-	 * @return the list of elements following the path.
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#getValue()
 	 */
-	public Object[] getElements() {
+	public Object[] getValue() {
 		if (((EClass)features[0].eContainer()).isInstance(source)) {
 			Object value1 = ((EObject)source).eGet(features[0]);
 			if (value1 != null) {
@@ -440,8 +442,8 @@ public class ReferencesTableSettings {
 
 	
 	/**
-	 * @param adapterFactory
-	 * @return
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#choiceOfValues(org.eclipse.emf.common.notify.AdapterFactory)
 	 */
 	public Object choiceOfValues(AdapterFactory adapterFactory) {
 		// FIXME: choiceOfValues should be called with the adapterFactory in parameter

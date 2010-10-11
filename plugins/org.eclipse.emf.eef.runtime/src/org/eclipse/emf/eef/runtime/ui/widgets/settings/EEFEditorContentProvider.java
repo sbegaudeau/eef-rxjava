@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.eclipse.emf.eef.runtime.ui.widgets.referencestable;
+package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class ReferencesTableContentProvider extends AdapterFactoryContentProvider {
+public class EEFEditorContentProvider extends AdapterFactoryContentProvider {
 	
 	public static final int CURRENT_VALUES_KIND = 0;
 	public static final int MATCHING_VALUES_KIND = 1;
@@ -22,14 +22,14 @@ public class ReferencesTableContentProvider extends AdapterFactoryContentProvide
 	/**
 	 * @param adapterFactory the adapterFactory to use
 	 */
-	public ReferencesTableContentProvider() {
+	public EEFEditorContentProvider() {
 		super(EEFRuntimePlugin.getDefault().getAdapterFactory());
 	}
 	
 	/**
 	 * @param adapterFactory the adapterFactory to use
 	 */
-	public ReferencesTableContentProvider(AdapterFactory adapterFactory) {
+	public EEFEditorContentProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -39,12 +39,13 @@ public class ReferencesTableContentProvider extends AdapterFactoryContentProvide
 	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof ReferencesTableSettings) {
-			if (kind == CURRENT_VALUES_KIND)
-				return ((ReferencesTableSettings)inputElement).getValue();
-			else if (kind == MATCHING_VALUES_KIND) {
-				Object choiceOfValues = ((ReferencesTableSettings)inputElement).choiceOfValues(adapterFactory);
-				return choiceOfValues instanceof List?((List)choiceOfValues).toArray():new Object[] { choiceOfValues};
+		if (inputElement instanceof EEFEditorSettings) {
+			if (kind == CURRENT_VALUES_KIND) {
+				Object value = ((EEFEditorSettings)inputElement).getValue();
+				return value instanceof Object[]?(Object[])value:new Object[] { value };
+			} else if (kind == MATCHING_VALUES_KIND) {
+				Object choiceOfValues = ((EEFEditorSettings)inputElement).choiceOfValues(adapterFactory);
+				return choiceOfValues instanceof List?((List)choiceOfValues).toArray():new Object[] { choiceOfValues };
 			}
 		}
 		return super.getElements(inputElement);

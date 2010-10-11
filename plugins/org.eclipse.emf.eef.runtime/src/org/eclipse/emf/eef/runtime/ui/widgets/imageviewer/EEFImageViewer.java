@@ -31,8 +31,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 
 /**
- * @author <a href="mailto:glefur@obeo.fr">glefur</a>
- *
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class EEFImageViewer extends Composite implements ISelectionProvider {
 
