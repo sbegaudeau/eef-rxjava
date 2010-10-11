@@ -22,8 +22,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
  */
 public class PropertiesEditionElementCustomPropertiesEditionPartForm extends PropertiesEditionElementPropertiesEditionPartForm {
 
-	public PropertiesEditionElementCustomPropertiesEditionPartForm(
-			IPropertiesEditionComponent editionComponent) {
+	public PropertiesEditionElementCustomPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
@@ -34,8 +33,7 @@ public class PropertiesEditionElementCustomPropertiesEditionPartForm extends Pro
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
 	public void initModel(ResourceSet allResources, EObject current) {
-		model.setInput(EEFUtils.choiceOfValues(this.current, MappingPackage.eINSTANCE
-				.getEMFPropertyBinding_Model()));
+		model.setInput(EEFUtils.choiceOfValues(this.current, MappingPackage.eINSTANCE.getEMFPropertyBinding_Model()));
 		if (current != null) {
 			model.setSelection(new StructuredSelection(current));
 		}
