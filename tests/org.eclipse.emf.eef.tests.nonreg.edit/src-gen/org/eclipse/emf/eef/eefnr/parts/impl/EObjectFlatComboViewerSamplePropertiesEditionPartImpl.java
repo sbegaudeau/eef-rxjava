@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -185,10 +186,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current)
 	 */
-	public void initEobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current) {
-		eobjectflatcomboviewerRequiredPropery.setInput(allResources);
+	public void initEobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings settings) {
+		eobjectflatcomboviewerRequiredPropery.setInput(settings);
 		if (current != null) {
-			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(current));
+			Object value = settings.getValue();
+			if (value == null)
+				value = "";
+			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(value));
 		}
 	}
 
