@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
@@ -33,8 +32,10 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -66,7 +67,17 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * 
 	 */
 	protected TableCompositionExtensionEditorSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for tablecompositionRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings tablecompositionRequiredPropertySettings;
+	
+	/**
+	 * Settings for tablecompositionOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings tablecompositionRequiredPropertySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -122,12 +133,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty())) {
-			basePart.updateTablecompositionRequiredProperty(tableCompositionExtensionEditorSample);
-		}
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty())) {
-			basePart.updateTablecompositionOptionalProperty(tableCompositionExtensionEditorSample);
-		}
+
+
 
 	}
 
@@ -199,8 +206,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)elt;
 			// init values
-			basePart.initTablecompositionRequiredProperty(tableCompositionExtensionEditorSample, null, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
-			basePart.initTablecompositionOptionalProperty(tableCompositionExtensionEditorSample, null, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
+			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
+			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
+			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
+			basePart.initTablecompositionOptionalProperty(tablecompositionRequiredPropertySettings);
 			// init filters
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
 
@@ -257,10 +266,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+					updateTablecompositionRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+					updateTablecompositionOptionalProperty(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -268,10 +277,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 					
 					public void execute() {
 						if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+							updateTablecompositionRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+							updateTablecompositionOptionalProperty(event);
 						}
 					}
 				});			
@@ -286,9 +295,25 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionRequiredProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+	private void updateTablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
+				tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionOptionalProperty, TableCompositionExtensionEditorSample, TableCompositionExtensionEditorSample.
+	private void updateTablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
+				tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 
 

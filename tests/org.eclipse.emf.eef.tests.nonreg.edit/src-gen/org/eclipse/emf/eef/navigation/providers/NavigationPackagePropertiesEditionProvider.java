@@ -25,6 +25,7 @@ public class NavigationPackagePropertiesEditionProvider extends ComposedProperti
 	public NavigationPackagePropertiesEditionProvider() {
 		super();
 		append(createDeferedFlatReferencesTableSampleEditorPropertiesEditionProvider());
+		append(createDeferedReferencesTableSampleEditorPropertiesEditionProvider());
 	}
 
 	/**
@@ -42,6 +43,23 @@ public class NavigationPackagePropertiesEditionProvider extends ComposedProperti
 		if (deferedFlatReferencesTableSampleEditorPropertiesEditionProvider == null)
 			deferedFlatReferencesTableSampleEditorPropertiesEditionProvider = new DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider();
 		return deferedFlatReferencesTableSampleEditorPropertiesEditionProvider;
+	}
+
+	/**
+	 * This keeps track of the one PropertiesEditionProvider used for all
+	 * DeferedReferenceTableEditorSample instances.
+	 * 
+	 */
+	protected DeferedReferencesTableSampleEditorPropertiesEditionProvider deferedReferencesTableSampleEditorPropertiesEditionProvider;
+
+	/**
+	 * This creates an PropertiesEditionProvider for a DeferedReferenceTableEditorSample
+	 * 
+	 */
+	public DeferedReferencesTableSampleEditorPropertiesEditionProvider createDeferedReferencesTableSampleEditorPropertiesEditionProvider() {
+		if (deferedReferencesTableSampleEditorPropertiesEditionProvider == null)
+			deferedReferencesTableSampleEditorPropertiesEditionProvider = new DeferedReferencesTableSampleEditorPropertiesEditionProvider();
+		return deferedReferencesTableSampleEditorPropertiesEditionProvider;
 	}
 
 }

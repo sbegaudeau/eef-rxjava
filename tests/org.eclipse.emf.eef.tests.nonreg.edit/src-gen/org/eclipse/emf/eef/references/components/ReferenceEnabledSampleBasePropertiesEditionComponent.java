@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart;
@@ -34,8 +35,10 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -67,7 +70,12 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 * 
 	 */
 	protected ReferenceEnabledSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for reference ReferencesTable
+	 */
+	private	ReferencesTableSettings referenceSettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -123,8 +131,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
-			basePart.updateReference(referenceEnabledSample);
+
 
 	}
 
@@ -196,7 +203,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)elt;
 			// init values
-			basePart.initReference(referenceEnabledSample, null, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
+			referenceSettings = new ReferencesTableSettings(referenceEnabledSample, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
+			basePart.initReference(referenceSettings);
 			// init filters
 			basePart.addFilterToReference(new ViewerFilter() {
 
@@ -239,7 +247,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (ReferencesViewsRepository.ReferenceEnabledSample.reference == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : reference, ReferenceEnabledSample, ReferenceEnabledSample.
+					updateReference(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -247,7 +255,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 					
 					public void execute() {
 						if (ReferencesViewsRepository.ReferenceEnabledSample.reference == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : reference, ReferenceEnabledSample, ReferenceEnabledSample.
+							updateReference(event);
 						}
 					}
 				});			
@@ -262,7 +270,15 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : reference, ReferenceEnabledSample, ReferenceEnabledSample.
+	private void updateReference(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				referenceSettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				referenceSettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 
 

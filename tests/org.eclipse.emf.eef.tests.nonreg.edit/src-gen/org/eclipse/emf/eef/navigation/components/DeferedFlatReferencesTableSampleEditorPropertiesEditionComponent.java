@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -36,7 +35,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -71,7 +70,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * 
 	 */
 	protected DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart;
-
+	
 	/**
 	 * Default constructor
 	 * 
@@ -224,11 +223,11 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
 					if (element instanceof EObject)
 						return (!deferedFlatReferencesTableSamplePart.isContainedInFlatReferencesTableSampleEditorTable((EObject)element));
-					return element instanceof Resource;
+					return false;
 				}
 
 			});
-			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
 			
 			// End of user code

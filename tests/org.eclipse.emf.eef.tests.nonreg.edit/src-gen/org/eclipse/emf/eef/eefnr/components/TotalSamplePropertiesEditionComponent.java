@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -42,10 +41,13 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -77,7 +79,67 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * 
 	 */
 	protected TotalSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for eobjectflatcomboviewerRequiredProperty EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings eobjectflatcomboviewerRequiredPropertySettings;
+	
+	/**
+	 * Settings for eobjectflatcomboviewerOptionalProperty EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings eobjectflatcomboviewerOptionalPropertySettings;
+	
+	/**
+	 * Settings for referencestableRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings referencestableRequiredPropertySettings;
+	
+	/**
+	 * Settings for referencestableOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings referencestableOptionalPropertySettings;
+	
+	/**
+	 * Settings for tablecompositionRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings tablecompositionRequiredPropertySettings;
+	
+	/**
+	 * Settings for tablecompositionOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings tablecompositionOptionalPropertySettings;
+	
+	/**
+	 * Settings for advancedreferencestableRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings advancedreferencestableRequiredPropertySettings;
+	
+	/**
+	 * Settings for advancedreferencestableOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings advancedreferencestableOptionalPropertySettings;
+	
+	/**
+	 * Settings for advancedeobjectflatcomboviewerRequiredPropery EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings advancedeobjectflatcomboviewerRequiredProperySettings;
+	
+	/**
+	 * Settings for advancedeobjectflatcomboviewerOptionalPropery EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings advancedeobjectflatcomboviewerOptionalProperySettings;
+	
+	/**
+	 * Settings for advancedtablecompositionRequiredProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings advancedtablecompositionRequiredPropertySettings;
+	
+	/**
+	 * Settings for advancedtablecompositionOptionalProperty ReferencesTable
+	 */
+	private	ReferencesTableSettings advancedtablecompositionOptionalPropertySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -177,10 +239,8 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.setEobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());
 		if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
 			basePart.setEobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
-		if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableRequiredProperty(totalSample);
-		if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableOptionalProperty(totalSample);
+
+
 		if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
 			basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
 
@@ -201,26 +261,16 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
 		}
 
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty())) {
-			basePart.updateTablecompositionRequiredProperty(totalSample);
-		}
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty())) {
-			basePart.updateTablecompositionOptionalProperty(totalSample);
-		}
-		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableRequiredProperty(totalSample);
-		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableOptionalProperty(totalSample);
+
+
+
+
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
 			basePart.setAdvancedeobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
 			basePart.setAdvancedeobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty())) {
-			basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
-		}
-		if (msg.getFeature() != null && ((EStructuralFeature)msg.getFeature() == EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty())) {
-			basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
-		}
+
+
 		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -318,15 +368,19 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.initRadioRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty().getEType(), totalSample.getRadioRequiredProperty());
 			basePart.initRadioOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty().getEType(), totalSample.getRadioOptionalProperty());
 			// init part
-			basePart.initEobjectflatcomboviewerRequiredProperty(allResource, totalSample.getEobjectflatcomboviewerRequiredProperty());
+			eobjectflatcomboviewerRequiredPropertySettings = new EObjectFlatComboSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty());
+			basePart.initEobjectflatcomboviewerRequiredProperty(eobjectflatcomboviewerRequiredPropertySettings);
 			// set the button mode
 			basePart.setEobjectflatcomboviewerRequiredPropertyButtonMode(ButtonsModeEnum.BROWSE);
 			// init part
-			basePart.initEobjectflatcomboviewerOptionalProperty(allResource, totalSample.getEobjectflatcomboviewerOptionalProperty());
+			eobjectflatcomboviewerOptionalPropertySettings = new EObjectFlatComboSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty());
+			basePart.initEobjectflatcomboviewerOptionalProperty(eobjectflatcomboviewerOptionalPropertySettings);
 			// set the button mode
 			basePart.setEobjectflatcomboviewerOptionalPropertyButtonMode(ButtonsModeEnum.BROWSE);
-			basePart.initReferencestableRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty());
-			basePart.initReferencestableOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty());
+			referencestableRequiredPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty());
+			basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
+			referencestableOptionalPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty());
+			basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
 			basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().getEType(), totalSample.getEmfcomboviewerRequiredProperty());
 			basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty().getEType(), totalSample.getEmfcomboviewerOptionalProperty());
 			if (totalSample.getMultivaluededitorRequiredProperty() != null)
@@ -335,20 +389,28 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			if (totalSample.getMultivaluededitorOptionalProperty() != null)
 				basePart.setMultivaluededitorOptionalProperty(new BasicEList(totalSample.getMultivaluededitorOptionalProperty()));
 
-			basePart.initTablecompositionRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty());
-			basePart.initTablecompositionOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty());
-			basePart.initAdvancedreferencestableRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty());
-			basePart.initAdvancedreferencestableOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty());
+			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty());
+			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
+			tablecompositionOptionalPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty());
+			basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
+			advancedreferencestableRequiredPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty());
+			basePart.initAdvancedreferencestableRequiredProperty(advancedreferencestableRequiredPropertySettings);
+			advancedreferencestableOptionalPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty());
+			basePart.initAdvancedreferencestableOptionalProperty(advancedreferencestableOptionalPropertySettings);
 			// init part
-			basePart.initAdvancedeobjectflatcomboviewerRequiredPropery(allResource, totalSample.getAdvancedeobjectflatcomboviewerRequiredPropery());
+			advancedeobjectflatcomboviewerRequiredProperySettings = new EObjectFlatComboSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery());
+			basePart.initAdvancedeobjectflatcomboviewerRequiredPropery(advancedeobjectflatcomboviewerRequiredProperySettings);
 			// set the button mode
 			basePart.setAdvancedeobjectflatcomboviewerRequiredProperyButtonMode(ButtonsModeEnum.BROWSE);
 			// init part
-			basePart.initAdvancedeobjectflatcomboviewerOptionalPropery(allResource, totalSample.getAdvancedeobjectflatcomboviewerOptionalPropery());
+			advancedeobjectflatcomboviewerOptionalProperySettings = new EObjectFlatComboSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery());
+			basePart.initAdvancedeobjectflatcomboviewerOptionalPropery(advancedeobjectflatcomboviewerOptionalProperySettings);
 			// set the button mode
 			basePart.setAdvancedeobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
-			basePart.initAdvancedtablecompositionRequiredProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty());
-			basePart.initAdvancedtablecompositionOptionalProperty(totalSample, null, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty());
+			advancedtablecompositionRequiredPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty());
+			basePart.initAdvancedtablecompositionRequiredProperty(advancedtablecompositionRequiredPropertySettings);
+			advancedtablecompositionOptionalPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty());
+			basePart.initAdvancedtablecompositionOptionalProperty(advancedtablecompositionOptionalPropertySettings);
 			if (totalSample.getName() != null)
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), totalSample.getName()));
 
@@ -646,10 +708,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					updateEobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
 				}
 				if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableRequiredProperty, TotalSample, TotalSample.
+					updateReferencestableRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableOptionalProperty, TotalSample, TotalSample.
+					updateReferencestableOptionalProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
 					updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
@@ -664,16 +726,16 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
 				}
 				if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TotalSample, TotalSample.
+					updateTablecompositionRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TotalSample, TotalSample.
+					updateTablecompositionOptionalProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableRequiredProperty, TotalSample, TotalSample.
+					updateAdvancedreferencestableRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableOptionalProperty, TotalSample, TotalSample.
+					updateAdvancedreferencestableOptionalProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
 					updateAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)event.getNewValue());
@@ -682,10 +744,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					updateAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)event.getNewValue());
 				}
 				if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionRequiredProperty, TotalSample, TotalSample.
+					updateAdvancedtablecompositionRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionOptionalProperty, TotalSample, TotalSample.
+					updateAdvancedtablecompositionOptionalProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
 					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
@@ -726,10 +788,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 							updateEobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
 						}
 						if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableRequiredProperty, TotalSample, TotalSample.
+							updateReferencestableRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : referencestableOptionalProperty, TotalSample, TotalSample.
+							updateReferencestableOptionalProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
 							updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
@@ -744,16 +806,16 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
 						}
 						if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionRequiredProperty, TotalSample, TotalSample.
+							updateTablecompositionRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : tablecompositionOptionalProperty, TotalSample, TotalSample.
+							updateTablecompositionOptionalProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableRequiredProperty, TotalSample, TotalSample.
+							updateAdvancedreferencestableRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedreferencestableOptionalProperty, TotalSample, TotalSample.
+							updateAdvancedreferencestableOptionalProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
 							updateAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)event.getNewValue());
@@ -762,10 +824,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 							updateAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)event.getNewValue());
 						}
 						if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionRequiredProperty, TotalSample, TotalSample.
+							updateAdvancedtablecompositionRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : advancedtablecompositionOptionalProperty, TotalSample, TotalSample.
+							updateAdvancedtablecompositionOptionalProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
 							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
@@ -816,16 +878,32 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	}
 
 	private void updateEobjectflatcomboviewerRequiredProperty(TotalSample newValue) {
-		totalSample.setEobjectflatcomboviewerRequiredProperty(newValue);	
+		eobjectflatcomboviewerRequiredPropertySettings.setToReference(newValue);	
 	}
 
 	private void updateEobjectflatcomboviewerOptionalProperty(TotalSample newValue) {
-		totalSample.setEobjectflatcomboviewerOptionalProperty(newValue);	
+		eobjectflatcomboviewerOptionalPropertySettings.setToReference(newValue);	
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : referencestableRequiredProperty, TotalSample, TotalSample.
+	private void updateReferencestableRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : referencestableOptionalProperty, TotalSample, TotalSample.
+	private void updateReferencestableOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 	private void updateEmfcomboviewerRequiredProperty(ENUM_SAMPLE newValue) {
 		totalSample.setEmfcomboviewerRequiredProperty(newValue);	
@@ -839,25 +917,73 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionRequiredProperty, TotalSample, TotalSample.
+	private void updateTablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof Sample) {
+				tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : tablecompositionOptionalProperty, TotalSample, TotalSample.
+	private void updateTablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof Sample) {
+				tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedreferencestableRequiredProperty, TotalSample, TotalSample.
+	private void updateAdvancedreferencestableRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedreferencestableOptionalProperty, TotalSample, TotalSample.
+	private void updateAdvancedreferencestableOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof TotalSample) {
+				advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 	private void updateAdvancedeobjectflatcomboviewerRequiredPropery(TotalSample newValue) {
-		totalSample.setAdvancedeobjectflatcomboviewerRequiredPropery(newValue);	
+		advancedeobjectflatcomboviewerRequiredProperySettings.setToReference(newValue);	
 	}
 
 	private void updateAdvancedeobjectflatcomboviewerOptionalPropery(TotalSample newValue) {
-		totalSample.setAdvancedeobjectflatcomboviewerOptionalPropery(newValue);	
+		advancedeobjectflatcomboviewerOptionalProperySettings.setToReference(newValue);	
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedtablecompositionRequiredProperty, TotalSample, TotalSample.
+	private void updateAdvancedtablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof Sample) {
+				advancedtablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				advancedtablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : advancedtablecompositionOptionalProperty, TotalSample, TotalSample.
+	private void updateAdvancedtablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getNewValue() instanceof Sample) {
+				advancedtablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+			}
+		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				advancedtablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+		}
+	}
 
 	private void updateName(java.lang.String newValue) {
 		totalSample.setName(newValue);	

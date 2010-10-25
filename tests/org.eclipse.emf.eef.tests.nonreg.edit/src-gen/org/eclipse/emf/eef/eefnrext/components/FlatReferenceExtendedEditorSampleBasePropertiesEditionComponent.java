@@ -11,6 +11,8 @@
 package org.eclipse.emf.eef.eefnrext.components;
 
 // Start of user code for imports
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -35,8 +37,10 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -68,7 +72,12 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * 
 	 */
 	protected FlatReferenceExtendedEditorSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for flatReferenceEditorSample ReferencesTable
+	 */
+	private	ReferencesTableSettings flatReferenceEditorSampleSettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -124,8 +133,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample().equals(msg.getFeature()))
-			basePart.updateFlatReferenceEditorSample(flatReferenceExtendedEditorSample);
+
 
 	}
 
@@ -197,7 +205,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			// init values
-			basePart.initFlatReferenceEditorSample(flatReferenceExtendedEditorSample, null, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample());
+			flatReferenceEditorSampleSettings = new ReferencesTableSettings(flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample());
+			basePart.initFlatReferenceEditorSample(flatReferenceEditorSampleSettings);
 			// init filters
 			basePart.addFilterToFlatReferenceEditorSample(new ViewerFilter() {
 
@@ -242,7 +251,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatReferenceEditorSample, FlatReferenceExtendedEditorSample, FlatReferenceExtendedEditorSample.
+					updateFlatReferenceEditorSample(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -250,7 +259,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 					
 					public void execute() {
 						if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatReferenceEditorSample, FlatReferenceExtendedEditorSample, FlatReferenceExtendedEditorSample.
+							updateFlatReferenceEditorSample(event);
 						}
 					}
 				});			
@@ -265,7 +274,10 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatReferenceEditorSample, FlatReferenceExtendedEditorSample, FlatReferenceExtendedEditorSample.
+	private void updateFlatReferenceEditorSample(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET)
+			flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
+	}
 
 
 

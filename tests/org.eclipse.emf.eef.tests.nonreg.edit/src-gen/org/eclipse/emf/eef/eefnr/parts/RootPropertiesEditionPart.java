@@ -11,11 +11,8 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -28,35 +25,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface RootPropertiesEditionPart {
 
-	/**
-	 * @return the samples to add
-	 * 
-	 */
-	public List getSamplesToAdd();
 
-	/**
-	 * @return the samples to remove
-	 * 
-	 */
-	public List getSamplesToRemove();
-
-	/**
-	 * @return the samples to move
-	 * 
-	 */
-	public List getSamplesToMove();
-
-	/**
-	 * @return the samples to edit
-	 * 
-	 */
-	public Map getSamplesToEdit();
-
-	/**
-	 * @return the current samples table
-	 * 
-	 */
-	public List getSamplesTable();
 
 	/**
 	 * Init the samples
@@ -64,7 +33,7 @@ public interface RootPropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initSamples(EObject current, EReference containingFeature, EReference feature);
+	public void initSamples(ReferencesTableSettings settings);
 
 	/**
 	 * Update the samples

@@ -66,7 +66,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * 
 	 */
 	protected SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

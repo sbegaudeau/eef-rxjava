@@ -19,6 +19,12 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
@@ -32,12 +38,6 @@
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 
@@ -72,6 +72,12 @@
                id="DeferedFlatReferencesTableSample"
                afterTab="DeferedFlatReferencesTableSample">
          </propertyTab>
+         <propertyTab
+               label="DeferedReferencesTableSample"
+               category="extended"
+               id="DeferedReferencesTableSample"
+               afterTab="DeferedReferencesTableSample">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -84,6 +90,14 @@
                tab="DeferedFlatReferencesTableSample">
              <input
                     type="org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.DeferedReferenceTableEditorSample"
+               tab="DeferedReferencesTableSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample">
              </input>
          </propertySection>
       </propertySections>

@@ -65,7 +65,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 	 * 
 	 */
 	protected AbstractEnabledSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

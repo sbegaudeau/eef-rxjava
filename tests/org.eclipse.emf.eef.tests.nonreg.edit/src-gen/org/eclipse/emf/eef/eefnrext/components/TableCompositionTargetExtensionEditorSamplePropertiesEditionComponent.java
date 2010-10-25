@@ -66,7 +66,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	 * 
 	 */
 	protected TableCompositionTargetExtensionEditorSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

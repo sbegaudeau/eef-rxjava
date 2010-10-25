@@ -11,16 +11,13 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -167,10 +164,9 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * Init the eobjectflatcomboviewerRequiredProperty
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initEobjectflatcomboviewerRequiredProperty(ResourceSet allResources, EObject current);
+	public void initEobjectflatcomboviewerRequiredProperty(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new eobjectflatcomboviewerRequiredProperty
@@ -215,10 +211,9 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * Init the eobjectflatcomboviewerOptionalProperty
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initEobjectflatcomboviewerOptionalProperty(ResourceSet allResources, EObject current);
+	public void initEobjectflatcomboviewerOptionalProperty(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new eobjectflatcomboviewerOptionalProperty
@@ -255,31 +250,13 @@ public interface TotalSamplePropertiesEditionPart {
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalProperty(ViewerFilter filter);
 
 
-	/**
-	 * @return the referencestableRequiredProperty to add
-	 * 
-	 */
-	public List getReferencestableRequiredPropertyToAdd();
 
-	/**
-	 * @return the referencestableRequiredProperty to remove
-	 * 
-	 */
-	public List getReferencestableRequiredPropertyToRemove();
-
-	/**
-	 * @return the current referencestableRequiredProperty table
-	 * 
-	 */
-	public List getReferencestableRequiredPropertyTable();
 
 	/**
 	 * Init the referencestableRequiredProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the referencestableRequiredProperty ReferencesTable 
 	 */
-	public void initReferencestableRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initReferencestableRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the referencestableRequiredProperty
@@ -315,31 +292,13 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the referencestableOptionalProperty to add
-	 * 
-	 */
-	public List getReferencestableOptionalPropertyToAdd();
 
-	/**
-	 * @return the referencestableOptionalProperty to remove
-	 * 
-	 */
-	public List getReferencestableOptionalPropertyToRemove();
-
-	/**
-	 * @return the current referencestableOptionalProperty table
-	 * 
-	 */
-	public List getReferencestableOptionalPropertyTable();
 
 	/**
 	 * Init the referencestableOptionalProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the referencestableOptionalProperty ReferencesTable 
 	 */
-	public void initReferencestableOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initReferencestableOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the referencestableOptionalProperty
@@ -469,35 +428,7 @@ public interface TotalSamplePropertiesEditionPart {
 	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue);
 
 
-	/**
-	 * @return the tablecompositionRequiredProperty to add
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyToAdd();
 
-	/**
-	 * @return the tablecompositionRequiredProperty to remove
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyToRemove();
-
-	/**
-	 * @return the tablecompositionRequiredProperty to move
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyToMove();
-
-	/**
-	 * @return the tablecompositionRequiredProperty to edit
-	 * 
-	 */
-	public Map getTablecompositionRequiredPropertyToEdit();
-
-	/**
-	 * @return the current tablecompositionRequiredProperty table
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyTable();
 
 	/**
 	 * Init the tablecompositionRequiredProperty
@@ -505,7 +436,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initTablecompositionRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initTablecompositionRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the tablecompositionRequiredProperty
@@ -541,35 +472,7 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the tablecompositionOptionalProperty to add
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyToAdd();
 
-	/**
-	 * @return the tablecompositionOptionalProperty to remove
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyToRemove();
-
-	/**
-	 * @return the tablecompositionOptionalProperty to move
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyToMove();
-
-	/**
-	 * @return the tablecompositionOptionalProperty to edit
-	 * 
-	 */
-	public Map getTablecompositionOptionalPropertyToEdit();
-
-	/**
-	 * @return the current tablecompositionOptionalProperty table
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyTable();
 
 	/**
 	 * Init the tablecompositionOptionalProperty
@@ -577,7 +480,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initTablecompositionOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initTablecompositionOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the tablecompositionOptionalProperty
@@ -613,31 +516,13 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element);
 
 
-	/**
-	 * @return the advancedreferencestableRequiredProperty to add
-	 * 
-	 */
-	public List getAdvancedreferencestableRequiredPropertyToAdd();
 
-	/**
-	 * @return the advancedreferencestableRequiredProperty to remove
-	 * 
-	 */
-	public List getAdvancedreferencestableRequiredPropertyToRemove();
-
-	/**
-	 * @return the current advancedreferencestableRequiredProperty table
-	 * 
-	 */
-	public List getAdvancedreferencestableRequiredPropertyTable();
 
 	/**
 	 * Init the advancedreferencestableRequiredProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the advancedreferencestableRequiredProperty ReferencesTable 
 	 */
-	public void initAdvancedreferencestableRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initAdvancedreferencestableRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the advancedreferencestableRequiredProperty
@@ -673,31 +558,13 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedreferencestableRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the advancedreferencestableOptionalProperty to add
-	 * 
-	 */
-	public List getAdvancedreferencestableOptionalPropertyToAdd();
 
-	/**
-	 * @return the advancedreferencestableOptionalProperty to remove
-	 * 
-	 */
-	public List getAdvancedreferencestableOptionalPropertyToRemove();
-
-	/**
-	 * @return the current advancedreferencestableOptionalProperty table
-	 * 
-	 */
-	public List getAdvancedreferencestableOptionalPropertyTable();
 
 	/**
 	 * Init the advancedreferencestableOptionalProperty
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the advancedreferencestableOptionalProperty ReferencesTable 
 	 */
-	public void initAdvancedreferencestableOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initAdvancedreferencestableOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the advancedreferencestableOptionalProperty
@@ -741,10 +608,9 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * Init the advancedeobjectflatcomboviewerRequiredPropery
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initAdvancedeobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current);
+	public void initAdvancedeobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new advancedeobjectflatcomboviewerRequiredPropery
@@ -789,10 +655,9 @@ public interface TotalSamplePropertiesEditionPart {
 
 	/**
 	 * Init the advancedeobjectflatcomboviewerOptionalPropery
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initAdvancedeobjectflatcomboviewerOptionalPropery(ResourceSet allResources, EObject current);
+	public void initAdvancedeobjectflatcomboviewerOptionalPropery(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new advancedeobjectflatcomboviewerOptionalPropery
@@ -829,35 +694,7 @@ public interface TotalSamplePropertiesEditionPart {
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalPropery(ViewerFilter filter);
 
 
-	/**
-	 * @return the advancedtablecompositionRequiredProperty to add
-	 * 
-	 */
-	public List getAdvancedtablecompositionRequiredPropertyToAdd();
 
-	/**
-	 * @return the advancedtablecompositionRequiredProperty to remove
-	 * 
-	 */
-	public List getAdvancedtablecompositionRequiredPropertyToRemove();
-
-	/**
-	 * @return the advancedtablecompositionRequiredProperty to move
-	 * 
-	 */
-	public List getAdvancedtablecompositionRequiredPropertyToMove();
-
-	/**
-	 * @return the advancedtablecompositionRequiredProperty to edit
-	 * 
-	 */
-	public Map getAdvancedtablecompositionRequiredPropertyToEdit();
-
-	/**
-	 * @return the current advancedtablecompositionRequiredProperty table
-	 * 
-	 */
-	public List getAdvancedtablecompositionRequiredPropertyTable();
 
 	/**
 	 * Init the advancedtablecompositionRequiredProperty
@@ -865,7 +702,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initAdvancedtablecompositionRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initAdvancedtablecompositionRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the advancedtablecompositionRequiredProperty
@@ -901,35 +738,7 @@ public interface TotalSamplePropertiesEditionPart {
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the advancedtablecompositionOptionalProperty to add
-	 * 
-	 */
-	public List getAdvancedtablecompositionOptionalPropertyToAdd();
 
-	/**
-	 * @return the advancedtablecompositionOptionalProperty to remove
-	 * 
-	 */
-	public List getAdvancedtablecompositionOptionalPropertyToRemove();
-
-	/**
-	 * @return the advancedtablecompositionOptionalProperty to move
-	 * 
-	 */
-	public List getAdvancedtablecompositionOptionalPropertyToMove();
-
-	/**
-	 * @return the advancedtablecompositionOptionalProperty to edit
-	 * 
-	 */
-	public Map getAdvancedtablecompositionOptionalPropertyToEdit();
-
-	/**
-	 * @return the current advancedtablecompositionOptionalProperty table
-	 * 
-	 */
-	public List getAdvancedtablecompositionOptionalPropertyTable();
 
 	/**
 	 * Init the advancedtablecompositionOptionalProperty
@@ -937,7 +746,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initAdvancedtablecompositionOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initAdvancedtablecompositionOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the advancedtablecompositionOptionalProperty
