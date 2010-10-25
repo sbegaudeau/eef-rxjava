@@ -79,9 +79,10 @@ public class EEFFeatureEditorDialog extends Dialog {
 	 */
 	private List<ViewerFilter> brFilters;
 
-	public EEFFeatureEditorDialog(Shell parent, String displayName,  ILabelProvider labelProvider,  List<?> currentValues,
-			List<?> choiceOfValues, boolean multiLine,
-			boolean sortChoices, List<ViewerFilter> filters, List<ViewerFilter> brFilters) {
+	public EEFFeatureEditorDialog(Shell parent, String displayName,  ILabelProvider labelProvider,  
+			List<?> currentValues,	List<?> choiceOfValues, 
+			boolean multiLine, boolean sortChoices, 
+			List<ViewerFilter> filters, List<ViewerFilter> brFilters) {
 		super(parent);
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MAX);
 		this.labelProvider = labelProvider;
@@ -91,8 +92,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 		this.filters = filters;
 		this.brFilters = brFilters;
 
-		AdapterFactory adapterFactory = new ComposedAdapterFactory(Collections
-				.<AdapterFactory> emptyList());
+		AdapterFactory adapterFactory = new ComposedAdapterFactory(Collections.<AdapterFactory> emptyList());
 		values = new ItemProvider(adapterFactory, currentValues);
 		contentProvider = new AdapterFactoryContentProvider(adapterFactory);
 		if (sortChoices && choiceOfValues != null) {
@@ -100,6 +100,14 @@ public class EEFFeatureEditorDialog extends Dialog {
 			ExtendedComboBoxCellEditor.createItems(this.choiceOfValues,
 					labelProvider, true);
 		}
+	}
+
+	public EEFFeatureEditorDialog(Shell parent, String displayName,  ILabelProvider labelProvider,  
+			List<?> currentValues,	EClassifier eClassifier, List<?> choiceOfValues, 
+			boolean multiLine, boolean sortChoices, 
+			List<ViewerFilter> filters, List<ViewerFilter> brFilters) {
+		this(parent, displayName, labelProvider, currentValues, choiceOfValues, multiLine, sortChoices, filters, brFilters);
+		this.eClassifier = eClassifier;
 	}
 
 	@Override
@@ -370,9 +378,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 					if (!multiLine
 							&& (event.character == '\r' || event.character == '\n')) {
 						try {
-							Object value = EcoreUtil.createFromString(
-									(EDataType) eClassifier, choiceText
-											.getText());
+							Object value = EcoreUtil.createFromString((EDataType) eClassifier, choiceText	.getText());
 							values.getChildren().add(value);
 							choiceText.setText(""); //$NON-NLS-1$
 							featureTableViewer
@@ -435,8 +441,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 					featureTableViewer.setSelection(selection);
 				} else if (choiceText != null) {
 					try {
-						Object value = EcoreUtil.createFromString(
-								(EDataType) eClassifier, choiceText.getText());
+						Object value = EcoreUtil.createFromString((EDataType) eClassifier, choiceText.getText());
 						values.getChildren().add(value);
 						choiceText.setText(""); //$NON-NLS-1$
 						featureTableViewer
@@ -472,8 +477,7 @@ public class EEFFeatureEditorDialog extends Dialog {
 					choiceTableViewer.setSelection(selection);
 				} else if (choiceText != null) {
 					if (firstValue != null) {
-						String value = EcoreUtil.convertToString(
-								(EDataType) eClassifier, firstValue);
+						String value = EcoreUtil.convertToString((EDataType) eClassifier, firstValue);
 						choiceText.setText(value);
 					}
 				}
