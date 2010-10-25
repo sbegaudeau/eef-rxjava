@@ -11,10 +11,7 @@
 package org.eclipse.emf.eef.eefnrext.parts.forms;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
@@ -30,6 +27,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -130,7 +128,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (event.getSelection() instanceof StructuredSelection) 
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FlatReferenceExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FlatReferenceExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
 			}
 
 		});
@@ -162,56 +160,17 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		// End of user code
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#getFlatReferenceEditorSampleToAdd()
-	 * 
-	 */
-	public List getFlatReferenceEditorSampleToAdd() {
-		return flatReferenceEditorSample.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#getFlatReferenceEditorSampleToRemove()
-	 * 
-	 */
-	public List getFlatReferenceEditorSampleToRemove() {
-		return flatReferenceEditorSample.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#getFlatReferenceEditorSampleTable()
-	 * 
-	 */
-	public List getFlatReferenceEditorSampleTable() {
-		return flatReferenceEditorSample.getVirtualList();
-	}
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#initFlatReferenceEditorSample(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#initFlatReferenceEditorSample(ReferencesTableSettings)
 	 */
-	public void initFlatReferenceEditorSample(EObject current, EReference containingFeature, EReference feature) {
-		flatReferenceEditorSample.initComponent(current, containingFeature, feature);
+	public void initFlatReferenceEditorSample(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			flatReferenceEditorSample.setInput(current.eResource().getResourceSet());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#updateFlatReferenceEditorSample(EObject newValue)
-	 * 
-	 */
-	public void updateFlatReferenceEditorSample(EObject newValue) {
-		flatReferenceEditorSample.updateComponent(newValue);
+			this.resourceSet = current.eResource().getResourceSet();
+		flatReferenceEditorSample.setInput(settings);
 	}
 
 	/**
@@ -241,7 +200,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	 * 
 	 */
 	public boolean isContainedInFlatReferenceEditorSampleTable(EObject element) {
-		return flatReferenceEditorSample.virtualListContains(element);
+		return ((ReferencesTableSettings)flatReferenceEditorSample.getInput()).contains(element);
 	}
 
 /**

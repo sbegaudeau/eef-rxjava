@@ -11,11 +11,9 @@
 package org.eclipse.emf.eef.eefnrext.parts;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -28,38 +26,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface FlatReferenceExtendedEditorSamplePropertiesEditionPart {
 
-	/**
-	 * @return the flatReferenceEditorSample to add
-	 * 
-	 */
-	public List getFlatReferenceEditorSampleToAdd();
 
-	/**
-	 * @return the flatReferenceEditorSample to remove
-	 * 
-	 */
-	public List getFlatReferenceEditorSampleToRemove();
-
-	/**
-	 * @return the current flatReferenceEditorSample table
-	 * 
-	 */
-	public List getFlatReferenceEditorSampleTable();
 
 	/**
 	 * Init the flatReferenceEditorSample
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the flatReferenceEditorSample ReferencesTable 
 	 */
-	public void initFlatReferenceEditorSample(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the flatReferenceEditorSample
-	 * @param newValue the flatReferenceEditorSample to update
-	 * 
-	 */
-	public void updateFlatReferenceEditorSample(EObject newValue);
+	public void initFlatReferenceEditorSample(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the flatReferenceEditorSample edition editor.

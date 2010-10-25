@@ -16,7 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
@@ -27,18 +26,19 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -58,7 +58,6 @@ import org.eclipse.swt.widgets.Group;
  */
 public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ReferenceEnabledSamplePropertiesEditionPart {
 
-	protected EMFListEditUtil referenceEditUtil;
 	protected ReferencesTable<? extends EObject> reference;
 	protected List<ViewerFilter> referenceBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> referenceFilters = new ArrayList<ViewerFilter>();
@@ -136,8 +135,6 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							if (!referenceEditUtil.getVirtualList().contains(elem))
-								referenceEditUtil.addElement(elem);
 							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference,
 								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
@@ -166,47 +163,29 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	protected void moveReference(TotalSample element, int oldIndex, int newIndex) {
-		EObject editedElement = referenceEditUtil.foundCorrespondingEObject(element);
-		referenceEditUtil.moveElement(element, oldIndex, newIndex);
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		reference.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
 	}
 
 	/**
 	 * 
 	 */
 	protected void removeFromReference(TotalSample element) {
-
-		// Start of user code removeFromReference() method body
-				EObject editedElement = referenceEditUtil.foundCorrespondingEObject(element);
-				referenceEditUtil.removeElement(element);
-				reference.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-				
-		// End of user code
-
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		reference.refresh();		
 	}
 
 	/**
 	 * 
 	 */
 	protected void editReference(TotalSample element) {
-
-		// Start of user code editReference() method body
-				EObject editedElement = referenceEditUtil.foundCorrespondingEObject(element);
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(editedElement);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-					if (propertiesEditionObject != null) {
-						referenceEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
-						reference.refresh();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
-					}
-				}
-				
-		// End of user code
-
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+		PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
+		if (policy != null) {
+			policy.execute();
+			reference.refresh();
+		}		
 	}
 
 	protected void createAbstractEnabledSample(Composite container) {
@@ -230,50 +209,19 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		// End of user code
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceToAdd()
-	 * 
-	 */
-	public List getReferenceToAdd() {
-		return referenceEditUtil.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceToRemove()
-	 * 
-	 */
-	public List getReferenceToRemove() {
-		return referenceEditUtil.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getReferenceTable()
-	 * 
-	 */
-	public List getReferenceTable() {
-		return referenceEditUtil.getVirtualList();
-	}
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#initReference(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#initReference(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
-	public void initReference(EObject current, EReference containingFeature, EReference feature) {
+	public void initReference(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			referenceEditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			referenceEditUtil = new EMFListEditUtil(current, feature);
-		this.reference.setInput(referenceEditUtil.getVirtualList());
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		reference.setContentProvider(contentProvider);
+		reference.setInput(settings);
 	}
 
 	/**
@@ -283,11 +231,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	public void updateReference(EObject newValue) {
-		if(referenceEditUtil != null){
-			referenceEditUtil.reinit(newValue);
-			reference.refresh();
-		}
-	}
+	reference.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
@@ -316,7 +261,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	public boolean isContainedInReferenceTable(EObject element) {
-		return referenceEditUtil.contains(element);
+		return ((ReferencesTableSettings)reference.getInput()).contains(element);
 	}
 
 

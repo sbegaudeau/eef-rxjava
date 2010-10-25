@@ -34,6 +34,13 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	public void initReferencestableRequiredProperty(ReferencesTableSettings settings);
 
 	/**
+	 * Update the referencestableRequiredProperty
+	 * @param newValue the referencestableRequiredProperty to update
+	 * 
+	 */
+	public void updateReferencestableRequiredProperty(EObject newValue);
+
+	/**
 	 * Adds the given filter to the referencestableRequiredProperty edition editor.
 	 * 
 	 * @param filter
@@ -67,6 +74,13 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param settings settings for the referencestableOptionalProperty ReferencesTable 
 	 */
 	public void initReferencestableOptionalProperty(ReferencesTableSettings settings);
+
+	/**
+	 * Update the referencestableOptionalProperty
+	 * @param newValue the referencestableOptionalProperty to update
+	 * 
+	 */
+	public void updateReferencestableOptionalProperty(EObject newValue);
 
 	/**
 	 * Adds the given filter to the referencestableOptionalProperty edition editor.
