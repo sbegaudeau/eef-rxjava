@@ -11,10 +11,11 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
@@ -34,6 +35,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.swt.widgets.Display;
@@ -207,10 +209,10 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 			final MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)elt;
 			// init values
 			if (multiValuedEditorSample.getMultivaluededitorRequiredProperty() != null)
-				basePart.setMultivaluededitorRequiredProperty(new BasicEList(multiValuedEditorSample.getMultivaluededitorRequiredProperty()));
+				basePart.setMultivaluededitorRequiredProperty(multiValuedEditorSample.getMultivaluededitorRequiredProperty());
 
 			if (multiValuedEditorSample.getMultivaluededitorOptionalProperty() != null)
-				basePart.setMultivaluededitorOptionalProperty(new BasicEList(multiValuedEditorSample.getMultivaluededitorOptionalProperty()));
+				basePart.setMultivaluededitorOptionalProperty(multiValuedEditorSample.getMultivaluededitorOptionalProperty());
 
 			// init filters
 
@@ -238,10 +240,10 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
 				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+					updateMultivaluededitorRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+					updateMultivaluededitorOptionalProperty(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -249,10 +251,10 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 					
 					public void execute() {
 						if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+							updateMultivaluededitorRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+							updateMultivaluededitorOptionalProperty(event);
 						}
 					}
 				});			
@@ -267,9 +269,19 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 		}
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorRequiredProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+	private void updateMultivaluededitorRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET) {
+			multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
+			multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorOptionalProperty, MultiValuedEditorSample, MultiValuedEditorSample.
+	private void updateMultivaluededitorOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET) {
+			multiValuedEditorSample.getMultivaluededitorOptionalProperty().clear();
+			multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
+		}
+	}
 
 
 

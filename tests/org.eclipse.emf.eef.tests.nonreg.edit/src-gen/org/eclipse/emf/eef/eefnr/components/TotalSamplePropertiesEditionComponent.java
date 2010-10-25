@@ -11,10 +11,11 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
@@ -384,10 +385,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().getEType(), totalSample.getEmfcomboviewerRequiredProperty());
 			basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty().getEType(), totalSample.getEmfcomboviewerOptionalProperty());
 			if (totalSample.getMultivaluededitorRequiredProperty() != null)
-				basePart.setMultivaluededitorRequiredProperty(new BasicEList(totalSample.getMultivaluededitorRequiredProperty()));
+				basePart.setMultivaluededitorRequiredProperty(totalSample.getMultivaluededitorRequiredProperty());
 
 			if (totalSample.getMultivaluededitorOptionalProperty() != null)
-				basePart.setMultivaluededitorOptionalProperty(new BasicEList(totalSample.getMultivaluededitorOptionalProperty()));
+				basePart.setMultivaluededitorOptionalProperty(totalSample.getMultivaluededitorOptionalProperty());
 
 			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty());
 			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
@@ -720,10 +721,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 				}
 				if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, TotalSample, TotalSample.
+					updateMultivaluededitorRequiredProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
+					updateMultivaluededitorOptionalProperty(event);
 				}
 				if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 					updateTablecompositionRequiredProperty(event);
@@ -800,10 +801,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 							updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 						}
 						if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorRequiredProperty, TotalSample, TotalSample.
+							updateMultivaluededitorRequiredProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
+							updateMultivaluededitorOptionalProperty(event);
 						}
 						if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 							updateTablecompositionRequiredProperty(event);
@@ -913,9 +914,19 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		totalSample.setEmfcomboviewerOptionalProperty(newValue);	
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorRequiredProperty, TotalSample, TotalSample.
+	private void updateMultivaluededitorRequiredProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET) {
+			totalSample.getMultivaluededitorRequiredProperty().clear();
+			totalSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+		}
+	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : multivaluededitorOptionalProperty, TotalSample, TotalSample.
+	private void updateMultivaluededitorOptionalProperty(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET) {
+			totalSample.getMultivaluededitorOptionalProperty().clear();
+			totalSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
+		}
+	}
 
 	private void updateTablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
