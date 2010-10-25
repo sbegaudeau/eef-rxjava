@@ -306,7 +306,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	protected void addReferencesTableSampleEditor() {
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, referencesTableSampleEditorFilters, referencesTableSampleEditorBusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), referencesTableSampleEditor.getInput(), referencesTableSampleEditorFilters, referencesTableSampleEditorBusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
