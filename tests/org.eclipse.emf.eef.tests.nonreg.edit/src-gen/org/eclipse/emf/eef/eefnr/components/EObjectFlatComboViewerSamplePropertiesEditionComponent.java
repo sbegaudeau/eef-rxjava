@@ -35,6 +35,7 @@ import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComp
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -66,7 +67,17 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 */
 	protected EObjectFlatComboViewerSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for eobjectflatcomboviewerRequiredPropery EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings eobjectflatcomboviewerRequiredProperySettings;
+	
+	/**
+	 * Settings for eobjectflatcomboviewerOptionalPropery EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings eobjectflatcomboviewerOptionalProperySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -198,11 +209,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 			final EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)elt;
 			// init values
 			// init part
-			basePart.initEobjectflatcomboviewerRequiredPropery(allResource, eObjectFlatComboViewerSample.getEobjectflatcomboviewerRequiredPropery());
+			eobjectflatcomboviewerRequiredProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery());
+			basePart.initEobjectflatcomboviewerRequiredPropery(eobjectflatcomboviewerRequiredProperySettings);
 			// set the button mode
 			basePart.setEobjectflatcomboviewerRequiredProperyButtonMode(ButtonsModeEnum.BROWSE);
 			// init part
-			basePart.initEobjectflatcomboviewerOptionalPropery(allResource, eObjectFlatComboViewerSample.getEobjectflatcomboviewerOptionalPropery());
+			eobjectflatcomboviewerOptionalProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery());
+			basePart.initEobjectflatcomboviewerOptionalPropery(eobjectflatcomboviewerOptionalProperySettings);
 			// set the button mode
 			basePart.setEobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
 			// init filters
@@ -291,11 +304,11 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	}
 
 	private void updateEobjectflatcomboviewerRequiredPropery(TotalSample newValue) {
-		eObjectFlatComboViewerSample.setEobjectflatcomboviewerRequiredPropery(newValue);	
+		eobjectflatcomboviewerRequiredProperySettings.setToReference(newValue);	
 	}
 
 	private void updateEobjectflatcomboviewerOptionalPropery(TotalSample newValue) {
-		eObjectFlatComboViewerSample.setEobjectflatcomboviewerOptionalPropery(newValue);	
+		eobjectflatcomboviewerOptionalProperySettings.setToReference(newValue);	
 	}
 
 

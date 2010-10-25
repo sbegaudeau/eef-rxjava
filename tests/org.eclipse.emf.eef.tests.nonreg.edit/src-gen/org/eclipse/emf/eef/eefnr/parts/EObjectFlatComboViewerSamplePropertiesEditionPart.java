@@ -12,8 +12,8 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -34,10 +34,9 @@ public interface EObjectFlatComboViewerSamplePropertiesEditionPart {
 
 	/**
 	 * Init the eobjectflatcomboviewerRequiredPropery
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initEobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current);
+	public void initEobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new eobjectflatcomboviewerRequiredPropery
@@ -82,10 +81,9 @@ public interface EObjectFlatComboViewerSamplePropertiesEditionPart {
 
 	/**
 	 * Init the eobjectflatcomboviewerOptionalPropery
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initEobjectflatcomboviewerOptionalPropery(ResourceSet allResources, EObject current);
+	public void initEobjectflatcomboviewerOptionalPropery(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new eobjectflatcomboviewerOptionalPropery

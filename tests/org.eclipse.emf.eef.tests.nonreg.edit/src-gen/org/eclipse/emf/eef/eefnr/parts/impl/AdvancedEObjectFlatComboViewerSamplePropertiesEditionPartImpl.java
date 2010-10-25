@@ -12,9 +12,6 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
@@ -24,16 +21,17 @@ import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -130,20 +128,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 			
 			public TotalSample handleCreate() {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				if (current != null && current instanceof AdvancedEObjectFlatComboViewerSample && ((AdvancedEObjectFlatComboViewerSample)current).getAdvancedeobjectflatcomboviewerRequiredProperty() != null) {
-					eObject = (TotalSample) EcoreUtil.copy(((AdvancedEObjectFlatComboViewerSample)current).getAdvancedeobjectflatcomboviewerRequiredProperty());
-				}
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-					if (propertiesEditionObject != null) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
-						return (TotalSample)propertiesEditionObject;
-					}
-					if (current != null && current instanceof AdvancedEObjectFlatComboViewerSample && ((AdvancedEObjectFlatComboViewerSample)current).getAdvancedeobjectflatcomboviewerRequiredProperty() != null)
-						return eObject;
-					return null;
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent, current,resourceSet);
+				PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+				PropertiesEditingPolicy policy = provider.getPolicy(context);
+				if (policy != null) {
+					policy.execute();
 				}
 				return null;
 			}
@@ -172,20 +161,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 			
 			public TotalSample handleCreate() {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				if (current != null && current instanceof AdvancedEObjectFlatComboViewerSample && ((AdvancedEObjectFlatComboViewerSample)current).getAdvancedeobjectflatcomboviewerOptionalProperty() != null) {
-					eObject = (TotalSample) EcoreUtil.copy(((AdvancedEObjectFlatComboViewerSample)current).getAdvancedeobjectflatcomboviewerOptionalProperty());
-				}
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-					if (propertiesEditionObject != null) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
-						return (TotalSample)propertiesEditionObject;
-					}
-					if (current != null && current instanceof AdvancedEObjectFlatComboViewerSample && ((AdvancedEObjectFlatComboViewerSample)current).getAdvancedeobjectflatcomboviewerOptionalProperty() != null)
-						return eObject;
-					return null;
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent, current,resourceSet);
+				PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+				PropertiesEditingPolicy policy = provider.getPolicy(context);
+				if (policy != null) {
+					policy.execute();
 				}
 				return null;
 			}
@@ -227,13 +207,12 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#initAdvancedeobjectflatcomboviewerRequiredProperty(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#initAdvancedeobjectflatcomboviewerRequiredProperty(EObjectFlatComboSettings)
 	 */
-	public void initAdvancedeobjectflatcomboviewerRequiredProperty(ResourceSet allResources, EObject current) {
-		advancedeobjectflatcomboviewerRequiredProperty.setInput(allResources);
+	public void initAdvancedeobjectflatcomboviewerRequiredProperty(EObjectFlatComboSettings settings) {
+		advancedeobjectflatcomboviewerRequiredProperty.setInput(settings);
 		if (current != null) {
-			advancedeobjectflatcomboviewerRequiredProperty.setSelection(new StructuredSelection(current));
-			advancedeobjectflatcomboviewerRequiredProperty.setMainResource(current.eResource());
+			advancedeobjectflatcomboviewerRequiredProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
@@ -294,13 +273,12 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#initAdvancedeobjectflatcomboviewerOptionalProperty(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#initAdvancedeobjectflatcomboviewerOptionalProperty(EObjectFlatComboSettings)
 	 */
-	public void initAdvancedeobjectflatcomboviewerOptionalProperty(ResourceSet allResources, EObject current) {
-		advancedeobjectflatcomboviewerOptionalProperty.setInput(allResources);
+	public void initAdvancedeobjectflatcomboviewerOptionalProperty(EObjectFlatComboSettings settings) {
+		advancedeobjectflatcomboviewerOptionalProperty.setInput(settings);
 		if (current != null) {
-			advancedeobjectflatcomboviewerOptionalProperty.setSelection(new StructuredSelection(current));
-			advancedeobjectflatcomboviewerOptionalProperty.setMainResource(current.eResource());
+			advancedeobjectflatcomboviewerOptionalProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

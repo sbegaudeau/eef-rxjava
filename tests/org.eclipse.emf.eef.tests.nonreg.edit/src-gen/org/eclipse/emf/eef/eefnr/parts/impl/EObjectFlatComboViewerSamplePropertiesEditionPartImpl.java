@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -184,15 +183,12 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings)
 	 */
 	public void initEobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings settings) {
 		eobjectflatcomboviewerRequiredPropery.setInput(settings);
 		if (current != null) {
-			Object value = settings.getValue();
-			if (value == null)
-				value = "";
-			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(value));
+			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
@@ -258,12 +254,12 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerOptionalPropery(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerOptionalPropery(EObjectFlatComboSettings)
 	 */
-	public void initEobjectflatcomboviewerOptionalPropery(ResourceSet allResources, EObject current) {
-		eobjectflatcomboviewerOptionalPropery.setInput(allResources);
+	public void initEobjectflatcomboviewerOptionalPropery(EObjectFlatComboSettings settings) {
+		eobjectflatcomboviewerOptionalPropery.setInput(settings);
 		if (current != null) {
-			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(current));
+			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

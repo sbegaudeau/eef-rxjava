@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -25,6 +24,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -196,12 +196,12 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings)
 	 */
-	public void initEobjectflatcomboviewerRequiredPropery(ResourceSet allResources, EObject current) {
-		eobjectflatcomboviewerRequiredPropery.setInput(allResources);
+	public void initEobjectflatcomboviewerRequiredPropery(EObjectFlatComboSettings settings) {
+		eobjectflatcomboviewerRequiredPropery.setInput(settings);
 		if (current != null) {
-			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(current));
+			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
@@ -267,12 +267,12 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerOptionalPropery(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart#initEobjectflatcomboviewerOptionalPropery(EObjectFlatComboSettings)
 	 */
-	public void initEobjectflatcomboviewerOptionalPropery(ResourceSet allResources, EObject current) {
-		eobjectflatcomboviewerOptionalPropery.setInput(allResources);
+	public void initEobjectflatcomboviewerOptionalPropery(EObjectFlatComboSettings settings) {
+		eobjectflatcomboviewerOptionalPropery.setInput(settings);
 		if (current != null) {
-			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(current));
+			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

@@ -36,6 +36,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 	
@@ -65,7 +66,17 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	 * 
 	 */
 	protected AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart basePart;
-
+	
+	/**
+	 * Settings for advancedeobjectflatcomboviewerRequiredProperty EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings advancedeobjectflatcomboviewerRequiredPropertySettings;
+	
+	/**
+	 * Settings for advancedeobjectflatcomboviewerOptionalProperty EObjectFlatComboViewer
+	 */
+	private	EObjectFlatComboSettings advancedeobjectflatcomboviewerOptionalPropertySettings;
+	
 	/**
 	 * Default constructor
 	 * 
@@ -197,16 +208,16 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 			final AdvancedEObjectFlatComboViewerSample advancedEObjectFlatComboViewerSample = (AdvancedEObjectFlatComboViewerSample)elt;
 			// init values
 			// init part
-			basePart.initAdvancedeobjectflatcomboviewerRequiredProperty(allResource, advancedEObjectFlatComboViewerSample.getAdvancedeobjectflatcomboviewerRequiredProperty());
+			advancedeobjectflatcomboviewerRequiredPropertySettings = new EObjectFlatComboSettings(advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty());
+			basePart.initAdvancedeobjectflatcomboviewerRequiredProperty(advancedeobjectflatcomboviewerRequiredPropertySettings);
 			// set the button mode
 			basePart.setAdvancedeobjectflatcomboviewerRequiredPropertyButtonMode(ButtonsModeEnum.BROWSE);
 			// init part
-			basePart.initAdvancedeobjectflatcomboviewerOptionalProperty(allResource, advancedEObjectFlatComboViewerSample.getAdvancedeobjectflatcomboviewerOptionalProperty());
+			advancedeobjectflatcomboviewerOptionalPropertySettings = new EObjectFlatComboSettings(advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty());
+			basePart.initAdvancedeobjectflatcomboviewerOptionalProperty(advancedeobjectflatcomboviewerOptionalPropertySettings);
 			// set the button mode
 			basePart.setAdvancedeobjectflatcomboviewerOptionalPropertyButtonMode(ButtonsModeEnum.BROWSE);
 			// init filters
-			basePart.addFilterToAdvancedeobjectflatcomboviewerRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
-			basePart.addFilterToAdvancedeobjectflatcomboviewerOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 		}
 		// init values for referenced views
 
@@ -260,11 +271,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	}
 
 	private void updateAdvancedeobjectflatcomboviewerRequiredProperty(TotalSample newValue) {
-		advancedEObjectFlatComboViewerSample.setAdvancedeobjectflatcomboviewerRequiredProperty(newValue);	
+		advancedeobjectflatcomboviewerRequiredPropertySettings.setToReference(newValue);	
 	}
 
 	private void updateAdvancedeobjectflatcomboviewerOptionalProperty(TotalSample newValue) {
-		advancedEObjectFlatComboViewerSample.setAdvancedeobjectflatcomboviewerOptionalProperty(newValue);	
+		advancedeobjectflatcomboviewerOptionalPropertySettings.setToReference(newValue);	
 	}
 
 
