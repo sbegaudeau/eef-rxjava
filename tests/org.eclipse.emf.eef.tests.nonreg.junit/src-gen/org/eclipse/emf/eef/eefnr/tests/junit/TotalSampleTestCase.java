@@ -2385,10 +2385,8 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
-		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
-		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
@@ -2399,7 +2397,6 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editTableCompositiontablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
-		bot.sleep(500);
 		bot.addButtonTableComposition(EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty).click();
 		editTableCompositionFortablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
@@ -2412,10 +2409,8 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
-		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
-		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
@@ -2426,7 +2421,6 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editTableCompositiontablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
-		bot.sleep(500);
 		bot.addButtonTableComposition(EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty).click();
 		editTableCompositionFortablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
@@ -2447,10 +2441,8 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
-		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
-		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
@@ -2461,7 +2453,6 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
-		bot.sleep(500);
 		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
@@ -2474,10 +2465,8 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
-		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
-		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
@@ -2488,7 +2477,6 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
-		bot.sleep(500);
 		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);

@@ -379,10 +379,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
-		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
-		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
@@ -405,10 +403,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
-		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
-		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
