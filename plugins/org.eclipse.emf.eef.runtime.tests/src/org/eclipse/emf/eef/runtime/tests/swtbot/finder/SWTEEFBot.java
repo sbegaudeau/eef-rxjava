@@ -43,6 +43,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
@@ -155,7 +156,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public SWTBotEditor openFile(IFile file) {
 		SWTBotTree wizardTree = viewByTitle(UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
-//		sleep(500);
 		List<IResource> expansionPath = getExpansionPath(file);
 		Iterator<IResource> iter = expansionPath.iterator();
 		if (iter.hasNext()) {
@@ -168,7 +168,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			}
 			treeItem.select();
 			menu(UIConstants.NAVIGATE_MENU).menu(UIConstants.OPEN_MENU).click();
-//			sleep(500);
 			SWTBotEditor editor = editorByTitle(activeResource.getURI().lastSegment());
 			return editor;
 		}
@@ -199,7 +198,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		node2.doubleClick();
 		cTabItem(tabName).activate();
 		cTabItem(tabName).setFocus();
-//		sleep(1000);
 		return shell(elementType.getName());
 	}
 
@@ -216,7 +214,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		SWTBotTreeItem node2 = selectNode(editor, element);
 		node2.select();
 		SWTBotUtils.selectPropertyTabItem(tabName);
-//		sleep(1000);
 		return viewByTitle(UIConstants.PROPERTIES_VIEW_NAME);
 	}
 
@@ -270,11 +267,21 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @param editor
 	 *            the modelEditor
 	 */
-	public void finalizeEdition(SWTBotEditor editor) {
+	public void finalizeEdition(final SWTBotEditor editor) {
 		activateEclipseShell();
 		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
-		// TODO : waitUntilKivabien ?
-		sleep(3000);
+		this.waitUntil(new DefaultCondition() {
+			
+			@Override
+			public boolean test() throws Exception {
+				return !editor.isDirty();
+			}
+			
+			@Override
+			public String getFailureMessage() {
+				return "the editor does not save in less than one minute";
+			}
+		}, 60000);
 		editor.close();
 	}
 
@@ -294,9 +301,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editTextFeature(SWTBotShell shell, String feature, Object newValue) {
 		activateShell(shell);
-		sleep(500);
 		editEEFText(feature, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -309,9 +314,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editEMFComboViewerFeature(SWTBotShell shell, String viewID, Object newValue) {
 		activateShell(shell);
-		sleep(500);
 		editEMFComboViewer(viewID, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -324,9 +327,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editRadioFeature(SWTBotShell shell, String viewID, Object newValue) {
 		activateShell(shell);
-		sleep(500);
 		editRadio(viewID, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -372,6 +373,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			/* our listener wait a focus lost to launch the command */
 //			button(UIConstants.FINISH_BUTTON).setFocus();
 			SWTBotUtils.pressEnterKey(textWithId.widget);
+			SWTBotUtils.sendFocusLost(textWithId.widget);
 			syncExec(new VoidResult() {
 				
 				@Override
@@ -421,9 +423,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editCheckboxFeature(SWTBotShell shell, String viewID) {
 		activateShell(shell);
-		sleep(500);
 		editEEFCheckbox(viewID);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -437,9 +437,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editEObjectFlatComboViewerFeature(SWTBotShell shell, String viewID, int tableIndex) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		editEObjectFlatComboViewer(viewID, tableIndex);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -453,9 +451,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editFlatReferencesTableFeature(SWTBotShell shell, String viewID, int newValue) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		editFlatReferencesTable(viewID, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -499,9 +495,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editReferencesTableFeature(SWTBotShell shell, String viewID, int newValue) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		editReferencesTable(viewID, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -528,9 +522,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removeReferencesTableFeature(SWTBotShell shell, String viewID, int newValue) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		removeReferencesTable(viewID, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -560,9 +552,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editAdvancedEObjectFlatComboViewerFeature(SWTBotShell shell, String viewID, Object value) {
 		activateShell(shell);
-		sleep(500);
 		editAdvancedEObjectFlatComboViewer(viewID, value);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -575,9 +565,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removeAdvancedEObjectFlatComboViewerFeature(SWTBotShell shell, String viewID) {
 		activateShell(shell);
-		sleep(500);
 		removeAdvancedEObjectFlatComboViewer(viewID);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -588,9 +576,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removeFlatReferencesTableFeature(SWTBotShell shell, String viewID) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		removeFlatReferencesTable(viewID);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 	
@@ -619,9 +605,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removeEObjectFlatComboViewerFeature(SWTBotShell shell, String viewID) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		removeEObjectFlatComboViewer(viewID);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -708,9 +692,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editAdvancedReferencesTableFeature(SWTBotShell shell, String viewID, Object value) {
 		activateShell(shell);
-		sleep(500);
 		editAdvancedReferencesTable(viewID, value);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -724,9 +706,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editMultiValuedEditorFeature(SWTBotShell shell, String viewID, String newValue) {
 		activateShell(shell);
-		sleep(500);
 		editMultiValuedEditor(viewID, newValue);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -809,9 +789,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removeAdvancedReferencesTableFeature(SWTBotShell shell, String viewID, Object value) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		removeAdvancedReferencesTable(viewID, value);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -828,9 +806,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public void removeAdvancedTableCompositionFeature(SWTBotShell shell, String viewID)
 			throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		removeAdvancedTableComposition(viewID);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -852,9 +828,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removeTableCompositionFeature(SWTBotShell shell, String viewID) throws WidgetInvalidException {
 		activateShell(shell);
-		sleep(500);
 		removeTableComposition(viewID);
-		sleep(1000);
 		closeShellWithFinishButton(shell);
 	}
 
@@ -1006,7 +980,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editPropertyFlatReferencesTableFeature(SWTBotView propertyView, String viewID, int newValue, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		editFlatReferencesTable(viewID, newValue);
-		sleep(1000);
 		selectNode.select();
 	}
 
@@ -1019,9 +992,7 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 * @throws WidgetInvalidException 
 	 */
 	public void editPropertyEObjectFlatComboViewerFeature(SWTBotView propertyView, String viewID, int tableIndex, SWTBotTreeItem selectNode) throws WidgetInvalidException {
-		// SWTBot propertyBot = propertyView.bot();
 		editEObjectFlatComboViewer(viewID, tableIndex);
-		sleep(1000);
 		selectNode.select();
 	}
 
@@ -1035,7 +1006,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void editPropertyReferencesTableFeature(SWTBotView propertyView, String viewID, int newValue, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		editReferencesTable(viewID, newValue);
-		sleep(1000);
 		selectNode.select();
 	}
 
@@ -1049,7 +1019,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removePropertyReferencesTableFeature(SWTBotView propertyView, String viewID, int newValue, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		removeReferencesTable(viewID, newValue);
-		sleep(1000);
 		selectNode.select();
 	}
 
@@ -1062,7 +1031,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	 */
 	public void removePropertyTableCompositionFeature(SWTBotView propertyView, String viewID, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		removeTableComposition(viewID);
-		sleep(1000);
 		selectNode.select();
 	}
 
@@ -1257,7 +1225,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		String text = labelProvider.getText(next);
 		SWTBotTreeItem node2 = currentNode.getNode(text);
 		node2.select();
-		sleep(500);
 		return node2;
 	}
 }
