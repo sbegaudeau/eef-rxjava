@@ -19,11 +19,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.AdvancedEObjectFlatComboContentProvider;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -86,8 +87,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	/**
 	 * The adapter factory.
 	 */
-	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(
-			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	private Composite parent;
 
@@ -118,8 +118,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 *            appear
 	 * @deprecated 
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
-			List<ViewerFilter> brFilters, String title, EClass restrictToEClass) {
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters, String title, EClass restrictToEClass) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
@@ -147,8 +146,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 * @param mainResource
 	 *            the main resource.
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
-			List<ViewerFilter> brFilters, String title, EClass restrictToEClass, Resource mainResource) {
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters, String title, EClass restrictToEClass, Resource mainResource) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
@@ -178,23 +176,24 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 			// Filter elements only in main Resource
 			@Override
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				if (input instanceof ResourceSet) {
-					ResourceSet resourceSet = (ResourceSet)input;
-					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? TabElementTreeSelectionDialog.this.mainResource
-							: resourceSet.getResources().get(0);
-					if (mainResource != null && mainResource == element) {
-						return true;
+				if (input instanceof EObjectFlatComboSettings) {
+					EObjectFlatComboSettings settings = (EObjectFlatComboSettings) input;
+					if (settings.getSource().eResource().getResourceSet() != null) {
+						ResourceSet resourceSet = settings.getSource().eResource().getResourceSet();
+						Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? 
+													TabElementTreeSelectionDialog.this.mainResource
+												  : resourceSet.getResources().get(0);
+						if (mainResource != null && mainResource == element) {
+							return true;
+						}
+						if (element instanceof EObject) {
+							EObject eObject = (EObject)element;
+							if (mainResource != null && mainResource == eObject.eResource()) {
+								return true;
+							}
+						}
 					}
-				}
-				if (element instanceof EObject) {
-					EObject eObject = (EObject)element;
-					ResourceSet resourceSet = (ResourceSet)input;
-					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? TabElementTreeSelectionDialog.this.mainResource
-							: resourceSet.getResources().get(0);
-					if (mainResource != null && mainResource == eObject.eResource()) {
-						return true;
-					}
-				}
+				}				
 				return false;
 			}
 		}));
@@ -229,38 +228,13 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		PatternFilter patternFilter = new TreeSelectionPatternFilter();
 		patternFilter.setIncludeLeadingWildcard(true);
 
-		FilteredTree filteredTree = new FilteredTree(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL
-				| SWT.RESIZE, patternFilter);
+		FilteredTree filteredTree = new FilteredTree(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL | SWT.RESIZE, patternFilter);
 		// use of EMF facilities
 		final TreeViewer treeViewer = filteredTree.getViewer();
 		treeViewer.setFilters(new ViewerFilter[0]);
 		treeViewer.setUseHashlookup(true);
-		treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
-			@Override
-			public Object[] getElements(Object inputElement) {
-				if (inputElement instanceof ResourceSet) {
-					ResourceSet resourceSet = (ResourceSet)inputElement;
-					if (showResourceItem) {
-						return resourceSet.getResources().toArray();
-					} else {
-						ArrayList<EObject> contents = new ArrayList<EObject>();
-						for (Resource resource : resourceSet.getResources()) {
-							contents.addAll(resource.getContents());
-						}
-						return contents.toArray();
-					}
-				}
-				return super.getElements(inputElement);
-			}
-
-			@Override
-			public Object[] getChildren(Object object) {
-				// TODO Auto-generated method stub
-				Object[] children = super.getChildren(object);
-				return children;
-			}
-			
-		});
+		AdvancedEObjectFlatComboContentProvider contentProvider = new AdvancedEObjectFlatComboContentProvider(adapterFactory);
+		treeViewer.setContentProvider(contentProvider);
 
 		ArrayList<ViewerFilter> filters = new ArrayList<ViewerFilter>();
 		if (specificTabFilter != null) {
