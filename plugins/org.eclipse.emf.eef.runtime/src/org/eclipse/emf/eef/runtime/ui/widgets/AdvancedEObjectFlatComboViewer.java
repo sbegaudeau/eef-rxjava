@@ -86,8 +86,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	/**
 	 * The adapter factory.
 	 */
-	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(
-			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	protected AdapterFactoryLabelProvider labelProvider;
 
@@ -288,7 +287,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	public void setSelection(ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection structuredSelection = (StructuredSelection)selection;
-			if (!structuredSelection.isEmpty()) {
+			if (!structuredSelection.isEmpty() && !"".equals(structuredSelection.getFirstElement())) {
 				setSelection((T)structuredSelection.getFirstElement());
 			} else {
 				this.valueText.setText(UNDEFINED_VALUE);
@@ -317,8 +316,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	protected void browseButtonPressed() {
 		switch (button_mode) {
 			case BROWSE:
-				TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input,
-						filters, brFilters, dialogTitle, restrictToEClass, mainResource) {
+				TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input, filters, brFilters, dialogTitle, restrictToEClass, mainResource) {
 					@SuppressWarnings("unchecked")
 					@Override
 					public void process(IStructuredSelection selection) {

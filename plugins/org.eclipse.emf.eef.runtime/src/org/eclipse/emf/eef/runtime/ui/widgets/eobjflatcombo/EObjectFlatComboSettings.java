@@ -67,7 +67,7 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 			} else {
 				Object value1 = ((EObject)source).eGet(features[0]);
 				if (features.length == 1) {
-					return value1;
+					return value1 == null?"":value1;
 				}
 				else {
 					if (features[1].isMany()) {
@@ -92,12 +92,12 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 	 * Add a new value following a list of StructualFeatures to a given EObject
 	 * @param newValue the value to add
 	 */
-	public void setToReference(EObject newValue) {
+	public void setToReference(Object newValue) {
 		Object value1 = source.eGet(features[0]);
 		if (features[0].isMany()) {
 			throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation with multiple references");
 		} else /* ref is Single */  {
-			setFirstSingle((EObject)value1, newValue);
+			setFirstSingle((EObject)value1, (newValue instanceof EObject?(EObject)newValue:null));
 		}
 	}
 
