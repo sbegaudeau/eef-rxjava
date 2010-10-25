@@ -130,20 +130,11 @@ import [pee.model.eContainingClass.qualifiedName(basePackage)/];
 				[else]
 				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 				[/if]
-				if (current != null && current instanceof [editor.involvedPropertiesEditionElement().model.eContainingClass.name/] && (([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]() != null) {
-					eObject = ([editor.involvedPropertiesEditionElement().model.eType.name/]) EcoreUtil.copy((([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]());
-				}
-				IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(eObject);
-				IPropertiesEditionPolicy editionPolicy = policyProvider.getEditionPolicy(eObject);
-				if (editionPolicy != null) {
-					EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(propertiesEditionComponent, eObject,resourceSet));
-					if (propertiesEditionObject != null) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, propertiesEditionObject));
-						return ([editor.involvedPropertiesEditionElement().model.eType.name/])propertiesEditionObject;
-					}
-					if (current != null && current instanceof [editor.involvedPropertiesEditionElement().model.eContainingClass.name/] && (([editor.involvedPropertiesEditionElement().model.eContainingClass.name/])current).get[editor.involvedPropertiesEditionElement().model.name.toJavaClassifier()/]() != null)
-						return eObject;
-					return null;
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent, current,resourceSet);
+				PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+				PropertiesEditingPolicy policy = provider.getPolicy(context);
+				if (policy != null) {
+					policy.execute();
 				}
 				return null;
 			}

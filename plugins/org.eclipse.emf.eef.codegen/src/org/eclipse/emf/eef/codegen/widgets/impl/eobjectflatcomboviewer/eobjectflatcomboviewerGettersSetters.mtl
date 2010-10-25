@@ -37,13 +37,12 @@
 [template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 	/**
 	 * Init the [elementEditor.name/]
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
-	public void init[elementEditor.viewPackageSignature()/](ResourceSet allResources, EObject current)
+	public void init[elementEditor.viewPackageSignature()/](EObjectFlatComboSettings settings)
 [/template]
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
@@ -83,7 +82,7 @@
 [template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](allResources, current);
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](settings);
 	}
 
 [setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -140,25 +139,24 @@
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](ResourceSet allResources, EObject current)
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EObjectFlatComboSettings)
 	 */
 [/template]
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setInput(allResources);
+		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
 		if (current != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 [/template]
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setInput(allResources);
+		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
 		if (current != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
-			[elementEditor.name.toJavaIdentifier()/].setMainResource(current.eResource());
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 [/template]
