@@ -66,7 +66,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 * 
 	 */
 	protected CheckBoxExtendedEditorSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 
