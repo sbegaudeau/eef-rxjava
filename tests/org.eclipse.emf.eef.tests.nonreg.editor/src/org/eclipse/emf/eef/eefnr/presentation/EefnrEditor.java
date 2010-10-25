@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrEditor.java,v 1.2 2010/04/16 15:50:59 sbouchet Exp $
+ * $Id: EefnrEditor.java,v 1.3 2010/10/25 21:56:28 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.presentation;
 
@@ -304,6 +304,12 @@ public class EefnrEditor
 	 */
 	protected boolean updateProblemIndication = true;
 
+	
+	/**
+	 * @generated NOT
+	 */
+	protected boolean isSaving = false;
+	
 	/**
 	 * Adapter used to update the problem indication when resources are demanded loaded.
 	 * <!-- begin-user-doc -->
@@ -475,7 +481,7 @@ public class EefnrEditor
 	 * @generated
 	 */
 	protected void handleChangedResources() {
-		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+		if (!changedResources.isEmpty() && (!isDirty() || (!isSaving && handleDirtyConflict()))) {
 			if (isDirty()) {
 				changedResources.addAll(editingDomain.getResourceSet().getResources());
 			}
@@ -1137,7 +1143,8 @@ public class EefnrEditor
 	 * This is for implementing {@link IEditorPart} and simply saves the model file.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * Setting the isSaving boolean to prevent conflict during test saving.
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
@@ -1179,7 +1186,9 @@ public class EefnrEditor
 		try {
 			// This runs the options, and shows progress.
 			//
+			isSaving = true;
 			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+			isSaving = false;
 
 			// Refresh the necessary state.
 			//
