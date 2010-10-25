@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.ui.comparator.EMFModelViewerComparator;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -153,7 +154,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		// ADD EXTENSION: CNO
 		final Table table = buildTable();
 
-		if (input instanceof EObjectFlatComboSettings) {
+		if (input instanceof EEFEditorSettings) {
 			EEFEditorContentProvider provider = new EEFEditorContentProvider();
 			provider.kind = EEFEditorContentProvider.MATCHING_VALUES_KIND;
 			elements.setContentProvider(provider);
