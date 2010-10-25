@@ -88,9 +88,11 @@ protected Text [editor.name.toJavaIdentifier()/];
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				EObject [pec.model.name.toJavaIdentifier()/] = PropertiesContextService.getInstance().lastElement();
-				FeatureEditorDialog dialog = new FeatureEditorDialog(Display.getDefault().getActiveShell(), new AdapterFactoryLabelProvider(adapterFactory), [pec.model.name.toJavaIdentifier()/], [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), 
-						[editor.name.toJavaIdentifier()/]List, "[pec.model.name/]", null, false, false); //$NON-NLS-1$
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						[editor.name.toJavaIdentifier()/].getShell(), "[pec.model.name/]", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						[editor.name.toJavaIdentifier()/]List, [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), null,
+						false, true, 
+						null, null);						
 				if (dialog.open() == Window.OK) {
 					[editor.name.toJavaIdentifier()/]List = dialog.getResult();
 					if ([editor.name.toJavaIdentifier()/]List == null) {

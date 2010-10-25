@@ -17,6 +17,19 @@
 [import typeUtils /]
 
 [comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
+	if (event.getKind() == PropertiesEditionEvent.SET) {
+		[pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]().clear();
+		[pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]().addAll(((List) event.getNewValue()));
+	}
+}
+[/template]
+
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+update[editionElement.name.toJavaClassifier()/](event);
+[/template]
+
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).many)]
 		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null) {
@@ -33,10 +46,10 @@
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.many)]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](new BasicEList([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]()));
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]());
 [else]
 			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](new BasicEList([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/if]
 [/template]
 
