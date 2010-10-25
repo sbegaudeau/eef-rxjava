@@ -56,6 +56,18 @@ public class SWTBotUtils {
 		});
 	}
 
+	public static void sendFocusLost(final Widget widget) {
+		UIThreadRunnable.asyncExec(new VoidResult() {
+			public void run() {
+				Event event = createEvent(widget);
+				event.type = SWT.FocusOut;
+				
+				widget.notifyListeners(SWT.FocusOut, event);
+			}
+		});
+	}
+
+	
 	/**
 	 * Press the enter key
 	 * 
