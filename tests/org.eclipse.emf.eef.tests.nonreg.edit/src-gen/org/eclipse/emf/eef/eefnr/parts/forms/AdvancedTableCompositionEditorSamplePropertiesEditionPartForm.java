@@ -155,7 +155,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * 
 	 */
 	protected void addToAdvancedtablecompositionRequiredProperty() {
-		// Start of user code addToAdvancedtablecompositionRequiredProperty() method body
 		Sample eObject = EefnrFactory.eINSTANCE.createSample();
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
@@ -166,26 +165,21 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
 		advancedtablecompositionRequiredProperty.refresh();
 		
-		// End of user code
-
 	}
 
 	/**
 	 * 
 	 */
 	protected void removeFromAdvancedtablecompositionRequiredProperty(Sample element) {
-		// Start of user code for the removeFromAdvancedtablecompositionRequiredProperty() method body
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 		
-		// End of user code
 	}
 
 	/**
 	 * 
 	 */
 	protected void editAdvancedtablecompositionRequiredProperty(Sample element) {
-		// Start of user code editAdvancedtablecompositionRequiredProperty() method body
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
@@ -193,7 +187,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 			editionPolicy.execute();
 			advancedtablecompositionRequiredProperty.refresh();
 		}
-		// End of user code
 	}
 
 	/**
@@ -231,7 +224,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 * 
 	 */
 	protected void addToAdvancedtablecompositionOptionalProperty() {
-		// Start of user code addToAdvancedtablecompositionOptionalProperty() method body
 		Sample eObject = EefnrFactory.eINSTANCE.createSample();
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
@@ -242,26 +234,21 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
 		advancedtablecompositionOptionalProperty.refresh();
 		
-		// End of user code
-
 	}
 
 	/**
 	 * 
 	 */
 	protected void removeFromAdvancedtablecompositionOptionalProperty(Sample element) {
-		// Start of user code for the removeFromAdvancedtablecompositionOptionalProperty() method body
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 		
-		// End of user code
 	}
 
 	/**
 	 * 
 	 */
 	protected void editAdvancedtablecompositionOptionalProperty(Sample element) {
-		// Start of user code editAdvancedtablecompositionOptionalProperty() method body
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
@@ -269,7 +256,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 			editionPolicy.execute();
 			advancedtablecompositionOptionalProperty.refresh();
 		}
-		// End of user code
 	}
 
 

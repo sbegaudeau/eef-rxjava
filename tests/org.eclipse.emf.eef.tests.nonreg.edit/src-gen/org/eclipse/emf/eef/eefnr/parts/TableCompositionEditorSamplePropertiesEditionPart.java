@@ -11,11 +11,8 @@
 package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -28,35 +25,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface TableCompositionEditorSamplePropertiesEditionPart {
 
-	/**
-	 * @return the tablecompositionRequiredProperty to add
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyToAdd();
 
-	/**
-	 * @return the tablecompositionRequiredProperty to remove
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyToRemove();
-
-	/**
-	 * @return the tablecompositionRequiredProperty to move
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyToMove();
-
-	/**
-	 * @return the tablecompositionRequiredProperty to edit
-	 * 
-	 */
-	public Map getTablecompositionRequiredPropertyToEdit();
-
-	/**
-	 * @return the current tablecompositionRequiredProperty table
-	 * 
-	 */
-	public List getTablecompositionRequiredPropertyTable();
 
 	/**
 	 * Init the tablecompositionRequiredProperty
@@ -64,7 +33,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initTablecompositionRequiredProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initTablecompositionRequiredProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the tablecompositionRequiredProperty
@@ -100,35 +69,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	public boolean isContainedInTablecompositionRequiredPropertyTable(EObject element);
 
 
-	/**
-	 * @return the tablecompositionOptionalProperty to add
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyToAdd();
 
-	/**
-	 * @return the tablecompositionOptionalProperty to remove
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyToRemove();
-
-	/**
-	 * @return the tablecompositionOptionalProperty to move
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyToMove();
-
-	/**
-	 * @return the tablecompositionOptionalProperty to edit
-	 * 
-	 */
-	public Map getTablecompositionOptionalPropertyToEdit();
-
-	/**
-	 * @return the current tablecompositionOptionalProperty table
-	 * 
-	 */
-	public List getTablecompositionOptionalPropertyTable();
 
 	/**
 	 * Init the tablecompositionOptionalProperty
@@ -136,7 +77,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initTablecompositionOptionalProperty(EObject current, EReference containingFeature, EReference feature);
+	public void initTablecompositionOptionalProperty(ReferencesTableSettings settings);
 
 	/**
 	 * Update the tablecompositionOptionalProperty
