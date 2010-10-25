@@ -89,7 +89,7 @@
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature)
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](ReferencesTableSettings)
 	 */
 [/template]
 
