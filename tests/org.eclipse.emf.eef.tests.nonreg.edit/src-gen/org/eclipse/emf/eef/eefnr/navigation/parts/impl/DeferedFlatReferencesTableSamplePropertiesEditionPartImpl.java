@@ -11,10 +11,7 @@
 package org.eclipse.emf.eef.eefnr.navigation.parts.impl;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
@@ -27,6 +24,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -222,56 +220,17 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 	}
 
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#getFlatReferencesTableSampleEditorToAdd()
-	 * 
-	 */
-	public List getFlatReferencesTableSampleEditorToAdd() {
-		return flatReferencesTableSampleEditor.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#getFlatReferencesTableSampleEditorToRemove()
-	 * 
-	 */
-	public List getFlatReferencesTableSampleEditorToRemove() {
-		return flatReferencesTableSampleEditor.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#getFlatReferencesTableSampleEditorTable()
-	 * 
-	 */
-	public List getFlatReferencesTableSampleEditorTable() {
-		return flatReferencesTableSampleEditor.getVirtualList();
-	}
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#initFlatReferencesTableSampleEditor(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#initFlatReferencesTableSampleEditor(ReferencesTableSettings)
 	 */
-	public void initFlatReferencesTableSampleEditor(EObject current, EReference containingFeature, EReference feature) {
-		flatReferencesTableSampleEditor.initComponent(current, containingFeature, feature);
+	public void initFlatReferencesTableSampleEditor(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			flatReferencesTableSampleEditor.setInput(current.eResource().getResourceSet());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#updateFlatReferencesTableSampleEditor(EObject newValue)
-	 * 
-	 */
-	public void updateFlatReferencesTableSampleEditor(EObject newValue) {
-		flatReferencesTableSampleEditor.updateComponent(newValue);
+			this.resourceSet = current.eResource().getResourceSet();
+		flatReferencesTableSampleEditor.setInput(settings);
 	}
 
 	/**
@@ -301,7 +260,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 	 * 
 	 */
 	public boolean isContainedInFlatReferencesTableSampleEditorTable(EObject element) {
-		return flatReferencesTableSampleEditor.virtualListContains(element);
+		return ((ReferencesTableSettings)flatReferencesTableSampleEditor.getInput()).contains(element);
 	}
 
 

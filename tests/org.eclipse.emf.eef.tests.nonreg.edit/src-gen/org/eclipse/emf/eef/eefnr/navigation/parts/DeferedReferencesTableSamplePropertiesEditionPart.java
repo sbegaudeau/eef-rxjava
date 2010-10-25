@@ -48,6 +48,13 @@ public interface DeferedReferencesTableSamplePropertiesEditionPart {
 	public void initReferencesTableSampleEditor(ReferencesTableSettings settings);
 
 	/**
+	 * Update the referencesTableSampleEditor
+	 * @param newValue the referencesTableSampleEditor to update
+	 * 
+	 */
+	public void updateReferencesTableSampleEditor(EObject newValue);
+
+	/**
 	 * Adds the given filter to the referencesTableSampleEditor edition editor.
 	 * 
 	 * @param filter

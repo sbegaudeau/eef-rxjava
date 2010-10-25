@@ -24,16 +24,31 @@ public class NavigationMessages extends NLS {
 	public static String DeferedFlatReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DeferedReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String DeferedFlatReferencesTableSample_ReadOnly;
 
 	
 	public static String DeferedFlatReferencesTableSample_Part_Title;
 
 	
+	public static String DeferedReferencesTableSample_ReadOnly;
+
+	
+	public static String DeferedReferencesTableSample_Part_Title;
+
+	
 	public static String DeferedFlatReferencesTableSamplePropertiesEditionPart_NameLabel;
 
 	
 	public static String DeferedFlatReferencesTableSamplePropertiesEditionPart_FlatReferencesTableSampleEditorLabel;
+
+	
+	public static String DeferedReferencesTableSamplePropertiesEditionPart_NameLabel;
+
+	
+	public static String DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel;
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

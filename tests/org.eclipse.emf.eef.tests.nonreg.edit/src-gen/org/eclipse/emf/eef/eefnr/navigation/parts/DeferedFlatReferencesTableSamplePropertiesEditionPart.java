@@ -11,10 +11,8 @@
 package org.eclipse.emf.eef.eefnr.navigation.parts;
 
 // Start of user code for imports
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -42,38 +40,13 @@ public interface DeferedFlatReferencesTableSamplePropertiesEditionPart {
 	public void setName(String newValue);
 
 
-	/**
-	 * @return the flatReferencesTableSampleEditor to add
-	 * 
-	 */
-	public List getFlatReferencesTableSampleEditorToAdd();
 
-	/**
-	 * @return the flatReferencesTableSampleEditor to remove
-	 * 
-	 */
-	public List getFlatReferencesTableSampleEditorToRemove();
-
-	/**
-	 * @return the current flatReferencesTableSampleEditor table
-	 * 
-	 */
-	public List getFlatReferencesTableSampleEditorTable();
 
 	/**
 	 * Init the flatReferencesTableSampleEditor
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the flatReferencesTableSampleEditor ReferencesTable 
 	 */
-	public void initFlatReferencesTableSampleEditor(EObject current, EReference containingFeature, EReference feature);
-
-	/**
-	 * Update the flatReferencesTableSampleEditor
-	 * @param newValue the flatReferencesTableSampleEditor to update
-	 * 
-	 */
-	public void updateFlatReferencesTableSampleEditor(EObject newValue);
+	public void initFlatReferencesTableSampleEditor(ReferencesTableSettings settings);
 
 	/**
 	 * Adds the given filter to the flatReferencesTableSampleEditor edition editor.

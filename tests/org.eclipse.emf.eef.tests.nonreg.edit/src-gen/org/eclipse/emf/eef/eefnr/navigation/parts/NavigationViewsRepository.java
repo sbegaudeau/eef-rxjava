@@ -35,4 +35,18 @@ public class NavigationViewsRepository {
 	
 	}
 
+	/**
+	 * DeferedReferencesTableSample view descriptor
+	 * 
+	 */
+	public static class DeferedReferencesTableSample {
+		
+		public static String name = "navigation::DeferedReferencesTableSample::name";
+		
+		
+		public static String referencesTableSampleEditor = "navigation::DeferedReferencesTableSample::referencesTableSampleEditor";
+		
+	
+	}
+
 }

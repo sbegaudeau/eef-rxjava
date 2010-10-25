@@ -388,6 +388,16 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart#updateReferencesTableSampleEditor(EObject newValue)
+	 * 
+	 */
+	public void updateReferencesTableSampleEditor(EObject newValue) {
+	referencesTableSampleEditor.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart#addFilterReferencesTableSampleEditor(ViewerFilter filter)
 	 * 
 	 */

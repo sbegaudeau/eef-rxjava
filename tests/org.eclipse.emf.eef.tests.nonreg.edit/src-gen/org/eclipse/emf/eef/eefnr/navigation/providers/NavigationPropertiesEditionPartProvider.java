@@ -12,7 +12,9 @@ package org.eclipse.emf.eef.eefnr.navigation.providers;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedFlatReferencesTableSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedFlatReferencesTableSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -44,6 +46,12 @@ public class NavigationPropertiesEditionPartProvider implements IPropertiesEditi
 				return new DeferedFlatReferencesTableSamplePropertiesEditionPartImpl(component);
 			if (kind == NavigationViewsRepository.FORM_KIND)
 				return new DeferedFlatReferencesTableSamplePropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.DeferedReferencesTableSample.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new DeferedReferencesTableSamplePropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new DeferedReferencesTableSamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}
