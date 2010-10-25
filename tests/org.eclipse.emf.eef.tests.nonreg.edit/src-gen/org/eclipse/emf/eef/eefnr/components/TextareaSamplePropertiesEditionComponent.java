@@ -66,7 +66,7 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 	 * 
 	 */
 	protected TextareaSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

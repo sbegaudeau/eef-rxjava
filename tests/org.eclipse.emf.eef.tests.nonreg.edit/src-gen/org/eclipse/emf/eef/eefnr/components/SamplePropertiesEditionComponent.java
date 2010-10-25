@@ -66,7 +66,7 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 	 * 
 	 */
 	protected SamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

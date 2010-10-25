@@ -65,7 +65,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 * 
 	 */
 	protected MultiValuedEditorSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

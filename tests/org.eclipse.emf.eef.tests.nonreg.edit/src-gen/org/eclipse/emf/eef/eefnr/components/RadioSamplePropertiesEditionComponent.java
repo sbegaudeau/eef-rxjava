@@ -67,7 +67,7 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * 
 	 */
 	protected RadioSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 

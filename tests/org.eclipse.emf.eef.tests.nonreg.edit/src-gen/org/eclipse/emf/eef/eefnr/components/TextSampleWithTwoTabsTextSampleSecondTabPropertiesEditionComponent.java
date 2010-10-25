@@ -66,7 +66,7 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 * 
 	 */
 	protected TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart;
-
+	
 	/**
 	 * Default constructor
 	 * 

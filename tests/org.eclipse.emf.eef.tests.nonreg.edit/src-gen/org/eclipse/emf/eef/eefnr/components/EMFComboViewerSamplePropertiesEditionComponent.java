@@ -67,7 +67,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 	 * 
 	 */
 	protected EMFComboViewerSamplePropertiesEditionPart basePart;
-
+	
 	/**
 	 * Default constructor
 	 * 
