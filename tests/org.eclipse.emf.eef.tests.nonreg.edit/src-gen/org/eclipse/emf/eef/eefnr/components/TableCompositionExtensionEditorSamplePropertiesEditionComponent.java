@@ -76,7 +76,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	/**
 	 * Settings for tablecompositionOptionalProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings tablecompositionRequiredPropertySettings;
+	private	ReferencesTableSettings tablecompositionOptionalPropertySettings;
 	
 	/**
 	 * Default constructor
@@ -133,8 +133,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
-
+if (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
+	basePart.updateTablecompositionRequiredProperty(tableCompositionExtensionEditorSample);
+if (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
+	basePart.updateTablecompositionOptionalProperty(tableCompositionExtensionEditorSample);
 
 	}
 
@@ -208,8 +210,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			// init values
 			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
 			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
-			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
-			basePart.initTablecompositionOptionalProperty(tablecompositionRequiredPropertySettings);
+			tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty());
+			basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
 
@@ -235,7 +237,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof AbstractTableCompositionTargetExtensionEditorSample);
+						return (element instanceof String && element.equals("")) || (element instanceof AbstractTableCompositionTargetExtensionEditorSample); //$NON-NLS-1$ 
 				}
 
 			});
@@ -308,10 +310,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	private void updateTablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
 		if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
-				tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+				tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 			}
 		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 		}
 	}
 
@@ -324,7 +326,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty || key == EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty;
+		return key == EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty;
 	}
 
 	/**

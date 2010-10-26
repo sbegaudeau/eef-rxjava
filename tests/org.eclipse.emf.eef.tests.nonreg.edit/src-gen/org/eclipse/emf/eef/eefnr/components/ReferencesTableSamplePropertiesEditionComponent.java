@@ -134,8 +134,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
-
+if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
+	basePart.updateReferencestableRequiredProperty(referencesTableSample);
+if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
+	basePart.updateReferencestableOptionalProperty(referencesTableSample);
 
 	}
 

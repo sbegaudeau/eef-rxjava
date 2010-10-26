@@ -11,6 +11,8 @@
 package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -36,9 +38,11 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Display;
@@ -70,6 +74,11 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * 
 	 */
 	protected DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart;
+	
+	/**
+	 * Settings for flatReferencesTableSampleEditor ReferencesTable
+	 */
+	private	ReferencesTableSettings flatreferenceEditorSettings;
 	
 	/**
 	 * Default constructor
@@ -133,9 +142,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 				deferedFlatReferencesTableSamplePart.setName("");
 			}
 		}
-							if (NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References().equals(msg.getFeature())) {
-								deferedFlatReferencesTableSamplePart.updateFlatReferencesTableSampleEditor(deferedFlatReferenceTableEditorSample);
-							}
+if (NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor().equals(msg.getFeature()))
+	deferedFlatReferencesTableSamplePart.updateFlatReferencesTableSampleEditor(deferedFlatReferenceTableEditorSample);
 
 	}
 
@@ -210,7 +218,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			if (deferedFlatReferenceTableEditorSample.getName() != null)
 				deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferenceTableEditorSample.getName()));
 
-			deferedFlatReferencesTableSamplePart.initFlatReferencesTableSampleEditor(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			flatreferenceEditorSettings = new ReferencesTableSettings(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedFlatReferencesTableSamplePart.initFlatReferencesTableSampleEditor(flatreferenceEditorSettings);
 			// init filters
 
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new ViewerFilter() {
@@ -258,7 +267,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 				}
 				if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
-					// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatReferencesTableSampleEditor, DeferedFlatReferencesTableSample, DeferedFlatReferencesTableSampleEditor.
+					updateFlatReferencesTableSampleEditor(event);
 				}
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -269,7 +278,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 						}
 						if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
-							// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : flatReferencesTableSampleEditor, DeferedFlatReferencesTableSample, DeferedFlatReferencesTableSampleEditor.
+							updateFlatReferencesTableSampleEditor(event);
 						}
 					}
 				});			
@@ -288,7 +297,10 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 		deferedFlatReferenceTableEditorSample.setName(newValue);	
 	}
 
-	// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : flatReferencesTableSampleEditor, DeferedFlatReferencesTableSample, DeferedFlatReferencesTableSampleEditor.
+	private void updateFlatReferencesTableSampleEditor(final IPropertiesEditionEvent event) {
+		if (event.getKind() == PropertiesEditionEvent.SET)
+			flatreferenceEditorSettings.setToReference((List<EObject>) event.getNewValue());
+	}
 
 
 

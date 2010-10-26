@@ -140,7 +140,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 				deferedReferencesTableSamplePart.setName("");
 			}
 		}
-
+if (NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor().equals(msg.getFeature()))
+	deferedReferencesTableSamplePart.updateReferencesTableSampleEditor(deferedReferenceTableEditorSample);
 
 	}
 

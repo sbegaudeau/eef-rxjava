@@ -128,7 +128,8 @@ public class RootPropertiesEditionComponent extends StandardPropertiesEditionCom
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
+if (EefnrPackage.eINSTANCE.getRoot_Samples().equals(msg.getFeature()))
+	basePart.updateSamples(root);
 
 	}
 

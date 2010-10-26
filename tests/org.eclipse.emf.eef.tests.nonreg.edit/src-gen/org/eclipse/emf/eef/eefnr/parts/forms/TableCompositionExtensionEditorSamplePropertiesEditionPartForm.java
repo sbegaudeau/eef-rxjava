@@ -257,7 +257,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		GridData tablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionOptionalPropertyData.horizontalSpan = 3;
 		this.tablecompositionOptionalProperty.setLayoutData(tablecompositionOptionalPropertyData);
-		this.tablecompositionOptionalProperty.setLowerBound(1);
+		this.tablecompositionOptionalProperty.setLowerBound(0);
 		this.tablecompositionOptionalProperty.setUpperBound(-1);
 		tablecompositionOptionalProperty.setID(EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty);
 		tablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
@@ -273,7 +273,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	 * 
 	 */
 	protected void addToTablecompositionOptionalProperty() {
-		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), resourceSet);
+		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty(), resourceSet);
 		PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {

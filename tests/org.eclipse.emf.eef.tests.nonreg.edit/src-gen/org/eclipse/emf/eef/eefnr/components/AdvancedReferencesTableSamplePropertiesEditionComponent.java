@@ -135,8 +135,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sta
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
-
+if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedreferencestableRequiredProperty(advancedReferencesTableSample);
+if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedreferencestableOptionalProperty(advancedReferencesTableSample);
 
 	}
 

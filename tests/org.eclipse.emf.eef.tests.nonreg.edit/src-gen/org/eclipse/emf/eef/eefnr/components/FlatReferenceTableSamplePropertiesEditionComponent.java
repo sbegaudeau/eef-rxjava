@@ -135,8 +135,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
-
+if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
+	basePart.updateFlatreferencetableRequiredProperty(flatReferencesTableSample);
+if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
+	basePart.updateFlatreferencetableOptionalProperty(flatReferencesTableSample);
 
 	}
 

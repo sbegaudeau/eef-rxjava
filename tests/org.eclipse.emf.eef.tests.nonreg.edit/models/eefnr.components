@@ -232,7 +232,7 @@
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionExtensionEditorSample/tablecompositionRequiredProperty"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_5KmjYT1oEd-LLuOHydFNYw" name="tablecompositionOptionalProperty" views="_3tHRtD1oEd-LLuOHydFNYw">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionExtensionEditorSample/tablecompositionRequiredProperty"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionExtensionEditorSample/tablecompositionOptionalProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionExtensionEditorSample"/>
       </bindings>

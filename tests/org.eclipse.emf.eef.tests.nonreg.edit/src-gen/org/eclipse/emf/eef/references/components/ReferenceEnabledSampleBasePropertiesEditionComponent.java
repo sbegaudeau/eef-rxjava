@@ -131,7 +131,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
+if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
+	basePart.updateReference(referenceEnabledSample);
 
 	}
 

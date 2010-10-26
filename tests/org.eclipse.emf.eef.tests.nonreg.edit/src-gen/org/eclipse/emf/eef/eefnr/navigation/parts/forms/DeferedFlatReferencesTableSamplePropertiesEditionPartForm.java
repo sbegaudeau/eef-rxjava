@@ -234,6 +234,16 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends C
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#updateFlatReferencesTableSampleEditor(EObject newValue)
+	 * 
+	 */
+	public void updateFlatReferencesTableSampleEditor(EObject newValue) {
+	flatReferencesTableSampleEditor.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart#addFilterFlatReferencesTableSampleEditor(ViewerFilter filter)
 	 * 
 	 */

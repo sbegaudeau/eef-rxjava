@@ -133,8 +133,10 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
-
+if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
+	basePart.updateTablecompositionRequiredProperty(tableCompositionEditorSample);
+if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
+	basePart.updateTablecompositionOptionalProperty(tableCompositionEditorSample);
 
 	}
 

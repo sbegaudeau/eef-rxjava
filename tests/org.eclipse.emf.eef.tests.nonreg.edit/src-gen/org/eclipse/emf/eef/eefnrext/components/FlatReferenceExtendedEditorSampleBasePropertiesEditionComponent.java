@@ -133,7 +133,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
+if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample().equals(msg.getFeature()))
+	basePart.updateFlatReferenceEditorSample(flatReferenceExtendedEditorSample);
 
 	}
 

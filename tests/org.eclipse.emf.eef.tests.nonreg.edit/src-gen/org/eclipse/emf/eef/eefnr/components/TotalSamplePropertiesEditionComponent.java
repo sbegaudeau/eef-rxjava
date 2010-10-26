@@ -240,8 +240,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 			basePart.setEobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());
 		if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
 			basePart.setEobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
-
-
+if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
+	basePart.updateReferencestableRequiredProperty(totalSample);
+if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
+	basePart.updateReferencestableOptionalProperty(totalSample);
 		if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
 			basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
 
@@ -262,16 +264,22 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
 		}
 
-
-
-
-
+if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
+	basePart.updateTablecompositionRequiredProperty(totalSample);
+if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
+	basePart.updateTablecompositionOptionalProperty(totalSample);
+if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedreferencestableRequiredProperty(totalSample);
+if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedreferencestableOptionalProperty(totalSample);
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
 			basePart.setAdvancedeobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
 			basePart.setAdvancedeobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
-
-
+if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
+if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
 		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));

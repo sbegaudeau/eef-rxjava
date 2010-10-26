@@ -133,8 +133,10 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	 * 
 	 */
 	protected void runUpdateRunnable(final Notification msg) {
-
-
+if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedtablecompositionRequiredProperty(advancedTableCompositionEditorSample);
+if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
+	basePart.updateAdvancedtablecompositionOptionalProperty(advancedTableCompositionEditorSample);
 
 	}
 

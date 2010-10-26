@@ -35,6 +35,13 @@ public interface FlatReferenceExtendedEditorSamplePropertiesEditionPart {
 	public void initFlatReferenceEditorSample(ReferencesTableSettings settings);
 
 	/**
+	 * Update the flatReferenceEditorSample
+	 * @param newValue the flatReferenceEditorSample to update
+	 * 
+	 */
+	public void updateFlatReferenceEditorSample(EObject newValue);
+
+	/**
 	 * Adds the given filter to the flatReferenceEditorSample edition editor.
 	 * 
 	 * @param filter

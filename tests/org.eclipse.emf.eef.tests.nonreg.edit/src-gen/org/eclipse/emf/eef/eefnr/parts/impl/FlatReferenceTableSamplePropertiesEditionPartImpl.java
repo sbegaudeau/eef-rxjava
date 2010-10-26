@@ -184,6 +184,16 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableRequiredProperty(EObject newValue)
+	 * 
+	 */
+	public void updateFlatreferencetableRequiredProperty(EObject newValue) {
+	flatreferencetableRequiredProperty.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addFilterFlatreferencetableRequiredProperty(ViewerFilter filter)
 	 * 
 	 */
@@ -224,6 +234,16 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableOptionalProperty.setInput(settings);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableOptionalProperty(EObject newValue)
+	 * 
+	 */
+	public void updateFlatreferencetableOptionalProperty(EObject newValue) {
+	flatreferencetableOptionalProperty.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
