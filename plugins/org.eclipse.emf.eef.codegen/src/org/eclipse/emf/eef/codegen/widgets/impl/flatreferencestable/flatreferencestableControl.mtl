@@ -73,6 +73,26 @@ update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [comment ===== Case : model = Reference(*) in Simple Navigation - view = FlatReferencesTable===== /]
+[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
+
+/**
+ * Settings for [editionElement.name/] ReferencesTable
+ */
+private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]Settings;
+
+[/template]
+
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater  ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
+private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
+	if (event.getKind() == PropertiesEditionEvent.SET)
+		[editionElement.model.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
+}
+[/template]
+
+[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
+update[editionElement.name.toJavaClassifier()/](event);
+[/template]
+
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
 							if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
 								[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
@@ -80,7 +100,8 @@ update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+			[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
