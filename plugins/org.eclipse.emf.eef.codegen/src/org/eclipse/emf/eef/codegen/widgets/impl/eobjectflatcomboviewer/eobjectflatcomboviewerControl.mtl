@@ -88,12 +88,12 @@ update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.nam
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-							if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
-								if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
-									[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
-								else
-									[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](null);
-							}
+if ([editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/].equals(msg.getFeature())) {
+	if ([pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]() instanceof [editionElement.model.eContainingClass.name.toUpperFirst()/])
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((([editionElement.model.eContainingClass.name.toUpperFirst()/])[pec.model.name.toJavaIdentifier()/].get[editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.name.toUpperFirst()/]()).get[editionElement.model.name.toUpperFirst()/]());
+	else
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](null);
+}
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
@@ -148,8 +148,8 @@ update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.nam
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isContainmentSingle() and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
-						if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
-							[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null)
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.views->first().toJavaType().trim()/])msg.getNewValue());
 [/template]
 
 
