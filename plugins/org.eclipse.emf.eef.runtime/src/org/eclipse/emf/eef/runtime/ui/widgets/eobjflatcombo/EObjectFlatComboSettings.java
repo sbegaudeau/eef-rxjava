@@ -3,11 +3,14 @@
  */
 package org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo;
 
+import java.util.Arrays;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
@@ -49,6 +52,14 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 	 */
 	public EClassifier getEType() {
 		return features[features.length - 1].getEType();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#isAffectingFeature(org.eclipse.emf.ecore.EStructuralFeature)
+	 */
+	public boolean isAffectingFeature(EStructuralFeature feature) {
+		return Arrays.asList(features).contains(feature);
 	}
 
 	/************************************************************************************************
