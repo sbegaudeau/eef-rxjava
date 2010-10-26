@@ -58,8 +58,19 @@ public class EEFUtils {
 	}
 
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature) {
+		return choiceOfValues(EEFRuntimePlugin.getDefault().getAdapterFactory(), eObject, feature);
+	}
+
+	/**
+	 * Return the choice of value for the given feature
+	 * @param adapterFactory the adapterFactory to use
+	 * @param eObject the EObject to process
+	 * @param feature the feature to process
+	 * @return list of possible values
+	 */
+	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject, EStructuralFeature feature) {
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)EEFRuntimePlugin.getDefault().getAdapterFactory().adapt(eObject, IItemPropertySource.class);
+		IItemPropertySource ps = (IItemPropertySource) adapterFactory.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)

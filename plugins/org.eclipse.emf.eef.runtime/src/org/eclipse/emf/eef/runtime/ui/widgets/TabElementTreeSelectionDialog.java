@@ -176,24 +176,27 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 			// Filter elements only in main Resource
 			@Override
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				if (input instanceof EObjectFlatComboSettings) {
-					EObjectFlatComboSettings settings = (EObjectFlatComboSettings) input;
-					if (settings.getSource().eResource().getResourceSet() != null) {
-						ResourceSet resourceSet = settings.getSource().eResource().getResourceSet();
-						Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? 
-													TabElementTreeSelectionDialog.this.mainResource
-												  : resourceSet.getResources().get(0);
-						if (mainResource != null && mainResource == element) {
+				ResourceSet resourceSet = null;
+				if (input instanceof ResourceSet) {
+					resourceSet = (ResourceSet)input;
+				} else if (input instanceof EObjectFlatComboSettings) {
+					if (((EObjectFlatComboSettings) input).getSource().eResource() != null) 
+						resourceSet = ((EObjectFlatComboSettings) input).getSource().eResource().getResourceSet();
+				}
+				if (resourceSet != null) {
+					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? 
+							TabElementTreeSelectionDialog.this.mainResource
+							: resourceSet.getResources().get(0);
+					if (mainResource != null && mainResource == element) {
+						return true;
+					}
+					if (element instanceof EObject) {
+						EObject eObject = (EObject)element;
+						if (mainResource != null && mainResource == eObject.eResource()) {
 							return true;
 						}
-						if (element instanceof EObject) {
-							EObject eObject = (EObject)element;
-							if (mainResource != null && mainResource == eObject.eResource()) {
-								return true;
-							}
-						}
 					}
-				}				
+				}
 				return false;
 			}
 		}));

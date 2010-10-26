@@ -41,6 +41,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -233,8 +234,13 @@ public class PropertiesEditionWizard extends Wizard {
 				});
 				buttons.add(button);
 			}
-			buttons.get(0).setSelection(true);
-			eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
+			if (buttons.size() > 0) {
+				buttons.get(0).setSelection(true);
+				eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
+			} else {
+				Label errorLabel = new Label(control, SWT.NONE);
+				errorLabel.setText("Error non instanciable type found");
+			}
 			setControl(control);
 		}
 
