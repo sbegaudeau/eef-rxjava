@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -142,7 +143,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 				deferedFlatReferencesTableSamplePart.setName("");
 			}
 		}
-if (NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor().equals(msg.getFeature()))
+if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 	deferedFlatReferencesTableSamplePart.updateFlatReferencesTableSampleEditor(deferedFlatReferenceTableEditorSample);
 
 	}

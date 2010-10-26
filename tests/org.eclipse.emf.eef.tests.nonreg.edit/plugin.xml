@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.3 2010/04/16 15:51:28 sbouchet Exp $
+ $Id: plugin.xml,v 1.4 2010/10/26 22:44:42 glefur Exp $
 -->
 
 <plugin>
@@ -20,6 +20,9 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
             class="org.eclipse.emf.eef.eefnr.references.provider.ReferencesItemProviderAdapterFactory"
@@ -29,9 +32,24 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            class="org.eclipse.emf.eef.eefnrext.provider.EefnrextItemProviderAdapterFactory"
+            uri="http://www.eclipse.org/emf/eef/nonreg/navigation/1.0.0"
+            class="org.eclipse.emf.eef.eefnr.navigation.provider.NavigationItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
             uri="http://www.eclipse.org/emf/eef/nonreg/extension/1.0.0"
+            class="org.eclipse.emf.eef.eefnrext.provider.EefnrextItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
