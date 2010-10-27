@@ -21,12 +21,6 @@
 // [/protected]
 [/template]
 
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
-// [protected ('update'.concat(editionElement.name.toJavaClassifier()).concat(' method invokation'))]
-
-// [/protected]
-[/template]
-
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for '.concat(editionElement.name).concat(' live update'))]

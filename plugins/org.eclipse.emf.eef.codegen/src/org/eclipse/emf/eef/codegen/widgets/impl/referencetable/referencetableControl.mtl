@@ -29,7 +29,6 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
 			[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference((EObject) event.getNewValue());
@@ -37,11 +36,6 @@ private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEd
 	} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 			[editionElement.model.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 	}
-}
-[/template]
-
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
-update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
@@ -122,7 +116,6 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForMultipleModelReference())]
-private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
 			[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference((EObject) event.getNewValue());
@@ -130,11 +123,6 @@ private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEd
 	} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 			[editionElement.model.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 	}
-}
-[/template]
-
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.validCaseForMultipleModelReference())]
-update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForMultipleModelReference())]
@@ -190,7 +178,6 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForSingleModelReference())]
-private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
 			[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference((EObject) event.getNewValue());
@@ -198,11 +185,6 @@ private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEd
 	} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 			[editionElement.model.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 	}
-}
-[/template]
-
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.validCaseForSingleModelReference())]
-update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForSingleModelReference())]

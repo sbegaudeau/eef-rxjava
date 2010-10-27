@@ -18,15 +18,9 @@
 
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
-private void update[editionElement.name.toJavaClassifier()/]([editionElement.model.eType.instanceClassName/] newValue) {
-	[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](newValue);	
-}
-[/template]
-
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
 [if (editionElement.model.isPrimitiveType())]
-update[editionElement.name.toJavaClassifier()/]((EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
-update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/]((EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
+[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]

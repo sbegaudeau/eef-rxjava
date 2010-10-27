@@ -35,12 +35,5 @@
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
-private void update[editionElement.name.toJavaClassifier()/]([editionElement.model.eType.name/] newValue) {
-	[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](newValue);
-}
-[/template]
-
-[comment invokeEObjectUpdate : templates that override this one must define the invokation of the method declareEObjectUpdater /]
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ?  (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
-update[editionElement.name.toJavaClassifier()/](([editionElement.model.eType.name/])((EEnumLiteral)[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).getInstance());
+[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])((EEnumLiteral)[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).getInstance());
 [/template]

@@ -27,11 +27,6 @@
 // FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : [editionElement.name/], [view.name/], [pec.name/].
 [/template]
 
-[comment invokeEObjectUpdate : templates that override this one must define the invokation of the method declareEObjectUpdater /]
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-// FIXME INVALID CASE you must override the template 'invokeEObjectUpdater' for the case : [editionElement.name/], [view.name/], [pec.name/].
-[/template]
-
 [comment liveupdater : templates that override this one must define the behaviour of the generated widget when the associated
 		 feature of the edited element has changed /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]

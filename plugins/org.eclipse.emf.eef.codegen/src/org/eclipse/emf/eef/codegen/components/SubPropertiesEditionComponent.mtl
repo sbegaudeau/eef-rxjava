@@ -358,27 +358,13 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-		[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
-				// [protected ('for firePropertiesChanged body')]
-				
-				// [/protected]
-		[else]
-			[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-				if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-					[editionElement.invokeEObjectUpdater(view, pec)/]
-				}
-			[/for]
-		[/if]
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-					[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-						if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-							[editionElement.invokeEObjectUpdater(view, pec)/]
-						}
-					[/for]
+						updatePart(event);
 					}
 				});			
 			}
@@ -392,10 +378,13 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		}
 	}
 
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-	[editionElement.declareEObjectUpdater(view, pec)/]
-
-[/for]
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
+			[editionElement.declareEObjectUpdater(view, pec)/]
+		}
+		[/for]
+	}
 
 [if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]
 

@@ -28,14 +28,8 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
-private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.SET)
 		[editionElement.model.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
-}
-[/template]
-
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
-update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
@@ -85,14 +79,8 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater  ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-private void update[editionElement.name.toJavaClassifier()/](final IPropertiesEditionEvent event) {
 	if (event.getKind() == PropertiesEditionEvent.SET)
 		[editionElement.model.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
-}
-[/template]
-
-[template public invokeEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides invokeEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-update[editionElement.name.toJavaClassifier()/](event);
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
