@@ -160,40 +160,40 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setTextRequiredProperty("");
-							}
-						}
-						if (EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setTextOptionalProperty("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextRequiredProperty("");
+					}
+				}
+				if (EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextOptionalProperty("");
+					}
+				}
 						if (EefnrPackage.eINSTANCE.getTotalSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
 							basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
 				
 						if (EefnrPackage.eINSTANCE.getTotalSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
 							basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
 				
-						if (EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setTextareaRequiredProperty("");
-							}
-						}
-						if (EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setTextareaOptionalProperty("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextareaRequiredProperty("");
+					}
+				}
+				if (EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextareaOptionalProperty("");
+					}
+				}
 						if (EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
 							basePart.setRadioRequiredProperty((Enumerator)msg.getNewValue());
 				
@@ -244,13 +244,13 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 					basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
 				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
 					basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
-						if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setName("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setName("");
+					}
+				}
 				
 			}
 		};

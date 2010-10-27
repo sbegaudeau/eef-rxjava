@@ -86,20 +86,20 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)textSampleFirstTabPart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
-							if (msg.getNewValue() != null) {
-								textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								textSampleFirstTabPart.setTextOptionalPropertyInFirstTab("");
-							}
-						}
-						if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
-							if (msg.getNewValue() != null) {
-								textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								textSampleFirstTabPart.setTextRequiredPropertyInFirstTab("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
+					if (msg.getNewValue() != null) {
+						textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						textSampleFirstTabPart.setTextOptionalPropertyInFirstTab("");
+					}
+				}
+				if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
+					if (msg.getNewValue() != null) {
+						textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						textSampleFirstTabPart.setTextRequiredPropertyInFirstTab("");
+					}
+				}
 				
 			}
 		};

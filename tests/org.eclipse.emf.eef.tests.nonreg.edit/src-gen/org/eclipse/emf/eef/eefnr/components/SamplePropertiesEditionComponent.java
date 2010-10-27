@@ -86,20 +86,20 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setTextRequiredProperty("");
-							}
-						}
-						if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setTextOptionalProperty("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextRequiredProperty("");
+					}
+				}
+				if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextOptionalProperty("");
+					}
+				}
 				
 			}
 		};

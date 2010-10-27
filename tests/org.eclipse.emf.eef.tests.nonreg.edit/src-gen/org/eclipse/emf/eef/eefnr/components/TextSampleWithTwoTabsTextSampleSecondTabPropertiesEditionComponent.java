@@ -86,20 +86,20 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)textSampleSecondTabPart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
-							if (msg.getNewValue() != null) {
-								textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								textSampleSecondTabPart.setTextOptionalPropertyInSecondTab("");
-							}
-						}
-						if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
-							if (msg.getNewValue() != null) {
-								textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								textSampleSecondTabPart.setTextRequiredPropertyInSecondTab("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
+					if (msg.getNewValue() != null) {
+						textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						textSampleSecondTabPart.setTextOptionalPropertyInSecondTab("");
+					}
+				}
+				if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
+					if (msg.getNewValue() != null) {
+						textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						textSampleSecondTabPart.setTextRequiredPropertyInSecondTab("");
+					}
+				}
 				
 			}
 		};

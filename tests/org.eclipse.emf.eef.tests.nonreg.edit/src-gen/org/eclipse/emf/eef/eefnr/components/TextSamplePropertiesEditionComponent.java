@@ -25,10 +25,15 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
 
@@ -38,20 +43,37 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class TextSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
 	/**
+	 * The EObject to edit
+	 * 
+	 */
+	private TextSample textSample;
+
+	/**
+	 * The Base part
+	 * 
+	 */
+	protected TextSamplePropertiesEditionPart basePart;
+	
+	/**
 	 * Default constructor
 	 * 
 	 */
 	public TextSamplePropertiesEditionComponent(EObject textSample, String editing_mode) {
-		super(textSample, editing_mode);
+		if (textSample instanceof TextSample) {
+			this.textSample = (TextSample)textSample;
+			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				semanticAdapter = initializeSemanticAdapter();
+				this.textSample.eAdapters().add(semanticAdapter);
+			}
+		}
 		parts = new String[] { BASE_PART };
-		repositoryKey = EefnrViewsRepository.class;
-		partKey = EefnrViewsRepository.TextSample.class;
+		this.editing_mode = editing_mode;
 	}
 
 	/**
@@ -60,29 +82,74 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @return the semantic model listener
 	 * 
 	 */
-	protected AdapterImpl initializeSemanticAdapter() {
+	private AdapterImpl initializeSemanticAdapter() {
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								((TextSamplePropertiesEditionPart)basePart).setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								((TextSamplePropertiesEditionPart)basePart).setTextRequiredProperty("");
-							}
-						}
-						if (EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								((TextSamplePropertiesEditionPart)basePart).setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								((TextSamplePropertiesEditionPart)basePart).setTextOptionalProperty("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextRequiredProperty("");
+					}
+				}
+				if (EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setTextOptionalProperty("");
+					}
+				}
 				
 			}
 		};
 	}
 	 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
+	 * 
+	 */
+	public java.lang.Class translatePart(String key) {
+		if (BASE_PART.equals(key))
+			return EefnrViewsRepository.TextSample.class;
+		return super.translatePart(key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
+	 *  (java.lang.String, java.lang.String)
+	 * 
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+		if (textSample != null && BASE_PART.equals(key)) {
+			if (basePart == null) {
+				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
+				if (provider != null) {
+					basePart = (TextSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.TextSample.class, kind, this);
+					addListener((IPropertiesEditionListener)basePart);
+				}
+			}
+			return (IPropertiesEditionPart)basePart;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
+	 */
+	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (key == EefnrViewsRepository.TextSample.class)
+			this.basePart = (TextSamplePropertiesEditionPart) propertiesEditionPart;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -97,10 +164,10 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 			final TextSample textSample = (TextSample)elt;
 			// init values
 			if (textSample.getTextRequiredProperty() != null)
-				((TextSamplePropertiesEditionPart)basePart).setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSample.getTextRequiredProperty()));
+				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSample.getTextRequiredProperty()));
 
 			if (textSample.getTextOptionalProperty() != null)
-				((TextSamplePropertiesEditionPart)basePart).setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSample.getTextOptionalProperty()));
+				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSample.getTextOptionalProperty()));
 
 			// init filters
 
@@ -123,10 +190,10 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.TextSample.textRequiredProperty == event.getAffectedEditor()) {
-			((TextSample)semanticObject).setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			textSample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (EefnrViewsRepository.TextSample.textOptionalProperty == event.getAffectedEditor()) {
-			((TextSample)semanticObject).setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			textSample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
 
@@ -169,4 +236,39 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 		return ret;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
+	 * 
+	 */
+	public Diagnostic validate() {
+		Diagnostic validate = Diagnostic.OK_INSTANCE;
+		validate = EEFRuntimePlugin.getEEFValidator().validate(textSample);
+		// Start of user code for custom validation check
+		
+		// End of user code
+		return validate;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
+	 * 
+	 */
+	public void dispose() {
+		if (semanticAdapter != null)
+			textSample.eAdapters().remove(semanticAdapter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * 
+	 */
+	public String getTabText(String p_key) {
+		return basePart.getTitle();
+	}
 }

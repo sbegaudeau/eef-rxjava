@@ -86,20 +86,20 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)secondFlatReferenceExtendedEditorSamplePart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
-							if (msg.getNewValue() != null) {
-								secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								secondFlatReferenceExtendedEditorSamplePart.setDemo("");
-							}
-						}
-						if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
-							if (msg.getNewValue() != null) {
-								secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
-							} else {
-								secondFlatReferenceExtendedEditorSamplePart.setSize("");
-							}
-						}
+				if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
+					if (msg.getNewValue() != null) {
+						secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						secondFlatReferenceExtendedEditorSamplePart.setDemo("");
+					}
+				}
+				if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
+					if (msg.getNewValue() != null) {
+						secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					} else {
+						secondFlatReferenceExtendedEditorSamplePart.setSize("");
+					}
+				}
 				
 			}
 		};

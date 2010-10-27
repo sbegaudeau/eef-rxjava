@@ -86,13 +86,13 @@ public class AbstractSamplePropertiesEditionComponent extends StandardProperties
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
-							if (msg.getNewValue() != null) {
-								basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								basePart.setName("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
+					if (msg.getNewValue() != null) {
+						basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						basePart.setName("");
+					}
+				}
 				
 			}
 		};

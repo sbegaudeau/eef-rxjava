@@ -98,13 +98,13 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)deferedReferencesTableSamplePart) {
 			
 			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null){
-							if (msg.getNewValue() != null) {
-								deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-							} else {
-								deferedReferencesTableSamplePart.setName("");
-							}
-						}
+				if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null){
+					if (msg.getNewValue() != null) {
+						deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					} else {
+						deferedReferencesTableSamplePart.setName("");
+					}
+				}
 				if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 					deferedReferencesTableSamplePart.updateReferencesTableSampleEditor(deferedReferenceTableEditorSample);
 				
