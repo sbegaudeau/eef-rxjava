@@ -310,9 +310,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void updatePart(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 			[editionElement.declareEObjectUpdater(view, pec)/]
