@@ -66,20 +66,20 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 			final TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)elt;
 			final TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)editingPart;
 			// init values
-								if (textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab() != null)
-									textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab()));
-					
-								if (textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab() != null)
-									textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab()));
-					
+			if (textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab() != null)
+				textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab()));
+			
+			if (textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab() != null)
+				textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab()));
+			
 			// init filters
-
-
+			
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 

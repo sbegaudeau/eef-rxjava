@@ -65,16 +65,16 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 			final AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)elt;
 			final AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
 			// init values
-								basePart.setEnabled(abstractEnabledSample.isEnabled());
-					
+			basePart.setEnabled(abstractEnabledSample.isEnabled());
+			
 			// init filters
-
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
-
+		
+		
 		setInitializing(false);
 	}
 
@@ -100,8 +100,8 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	 */
 	public void updatePart(Notification msg) {
 		AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
-				if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && basePart != null)
-					basePart.setEnabled((Boolean)msg.getNewValue());
+		if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && basePart != null)
+			basePart.setEnabled((Boolean)msg.getNewValue());
 		
 		
 	}

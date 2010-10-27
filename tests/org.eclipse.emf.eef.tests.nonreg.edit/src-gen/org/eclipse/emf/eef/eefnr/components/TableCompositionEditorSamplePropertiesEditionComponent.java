@@ -77,13 +77,13 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			final TableCompositionEditorSample tableCompositionEditorSample = (TableCompositionEditorSample)elt;
 			final TableCompositionEditorSamplePropertiesEditionPart basePart = (TableCompositionEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-								tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty());
-								basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
-								tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty());
-								basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
+			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty());
+			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
+			tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty());
+			basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
-
+			
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -91,15 +91,15 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof Sample);
-				}
-
+					}
+			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
+												
+												// End of user code
 			
-			// End of user code
-
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
-
+			
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -107,18 +107,18 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
-				}
-
+					}
+			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -134,22 +134,22 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TableCompositionEditorSample tableCompositionEditorSample = (TableCompositionEditorSample)semanticObject;
 		if (EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof Sample) {
-						tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof Sample) {
+					tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 		if (EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof Sample) {
-						tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof Sample) {
+					tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

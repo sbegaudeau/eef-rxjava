@@ -66,20 +66,20 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 			final Sample sample = (Sample)elt;
 			final SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			// init values
-								if (sample.getTextRequiredProperty() != null)
-									basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextRequiredProperty()));
-					
-								if (sample.getTextOptionalProperty() != null)
-									basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextOptionalProperty()));
-					
+			if (sample.getTextRequiredProperty() != null)
+				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextRequiredProperty()));
+			
+			if (sample.getTextOptionalProperty() != null)
+				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextOptionalProperty()));
+			
 			// init filters
-
-
+			
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 

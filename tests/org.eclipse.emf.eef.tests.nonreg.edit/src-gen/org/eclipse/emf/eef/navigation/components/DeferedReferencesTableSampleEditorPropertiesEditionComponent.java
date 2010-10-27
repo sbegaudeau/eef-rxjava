@@ -78,15 +78,15 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			final DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)elt;
 			final DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-								if (deferedReferenceTableEditorSample.getName() != null)
-									deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
-					
-								flatreferenceEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-								deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatreferenceEditorSettings);
+			if (deferedReferenceTableEditorSample.getName() != null)
+				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
+			
+			flatreferenceEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatreferenceEditorSettings);
 			// init filters
-
+			
 			deferedReferencesTableSamplePart.addFilterToReferencesTableSampleEditor(new ViewerFilter() {
-
+			
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -95,17 +95,17 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof TotalSample);
 				}
-
+			
 			});
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -124,13 +124,13 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			deferedReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof TotalSample) {
-						flatreferenceEditorSettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						flatreferenceEditorSettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof TotalSample) {
+					flatreferenceEditorSettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					flatreferenceEditorSettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

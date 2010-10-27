@@ -79,13 +79,13 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			final FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)elt;
 			final FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
 			// init values
-								flatreferencestableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
-								basePart.initFlatreferencetableRequiredProperty(flatreferencestableRequiredPropertySettings);
-								flatreferencestableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
-								basePart.initFlatreferencetableOptionalProperty(flatreferencestableOptionalPropertySettings);
+			flatreferencestableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
+			basePart.initFlatreferencetableRequiredProperty(flatreferencestableRequiredPropertySettings);
+			flatreferencestableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+			basePart.initFlatreferencetableOptionalProperty(flatreferencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToFlatreferencetableRequiredProperty(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -96,15 +96,15 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 						return (!basePart.isContainedInFlatreferencetableRequiredPropertyTable((EObject)element));
 					return false;
 				}
-
+			
 			});
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
+												
+												// End of user code
 			
-			// End of user code
-
 			basePart.addFilterToFlatreferencetableOptionalProperty(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -115,18 +115,18 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 						return (!basePart.isContainedInFlatreferencetableOptionalPropertyTable((EObject)element));
 					return element instanceof String && element.equals("");
 				}
-
+			
 			});
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -142,12 +142,12 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.SET)
-					flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)
+				flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
 		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.SET)
-					flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)
+				flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
 	}
 

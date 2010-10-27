@@ -77,13 +77,13 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			final TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)elt;
 			final TableCompositionExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionExtensionEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-								tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
-								basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
-								tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty());
-								basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
+			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
+			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
+			tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty());
+			basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
-
+			
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -91,15 +91,15 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof AbstractTableCompositionTargetExtensionEditorSample);
-				}
-
+					}
+			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
+												
+												// End of user code
 			
-			// End of user code
-
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
-
+			
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -107,18 +107,18 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof AbstractTableCompositionTargetExtensionEditorSample); //$NON-NLS-1$ 
-				}
-
+					}
+			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -134,22 +134,22 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)semanticObject;
 		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
-						tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
+					tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
-						tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
+					tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

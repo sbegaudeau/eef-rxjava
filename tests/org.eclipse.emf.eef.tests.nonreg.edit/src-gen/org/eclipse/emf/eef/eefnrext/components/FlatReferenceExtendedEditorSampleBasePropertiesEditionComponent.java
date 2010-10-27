@@ -77,11 +77,11 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			final FlatReferenceExtendedEditorSamplePropertiesEditionPart basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-								flatReferenceEditorSampleSettings = new ReferencesTableSettings(flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample());
-								basePart.initFlatReferenceEditorSample(flatReferenceEditorSampleSettings);
+			flatReferenceEditorSampleSettings = new ReferencesTableSettings(flatReferenceExtendedEditorSample, EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample());
+			basePart.initFlatReferenceEditorSample(flatReferenceEditorSampleSettings);
 			// init filters
 			basePart.addFilterToFlatReferenceEditorSample(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -92,19 +92,19 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 						return (!basePart.isContainedInFlatReferenceEditorSampleTable((EObject)element));
 					return element instanceof String && element.equals("");
 				}
-
+			
 			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
-
+		
+		
 		setInitializing(false);
 	}
 
@@ -120,8 +120,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)semanticObject;
 		if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.SET)
-					flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)
+				flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
 		}
 	}
 

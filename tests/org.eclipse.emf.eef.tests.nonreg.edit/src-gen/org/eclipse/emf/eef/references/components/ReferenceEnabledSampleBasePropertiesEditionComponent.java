@@ -75,11 +75,11 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 			final ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)elt;
 			final ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
 			// init values
-								referenceSettings = new ReferencesTableSettings(referenceEnabledSample, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
-								basePart.initReference(referenceSettings);
+			referenceSettings = new ReferencesTableSettings(referenceEnabledSample, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
+			basePart.initReference(referenceSettings);
 			// init filters
 			basePart.addFilterToReference(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -90,18 +90,18 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 						return (!basePart.isContainedInReferenceTable((EObject)element));
 					return element instanceof Resource;
 				}
-
+			
 			});
 			basePart.addFilterToReference(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for reference
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -116,13 +116,13 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)semanticObject;
 		if (ReferencesViewsRepository.ReferenceEnabledSample.reference == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof TotalSample) {
-						referenceSettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						referenceSettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof TotalSample) {
+					referenceSettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					referenceSettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

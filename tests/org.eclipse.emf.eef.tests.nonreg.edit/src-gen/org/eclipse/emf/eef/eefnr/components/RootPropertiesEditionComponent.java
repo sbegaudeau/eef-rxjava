@@ -72,11 +72,11 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final Root root = (Root)elt;
 			final RootPropertiesEditionPart basePart = (RootPropertiesEditionPart)editingPart;
 			// init values
-								samplesSettings = new ReferencesTableSettings(root, EefnrPackage.eINSTANCE.getRoot_Samples());
-								basePart.initSamples(samplesSettings);
+			samplesSettings = new ReferencesTableSettings(root, EefnrPackage.eINSTANCE.getRoot_Samples());
+			basePart.initSamples(samplesSettings);
 			// init filters
 			basePart.addFilterToSamples(new ViewerFilter() {
-
+			
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -84,18 +84,18 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof AbstractSample); //$NON-NLS-1$ 
-				}
-
+					}
+			
 			});
 			// Start of user code for additional businessfilters for samples
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -110,13 +110,13 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Root root = (Root)semanticObject;
 		if (EefnrViewsRepository.Root.samples == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof AbstractSample) {
-						samplesSettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						samplesSettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof AbstractSample) {
+					samplesSettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					samplesSettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

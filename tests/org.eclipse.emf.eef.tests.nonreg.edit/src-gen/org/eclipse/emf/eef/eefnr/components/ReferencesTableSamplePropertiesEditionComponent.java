@@ -78,13 +78,13 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			final ReferencesTableSample referencesTableSample = (ReferencesTableSample)elt;
 			final ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-								referencestableRequiredPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
-								basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
-								referencestableOptionalPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
-								basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
+			referencestableRequiredPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
+			basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
+			referencestableOptionalPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
+			basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -95,15 +95,15 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 						return (!basePart.isContainedInReferencestableRequiredPropertyTable((EObject)element));
 					return false;
 				}
-
+			
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
+												
+												// End of user code
 			
-			// End of user code
-
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -114,18 +114,18 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 						return (!basePart.isContainedInReferencestableOptionalPropertyTable((EObject)element));
 					return element instanceof String && element.equals("");
 				}
-
+			
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -141,22 +141,22 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ReferencesTableSample referencesTableSample = (ReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof TotalSample) {
-						referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof TotalSample) {
+					referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 		if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof TotalSample) {
-						referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof TotalSample) {
+					referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

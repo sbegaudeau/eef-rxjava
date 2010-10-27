@@ -80,15 +80,15 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			final DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)elt;
 			final DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-								if (deferedFlatReferenceTableEditorSample.getName() != null)
-									deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferenceTableEditorSample.getName()));
-					
-								flatreferenceEditorSettings = new ReferencesTableSettings(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-								deferedFlatReferencesTableSamplePart.initFlatReferencesTableSampleEditor(flatreferenceEditorSettings);
+			if (deferedFlatReferenceTableEditorSample.getName() != null)
+				deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferenceTableEditorSample.getName()));
+			
+			flatreferenceEditorSettings = new ReferencesTableSettings(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedFlatReferencesTableSamplePart.initFlatReferencesTableSampleEditor(flatreferenceEditorSettings);
 			// init filters
-
+			
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -99,18 +99,18 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 						return (!deferedFlatReferencesTableSamplePart.isContainedInFlatReferencesTableSampleEditorTable((EObject)element));
 					return false;
 				}
-
+			
 			});
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -129,8 +129,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			deferedFlatReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.SET)
-					flatreferenceEditorSettings.setToReference((List<EObject>) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)
+				flatreferenceEditorSettings.setToReference((List<EObject>) event.getNewValue());
 		}
 	}
 

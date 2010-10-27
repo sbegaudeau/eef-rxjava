@@ -79,13 +79,13 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			final AdvancedReferencesTableSample advancedReferencesTableSample = (AdvancedReferencesTableSample)elt;
 			final AdvancedReferencesTableSamplePropertiesEditionPart basePart = (AdvancedReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-								advancedreferencestableRequiredPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty());
-								basePart.initAdvancedreferencestableRequiredProperty(advancedreferencestableRequiredPropertySettings);
-								advancedreferencestableOptionalPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty());
-								basePart.initAdvancedreferencestableOptionalProperty(advancedreferencestableOptionalPropertySettings);
+			advancedreferencestableRequiredPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty());
+			basePart.initAdvancedreferencestableRequiredProperty(advancedreferencestableRequiredPropertySettings);
+			advancedreferencestableOptionalPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty());
+			basePart.initAdvancedreferencestableOptionalProperty(advancedreferencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -96,15 +96,15 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 						return (!basePart.isContainedInAdvancedreferencestableRequiredPropertyTable((EObject)element));
 					return element instanceof Resource;
 				}
-
+			
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
+												
+												// End of user code
 			
-			// End of user code
-
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
-
+			
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -115,18 +115,18 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 						return (!basePart.isContainedInAdvancedreferencestableOptionalPropertyTable((EObject)element));
 					return element instanceof Resource;
 				}
-
+			
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
+												
+												// End of user code
 			
-			// End of user code
-
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -142,22 +142,22 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AdvancedReferencesTableSample advancedReferencesTableSample = (AdvancedReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof TotalSample) {
-						advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof TotalSample) {
+					advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 		if (EefnrViewsRepository.AdvancedReferencesTableSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-				if (event.getKind() == PropertiesEditionEvent.ADD)  {
-					if (event.getNewValue() instanceof TotalSample) {
-						advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-					}
-				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-						advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				if (event.getNewValue() instanceof TotalSample) {
+					advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+			}
 		}
 	}
 

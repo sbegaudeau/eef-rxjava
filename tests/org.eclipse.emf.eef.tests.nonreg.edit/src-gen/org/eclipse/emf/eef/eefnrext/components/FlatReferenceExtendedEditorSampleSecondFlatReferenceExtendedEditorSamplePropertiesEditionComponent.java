@@ -66,19 +66,19 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			final SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-								if (flatReferenceExtendedEditorSample.getDemo() != null)
-									secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), flatReferenceExtendedEditorSample.getDemo()));
-					
-								secondFlatReferenceExtendedEditorSamplePart.setSize(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), flatReferenceExtendedEditorSample.getSize()));
-					
+			if (flatReferenceExtendedEditorSample.getDemo() != null)
+				secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), flatReferenceExtendedEditorSample.getDemo()));
+			
+			secondFlatReferenceExtendedEditorSamplePart.setSize(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), flatReferenceExtendedEditorSample.getSize()));
+			
 			// init filters
-
-
+			
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 

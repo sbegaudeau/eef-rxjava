@@ -66,16 +66,16 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 			final CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)elt;
 			final CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-								basePart.setCheckboxEditorSample(checkBoxExtendedEditorSample.isCheckboxEditorSample());
-					
+			basePart.setCheckboxEditorSample(checkBoxExtendedEditorSample.isCheckboxEditorSample());
+			
 			// init filters
-
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
-
+		
+		
 		setInitializing(false);
 	}
 
@@ -101,8 +101,8 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 */
 	public void updatePart(Notification msg) {
 		CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
-				if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
-					basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
+		if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
+			basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
 		
 		
 	}

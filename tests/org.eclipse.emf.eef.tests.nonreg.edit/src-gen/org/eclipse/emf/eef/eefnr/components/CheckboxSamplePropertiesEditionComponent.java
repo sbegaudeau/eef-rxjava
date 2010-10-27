@@ -64,18 +64,18 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 			final CheckboxSample checkboxSample = (CheckboxSample)elt;
 			final CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
 			// init values
-								basePart.setCheckboxRequiredProperty(checkboxSample.isCheckboxRequiredProperty());
-					
-								basePart.setCheckboxOptionalProperty(checkboxSample.isCheckboxOptionalProperty());
-					
+			basePart.setCheckboxRequiredProperty(checkboxSample.isCheckboxRequiredProperty());
+			
+			basePart.setCheckboxOptionalProperty(checkboxSample.isCheckboxOptionalProperty());
+			
 			// init filters
-
-
+			
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -104,11 +104,11 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updatePart(Notification msg) {
 		CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
-				if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
-					basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
+		if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
+			basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
 		
-				if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
-					basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+		if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
+			basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
 		
 		
 	}
