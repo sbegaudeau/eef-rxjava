@@ -14,12 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
 /**
@@ -51,6 +55,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * Is the component is current initializing
 	 */
 	protected boolean initializing = false;
+	
+	/**
+	 * List of {@link IPropertiesEditionPart}'s key managed by the component. 
+	 */
+	protected String[] parts;
 
 	/**
 	 * {@inheritDoc}
@@ -60,6 +69,16 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 */
 	public void initPart(Class key, int kind, EObject element) {
 		this.initPart(key, kind, element, element.eResource().getResourceSet());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
+	 * 
+	 */
+	public String[] partsList() {
+		return parts;
 	}
 
 	/**
@@ -97,13 +116,49 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	private void propagateEvent(IPropertiesEditionEvent event) {
 		event.addHolder(this);
 		for (IPropertiesEditionListener listener : listeners) {
 			if (!event.hold(listener))
 				listener.firePropertiesChanged(event);
 		}
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
+		if (!isInitializing()) {
+			Diagnostic valueDiagnostic = validateValue(event);
+			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				updatePart(event);
+			}
+			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					
+					public void execute() {
+						updatePart(event);
+					}
+				});			
+			}
+			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
+				propagateEvent(new PropertiesValidationEditionEvent(event, valueDiagnostic));
+			else {
+				Diagnostic validate = validate();
+				propagateEvent(new PropertiesValidationEditionEvent(event, validate));
+			}
+			propagateEvent(event);
+		}
+	}
+
+	/**
+	 * Update the part in response to a semantic event
+	 * @param event the semantic event
+	 */
+	public abstract void updatePart(IPropertiesEditionEvent event);
 
 	/**
 	 * {@inheritDoc}
