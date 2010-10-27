@@ -13,7 +13,6 @@ package org.eclipse.emf.eef.views.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -24,6 +23,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.emf.eef.views.providers.ViewsMessages;
@@ -271,12 +271,12 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#initRepresentation(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#initRepresentation(EObjectFlatComboSettings)
 	 */
-	public void initRepresentation(ResourceSet allResources, EObject current) {
-		representation.setInput(allResources);
+	public void initRepresentation(EObjectFlatComboSettings settings) {
+		representation.setInput(settings);
 		if (current != null) {
-			representation.setSelection(new StructuredSelection(current));
+			representation.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

@@ -13,7 +13,6 @@ package org.eclipse.emf.eef.views.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -21,20 +20,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -42,8 +33,6 @@ import org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
 	
 
 // End of user code
@@ -52,149 +41,26 @@ import org.eclipse.ui.PlatformUI;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ElementEditorBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class ElementEditorBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
 	
-	private String[] parts = {BASE_PART};
-
 	/**
-	 * The EObject to edit
-	 * 
+	 * Settings for representation EObjectFlatComboViewer
 	 */
-	private ElementEditor elementEditor;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected ElementEditorPropertiesEditionPart basePart;
+	private	EObjectFlatComboSettings representationSettings;
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public ElementEditorBasePropertiesEditionComponent(EObject elementEditor, String editing_mode) {
-		if (elementEditor instanceof ElementEditor) {
-			this.elementEditor = (ElementEditor)elementEditor;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
-				this.elementEditor.eAdapters().add(semanticAdapter);
-			}
-		}
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new EContentAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-			 * 
-			 */
-			public void notifyChanged(final Notification msg) {
-				if (basePart == null)
-					ElementEditorBasePropertiesEditionComponent.this.dispose();
-				else {
-					Runnable updateRunnable = new Runnable() {
-						public void run() {
-							runUpdateRunnable(msg);
-						}
-					};
-					if (null == Display.getCurrent()) {
-						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-					} else {
-						updateRunnable.run();
-					}
-				}
-			}
-
-		};
-	}
-
-	/**
-	 * Used to update the views
-	 * 
-	 */
-	protected void runUpdateRunnable(final Notification msg) {
-		if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-			basePart.setRepresentation((EObject)msg.getNewValue());
-		if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
-			}
-		}
-		if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null)
-			basePart.setReadOnly((Boolean)msg.getNewValue());
-
-
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return ViewsViewsRepository.ElementEditor.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
-	 * 
-	 */
-	public String[] partsList() {
-		return parts;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (elementEditor != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ViewsViewsRepository.class);
-				if (provider != null) {
-					basePart = (ElementEditorPropertiesEditionPart)provider.getPropertiesEditionPart(ViewsViewsRepository.ElementEditor.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == ViewsViewsRepository.ElementEditor.class)
-			this.basePart = (ElementEditorPropertiesEditionPart) propertiesEditionPart;
+		super(elementEditor, editing_mode);
+		parts = new String[] { BASE_PART };
+		repositoryKey = ViewsViewsRepository.class;
+		partKey = ViewsViewsRepository.ElementEditor.class;
 	}
 
 	/**
@@ -206,43 +72,45 @@ public class ElementEditorBasePropertiesEditionComponent extends StandardPropert
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == ViewsViewsRepository.ElementEditor.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final ElementEditor elementEditor = (ElementEditor)elt;
+			final ElementEditorPropertiesEditionPart basePart = (ElementEditorPropertiesEditionPart)editingPart;
 			// init values
 			// init part
-			basePart.initRepresentation(allResource, elementEditor.getRepresentation());
+			representationSettings = new EObjectFlatComboSettings(elementEditor, ViewsPackage.eINSTANCE.getViewElement_Representation());
+			basePart.initRepresentation(representationSettings);
 			// set the button mode
 			basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			if (elementEditor.getName() != null)
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), elementEditor.getName()));
-
+			
 			basePart.setReadOnly(elementEditor.isReadOnly());
-
+			
 			// init filters
 			basePart.addFilterToRepresentation(new ViewerFilter() {
-
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
+			
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+			 */
+			public boolean select(Viewer viewer, Object parentElement, Object element) {
+				return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
 				}
-
+			
 			});
 			// Start of user code for additional businessfilters for representation
+						
+						// End of user code
 			
-			// End of user code
-
-
-
+			
+			
 		}
 		// init values for referenced views
-
+		
 		// init filters for referenced views
-
+		
 		setInitializing(false);
 	}
 
@@ -253,62 +121,42 @@ public class ElementEditorBasePropertiesEditionComponent extends StandardPropert
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
-		if (!isInitializing()) {
-			Diagnostic valueDiagnostic = validateValue(event);
-			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (ViewsViewsRepository.ElementEditor.representation == event.getAffectedEditor()) {
-					updateRepresentation((Widget)event.getNewValue());
-				}
-				if (ViewsViewsRepository.ElementEditor.name == event.getAffectedEditor()) {
-					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (ViewsViewsRepository.ElementEditor.readOnly == event.getAffectedEditor()) {
-					updateReadOnly((Boolean)event.getNewValue());
-				}
-			}
-			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
-					
-					public void execute() {
-						if (ViewsViewsRepository.ElementEditor.representation == event.getAffectedEditor()) {
-							updateRepresentation((Widget)event.getNewValue());
-						}
-						if (ViewsViewsRepository.ElementEditor.name == event.getAffectedEditor()) {
-							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (ViewsViewsRepository.ElementEditor.readOnly == event.getAffectedEditor()) {
-							updateReadOnly((Boolean)event.getNewValue());
-						}
-					}
-				});			
-			}
-			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
-			else {
-				Diagnostic validate = validate();
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
-			}
-			super.firePropertiesChanged(event);
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		ElementEditor elementEditor = (ElementEditor)semanticObject;
+		if (ViewsViewsRepository.ElementEditor.representation == event.getAffectedEditor()) {
+			representationSettings.setToReference((Widget)event.getNewValue());
+		}
+		if (ViewsViewsRepository.ElementEditor.name == event.getAffectedEditor()) {
+			elementEditor.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (ViewsViewsRepository.ElementEditor.readOnly == event.getAffectedEditor()) {
+			elementEditor.setReadOnly((Boolean)event.getNewValue());	
 		}
 	}
 
-	private void updateRepresentation(Widget newValue) {
-		elementEditor.setRepresentation(newValue);	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		ElementEditorPropertiesEditionPart basePart = (ElementEditorPropertiesEditionPart)editingPart;
+		if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
+			basePart.setRepresentation((EObject)msg.getNewValue());
+		if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+		if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null)
+			basePart.setReadOnly((Boolean)msg.getNewValue());
+		
+		
 	}
-
-	private void updateName(java.lang.String newValue) {
-		elementEditor.setName(newValue);	
-	}
-
-	private void updateReadOnly(Boolean newValue) {
-		elementEditor.setReadOnly(newValue);	
-	}
-
 
 
 	/**
@@ -365,39 +213,4 @@ public class ElementEditorBasePropertiesEditionComponent extends StandardPropert
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(elementEditor);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			elementEditor.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }
