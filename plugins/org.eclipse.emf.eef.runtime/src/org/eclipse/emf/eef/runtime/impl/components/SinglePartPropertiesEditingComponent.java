@@ -3,7 +3,6 @@
  */
 package org.eclipse.emf.eef.runtime.impl.components;
 
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -20,12 +19,24 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  */
 public abstract class SinglePartPropertiesEditingComponent extends StandardPropertiesEditionComponent {
 
+	/**
+	 * EObject to edit
+	 */
 	protected EObject semanticObject;
 
-	protected IPropertiesEditionPart basePart;
+	/**
+	 * Component's part
+	 */
+	protected IPropertiesEditionPart editingPart;
 	
+	/**
+	 * Key to use to get the Part provider
+	 */
 	protected java.lang.Class repositoryKey;
 
+	/**
+	 * Key to use to get the Part
+	 */
 	protected java.lang.Class partKey;
 
 	/**
@@ -40,8 +51,6 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		}
 		this.editing_mode = editing_mode;
 	}
-	
-	protected abstract AdapterImpl initializeSemanticAdapter();
 	
 	/**
 	 * @return
@@ -70,8 +79,11 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * 
 	 */
 	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == partKey)
-			this.basePart = propertiesEditionPart;
+		if (key == partKey) {
+			this.editingPart = propertiesEditionPart;
+			if (semanticAdapter != null)
+				semanticAdapter.setPart(editingPart);
+		}
 	}
 
 
@@ -107,14 +119,16 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (semanticObject != null && partID().equals(key)) {
-			if (basePart == null) {
+			if (editingPart == null) {
 				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(repositoryKey);
 				if (provider != null) {
-					basePart = provider.getPropertiesEditionPart(partKey, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
+					editingPart = provider.getPropertiesEditionPart(partKey, kind, this);
+					addListener((IPropertiesEditionListener)editingPart);
+					if (semanticAdapter != null)
+						semanticAdapter.setPart(editingPart);
 				}
 			}
-			return (IPropertiesEditionPart)basePart;
+			return (IPropertiesEditionPart)editingPart;
 		}
 		return null;
 	}
@@ -126,7 +140,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * 
 	 */
 	public String getTabText(String p_key) {
-		return basePart.getTitle();
+		return editingPart.getTitle();
 	}
 
 }

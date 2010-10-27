@@ -42,7 +42,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * the semantic listener dedicated to update view
 	 */
-	protected Adapter semanticAdapter;
+	protected PropertiesEditingSemanticLister semanticAdapter;
 
 	/**
 	 * the editing domain where to perform live update
@@ -116,12 +116,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	
 	/**
 	 * Initialize the semantic model listener for live editing mode
-	 * @param editingPart the compennt's part 
 	 * @return the semantic model listener
 	 * 
 	 */
-	protected AdapterImpl initializeSemanticAdapter(IPropertiesEditionPart editingPart) {
-		return new PropertiesEditingSemanticLister(this, editingPart) {
+	protected PropertiesEditingSemanticLister initializeSemanticAdapter() {
+		return new PropertiesEditingSemanticLister(this) {
 			
 			public void runUpdateRunnable(Notification msg) {
 				updatePart(msg);

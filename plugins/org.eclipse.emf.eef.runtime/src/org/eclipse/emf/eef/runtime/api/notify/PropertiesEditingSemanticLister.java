@@ -21,15 +21,25 @@ public abstract class PropertiesEditingSemanticLister extends EContentAdapter {
 
 	/**
 	 * @param component
-	 * @param part
 	 */
-	public PropertiesEditingSemanticLister(IPropertiesEditionComponent component, IPropertiesEditionPart part) {
+	public PropertiesEditingSemanticLister(IPropertiesEditionComponent component) {
 		this.component = component;
-		this.part = part;
 	}
 
+	/**
+	 * @return the part
+	 */
+	public IPropertiesEditionPart getPart() {
+		return part;
+	}
 
-
+	/**
+	 * @param part the part to set
+	 */
+	public void setPart(IPropertiesEditionPart part) {
+		this.part = part;
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
