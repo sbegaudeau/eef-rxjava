@@ -14,9 +14,9 @@ package org.eclipse.emf.eef.mapping.parts;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
@@ -36,10 +36,9 @@ public interface OnlyReferenceTypeFilterPropertiesEditionPart {
 
 	/**
 	 * Init the referencedFeature
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initReferencedFeature(ResourceSet allResources, EObject current);
+	public void initReferencedFeature(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new referencedFeature

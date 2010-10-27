@@ -14,8 +14,8 @@ package org.eclipse.emf.eef.mapping.parts;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
  
@@ -50,10 +50,9 @@ public interface StandardPropertyBindingPropertiesEditionPart {
 
 	/**
 	 * Init the model
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initModel(ResourceSet allResources, EObject current);
+	public void initModel(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new model
@@ -103,7 +102,7 @@ public interface StandardPropertyBindingPropertiesEditionPart {
 	 * @param newValue the views to update
 	 * 
 	 */
-	public void updateViews(EObject newValue);
+	public void updateViews();
 
 	/**
 	 * Adds the given filter to the views edition editor.

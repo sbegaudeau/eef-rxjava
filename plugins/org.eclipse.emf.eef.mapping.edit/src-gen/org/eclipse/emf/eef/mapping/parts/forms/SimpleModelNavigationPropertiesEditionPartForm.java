@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -273,12 +274,12 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#initFeature(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#initFeature(EObjectFlatComboSettings)
 	 */
-	public void initFeature(ResourceSet allResources, EObject current) {
-		feature.setInput(allResources);
+	public void initFeature(EObjectFlatComboSettings settings) {
+		feature.setInput(settings);
 		if (current != null) {
-			feature.setSelection(new StructuredSelection(current));
+			feature.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
@@ -344,12 +345,12 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#initDiscriminatorType(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.navigation.parts.SimpleModelNavigationPropertiesEditionPart#initDiscriminatorType(EObjectFlatComboSettings)
 	 */
-	public void initDiscriminatorType(ResourceSet allResources, EObject current) {
-		discriminatorType.setInput(allResources);
+	public void initDiscriminatorType(EObjectFlatComboSettings settings) {
+		discriminatorType.setInput(settings);
 		if (current != null) {
-			discriminatorType.setSelection(new StructuredSelection(current));
+			discriminatorType.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

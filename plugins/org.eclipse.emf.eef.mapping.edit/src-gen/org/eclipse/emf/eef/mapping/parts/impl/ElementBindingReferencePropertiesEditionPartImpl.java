@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.mapping.parts.impl;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
@@ -27,6 +26,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -159,12 +159,12 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#initBinding(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart#initBinding(EObjectFlatComboSettings)
 	 */
-	public void initBinding(ResourceSet allResources, EObject current) {
-		binding.setInput(allResources);
+	public void initBinding(EObjectFlatComboSettings settings) {
+		binding.setInput(settings);
 		if (current != null) {
-			binding.setSelection(new StructuredSelection(current));
+			binding.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

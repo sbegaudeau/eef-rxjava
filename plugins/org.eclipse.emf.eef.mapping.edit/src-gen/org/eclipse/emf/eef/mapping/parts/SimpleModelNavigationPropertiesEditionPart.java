@@ -14,8 +14,8 @@ package org.eclipse.emf.eef.mapping.parts;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
  
 
@@ -49,10 +49,9 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 
 	/**
 	 * Init the feature
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initFeature(ResourceSet allResources, EObject current);
+	public void initFeature(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new feature
@@ -97,10 +96,9 @@ public interface SimpleModelNavigationPropertiesEditionPart {
 
 	/**
 	 * Init the discriminatorType
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initDiscriminatorType(ResourceSet allResources, EObject current);
+	public void initDiscriminatorType(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new discriminatorType

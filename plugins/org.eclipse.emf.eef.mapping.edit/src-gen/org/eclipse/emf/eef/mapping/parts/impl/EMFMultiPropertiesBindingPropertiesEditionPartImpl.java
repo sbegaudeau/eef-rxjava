@@ -376,10 +376,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#updateModel(EObject newValue)
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#updateModel()
 	 * 
 	 */
-	public void updateModel(EObject newValue) {
+	public void updateModel() {
 	model.refresh();
 }
 
@@ -432,10 +432,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#updateViews(EObject newValue)
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart#updateViews()
 	 * 
 	 */
-	public void updateViews(EObject newValue) {
+	public void updateViews() {
 	views.refresh();
 }
 

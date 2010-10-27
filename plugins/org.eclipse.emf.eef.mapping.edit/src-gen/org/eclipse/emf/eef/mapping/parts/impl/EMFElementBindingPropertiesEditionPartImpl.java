@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
@@ -39,6 +38,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.views.View;
@@ -338,12 +338,12 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart#initModel(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart#initModel(EObjectFlatComboSettings)
 	 */
-	public void initModel(ResourceSet allResources, EObject current) {
-		model.setInput(allResources);
+	public void initModel(EObjectFlatComboSettings settings) {
+		model.setInput(settings);
 		if (current != null) {
-			model.setSelection(new StructuredSelection(current));
+			model.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
@@ -409,10 +409,10 @@ public class EMFElementBindingPropertiesEditionPartImpl extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart#updateViews(EObject newValue)
+	 * @see org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart#updateViews()
 	 * 
 	 */
-	public void updateViews(EObject newValue) {
+	public void updateViews() {
 	views.refresh();
 }
 

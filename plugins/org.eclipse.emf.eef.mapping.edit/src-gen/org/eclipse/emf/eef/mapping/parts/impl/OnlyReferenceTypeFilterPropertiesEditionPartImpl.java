@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.mapping.parts.impl;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
@@ -31,6 +30,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -173,12 +173,12 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart#initReferencedFeature(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart#initReferencedFeature(EObjectFlatComboSettings)
 	 */
-	public void initReferencedFeature(ResourceSet allResources, EObject current) {
-		referencedFeature.setInput(allResources);
+	public void initReferencedFeature(EObjectFlatComboSettings settings) {
+		referencedFeature.setInput(settings);
 		if (current != null) {
-			referencedFeature.setSelection(new StructuredSelection(current));
+			referencedFeature.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
