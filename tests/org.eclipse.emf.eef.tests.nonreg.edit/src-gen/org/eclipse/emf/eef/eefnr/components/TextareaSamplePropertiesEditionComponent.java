@@ -24,14 +24,8 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextareaSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
 
@@ -41,82 +35,21 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TextareaSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class TextareaSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private TextareaSample textareaSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected TextareaSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public TextareaSamplePropertiesEditionComponent(EObject textareaSample, String editing_mode) {
-		if (textareaSample instanceof TextareaSample) {
-			this.textareaSample = (TextareaSample)textareaSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.textareaSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(textareaSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrViewsRepository.TextareaSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (textareaSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
-				if (provider != null) {
-					basePart = (TextareaSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.TextareaSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrViewsRepository.TextareaSample.class)
-			this.basePart = (TextareaSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrViewsRepository.class;
+		partKey = EefnrViewsRepository.TextareaSample.class;
 	}
 
 	/**
@@ -128,9 +61,10 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrViewsRepository.TextareaSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final TextareaSample textareaSample = (TextareaSample)elt;
+			final TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			// init values
 								if (textareaSample.getTextareaRequiredProperty() != null)
 									basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textareaSample.getTextareaRequiredProperty()));
@@ -157,6 +91,7 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		TextareaSample textareaSample = (TextareaSample)semanticObject;
 		if (EefnrViewsRepository.TextareaSample.textareaRequiredProperty == event.getAffectedEditor()) {
 			textareaSample.setTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
@@ -170,6 +105,7 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 				if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
 					if (msg.getNewValue() != null) {
 						basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -226,39 +162,4 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(textareaSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			textareaSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

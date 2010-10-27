@@ -40,7 +40,7 @@ public interface RootPropertiesEditionPart {
 	 * @param newValue the samples to update
 	 * 
 	 */
-	public void updateSamples(EObject newValue);
+	public void updateSamples();
 
 	/**
 	 * Adds the given filter to the samples edition editor.

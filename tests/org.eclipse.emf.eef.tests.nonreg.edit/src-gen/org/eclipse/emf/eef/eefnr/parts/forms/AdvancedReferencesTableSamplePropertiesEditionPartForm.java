@@ -282,10 +282,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableRequiredProperty()
 	 * 
 	 */
-	public void updateAdvancedreferencestableRequiredProperty(EObject newValue) {
+	public void updateAdvancedreferencestableRequiredProperty() {
 	advancedreferencestableRequiredProperty.refresh();
 }
 
@@ -338,10 +338,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableOptionalProperty()
 	 * 
 	 */
-	public void updateAdvancedreferencestableOptionalProperty(EObject newValue) {
+	public void updateAdvancedreferencestableOptionalProperty() {
 	advancedreferencestableOptionalProperty.refresh();
 }
 

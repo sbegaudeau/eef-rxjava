@@ -22,16 +22,10 @@ import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -43,22 +37,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ReferencesTableSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private ReferencesTableSample referencesTableSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected ReferencesTableSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Settings for referencestableRequiredProperty ReferencesTable
@@ -75,60 +58,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 * 
 	 */
 	public ReferencesTableSamplePropertiesEditionComponent(EObject referencesTableSample, String editing_mode) {
-		if (referencesTableSample instanceof ReferencesTableSample) {
-			this.referencesTableSample = (ReferencesTableSample)referencesTableSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.referencesTableSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(referencesTableSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrViewsRepository.ReferencesTableSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (referencesTableSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
-				if (provider != null) {
-					basePart = (ReferencesTableSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.ReferencesTableSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrViewsRepository.ReferencesTableSample.class)
-			this.basePart = (ReferencesTableSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrViewsRepository.class;
+		partKey = EefnrViewsRepository.ReferencesTableSample.class;
 	}
 
 	/**
@@ -140,9 +73,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrViewsRepository.ReferencesTableSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final ReferencesTableSample referencesTableSample = (ReferencesTableSample)elt;
+			final ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
 								referencestableRequiredPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
 								basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
@@ -205,6 +139,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		ReferencesTableSample referencesTableSample = (ReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
 				if (event.getKind() == PropertiesEditionEvent.ADD)  {
 					if (event.getNewValue() instanceof TotalSample) {
@@ -230,10 +165,11 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
 		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableRequiredProperty(referencesTableSample);
+			basePart.updateReferencestableRequiredProperty();
 		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableOptionalProperty(referencesTableSample);
+			basePart.updateReferencestableOptionalProperty();
 		
 	}
 
@@ -268,39 +204,4 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(referencesTableSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			referencesTableSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

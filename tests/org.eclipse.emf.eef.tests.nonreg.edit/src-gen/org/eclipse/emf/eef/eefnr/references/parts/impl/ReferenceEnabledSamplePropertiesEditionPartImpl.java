@@ -227,10 +227,10 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#updateReference(EObject newValue)
+	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#updateReference()
 	 * 
 	 */
-	public void updateReference(EObject newValue) {
+	public void updateReference() {
 	reference.refresh();
 }
 

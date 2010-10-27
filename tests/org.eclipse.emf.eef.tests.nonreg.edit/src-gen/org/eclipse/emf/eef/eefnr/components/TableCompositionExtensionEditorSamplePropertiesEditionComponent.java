@@ -22,15 +22,9 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -42,22 +36,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TableCompositionExtensionEditorSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class TableCompositionExtensionEditorSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected TableCompositionExtensionEditorSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Settings for tablecompositionRequiredProperty ReferencesTable
@@ -74,60 +57,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * 
 	 */
 	public TableCompositionExtensionEditorSamplePropertiesEditionComponent(EObject tableCompositionExtensionEditorSample, String editing_mode) {
-		if (tableCompositionExtensionEditorSample instanceof TableCompositionExtensionEditorSample) {
-			this.tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)tableCompositionExtensionEditorSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.tableCompositionExtensionEditorSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(tableCompositionExtensionEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrViewsRepository.TableCompositionExtensionEditorSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (tableCompositionExtensionEditorSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
-				if (provider != null) {
-					basePart = (TableCompositionExtensionEditorSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.TableCompositionExtensionEditorSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrViewsRepository.TableCompositionExtensionEditorSample.class)
-			this.basePart = (TableCompositionExtensionEditorSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrViewsRepository.class;
+		partKey = EefnrViewsRepository.TableCompositionExtensionEditorSample.class;
 	}
 
 	/**
@@ -139,9 +72,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrViewsRepository.TableCompositionExtensionEditorSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)elt;
+			final TableCompositionExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionExtensionEditorSamplePropertiesEditionPart)editingPart;
 			// init values
 								tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionExtensionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty());
 								basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
@@ -198,6 +132,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)semanticObject;
 		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 				if (event.getKind() == PropertiesEditionEvent.ADD)  {
 					if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
@@ -223,10 +158,11 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		TableCompositionExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionExtensionEditorSamplePropertiesEditionPart)editingPart;
 		if (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
-			basePart.updateTablecompositionRequiredProperty(tableCompositionExtensionEditorSample);
+			basePart.updateTablecompositionRequiredProperty();
 		if (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
-			basePart.updateTablecompositionOptionalProperty(tableCompositionExtensionEditorSample);
+			basePart.updateTablecompositionOptionalProperty();
 		
 	}
 
@@ -261,39 +197,4 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(tableCompositionExtensionEditorSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			tableCompositionExtensionEditorSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

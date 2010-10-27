@@ -553,10 +553,10 @@ createTablecompositionOptionalPropertyTableComposition(propertiesGroup);
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#updateTablecompositionRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#updateTablecompositionRequiredProperty()
 	 * 
 	 */
-	public void updateTablecompositionRequiredProperty(EObject newValue) {
+	public void updateTablecompositionRequiredProperty() {
 	tablecompositionRequiredProperty.refresh();
 }
 
@@ -609,10 +609,10 @@ createTablecompositionOptionalPropertyTableComposition(propertiesGroup);
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#updateTablecompositionOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart#updateTablecompositionOptionalProperty()
 	 * 
 	 */
-	public void updateTablecompositionOptionalProperty(EObject newValue) {
+	public void updateTablecompositionOptionalProperty() {
 	tablecompositionOptionalProperty.refresh();
 }
 

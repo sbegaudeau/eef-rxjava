@@ -22,14 +22,8 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -42,22 +36,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private EObjectFlatComboViewerSample eObjectFlatComboViewerSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected EObjectFlatComboViewerSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Settings for eobjectflatcomboviewerRequiredPropery EObjectFlatComboViewer
@@ -74,60 +57,10 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 */
 	public EObjectFlatComboViewerSamplePropertiesEditionComponent(EObject eObjectFlatComboViewerSample, String editing_mode) {
-		if (eObjectFlatComboViewerSample instanceof EObjectFlatComboViewerSample) {
-			this.eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)eObjectFlatComboViewerSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.eObjectFlatComboViewerSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(eObjectFlatComboViewerSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrViewsRepository.EObjectFlatComboViewerSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (eObjectFlatComboViewerSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
-				if (provider != null) {
-					basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.EObjectFlatComboViewerSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrViewsRepository.EObjectFlatComboViewerSample.class)
-			this.basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrViewsRepository.class;
+		partKey = EefnrViewsRepository.EObjectFlatComboViewerSample.class;
 	}
 
 	/**
@@ -139,9 +72,10 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrViewsRepository.EObjectFlatComboViewerSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)elt;
+			final EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values
 								// init part
 								eobjectflatcomboviewerRequiredProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery());
@@ -204,6 +138,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)semanticObject;
 		if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
 			eobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
 		}
@@ -217,6 +152,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 				if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
 					basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
 				if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
@@ -255,39 +191,4 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(eObjectFlatComboViewerSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			eObjectFlatComboViewerSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

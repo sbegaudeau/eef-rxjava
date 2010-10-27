@@ -1943,10 +1943,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateReferencestableRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateReferencestableRequiredProperty()
 	 * 
 	 */
-	public void updateReferencestableRequiredProperty(EObject newValue) {
+	public void updateReferencestableRequiredProperty() {
 	referencestableRequiredProperty.refresh();
 }
 
@@ -1999,10 +1999,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateReferencestableOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateReferencestableOptionalProperty()
 	 * 
 	 */
-	public void updateReferencestableOptionalProperty(EObject newValue) {
+	public void updateReferencestableOptionalProperty() {
 	referencestableOptionalProperty.refresh();
 }
 
@@ -2207,10 +2207,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionRequiredProperty()
 	 * 
 	 */
-	public void updateTablecompositionRequiredProperty(EObject newValue) {
+	public void updateTablecompositionRequiredProperty() {
 	tablecompositionRequiredProperty.refresh();
 }
 
@@ -2263,10 +2263,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateTablecompositionOptionalProperty()
 	 * 
 	 */
-	public void updateTablecompositionOptionalProperty(EObject newValue) {
+	public void updateTablecompositionOptionalProperty() {
 	tablecompositionOptionalProperty.refresh();
 }
 
@@ -2319,10 +2319,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedreferencestableRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedreferencestableRequiredProperty()
 	 * 
 	 */
-	public void updateAdvancedreferencestableRequiredProperty(EObject newValue) {
+	public void updateAdvancedreferencestableRequiredProperty() {
 	advancedreferencestableRequiredProperty.refresh();
 }
 
@@ -2375,10 +2375,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedreferencestableOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedreferencestableOptionalProperty()
 	 * 
 	 */
-	public void updateAdvancedreferencestableOptionalProperty(EObject newValue) {
+	public void updateAdvancedreferencestableOptionalProperty() {
 	advancedreferencestableOptionalProperty.refresh();
 }
 
@@ -2573,10 +2573,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionRequiredProperty()
 	 * 
 	 */
-	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue) {
+	public void updateAdvancedtablecompositionRequiredProperty() {
 	advancedtablecompositionRequiredProperty.refresh();
 }
 
@@ -2629,10 +2629,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#updateAdvancedtablecompositionOptionalProperty()
 	 * 
 	 */
-	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue) {
+	public void updateAdvancedtablecompositionOptionalProperty() {
 	advancedtablecompositionOptionalProperty.refresh();
 }
 

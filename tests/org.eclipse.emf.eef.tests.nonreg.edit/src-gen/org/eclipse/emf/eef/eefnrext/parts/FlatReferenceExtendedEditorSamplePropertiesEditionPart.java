@@ -39,7 +39,7 @@ public interface FlatReferenceExtendedEditorSamplePropertiesEditionPart {
 	 * @param newValue the flatReferenceEditorSample to update
 	 * 
 	 */
-	public void updateFlatReferenceEditorSample(EObject newValue);
+	public void updateFlatReferenceEditorSample();
 
 	/**
 	 * Adds the given filter to the flatReferenceEditorSample edition editor.

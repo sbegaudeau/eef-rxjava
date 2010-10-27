@@ -39,7 +39,7 @@ public interface ReferenceEnabledSamplePropertiesEditionPart {
 	 * @param newValue the reference to update
 	 * 
 	 */
-	public void updateReference(EObject newValue);
+	public void updateReference();
 
 	/**
 	 * Adds the given filter to the reference edition editor.

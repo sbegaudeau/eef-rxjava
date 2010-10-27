@@ -25,15 +25,9 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 	
 
 // End of user code
@@ -42,82 +36,21 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private MultiValuedEditorSample multiValuedEditorSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected MultiValuedEditorSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public MultiValuedEditorSamplePropertiesEditionComponent(EObject multiValuedEditorSample, String editing_mode) {
-		if (multiValuedEditorSample instanceof MultiValuedEditorSample) {
-			this.multiValuedEditorSample = (MultiValuedEditorSample)multiValuedEditorSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.multiValuedEditorSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(multiValuedEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrViewsRepository.MultiValuedEditorSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (multiValuedEditorSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
-				if (provider != null) {
-					basePart = (MultiValuedEditorSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.MultiValuedEditorSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrViewsRepository.MultiValuedEditorSample.class)
-			this.basePart = (MultiValuedEditorSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrViewsRepository.class;
+		partKey = EefnrViewsRepository.MultiValuedEditorSample.class;
 	}
 
 	/**
@@ -129,9 +62,10 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrViewsRepository.MultiValuedEditorSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)elt;
+			final MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
 								if (multiValuedEditorSample.getMultivaluededitorRequiredProperty() != null)
 									basePart.setMultivaluededitorRequiredProperty(multiValuedEditorSample.getMultivaluededitorRequiredProperty());
@@ -160,6 +94,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)semanticObject;
 		if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
 				if (event.getKind() == PropertiesEditionEvent.SET) {
 					multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
@@ -179,6 +114,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
 				if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
 					if (msg.getEventType() == Notification.ADD) 
 						basePart.addToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
@@ -235,39 +171,4 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(multiValuedEditorSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			multiValuedEditorSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

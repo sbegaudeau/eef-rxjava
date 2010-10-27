@@ -263,7 +263,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the referencestableRequiredProperty to update
 	 * 
 	 */
-	public void updateReferencestableRequiredProperty(EObject newValue);
+	public void updateReferencestableRequiredProperty();
 
 	/**
 	 * Adds the given filter to the referencestableRequiredProperty edition editor.
@@ -305,7 +305,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the referencestableOptionalProperty to update
 	 * 
 	 */
-	public void updateReferencestableOptionalProperty(EObject newValue);
+	public void updateReferencestableOptionalProperty();
 
 	/**
 	 * Adds the given filter to the referencestableOptionalProperty edition editor.
@@ -443,7 +443,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the tablecompositionRequiredProperty to update
 	 * 
 	 */
-	public void updateTablecompositionRequiredProperty(EObject newValue);
+	public void updateTablecompositionRequiredProperty();
 
 	/**
 	 * Adds the given filter to the tablecompositionRequiredProperty edition editor.
@@ -487,7 +487,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the tablecompositionOptionalProperty to update
 	 * 
 	 */
-	public void updateTablecompositionOptionalProperty(EObject newValue);
+	public void updateTablecompositionOptionalProperty();
 
 	/**
 	 * Adds the given filter to the tablecompositionOptionalProperty edition editor.
@@ -529,7 +529,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the advancedreferencestableRequiredProperty to update
 	 * 
 	 */
-	public void updateAdvancedreferencestableRequiredProperty(EObject newValue);
+	public void updateAdvancedreferencestableRequiredProperty();
 
 	/**
 	 * Adds the given filter to the advancedreferencestableRequiredProperty edition editor.
@@ -571,7 +571,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the advancedreferencestableOptionalProperty to update
 	 * 
 	 */
-	public void updateAdvancedreferencestableOptionalProperty(EObject newValue);
+	public void updateAdvancedreferencestableOptionalProperty();
 
 	/**
 	 * Adds the given filter to the advancedreferencestableOptionalProperty edition editor.
@@ -709,7 +709,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the advancedtablecompositionRequiredProperty to update
 	 * 
 	 */
-	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue);
+	public void updateAdvancedtablecompositionRequiredProperty();
 
 	/**
 	 * Adds the given filter to the advancedtablecompositionRequiredProperty edition editor.
@@ -753,7 +753,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the advancedtablecompositionOptionalProperty to update
 	 * 
 	 */
-	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue);
+	public void updateAdvancedtablecompositionOptionalProperty();
 
 	/**
 	 * Adds the given filter to the advancedtablecompositionOptionalProperty edition editor.

@@ -24,14 +24,8 @@ import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
 
@@ -41,82 +35,21 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String SECONDFLATREFERENCEEXTENDEDEDITORSAMPLE_PART = "SecondFlatReferenceExtendedEditorSample"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample;
-
-	/**
-	 * The SecondFlatReferenceExtendedEditorSample part
-	 * 
-	 */
-	protected SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart;
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent(EObject flatReferenceExtendedEditorSample, String editing_mode) {
-		if (flatReferenceExtendedEditorSample instanceof FlatReferenceExtendedEditorSample) {
-			this.flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)flatReferenceExtendedEditorSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)secondFlatReferenceExtendedEditorSamplePart);
-				this.flatReferenceExtendedEditorSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(flatReferenceExtendedEditorSample, editing_mode);
 		parts = new String[] { SECONDFLATREFERENCEEXTENDEDEDITORSAMPLE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (SECONDFLATREFERENCEEXTENDEDEDITORSAMPLE_PART.equals(key))
-			return EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (flatReferenceExtendedEditorSample != null && SECONDFLATREFERENCEEXTENDEDEDITORSAMPLE_PART.equals(key)) {
-			if (secondFlatReferenceExtendedEditorSamplePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrextViewsRepository.class);
-				if (provider != null) {
-					secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class, kind, this);
-					addListener((IPropertiesEditionListener)secondFlatReferenceExtendedEditorSamplePart);
-				}
-			}
-			return (IPropertiesEditionPart)secondFlatReferenceExtendedEditorSamplePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class)
-			this.secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrextViewsRepository.class;
+		partKey = EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class;
 	}
 
 	/**
@@ -128,9 +61,10 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (secondFlatReferenceExtendedEditorSamplePart != null && key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class) {
-			((IPropertiesEditionPart)secondFlatReferenceExtendedEditorSamplePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
+			final SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
 								if (flatReferenceExtendedEditorSample.getDemo() != null)
 									secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), flatReferenceExtendedEditorSample.getDemo()));
@@ -158,6 +92,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)semanticObject;
 		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
 			flatReferenceExtendedEditorSample.setDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
@@ -171,6 +106,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 		if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
 			if (msg.getNewValue() != null) {
 				secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -227,39 +163,4 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(flatReferenceExtendedEditorSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			flatReferenceExtendedEditorSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return secondFlatReferenceExtendedEditorSamplePart.getTitle();
-	}
 }

@@ -366,10 +366,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart#updateTablecompositionRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart#updateTablecompositionRequiredProperty()
 	 * 
 	 */
-	public void updateTablecompositionRequiredProperty(EObject newValue) {
+	public void updateTablecompositionRequiredProperty() {
 	tablecompositionRequiredProperty.refresh();
 }
 
@@ -422,10 +422,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart#updateTablecompositionOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart#updateTablecompositionOptionalProperty()
 	 * 
 	 */
-	public void updateTablecompositionOptionalProperty(EObject newValue) {
+	public void updateTablecompositionOptionalProperty() {
 	tablecompositionOptionalProperty.refresh();
 }
 

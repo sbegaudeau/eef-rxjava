@@ -24,14 +24,8 @@ import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
 // End of user code
@@ -40,82 +34,21 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AbstractEnabledSampleBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class AbstractEnabledSampleBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private AbstractEnabledSample abstractEnabledSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected AbstractEnabledSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public AbstractEnabledSampleBasePropertiesEditionComponent(EObject abstractEnabledSample, String editing_mode) {
-		if (abstractEnabledSample instanceof AbstractEnabledSample) {
-			this.abstractEnabledSample = (AbstractEnabledSample)abstractEnabledSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.abstractEnabledSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(abstractEnabledSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return ReferencesViewsRepository.AbstractEnabledSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (abstractEnabledSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
-				if (provider != null) {
-					basePart = (AbstractEnabledSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractEnabledSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == ReferencesViewsRepository.AbstractEnabledSample.class)
-			this.basePart = (AbstractEnabledSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = ReferencesViewsRepository.class;
+		partKey = ReferencesViewsRepository.AbstractEnabledSample.class;
 	}
 
 	/**
@@ -127,9 +60,10 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == ReferencesViewsRepository.AbstractEnabledSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)elt;
+			final AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
 			// init values
 								basePart.setEnabled(abstractEnabledSample.isEnabled());
 					
@@ -154,6 +88,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)semanticObject;
 		if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
 			abstractEnabledSample.setEnabled((Boolean)event.getNewValue());	
 		}
@@ -164,6 +99,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
 				if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && basePart != null)
 					basePart.setEnabled((Boolean)msg.getNewValue());
 		
@@ -199,39 +135,4 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(abstractEnabledSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			abstractEnabledSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

@@ -287,10 +287,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#updateAdvancedtablecompositionRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#updateAdvancedtablecompositionRequiredProperty()
 	 * 
 	 */
-	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue) {
+	public void updateAdvancedtablecompositionRequiredProperty() {
 	advancedtablecompositionRequiredProperty.refresh();
 }
 
@@ -343,10 +343,10 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#updateAdvancedtablecompositionOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart#updateAdvancedtablecompositionOptionalProperty()
 	 * 
 	 */
-	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue) {
+	public void updateAdvancedtablecompositionOptionalProperty() {
 	advancedtablecompositionOptionalProperty.refresh();
 }
 

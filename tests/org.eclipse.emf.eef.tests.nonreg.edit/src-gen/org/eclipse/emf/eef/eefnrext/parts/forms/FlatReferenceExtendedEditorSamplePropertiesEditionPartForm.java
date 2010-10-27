@@ -176,10 +176,10 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#updateFlatReferenceEditorSample(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#updateFlatReferenceEditorSample()
 	 * 
 	 */
-	public void updateFlatReferenceEditorSample(EObject newValue) {
+	public void updateFlatReferenceEditorSample() {
 	flatReferenceEditorSample.refresh();
 }
 

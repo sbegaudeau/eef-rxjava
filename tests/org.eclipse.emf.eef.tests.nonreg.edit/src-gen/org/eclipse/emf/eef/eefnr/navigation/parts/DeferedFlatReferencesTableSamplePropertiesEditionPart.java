@@ -53,7 +53,7 @@ public interface DeferedFlatReferencesTableSamplePropertiesEditionPart {
 	 * @param newValue the flatReferencesTableSampleEditor to update
 	 * 
 	 */
-	public void updateFlatReferencesTableSampleEditor(EObject newValue);
+	public void updateFlatReferencesTableSampleEditor();
 
 	/**
 	 * Adds the given filter to the flatReferencesTableSampleEditor edition editor.

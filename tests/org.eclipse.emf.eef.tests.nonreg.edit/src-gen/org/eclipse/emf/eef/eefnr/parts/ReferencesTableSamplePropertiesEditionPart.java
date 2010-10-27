@@ -38,7 +38,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param newValue the referencestableRequiredProperty to update
 	 * 
 	 */
-	public void updateReferencestableRequiredProperty(EObject newValue);
+	public void updateReferencestableRequiredProperty();
 
 	/**
 	 * Adds the given filter to the referencestableRequiredProperty edition editor.
@@ -80,7 +80,7 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * @param newValue the referencestableOptionalProperty to update
 	 * 
 	 */
-	public void updateReferencestableOptionalProperty(EObject newValue);
+	public void updateReferencestableOptionalProperty();
 
 	/**
 	 * Adds the given filter to the referencestableOptionalProperty edition editor.

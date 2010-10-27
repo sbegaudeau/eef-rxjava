@@ -28,16 +28,10 @@ import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSampl
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -50,22 +44,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String DEFEREDFLATREFERENCESTABLESAMPLE_PART = "DeferedFlatReferencesTableSample"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample;
-
-	/**
-	 * The DeferedFlatReferencesTableSample part
-	 * 
-	 */
-	protected DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart;
 	
 	/**
 	 * Settings for flatReferencesTableSampleEditor ReferencesTable
@@ -77,60 +60,10 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * 
 	 */
 	public DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent(EObject deferedFlatReferenceTableEditorSample, String editing_mode) {
-		if (deferedFlatReferenceTableEditorSample instanceof DeferedFlatReferenceTableEditorSample) {
-			this.deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)deferedFlatReferenceTableEditorSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)deferedFlatReferencesTableSamplePart);
-				this.deferedFlatReferenceTableEditorSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(deferedFlatReferenceTableEditorSample, editing_mode);
 		parts = new String[] { DEFEREDFLATREFERENCESTABLESAMPLE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (DEFEREDFLATREFERENCESTABLESAMPLE_PART.equals(key))
-			return NavigationViewsRepository.DeferedFlatReferencesTableSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (deferedFlatReferenceTableEditorSample != null && DEFEREDFLATREFERENCESTABLESAMPLE_PART.equals(key)) {
-			if (deferedFlatReferencesTableSamplePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NavigationViewsRepository.class);
-				if (provider != null) {
-					deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)provider.getPropertiesEditionPart(NavigationViewsRepository.DeferedFlatReferencesTableSample.class, kind, this);
-					addListener((IPropertiesEditionListener)deferedFlatReferencesTableSamplePart);
-				}
-			}
-			return (IPropertiesEditionPart)deferedFlatReferencesTableSamplePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == NavigationViewsRepository.DeferedFlatReferencesTableSample.class)
-			this.deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = NavigationViewsRepository.class;
+		partKey = NavigationViewsRepository.DeferedFlatReferencesTableSample.class;
 	}
 
 	/**
@@ -142,9 +75,10 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (deferedFlatReferencesTableSamplePart != null && key == NavigationViewsRepository.DeferedFlatReferencesTableSample.class) {
-			((IPropertiesEditionPart)deferedFlatReferencesTableSamplePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)elt;
+			final DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
 								if (deferedFlatReferenceTableEditorSample.getName() != null)
 									deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferenceTableEditorSample.getName()));
@@ -190,6 +124,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)semanticObject;
 		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
 			deferedFlatReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
@@ -204,6 +139,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedFlatReferencesTableSamplePart != null){
 			if (msg.getNewValue() != null) {
 				deferedFlatReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -212,7 +148,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			}
 		}
 		if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			deferedFlatReferencesTableSamplePart.updateFlatReferencesTableSampleEditor(deferedFlatReferenceTableEditorSample);
+			deferedFlatReferencesTableSamplePart.updateFlatReferencesTableSampleEditor();
 		
 	}
 
@@ -251,39 +187,4 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(deferedFlatReferenceTableEditorSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			deferedFlatReferenceTableEditorSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return deferedFlatReferencesTableSamplePart.getTitle();
-	}
 }

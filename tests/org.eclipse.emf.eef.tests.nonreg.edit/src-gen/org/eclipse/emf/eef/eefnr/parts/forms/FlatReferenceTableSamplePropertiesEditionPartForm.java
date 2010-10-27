@@ -187,10 +187,10 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableRequiredProperty()
 	 * 
 	 */
-	public void updateFlatreferencetableRequiredProperty(EObject newValue) {
+	public void updateFlatreferencetableRequiredProperty() {
 	flatreferencetableRequiredProperty.refresh();
 }
 
@@ -241,10 +241,10 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableOptionalProperty()
 	 * 
 	 */
-	public void updateFlatreferencetableOptionalProperty(EObject newValue) {
+	public void updateFlatreferencetableOptionalProperty() {
 	flatreferencetableOptionalProperty.refresh();
 }
 

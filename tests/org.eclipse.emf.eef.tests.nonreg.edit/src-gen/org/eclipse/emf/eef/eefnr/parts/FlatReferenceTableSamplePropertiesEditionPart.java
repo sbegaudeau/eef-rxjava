@@ -39,7 +39,7 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	 * @param newValue the flatreferencetableRequiredProperty to update
 	 * 
 	 */
-	public void updateFlatreferencetableRequiredProperty(EObject newValue);
+	public void updateFlatreferencetableRequiredProperty();
 
 	/**
 	 * Adds the given filter to the flatreferencetableRequiredProperty edition editor.
@@ -81,7 +81,7 @@ public interface FlatReferenceTableSamplePropertiesEditionPart {
 	 * @param newValue the flatreferencetableOptionalProperty to update
 	 * 
 	 */
-	public void updateFlatreferencetableOptionalProperty(EObject newValue);
+	public void updateFlatreferencetableOptionalProperty();
 
 	/**
 	 * Adds the given filter to the flatreferencetableOptionalProperty edition editor.

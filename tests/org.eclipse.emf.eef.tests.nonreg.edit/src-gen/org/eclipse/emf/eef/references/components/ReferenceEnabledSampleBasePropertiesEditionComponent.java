@@ -24,16 +24,10 @@ import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -45,22 +39,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ReferenceEnabledSampleBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class ReferenceEnabledSampleBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private ReferenceEnabledSample referenceEnabledSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected ReferenceEnabledSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Settings for reference ReferencesTable
@@ -72,60 +55,10 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 * 
 	 */
 	public ReferenceEnabledSampleBasePropertiesEditionComponent(EObject referenceEnabledSample, String editing_mode) {
-		if (referenceEnabledSample instanceof ReferenceEnabledSample) {
-			this.referenceEnabledSample = (ReferenceEnabledSample)referenceEnabledSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.referenceEnabledSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(referenceEnabledSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return ReferencesViewsRepository.ReferenceEnabledSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (referenceEnabledSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
-				if (provider != null) {
-					basePart = (ReferenceEnabledSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.ReferenceEnabledSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == ReferencesViewsRepository.ReferenceEnabledSample.class)
-			this.basePart = (ReferenceEnabledSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = ReferencesViewsRepository.class;
+		partKey = ReferencesViewsRepository.ReferenceEnabledSample.class;
 	}
 
 	/**
@@ -137,9 +70,10 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == ReferencesViewsRepository.ReferenceEnabledSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)elt;
+			final ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
 			// init values
 								referenceSettings = new ReferencesTableSettings(referenceEnabledSample, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
 								basePart.initReference(referenceSettings);
@@ -180,6 +114,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)semanticObject;
 		if (ReferencesViewsRepository.ReferenceEnabledSample.reference == event.getAffectedEditor()) {
 				if (event.getKind() == PropertiesEditionEvent.ADD)  {
 					if (event.getNewValue() instanceof TotalSample) {
@@ -196,8 +131,9 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
 		if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
-			basePart.updateReference(referenceEnabledSample);
+			basePart.updateReference();
 		
 	}
 
@@ -222,39 +158,4 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(referenceEnabledSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			referenceEnabledSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

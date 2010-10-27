@@ -38,7 +38,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * @param newValue the advancedreferencestableRequiredProperty to update
 	 * 
 	 */
-	public void updateAdvancedreferencestableRequiredProperty(EObject newValue);
+	public void updateAdvancedreferencestableRequiredProperty();
 
 	/**
 	 * Adds the given filter to the advancedreferencestableRequiredProperty edition editor.
@@ -80,7 +80,7 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * @param newValue the advancedreferencestableOptionalProperty to update
 	 * 
 	 */
-	public void updateAdvancedreferencestableOptionalProperty(EObject newValue);
+	public void updateAdvancedreferencestableOptionalProperty();
 
 	/**
 	 * Adds the given filter to the advancedreferencestableOptionalProperty edition editor.

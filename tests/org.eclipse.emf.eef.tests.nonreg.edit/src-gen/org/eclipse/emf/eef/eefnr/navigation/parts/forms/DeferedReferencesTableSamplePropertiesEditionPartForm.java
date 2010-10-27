@@ -385,10 +385,10 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart#updateReferencesTableSampleEditor(EObject newValue)
+	 * @see org.eclipse.emf.eef.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart#updateReferencesTableSampleEditor()
 	 * 
 	 */
-	public void updateReferencesTableSampleEditor(EObject newValue) {
+	public void updateReferencesTableSampleEditor() {
 	referencesTableSampleEditor.refresh();
 }
 

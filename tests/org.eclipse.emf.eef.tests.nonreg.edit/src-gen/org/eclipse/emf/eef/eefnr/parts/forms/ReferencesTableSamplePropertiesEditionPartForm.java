@@ -476,10 +476,10 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableRequiredProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableRequiredProperty()
 	 * 
 	 */
-	public void updateReferencestableRequiredProperty(EObject newValue) {
+	public void updateReferencestableRequiredProperty() {
 	referencestableRequiredProperty.refresh();
 }
 
@@ -532,10 +532,10 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableOptionalProperty(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableOptionalProperty()
 	 * 
 	 */
-	public void updateReferencestableOptionalProperty(EObject newValue) {
+	public void updateReferencestableOptionalProperty() {
 	referencestableOptionalProperty.refresh();
 }
 

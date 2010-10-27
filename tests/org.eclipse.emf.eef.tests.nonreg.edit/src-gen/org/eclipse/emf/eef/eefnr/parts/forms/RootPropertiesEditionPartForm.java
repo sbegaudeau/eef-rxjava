@@ -219,10 +219,10 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#updateSamples(EObject newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart#updateSamples()
 	 * 
 	 */
-	public void updateSamples(EObject newValue) {
+	public void updateSamples() {
 	samples.refresh();
 }
 

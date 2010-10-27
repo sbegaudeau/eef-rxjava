@@ -31,16 +31,10 @@ import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -55,22 +49,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private TotalSample totalSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected TotalSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Settings for eobjectflatcomboviewerRequiredProperty EObjectFlatComboViewer
@@ -137,60 +120,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * 
 	 */
 	public TotalSamplePropertiesEditionComponent(EObject totalSample, String editing_mode) {
-		if (totalSample instanceof TotalSample) {
-			this.totalSample = (TotalSample)totalSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.totalSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(totalSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrViewsRepository.TotalSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (totalSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrViewsRepository.class);
-				if (provider != null) {
-					basePart = (TotalSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrViewsRepository.TotalSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrViewsRepository.TotalSample.class)
-			this.basePart = (TotalSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrViewsRepository.class;
+		partKey = EefnrViewsRepository.TotalSample.class;
 	}
 
 	/**
@@ -202,9 +135,10 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrViewsRepository.TotalSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final TotalSample totalSample = (TotalSample)elt;
+			final TotalSamplePropertiesEditionPart basePart = (TotalSamplePropertiesEditionPart)editingPart;
 			// init values
 								if (totalSample.getTextRequiredProperty() != null)
 									basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), totalSample.getTextRequiredProperty()));
@@ -530,6 +464,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		TotalSample totalSample = (TotalSample)semanticObject;
 		if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
 			totalSample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
@@ -666,6 +601,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		TotalSamplePropertiesEditionPart basePart = (TotalSamplePropertiesEditionPart)editingPart;
 		if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -711,9 +647,9 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
 					basePart.setEobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
 		if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableRequiredProperty(totalSample);
+			basePart.updateReferencestableRequiredProperty();
 		if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableOptionalProperty(totalSample);
+			basePart.updateReferencestableOptionalProperty();
 				if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
 					basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
 		
@@ -735,21 +671,21 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				}
 		
 		if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
-			basePart.updateTablecompositionRequiredProperty(totalSample);
+			basePart.updateTablecompositionRequiredProperty();
 		if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
-			basePart.updateTablecompositionOptionalProperty(totalSample);
+			basePart.updateTablecompositionOptionalProperty();
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableRequiredProperty(totalSample);
+			basePart.updateAdvancedreferencestableRequiredProperty();
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableOptionalProperty(totalSample);
+			basePart.updateAdvancedreferencestableOptionalProperty();
 				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
 					basePart.setAdvancedeobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
 				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
 					basePart.setAdvancedeobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
+			basePart.updateAdvancedtablecompositionRequiredProperty();
 		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
+			basePart.updateAdvancedtablecompositionOptionalProperty();
 		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -843,39 +779,4 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(totalSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			totalSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

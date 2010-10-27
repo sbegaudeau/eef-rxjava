@@ -52,7 +52,7 @@ public interface DeferedReferencesTableSamplePropertiesEditionPart {
 	 * @param newValue the referencesTableSampleEditor to update
 	 * 
 	 */
-	public void updateReferencesTableSampleEditor(EObject newValue);
+	public void updateReferencesTableSampleEditor();
 
 	/**
 	 * Adds the given filter to the referencesTableSampleEditor edition editor.

@@ -40,7 +40,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param newValue the tablecompositionRequiredProperty to update
 	 * 
 	 */
-	public void updateTablecompositionRequiredProperty(EObject newValue);
+	public void updateTablecompositionRequiredProperty();
 
 	/**
 	 * Adds the given filter to the tablecompositionRequiredProperty edition editor.
@@ -84,7 +84,7 @@ public interface TableCompositionEditorSamplePropertiesEditionPart {
 	 * @param newValue the tablecompositionOptionalProperty to update
 	 * 
 	 */
-	public void updateTablecompositionOptionalProperty(EObject newValue);
+	public void updateTablecompositionOptionalProperty();
 
 	/**
 	 * Adds the given filter to the tablecompositionOptionalProperty edition editor.

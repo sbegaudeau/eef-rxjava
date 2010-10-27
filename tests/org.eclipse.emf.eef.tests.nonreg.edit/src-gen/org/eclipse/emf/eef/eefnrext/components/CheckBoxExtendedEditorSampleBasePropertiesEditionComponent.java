@@ -25,14 +25,8 @@ import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
 // End of user code
@@ -41,82 +35,21 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends StandardPropertiesEditionComponent {
+public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	/**
-	 * The EObject to edit
-	 * 
-	 */
-	private CheckBoxExtendedEditorSample checkBoxExtendedEditorSample;
-
-	/**
-	 * The Base part
-	 * 
-	 */
-	protected CheckBoxExtendedEditorSamplePropertiesEditionPart basePart;
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public CheckBoxExtendedEditorSampleBasePropertiesEditionComponent(EObject checkBoxExtendedEditorSample, String editing_mode) {
-		if (checkBoxExtendedEditorSample instanceof CheckBoxExtendedEditorSample) {
-			this.checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)checkBoxExtendedEditorSample;
-			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
-				this.checkBoxExtendedEditorSample.eAdapters().add(semanticAdapter);
-			}
-		}
+		super(checkBoxExtendedEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
-		this.editing_mode = editing_mode;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
-	 */
-	public java.lang.Class translatePart(String key) {
-		if (BASE_PART.equals(key))
-			return EefnrextViewsRepository.CheckBoxExtendedEditorSample.class;
-		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (checkBoxExtendedEditorSample != null && BASE_PART.equals(key)) {
-			if (basePart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrextViewsRepository.class);
-				if (provider != null) {
-					basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, kind, this);
-					addListener((IPropertiesEditionListener)basePart);
-				}
-			}
-			return (IPropertiesEditionPart)basePart;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
-	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.class)
-			this.basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart) propertiesEditionPart;
+		repositoryKey = EefnrextViewsRepository.class;
+		partKey = EefnrextViewsRepository.CheckBoxExtendedEditorSample.class;
 	}
 
 	/**
@@ -128,9 +61,10 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 */
 	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
-		if (basePart != null && key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.class) {
-			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 			final CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)elt;
+			final CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
 								basePart.setCheckboxEditorSample(checkBoxExtendedEditorSample.isCheckboxEditorSample());
 					
@@ -155,6 +89,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)semanticObject;
 		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
 			checkBoxExtendedEditorSample.setCheckboxEditorSample((Boolean)event.getNewValue());	
 		}
@@ -165,6 +100,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
 				if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
 					basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
 		
@@ -200,39 +136,4 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		return ret;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
-	 */
-	public Diagnostic validate() {
-		Diagnostic validate = Diagnostic.OK_INSTANCE;
-		validate = EEFRuntimePlugin.getEEFValidator().validate(checkBoxExtendedEditorSample);
-		// Start of user code for custom validation check
-		
-		// End of user code
-		return validate;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
-	 */
-	public void dispose() {
-		if (semanticAdapter != null)
-			checkBoxExtendedEditorSample.eAdapters().remove(semanticAdapter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
-	 * 
-	 */
-	public String getTabText(String p_key) {
-		return basePart.getTitle();
-	}
 }

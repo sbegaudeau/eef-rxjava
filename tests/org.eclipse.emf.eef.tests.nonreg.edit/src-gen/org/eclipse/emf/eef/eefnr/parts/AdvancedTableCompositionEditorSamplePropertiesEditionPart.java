@@ -40,7 +40,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * @param newValue the advancedtablecompositionRequiredProperty to update
 	 * 
 	 */
-	public void updateAdvancedtablecompositionRequiredProperty(EObject newValue);
+	public void updateAdvancedtablecompositionRequiredProperty();
 
 	/**
 	 * Adds the given filter to the advancedtablecompositionRequiredProperty edition editor.
@@ -84,7 +84,7 @@ public interface AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 	 * @param newValue the advancedtablecompositionOptionalProperty to update
 	 * 
 	 */
-	public void updateAdvancedtablecompositionOptionalProperty(EObject newValue);
+	public void updateAdvancedtablecompositionOptionalProperty();
 
 	/**
 	 * Adds the given filter to the advancedtablecompositionOptionalProperty edition editor.
