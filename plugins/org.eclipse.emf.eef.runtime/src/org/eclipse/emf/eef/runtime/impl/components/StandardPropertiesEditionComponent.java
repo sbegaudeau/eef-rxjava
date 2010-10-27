@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -21,6 +23,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
@@ -110,6 +113,28 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	public void setLiveEditingDomain(EditingDomain editingDomain) {
 		this.liveEditingDomain = editingDomain;
 	}
+	
+	/**
+	 * Initialize the semantic model listener for live editing mode
+	 * @param editingPart the compennt's part 
+	 * @return the semantic model listener
+	 * 
+	 */
+	protected AdapterImpl initializeSemanticAdapter(IPropertiesEditionPart editingPart) {
+		return new PropertiesEditingSemanticLister(this, editingPart) {
+			
+			public void runUpdateRunnable(Notification msg) {
+				updatePart(msg);
+			}
+		};
+	}
+	
+
+	/**
+	 * Update the part in response to a semantic event
+	 * @param msg the semantic event
+	 */
+	public abstract void updatePart(Notification msg);
 
 	/**
 	 * {@inheritDoc}
@@ -155,8 +180,8 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	}
 
 	/**
-	 * Update the part in response to a semantic event
-	 * @param event the semantic event
+	 * Update the model in response to a view event
+	 * @param event the view event
 	 */
 	public abstract void updateSemanticModel(IPropertiesEditionEvent event);
 
