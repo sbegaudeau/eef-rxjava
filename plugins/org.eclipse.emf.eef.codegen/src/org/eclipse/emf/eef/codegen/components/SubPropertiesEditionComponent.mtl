@@ -191,7 +191,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
 			this.[pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])[pec.model.name.toJavaIdentifier()/];
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)[view.viewIdentifier(pec)/]);
 				this.[pec.model.name.toJavaIdentifier()/].eAdapters().add(semanticAdapter);
 			}
 		}
@@ -199,31 +199,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)[view.viewIdentifier(pec)/]) {
-			
-			public void runUpdateRunnable(Notification msg) {
-					[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
-				// [protected ('for notifyChanged body')]
-				
-				// [/protected]
-					[else]		
-						[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-				[editionElement.liveUpdater(view, pec)/]
-						[/for]
-				[comment add ViewReference support/]
-				[view.liveUpdaterForReferencedViews(pec)/]
-					[/if]
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -287,9 +262,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 			
 			// [/protected]
 			[else]
-[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[pee.updater(view, pec)/]
-[/for]
+				[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+					[pee.updater(view, pec)/]
+				[/for]
 			[/if]
 			// init filters
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
@@ -311,13 +286,38 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
+		// [protected ('for notifyChanged body')]
+		
+		// [/protected]
+			[else]		
 		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 			[editionElement.declareEObjectUpdater(view, pec)/]
 		}
 		[/for]
+			[/if]
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
+		// [protected ('for notifyChanged body')]
+		
+		// [/protected]
+			[else]		
+				[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+		[editionElement.liveUpdater(view, pec)/]
+				[/for]
+		[comment add ViewReference support/]
+		[view.liveUpdaterForReferencedViews(pec)/]
+			[/if]
 	}
 
 [if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]
