@@ -67,7 +67,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * @param newValue the model to update
 	 * 
 	 */
-	public void updateModel(EObject newValue);
+	public void updateModel();
 
 	/**
 	 * Adds the given filter to the model edition editor.
@@ -109,7 +109,7 @@ public interface PropertiesMultiEditionElementPropertiesEditionPart {
 	 * @param newValue the views to update
 	 * 
 	 */
-	public void updateViews(EObject newValue);
+	public void updateViews();
 
 	/**
 	 * Adds the given filter to the views edition editor.

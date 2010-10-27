@@ -383,7 +383,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 * 
 	 */
 	protected void addModel() {
-		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), resourceSet, modelFilters, modelBusinessFilters, false, true) {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), model.getInput(), modelFilters, modelBusinessFilters, false, true) {
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
@@ -555,10 +555,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#updateModel(EObject newValue)
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#updateModel()
 	 * 
 	 */
-	public void updateModel(EObject newValue) {
+	public void updateModel() {
 	model.refresh();
 }
 
@@ -611,10 +611,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#updateViews(EObject newValue)
+	 * @see org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart#updateViews()
 	 * 
 	 */
-	public void updateViews(EObject newValue) {
+	public void updateViews() {
 	views.refresh();
 }
 
