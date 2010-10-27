@@ -134,13 +134,13 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				updatePart(event);
+				updateSemanticModel(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						updatePart(event);
+						updateSemanticModel(event);
 					}
 				});			
 			}
@@ -158,7 +158,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * Update the part in response to a semantic event
 	 * @param event the semantic event
 	 */
-	public abstract void updatePart(IPropertiesEditionEvent event);
+	public abstract void updateSemanticModel(IPropertiesEditionEvent event);
 
 	/**
 	 * {@inheritDoc}
