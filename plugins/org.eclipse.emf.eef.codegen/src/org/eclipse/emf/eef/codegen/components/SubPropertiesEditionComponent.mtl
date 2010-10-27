@@ -171,9 +171,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	[peContext.associatedGenModel().generationComment()/]
 	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
 
-	[peContext.associatedGenModel().generationComment()/]
-	private String['['/][']'/] parts = {[view.viewPartConstant(pec)/]};
-
 	/**
 	 * The EObject to edit
 	 * [peContext.associatedGenModel().generationMark()/]
@@ -198,6 +195,7 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 				this.[pec.model.name.toJavaIdentifier()/].eAdapters().add(semanticAdapter);
 			}
 		}
+		parts = new String['['/][']'/] { [view.viewPartConstant(pec)/] };
 		this.editing_mode = editing_mode;
 	}
 
@@ -208,52 +206,24 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
-		return new EContentAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-			 * [peContext.associatedGenModel().generationMark()/]
-			 */
-			public void notifyChanged(final Notification msg) {
-				if ([view.viewIdentifier(pec)/] == null)
-					[pec.subPECClass(view)/].this.dispose();
-				else {
-[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
-					// [protected ('for notifyChanged body')]
-					
-					// [/protected]
-[else]
-					Runnable updateRunnable = new Runnable() {
-						public void run() {
-							runUpdateRunnable(msg);
-						}
-					};
-					if (null == Display.getCurrent()) {
-						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-					} else {
-						updateRunnable.run();
-					}
-				}
+		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)[view.viewIdentifier(pec)/]) {
+			
+			public void runUpdateRunnable(Notification msg) {
+					[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
+				// [protected ('for notifyChanged body')]
+				
+				// [/protected]
+					[else]		
+						[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+				[editionElement.liveUpdater(view, pec)/]
+						[/for]
+				[comment add ViewReference support/]
+				[view.liveUpdaterForReferencedViews(pec)/]
+					[/if]
 			}
-
 		};
 	}
-
-	/**
-	 * Used to update the views
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	protected void runUpdateRunnable(final Notification msg) {
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[editionElement.liveUpdater(view, pec)/]
-[/for]
-[comment add ViewReference support/]
-[view.liveUpdaterForReferencedViews(pec)/]
-[/if]
-	}
-
+	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -264,16 +234,6 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 		if ([view.viewPartConstant(pec)/].equals(key))
 			return [view.editorID()/].class;
 		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	public String['['/][']'/] partsList() {
-		return parts;
 	}
 
 	/**
@@ -350,35 +310,9 @@ public class [pec.subPECClass(view)/] extends StandardPropertiesEditionComponent
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * [peContext.associatedGenModel().generationMark()/]
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
-		if (!isInitializing()) {
-			Diagnostic valueDiagnostic = validateValue(event);
-			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				updatePart(event);
-			}
-			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
-					
-					public void execute() {
-						updatePart(event);
-					}
-				});			
-			}
-			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
-			else {
-				Diagnostic validate = validate();
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
-			}
-			super.firePropertiesChanged(event);
-		}
-	}
-
-	protected void updatePart(final IPropertiesEditionEvent event) {
+	public void updatePart(final IPropertiesEditionEvent event) {
 		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 			[editionElement.declareEObjectUpdater(view, pec)/]
