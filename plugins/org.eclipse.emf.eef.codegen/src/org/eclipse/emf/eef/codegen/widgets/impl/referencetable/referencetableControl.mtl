@@ -40,7 +40,7 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')))]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
-	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable'))]
@@ -127,7 +127,7 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForMultipleModelReference())]
 if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForMultipleModelReference())]
@@ -189,7 +189,7 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForSingleModelReference())]
 if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/]);
+	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForSingleModelReference())]

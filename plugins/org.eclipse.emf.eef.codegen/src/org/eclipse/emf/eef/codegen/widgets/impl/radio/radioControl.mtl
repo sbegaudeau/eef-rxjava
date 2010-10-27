@@ -35,5 +35,5 @@
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio'))]
-[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])((EEnumLiteral)[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]).getInstance());
+[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])((EEnumLiteral)event.getNewValue()).getInstance());
 [/template]

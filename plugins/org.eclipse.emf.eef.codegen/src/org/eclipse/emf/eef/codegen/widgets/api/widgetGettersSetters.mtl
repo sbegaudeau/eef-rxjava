@@ -145,7 +145,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public updateSignature(elementEditor : ElementEditor)]
-	public void update[elementEditor.viewPackageSignature()/](EObject newValue)
+	public void update[elementEditor.viewPackageSignature()/]()
 [/template]
 
 [template public setterSignatureDocumentation(elementEditor : ElementEditor)]
@@ -315,7 +315,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#update[elementEditor.viewPackageSignature()/](EObject newValue)
+	 * @see [fullInterfacePath/]#update[elementEditor.viewPackageSignature()/]()
 	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
