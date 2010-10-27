@@ -47,9 +47,9 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'TableComposition')]
-protected TableViewer [editor.name.toJavaIdentifier()/];
-protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
+	protected TableViewer [editor.name.toJavaIdentifier()/];
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'TableComposition')]

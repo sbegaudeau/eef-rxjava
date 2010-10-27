@@ -58,7 +58,7 @@
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
 				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.[pec.model.name.toJavaIdentifier()/], [filter.reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.reference.ecorePackageSignature()/]());
+					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.semanticObject, [filter.reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.reference.ecorePackageSignature()/]());
 					if (result instanceof Collection) {
 						return ((Collection)result).contains(element);
 					} else if (result instanceof ResourceSet && element instanceof EObject) {
