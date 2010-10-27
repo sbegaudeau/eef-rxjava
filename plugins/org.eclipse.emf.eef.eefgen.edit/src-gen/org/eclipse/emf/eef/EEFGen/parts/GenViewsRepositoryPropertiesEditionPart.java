@@ -16,8 +16,8 @@ package org.eclipse.emf.eef.EEFGen.parts;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 // End of user code
@@ -36,10 +36,9 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 
 	/**
 	 * Init the Views repository
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initViewsRepository(ResourceSet allResources, EObject current);
+	public void initViewsRepository(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new Views repository

@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.EEFGen.parts.impl;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
@@ -27,6 +26,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -159,12 +159,12 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#initReferencedEEFGenModel(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart#initReferencedEEFGenModel(EObjectFlatComboSettings)
 	 */
-	public void initReferencedEEFGenModel(ResourceSet allResources, EObject current) {
-		referencedEEFGenModel.setInput(allResources);
+	public void initReferencedEEFGenModel(EObjectFlatComboSettings settings) {
+		referencedEEFGenModel.setInput(settings);
 		if (current != null) {
-			referencedEEFGenModel.setSelection(new StructuredSelection(current));
+			referencedEEFGenModel.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 

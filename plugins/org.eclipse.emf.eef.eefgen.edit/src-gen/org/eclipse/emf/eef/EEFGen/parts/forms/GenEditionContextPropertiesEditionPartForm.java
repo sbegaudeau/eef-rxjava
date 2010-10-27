@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.EEFGen.parts.forms;
 // Start of user code for imports
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart;
@@ -28,6 +27,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -377,12 +377,12 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#initPropertiesEditionContext(ResourceSet allResources, EObject current)
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart#initPropertiesEditionContext(EObjectFlatComboSettings)
 	 */
-	public void initPropertiesEditionContext(ResourceSet allResources, EObject current) {
-		propertiesEditionContext.setInput(allResources);
+	public void initPropertiesEditionContext(EObjectFlatComboSettings settings) {
+		propertiesEditionContext.setInput(settings);
 		if (current != null) {
-			propertiesEditionContext.setSelection(new StructuredSelection(current));
+			propertiesEditionContext.setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 
