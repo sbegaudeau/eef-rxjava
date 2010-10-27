@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
@@ -37,13 +36,12 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -51,8 +49,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
 	
 
 // End of user code
@@ -65,9 +61,6 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
-	
-	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
@@ -153,6 +146,7 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				this.totalSample.eAdapters().add(semanticAdapter);
 			}
 		}
+		parts = new String[] { BASE_PART };
 		this.editing_mode = editing_mode;
 	}
 
@@ -163,133 +157,105 @@ public class TotalSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
-		return new EContentAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-			 * 
-			 */
-			public void notifyChanged(final Notification msg) {
-				if (basePart == null)
-					TotalSamplePropertiesEditionComponent.this.dispose();
-				else {
-					Runnable updateRunnable = new Runnable() {
-						public void run() {
-							runUpdateRunnable(msg);
+		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
+			
+			public void runUpdateRunnable(Notification msg) {
+						if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+							if (msg.getNewValue() != null) {
+								basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+							} else {
+								basePart.setTextRequiredProperty("");
+							}
 						}
-					};
-					if (null == Display.getCurrent()) {
-						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-					} else {
-						updateRunnable.run();
-					}
-				}
+						if (EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+							if (msg.getNewValue() != null) {
+								basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+							} else {
+								basePart.setTextOptionalProperty("");
+							}
+						}
+						if (EefnrPackage.eINSTANCE.getTotalSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
+							if (msg.getNewValue() != null) {
+								basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+							} else {
+								basePart.setTextareaRequiredProperty("");
+							}
+						}
+						if (EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null){
+							if (msg.getNewValue() != null) {
+								basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+							} else {
+								basePart.setTextareaOptionalProperty("");
+							}
+						}
+						if (EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setRadioRequiredProperty((Enumerator)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setRadioOptionalProperty((Enumerator)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setEobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());
+						if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setEobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
+				if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
+					basePart.updateReferencestableRequiredProperty(totalSample);
+				if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
+					basePart.updateReferencestableOptionalProperty(totalSample);
+						if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
+							if (msg.getEventType() == Notification.ADD) 
+								basePart.addToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
+							else if (msg.getEventType() == Notification.REMOVE) 
+								basePart.removeToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
+						}
+				
+						if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null) {
+							if (msg.getEventType() == Notification.ADD) 
+								basePart.addToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
+							else if (msg.getEventType() == Notification.REMOVE) 
+								basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
+						}
+				
+				if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
+					basePart.updateTablecompositionRequiredProperty(totalSample);
+				if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
+					basePart.updateTablecompositionOptionalProperty(totalSample);
+				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
+					basePart.updateAdvancedreferencestableRequiredProperty(totalSample);
+				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
+					basePart.updateAdvancedreferencestableOptionalProperty(totalSample);
+						if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
+							basePart.setAdvancedeobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
+						if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
+							basePart.setAdvancedeobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
+				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
+					basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
+				if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
+					basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
+						if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
+							if (msg.getNewValue() != null) {
+								basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+							} else {
+								basePart.setName("");
+							}
+						}
+				
 			}
-
 		};
 	}
-
-	/**
-	 * Used to update the views
-	 * 
-	 */
-	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextRequiredProperty("");
-			}
-		}
-		if (EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextOptionalProperty("");
-			}
-		}
-		if (EefnrPackage.eINSTANCE.getTotalSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextareaRequiredProperty("");
-			}
-		}
-		if (EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextareaOptionalProperty("");
-			}
-		}
-		if (EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setRadioRequiredProperty((Enumerator)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setRadioOptionalProperty((Enumerator)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setEobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());
-		if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setEobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
-if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-	basePart.updateReferencestableRequiredProperty(totalSample);
-if (EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-	basePart.updateReferencestableOptionalProperty(totalSample);
-		if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
-			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
-			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
-		}
-
-		if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null) {
-			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
-			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
-		}
-
-if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
-	basePart.updateTablecompositionRequiredProperty(totalSample);
-if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
-	basePart.updateTablecompositionOptionalProperty(totalSample);
-if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
-	basePart.updateAdvancedreferencestableRequiredProperty(totalSample);
-if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
-	basePart.updateAdvancedreferencestableOptionalProperty(totalSample);
-		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
-			basePart.setAdvancedeobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
-		if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
-			basePart.setAdvancedeobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
-if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
-	basePart.updateAdvancedtablecompositionRequiredProperty(totalSample);
-if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
-	basePart.updateAdvancedtablecompositionOptionalProperty(totalSample);
-		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
-			}
-		}
-
-	}
-
+	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -300,16 +266,6 @@ if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProper
 		if (BASE_PART.equals(key))
 			return EefnrViewsRepository.TotalSample.class;
 		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
-	 * 
-	 */
-	public String[] partsList() {
-		return parts;
 	}
 
 	/**
@@ -678,35 +634,9 @@ if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProper
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
-		if (!isInitializing()) {
-			Diagnostic valueDiagnostic = validateValue(event);
-			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				updatePart(event);
-			}
-			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
-					
-					public void execute() {
-						updatePart(event);
-					}
-				});			
-			}
-			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
-			else {
-				Diagnostic validate = validate();
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
-			}
-			super.firePropertiesChanged(event);
-		}
-	}
-
-	protected void updatePart(final IPropertiesEditionEvent event) {
+	public void updatePart(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
 			totalSample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}

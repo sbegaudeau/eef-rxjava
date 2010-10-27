@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
@@ -32,14 +31,11 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
 	
 
 // End of user code
@@ -52,9 +48,6 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
-	
-	private String[] parts = {BASE_PART};
 
 	/**
 	 * The EObject to edit
@@ -80,6 +73,7 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 				this.radioSample.eAdapters().add(semanticAdapter);
 			}
 		}
+		parts = new String[] { BASE_PART };
 		this.editing_mode = editing_mode;
 	}
 
@@ -90,48 +84,20 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 	 * 
 	 */
 	private AdapterImpl initializeSemanticAdapter() {
-		return new EContentAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-			 * 
-			 */
-			public void notifyChanged(final Notification msg) {
-				if (basePart == null)
-					RadioSamplePropertiesEditionComponent.this.dispose();
-				else {
-					Runnable updateRunnable = new Runnable() {
-						public void run() {
-							runUpdateRunnable(msg);
-						}
-					};
-					if (null == Display.getCurrent()) {
-						PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
-					} else {
-						updateRunnable.run();
-					}
-				}
+		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
+			
+			public void runUpdateRunnable(Notification msg) {
+						if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setRadioRequiredProperty((Object)msg.getNewValue());
+				
+						if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null)
+							basePart.setRadioOptionalProperty((Object)msg.getNewValue());
+				
+				
 			}
-
 		};
 	}
-
-	/**
-	 * Used to update the views
-	 * 
-	 */
-	protected void runUpdateRunnable(final Notification msg) {
-		if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setRadioRequiredProperty((Object)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setRadioOptionalProperty((Object)msg.getNewValue());
-
-
-	}
-
+	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -142,16 +108,6 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		if (BASE_PART.equals(key))
 			return EefnrViewsRepository.RadioSample.class;
 		return super.translatePart(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
-	 * 
-	 */
-	public String[] partsList() {
-		return parts;
 	}
 
 	/**
@@ -219,35 +175,9 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
-		if (!isInitializing()) {
-			Diagnostic valueDiagnostic = validateValue(event);
-			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				updatePart(event);
-			}
-			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
-					
-					public void execute() {
-						updatePart(event);
-					}
-				});			
-			}
-			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, valueDiagnostic));
-			else {
-				Diagnostic validate = validate();
-				super.firePropertiesChanged(new PropertiesValidationEditionEvent(event, validate));
-			}
-			super.firePropertiesChanged(event);
-		}
-	}
-
-	protected void updatePart(final IPropertiesEditionEvent event) {
+	public void updatePart(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.RadioSample.radioRequiredProperty == event.getAffectedEditor()) {
 			radioSample.setRadioRequiredProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioRequiredProperty()).getInstance());
 		}
