@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -32,7 +31,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -80,7 +78,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		if (deferedReferenceTableEditorSample instanceof DeferedReferenceTableEditorSample) {
 			this.deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)deferedReferenceTableEditorSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)deferedReferencesTableSamplePart);
 				this.deferedReferenceTableEditorSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -88,30 +86,6 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)deferedReferencesTableSamplePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null){
-					if (msg.getNewValue() != null) {
-						deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-					} else {
-						deferedReferencesTableSamplePart.setName("");
-					}
-				}
-				if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-					deferedReferencesTableSamplePart.updateReferencesTableSampleEditor(deferedReferenceTableEditorSample);
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -170,11 +144,11 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			((IPropertiesEditionPart)deferedReferencesTableSamplePart).setContext(elt, allResource);
 			final DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)elt;
 			// init values
-			if (deferedReferenceTableEditorSample.getName() != null)
-				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
-
-			flatreferenceEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatreferenceEditorSettings);
+								if (deferedReferenceTableEditorSample.getName() != null)
+									deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
+					
+								flatreferenceEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+								deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatreferenceEditorSettings);
 			// init filters
 
 			deferedReferencesTableSamplePart.addFilterToReferencesTableSampleEditor(new ViewerFilter() {
@@ -208,6 +182,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (NavigationViewsRepository.DeferedReferencesTableSample.name == event.getAffectedEditor()) {
@@ -222,6 +197,23 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 						flatreferenceEditorSettings.removeFromReference((EObject) event.getNewValue());
 				}
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null){
+			if (msg.getNewValue() != null) {
+				deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				deferedReferencesTableSamplePart.setName("");
+			}
+		}
+		if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+			deferedReferencesTableSamplePart.updateReferencesTableSampleEditor(deferedReferenceTableEditorSample);
+		
 	}
 
 

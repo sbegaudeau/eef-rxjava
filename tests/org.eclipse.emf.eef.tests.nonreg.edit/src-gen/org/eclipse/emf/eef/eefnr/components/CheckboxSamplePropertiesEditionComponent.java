@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -28,7 +27,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -66,7 +64,7 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 		if (checkboxSample instanceof CheckboxSample) {
 			this.checkboxSample = (CheckboxSample)checkboxSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart) basePart);
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.checkboxSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -132,10 +130,10 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final CheckboxSample checkboxSample = (CheckboxSample)elt;
 			// init values
-			basePart.setCheckboxRequiredProperty(checkboxSample.isCheckboxRequiredProperty());
-
-			basePart.setCheckboxOptionalProperty(checkboxSample.isCheckboxOptionalProperty());
-
+								basePart.setCheckboxRequiredProperty(checkboxSample.isCheckboxRequiredProperty());
+					
+								basePart.setCheckboxOptionalProperty(checkboxSample.isCheckboxOptionalProperty());
+					
 			// init filters
 
 
@@ -147,9 +145,14 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 		setInitializing(false);
 	}
 
+
+
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty == event.getAffectedEditor()) {
@@ -160,19 +163,21 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
-
-		if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+				if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
+					basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
+		
+				if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
+					basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+		
+		
 	}
-	 
+
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -246,5 +251,4 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 	public String getTabText(String p_key) {
 		return basePart.getTitle();
 	}
-
 }

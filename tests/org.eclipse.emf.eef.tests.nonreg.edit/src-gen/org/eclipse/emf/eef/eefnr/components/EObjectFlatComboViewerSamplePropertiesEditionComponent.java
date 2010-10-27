@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -27,7 +26,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -79,7 +77,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 		if (eObjectFlatComboViewerSample instanceof EObjectFlatComboViewerSample) {
 			this.eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)eObjectFlatComboViewerSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.eObjectFlatComboViewerSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -87,25 +85,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
-							basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
-						if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
-							basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -164,16 +143,16 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)elt;
 			// init values
-			// init part
-			eobjectflatcomboviewerRequiredProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery());
-			basePart.initEobjectflatcomboviewerRequiredPropery(eobjectflatcomboviewerRequiredProperySettings);
-			// set the button mode
-			basePart.setEobjectflatcomboviewerRequiredProperyButtonMode(ButtonsModeEnum.BROWSE);
-			// init part
-			eobjectflatcomboviewerOptionalProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery());
-			basePart.initEobjectflatcomboviewerOptionalPropery(eobjectflatcomboviewerOptionalProperySettings);
-			// set the button mode
-			basePart.setEobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
+								// init part
+								eobjectflatcomboviewerRequiredProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery());
+								basePart.initEobjectflatcomboviewerRequiredPropery(eobjectflatcomboviewerRequiredProperySettings);
+								// set the button mode
+								basePart.setEobjectflatcomboviewerRequiredProperyButtonMode(ButtonsModeEnum.BROWSE);
+								// init part
+								eobjectflatcomboviewerOptionalProperySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery());
+								basePart.initEobjectflatcomboviewerOptionalPropery(eobjectflatcomboviewerOptionalProperySettings);
+								// set the button mode
+								basePart.setEobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
 			// init filters
 			basePart.addFilterToEobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
 
@@ -222,6 +201,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
@@ -230,6 +210,18 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 		if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
 			eobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+				if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
+					basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
+				if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
+					basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
+		
 	}
 
 

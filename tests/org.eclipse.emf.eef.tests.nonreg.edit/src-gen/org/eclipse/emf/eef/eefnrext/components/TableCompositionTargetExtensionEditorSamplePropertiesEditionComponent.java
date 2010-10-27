@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnrext.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -29,7 +28,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -68,7 +66,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		if (tableCompositionTargetExtensionEditorSample instanceof TableCompositionTargetExtensionEditorSample) {
 			this.tableCompositionTargetExtensionEditorSample = (TableCompositionTargetExtensionEditorSample)tableCompositionTargetExtensionEditorSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.tableCompositionTargetExtensionEditorSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -76,28 +74,6 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
-					if (msg.getNewValue() != null) {
-						basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-					} else {
-						basePart.setName("");
-					}
-				}
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -156,9 +132,9 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final TableCompositionTargetExtensionEditorSample tableCompositionTargetExtensionEditorSample = (TableCompositionTargetExtensionEditorSample)elt;
 			// init values
-			if (tableCompositionTargetExtensionEditorSample.getName() != null)
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), tableCompositionTargetExtensionEditorSample.getName()));
-
+								if (tableCompositionTargetExtensionEditorSample.getName() != null)
+									basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), tableCompositionTargetExtensionEditorSample.getName()));
+					
 			// init filters
 
 		}
@@ -175,11 +151,27 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name == event.getAffectedEditor()) {
 			tableCompositionTargetExtensionEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setName("");
+			}
+		}
+		
 	}
 
 

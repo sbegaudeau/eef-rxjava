@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.references.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -29,7 +28,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -77,7 +75,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 		if (referenceEnabledSample instanceof ReferenceEnabledSample) {
 			this.referenceEnabledSample = (ReferenceEnabledSample)referenceEnabledSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.referenceEnabledSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -85,23 +83,6 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
-					basePart.updateReference(referenceEnabledSample);
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -160,8 +141,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)elt;
 			// init values
-			referenceSettings = new ReferencesTableSettings(referenceEnabledSample, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
-			basePart.initReference(referenceSettings);
+								referenceSettings = new ReferencesTableSettings(referenceEnabledSample, ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
+								basePart.initReference(referenceSettings);
 			// init filters
 			basePart.addFilterToReference(new ViewerFilter() {
 
@@ -196,6 +177,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (ReferencesViewsRepository.ReferenceEnabledSample.reference == event.getAffectedEditor()) {
@@ -207,6 +189,16 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Standa
 						referenceSettings.removeFromReference((EObject) event.getNewValue());
 				}
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
+			basePart.updateReference(referenceEnabledSample);
+		
 	}
 
 

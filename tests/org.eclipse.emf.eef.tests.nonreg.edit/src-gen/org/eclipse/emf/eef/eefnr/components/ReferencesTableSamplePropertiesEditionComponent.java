@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -27,7 +26,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -80,7 +78,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 		if (referencesTableSample instanceof ReferencesTableSample) {
 			this.referencesTableSample = (ReferencesTableSample)referencesTableSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.referencesTableSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -88,25 +86,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-					basePart.updateReferencestableRequiredProperty(referencesTableSample);
-				if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-					basePart.updateReferencestableOptionalProperty(referencesTableSample);
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -165,10 +144,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final ReferencesTableSample referencesTableSample = (ReferencesTableSample)elt;
 			// init values
-			referencestableRequiredPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
-			basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
-			referencestableOptionalPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
-			basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
+								referencestableRequiredPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty());
+								basePart.initReferencestableRequiredProperty(referencestableRequiredPropertySettings);
+								referencestableOptionalPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
+								basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
 
@@ -223,6 +202,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
@@ -243,6 +223,18 @@ public class ReferencesTableSamplePropertiesEditionComponent extends StandardPro
 						referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 				}
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
+			basePart.updateReferencestableRequiredProperty(referencesTableSample);
+		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
+			basePart.updateReferencestableOptionalProperty(referencesTableSample);
+		
 	}
 
 

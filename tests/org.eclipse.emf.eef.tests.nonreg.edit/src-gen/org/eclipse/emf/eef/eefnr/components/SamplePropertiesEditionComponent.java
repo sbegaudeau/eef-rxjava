@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -29,7 +28,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -68,7 +66,7 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 		if (sample instanceof Sample) {
 			this.sample = (Sample)sample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.sample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -76,35 +74,6 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
-					if (msg.getNewValue() != null) {
-						basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-					} else {
-						basePart.setTextRequiredProperty("");
-					}
-				}
-				if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
-					if (msg.getNewValue() != null) {
-						basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-					} else {
-						basePart.setTextOptionalProperty("");
-					}
-				}
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -163,12 +132,12 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final Sample sample = (Sample)elt;
 			// init values
-			if (sample.getTextRequiredProperty() != null)
-				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextRequiredProperty()));
-
-			if (sample.getTextOptionalProperty() != null)
-				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextOptionalProperty()));
-
+								if (sample.getTextRequiredProperty() != null)
+									basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextRequiredProperty()));
+					
+								if (sample.getTextOptionalProperty() != null)
+									basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextOptionalProperty()));
+					
 			// init filters
 
 
@@ -187,6 +156,7 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.Sample.textRequiredProperty == event.getAffectedEditor()) {
@@ -195,6 +165,28 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 		if (EefnrViewsRepository.Sample.textOptionalProperty == event.getAffectedEditor()) {
 			sample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setTextRequiredProperty("");
+			}
+		}
+		if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setTextOptionalProperty("");
+			}
+		}
+		
 	}
 
 

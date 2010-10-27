@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -27,7 +26,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -79,7 +77,7 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 		if (tableCompositionEditorSample instanceof TableCompositionEditorSample) {
 			this.tableCompositionEditorSample = (TableCompositionEditorSample)tableCompositionEditorSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.tableCompositionEditorSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -87,25 +85,6 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
-					basePart.updateTablecompositionRequiredProperty(tableCompositionEditorSample);
-				if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
-					basePart.updateTablecompositionOptionalProperty(tableCompositionEditorSample);
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -164,10 +143,10 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final TableCompositionEditorSample tableCompositionEditorSample = (TableCompositionEditorSample)elt;
 			// init values
-			tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty());
-			basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
-			tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty());
-			basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
+								tablecompositionRequiredPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty());
+								basePart.initTablecompositionRequiredProperty(tablecompositionRequiredPropertySettings);
+								tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty());
+								basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
 
@@ -216,6 +195,7 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
@@ -236,6 +216,18 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Stan
 						tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 				}
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
+			basePart.updateTablecompositionRequiredProperty(tableCompositionEditorSample);
+		if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
+			basePart.updateTablecompositionOptionalProperty(tableCompositionEditorSample);
+		
 	}
 
 

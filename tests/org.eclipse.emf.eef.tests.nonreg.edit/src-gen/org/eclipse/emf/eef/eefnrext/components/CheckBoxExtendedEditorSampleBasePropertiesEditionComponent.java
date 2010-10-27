@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnrext.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -30,7 +29,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -68,7 +66,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		if (checkBoxExtendedEditorSample instanceof CheckBoxExtendedEditorSample) {
 			this.checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)checkBoxExtendedEditorSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.checkBoxExtendedEditorSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -76,24 +74,6 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-						if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
-							basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
-				
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -152,8 +132,8 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)elt;
 			// init values
-			basePart.setCheckboxEditorSample(checkBoxExtendedEditorSample.isCheckboxEditorSample());
-
+								basePart.setCheckboxEditorSample(checkBoxExtendedEditorSample.isCheckboxEditorSample());
+					
 			// init filters
 
 		}
@@ -172,11 +152,23 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
 			checkBoxExtendedEditorSample.setCheckboxEditorSample((Boolean)event.getNewValue());	
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+				if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
+					basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
+		
+		
 	}
 
 

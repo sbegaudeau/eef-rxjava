@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.components;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
@@ -28,7 +27,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -81,7 +79,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 		if (flatReferencesTableSample instanceof FlatReferencesTableSample) {
 			this.flatReferencesTableSample = (FlatReferencesTableSample)flatReferencesTableSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.flatReferencesTableSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -89,25 +87,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-				if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
-					basePart.updateFlatreferencetableRequiredProperty(flatReferencesTableSample);
-				if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
-					basePart.updateFlatreferencetableOptionalProperty(flatReferencesTableSample);
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -166,10 +145,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)elt;
 			// init values
-			flatreferencestableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
-			basePart.initFlatreferencetableRequiredProperty(flatreferencestableRequiredPropertySettings);
-			flatreferencestableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
-			basePart.initFlatreferencetableOptionalProperty(flatreferencestableOptionalPropertySettings);
+								flatreferencestableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
+								basePart.initFlatreferencetableRequiredProperty(flatreferencestableRequiredPropertySettings);
+								flatreferencestableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+								basePart.initFlatreferencetableOptionalProperty(flatreferencestableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToFlatreferencetableRequiredProperty(new ViewerFilter() {
 
@@ -224,6 +203,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
@@ -234,6 +214,18 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends Standard
 				if (event.getKind() == PropertiesEditionEvent.SET)
 					flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
+			basePart.updateFlatreferencetableRequiredProperty(flatReferencesTableSample);
+		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
+			basePart.updateFlatreferencetableOptionalProperty(flatReferencesTableSample);
+		
 	}
 
 

@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Enumerator;
@@ -31,7 +30,6 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent;
@@ -69,7 +67,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 		if (eMFComboViewerSample instanceof EMFComboViewerSample) {
 			this.eMFComboViewerSample = (EMFComboViewerSample)eMFComboViewerSample;
 			if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				semanticAdapter = initializeSemanticAdapter();
+				semanticAdapter = initializeSemanticAdapter((IPropertiesEditionPart)basePart);
 				this.eMFComboViewerSample.eAdapters().add(semanticAdapter);
 			}
 		}
@@ -77,27 +75,6 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 		this.editing_mode = editing_mode;
 	}
 
-	/**
-	 * Initialize the semantic model listener for live editing mode
-	 * 
-	 * @return the semantic model listener
-	 * 
-	 */
-	private AdapterImpl initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this, (IPropertiesEditionPart)basePart) {
-			
-			public void runUpdateRunnable(Notification msg) {
-						if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
-							basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
-				
-						if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
-							basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
-				
-				
-			}
-		};
-	}
-	 
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -156,8 +133,8 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 			((IPropertiesEditionPart)basePart).setContext(elt, allResource);
 			final EMFComboViewerSample eMFComboViewerSample = (EMFComboViewerSample)elt;
 			// init values
-			basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerRequiredProperty());
-			basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerOptionalProperty());
+								basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerRequiredProperty());
+								basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerOptionalProperty());
 			// init filters
 
 
@@ -176,6 +153,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
@@ -184,6 +162,20 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 		if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
 			eMFComboViewerSample.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+				if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
+					basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
+		
+				if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
+					basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
+		
+		
 	}
 
 
