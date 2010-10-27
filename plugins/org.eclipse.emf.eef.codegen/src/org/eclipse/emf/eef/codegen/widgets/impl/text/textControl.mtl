@@ -35,10 +35,10 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Text'))]
 [if (editionElement.model.isPrimitiveType())]
-			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [else]
-			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [/if]
 [/template]
 

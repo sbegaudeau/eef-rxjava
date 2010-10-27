@@ -203,18 +203,18 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 			// [/protected]
 			[else]
 				[for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-					[pee.updater(view, pec)/]
+			[pee.updater(view, pec)/]
 				[/for]
 			[/if]
 			// init filters
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-[pee.filterUpdater(view, pec)/]
+			[pee.filterUpdater(view, pec)/]
 [/for]
 		}
 		// init values for referenced views
-[view.updaterForReferencedViews(pec)/]
+		[view.updaterForReferencedViews(pec)/]
 		// init filters for referenced views
-[view.filterUpdaterForReferencedViews(pec)/]
+		[view.filterUpdaterForReferencedViews(pec)/]
 		setInitializing(false);
 	}
 

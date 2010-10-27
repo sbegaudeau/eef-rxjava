@@ -28,13 +28,13 @@ private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]S
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-	if (event.getKind() == PropertiesEditionEvent.ADD)  {
-		if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
-			[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference((EObject) event.getNewValue());
-		}
-	} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-			[editionElement.model.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
+if (event.getKind() == PropertiesEditionEvent.ADD)  {
+	if (event.getNewValue() instanceof [editionElement.model.eType.name/]) {
+		[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference((EObject) event.getNewValue());
 	}
+} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+		[editionElement.model.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
+}
 [/template]
 
 
@@ -45,30 +45,30 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
+[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-				}
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+		 */
+		public boolean select(Viewer viewer, Object parentElement, Object element) {
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		}
 
-			});
+});
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
-			
-			// [/protected]
+// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+
+// [/protected]
 [/if]
 [/template]
 
@@ -88,34 +88,34 @@ if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						[if (editionElement.model.lowerBound = 0)]if (element instanceof String)
-							return element.equals(""); //$NON-NLS-1$ 
-						[/if]
-						if (element instanceof [editionElement.model.eType.name/])
-							return true;
-						return element instanceof Resource;
-				}
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+		 */
+		public boolean select(Viewer viewer, Object parentElement, Object element) {
+			[if (editionElement.model.lowerBound = 0)]if (element instanceof String)
+				return element.equals(""); //$NON-NLS-1$ 
+			[/if]
+			if (element instanceof [editionElement.model.eType.name/])
+				return true;
+			return element instanceof Resource;
+		}
 
-			});
+});
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
-			
-			// [/protected]
+// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+
+// [/protected]
 [/if]
 [/template]
 
@@ -126,28 +126,28 @@ if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/]);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
-					/**
-					 * {@inheritDoc}
-					 *
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
-				}
+		/**
+		 * {@inheritDoc}
+		 *
+		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+		 */
+		public boolean select(Viewer viewer, Object parentElement, Object element) {
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		}
 
-			});
+});
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-			// [protected ('for additional businessfilters for '.concat(editionElement.name))]
-			
-			// [/protected]
+// [protected ('for additional businessfilters for '.concat(editionElement.name))]
+
+// [/protected]
 [/if]
 [/template]

@@ -18,20 +18,20 @@
 
 [comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
-	if (event.getKind() == PropertiesEditionEvent.SET) {
-		[pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]().clear();
-		[pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]().addAll(((List) event.getNewValue()));
-	}
+if (event.getKind() == PropertiesEditionEvent.SET) {
+	[pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]().clear();
+	[pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]().addAll(((List) event.getNewValue()));
+}
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.oclAsType(ecore::EAttribute).many)]
-		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null) {
-			if (msg.getEventType() == Notification.ADD) 
-				[view.viewIdentifier(pec)/].addTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getNewValue());
-			else if (msg.getEventType() == Notification.REMOVE) 
-				[view.viewIdentifier(pec)/].removeTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getNewValue());
-		}
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null) {
+	if (msg.getEventType() == Notification.ADD) 
+		[view.viewIdentifier(pec)/].addTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getNewValue());
+	else if (msg.getEventType() == Notification.REMOVE) 
+		[view.viewIdentifier(pec)/].removeTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getNewValue());
+}
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
@@ -39,11 +39,11 @@
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.many)]
-			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]());
+if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null)
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]());
 [else]
-			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
+if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null)
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/if]
 [/template]
 

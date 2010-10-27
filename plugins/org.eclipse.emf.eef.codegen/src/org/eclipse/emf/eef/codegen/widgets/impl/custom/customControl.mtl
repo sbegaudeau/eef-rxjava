@@ -16,9 +16,11 @@
 
 [comment ===== Case : model = any - view = CustomElementEditor ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
+[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 // [protected ('for update'.concat(editionElement.name.toJavaClassifier()).concat(' method body'))]
 
 // [/protected]
+[/if]
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
@@ -31,17 +33,17 @@
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-		// [protected (' for '.concat(editionElement.name).concat(' command update'))]
-		
-		// [/protected]
+// [protected (' for '.concat(editionElement.name).concat(' command update'))]
+
+// [/protected]
 [/if]
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.views->first().oclIsTypeOf(views::CustomElementEditor))]
 [if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-		// [protected (' for '.concat(editionElement.name).concat(' filter update'))]
-		
-		// [/protected]
+// [protected (' for '.concat(editionElement.name).concat(' filter update'))]
+
+// [/protected]
 [/if]
 [/template]
 
