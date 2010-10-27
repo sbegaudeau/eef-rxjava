@@ -114,12 +114,12 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Text multivaluededitorOptionalProperty;
 	protected Button editMultivaluededitorOptionalProperty;
 	private EList multivaluededitorOptionalPropertyList;
-protected TableViewer tablecompositionRequiredProperty;
-protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-protected TableViewer tablecompositionOptionalProperty;
-protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer tablecompositionRequiredProperty;
+	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer tablecompositionOptionalProperty;
+	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable<? extends EObject> advancedreferencestableRequiredProperty;
 	protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
