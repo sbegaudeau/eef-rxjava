@@ -221,9 +221,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Stan
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void updatePart(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
 			eobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
 		}

@@ -215,9 +215,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void updatePart(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
 				if (event.getKind() == PropertiesEditionEvent.ADD)  {
 					if (event.getNewValue() instanceof Sample) {

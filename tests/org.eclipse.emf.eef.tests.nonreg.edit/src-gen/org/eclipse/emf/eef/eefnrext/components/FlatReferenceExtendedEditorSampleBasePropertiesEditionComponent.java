@@ -199,9 +199,9 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
-	public void updatePart(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
 				if (event.getKind() == PropertiesEditionEvent.SET)
 					flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
