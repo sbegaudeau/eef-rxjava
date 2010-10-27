@@ -227,23 +227,13 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.RadioSample.radioRequiredProperty == event.getAffectedEditor()) {
-					updateRadioRequiredProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioRequiredProperty()).getInstance());
-				}
-				if (EefnrViewsRepository.RadioSample.radioOptionalProperty == event.getAffectedEditor()) {
-					updateRadioOptionalProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioOptionalProperty()).getInstance());
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.RadioSample.radioRequiredProperty == event.getAffectedEditor()) {
-							updateRadioRequiredProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioRequiredProperty()).getInstance());
-						}
-						if (EefnrViewsRepository.RadioSample.radioOptionalProperty == event.getAffectedEditor()) {
-							updateRadioOptionalProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioOptionalProperty()).getInstance());
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -257,14 +247,14 @@ public class RadioSamplePropertiesEditionComponent extends StandardPropertiesEdi
 		}
 	}
 
-	private void updateRadioRequiredProperty(ENUM_SAMPLE newValue) {
-		radioSample.setRadioRequiredProperty(newValue);
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.RadioSample.radioRequiredProperty == event.getAffectedEditor()) {
+			radioSample.setRadioRequiredProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioRequiredProperty()).getInstance());
+		}
+		if (EefnrViewsRepository.RadioSample.radioOptionalProperty == event.getAffectedEditor()) {
+			radioSample.setRadioOptionalProperty((ENUM_SAMPLE)((EEnumLiteral)basePart.getRadioOptionalProperty()).getInstance());
+		}
 	}
-
-	private void updateRadioOptionalProperty(ENUM_SAMPLE newValue) {
-		radioSample.setRadioOptionalProperty(newValue);
-	}
-
 
 
 	/**

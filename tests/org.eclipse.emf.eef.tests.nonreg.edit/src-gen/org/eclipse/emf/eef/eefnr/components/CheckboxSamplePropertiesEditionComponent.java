@@ -226,23 +226,13 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty == event.getAffectedEditor()) {
-					updateCheckboxRequiredProperty((Boolean)event.getNewValue());
-				}
-				if (EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty == event.getAffectedEditor()) {
-					updateCheckboxOptionalProperty((Boolean)event.getNewValue());
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty == event.getAffectedEditor()) {
-							updateCheckboxRequiredProperty((Boolean)event.getNewValue());
-						}
-						if (EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty == event.getAffectedEditor()) {
-							updateCheckboxOptionalProperty((Boolean)event.getNewValue());
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -256,14 +246,14 @@ public class CheckboxSamplePropertiesEditionComponent extends StandardProperties
 		}
 	}
 
-	private void updateCheckboxRequiredProperty(Boolean newValue) {
-		checkboxSample.setCheckboxRequiredProperty(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty == event.getAffectedEditor()) {
+			checkboxSample.setCheckboxRequiredProperty((Boolean)event.getNewValue());	
+		}
+		if (EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty == event.getAffectedEditor()) {
+			checkboxSample.setCheckboxOptionalProperty((Boolean)event.getNewValue());	
+		}
 	}
-
-	private void updateCheckboxOptionalProperty(Boolean newValue) {
-		checkboxSample.setCheckboxOptionalProperty(newValue);	
-	}
-
 
 
 	/**

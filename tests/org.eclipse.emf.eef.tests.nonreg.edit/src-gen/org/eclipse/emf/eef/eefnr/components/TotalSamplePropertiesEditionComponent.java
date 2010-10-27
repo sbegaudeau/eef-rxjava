@@ -686,161 +686,13 @@ if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProper
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
-					updateTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.TotalSample.textOptionalProperty == event.getAffectedEditor()) {
-					updateTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.TotalSample.checkboxRequiredProperty == event.getAffectedEditor()) {
-					updateCheckboxRequiredProperty((Boolean)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.checkboxOptionalProperty == event.getAffectedEditor()) {
-					updateCheckboxOptionalProperty((Boolean)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.textareaRequiredProperty == event.getAffectedEditor()) {
-					updateTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.TotalSample.textareaOptionalProperty == event.getAffectedEditor()) {
-					updateTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.TotalSample.radioRequiredProperty == event.getAffectedEditor()) {
-					updateRadioRequiredProperty((ENUM_SAMPLE)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.radioOptionalProperty == event.getAffectedEditor()) {
-					updateRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
-					updateEobjectflatcomboviewerRequiredProperty((TotalSample)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
-					updateEobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-					updateReferencestableRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-					updateReferencestableOptionalProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
-					updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
-					updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-					updateMultivaluededitorRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-					updateMultivaluededitorOptionalProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-					updateTablecompositionRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-					updateTablecompositionOptionalProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-					updateAdvancedreferencestableRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-					updateAdvancedreferencestableOptionalProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
-					updateAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
-					updateAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)event.getNewValue());
-				}
-				if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
-					updateAdvancedtablecompositionRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
-					updateAdvancedtablecompositionOptionalProperty(event);
-				}
-				if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
-					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
-							updateTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.TotalSample.textOptionalProperty == event.getAffectedEditor()) {
-							updateTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.TotalSample.checkboxRequiredProperty == event.getAffectedEditor()) {
-							updateCheckboxRequiredProperty((Boolean)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.checkboxOptionalProperty == event.getAffectedEditor()) {
-							updateCheckboxOptionalProperty((Boolean)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.textareaRequiredProperty == event.getAffectedEditor()) {
-							updateTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.TotalSample.textareaOptionalProperty == event.getAffectedEditor()) {
-							updateTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.TotalSample.radioRequiredProperty == event.getAffectedEditor()) {
-							updateRadioRequiredProperty((ENUM_SAMPLE)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.radioOptionalProperty == event.getAffectedEditor()) {
-							updateRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
-							updateEobjectflatcomboviewerRequiredProperty((TotalSample)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
-							updateEobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-							updateReferencestableRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-							updateReferencestableOptionalProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
-							updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
-							updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-							updateMultivaluededitorRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-							updateMultivaluededitorOptionalProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-							updateTablecompositionRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-							updateTablecompositionOptionalProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-							updateAdvancedreferencestableRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-							updateAdvancedreferencestableOptionalProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
-							updateAdvancedeobjectflatcomboviewerRequiredPropery((TotalSample)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
-							updateAdvancedeobjectflatcomboviewerOptionalPropery((TotalSample)event.getNewValue());
-						}
-						if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
-							updateAdvancedtablecompositionRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
-							updateAdvancedtablecompositionOptionalProperty(event);
-						}
-						if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
-							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -854,160 +706,137 @@ if (EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProper
 		}
 	}
 
-	private void updateTextRequiredProperty(java.lang.String newValue) {
-		totalSample.setTextRequiredProperty(newValue);	
-	}
-
-	private void updateTextOptionalProperty(java.lang.String newValue) {
-		totalSample.setTextOptionalProperty(newValue);	
-	}
-
-	private void updateCheckboxRequiredProperty(Boolean newValue) {
-		totalSample.setCheckboxRequiredProperty(newValue);	
-	}
-
-	private void updateCheckboxOptionalProperty(Boolean newValue) {
-		totalSample.setCheckboxOptionalProperty(newValue);	
-	}
-
-	private void updateTextareaRequiredProperty(java.lang.String newValue) {
-		totalSample.setTextareaRequiredProperty(newValue);	
-	}
-
-	private void updateTextareaOptionalProperty(java.lang.String newValue) {
-		totalSample.setTextareaOptionalProperty(newValue);	
-	}
-
-	private void updateRadioRequiredProperty(ENUM_SAMPLE newValue) {
-		totalSample.setRadioRequiredProperty(newValue);	
-	}
-
-	private void updateRadioOptionalProperty(ENUM_SAMPLE newValue) {
-		totalSample.setRadioOptionalProperty(newValue);	
-	}
-
-	private void updateEobjectflatcomboviewerRequiredProperty(TotalSample newValue) {
-		eobjectflatcomboviewerRequiredPropertySettings.setToReference(newValue);	
-	}
-
-	private void updateEobjectflatcomboviewerOptionalProperty(TotalSample newValue) {
-		eobjectflatcomboviewerOptionalPropertySettings.setToReference(newValue);	
-	}
-
-	private void updateReferencestableRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof TotalSample) {
-				referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.TotalSample.textRequiredProperty == event.getAffectedEditor()) {
+			totalSample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.TotalSample.textOptionalProperty == event.getAffectedEditor()) {
+			totalSample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.TotalSample.checkboxRequiredProperty == event.getAffectedEditor()) {
+			totalSample.setCheckboxRequiredProperty((Boolean)event.getNewValue());	
+		}
+		if (EefnrViewsRepository.TotalSample.checkboxOptionalProperty == event.getAffectedEditor()) {
+			totalSample.setCheckboxOptionalProperty((Boolean)event.getNewValue());	
+		}
+		if (EefnrViewsRepository.TotalSample.textareaRequiredProperty == event.getAffectedEditor()) {
+			totalSample.setTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.TotalSample.textareaOptionalProperty == event.getAffectedEditor()) {
+			totalSample.setTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.TotalSample.radioRequiredProperty == event.getAffectedEditor()) {
+			totalSample.setRadioRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.radioOptionalProperty == event.getAffectedEditor()) {
+			totalSample.setRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
+			eobjectflatcomboviewerRequiredPropertySettings.setToReference((TotalSample)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
+			eobjectflatcomboviewerOptionalPropertySettings.setToReference((TotalSample)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.referencestableRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof TotalSample) {
+						referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.referencestableOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof TotalSample) {
+						referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+			totalSample.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+			totalSample.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET) {
+					totalSample.getMultivaluededitorRequiredProperty().clear();
+					totalSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET) {
+					totalSample.getMultivaluededitorOptionalProperty().clear();
+					totalSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof Sample) {
+						tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof Sample) {
+						tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof TotalSample) {
+						advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof TotalSample) {
+						advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
+			advancedeobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
+			advancedeobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
+		}
+		if (EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof Sample) {
+						advancedtablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						advancedtablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof Sample) {
+						advancedtablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						advancedtablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TotalSample.name == event.getAffectedEditor()) {
+			totalSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
-
-	private void updateReferencestableOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof TotalSample) {
-				referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateEmfcomboviewerRequiredProperty(ENUM_SAMPLE newValue) {
-		totalSample.setEmfcomboviewerRequiredProperty(newValue);	
-	}
-
-	private void updateEmfcomboviewerOptionalProperty(ENUM_SAMPLE newValue) {
-		totalSample.setEmfcomboviewerOptionalProperty(newValue);	
-	}
-
-	private void updateMultivaluededitorRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET) {
-			totalSample.getMultivaluededitorRequiredProperty().clear();
-			totalSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
-		}
-	}
-
-	private void updateMultivaluededitorOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET) {
-			totalSample.getMultivaluededitorOptionalProperty().clear();
-			totalSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
-		}
-	}
-
-	private void updateTablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof Sample) {
-				tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateTablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof Sample) {
-				tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateAdvancedreferencestableRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof TotalSample) {
-				advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateAdvancedreferencestableOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof TotalSample) {
-				advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateAdvancedeobjectflatcomboviewerRequiredPropery(TotalSample newValue) {
-		advancedeobjectflatcomboviewerRequiredProperySettings.setToReference(newValue);	
-	}
-
-	private void updateAdvancedeobjectflatcomboviewerOptionalPropery(TotalSample newValue) {
-		advancedeobjectflatcomboviewerOptionalProperySettings.setToReference(newValue);	
-	}
-
-	private void updateAdvancedtablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof Sample) {
-				advancedtablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				advancedtablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateAdvancedtablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof Sample) {
-				advancedtablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				advancedtablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
-	private void updateName(java.lang.String newValue) {
-		totalSample.setName(newValue);	
-	}
-
 
 
 	/**

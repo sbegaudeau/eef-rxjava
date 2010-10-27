@@ -236,23 +236,13 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.TextareaSample.textareaRequiredProperty == event.getAffectedEditor()) {
-					updateTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.TextareaSample.textareaOptionalProperty == event.getAffectedEditor()) {
-					updateTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.TextareaSample.textareaRequiredProperty == event.getAffectedEditor()) {
-							updateTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.TextareaSample.textareaOptionalProperty == event.getAffectedEditor()) {
-							updateTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -266,14 +256,14 @@ public class TextareaSamplePropertiesEditionComponent extends StandardProperties
 		}
 	}
 
-	private void updateTextareaRequiredProperty(java.lang.String newValue) {
-		textareaSample.setTextareaRequiredProperty(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.TextareaSample.textareaRequiredProperty == event.getAffectedEditor()) {
+			textareaSample.setTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.TextareaSample.textareaOptionalProperty == event.getAffectedEditor()) {
+			textareaSample.setTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
 	}
-
-	private void updateTextareaOptionalProperty(java.lang.String newValue) {
-		textareaSample.setTextareaOptionalProperty(newValue);	
-	}
-
 
 
 	/**

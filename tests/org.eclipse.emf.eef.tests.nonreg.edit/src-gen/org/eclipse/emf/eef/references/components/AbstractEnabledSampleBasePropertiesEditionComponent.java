@@ -222,17 +222,13 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
-					updateEnabled((Boolean)event.getNewValue());
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
-							updateEnabled((Boolean)event.getNewValue());
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -246,10 +242,11 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends Standar
 		}
 	}
 
-	private void updateEnabled(Boolean newValue) {
-		abstractEnabledSample.setEnabled(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
+			abstractEnabledSample.setEnabled((Boolean)event.getNewValue());	
+		}
 	}
-
 
 
 	/**

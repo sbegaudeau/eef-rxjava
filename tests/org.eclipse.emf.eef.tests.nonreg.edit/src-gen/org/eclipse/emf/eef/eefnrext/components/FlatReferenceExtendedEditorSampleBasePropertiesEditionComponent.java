@@ -251,17 +251,13 @@ if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReference
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
-					updateFlatReferenceEditorSample(event);
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
-							updateFlatReferenceEditorSample(event);
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -275,11 +271,12 @@ if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReference
 		}
 	}
 
-	private void updateFlatReferenceEditorSample(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET)
-			flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET)
+					flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
+		}
 	}
-
 
 
 	/**

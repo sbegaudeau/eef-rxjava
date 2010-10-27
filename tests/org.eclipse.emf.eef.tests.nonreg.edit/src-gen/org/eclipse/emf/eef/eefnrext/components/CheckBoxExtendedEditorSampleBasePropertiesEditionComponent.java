@@ -223,17 +223,13 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
-					updateCheckboxEditorSample((Boolean)event.getNewValue());
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
-							updateCheckboxEditorSample((Boolean)event.getNewValue());
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -247,10 +243,11 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		}
 	}
 
-	private void updateCheckboxEditorSample(Boolean newValue) {
-		checkBoxExtendedEditorSample.setCheckboxEditorSample(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
+			checkBoxExtendedEditorSample.setCheckboxEditorSample((Boolean)event.getNewValue());	
+		}
 	}
-
 
 
 	/**

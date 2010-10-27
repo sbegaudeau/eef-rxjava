@@ -275,23 +275,13 @@ if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptio
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-					updateFlatreferencetableRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-					updateFlatreferencetableOptionalProperty(event);
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-							updateFlatreferencetableRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-							updateFlatreferencetableOptionalProperty(event);
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -305,16 +295,16 @@ if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptio
 		}
 	}
 
-	private void updateFlatreferencetableRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET)
-			flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET)
+					flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
+		}
+		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET)
+					flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
+		}
 	}
-
-	private void updateFlatreferencetableOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET)
-			flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
-	}
-
 
 
 	/**

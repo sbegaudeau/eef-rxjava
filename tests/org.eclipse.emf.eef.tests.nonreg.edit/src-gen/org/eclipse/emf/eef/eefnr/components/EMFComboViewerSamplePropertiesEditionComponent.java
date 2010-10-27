@@ -227,23 +227,13 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
-					updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
-				}
-				if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
-					updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
-							updateEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
-						}
-						if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
-							updateEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -257,14 +247,14 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends StandardProp
 		}
 	}
 
-	private void updateEmfcomboviewerRequiredProperty(ENUM_SAMPLE newValue) {
-		eMFComboViewerSample.setEmfcomboviewerRequiredProperty(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+			eMFComboViewerSample.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
+		}
+		if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+			eMFComboViewerSample.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
+		}
 	}
-
-	private void updateEmfcomboviewerOptionalProperty(ENUM_SAMPLE newValue) {
-		eMFComboViewerSample.setEmfcomboviewerOptionalProperty(newValue);	
-	}
-
 
 
 	/**

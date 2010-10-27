@@ -239,23 +239,13 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-					updateMultivaluededitorRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-					updateMultivaluededitorOptionalProperty(event);
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-							updateMultivaluededitorRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-							updateMultivaluededitorOptionalProperty(event);
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -269,20 +259,20 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends StandardP
 		}
 	}
 
-	private void updateMultivaluededitorRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET) {
-			multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
-			multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET) {
+					multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
+					multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+				}
+		}
+		if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET) {
+					multiValuedEditorSample.getMultivaluededitorOptionalProperty().clear();
+					multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
+				}
 		}
 	}
-
-	private void updateMultivaluededitorOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET) {
-			multiValuedEditorSample.getMultivaluededitorOptionalProperty().clear();
-			multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
-		}
-	}
-
 
 
 	/**

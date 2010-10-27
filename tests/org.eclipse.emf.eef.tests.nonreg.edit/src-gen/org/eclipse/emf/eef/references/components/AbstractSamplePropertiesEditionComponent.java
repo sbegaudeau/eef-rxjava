@@ -226,17 +226,13 @@ public class AbstractSamplePropertiesEditionComponent extends StandardProperties
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
-					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
-							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -250,10 +246,11 @@ public class AbstractSamplePropertiesEditionComponent extends StandardProperties
 		}
 	}
 
-	private void updateName(java.lang.String newValue) {
-		abstractSample.setName(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
+			abstractSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
 	}
-
 
 
 	/**

@@ -274,23 +274,13 @@ if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalPrope
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-					updateReferencestableRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-					updateReferencestableOptionalProperty(event);
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
-							updateReferencestableRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
-							updateReferencestableOptionalProperty(event);
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -304,26 +294,26 @@ if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalPrope
 		}
 	}
 
-	private void updateReferencestableRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof TotalSample) {
-				referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof TotalSample) {
+						referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof TotalSample) {
+						referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
 		}
 	}
-
-	private void updateReferencestableOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof TotalSample) {
-				referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
 
 
 	/**

@@ -226,17 +226,13 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name == event.getAffectedEditor()) {
-					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name == event.getAffectedEditor()) {
-							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -250,10 +246,11 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		}
 	}
 
-	private void updateName(java.lang.String newValue) {
-		tableCompositionTargetExtensionEditorSample.setName(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name == event.getAffectedEditor()) {
+			tableCompositionTargetExtensionEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
 	}
-
 
 
 	/**

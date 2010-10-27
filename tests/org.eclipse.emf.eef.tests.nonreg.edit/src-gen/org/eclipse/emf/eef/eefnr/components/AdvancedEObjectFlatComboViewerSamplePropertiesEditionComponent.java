@@ -241,23 +241,13 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
-					updateAdvancedeobjectflatcomboviewerRequiredProperty((TotalSample)event.getNewValue());
-				}
-				if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
-					updateAdvancedeobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
-							updateAdvancedeobjectflatcomboviewerRequiredProperty((TotalSample)event.getNewValue());
-						}
-						if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
-							updateAdvancedeobjectflatcomboviewerOptionalProperty((TotalSample)event.getNewValue());
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -271,14 +261,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		}
 	}
 
-	private void updateAdvancedeobjectflatcomboviewerRequiredProperty(TotalSample newValue) {
-		advancedeobjectflatcomboviewerRequiredPropertySettings.setToReference(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
+			advancedeobjectflatcomboviewerRequiredPropertySettings.setToReference((TotalSample)event.getNewValue());
+		}
+		if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.advancedeobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
+			advancedeobjectflatcomboviewerOptionalPropertySettings.setToReference((TotalSample)event.getNewValue());
+		}
 	}
-
-	private void updateAdvancedeobjectflatcomboviewerOptionalProperty(TotalSample newValue) {
-		advancedeobjectflatcomboviewerOptionalPropertySettings.setToReference(newValue);	
-	}
-
 
 
 	/**

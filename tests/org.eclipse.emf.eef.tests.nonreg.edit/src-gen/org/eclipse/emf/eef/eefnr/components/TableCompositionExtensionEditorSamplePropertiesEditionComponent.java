@@ -267,23 +267,13 @@ if (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_Tablecomposi
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-					updateTablecompositionRequiredProperty(event);
-				}
-				if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-					updateTablecompositionOptionalProperty(event);
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-							updateTablecompositionRequiredProperty(event);
-						}
-						if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-							updateTablecompositionOptionalProperty(event);
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -297,26 +287,26 @@ if (EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_Tablecomposi
 		}
 	}
 
-	private void updateTablecompositionRequiredProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
-				tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionRequiredProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
+						tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
+		}
+		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.tablecompositionOptionalProperty == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.ADD)  {
+					if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
+						tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+					}
+				} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
+				}
 		}
 	}
-
-	private void updateTablecompositionOptionalProperty(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.ADD)  {
-			if (event.getNewValue() instanceof AbstractTableCompositionTargetExtensionEditorSample) {
-				tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
-			}
-		} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
-		}
-	}
-
 
 
 	/**

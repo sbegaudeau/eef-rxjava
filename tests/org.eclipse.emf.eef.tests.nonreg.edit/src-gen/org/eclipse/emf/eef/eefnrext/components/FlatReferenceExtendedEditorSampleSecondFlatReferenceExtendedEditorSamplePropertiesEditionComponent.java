@@ -237,23 +237,13 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
-					updateDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
-					updateSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
-							updateDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
-							updateSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -267,14 +257,14 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		}
 	}
 
-	private void updateDemo(java.lang.String newValue) {
-		flatReferenceExtendedEditorSample.setDemo(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
+			flatReferenceExtendedEditorSample.setDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
+			flatReferenceExtendedEditorSample.setSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+		}
 	}
-
-	private void updateSize(int newValue) {
-		flatReferenceExtendedEditorSample.setSize(newValue);	
-	}
-
 
 
 	/**

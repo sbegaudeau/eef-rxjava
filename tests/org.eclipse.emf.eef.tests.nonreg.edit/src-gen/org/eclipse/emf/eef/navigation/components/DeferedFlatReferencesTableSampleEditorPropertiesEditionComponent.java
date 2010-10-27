@@ -264,23 +264,13 @@ if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFe
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
-					updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
-					updateFlatReferencesTableSampleEditor(event);
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
-							updateName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
-							updateFlatReferencesTableSampleEditor(event);
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -294,15 +284,15 @@ if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFe
 		}
 	}
 
-	private void updateName(java.lang.String newValue) {
-		deferedFlatReferenceTableEditorSample.setName(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.name == event.getAffectedEditor()) {
+			deferedFlatReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
+				if (event.getKind() == PropertiesEditionEvent.SET)
+					flatreferenceEditorSettings.setToReference((List<EObject>) event.getNewValue());
+		}
 	}
-
-	private void updateFlatReferencesTableSampleEditor(final IPropertiesEditionEvent event) {
-		if (event.getKind() == PropertiesEditionEvent.SET)
-			flatreferenceEditorSettings.setToReference((List<EObject>) event.getNewValue());
-	}
-
 
 
 	/**

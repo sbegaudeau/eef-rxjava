@@ -238,23 +238,13 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab == event.getAffectedEditor()) {
-					updateTextOptionalPropertyInFirstTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab == event.getAffectedEditor()) {
-					updateTextRequiredPropertyInFirstTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab == event.getAffectedEditor()) {
-							updateTextOptionalPropertyInFirstTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab == event.getAffectedEditor()) {
-							updateTextRequiredPropertyInFirstTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -268,14 +258,14 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 		}
 	}
 
-	private void updateTextOptionalPropertyInFirstTab(java.lang.String newValue) {
-		textSampleWithTwoTabs.setTextOptionalPropertyInFirstTab(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab == event.getAffectedEditor()) {
+			textSampleWithTwoTabs.setTextOptionalPropertyInFirstTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab == event.getAffectedEditor()) {
+			textSampleWithTwoTabs.setTextRequiredPropertyInFirstTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
 	}
-
-	private void updateTextRequiredPropertyInFirstTab(java.lang.String newValue) {
-		textSampleWithTwoTabs.setTextRequiredPropertyInFirstTab(newValue);	
-	}
-
 
 
 	/**

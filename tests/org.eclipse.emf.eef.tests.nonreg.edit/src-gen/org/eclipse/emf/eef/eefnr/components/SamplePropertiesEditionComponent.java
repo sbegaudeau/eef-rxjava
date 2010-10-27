@@ -238,23 +238,13 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
 			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				if (EefnrViewsRepository.Sample.textRequiredProperty == event.getAffectedEditor()) {
-					updateTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
-				if (EefnrViewsRepository.Sample.textOptionalProperty == event.getAffectedEditor()) {
-					updateTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-				}
+				updatePart(event);
 			}
 			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 					
 					public void execute() {
-						if (EefnrViewsRepository.Sample.textRequiredProperty == event.getAffectedEditor()) {
-							updateTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
-						if (EefnrViewsRepository.Sample.textOptionalProperty == event.getAffectedEditor()) {
-							updateTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
-						}
+						updatePart(event);
 					}
 				});			
 			}
@@ -268,14 +258,14 @@ public class SamplePropertiesEditionComponent extends StandardPropertiesEditionC
 		}
 	}
 
-	private void updateTextRequiredProperty(java.lang.String newValue) {
-		sample.setTextRequiredProperty(newValue);	
+	protected void updatePart(final IPropertiesEditionEvent event) {
+		if (EefnrViewsRepository.Sample.textRequiredProperty == event.getAffectedEditor()) {
+			sample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EefnrViewsRepository.Sample.textOptionalProperty == event.getAffectedEditor()) {
+			sample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
 	}
-
-	private void updateTextOptionalProperty(java.lang.String newValue) {
-		sample.setTextOptionalProperty(newValue);	
-	}
-
 
 
 	/**
