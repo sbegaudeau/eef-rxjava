@@ -25,35 +25,6 @@
     <imports href="../../../services/typeUtils.emtl#/0"/>
     <imports href="../../../services/filters.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="declareEObjectUpdater" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="private void update"/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/common.emtl#/0/toJavaClassifier"/>
-        <argument xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/declareEObjectUpdater/editionElement">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//AbstractPropertyBinding/name"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="("/>
-      <body xsi:type="ocl.ecore:PropertyCallExp">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/declareEObjectUpdater/editionElement">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
-          </source>
-          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
-        </source>
-        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" newValue) {&#xA;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/toJavaIdentifier"/>
@@ -84,7 +55,23 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
         </source>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(newValue);&#x9;&#xA;}"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(("/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/declareEObjectUpdater/editionElement">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")event.getNewValue());&#x9;"/>
       <overrides href="../../api/widgetControl.emtl#/0/declareEObjectUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -121,74 +108,8 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="invokeEObjectUpdater" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="update"/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/common.emtl#/0/toJavaClassifier"/>
-        <argument xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/invokeEObjectUpdater/editionElement">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//AbstractPropertyBinding/name"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(("/>
-      <body xsi:type="ocl.ecore:PropertyCallExp">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/invokeEObjectUpdater/editionElement">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
-          </source>
-          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
-        </source>
-        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")event.getNewValue());"/>
-      <overrides href="../../api/widgetControl.emtl#/0/invokeEObjectUpdater"/>
-      <parameter name="editionElement">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-      </parameter>
-      <parameter name="view">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-      </parameter>
-      <parameter name="pec">
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-      </parameter>
-      <guard xsi:type="ocl.ecore:OperationCallExp">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-        <source xsi:type="mtl:QueryInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-          <definition href="../../../services/common.emtl#/0/isReferenceSingle"/>
-          <argument xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/invokeEObjectUpdater/editionElement">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
-          </argument>
-        </source>
-        <argument xsi:type="mtl:QueryInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-          <definition href="../../../services/common.emtl#/0/representationName"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/invokeEObjectUpdater/editionElement">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-          </argument>
-          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Combo">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </argument>
-        </argument>
-        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
-      </guard>
-    </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="liveUpdater" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;if ("/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="if ("/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/metamodelGetter.1"/>
@@ -207,7 +128,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" != null)&#xA;&#x9;&#x9;&#x9;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" != null)&#xA;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/naming.emtl#/0/viewIdentifier"/>
@@ -224,7 +145,7 @@
         <definition href="../../../services/common.emtl#/0/viewPackageSetter"/>
         <argument xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/26/OrderedSet(ElementEditor)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/18/OrderedSet(ElementEditor)">
             <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/liveUpdater/editionElement">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
             </source>
@@ -241,7 +162,7 @@
           <definition href="../../../services/common.emtl#/0/toJavaType"/>
           <argument xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/26/OrderedSet(ElementEditor)">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/18/OrderedSet(ElementEditor)">
               <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/liveUpdater/editionElement">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
               </source>
@@ -289,7 +210,6 @@
       </guard>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="updater" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/naming.emtl#/0/viewIdentifier"/>
@@ -306,7 +226,7 @@
         <definition href="../../../services/common.emtl#/0/viewPackageSignature"/>
         <argument xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/26/OrderedSet(ElementEditor)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/18/OrderedSet(ElementEditor)">
             <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/updater/editionElement">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
             </source>
@@ -369,7 +289,6 @@
       </guard>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="filterUpdater" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/naming.emtl#/0/viewIdentifier"/>
@@ -391,7 +310,7 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//AbstractPropertyBinding/name"/>
         </source>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(new ViewerFilter() {&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;/**&#xA;&#x9;&#x9;&#x9;&#x9; * {@inheritDoc}&#xA;&#x9;&#x9;&#x9;&#x9; * &#xA;&#x9;&#x9;&#x9;&#x9; * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)&#xA;&#x9;&#x9;&#x9;&#x9; * "/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(new ViewerFilter() {&#xA;&#xA;&#x9;/**&#xA;&#x9; * {@inheritDoc}&#xA;&#x9; * &#xA;&#x9; * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)&#xA;&#x9; * "/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/generationComment"/>
@@ -407,7 +326,7 @@
           </argument>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;&#x9;&#x9; */&#xA;&#x9;&#x9;&#x9;&#x9;public boolean select(Viewer viewer, Object parentElement, Object element) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return "/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9; */&#xA;&#x9;public boolean select(Viewer viewer, Object parentElement, Object element) {&#xA;&#x9;&#x9;return "/>
       <body xsi:type="mtl:IfBlock">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(element instanceof String &amp;&amp; element.equals(&quot;&quot;)) || "/>
         <ifExpr xsi:type="ocl.ecore:OperationCallExp">
@@ -467,12 +386,12 @@
           <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/="/>
         </ifExpr>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;});&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;}&#xA;&#xA;});&#xA;"/>
       <body xsi:type="mtl:ForBlock">
         <body xsi:type="mtl:TemplateInvocation">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <definition href="../../../services/filters.emtl#/0/filterBody"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="filter" referredVariable="/0/filterUpdater/@body.13/filter">
+          <argument xsi:type="ocl.ecore:VariableExp" name="filter" referredVariable="/0/filterUpdater/@body.12/filter">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/BindingFilter"/>
           </argument>
           <argument xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/filterUpdater/editionElement">
@@ -489,7 +408,7 @@
         <loopVariable name="filter">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/BindingFilter"/>
         </loopVariable>
-        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/26/OrderedSet(BindingFilter)">
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/18/OrderedSet(BindingFilter)">
           <source xsi:type="ocl.ecore:VariableExp" name="editionElement" referredVariable="/0/filterUpdater/editionElement">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
           </source>
@@ -497,9 +416,9 @@
         </iterSet>
       </body>
       <body xsi:type="mtl:IfBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;// "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="// "/>
         <body xsi:type="mtl:ProtectedAreaBlock">
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;// "/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;// "/>
           <marker xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="for additional businessfilters for ">
@@ -534,11 +453,11 @@
                     </source>
                     <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//AbstractPropertyBinding/element"/>
                   </source>
-                  <argument xsi:type="ocl.ecore:TypeExp" eType="/54/PropertiesEditionContext">
+                  <argument xsi:type="ocl.ecore:TypeExp" eType="/46/PropertiesEditionContext">
                     <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
                   </argument>
                 </source>
-                <argument xsi:type="ocl.ecore:TypeExp" eType="/54/PropertiesEditionContext">
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/46/PropertiesEditionContext">
                   <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
                 </argument>
                 <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
@@ -976,22 +895,6 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/declareEObjectUpdater"/>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="editionElement">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        </eParameters>
-        <eParameters name="view">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-        </eParameters>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-        </eParameters>
-      </eOperations>
-      <eOperations name="invokeEObjectUpdater">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL" references="/0/invokeEObjectUpdater"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="editionElement">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -3330,19 +3233,6 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
       </eOperations>
-      <eOperations name="invokeEObjectUpdater">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL" references="/0/invokeEObjectUpdater"/>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="view">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-        </eParameters>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-        </eParameters>
-      </eOperations>
       <eOperations name="liveUpdater">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -5037,30 +4927,6 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
@@ -5190,937 +5056,797 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/declareEObjectUpdater">
       <details key="start" value="945"/>
-      <details key="end" value="1417"/>
+      <details key="end" value="1353"/>
       <details key="line" value="21"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/declareEObjectUpdater/@body.0">
-      <details key="start" value="1199"/>
-      <details key="end" value="1218"/>
-      <details key="line" value="22"/>
-    </eAnnotations>
-    <eAnnotations source="positions.2" references="/0/declareEObjectUpdater/@body.1">
-      <details key="start" value="1219"/>
-      <details key="end" value="1257"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/declareEObjectUpdater/@body.1/@argument.0">
-      <details key="start" value="1219"/>
-      <details key="end" value="1238"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/declareEObjectUpdater/@body.1/@argument.0/editionElement">
-      <details key="start" value="1219"/>
+      <details key="start" value="1200"/>
       <details key="end" value="1233"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.5" references="/0/declareEObjectUpdater/@body.2">
-      <details key="start" value="1259"/>
+    <eAnnotations source="positions.2" references="/0/declareEObjectUpdater/@body.0/@argument.0">
+      <details key="start" value="1200"/>
+      <details key="end" value="1214"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/declareEObjectUpdater/@body.0/@argument.0/@source">
+      <details key="start" value="1200"/>
+      <details key="end" value="1209"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/declareEObjectUpdater/@body.0/@argument.0/@source/pec">
+      <details key="start" value="1200"/>
+      <details key="end" value="1203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/declareEObjectUpdater/@body.1">
+      <details key="start" value="1235"/>
+      <details key="end" value="1239"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/declareEObjectUpdater/@body.2">
+      <details key="start" value="1240"/>
+      <details key="end" value="1280"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/declareEObjectUpdater/@body.2/@source">
+      <details key="start" value="1240"/>
+      <details key="end" value="1265"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/declareEObjectUpdater/@body.2/@source/@source">
+      <details key="start" value="1240"/>
       <details key="end" value="1260"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/declareEObjectUpdater/@body.2/@source/@source/editionElement">
+      <details key="start" value="1240"/>
+      <details key="end" value="1254"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/declareEObjectUpdater/@body.3">
+      <details key="start" value="1282"/>
+      <details key="end" value="1284"/>
       <details key="line" value="22"/>
     </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/declareEObjectUpdater/@body.3">
-      <details key="start" value="1261"/>
-      <details key="end" value="1292"/>
+    <eAnnotations source="positions.11" references="/0/declareEObjectUpdater/@body.4">
+      <details key="start" value="1285"/>
+      <details key="end" value="1316"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/declareEObjectUpdater/@body.3/@source">
-      <details key="start" value="1261"/>
-      <details key="end" value="1287"/>
+    <eAnnotations source="positions.12" references="/0/declareEObjectUpdater/@body.4/@source">
+      <details key="start" value="1285"/>
+      <details key="end" value="1311"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/declareEObjectUpdater/@body.3/@source/@source">
-      <details key="start" value="1261"/>
-      <details key="end" value="1281"/>
+    <eAnnotations source="positions.13" references="/0/declareEObjectUpdater/@body.4/@source/@source">
+      <details key="start" value="1285"/>
+      <details key="end" value="1305"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/declareEObjectUpdater/@body.3/@source/@source/editionElement">
-      <details key="start" value="1261"/>
-      <details key="end" value="1275"/>
+    <eAnnotations source="positions.14" references="/0/declareEObjectUpdater/@body.4/@source/@source/editionElement">
+      <details key="start" value="1285"/>
+      <details key="end" value="1299"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/declareEObjectUpdater/@body.4">
-      <details key="start" value="1294"/>
-      <details key="end" value="1308"/>
+    <eAnnotations source="positions.15" references="/0/declareEObjectUpdater/@body.5">
+      <details key="start" value="1318"/>
+      <details key="end" value="1341"/>
       <details key="line" value="22"/>
     </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/declareEObjectUpdater/@body.5">
-      <details key="start" value="1309"/>
-      <details key="end" value="1342"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/declareEObjectUpdater/@body.5/@argument.0">
-      <details key="start" value="1309"/>
-      <details key="end" value="1323"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/declareEObjectUpdater/@body.5/@argument.0/@source">
-      <details key="start" value="1309"/>
-      <details key="end" value="1318"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/declareEObjectUpdater/@body.5/@argument.0/@source/pec">
-      <details key="start" value="1309"/>
-      <details key="end" value="1312"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/declareEObjectUpdater/@body.6">
-      <details key="start" value="1344"/>
-      <details key="end" value="1348"/>
-      <details key="line" value="23"/>
-    </eAnnotations>
-    <eAnnotations source="positions.16" references="/0/declareEObjectUpdater/@body.7">
-      <details key="start" value="1349"/>
-      <details key="end" value="1389"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.17" references="/0/declareEObjectUpdater/@body.7/@source">
-      <details key="start" value="1349"/>
-      <details key="end" value="1374"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/declareEObjectUpdater/@body.7/@source/@source">
-      <details key="start" value="1349"/>
-      <details key="end" value="1369"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/declareEObjectUpdater/@body.7/@source/@source/editionElement">
-      <details key="start" value="1349"/>
-      <details key="end" value="1363"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/declareEObjectUpdater/@body.8">
-      <details key="start" value="1391"/>
-      <details key="end" value="1405"/>
-      <details key="line" value="23"/>
-    </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/declareEObjectUpdater/editionElement">
+    <eAnnotations source="positions.16" references="/0/declareEObjectUpdater/editionElement">
       <details key="start" value="984"/>
       <details key="end" value="1025"/>
       <details key="line" value="21"/>
     </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/declareEObjectUpdater/view">
+    <eAnnotations source="positions.17" references="/0/declareEObjectUpdater/view">
       <details key="start" value="1027"/>
       <details key="end" value="1038"/>
       <details key="line" value="21"/>
     </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/declareEObjectUpdater/pec">
+    <eAnnotations source="positions.18" references="/0/declareEObjectUpdater/pec">
       <details key="start" value="1040"/>
       <details key="end" value="1072"/>
       <details key="line" value="21"/>
     </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/declareEObjectUpdater/@guard">
+    <eAnnotations source="positions.19" references="/0/declareEObjectUpdater/@guard">
       <details key="start" value="1109"/>
       <details key="end" value="1196"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/declareEObjectUpdater/@guard/@source">
+    <eAnnotations source="positions.20" references="/0/declareEObjectUpdater/@guard/@source">
       <details key="start" value="1109"/>
       <details key="end" value="1149"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/declareEObjectUpdater/@guard/@source/@argument.0">
+    <eAnnotations source="positions.21" references="/0/declareEObjectUpdater/@guard/@source/@argument.0">
       <details key="start" value="1109"/>
       <details key="end" value="1129"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/declareEObjectUpdater/@guard/@source/@argument.0/editionElement">
+    <eAnnotations source="positions.22" references="/0/declareEObjectUpdater/@guard/@source/@argument.0/editionElement">
       <details key="start" value="1109"/>
       <details key="end" value="1123"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/declareEObjectUpdater/@guard/@argument.0">
+    <eAnnotations source="positions.23" references="/0/declareEObjectUpdater/@guard/@argument.0">
       <details key="start" value="1154"/>
       <details key="end" value="1196"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/declareEObjectUpdater/@guard/@argument.0/editionElement">
+    <eAnnotations source="positions.24" references="/0/declareEObjectUpdater/@guard/@argument.0/editionElement">
       <details key="start" value="1154"/>
       <details key="end" value="1168"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/declareEObjectUpdater/@guard/@argument.0/@argument.1">
+    <eAnnotations source="positions.25" references="/0/declareEObjectUpdater/@guard/@argument.0/@argument.1">
       <details key="start" value="1188"/>
       <details key="end" value="1195"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/invokeEObjectUpdater">
-      <details key="start" value="1419"/>
-      <details key="end" value="1788"/>
-      <details key="line" value="27"/>
+    <eAnnotations source="positions.26" references="/0/liveUpdater">
+      <details key="start" value="1355"/>
+      <details key="end" value="1861"/>
+      <details key="line" value="25"/>
     </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/invokeEObjectUpdater/@body.0">
-      <details key="start" value="1671"/>
-      <details key="end" value="1677"/>
-      <details key="line" value="28"/>
+    <eAnnotations source="positions.27" references="/0/liveUpdater/@body.0">
+      <details key="start" value="1589"/>
+      <details key="end" value="1593"/>
+      <details key="line" value="26"/>
     </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/invokeEObjectUpdater/@body.1">
-      <details key="start" value="1678"/>
-      <details key="end" value="1716"/>
+    <eAnnotations source="positions.28" references="/0/liveUpdater/@body.1">
+      <details key="start" value="1594"/>
+      <details key="end" value="1626"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/invokeEObjectUpdater/@body.1/@argument.0">
-      <details key="start" value="1678"/>
-      <details key="end" value="1697"/>
+    <eAnnotations source="positions.29" references="/0/liveUpdater/@body.1/editionElement">
+      <details key="start" value="1594"/>
+      <details key="end" value="1608"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/invokeEObjectUpdater/@body.1/@argument.0/editionElement">
-      <details key="start" value="1678"/>
-      <details key="end" value="1692"/>
+    <eAnnotations source="positions.30" references="/0/liveUpdater/@body.2">
+      <details key="start" value="1628"/>
+      <details key="end" value="1657"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/liveUpdater/@body.3">
+      <details key="start" value="1658"/>
+      <details key="end" value="1682"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/invokeEObjectUpdater/@body.2">
-      <details key="start" value="1718"/>
+    <eAnnotations source="positions.32" references="/0/liveUpdater/@body.3/view">
+      <details key="start" value="1658"/>
+      <details key="end" value="1662"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/liveUpdater/@body.3/pec">
+      <details key="start" value="1678"/>
+      <details key="end" value="1681"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/liveUpdater/@body.4">
+      <details key="start" value="1684"/>
+      <details key="end" value="1695"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/liveUpdater/@body.5">
+      <details key="start" value="1696"/>
       <details key="end" value="1720"/>
-      <details key="line" value="28"/>
-    </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/invokeEObjectUpdater/@body.3">
-      <details key="start" value="1721"/>
-      <details key="end" value="1752"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.38" references="/0/invokeEObjectUpdater/@body.3/@source">
-      <details key="start" value="1721"/>
-      <details key="end" value="1747"/>
+    <eAnnotations source="positions.36" references="/0/liveUpdater/@body.5/view">
+      <details key="start" value="1696"/>
+      <details key="end" value="1700"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/invokeEObjectUpdater/@body.3/@source/@source">
-      <details key="start" value="1721"/>
-      <details key="end" value="1741"/>
+    <eAnnotations source="positions.37" references="/0/liveUpdater/@body.5/pec">
+      <details key="start" value="1716"/>
+      <details key="end" value="1719"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/invokeEObjectUpdater/@body.3/@source/@source/editionElement">
-      <details key="start" value="1721"/>
-      <details key="end" value="1735"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/invokeEObjectUpdater/@body.4">
-      <details key="start" value="1754"/>
-      <details key="end" value="1776"/>
-      <details key="line" value="28"/>
-    </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/invokeEObjectUpdater/editionElement">
-      <details key="start" value="1457"/>
-      <details key="end" value="1498"/>
+    <eAnnotations source="positions.38" references="/0/liveUpdater/@body.6">
+      <details key="start" value="1722"/>
+      <details key="end" value="1723"/>
       <details key="line" value="27"/>
     </eAnnotations>
-    <eAnnotations source="positions.43" references="/0/invokeEObjectUpdater/view">
-      <details key="start" value="1500"/>
-      <details key="end" value="1511"/>
+    <eAnnotations source="positions.39" references="/0/liveUpdater/@body.7">
+      <details key="start" value="1724"/>
+      <details key="end" value="1773"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/liveUpdater/@body.7/@argument.0">
+      <details key="start" value="1724"/>
+      <details key="end" value="1753"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/liveUpdater/@body.7/@argument.0/@source">
+      <details key="start" value="1724"/>
+      <details key="end" value="1744"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/liveUpdater/@body.7/@argument.0/@source/editionElement">
+      <details key="start" value="1724"/>
+      <details key="end" value="1738"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/liveUpdater/@body.8">
+      <details key="start" value="1775"/>
+      <details key="end" value="1777"/>
       <details key="line" value="27"/>
     </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/invokeEObjectUpdater/pec">
-      <details key="start" value="1513"/>
-      <details key="end" value="1545"/>
+    <eAnnotations source="positions.44" references="/0/liveUpdater/@body.9">
+      <details key="start" value="1778"/>
+      <details key="end" value="1827"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/liveUpdater/@body.9/@source">
+      <details key="start" value="1778"/>
+      <details key="end" value="1820"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/liveUpdater/@body.9/@source/@argument.0">
+      <details key="start" value="1778"/>
+      <details key="end" value="1807"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/liveUpdater/@body.9/@source/@argument.0/@source">
+      <details key="start" value="1778"/>
+      <details key="end" value="1798"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/liveUpdater/@body.9/@source/@argument.0/@source/editionElement">
+      <details key="start" value="1778"/>
+      <details key="end" value="1792"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/liveUpdater/@body.10">
+      <details key="start" value="1829"/>
+      <details key="end" value="1849"/>
       <details key="line" value="27"/>
     </eAnnotations>
-    <eAnnotations source="positions.45" references="/0/invokeEObjectUpdater/@guard">
-      <details key="start" value="1581"/>
-      <details key="end" value="1668"/>
+    <eAnnotations source="positions.50" references="/0/liveUpdater/editionElement">
+      <details key="start" value="1384"/>
+      <details key="end" value="1425"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/liveUpdater/view">
+      <details key="start" value="1427"/>
+      <details key="end" value="1438"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/liveUpdater/pec">
+      <details key="start" value="1440"/>
+      <details key="end" value="1472"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/liveUpdater/@guard">
+      <details key="start" value="1499"/>
+      <details key="end" value="1586"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.46" references="/0/invokeEObjectUpdater/@guard/@source">
-      <details key="start" value="1581"/>
-      <details key="end" value="1621"/>
+    <eAnnotations source="positions.54" references="/0/liveUpdater/@guard/@source">
+      <details key="start" value="1499"/>
+      <details key="end" value="1539"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.47" references="/0/invokeEObjectUpdater/@guard/@source/@argument.0">
-      <details key="start" value="1581"/>
-      <details key="end" value="1601"/>
+    <eAnnotations source="positions.55" references="/0/liveUpdater/@guard/@source/@argument.0">
+      <details key="start" value="1499"/>
+      <details key="end" value="1519"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.48" references="/0/invokeEObjectUpdater/@guard/@source/@argument.0/editionElement">
-      <details key="start" value="1581"/>
-      <details key="end" value="1595"/>
+    <eAnnotations source="positions.56" references="/0/liveUpdater/@guard/@source/@argument.0/editionElement">
+      <details key="start" value="1499"/>
+      <details key="end" value="1513"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.49" references="/0/invokeEObjectUpdater/@guard/@argument.0">
-      <details key="start" value="1626"/>
-      <details key="end" value="1668"/>
+    <eAnnotations source="positions.57" references="/0/liveUpdater/@guard/@argument.0">
+      <details key="start" value="1544"/>
+      <details key="end" value="1586"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.50" references="/0/invokeEObjectUpdater/@guard/@argument.0/editionElement">
-      <details key="start" value="1626"/>
-      <details key="end" value="1640"/>
+    <eAnnotations source="positions.58" references="/0/liveUpdater/@guard/@argument.0/editionElement">
+      <details key="start" value="1544"/>
+      <details key="end" value="1558"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.51" references="/0/invokeEObjectUpdater/@guard/@argument.0/@argument.1">
-      <details key="start" value="1660"/>
-      <details key="end" value="1667"/>
+    <eAnnotations source="positions.59" references="/0/liveUpdater/@guard/@argument.0/@argument.1">
+      <details key="start" value="1578"/>
+      <details key="end" value="1585"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.52" references="/0/liveUpdater">
-      <details key="start" value="1790"/>
-      <details key="end" value="2300"/>
-      <details key="line" value="31"/>
+    <eAnnotations source="positions.60" references="/0/updater">
+      <details key="start" value="1863"/>
+      <details key="end" value="2244"/>
+      <details key="line" value="30"/>
     </eAnnotations>
-    <eAnnotations source="positions.53" references="/0/liveUpdater/@body.0">
-      <details key="start" value="2024"/>
-      <details key="end" value="2030"/>
-      <details key="line" value="32"/>
-    </eAnnotations>
-    <eAnnotations source="positions.54" references="/0/liveUpdater/@body.1">
-      <details key="start" value="2031"/>
-      <details key="end" value="2063"/>
+    <eAnnotations source="positions.61" references="/0/updater/@body.0">
+      <details key="start" value="2045"/>
+      <details key="end" value="2069"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.55" references="/0/liveUpdater/@body.1/editionElement">
-      <details key="start" value="2031"/>
-      <details key="end" value="2045"/>
+    <eAnnotations source="positions.62" references="/0/updater/@body.0/view">
+      <details key="start" value="2045"/>
+      <details key="end" value="2049"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.56" references="/0/liveUpdater/@body.2">
+    <eAnnotations source="positions.63" references="/0/updater/@body.0/pec">
       <details key="start" value="2065"/>
-      <details key="end" value="2094"/>
-      <details key="line" value="32"/>
-    </eAnnotations>
-    <eAnnotations source="positions.57" references="/0/liveUpdater/@body.3">
-      <details key="start" value="2095"/>
-      <details key="end" value="2119"/>
+      <details key="end" value="2068"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.58" references="/0/liveUpdater/@body.3/view">
-      <details key="start" value="2095"/>
-      <details key="end" value="2099"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.59" references="/0/liveUpdater/@body.3/pec">
-      <details key="start" value="2115"/>
-      <details key="end" value="2118"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.60" references="/0/liveUpdater/@body.4">
-      <details key="start" value="2121"/>
-      <details key="end" value="2134"/>
-      <details key="line" value="32"/>
-    </eAnnotations>
-    <eAnnotations source="positions.61" references="/0/liveUpdater/@body.5">
-      <details key="start" value="2135"/>
-      <details key="end" value="2159"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.62" references="/0/liveUpdater/@body.5/view">
-      <details key="start" value="2135"/>
-      <details key="end" value="2139"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.63" references="/0/liveUpdater/@body.5/pec">
-      <details key="start" value="2155"/>
-      <details key="end" value="2158"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.64" references="/0/liveUpdater/@body.6">
-      <details key="start" value="2161"/>
-      <details key="end" value="2162"/>
-      <details key="line" value="33"/>
-    </eAnnotations>
-    <eAnnotations source="positions.65" references="/0/liveUpdater/@body.7">
-      <details key="start" value="2163"/>
-      <details key="end" value="2212"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.66" references="/0/liveUpdater/@body.7/@argument.0">
-      <details key="start" value="2163"/>
-      <details key="end" value="2192"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.67" references="/0/liveUpdater/@body.7/@argument.0/@source">
-      <details key="start" value="2163"/>
-      <details key="end" value="2183"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.68" references="/0/liveUpdater/@body.7/@argument.0/@source/editionElement">
-      <details key="start" value="2163"/>
-      <details key="end" value="2177"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.69" references="/0/liveUpdater/@body.8">
-      <details key="start" value="2214"/>
-      <details key="end" value="2216"/>
-      <details key="line" value="33"/>
-    </eAnnotations>
-    <eAnnotations source="positions.70" references="/0/liveUpdater/@body.9">
-      <details key="start" value="2217"/>
-      <details key="end" value="2266"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.71" references="/0/liveUpdater/@body.9/@source">
-      <details key="start" value="2217"/>
-      <details key="end" value="2259"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.72" references="/0/liveUpdater/@body.9/@source/@argument.0">
-      <details key="start" value="2217"/>
-      <details key="end" value="2246"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.73" references="/0/liveUpdater/@body.9/@source/@argument.0/@source">
-      <details key="start" value="2217"/>
-      <details key="end" value="2237"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.74" references="/0/liveUpdater/@body.9/@source/@argument.0/@source/editionElement">
-      <details key="start" value="2217"/>
-      <details key="end" value="2231"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.75" references="/0/liveUpdater/@body.10">
-      <details key="start" value="2268"/>
-      <details key="end" value="2288"/>
-      <details key="line" value="33"/>
-    </eAnnotations>
-    <eAnnotations source="positions.76" references="/0/liveUpdater/editionElement">
-      <details key="start" value="1819"/>
-      <details key="end" value="1860"/>
+    <eAnnotations source="positions.64" references="/0/updater/@body.1">
+      <details key="start" value="2071"/>
+      <details key="end" value="2076"/>
       <details key="line" value="31"/>
     </eAnnotations>
-    <eAnnotations source="positions.77" references="/0/liveUpdater/view">
-      <details key="start" value="1862"/>
-      <details key="end" value="1873"/>
+    <eAnnotations source="positions.65" references="/0/updater/@body.2">
+      <details key="start" value="2077"/>
+      <details key="end" value="2129"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/updater/@body.2/@argument.0">
+      <details key="start" value="2077"/>
+      <details key="end" value="2106"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/updater/@body.2/@argument.0/@source">
+      <details key="start" value="2077"/>
+      <details key="end" value="2097"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/updater/@body.2/@argument.0/@source/editionElement">
+      <details key="start" value="2077"/>
+      <details key="end" value="2091"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/updater/@body.3">
+      <details key="start" value="2131"/>
+      <details key="end" value="2145"/>
       <details key="line" value="31"/>
     </eAnnotations>
-    <eAnnotations source="positions.78" references="/0/liveUpdater/pec">
-      <details key="start" value="1875"/>
-      <details key="end" value="1907"/>
+    <eAnnotations source="positions.70" references="/0/updater/@body.4">
+      <details key="start" value="2146"/>
+      <details key="end" value="2179"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/updater/@body.4/@argument.0">
+      <details key="start" value="2146"/>
+      <details key="end" value="2160"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/updater/@body.4/@argument.0/@source">
+      <details key="start" value="2146"/>
+      <details key="end" value="2155"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/updater/@body.4/@argument.0/@source/pec">
+      <details key="start" value="2146"/>
+      <details key="end" value="2149"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/updater/@body.5">
+      <details key="start" value="2181"/>
+      <details key="end" value="2185"/>
       <details key="line" value="31"/>
     </eAnnotations>
-    <eAnnotations source="positions.79" references="/0/liveUpdater/@guard">
-      <details key="start" value="1934"/>
-      <details key="end" value="2021"/>
+    <eAnnotations source="positions.75" references="/0/updater/@body.6">
+      <details key="start" value="2186"/>
+      <details key="end" value="2226"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.80" references="/0/liveUpdater/@guard/@source">
-      <details key="start" value="1934"/>
-      <details key="end" value="1974"/>
+    <eAnnotations source="positions.76" references="/0/updater/@body.6/@source">
+      <details key="start" value="2186"/>
+      <details key="end" value="2211"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.81" references="/0/liveUpdater/@guard/@source/@argument.0">
-      <details key="start" value="1934"/>
-      <details key="end" value="1954"/>
+    <eAnnotations source="positions.77" references="/0/updater/@body.6/@source/@source">
+      <details key="start" value="2186"/>
+      <details key="end" value="2206"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.82" references="/0/liveUpdater/@guard/@source/@argument.0/editionElement">
-      <details key="start" value="1934"/>
-      <details key="end" value="1948"/>
+    <eAnnotations source="positions.78" references="/0/updater/@body.6/@source/@source/editionElement">
+      <details key="start" value="2186"/>
+      <details key="end" value="2200"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.83" references="/0/liveUpdater/@guard/@argument.0">
-      <details key="start" value="1979"/>
-      <details key="end" value="2021"/>
+    <eAnnotations source="positions.79" references="/0/updater/@body.7">
+      <details key="start" value="2228"/>
+      <details key="end" value="2232"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/updater/editionElement">
+      <details key="start" value="1888"/>
+      <details key="end" value="1929"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/updater/view">
+      <details key="start" value="1931"/>
+      <details key="end" value="1942"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/updater/pec">
+      <details key="start" value="1944"/>
+      <details key="end" value="1976"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/updater/@guard">
+      <details key="start" value="1999"/>
+      <details key="end" value="2041"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.84" references="/0/liveUpdater/@guard/@argument.0/editionElement">
-      <details key="start" value="1979"/>
-      <details key="end" value="1993"/>
+    <eAnnotations source="positions.84" references="/0/updater/@guard/editionElement">
+      <details key="start" value="1999"/>
+      <details key="end" value="2013"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.85" references="/0/liveUpdater/@guard/@argument.0/@argument.1">
-      <details key="start" value="2013"/>
-      <details key="end" value="2020"/>
+    <eAnnotations source="positions.85" references="/0/updater/@guard/@argument.1">
+      <details key="start" value="2033"/>
+      <details key="end" value="2040"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.86" references="/0/updater">
-      <details key="start" value="2302"/>
-      <details key="end" value="2686"/>
-      <details key="line" value="36"/>
+    <eAnnotations source="positions.86" references="/0/filterUpdater">
+      <details key="start" value="2246"/>
+      <details key="end" value="3538"/>
+      <details key="line" value="34"/>
     </eAnnotations>
-    <eAnnotations source="positions.87" references="/0/updater/@body.0">
-      <details key="start" value="2483"/>
-      <details key="end" value="2486"/>
-      <details key="line" value="37"/>
-    </eAnnotations>
-    <eAnnotations source="positions.88" references="/0/updater/@body.1">
-      <details key="start" value="2487"/>
-      <details key="end" value="2511"/>
+    <eAnnotations source="positions.87" references="/0/filterUpdater/@body.0">
+      <details key="start" value="2485"/>
+      <details key="end" value="2509"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.89" references="/0/updater/@body.1/view">
-      <details key="start" value="2487"/>
-      <details key="end" value="2491"/>
+    <eAnnotations source="positions.88" references="/0/filterUpdater/@body.0/view">
+      <details key="start" value="2485"/>
+      <details key="end" value="2489"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.90" references="/0/updater/@body.1/pec">
-      <details key="start" value="2507"/>
-      <details key="end" value="2510"/>
+    <eAnnotations source="positions.89" references="/0/filterUpdater/@body.0/pec">
+      <details key="start" value="2505"/>
+      <details key="end" value="2508"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.91" references="/0/updater/@body.2">
-      <details key="start" value="2513"/>
-      <details key="end" value="2518"/>
-      <details key="line" value="37"/>
+    <eAnnotations source="positions.90" references="/0/filterUpdater/@body.1">
+      <details key="start" value="2511"/>
+      <details key="end" value="2523"/>
+      <details key="line" value="35"/>
     </eAnnotations>
-    <eAnnotations source="positions.92" references="/0/updater/@body.3">
-      <details key="start" value="2519"/>
-      <details key="end" value="2571"/>
+    <eAnnotations source="positions.91" references="/0/filterUpdater/@body.2">
+      <details key="start" value="2524"/>
+      <details key="end" value="2558"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.93" references="/0/updater/@body.3/@argument.0">
-      <details key="start" value="2519"/>
-      <details key="end" value="2548"/>
+    <eAnnotations source="positions.92" references="/0/filterUpdater/@body.2/@source">
+      <details key="start" value="2524"/>
+      <details key="end" value="2543"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.94" references="/0/updater/@body.3/@argument.0/@source">
-      <details key="start" value="2519"/>
-      <details key="end" value="2539"/>
+    <eAnnotations source="positions.93" references="/0/filterUpdater/@body.2/@source/editionElement">
+      <details key="start" value="2524"/>
+      <details key="end" value="2538"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.95" references="/0/updater/@body.3/@argument.0/@source/editionElement">
-      <details key="start" value="2519"/>
-      <details key="end" value="2533"/>
+    <eAnnotations source="positions.94" references="/0/filterUpdater/@body.3">
+      <details key="start" value="2560"/>
+      <details key="end" value="2740"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/filterUpdater/@body.4">
+      <details key="start" value="2741"/>
+      <details key="end" value="2810"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.96" references="/0/updater/@body.4">
-      <details key="start" value="2573"/>
-      <details key="end" value="2587"/>
-      <details key="line" value="37"/>
-    </eAnnotations>
-    <eAnnotations source="positions.97" references="/0/updater/@body.5">
-      <details key="start" value="2588"/>
-      <details key="end" value="2621"/>
+    <eAnnotations source="positions.96" references="/0/filterUpdater/@body.4/@argument.0">
+      <details key="start" value="2741"/>
+      <details key="end" value="2790"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.98" references="/0/updater/@body.5/@argument.0">
-      <details key="start" value="2588"/>
-      <details key="end" value="2602"/>
+    <eAnnotations source="positions.97" references="/0/filterUpdater/@body.4/@argument.0/@argument.0">
+      <details key="start" value="2741"/>
+      <details key="end" value="2769"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.99" references="/0/updater/@body.5/@argument.0/@source">
-      <details key="start" value="2588"/>
-      <details key="end" value="2597"/>
+    <eAnnotations source="positions.98" references="/0/filterUpdater/@body.4/@argument.0/@argument.0/view">
+      <details key="start" value="2741"/>
+      <details key="end" value="2745"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.100" references="/0/updater/@body.5/@argument.0/@source/pec">
-      <details key="start" value="2588"/>
-      <details key="end" value="2591"/>
+    <eAnnotations source="positions.99" references="/0/filterUpdater/@body.5">
+      <details key="start" value="2812"/>
+      <details key="end" value="2905"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/filterUpdater/@body.6">
+      <details key="start" value="2905"/>
+      <details key="end" value="3005"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/filterUpdater/@body.6/@body.0">
+      <details key="start" value="2947"/>
+      <details key="end" value="3000"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/filterUpdater/@body.6/@ifExpr">
+      <details key="start" value="2909"/>
+      <details key="end" value="2946"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.101" references="/0/updater/@body.6">
-      <details key="start" value="2623"/>
-      <details key="end" value="2627"/>
-      <details key="line" value="37"/>
-    </eAnnotations>
-    <eAnnotations source="positions.102" references="/0/updater/@body.7">
-      <details key="start" value="2628"/>
-      <details key="end" value="2668"/>
+    <eAnnotations source="positions.103" references="/0/filterUpdater/@body.6/@ifExpr/@source">
+      <details key="start" value="2910"/>
+      <details key="end" value="2941"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.103" references="/0/updater/@body.7/@source">
-      <details key="start" value="2628"/>
-      <details key="end" value="2653"/>
+    <eAnnotations source="positions.104" references="/0/filterUpdater/@body.6/@ifExpr/@source/@source">
+      <details key="start" value="2910"/>
+      <details key="end" value="2930"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.104" references="/0/updater/@body.7/@source/@source">
-      <details key="start" value="2628"/>
-      <details key="end" value="2648"/>
+    <eAnnotations source="positions.105" references="/0/filterUpdater/@body.6/@ifExpr/@source/@source/editionElement">
+      <details key="start" value="2910"/>
+      <details key="end" value="2924"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.105" references="/0/updater/@body.7/@source/@source/editionElement">
-      <details key="start" value="2628"/>
-      <details key="end" value="2642"/>
+    <eAnnotations source="positions.106" references="/0/filterUpdater/@body.6/@ifExpr/@argument.0">
+      <details key="start" value="2944"/>
+      <details key="end" value="2945"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.106" references="/0/updater/@body.8">
-      <details key="start" value="2670"/>
-      <details key="end" value="2674"/>
-      <details key="line" value="37"/>
-    </eAnnotations>
-    <eAnnotations source="positions.107" references="/0/updater/editionElement">
-      <details key="start" value="2327"/>
-      <details key="end" value="2368"/>
-      <details key="line" value="36"/>
-    </eAnnotations>
-    <eAnnotations source="positions.108" references="/0/updater/view">
-      <details key="start" value="2370"/>
-      <details key="end" value="2381"/>
-      <details key="line" value="36"/>
-    </eAnnotations>
-    <eAnnotations source="positions.109" references="/0/updater/pec">
-      <details key="start" value="2383"/>
-      <details key="end" value="2415"/>
-      <details key="line" value="36"/>
-    </eAnnotations>
-    <eAnnotations source="positions.110" references="/0/updater/@guard">
-      <details key="start" value="2438"/>
-      <details key="end" value="2480"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.111" references="/0/updater/@guard/editionElement">
-      <details key="start" value="2438"/>
-      <details key="end" value="2452"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.112" references="/0/updater/@guard/@argument.1">
-      <details key="start" value="2472"/>
-      <details key="end" value="2479"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.113" references="/0/filterUpdater">
-      <details key="start" value="2688"/>
-      <details key="end" value="4026"/>
-      <details key="line" value="40"/>
-    </eAnnotations>
-    <eAnnotations source="positions.114" references="/0/filterUpdater/@body.0">
-      <details key="start" value="2926"/>
-      <details key="end" value="2929"/>
-      <details key="line" value="41"/>
-    </eAnnotations>
-    <eAnnotations source="positions.115" references="/0/filterUpdater/@body.1">
-      <details key="start" value="2930"/>
-      <details key="end" value="2954"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.116" references="/0/filterUpdater/@body.1/view">
-      <details key="start" value="2930"/>
-      <details key="end" value="2934"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.117" references="/0/filterUpdater/@body.1/pec">
-      <details key="start" value="2950"/>
-      <details key="end" value="2953"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.118" references="/0/filterUpdater/@body.2">
-      <details key="start" value="2956"/>
-      <details key="end" value="2968"/>
-      <details key="line" value="41"/>
-    </eAnnotations>
-    <eAnnotations source="positions.119" references="/0/filterUpdater/@body.3">
-      <details key="start" value="2969"/>
-      <details key="end" value="3003"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.120" references="/0/filterUpdater/@body.3/@source">
-      <details key="start" value="2969"/>
-      <details key="end" value="2988"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.121" references="/0/filterUpdater/@body.3/@source/editionElement">
-      <details key="start" value="2969"/>
-      <details key="end" value="2983"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.122" references="/0/filterUpdater/@body.4">
+    <eAnnotations source="positions.107" references="/0/filterUpdater/@body.7">
       <details key="start" value="3005"/>
-      <details key="end" value="3200"/>
-      <details key="line" value="41"/>
+      <details key="end" value="3025"/>
+      <details key="line" value="44"/>
     </eAnnotations>
-    <eAnnotations source="positions.123" references="/0/filterUpdater/@body.5">
-      <details key="start" value="3201"/>
-      <details key="end" value="3270"/>
+    <eAnnotations source="positions.108" references="/0/filterUpdater/@body.8">
+      <details key="start" value="3026"/>
+      <details key="end" value="3057"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.124" references="/0/filterUpdater/@body.5/@argument.0">
-      <details key="start" value="3201"/>
-      <details key="end" value="3250"/>
+    <eAnnotations source="positions.109" references="/0/filterUpdater/@body.8/@source">
+      <details key="start" value="3026"/>
+      <details key="end" value="3052"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.125" references="/0/filterUpdater/@body.5/@argument.0/@argument.0">
-      <details key="start" value="3201"/>
-      <details key="end" value="3229"/>
+    <eAnnotations source="positions.110" references="/0/filterUpdater/@body.8/@source/@source">
+      <details key="start" value="3026"/>
+      <details key="end" value="3046"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.126" references="/0/filterUpdater/@body.5/@argument.0/@argument.0/view">
-      <details key="start" value="3201"/>
-      <details key="end" value="3205"/>
+    <eAnnotations source="positions.111" references="/0/filterUpdater/@body.8/@source/@source/editionElement">
+      <details key="start" value="3026"/>
+      <details key="end" value="3040"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.127" references="/0/filterUpdater/@body.6">
-      <details key="start" value="3272"/>
-      <details key="end" value="3374"/>
+    <eAnnotations source="positions.112" references="/0/filterUpdater/@body.9">
+      <details key="start" value="3059"/>
+      <details key="end" value="3061"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/filterUpdater/@body.10">
+      <details key="start" value="3061"/>
+      <details key="end" value="3123"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/filterUpdater/@body.10/@body.0">
+      <details key="start" value="3103"/>
+      <details key="end" value="3118"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/filterUpdater/@body.10/@ifExpr">
+      <details key="start" value="3065"/>
+      <details key="end" value="3102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/filterUpdater/@body.10/@ifExpr/@source">
+      <details key="start" value="3066"/>
+      <details key="end" value="3097"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/filterUpdater/@body.10/@ifExpr/@source/@source">
+      <details key="start" value="3066"/>
+      <details key="end" value="3086"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/filterUpdater/@body.10/@ifExpr/@source/@source/editionElement">
+      <details key="start" value="3066"/>
+      <details key="end" value="3080"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/filterUpdater/@body.10/@ifExpr/@argument.0">
+      <details key="start" value="3100"/>
+      <details key="end" value="3101"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/filterUpdater/@body.11">
+      <details key="start" value="3123"/>
+      <details key="end" value="3132"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/filterUpdater/@body.12">
+      <details key="start" value="3132"/>
+      <details key="end" value="3247"/>
       <details key="line" value="48"/>
     </eAnnotations>
-    <eAnnotations source="positions.128" references="/0/filterUpdater/@body.7">
-      <details key="start" value="3374"/>
-      <details key="end" value="3474"/>
+    <eAnnotations source="positions.122" references="/0/filterUpdater/@body.12/@body.0">
+      <details key="start" value="3196"/>
+      <details key="end" value="3238"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/filterUpdater/@body.12/@body.0/filter">
+      <details key="start" value="3196"/>
+      <details key="end" value="3202"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/filterUpdater/@body.12/@body.0/editionElement">
+      <details key="start" value="3214"/>
+      <details key="end" value="3228"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/filterUpdater/@body.12/@body.0/view">
+      <details key="start" value="3229"/>
+      <details key="end" value="3233"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/filterUpdater/@body.12/@body.0/pec">
+      <details key="start" value="3234"/>
+      <details key="end" value="3237"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/filterUpdater/@body.12/@body.1">
+      <details key="start" value="3240"/>
+      <details key="end" value="3241"/>
       <details key="line" value="50"/>
     </eAnnotations>
-    <eAnnotations source="positions.129" references="/0/filterUpdater/@body.7/@body.0">
-      <details key="start" value="3416"/>
-      <details key="end" value="3469"/>
-      <details key="line" value="50"/>
+    <eAnnotations source="positions.128" references="/0/filterUpdater/@body.12/filter">
+      <details key="start" value="3138"/>
+      <details key="end" value="3160"/>
+      <details key="line" value="48"/>
     </eAnnotations>
-    <eAnnotations source="positions.130" references="/0/filterUpdater/@body.7/@ifExpr">
-      <details key="start" value="3378"/>
-      <details key="end" value="3415"/>
+    <eAnnotations source="positions.129" references="/0/filterUpdater/@body.12/@iterSet">
+      <details key="start" value="3163"/>
+      <details key="end" value="3192"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.131" references="/0/filterUpdater/@body.7/@ifExpr/@source">
-      <details key="start" value="3379"/>
-      <details key="end" value="3410"/>
+    <eAnnotations source="positions.130" references="/0/filterUpdater/@body.12/@iterSet/editionElement">
+      <details key="start" value="3163"/>
+      <details key="end" value="3177"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.132" references="/0/filterUpdater/@body.7/@ifExpr/@source/@source">
-      <details key="start" value="3379"/>
-      <details key="end" value="3399"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.133" references="/0/filterUpdater/@body.7/@ifExpr/@source/@source/editionElement">
-      <details key="start" value="3379"/>
-      <details key="end" value="3393"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.134" references="/0/filterUpdater/@body.7/@ifExpr/@argument.0">
-      <details key="start" value="3413"/>
-      <details key="end" value="3414"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.135" references="/0/filterUpdater/@body.8">
-      <details key="start" value="3474"/>
-      <details key="end" value="3494"/>
-      <details key="line" value="50"/>
-    </eAnnotations>
-    <eAnnotations source="positions.136" references="/0/filterUpdater/@body.9">
-      <details key="start" value="3495"/>
+    <eAnnotations source="positions.131" references="/0/filterUpdater/@body.13">
+      <details key="start" value="3248"/>
       <details key="end" value="3526"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.137" references="/0/filterUpdater/@body.9/@source">
-      <details key="start" value="3495"/>
-      <details key="end" value="3521"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.138" references="/0/filterUpdater/@body.9/@source/@source">
-      <details key="start" value="3495"/>
-      <details key="end" value="3515"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.139" references="/0/filterUpdater/@body.9/@source/@source/editionElement">
-      <details key="start" value="3495"/>
-      <details key="end" value="3509"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.140" references="/0/filterUpdater/@body.10">
-      <details key="start" value="3528"/>
-      <details key="end" value="3530"/>
-      <details key="line" value="50"/>
-    </eAnnotations>
-    <eAnnotations source="positions.141" references="/0/filterUpdater/@body.11">
-      <details key="start" value="3530"/>
-      <details key="end" value="3592"/>
-      <details key="line" value="50"/>
-    </eAnnotations>
-    <eAnnotations source="positions.142" references="/0/filterUpdater/@body.11/@body.0">
-      <details key="start" value="3572"/>
-      <details key="end" value="3587"/>
-      <details key="line" value="50"/>
-    </eAnnotations>
-    <eAnnotations source="positions.143" references="/0/filterUpdater/@body.11/@ifExpr">
-      <details key="start" value="3534"/>
-      <details key="end" value="3571"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.144" references="/0/filterUpdater/@body.11/@ifExpr/@source">
-      <details key="start" value="3535"/>
-      <details key="end" value="3566"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.145" references="/0/filterUpdater/@body.11/@ifExpr/@source/@source">
-      <details key="start" value="3535"/>
-      <details key="end" value="3555"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.146" references="/0/filterUpdater/@body.11/@ifExpr/@source/@source/editionElement">
-      <details key="start" value="3535"/>
-      <details key="end" value="3549"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.147" references="/0/filterUpdater/@body.11/@ifExpr/@argument.0">
-      <details key="start" value="3569"/>
-      <details key="end" value="3570"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.148" references="/0/filterUpdater/@body.12">
-      <details key="start" value="3592"/>
-      <details key="end" value="3607"/>
       <details key="line" value="51"/>
     </eAnnotations>
-    <eAnnotations source="positions.149" references="/0/filterUpdater/@body.13">
-      <details key="start" value="3607"/>
-      <details key="end" value="3722"/>
-      <details key="line" value="54"/>
+    <eAnnotations source="positions.132" references="/0/filterUpdater/@body.13/@body.0">
+      <details key="start" value="3421"/>
+      <details key="end" value="3424"/>
+      <details key="line" value="52"/>
     </eAnnotations>
-    <eAnnotations source="positions.150" references="/0/filterUpdater/@body.13/@body.0">
-      <details key="start" value="3671"/>
-      <details key="end" value="3713"/>
+    <eAnnotations source="positions.133" references="/0/filterUpdater/@body.13/@body.1">
+      <details key="start" value="3424"/>
+      <details key="end" value="3520"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/filterUpdater/@body.13/@body.1/@body.0">
+      <details key="start" value="3503"/>
+      <details key="end" value="3508"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/filterUpdater/@body.13/@body.1/@marker">
+      <details key="start" value="3436"/>
+      <details key="end" value="3501"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.151" references="/0/filterUpdater/@body.13/@body.0/filter">
-      <details key="start" value="3671"/>
-      <details key="end" value="3677"/>
+    <eAnnotations source="positions.136" references="/0/filterUpdater/@body.13/@body.1/@marker/@source">
+      <details key="start" value="3436"/>
+      <details key="end" value="3473"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.152" references="/0/filterUpdater/@body.13/@body.0/editionElement">
-      <details key="start" value="3689"/>
-      <details key="end" value="3703"/>
+    <eAnnotations source="positions.137" references="/0/filterUpdater/@body.13/@body.1/@marker/@argument.0">
+      <details key="start" value="3481"/>
+      <details key="end" value="3500"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.153" references="/0/filterUpdater/@body.13/@body.0/view">
-      <details key="start" value="3704"/>
-      <details key="end" value="3708"/>
+    <eAnnotations source="positions.138" references="/0/filterUpdater/@body.13/@body.1/@marker/@argument.0/editionElement">
+      <details key="start" value="3481"/>
+      <details key="end" value="3495"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.154" references="/0/filterUpdater/@body.13/@body.0/pec">
-      <details key="start" value="3709"/>
-      <details key="end" value="3712"/>
+    <eAnnotations source="positions.139" references="/0/filterUpdater/@body.13/@body.2">
+      <details key="start" value="3520"/>
+      <details key="end" value="3521"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/filterUpdater/@body.13/@ifExpr">
+      <details key="start" value="3252"/>
+      <details key="end" value="3419"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.155" references="/0/filterUpdater/@body.13/@body.1">
-      <details key="start" value="3715"/>
-      <details key="end" value="3716"/>
-      <details key="line" value="56"/>
-    </eAnnotations>
-    <eAnnotations source="positions.156" references="/0/filterUpdater/@body.13/filter">
-      <details key="start" value="3613"/>
-      <details key="end" value="3635"/>
-      <details key="line" value="54"/>
-    </eAnnotations>
-    <eAnnotations source="positions.157" references="/0/filterUpdater/@body.13/@iterSet">
-      <details key="start" value="3638"/>
-      <details key="end" value="3667"/>
+    <eAnnotations source="positions.141" references="/0/filterUpdater/@body.13/@ifExpr/@source">
+      <details key="start" value="3257"/>
+      <details key="end" value="3418"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.158" references="/0/filterUpdater/@body.13/@iterSet/editionElement">
-      <details key="start" value="3638"/>
-      <details key="end" value="3652"/>
+    <eAnnotations source="positions.142" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source">
+      <details key="start" value="3257"/>
+      <details key="end" value="3397"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.159" references="/0/filterUpdater/@body.14">
-      <details key="start" value="3725"/>
-      <details key="end" value="4014"/>
-      <details key="line" value="57"/>
-    </eAnnotations>
-    <eAnnotations source="positions.160" references="/0/filterUpdater/@body.14/@body.0">
-      <details key="start" value="3898"/>
-      <details key="end" value="3904"/>
-      <details key="line" value="58"/>
-    </eAnnotations>
-    <eAnnotations source="positions.161" references="/0/filterUpdater/@body.14/@body.1">
-      <details key="start" value="3904"/>
-      <details key="end" value="4006"/>
-      <details key="line" value="58"/>
-    </eAnnotations>
-    <eAnnotations source="positions.162" references="/0/filterUpdater/@body.14/@body.1/@body.0">
-      <details key="start" value="3983"/>
-      <details key="end" value="3994"/>
-      <details key="line" value="59"/>
-    </eAnnotations>
-    <eAnnotations source="positions.163" references="/0/filterUpdater/@body.14/@body.1/@marker">
-      <details key="start" value="3916"/>
-      <details key="end" value="3981"/>
+    <eAnnotations source="positions.143" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source/@argument.0">
+      <details key="start" value="3257"/>
+      <details key="end" value="3376"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.164" references="/0/filterUpdater/@body.14/@body.1/@marker/@source">
-      <details key="start" value="3916"/>
-      <details key="end" value="3953"/>
+    <eAnnotations source="positions.144" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source/@argument.0/@source">
+      <details key="start" value="3257"/>
+      <details key="end" value="3328"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.165" references="/0/filterUpdater/@body.14/@body.1/@marker/@argument.0">
-      <details key="start" value="3961"/>
-      <details key="end" value="3980"/>
+    <eAnnotations source="positions.145" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source/@argument.0/@source/@source">
+      <details key="start" value="3257"/>
+      <details key="end" value="3279"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.166" references="/0/filterUpdater/@body.14/@body.1/@marker/@argument.0/editionElement">
-      <details key="start" value="3961"/>
-      <details key="end" value="3975"/>
+    <eAnnotations source="positions.146" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source/@argument.0/@source/@source/editionElement">
+      <details key="start" value="3257"/>
+      <details key="end" value="3271"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.167" references="/0/filterUpdater/@body.14/@body.2">
-      <details key="start" value="4006"/>
-      <details key="end" value="4007"/>
-      <details key="line" value="61"/>
-    </eAnnotations>
-    <eAnnotations source="positions.168" references="/0/filterUpdater/@body.14/@ifExpr">
-      <details key="start" value="3729"/>
-      <details key="end" value="3896"/>
+    <eAnnotations source="positions.147" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source/@argument.0/@source/@argument.0">
+      <details key="start" value="3291"/>
+      <details key="end" value="3327"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.169" references="/0/filterUpdater/@body.14/@ifExpr/@source">
-      <details key="start" value="3734"/>
-      <details key="end" value="3895"/>
+    <eAnnotations source="positions.148" references="/0/filterUpdater/@body.13/@ifExpr/@source/@source/@argument.0/@argument.0">
+      <details key="start" value="3339"/>
+      <details key="end" value="3375"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.170" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source">
-      <details key="start" value="3734"/>
-      <details key="end" value="3874"/>
+    <eAnnotations source="positions.149" references="/0/filterUpdater/editionElement">
+      <details key="start" value="2277"/>
+      <details key="end" value="2318"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/filterUpdater/view">
+      <details key="start" value="2320"/>
+      <details key="end" value="2331"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/filterUpdater/pec">
+      <details key="start" value="2333"/>
+      <details key="end" value="2365"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/filterUpdater/@guard">
+      <details key="start" value="2394"/>
+      <details key="end" value="2481"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.171" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source/@argument.0">
-      <details key="start" value="3734"/>
-      <details key="end" value="3853"/>
+    <eAnnotations source="positions.153" references="/0/filterUpdater/@guard/@source">
+      <details key="start" value="2394"/>
+      <details key="end" value="2434"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.172" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source/@argument.0/@source">
-      <details key="start" value="3734"/>
-      <details key="end" value="3805"/>
+    <eAnnotations source="positions.154" references="/0/filterUpdater/@guard/@source/@argument.0">
+      <details key="start" value="2394"/>
+      <details key="end" value="2414"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.173" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source/@argument.0/@source/@source">
-      <details key="start" value="3734"/>
-      <details key="end" value="3756"/>
+    <eAnnotations source="positions.155" references="/0/filterUpdater/@guard/@source/@argument.0/editionElement">
+      <details key="start" value="2394"/>
+      <details key="end" value="2408"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.174" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source/@argument.0/@source/@source/editionElement">
-      <details key="start" value="3734"/>
-      <details key="end" value="3748"/>
+    <eAnnotations source="positions.156" references="/0/filterUpdater/@guard/@argument.0">
+      <details key="start" value="2439"/>
+      <details key="end" value="2481"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.175" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source/@argument.0/@source/@argument.0">
-      <details key="start" value="3768"/>
-      <details key="end" value="3804"/>
+    <eAnnotations source="positions.157" references="/0/filterUpdater/@guard/@argument.0/editionElement">
+      <details key="start" value="2439"/>
+      <details key="end" value="2453"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.176" references="/0/filterUpdater/@body.14/@ifExpr/@source/@source/@argument.0/@argument.0">
-      <details key="start" value="3816"/>
-      <details key="end" value="3852"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.177" references="/0/filterUpdater/editionElement">
-      <details key="start" value="2719"/>
-      <details key="end" value="2760"/>
-      <details key="line" value="40"/>
-    </eAnnotations>
-    <eAnnotations source="positions.178" references="/0/filterUpdater/view">
-      <details key="start" value="2762"/>
-      <details key="end" value="2773"/>
-      <details key="line" value="40"/>
-    </eAnnotations>
-    <eAnnotations source="positions.179" references="/0/filterUpdater/pec">
-      <details key="start" value="2775"/>
-      <details key="end" value="2807"/>
-      <details key="line" value="40"/>
-    </eAnnotations>
-    <eAnnotations source="positions.180" references="/0/filterUpdater/@guard">
-      <details key="start" value="2836"/>
-      <details key="end" value="2923"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.181" references="/0/filterUpdater/@guard/@source">
-      <details key="start" value="2836"/>
-      <details key="end" value="2876"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.182" references="/0/filterUpdater/@guard/@source/@argument.0">
-      <details key="start" value="2836"/>
-      <details key="end" value="2856"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.183" references="/0/filterUpdater/@guard/@source/@argument.0/editionElement">
-      <details key="start" value="2836"/>
-      <details key="end" value="2850"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.184" references="/0/filterUpdater/@guard/@argument.0">
-      <details key="start" value="2881"/>
-      <details key="end" value="2923"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.185" references="/0/filterUpdater/@guard/@argument.0/editionElement">
-      <details key="start" value="2881"/>
-      <details key="end" value="2895"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.186" references="/0/filterUpdater/@guard/@argument.0/@argument.1">
-      <details key="start" value="2915"/>
-      <details key="end" value="2922"/>
+    <eAnnotations source="positions.158" references="/0/filterUpdater/@guard/@argument.0/@argument.1">
+      <details key="start" value="2473"/>
+      <details key="end" value="2480"/>
       <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>
