@@ -38,11 +38,11 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
    
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
-      <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.eef.mapping.providers.MappingPackagePropertiesEditionProvider">
-      </PropertiesEditionComponentProvider>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/mapping/1.0.0"
+            class="org.eclipse.emf.eef.mapping.providers.MappingEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
