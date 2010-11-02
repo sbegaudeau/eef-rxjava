@@ -347,7 +347,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [/template]
 
 [template public defaultEditOperation (editor : ElementEditor) ]
-EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
 if (policy != null) {

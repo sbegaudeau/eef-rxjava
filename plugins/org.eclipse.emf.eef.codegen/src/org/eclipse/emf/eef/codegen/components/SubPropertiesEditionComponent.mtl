@@ -176,8 +176,8 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 	 * Default constructor
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public [pec.subPECClass(view)/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
-		super([pec.model.name.toJavaIdentifier()/], editing_mode);
+	public [pec.subPECClass(view)/](PropertiesEditingContext editingContext, EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
+		super(editingContext, [pec.model.name.toJavaIdentifier()/], editing_mode);
 		parts = new String['['/][']'/] { [view.viewPartConstant(pec)/] };
 		repositoryKey = [view.owningViewsRepository().vrClass()/].class;
 		partKey = [view.editorID()/].class;

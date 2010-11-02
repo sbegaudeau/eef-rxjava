@@ -136,7 +136,7 @@ protected AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElemen
 				[else]
 				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
 				[/if]
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent, current,resourceSet);
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, adapterFactory);
 				PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 				PropertiesEditingPolicy policy = provider.getPolicy(context);
 				if (policy != null) {

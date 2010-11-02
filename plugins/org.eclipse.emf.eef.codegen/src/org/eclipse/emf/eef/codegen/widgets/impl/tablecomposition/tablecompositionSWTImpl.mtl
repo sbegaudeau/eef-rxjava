@@ -239,7 +239,7 @@ if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelec
 	IStructuredSelection selection = (IStructuredSelection) [editor.name.toJavaIdentifier()/].getSelection();
 	if (selection.getFirstElement() instanceof EObject) {
 		EObject selectedElement = (EObject) selection.getFirstElement();
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, selectedElement,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, selectedElement, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
 		if (editionPolicy != null) {
@@ -265,7 +265,7 @@ if ([editor.name.toJavaIdentifier()/].getSelection() instanceof IStructuredSelec
 	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 [editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
-EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
 PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
 if (policy != null) {
@@ -274,7 +274,7 @@ if (policy != null) {
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
 [editor.name.toJavaIdentifier()/].refresh();
 		[else]
-EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet);
+EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, [editor.involvedPropertiesEditionElement().metamodelGetter()/], adapterFactory);
 PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 PropertiesEditingPolicy policy = provider.getPolicy(context);
 if (policy instanceof CreateEditingPolicy) {
@@ -398,7 +398,7 @@ create[editor.name.toJavaClassifier()/]AdvancedTableComposition([editor.widgetCo
 [/template]
 
 [template private defaultEditOperationForAdvancedTableComposition (editor : ElementEditor) ]
-EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
 if (editionPolicy != null) {
@@ -417,7 +417,7 @@ if (editionPolicy != null) {
 	[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 [editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
-EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
+EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
 PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
 if (policy != null) {
@@ -426,7 +426,7 @@ if (policy != null) {
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, eObject));
 [editor.name.toJavaIdentifier()/].refresh();
 		[else]
-EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, [editor.involvedPropertiesEditionElement().metamodelGetter()/], resourceSet);
+EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, [editor.involvedPropertiesEditionElement().metamodelGetter()/], adapterFactory);
 PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 PropertiesEditingPolicy policy = provider.getPolicy(context);
 if (policy instanceof CreateEditingPolicy) {
