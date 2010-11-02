@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
@@ -45,8 +46,8 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 * Default constructor
 	 * 
 	 */
-	public TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent(EObject textSampleWithTwoTabs, String editing_mode) {
-		super(textSampleWithTwoTabs, editing_mode);
+	public TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject textSampleWithTwoTabs, String editing_mode) {
+		super(editingContext, textSampleWithTwoTabs, editing_mode);
 		parts = new String[] { TEXTSAMPLESECONDTAB_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.TextSampleSecondTab.class;

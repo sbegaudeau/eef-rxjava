@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
@@ -43,8 +44,8 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	 * Default constructor
 	 * 
 	 */
-	public CheckboxSamplePropertiesEditionComponent(EObject checkboxSample, String editing_mode) {
-		super(checkboxSample, editing_mode);
+	public CheckboxSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject checkboxSample, String editing_mode) {
+		super(editingContext, checkboxSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.CheckboxSample.class;

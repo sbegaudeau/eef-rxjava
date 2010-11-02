@@ -24,10 +24,10 @@ import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.policies.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
@@ -206,7 +206,7 @@ createTablecompositionOptionalPropertyAdvancedTableComposition(propertiesGroup);
 	 *  
 	 */
 	protected void addToTablecompositionRequiredProperty() {
-		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), resourceSet);
+		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), adapterFactory);
 		PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
@@ -233,7 +233,7 @@ createTablecompositionOptionalPropertyAdvancedTableComposition(propertiesGroup);
 	 *  
 	 */
 	protected void editTablecompositionRequiredProperty(AbstractTableCompositionTargetExtensionEditorSample element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
 		if (editionPolicy != null) {
@@ -275,7 +275,7 @@ createTablecompositionOptionalPropertyAdvancedTableComposition(propertiesGroup);
 	 *  
 	 */
 	protected void addToTablecompositionOptionalProperty() {
-		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty(), resourceSet);
+		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty(), adapterFactory);
 		PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
@@ -302,7 +302,7 @@ createTablecompositionOptionalPropertyAdvancedTableComposition(propertiesGroup);
 	 *  
 	 */
 	protected void editTablecompositionOptionalProperty(AbstractTableCompositionTargetExtensionEditorSample element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
 		if (editionPolicy != null) {

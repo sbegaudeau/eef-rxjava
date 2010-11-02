@@ -24,9 +24,9 @@ import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
@@ -153,7 +153,7 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	 */
 	protected void addToAdvancedtablecompositionRequiredProperty() {
 		Sample eObject = EefnrFactory.eINSTANCE.createSample();
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
 		if (policy != null) {
@@ -177,7 +177,7 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	 *  
 	 */
 	protected void editAdvancedtablecompositionRequiredProperty(Sample element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
 		if (editionPolicy != null) {
@@ -222,7 +222,7 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	 */
 	protected void addToAdvancedtablecompositionOptionalProperty() {
 		Sample eObject = EefnrFactory.eINSTANCE.createSample();
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, eObject,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
 		if (policy != null) {
@@ -246,7 +246,7 @@ createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(propertie
 	 *  
 	 */
 	protected void editAdvancedtablecompositionOptionalProperty(Sample element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
 		PropertiesEditingPolicy editionPolicy = policyProvider.getPolicy(context);
 		if (editionPolicy != null) {

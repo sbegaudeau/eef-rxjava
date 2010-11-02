@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.TableCompositionTargetExtensionEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
@@ -45,8 +46,8 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	 * Default constructor
 	 * 
 	 */
-	public TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent(EObject tableCompositionTargetExtensionEditorSample, String editing_mode) {
-		super(tableCompositionTargetExtensionEditorSample, editing_mode);
+	public TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject tableCompositionTargetExtensionEditorSample, String editing_mode) {
+		super(editingContext, tableCompositionTargetExtensionEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrextViewsRepository.class;
 		partKey = EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.class;

@@ -10,100 +10,90 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.providers;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.components.AdvancedTableCompositionEditorSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AdvancedTableCompositionEditorSamplePropertiesEditionProvider implements IPropertiesEditionProvider {
+public class AdvancedTableCompositionEditorSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 * 
 	 */
-	public boolean provides(EObject eObject) {
-		return (eObject instanceof AdvancedTableCompositionEditorSample) && (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample() == eObject.eClass());
+	public boolean provides(PropertiesEditingContext editingContext) {
+		return (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) 
+					&& (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample() == editingContext.getEObject().eClass());
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part) {
-		return (eObject instanceof AdvancedTableCompositionEditorSample) && (AdvancedTableCompositionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part));
+	public boolean provides(PropertiesEditingContext editingContext, String part) {
+		return (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) && (AdvancedTableCompositionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, java.lang.Class refinement) {
-		return (eObject instanceof AdvancedTableCompositionEditorSample) && (refinement == AdvancedTableCompositionEditorSamplePropertiesEditionComponent.class);
+	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
+		return (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) && (refinement == AdvancedTableCompositionEditorSamplePropertiesEditionComponent.class);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
-		return (eObject instanceof AdvancedTableCompositionEditorSample) && ((AdvancedTableCompositionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AdvancedTableCompositionEditorSamplePropertiesEditionComponent.class));
+	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
+		return (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) && ((AdvancedTableCompositionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AdvancedTableCompositionEditorSamplePropertiesEditionComponent.class));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof AdvancedTableCompositionEditorSample) {
-			return new AdvancedTableCompositionEditorSamplePropertiesEditionComponent(eObject, editing_mode);
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+		if (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) {
+			return new AdvancedTableCompositionEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof AdvancedTableCompositionEditorSample) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+		if (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) {
 			if (AdvancedTableCompositionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part))
-				return new AdvancedTableCompositionEditorSamplePropertiesEditionComponent(eObject, editing_mode);
+				return new AdvancedTableCompositionEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String, java.lang.String, java.lang.Class)
-	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
-		if (eObject instanceof AdvancedTableCompositionEditorSample) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+		if (editingContext.getEObject() instanceof AdvancedTableCompositionEditorSample) {
 			if (AdvancedTableCompositionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == AdvancedTableCompositionEditorSamplePropertiesEditionComponent.class)
-				return new AdvancedTableCompositionEditorSamplePropertiesEditionComponent(eObject, editing_mode);
+				return new AdvancedTableCompositionEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}

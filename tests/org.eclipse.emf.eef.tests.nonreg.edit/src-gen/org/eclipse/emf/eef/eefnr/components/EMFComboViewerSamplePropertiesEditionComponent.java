@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
@@ -46,8 +47,8 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	 * Default constructor
 	 * 
 	 */
-	public EMFComboViewerSamplePropertiesEditionComponent(EObject eMFComboViewerSample, String editing_mode) {
-		super(eMFComboViewerSample, editing_mode);
+	public EMFComboViewerSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eMFComboViewerSample, String editing_mode) {
+		super(editingContext, eMFComboViewerSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.EMFComboViewerSample.class;

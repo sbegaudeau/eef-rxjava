@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
@@ -45,8 +46,8 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * Default constructor
 	 * 
 	 */
-	public SamplePropertiesEditionComponent(EObject sample, String editing_mode) {
-		super(sample, editing_mode);
+	public SamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject sample, String editing_mode) {
+		super(editingContext, sample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.Sample.class;

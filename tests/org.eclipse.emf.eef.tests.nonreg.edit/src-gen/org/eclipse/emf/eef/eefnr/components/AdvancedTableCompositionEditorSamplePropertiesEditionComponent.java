@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.parts.AdvancedTableCompositionEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -56,8 +57,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	 * Default constructor
 	 * 
 	 */
-	public AdvancedTableCompositionEditorSamplePropertiesEditionComponent(EObject advancedTableCompositionEditorSample, String editing_mode) {
-		super(advancedTableCompositionEditorSample, editing_mode);
+	public AdvancedTableCompositionEditorSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject advancedTableCompositionEditorSample, String editing_mode) {
+		super(editingContext, advancedTableCompositionEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.AdvancedTableCompositionEditorSample.class;
@@ -95,8 +96,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 			
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionRequiredProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 			basePart.addFilterToAdvancedtablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -111,8 +112,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 			
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

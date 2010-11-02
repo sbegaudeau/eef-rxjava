@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.eefnr.RadioSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
@@ -46,8 +47,8 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 * Default constructor
 	 * 
 	 */
-	public RadioSamplePropertiesEditionComponent(EObject radioSample, String editing_mode) {
-		super(radioSample, editing_mode);
+	public RadioSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject radioSample, String editing_mode) {
+		super(editingContext, radioSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.RadioSample.class;

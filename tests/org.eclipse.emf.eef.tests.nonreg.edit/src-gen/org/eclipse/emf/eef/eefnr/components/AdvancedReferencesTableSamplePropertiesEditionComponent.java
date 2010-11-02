@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -58,8 +59,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	 * Default constructor
 	 * 
 	 */
-	public AdvancedReferencesTableSamplePropertiesEditionComponent(EObject advancedReferencesTableSample, String editing_mode) {
-		super(advancedReferencesTableSample, editing_mode);
+	public AdvancedReferencesTableSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject advancedReferencesTableSample, String editing_mode) {
+		super(editingContext, advancedReferencesTableSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.AdvancedReferencesTableSample.class;
@@ -100,8 +101,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -119,8 +120,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

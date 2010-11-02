@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
@@ -45,8 +46,8 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 * Default constructor
 	 * 
 	 */
-	public CheckBoxExtendedEditorSampleBasePropertiesEditionComponent(EObject checkBoxExtendedEditorSample, String editing_mode) {
-		super(checkBoxExtendedEditorSample, editing_mode);
+	public CheckBoxExtendedEditorSampleBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject checkBoxExtendedEditorSample, String editing_mode) {
+		super(editingContext, checkBoxExtendedEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrextViewsRepository.class;
 		partKey = EefnrextViewsRepository.CheckBoxExtendedEditorSample.class;

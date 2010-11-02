@@ -18,9 +18,9 @@ import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleFirstTabPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
 // End of user code
@@ -60,15 +60,15 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	 * @param textSampleWithTwoTabs the EObject to edit
 	 * 
 	 */
-	public TextSampleWithTwoTabsPropertiesEditionComponent(EObject textSampleWithTwoTabs, String editing_mode) {
-		super(editing_mode);
+	public TextSampleWithTwoTabsPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject textSampleWithTwoTabs, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (textSampleWithTwoTabs instanceof TextSampleWithTwoTabs) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(textSampleWithTwoTabs, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class);
-			textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent)provider.getPropertiesEditionComponent(textSampleWithTwoTabs, editing_mode, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(textSampleWithTwoTabs, PropertiesEditingProvider.class);
+			textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART, TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class);
 			addSubComponent(textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(textSampleWithTwoTabs, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class);
-			textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent)provider.getPropertiesEditionComponent(textSampleWithTwoTabs, editing_mode, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(textSampleWithTwoTabs, PropertiesEditingProvider.class);
+			textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent = (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART, TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.class);
 			addSubComponent(textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent);
 		}
 	}

@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 	
@@ -46,8 +47,8 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	 * Default constructor
 	 * 
 	 */
-	public MultiValuedEditorSamplePropertiesEditionComponent(EObject multiValuedEditorSample, String editing_mode) {
-		super(multiValuedEditorSample, editing_mode);
+	public MultiValuedEditorSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject multiValuedEditorSample, String editing_mode) {
+		super(editingContext, multiValuedEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.MultiValuedEditorSample.class;

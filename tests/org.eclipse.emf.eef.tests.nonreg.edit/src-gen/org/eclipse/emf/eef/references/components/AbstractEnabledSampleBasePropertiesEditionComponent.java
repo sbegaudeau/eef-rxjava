@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
@@ -44,8 +45,8 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	 * Default constructor
 	 * 
 	 */
-	public AbstractEnabledSampleBasePropertiesEditionComponent(EObject abstractEnabledSample, String editing_mode) {
-		super(abstractEnabledSample, editing_mode);
+	public AbstractEnabledSampleBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject abstractEnabledSample, String editing_mode) {
+		super(editingContext, abstractEnabledSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ReferencesViewsRepository.class;
 		partKey = ReferencesViewsRepository.AbstractEnabledSample.class;

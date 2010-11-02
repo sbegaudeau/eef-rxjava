@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
@@ -45,8 +46,8 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * Default constructor
 	 * 
 	 */
-	public FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent(EObject flatReferenceExtendedEditorSample, String editing_mode) {
-		super(flatReferenceExtendedEditorSample, editing_mode);
+	public FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject flatReferenceExtendedEditorSample, String editing_mode) {
+		super(editingContext, flatReferenceExtendedEditorSample, editing_mode);
 		parts = new String[] { SECONDFLATREFERENCEEXTENDEDEDITORSAMPLE_PART };
 		repositoryKey = EefnrextViewsRepository.class;
 		partKey = EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class;

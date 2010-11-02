@@ -17,9 +17,9 @@ import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
 // End of user code
@@ -53,15 +53,15 @@ public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPro
 	 * @param abstractEnabledSample the EObject to edit
 	 * 
 	 */
-	public AbstractEnabledSamplePropertiesEditionComponent(EObject abstractEnabledSample, String editing_mode) {
-		super(editing_mode);
+	public AbstractEnabledSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject abstractEnabledSample, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (abstractEnabledSample instanceof AbstractEnabledSample) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(abstractEnabledSample, AbstractEnabledSampleBasePropertiesEditionComponent.class);
-			abstractEnabledSampleBasePropertiesEditionComponent = (AbstractEnabledSampleBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(abstractEnabledSample, editing_mode, AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART, AbstractEnabledSampleBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(abstractEnabledSample, PropertiesEditingProvider.class);
+			abstractEnabledSampleBasePropertiesEditionComponent = (AbstractEnabledSampleBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART, AbstractEnabledSampleBasePropertiesEditionComponent.class);
 			addSubComponent(abstractEnabledSampleBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(abstractEnabledSample, AbstractSamplePropertiesEditionComponent.class);
-			abstractSamplePropertiesEditionComponent = (AbstractSamplePropertiesEditionComponent)provider.getPropertiesEditionComponent(abstractEnabledSample, editing_mode, AbstractSamplePropertiesEditionComponent.BASE_PART, AbstractSamplePropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(abstractEnabledSample, PropertiesEditingProvider.class);
+			abstractSamplePropertiesEditionComponent = (AbstractSamplePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, AbstractSamplePropertiesEditionComponent.BASE_PART, AbstractSamplePropertiesEditionComponent.class);
 			addSubComponent(abstractSamplePropertiesEditionComponent);
 		}
 	}

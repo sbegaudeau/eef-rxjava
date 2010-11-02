@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -57,8 +58,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	 * Default constructor
 	 * 
 	 */
-	public DeferedReferencesTableSampleEditorPropertiesEditionComponent(EObject deferedReferenceTableEditorSample, String editing_mode) {
-		super(deferedReferenceTableEditorSample, editing_mode);
+	public DeferedReferencesTableSampleEditorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject deferedReferenceTableEditorSample, String editing_mode) {
+		super(editingContext, deferedReferenceTableEditorSample, editing_mode);
 		parts = new String[] { DEFEREDREFERENCESTABLESAMPLE_PART };
 		repositoryKey = NavigationViewsRepository.class;
 		partKey = NavigationViewsRepository.DeferedReferencesTableSample.class;
@@ -98,8 +99,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			
 			});
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

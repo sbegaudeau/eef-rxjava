@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnr.TextareaSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
@@ -45,8 +46,8 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	 * Default constructor
 	 * 
 	 */
-	public TextareaSamplePropertiesEditionComponent(EObject textareaSample, String editing_mode) {
-		super(textareaSample, editing_mode);
+	public TextareaSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject textareaSample, String editing_mode) {
+		super(editingContext, textareaSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.TextareaSample.class;

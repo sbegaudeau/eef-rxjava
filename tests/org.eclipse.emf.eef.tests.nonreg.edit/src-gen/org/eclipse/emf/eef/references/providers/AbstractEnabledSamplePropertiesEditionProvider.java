@@ -10,107 +10,97 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.references.providers;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.references.components.AbstractEnabledSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.references.components.AbstractEnabledSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AbstractEnabledSamplePropertiesEditionProvider implements IPropertiesEditionProvider {
+public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 * 
 	 */
-	public boolean provides(EObject eObject) {
-		return (eObject instanceof AbstractEnabledSample) && (ReferencesPackage.eINSTANCE.getAbstractEnabledSample() == eObject.eClass());
+	public boolean provides(PropertiesEditingContext editingContext) {
+		return (editingContext.getEObject() instanceof AbstractEnabledSample) 
+					&& (ReferencesPackage.eINSTANCE.getAbstractEnabledSample() == editingContext.getEObject().eClass());
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part) {
-		return (eObject instanceof AbstractEnabledSample) && (AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) || AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part));
+	public boolean provides(PropertiesEditingContext editingContext, String part) {
+		return (editingContext.getEObject() instanceof AbstractEnabledSample) && (AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) || AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, java.lang.Class refinement) {
-		return (eObject instanceof AbstractEnabledSample) && (refinement == AbstractEnabledSampleBasePropertiesEditionComponent.class || refinement == AbstractSamplePropertiesEditionComponent.class);
+	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
+		return (editingContext.getEObject() instanceof AbstractEnabledSample) && (refinement == AbstractEnabledSampleBasePropertiesEditionComponent.class || refinement == AbstractSamplePropertiesEditionComponent.class);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
-		return (eObject instanceof AbstractEnabledSample) && ((AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractEnabledSampleBasePropertiesEditionComponent.class) || (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractSamplePropertiesEditionComponent.class));
+	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
+		return (editingContext.getEObject() instanceof AbstractEnabledSample) && ((AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractEnabledSampleBasePropertiesEditionComponent.class) || (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractSamplePropertiesEditionComponent.class));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof AbstractEnabledSample) {
-			return new AbstractEnabledSamplePropertiesEditionComponent(eObject, editing_mode);
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+		if (editingContext.getEObject() instanceof AbstractEnabledSample) {
+			return new AbstractEnabledSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof AbstractEnabledSample) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+		if (editingContext.getEObject() instanceof AbstractEnabledSample) {
 			if (AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new AbstractEnabledSampleBasePropertiesEditionComponent(eObject, editing_mode);
+				return new AbstractEnabledSampleBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part))
-				return new AbstractSamplePropertiesEditionComponent(eObject, editing_mode);
+				return new AbstractSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String, java.lang.String, java.lang.Class)
-	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
-		if (eObject instanceof AbstractEnabledSample) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+		if (editingContext.getEObject() instanceof AbstractEnabledSample) {
 			if (AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == AbstractEnabledSampleBasePropertiesEditionComponent.class)
-				return new AbstractEnabledSampleBasePropertiesEditionComponent(eObject, editing_mode);
+				return new AbstractEnabledSampleBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == AbstractSamplePropertiesEditionComponent.class)
-				return new AbstractSamplePropertiesEditionComponent(eObject, editing_mode);
+				return new AbstractSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}

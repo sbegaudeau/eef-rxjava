@@ -19,9 +19,9 @@ import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSampleProperties
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
 // End of user code
@@ -55,15 +55,15 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends Comp
 	 * @param checkBoxExtendedEditorSample the EObject to edit
 	 * 
 	 */
-	public CheckBoxExtendedEditorSamplePropertiesEditionComponent(EObject checkBoxExtendedEditorSample, String editing_mode) {
-		super(editing_mode);
+	public CheckBoxExtendedEditorSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject checkBoxExtendedEditorSample, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (checkBoxExtendedEditorSample instanceof CheckBoxExtendedEditorSample) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(checkBoxExtendedEditorSample, CheckBoxExtendedEditorSampleBasePropertiesEditionComponent.class);
-			checkBoxExtendedEditorSampleBasePropertiesEditionComponent = (CheckBoxExtendedEditorSampleBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(checkBoxExtendedEditorSample, editing_mode, CheckBoxExtendedEditorSampleBasePropertiesEditionComponent.BASE_PART, CheckBoxExtendedEditorSampleBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(checkBoxExtendedEditorSample, PropertiesEditingProvider.class);
+			checkBoxExtendedEditorSampleBasePropertiesEditionComponent = (CheckBoxExtendedEditorSampleBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, CheckBoxExtendedEditorSampleBasePropertiesEditionComponent.BASE_PART, CheckBoxExtendedEditorSampleBasePropertiesEditionComponent.class);
 			addSubComponent(checkBoxExtendedEditorSampleBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(checkBoxExtendedEditorSample, AbstractSamplePropertiesEditionComponent.class);
-			abstractSamplePropertiesEditionComponent = (AbstractSamplePropertiesEditionComponent)provider.getPropertiesEditionComponent(checkBoxExtendedEditorSample, editing_mode, AbstractSamplePropertiesEditionComponent.BASE_PART, AbstractSamplePropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(checkBoxExtendedEditorSample, PropertiesEditingProvider.class);
+			abstractSamplePropertiesEditionComponent = (AbstractSamplePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, AbstractSamplePropertiesEditionComponent.BASE_PART, AbstractSamplePropertiesEditionComponent.class);
 			addSubComponent(abstractSamplePropertiesEditionComponent);
 		}
 	}

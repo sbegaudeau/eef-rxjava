@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedFlatReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -59,8 +60,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * Default constructor
 	 * 
 	 */
-	public DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent(EObject deferedFlatReferenceTableEditorSample, String editing_mode) {
-		super(deferedFlatReferenceTableEditorSample, editing_mode);
+	public DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject deferedFlatReferenceTableEditorSample, String editing_mode) {
+		super(editingContext, deferedFlatReferenceTableEditorSample, editing_mode);
 		parts = new String[] { DEFEREDFLATREFERENCESTABLESAMPLE_PART };
 		repositoryKey = NavigationViewsRepository.class;
 		partKey = NavigationViewsRepository.DeferedFlatReferencesTableSample.class;
@@ -103,8 +104,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			});
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

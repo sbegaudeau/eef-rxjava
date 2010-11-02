@@ -10,100 +10,90 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.navigation.providers;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.navigation.components.DeferedReferencesTableSampleEditorPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class DeferedReferencesTableSampleEditorPropertiesEditionProvider implements IPropertiesEditionProvider {
+public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 * 
 	 */
-	public boolean provides(EObject eObject) {
-		return (eObject instanceof DeferedReferenceTableEditorSample) && (NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample() == eObject.eClass());
+	public boolean provides(PropertiesEditingContext editingContext) {
+		return (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) 
+					&& (NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample() == editingContext.getEObject().eClass());
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part) {
-		return (eObject instanceof DeferedReferenceTableEditorSample) && (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part));
+	public boolean provides(PropertiesEditingContext editingContext, String part) {
+		return (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) && (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, java.lang.Class refinement) {
-		return (eObject instanceof DeferedReferenceTableEditorSample) && (refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class);
+	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
+		return (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) && (refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#provides(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	public boolean provides(EObject eObject, String part, java.lang.Class refinement) {
-		return (eObject instanceof DeferedReferenceTableEditorSample) && ((DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part) && refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class));
+	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
+		return (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) && ((DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part) && refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode) {
-		if (eObject instanceof DeferedReferenceTableEditorSample) {
-			return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(eObject, editing_mode);
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
+			return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part) {
-		if (eObject instanceof DeferedReferenceTableEditorSample) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
 			if (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part))
-				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(eObject, editing_mode);
+				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider#getPropertiesEditionComponent(org.eclipse.emf.ecore.EObject,
-	 *  java.lang.String, java.lang.String, java.lang.Class)
-	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent(EObject eObject, String editing_mode, String part, java.lang.Class refinement) {
-		if (eObject instanceof DeferedReferenceTableEditorSample) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
 			if (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part)
 				&& refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class)
-				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(eObject, editing_mode);
+				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return null;
 	}

@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.Root;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -51,8 +52,8 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * Default constructor
 	 * 
 	 */
-	public RootPropertiesEditionComponent(EObject root, String editing_mode) {
-		super(root, editing_mode);
+	public RootPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject root, String editing_mode) {
+		super(editingContext, root, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.Root.class;
@@ -88,8 +89,8 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for samples
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

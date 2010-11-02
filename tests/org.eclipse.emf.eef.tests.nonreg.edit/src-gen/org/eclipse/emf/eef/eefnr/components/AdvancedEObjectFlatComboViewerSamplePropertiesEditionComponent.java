@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -54,8 +55,8 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	 * Default constructor
 	 * 
 	 */
-	public AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent(EObject advancedEObjectFlatComboViewerSample, String editing_mode) {
-		super(advancedEObjectFlatComboViewerSample, editing_mode);
+	public AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject advancedEObjectFlatComboViewerSample, String editing_mode) {
+		super(editingContext, advancedEObjectFlatComboViewerSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.class;

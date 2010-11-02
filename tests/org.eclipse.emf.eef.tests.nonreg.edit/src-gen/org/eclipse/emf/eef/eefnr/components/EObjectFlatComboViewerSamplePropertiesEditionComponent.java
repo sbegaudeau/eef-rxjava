@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -56,8 +57,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 * Default constructor
 	 * 
 	 */
-	public EObjectFlatComboViewerSamplePropertiesEditionComponent(EObject eObjectFlatComboViewerSample, String editing_mode) {
-		super(eObjectFlatComboViewerSample, editing_mode);
+	public EObjectFlatComboViewerSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eObjectFlatComboViewerSample, String editing_mode) {
+		super(editingContext, eObjectFlatComboViewerSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.EObjectFlatComboViewerSample.class;
@@ -101,8 +102,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 			
@@ -117,8 +118,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

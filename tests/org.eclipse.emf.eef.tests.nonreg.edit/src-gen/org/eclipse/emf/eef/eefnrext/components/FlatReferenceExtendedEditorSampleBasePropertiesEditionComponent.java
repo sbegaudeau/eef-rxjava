@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -56,8 +57,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * Default constructor
 	 * 
 	 */
-	public FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent(EObject flatReferenceExtendedEditorSample, String editing_mode) {
-		super(flatReferenceExtendedEditorSample, editing_mode);
+	public FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject flatReferenceExtendedEditorSample, String editing_mode) {
+		super(editingContext, flatReferenceExtendedEditorSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrextViewsRepository.class;
 		partKey = EefnrextViewsRepository.FlatReferenceExtendedEditorSample.class;
@@ -96,8 +97,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

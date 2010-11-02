@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -58,8 +59,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 * Default constructor
 	 * 
 	 */
-	public FlatReferenceTableSamplePropertiesEditionComponent(EObject flatReferencesTableSample, String editing_mode) {
-		super(flatReferencesTableSample, editing_mode);
+	public FlatReferenceTableSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject flatReferencesTableSample, String editing_mode) {
+		super(editingContext, flatReferencesTableSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.FlatReferenceTableSample.class;
@@ -100,8 +101,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 			basePart.addFilterToFlatreferencetableOptionalProperty(new ViewerFilter() {
 			
@@ -119,8 +120,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

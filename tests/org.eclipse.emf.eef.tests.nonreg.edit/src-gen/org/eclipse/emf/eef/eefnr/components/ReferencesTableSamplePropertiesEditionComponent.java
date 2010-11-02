@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -57,8 +58,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	 * Default constructor
 	 * 
 	 */
-	public ReferencesTableSamplePropertiesEditionComponent(EObject referencesTableSample, String editing_mode) {
-		super(referencesTableSample, editing_mode);
+	public ReferencesTableSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject referencesTableSample, String editing_mode) {
+		super(editingContext, referencesTableSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.ReferencesTableSample.class;
@@ -99,8 +100,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -118,8 +119,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

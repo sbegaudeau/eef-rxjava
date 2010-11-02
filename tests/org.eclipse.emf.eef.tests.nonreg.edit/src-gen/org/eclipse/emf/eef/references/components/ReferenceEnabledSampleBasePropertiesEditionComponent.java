@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -54,8 +55,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	 * Default constructor
 	 * 
 	 */
-	public ReferenceEnabledSampleBasePropertiesEditionComponent(EObject referenceEnabledSample, String editing_mode) {
-		super(referenceEnabledSample, editing_mode);
+	public ReferenceEnabledSampleBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject referenceEnabledSample, String editing_mode) {
+		super(editingContext, referenceEnabledSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ReferencesViewsRepository.class;
 		partKey = ReferencesViewsRepository.ReferenceEnabledSample.class;
@@ -94,8 +95,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 			});
 			basePart.addFilterToReference(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for reference
-															
-															// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views

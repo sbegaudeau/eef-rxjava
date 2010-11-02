@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.eefnr.TextSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 	
@@ -45,8 +46,8 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * Default constructor
 	 * 
 	 */
-	public TextSamplePropertiesEditionComponent(EObject textSample, String editing_mode) {
-		super(textSample, editing_mode);
+	public TextSamplePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject textSample, String editing_mode) {
+		super(editingContext, textSample, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EefnrViewsRepository.class;
 		partKey = EefnrViewsRepository.TextSample.class;
