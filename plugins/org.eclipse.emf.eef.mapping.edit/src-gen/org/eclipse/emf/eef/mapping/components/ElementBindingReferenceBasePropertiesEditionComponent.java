@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -52,8 +53,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	 * Default constructor
 	 * 
 	 */
-	public ElementBindingReferenceBasePropertiesEditionComponent(EObject elementBindingReference, String editing_mode) {
-		super(elementBindingReference, editing_mode);
+	public ElementBindingReferenceBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject elementBindingReference, String editing_mode) {
+		super(editingContext, elementBindingReference, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.ElementBindingReference.class;
@@ -92,8 +93,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for binding
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views

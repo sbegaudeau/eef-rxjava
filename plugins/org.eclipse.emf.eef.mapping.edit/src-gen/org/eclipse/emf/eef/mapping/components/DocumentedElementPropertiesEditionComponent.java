@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
@@ -46,8 +47,8 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 * Default constructor
 	 * 
 	 */
-	public DocumentedElementPropertiesEditionComponent(EObject documentedElement, String editing_mode) {
-		super(documentedElement, editing_mode);
+	public DocumentedElementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject documentedElement, String editing_mode) {
+		super(editingContext, documentedElement, editing_mode);
 		parts = new String[] { DOCUMENTATION_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.Documentation.class;

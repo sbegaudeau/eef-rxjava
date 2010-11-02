@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
 import org.eclipse.emf.eef.mapping.parts.JavaExpressionFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
@@ -46,8 +47,8 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 	 * Default constructor
 	 * 
 	 */
-	public JavaExpressionFilterBasePropertiesEditionComponent(EObject javaExpressionFilter, String editing_mode) {
-		super(javaExpressionFilter, editing_mode);
+	public JavaExpressionFilterBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject javaExpressionFilter, String editing_mode) {
+		super(editingContext, javaExpressionFilter, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.JavaExpressionFilter.class;

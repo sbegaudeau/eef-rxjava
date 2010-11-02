@@ -19,9 +19,9 @@ import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 // End of user code
 
@@ -60,18 +60,18 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 	 * @param onlyReferenceTypeFilter the EObject to edit
 	 * 
 	 */
-	public OnlyReferenceTypeFilterPropertiesEditionComponent(EObject onlyReferenceTypeFilter, String editing_mode) {
-		super(editing_mode);
+	public OnlyReferenceTypeFilterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject onlyReferenceTypeFilter, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (onlyReferenceTypeFilter instanceof OnlyReferenceTypeFilter) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter, OnlyReferenceTypeFilterBasePropertiesEditionComponent.class);
-			onlyReferenceTypeFilterBasePropertiesEditionComponent = (OnlyReferenceTypeFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART, OnlyReferenceTypeFilterBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(onlyReferenceTypeFilter, PropertiesEditingProvider.class);
+			onlyReferenceTypeFilterBasePropertiesEditionComponent = (OnlyReferenceTypeFilterBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART, OnlyReferenceTypeFilterBasePropertiesEditionComponent.class);
 			addSubComponent(onlyReferenceTypeFilterBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(onlyReferenceTypeFilter, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(onlyReferenceTypeFilter, FilterPropertiesPropertiesEditionComponent.class);
-			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(onlyReferenceTypeFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(onlyReferenceTypeFilter, PropertiesEditingProvider.class);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}

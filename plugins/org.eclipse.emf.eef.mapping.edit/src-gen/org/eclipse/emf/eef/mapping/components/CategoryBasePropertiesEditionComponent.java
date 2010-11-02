@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
@@ -46,8 +47,8 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 * Default constructor
 	 * 
 	 */
-	public CategoryBasePropertiesEditionComponent(EObject category, String editing_mode) {
-		super(category, editing_mode);
+	public CategoryBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject category, String editing_mode) {
+		super(editingContext, category, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.Category.class;

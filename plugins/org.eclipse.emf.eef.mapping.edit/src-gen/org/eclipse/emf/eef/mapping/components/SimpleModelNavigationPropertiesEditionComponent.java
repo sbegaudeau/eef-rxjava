@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.SimpleModelNavigationPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -62,8 +63,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	 * Default constructor
 	 * 
 	 */
-	public SimpleModelNavigationPropertiesEditionComponent(EObject simpleModelNavigation, String editing_mode) {
-		super(simpleModelNavigation, editing_mode);
+	public SimpleModelNavigationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject simpleModelNavigation, String editing_mode) {
+		super(editingContext, simpleModelNavigation, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.SimpleModelNavigation.class;
@@ -110,8 +111,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for feature
-						
-						// End of user code
+									
+									// End of user code
 			
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 			
@@ -126,8 +127,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for discriminatorType
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views

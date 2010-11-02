@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OCLFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
@@ -46,8 +47,8 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 * Default constructor
 	 * 
 	 */
-	public OCLFilterBasePropertiesEditionComponent(EObject oCLFilter, String editing_mode) {
-		super(oCLFilter, editing_mode);
+	public OCLFilterBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject oCLFilter, String editing_mode) {
+		super(editingContext, oCLFilter, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.OCLFilter.class;

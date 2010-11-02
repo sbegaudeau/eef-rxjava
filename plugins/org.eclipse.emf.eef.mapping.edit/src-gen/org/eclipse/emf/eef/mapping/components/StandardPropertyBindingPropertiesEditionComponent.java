@@ -19,9 +19,9 @@ import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.StandardPropertyBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 // End of user code
 
@@ -54,15 +54,15 @@ public class StandardPropertyBindingPropertiesEditionComponent extends ComposedP
 	 * @param standardPropertyBinding the EObject to edit
 	 * 
 	 */
-	public StandardPropertyBindingPropertiesEditionComponent(EObject standardPropertyBinding, String editing_mode) {
-		super(editing_mode);
+	public StandardPropertyBindingPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject standardPropertyBinding, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (standardPropertyBinding instanceof StandardPropertyBinding) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(standardPropertyBinding, StandardPropertyBindingBasePropertiesEditionComponent.class);
-			standardPropertyBindingBasePropertiesEditionComponent = (StandardPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(standardPropertyBinding, editing_mode, StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART, StandardPropertyBindingBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(standardPropertyBinding, PropertiesEditingProvider.class);
+			standardPropertyBindingBasePropertiesEditionComponent = (StandardPropertyBindingBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART, StandardPropertyBindingBasePropertiesEditionComponent.class);
 			addSubComponent(standardPropertyBindingBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(standardPropertyBinding, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(standardPropertyBinding, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(standardPropertyBinding, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

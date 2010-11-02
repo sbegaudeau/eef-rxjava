@@ -19,9 +19,9 @@ import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;
 import org.eclipse.emf.eef.mapping.parts.JavaDeclarationFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 // End of user code
 
@@ -60,18 +60,18 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	 * @param javaDeclarationFilter the EObject to edit
 	 * 
 	 */
-	public JavaDeclarationFilterPropertiesEditionComponent(EObject javaDeclarationFilter, String editing_mode) {
-		super(editing_mode);
+	public JavaDeclarationFilterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject javaDeclarationFilter, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (javaDeclarationFilter instanceof JavaDeclarationFilter) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter, JavaDeclarationFilterBasePropertiesEditionComponent.class);
-			javaDeclarationFilterBasePropertiesEditionComponent = (JavaDeclarationFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART, JavaDeclarationFilterBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(javaDeclarationFilter, PropertiesEditingProvider.class);
+			javaDeclarationFilterBasePropertiesEditionComponent = (JavaDeclarationFilterBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART, JavaDeclarationFilterBasePropertiesEditionComponent.class);
 			addSubComponent(javaDeclarationFilterBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(javaDeclarationFilter, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(javaDeclarationFilter, FilterPropertiesPropertiesEditionComponent.class);
-			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(javaDeclarationFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(javaDeclarationFilter, PropertiesEditingProvider.class);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}

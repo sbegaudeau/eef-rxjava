@@ -19,9 +19,9 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OCLFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 // End of user code
 
@@ -60,18 +60,18 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @param oCLFilter the EObject to edit
 	 * 
 	 */
-	public OCLFilterPropertiesEditionComponent(EObject oCLFilter, String editing_mode) {
-		super(editing_mode);
+	public OCLFilterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject oCLFilter, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (oCLFilter instanceof OCLFilter) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(oCLFilter, OCLFilterBasePropertiesEditionComponent.class);
-			oCLFilterBasePropertiesEditionComponent = (OCLFilterBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, OCLFilterBasePropertiesEditionComponent.BASE_PART, OCLFilterBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(oCLFilter, PropertiesEditingProvider.class);
+			oCLFilterBasePropertiesEditionComponent = (OCLFilterBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, OCLFilterBasePropertiesEditionComponent.BASE_PART, OCLFilterBasePropertiesEditionComponent.class);
 			addSubComponent(oCLFilterBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(oCLFilter, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(oCLFilter, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(oCLFilter, FilterPropertiesPropertiesEditionComponent.class);
-			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditionComponent(oCLFilter, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(oCLFilter, PropertiesEditingProvider.class);
+			filterPropertiesPropertiesEditionComponent = (FilterPropertiesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART, FilterPropertiesPropertiesEditionComponent.class);
 			addSubComponent(filterPropertiesPropertiesEditionComponent);
 		}
 	}

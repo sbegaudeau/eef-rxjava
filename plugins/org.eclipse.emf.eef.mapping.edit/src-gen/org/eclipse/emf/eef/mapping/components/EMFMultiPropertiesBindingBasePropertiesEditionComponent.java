@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -65,8 +66,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	 * Default constructor
 	 * 
 	 */
-	public EMFMultiPropertiesBindingBasePropertiesEditionComponent(EObject eMFMultiPropertiesBinding, String editing_mode) {
-		super(eMFMultiPropertiesBinding, editing_mode);
+	public EMFMultiPropertiesBindingBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eMFMultiPropertiesBinding, String editing_mode) {
+		super(editingContext, eMFMultiPropertiesBinding, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.EMFMultiPropertiesBinding.class;
@@ -111,8 +112,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-						
-						// End of user code
+									
+									// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -130,8 +131,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToModel(new EObjectFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views

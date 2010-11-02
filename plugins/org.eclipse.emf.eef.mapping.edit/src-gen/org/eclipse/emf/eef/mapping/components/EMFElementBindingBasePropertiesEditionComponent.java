@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.EMFElementBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -67,8 +68,8 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 	 * Default constructor
 	 * 
 	 */
-	public EMFElementBindingBasePropertiesEditionComponent(EObject eMFElementBinding, String editing_mode) {
-		super(eMFElementBinding, editing_mode);
+	public EMFElementBindingBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eMFElementBinding, String editing_mode) {
+		super(editingContext, eMFElementBinding, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.EMFElementBinding.class;
@@ -116,8 +117,8 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-						
-						// End of user code
+									
+									// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -132,8 +133,8 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for model
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views

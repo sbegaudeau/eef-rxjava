@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
@@ -46,8 +47,8 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	 * Default constructor
 	 * 
 	 */
-	public FilterPropertiesPropertiesEditionComponent(EObject bindingFilter, String editing_mode) {
-		super(bindingFilter, editing_mode);
+	public FilterPropertiesPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject bindingFilter, String editing_mode) {
+		super(editingContext, bindingFilter, editing_mode);
 		parts = new String[] { FILTERPROPERTIES_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.FilterProperties.class;

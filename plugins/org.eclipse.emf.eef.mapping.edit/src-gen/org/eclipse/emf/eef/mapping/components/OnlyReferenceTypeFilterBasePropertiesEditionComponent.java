@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -54,8 +55,8 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 	 * Default constructor
 	 * 
 	 */
-	public OnlyReferenceTypeFilterBasePropertiesEditionComponent(EObject onlyReferenceTypeFilter, String editing_mode) {
-		super(onlyReferenceTypeFilter, editing_mode);
+	public OnlyReferenceTypeFilterBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject onlyReferenceTypeFilter, String editing_mode) {
+		super(editingContext, onlyReferenceTypeFilter, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = MappingViewsRepository.class;
 		partKey = MappingViewsRepository.OnlyReferenceTypeFilter.class;
@@ -94,8 +95,8 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for referencedFeature
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views
