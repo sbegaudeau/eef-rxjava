@@ -67,11 +67,11 @@
       </extension>
       
       <!-- EEF EXTENSIONS -->
-  <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
-      <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.eef.components.providers.ComponentsPackagePropertiesEditionProvider">
-      </PropertiesEditionComponentProvider>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/components/1.0.0"
+            class="org.eclipse.emf.eef.components.providers.ComponentsEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
