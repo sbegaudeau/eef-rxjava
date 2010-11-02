@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
@@ -67,8 +68,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * Default constructor
 	 * 
 	 */
-	public PropertiesMultiEditionElementBasePropertiesEditionComponent(EObject propertiesMultiEditionElement, String editing_mode) {
-		super(propertiesMultiEditionElement, editing_mode);
+	public PropertiesMultiEditionElementBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject propertiesMultiEditionElement, String editing_mode) {
+		super(editingContext, propertiesMultiEditionElement, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ComponentsViewsRepository.class;
 		partKey = ComponentsViewsRepository.PropertiesMultiEditionElement.class;
@@ -116,8 +117,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-									
-									// End of user code
+															
+															// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -135,8 +136,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-									
-									// End of user code
+															
+															// End of user code
 			
 			
 		}

@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -52,8 +53,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * Default constructor
 	 * 
 	 */
-	public PropertiesEditionContextBasePropertiesEditionComponent(EObject propertiesEditionContext, String editing_mode) {
-		super(propertiesEditionContext, editing_mode);
+	public PropertiesEditionContextBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject propertiesEditionContext, String editing_mode) {
+		super(editingContext, propertiesEditionContext, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ComponentsViewsRepository.class;
 		partKey = ComponentsViewsRepository.PropertiesEditionContext.class;
@@ -92,8 +93,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-									
-									// End of user code
+															
+															// End of user code
 			
 		}
 		// init values for referenced views

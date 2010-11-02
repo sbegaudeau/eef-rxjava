@@ -13,8 +13,8 @@ package org.eclipse.emf.eef.components.providers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.policies.impl.StandardPropertiesEditingPolicyProvider;
 
 /**
@@ -28,7 +28,7 @@ public class ComponentsPackagePropertiesEditionPolicyProvider extends StandardPr
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider#provides(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
 	 * 
 	 */
-	public boolean provides(IPropertiesEditionContext context) {
+	public boolean provides(PropertiesEditingContext context) {
 		if (context instanceof EObjectPropertiesEditionContext) {
 			EObject eObject = ((EObjectPropertiesEditionContext) context).getEObject();
 			return eObject != null && (ComponentsPackage.eINSTANCE.equals(eObject.eClass().getEPackage()) || ComponentsPackage.eINSTANCE.getESubpackages().contains(eObject.eClass().getEPackage()));
