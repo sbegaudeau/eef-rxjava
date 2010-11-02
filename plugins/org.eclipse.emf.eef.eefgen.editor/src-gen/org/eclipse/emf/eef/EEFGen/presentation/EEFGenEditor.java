@@ -938,7 +938,7 @@ public class EEFGenEditor
 			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 			selectionViewer.setInput(editingDomain.getResourceSet());
 			selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-			selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain));
+			selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 
 			new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
 
