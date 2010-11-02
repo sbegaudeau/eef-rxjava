@@ -4,11 +4,11 @@
  <plugin>
 
   <!-- EEF extensions -->
-  <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
-      <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.eef.EEFGen.providers.EEFGenPackagePropertiesEditionProvider">
-      </PropertiesEditionComponentProvider>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/generation/1.0.0"
+            class="org.eclipse.emf.eef.EEFGen.providers.EEFGenEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
