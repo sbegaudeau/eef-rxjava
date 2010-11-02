@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrEditor.java,v 1.3 2010/10/25 21:56:28 glefur Exp $
+ * $Id: EefnrEditor.java,v 1.4 2010/11/02 11:58:44 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.presentation;
 
@@ -910,7 +910,7 @@ public class EefnrEditor
 			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 			selectionViewer.setInput(editingDomain.getResourceSet());
 			selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-			selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain));
+			selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 
 			new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
 
@@ -1007,7 +1007,6 @@ public class EefnrEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
