@@ -12,7 +12,7 @@ package org.eclipse.emf.eef.runtime.impl.command;
 
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.impl.policies.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.UIConstants;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
@@ -42,8 +42,7 @@ public class WizardEditingCommand extends AbstractCommand {
 	 */
 	@Override
 	protected boolean prepare() {
-		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext.getEditingDomain(),
-				editionContext.getEObject(), editionContext.getEditingDomain().getResourceSet());
+		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), editionContext.getEObject());
 		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard) {
 			
 			/**

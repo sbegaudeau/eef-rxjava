@@ -16,6 +16,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 /**
  * A stateful element to edit an EObject divided in one or more parts.
@@ -46,6 +47,11 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 */
 	public abstract IPropertiesEditionPart getPropertiesEditionPart(int kind, String key);
 
+	/**
+	 * @return the current editingContext
+	 */
+	public abstract PropertiesEditingContext getEditingContext();
+	
 	/**
 	 * @param key
 	 *            the key identifying the ElementEditor

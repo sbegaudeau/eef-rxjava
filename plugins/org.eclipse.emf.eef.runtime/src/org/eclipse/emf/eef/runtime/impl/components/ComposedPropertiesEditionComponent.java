@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.parts.NullCompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFRuntimeMessages;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
@@ -43,9 +44,15 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	private List<IPropertiesEditionListener> listeners;
 
 	/**
+	 * The current editingContext
+	 */
+	private PropertiesEditingContext editingContext;
+
+	/**
 	 * Default constructor
 	 */
-	public ComposedPropertiesEditionComponent(String mode) {
+	public ComposedPropertiesEditionComponent(PropertiesEditingContext editingContext, String mode) {
+		this.editingContext = editingContext;
 		this.subComponents = new ArrayList<IPropertiesEditionComponent>();
 		this.listeners = new ArrayList<IPropertiesEditionListener>();
 	}
@@ -135,6 +142,14 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 				return propertiesEditionPart;
 		}
 		return new NullCompositePropertiesEditionPart(this);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getEditingContext()
+	 */
+	public PropertiesEditingContext getEditingContext() {
+		return editingContext;
 	}
 
 	/**

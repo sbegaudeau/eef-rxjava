@@ -11,10 +11,11 @@
 package org.eclipse.emf.eef.runtime.ui.notify;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.command.WizardEditingCommand;
-import org.eclipse.emf.eef.runtime.impl.policies.DomainPropertiesEditionContext;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -26,12 +27,14 @@ import org.eclipse.jface.viewers.StructuredSelection;
 public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 
 	private EditingDomain editingDomain;
+	private AdapterFactory adapterFactory;
 
 	/**
 	 * @param editingDomain
 	 */
-	public OpenWizardOnDoubleClick(EditingDomain editingDomain) {
+	public OpenWizardOnDoubleClick(EditingDomain editingDomain, AdapterFactory adapterFactory) {
 		this.editingDomain = editingDomain;
+		this.adapterFactory = adapterFactory;
 	}
 
 	/**
@@ -51,7 +54,7 @@ public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 					eObject = (EObject)((IAdaptable)firstElement).getAdapter(EObject.class);
 			}
 			if (eObject != null) {
-				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, editingDomain, eObject);
+				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
 				WizardEditingCommand wizardEditingCommand = new WizardEditingCommand(propertiesEditionContext);
 				editingDomain.getCommandStack().execute(wizardEditingCommand);
 			}

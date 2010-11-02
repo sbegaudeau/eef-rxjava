@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
@@ -56,16 +56,18 @@ public class EEFStandardFormPage extends FormPage {
 	 * The folder for the tab
 	 */	
 	protected PropertiesEditionViewer viewer;
+
+	private AdapterFactory adapterFactory;
 	
 
 	/**
 	 * @param editor
 	 *            the form editor in which this page will be included
 	 */
-	public EEFStandardFormPage(FormEditor editor, String pageTitle,
-			EditingDomain editingDomain) {
+	public EEFStandardFormPage(FormEditor editor, String pageTitle, EditingDomain editingDomain, AdapterFactory adapterFactory) {
 		super(editor, PAGE_ID, pageTitle); 
 		this.editingDomain = editingDomain;
+		this.adapterFactory = adapterFactory;
 	}
 
 	/**
@@ -83,7 +85,7 @@ public class EEFStandardFormPage extends FormPage {
 		viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 		viewer.setDynamicTabHeader(false);
 		viewer.setToolkit(getManagedForm().getToolkit());
-		viewer.setContentProvider(new PropertiesEditionContentProvider(new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 
 	}
 

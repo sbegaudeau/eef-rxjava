@@ -5,7 +5,7 @@ package org.eclipse.emf.eef.runtime.policies.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.impl.policies.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
@@ -33,7 +33,7 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
 	public void execute() {
-		PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getEReference(), editionContext.getResourceSet());
+		PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getAdapterFactory(), editionContext.getEReference());
 		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
 		int executionResult = wDialog.open();
 		result = wizard.getEObject();

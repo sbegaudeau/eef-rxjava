@@ -3,9 +3,9 @@
  */
 package org.eclipse.emf.eef.runtime.policies.impl;
 
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.policies.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 
@@ -17,9 +17,9 @@ public abstract class StandardPropertiesEditingPolicyProvider implements Propert
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider#getPolicy(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
+	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider#getPolicy(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 */
-	public PropertiesEditingPolicy getPolicy(IPropertiesEditionContext context) {
+	public PropertiesEditingPolicy getPolicy(PropertiesEditingContext context) {
 		if (context instanceof EReferencePropertiesEditionContext) {
 			return new CreateEditingPolicy((EReferencePropertiesEditionContext) context);
 		}

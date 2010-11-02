@@ -48,6 +48,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	protected FormToolkit toolkit;
 	protected AbstractEEFMasterPart masterPart;
 	protected EditingDomain editingDomain;
+	private AdapterFactory adapterFactory;
 	protected ValidateAction validateAction;
 	
 	private boolean orientable = true;
@@ -164,7 +165,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 			public IDetailsPage getPage(Object key) {
 				if (key.equals(EObject.class))
-					return new EEFDetailsPage(toolkit, editingDomain);
+					return new EEFDetailsPage(toolkit, editingDomain, adapterFactory);
 				return null;
 			}
 		});
@@ -196,6 +197,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	 * @param adapterFactory the adapterFactory to set
 	 */
 	public void setAdapterFactory(AdapterFactory adapterFactory) {
+		this.adapterFactory = adapterFactory;
 		masterPart.setAdapterFactory(adapterFactory);
 	}
 

@@ -11,13 +11,12 @@
 package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -45,7 +44,6 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 	private EditingDomain editingDomain;
 	protected EObject eObject;
 	protected IPropertiesEditionComponent propertiesEditionComponent;
-	protected ResourceSet allResources;
 	
 	/**
      * Manager for error message
@@ -53,11 +51,13 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 	private PropertiesEditionMessageManager messageManager;
 
 	protected PropertiesEditionViewer viewer;
+	private AdapterFactory adapterFactory;
 
-	public EEFDetailsPage(FormToolkit toolkit, EditingDomain editingDomain) {
+	public EEFDetailsPage(FormToolkit toolkit, EditingDomain editingDomain, AdapterFactory adapterFactory) {
 		super();
 		this.toolkit = toolkit; 
 		this.editingDomain = editingDomain;
+		this.adapterFactory = adapterFactory;
 	}
 
 	public void createContents(Composite parent) {
@@ -81,7 +81,7 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 		this.viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
 		viewer.setDynamicTabHeader(false);
 		viewer.setToolkit(getManagedForm().getToolkit());
-		viewer.setContentProvider(new PropertiesEditionContentProvider(new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 	}
 
 	public void selectionChanged(IFormPart part, ISelection selection) {

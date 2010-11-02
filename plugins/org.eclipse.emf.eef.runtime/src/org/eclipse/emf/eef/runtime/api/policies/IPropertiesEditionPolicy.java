@@ -12,11 +12,12 @@ package org.eclipse.emf.eef.runtime.api.policies;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a> A interface that allows to specify a
  *         behavior to edit properties of an eObject. This behavior is parameterized by an
- *         {@link IPropertiesEditionContext}.
+ *         {@link PropertiesEditingContext}.
  */
 public interface IPropertiesEditionPolicy {
 
@@ -27,7 +28,7 @@ public interface IPropertiesEditionPolicy {
 	 *            the edition context.
 	 * @return the {@link Command} to update the edited {@link EObject}.
 	 */
-	public abstract Command getPropertiesEditionCommand(IPropertiesEditionContext propertiesEditionContext);
+	public abstract Command getPropertiesEditionCommand(PropertiesEditingContext propertiesEditionContext);
 
 	/**
 	 * Send a request to obtain EObject updating.
@@ -36,6 +37,6 @@ public interface IPropertiesEditionPolicy {
 	 *            the edition context.
 	 * @return the updated {@link EObject}.
 	 */
-	public abstract void getPropertiesEditionObject(IPropertiesEditionContext propertiesEditionContext);
+	public abstract void getPropertiesEditionObject(PropertiesEditingContext propertiesEditionContext);
 
 }

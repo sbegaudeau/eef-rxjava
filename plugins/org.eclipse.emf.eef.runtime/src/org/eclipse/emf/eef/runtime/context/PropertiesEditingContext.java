@@ -8,18 +8,36 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.runtime.api.policies;
+package org.eclipse.emf.eef.runtime.context;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public interface IPropertiesEditionContext {
+public interface PropertiesEditingContext {
 	
 	/**
 	 * @return the changeRecorder of the editing session
 	 */
 	public ChangeRecorder getChangeRecorder();
+	
+	/**
+	 * @return the currently edited {@link EObject}.
+	 */
+	public EObject getEObject();
+	
+	/**
+	 * @return the resourceSet where to work.
+	 */
+	public ResourceSet getResourceSet();
+	
+	/**
+	 * @return the {@link AdapterFactory} to use during the editing.
+	 */
+	public AdapterFactory getAdapterFactory();
 
 }

@@ -11,13 +11,16 @@
 package org.eclipse.emf.eef.runtime.impl.policies;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.command.WizardEditingCommand;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
@@ -31,13 +34,12 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy#getPropertiesEditionCommand(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
+	 * @see org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy#getPropertiesEditionCommand(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 */
-	public Command getPropertiesEditionCommand(IPropertiesEditionContext propertiesEditionContext) {
+	public Command getPropertiesEditionCommand(PropertiesEditingContext propertiesEditionContext) {
 		final DomainPropertiesEditionContext editionContext = (DomainPropertiesEditionContext)propertiesEditionContext;
 		final EObject eObject = editionContext.getEObject();
-		IPropertiesEditionProvider provider = PropertiesEditionComponentService.getInstance().getProvider(
-				eObject);
+		Adapter provider = editionContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 		if (provider != null) {
 			return new WizardEditingCommand(editionContext);
 		}
@@ -48,23 +50,21 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy#getPropertiesEditionObject(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
+	 * @see org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy#getPropertiesEditionObject(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 */
-	public void getPropertiesEditionObject(IPropertiesEditionContext propertiesEditionContext) {
+	public void getPropertiesEditionObject(PropertiesEditingContext propertiesEditionContext) {
 		if (propertiesEditionContext instanceof EObjectPropertiesEditionContext) {
-			EObjectPropertiesEditionContext editionContext = (EObjectPropertiesEditionContext)propertiesEditionContext;
-			EObject eObject = editionContext.getEObject();
-			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, eObject, editionContext.getResourceSet());
+			EObjectPropertiesEditionContext editingContext = (EObjectPropertiesEditionContext)propertiesEditionContext;
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editingContext.getAdapterFactory(), editingContext.getEObject());
 			WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
 			int result = wDialog.open();
-			ChangeDescription change = editionContext.getChangeRecorder().endRecording();
+			ChangeDescription change = editingContext.getChangeRecorder().endRecording();
 			if (result == Window.CANCEL) {
 				change.applyAndReverse();
 			}
 		} else if (propertiesEditionContext instanceof EReferencePropertiesEditionContext) {
 			EReferencePropertiesEditionContext editionContext = (EReferencePropertiesEditionContext)propertiesEditionContext;
-			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null,
-					editionContext.getEReference(), editionContext.getResourceSet());
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getAdapterFactory(), editionContext.getEReference());
 			WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
 			int result = wDialog.open();
 			ChangeDescription change = editionContext.getChangeRecorder().endRecording();

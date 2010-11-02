@@ -17,8 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -26,9 +28,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
@@ -64,7 +66,6 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	/**
 	 * The section's viewer
 	 */
-//	protected PropertiesEditionViewer viewer;
 	private Composite container;
 
 	/**
@@ -97,28 +98,11 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 */
 	private ViewerFilter[] filters = new ViewerFilter[1];
 
-	/**
-	 * global register edition provider
-	 */
-	private RegistryPropertiesEditionProvider provider;
-	
 	protected IPropertiesEditionComponent propertiesEditionComponent;
 
-	/**
-	 * @return the Global ProviderEditionProvider
-	 */
-	public RegistryPropertiesEditionProvider getProvider() {
-		if (provider == null)
-			provider = new RegistryPropertiesEditionProvider();
-		return provider;
-	}
-
-	/**
-	 * Global Properties Edition Provider
-	 */
-	private IPropertiesEditionProvider propertiesEditionProvider = new RegistryPropertiesEditionProvider();
-
 	private PropertiesEditionContentProvider contentProvider;
+
+	private AdapterFactory adapterFactory;
 
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
@@ -173,7 +157,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	}
 
 	private void refreshComponent(String descriptor) {
-		propertiesEditionComponent = getProvider().getPropertiesEditionComponent(eObject, IPropertiesEditionComponent.LIVE_MODE);
+		propertiesEditionComponent = getProvider(eObject).getPropertiesEditingComponent(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject), IPropertiesEditionComponent.LIVE_MODE);
 		if (propertiesEditionComponent != null) {
 			PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
@@ -192,6 +176,13 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 				}
 			}
 		}
+	}
+
+	private PropertiesEditingProvider getProvider(EObject eObject) {
+		if (this.adapterFactory == null) {
+			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		}
+		return (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
 	}
 
 	/**
@@ -344,7 +335,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	public boolean select(Object toTest) {
 		EObject eObj = resolveSemanticObject(toTest);
 		if (eObj != null) {
-			return getProvider().provides(eObj);
+			return getProvider(eObj)!=null;
 		}
 		return false;
 	}

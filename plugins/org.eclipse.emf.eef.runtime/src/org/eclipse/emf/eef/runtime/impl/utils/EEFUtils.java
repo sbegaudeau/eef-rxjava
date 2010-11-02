@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -95,12 +94,11 @@ public class EEFUtils {
 	/**
 	 * Return all the instanciable types for a given reference.
 	 * @param eReference the reference to process.
-	 * @param editingDomain the editing domain "where we live !"
-	 * @param allResources the resourceset where to search
+	 * @param editingDomain the editing domain where we live !
 	 * @return a list of {@link EClass} containing all the instanciable type for the give reference.
 	 */
-	public static List<EClass> allTypeFor(EReference eReference, EditingDomain editingDomain, ResourceSet allResources) {
-		Collection<?> list = editingDomain.getNewChildDescriptors(EEFUtils.searchInstanceOf(allResources, eReference.getEContainingClass()), null);
+	public static List<EClass> allTypeFor(EReference eReference, EditingDomain editingDomain) {
+		Collection<?> list = editingDomain.getNewChildDescriptors(EEFUtils.searchInstanceOf(editingDomain.getResourceSet(), eReference.getEContainingClass()), null);
 		ArrayList<EClass> instanciableTypesInHierarchy = new ArrayList<EClass>();
 		for(Object object : list) {
 			if(object instanceof CommandParameter) {

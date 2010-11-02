@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -24,7 +25,9 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
@@ -52,7 +55,7 @@ public class PropertiesEditionWizard extends Wizard {
 
 	private ElementCreationWizardPage elementCreationPage;
 
-	protected EditingDomain editingDomain;
+	protected PropertiesEditingContext editingContext;
 
 	protected EObject eObject;
 
@@ -60,43 +63,34 @@ public class PropertiesEditionWizard extends Wizard {
 
 	protected Command command;
 
-	protected ResourceSet allResources;
+//	protected ResourceSet allResources;
 	
 	private PropertiesEditionMessageManager messageManager;
 
+	private AdapterFactory adapterFactory;
+
 	/**
-	 * Default constructor - define the eObject to edit.
-	 * 
-	 * @param editingDomain
-	 *            (optional) defines the editingDomain where to perform commands.
-	 * @param eObject
-	 *            the eObject to edit.
-	 * @param allResources
-	 *            the resourceSet where the EObject is located.
+	 * @param editionContext defines the editing context.
+	 * @param adapterFactory the adapterFactory to use to get the editing component
+	 * @param eObject the eObject to edit
 	 */
-	public PropertiesEditionWizard(EditingDomain editingDomain, EObject eObject, ResourceSet allResources) {
-		this.editingDomain = editingDomain;
+	public PropertiesEditionWizard(PropertiesEditingContext editionContext, AdapterFactory adapterFactory, EObject eObject) {
+		this.editingContext = editionContext;
 		this.eObject = eObject;
-		this.allResources = allResources;
+		this.adapterFactory = adapterFactory;
 		this.setWindowTitle(eObject.eClass().getName());
 		initMessageManager();
 	}
 
 	/**
-	 * Default constructor - define the eObject to edit.
-	 * 
-	 * @param editingDomain
-	 *            (optional) defines the editingDomain where to perform commands.
-	 * @param eReference
-	 *            the reference where create the EObject.
-	 * @param allResources
-	 *            the resourceSet where the EObject is located.
+	 * @param editingContext defines the editing context.
+	 * @param adapterFactory the adapterFactory to use to get the editing component
+	 * @param eReference the eReference to edit
 	 */
-	public PropertiesEditionWizard(EditingDomain editingDomain, EReference eReference,
-			ResourceSet allResources) {
-		this.editingDomain = editingDomain;
+	public PropertiesEditionWizard(PropertiesEditingContext editingContext, AdapterFactory adapterFactory, EReference eReference) {
+		this.editingContext = editingContext;
 		this.eReference = eReference;
-		this.allResources = allResources;
+		this.adapterFactory = adapterFactory;
 		this.setWindowTitle(eReference.getName());
 		initMessageManager();
 	}
@@ -119,14 +113,14 @@ public class PropertiesEditionWizard extends Wizard {
 	 * @return the editingDomain where to perform commands.
 	 */
 	public EditingDomain getEditingDomain() {
-		return editingDomain;
+		return editingContext instanceof DomainPropertiesEditionContext?((DomainPropertiesEditionContext)editingContext).getEditingDomain():null;
 	}
 
 	/**
 	 * @return the updated EObject.
 	 */
 	public EObject getEObject() {
-		return eObject;
+		return editingContext.getEObject();
 	}
 
 	/**
@@ -214,13 +208,12 @@ public class PropertiesEditionWizard extends Wizard {
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
 			List<EClass> instanciableTypesInHierarchy;
-			if(editingDomain != null) {
-				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference, editingDomain, allResources);
-				//TODO Florian : cheat code to avoid perform finish guard.
-				editingDomain = null;
+			if(editingContext instanceof DomainPropertiesEditionContext) {
+				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference, ((DomainPropertiesEditionContext)editingContext).getEditingDomain());
+				editingContext = null;
 			}
 			else {
-				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(), allResources);
+				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(), editingContext.getResourceSet());
 			}
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
@@ -267,16 +260,18 @@ public class PropertiesEditionWizard extends Wizard {
 				Composite container = new Composite(scrolledContainer, SWT.FLAT);
 				GridLayout containerLayout = new GridLayout();
 				container.setLayout(containerLayout);
-				viewer = new PropertiesEditionViewer(container, PropertiesEditionWizard.this.allResources, 0);
+				ResourceSet resourceSet;
+				if (editingContext != null)
+					resourceSet = editingContext.getResourceSet();
+				else
+					resourceSet = eObject.eResource().getResourceSet();
+				viewer = new PropertiesEditionViewer(container, resourceSet, 0);
 				viewer.setDynamicTabHeader(true);
-				viewer.setContentProvider(new PropertiesEditionContentProvider(
-						new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.BATCH_MODE));
+				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.BATCH_MODE));
 				scrolledContainer.setContent(container);
 				setControl(viewer.getControl());
-				
 			} catch (InstantiationException e) {
-				EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionWizard_error_wizard_live_mode,
-						e);
+				EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionWizard_error_wizard_live_mode, e);
 			}
 		}
 

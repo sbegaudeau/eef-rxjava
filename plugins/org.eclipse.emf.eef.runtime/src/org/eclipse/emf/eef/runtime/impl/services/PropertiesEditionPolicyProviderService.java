@@ -16,8 +16,8 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.providers.StandardPropertiesEditionPolicyProviderFactory;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 
@@ -75,7 +75,7 @@ public class PropertiesEditionPolicyProviderService implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProviderFactory#getProvider(org.eclipse.emf.ecore.EObject)
 	 */
-	public PropertiesEditingPolicyProvider getProvider(IPropertiesEditionContext eObject) {
+	public PropertiesEditingPolicyProvider getProvider(PropertiesEditingContext eObject) {
 		return editPropertiesProviderFactory.getProvider(eObject);
 	}
 
@@ -84,7 +84,7 @@ public class PropertiesEditionPolicyProviderService implements IPropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.ecore.EObject)
 	 */
-	public boolean provides(IPropertiesEditionContext eObject) {
+	public boolean provides(PropertiesEditingContext eObject) {
 		return editPropertiesProviderFactory.provides(eObject);
 	}
 

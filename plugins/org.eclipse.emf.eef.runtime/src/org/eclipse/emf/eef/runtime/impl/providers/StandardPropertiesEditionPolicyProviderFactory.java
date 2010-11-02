@@ -13,8 +13,8 @@ package org.eclipse.emf.eef.runtime.impl.providers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
 
 /**
@@ -37,9 +37,9 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#getProvider(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#getProvider(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 */
-	public PropertiesEditingPolicyProvider getProvider(IPropertiesEditionContext context) {
+	public PropertiesEditingPolicyProvider getProvider(PropertiesEditingContext context) {
 		for (PropertiesEditingPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
 			if (editPropertiesPolicyProvider.provides(context))
 				return editPropertiesPolicyProvider;
@@ -49,9 +49,9 @@ public class StandardPropertiesEditionPolicyProviderFactory implements IProperti
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionContext)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProviderFactory#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 */
-	public boolean provides(IPropertiesEditionContext context) {
+	public boolean provides(PropertiesEditingContext context) {
 		for (PropertiesEditingPolicyProvider editPropertiesPolicyProvider : editPropertiesPolicyProviders) {
 			if (editPropertiesPolicyProvider.provides(context))
 				return true;

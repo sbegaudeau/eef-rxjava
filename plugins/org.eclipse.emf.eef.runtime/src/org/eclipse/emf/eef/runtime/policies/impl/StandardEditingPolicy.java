@@ -5,7 +5,7 @@ package org.eclipse.emf.eef.runtime.policies.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
@@ -36,7 +36,7 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 	public void execute() {
 		EObjectPropertiesEditionContext editionContext = (EObjectPropertiesEditionContext)context;
 		EObject eObject = editionContext.getEObject();
-		PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, eObject, editionContext.getResourceSet());
+		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), eObject);
 		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
 		int result = wDialog.open();
 		ChangeDescription change = editionContext.getChangeRecorder().endRecording();

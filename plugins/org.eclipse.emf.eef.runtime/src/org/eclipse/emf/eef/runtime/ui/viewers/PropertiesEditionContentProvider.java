@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.viewers;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -18,8 +19,10 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -29,7 +32,7 @@ import org.eclipse.jface.viewers.Viewer;
  */
 public class PropertiesEditionContentProvider implements IStructuredContentProvider {
 
-	private IPropertiesEditionProvider propertiesEditionProvider;
+	private AdapterFactory adapterFactory;
 
 	private IPropertiesEditionComponent propertiesEditionComponent;
 
@@ -38,22 +41,20 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	private EditingDomain editingDomain;
 
 	/**
-	 * @param propertiesEditionProvider
+	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(IPropertiesEditionProvider propertiesEditionProvider, String mode)
-			throws InstantiationException {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode) throws InstantiationException {
 		if (mode == IPropertiesEditionComponent.LIVE_MODE)
 			throw new InstantiationException(EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
-		this.propertiesEditionProvider = propertiesEditionProvider;
+		this.adapterFactory = adapterFactory;
 		this.mode = mode;
 	}
 
 	/**
-	 * @param propertiesEditionProvider
+	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(IPropertiesEditionProvider propertiesEditionProvider,
-			String mode, EditingDomain editingDomain) {
-		this.propertiesEditionProvider = propertiesEditionProvider;
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode, EditingDomain editingDomain) {
+		this.adapterFactory = adapterFactory;
 		this.mode = mode;
 		this.editingDomain = editingDomain;
 	}
@@ -81,9 +82,15 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 			PropertiesContextService.getInstance().pop();
 			propertiesEditionComponent.dispose();
 		}
-		this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditionComponent((EObject)newInput, mode);
-		if (propertiesEditionComponent != null && mode == IPropertiesEditionComponent.LIVE_MODE)
-			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
+		PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider) adapterFactory.adapt((EObject)newInput, PropertiesEditingProvider.class);
+		if (propertiesEditionProvider != null) {
+			if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject)newInput), mode);
+				propertiesEditionComponent.setLiveEditingDomain(editingDomain);
+			} else if (mode == IPropertiesEditionComponent.BATCH_MODE) {
+				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(new EObjectPropertiesEditionContext(null, null, (EObject)newInput, adapterFactory), mode);
+			}
+		}
 
 		// FIXME: find a better way to manage the context
 		PropertiesContextService.getInstance().push((EObject)newInput, propertiesEditionComponent);

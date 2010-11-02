@@ -10,6 +10,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
 
@@ -19,6 +20,11 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  */
 public abstract class SinglePartPropertiesEditingComponent extends StandardPropertiesEditionComponent {
 
+	/**
+	 * Editing context
+	 */
+	protected PropertiesEditingContext editingContext;
+	
 	/**
 	 * EObject to edit
 	 */
@@ -43,8 +49,9 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * Default constructor
 	 * 
 	 */
-	public SinglePartPropertiesEditingComponent(EObject semanticObject, String editing_mode) {
+	public SinglePartPropertiesEditingComponent(PropertiesEditingContext editingContext, EObject semanticObject, String editing_mode) {
 		this.semanticObject = semanticObject;
+		this.editingContext = editingContext;
 		if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			semanticAdapter = initializeSemanticAdapter();
 			this.semanticObject.eAdapters().add(semanticAdapter);
@@ -86,6 +93,13 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getEditingContext()
+	 */
+	public PropertiesEditingContext getEditingContext() {
+		return editingContext;
+	}
 
 	/**
 	 * {@inheritDoc}
