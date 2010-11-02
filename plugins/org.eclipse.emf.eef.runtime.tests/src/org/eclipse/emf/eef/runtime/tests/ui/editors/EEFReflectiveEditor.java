@@ -36,7 +36,7 @@ public class EEFReflectiveEditor extends EcoreEditor implements ITabbedPropertyS
 	@Override
 	public void createPages() {
 		super.createPages();
-		selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain));
+		selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 	}
 
 	/* (non-Javadoc)

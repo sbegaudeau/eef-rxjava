@@ -13,14 +13,16 @@ package org.eclipse.emf.eef.runtime.tests.ui.properties.section;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.impl.providers.RegistryPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
@@ -87,17 +89,25 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	/**
 	 * global register edition provider
 	 */
-	private RegistryPropertiesEditionProvider provider;
+	private AdapterFactory adapterFactory;
 	
 	private IPropertiesEditionComponent propertiesEditionComponent;
 
 	/**
-	 * @return the Global ProviderEditionProvider
+	 * @return the associated ProviderEditionProvider
 	 */
-	public RegistryPropertiesEditionProvider getProvider() {
-		if (provider == null)
-			provider = new RegistryPropertiesEditionProvider();
-		return provider;
+	public PropertiesEditingProvider getProvider(EObject eObject) {
+		return (PropertiesEditingProvider) getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+	}
+
+
+	/**
+	 * 
+	 */
+	private AdapterFactory getAdapterFactory() {
+		if (adapterFactory == null)
+			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		return adapterFactory;
 	}
 
 
@@ -140,7 +150,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
 		initializeEditingDomain(part);
-		PropertiesEditionContentProvider propertiesEditionContentProvider = new PropertiesEditionContentProvider(new RegistryPropertiesEditionProvider(), IPropertiesEditionComponent.LIVE_MODE, editingDomain);
+		PropertiesEditionContentProvider propertiesEditionContentProvider = new PropertiesEditionContentProvider(getAdapterFactory(), IPropertiesEditionComponent.LIVE_MODE, editingDomain);
 		viewer.setContentProvider(propertiesEditionContentProvider);
 		if (!(selection instanceof IStructuredSelection)) {
 			return;
@@ -217,7 +227,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	public boolean select(Object toTest) {
 		EObject eObj = resolveSemanticObject(toTest);
 		if (eObj != null) {
-			return getProvider().provides(eObj);
+			return getProvider(eObj) != null;
 		}
 		return false;
 	}
