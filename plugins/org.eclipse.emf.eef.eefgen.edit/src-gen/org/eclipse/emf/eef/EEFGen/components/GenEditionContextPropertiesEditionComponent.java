@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -56,8 +57,8 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	 * Default constructor
 	 * 
 	 */
-	public GenEditionContextPropertiesEditionComponent(EObject genEditionContext, String editing_mode) {
-		super(genEditionContext, editing_mode);
+	public GenEditionContextPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject genEditionContext, String editing_mode) {
+		super(editingContext, genEditionContext, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EEFGenViewsRepository.class;
 		partKey = EEFGenViewsRepository.GenEditionContext.class;
@@ -112,8 +113,8 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for propertiesEditionContext
-						
-						// End of user code
+									
+									// End of user code
 			
 			
 		}

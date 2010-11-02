@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -52,8 +53,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	 * Default constructor
 	 * 
 	 */
-	public EEFGenModelReferencePropertiesEditionComponent(EObject eEFGenModelReference, String editing_mode) {
-		super(eEFGenModelReference, editing_mode);
+	public EEFGenModelReferencePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eEFGenModelReference, String editing_mode) {
+		super(editingContext, eEFGenModelReference, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EEFGenViewsRepository.class;
 		partKey = EEFGenViewsRepository.EEFGenModelReference.class;
@@ -92,8 +93,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for reference
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views

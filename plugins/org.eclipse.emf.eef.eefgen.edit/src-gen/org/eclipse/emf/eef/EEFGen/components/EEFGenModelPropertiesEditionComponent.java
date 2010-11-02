@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
@@ -46,8 +47,8 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	 * Default constructor
 	 * 
 	 */
-	public EEFGenModelPropertiesEditionComponent(EObject eEFGenModel, String editing_mode) {
-		super(eEFGenModel, editing_mode);
+	public EEFGenModelPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject eEFGenModel, String editing_mode) {
+		super(editingContext, eEFGenModel, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EEFGenViewsRepository.class;
 		partKey = EEFGenViewsRepository.EEFGenModel.class;

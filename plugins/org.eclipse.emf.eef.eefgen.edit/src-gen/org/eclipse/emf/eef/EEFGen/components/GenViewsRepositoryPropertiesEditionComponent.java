@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -59,8 +60,8 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 	 * Default constructor
 	 * 
 	 */
-	public GenViewsRepositoryPropertiesEditionComponent(EObject genViewsRepository, String editing_mode) {
-		super(genViewsRepository, editing_mode);
+	public GenViewsRepositoryPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject genViewsRepository, String editing_mode) {
+		super(editingContext, genViewsRepository, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = EEFGenViewsRepository.class;
 		partKey = EEFGenViewsRepository.GenViewsRepository.class;
@@ -111,8 +112,8 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for viewsRepository
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views
