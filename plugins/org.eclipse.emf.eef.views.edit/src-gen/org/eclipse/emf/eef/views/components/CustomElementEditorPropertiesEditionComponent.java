@@ -15,9 +15,9 @@ package org.eclipse.emf.eef.views.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -54,15 +54,15 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 	 * @param customElementEditor the EObject to edit
 	 * 
 	 */
-	public CustomElementEditorPropertiesEditionComponent(EObject customElementEditor, String editing_mode) {
-		super(editing_mode);
+	public CustomElementEditorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject customElementEditor, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (customElementEditor instanceof CustomElementEditor) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(customElementEditor, CustomElementEditorBasePropertiesEditionComponent.class);
-			customElementEditorBasePropertiesEditionComponent = (CustomElementEditorBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(customElementEditor, editing_mode, CustomElementEditorBasePropertiesEditionComponent.BASE_PART, CustomElementEditorBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(customElementEditor, PropertiesEditingProvider.class);
+			customElementEditorBasePropertiesEditionComponent = (CustomElementEditorBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, CustomElementEditorBasePropertiesEditionComponent.BASE_PART, CustomElementEditorBasePropertiesEditionComponent.class);
 			addSubComponent(customElementEditorBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(customElementEditor, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(customElementEditor, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(customElementEditor, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

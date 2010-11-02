@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.views.Category;
@@ -46,8 +47,8 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 * Default constructor
 	 * 
 	 */
-	public CategoryBasePropertiesEditionComponent(EObject category, String editing_mode) {
-		super(category, editing_mode);
+	public CategoryBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject category, String editing_mode) {
+		super(editingContext, category, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ViewsViewsRepository.class;
 		partKey = ViewsViewsRepository.Category.class;

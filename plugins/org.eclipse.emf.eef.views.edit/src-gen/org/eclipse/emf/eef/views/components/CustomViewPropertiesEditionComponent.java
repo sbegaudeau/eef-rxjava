@@ -15,9 +15,9 @@ package org.eclipse.emf.eef.views.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.CustomView;
 import org.eclipse.emf.eef.views.parts.CustomViewPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -54,15 +54,15 @@ public class CustomViewPropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @param customView the EObject to edit
 	 * 
 	 */
-	public CustomViewPropertiesEditionComponent(EObject customView, String editing_mode) {
-		super(editing_mode);
+	public CustomViewPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject customView, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (customView instanceof CustomView) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(customView, CustomViewBasePropertiesEditionComponent.class);
-			customViewBasePropertiesEditionComponent = (CustomViewBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(customView, editing_mode, CustomViewBasePropertiesEditionComponent.BASE_PART, CustomViewBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(customView, PropertiesEditingProvider.class);
+			customViewBasePropertiesEditionComponent = (CustomViewBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, CustomViewBasePropertiesEditionComponent.BASE_PART, CustomViewBasePropertiesEditionComponent.class);
 			addSubComponent(customViewBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(customView, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(customView, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(customView, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

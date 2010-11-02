@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -56,8 +57,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	 * Default constructor
 	 * 
 	 */
-	public ViewReferenceBasePropertiesEditionComponent(EObject viewReference, String editing_mode) {
-		super(viewReference, editing_mode);
+	public ViewReferenceBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject viewReference, String editing_mode) {
+		super(editingContext, viewReference, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ViewsViewsRepository.class;
 		partKey = ViewsViewsRepository.ViewReference.class;
@@ -100,8 +101,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for view
-						
-						// End of user code
+									
+									// End of user code
 			
 		}
 		// init values for referenced views

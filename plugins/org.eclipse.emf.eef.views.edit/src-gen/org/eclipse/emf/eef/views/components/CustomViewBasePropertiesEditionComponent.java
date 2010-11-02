@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.views.CustomView;
@@ -46,8 +47,8 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	 * Default constructor
 	 * 
 	 */
-	public CustomViewBasePropertiesEditionComponent(EObject customView, String editing_mode) {
-		super(customView, editing_mode);
+	public CustomViewBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject customView, String editing_mode) {
+		super(editingContext, customView, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ViewsViewsRepository.class;
 		partKey = ViewsViewsRepository.CustomView.class;

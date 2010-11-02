@@ -15,9 +15,9 @@ package org.eclipse.emf.eef.views.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.Category;
 import org.eclipse.emf.eef.views.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -54,15 +54,15 @@ public class CategoryPropertiesEditionComponent extends ComposedPropertiesEditio
 	 * @param category the EObject to edit
 	 * 
 	 */
-	public CategoryPropertiesEditionComponent(EObject category, String editing_mode) {
-		super(editing_mode);
+	public CategoryPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject category, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (category instanceof Category) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(category, CategoryBasePropertiesEditionComponent.class);
-			categoryBasePropertiesEditionComponent = (CategoryBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, CategoryBasePropertiesEditionComponent.BASE_PART, CategoryBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(category, PropertiesEditingProvider.class);
+			categoryBasePropertiesEditionComponent = (CategoryBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, CategoryBasePropertiesEditionComponent.BASE_PART, CategoryBasePropertiesEditionComponent.class);
 			addSubComponent(categoryBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(category, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(category, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(category, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.views.DocumentedElement;
@@ -46,8 +47,8 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 * Default constructor
 	 * 
 	 */
-	public DocumentedElementPropertiesEditionComponent(EObject documentedElement, String editing_mode) {
-		super(documentedElement, editing_mode);
+	public DocumentedElementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject documentedElement, String editing_mode) {
+		super(editingContext, documentedElement, editing_mode);
 		parts = new String[] { DOCUMENTATION_PART };
 		repositoryKey = ViewsViewsRepository.class;
 		partKey = ViewsViewsRepository.Documentation.class;

@@ -15,9 +15,9 @@ package org.eclipse.emf.eef.views.components;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.parts.ViewReferencePropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
@@ -54,15 +54,15 @@ public class ViewReferencePropertiesEditionComponent extends ComposedPropertiesE
 	 * @param viewReference the EObject to edit
 	 * 
 	 */
-	public ViewReferencePropertiesEditionComponent(EObject viewReference, String editing_mode) {
-		super(editing_mode);
+	public ViewReferencePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject viewReference, String editing_mode) {
+		super(editingContext, editing_mode);
 		if (viewReference instanceof ViewReference) {
-			IPropertiesEditionProvider provider = null;
-			provider = PropertiesEditionComponentService.getInstance().getProvider(viewReference, ViewReferenceBasePropertiesEditionComponent.class);
-			viewReferenceBasePropertiesEditionComponent = (ViewReferenceBasePropertiesEditionComponent)provider.getPropertiesEditionComponent(viewReference, editing_mode, ViewReferenceBasePropertiesEditionComponent.BASE_PART, ViewReferenceBasePropertiesEditionComponent.class);
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(viewReference, PropertiesEditingProvider.class);
+			viewReferenceBasePropertiesEditionComponent = (ViewReferenceBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ViewReferenceBasePropertiesEditionComponent.BASE_PART, ViewReferenceBasePropertiesEditionComponent.class);
 			addSubComponent(viewReferenceBasePropertiesEditionComponent);
-			provider = PropertiesEditionComponentService.getInstance().getProvider(viewReference, DocumentedElementPropertiesEditionComponent.class);
-			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditionComponent(viewReference, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(viewReference, PropertiesEditingProvider.class);
+			documentedElementPropertiesEditionComponent = (DocumentedElementPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART, DocumentedElementPropertiesEditionComponent.class);
 			addSubComponent(documentedElementPropertiesEditionComponent);
 		}
 	}

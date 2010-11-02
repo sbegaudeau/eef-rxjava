@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
@@ -46,8 +47,8 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * Default constructor
 	 * 
 	 */
-	public WidgetPropertiesEditionComponent(EObject widget, String editing_mode) {
-		super(widget, editing_mode);
+	public WidgetPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject widget, String editing_mode) {
+		super(editingContext, widget, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ToolkitsViewsRepository.class;
 		partKey = ToolkitsViewsRepository.Widget.class;
