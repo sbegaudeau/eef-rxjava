@@ -21,46 +21,24 @@
 [peContext.associatedGenModel().licenceText().trim()/]
 package [peContext.providersPackage()/];
 
-import org.eclipse.emf.eef.runtime.impl.providers.ComposedPropertiesEditionProvider;
-[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
-	[if (component.model.completePackage() <> peContext.model.ecorePackage.completePackage())]
-import [component.model.completePackage()/].providers.[component.pecProviderClass()/];
-	[/if]
-[/for]
+import org.eclipse.emf.common.notify.Adapter;
+import [peContext.model.basePackage/].util.[peContext.model.ecorePackage.name.toJavaClassifier()/];
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [peContext.pecPackageProviderClass()/] extends ComposedPropertiesEditionProvider {
-
-	/**
-	 * Default Constructor
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	public [peContext.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider() {
-		super();
-[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
-		append(create[component.pecProviderClass()/]());
-[/for]
-	}
+public class [peContext.pecPackageProviderClass()/] extends [peContext.model.ecorePackage.name.toJavaClassifier()/]AdapterFactory {
 
 [for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
-	/**
-	 * This keeps track of the one PropertiesEditionProvider used for all
-	 * [component.model.name/] instances.
-	 * [peContext.associatedGenModel().generationMark()/]
-	 */
-	protected [component.pecProviderClass()/] [component.pecProviderClass().toJavaIdentifier()/];
 
 	/**
-	 * This creates an PropertiesEditionProvider for a [component.model.name/]
+	 * {@inheritDoc}
+	 * @see [peContext.model.basePackage/].util.[peContext.model.ecorePackage.name.toJavaClassifier()/]#create[component.model.name.toJavaClassifier()/]Adapter()
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public [component.pecProviderClass()/] create[component.pecProviderClass()/]() {
-		if ([component.pecProviderClass().toJavaIdentifier()/] == null)
-			[component.pecProviderClass().toJavaIdentifier()/] = new [component.pecProviderClass()/]();
-		return [component.pecProviderClass().toJavaIdentifier()/];
+	public Adapter create[component.model.name.toJavaClassifier()/]Adapter() {
+		return new [component.pecProviderClass()/]();
 	}
 
 [/for]

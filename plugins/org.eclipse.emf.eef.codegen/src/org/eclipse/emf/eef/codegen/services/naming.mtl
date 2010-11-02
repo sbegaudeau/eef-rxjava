@@ -77,7 +77,7 @@
 [/template]
 
 [template public pecPackageProviderClass(pec : PropertiesEditionContext)]
-[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionProvider
+[pec.model.ecorePackage.name.toJavaClassifier()/]EEFAdapterFactory
 [/template]
 
 [template public pecPackageProviderQualifiedClass(pec : PropertiesEditionContext)]
