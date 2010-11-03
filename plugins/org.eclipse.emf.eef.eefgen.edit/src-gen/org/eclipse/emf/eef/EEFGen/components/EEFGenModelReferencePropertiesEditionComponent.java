@@ -93,8 +93,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for reference
-												
-												// End of user code
+															
+															// End of user code
 			
 		}
 		// init values for referenced views
