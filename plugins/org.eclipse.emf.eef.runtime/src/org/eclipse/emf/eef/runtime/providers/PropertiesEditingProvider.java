@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.runtime.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 
 /**
  * Interface to implement by {@link IPropertiesEditionComponent} providers.
@@ -60,7 +61,7 @@ public interface PropertiesEditingProvider {
 	 * Returns a {@link IPropertiesEditionComponent} able to edit the {@link EObject} in the current {@link PropertiesEditingContext}.
 	 * 
 	 * @param editingContext the current {@link PropertiesEditingContext}
-	 * @param mode the editing mode. Avaiable modes are IPropertiesEditionComponent.BATCH_MODE or IPropertiesEditionComponent.LIVE_MODE.
+	 * @param mode the editing mode. Available modes are IPropertiesEditionComponent.BATCH_MODE or IPropertiesEditionComponent.LIVE_MODE.
 	 * @return a {@link IPropertiesEditionComponent} to edit the {@link EObject} in the editingContext
 	 */
 	public abstract IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode);
@@ -70,21 +71,29 @@ public interface PropertiesEditingProvider {
 	 * for the given part.
 	 * 
 	 * @param editingContext the current {@link PropertiesEditingContext}
-	 * @param mode the editing mode. Avaiable modes are IPropertiesEditionComponent.BATCH_MODE or IPropertiesEditionComponent.LIVE_MODE.
+	 * @param mode the editing mode. Available modes are IPropertiesEditionComponent.BATCH_MODE or IPropertiesEditionComponent.LIVE_MODE.
 	 * @param part the key of the part determining the {@link IPropertiesEditionComponent} to provide
 	 * @return a {@link IPropertiesEditionComponent} to edit the {@link EObject} in the editingContext
 	 */
 	public abstract IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part);
 
 	/**
-	 * Returns a stateful {@link IPropertiesEditionComponent} able to edit the specified eObject for a specific part with a specific type.
+	 * Returns a {@link IPropertiesEditionComponent} able to edit the specified eObject for a specific part with a specific type.
 	 * 
 	 * @param editingContext the current {@link PropertiesEditingContext}
-	 * @param mode the editing mode. Avaiable modes are IPropertiesEditionComponent.BATCH_MODE or IPropertiesEditionComponent.LIVE_MODE.
+	 * @param mode the editing mode. Available modes are IPropertiesEditionComponent.BATCH_MODE or IPropertiesEditionComponent.LIVE_MODE.
 	 * @param part the key of the part determining the {@link IPropertiesEditionComponent} to provide
 	 * @param refinement the expected type
 	 * @return a {@link IPropertiesEditionComponent} to edit the {@link EObject} in the editingContext
 	 */
 	public abstract IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement);
+
+	/**
+	 * Returns a {@link PropertiesEditingPolicy} defining the editing policy for the given context.
+	 * 
+	 * @param editingContext the current {@link PropertiesEditingContext}
+	 * @return a {@link PropertiesEditingPolicy} to edit the given context
+	 */
+	public abstract PropertiesEditingPolicy getPolicy(PropertiesEditingContext context);
 
 }
