@@ -348,11 +348,13 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 [template public defaultEditOperation (editor : ElementEditor) ]
 EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
-PropertiesEditingPolicy policy = policyProvider.getPolicy(context);
-if (policy != null) {
-	policy.execute();
-	[editor.name.toJavaIdentifier()/].refresh();
+PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+if (provider != null) {
+	PropertiesEditingPolicy policy = provider.getPolicy(context);
+	if (policy != null) {
+		policy.execute();
+		[editor.name.toJavaIdentifier()/].refresh();
+	}
 }
 [/template]
 

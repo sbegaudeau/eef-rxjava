@@ -24,17 +24,11 @@
  <plugin>
 
   <!-- EEF extensions -->
-  <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
-      <PropertiesEditionComponentProvider
-            providerClass="[editionContext.pecPackageProviderQualifiedClass()/]">
-      </PropertiesEditionComponentProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="[editionContext.pecPolicyProviderQualifiedClass()/]">
-      </PropertiesEditionPolicyProvider>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="[editionContext.model.ecorePackage.nsURI/]"
+            class="[editionContext.pecPackageProviderQualifiedClass()/]"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
 [for (repository : ViewsRepository | views::ViewsRepository.allInstances())]
    <extension
