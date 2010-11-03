@@ -11,10 +11,10 @@
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
@@ -26,12 +26,6 @@
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
    <extension

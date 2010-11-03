@@ -99,8 +99,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			
 			});
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-																																																																		
-																																																																		// End of user code
+																																																																											
+																																																																											// End of user code
 			
 		}
 		// init values for referenced views

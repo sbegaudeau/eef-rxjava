@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.5 2010/11/02 11:58:42 glefur Exp $
+ $Id: plugin.xml,v 1.6 2010/11/03 17:06:24 glefur Exp $
 -->
 
 <plugin>
@@ -65,13 +65,6 @@
             class="org.eclipse.emf.eef.eefnr.providers.EefnrEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
-   
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
-   </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
@@ -80,24 +73,12 @@
    </extension>
   <!-- EEF extensions -->
    <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
-   </extension>
-   <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
   <!-- EEF extensions -->
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.navigation.providers.NavigationPackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
-   </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
@@ -121,18 +102,6 @@
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
-   </extension>
-  <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
-      <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.eef.references.providers.ReferencesPackagePropertiesEditionProvider">
-      </PropertiesEditionComponentProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.references.providers.ReferencesPackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">

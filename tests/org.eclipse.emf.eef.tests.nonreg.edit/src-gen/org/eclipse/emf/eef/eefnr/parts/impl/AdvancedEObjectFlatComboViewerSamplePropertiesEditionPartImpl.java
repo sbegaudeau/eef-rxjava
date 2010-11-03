@@ -24,9 +24,8 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -128,11 +127,13 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 			
 			public TotalSample handleCreate() {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, adapterFactory);
-				PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
 				PropertiesEditingPolicy policy = provider.getPolicy(context);
-				if (policy != null) {
-					policy.execute();
+					if (policy != null) {
+						policy.execute();
+					}
 				}
 				return null;
 			}
@@ -161,11 +162,13 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 			
 			public TotalSample handleCreate() {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, adapterFactory);
-				PropertiesEditingPolicyProvider provider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
 				PropertiesEditingPolicy policy = provider.getPolicy(context);
-				if (policy != null) {
-					policy.execute();
+					if (policy != null) {
+						policy.execute();
+					}
 				}
 				return null;
 			}

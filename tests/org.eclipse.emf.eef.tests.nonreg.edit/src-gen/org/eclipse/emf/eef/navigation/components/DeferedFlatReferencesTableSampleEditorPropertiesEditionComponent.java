@@ -104,8 +104,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			});
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-																																																																		
-																																																																		// End of user code
+																																																																											
+																																																																											// End of user code
 			
 		}
 		// init values for referenced views
