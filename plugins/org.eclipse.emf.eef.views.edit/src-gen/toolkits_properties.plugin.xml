@@ -11,12 +11,6 @@
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.eef.toolkits.providers.ToolkitsPackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
-   </extension>
-   <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.toolkits.providers.ToolkitsPropertiesEditionPartProvider">
