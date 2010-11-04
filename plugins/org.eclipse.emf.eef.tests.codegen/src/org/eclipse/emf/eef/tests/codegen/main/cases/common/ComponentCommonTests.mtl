@@ -47,7 +47,7 @@ import [viewRepository.qualifiedMessagesProvider()/];
 [/for]
 [for (peElement : components::PropertiesEditionElement | pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement))]
 [if (peElement.model.eType.oclIsKindOf(ecore::EClass))]import [peElement.model.eType.qualifiedName()/];
-[/if]	
+[/if]
 [/for]
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
@@ -85,7 +85,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass [name.toLowerFirst()/]MetaClass = [pec.model.ePackage.metamodelPackage()/].eINSTANCE.get[name/]();	
+	private EClass [name.toLowerFirst()/]MetaClass = [pec.model.ePackage.metamodelPackage()/].eINSTANCE.get[name/]();
 	[/for]
 	[if (pec.properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(model.oclIsTypeOf(ecore::EReference) and canRemove())->asSet()->notEmpty())]
 	/**
@@ -154,7 +154,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	}
 	[/template]
 
-[template public initializeExpectedModelPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]	
+[template public initializeExpectedModelPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -172,7 +172,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	}
 [/template]
 
-[template public initializeRemoveExpectedModelPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) ? (peElement.canRemove())]	
+[template public initializeRemoveExpectedModelPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) ? (peElement.canRemove())]
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -190,7 +190,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 	}
 [/template]
 
-[template public testEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]    
+[template public testEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 	public void testEdit[pec.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws Exception {
 		
 		// Import the input model
@@ -211,7 +211,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		
 [/template]
 
-[template public testRemoveEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) ? (peElement.canRemove())]    
+[template public testRemoveEditPropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) ? (peElement.canRemove())]
 	public void testRemove[pec.name.toUpperFirst()/][peElement.name.toUpperFirst()/]() throws Exception {
 		
 		// Import the input model
@@ -232,7 +232,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 		
 [/template]
 		
-[template public comparePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)] 		
+[template public comparePropertySection(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement)]
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
