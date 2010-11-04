@@ -157,7 +157,7 @@
 		<fail message="downloads.area property must be defined" unless="downloads.area" />
 
 		<!-- defaults -->
-		<property name="version" value="1.1.1" />
+		<property name="version" value="0.9.0" />
 
 		<property name="packages.directory" location="${build.root}/archive/${packages.base}" />
 
@@ -218,7 +218,7 @@
 
 		<unzip dest="${build.repository.directory}">
 			<fileset dir="${packages.directory}">
-				<filename name="emf-compare-Update*.zip" />
+				<filename name="emft-eef-Update*.zip" />
 			</fileset>
 		</unzip>
 
