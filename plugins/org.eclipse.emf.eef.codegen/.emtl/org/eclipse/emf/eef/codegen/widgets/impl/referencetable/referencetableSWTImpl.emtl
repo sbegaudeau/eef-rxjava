@@ -2567,7 +2567,7 @@
       </guard>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="defaultEditOperation" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(null, element,resourceSet);&#xA;PropertiesEditingPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(context);&#xA;PropertiesEditingPolicy policy = policyProvider.getPolicy(context);&#xA;if (policy != null) {&#xA;&#x9;policy.execute();&#xA;&#x9;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);&#xA;PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);&#xA;if (provider != null) {&#xA;&#x9;PropertiesEditingPolicy policy = provider.getPolicy(context);&#xA;&#x9;if (policy != null) {&#xA;&#x9;&#x9;policy.execute();&#xA;&#x9;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/toJavaIdentifier"/>
@@ -2579,7 +2579,7 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".refresh();&#xA;}"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".refresh();&#xA;&#x9;}&#xA;}"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
       </parameter>
@@ -12269,33 +12269,33 @@
     </eAnnotations>
     <eAnnotations source="positions.854" references="/0/defaultEditOperation">
       <details key="start" value="19006"/>
-      <details key="end" value="19469"/>
+      <details key="end" value="19572"/>
       <details key="line" value="350"/>
     </eAnnotations>
     <eAnnotations source="positions.855" references="/0/defaultEditOperation/@body.0">
       <details key="start" value="19071"/>
-      <details key="end" value="19411"/>
+      <details key="end" value="19511"/>
       <details key="line" value="351"/>
     </eAnnotations>
     <eAnnotations source="positions.856" references="/0/defaultEditOperation/@body.1">
-      <details key="start" value="19412"/>
-      <details key="end" value="19442"/>
+      <details key="start" value="19512"/>
+      <details key="end" value="19542"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.857" references="/0/defaultEditOperation/@body.1/@argument.0">
-      <details key="start" value="19412"/>
-      <details key="end" value="19423"/>
+      <details key="start" value="19512"/>
+      <details key="end" value="19523"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.858" references="/0/defaultEditOperation/@body.1/@argument.0/editor">
-      <details key="start" value="19412"/>
-      <details key="end" value="19418"/>
+      <details key="start" value="19512"/>
+      <details key="end" value="19518"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.859" references="/0/defaultEditOperation/@body.2">
-      <details key="start" value="19444"/>
-      <details key="end" value="19457"/>
-      <details key="line" value="356"/>
+      <details key="start" value="19544"/>
+      <details key="end" value="19560"/>
+      <details key="line" value="357"/>
     </eAnnotations>
     <eAnnotations source="positions.860" references="/0/defaultEditOperation/editor">
       <details key="start" value="19045"/>
@@ -12303,69 +12303,69 @@
       <details key="line" value="350"/>
     </eAnnotations>
     <eAnnotations source="positions.861" references="/0/defaultRemoveOperation">
-      <details key="start" value="19471"/>
-      <details key="end" value="19801"/>
-      <details key="line" value="360"/>
+      <details key="start" value="19574"/>
+      <details key="end" value="19904"/>
+      <details key="line" value="362"/>
     </eAnnotations>
     <eAnnotations source="positions.862" references="/0/defaultRemoveOperation/@body.0">
-      <details key="start" value="19538"/>
-      <details key="end" value="19614"/>
-      <details key="line" value="361"/>
+      <details key="start" value="19641"/>
+      <details key="end" value="19717"/>
+      <details key="line" value="363"/>
     </eAnnotations>
     <eAnnotations source="positions.863" references="/0/defaultRemoveOperation/@body.1">
-      <details key="start" value="19615"/>
-      <details key="end" value="19635"/>
+      <details key="start" value="19718"/>
+      <details key="end" value="19738"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.864" references="/0/defaultRemoveOperation/@body.1/editor">
-      <details key="start" value="19615"/>
-      <details key="end" value="19621"/>
+      <details key="start" value="19718"/>
+      <details key="end" value="19724"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.865" references="/0/defaultRemoveOperation/@body.2">
-      <details key="start" value="19637"/>
-      <details key="end" value="19644"/>
-      <details key="line" value="361"/>
+      <details key="start" value="19740"/>
+      <details key="end" value="19747"/>
+      <details key="line" value="363"/>
     </eAnnotations>
     <eAnnotations source="positions.866" references="/0/defaultRemoveOperation/@body.3">
-      <details key="start" value="19645"/>
-      <details key="end" value="19662"/>
+      <details key="start" value="19748"/>
+      <details key="end" value="19765"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.867" references="/0/defaultRemoveOperation/@body.3/editor">
-      <details key="start" value="19645"/>
-      <details key="end" value="19651"/>
+      <details key="start" value="19748"/>
+      <details key="end" value="19754"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.868" references="/0/defaultRemoveOperation/@body.4">
-      <details key="start" value="19664"/>
-      <details key="end" value="19745"/>
-      <details key="line" value="361"/>
+      <details key="start" value="19767"/>
+      <details key="end" value="19848"/>
+      <details key="line" value="363"/>
     </eAnnotations>
     <eAnnotations source="positions.869" references="/0/defaultRemoveOperation/@body.5">
-      <details key="start" value="19746"/>
-      <details key="end" value="19776"/>
+      <details key="start" value="19849"/>
+      <details key="end" value="19879"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.870" references="/0/defaultRemoveOperation/@body.5/@argument.0">
-      <details key="start" value="19746"/>
-      <details key="end" value="19757"/>
+      <details key="start" value="19849"/>
+      <details key="end" value="19860"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.871" references="/0/defaultRemoveOperation/@body.5/@argument.0/editor">
-      <details key="start" value="19746"/>
-      <details key="end" value="19752"/>
+      <details key="start" value="19849"/>
+      <details key="end" value="19855"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.872" references="/0/defaultRemoveOperation/@body.6">
-      <details key="start" value="19778"/>
-      <details key="end" value="19789"/>
-      <details key="line" value="362"/>
+      <details key="start" value="19881"/>
+      <details key="end" value="19892"/>
+      <details key="line" value="364"/>
     </eAnnotations>
     <eAnnotations source="positions.873" references="/0/defaultRemoveOperation/editor">
-      <details key="start" value="19512"/>
-      <details key="end" value="19534"/>
-      <details key="line" value="360"/>
+      <details key="start" value="19615"/>
+      <details key="end" value="19637"/>
+      <details key="line" value="362"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
