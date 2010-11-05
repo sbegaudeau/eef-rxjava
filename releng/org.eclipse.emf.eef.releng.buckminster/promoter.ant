@@ -52,7 +52,7 @@
 
 		<copy tofile="${publisher.root}/publisher.ant" file="${ant.file}" />
 
-		<property name="promoter.properties.file" value="${env.WORKSPACE}/../lastSuccessful/archive/${promoter.properties.file.name}" />
+		<property name="promoter.properties.file" value="${env.WORKSPACE}/${promoter.properties.file.name}" />
 
 		<!-- load the promoter properties using the PROMOTED_URL supplied by Hudson -->
 		<property prefix="saved." file="${promoter.properties.file}" />
