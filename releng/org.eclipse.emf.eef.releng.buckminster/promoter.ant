@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Promoter / Publisher" default="publish.build">
+<project name="Promoter-Publisher" default="publish.build">
 	<property name="promoter.properties.file.name" value="promote.properties" />
 	<property name="publisher.properties.file.name" value="publisher.properties" />
 
@@ -80,6 +80,7 @@
 	</target>
 
 	<target name="publish.build">
+		<property file="${publisher.properties.file.name}"/>
 		<fail message="build.root property must be defined" unless="build.root" />
 
 		<property name="property.file.location" location="${build.root}/archive/${promoter.properties.file.name}" />
