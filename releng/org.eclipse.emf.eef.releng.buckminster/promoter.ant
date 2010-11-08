@@ -68,7 +68,7 @@
 			</condition>
 		</fail>
 
-		<property name="build.root" location="/shared/jobs/${env.JOB_NAME}/builds/${saved.hudson.build.id}" />
+		<property name="build.root" location="/opt/public/jobs/${env.JOB_NAME}/builds/${saved.hudson.build.id}" />
 
 		<echoproperties destfile="${publisher.root}/${publisher.properties.file.name}">
 			<propertyset>
