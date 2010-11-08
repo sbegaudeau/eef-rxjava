@@ -18,6 +18,9 @@
 			<entry key="eclipse.home" value="${eclipse.home}" />
 			<entry key="build.id" value="${build.id}" />
 			<entry key="hudson.build.id" value="${hudson.build.id}" />
+			<entry key="build.root" value="/shared/jobs/emf-eef-nightly/lastSuccessful" />
+			<entry key="packages.base" value="EEF.downloads" />
+			<entry key="downloads.area" value="/home/data/httpd/download.eclipse.org/modeling/emft/eef" />
 		</propertyfile>
 
 		<!-- diagnostics
@@ -142,7 +145,6 @@
 	</target>
 
 	<target name="publish.build.from.framework" depends="-check.property.file.location,-load.properties">
-		<echoproperties/>
 		<fail message="saved.build.id property must be defined">
 			<condition>
 				<not>
