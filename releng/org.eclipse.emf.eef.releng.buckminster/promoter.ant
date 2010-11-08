@@ -142,6 +142,7 @@
 	</target>
 
 	<target name="publish.build.from.framework" depends="-check.property.file.location,-load.properties">
+		<echoproperties/>
 		<fail message="saved.build.id property must be defined">
 			<condition>
 				<not>
