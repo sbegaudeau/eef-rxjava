@@ -155,16 +155,16 @@
 				</not>
 			</condition>
 		</fail>
-		<fail message="build.root property must be defined" unless="build.root" />
-		<fail message="packages.base property must be defined" unless="packages.base" />
-		<fail message="downloads.area property must be defined" unless="downloads.area" />
+		<fail message="saved.build.root property must be defined" unless="saved.build.root" />
+		<fail message="saved.packages.base property must be defined" unless="saved.packages.base" />
+		<fail message="saved.downloads.area property must be defined" unless="saved.downloads.area" />
 
 		<!-- defaults -->
 		<property name="version" value="0.9.0" />
 
-		<property name="packages.directory" location="${build.root}/archive/${packages.base}" />
+		<property name="packages.directory" location="${saved.build.root}/archive/${saved.packages.base}" />
 
-		<property name="build.drop.directory" location="${downloads.area}/downloads/drops/${version}/${saved.build.id}" />
+		<property name="build.drop.directory" location="${saved.downloads.area}/downloads/drops/${version}/${saved.build.id}" />
 
 		<delete dir="${build.drop.directory}" />
 		<mkdir dir="${build.drop.directory}" />
@@ -180,7 +180,7 @@
 			<fileset dir="${build.drop.directory}" />
 		</checksum>
 		<!-- copy buildlog -->
-		<copy tofile="${build.drop.directory}/buildlog.txt" file="${build.root}/log" />
+		<copy tofile="${build.drop.directory}/buildlog.txt" file="${saved.build.root}/log" />
 
 		<fileset id="drop.resources" dir="${build.drop.directory}">
 			<or>
@@ -212,7 +212,7 @@
 	</target>
 
 	<target name="-publish.build.repository" if="composite.repository.base">
-		<property name="composite.repository.directory" location="${downloads.area}/updates/${composite.repository.base}" />
+		<property name="composite.repository.directory" location="${saved.downloads.area}/updates/${composite.repository.base}" />
 		<property name="composite.repository.url" value="file:/${composite.repository.directory}" />
 		<property name="build.repository.directory" location="${composite.repository.directory}/${saved.build.id}" />
 
