@@ -220,7 +220,7 @@
 
 		<unzip dest="${build.repository.directory}">
 			<fileset dir="${packages.directory}">
-				<filename name="emft-eef-Update*.zip" />
+				<filename name="emf-eef-Update*.zip" />
 			</fileset>
 		</unzip>
 
