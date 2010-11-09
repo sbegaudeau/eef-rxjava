@@ -83,7 +83,7 @@
 	</target>
 
 	<target name="publish.build">
-		<property file="${publisher.properties.file.name}"/>
+		<property file="${publisher.properties.file.name}" />
 		<fail message="build.root property must be defined" unless="build.root" />
 
 		<property name="property.file.location" location="${build.root}/archive/${promoter.properties.file.name}" />
@@ -132,11 +132,8 @@
 			somewhat more complicated than simple <delete dir="${publisher.workspace}" />
 			but this way it does not produce the "Deleting directory" message
 		-->
-		<delete dir="${publisher.workspace}" includeemptydirs="true" quiet="true">
-			<or>
-				<type type="dir" />
-				<type type="file" />
-			</or>
+		<delete includeemptydirs="true" quiet="true">
+			<fileset dir="${publisher.workspace}" includes="**/*"/>
 		</delete>
 	</target>
 
@@ -198,16 +195,18 @@
 		<buckminster.substitute value="${version}" pattern="^(\d+\.\d+)\.\d+.*$" replacement="$$1" property="base.version" />
 
 		<!-- setup composite.repository.base appropriate to the build type -->
-		<condition property="composite.repository.base" value="${base.version}-I-builds">
+		<condition property="composite.repository.base" value="interim/${base.version}">
 			<matches pattern="^I" string="${saved.build.id}" />
 		</condition>
-		<condition property="composite.repository.base" value="${base.version}milestones">
+		<condition property="composite.repository.base" value="milestones/${base.version}">
 			<matches pattern="^[MS]" string="${saved.build.id}" />
 		</condition>
-		<condition property="composite.repository.base" value="${base.version}">
+		<condition property="composite.repository.base" value="releases/${base.version}">
 			<matches pattern="^R" string="${saved.build.id}" />
 		</condition>
-
+		<condition property="composite.repository.base" value="nightly/${base.version}">
+			<matches pattern="^N" string="${saved.build.id}" />
+		</condition>
 		<antcall target="-publish.build.repository" inheritall="true" />
 	</target>
 
