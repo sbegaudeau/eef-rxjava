@@ -72,12 +72,9 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_Widget_name_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Widget_name_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_name_description"), //$NON-NLS-1$
-				ToolkitsPackage.Literals.WIDGET__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ToolkitsPackage.Literals.WIDGET__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -87,12 +84,9 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 * @generated
 	 */
 	protected void addIconPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_Widget_icon_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Widget_icon_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_icon_description"), //$NON-NLS-1$
-				ToolkitsPackage.Literals.WIDGET__ICON, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ToolkitsPackage.Literals.WIDGET__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -102,13 +96,9 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 * @generated
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Widget_implementation_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Widget_implementation_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_implementation_description"), //$NON-NLS-1$
-				ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -130,7 +120,7 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Widget)object).getName();
+		String label = ((Widget) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Widget_type") : //$NON-NLS-1$
 				getString("_UI_Widget_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -147,12 +137,11 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Widget.class)) {
-			case ToolkitsPackage.WIDGET__NAME:
-			case ToolkitsPackage.WIDGET__ICON:
-			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ToolkitsPackage.WIDGET__NAME:
+		case ToolkitsPackage.WIDGET__ICON:
+		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}

@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -67,7 +68,7 @@ public class IdentifiedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((IdentifiedElement)object).getQualifiedIdentifier();
+		String label = ((IdentifiedElement) object).getQualifiedIdentifier();
 		return label == null || label.length() == 0 ? getString("_UI_IdentifiedElement_type") : //$NON-NLS-1$
 				getString("_UI_IdentifiedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -84,10 +85,9 @@ public class IdentifiedElementItemProvider extends ItemProviderAdapter implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(IdentifiedElement.class)) {
-			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -112,7 +112,7 @@ public class IdentifiedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ViewsEditPlugin.INSTANCE;
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

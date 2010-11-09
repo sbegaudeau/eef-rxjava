@@ -72,12 +72,9 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_Toolkit_name_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Toolkit_name_feature"), //$NON-NLS-1$
 				getString("_UI_Toolkit_name_description"), //$NON-NLS-1$
-				ToolkitsPackage.Literals.TOOLKIT__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ToolkitsPackage.Literals.TOOLKIT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -129,7 +126,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Toolkit)object).getName();
+		String label = ((Toolkit) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Toolkit_type") : //$NON-NLS-1$
 				getString("_UI_Toolkit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -146,14 +143,12 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Toolkit.class)) {
-			case ToolkitsPackage.TOOLKIT__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
-			case ToolkitsPackage.TOOLKIT__WIDGETS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case ToolkitsPackage.TOOLKIT__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case ToolkitsPackage.TOOLKIT__WIDGETS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -169,8 +164,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ToolkitsPackage.Literals.TOOLKIT__WIDGETS,
-				ToolkitsFactory.eINSTANCE.createWidget()));
+		newChildDescriptors.add(createChildParameter(ToolkitsPackage.Literals.TOOLKIT__WIDGETS, ToolkitsFactory.eINSTANCE.createWidget()));
 	}
 
 	/**

@@ -108,7 +108,7 @@ public class ContainerItemProvider extends ViewElementItemProvider implements IE
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Container)object).getName();
+		String label = ((Container) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Container_type") : //$NON-NLS-1$
 				getString("_UI_Container_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -125,10 +125,12 @@ public class ContainerItemProvider extends ViewElementItemProvider implements IE
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Container.class)) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -144,23 +146,17 @@ public class ContainerItemProvider extends ViewElementItemProvider implements IE
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createContainer()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS, ViewsFactory.eINSTANCE.createContainer()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createView()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS, ViewsFactory.eINSTANCE.createView()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createElementEditor()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS, ViewsFactory.eINSTANCE.createElementEditor()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createCustomElementEditor()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS, ViewsFactory.eINSTANCE.createCustomElementEditor()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createCustomView()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS, ViewsFactory.eINSTANCE.createCustomView()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS,
-				ViewsFactory.eINSTANCE.createViewReference()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CONTAINER__ELEMENTS, ViewsFactory.eINSTANCE.createViewReference()));
 	}
 
 }

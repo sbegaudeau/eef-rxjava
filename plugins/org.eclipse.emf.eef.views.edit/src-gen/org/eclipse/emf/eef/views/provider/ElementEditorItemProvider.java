@@ -67,13 +67,9 @@ public class ElementEditorItemProvider extends ViewElementItemProvider implement
 	 * @generated
 	 */
 	protected void addReadOnlyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ElementEditor_readOnly_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementEditor_readOnly_feature"), //$NON-NLS-1$
 				getString("_UI_ElementEditor_readOnly_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.ELEMENT_EDITOR__READ_ONLY, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.ELEMENT_EDITOR__READ_ONLY, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,7 +91,7 @@ public class ElementEditorItemProvider extends ViewElementItemProvider implement
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ElementEditor)object).getName();
+		String label = ((ElementEditor) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ElementEditor_type") : //$NON-NLS-1$
 				getString("_UI_ElementEditor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -112,11 +108,10 @@ public class ElementEditorItemProvider extends ViewElementItemProvider implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ElementEditor.class)) {
-			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}

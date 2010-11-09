@@ -67,12 +67,9 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 	 * @generated
 	 */
 	protected void addExplicitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_View_explicit_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_View_explicit_feature"), //$NON-NLS-1$
 				getString("_UI_View_explicit_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW__EXPLICIT, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.VIEW__EXPLICIT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -94,7 +91,7 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((View)object).getName();
+		String label = ((View) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_View_type") : //$NON-NLS-1$
 				getString("_UI_View_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -111,11 +108,9 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(View.class)) {
-			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-			case ViewsPackage.VIEW__EXPLICIT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.VIEW__EXPLICIT:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}

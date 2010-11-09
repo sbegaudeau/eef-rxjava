@@ -68,9 +68,7 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 * @generated
 	 */
 	protected void addRepresentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ViewElement_representation_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewElement_representation_feature"), //$NON-NLS-1$
 				getString("_UI_ViewElement_representation_description"), //$NON-NLS-1$
 				ViewsPackage.Literals.VIEW_ELEMENT__REPRESENTATION, true, false, true, null, null, null));
 	}
@@ -82,12 +80,9 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ViewElement_name_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewElement_name_feature"), //$NON-NLS-1$
 				getString("_UI_ViewElement_name_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW_ELEMENT__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.VIEW_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -98,7 +93,7 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewElement)object).getName();
+		String label = ((ViewElement) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewElement_type") : //$NON-NLS-1$
 				getString("_UI_ViewElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -115,10 +110,9 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ViewElement.class)) {
-			case ViewsPackage.VIEW_ELEMENT__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.VIEW_ELEMENT__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
